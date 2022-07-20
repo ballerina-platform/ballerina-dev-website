@@ -26,6 +26,8 @@ export async function getStaticProps() {
 }
 
 export default function PrivacyPolicyPage({ frontmatter, content }) {
+
+  // Add id attributes to headings
   const extractText = (value) => {
     if (typeof value === 'string') {
       return value
@@ -41,42 +43,46 @@ export default function PrivacyPolicyPage({ frontmatter, content }) {
     return newId
   }
 
+  // Show page toc
+  const [showToc, setShowToc] = React.useState(false);
+
   return (
     <>
       <Head>
-        <meta name="description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/>
-        <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language"/>
+        <meta name="description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
         <title>{frontmatter.title}</title>
 
         {/* <!--FB--> */}
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content={`Ballerina - ${frontmatter.title}`}/>
-        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/>
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={`Ballerina - ${frontmatter.title}`} />
+        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Ballerina"/>
+        <meta property="og:title" content="Ballerina" />
 
 
         {/* <!--TWITTER--> */}
-        <meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/>
-        <meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/>
+        <meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
       </Head>
       <Layout>
         <Col xs={12} sm={10} className="policyContent">
           <Row className="pageHeader">
             <Col xs={11}><h1>{frontmatter.title}</h1></Col>
             <Col xs={1} className="gitIcon">
-              <Image src={`${prefix}/images/github.svg`} height={20} width={20} alt="Edit in github"/>
+              <Image src={`${prefix}/images/github.svg`} height={20} width={20} alt="Edit in github" />
             </Col>
           </Row>
 
           <Row className='pageContentRow'>
             <Col xs={12}>
-              <ReactMarkdown 
+              <ReactMarkdown
                 components={{
                   h2({ node, inline, className, children, ...props }) {
                     let id = '';
+                    setShowToc(true);
                     if (children.length === 1) {
                       id = children[0].toLowerCase().replace(/ /g, '-');
                     }
@@ -87,6 +93,7 @@ export default function PrivacyPolicyPage({ frontmatter, content }) {
                   },
                   h3({ node, inline, className, children, ...props }) {
                     let id = '';
+                    setShowToc(true);
                     if (children.length === 1) {
                       id = children[0].toLowerCase().replace(/ /g, '-');
                     }
@@ -97,6 +104,7 @@ export default function PrivacyPolicyPage({ frontmatter, content }) {
                   },
                   h4({ node, inline, className, children, ...props }) {
                     let id = '';
+                    setShowToc(true);
                     if (children.length === 1) {
                       id = children[0].toLowerCase().replace(/ /g, '-');
                     }
@@ -107,6 +115,7 @@ export default function PrivacyPolicyPage({ frontmatter, content }) {
                   },
                   h5({ node, inline, className, children, ...props }) {
                     let id = '';
+                    setShowToc(true);
                     if (children.length === 1) {
                       id = children[0].toLowerCase().replace(/ /g, '-');
                     }
@@ -117,6 +126,7 @@ export default function PrivacyPolicyPage({ frontmatter, content }) {
                   },
                   h6({ node, inline, className, children, ...props }) {
                     let id = '';
+                    setShowToc(true);
                     if (children.length === 1) {
                       id = children[0].toLowerCase().replace(/ /g, '-');
                     }
@@ -133,8 +143,18 @@ export default function PrivacyPolicyPage({ frontmatter, content }) {
           </Row>
         </Col>
         <Col sm={2} className='pageToc d-none d-sm-block'>
-          <h6>On this page</h6>
-          <MarkdownNavbar source={content} ordered={false} headingTopOffset={150} declarative/>
+          {
+            (showToc) ?
+              <>
+                <h6>On this page</h6>
+                <MarkdownNavbar
+                  source={content}
+                  ordered={false}
+                  headingTopOffset={150}
+                  declarative />
+              </>
+              : null
+          }
         </Col>
       </Layout>
     </>

@@ -81,6 +81,7 @@ export default function PostPage({ frontmatter, content, id }) {
   //     .parseAndRender('{{version | capitalize}}', {version: 'alice'})
   //     .then(console.log);     // outputs 'Alice'
 
+  // Synatax highlighting
   const HighlightSyntax = (code, language) => {
     const [codeSnippet, setCodeSnippet] = React.useState([]);
 
@@ -98,11 +99,12 @@ export default function PostPage({ frontmatter, content, id }) {
     return [codeSnippet]
   }
 
+  // Show mobile left nav
   const [show, setShow] = React.useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // Add id attributes to headings
   const extractText = (value) => {
     if (typeof value === 'string') {
       return value
@@ -117,6 +119,9 @@ export default function PostPage({ frontmatter, content, id }) {
     newId = newId.replace(/ /g, '-');
     return newId
   }
+
+  // Show page toc
+  const [showToc, setShowToc] = React.useState(false);
 
   return (
     <>
@@ -175,6 +180,7 @@ export default function PostPage({ frontmatter, content, id }) {
               components={{
                 h2({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -185,6 +191,7 @@ export default function PostPage({ frontmatter, content, id }) {
                 },
                 h3({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -195,6 +202,7 @@ export default function PostPage({ frontmatter, content, id }) {
                 },
                 h4({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -205,6 +213,7 @@ export default function PostPage({ frontmatter, content, id }) {
                 },
                 h5({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -215,6 +224,7 @@ export default function PostPage({ frontmatter, content, id }) {
                 },
                 h6({ node, inline, className, children, ...props }) {
                   let id = '';
+                  setShowToc(true);
                   if (children.length === 1) {
                     id = children[0].toLowerCase().replace(/ /g, '-');
                   }
@@ -257,8 +267,18 @@ export default function PostPage({ frontmatter, content, id }) {
           </Container>
         </Col>
         <Col sm={2} className='pageToc d-none d-sm-block'>
-          <h6>On this page</h6>
-          <MarkdownNavbar source={content} ordered={false} headingTopOffset={150} declarative />
+          {
+            (showToc) ?
+              <>
+                <h6>On this page</h6>
+                <MarkdownNavbar
+                  source={content}
+                  ordered={false}
+                  headingTopOffset={150}
+                  declarative />
+              </>
+              : null
+          }
         </Col>
       </Layout>
     </>

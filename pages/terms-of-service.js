@@ -25,6 +25,8 @@ export async function getStaticProps() {
 }
 
 export default function TermsOfServicePage({ frontmatter, content }) {
+
+  // Add id attributes to headings
   const extractText = (value) => {
     if (typeof value === 'string') {
       return value
@@ -39,6 +41,9 @@ export default function TermsOfServicePage({ frontmatter, content }) {
     newId = newId.replace(/ /g, '-');
     return newId
   }
+
+  // Show page toc
+  const [showToc, setShowToc] = React.useState(false);
 
   return (
     <>
@@ -76,6 +81,7 @@ export default function TermsOfServicePage({ frontmatter, content }) {
                 components={{
                   h2({ node, inline, className, children, ...props }) {
                     let id = '';
+                    setShowToc(true);
                     if (children.length === 1) {
                       id = children[0].toLowerCase().replace(/ /g, '-');
                     }
@@ -86,6 +92,7 @@ export default function TermsOfServicePage({ frontmatter, content }) {
                   },
                   h3({ node, inline, className, children, ...props }) {
                     let id = '';
+                    setShowToc(true);
                     if (children.length === 1) {
                       id = children[0].toLowerCase().replace(/ /g, '-');
                     }
@@ -96,6 +103,7 @@ export default function TermsOfServicePage({ frontmatter, content }) {
                   },
                   h4({ node, inline, className, children, ...props }) {
                     let id = '';
+                    setShowToc(true);
                     if (children.length === 1) {
                       id = children[0].toLowerCase().replace(/ /g, '-');
                     }
@@ -106,6 +114,7 @@ export default function TermsOfServicePage({ frontmatter, content }) {
                   },
                   h5({ node, inline, className, children, ...props }) {
                     let id = '';
+                    setShowToc(true);
                     if (children.length === 1) {
                       id = children[0].toLowerCase().replace(/ /g, '-');
                     }
@@ -116,6 +125,7 @@ export default function TermsOfServicePage({ frontmatter, content }) {
                   },
                   h6({ node, inline, className, children, ...props }) {
                     let id = '';
+                    setShowToc(true);
                     if (children.length === 1) {
                       id = children[0].toLowerCase().replace(/ /g, '-');
                     }
@@ -132,8 +142,18 @@ export default function TermsOfServicePage({ frontmatter, content }) {
           </Row>
         </Col>
         <Col sm={2} className='pageToc d-none d-sm-block'>
-          <h6>On this page</h6>
-          <MarkdownNavbar source={content} ordered={false} headingTopOffset={150} declarative />
+          {
+            (showToc) ?
+              <>
+                <h6>On this page</h6>
+                <MarkdownNavbar
+                  source={content}
+                  ordered={false}
+                  headingTopOffset={150}
+                  declarative />
+              </>
+              : null
+          }
         </Col>
       </Layout>
     </>

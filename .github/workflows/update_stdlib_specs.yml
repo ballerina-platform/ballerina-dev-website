@@ -31,7 +31,7 @@ jobs:
 
       - name: Push changes for new specifications
         run: |
-          git checkout automate-specs-$GITHUB_SHA 2>/master/null || git checkout -b automate-specs-$GITHUB_SHA
+          git checkout automate-specs-$GITHUB_SHA 2>/website-revamp/null || git checkout -b automate-specs-$GITHUB_SHA
 
           git config --global user.email "ballerina-bot@ballerina.org"
           git config --global user.name "ballerina-bot"
@@ -46,6 +46,6 @@ jobs:
         shell: bash
         run: |
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          bin/hub pull-request -b master -m '[AUTOMATE] Update Ballerina Standard Library Specifications'
+          bin/hub pull-request -b website-revamp -m '[AUTOMATE] Update Ballerina Standard Library Specifications'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

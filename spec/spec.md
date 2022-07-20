@@ -49,6 +49,13 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 
 For the proposals for improving Ballerina, see the <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/README.md">work in progress proposals</a>.
 
+## Ballerina standard library specifications
+
+| Module | Edition | Current snapshot | Description |
+| ------- | ------- | ---------------- | ----------- | 
+| `http` | Swan Lake | <a target="_blank" href="/spec/http/">Snapshot</a> | HTTP module of Ballerina language, which provides HTTP client-server functionalities to produce and consume HTTP APIs. |
+| `jwt` | Swan Lake | <a target="_blank" href="/spec/jwt/">Snapshot</a> | JWT module of Ballerina language, which is used for authorization of listeners and clients (HTTP, gRPC, GraphQL, WebSocket, WebSub, etc.). |
+
 ## Ballerina platform specifications
 
 | Specification | Latest released version | Current snapshot |

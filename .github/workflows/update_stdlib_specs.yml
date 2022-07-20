@@ -12,21 +12,28 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          ref: website-revamp
 
       - name: Install pandoc
         run: sudo apt-get install pandoc -y
 
-      - name: Get spec.md file
-        run: wget ${{ github.event.client_payload.file_url }}
+      - name: Clone standard library repository
+        run: git clone https://github.com/ballerina-platform/${{ github.event.client_payload.module_name }}.git
 
       - name: Update specifications
         run: |
-          chmod +x .github/scripts/spec_update.sh
-          ./.github/scripts/spec_update.sh ${{ github.event.client_payload.module }} ${{ github.event.client_payload.release_date }}
+          rm -rf spec/${{ github.event.client_payload.short_name }}
+          rm -rf public/spec/${{ github.event.client_payload.short_name }}
+
+          cp -r ${{ github.event.client_payload.file_dir }} spec/${{ github.event.client_payload.short_name }}
+          cp -r ${{ github.event.client_payload.file_dir }} public/spec/${{ github.event.client_payload.short_name }}
+
+          rm -rf ${{ github.event.client_payload.module_name }}
 
       - name: Push changes for new specifications
         run: |
-          git checkout automate-specs-$GITHUB_SHA 2>/master/null || git checkout -b automate-bbes-$GITHUB_SHA
+          git checkout automate-specs-$GITHUB_SHA 2>/website-revamp/null || git checkout -b automate-specs-$GITHUB_SHA
 
           git config --global user.email "ballerina-bot@ballerina.org"
           git config --global user.name "ballerina-bot"
@@ -41,6 +48,6 @@ jobs:
         shell: bash
         run: |
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          bin/hub pull-request -b master -m '[AUTOMATE] Update Ballerina Standard Library Specifications'
+          bin/hub pull-request -b website-revamp -m '[AUTOMATE] Update Ballerina Standard Library Specifications'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

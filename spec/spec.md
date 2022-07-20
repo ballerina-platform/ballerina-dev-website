@@ -81,9 +81,6 @@ For the proposals for improving Ballerina, see the <a target="_blank" href="http
 | `webusuhub` | Swan Lake | <a target="_blank" href="/spec/websubhub/">Snapshot</a> | WebSubHub package of Ballerina language, which provides WebSub compliant hub and publisher related functionalities. |
 | `xmldata` | Swan Lake | <a target="_blank" href="/spec/xmldata/">Snapshot</a> | Xmldata package of Ballerina language, which provides APIs to perform conversions between XML and JSON/Ballerina records. |
 
-
-
-
 ## Ballerina platform specifications
 
 | Specification | Latest released version | Current snapshot |

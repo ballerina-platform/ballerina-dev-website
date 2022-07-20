@@ -51,6 +51,9 @@ a.cDownload {
   text-decoration: none;
   min-height: 60px;
   line-height: 35px;
+  background-image: url('/images/download-bg.svg');
+  background-repeat: no-repeat;
+  background-position: left 20px top 20px;
 }
 
 .releaseLinks {
@@ -177,11 +180,12 @@ a.cDownload .cSize {
   color: #20b6b0;
 }
 
-/* a.cDownload:hover {
+a.cDownload:hover {
   background-image: url("/images/download-bg-white.svg");
   background-color: #20b6b0;
-  background-image: url("/images/download-bg-white.svg");
-} */
+  background-repeat: no-repeat;
+  background-position: left 20px top 20px;
+}
 
 .dwindows, .dLinux, .dMac, .dVSCode {
   background-repeat: no-repeat;

@@ -14,16 +14,28 @@ a {
   box-sizing: border-box;
 }
 
-.main-wrapper {
+/* .main-wrapper {
   justify-content: space-between;
   min-height: 100vh;
-}
+} */
 
 .wrap-page-content {
   /* margin-top: 74px; */
   padding-bottom: 30px;
   font-size: 16px;
   font-weight: 300;
+}
+
+@media (min-width: 1200px) {
+  .short {
+    margin-bottom: 83px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .short  {
+    margin-bottom: 473px;
+  }
 }
 
 .contentRow,
@@ -342,6 +354,13 @@ a.cGreenLinkArrow:hover {
 .pageContentRow h2 {
   color: #585a5e;
   font-size: 1.5rem;
+  scroll-margin-top: 60px;
+}
+
+.community .pageContentRow h2 {
+  color: #585a5e;
+  font-size: 1.5rem;
+  scroll-margin-top: 120px;
 }
 
 .pageHeader h1 {
@@ -377,12 +396,17 @@ pre[class*="language-"] {
 
 .communitySubRow {
   background-color: #f8f8f8;
+  z-index: 2000;
 }
 
 .communitySub {
   background-color: #f8f8f8;
   padding-top: 15px;
   padding-bottom: 15px;
+  position: sticky;
+  top: 60px;
+  z-index: 2000;
+
 }
 
 .communitySub ul {

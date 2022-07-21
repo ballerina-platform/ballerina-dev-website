@@ -22,7 +22,7 @@ export default function Layout({ children }) {
       </Head>
       <Stack gap={0} className='main-wrapper other'>
         <TopNav launcher='brokenLink'/>
-        <Container className='wrap-page-content'>
+        <Container className='wrap-page-content short'>
           <Row >
             {children}
           </Row>

@@ -187,7 +187,7 @@ a {
   padding: 10px;
 }
 
-.mdContent table thead tr {
+.mdContent table thead tr, .cCodeTable tr th {
   background-color: #464646;
   /* font-weight: 400; */
   color: #ffffff;
@@ -921,4 +921,16 @@ table.cTopControlsContainer tbody {
 
 .bbeTable a {
   color: #57595d !important;
+}
+
+
+
+
+
+
+
+
+
+.cCodeTable.cCodeTableFixedLayout {
+  table-layout: fixed;
 }

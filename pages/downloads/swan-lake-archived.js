@@ -74,8 +74,8 @@ export default function SwanLakeArchived() {
                                                         : null
 
                                                 }
-                                            </tbody></table>
-
+                                            </tbody>
+                                        </table>
                                     </Col>
                                     <Col xs={12} md={6} lg={6} className="rightTable">
                                         <table>
@@ -125,12 +125,20 @@ export default function SwanLakeArchived() {
                                                         </tr>
 
                                                 }
-                                            </tbody></table>
+                                            </tbody>
+                                        </table>
                                     </Col>
                                 </Row>
-                                <div className="archivedReleaseNotes">
-                                    <a className="archivedReleaseNotesLink" id={`${item.version}notes`} href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${item.version}`}>RELEASE NOTES</a>
-                                </div>
+                                {
+                                    (item.version.indexOf('swan') > -1) ?
+                                        <div className="archivedReleaseNotes">
+                                            <a className="archivedReleaseNotesLink" id={`${item.version} notes`} href={`${prefix}/downloads/swan-lake-release-notes/${item.version}`}>RELEASE NOTES</a>
+                                        </div>
+                                        : <div className="archivedReleaseNotes">
+                                            <a className="archivedReleaseNotesLink" id={`${item.version} notes`} href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${item.version}`}>RELEASE NOTES</a>
+                                        </div>
+
+                                }
                             </div>
                         ))}
                     </Col>

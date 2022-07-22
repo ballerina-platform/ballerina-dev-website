@@ -274,7 +274,7 @@ export default function Downloads() {
                         <p><a href={`${prefix}/downloads/1.2.x-release-notes/${stable.version}`}>RELEASE NOTES &gt;</a></p>
                      </div>
                      <div className={styles.releaseNotes} >
-                        <p><a href={`${prefix}/downloads/1.2.x-archived`}>ARCHIVED VERSIONS &gt;</a></p>
+                        <p><a href={`${prefix}/downloads/archived/#1.2.x-archived-versions`}>ARCHIVED VERSIONS &gt;</a></p>
                      </div>
                   </div>
                </Col>

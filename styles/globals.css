@@ -142,6 +142,16 @@ a {
   font-size: 1.4rem;
 }
 
+.mdContent h4, .mdContent h5, .mdContent h6,
+.policyContent h4, .policyContent h5, .policyContent h6 {
+  margin-top: 20px;
+  color: #585a5e;
+}
+
+.mdContent h4, .policyContent h4 {
+  font-size: 1.3rem;
+}
+
 .mdContent p,
 .mdContent li,
 .policyContent p,
@@ -187,7 +197,7 @@ a {
   padding: 10px;
 }
 
-.mdContent table thead tr {
+.mdContent table thead tr, .cCodeTable tr th {
   background-color: #464646;
   /* font-weight: 400; */
   color: #ffffff;
@@ -921,4 +931,9 @@ table.cTopControlsContainer tbody {
 
 .bbeTable a {
   color: #57595d !important;
+}
+
+/* CSS for hard coded html content in mds. */
+.cCodeTable.cCodeTableFixedLayout {
+  table-layout: fixed;
 }

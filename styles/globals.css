@@ -771,6 +771,23 @@ table.cTopControlsContainer tbody {
   --button-hover-color-text: #a8dbd9;
 }
 
+.bbeBody > * {
+  margin: 0 0 20px 0 !important;
+  padding: 0 !important;
+}
+
+.bbeBody ul {
+  list-style: none;
+}
+
+.bbeBody li {
+  margin: 0;
+}
+
+.bbeBody > pre:not(.bbeOutput pre) {
+  background-color: #eeeeee;
+}
+
 .bbeCode {
   background-color: var(--code-color-background);
 }
@@ -849,6 +866,7 @@ table.cTopControlsContainer tbody {
 
 .bbeTable ul {
   list-style: none;
+  scroll-margin-top: 70px;
 }
 
 .bbeTable li {

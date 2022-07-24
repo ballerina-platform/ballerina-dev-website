@@ -98,10 +98,10 @@ const escapeCharacterAdder = (content, type) => {
 
 // extract code content
 const extractCode = (relPath, line) => {
-  const m = line.trim().match(/(\s*).*code\s+(.*\w)/);
+  const m = line.trim().match(/code\s+(.+\w)/);
   try {
-    const codeContent = fs.readFileSync(`${relPath}/${m[2]}`, "utf-8");
-    return { marginLeftMultiplier: m[1].length, fileName: m[2], codeContent };
+    const codeContent = fs.readFileSync(`${relPath}/${m[1]}`, "utf-8");
+    return { fileName: m[1], codeContent };
   } catch ({ message }) {
     console.log(message);
   }
@@ -114,6 +114,15 @@ const sleep = (timeout) => {
   do {
     end = Date.now();
   } while (end < start + timeout);
+};
+
+// render code snippet
+const codeSnippetGenerator = (code, marginLeftMultiplier, lang) => {
+  let output = `<pre style={{ marginLeft: "${
+    marginLeftMultiplier * 8
+  }px" }} className="p-3 rounded ${lang}"><code>${code}</code></pre>`;
+
+  return output;
 };
 
 // playground link generator
@@ -162,7 +171,7 @@ const generateEditOnGithubLink = (exampleDir) => {
 // ballerina code jsx generator
 md.use(container, "code", {
   validate: function (params) {
-    return params.trim().match(/code\s+(.*\w)/);
+    return params.trim().match(/code\s+(.+\w)/);
   },
   render: function (tokens, idx, options, env, self) {
     if (tokens[idx].nesting === 1) {
@@ -275,18 +284,19 @@ md.use(container, "code", {
 // ballerina output jsx generator
 md.use(container, "out", {
   validate: function (params) {
-    return params.trim().match(/out\s+(.*\w)/);
+    return params.trim().match(/out\s+(.+\w)/);
   },
   render: function (tokens, idx, options, env, self) {
-    const m = tokens[idx].info.trim().match(/out\s+(.*\w)/);
+    const m = tokens[idx].info.trim().match(/out\s+(.+\w)/);
 
     if (tokens[idx].nesting === 1) {
       let filePath = `${env.relPath}/${m[1]}`;
       let outputRead = fs.readFileSync(filePath, "utf-8").trim();
       let outputSplitted = outputRead.split("\n");
-      let output = `<br />
-
-<Row className="bbeOutput mx-0 px-2 rounded">
+      let output =
+        `<Row className="bbeOutput mx-0 px-2 rounded" style={{ marginLeft: "${
+          env.marginLeftMultiplier * 8
+        }px" }}>
   <Col className="my-2" sm={10}>
     <pre className="m-0" ref={ref${env.outputCount}}>
       <code className="d-flex flex-column">`.trim();
@@ -654,10 +664,8 @@ export default function ${kebabCaseToPascalCase(bbeName)}() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       ${codeSection}
-
-      <br />
 
       <Row className="mt-auto mb-5">
         ${prevButton}
@@ -701,6 +709,9 @@ const generate = async (examplesDir, outputDir) => {
     // index.jsx file content
     const indexArray = [];
 
+    // line extract regex
+    const lineReg = /(\s*)(:::.*:::)/;
+
     // metadata extract regex
     const metaReg =
       platform.indexOf("win") !== -1
@@ -722,21 +733,21 @@ const generate = async (examplesDir, outputDir) => {
 
       // iterate through bbes
       for (const bbe of bbes) {
-        let name = bbe["name"];
-        let url = bbe["url"];
-        let relPath = `${examplesDir}/${url}`;
-        let editOnGithubLink = `${editOnGithubBaseUrl}/${url}`;
+        let name = bbe["name"],
+          url = bbe["url"],
+          relPath = `${examplesDir}/${url}`,
+          editOnGithubLink = `${editOnGithubBaseUrl}/${url}`;
 
         indexArray.push(url);
 
-        let files = fs.readdirSync(relPath);
-        let description;
-        let keywords;
-        let codeSection;
-        let playground = true;
-        let codeCount = 0;
-        let outputCount = 0;
-        let codeContentArray = [];
+        let files = fs.readdirSync(relPath),
+          description,
+          keywords,
+          codeSection,
+          playground = true,
+          codeCount = 0,
+          outputCount = 0,
+          codeContentArray = [];
 
         console.log(`\tProcessing BBE : ${name}`);
 
@@ -762,54 +773,97 @@ const generate = async (examplesDir, outputDir) => {
 
               // markdown file
             } else if (file.includes(".md")) {
-              let content = fs.readFileSync(fileRelPath, "utf-8").trim();
-              let contentArray = content.split("\n");
-              let updatedArray = [];
+              let content = fs.readFileSync(fileRelPath, "utf-8").trim(),
+                contentArray = content.split("\n"),
+                updatedArray = [],
+                codeSnippetRegex = /(\s*)```(\w+)/,
+                codeSnippetFound = false,
+                codeSnippetMarginLeftMultiplier = 0,
+                codeSnippetLang,
+                codeSnippetArray = [],
+                listRegex = /^(\s*)(\d|-)(?:\.?)+\s*(.*)/;
 
               for (const line of contentArray) {
                 let convertedLine;
 
-                // Ballerina content
-                if (line.includes("::: code")) {
-                  let playgroundLink;
-                  codeCount++;
+                if (!codeSnippetFound) {
+                  // ballerina content
+                  if (line.includes("::: code")) {
+                    let playgroundLink;
+                    let m = line.match(lineReg);
+                    codeCount++;
 
-                  let { marginLeftMultiplier, fileName, codeContent } =
-                    extractCode(relPath, line);
+                    let { fileName, codeContent } = extractCode(relPath, m[2]);
 
-                  if (playground) {
-                    playgroundLink = await generatePlaygroundLink(
-                      codeContent,
+                    if (playground) {
+                      playgroundLink = await generatePlaygroundLink(
+                        codeContent,
+                        relPath,
+                        fileName
+                      );
+                    }
+
+                    convertedLine = md.render(m[2], {
+                      codeCount,
+                      marginLeftMultiplier: m[1].length,
+                      playgroundLink,
+                      editOnGithubLink,
+                    });
+
+                    codeContentArray.push(
+                      `\`${escapeCharacterAdder(codeContent, "code")}\``
+                    );
+
+                    // ballerina output
+                  } else if (line.includes("::: out")) {
+                    let m = line.match(lineReg);
+                    outputCount++;
+
+                    convertedLine = md.render(m[2], {
+                      outputCount,
                       relPath,
-                      fileName
+                      marginLeftMultiplier: m[1].length,
+                    });
+                  } else if (line.includes("```")) {
+                    codeSnippetFound = true;
+                    let match = line.match(codeSnippetRegex);
+                    codeSnippetMarginLeftMultiplier = match[1].length;
+                    codeSnippetLang = match[2];
+                  } else if (listRegex.test(line)) {
+                    let match = line.match(listRegex);
+                    let listContent = md.render(match[3]);
+                    convertedLine = `<ul style={{ marginLeft: "${
+                      match[1].length * 8
+                    }px" }}>
+                    <li>
+                        <span>${
+                          match[2] === "-" ? `&#8226;&nbsp;` : `${match[2]}.`
+                        }</span>
+                        <span>${listContent.slice(
+                          3,
+                          listContent.length - 5
+                        )}</span>
+                    </li>
+                </ul>`;
+                  } else {
+                    convertedLine = escapeParagraphCharacters(md.render(line));
+                  }
+                } else {
+                  if (line.includes("```")) {
+                    codeSnippetFound = false;
+                    convertedLine = codeSnippetGenerator(
+                      codeSnippetArray.join("\n"),
+                      codeSnippetMarginLeftMultiplier,
+                      codeSnippetLang
+                    );
+                  } else {
+                    codeSnippetArray.push(
+                      line.slice(codeSnippetMarginLeftMultiplier)
                     );
                   }
-
-                  convertedLine = md.render(line, {
-                    codeCount,
-                    marginLeftMultiplier,
-                    playgroundLink,
-                    editOnGithubLink,
-                  });
-
-                  codeContentArray.push(
-                    `\`${escapeCharacterAdder(codeContent, "code")}\``
-                  );
-
-                  // Ballerina output
-                } else if (line.includes("::: out")) {
-                  outputCount++;
-                  convertedLine = md.render(line, {
-                    outputCount,
-                    relPath,
-                  });
-                } else {
-                  convertedLine = escapeParagraphCharacters(md.render(line));
                 }
 
-                if (convertedLine === null) {
-                  updatedArray.push("");
-                } else {
+                if (!codeSnippetFound) {
                   updatedArray.push(convertedLine);
                 }
               }

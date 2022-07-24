@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 // const ss = `/gggggggg/`;
-const redirectBase = process.env.NEXT_PUBLIC_BASE_PATH ? `${process.env.NEXT_PUBLIC_BASE_PATH}/` : '';
+const redirectBase = process.env.NEXT_PUBLIC_BASE_PATH
+  ? `${process.env.NEXT_PUBLIC_BASE_PATH}/`
+  : "";
 const nextConfig = {
   reactStrictMode: true,
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
-  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || "",
   images: {
     loader: "custom",
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -18,8 +20,8 @@ const nextConfig = {
   env: {
     storePicturesInWEBP: true,
     generateAndUseBlurImages: true,
-    distServer: 'https://dist.ballerina.io',
-    gitHubPath: 'https://github.com/sm1990/sarani.github.io/blob/main/'
+    distServer: "https://dist.ballerina.io",
+    gitHubPath: "https://github.com/sm1990/sarani.github.io/blob/main/",
   },
   async rewrites() {
     return [
@@ -64,11 +66,9 @@ const nextConfig = {
         destination: `/${redirectBase}learn/get-started/install-ballerina/:slug`,
       },
       {
-        source: '/learn',
-        destination: '/learn/get-started/install-ballerina/set-up-ballerina',
+        source: "/learn",
+        destination: "/learn/get-started/install-ballerina/set-up-ballerina",
       },
-
-
 
       {
         source: `/${redirectBase}learn/openapi-tool`,
@@ -135,7 +135,6 @@ const nextConfig = {
         destination: `/${redirectBase}learn/learn-the-platform/test-document-the-code/test-ballerina-code/:slug`,
       },
 
-
       {
         source: `/${redirectBase}learn/package-references`,
         destination: `/${redirectBase}learn/learn-the-platform/source-code-dependencies/package-references`,
@@ -172,13 +171,14 @@ const nextConfig = {
       {
         source: `/${redirectBase}1.0/learn/`,
         destination: `/${redirectBase}1.0/learn/index.html`,
-      }
-    ]
+      },
+    ];
   },
   trailingSlash: true,
-  resolve: [{"path":false,"fs": false}],
+  resolve: [{ path: false, fs: false }],
+  experimental: {
+    scrollRestoration: true,
+  },
+};
 
-
-}
-
-module.exports = nextConfig
+module.exports = nextConfig;

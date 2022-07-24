@@ -49,6 +49,38 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 
 For the proposals for improving Ballerina, see the <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/README.md">work in progress proposals</a>.
 
+## Ballerina standard library specifications
+
+| Package | Edition | Current snapshot | Description |
+| ------- | ------- | ---------------- | ----------- |
+| `auth` | Swan Lake | <a target="_blank" href="/spec/auth/">Snapshot</a> | Auth package of Ballerina language, which is used for authorization of listeners and clients (HTTP, gRPC, GraphQL, WebSocket, WebSub, etc.). |
+| `cache` | Swan Lake | <a target="_blank" href="/spec/cache/">Snapshot</a> | Cache package of Ballerina language, which provides a mechanism to manage frequently accessed data in-memory by using a semi-persistent mapping from key to value. |
+| `email` | Swan Lake | <a target="_blank" href="/spec/email/">Snapshot</a> | Email package of Ballerina language, which provides functionalities related to sending/receiving emails via SMTP, POP3, and IMAP protocols. |
+| `file` | Swan Lake | <a target="_blank" href="/spec/file/">Snapshot</a> | File package of Ballerina language, which provides APIs to perform file, file path, and directory operations. |
+| `ftp` | Swan Lake | <a target="_blank" href="/spec/ftp/">Snapshot</a> | FTP package of Ballerina language, which provides FTP client/listener functionalities to send and receive files by connecting to FTP/SFTP server. |
+| `graphql` | Swan Lake | <a target="_blank" href="/spec/graphql/">Snapshot</a> | GraphQL package of Ballerina language, which provides GraphQL server functionalities to produce GraphQL APIs. |
+| `grpc` | Swan Lake | <a target="_blank" href="/spec/grpc/">Snapshot</a> | gRPC package of Ballerina language, which provides APIs for gRPC client and server implementation. |
+| `io` | Swan Lake | <a target="_blank" href="/spec/io/">Snapshot</a> | I/O package of Ballerina language, which provides file related I/O operations. |
+| `http` | Swan Lake | <a target="_blank" href="/spec/http/">Snapshot</a> | HTTP package of Ballerina language, which provides HTTP client-server functionalities to produce and consume HTTP APIs. |
+| `jwt` | Swan Lake | <a target="_blank" href="/spec/jwt/">Snapshot</a> | JWT package of Ballerina language, which is used for authorization of listeners and clients (HTTP, gRPC, GraphQL, WebSocket, WebSub, etc.). |
+| `log` | Swan Lake | <a target="_blank" href="/spec/log/">Snapshot</a> | Log package of Ballerina language, which provides APIs to log information when running applications. |
+| `mime` | Swan Lake | <a target="_blank" href="/spec/mime/">Snapshot</a> | MIME package of Ballerina language, which provides a set of APIs to work with messages, which follow the Multipurpose Internet Mail Extensions (MIME) specification as specified in the RFC 2045 standard. |
+| `oauth2` | Swan Lake | <a target="_blank" href="/spec/oauth2/">Snapshot</a> | OAuth2 package of Ballerina language, which is used for authorization of listeners and clients (HTTP, gRPC, GraphQL, WebSocket, WebSub, etc.). |
+| `os` | Swan Lake | <a target="_blank" href="/spec/os/">Snapshot</a> | OS package of Ballerina language, which provides APIs to retrieve information about the operating system and its current users. |
+| `protobuf` | Swan Lake | <a target="_blank" href="/spec/protobuf/">Snapshot</a> | Protobuf package of Ballerina language, which provides APIs to represent a set of pre-defined protobuf types. |
+| `random` | Swan Lake | <a target="_blank" href="/spec/random/">Snapshot</a> | Random package of Ballerina language, which provides APIs to generate pseudo-random numbers. |
+| `regex` | Swan Lake | <a target="_blank" href="/spec/regex/">Snapshot</a> | Regex package of Ballerina language, which provides functionalities such as matching, replacing and splitting strings based on regular expressions. |
+| `sql` | Swan Lake | <a target="_blank" href="/spec/sql/">Snapshot</a> | SQL package of Ballerina language, which provides the generic interface and functionality to interact with a SQL database. |
+| `task` | Swan Lake | <a target="_blank" href="/spec/task/">Snapshot</a> | Task package of Ballerina language, which provides APIs to schedule a Ballerina job either once or periodically and manage the execution of those jobs. |
+| `tcp` | Swan Lake | <a target="_blank" href="/spec/tcp/">Snapshot</a> | TCP package of Ballerina language, which provides TCP client-server functionalities. |
+| `time` | Swan Lake | <a target="_blank" href="/spec/time/">Snapshot</a> | Time package of Ballerina language, which provides time generation and conversion APIs. |
+| `udp` | Swan Lake | <a target="_blank" href="/spec/udp/">Snapshot</a> | UDP package of Ballerina language, which provides UDP client-server functionalities. |
+| `uuid` | Swan Lake | <a target="_blank" href="/spec/uuid/">Snapshot</a> | UUID package of Ballerina language, which provides APIs to generate UUIDs based on the RFC 4122. |
+| `websocket` | Swan Lake | <a target="_blank" href="/spec/websocket/">Snapshot</a> | WebSocket package of Ballerina language, which provides WebSocket client-server functionalities. |
+| `websub` | Swan Lake | <a target="_blank" href="/spec/websub/">Snapshot</a> | WebSub package of Ballerina language, which provides WebSub compliant subscriber related functionalities. |
+| `webusuhub` | Swan Lake | <a target="_blank" href="/spec/websubhub/">Snapshot</a> | WebSubHub package of Ballerina language, which provides WebSub compliant hub and publisher related functionalities. |
+| `xmldata` | Swan Lake | <a target="_blank" href="/spec/xmldata/">Snapshot</a> | Xmldata package of Ballerina language, which provides APIs to perform conversions between XML and JSON/Ballerina records. |
+
 ## Ballerina platform specifications
 
 | Specification | Latest released version | Current snapshot |

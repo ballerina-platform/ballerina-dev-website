@@ -15,6 +15,14 @@
             "id": "learn-the-platform",
             "subDirectories": [
                 {
+                    "dirName": "Platform specifications",
+                    "level": 2,
+                    "position": 8,
+                    "isDir": false,
+                    "url": "/learn/platform-specifications",
+                    "id": "platform-specifications"
+                },
+                {
                     "dirName": "Ballerina central",
                     "level": 2,
                     "position": 7,
@@ -595,7 +603,7 @@
                 {
                     "dirName": "Library documentation",
                     "level": 2,
-                    "position": 5,
+                    "position": 0,
                     "isDir": false,
                     "url": "https://lib.ballerina.io/",
                     "id": "library-documentation"
@@ -603,7 +611,7 @@
                 {
                     "dirName": "By example",
                     "level": 2,
-                    "position": 4,
+                    "position": 0,
                     "isDir": false,
                     "url": "/learn/by-example",
                     "id": "by-example"

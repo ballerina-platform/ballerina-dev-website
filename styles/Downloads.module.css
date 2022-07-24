@@ -5,6 +5,13 @@
   font-size: 1.5rem;
 }
 
+.downloadsOther h3 {
+  color: #585a5e;
+  font-size: 32px;
+  margin-top: 15px;
+  font-size: 1.25rem;
+}
+
 /* .downloads .alert {
   border: 1px solid #f5f5f5;
 } */
@@ -44,6 +51,9 @@ a.cDownload {
   text-decoration: none;
   min-height: 60px;
   line-height: 35px;
+  background-image: url('/images/download-bg.svg');
+  background-repeat: no-repeat;
+  background-position: left 20px top 20px;
 }
 
 .releaseLinks {
@@ -170,11 +180,12 @@ a.cDownload .cSize {
   color: #20b6b0;
 }
 
-/* a.cDownload:hover {
+a.cDownload:hover {
   background-image: url("/images/download-bg-white.svg");
   background-color: #20b6b0;
-  background-image: url("/images/download-bg-white.svg");
-} */
+  background-repeat: no-repeat;
+  background-position: left 20px top 20px;
+}
 
 .dwindows, .dLinux, .dMac, .dVSCode {
   background-repeat: no-repeat;
@@ -387,3 +398,7 @@ a.cDownload:hover {
   background-color: #20b6b0;
   background-image: url("/images/download-bg-white.svg");
 } */
+
+.cDownloadLinkIcon {
+  padding-left: 5px !important;
+}

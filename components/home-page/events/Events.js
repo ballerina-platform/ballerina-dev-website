@@ -9,7 +9,7 @@ export default function Events() {
     <Col sm={12}>
       <Container>
         <Row>
-          <Col sm={12}>
+          <Col sm={12} className='sectionTitle'>
             <h2 id="events">Events</h2>
           </Col>
         </Row>

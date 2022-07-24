@@ -14,16 +14,28 @@ a {
   box-sizing: border-box;
 }
 
-.main-wrapper {
+/* .main-wrapper {
   justify-content: space-between;
   min-height: 100vh;
-}
+} */
 
 .wrap-page-content {
   /* margin-top: 74px; */
   padding-bottom: 30px;
   font-size: 16px;
   font-weight: 300;
+}
+
+@media (min-width: 1200px) {
+  .short {
+    margin-bottom: 83px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .short  {
+    margin-bottom: 473px;
+  }
 }
 
 .contentRow,
@@ -96,25 +108,54 @@ a {
 }
 
 .mdContent h2,
-.policyContent h2 {
+.policyContent h2,
+.downloads h2 {
   /* margin-top: 40px; */
   margin-top: 20px;
   color: #585a5e;
   font-size: 1.5rem;
 }
 
+.downloads h2 {
+  scroll-margin-top: 60px;
+}
+
+/* .mdContent h2:hover:after, .mdContent h3:hover:after, .mdContent h4:hover:after,
+.mdContent h5:hover:after, .mdContent h6:hover:after,
+.sectionTitle:hover:after {
+  content: "";
+  display:inline-block;
+  height:16px;
+  width:16px;
+  margin-left: 5px;
+  background-size: 16px 16px;
+  background-image: url('/img/icons/permilink.svg');
+  background-repeat: no-repeat;
+} */
+
 .mdContent h3,
-.policyContent h3 {
+.policyContent h3,
+.downloads h3 {
   /* margin-top: 40px; */
   margin-top: 20px;
   color: #585a5e;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .community h3 {
   color: #585a5e;
   /* font-size: 1rem; */
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+}
+
+.mdContent h4, .mdContent h5, .mdContent h6,
+.policyContent h4, .policyContent h5, .policyContent h6 {
+  margin-top: 20px;
+  color: #585a5e;
+}
+
+.mdContent h4, .policyContent h4 {
+  font-size: 1.1rem;
 }
 
 .mdContent p,
@@ -162,7 +203,7 @@ a {
   padding: 10px;
 }
 
-.mdContent table thead tr {
+.mdContent table thead tr, .cCodeTable tr th {
   background-color: #464646;
   /* font-weight: 400; */
   color: #ffffff;
@@ -251,6 +292,22 @@ pre.shiki {
   display: none;
 }
 
+.pageToc .title-level3 {
+  padding-left: 25px !important;
+}
+
+.pageToc .title-level4 {
+  padding-left: 45px !important;
+}
+
+.pageToc .title-level5 {
+  padding-left: 65px !important;
+}
+
+.pageToc .title-level6 {
+  padding-left: 85px !important;
+}
+
 .markdown-navigation {
   border-left: 1px solid #20b6b0;
 }
@@ -313,6 +370,13 @@ a.cGreenLinkArrow:hover {
 .pageContentRow h2 {
   color: #585a5e;
   font-size: 1.5rem;
+  scroll-margin-top: 60px;
+}
+
+.community .pageContentRow h2 {
+  color: #585a5e;
+  font-size: 1.5rem;
+  scroll-margin-top: 120px;
 }
 
 .pageHeader h1 {
@@ -348,12 +412,17 @@ pre[class*="language-"] {
 
 .communitySubRow {
   background-color: #f8f8f8;
+  z-index: 2000;
 }
 
 .communitySub {
   background-color: #f8f8f8;
   padding-top: 15px;
   padding-bottom: 15px;
+  position: sticky;
+  top: 60px;
+  z-index: 2000;
+
 }
 
 .communitySub ul {
@@ -531,7 +600,7 @@ ul.eventsTabs {
 }
 
 .installers h3.releaseVersion {
-  font-size: 22px;
+  font-size: 1.3rem;
   color: #555;
   letter-spacing: 0.5px;
   text-transform: none;
@@ -601,6 +670,17 @@ ul.eventsTabs {
   margin-top: 0;
   background-color: #f5f5f5 !important;
 }
+
+.home pre.shiki code, .home pre.shiki span {
+  line-height: 18px;
+}
+
+@media (min-width: 992px) {
+  .algolia-search-cont {
+    margin-left: 0.5rem;
+  }
+}
+
 
 /*--------------------Specifications------------*/
 
@@ -849,7 +929,12 @@ table.cTopControlsContainer tbody {
   background-color: var(--code-color-background) !important;
 }
 
-/* BBE landing page */
+.archivedCategory {
+  padding-bottom: 20px;
+  border-bottom: 0.5px solid #585a5e;
+  margin-bottom: 20px;
+}
+
 .bbeHomeTitle {
   width: fit-content;
   border-bottom: 2px solid #464646;
@@ -875,4 +960,9 @@ table.cTopControlsContainer tbody {
 
 .bbeTable a {
   color: #57595d !important;
+}
+
+/* CSS for hard coded html content in mds. */
+.cCodeTable.cCodeTableFixedLayout {
+  table-layout: fixed;
 }

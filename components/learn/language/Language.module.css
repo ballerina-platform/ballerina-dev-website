@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .linkText {
@@ -35,7 +35,7 @@
 .btnCol {
     /* text-align: center; */
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 

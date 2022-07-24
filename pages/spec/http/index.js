@@ -34,7 +34,7 @@ export async function getStaticProps() {
 }
 
 
-export default function PostPage({ frontmatter, content, id }) {
+export default function PostPage({ frontmatter, content }) {
 
   const HighlightSyntax = (code,language) => {
     const [codeSnippet, setCodeSnippet] = React.useState([]);

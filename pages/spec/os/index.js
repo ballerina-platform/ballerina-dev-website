@@ -22,7 +22,7 @@ import { prefix } from '../../../utils/prefix';
 
 export async function getStaticProps() {
 
-  const fileName = fs.readFileSync(`spec/http/spec.md`, 'utf-8');
+  const fileName = fs.readFileSync(`spec/os/spec.md`, 'utf-8');
   const { data: frontmatter, content } = matter(fileName);
 
   return {

@@ -307,11 +307,6 @@ $("table").addClass('table-striped');
     $('.cIUnderstand').click(function () {
         setCookie('cookie_accepted', '1', 180);
     });
-    var cookie_policy = is_cookie("cookie_accepted");
-    if (cookie_policy != -1) {
-        $(".cCookie-Policy").addClass('cHide-Policy');
-    }
-    
 
     initCodeLineNumbers();
 

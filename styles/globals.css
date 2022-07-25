@@ -983,6 +983,10 @@ table.cTopControlsContainer tbody {
   opacity: 1;
 }
 
+.bbeTable h4 {
+  font-size: 28px;
+}
+
 .bbeTable ul {
   list-style: none;
   scroll-margin-top: 70px;
@@ -990,6 +994,7 @@ table.cTopControlsContainer tbody {
 
 .bbeTable li {
   border-bottom: 1px solid #cecfd0;
+  cursor: pointer;
 }
 
 .bbeTable a {

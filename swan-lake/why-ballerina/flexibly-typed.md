@@ -32,7 +32,7 @@ Ballerina is a statically-typed language, which means type compatibility between
 
 ### Shapes in Ballerina
 
-Types in Ballerina deal with an abstraction of values that don't consider storage identity. This abstraction is called a shape. For simple types like `int` and `boolean`, there is no difference between a shape and a value because they don't have a storage identity. To understand the concept of a shape, let’s look at the [`record` type](/learn/by-example/records.html) in Ballerina. Because records have storage identity, a reference to the value is stored in the variable rather than storing the actual value. This is comparable to references in Java or pointers in C++.
+Types in Ballerina deal with an abstraction of values that don't consider storage identity. This abstraction is called a shape. For simple types like `int` and `boolean`, there is no difference between a shape and a value because they don't have a storage identity. To understand the concept of a shape, let’s look at the [`record` type](/learn/by-example/records) in Ballerina. Because records have storage identity, a reference to the value is stored in the variable rather than storing the actual value. This is comparable to references in Java or pointers in C++.
 
 Here’s an example of a record that stores the state of a door:
 
@@ -254,7 +254,7 @@ P2's credit score: GOOD
 
 ## Network communication with data binding
 
-The type system features for records in Ballerina can be used when implementing <a href="/learn/by-example/http-data-binding.html">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina:
+The type system features for records in Ballerina can be used when implementing <a href="/learn/by-example/http-data-binding">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina:
 
 ```ballerina
 final http:Client highCreditStoreCustomersDb = check new ("http://example.com/");

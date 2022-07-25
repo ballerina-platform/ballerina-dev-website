@@ -19,7 +19,7 @@ const nextConfig = {
     storePicturesInWEBP: true,
     generateAndUseBlurImages: true,
     distServer: 'https://dist.ballerina.io',
-    gitHubPath: 'https://github.com/sm1990/sarani.github.io/blob/main/'
+    gitHubPath: 'https://github.com/ballerina-platform/ballerina-dev-website/blob/website-revamp/'
   },
   async rewrites() {
     return [

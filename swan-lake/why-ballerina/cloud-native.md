@@ -138,8 +138,8 @@ Ballerina services come with built-in concurrency. Every request to a resource m
 Some protocols supported out-of-the-box are:
 
 - [HTTP](/learn/by-example/http-client-endpoint)
-- [HTTP 2.0](/learn/by-example/http-1-1-to-2-0-protocol-switch.html)
-- [gRPC](/learn/by-example/proto-to-ballerina.html)
+- [HTTP 2.0](/learn/by-example/http-1-1-to-2-0-protocol-switch)
+- [gRPC](/learn/by-example/proto-to-ballerina)
 - [NATS](/learn/by-example/nats-basic-pub-sub)
 
 ## Async network protocol

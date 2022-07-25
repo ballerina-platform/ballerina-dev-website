@@ -68,14 +68,16 @@ export default function TermsOfServicePage({ frontmatter, content }) {
       </Head>
       <Layout>
         <Col xs={12} sm={10} className="policyContent">
-          <Row className="pageHeader">
+          <Row className='topRow innerRow'>
             <Col xs={11}><h1>{frontmatter.title}</h1></Col>
             <Col xs={1} className="gitIcon">
-              <Image src={`${prefix}/images/github.svg`} height={20} width={20} alt="Edit in github" />
+              <a href={`${process.env.gitHubPath}policy/terms-of-service.md`}>
+                <Image src={`${prefix}/images/github.svg`} height={20} width={20} alt="Edit in github" />
+              </a>
             </Col>
           </Row>
 
-          <Row className='pageContentRow'>
+          <Row className='pageContentRow innerRow'>
             <Col xs={12}>
               <ReactMarkdown
                 components={{

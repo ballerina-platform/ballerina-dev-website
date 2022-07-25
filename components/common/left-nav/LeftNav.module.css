@@ -1,14 +1,31 @@
+.leftNavAccordian {
+    padding-left: 0.4rem;
+}
+
 .leftNavAccordian button {
     padding: 1rem 0.75rem;
     font-size: 13px;
     font-weight: 400;
     /* text-transform: capitalize; */
     /* padding-left: 38px; */
+
+    /* white-space: normal !important; */
+    white-space: normal;
+    line-height: normal;
+}
+
+.headName {
+    white-space: nowrap;
 }
 
 .acItem {
     border: none !important;
 }
+
+/* .acItem h2 button {
+    white-space: normal !important;
+   /* word-wrap: break-word !important;
+} */
 
 .leftNavAccordian h2 {
     margin-top: 0;

@@ -20,9 +20,9 @@ const TopNav = (props) => {
   return (
     <>
       <Navbar className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} expand="lg" sticky='top'>
-        <Container fluid className={(launcher === 'home') ? styles.toggleFloat : null}>
+        <Container fluid='xxl' className={(launcher === 'home') ? styles.toggleFloat : null}>
         {(launcher !== "home") ?
-          <Navbar.Brand href={`${prefix}/`}>
+          <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
             
               <Image src={`${prefix}/images/ballerina-logo.svg`} height={28} width={150} alt="Ballerina Logo" />
               
@@ -31,7 +31,7 @@ const TopNav = (props) => {
           : null
           }
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
+          <Navbar.Collapse id="navbarScroll" className={styles.navItems}>
             {/* <Nav
               className="topNav ms-auto my-2 my-lg-0"
               style={{ maxHeight: '100px' }}

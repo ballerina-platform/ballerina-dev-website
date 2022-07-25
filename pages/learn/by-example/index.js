@@ -7,6 +7,10 @@ import Layout from "../../../layouts/LayoutDocs";
 import { load } from "js-yaml";
 import LeftNavYaml from "../../../components/common/left-nav/LeftNavYaml";
 
+function toKebabCase(str) {
+  return str.replace(/\s/g, "-").toLowerCase();
+}
+
 export async function getStaticProps() {
   const bbesJson = JSON.parse(
     fs.readFileSync("swan-lake/by-example/all-bbes.json", "utf-8")
@@ -51,15 +55,20 @@ export default function BBEPage({ navContent, bbesJson }) {
 
       for (let bbe of category.samples) {
         sampleData.push(
-          <li className="ps-3 my-1">
-            <a href={`/learn/by-example/${bbe.url}`}>{bbe.name}</a>
-          </li>
+          <Link href={`/learn/by-example/${bbe.url}`} passHref>
+            <li className="ps-3 my-1">{bbe.name}</li>
+          </Link>
         );
       }
 
       colData.push(
-        <ul className="p-0 my-1">
-          <li className="fw-bold">{category.title}</li>
+        <ul className="p-0 my-1" id={toKebabCase(category.title)}>
+          <Link
+            href={`/learn/by-example#${toKebabCase(category.title)}`}
+            passHref
+          >
+            <li className="fw-bold">{category.title}</li>
+          </Link>
           {sampleData}
         </ul>
       );

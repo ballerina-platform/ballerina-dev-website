@@ -493,9 +493,14 @@ export default function AllArchived() {
                                             </table>
                                         </Col>
                                     </Row>
-                                    <div className="archivedReleaseNotes">
-                                        <a className="archivedReleaseNotesLink" id={`${item.version}notes`} href={`${prefix}/downloads/0.9.x-release-notes/${item.version}`}>RELEASE NOTES</a>
-                                    </div>
+                                    {
+                                        (item.version === '0.990.7' || item.version === '0.990.5') ?
+                                            null
+                                            : <div className="archivedReleaseNotes">
+                                                <a className="archivedReleaseNotesLink" id={`${item.version}notes`} href={`${prefix}/downloads/0.9.x-release-notes/${item.version}`}>RELEASE NOTES</a>
+                                            </div>
+                                    }
+
                                 </div>
                             ))}
                         </Row>

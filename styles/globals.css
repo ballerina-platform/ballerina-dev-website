@@ -981,6 +981,21 @@ table.cTopControlsContainer tbody {
   margin-bottom: 20px;
 }
 
+/*------ custom shiki theme for home page examples -------*/
+:root {
+  --shiki-color-text: #000;
+  --shiki-color-background: #333333;
+  --shiki-token-constant: #07a;
+  --shiki-token-string: #770000;
+  --shiki-token-comment: slategray;
+  --shiki-token-keyword: #07a;
+  --shiki-token-parameter: #AA0000;
+  --shiki-token-function: #000;
+  --shiki-token-string-expression: #690;
+  --shiki-token-punctuation: #000;
+  --shiki-token-link: #EE0000;
+}
+
 .bbeHomeTitle {
   width: fit-content;
   border-bottom: 2px solid #464646;

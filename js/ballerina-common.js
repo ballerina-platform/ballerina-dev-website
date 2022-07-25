@@ -299,15 +299,6 @@ $("table").addClass('table-striped');
 //        $(".cBallerina-io-primitive-types").removeClass('cOpenMenu');
     });
 
-
-    /** 
-     * Privacy policy popup
-     * 
-    */
-    $('.cIUnderstand').click(function () {
-        setCookie('cookie_accepted', '1', 180);
-    });
-
     initCodeLineNumbers();
 
     $('.cBBE-body').each(function() {

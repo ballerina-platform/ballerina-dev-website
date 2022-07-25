@@ -41,6 +41,22 @@ export default function Articles() {
           <div className={styles.articleWrapper}>
 
             <div className={styles.articleInfo}>
+              <a target="_blank" rel="noreferrer" href="https://www.infoq.com/articles/graphql-ballerina/">
+                <h4>Using GraphQL and Ballerina with Multiple Data Sources</h4>
+              </a>
+              <p> By Anupama Pathirage</p>
+              <p> 1 July 2022</p>
+            </div>
+
+            <div className={styles.articleInfo}>
+              <a target="_blank" rel="noreferrer" href="https://thenewstack.io/how-mosip-uses-ballerina-websubhub-for-event-driven-integration/">
+                <h4>How MOSIP Uses Ballerina WebSubHub for Event-Driven Integration</h4>
+              </a>
+              <p> By Dakshitha Ratnayake</p>
+              <p> 28 June 2022</p>
+            </div>
+
+            <div className={styles.articleInfo}>
               <a target="_blank" rel="noreferrer" href="https://www.infoq.com/articles/ballerina-data-oriented-language/">
                 <h4>Ballerina: A Data-Oriented Programming Language</h4>
               </a>

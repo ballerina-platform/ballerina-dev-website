@@ -33,7 +33,7 @@ a {
 }
 
 @media (min-width: 1400px) {
-  .short  {
+  .short {
     margin-bottom: 473px;
   }
 }
@@ -148,13 +148,18 @@ a {
   font-size: 1.3rem;
 }
 
-.mdContent h4, .mdContent h5, .mdContent h6,
-.policyContent h4, .policyContent h5, .policyContent h6 {
+.mdContent h4,
+.mdContent h5,
+.mdContent h6,
+.policyContent h4,
+.policyContent h5,
+.policyContent h6 {
   margin-top: 20px;
   color: #585a5e;
 }
 
-.mdContent h4, .policyContent h4 {
+.mdContent h4,
+.policyContent h4 {
   font-size: 1.1rem;
 }
 
@@ -203,7 +208,8 @@ a {
   padding: 10px;
 }
 
-.mdContent table thead tr, .cCodeTable tr th {
+.mdContent table thead tr,
+.cCodeTable tr th {
   background-color: #464646;
   /* font-weight: 400; */
   color: #ffffff;
@@ -422,7 +428,6 @@ pre[class*="language-"] {
   position: sticky;
   top: 60px;
   z-index: 2000;
-
 }
 
 .communitySub ul {
@@ -671,7 +676,8 @@ ul.eventsTabs {
   background-color: #f5f5f5 !important;
 }
 
-.home pre.shiki code, .home pre.shiki span {
+.home pre.shiki code,
+.home pre.shiki span {
   line-height: 18px;
 }
 
@@ -680,7 +686,6 @@ ul.eventsTabs {
     margin-left: 0.5rem;
   }
 }
-
 
 /*--------------------Specifications------------*/
 
@@ -846,8 +851,9 @@ table.cTopControlsContainer tbody {
   --output-color-background: #585a5e;
 
   --output-color-text: #3ad1ca;
-  --button-color-text: #3ad1ca;
   --code-color-output: #818181;
+
+  --button-color-text: #3ad1ca;
   --button-hover-color-text: #a8dbd9;
 }
 
@@ -866,6 +872,34 @@ table.cTopControlsContainer tbody {
 
 .bbeBody > pre:not(.bbeOutput pre) {
   background-color: #eeeeee;
+}
+
+.backToExample {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 16px 0;
+  text-decoration: none;
+}
+
+.backToExample * {
+  margin: 0 16px;
+  cursor: pointer;
+}
+
+.backToExample p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--button-color-text);
+}
+
+.backToExample:hover svg {
+  fill: var(--button-hover-color-text);
+}
+
+.backToExample:hover p {
+  font-weight: 500;
+  color: var(--button-hover-color-text);
 }
 
 .bbeCode {

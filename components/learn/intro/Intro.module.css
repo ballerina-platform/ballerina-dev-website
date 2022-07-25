@@ -27,8 +27,10 @@
 }
 
 .primary {
-    background-color: #57595d;
-    color: #fff;
+    /* background-color: #57595d;
+    color: #fff; */
+    background-color: #eeeeee;
+    color: #57595d;
     height: 120px;
 }
 
@@ -42,13 +44,19 @@
 }
 
 .secondary {
-    background-color: #f5f5f5;
-    color: #57595d;
+    /* background-color: #f5f5f5;
+    color: #57595d; */
+    background-color: #57595d;
+    color: #fff;
     height: 95px;
 }
 
 .secondary:hover {
-    border: #57595d solid 0.3px;
+    /* background-color: #f5f5f5;
+    color: #57595d;
+    border: #57595d solid 0.3px; */
+    background-color: #20b6b0;
+    color: #fff;
 }
 
 

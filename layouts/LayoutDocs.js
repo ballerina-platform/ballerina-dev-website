@@ -24,7 +24,7 @@ export default function Layout({ children }) {
       </Head>
       <Stack gap={0} className='main-wrapper'>
         <TopNav launcher='docs'/>
-        <Container className='wrap-page-content' fluid>
+        <Container className='wrap-page-content' fluid='xxl'>
           <Row >
             {/* <Col sm={3} xxl={2} className='leftNav d-none d-sm-block'>
               <LeftNav/>

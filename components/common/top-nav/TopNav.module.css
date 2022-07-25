@@ -13,6 +13,16 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     background-color: #fff;
 }
 
+/* added to increase spacing on sides */
+.logo {
+    padding-left: 0.4rem;
+}
+
+.navItems {
+    padding-right: 0.4rem;
+}
+/* --------------------------------------- */
+
 .topNav a.navItem {
     color: #20b6b0 !important;
     font-size: 16px;

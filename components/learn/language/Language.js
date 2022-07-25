@@ -8,13 +8,13 @@ export default function Language() {
 
   return (
     <>
-      <Row className="pageContentRow learnRow">
+      <Row className="pageContentRow learnRow llanding">
         <Col xs={12} md={12}>
           <h2>Learn the language</h2>
         </Col>
       </Row>
 
-      <Row className="pageContentRow">
+      <Row className="pageContentRow llanding">
         <Col xs={12} lg={6}>
           <div className={styles.langRow}>
             <a href={`${prefix}/learn/language-basics`} className={styles.linkText}>Language basics</a>

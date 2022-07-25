@@ -38,3 +38,9 @@
     color: #57595d;
     font-size: 14px;
 }
+
+.contentCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

@@ -9,13 +9,13 @@ export default function New() {
   return (
     <>
 
-        <Row className="pageContentRow learnRow">
+        <Row className="pageContentRow learnRow llanding">
           <Col xs={12} md={12}>
             <h2>What&apos;s new</h2> 
           </Col>
         </Row>
 
-        <Row className="pageContentRow">
+        <Row className="pageContentRow llanding">
           <Col xs={12} md={12}>
             <p className={styles.title}><a href="#" className={styles.linkText}>Ballerina Proposals</a></p>
             <p className={styles.description}>Read and contribute to open proposals</p>

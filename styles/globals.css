@@ -24,6 +24,19 @@ a {
   padding-bottom: 30px;
   font-size: 16px;
   font-weight: 300;
+
+
+  /* padding-left: 0.4rem !important;
+  padding-right: 0.4rem !important; */
+}
+
+.llanding {
+  padding-left: 0.4rem !important;
+  padding-right: 0.4rem !important;
+}
+
+.innerRow {
+  padding-left: 0.4rem !important;
 }
 
 @media (min-width: 1200px) {
@@ -51,7 +64,7 @@ a {
   height: calc(100vh - 4rem);
   overflow-y: auto;
   padding-right: 0 !important;
-  padding-left: 0 !important;
+  padding-left: 0.4 !important;
   font-size: 13px;
   border-right: 1px solid #e6e6e6;
 }
@@ -89,7 +102,8 @@ a {
 }
 
 .policyContent {
-  padding-right: 1% !important;
+  padding-top: 35px;
+  padding-right: 3% !important;
 }
 
 .topRow {
@@ -110,15 +124,13 @@ a {
 .mdContent h2,
 .policyContent h2,
 .downloads h2 {
-  /* margin-top: 40px; */
-  margin-top: 20px;
+  margin-top: 40px;
+  /* margin-top: 20px; */
   color: #585a5e;
   font-size: 1.5rem;
-}
-
-.downloads h2 {
   scroll-margin-top: 60px;
 }
+
 
 /* .mdContent h2:hover:after, .mdContent h3:hover:after, .mdContent h4:hover:after,
 .mdContent h5:hover:after, .mdContent h6:hover:after,
@@ -136,10 +148,11 @@ a {
 .mdContent h3,
 .policyContent h3,
 .downloads h3 {
-  /* margin-top: 40px; */
-  margin-top: 20px;
+  margin-top: 40px;
+  /* margin-top: 20px; */
   color: #585a5e;
   font-size: 1.3rem;
+  scroll-margin-top: 60px;
 }
 
 .community h3 {
@@ -150,7 +163,8 @@ a {
 
 .mdContent h4, .mdContent h5, .mdContent h6,
 .policyContent h4, .policyContent h5, .policyContent h6 {
-  margin-top: 20px;
+  margin-top: 40px;
+  /* margin-top: 20px; */
   color: #585a5e;
 }
 
@@ -277,7 +291,7 @@ pre.shiki {
   top: 4rem;
   height: calc(100vh - 4rem);
   overflow-y: auto;
-  padding-right: 0 !important;
+  padding-right: 0.4rem !important;
   padding-left: 0 !important;
   padding-top: 25px;
   font-size: 13px;
@@ -947,4 +961,8 @@ table.cTopControlsContainer tbody {
 /* CSS for hard coded html content in mds. */
 .cCodeTable.cCodeTableFixedLayout {
   table-layout: fixed;
+}
+
+.cBallerina-Box p {
+  margin-left: 20px;
 }

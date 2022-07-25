@@ -9,13 +9,13 @@ export default function UseCases() {
   return (
     <>
 
-      <Row className="pageContentRow learnRow">
+      <Row className="pageContentRow learnRow llanding">
         <Col xs={12} md={12}>
           <h2>Featured use cases</h2>
         </Col>
       </Row>
 
-      <Row className="pageContentRow">
+      <Row className="pageContentRow llanding">
         <Col xs={12} lg={4}>
           <div className={styles.langRow}>
             <a href={`${prefix}/learn/write-a-restful-api-with-ballerina/`} className={styles.linkText}>Write a RESTful API</a>
@@ -73,11 +73,11 @@ export default function UseCases() {
         </Col> */}
       </Row>
 
-      <Row className="pageContentRow">
+      {/* <Row className="pageContentRow llanding">
         <Col xs={12}>
         <p>See more standard library and other <a href={`${prefix}/learn/use-cases/`} className={styles.linkText}>use cases</a></p>
         </Col>
-      </Row>
+      </Row> */}
     </>
   );
 }

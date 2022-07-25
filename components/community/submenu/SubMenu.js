@@ -6,7 +6,7 @@ export default function SubMenu() {
 
   return (
     <Col xs={12}>
-      <Container fluid>
+      <Container fluid='xxl'>
         <Row>
           <Col xs={12} className='communitySubRow'>
             <ul className="nav navbar-nav secondary-nav">

@@ -8,7 +8,7 @@ export default function Intro() {
 
     return (
         <>
-            <Row className="pageContentRow justify-content-md-center">
+            <Row className="pageContentRow justify-content-md-center llanding">
                 <Col xs={12} lg={4} className={styles.introCard}>
                     <a href={`${prefix}/learn/install-ballerina/set-up-ballerina`} className={styles.cardLink}>
                         <div className={`${styles.cardContent} ${styles.primary}`}>
@@ -28,7 +28,7 @@ export default function Intro() {
                 </Col>
             </Row>
 
-            <Row className="pageContentRow justify-content-md-center">
+            <Row className="pageContentRow justify-content-md-center llanding">
                 <Col xs={12} lg={4} className={styles.introCard}>
                     <a href={`${prefix}/learn/by-example/`} className={styles.cardLink}>
                         <div className={`${styles.cardContent} ${styles.secondary}`}>

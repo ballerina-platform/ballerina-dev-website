@@ -51,7 +51,7 @@ export default function Intro() {
                     <a href={`${prefix}/learn/platform-specifications`} className={styles.cardLink}>
                         <div className={`${styles.cardContent} ${styles.secondary}`}>
                             <p className={styles.title}>Ballerina Specifications</p>
-                            <p className={styles.description}>Language, library &amp; platform specs</p>
+                            <p className={styles.description}>Language, library, and platform specifications</p>
                         </div>
                     </a>
                 </Col>

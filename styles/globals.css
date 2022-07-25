@@ -25,7 +25,6 @@ a {
   font-size: 16px;
   font-weight: 300;
 
-
   /* padding-left: 0.4rem !important;
   padding-right: 0.4rem !important; */
 }
@@ -46,7 +45,7 @@ a {
 }
 
 @media (min-width: 1400px) {
-  .short  {
+  .short {
     margin-bottom: 473px;
   }
 }
@@ -131,7 +130,6 @@ a {
   scroll-margin-top: 60px;
 }
 
-
 /* .mdContent h2:hover:after, .mdContent h3:hover:after, .mdContent h4:hover:after,
 .mdContent h5:hover:after, .mdContent h6:hover:after,
 .sectionTitle:hover:after {
@@ -161,14 +159,19 @@ a {
   font-size: 1.3rem;
 }
 
-.mdContent h4, .mdContent h5, .mdContent h6,
-.policyContent h4, .policyContent h5, .policyContent h6 {
+.mdContent h4,
+.mdContent h5,
+.mdContent h6,
+.policyContent h4,
+.policyContent h5,
+.policyContent h6 {
   margin-top: 40px;
   /* margin-top: 20px; */
   color: #585a5e;
 }
 
-.mdContent h4, .policyContent h4 {
+.mdContent h4,
+.policyContent h4 {
   font-size: 1.1rem;
 }
 
@@ -217,7 +220,8 @@ a {
   padding: 10px;
 }
 
-.mdContent table thead tr, .cCodeTable tr th {
+.mdContent table thead tr,
+.cCodeTable tr th {
   background-color: #464646;
   /* font-weight: 400; */
   color: #ffffff;
@@ -436,7 +440,6 @@ pre[class*="language-"] {
   position: sticky;
   top: 60px;
   z-index: 2000;
-
 }
 
 .communitySub ul {
@@ -685,7 +688,8 @@ ul.eventsTabs {
   background-color: #f5f5f5 !important;
 }
 
-.home pre.shiki code, .home pre.shiki span {
+.home pre.shiki code,
+.home pre.shiki span {
   line-height: 18px;
 }
 
@@ -694,7 +698,6 @@ ul.eventsTabs {
     margin-left: 0.5rem;
   }
 }
-
 
 /*--------------------Specifications------------*/
 
@@ -860,9 +863,55 @@ table.cTopControlsContainer tbody {
   --output-color-background: #585a5e;
 
   --output-color-text: #3ad1ca;
-  --button-color-text: #3ad1ca;
   --code-color-output: #818181;
+
+  --button-color-text: #3ad1ca;
   --button-hover-color-text: #a8dbd9;
+}
+
+.bbeBody > * {
+  margin: 0 0 20px 0 !important;
+  padding: 0 !important;
+}
+
+.bbeBody ul {
+  list-style: none;
+}
+
+.bbeBody li {
+  margin: 0;
+}
+
+.bbeBody > pre:not(.bbeOutput pre) {
+  background-color: #eeeeee;
+}
+
+.backToExample {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 16px 0;
+  text-decoration: none;
+}
+
+.backToExample * {
+  margin: 0 16px;
+  cursor: pointer;
+}
+
+.backToExample p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--button-color-text);
+}
+
+.backToExample:hover svg {
+  fill: var(--button-hover-color-text);
+}
+
+.backToExample:hover p {
+  font-weight: 500;
+  color: var(--button-hover-color-text);
 }
 
 .bbeCode {
@@ -946,12 +995,18 @@ table.cTopControlsContainer tbody {
   opacity: 1;
 }
 
+.bbeTable h4 {
+  font-size: 28px;
+}
+
 .bbeTable ul {
   list-style: none;
+  scroll-margin-top: 70px;
 }
 
 .bbeTable li {
   border-bottom: 1px solid #cecfd0;
+  cursor: pointer;
 }
 
 .bbeTable a {

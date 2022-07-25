@@ -31,7 +31,11 @@ export default function LeftNavYaml({ navContent, bbe }) {
       >
         {navContent &&
           navContent.sublinks.map((category, index) => (
-            <Accordion.Item key={index} eventKey={category.id}>
+            <Accordion.Item
+              key={index}
+              eventKey={category.id}
+              className={styles.acItem}
+            >
               <Accordion.Header className={styles.mainDir}>
                 {category.title}
               </Accordion.Header>
@@ -57,7 +61,7 @@ export default function LeftNavYaml({ navContent, bbe }) {
         {directory.hasOwnProperty("sublinks") ? (
           <>
             <Accordion defaultActiveKey={active ? activeSubLevel : null}>
-              <Accordion.Item eventKey={directory.id}>
+              <Accordion.Item eventKey={directory.id} className={styles.acItem}>
                 <Accordion.Header>{directory.title}</Accordion.Header>
                 <Accordion.Body className={styles.acBody}>
                   <ul className={styles.secondTier}>

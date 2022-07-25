@@ -101,7 +101,7 @@ For more download options, see [Downloads](/download).
 
 Double-click on the package file you downloaded above to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution.
 
-For more installation options, see [Installation options](/learn/installing-ballerina/installation-options/).
+For more installation options, see [Installation options](/learn/install-ballerina/installation-options/).
 
 ## Install the VS Code extension
 

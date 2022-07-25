@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R3 preview 2022-07-11</h1>
+<h1>Ballerina Language Specification, 2022R3 preview 2022-07-25</h1>
 <p>
 Primary contributors:
 </p>
@@ -7141,7 +7141,7 @@ class="grammar"><dfn>action</dfn> :=
    | <abbr>checking-action-or-expr</abbr>
    | <abbr>trap-action-or-expr</abbr>
    | <abbr>query-action-or-expr</abbr>
-   | <code>(</code> <abbr>action</abbr> <code>)</code>
+   | <code>(</code> <abbr>action-or-expr</abbr> <code>)</code>
 
 <dfn>type-cast-action-or-expr</dfn> := <code>&lt;</code> <abbr>type-cast-param</abbr> <code>&gt;</code> <abbr>action-or-expr</abbr>
 <dfn>checking-action-or-expr</dfn> := <abbr>checking-keyword</abbr> <abbr>action-or-expr</abbr>

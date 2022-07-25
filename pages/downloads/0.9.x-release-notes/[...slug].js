@@ -86,7 +86,7 @@ export default function PostPage({ frontmatter, content, id }) {
       .process(content)
 
     setData(String(file));
-  }, [])
+  }, [content])
 
   // the useEffect is only there to call `fetchData` at the right time
   React.useEffect(() => {

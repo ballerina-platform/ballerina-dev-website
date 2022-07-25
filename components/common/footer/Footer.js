@@ -47,7 +47,7 @@ export default function Footer() {
             <div className={styles.footerLinks}>
             <ul>
                 <li><Link className="footerLink" href={`/downloads`}>DOWNLOAD</Link></li>
-                <li><Link className="footerLink" href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose">REPORT ISSUES</Link></li>
+                <li><a className="footerLink" target='_blank' rel="noreferrer" href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose">REPORT ISSUES</a></li>
             </ul>
             </div>
 
@@ -60,7 +60,7 @@ export default function Footer() {
         <Row className={styles.policyLinks}>
           <Col xs={12}>
             <ul>
-              <li><Link className="footerLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">CODE LICENSE</Link></li>
+              <li><a className="footerLink" target='_blank' rel="noreferrer" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">CODE LICENSE</a></li>
               <li><Link className="footerLink" href={`/license-of-site`}>SITE LICENSE</Link></li>
               <li><Link className="footerLink" href={`/terms-of-service`}>TERMS OF SERVICE</Link></li>
               <li><Link className="footerLink" href={`/privacy-policy`}>PRIVACY POLICY</Link></li>

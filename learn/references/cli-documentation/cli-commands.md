@@ -187,7 +187,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </tr>
 <tr>
 <td class="cCommand">semver</td>
-<td class="cDescription">Show SemVer compatibility and local package changes against published packages in Ballerina Central.
+<td class="cDescription">Validate <a href="https://semver.org/">SemVer</a> compatibility of the local package changes against any previously published version(s) in Ballerina Central.
 </td>
 </tr>
 <tr>

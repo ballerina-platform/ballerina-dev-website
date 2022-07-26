@@ -17,29 +17,31 @@ export default function BalAction() {
     if (hash !== '') {
       hash = hash.replace('#', '');
       setKey(hash);
+      const element = document.getElementById("ballerina-in-action");
+      element.scrollIntoView();
     }
   }, [hash]);
 
-  const HighlightSyntax = (code,language) => {
+  const HighlightSyntax = (code, language) => {
     const [codeSnippet, setCodeSnippet] = React.useState([]);
 
-    React.useEffect( () => { 
+    React.useEffect(() => {
 
       async function fetchData() {
-          getHighlighter({
-            theme: "github-light",
-            langs: ['ballerina']
-          }).then((highlighter) => {
-            setCodeSnippet(highlighter.codeToHtml(code,language));
-          })
+        getHighlighter({
+          theme: "css-variables",
+          langs: ['ballerina']
+        }).then((highlighter) => {
+          setCodeSnippet(highlighter.codeToHtml(code, language));
+        })
       }
       fetchData();
-    }, [code,language]);
+    }, [code, language]);
 
     return [codeSnippet]
   }
 
-  
+
 
   const ConsumerServices = `import ballerina/http;
 import ballerinax/googleapis.sheets;
@@ -362,7 +364,7 @@ service / on new http:Listener(8080) {
                 <Row>
                   <Col lg={7} md={12} sm={12} className={styles.col1} id="column1" >
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{__html: HighlightSyntax(ConsumerServices,'ballerina')}}/>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(ConsumerServices, 'ballerina') }} />
                     </div>
                   </Col>
                   <Col lg={5} md={12} sm={12} className={styles.col2} id="column2" >
@@ -378,7 +380,7 @@ service / on new http:Listener(8080) {
                 <Row>
                   <Col lg={7} md={12} sm={12} className={styles.col1}>
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{__html: HighlightSyntax(workingWithData,'ballerina')}}/>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(workingWithData, 'ballerina') }} />
                     </div>
                   </Col>
                   <Col lg={5} md={12} sm={12} className={styles.col2}>
@@ -396,7 +398,7 @@ service / on new http:Listener(8080) {
                 <Row>
                   <Col sm={12}>
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{__html: HighlightSyntax(restfulApi,'ballerina')}}/>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(restfulApi, 'ballerina') }} />
                     </div>
                   </Col>
                 </Row>
@@ -406,12 +408,12 @@ service / on new http:Listener(8080) {
                 <Row>
                   <Col lg={7} md={12} sm={7} className={styles.col1}>
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{__html: HighlightSyntax(grpcCode1,'ballerina')}}/>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(grpcCode1, 'ballerina') }} />
                     </div>
                   </Col>
                   <Col lg={5} md={12} sm={12} id="grpc-api-proto" className={styles.col2}>
                     <div className={styles.focusPane}>
-                    <div className="highlight" dangerouslySetInnerHTML={{__html: HighlightSyntax(grpcCode2,'ballerina')}}/>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(grpcCode2, 'ballerina') }} />
                     </div>
                   </Col>
                 </Row>
@@ -421,17 +423,17 @@ service / on new http:Listener(8080) {
                 <Row>
                   <Col sm={12}>
                     <div className={styles.focusPane}>
-                    <div className="highlight" dangerouslySetInnerHTML={{__html: HighlightSyntax(graphqlApi,'ballerina')}}/>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(graphqlApi, 'ballerina') }} />
                     </div>
                   </Col>
                 </Row>
               </Tab>
 
-              <Tab eventKey="kafka-consumer" title="Kafka consumer/producer">
+              <Tab eventKey="kafka-consumer-producer" title="Kafka consumer/producer">
                 <Row>
                   <Col sm={12}>
                     <div className={styles.focusPane}>
-                    <div className="highlight" dangerouslySetInnerHTML={{__html: HighlightSyntax(kafkaConsumer,'ballerina')}}/>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(kafkaConsumer, 'ballerina') }} />
                     </div>
                   </Col>
                 </Row>
@@ -441,7 +443,7 @@ service / on new http:Listener(8080) {
                 <Row>
                   <Col sm={12}>
                     <div className={styles.focusPane}>
-                    <div className="highlight" dangerouslySetInnerHTML={{__html: HighlightSyntax(workingWithDataBases,'ballerina')}}/>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(workingWithDataBases, 'ballerina') }} />
                     </div>
                   </Col>
                 </Row>

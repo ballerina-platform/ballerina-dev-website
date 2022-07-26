@@ -430,7 +430,7 @@ pre[class*="language-"] {
 
 .communitySubRow {
   background-color: #f8f8f8;
-  z-index: 2000;
+  z-index: 100;
 }
 
 .communitySub {
@@ -439,7 +439,7 @@ pre[class*="language-"] {
   padding-bottom: 15px;
   position: sticky;
   top: 60px;
-  z-index: 2000;
+  z-index: 1000;
 }
 
 .communitySub ul {
@@ -795,6 +795,10 @@ ul.eventsTabs {
   font-size: 13px;
 }
 
+.specIcon {
+  cursor: pointer;
+}
+
 /*------------------- Old Versions ------------------*/
 
 ul.cLearnLandingLinks {
@@ -979,6 +983,21 @@ table.cTopControlsContainer tbody {
   padding-bottom: 20px;
   border-bottom: 0.5px solid #585a5e;
   margin-bottom: 20px;
+}
+
+/*------ custom shiki theme for home page examples -------*/
+:root {
+  --shiki-color-text: #000;
+  --shiki-color-background: #333333;
+  --shiki-token-constant: #07a;
+  --shiki-token-string: #770000;
+  --shiki-token-comment: slategray;
+  --shiki-token-keyword: #07a;
+  --shiki-token-parameter: #AA0000;
+  --shiki-token-function: #000;
+  --shiki-token-string-expression: #690;
+  --shiki-token-punctuation: #000;
+  --shiki-token-link: #EE0000;
 }
 
 .bbeHomeTitle {

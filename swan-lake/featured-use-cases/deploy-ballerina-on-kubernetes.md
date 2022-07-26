@@ -23,7 +23,7 @@ To complete this tutorial, you need:
 1. A command terminal
 2. A text editor
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
-3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
+3. A [Ballerina installation](/learn/install-ballerina/set-up-ballerina/)
 4. [Docker](https://www.docker.com/) installed and configured in your machine
 5. A [Docker Hub](https://hub.docker.com/) account
 6. [Kubectl](https://kubernetes.io/docs/tasks/tools/) installed and configured in a [Kubernetes cluster](https://minikube.sigs.k8s.io/docs/start/)
@@ -121,4 +121,4 @@ deployment.apps/greeter-deployment created
 horizontalpodautoscaler.autoscaling/greeter-hpa created
 ```
 
-**Info:** For in-depth information about executing these deployed applications and the supported customizations in code to cloud, see [Code to Cloud deployment](/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/).
+**Info:** For in-depth information about executing these deployed applications and the supported customizations in code to cloud, see [Code to Cloud deployment](/learn/run-in-the-cloud/code-to-cloud/code-to-cloud-deployment).

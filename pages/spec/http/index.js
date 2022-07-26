@@ -95,7 +95,7 @@ export default function PostPage({ frontmatter, content }) {
           <Container>
             <Row className='topRowSpec'>
               <Col xs={12}>
-                <Link href='/'><Image src={`${prefix}/images/ballerina-logo.svg`} height={37} width={199} alt="Ballerina-logo"/></Link>
+                <Link href='/' passHref className='specIcon'><Image src={`${prefix}/images/ballerina-logo.svg`} height={37} width={199} alt="Ballerina-logo" className='specIcon'/></Link>
               </Col>
             </Row>
             

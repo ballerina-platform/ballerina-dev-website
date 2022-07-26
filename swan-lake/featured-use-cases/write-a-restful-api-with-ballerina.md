@@ -18,7 +18,7 @@ redirect_from:
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2202.0.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
+1. [Ballerina 2202.0.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
   >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
 3. A command terminal
@@ -48,7 +48,7 @@ The second endpoint is about getting data filtered from the service. The data is
 
 Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
-> **Info:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
+> **Info:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organize-ballerina-code/).
 
 ```bash
 $ bal new covid19 -t service

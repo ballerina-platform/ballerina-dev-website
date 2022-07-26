@@ -28,7 +28,7 @@ To complete this tutorial, you need:
 1. A command terminal
 2. A text editor
     >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed as it has good support for Ballerina.
-3. A [Ballerina installation](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/)
+3. A [Ballerina installation](/learn/install-ballerina/set-up-ballerina/)
 
 ### Set up a MySQL server instance
 
@@ -335,4 +335,4 @@ service /employees on new http:Listener(8080) {
 To learn more about MySQL and HTTP support in Ballerina, see the following:
 - [`mysql` module documentation](https://lib.ballerina.io/ballerinax/mysql/latest)
 - [`http` module documentation](https://lib.ballerina.io/ballerina/http/latest)
-- [MySQL examples](/learn/by-example/mysql-query-operation.html)
+- [MySQL examples](/learn/by-example/mysql-query-operation)

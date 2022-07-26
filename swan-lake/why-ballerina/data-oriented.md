@@ -27,35 +27,35 @@ Query expressions allow you to generate a list, stream, table, string, or XML. T
 
 Query expressions contain a set of clauses similar to SQL to process the data. They must start with the `from` clause and can perform various operations such as filter, join, sort, limit, and projection. There are various SQL-like clauses below to perform these operations. 
 
-#### 'from' clause
+#### `from` clause
 
 The `from` clause is used to define the input iterator source that is considered for processing the data. Similar to the `for each` statement, you can specify any iterator as the expression. Similar to a list and stream, you can use all kinds of iterators as the input in the `from` clause.
 
-#### 'where' clause
+#### `where` clause
 
 The `where` clause allows you to filter by condition. You can define any conditional expression, which returns a boolean. A `where` clause contains logical operators, equality, and range checks.
 
-#### 'let' clause
+#### `let` clause
 
 The `let` clause allows you to define variables that can be used only within the query expression scope. These variables cannot be accessed out of the query expression. You can define one or more variables in the `let` clause and use them within query expressions. 
 
-#### 'join' clause
+#### `join` clause
 
 A `join` clause performs an inner or left outer equijoin. In the `join` clause, there are two input iterators. During the joining process, each value of an iterator is matched against all the values in the other iterator based on the given condition, and the output values are generated for all the matching event pairs. Here, you can only perform equality checks as the joining condition.
 
-#### 'order by' clause 
+#### `order by` clause 
 
 The `order by` clause allows ordering the result in the ascending and/or descending order based on the specified attributes. Ordering will be done in an ascending manner by default. You can use the `descending` keyword to order in a descending manner. Here, attributes that are considered for the `order by` operations are order-keys, which should be an ordered type. You can define more than one order key in the `order by` clause and it’s possible to have more than one `order by` clause. 
 
-#### 'limit' clause
+#### `limit` clause
 
 The `limit` clause limits the number of frames/values emitted by a query pipeline. You should define an integer value to specify the number of output values.
 
-#### 'select' clause
+#### `select` clause
 
 The `select` clause is a mandatory clause in query expressions that is used for projection. You can use this clause to create the values required to generate iterators such as list, table, XML, string, and stream. 
 
-#### 'on conflict' clause
+#### `on conflict` clause
 
 An `on conflict` clause is only allowed for a query expression that constructs a table with a key sequence. The expression is evaluated when the `select` clause emits a value that conflicts with a previous value, in the sense, that both values have the same key value in the table. The `on conflict` clause gets executed when the `select` clause emits a row that has the same key as a row that it emitted earlier. It gives an `onConflictError` error if there is a key conflict.
 

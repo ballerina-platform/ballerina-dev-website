@@ -32,7 +32,7 @@ export default function GetInvolved() {
             <h4 id="contribute-to-ballerina-central-title">
               Contribute to Ballerina Central
             </h4>
-            <p>Let the whole community benefit from your work by <a className={styles.getStartLinks} target="_blank" rel="noreferrer" href="https://ballerina.io/learn/publishing-packages-to-ballerina-central/" >
+            <p>Let the whole community benefit from your work by <a className={styles.getStartLinks} target="_blank" rel="noreferrer" href="/learn/publish-packages-to-ballerina-central/" >
               creating and publishing</a> your own module to <a className={styles.getStartLinks} target="_blank" rel="noreferrer" href="https://central.ballerina.io/" >Ballerina Central</a>. </p>
           </Col>
           <Col xs={12} md={4} lg={4} className={styles.card}>
@@ -40,7 +40,7 @@ export default function GetInvolved() {
             <h4 id="report-issues-title">
               Report issues
             </h4>
-            <p><a id="reportissues" className={styles.getStartLinks} href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose">Report issues</a> in the respective GitHub repositories of the areas and components.</p>
+            <p><a id="reportissues" target='_blank' rel="noreferrer" className={styles.getStartLinks} href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose">Report issues</a> in the respective GitHub repositories of the areas and components.</p>
           </Col>
         </Row>
 

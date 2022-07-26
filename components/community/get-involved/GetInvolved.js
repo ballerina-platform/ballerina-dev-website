@@ -40,7 +40,7 @@ export default function GetInvolved() {
             <h4 id="report-issues-title">
               Report issues
             </h4>
-            <p><a id="reportissues" className={styles.getStartLinks} href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose">Report issues</a> in the respective GitHub repositories of the areas and components.</p>
+            <p><a id="reportissues" target='_blank' rel="noreferrer" className={styles.getStartLinks} href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose">Report issues</a> in the respective GitHub repositories of the areas and components.</p>
           </Col>
         </Row>
 

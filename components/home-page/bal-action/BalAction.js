@@ -29,7 +29,7 @@ export default function BalAction() {
 
       async function fetchData() {
         getHighlighter({
-          theme: "github-light",
+          theme: "css-variables",
           langs: ['ballerina']
         }).then((highlighter) => {
           setCodeSnippet(highlighter.codeToHtml(code, language));

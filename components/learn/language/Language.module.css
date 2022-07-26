@@ -66,7 +66,7 @@
     transition: none !important;
     font-size: 16px;
     text-align: center;
-    background-color: #20b6b0;
+    background-color: #57595d;
     color: #ffffff !important;
     padding: 10px 10px;
     background-repeat: no-repeat;
@@ -82,7 +82,7 @@
 }
 
 .linkBtn:hover {
-    background-color: #57595d;
+    background-color: #20b6b0;
 }
 
 /* .linkBtn:not(:last-of-type) {

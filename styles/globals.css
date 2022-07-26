@@ -795,6 +795,10 @@ ul.eventsTabs {
   font-size: 13px;
 }
 
+.specIcon {
+  cursor: pointer;
+}
+
 /*------------------- Old Versions ------------------*/
 
 ul.cLearnLandingLinks {

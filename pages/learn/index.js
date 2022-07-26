@@ -30,15 +30,7 @@ export default function Learn() {
         <LearnTheLanguage/>
         <UseCases/>
         <Platform/>
-        <New/>
-
-        {/* <div className='mainrowx'>
-          <div className='testitem b1'><div>cccc</div><div>fffffffff</div></div>
-          <div className='testitem'>hhhhhh<br/>ppppppp</div>
-          <div className='testitem'>hhhhhh<br/>ppppppp<br/>kkkkkkkkk</div>
-        </div> */}
-
-      
+        <New/>   
 
         {/* <Row className="pageContentRow">
           <Col xs={12} md={12}>

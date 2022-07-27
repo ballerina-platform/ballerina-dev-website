@@ -71,7 +71,7 @@ export default function SecurityPolicyPage({ frontmatter, content }) {
           <Row className='topRow innerRow'>
             <Col xs={11}><h1>{frontmatter.title}</h1></Col>
             <Col xs={1} className="gitIcon">
-              <a href={`${process.env.gitHubPath}policy/security-policy.md`}>
+              <a href={`${process.env.gitHubPath}policy/security-policy.md`} target="_blank" rel="noreferrer">
                 <Image src={`${prefix}/images/github.svg`} height={20} width={20} alt="Edit in github" />
               </a>
             </Col>

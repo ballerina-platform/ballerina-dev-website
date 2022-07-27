@@ -40,32 +40,20 @@ export default function HelloWorld() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>Hello world main</h1>
 
       <p>
         Let's write the <code>Hello World</code> program in Ballerina.
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c45c215824439cf40658dd58ce079785&file=hello_world.bal",
+                "https://play.ballerina.io/?gist=610658556a70045cab67872d48ed26f8&file=hello_world.bal",
                 "_blank"
               );
             }}
@@ -85,7 +73,7 @@ export default function HelloWorld() {
             </svg>
           </button>
           <button
-            className="btn rounded"
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/hello-world",
@@ -107,7 +95,7 @@ export default function HelloWorld() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -124,7 +112,7 @@ export default function HelloWorld() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -148,31 +136,25 @@ export default function HelloWorld() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`# To run this sample, place the source code in `}</span>
-              <span>
-                {`# `}
-                <code>{`hello_world.bal`}</code>
-                {` file and use `}
-                <code>{`bal run`}</code>
-                {` command.`}
-              </span>
-              <span>{`bal run hello_world.bal`}</span>
-              <span>{`Hello, World!`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -188,7 +170,7 @@ export default function HelloWorld() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -213,9 +195,23 @@ export default function HelloWorld() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`# To run this sample, place the source code in `}</span>
+              <span>
+                {`# `}
+                <code>{`hello_world.bal`}</code>
+                {` file and use `}
+                <code>{`bal run`}</code>
+                {` command.`}
+              </span>
+              <span>{`bal run hello_world.bal`}</span>
+              <span>{`Hello, World!`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col className="ms-auto" sm={6}>

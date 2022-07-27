@@ -170,6 +170,7 @@ import GraphqlHierarchicalResourcePaths from "./graphql-hierarchical-resource-pa
 import GraphqlReturningServiceObjects from "./graphql-returning-service-objects/content.jsx";
 import GraphqlInputTypes from "./graphql-input-types/content.jsx";
 import GraphqlMutations from "./graphql-mutations/content.jsx";
+import GraphqlSubscriptions from "./graphql-subscriptions/content.jsx";
 import GraphqlContext from "./graphql-context/content.jsx";
 import GraphqlFileUpload from "./graphql-file-upload/content.jsx";
 import GraphqlDocumentation from "./graphql-documentation/content.jsx";
@@ -302,7 +303,8 @@ import UuidOperations from "./uuid-operations/content.jsx";
 import XsltTransformation from "./xslt-transformation/content.jsx";
 import RegularExpressions from "./regular-expressions/content.jsx";
 import EnvironmentVariables from "./environment-variables/content.jsx";
-import XmlJsonConversion from "./xml-json-conversion/content.jsx";
+import XmlToJsonConversion from "./xml-to-json-conversion/content.jsx";
+import XmlFromJsonConversion from "./xml-from-json-conversion/content.jsx";
 import Tracing from "./tracing/content.jsx";
 import CounterMetrics from "./counter-metrics/content.jsx";
 import GaugeMetrics from "./gauge-metrics/content.jsx";
@@ -483,6 +485,7 @@ const BBEs = {
   GraphqlReturningServiceObjects,
   GraphqlInputTypes,
   GraphqlMutations,
+  GraphqlSubscriptions,
   GraphqlContext,
   GraphqlFileUpload,
   GraphqlDocumentation,
@@ -615,7 +618,8 @@ const BBEs = {
   XsltTransformation,
   RegularExpressions,
   EnvironmentVariables,
-  XmlJsonConversion,
+  XmlToJsonConversion,
+  XmlFromJsonConversion,
   Tracing,
   CounterMetrics,
   GaugeMetrics,

@@ -75,7 +75,7 @@ export default function Identity() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>Identity</h1>
 
       <p>
@@ -89,25 +89,13 @@ export default function Identity() {
         <code>-0.0</code> and <code>+0.0</code> are equal but not identical.
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0de03d99988c6a42007d35606d3b70bf&file=identity.bal",
+                "https://play.ballerina.io/?gist=8927d071924d1bcc161cb7672b49a148&file=identity.bal",
                 "_blank"
               );
             }}
@@ -127,7 +115,7 @@ export default function Identity() {
             </svg>
           </button>
           <button
-            className="btn rounded"
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/identity",
@@ -149,7 +137,7 @@ export default function Identity() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -166,7 +154,7 @@ export default function Identity() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -190,28 +178,25 @@ export default function Identity() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`bal run identity.bal`}</span>
-              <span>{`true`}</span>
-              <span>{`false`}</span>
-              <span>{`true`}</span>
-              <span>{`false`}</span>
-              <span>{`true`}</span>
-              <span>{`false`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -227,7 +212,7 @@ export default function Identity() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -252,14 +237,25 @@ export default function Identity() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`bal run identity.bal`}</span>
+              <span>{`true`}</span>
+              <span>{`false`}</span>
+              <span>{`true`}</span>
+              <span>{`false`}</span>
+              <span>{`true`}</span>
+              <span>{`false`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Ignoring return values and errors"
+            title="Ignore return values and errors"
             href="/learn/by-example/ignoring-return-values-and-errors"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -287,7 +283,7 @@ export default function Identity() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Ignoring return values and errors
+                  Ignore return values and errors
                 </span>
               </div>
             </div>

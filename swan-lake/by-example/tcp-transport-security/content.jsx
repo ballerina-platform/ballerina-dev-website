@@ -18,7 +18,7 @@ import ballerina/tcp;
 // An TCP client can be configured to communicate through SSL/TLS as well.
 // To secure a client using SSL/TLS, the client needs to be configured with
 // a certificate file of the listener.
-// The [\`tcp:ClientSecureSocket\`](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket) record
+// The [\`tcp:ClientSecureSocket\`](https://lib.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket) record
 // provides the SSL-related configurations of the client.
 tcp:Client securedClientEP = check new("localhost", 3000,
     secureSocket = {
@@ -39,7 +39,7 @@ import ballerina/tcp;
 // An HTTP listener can be configured to communicate through SSL/TLS as well.
 // To secure a listener using SSL/TLS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
-// The [\`tcp:ListenerSecureSocket\`](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket) record
+// The [\`tcp:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket) record
 // provides the SSL-related listener configurations of the listener.
 listener tcp:Listener securedListnerEP = check new(3000,
     secureSocket = {
@@ -92,7 +92,7 @@ export default function TcpTransportSecurity() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>Transport security</h1>
 
       <p>This demonstrates how the Ballerina TCP client can be configured to</p>
@@ -112,28 +112,13 @@ export default function TcpTransportSecurity() {
 
       <p>
         see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/tcp/latest">
-          TCP module
-        </a>
-        .
+        <a href="https://lib.ballerina.io/ballerina/tcp/latest">TCP module</a>.
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/tcp-transport-security",
@@ -155,7 +140,7 @@ export default function TcpTransportSecurity() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -172,7 +157,7 @@ export default function TcpTransportSecurity() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -196,24 +181,25 @@ export default function TcpTransportSecurity() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>{`bal run tcp_transport_security_client.bal`}</span>
-              <span>{`Received message: Hello, World!`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -229,7 +215,7 @@ export default function TcpTransportSecurity() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -254,24 +240,21 @@ export default function TcpTransportSecurity() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`# You may need to change the trusted certificate file path.`}</span>
+              <span>{`bal run tcp_transport_security_client.bal`}</span>
+              <span>{`Received message: Hello, World!`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[1] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[1]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/tcp-transport-security",
@@ -293,7 +276,7 @@ export default function TcpTransportSecurity() {
           </button>
           {codeClick2 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -310,7 +293,7 @@ export default function TcpTransportSecurity() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick2(true);
                 copyToClipboard(codeSnippetData[1]);
@@ -334,25 +317,25 @@ export default function TcpTransportSecurity() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[1] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[1]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref2}>
-            <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>{`bal run tcp_transport_security_service.bal`}</span>
-              <span>{`Client connected on server port: 5639`}</span>
-              <span>{`Received message: Hello, World!`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick2 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -368,7 +351,7 @@ export default function TcpTransportSecurity() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick2(true);
                 const extractedText = extractOutput(ref2.current.innerText);
@@ -393,9 +376,17 @@ export default function TcpTransportSecurity() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
+              <span>{`bal run tcp_transport_security_service.bal`}</span>
+              <span>{`Client connected on server port: 5639`}</span>
+              <span>{`Received message: Hello, World!`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

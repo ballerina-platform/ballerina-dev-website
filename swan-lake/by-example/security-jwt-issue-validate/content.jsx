@@ -24,7 +24,7 @@ public function main() returns error? {
         keyId: "NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ",
         expTime: 3600,
         // Signature can be created using either the private key configurations or keystore configurations.
-        // [jwt:IssuerSignatureConfig](https://docs.central.ballerina.io/ballerina/jwt/latest/records/IssuerSignatureConfig)
+        // [jwt:IssuerSignatureConfig](https://lib.ballerina.io/ballerina/jwt/latest/records/IssuerSignatureConfig)
         signatureConfig: {
             config: {
                 keyFile: "../resource/path/to/private.key"
@@ -43,7 +43,7 @@ public function main() returns error? {
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         clockSkew: 60,
         // Signature can be validated using the public certificate file, truststore configurations, or JWKS configurations.
-        // [jwt:ValidatorSignatureConfig](https://docs.central.ballerina.io/ballerina/jwt/latest/records/ValidatorSignatureConfig)
+        // [jwt:ValidatorSignatureConfig](https://lib.ballerina.io/ballerina/jwt/latest/records/ValidatorSignatureConfig)
         signatureConfig: {
             certFile: "../resource/path/to/public.crt"
         }
@@ -76,7 +76,7 @@ export default function SecurityJwtIssueValidate() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>JWT issue/validate</h1>
 
       <p>This example demonstrates how to issue a self-signed JWT and</p>
@@ -87,28 +87,13 @@ export default function SecurityJwtIssueValidate() {
 
       <p>
         see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/jwt/latest/">
-          JWT module
-        </a>
-        .
+        <a href="https://lib.ballerina.io/ballerina/jwt/latest/">JWT module</a>.
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/security-jwt-issue-validate",
@@ -130,7 +115,7 @@ export default function SecurityJwtIssueValidate() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -147,7 +132,7 @@ export default function SecurityJwtIssueValidate() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -171,39 +156,25 @@ export default function SecurityJwtIssueValidate() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
-              <span>{`# trusted certificate file path.`}</span>
-              <span>{`bal run security_jwt_issue_validate.bal`}</span>
-              <span>{`Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkR`}</span>
-              <span>{`            nM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJpc3MiOi`}</span>
-              <span>{`            JiYWxsZXJpbmEiLCAic3ViIjoiYWRtaW4iLCAiYXVkIjoidkV3emJjYXNKVlFtMWpWW`}</span>
-              <span>{`            UhVSENqaHhaNHRZYSIsICJqdGkiOiI1NWEwYjc1NC04OTVmLTQyNzktODg0My1iNzQ1`}</span>
-              <span>{`            ZTExYTU3ZTkiLCAiZXhwIjoxNjExMTI3MDIzLCAibmJmIjoxNjExMTIzNDIzLCAiaWF`}</span>
-              <span>{`            0IjoxNjExMTIzNDIzfQ.DMJDjJEFiQN7d_2CXGfXX_UR8Fi7Witr3aVGm4K7amEm3xN`}</span>
-              <span>{`            cbh1bZmKO2ir-oP2_ikoM1_ETO7i4E4LKJHNAEdhqj8YHyKpbszaEq5zouMOtdFcI7i`}</span>
-              <span>{`            TS8LyYDnyLEQQ6sa9L9NoMz3xULeF8epk0eaN1vVA-ijndVkZlMjaXJNf9Bgzn2qJOd`}</span>
-              <span>{`            sQ6F0GeC4WKEt-xcEY5C2_haEDotSOYhUzEqh6D1fRtrGy7GaH5gzx99n-xjn8NZbTD`}</span>
-              <span>{`            F0VnD6c1kJPe25FiPz24l9KdaCE1i2WbuzEhZWMclHW5RcTXVkLLkjQ4DvxfE-riGmK`}</span>
-              <span>{`            qPN1gatWViZQF_VGBK-G7rEhi9Q`}</span>
-              <span>{`Validated JWT Payload: {"iss":"ballerina","sub":"admin",`}</span>
-              <span>{`                        "aud":"vEwzbcasJVQm1jVYHUHCjhxZ4tYa",`}</span>
-              <span>{`                        "jti":"55a0b754-895f-4279-8843-b745e11a57e9",`}</span>
-              <span>{`                        "exp":1611127023,"nbf":1611123423,"iat":1611123423}`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -219,7 +190,7 @@ export default function SecurityJwtIssueValidate() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -244,9 +215,31 @@ export default function SecurityJwtIssueValidate() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
+              <span>{`# trusted certificate file path.`}</span>
+              <span>{`bal run security_jwt_issue_validate.bal`}</span>
+              <span>{`Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkR`}</span>
+              <span>{`            nM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJpc3MiOi`}</span>
+              <span>{`            JiYWxsZXJpbmEiLCAic3ViIjoiYWRtaW4iLCAiYXVkIjoidkV3emJjYXNKVlFtMWpWW`}</span>
+              <span>{`            UhVSENqaHhaNHRZYSIsICJqdGkiOiI1NWEwYjc1NC04OTVmLTQyNzktODg0My1iNzQ1`}</span>
+              <span>{`            ZTExYTU3ZTkiLCAiZXhwIjoxNjExMTI3MDIzLCAibmJmIjoxNjExMTIzNDIzLCAiaWF`}</span>
+              <span>{`            0IjoxNjExMTIzNDIzfQ.DMJDjJEFiQN7d_2CXGfXX_UR8Fi7Witr3aVGm4K7amEm3xN`}</span>
+              <span>{`            cbh1bZmKO2ir-oP2_ikoM1_ETO7i4E4LKJHNAEdhqj8YHyKpbszaEq5zouMOtdFcI7i`}</span>
+              <span>{`            TS8LyYDnyLEQQ6sa9L9NoMz3xULeF8epk0eaN1vVA-ijndVkZlMjaXJNf9Bgzn2qJOd`}</span>
+              <span>{`            sQ6F0GeC4WKEt-xcEY5C2_haEDotSOYhUzEqh6D1fRtrGy7GaH5gzx99n-xjn8NZbTD`}</span>
+              <span>{`            F0VnD6c1kJPe25FiPz24l9KdaCE1i2WbuzEhZWMclHW5RcTXVkLLkjQ4DvxfE-riGmK`}</span>
+              <span>{`            qPN1gatWViZQF_VGBK-G7rEhi9Q`}</span>
+              <span>{`Validated JWT Payload: {"iss":"ballerina","sub":"admin",`}</span>
+              <span>{`                        "aud":"vEwzbcasJVQm1jVYHUHCjhxZ4tYa",`}</span>
+              <span>{`                        "jti":"55a0b754-895f-4279-8843-b745e11a57e9",`}</span>
+              <span>{`                        "exp":1611127023,"nbf":1611123423,"iat":1611123423}`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

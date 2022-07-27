@@ -51,7 +51,7 @@ export default function EnvironmentVariables() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>Environment variables</h1>
 
       <p>
@@ -61,31 +61,16 @@ export default function EnvironmentVariables() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/os/latest/">
-          OS module
-        </a>
-        .
+        <a href="https://lib.ballerina.io/ballerina/os/latest/">OS module</a>.
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d56547b2ad4580e154d8523175f1da85&file=environment_variables.bal",
+                "https://play.ballerina.io/?gist=896e1a12edb17226014faf97ecd0fa74&file=environment_variables.bal",
                 "_blank"
               );
             }}
@@ -105,7 +90,7 @@ export default function EnvironmentVariables() {
             </svg>
           </button>
           <button
-            className="btn rounded"
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/environment-variables",
@@ -127,7 +112,7 @@ export default function EnvironmentVariables() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -144,7 +129,7 @@ export default function EnvironmentVariables() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -168,29 +153,29 @@ export default function EnvironmentVariables() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
       <p>
         To run this sample use the <code>bal run</code> command.
       </p>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`bal run environment_variables.bal`}</span>
-              <span>{`HTTP_PORT: 5005`}</span>
-              <span>{`Username: Alex`}</span>
-              <span>{`Userhome: /Users/Alex`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -206,7 +191,7 @@ export default function EnvironmentVariables() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -231,9 +216,17 @@ export default function EnvironmentVariables() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`bal run environment_variables.bal`}</span>
+              <span>{`HTTP_PORT: 5005`}</span>
+              <span>{`Username: Alex`}</span>
+              <span>{`Userhome: /Users/Alex`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -274,8 +267,8 @@ export default function EnvironmentVariables() {
         </Col>
         <Col sm={6}>
           <Link
-            title="XML JSON conversion"
-            href="/learn/by-example/xml-json-conversion"
+            title="XML to JSON conversion"
+            href="/learn/by-example/xml-to-json-conversion"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -285,7 +278,7 @@ export default function EnvironmentVariables() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  XML JSON conversion
+                  XML to JSON conversion
                 </span>
               </div>
               <svg

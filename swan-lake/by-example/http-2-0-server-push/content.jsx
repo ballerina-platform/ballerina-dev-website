@@ -24,7 +24,7 @@ service /http2Service on http2ServiceEP {
 
     resource function 'default .(http:Caller caller) {
 
-        // [Send a Push Promise](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller#promise).
+        // [Send a Push Promise](https://lib.ballerina.io/ballerina/http/latest/clients/Caller#promise).
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");
         var promiseResponse1 = caller->promise(promise1);
         if (promiseResponse1 is error) {
@@ -65,7 +65,7 @@ service /http2Service on http2ServiceEP {
         msg = {"push": {"name": "resource1"}};
         push1.setPayload(msg);
 
-        // [Push promised resource1](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse).
+        // [Push promised resource1](https://lib.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse).
         var pushResponse1 = caller->pushPromisedResponse(promise1, push1);
         if (pushResponse1 is error) {
             log:printError("Error occurred while sending the promised " +
@@ -101,7 +101,7 @@ service /http2Service on http2ServiceEP {
   `import ballerina/http;
 import ballerina/log;
 
-// Create an [HTTP client](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client) that can send HTTP/2 messages.
+// Create an [HTTP client](https://lib.ballerina.io/ballerina/http/latest/clients/Client) that can send HTTP/2 messages.
 // HTTP version is set to 2.0.
 final http:Client clientEP =
         check new ("http://localhost:7090", {httpVersion: "2.0"});
@@ -110,7 +110,7 @@ public function main() {
 
     http:Request serviceReq = new;
     http:HttpFuture httpFuture = new;
-    // [Submit a request](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#submit).
+    // [Submit a request](https://lib.ballerina.io/ballerina/http/latest/clients/Client#submit).
     var submissionResult = clientEP->submit("GET", "/http2Service", serviceReq);
 
     if (submissionResult is http:HttpFuture) {
@@ -123,12 +123,12 @@ public function main() {
 
     http:PushPromise?[] promises = [];
     int promiseCount = 0;
-    // [Check if promises exists](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#hasPromise).
+    // [Check if promises exists](https://lib.ballerina.io/ballerina/http/latest/clients/Client#hasPromise).
     boolean hasPromise = clientEP->hasPromise(httpFuture);
 
     while (hasPromise) {
         http:PushPromise pushPromise = new;
-        // [Get the next promise](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#getNextPromise).
+        // [Get the next promise](https://lib.ballerina.io/ballerina/http/latest/clients/Client#getNextPromise).
         var nextPromiseResult = clientEP->getNextPromise(httpFuture);
 
         if (nextPromiseResult is http:PushPromise) {
@@ -142,7 +142,7 @@ public function main() {
 
         if (pushPromise.path == "/resource2") {
             // The client is not interested in receiving \`/resource2\`.
-            // Therefore, [reject the promise](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#rejectPromise).
+            // Therefore, [reject the promise](https://lib.ballerina.io/ballerina/http/latest/clients/Client#rejectPromise).
             clientEP->rejectPromise(pushPromise);
 
             log:printInfo("Push promise for resource2 rejected");
@@ -156,7 +156,7 @@ public function main() {
     }
 
     http:Response response = new;
-    // [Get the requested resource](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#getResponse).
+    // [Get the requested resource](https://lib.ballerina.io/ballerina/http/latest/clients/Client#getResponse).
     var result = clientEP->getResponse(httpFuture);
 
     if (result is http:Response) {
@@ -223,7 +223,7 @@ export default function Http20ServerPush() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>HTTP 2.0 server push</h1>
 
       <p>
@@ -240,28 +240,16 @@ export default function Http20ServerPush() {
 
       <p>
         see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-2-0-server-push",
@@ -283,7 +271,7 @@ export default function Http20ServerPush() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -300,7 +288,7 @@ export default function Http20ServerPush() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -324,22 +312,25 @@ export default function Http20ServerPush() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`bal run http_2.0_service.bal`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -355,7 +346,7 @@ export default function Http20ServerPush() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -380,24 +371,19 @@ export default function Http20ServerPush() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`bal run http_2.0_service.bal`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[1] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[1]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-2-0-server-push",
@@ -419,7 +405,7 @@ export default function Http20ServerPush() {
           </button>
           {codeClick2 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -436,7 +422,7 @@ export default function Http20ServerPush() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick2(true);
                 copyToClipboard(codeSnippetData[1]);
@@ -460,29 +446,25 @@ export default function Http20ServerPush() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[1] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[1]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref2}>
-            <code className="d-flex flex-column">
-              <span>{`bal run http_client.bal`}</span>
-              <span>{`time = 2021-01-21 18:54:45,237 level = INFO  module = "" message = "Received a promise for /resource1"`}</span>
-              <span>{`time = 2021-01-21 18:54:45,278 level = INFO  module = "" message = "Received a promise for /resource2"`}</span>
-              <span>{`time = 2021-01-21 18:54:45,281 level = INFO  module = "" message = "Push promise for resource2 rejected"`}</span>
-              <span>{`time = 2021-01-21 18:54:45,283 level = INFO  module = "" message = "Received a promise for /resource3"`}</span>
-              <span>{`time = 2021-01-21 18:54:45,306 level = INFO  module = "" message = "Response : {"response":{"name":"main resource"}}"`}</span>
-              <span>{`time = 2021-01-21 18:54:45,314 level = INFO  module = "" message = "Promised resource : {"push":{"name":"resource1"}}"`}</span>
-              <span>{`time = 2021-01-21 18:54:45,468 level = INFO  module = "" message = "Promised resource : {"push":{"name":"resource3"}}"`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick2 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -498,7 +480,7 @@ export default function Http20ServerPush() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick2(true);
                 const extractedText = extractOutput(ref2.current.innerText);
@@ -523,9 +505,21 @@ export default function Http20ServerPush() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`bal run http_client.bal`}</span>
+              <span>{`time = 2021-01-21 18:54:45,237 level = INFO  module = "" message = "Received a promise for /resource1"`}</span>
+              <span>{`time = 2021-01-21 18:54:45,278 level = INFO  module = "" message = "Received a promise for /resource2"`}</span>
+              <span>{`time = 2021-01-21 18:54:45,281 level = INFO  module = "" message = "Push promise for resource2 rejected"`}</span>
+              <span>{`time = 2021-01-21 18:54:45,283 level = INFO  module = "" message = "Received a promise for /resource3"`}</span>
+              <span>{`time = 2021-01-21 18:54:45,306 level = INFO  module = "" message = "Response : {"response":{"name":"main resource"}}"`}</span>
+              <span>{`time = 2021-01-21 18:54:45,314 level = INFO  module = "" message = "Promised resource : {"push":{"name":"resource1"}}"`}</span>
+              <span>{`time = 2021-01-21 18:54:45,468 level = INFO  module = "" message = "Promised resource : {"push":{"name":"resource3"}}"`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

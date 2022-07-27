@@ -21,7 +21,7 @@ service / on new http:Listener(9090) {
     // The passthrough resource allows all HTTP methods as the accessor is \`default\`.
     resource function 'default passthrough(http:Request req)
             returns http:Response|error? {
-        // When [forward()](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#forward) is called on the backend client endpoint, it forwards the request that the passthrough
+        // When [forward()](https://lib.ballerina.io/ballerina/http/latest/clients/Client#forward) is called on the backend client endpoint, it forwards the request that the passthrough
         // resource received to the backend. When forwarding, the request is made using the same HTTP method that was
         // used to invoke the passthrough resource. The \`forward()\` function returns the response from the backend if
         // there are no errors.
@@ -54,7 +54,7 @@ export default function HttpPassthrough() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>Passthrough</h1>
 
       <p>
@@ -67,28 +67,16 @@ export default function HttpPassthrough() {
 
       <p>
         see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-passthrough",
@@ -110,7 +98,7 @@ export default function HttpPassthrough() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -127,7 +115,7 @@ export default function HttpPassthrough() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -151,24 +139,25 @@ export default function HttpPassthrough() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`# To invoke the service, use the cURL commands below.`}</span>
-              <span>{`curl http://localhost:9090/passthrough`}</span>
-              <span>{`{"args":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b7255d-23ce05a61ad55a0164ca19d3", "accept":"*/*", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get"}`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -184,7 +173,7 @@ export default function HttpPassthrough() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -209,22 +198,25 @@ export default function HttpPassthrough() {
             </button>
           )}
         </Col>
-      </Row>
-
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref2}>
+        <Col sm={12}>
+          <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run passthrough.bal`}</span>
+              <span>{`# To invoke the service, use the cURL commands below.`}</span>
+              <span>{`curl http://localhost:9090/passthrough`}</span>
+              <span>{`{"args":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b7255d-23ce05a61ad55a0164ca19d3", "accept":"*/*", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get"}`}</span>
             </code>
           </pre>
         </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      </Row>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick2 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -240,7 +232,7 @@ export default function HttpPassthrough() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick2(true);
                 const extractedText = extractOutput(ref2.current.innerText);
@@ -265,9 +257,14 @@ export default function HttpPassthrough() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`bal run passthrough.bal`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

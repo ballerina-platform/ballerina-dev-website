@@ -103,7 +103,7 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
       async function fetchData() {
         getHighlighter({
           theme: "github-light",
-          langs: ['bash', 'ballerina', 'toml', 'yaml', 'sh', 'json', 'graphql', 'sql', 'java']
+          langs: ['bash', 'ballerina', 'toml', 'yaml', 'sh', 'json', 'graphql', 'sql', 'java', 'groovy']
         }).then((highlighter) => {
           setCodeSnippet(highlighter.codeToHtml(code, language));
         })
@@ -191,6 +191,8 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
                 </a>
               </Col>
             </div>
+
+            <p className='intro'>{frontmatter.intro}</p>
 
             <ReactMarkdown
               components={{

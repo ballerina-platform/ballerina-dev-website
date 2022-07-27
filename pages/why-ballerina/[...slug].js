@@ -160,6 +160,8 @@ export default function PostPage({ frontmatter, content, id }) {
               </Col>
             </div>
 
+            <p className='intro'>{frontmatter.intro}</p>
+
             <ReactMarkdown
               components={{
                 h2({ node, inline, className, children, ...props }) {

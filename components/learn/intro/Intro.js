@@ -48,7 +48,7 @@ export default function Intro() {
                 </Col>
 
                 <Col xs={12} lg={4} className={styles.introCard}>
-                    <a href={`${prefix}/learn/platform-specifications`} className={styles.cardLink}>
+                    <a href={`${prefix}/learn/ballerina-specifications`} className={styles.cardLink}>
                         <div className={`${styles.cardContent} ${styles.secondary}`}>
                             <p className={styles.title}>Ballerina Specifications</p>
                             <p className={styles.description}>Language, library, and platform specifications</p>

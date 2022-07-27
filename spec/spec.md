@@ -24,7 +24,7 @@ Ballerina has a collection of specifications starting with the Ballerina Languag
 
 ### Specification versioning convention
 
-From the start of 2019, Ballerina  specifications are versioned chronologically using the convention `20XYRn`, where `XY` is the 2-digit year (e.g., 19), `R` stands for "Release", and `n` is the release number for that year. Prior to 2019, a semver versioning scheme was used. However, that approach was abandoned when the language specification reached 0.980.
+From the start of 2019, Ballerina  specifications are versioned chronologically using the convention `20XYRn`, where `XY` is the 2-digit year (e.g., 19), `R` stands for "Release" and `n` is the release number for that year. Prior to 2019, a semver versioning scheme was used. However, that approach was abandoned when the language specification reached 0.980.
 
 ## Language specifications 
 
@@ -32,7 +32,7 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 
 The below are the most stable versions of the lanuguage specification, which are in sync with the Ballerina releases.
 
-> **Note:** The Changes since previous releases section of the specification identifies the changes that have occurred in each version of the specification.
+> **Note:** The changes since previous releases section of the specification identifies the changes that have occurred in each version of the specification.
 
 | Version | Release Date | Description |
 | ------- | ------------ | ----------- | 

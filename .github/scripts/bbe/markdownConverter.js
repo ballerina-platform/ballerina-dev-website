@@ -175,23 +175,14 @@ md.use(container, "code", {
   },
   render: function (tokens, idx, options, env, self) {
     if (tokens[idx].nesting === 1) {
-      return `<Row className="bbeCode mx-0 px-2 py-0 rounded" style={{ marginLeft: "${
+      return `<Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "${
         env.marginLeftMultiplier * 8
       }px" }}>
-  <Col sm={10}>
-    {codeSnippets[${env.codeCount - 1}] != undefined && (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(codeSnippets[${env.codeCount - 1}]),
-        }}
-      />
-    )}
-  </Col>
-  <Col className="d-flex align-items-start pt-2" sm={2}>
+  <Col className="d-flex align-items-start" sm={12}>
     ${
       env.playgroundLink != undefined
         ? `<button
-        className="btn rounded ms-auto"
+        className="bg-transparent border-0 m-0 p-2 ms-auto"
         onClick={() => {
           window.open(
             "${env.playgroundLink}",
@@ -216,7 +207,7 @@ md.use(container, "code", {
         : ""
     }
     <button
-      className="btn rounded${
+      className="bg-transparent border-0 m-0 p-2${
         env.playgroundLink != undefined ? "" : " ms-auto"
       }"
       onClick={() => {
@@ -236,7 +227,7 @@ md.use(container, "code", {
       </svg>
     </button>
     {codeClick${env.codeCount} ? (
-      <button className="btn rounded" disabled aria-label="Copy to Clipboard Check">
+      <button className="bg-transparent border-0 m-0 p-2" disabled aria-label="Copy to Clipboard Check">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -250,7 +241,7 @@ md.use(container, "code", {
       </button>
     ) : (
       <button
-        className="btn rounded"
+        className="bg-transparent border-0 m-0 p-2"
         onClick={() => {
           updateCodeClick${env.codeCount}(true);
           copyToClipboard(codeSnippetData[${env.codeCount - 1}]);
@@ -274,6 +265,15 @@ md.use(container, "code", {
       </button>
     )}
   </Col>
+  <Col sm={12}>
+    {codeSnippets[${env.codeCount - 1}] != undefined && (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: DOMPurify.sanitize(codeSnippets[${env.codeCount - 1}]),
+        }}
+      />
+    )}
+  </Col>
 </Row>`;
     } else {
       return "";
@@ -294,61 +294,63 @@ md.use(container, "out", {
       let outputRead = fs.readFileSync(filePath, "utf-8").trim();
       let outputSplitted = outputRead.split("\n");
       let output =
-        `<Row className="bbeOutput mx-0 px-2 rounded" style={{ marginLeft: "${
+        `<Row className="bbeOutput mx-0 py-0 rounded" style={{ marginLeft: "${
           env.marginLeftMultiplier * 8
         }px" }}>
-  <Col className="my-2" sm={10}>
-    <pre className="m-0" ref={ref${env.outputCount}}>
+  <Col sm={12} className="d-flex align-items-start">
+    {outputClick${env.outputCount} ? (
+      <button
+        className="bg-transparent border-0 m-0 p-2 ms-auto"
+        aria-label="Copy to Clipboard Check"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="#00FF19"
+          className="output-btn bi bi-check"
+          viewBox="0 0 16 16"
+        >
+          <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+        </svg>
+      </button>
+    ) : (
+      <button
+        className="bg-transparent border-0 m-0 p-2 ms-auto"
+        onClick={() => {
+          updateOutputClick${env.outputCount}(true);
+          const extractedText = extractOutput(ref${
+            env.outputCount
+          }.current.innerText);
+          copyToClipboard(extractedText);
+          setTimeout(() => {
+            updateOutputClick${env.outputCount}(false);
+          }, 3000);
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="#EEEEEE"
+          className="output-btn bi bi-clipboard"
+          viewBox="0 0 16 16"
+          aria-label="Copy to Clipboard"
+        >
+          <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+          <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+        </svg>
+      </button>
+    )}
+  </Col>
+  <Col sm={12}>
+    <pre ref={ref${env.outputCount}}>
       <code className="d-flex flex-column">`.trim();
       outputSplitted.forEach((line) => {
         line = `{\`${escapeCharacterAdder(line, "out")}\`}`;
         output += `<span>${line}</span>\n`;
       });
       output += `</code></pre>
-          </Col>
-          <Col sm={2} className="d-flex align-items-start">
-            {outputClick${env.outputCount} ? (
-              <button
-                className="btn rounded ms-auto"
-                aria-label="Copy to Clipboard Check"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="#00FF19"
-                  className="output-btn bi bi-check"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-                </svg>
-              </button>
-            ) : (
-              <button
-                className="btn rounded ms-auto"
-                onClick={() => {
-                  updateOutputClick${env.outputCount}(true);
-                  const extractedText = extractOutput(ref${env.outputCount}.current.innerText);
-                  copyToClipboard(extractedText);
-                  setTimeout(() => {
-                    updateOutputClick${env.outputCount}(false);
-                  }, 3000);
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="#EEEEEE"
-                  className="output-btn bi bi-clipboard"
-                  viewBox="0 0 16 16"
-                  aria-label="Copy to Clipboard"
-                >
-                  <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                  <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-                </svg>
-              </button>
-            )}
           </Col>
         </Row>`;
 

@@ -57,7 +57,7 @@ export default function ErrorSubtyping() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>Error subtyping</h1>
 
       <p>
@@ -89,25 +89,13 @@ export default function ErrorSubtyping() {
 
       <p>used to tag instances of the type.</p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=45e01cb9cfcfd4f476b268d7b865b48f&file=error_subtyping.bal",
+                "https://play.ballerina.io/?gist=5e9709021607f74e952d365cce4a8c2d&file=error_subtyping.bal",
                 "_blank"
               );
             }}
@@ -127,7 +115,7 @@ export default function ErrorSubtyping() {
             </svg>
           </button>
           <button
-            className="btn rounded"
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/error-subtyping",
@@ -149,7 +137,7 @@ export default function ErrorSubtyping() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -166,7 +154,7 @@ export default function ErrorSubtyping() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -190,23 +178,25 @@ export default function ErrorSubtyping() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`bal run error_subtyping.bal`}</span>
-              <span>{`X`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -222,7 +212,7 @@ export default function ErrorSubtyping() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -247,9 +237,15 @@ export default function ErrorSubtyping() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`bal run error_subtyping.bal`}</span>
+              <span>{`X`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

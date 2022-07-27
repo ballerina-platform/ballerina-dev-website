@@ -77,7 +77,7 @@ export default function TimeFormattingAndParsing() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>Time formatting/parsing</h1>
 
       <p>
@@ -94,31 +94,19 @@ export default function TimeFormattingAndParsing() {
 
       <p>
         see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/time/latest/">
+        <a href="https://lib.ballerina.io/ballerina/time/latest/">
           Time module
         </a>
         .
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2a98687cffd197a888f63a20470047b4&file=time_formatting_and_parsing.bal",
+                "https://play.ballerina.io/?gist=2689e184d09c5b261a8d1d3f9e7976fc&file=time_formatting_and_parsing.bal",
                 "_blank"
               );
             }}
@@ -138,7 +126,7 @@ export default function TimeFormattingAndParsing() {
             </svg>
           </button>
           <button
-            className="btn rounded"
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/time-formatting-and-parsing",
@@ -160,7 +148,7 @@ export default function TimeFormattingAndParsing() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -177,7 +165,7 @@ export default function TimeFormattingAndParsing() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -201,29 +189,25 @@ export default function TimeFormattingAndParsing() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`bal run time_formatting_and_parsing.bal`}</span>
-              <span>{`UTC value: [1196676930,0.12]`}</span>
-              <span>{`UTC string representation: 2007-12-03T10:15:30.120Z`}</span>
-              <span>{`Converted civil value: {"utcOffset":{"hours":5,"minutes":30},"timeAbbrev":"Asia/Colombo","dayOfWeek":1,"year":2021,"month":4,"day":12,"hour":23,"minute":20,"second":50.52}`}</span>
-              <span>{`Civil string representation: 2021-04-12T17:50:50.520Z`}</span>
-              <span>{`Email formatted string: Mon, 3 Dec 2007 10:15:30 Z`}</span>
-              <span>{`Civil record of the email string: {"utcOffset":{"hours":-8,"minutes":0},"timeAbbrev":"America/Los_Angeles","dayOfWeek":3,"year":2021,"month":3,"day":10,"hour":19,"minute":51,"second":55}`}</span>
-              <span>{`Email string of the civil record: Wed, 10 Mar 2021 19:51:55 -0800`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -239,7 +223,7 @@ export default function TimeFormattingAndParsing() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -264,9 +248,21 @@ export default function TimeFormattingAndParsing() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`bal run time_formatting_and_parsing.bal`}</span>
+              <span>{`UTC value: [1196676930,0.12]`}</span>
+              <span>{`UTC string representation: 2007-12-03T10:15:30.120Z`}</span>
+              <span>{`Converted civil value: {"utcOffset":{"hours":5,"minutes":30},"timeAbbrev":"Asia/Colombo","dayOfWeek":1,"year":2021,"month":4,"day":12,"hour":23,"minute":20,"second":50.52}`}</span>
+              <span>{`Civil string representation: 2021-04-12T17:50:50.520Z`}</span>
+              <span>{`Email formatted string: Mon, 3 Dec 2007 10:15:30 Z`}</span>
+              <span>{`Civil record of the email string: {"utcOffset":{"hours":-8,"minutes":0},"timeAbbrev":"America/Los_Angeles","dayOfWeek":3,"year":2021,"month":3,"day":10,"hour":19,"minute":51,"second":55}`}</span>
+              <span>{`Email string of the civil record: Wed, 10 Mar 2021 19:51:55 -0800`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

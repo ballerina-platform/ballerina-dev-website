@@ -295,7 +295,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Controlling openness",
+        "name": "Control openness",
         "url": "controlling-openness",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -316,7 +316,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Defining classes",
+        "name": "Define classes",
         "url": "defining-classes",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -367,12 +367,12 @@
     ]
   },
   {
-    "title": "Ignoring return values and errors",
+    "title": "Ignore return values and errors",
     "column": 1,
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Ignoring return values and errors",
+        "name": "Ignore return values and errors",
         "url": "ignoring-return-values-and-errors",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -429,7 +429,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Working directly with JSON",
+        "name": "Work directly with JSON",
         "url": "working-directly-with-json",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -443,21 +443,21 @@
         "isLearnByExample": true
       },
       {
-        "name": "Converting from user-defined type to JSON",
+        "name": "Convert from user-defined type to JSON",
         "url": "converting-from-user-defined-type-to-json",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Converting from JSON to user-defined type",
+        "name": "Convert from JSON to user-defined type",
         "url": "converting-from-json-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Converting to user-defined type",
+        "name": "Convert to user-defined type",
         "url": "converting-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -521,7 +521,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructuring records",
+        "name": "Destructure records",
         "url": "destructuring-records",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -556,7 +556,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Creating tables with query",
+        "name": "Create tables with query",
         "url": "creating-tables-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -699,7 +699,7 @@
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Consuming services: client objects",
+        "name": "Consume services: client objects",
         "url": "consuming-services",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -707,7 +707,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Providing services",
+        "name": "Provide services",
         "url": "providing-services",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -798,7 +798,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Waiting for workers",
+        "name": "Wait for workers",
         "url": "waiting-for-workers",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -1082,7 +1082,7 @@
   {
     "title": "REST API",
     "column": 0,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Service path and resource path",
@@ -1161,7 +1161,7 @@
   {
     "title": "REST client",
     "column": 0,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Client",
@@ -1191,7 +1191,7 @@
   {
     "title": "REST API security",
     "column": 0,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Service - SSL/TLS",
@@ -1318,7 +1318,7 @@
   {
     "title": "REST API advanced",
     "column": 0,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Redirects",
@@ -1421,7 +1421,7 @@
   {
     "title": "REST API interceptors",
     "column": 1,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Interceptors",
@@ -1440,7 +1440,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Interceptor Error Handling",
+        "name": "Interceptor error handling",
         "url": "http-interceptor-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1452,7 +1452,7 @@
   {
     "title": "HTTP2",
     "column": 1,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "HTTP 1.1 to 2.0 protocol switch",
@@ -1475,7 +1475,7 @@
   {
     "title": "GraphQL",
     "column": 1,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Hello world",
@@ -1486,7 +1486,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Returning record values",
+        "name": "Return record values",
         "url": "graphql-returning-record-values",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1502,7 +1502,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Returning service objects",
+        "name": "Return service objects",
         "url": "graphql-returning-service-objects",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1520,6 +1520,14 @@
       {
         "name": "Mutations",
         "url": "graphql-mutations",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Subscriptions",
+        "url": "graphql-subscriptions",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1555,7 +1563,7 @@
   {
     "title": "GraphQL security",
     "column": 1,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Service - SSL/TLS",
@@ -1610,7 +1618,7 @@
   {
     "title": "WebSockets",
     "column": 1,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Client",
@@ -1642,7 +1650,7 @@
   {
     "title": "WebSocket security",
     "column": 1,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Service - SSL/TLS",
@@ -1769,7 +1777,7 @@
   {
     "title": "WebSub",
     "column": 1,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "WebSub subscriber service",
@@ -1784,7 +1792,7 @@
   {
     "title": "Resiliency",
     "column": 2,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Circuit breaker",
@@ -1831,7 +1839,7 @@
   {
     "title": "Listeners",
     "column": 2,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Dynamic listener",
@@ -1846,7 +1854,7 @@
   {
     "title": "gRPC",
     "column": 2,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Simple RPC",
@@ -1907,7 +1915,7 @@
   {
     "title": "gRPC security",
     "column": 2,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Service - SSL/TLS",
@@ -2034,7 +2042,7 @@
   {
     "title": "NATS",
     "column": 2,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Publish/subscribe",
@@ -2068,7 +2076,7 @@
   {
     "title": "STAN",
     "column": 2,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Publish/subscribe",
@@ -2120,7 +2128,7 @@
   {
     "title": "Kafka",
     "column": 2,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Producer",
@@ -2190,7 +2198,7 @@
   {
     "title": "RabbitMQ",
     "column": 3,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Producer",
@@ -2251,7 +2259,7 @@
   {
     "title": "TCP",
     "column": 3,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Client",
@@ -2285,7 +2293,7 @@
   {
     "title": "UDP",
     "column": 3,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Connectionless client",
@@ -2319,7 +2327,7 @@
   {
     "title": "Email",
     "column": 3,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Send emails",
@@ -2353,7 +2361,7 @@
   {
     "title": "FTP",
     "column": 3,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Client",
@@ -2378,7 +2386,7 @@
   {
     "title": "SFTP",
     "column": 3,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Client",
@@ -2403,7 +2411,7 @@
   {
     "title": "MySQL",
     "column": 3,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Simple query",
@@ -2473,7 +2481,7 @@
   {
     "title": "JDBC",
     "column": 3,
-    "category": "Working over the network",
+    "category": "Work over the network",
     "samples": [
       {
         "name": "Simple query",
@@ -2857,8 +2865,15 @@
     "category": "Common libraries",
     "samples": [
       {
-        "name": "XML JSON conversion",
-        "url": "xml-json-conversion",
+        "name": "XML to JSON conversion",
+        "url": "xml-to-json-conversion",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "JSON to XML conversion ",
+        "url": "xml-from-json-conversion",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false

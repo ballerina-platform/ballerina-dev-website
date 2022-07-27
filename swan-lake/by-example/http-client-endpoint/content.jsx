@@ -66,7 +66,7 @@ export default function HttpClientEndpoint() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>Client</h1>
 
       <p>
@@ -78,31 +78,19 @@ export default function HttpClientEndpoint() {
 
       <p>
         see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=95a0c90956665ab8ef525b24cf214610&file=http_client_endpoint.bal",
+                "https://play.ballerina.io/?gist=a69fefe406e53e352aba88e7a2ac2b6c&file=http_client_endpoint.bal",
                 "_blank"
               );
             }}
@@ -122,7 +110,7 @@ export default function HttpClientEndpoint() {
             </svg>
           </button>
           <button
-            className="btn rounded"
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-client-endpoint",
@@ -144,7 +132,7 @@ export default function HttpClientEndpoint() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -161,7 +149,7 @@ export default function HttpClientEndpoint() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -185,33 +173,25 @@ export default function HttpClientEndpoint() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`bal run http_client_endpoint.bal`}</span>
-              <span>{`GET request:`}</span>
-              <span>{`{"args":{"test":"123"}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e3-2cec8477340e121571a5df88", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get?test=123"}`}</span>
-              <span>{``}</span>
-              <span>{`GET request with Headers:`}</span>
-              <span>{`{"args":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e6-124af9746490533b1a560cca", "sample-name":"http-client-connector", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get"}`}</span>
-              <span>{``}</span>
-              <span>{`POST request:`}</span>
-              <span>{`{"args":{}, "data":"POST: Hello World", "files":{}, "form":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e6-60ad459c47889ca53a89df90", "content-length":"17", "content-type":"text/plain", "user-agent":"ballerina"}, "json":null, "url":"http://postman-echo.com/post"}`}</span>
-              <span>{``}</span>
-              <span>{`Use custom HTTP verbs:`}</span>
-              <span>{`Status code: 404`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -227,7 +207,7 @@ export default function HttpClientEndpoint() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -252,9 +232,25 @@ export default function HttpClientEndpoint() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`bal run http_client_endpoint.bal`}</span>
+              <span>{`GET request:`}</span>
+              <span>{`{"args":{"test":"123"}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e3-2cec8477340e121571a5df88", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get?test=123"}`}</span>
+              <span>{``}</span>
+              <span>{`GET request with Headers:`}</span>
+              <span>{`{"args":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e6-124af9746490533b1a560cca", "sample-name":"http-client-connector", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get"}`}</span>
+              <span>{``}</span>
+              <span>{`POST request:`}</span>
+              <span>{`{"args":{}, "data":"POST: Hello World", "files":{}, "form":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e6-60ad459c47889ca53a89df90", "content-length":"17", "content-type":"text/plain", "user-agent":"ballerina"}, "json":null, "url":"http://postman-echo.com/post"}`}</span>
+              <span>{``}</span>
+              <span>{`Use custom HTTP verbs:`}</span>
+              <span>{`Status code: 404`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

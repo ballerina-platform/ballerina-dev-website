@@ -974,9 +974,15 @@ table.cTopControlsContainer tbody {
   fill: var(--button-hover-color-text);
 }
 
-.shiki {
+.bbeCode .shiki {
   margin: 0 !important;
+  padding-top: 0 !important;
   background-color: var(--code-color-background) !important;
+}
+
+.bbeOutput pre {
+  margin: 0 !important;
+  padding: 0 10px 10px 10px !important;
 }
 
 .archivedCategory {
@@ -993,11 +999,11 @@ table.cTopControlsContainer tbody {
   --shiki-token-string: #770000;
   --shiki-token-comment: slategray;
   --shiki-token-keyword: #07a;
-  --shiki-token-parameter: #AA0000;
+  --shiki-token-parameter: #aa0000;
   --shiki-token-function: #000;
   --shiki-token-string-expression: #690;
   --shiki-token-punctuation: #000;
-  --shiki-token-link: #EE0000;
+  --shiki-token-link: #ee0000;
 }
 
 .bbeHomeTitle {

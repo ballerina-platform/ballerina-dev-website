@@ -12,40 +12,42 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/io;
-import ballerina/xmldata;
+  `import ballerina/graphql;
 
-public function main() returns error? {
-    // Creates a JSON object.
-    json jsonObject = {"Store": {
-            "@id": "AST",
-            "name": "Anne",
-            "address": {
-                "street": "Main",
-                "city": "94"
-            },
-            "codes": ["4", "8"]
-        }};
-    // Converts the JSON object to XML using a default \`attributePrefix\` (i.e., the \`@\` character)
-    // and the default \`arrayEntryTag\` (i.e., \`root\`).
-    xml? xmlData = check xmldata:fromJson(jsonObject);
-    io:println(xmlData);
+service /graphql on new graphql:Listener(4000) {
 
-    if xmlData is xml {
-        // Converts the XML to JSON object using a default \`attributePrefix\` (i.e., the \`@\` character)
-        // and the default \`preserveNamespaces\` (i.e., \`true\`).
-        jsonObject = check xmldata:toJson(xmlData);
-        io:println(jsonObject);
+    // Define a \`string\` array in the service.
+    private string[] names;
+
+    function init() {
+        // Initialize the array.
+        self.names = ["Walter White", "Jesse Pinkman", "Skyler White"];
+    }
+
+    // The mandatory resource function with the \`get\` accessor
+    // represents a field in the root \`Query\` operation.
+    resource function get names() returns string[] {
+        return self.names;
+    }
+
+    // A resource function with the \`subscribe\` accessor 
+    // represents a field in the root \`Subscription\` operation.
+    // It must always return a stream. 
+    // Each name will be returned in the \`string\` type as GraphQL responses.
+    resource function subscribe names() returns stream<string, error?> {
+        return self.names.toStream();
     }
 }
 `,
 ];
 
-export default function XmlJsonConversion() {
+export default function GraphqlSubscriptions() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -61,66 +63,66 @@ export default function XmlJsonConversion() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
-      <h1>XML JSON conversion</h1>
+    <Container className="bbeBody d-flex flex-column h-100">
+      <h1>Subscriptions</h1>
 
       <p>
-        The <code>xmldata:fromJson()</code> and <code>xmldata:toJson()</code>{" "}
-        functions are used to do the conversions between JSON and XML.
+        A resource function with the <code>subscribe</code> accessor inside a
+        GraphQL service
       </p>
 
-      <p>For more information on the underlying module,</p>
+      <p>
+        represents a field in the root <code>Subscription</code> object type.
+        Therefore, if a
+      </p>
 
       <p>
-        see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/xmldata/latest/">
-          xmldata module
+        resource function with the <code>subscribe</code> accessor is present
+        inside the
+      </p>
+
+      <p>
+        Ballerina GraphQL service, the auto-generated schema will have a{" "}
+        <code>Subscription</code>
+      </p>
+
+      <p>type. &lt;br/&gt;&lt;br/&gt;</p>
+
+      <p>
+        Each resource function with the <code>subscribe</code> accessor in the
+        service will
+      </p>
+
+      <p>
+        be added as a field of the <code>Subscription</code> type. The field
+        name will be the
+      </p>
+
+      <p>
+        resource function name, and the field type will be the constraint type
+        of
+      </p>
+
+      <p>the stream returned from the resource function.</p>
+
+      <p>&lt;br/&gt;&lt;br/&gt;</p>
+
+      <p>For more information on the underlying package, see the</p>
+
+      <p>
+        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+          GraphQL package
         </a>
         .
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c1186df41a1e1544db6493b5c11fc9f0&file=xml_json_conversion.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-          <button
-            className="btn rounded"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/xml-json-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/graphql-subscriptions",
                 "_blank"
               );
             }}
@@ -139,7 +141,7 @@ export default function XmlJsonConversion() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -156,7 +158,7 @@ export default function XmlJsonConversion() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -180,24 +182,25 @@ export default function XmlJsonConversion() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`bal run xml_json_conversion.bal`}</span>
-              <span>{`<Store id="AST"><name>Anne</name><address><street>Main</street><city>94</city></address><codes>4</codes><codes>8</codes></Store>`}</span>
-              <span>{`{"Store":{"name":"Anne","address":{"street":"Main","city":"94"},"codes":["4","8"],"@id":"AST"}}`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -213,7 +216,7 @@ export default function XmlJsonConversion() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -238,16 +241,80 @@ export default function XmlJsonConversion() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
+              <span>{`# The query used: subscription { names }`}</span>
+              <span>{`curl 'http://localhost:4000/graphql' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: file://' --data-binary '{"query":"subscription { names }"}' --compressed`}</span>
+              <span>{`{ "data": { "names": "Walter White" } }`}</span>
+              <span>{`{ "data": { "names": "Jesse Pinkman" } }`}</span>
+              <span>{`{ "data": { "names": "Skyler White" } }`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
 
-      <br />
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#00FF19"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`bal run graphql_subscriptions.bal`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Environment variables"
-            href="/learn/by-example/environment-variables"
-          >
+          <Link title="Mutations" href="/learn/by-example/graphql-mutations">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -273,14 +340,14 @@ export default function XmlJsonConversion() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Environment variables
+                  Mutations
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Distributed tracing" href="/learn/by-example/tracing">
+          <Link title="Context" href="/learn/by-example/graphql-context">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -289,7 +356,7 @@ export default function XmlJsonConversion() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Distributed tracing
+                  Context
                 </span>
               </div>
               <svg

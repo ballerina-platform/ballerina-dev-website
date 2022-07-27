@@ -85,7 +85,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>Service - Basic Auth LDAP user store</h1>
 
       <p>A GraphQL service can be secured with Basic Auth and by enforcing</p>
@@ -124,28 +124,16 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
 
       <p>
         see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
+        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
           Auth module
         </a>
         .
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/graphql-service-basic-auth-ldap-user-store",
@@ -167,7 +155,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -184,7 +172,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -208,23 +196,25 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>{`bal run graphql_service_basic_auth_ldap_user_store.bal`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -240,7 +230,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -265,9 +255,15 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
+              <span>{`bal run graphql_service_basic_auth_ldap_user_store.bal`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

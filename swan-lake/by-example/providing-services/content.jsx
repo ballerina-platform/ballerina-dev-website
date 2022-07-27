@@ -41,7 +41,7 @@ export default function ProvidingServices() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>Providing services</h1>
 
       <p>
@@ -51,13 +51,16 @@ export default function ProvidingServices() {
 
       <p>//</p>
 
-      <ol>
+      <ul style={{ marginLeft: "0px" }}>
         <li>
-          Service objects are the counterpart of client objects. Service objects
-          also have remote methods and they are remotely accessible to clients.
+          <span>1.</span>
+          <span>
+            ) Service objects are the counterpart of client objects. Service
+            objects also have remote methods and they are remotely accessible to
+            clients.
+          </span>
         </li>
-      </ol>
-
+      </ul>
       <p>
         Remote method of a client object typically calls the remote method of a
         service object.
@@ -65,13 +68,15 @@ export default function ProvidingServices() {
 
       <p>//</p>
 
-      <ol start="2">
+      <ul style={{ marginLeft: "0px" }}>
         <li>
-          Listener is the entity that receives the network input and then it
-          makes calls to remote methods of attached service objects.
+          <span>2.</span>
+          <span>
+            ) Listener is the entity that receives the network input and then it
+            makes calls to remote methods of attached service objects.
+          </span>
         </li>
-      </ol>
-
+      </ul>
       <p>
         Listeners are registered with the module as illustrated in the following
         example.
@@ -79,31 +84,22 @@ export default function ProvidingServices() {
 
       <p>//</p>
 
-      <ol start="3">
+      <ul style={{ marginLeft: "0px" }}>
         <li>
-          Modules have a lifecycle and they are initialized on program startup.
-          Modules start up the registered listeners after the initialization and
+          <span>3.</span>
+          <span>
+            ) Modules have a lifecycle and they are initialized on program
+            startup. Modules start up the registered listeners after the
+            initialization and
+          </span>
         </li>
-      </ol>
-
+      </ul>
       <p>shut them down during the program shutdown.</p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/providing-services",
@@ -125,7 +121,7 @@ export default function ProvidingServices() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -142,7 +138,7 @@ export default function ProvidingServices() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -166,22 +162,25 @@ export default function ProvidingServices() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`bal run providing_services.bal`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -197,7 +196,7 @@ export default function ProvidingServices() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -222,14 +221,19 @@ export default function ProvidingServices() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`bal run providing_services.bal`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Consuming services: client objects"
+            title="Consume services: client objects"
             href="/learn/by-example/consuming-services"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -257,7 +261,7 @@ export default function ProvidingServices() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consuming services: client objects
+                  Consume services: client objects
                 </span>
               </div>
             </div>

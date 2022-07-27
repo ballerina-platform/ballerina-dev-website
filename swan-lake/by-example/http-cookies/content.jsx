@@ -33,7 +33,7 @@ service /cookieDemo on serverEP {
                 // Check the password value.
                 if (password == "p@ssw0rd") {
 
-                    // [Create a new cookie](https://docs.central.ballerina.io/ballerina/http/latest/classes/Cookie)
+                    // [Create a new cookie](https://lib.ballerina.io/ballerina/http/latest/classes/Cookie)
                     // by setting \`name\` as the \`username\` and \`value\` as the logged-in user's name. Set the cookies
                     // path as \`/\` to apply it to all the resources in the service.
                     http:Cookie cookie = new("username", name.toString(),
@@ -41,7 +41,7 @@ service /cookieDemo on serverEP {
 
                     http:Response response = new;
 
-                    // [Add the created cookie to the response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#addCookie).
+                    // [Add the created cookie to the response](https://lib.ballerina.io/ballerina/http/latest/classes/Response#addCookie).
                     response.addCookie(cookie);
 
                     // Set a message payload to inform that the login has
@@ -55,7 +55,7 @@ service /cookieDemo on serverEP {
     }
 
     resource function get welcome(http:Request req) returns string {
-        // [Retrieve cookies from the request](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getCookies).
+        // [Retrieve cookies from the request](https://lib.ballerina.io/ballerina/http/latest/classes/Request#getCookies).
         http:Cookie[] cookies = req.getCookies();
 
         // Get the cookie value of the \`username\`.
@@ -84,7 +84,7 @@ service /cookieDemo on serverEP {
   `import ballerina/http;
 import ballerina/log;
 
-// HTTP client configurations associated with [enabling cookies](https://docs.central.ballerina.io/ballerina/http/latest/records/CookieConfig).
+// HTTP client configurations associated with [enabling cookies](https://lib.ballerina.io/ballerina/http/latest/records/CookieConfig).
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
@@ -149,7 +149,7 @@ export default function HttpCookies() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column h-100">
+    <Container className="bbeBody d-flex flex-column h-100">
       <h1>Cookies</h1>
 
       <p>
@@ -161,28 +161,16 @@ export default function HttpCookies() {
 
       <p>
         see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
       </p>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[0] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[0]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-cookies",
@@ -204,7 +192,7 @@ export default function HttpCookies() {
           </button>
           {codeClick1 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -221,7 +209,7 @@ export default function HttpCookies() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -245,22 +233,25 @@ export default function HttpCookies() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`bal run cookie_server.bal`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -276,7 +267,7 @@ export default function HttpCookies() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick1(true);
                 const extractedText = extractOutput(ref1.current.innerText);
@@ -301,24 +292,19 @@ export default function HttpCookies() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`bal run cookie_server.bal`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
 
-      <Row
-        className="bbeCode mx-0 px-2 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={10}>
-          {codeSnippets[1] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[1]),
-              }}
-            />
-          )}
-        </Col>
-        <Col className="d-flex align-items-start pt-2" sm={2}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="btn rounded ms-auto"
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-cookies",
@@ -340,7 +326,7 @@ export default function HttpCookies() {
           </button>
           {codeClick2 ? (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -357,7 +343,7 @@ export default function HttpCookies() {
             </button>
           ) : (
             <button
-              className="btn rounded"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick2(true);
                 copyToClipboard(codeSnippetData[1]);
@@ -381,23 +367,25 @@ export default function HttpCookies() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          {codeSnippets[1] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[1]),
+              }}
+            />
+          )}
+        </Col>
       </Row>
 
-      <br />
-
-      <Row className="bbeOutput mx-0 px-2 rounded">
-        <Col className="my-2" sm={10}>
-          <pre className="m-0" ref={ref2}>
-            <code className="d-flex flex-column">
-              <span>{`bal run http_client.bal`}</span>
-              <span>{`time = 2020-12-15 16:14:08,691 level = INFO  module = "" message = "Welcome back John"`}</span>
-            </code>
-          </pre>
-        </Col>
-        <Col sm={2} className="d-flex align-items-start">
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
           {outputClick2 ? (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -413,7 +401,7 @@ export default function HttpCookies() {
             </button>
           ) : (
             <button
-              className="btn rounded ms-auto"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateOutputClick2(true);
                 const extractedText = extractOutput(ref2.current.innerText);
@@ -438,9 +426,15 @@ export default function HttpCookies() {
             </button>
           )}
         </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`bal run http_client.bal`}</span>
+              <span>{`time = 2020-12-15 16:14:08,691 level = INFO  module = "" message = "Welcome back John"`}</span>
+            </code>
+          </pre>
+        </Col>
       </Row>
-
-      <br />
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

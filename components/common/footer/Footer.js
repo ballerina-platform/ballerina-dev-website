@@ -39,7 +39,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div className={styles.subscribe}>
-                <Link className={styles.subscribeBtn} href={`/community/#subscribe-to-newsletter`}>Subscribe to our newsletter</Link>
+                <Link className={styles.subscribeBtn} href={`/community/#subscribe-to-our-newsletter`}>Subscribe to our newsletter</Link>
               </div>
                 
             </div>

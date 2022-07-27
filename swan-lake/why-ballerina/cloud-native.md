@@ -28,7 +28,7 @@ redirect_from:
   - /why-ballerina/the-network-in-the-language
 ---
 
-In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the [Fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) in their application logic. For decades, programming languages have treated networks simply as I/O sources. The sections below demonstrate a few of Ballerina's inherent capabilities to develop distributed services effectively and the cloud-native deployment process that is provided as part of the programming experience. 
+In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the [fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) in their application logic. For decades, programming languages have treated networks simply as I/O sources. The sections below demonstrate a few of Ballerina's inherent capabilities to develop distributed services effectively and the cloud-native deployment process that is provided as part of the programming experience. 
 
 ## Network-friendly type system
 
@@ -256,7 +256,7 @@ public function hello(@azure_functions:HTTPTrigger {authLevel: "anonymous"} stri
 }
 ```
 
-### CI/CD with GitHub actions
+### CI/CD with GitHub Actions
 
 In a microservice architecture, continuous integration and continuous delivery (CI/CD) is critical in creating an agile environment to incorporate incremental changes to your system. Different technologies provide this CI/CD functionality, and very recently, GitHub has introduced GitHub Actions, which is now available for general usage. GitHub Actions is a convenient mechanism for implementing CI/CD pipelines using their workflow concept right from your GitHub repositories.
 

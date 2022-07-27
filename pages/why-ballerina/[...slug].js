@@ -61,12 +61,13 @@ export async function getStaticProps({ params: { slug } }) {
     props: {
       frontmatter,
       content,
-      id
+      id,
+      slug
     },
   };
 }
 
-export default function PostPage({ frontmatter, content, id }) {
+export default function PostPage({ frontmatter, content, id, slug }) {
 
   // Synatax highlighting
   const HighlightSyntax = (code, language) => {
@@ -156,7 +157,9 @@ export default function PostPage({ frontmatter, content, id }) {
             <div className='topRow'>
               <Col xs={11}><h1>{frontmatter.title}</h1></Col>
               <Col xs={1} className="gitIcon">
-                <Image src={`${prefix}/images/github.svg`} height={20} width={20} alt="Edit in github" />
+                <a href={`${process.env.gitHubPath}swan-lake/why-ballerina/${slug}.md`} target="_blank" rel="noreferrer">
+                  <Image src={`${prefix}/images/github.svg`} height={20} width={20} alt="Edit in github" />
+                </a>
               </Col>
             </div>
 

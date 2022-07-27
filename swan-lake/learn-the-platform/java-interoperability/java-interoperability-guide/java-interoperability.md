@@ -15,7 +15,7 @@ redirect_from:
 ## Ballerina bindings to Java code
 You can write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the diagram below.
 
-<img src="/learn/images/interoperability-diagram-new.png" alt="Ballerina bindings to Java code" width="300" height="450">
+<img src="/learn/images/interoperability-diagram-new.png" alt="Ballerina bindings to Java code" width="300" height="450" style='width:auto !important'>
 
 The next section of this reference guide explains the [Bindgen Tool](/learn/java-interoperability/the-bindgen-tool/) that can be used to generate these bindings automatically while eliminating the need for understanding the Ballerina FFI layer.
 

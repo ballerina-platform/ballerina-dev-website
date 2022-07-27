@@ -112,6 +112,22 @@ Now, that you are ready to publish, execute the command below to publish the pac
 bal push
 ```
 
+### Publish a new version of a package
+If you require adding new features/improvements/fixes to a library package which you have already published to Ballerina central, 
+you are allowed to publish them under a new version, based on the [Semantic Versioning Specification](https://semver.org/).
+However, it's the library developer's responsibility to be cautious when deciding on the new package versions
+(especially when there are potential breaking/backward-incompatible API changes), as otherwise, it may result in library
+versions that are compatible only by the version but not by the implementation.
+
+>**Tip:** As a precaution, use the Ballerina semver validator CLI tool (experimental) to check if your new API changes
+conform to the version that you are trying to publish to Ballerina central.
+
+By default, running the `bal semver` command on the root directory of the package will compare the local changes with the 
+"closest compatible" published version available in Ballerina Central. 
+(Use `bal semver --help` for the CLI help text which outlines all the available command options)
+
+> **Note:** Semver validator CLI support is only available from Swan Lake Update 2 onwards.
+
 ## Use the packages in Ballerina Central
 
 After publishing your first package, you can create a second package and use the already published package in it.

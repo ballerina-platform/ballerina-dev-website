@@ -240,6 +240,13 @@ a {
   color: inherit;
 }
 
+pre:not(.shiki) {
+  padding: 10px;
+  border-radius: 0.3em;
+  background: #eeeeee;
+  color: inherit;
+}
+
 b,
 strong {
   font-weight: 700 !important;

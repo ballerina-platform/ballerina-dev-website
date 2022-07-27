@@ -1,7 +1,7 @@
 .iframe {
     width: 100%;
     border: 0;
-    height: 160px;
+    height: 200px;
     z-index: 7;
     position: sticky;
 }

@@ -112,7 +112,7 @@ Now, that you are ready to publish, execute the command below to publish the pac
 bal push
 ```
 
-### Publish successive package versions 
+### Publish a new version of a package
 If you require adding new features/improvements/fixes to a library package which you have already published to Ballerina central, 
 you are allowed to publish them under a new version, based on the [Semantic Versioning Specification](https://semver.org/).
 However, it's the library developer's responsibility to be cautious when deciding on the new package versions

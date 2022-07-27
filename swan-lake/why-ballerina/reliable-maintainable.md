@@ -18,7 +18,7 @@ redirect_from:
 
 Error handling refers to the act of reacting to and recovering from errors. Error handling plays a critical role in producing reliable, maintainable applications. Ballerina is designed with a conscious decision to have explicit errors instead of exceptions. As a result, Ballerina has explicit error reporting and explicit error testing and handling. It is explained further using examples.
 
-Errors are expected in network handling. In fact, “The network is reliable” is one of the [Fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing). Therefore, explicit error handling is a must when dealing with network services because it forces you to check for errors and handle or pass them to the caller. 
+Errors are expected in network handling. In fact, “The network is reliable” is one of the [fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing). Therefore, explicit error handling is a must when dealing with network services because it forces you to check for errors and handle or pass them to the caller. 
 
 In Ballerina, errors are reported by functions returning values of the `error` type. The error values are part of their basic type. 
 

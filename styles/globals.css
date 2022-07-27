@@ -200,6 +200,7 @@ a {
 }
 
 .mdContent ol + blockquote,
+.mdContent blockquote,
 .policyContent blockquote {
   padding: 10px 20px;
   margin: -10px 0 20px 30px !important;
@@ -216,7 +217,7 @@ a {
   font-weight: 400;
 }
 
-.mdContent table th {
+.mdContent table th, .mdContent table td {
   padding: 10px;
 }
 
@@ -409,6 +410,11 @@ a.cGreenLinkArrow:hover {
 .downloads :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
   background: #f5f5f5 !important;
+}
+
+.versionSeparator {
+  border-top: #a7a8ab solid 0.3px;
+  margin-top: 40px !important;
 }
 
 .other .cHomeWhyBallerinaBox h4 {
@@ -778,6 +784,10 @@ ul.eventsTabs {
   margin-bottom: 20px;
 }
 
+.mdContent .intro {
+  margin-top: 20px;
+}
+
 .mdContentSpec h2 {
   font-size: 24px;
   text-transform: uppercase;
@@ -797,6 +807,10 @@ ul.eventsTabs {
 
 .specIcon {
   cursor: pointer;
+}
+
+.policyContent li a {
+  font-weight: 400;
 }
 
 /*------------------- Old Versions ------------------*/

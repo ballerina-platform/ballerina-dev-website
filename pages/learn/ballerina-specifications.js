@@ -26,7 +26,7 @@ export async function getStaticProps() {
 
   const fileName = fs.readFileSync(`spec/spec.md`, 'utf-8');
   const { data: frontmatter, content } = matter(fileName);
-  const id = 'platform-specifications';
+  const id = 'ballerina-specifications';
 
   return {
     props: {
@@ -143,6 +143,8 @@ export default function PostPage({ frontmatter, content, id }) {
                 </a>
               </Col>
             </div>
+
+            <p className='intro'>{frontmatter.intro}</p>
 
             <ReactMarkdown
               components={{

@@ -197,7 +197,7 @@ export default function Downloads() {
                </Col>
             </Row>
 
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+            <Row className={`${styles.donwloadVersion} pageContentRow versionSeparator`}>
                <Col xs={12}>
                   <h2 id="stable"><span>{stable['version']}</span></h2>
                </Col>

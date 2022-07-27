@@ -19,7 +19,7 @@ export default function Intro() {
                 </Col>
 
                 <Col xs={12} lg={4} className={styles.introCard}>
-                    <a href={`${prefix}/learn/get-started-with-ballerina`}className={`${styles.cardLink} ${styles.primary}`}>
+                    <a href={`${prefix}/learn/get-started-with-ballerina`} className={`${styles.cardLink} ${styles.primary}`}>
                         <div className={`${styles.cardContent} ${styles.primary}`}>
                             <p className={styles.title}>Get started with Ballerina</p>
                             <p className={styles.description}>Write your first Ballerina program and create your first Ballerina package</p>

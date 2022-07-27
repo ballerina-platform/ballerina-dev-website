@@ -116,7 +116,7 @@ export default function PostPage({ frontmatter, content, id }) {
           <LeftNav launcher='learn' id={id}
             mainDir='learn-the-platform'
             LearnToc={LearnToc}
-            />
+          />
         </Col>
         <Col xs={12} className='d-block d-sm-none'>
           <Button className='learnMob' onClick={handleShow}>

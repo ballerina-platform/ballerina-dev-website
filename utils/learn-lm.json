@@ -15,12 +15,12 @@
             "id": "learn-the-platform",
             "subDirectories": [
                 {
-                    "dirName": "Platform specifications",
+                    "dirName": "Ballerina specifications",
                     "level": 2,
                     "position": 8,
                     "isDir": false,
-                    "url": "/learn/platform-specifications",
-                    "id": "platform-specifications"
+                    "url": "/learn/ballerina-specifications",
+                    "id": "ballerina-specifications"
                 },
                 {
                     "dirName": "Ballerina central",
@@ -155,7 +155,7 @@
                         {
                             "dirName": "Visual Studio Code extension",
                             "level": 3,
-                            "position": 1,
+                            "position": 0,
                             "isDir": false,
                             "url": "https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina",
                             "id": "visual-studio-code-extension"
@@ -163,7 +163,7 @@
                         {
                             "dirName": "Ballerina Shell",
                             "level": 3,
-                            "position": 2,
+                            "position": 1,
                             "isDir": false,
                             "url": "/learn/ballerina-shell",
                             "id": "ballerina-shell"
@@ -171,7 +171,7 @@
                         {
                             "dirName": "OpenAPI tool",
                             "level": 3,
-                            "position": 3,
+                            "position": 2,
                             "isDir": false,
                             "url": "/learn/openapi-tool",
                             "id": "openapi-tool"
@@ -179,7 +179,7 @@
                         {
                             "dirName": "CLI documentation",
                             "level": 3,
-                            "position": 6,
+                            "position": 5,
                             "isDir": true,
                             "url": "/learn/ballerina-tooling/cli-documentation",
                             "id": "cli-documentation",
@@ -237,7 +237,7 @@
                         {
                             "dirName": "GraphQL client tool",
                             "level": 3,
-                            "position": 4,
+                            "position": 3,
                             "isDir": false,
                             "url": "/learn/graphql-client-tool",
                             "id": "graphql-client-tool"
@@ -245,7 +245,7 @@
                         {
                             "dirName": "AsyncAPI tool",
                             "level": 3,
-                            "position": 5,
+                            "position": 4,
                             "isDir": false,
                             "url": "/learn/asyncapi-tool",
                             "id": "asyncapi-tool"

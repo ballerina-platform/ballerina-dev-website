@@ -1,8 +1,8 @@
 ---
 layout: ballerina-platform-specifications-left-nav-pages-swanlake
-title: Platform specifications
+title: Ballerina specifications
 intro: Read the Ballerina language spec and other specifications that cover the standard library, built-in language extensions, testing, documentation, and more.
-keywords: ballerina, language specification, spec 
+keywords: ballerina, specifications, spec, language specifications, platform specifications, standard library specifications
 permalink: /learn/platform-specifications/
 redirect_from:
   - /learn/language-specification
@@ -12,10 +12,21 @@ redirect_from:
   - /spec
   - /spec/
   - /learn/platform-specifications
+  - /learn/platform-specifications/
   
 ---
 
-## Ballerina language specifications and proposals
+## About Ballerina specifications
+
+As a language, which is designed to have multiple implementations, Ballerina semantics are defined by a series of specifications and not by the implementation. Currently, there is only one implementation (i.e., jBallerina, which compiles Ballerina to Java bytecodes). Others will follow including a compiler, which generates native binaries using LLVM.
+
+Ballerina has a collection of specifications starting with the Ballerina Language Specification. Other specifications (which are yet to be moved to the specification repository or, in some cases, yet to be written) will cover the standard library, built-in language extensions such as security, immutability & deprecation, module and project management, testing, documentation, compiler extensions for cloud, and Ballerina Central.
+
+### Specification versioning convention
+
+From the start of 2019, Ballerina  specifications are versioned chronologically using the convention `20XYRn`, where `XY` is the 2-digit year (e.g., 19), `R` stands for "Release", and `n` is the release number for that year. Prior to 2019, a semver versioning scheme was used. However, that approach was abandoned when the language specification reached 0.980.
+
+## Language specifications 
 
 ### Released specifications
 
@@ -41,15 +52,7 @@ For a snapshot of the current language specification including all changes, see 
 
 For previous draft language specifications of a Ballerina release, see the <a target="_blank" href="https://ballerina.io/spec/lang/draft/">draft language specification</a>.
 
-### Specification versioning convention
-
-From the start of 2019, Ballerina  specifications are versioned chronologically using the convention `20XYRn`, where `XY` is the 2-digit year (e.g., 19), `R` stands for "Release", and `n` is the release number for that year. Prior to 2019, a semver versioning scheme was used. However, that approach was abandoned when the language specification reached 0.980.
-
-### Proposals for improvements/enhancements
-
-For the proposals for improving Ballerina, see the <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/README.md">work in progress proposals</a>.
-
-## Ballerina standard library specifications
+## Standard library specifications
 
 | Package | Edition | Current snapshot | Description |
 | ------- | ------- | ---------------- | ----------- |
@@ -81,7 +84,7 @@ For the proposals for improving Ballerina, see the <a target="_blank" href="http
 | `webusuhub` | Swan Lake | <a target="_blank" href="/spec/websubhub/">Snapshot</a> | WebSubHub package of Ballerina language, which provides WebSub compliant hub and publisher related functionalities. |
 | `xmldata` | Swan Lake | <a target="_blank" href="/spec/xmldata/">Snapshot</a> | Xmldata package of Ballerina language, which provides APIs to perform conversions between XML and JSON/Ballerina records. |
 
-## Ballerina platform specifications
+## Platform specifications
 
 | Specification | Latest released version | Current snapshot |
 | ---- | --------------- | ---------------- |
@@ -91,13 +94,9 @@ For the proposals for improving Ballerina, see the <a target="_blank" href="http
 | Package | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/packages/package-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/packages/package-spec.md">Snapshot</a> |
 | Test Framework | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/test/test-framework-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/test/test-framework-spec.md">Snapshot</a> |
 
-## About Ballerina specifications
+## Proposals for improvements/enhancements
 
-As a platform designed to have multiple implementations, Ballerina semantics are defined by a series of specifications and not by the implementation. Currently, we have only one implementation (i.e., jBallerina, which compiles Ballerina to Java bytecodes). Others will follow, including a compiler which generates native binaries using LLVM.
-
-The Ballerina platform is specified by a collection of specifications starting with the Ballerina Language Specification. Other specifications (which are yet to be moved to the specification repository or, in some cases, yet to be written) will cover the standard library, built-in language extensions such as security, immutability & deprecation, module and project management, testing, documentation, compiler extensions for cloud, and Ballerina Central.
-
-All Ballerina specifications are maintained in the [ballerina-spec](https://github.com/ballerina-platform/ballerina-spec/) GitHub repository. Designing is also done via clearly-identified issues in this repository. Contributors are encouraged to participate via existing issues or by creating new issues.
+For the proposals for improving Ballerina, see the <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/README.md">work in progress proposals</a>.
 
 <style> 
 table {

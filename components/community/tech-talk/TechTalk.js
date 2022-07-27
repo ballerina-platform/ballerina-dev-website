@@ -30,7 +30,7 @@ export default function TechTalk() {
       <Container>
         <Row>
           <Col xs={12}>
-            <h2 id='ballerina-tech-talk'>Ballerina Tech Talk</h2>
+            <h2 id='monthly-tech-talk'>Ballerina Tech Talk</h2>
           </Col>
         </Row>
 

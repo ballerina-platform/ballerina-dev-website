@@ -44,7 +44,7 @@ export default function UseCases() {
           </div>
 
           <div className={styles.langRow}>
-            <a href={`${prefix}/learn/work-with-data-using-queries-in-ballerina/`} className={styles.linkText}>Working with data using queries</a>
+            <a href={`${prefix}/learn/work-with-data-using-queries-in-ballerina/`} className={styles.linkText}>Work with data using queries</a>
             {/* <div className={styles.linkRow}>
               <a href={`${prefix}/learn/language-basics/`} className={styles.linkSubText}>(Spec)</a>
             </div> */}
@@ -53,7 +53,7 @@ export default function UseCases() {
 
         <Col xs={12} lg={4}>
           <div className={styles.langRow}>
-            <a href={`${prefix}/learn/build-a-data-service-in-ballerina/`} className={styles.linkText}>Work with databases</a>
+            <a href={`${prefix}/learn/build-a-data-service-in-ballerina/`} className={styles.linkText}>Build a data service</a>
             {/* <div className={styles.linkRow}>
               <a href={`${prefix}/learn/language-basics/`} className={styles.linkSubText}>(SQL API Docs)</a>&nbsp;&nbsp;
               <a href={`${prefix}/learn/language-basics/`} className={styles.linkSubText}>(Spec)</a>

@@ -228,6 +228,10 @@ a {
   color: #ffffff;
 }
 
+.mdContent li ul li {
+  list-style: disc;
+}
+
 :not(pre) > code {
   padding: 0.1em;
   border-radius: 0.3em;

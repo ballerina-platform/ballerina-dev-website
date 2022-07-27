@@ -824,6 +824,10 @@ ul.eventsTabs {
   font-weight: 400;
 }
 
+.subscriptionCol iframe {
+  height: 350px !important;
+}
+
 /*------------------- Old Versions ------------------*/
 
 ul.cLearnLandingLinks {

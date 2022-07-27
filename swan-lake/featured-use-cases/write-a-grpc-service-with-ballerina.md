@@ -49,7 +49,6 @@ To create a simple service definition in Protocol Buffers, follow these steps:
 
 4. Copy the service definition below to the `helloworld.proto` file.
   > **Info:** This sample service definition is taken from the [Quick start](https://grpc.io/docs/languages/go/quickstart/) guide on the gRPC official site.
-  
 
   ```proto
   syntax = "proto3";

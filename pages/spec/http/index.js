@@ -107,15 +107,19 @@ export default function PostPage({ frontmatter, content }) {
                 h4: ({node,children, ...props}) => <h4 id={genrateId(children)} {...props}>{children}</h4>,
                 h5: ({node,children, ...props}) => <h5 id={genrateId(children)} {...props}>{children}</h5>,
                 h6: ({node,children, ...props}) => <h6 id={genrateId(children)} {...props}>{children}</h6>,
-                code({node, inline, className, children, ...props}) {
+                code({ node, inline, className, children, ...props }) {
                   const match = /language-(\w+)/.exec(className || '')
-                  return !inline && match ? (
-                    <div dangerouslySetInnerHTML={{__html: HighlightSyntax(String(children).replace(/\n$/, ''),match[1].toLowerCase())}} />
-                  ) : (
+                  return inline ?
                     <code className={className} {...props}>
                       {children}
                     </code>
-                  )
+                    : match ?
+                      <div dangerouslySetInnerHTML={{ __html: HighlightSyntax(String(children).replace(/\n$/, ''), match[1].toLowerCase()) }} />
+                      : <pre className='default'>
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      </pre>
                 }
               }}
               remarkPlugins={[remarkGfm]} 

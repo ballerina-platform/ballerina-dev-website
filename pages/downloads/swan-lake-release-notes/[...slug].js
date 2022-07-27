@@ -89,7 +89,7 @@ export default function PostPage({ frontmatter, content, id }) {
       async function fetchData() {
         getHighlighter({
           theme: "github-light",
-          langs: ['bash', 'ballerina', 'toml', 'yaml', 'sh', 'json', 'graphql', 'sql', 'java', 'xml']
+          langs: ['bash', 'ballerina', 'toml', 'yaml', 'sh', 'json', 'graphql', 'sql', 'java', 'xml', 'cmd']
         }).then((highlighter) => {
           setCodeSnippet(highlighter.codeToHtml(code, language));
         })
@@ -235,13 +235,17 @@ export default function PostPage({ frontmatter, content, id }) {
                 },
                 code({ node, inline, className, children, ...props }) {
                   const match = /language-(\w+)/.exec(className || '')
-                  return !inline && match ? (
-                    <div dangerouslySetInnerHTML={{ __html: HighlightSyntax(String(children).replace(/\n$/, ''), match[1].toLowerCase()) }} />
-                  ) : (
+                  return inline ?
                     <code className={className} {...props}>
                       {children}
                     </code>
-                  )
+                    : match ?
+                      <div dangerouslySetInnerHTML={{ __html: HighlightSyntax(String(children).replace(/\n$/, ''), match[1].toLowerCase()) }} />
+                      : <pre className='default'>
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      </pre>
                 }
               }}
               remarkPlugins={[remarkGfm]}

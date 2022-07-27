@@ -256,7 +256,7 @@ public function hello(@azure_functions:HTTPTrigger {authLevel: "anonymous"} stri
 }
 ```
 
-### CI/CD with GitHub actions
+### CI/CD with GitHub Actions
 
 In a microservice architecture, continuous integration and continuous delivery (CI/CD) is critical in creating an agile environment to incorporate incremental changes to your system. Different technologies provide this CI/CD functionality, and very recently, GitHub has introduced GitHub Actions, which is now available for general usage. GitHub Actions is a convenient mechanism for implementing CI/CD pipelines using their workflow concept right from your GitHub repositories.
 

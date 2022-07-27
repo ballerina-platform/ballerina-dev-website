@@ -240,22 +240,16 @@ a {
   color: inherit;
 }
 
-pre:not(.shiki) {
-  padding: 10px;
-  border-radius: 0.3em;
-  background: #eeeeee;
-  color: inherit;
-}
-
 b,
 strong {
   font-weight: 700 !important;
 }
 
-pre.shiki {
+pre.shiki, pre.default {
   padding: 10px;
   border-radius: 5px;
   margin-top: 20px;
+  background-color: #eeeeee !important;
 }
 
 .mdContent img {

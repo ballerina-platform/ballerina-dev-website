@@ -76,11 +76,9 @@ When a package provides multiple functionalities, it is better to split it into 
 
 For example, if you need to provide a set of APIs to communicate with AWS, you can choose to support APIs to AWS services using multiple packages such as `aws.s3`, `aws.sqs`, `aws.rds`, etc.
 
-#### The `split module` condition
+#### The split module condition
 
-A `split module` condition occurs when the latest versions of two different packages contain the same module resulting in a build failure. 
-
->**Info:** When using hierarchical package names, ensure that the package repository does not hold another package containing a module with the same name in its latest version.
+A split module condition occurs when the latest versions of two different packages contain the same module resulting in a build failure. When using hierarchical package names, ensure that the package repository does not hold another package containing a module with the same name in its latest version.
 
 For example, follow the steps below if you created and published the `1.0.0` version of `aws.rds` package containing the `aws.rds.mysql` module to [Ballerina Central](https://central.ballerina.io/), and decide to move the `aws.rds.mysql` module to a separate package later.
 

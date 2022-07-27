@@ -200,6 +200,7 @@ a {
 }
 
 .mdContent ol + blockquote,
+.mdContent blockquote,
 .policyContent blockquote {
   padding: 10px 20px;
   margin: -10px 0 20px 30px !important;
@@ -216,7 +217,7 @@ a {
   font-weight: 400;
 }
 
-.mdContent table th {
+.mdContent table th, .mdContent table td {
   padding: 10px;
 }
 

@@ -25,7 +25,7 @@ jobs:
         uses: ballerina-platform/ballerina-action@master
         with:
           args: 
-            run .github/scripts/bal-proposals-bot
+            run .github/scripts/bal_proposals_bot
       - name: Commit files and Push
         id: commit
         run: |

@@ -84,7 +84,7 @@ export default function Platform() {
                   Document Ballerina code
                 </a>
               </p>
-              <p className={styles.description}>Generate documentation for the code</p>
+              <p className={styles.description}>Generate documentation for the code.</p>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ export default function Platform() {
                   Code to cloud
                 </a>
               </p>
-              <p className={styles.description}>Generating cloud deployment artifacts</p>
+              <p className={styles.description}>Generating cloud deployment artifacts.</p>
             </div>
 
             <div className={styles.content}>
@@ -109,7 +109,7 @@ export default function Platform() {
                   Functions as a service
                 </a>
               </p>
-              <p className={styles.description}>AWS Lambda and Azure functions</p>
+              <p className={styles.description}>AWS Lambda and Azure functions.</p>
             </div>
           </div>
 
@@ -144,7 +144,7 @@ export default function Platform() {
                   Call Java code from Ballerina
                 </a>
               </p>
-              <p className={styles.description}>Calling Java code from Ballerina</p>
+              <p className={styles.description}>Calling Java code from Ballerina.</p>
             </div>
 
             <div className={styles.content}>
@@ -153,7 +153,7 @@ export default function Platform() {
                   Java interoperability guide
                 </a>
               </p>
-              <p className={styles.description}>Instructions on the supoorted Java interoperability</p>
+              <p className={styles.description}>Instructions on the supoorted Java interoperability.</p>
             </div>
           </div>
         </Col>

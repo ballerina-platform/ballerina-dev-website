@@ -10,12 +10,6 @@ on:
   schedule:
     - cron: "0 0 * * *"
 
-# on:
-#   schedule:
-#   - cron: "0 0 * * *"
-
-#on: push
-
 jobs:
   generateHTML:
     env:
@@ -27,6 +21,11 @@ jobs:
         with:
           ref: master
           token: ${{ secrets.BALLERINA_BOT_TOKEN }}
+      - name: Ballerina Build
+        uses: ballerina-platform/ballerina-action@master
+        with:
+          args: 
+            pack
       - name: Download jBallerina deb
         run: |
           curl -L "https://github.com/ballerina-platform/ballerina-distribution/releases/download/v$JBAL_VERSION/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb" > $HOME/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb

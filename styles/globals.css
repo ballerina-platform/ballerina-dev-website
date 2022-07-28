@@ -172,7 +172,17 @@ a {
 
 .mdContent h4,
 .policyContent h4 {
+  font-size: 1.2rem;
+}
+
+.mdContent h5,
+.policyContent h5 {
   font-size: 1.1rem;
+}
+
+.mdContent h6,
+.policyContent h6 {
+  font-size: 1rem;
 }
 
 .mdContent p,

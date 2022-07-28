@@ -23,9 +23,9 @@ jobs:
           token: ${{ secrets.BALLERINA_BOT_TOKEN }}
       - name: Run Proposals Bot
         uses: ballerina-platform/ballerina-action@master
-          with:
-            args: 
-              run .github/scripts/bal-proposals-bot
+        with:
+          args: 
+            run .github/scripts/bal-proposals-bot
       - name: Commit files and Push
         id: commit
         run: |

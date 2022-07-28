@@ -226,10 +226,10 @@ Here, `FileInputStream` is the Ballerina class generated for the `java.io.FileIn
 Next, you’ll handle the `error` using a type guard.
 ```ballerina
 if fileInputStream is javaio:FileNotFoundException {
-	// The type of fileInputStream is FileNotFoundException within this block.
+    // The type of fileInputStream is FileNotFoundException within this block.
     io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.message());
 } else {
-	// The type of fileInputStream is FileInputStream within this block.
+    // The type of fileInputStream is FileInputStream within this block.
 }
 ```
 #### Create the SnakeYAML entry point

@@ -21,11 +21,6 @@ jobs:
         with:
           ref: master
           token: ${{ secrets.BALLERINA_BOT_TOKEN }}
-      - name: Ballerina Build
-        uses: ballerina-platform/ballerina-action@master
-        with:
-          args: 
-            pack
       - name: Download jBallerina deb
         run: |
           curl -L "https://github.com/ballerina-platform/ballerina-distribution/releases/download/v$JBAL_VERSION/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb" > $HOME/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb
@@ -51,7 +46,7 @@ jobs:
               git checkout automate-proposals-$UUID_VAL 2>/dev/null || git checkout -b automate-proposals-$UUID_VAL
               git config --local user.email "bgpbimsara@gmail.com"
               git config --local user.name "bimsarapathiraja"
-              git add --all
+              git add community/proposals/active-proposals.md
               if [-z "$(git status --porcelain)"]; then
                 echo "::set-output name=push::false"
               else

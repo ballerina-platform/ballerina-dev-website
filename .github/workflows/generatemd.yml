@@ -29,7 +29,6 @@ jobs:
           token: ${{ secrets.BALLERINA_BOT_TOKEN }}
       - name: Download jBallerina deb
         run: |
-          echo "djaebfaefakf DEV"
           curl -L "https://github.com/ballerina-platform/ballerina-distribution/releases/download/v$JBAL_VERSION/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb" > $HOME/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb
       - name: Install jBallerina deb
         run: |
@@ -69,7 +68,7 @@ jobs:
           if [ ${{ steps.commit.outputs.difference }} == true ]
           then
             curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-            bin/hub pull-request -m '[Automated] Update Ballerina active proposals'
+            bin/hub pull-request -b website-revamp -m '[Automated] Update Ballerina active proposals'
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}

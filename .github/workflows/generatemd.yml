@@ -21,17 +21,11 @@ jobs:
         with:
           ref: master
           token: ${{ secrets.BALLERINA_BOT_TOKEN }}
-      - name: Download jBallerina deb
-        run: |
-          curl -L "https://github.com/ballerina-platform/ballerina-distribution/releases/download/v$JBAL_VERSION/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb" > $HOME/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb
-      - name: Install jBallerina deb
-        run: |
-          sudo dpkg -i $HOME/ballerina-$JBAL_VERSION-swan-lake-linux-x64.deb
-          echo "/usr/lib/ballerina/bin" >> $GITHUB_PATH
-          echo "/usr/lib/ballerina/dependencies/jdk-11.0.8+10-jre/bin/java" >> $GITHUB_PATH
       - name: Run Proposals Bot
-        run: |
-          bal run .github/scripts/bal_proposals_bot
+        uses: ballerina-platform/ballerina-action@master
+          with:
+            args: 
+              run .github/scripts/bal-proposals-bot
       - name: Commit files and Push
         id: commit
         run: |

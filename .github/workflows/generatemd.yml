@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: master
+          ref: website-revamp
           token: ${{ secrets.BALLERINA_BOT_TOKEN }}
       - name: Run Proposals Bot
         uses: ballerina-platform/ballerina-action@master
@@ -59,7 +59,7 @@ jobs:
           if [ ${{ steps.commit.outputs.difference }} == true ]
           then
             curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-            bin/hub pull-request -b website-revamp -m '[Automated] Update Ballerina active proposals'
+            bin/hub pull-request -b -m '[Automated] Update Ballerina active proposals'
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}

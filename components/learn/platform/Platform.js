@@ -58,7 +58,7 @@ export default function Platform() {
           </div>
 
           <div className={styles.pGroup}>
-            <h3>Test &amp; document the code</h3>
+            <h3>Test, debug &amp; document the code</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>

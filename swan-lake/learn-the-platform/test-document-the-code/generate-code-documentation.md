@@ -42,7 +42,7 @@ Ballerina documentation design and usage is aligned with the package and module 
 
 ## Write Ballerina documentation
 
-Ballerina Flavored Markdown documentation is a first-class syntax in the Ballerina language. The `#` at the beginning of a line denotes a line of documentation. 
+Ballerina Flavored Markdown documentation is a first-class syntax in the Ballerina language. The ``#`` at the beginning of a line denotes a line of documentation. 
 If necessary, you can have multiple lines of documentation, which you can group together.
 
 ```ballerina

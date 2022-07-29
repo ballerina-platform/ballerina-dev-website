@@ -163,7 +163,7 @@ redirect_from:
 <div class="col-lg-6 col-md-6 col-sm-12 card">
 <a href="/learn/build-a-data-service-in-ballerina/">
     <h3 id="build-a-data-service-in-ballerina">Build a data service in Ballerina</h3></a>
-    <p >Connect to a MySQL database and execute queries using an HTTP RESTful API. </p>
+    <p >Connect to a MySQL database and execute queries using an HTTP RESTful API.</p>
 </div>
 </div>
 
@@ -251,8 +251,10 @@ redirect_from:
 		<p>Details of tooling support for troubleshooting Ballerina applications.  </p>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
-<h3 id="ballerina-shell"><a href="/learn/ballerina-shell/">Ballerina Shell</a></h3>
-<p>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
+<h3 id="troubleshoot-ballerina-runtime">
+    <a href="/learn/troubleshoot-ballerina-runtime/">Troubleshoot Ballerina Runtime</a>
+</h3>
+<p>Details of Ballerina strand dump tool.</p>
 </div>
 </div>
 
@@ -279,6 +281,14 @@ redirect_from:
  <a href="/learn/asyncapi-tool/">
     <h3 id="asyncapi-tool">AsyncAPI tool </h3></a>
     <p >Details of the Ballerina AsyncAPI tool. </p>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12 card">
+<a href="/learn/ballerina-shell/">
+    <h3 id="ballerina-shell">Ballerina Shell</h3></a>
+    <p >Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
 </div>
 </div>
 

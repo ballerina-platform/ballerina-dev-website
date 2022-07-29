@@ -1,0 +1,12 @@
+- title: Troubleshoot Ballerina runtime
+  url: #
+  sublinks:
+    - title: Strand dump
+      url: /learn/troubleshoot-ballerina-runtime/#strand-dump
+      sublinks:
+        - title: Getting strand dump
+          url: /learn/troubleshoot-ballerina-runtime/#getting-strand-dump
+          active: getting-strand-dump
+        - title: Format and available details
+          url: /learn/troubleshoot-ballerina-runtime/#format-and-available-details
+          active: format-and-available-details

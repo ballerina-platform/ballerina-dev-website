@@ -7,9 +7,6 @@ on:
 
 jobs:
   generateHTML:
-    env:
-      JBAL_VERSION: "2201.0.3"
-      GITHUB_TOKEN: ${{secrets.BALLERINA_BOT_TOKEN}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

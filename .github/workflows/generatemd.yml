@@ -1,12 +1,7 @@
 name: Generate Proposal MD
 
 on:
-  workflow_dispatch: #periodic
-    inputs:
-      logLevel:
-        description: "Log lev"
-        required: true
-        default: "warning"
+  workflow_dispatch: 
   schedule:
     - cron: "0 0 * * *"
 

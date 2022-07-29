@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: website-revamp
+          ref: master
           token: ${{ secrets.BALLERINA_BOT_TOKEN }}
       - name: Run Proposals Bot
         uses: ballerina-platform/ballerina-action@master

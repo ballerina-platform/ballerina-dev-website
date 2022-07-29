@@ -23,6 +23,8 @@ jobs:
           token: ${{ secrets.BALLERINA_BOT_TOKEN }}
       - name: Run Proposals Bot
         uses: ballerina-platform/ballerina-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         with:
           args: 
             run .github/scripts/bal_proposals_bot

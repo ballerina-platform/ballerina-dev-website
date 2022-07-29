@@ -68,17 +68,13 @@
     text-align: center;
     background-color: #57595d;
     color: #ffffff !important;
-    padding: 10px 10px;
-    background-repeat: no-repeat;
-    background-position: left 25px top 18px;
+    padding: 10px 60px;
     text-decoration: none;
     border: none;
     font-family: "pragmatica", sans-serif;
     transition: all 0.3s;
     width: 100%;
     margin-top: 10px;
-    /* border: #57595d 1px solid; */
-    /* margin-right: 10px; */
 }
 
 .linkBtn:hover {

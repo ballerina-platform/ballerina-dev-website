@@ -6,7 +6,7 @@ on:
     - cron: "0 0 * * *"
 
 jobs:
-  generateHTML:
+  generateMD:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -29,7 +29,6 @@ jobs:
           else
               DIFF_VAR=true
               UUID_VAL=$(uuidgen)
-              echo $UUID_VAL
               git checkout automate-proposals-$UUID_VAL 2>/dev/null || git checkout -b automate-proposals-$UUID_VAL
               git config --local user.email ${{ secrets.BALLERINA_BOT_USERNAME }}
               git config --local user.name ${{ secrets.BALLERINA_BOT_EMAIL }}

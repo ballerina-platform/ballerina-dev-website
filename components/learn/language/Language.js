@@ -46,7 +46,7 @@ export default function Language() {
         <Col xs={12} lg={6} className={styles.btnCol}>
           <div className={styles.btnWrapper}>
           <a href={`${prefix}/learn/language-walkthrough`} className={styles.linkBtn}>Watch video</a>
-          <a href={`${prefix}/learn/language-walkthrough`} className={styles.linkBtn}>Complete language guide slides</a>
+          <a href={`${prefix}/learn/language-walkthrough`} className={styles.linkBtn}>View slides</a>
           </div>
         </Col>
       </Row>

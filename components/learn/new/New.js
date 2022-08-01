@@ -18,7 +18,7 @@ export default function New() {
         <Row className="pageContentRow llanding">
           <Col xs={12} md={12}>
             <p className={styles.title}><a href="#" className={styles.linkText}>Ballerina Proposals</a></p>
-            <p className={styles.description}>Read and contribute to open proposals</p>
+            <p className={styles.description}>Read and contribute to open proposals.</p>
           </Col>
         </Row>
     </>

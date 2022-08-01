@@ -20,7 +20,7 @@ const TopNav = (props) => {
   return (
     <>
       <Navbar className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} expand="lg" sticky='top'>
-        <Container fluid='xxl' className={(launcher === 'home') ? styles.toggleFloat : null}>
+        <Container fluid className={(launcher === 'home') ? styles.toggleFloat : null}>
         {(launcher !== "home") ?
           <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
             
@@ -43,11 +43,11 @@ const TopNav = (props) => {
               navbarScroll
             >
               <Nav.Link className={(launcher === 'downloads') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/downloads`}>Download</Nav.Link>
-              <Nav.Link className={styles.navItem} href="https://play.ballerina.io/">Playground</Nav.Link>
+              <Nav.Link className={styles.navItem} href="https://play.ballerina.io/" target='_blank' rel="noreferrer">Playground</Nav.Link>
               <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>
-              <Nav.Link className={styles.navItem} href="https://central.ballerina.io/">Central</Nav.Link>
+              <Nav.Link className={styles.navItem} href="https://central.ballerina.io/" target='_blank' rel="noreferrer">Central</Nav.Link>
               <Nav.Link className={(launcher === 'community') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/community`}>Community</Nav.Link>
-              <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/">Blog</Nav.Link>
+              <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link>
               {(launcher === 'docs-learn')?
                 <NavDropdown title={versionPicker} id={styles.navbarScrollingDropdown}>
                   <NavDropdown.Item href={`${prefix}/learn/`}>Swan-Lake</NavDropdown.Item>

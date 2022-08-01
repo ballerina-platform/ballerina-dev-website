@@ -11,10 +11,10 @@ export default function FourOHFour() {
 
   const RedirectMessage = dynamic(() => import('../components/common/redirect-message/RedirectMessage'), { ssr: false });
 
-    const goBack = () => {
-        history.go(-1);
-        return false;
-}
+//     const goBack = () => {
+//         history.go(-1);
+//         return false;
+// }
   return (
     <>
       <Head>
@@ -39,18 +39,18 @@ export default function FourOHFour() {
       </Head>
       <Layout>
         <Col xs={12} sm={10} className="policyContent">
-          <Row className="pageHeader">
+          {/* <Row className="pageHeader">
             <Col xs={11}><h1>404</h1></Col>
           </Row>
 
           <Row className='pageContentRow'>
             <Col xs={12}>
-                <p><strong>Page not found. :(</strong></p>
+                <p><strong>Page not found. :(</strong></p> */}
                 <RedirectMessage/>
-                <p>You can either <a href="#" onClick={goBack}>go back</a> to the previous page, <a className="getStartLinks" href='https://github.com/ballerina-platform/ballerina-lang/issues/new/choose'>report your issue,</a> or contact the <a href={`${prefix}/community/#ballerina-slack-community`}>Ballerina
+                {/* <p>You can either <a href="#" onClick={goBack}>go back</a> to the previous page, <a className="getStartLinks" href='https://github.com/ballerina-platform/ballerina-lang/issues/new/choose'>report your issue,</a> or contact the <a href={`${prefix}/community/#ballerina-slack-community`}>Ballerina
       Team</a>.</p>
             </Col>
-          </Row>
+          </Row> */}
         </Col>
       </Layout>
     </>

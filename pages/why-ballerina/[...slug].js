@@ -136,11 +136,11 @@ export default function PostPage({ frontmatter, content, id, slug }) {
         <Col sm={3} xxl={2} className='leftNav d-none d-sm-block'>
           <LeftNav launcher='why-bal' id={id}
             mainDir='why-ballerina'
-            LearnToc={LearnToc} />
+            Toc={LearnToc} />
         </Col>
         <Col xs={12} className='d-block d-sm-none'>
           <Button className='learnMob' onClick={handleShow}>
-            Learn documentation
+            Why Ballerina
           </Button>
           <Offcanvas show={show} onHide={handleClose}>
             <Offcanvas.Header closeButton>
@@ -148,11 +148,11 @@ export default function PostPage({ frontmatter, content, id, slug }) {
             <Offcanvas.Body>
               <LeftNav launcher='why-bal' id={id}
                 mainDir='why-ballerina'
-                LearnToc={LearnToc} />
+                Toc={LearnToc} />
             </Offcanvas.Body>
           </Offcanvas>
         </Col>
-        <Col xs={12} sm={7} xxl={8} className='mdContent'>
+        <Col xs={12} sm={7} xxl={7} className='mdContent'>
           <Container>
             <div className='topRow'>
               <Col xs={11}><h1>{frontmatter.title}</h1></Col>
@@ -259,7 +259,7 @@ export default function PostPage({ frontmatter, content, id, slug }) {
             </div> */}
           </Container>
         </Col>
-        <Col sm={2} className='pageToc d-none d-sm-block'>
+        <Col sm={2} xxl={3} className='pageToc d-none d-sm-block'>
           {
             (showToc) ?
               <>

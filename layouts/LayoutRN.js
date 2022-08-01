@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { Container, Row, Stack, Col} from 'react-bootstrap';
+import { Container, Row, Stack } from 'react-bootstrap';
 
 import Footer from '../components/common/footer/Footer';
 
@@ -16,9 +16,6 @@ export default function Layout({ children }) {
         <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PSL2TX4"/>
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"/>
 
-        {/* <script async src="/jquery/jquery.min.js"/> */}
-        {/* <script async src="/jquery/jquery.min.js"/>
-        <script async src="/shiki/shiki.js" /> */}
         <script type="text/javascript" crossOrigin src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"/>
         
       </Head>

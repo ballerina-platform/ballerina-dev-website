@@ -462,6 +462,21 @@ pre[class*="language-"] {
   height: 50px;
 }
 
+.catTitleRow  h2, .catTitleRow .apiDocs {
+  display: inline-block;
+}
+
+.catTitleRow .apiDocs {
+  margin-left: 10px;
+  color: #20b6b0;
+}
+
+.catTitleRow .apiDocs:hover {
+  color: #464646;
+}
+
+/*------------Community----------------*/
+
 .communityRow {
   padding-top: 15px;
   /* padding-bottom: 15px; */

@@ -63,7 +63,7 @@ export default function AllArchived() {
         } else if (hash.match(/^1.0./)) {
             setMainDir('1.0.x-archived-versions');
             setId(hash+'v');
-        } else if (hash.match(/^0.9./)) {
+        } else if (hash.match(/^0.9/)) {
             setMainDir('0.9.x-archived-versions');
             setId(hash+'v');
         } else {
@@ -194,7 +194,10 @@ export default function AllArchived() {
                             </Row>
 
                             <Row className='archivedCategory'>
-                                <h2 id='1.2.x-archived-versions'>1.2.x archived versions</h2>
+                                <div className='catTitleRow'>
+                                    <h2 id='1.2.x-archived-versions'>1.2.x archived versions</h2>
+                                    <a href='/1.2/learn/api-docs/ballerina/' className='apiDocs'>[API docs]</a>
+                                </div>
 
                                 {sortedRelease12x.map((item, index) => (
 
@@ -266,7 +269,12 @@ export default function AllArchived() {
 
 
                             <Row className='archivedCategory'>
-                                <h2 id='1.1.x-archived-versions'>1.1.x archived versions</h2>
+                                <div className='catTitleRow'>
+                                    <h2 id='1.1.x-archived-versions'>1.1.x archived versions</h2>
+                                    <a href='/1.1/learn/api-docs/ballerina/' className='apiDocs'>[API docs]</a>
+                                </div>
+
+                                
                                 {sortedRelease11x.map((item, index) => (
 
                                     <div className="installers" key={item.version}>
@@ -336,7 +344,11 @@ export default function AllArchived() {
 
 
                             <Row className='archivedCategory'>
-                                <h2 id='1.0.x-archived-versions'>1.0.x archived versions</h2>
+                                <div className='catTitleRow'>
+                                    <h2 id='1.0.x-archived-versions'>1.0.x archived versions</h2>
+                                    <a href='/1.0/learn/api-docs/ballerina/' className='apiDocs'>[API docs]</a>
+                                </div>
+                                
                                 {sortedRelease10x.map((item, index) => (
 
                                     <div className="installers" key={item.version}>
@@ -407,7 +419,11 @@ export default function AllArchived() {
 
 
                             <Row>
-                                <h2 id='0.9.x-archived-versions'>0.9.x archived versions</h2>
+                                <div className='catTitleRow'>
+                                    <h2 id='0.9.x-archived-versions'>0.9.x archived versions</h2>
+                                    <a href='/0.990/learn/api-docs/ballerina/' className='apiDocs'>[API docs]</a>
+                                </div>
+                                
                                 {sortedRelease09x.map((item, index) => (
 
                                     <div className="installers" key={item.version}>

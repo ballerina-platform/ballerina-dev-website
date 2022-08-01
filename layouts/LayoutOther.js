@@ -16,8 +16,6 @@ export default function Layout({ children }) {
         <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PSL2TX4"/>
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"/>
 
-        {/* <script async src="/jquery/jquery.min.js"/>
-        <script async src="/shiki/shiki.js" /> */}
         <script type="text/javascript" crossorigin src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"/>
       </Head>
       <Stack gap={0} className='main-wrapper other'>

@@ -38,7 +38,7 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 export default function PostPage({ frontmatter, content }) {
-  // var clean = DOMPurify.sanitize(content);
+
   return (
     <>
       <Head>
@@ -71,10 +71,7 @@ export default function PostPage({ frontmatter, content }) {
         <Col sm={12} md={4} lg={4} className="subscriptionCol">
           <NewsletterSubscription/>
         </Col>
-        
-        
-        
-        
+
       </Layout>
     </>
   );

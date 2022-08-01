@@ -2,24 +2,8 @@ import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 
 import styles from './Contact.module.css';
-import { prefix } from '../../../utils/prefix';
 
 export default function Contact() {
-
-  const [hoverBtn, setHoverBtn] = React.useState(false);
-
-  let linkArrowPath = prefix + '/images/toc-bg.svg';
-  let linkArrowHoverPath = prefix + '/images/toc-bg-hover.svg';
-
-  const linkArrow = {
-    background: 'url(' + linkArrowPath + ') no-repeat scroll right center',
-    paddingRight: '25px'
-  }
-
-  const linkArrowHover = {
-    background: 'url(' + linkArrowHoverPath + ') no-repeat scroll right center',
-    paddingRight: '25px'
-  }
 
   return (
     <Col xs={12}>

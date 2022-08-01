@@ -16,7 +16,6 @@ setCDN("https://unpkg.com/shiki/");
 
 import Layout from '../../../layouts/LayoutDocs';
 import LeftNav from '../../../components/common/left-nav/LeftNav';
-// import PrevNext from '../../../components/common/prev-next/PrevNext';
 import { prefix } from '../../../utils/prefix';
 import LearnToc from '../../../utils/learn-lm.json';
 import SwanLake from '../../../_data/swanlake-latest/metadata.json';
@@ -183,11 +182,11 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
           <LeftNav launcher='learn' id={id}
             mainDir='get-started'
             sub={sub} third={third}
-            LearnToc={LearnToc} />
+            Toc={LearnToc} />
         </Col>
         <Col xs={12} className='d-block d-sm-none'>
           <Button className='learnMob' onClick={handleShow}>
-            Learn documentation
+            Learn
           </Button>
           <Offcanvas show={show} onHide={handleClose}>
             <Offcanvas.Header closeButton>
@@ -196,11 +195,11 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
               <LeftNav launcher='learn' id={id}
                 mainDir='get-started'
                 sub={sub} third={third}
-                LearnToc={LearnToc} />
+                Toc={LearnToc} />
             </Offcanvas.Body>
           </Offcanvas>
         </Col>
-        <Col xs={12} sm={7} xxl={8} className='mdContent'>
+        <Col xs={12} sm={7} xxl={7} className='mdContent'>
           <Container>
             <div className='topRow'>
               <Col xs={11}><h1>{frontmatter.title}</h1></Col>
@@ -288,16 +287,12 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}
             >
-              {/* {content} */}
               {AddLiquid(content)}
             </ReactMarkdown>
 
-            {/* <div className='contentNav'>
-              <PrevNext />
-            </div> */}
           </Container>
         </Col>
-        <Col sm={2} className='pageToc d-none d-sm-block'>
+        <Col sm={2} xxl={3} className='pageToc d-none d-sm-block'>
           {
             (showToc) ?
               <>

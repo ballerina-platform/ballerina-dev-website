@@ -11,16 +11,16 @@ setCDN("https://unpkg.com/shiki/");
 
 export default function BalAction() {
   const [key, setKey] = React.useState('consuming-services');
-  let hash = global.location.hash;
 
   React.useEffect(() => {
+    let hash = global.location.hash;
     if (hash !== '') {
       hash = hash.replace('#', '');
       setKey(hash);
       const element = document.getElementById("ballerina-in-action");
       element.scrollIntoView();
     }
-  }, [hash]);
+  }, []);
 
   const HighlightSyntax = (code, language) => {
     const [codeSnippet, setCodeSnippet] = React.useState([]);

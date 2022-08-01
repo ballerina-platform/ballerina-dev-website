@@ -84,9 +84,20 @@ a {
   padding-right: 1% !important;
 }
 
+@media (min-width: 1400px) {
+  .mdContent {
+    padding-left: 4% !important;
+  }
+}
+
+.archiveContent {
+  padding-left: 1% !important;
+}
+
 .learnMob {
   background-color: #20b6b0 !important;
   border: #20b6b0 !important;
+  border-radius: 0px !important;
 }
 
 .learnMob:focus,
@@ -115,14 +126,16 @@ a {
 }
 
 .mdContent h1,
-.policyContent h1 {
+.policyContent h1,
+.archiveContent h1 {
   color: #464646;
   font-size: 2rem;
 }
 
 .mdContent h2,
 .policyContent h2,
-.downloads h2 {
+.downloads h2,
+.archiveContent h2 {
   margin-top: 40px;
   /* margin-top: 20px; */
   color: #585a5e;
@@ -145,7 +158,8 @@ a {
 
 .mdContent h3,
 .policyContent h3,
-.downloads h3 {
+.downloads h3,
+.archiveContent h3 {
   margin-top: 40px;
   /* margin-top: 20px; */
   color: #585a5e;
@@ -164,31 +178,38 @@ a {
 .mdContent h6,
 .policyContent h4,
 .policyContent h5,
-.policyContent h6 {
+.policyContent h6,
+.archiveContent h4,
+.archiveContent h5,
+.archiveContent h6 {
   margin-top: 40px;
   /* margin-top: 20px; */
   color: #585a5e;
 }
 
 .mdContent h4,
-.policyContent h4 {
+.policyContent h4,
+.archiveContent h4 {
   font-size: 1.2rem;
 }
 
 .mdContent h5,
-.policyContent h5 {
+.policyContent h5
+.archiveContent h5 {
   font-size: 1.1rem;
 }
 
 .mdContent h6,
-.policyContent h6 {
+.policyContent h6
+.archiveContent h6 {
   font-size: 1rem;
 }
 
 .mdContent p,
 .mdContent li,
 .policyContent p,
-.communityRow p {
+.communityRow p
+.archiveContent p {
   font-size: 16px;
   color: #57595d;
   line-height: 24px;
@@ -441,6 +462,21 @@ pre[class*="language-"] {
   height: 50px;
 }
 
+.catTitleRow  h2, .catTitleRow .apiDocs {
+  display: inline-block;
+}
+
+.catTitleRow .apiDocs {
+  margin-left: 10px;
+  color: #20b6b0;
+}
+
+.catTitleRow .apiDocs:hover {
+  color: #464646;
+}
+
+/*------------Community----------------*/
+
 .communityRow {
   padding-top: 15px;
   /* padding-bottom: 15px; */
@@ -638,7 +674,7 @@ ul.eventsTabs {
 
 .releasesRow {
   display: inline-block;
-  width: 100%;
+  /* width: 100%; */
   margin-bottom: 20px;
 }
 
@@ -930,7 +966,7 @@ table.cTopControlsContainer tbody {
 
 .backToExample {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   margin: 16px 0;
   text-decoration: none;

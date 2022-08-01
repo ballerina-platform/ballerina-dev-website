@@ -163,12 +163,12 @@ export default function PostPage({ frontmatter, content, id, slug }) {
             launcher="why-bal"
             id={id}
             mainDir="why-ballerina"
-            LearnToc={LearnToc}
+            Toc={LearnToc}
           />
         </Col>
         <Col xs={12} className="d-block d-sm-none">
           <Button className="learnMob" onClick={handleShow}>
-            Learn documentation
+            Why Ballerina
           </Button>
           <Offcanvas show={show} onHide={handleClose}>
             <Offcanvas.Header closeButton></Offcanvas.Header>
@@ -177,12 +177,12 @@ export default function PostPage({ frontmatter, content, id, slug }) {
                 launcher="why-bal"
                 id={id}
                 mainDir="why-ballerina"
-                LearnToc={LearnToc}
+                Toc={LearnToc}
               />
             </Offcanvas.Body>
           </Offcanvas>
         </Col>
-        <Col xs={12} sm={7} xxl={8} className="mdContent">
+        <Col xs={12} sm={7} xxl={7} className="mdContent">
           <Container>
             <div className="topRow">
               <Col xs={11}>
@@ -287,32 +287,12 @@ export default function PostPage({ frontmatter, content, id, slug }) {
             >
               {content}
             </ReactMarkdown>
-
-            {/* <div className='contentNav'>
-              <Col xs={6} className='prevLink'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#20b6b0" className="bi bi-chevron-left" viewBox="0 0 16 16">
-                  <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                </svg> &nbsp;
-                <a href='#'>Install Ballerina</a>
-              </Col>
-              <Col xs={6} className='nextLink'>
-                <a href='#'>Language basics</a> &nbsp;
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#20b6b0" className="bi bi-chevron-right" viewBox="0 0 16 16">
-                  <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                </svg>
-              </Col>
-            </div> */}
           </Container>
         </Col>
         <Col sm={2} className="pageToc d-none d-sm-block">
           {showToc ? (
             <>
               <h6>On this page</h6>
-              {/* <MarkdownNavbar
-                  source={content}
-                  ordered={false}
-                  headingTopOffset={150}
-                  declarative /> */}
               <Toc source={content} />
             </>
           ) : null}

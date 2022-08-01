@@ -10,7 +10,7 @@ export default function LeftNav(props) {
   let mainDir = props.mainDir;
   let sub = props.sub;
   let third = props.third;
-  const Elements = props.LearnToc.subDirectories;
+  const Elements = props.Toc.subDirectories;
 
   function comparePositions(a, b) {
     return a.position - b.position;
@@ -19,18 +19,18 @@ export default function LeftNav(props) {
   function CheckActive(eventKey) {
 
     if (mainDir !== eventKey) {
-      document.getElementById(mainDir).getElementsByTagName('button')[0].style.color = '#20b6b0';
-      document.getElementById(mainDir).getElementsByTagName('button')[0].style.fontWeight = '500';
+      document.querySelectorAll('[item-id='+ "\'"+ mainDir + "\'" +']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
+      document.querySelectorAll('[item-id='+ "\'"+ mainDir + "\'" +']')[0].getElementsByTagName('button')[0].style.fontWeight = '500';
     }
 
     if (sub && sub !== eventKey) {
-      document.getElementById(sub).getElementsByTagName('button')[0].style.color = '#20b6b0';
-      document.getElementById(sub).getElementsByTagName('button')[0].style.fontWeight = '500';
+      document.querySelectorAll('[item-id='+ sub +']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
+      document.querySelectorAll('[item-id='+ sub +']')[0].getElementsByTagName('button')[0].style.fontWeight = '500';
     }
 
     if (third && third !== eventKey) {
-      document.getElementById(third).getElementsByTagName('button')[0].style.color = '#20b6b0';
-      document.getElementById(third).getElementsByTagName('button')[0].style.fontWeight = '500';
+      document.querySelectorAll('[item-id='+ third +']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
+      document.querySelectorAll('[item-id='+ third +']')[0].getElementsByTagName('button')[0].style.fontWeight = '500';
     }
   }
 
@@ -42,7 +42,7 @@ export default function LeftNav(props) {
     let category = props.category;
 
     return <Accordion.Item eventKey={category.id} className={styles.acItem}>
-      <Accordion.Header className={styles.mainDir} onClick={() => CheckActive(category.id)} id={category.id}>{category.dirName}</Accordion.Header>
+      <Accordion.Header className={styles.mainDir} onClick={() => CheckActive(category.id)} item-id={category.id}>{category.dirName}</Accordion.Header>
       <Accordion.Body className={styles.accordionBody}>
         <ul className={styles.firstTier}>
           {
@@ -66,7 +66,7 @@ export default function LeftNav(props) {
           (directory.isDir && directory.position > 0) ?
             <>
               <Accordion.Item eventKey={directory.id} className={styles.acItem}>
-                <Accordion.Header onClick={() => CheckActive(directory.id)} id={directory.id}>{directory.dirName}</Accordion.Header>
+                <Accordion.Header onClick={() => CheckActive(directory.id)} item-id={directory.id}>{directory.dirName}</Accordion.Header>
                 <Accordion.Body className={styles.acBody}>
                   <ul className={styles.secondTier}>
                     {
@@ -105,7 +105,7 @@ export default function LeftNav(props) {
           (directory.isDir && directory.position > 0) ?
             <>
               <Accordion.Item eventKey={directory.id} className={styles.acItem}>
-                <Accordion.Header onClick={() => CheckActive(directory.id)} id={directory.id}>{directory.dirName}</Accordion.Header>
+                <Accordion.Header onClick={() => CheckActive(directory.id)} item-id={directory.id}>{directory.dirName}</Accordion.Header>
                 <Accordion.Body className={styles.acBody}>
                   <ul className={styles.secondTier}>
                     {
@@ -144,6 +144,7 @@ export default function LeftNav(props) {
             'learn': (category.position > 0) ? <MainDir category={category} /> : null,
             'why-bal': (category.dirName === 'Why Ballerina') ? <MainDir category={category} /> : null,
             'rn': (category.position > 0) ? <MainDir category={category} /> : null,
+            'archived': (category.position > 0) ? <MainDir category={category} /> : null,
           }[launcher]
         ))}
       </Accordion>

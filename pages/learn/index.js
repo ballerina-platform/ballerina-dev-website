@@ -31,24 +31,7 @@ export default function Learn() {
         <UseCases/>
         <Platform/>
         <New/>   
-
-        {/* <Row className="pageContentRow">
-          <Col xs={12} md={12}>
-            <h2>What's new</h2>
-          </Col>
-        </Row>
-
-        <Row className="pageContentRow">
-          <Col xs={12} md={12}>
-            <p>Ballerina Proposals</p>
-            <p>Read and contribute to open proposals</p>
-          </Col>
-        </Row> */}
-
-
-
-
-
+        
       </Col>
     </Layout>
 

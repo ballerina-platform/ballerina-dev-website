@@ -6,7 +6,6 @@ import Layout from '../../layouts/LayoutDownloads';
 import styles from '../../styles/Downloads.module.css'
 import { prefix } from '../../utils/prefix';
 import swanlake from '../../_data/swanlake-latest/metadata.json';
-import stable from '../../_data/stable-latest/metadata.json';
 
 export default function Downloads() {
  
@@ -133,7 +132,7 @@ export default function Downloads() {
                         <p><a href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${swanlake.version}`}>RELEASE NOTES &gt;</a></p>
                      </div>
                      <div className={styles.releaseNotes} >
-                        <p><a href={`${prefix}/downloads/swan-lake-archived`}>ARCHIVED VERSIONS &gt;</a></p>
+                        <p><a href={`${prefix}/downloads/archived/#swan-lake-archived-versions`}>ARCHIVED VERSIONS &gt;</a></p>
                      </div>
                   </div>
                </Col>
@@ -194,135 +193,6 @@ export default function Downloads() {
                         </table>
                      </div>
                   </div>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.donwloadVersion} pageContentRow versionSeparator`}>
-               <Col xs={12}>
-                  <h2 id="stable"><span>{stable['version']}</span></h2>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
-               <Col xs={12} sm={12} md={12} lg={4}>
-                  <h3 className={styles.dwindows} style={windowsIcon}>Windows</h3>
-                  <a id="packWindows" 
-                     href={`${process.env.distServer}/downloads/${stable.version }/${stable['windows-installer']}`} 
-                     className={styles.cDownload} 
-                     data-download="downloads" 
-                     data-pack={stable['windows-installer']}>
-                     <div className={styles.cSize}>msi <span id="packWindowsName">{stable['windows-installer-size']}</span></div>
-                  </a>
-                  <ul className={styles.downloadSubLinks}>
-                     <li><a id="packWindowsMd5" href={`${process.env.distServer}/downloads/${stable.version }/${stable['windows-installer']}.md5`} >md5</a></li>
-                     <li><a id="packWindowsSha1" href={`${process.env.distServer}/downloads/${stable.version }/${stable['windows-installer']}.sha1`} >SHA-1</a></li>
-                     <li><a id="packWindowsAsc" href={`${process.env.distServer}/downloads/${stable.version }/${stable['windows-installer']}.asc`}>asc</a></li>
-                  </ul>
-               </Col>
-               <Col xs={12} sm={12} md={12} lg={4}>
-                  <h3 className={styles.dLinux} style={linuxIcon}>Linux </h3>
-                  <div className={styles.dVersions}>
-                     <div className={styles.dVersion}>
-                        <a id="packLinux" href={`${process.env.distServer}/downloads/${stable.version }/${stable['linux-installer']}`}  
-                        className={styles.cDownload} 
-                        data-download="downloads" 
-                        data-pack={stable['linux-installer']}>
-                           <div className={styles.cSize}>deb <span id="packLinuxName">{stable['linux-installer-size']}</span></div>
-                        </a>
-                        <ul className={styles.downloadSubLinks}>
-                           <li><a id="packLinuxMd5" href={`${process.env.distServer}/downloads/${stable.version }/${stable['linux-installer']}.md5`}>md5</a></li>
-                           <li><a id="packLinuxSha1" href={`${process.env.distServer}/downloads/${stable.version }/${stable['linux-installer']}.sha1`}>SHA-1</a></li>
-                           <li><a id="packLinuxAsc" href={`${process.env.distServer}/downloads/${stable.version }/${stable['linux-installer']}.asc`}>asc</a></li>
-                        </ul>
-                     </div>
-                     <div className={styles.dVersion}>
-                        <a id="packLinux" href={`${process.env.distServer}/downloads/${stable.version }/${stable['rpm-installer']}`}   
-                        className={styles.cDownload} 
-                        data-download="downloads" 
-                        data-pack={stable['rpm-installer']}>
-                           <div className={styles.cSize}>rpm <span id="packLinuxName">{stable['rpm-installer-size']}</span></div>
-                        </a>
-                        <ul className={styles.downloadSubLinks}>
-                           <li><a id="packLinuxMd5" href={`${process.env.distServer}/downloads/${stable.version }/${stable['rpm-installer']}.md5`}>md5</a></li>
-                           <li><a id="packLinuxSha1" href={`${process.env.distServer}/downloads/${stable.version }/${stable['rpm-installer']}.sha1`}>SHA-1</a></li>
-                           <li><a id="packLinuxAsc" href={`${process.env.distServer}/downloads/${stable.version }/${stable['rpm-installer']}.asc`}>asc</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </Col>
-               <Col xs={12} sm={12} md={12} lg={4}>
-                  <h3 className={styles.dMac} style={macIcon}>macOS</h3>
-                  <a id="packMac" 
-                     href={`${process.env.distServer}/downloads/${stable.version }/${stable['macos-installer']}`}  
-                     className={styles.cDownload} 
-                     data-download="downloads" 
-                     data-pack={stable['macos-installer']}>
-                     <div className={styles.cSize}>pkg <span id="packWindowsName">{stable['macos-installer-size']}</span></div>
-                  </a>
-                  <ul className={styles.downloadSubLinks}>
-                     <li><a id="packMacMd5" href={`${process.env.distServer}/downloads/${stable.version }/${stable['macos-installer']}.md5`}>md5</a></li>
-                     <li><a id="packMacSha1" href={`${process.env.distServer}/downloads/${stable.version }/${stable['macos-installer']}.sha1`}>SHA-1</a></li>
-                     <li><a id="packMacAsc" href={`${process.env.distServer}/downloads/${stable.version }/${stable['macos-installer']}.asc`}>asc</a></li>
-                  </ul>
-               </Col>
-            </Row>
-            
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
-               <Col xs={12}>
-                  <div className={styles.releaseLinks} >
-                     <div className={styles.releaseNotes} >
-                        <p><a href={`${prefix}/downloads/1.2.x-release-notes/${stable.version}`}>RELEASE NOTES &gt;</a></p>
-                     </div>
-                     <div className={styles.releaseNotes} >
-                        <p><a href={`${prefix}/downloads/archived/#1.2.x-archived-versions`}>ARCHIVED VERSIONS &gt;</a></p>
-                     </div>
-                  </div>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.downloadsVSCode} pageContentRow`}>
-               <Col xs={12} sm={12} md={12} lg={4}>
-                  <h3 className={styles.dVSCode} style={vscodeIcon}>Visual Studio Code</h3>
-                  <a id="packWindows" href="https://github.com/wso2/ballerina-plugin-vscode/releases/tag/v2.1.1" 
-                  className={styles.cDownload} data-download="downloads" 
-                  target="_blank" rel="noreferrer">
-                     <div className={styles.cSize}>Ballerina Extension<span id="packWindowsName"></span></div>
-                  </a>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.downloadsOther} pageContentRow`}>
-               <Col xs={12} sm={12} md={6} lg={6}>
-                  <div className="cInstallers">
-                     <h3>Other installation options</h3>
-                     <div className="">
-                        <table id="insPackages0">
-                           <tr>
-                              <td>Install via the ZIP archive
-                                 <a href={`${prefix}/1.2/learn/installing-ballerina/#installing-via-the-ballerina-language-zip-file`} className={styles.cDownloadLinkIcon} target="_blank" rel="noreferrer">
-                                    <Image src={`${prefix}/images/right-bg-green-fill.svg`} width={13} height={13} alt="Install via the ZIP archive"/>
-                                 </a>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>Install from source
-                                 <a href={`${prefix}/1.2/learn/installing-ballerina/#building-from-source`} className={styles.cDownloadLinkIcon} target="_blank" rel="noreferrer">
-                                    <Image src={`${prefix}/images/right-bg-green-fill.svg`} width={13} height={13} alt="Install from source"/>
-                                 </a>
-                              </td>
-                           </tr>
-                        </table>
-                     </div>
-                  </div>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
-               <Col xs={12}>
-                  <p>To download the VSCode and IntelliJ Ballerina extensions, see <a href={`${prefix}/1.2/learn/setting-up-visual-studio-code/`} className={styles.instructions}>Setting up Visual Studio Code</a> and 
-                  <a href={`${prefix}/1.2/learn/setting-up-intellij-idea/`} className={styles.instructions}> Setting up IntelliJ IDEA</a>, and for installation instructions, see 
-                  <a href={`${prefix}/1.2/learn/installing-ballerina/`} className={styles.instructions}> Installing Ballerina</a>. 
-                  </p>
                </Col>
             </Row>
          </Col>

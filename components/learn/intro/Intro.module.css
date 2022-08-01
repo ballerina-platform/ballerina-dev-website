@@ -48,7 +48,13 @@
     color: #57595d; */
     background-color: #57595d;
     color: #fff;
-    height: 95px;
+    height: 120px;
+}
+
+@media (min-width: 576px) {
+    .secondary {
+        height: 95px;
+    }
 }
 
 .secondary:hover {

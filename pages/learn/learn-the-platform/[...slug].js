@@ -16,7 +16,6 @@ setCDN("https://unpkg.com/shiki/");
 
 import Layout from '../../../layouts/LayoutDocs';
 import LeftNav from '../../../components/common/left-nav/LeftNav';
-// import PrevNext from '../../../components/common/prev-next/PrevNext';
 import { prefix } from '../../../utils/prefix';
 import LearnToc from '../../../utils/learn-lm.json';
 
@@ -274,9 +273,6 @@ export default function PostPage({ frontmatter, content, id, sub, third, slug })
               {content}
             </ReactMarkdown>
 
-            {/* <div className='contentNav'>
-              <PrevNext />
-            </div> */}
           </Container>
         </Col>
         <Col sm={2} xxl={3} className='pageToc d-none d-sm-block'>

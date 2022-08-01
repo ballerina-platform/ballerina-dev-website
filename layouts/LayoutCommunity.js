@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { Container, Row, Stack, Col} from 'react-bootstrap';
+import { Row, Stack } from 'react-bootstrap';
 
 import Footer from '../components/common/footer/Footer';
 

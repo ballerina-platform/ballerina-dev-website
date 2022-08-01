@@ -166,12 +166,28 @@ const nextConfig = {
         destination: `/${redirectBase}1.2/learn/index.html`,
       },
       {
+        source: `/${redirectBase}1.2/learn/api-docs/ballerina/`,
+        destination: `/${redirectBase}1.2/learn/api-docs/ballerina/index.html`,
+      },
+      {
         source: `/${redirectBase}1.1/learn/`,
         destination: `/${redirectBase}1.1/learn/index.html`,
       },
       {
+        source: `/${redirectBase}1.1/learn/api-docs/ballerina/`,
+        destination: `/${redirectBase}1.1/learn/api-docs/ballerina/index.html`,
+      },
+      {
         source: `/${redirectBase}1.0/learn/`,
         destination: `/${redirectBase}1.0/learn/index.html`,
+      },
+      {
+        source: `/${redirectBase}1.0/learn/api-docs/ballerina/`,
+        destination: `/${redirectBase}1.0/learn/api-docs/ballerina/index.html`,
+      },
+      {
+        source: `/${redirectBase}0.990/learn/api-docs/ballerina/`,
+        destination: `/${redirectBase}0.990/learn/api-docs/ballerina/index.html`,
       },
       {
         source: `/spec/lang/2022R2/`,

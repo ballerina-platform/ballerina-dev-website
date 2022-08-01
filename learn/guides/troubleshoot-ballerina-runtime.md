@@ -29,8 +29,11 @@ via a strand dump.
 
 Ballerina strand dump provides information on the available strands and strand groups during the execution of 
 a Ballerina program. This can be used to:
+
 - troubleshoot runtime errors,
+
 - find data races, race conditions, livelocks and deadlocks,
+
 - inspect strand and strand group status.
 
 Currently, this ability is only available in the operating systems where the TRAP POSIX signal is supported.
@@ -131,16 +134,26 @@ and strands available. The details will be given in the following format.
 ![Strand dump output format](/learn/images/strand-dump-format.png "Strand dump output format")
 
 - strand group ID - a unique ID given to a particular strand group. A strand group comprises a set of strands which run on the same thread.
+  
 - strand group state - current state of the strand group. Available states are,
+
     1. [RUNNABLE] - strand group is ready to run or currently running
     2. [QUEUED] - new set of strands which are not yet scheduled to run, or the strand group execution is blocked or completed
+
 - current no. of strands in the strand group
+
 - strand id - a unique ID given to a particular strand.
+
 - strand name - name of the strand associated with the strand ID. This is optional and omitted if not available.
+
 - strand initiated module - name of the module which created the strand
+
 - strand initiated function - name of the function which created the strand
+
 - parent strand ID - ID of the parent strand. Omitted if there is no parent strand.
+
 - strand state - current state of the strand. Available states are,
+
     1.   [WAITING FOR LOCK] - strand is waiting to acquire lock
     2.   [BLOCKED ON WORKER MESSAGE SEND] - strand is blocked due to sync send action
     3.   [BLOCKED ON WORKER MESSAGE RECEIVE] - strand is blocked due to receive action
@@ -149,5 +162,5 @@ and strands available. The details will be given in the following format.
     6.   [BLOCKED] - strand is blocked due to any other reason than the above. eg: function call
     7.   [RUNNABLE] - strand is ready to run or currently running
     8.   [DONE] - strand execution is completed
+
 - strand yielded location stacktrace - this is omitted if the state is RUNNABLE/DONE. If the strand is blocked (yielded), this gives the stack trace which points to the location where it was blocked. A line in the stacktrace is given by the format: module name:function name(filename:line number)
- 

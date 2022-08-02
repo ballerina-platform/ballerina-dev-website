@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-// const ss = `/gggggggg/`;
+
 const redirectBase = process.env.NEXT_PUBLIC_BASE_PATH
   ? `${process.env.NEXT_PUBLIC_BASE_PATH}/`
   : "";
@@ -223,7 +223,7 @@ const nextConfig = {
   resolve: [{ path: false, fs: false }],
   experimental: {
     scrollRestoration: true,
-  },
+  }
 };
 
 module.exports = nextConfig;

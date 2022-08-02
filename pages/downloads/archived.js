@@ -51,39 +51,39 @@ export default function AllArchived() {
     // Control Left nav
     const [mainDir, setMainDir] = React.useState('swan-lake-archived-versions');
     const [id, setId] = React.useState('');
-    
+
     const setLeftNav = (hash) => {
 
         if (hash.match(/^1.2./)) {
             setMainDir('1.2.x-archived-versions');
-            setId(hash+'v');
+            setId(hash + 'v');
         } else if (hash.match(/^1.1./)) {
             setMainDir('1.1.x-archived-versions');
-            setId(hash+'v');
+            setId(hash + 'v');
         } else if (hash.match(/^1.0./)) {
             setMainDir('1.0.x-archived-versions');
-            setId(hash+'v');
+            setId(hash + 'v');
         } else if (hash.match(/^0.9/)) {
             setMainDir('0.9.x-archived-versions');
-            setId(hash+'v');
+            setId(hash + 'v');
         } else {
             setMainDir('swan-lake-archived-versions');
-            setId(hash+'v');
-        } 
+            setId(hash + 'v');
+        }
     }
 
     React.useEffect(() => {
         let hash = global.location.hash;
         hash = hash.replace(/#/g, '');
-        setLeftNav(hash)      
+        setLeftNav(hash)
     })
 
     React.useEffect(() => {
-        window.addEventListener('hashchange', function() {
+        window.addEventListener('hashchange', function () {
             let hash = global.location.hash;
             hash = hash.replace(/#/g, '');
-            setLeftNav(hash) 
-          }, false);    
+            setLeftNav(hash)
+        }, false);
     })
 
     const [releases, setReleases] = React.useState(SLArchive)
@@ -115,7 +115,7 @@ export default function AllArchived() {
                 <Container>
                     <Row className="cDownloadsHeader pageHeader pageContentRow">
                         <Col xs={12}>
-                            <h1>Archived Versions</h1>
+                            <h1>Archived versions</h1>
                         </Col>
                     </Row>
 
@@ -124,7 +124,7 @@ export default function AllArchived() {
                         <Col xs={12}>
                             <Row className='archivedCategory'>
                                 <h2 id='swan-lake-archived-versions'>Swan Lake archived versions</h2>
-                                
+
                                 {releases.map((item, index) => (
                                     <div className="installers" key={item.version}>
                                         <h3 className="releaseVersion" id={item.version}>{item.version} ({item['release-date']})</h3>
@@ -186,9 +186,16 @@ export default function AllArchived() {
                                                 </table>
                                             </Col>
                                         </Row>
-                                        <div className="archivedReleaseNotes">
-                                            <a className="archivedReleaseNotesLink" id={`${item.version}notes`} href={`${prefix}/downloads/1.2.x-release-notes/${item.version}`}>RELEASE NOTES</a>
-                                        </div>
+                                        {
+                                            (item.version.indexOf('swan') > -1) ?
+                                                <div className="archivedReleaseNotes">
+                                                    <a className="archivedReleaseNotesLink" id={`${item.version} notes`} href={`${prefix}/downloads/swan-lake-release-notes/${item.version}`}>RELEASE NOTES</a>
+                                                </div>
+                                                : <div className="archivedReleaseNotes">
+                                                    <a className="archivedReleaseNotesLink" id={`${item.version} notes`} href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${item.version}`}>RELEASE NOTES</a>
+                                                </div>
+
+                                        }
                                     </div>
                                 ))}
                             </Row>
@@ -274,7 +281,7 @@ export default function AllArchived() {
                                     <a href='/1.1/learn/api-docs/ballerina/' className='apiDocs'>[API docs]</a>
                                 </div>
 
-                                
+
                                 {sortedRelease11x.map((item, index) => (
 
                                     <div className="installers" key={item.version}>
@@ -348,7 +355,7 @@ export default function AllArchived() {
                                     <h2 id='1.0.x-archived-versions'>1.0.x archived versions</h2>
                                     <a href='/1.0/learn/api-docs/ballerina/' className='apiDocs'>[API docs]</a>
                                 </div>
-                                
+
                                 {sortedRelease10x.map((item, index) => (
 
                                     <div className="installers" key={item.version}>
@@ -423,7 +430,7 @@ export default function AllArchived() {
                                     <h2 id='0.9.x-archived-versions'>0.9.x archived versions</h2>
                                     <a href='/0.990/learn/api-docs/ballerina/' className='apiDocs'>[API docs]</a>
                                 </div>
-                                
+
                                 {sortedRelease09x.map((item, index) => (
 
                                     <div className="installers" key={item.version}>

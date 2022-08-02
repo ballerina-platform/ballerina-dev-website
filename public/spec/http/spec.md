@@ -3,8 +3,9 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2022/04/08  
-_Edition_: Swan Lake  
+_Updated_: 2022/04/08   
+_Edition_: Swan Lake
+
 
 ## Introduction
 This is the specification for the HTTP standard library of [Ballerina language](https://ballerina.io/), which provides HTTP client-server functionalities to produce and consume HTTP APIs.  
@@ -31,13 +32,17 @@ The conforming implementation of the specification is released and included in t
         * 2.3.1. [Accessor](#231-accessor)
         * 2.3.2. [Resource-name](#232-resource-name)
         * 2.3.3. [Path parameter](#233-path-parameter)
-        * 2.3.4. [Return types](#234-return-types)
+        * 2.3.4. [Signature parameters](#234-signature-parameters)
             * 2.3.4.1. [Caller](#2341-httpcaller)
             * 2.3.4.2. [Request](#2342-httprequest)
             * 2.3.4.3. [Query param](#2343-query-parameter)
             * 2.3.4.4. [Payload param](#2344-payload-parameter)
             * 2.3.4.5. [Header param](#2345-header-parameter)
-      * 2.3.5. [Introspection resource](#235-introspection-resource)
+        * 2.3.5. [Return types](#235-return-types)
+            * 2.3.5.1. [Status Code Response](#2351-status-code-response)
+            * 2.3.5.2. [Return nil](#2352-return-nil)
+            * 2.3.5.3. [Default response status codes](#2353-default-response-status-codes)
+        * 2.3.6. [Introspection resource](#236-introspection-resource)
     * 2.4. [Client](#24-client)
         * 2.4.1. [Client types](#241-client-types)
             * 2.4.1.1. [Security](#2411-security)
@@ -51,8 +56,9 @@ The conforming implementation of the specification is released and included in t
         * 2.4.2. [Client actions](#242-client-action)
             * 2.4.2.1. [Entity body methods](#2421-entity-body-methods)
             * 2.4.2.2. [Non entity body methods](#2422-non-entity-body-methods)
-            * 2.4.2.3. [Forward/execute methods](#2423-forwardexecute-methods)
-            * 2.4.2.4. [HTTP2 additional methods](#2424-http2-additional-methods)
+            * 2.4.2.3. [Resource methods](#2423-resource-methods)
+            * 2.4.2.4. [Forward/execute methods](#2424-forwardexecute-methods)
+            * 2.4.2.5. [HTTP2 additional methods](#2425-http2-additional-methods)
         * 2.4.3. [Client actions return types](#243-client-action-return-types)
 3. [Request-routing](#3-request-routing)
     * 3.1. [Uri and http method match](#31-uri-and-http-method-match)
@@ -412,6 +418,10 @@ resource function post foo(@http:CallerInfo {respondType:Person}  http:Caller hc
     hc->respond(p);
 }
 ```
+
+When the caller `respond()` method is invoked from HTTP post resource by providing `anydata` payload, the status 
+code of the outbound response will be set to HTTP Created (201) by default.
+
 ##### 2.3.4.2. http:Request
 
 The `http:Request` represents the request which is sent and received over the network which includes headers and 
@@ -424,7 +434,7 @@ resource function get person(http:Request req) {
 }
 ```
 
-See section [Request and Response] to find out more. 
+See section [Request and Response](#6-request-and-response) to find out more. 
 
 ##### 2.3.4.3. Query parameter
 
@@ -525,7 +535,7 @@ service /queryparamservice on QueryBindingIdealEP {
 </tr>
 </table>
 
-See section [Query] to understand accessing query param via the request object.
+See section [Query](#52-query) to understand accessing query param via the request object.
 
 ##### 2.3.4.4. Payload parameter
 
@@ -610,7 +620,7 @@ process. Payload binding is not recommended if the service behaves as a proxy/pa
 not accessed.
 
 User may specify the expected content type in the annotation to shape the resource as described in section [Payload 
-binding parameter]
+binding parameter](#431-payload-binding-parameter)
 
 ##### 2.3.4.5. Header parameter
 
@@ -730,7 +740,7 @@ service /headerparamservice on HeaderBindingIdealEP {
 </table>
 
 
-#### 2.3.4. Return types
+#### 2.3.5. Return types
 The resource function supports anydata, error?, http:Response and http:StatusCodeResponse as return types. 
 Whenever user returns a particular output, that will result in an HTTP response to the caller who initiated the 
 call. Therefore, user does not necessarily depend on the `http:Caller` and its remote methods to proceed with the 
@@ -762,7 +772,7 @@ Based on the return types respective header value is added as the `Content-type`
 | map\<json\>, table<map\<json\>>, map\<json\>[], table<map\<json\>>)[] | application/json         |
 | http:StatusCodeResponse                                               | application/json         |
 
-#### 2.3.4.1. Status Code Response
+##### 2.3.5.1. Status Code Response
 
 The status code response records are defined in the HTTP module for every HTTP status code. It improves readability & 
 helps OpenAPI spec generation. 
@@ -799,7 +809,7 @@ resource function get greeting() returns http:Ok|http:InternalServerError {
 }
 ```
 
-#### 2.3.4.2. Return nil
+##### 2.3.5.2. Return nil
 
 Return nil from the resource has few meanings. 
 
@@ -832,7 +842,23 @@ resource function get fruit(string? colour, http:Caller caller) {
     return; // 500 internal Server Error
 }
 ```
-#### 2.3.5. Introspection resource
+
+##### 2.3.5.3. Default response status codes
+
+To improve the developer experience for RESTful API development, following default status codes will be used in outbound 
+response when returning `anydata` directly from a resource function.
+
+| Resource Accessor | Semantics                                                     | Status Code             |
+|-------------------|---------------------------------------------------------------|-------------------------|
+| GET               | Retrieve the resource                                         | 200 OK                  |
+| POST              | Create a new resource                                         | 201 Created             |
+| PUT               | Create a new resource or update an existing resource          | 200 OK                  |
+| PATCH             | Partially update an existing resource                         | 200 OK                  |
+| DELETE            | Delete an existing resource                                   | 200 OK                  |
+| HEAD              | Retrieve headers                                              | 200 OK                  |
+| OPTIONS           | Retrieve permitted communication options                      | 200 OK                  |
+
+#### 2.3.6. Introspection resource
 
 The introspection resource is internally generated for each service and host the openAPI doc can be generated 
 (or retrieved) at runtime when requested from the hosted service itself. In order to get the openAPI doc hosted
@@ -1199,7 +1225,71 @@ map<string|string[]> headers = {
 string resp = check httpClient->get("/data", headers);
 ````
 
-###### 2.4.2.3 Forward/Execute methods
+###### 2.4.2.3 Resource methods
+
+In addition to the above remote method actions, HTTP client supports executing standard HTTP methods through resource 
+methods. The following are the definitions of those resource methods :
+
+```ballerina
+# The post resource function can be used to send HTTP POST requests to HTTP endpoints.
+resource function post [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+            TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
+
+# The put resource function can be used to send HTTP PUT requests to HTTP endpoints.            
+resource function put [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+            TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
+
+# The patch resource function can be used to send HTTP PATCH requests to HTTP endpoints.              
+resource function patch [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+            TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
+
+# The delete resource function can be used to send HTTP DELETE requests to HTTP endpoints.              
+resource function delete [string ...path](RequestMessage message = (), map<string|string[]>? headers = (), string? mediaType = (),
+            TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
+
+# The head resource function can be used to send HTTP HEAD requests to HTTP endpoints.              
+resource function head [string ...path](map<string|string[]>? headers = (), *QueryParams params)
+            returns Response|ClientError; 
+
+# The get resource function can be used to send HTTP GET requests to HTTP endpoints.              
+resource function get [string ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
+            *QueryParams params) returns targetType|ClientError;
+
+# The options resource function can be used to send HTTP OPTIONS requests to HTTP endpoints.              
+resource function options [string ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
+            *QueryParams params) returns targetType|ClientError;                                               
+```
+
+The query parameter is passed as field-value pair in the resource method call. The following are examples of such 
+resource method calls :
+
+```ballerina
+// Making a GET request
+http:Client httpClient = check new ("https://www.example.com");
+map<string|string[]> headers = {
+   "my-header": "my-header-value",
+   "header-2": ["foo", "bar"]
+};
+string resp = check httpClient->/date.get(headers, id = 123);
+// Same as the following :
+// string response = check httpClient->get("/date?id&123", headers);
+```
+
+```ballerina
+// Making a POST request
+http:Client httpClient = check new ("https://www.example.com");
+json payload = {
+   name: "foo",
+   age: 25,
+   address: "area 51"
+};
+map<string> headers = { "my-header": "my-header-value" };
+string response = check httpClient->/some/endpoint(payload, headers, "application/json", name = "foo", id = 123);
+// Same as the following :
+// string response = check httpClient->post("/some/endpoint?name=foo&id=123", payload, headers, "application/json");
+```
+
+###### 2.4.2.4 Forward/Execute methods
 
 In addition to the standard HTTP methods, `forward` function can be used to proxy an inbound request using the incoming 
 HTTP request method. Also `execute` remote function is useful to send request with custom HTTP verbs such as `move`, 
@@ -1217,7 +1307,7 @@ remote isolated function forward(string path, Request request, TargetType target
         returns  targetType|ClientError;
 ```
 
-###### 2.4.2.4 HTTP2 additional methods
+###### 2.4.2.5 HTTP2 additional methods
 Following are the HTTP2 client related additional remote functions to deal with promises and responses.
 
 ```ballerina
@@ -2019,7 +2109,7 @@ listener http:Listener echoListener = new http:Listener(9090, config = {intercep
 
 ##### 8.1.4.3 Execution order of interceptors
 
-![img.png](resources/img.png)
+![img.png](_resources/img.png)
 In the above example blue dashed box represents the `RequestErrorInterceptor` and blue boxes simply represent the 
 `RequestInterceptors`, whereas green dashed box represents the `ResponseErrorInterceptor` and green boxes simply represent the 
 `ResponseInterceptors`. 

@@ -260,6 +260,7 @@ export default function PostPage({
                   setShowToc(true);
                   if (children.length === 1) {
                     id = children[0]
+                      .toString()
                       .toLowerCase()
                       .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
                       .replace(/ /g, "-");
@@ -289,6 +290,7 @@ export default function PostPage({
                   setShowToc(true);
                   if (children.length === 1) {
                     id = children[0]
+                      .toString()
                       .toLowerCase()
                       .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
                       .replace(/ /g, "-");
@@ -318,6 +320,7 @@ export default function PostPage({
                   setShowToc(true);
                   if (children.length === 1) {
                     id = children[0]
+                      .toString()
                       .toLowerCase()
                       .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
                       .replace(/ /g, "-");
@@ -347,6 +350,7 @@ export default function PostPage({
                   setShowToc(true);
                   if (children.length === 1) {
                     id = children[0]
+                      .toString()
                       .toLowerCase()
                       .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
                       .replace(/ /g, "-");
@@ -376,6 +380,7 @@ export default function PostPage({
                   setShowToc(true);
                   if (children.length === 1) {
                     id = children[0]
+                      .toString()
                       .toLowerCase()
                       .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
                       .replace(/ /g, "-");

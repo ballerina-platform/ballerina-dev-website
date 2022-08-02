@@ -6,10 +6,13 @@ import remarkHtml from "remark-html";
 export default function Toc(props) {
   const source = props.source;
   let uniqueHeadingList = [];
+  let hash = false;
 
-  const clickMe = (sectionId) => {
+  const clickMe = (triggerElement, sectionId) => {
+    if (triggerElement.tagName.toLowerCase() === "code")
+      triggerElement = triggerElement.parentElement;
     const match = sectionId.match(
-      /(?<id_1>(?:\w|-)+)-(?<count>\d+)|((?<id_2>(?:\w|-)+))/
+      /(?<id_1>(?:\w|-)+)-(?<count>\d)$|((?<id_2>(?:\w|-)+))/
     );
     const id = match.groups.id_1 || match.groups.id_2;
     const sectionNumber = match.groups.count;
@@ -28,58 +31,62 @@ export default function Toc(props) {
       el.classList.remove("active");
     });
 
+    triggerElement.classList.add("active");
     location.hash = "#" + sectionId;
-    event.target.classList.add("active");
     element.scrollIntoView();
   };
 
   //Highlight toc on scroll
-  const [scroll, setScroll] = React.useState(false);
   React.useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setScroll(window.scrollY > 50);
-
-      checkVisibleSection();
+    window.addEventListener("hashchange", () => {
+      hash = true;
+      setTimeout(() => (hash = false), 1000);
     });
-    // });
+    window.addEventListener("scroll", () => {
+      if (!hash) {
+        checkVisibleSection();
+      }
+    });
   }, []);
 
   //---Check the visible section
   function checkVisibleSection() {
-    var nav = document.getElementById("markdown-navigation"),
+    let nav = document.getElementById("markdown-navigation"),
       sections = document.querySelectorAll(".section"),
-      delay = null;
-
-    var minor = window.innerHeight,
+      minor = window.innerHeight,
       section = null;
 
     //---Select the section closest to the top
-    [].forEach.call(sections, function (item) {
-      var offset = item.getBoundingClientRect();
-
-      if (Math.abs(offset.top) < minor) {
+    [].forEach.call(sections, (item) => {
+      let offset = item.getBoundingClientRect();
+      if (Math.abs(offset.top) < minor + 25) {
         minor = Math.abs(offset.top);
-        console.log(item);
         section = item;
       }
     });
 
-    // React.useEffect(() => {
     //---If the section exists
     if (section) {
-      var index = section.dataset.section,
-        link = nav.querySelector("div[data-section='" + section.id + "']");
+      let sectionName = section.dataset.section,
+        similarSections = Array.prototype.slice.call(
+          document.querySelectorAll(
+            '.mdContent [data-section="' + sectionName + '"]'
+          )
+        ),
+        index = similarSections.indexOf(section),
+        link = nav.querySelector(
+          `[data-section="${sectionName}${index > 0 ? `-${index}` : ""}"]`
+        );
 
       //---If the link is not already active
       if (!link.classList.contains("active")) {
         //---Remove the active class
-        nav.querySelector(".title-anchor").classList.remove("active");
+        nav.querySelector("div.active").classList.remove("active");
 
         //---Add the active class
         link.classList.add("active");
       }
     }
-    // })
   }
 
   // get the count of an element in an array
@@ -87,7 +94,7 @@ export default function Toc(props) {
     return array.filter((item) => item === value).length;
   };
 
-  const navGen = (source) => {
+  const NavGen = (count, source) => {
     const [data, setData] = React.useState({});
 
     // declare the async data fetching function
@@ -118,6 +125,7 @@ export default function Toc(props) {
       sectionId = String(text)
         .replace(/<code>/g, "")
         .replace(/<\/code>/g, "")
+        .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
         .toLowerCase()
         .replace(/ /g, "-");
 
@@ -131,10 +139,11 @@ export default function Toc(props) {
         level: level,
         text: text,
         sectionId: sectionId,
+        active: count === 1 ? true : false,
       };
 
       setData(myObj);
-    }, [source]);
+    }, [count, source]);
 
     // the useEffect is only there to call `fetchData` at the right time
     React.useEffect(() => {
@@ -149,15 +158,18 @@ export default function Toc(props) {
   function z(content) {
     const myArray = content.split("\n");
 
-    let codeBlockFound = false;
+    let titleCount = 0,
+      codeBlockFound = false;
     let newArray = myArray.map((value) => {
       if (value.match(/^```/)) {
         codeBlockFound = !codeBlockFound;
       }
       if (value.match(/^#/) && !codeBlockFound) {
-        return navGen(value);
+        titleCount++;
+        return NavGen(titleCount, value);
       }
     });
+
     newArray = newArray.filter(function (element) {
       return element !== undefined;
     });
@@ -169,9 +181,12 @@ export default function Toc(props) {
       <div id="markdown-navigation" className="markdown-navigation">
         {z(source).map((item) => (
           <div
+            key={item.sectionId}
             data-section={item.sectionId}
-            className={`title-anchor ${item.level}`}
-            onClick={() => clickMe(item.sectionId)}
+            className={`title-anchor ${item.level}${
+              item.active ? " active" : ""
+            }`}
+            onClick={(e) => clickMe(e.target, item.sectionId)}
             dangerouslySetInnerHTML={{ __html: item.text }}
           />
         ))}

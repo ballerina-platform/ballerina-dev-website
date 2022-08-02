@@ -20,6 +20,7 @@ The conforming implementation of the specification is released and included in t
 1. [Overview](#1-overview)
 2. [Environment Variable Values](#2-environment-variable-values)
 3. [Operating System Users Information](#3-operating-system-users-information)
+4. [Operating System Command execution](#4-operating-system-command-execution)
 
 ## 1. Overview
 This specification elaborates on the operating-system-related functions available in the OS library.
@@ -54,4 +55,82 @@ string username = os:getUsername();
 The current user's home directory path can be retrieved using the `os:getUserHome()` function.
 ```ballerina
 string userHome = os:getUserHome();
+```
+
+## 4. Operating System Command execution
+The users can execute OS commands using the `os:exec()` function by passing an `os:Command` record.
+```ballerina
+os:Process|os:Error result = os:exec({value: "bal", arguments: ["run", filepath]}, BAL_CONFIG_FILE = "/abc/Config.toml");
+```
+
+The following is the record type definitions of `os:Command`.
+```ballerina
+public type Command record {|
+    string value;
+    string[] arguments = [];
+|};
+```
+
+Additionally, users can pass any number of environment properties as key-value pairs.
+```ballerina
+public type EnvProperties record {|
+    never command?;
+    anydata...;
+|};
+```
+
+This will return an `os:Process` object. To wait for the process to finish its work and exit, `process.waitForExit()` function can be used.
+```ballerina
+int|os:Error exitCode = process.waitForExit();
+```
+
+To retrieve the output of the process, `process.output()` function can be used. This will return the standard output as default. 
+There is an option provided to return standard error by providing file descriptor.
+```ballerina
+byte[]|os:Error err = process.output(io:stderr);
+```
+
+To terminate a process, `process.exit()` function can be used.
+```ballerina
+process.exit();
+```
+
+The following is the definition of the `os:Process` object.
+```ballerina
+# This object contains information on a process being created from Ballerina.
+# This is returned from the `exec` function in the `os` module.
+public class Process {
+
+    # Waits for the process to finish its work and exit. 
+    # This will return 0 if successful, or a different value during failure depending on the operating system.
+    # ```ballerina
+    # int|os:Error exitCode = process.waitForExit();
+    # ```
+    #
+    # + return - Returns the exit code for the process, or else an `Error` if a failure occurs
+    public isolated function waitForExit() returns int|Error {
+        return nativeWaitForExit(self);
+    }
+
+    # Returns the standard output as default. Option provided to return standard error by providing file descriptor.
+    # If the process was not finished and exited explicitly by running process.waitForExit(), then process.output() will finish the work and exit and return the output. 
+    # ```ballerina
+    # byte[]|os:Error err = process.output(io:stderr);
+    # ```
+    #
+    # + fileOutputStream - The output stream (`io:stdout` or `io:stderr`) content needs to be returned
+    # + return - The `byte[]`, which represents the process's 'standard error', or the 'standard out', or an Error
+    public isolated function output(io:FileOutputStream fileOutputStream = io:stdout) returns byte[]|Error {
+        return nativeOutput(self, fileOutputStream);
+    }
+
+    # Terminates the process.
+    # ```ballerina
+    # process.exit();
+    # ```
+    #
+    public isolated function exit() {
+        return nativeExit(self);
+    }
+}
 ```

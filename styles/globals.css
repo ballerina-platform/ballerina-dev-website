@@ -194,22 +194,19 @@ a {
 }
 
 .mdContent h5,
-.policyContent h5
-.archiveContent h5 {
+.policyContent h5 .archiveContent h5 {
   font-size: 1.1rem;
 }
 
 .mdContent h6,
-.policyContent h6
-.archiveContent h6 {
+.policyContent h6 .archiveContent h6 {
   font-size: 1rem;
 }
 
 .mdContent p,
 .mdContent li,
 .policyContent p,
-.communityRow p
-.archiveContent p {
+.communityRow p .archiveContent p {
   font-size: 16px;
   color: #57595d;
   line-height: 24px;
@@ -253,7 +250,8 @@ a {
   font-weight: 400;
 }
 
-.mdContent table th, .mdContent table td {
+.mdContent table th,
+.mdContent table td {
   padding: 10px;
 }
 
@@ -281,7 +279,8 @@ strong {
   font-weight: 700 !important;
 }
 
-pre.shiki, pre.default {
+pre.shiki,
+pre.default {
   padding: 10px;
   border-radius: 5px;
   margin-top: 20px;
@@ -319,6 +318,33 @@ pre.shiki, pre.default {
 .nextLink:hover {
   color: #57595d;
   fill: #57595d;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+}
+
+.mdButton {
+  visibility: hidden;
+  margin-left: -30px;
+  cursor: pointer;
+}
+
+.mdContent h2:hover .mdButton,
+.mdContent h3:hover .mdButton,
+.mdContent h4:hover .mdButton,
+.mdContent h5:hover .mdButton,
+.mdContent h6:hover .mdButton {
+  visibility: visible;
+}
+
+.mdContent h2 code,
+.mdContent h3 code,
+.mdContent h4 code,
+.mdContent h5 code,
+.mdContent h6 code {
+  margin: 0 8px;
 }
 
 /* .prevLink::after {
@@ -462,7 +488,8 @@ pre[class*="language-"] {
   height: 50px;
 }
 
-.catTitleRow  h2, .catTitleRow .apiDocs {
+.catTitleRow h2,
+.catTitleRow .apiDocs {
   display: inline-block;
 }
 

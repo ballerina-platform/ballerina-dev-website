@@ -1347,5 +1347,18 @@ pre[class*="language-"].line-numbers > code {
         ballerinaHighlighter.highlightSnippets();
     };
 </script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
 </body>
 </html>

@@ -105,9 +105,6 @@
                                     <select name="versions" id="versions" class="select-css">
                                         <option value="swan-lake" data-value="latest">Swan Lake</option>
                                         <option value="1.2">v1.2</option>
-                                        <option value="1.1">v1.1</option>
-                                        <option value="1.0">v1.0</option>
-                                   
                                     </select>
                                 </div>
                             </li>
@@ -1579,6 +1576,19 @@ pre[class*="language-"].line-numbers > code {
     window.onload = (event) => {
         ballerinaHighlighter.highlightSnippets();
     };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
 </script>
 </body>
 </html>

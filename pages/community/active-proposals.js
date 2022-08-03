@@ -2,8 +2,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import { Container, Col, Button, Offcanvas } from "react-bootstrap";
-import MarkdownNavbar from "markdown-navbar";
+import { Container, Col } from "react-bootstrap";
 import remarkGfm from "remark-gfm";
 import remarkExternalLinks from 'remark-external-links'
 import Image from "next-image-export-optimizer";
@@ -15,9 +14,7 @@ import { getHighlighter, setCDN } from "shiki";
 setCDN("https://unpkg.com/shiki/");
 
 import Layout from "../../layouts/LayoutOther";
-//import LeftNav from "../../components/common/left-nav/LeftNav";
 import { prefix } from "../../utils/prefix";
-//import LearnToc from "../../utils/learn-lm.json";
 import Toc from "../../components/common/pg-toc/Toc";
 
 export async function getStaticProps() {
@@ -35,9 +32,7 @@ export async function getStaticProps() {
 }
 
 export default function PostPage({ frontmatter, content, id }) {
-  // const MarkdownNavbar = dynamic(() => import('react-markdown-navbar'), { ssr: false });
-
-  // Synatax highlighting
+ 
   const HighlightSyntax = (code, language) => {
     const [codeSnippet, setCodeSnippet] = React.useState([]);
     if (language == "proto") {

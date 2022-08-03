@@ -20,6 +20,13 @@ export default function GetInvolved() {
         </Row>
 
         <Row>
+        <Col xs={12} md={4} lg={4} className={styles.card}>
+            <span className="bookMarkOnPage" id="report-issues"></span>
+            <h4 id="report-issues-title">
+              Report issues
+            </h4>
+            <p><a id="reportissues" target='_blank' rel="noreferrer" className={styles.getStartLinks} href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose">Report issues</a> in the respective GitHub repositories of the areas and components.</p>
+          </Col>
           <Col xs={12} md={4} lg={4} className={styles.card}>
             <span className="bookMarkOnPage" id="contribute-to-the-source-code"></span>
             <h4 id="contribute-to-the-source-code-title">
@@ -35,17 +42,17 @@ export default function GetInvolved() {
             <p>Let the whole community benefit from your work by <a className={styles.getStartLinks} target="_blank" rel="noreferrer" href="/learn/publish-packages-to-ballerina-central/" >
               creating and publishing</a> your own module to <a className={styles.getStartLinks} target="_blank" rel="noreferrer" href="https://central.ballerina.io/" >Ballerina Central</a>. </p>
           </Col>
-          <Col xs={12} md={4} lg={4} className={styles.card}>
-            <span className="bookMarkOnPage" id="report-issues"></span>
-            <h4 id="report-issues-title">
-              Report issues
-            </h4>
-            <p><a id="reportissues" target='_blank' rel="noreferrer" className={styles.getStartLinks} href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose">Report issues</a> in the respective GitHub repositories of the areas and components.</p>
-          </Col>
         </Row>
 
 
         <Row>
+        <Col xs={12} md={4} lg={4} className={styles.card}>
+            <span className="bookMarkOnPage" id="join-dev-google-group"></span>
+            <h4 id="join-dev-google-group-title">
+              Active proposals for Ballerina
+            </h4>
+            <p>Want to find out the active proposals proposed by the Ballerina community? Checkout <a className={styles.getStartLinks} rel="noreferrer" target="_blank" href="/community/active-proposals">Active proposals list</a>.</p>
+          </Col>
           <Col xs={12} md={4} lg={4} className={styles.card}>
             <span className="bookMarkOnPage" id="submit-a-use-case"></span>
             <h4 id="submit-a-use-case-title">
@@ -60,13 +67,7 @@ export default function GetInvolved() {
             </h4>
             <p>Want to talk about Ballerina at your local tech meetup? Reach us at <a className={styles.getStartLinks} href="mailto:contact@ballerina.io">contact@ballerina.io</a>, and we will help you with any presentation content.</p>
           </Col>
-          <Col xs={12} md={4} lg={4} className={styles.card}>
-            <span className="bookMarkOnPage" id="join-dev-google-group"></span>
-            <h4 id="join-dev-google-group-title">
-              Join the Dev Google Group
-            </h4>
-            <p>Get invovled in any technical discussions by joining the <a className={styles.getStartLinks} rel="noreferrer" target="_blank" href="https://groups.google.com/g/ballerina-dev">Ballerina Dev Google group</a>.</p>
-          </Col>
+          
 
           <Modal show={show} onHide={handleClose} id="submitUseCaseForm" className={styles.customModal}>
             <Modal.Header closeButton>

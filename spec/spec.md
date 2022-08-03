@@ -16,17 +16,13 @@ redirect_from:
   
 ---
 
-## About Ballerina specifications
-
 As a language, which is designed to have multiple implementations, Ballerina semantics are defined by a series of specifications and not by the implementation. Currently, there is only one implementation (i.e., jBallerina, which compiles Ballerina to Java bytecodes). Others will follow including a compiler, which generates native binaries using LLVM.
 
 Ballerina has a collection of specifications starting with the Ballerina Language Specification. Other specifications (which are yet to be moved to the specification repository or, in some cases, yet to be written) will cover the standard library, built-in language extensions such as security, immutability & deprecation, module and project management, testing, documentation, compiler extensions for cloud, and Ballerina Central.
 
-### Specification versioning convention
+## Language specifications 
 
 From the start of 2019, Ballerina  specifications are versioned chronologically using the convention `20XYRn`, where `XY` is the 2-digit year (e.g., 19), `R` stands for "Release" and `n` is the release number for that year. Prior to 2019, a semver versioning scheme was used. However, that approach was abandoned when the language specification reached 0.980.
-
-## Language specifications 
 
 ### Released specifications
 

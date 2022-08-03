@@ -45,7 +45,7 @@ redirect_from:
 <div class="row cDownloads">
       <!-- <div class=""> -->
          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
-					<h3 class="cWindows">Windows</h3>
+					<p class="cWindows">Windows</p>
 					<a id="packWindows" href="{{ dist_server }}/downloads/{{ version }}/{{ windows-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ windows-installer }}">
 						<div class="cSize">msi <span id="packWindowsName">{{ windows-installer-size }}</span></div>
 					</a>
@@ -56,7 +56,7 @@ redirect_from:
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
-					<h3 class="cLinux">Linux </h3>
+					<p class="cLinux">Linux </p>
           <div class="row" style='justify-content:space-around'>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cMarginSmall">
               <a id="packLinux" href="{{ dist_server }}/downloads/{{ version }}/{{ linux-installer }}" class="cGTMDownload cDownload cLinuxPKGs  cDownloadNew" data-download="downloads" data-pack="{{ linux-installer }}">
@@ -81,7 +81,7 @@ redirect_from:
           </div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
-					<h3 class="cMac">macOS</h3>
+					<p class="cMac">macOS</p>
 					<a id="packMac" href="{{ dist_server }}/downloads/{{ version }}/{{ macos-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ macos-installer }}">
 						<div class="cSize">pkg <span id="packWindowsName">{{ macos-installer-size }}</span></div>
 					</a>
@@ -93,7 +93,6 @@ redirect_from:
 				</div>
       <!-- </div> -->
    </div>
-
 
 For more download options, see [Downloads](/download).
 

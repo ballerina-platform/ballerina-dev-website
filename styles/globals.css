@@ -331,19 +331,19 @@ pre.default {
   cursor: pointer;
 }
 
-.mdContent h2:hover .mdButton,
-.mdContent h3:hover .mdButton,
-.mdContent h4:hover .mdButton,
-.mdContent h5:hover .mdButton,
-.mdContent h6:hover .mdButton {
+h2.section:hover .mdButton,
+h3.section:hover .mdButton,
+h4.section:hover .mdButton,
+h5.section:hover .mdButton,
+h6.section:hover .mdButton {
   visibility: visible;
 }
 
-.mdContent h2 code,
-.mdContent h3 code,
-.mdContent h4 code,
-.mdContent h5 code,
-.mdContent h6 code {
+h2.section code,
+h3.section code,
+h4.section code,
+h5.section code,
+h6.section code {
   margin: 0 8px;
 }
 

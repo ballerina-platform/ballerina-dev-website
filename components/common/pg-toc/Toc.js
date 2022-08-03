@@ -1,228 +1,196 @@
-import * as React from 'react';
-
-import { remark } from 'remark'
-// import remarkToc from 'remark-toc'
-// import {read} from 'to-vfile'
-// import remarkNormalizeHeadings from 'remark-normalize-headings'
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkHtml from 'remark-html'
-import toc from 'rehype-toc';
-import parse from 'rehype-parse'
-import slug from 'rehype-slug';
-import stringify from 'rehype-stringify';
-
+import * as React from "react";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkHtml from "remark-html";
 
 export default function Toc(props) {
   const source = props.source;
-  // const [active, setActive] = React.useState('');
+  let uniqueHeadingList = [];
+  let hash = false;
 
-  // const clickMe = (itemText) => {
+  const clickMe = (triggerElement, sectionId) => {
+    if (triggerElement.tagName.toLowerCase() === "code")
+      triggerElement = triggerElement.parentElement;
+    const match = sectionId.match(
+      /(?<id_1>(?:\w|-)+)-(?<count>\d)$|((?<id_2>(?:\w|-)+))/
+    );
+    const id = match.groups.id_1 || match.groups.id_2;
+    const sectionNumber = match.groups.count;
 
-  //   const id = itemText.toString()
-  //     .replace(/<code>/g, '')
-  //     .replace(/<\/code>/g, '')
-  //     .toLowerCase()
-  //     .replace(/ /g, '-');
+    const elements = document.querySelectorAll(`#${id}`);
+    let element;
 
-  //   const element = document.getElementById(id)
-  //   const tocItems = document.querySelectorAll('.title-anchor');
-  //   tocItems.forEach(function (el) {
-  //     el.classList.remove("active")
-  //   })
+    if (sectionNumber == undefined) {
+      element = elements[0];
+    } else {
+      element = elements[sectionNumber];
+    }
 
-  //   location.hash = '#' + id;
-  //   event.target.classList.add("active");
-  //   element.scrollIntoView();
-  // }
+    const tocItems = document.querySelectorAll(".title-anchor");
+    tocItems.forEach(function (el) {
+      el.classList.remove("active");
+    });
 
-
+    triggerElement.classList.add("active");
+    location.hash = "#" + sectionId;
+    element.scrollIntoView();
+  };
 
   //Highlight toc on scroll
-  // var nav = document.getElementById("markdown-navigation"),
-  //   sections = document.querySelectorAll(".section"),
-  //   delay = null;
-// console.log(nav);
-//   const [scroll, setScroll] = React.useState(false);
-//   React.useEffect(() => {
+  React.useEffect(() => {
+    window.addEventListener("hashchange", () => {
+      hash = true;
+      setTimeout(() => (hash = false), 1000);
+    });
+    window.addEventListener("scroll", () => {
+      if (!hash) {
+        checkVisibleSection();
+      }
+    });
+  }, []);
 
+  //---Check the visible section
+  function checkVisibleSection() {
+    let nav = document.getElementById("markdown-navigation"),
+      sections = document.querySelectorAll(".section"),
+      minor = window.innerHeight,
+      section = null;
 
-//     // var nav = document.getElementById("markdown-navigation"),
-//     // sections = document.querySelectorAll(".section"),
-//     // delay = null;
-    
-//     // document.addEventListener("DOMContentLoaded", () => {
-//     window.addEventListener("scroll", () => {
-//       setScroll(window.scrollY > 50);
+    //---Select the section closest to the top
+    [].forEach.call(sections, (item) => {
+      let offset = item.getBoundingClientRect();
+      if (Math.abs(offset.top) < minor + 25) {
+        minor = Math.abs(offset.top);
+        section = item;
+      }
+    });
 
-//       checkVisibleSection()
+    //---If the section exists
+    if (section) {
+      let sectionName = section.dataset.section,
+        similarSections = Array.prototype.slice.call(
+          document.querySelectorAll(
+            '.mdContent [data-section="' + sectionName + '"]'
+          )
+        ),
+        index = similarSections.indexOf(section),
+        link = nav.querySelector(
+          `[data-section="${sectionName}${index > 0 ? `-${index}` : ""}"]`
+        );
 
+      //---If the link is not already active
+      if (!link.classList.contains("active")) {
+        //---Remove the active class
+        nav.querySelector("div.active").classList.remove("active");
 
-//     });
-//   // });
-//   }, []);
-
-
-//   //---Check the visible section
-//   function checkVisibleSection() {
-
-//     var nav = document.getElementById("markdown-navigation"),
-//     sections = document.querySelectorAll(".section"),
-//     delay = null;
-
-//     var minor = window.innerHeight,
-//       section = null;
-
-//     //---Select the section closest to the top
-//     [].forEach.call(sections, function (item) {
-
-//       var offset = item.getBoundingClientRect();
-
-//       if (Math.abs(offset.top) < minor) {
-
-//         minor = Math.abs(offset.top);
-// console.log(item);
-//         section = item;
-
-//       }
-
-//     });
-
-
-//     // React.useEffect(() => {
-//     //---If the section exists
-//     if (section) {
-
-//       var index = section.dataset.section,
-//         link = nav.querySelector("div[data-section='" + section.id + "']");
-// // console.log(link);
-//       //---If the link is not already active
-//       if (!link.classList.contains("active")) {
-
-//         //---Remove the active class
-//         nav.querySelector(".title-anchor").classList.remove("active");
-
-//         //---Add the active class
-//         link.classList.add("active");
-
-//       }
-
-//     }
-//   // })
-
-//   }
-
-
-
-
-
-
-
-  // const navGen = (source) => {
-  //   // console.log(source);
-
-  //   const [data, setData] = React.useState({});
-  //   // declare the async data fetching function
-  //   const fetchData = React.useCallback(async () => {
-  //     const file = await unified()
-  //       .use(remarkParse)
-  //       .use(remarkHtml)
-  //       .process(source)
-
-  //     const level = '';
-  //     const text = ''
-  //     const sectionId = '';
-      
-  //     if (String(file).indexOf('h2') > -1) {
-  //       level = 'title-level2';
-  //       text = String(file).match(/<h2>(.*?)<\/h2>/g).map(function (val) {
-  //         return val.replace(/<\/?h2>/g, '');
-  //       });
-  //     }
-
-  //     sectionId = String(text).replace(/<code>/g, '')
-  //       .replace(/<\/code>/g, '')
-  //       .toLowerCase()
-  //       .replace(/ /g, '-');
-
- 
-  //     const myObj = {
-  //       'level': level,
-  //       'text': text,
-  //       'sectionId': sectionId
-  //     }
-
-  //     setData(myObj);
-
-  //   }, [source])
-
-  //   // the useEffect is only there to call `fetchData` at the right time
-  //   React.useEffect(() => {
-  //     fetchData()
-  //       // make sure to catch any error
-  //       .catch(console.error);;
-  //   }, [fetchData])
-
-  //   return data
-
-  // }
-
-
-
-
-  const extractHeadings = (value) => {
-    if (value.match(/^#/)) {
-      return navGen(value);
+        //---Add the active class
+        link.classList.add("active");
+      }
     }
   }
 
+  // get the count of an element in an array
+  const getArrayCount = (array, value) => {
+    return array.filter((item) => item === value).length;
+  };
+
+  const NavGen = (count, source) => {
+    const [data, setData] = React.useState({});
+
+    // declare the async data fetching function
+    const fetchData = React.useCallback(async () => {
+      const file = await unified()
+        .use(remarkParse)
+        .use(remarkHtml)
+        .process(source);
+
+      const level = "";
+      const text = "";
+      const sectionId = "";
+
+      const match = String(file).match(/h(\d)/);
+      if (match.length > 1) {
+        const headingLevel = match[1];
+
+        if (headingLevel > 0 && headingLevel < 7) {
+          level = `title-level${headingLevel}`;
+          text = String(file)
+            .match(/<h\d>(.*?)<\/h\d>/g)
+            .map(function (val) {
+              return val.replace(/<\/?h\d>/g, "");
+            });
+        }
+      }
+
+      sectionId = String(text)
+        .replace(/<code>/g, "")
+        .replace(/<\/code>/g, "")
+        .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
+        .toLowerCase()
+        .replace(/ /g, "-");
+
+      const headingCount = getArrayCount(uniqueHeadingList, sectionId);
+      uniqueHeadingList.push(sectionId);
+      if (headingCount !== 0) {
+        sectionId = sectionId + "-" + headingCount;
+      }
+
+      const myObj = {
+        level: level,
+        text: text,
+        sectionId: sectionId,
+        active: count === 1 ? true : false,
+      };
+
+      setData(myObj);
+    }, [count, source]);
+
+    // the useEffect is only there to call `fetchData` at the right time
+    React.useEffect(() => {
+      fetchData()
+        // make sure to catch any error
+        .catch(console.error);
+    }, [fetchData]);
+
+    return data;
+  };
+
   function z(content) {
-    // console.log(content);
     const myArray = content.split("\n");
 
-    let newArray = (myArray.map(extractHeadings));
-    // console.log(newArray)
+    let titleCount = 0,
+      codeBlockFound = false;
+    let newArray = myArray.map((value) => {
+      if (value.match(/^```/)) {
+        codeBlockFound = !codeBlockFound;
+      }
+      if (value.match(/^#/) && !codeBlockFound) {
+        titleCount++;
+        return NavGen(titleCount, value);
+      }
+    });
+
     newArray = newArray.filter(function (element) {
       return element !== undefined;
     });
-    //  console.log(newArray)
-    return newArray
+    return newArray;
   }
 
   return (
     <>
-      <div id='markdown-navigation' className='markdown-navigation'>
-        {
-          z(source).map(
-            (item, index) =>
-              <div key={index}
-                data-section={item.sectionId}
-                className={`title-anchor ${item.level}`}
-                onClick={() => clickMe(item.text)}
-                dangerouslySetInnerHTML={{ __html: item.text }}
-              />
-          )
-        }
+      <div id="markdown-navigation" className="markdown-navigation">
+        {z(source).map((item) => (
+          <div
+            key={item.sectionId}
+            data-section={item.sectionId}
+            className={`title-anchor ${item.level}${
+              item.active ? " active" : ""
+            }`}
+            onClick={(e) => clickMe(e.target, item.sectionId)}
+            dangerouslySetInnerHTML={{ __html: item.text }}
+          />
+        ))}
       </div>
-
-
-
-
-      {/* {z(source).map((item) =>
-    <div className='markdown-navigation '
-    dangerouslySetInnerHTML={{__html: item}}
-  />
-    )} */}
-      {/* <div
-      dangerouslySetInnerHTML={{__html: z(source)}}
-    /> */}
-      {/* {z(source)} */}
-      {/* {z(source).map((item) =>
-                {item}
-                )} */}
-      {/* <p>vvvvvvvvvvvv {navGen(source)}</p> */}
     </>
-
-
   );
 }

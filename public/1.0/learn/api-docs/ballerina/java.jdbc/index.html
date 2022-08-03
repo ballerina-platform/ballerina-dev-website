@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+      .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+       .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+     <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.0.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>     
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            <div class="primary-list module">
+    
+        <a href="../java.jdbc/index.html">
+            <h3>java.jdbc</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../java.jdbc/index.html#records">Records</a>
+        </li>
+        
+        
+        
+            <li>
+                <a data="clients" href="../java.jdbc/index.html#clients">Clients</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="constants" href="../java.jdbc/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../java.jdbc/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../java.jdbc/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+                
+                <div class="primary-list module">
+    
+        <a href="../java.jdbc/index.html">
+            <h3>java.jdbc</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../java.jdbc/index.html#records">Records</a>
+        </li>
+        
+        
+        
+            <li>
+                <a data="clients" href="../java.jdbc/index.html#clients">Clients</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="constants" href="../java.jdbc/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../java.jdbc/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../java.jdbc/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">java.jdbc</span>
+                    
+                </h1>
+                    <h2>Module overview</h2>
+<p>This module provides the functionality required to access and manipulate data stored in any type of relational database
+that is accessible via Java Database Connectivity (JDBC).</p>
+<p><strong>Prerequisite:</strong> Please add the JDBC driver corresponding to the database you are trying to interact with,
+as a native library dependency in your Ballerina project. Then, once you build the project with <code>ballerina build</code>
+command, you should be able to run the resultant jar with, the <code>java -jar</code> command.</p>
+<p>e.g. Ballerina.toml content.
+Please change the path to the JDBC driver appropriately.</p>
+<pre><code class="language-toml">[project]
+org-name= &quot;sample&quot;
+version= &quot;0.1.0&quot;
+
+[platform]
+target = &quot;java8&quot;
+
+    [[platform.libraries]]
+    artafactId = &quot;mysql-connector-java&quot;
+    version = &quot;8.0.17&quot;
+    path = &quot;/path/to/mysql-connector-java-8.0.17.jar&quot;
+    groupId = &quot;mysql&quot;
+    modules = [&quot;samplemodule&quot;]
+</code></pre>
+<p>Or, if you're trying to run a single bal file, you can copy the JDBC driver into <code>&lt;BALLERINA_HOME&gt;/bre/lib/distributions/jballerina-&lt;VERSION&gt;/bre/lib</code> and
+run the bal file with <code>ballerina run</code> command.</p>
+<h2>Client</h2>
+<p>To access a database, you must first create a <code>Client</code> object. The code for creating a JDBC client can be found below.</p>
+<h3>Creating a client</h3>
+<pre><code class="language-ballerina">jdbc:Client testDB = new ({
+    url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
+    username: &quot;root&quot;,
+    password: &quot;root&quot;,
+    dbOptions: {useSSL: false}
+});
+</code></pre>
+<p>The full list of client properties can be found listed under the <code>jdbc:PoolOptions</code> type.</p>
+<h2>Connection pool handling</h2>
+<p>There are 3 possible scenarios for connection pool handling.</p>
+<ol>
+<li>
+<p>Global, shareable default connection pool</p>
+<p>If you do not provide the <code>poolOptions</code> field, a globally shareable pool will be created for your database unless
+a connection pool matching with the properties you provided already exists.</p>
+<pre><code class="language-ballerina">jdbc:Client testDB = new ({
+    url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
+    username: &quot;root&quot;,
+    password: &quot;root&quot;,
+    dbOptions: {useSSL: false}
+});
+</code></pre>
+</li>
+<li>
+<p>Client owned, unsharable connection pool</p>
+<p>If you define the <code>poolOptions</code> field inline, an unshareable connection pool will be created.</p>
+<pre><code class="language-ballerina">jdbc:Client testDB = new ({
+    url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
+    username: &quot;root&quot;,
+    password: &quot;root&quot;,
+    poolOptions: {maximumPoolSize: 5},
+    dbOptions: {useSSL: false}
+});
+</code></pre>
+</li>
+<li>
+<p>Local shareable connection pool</p>
+<p>If you create a record of type <code>jdbc:PoolOptions</code> and reuse that in the configuration of multiple clients, for each
+set of clients that connects to the same database instance with the same set of properties, a shared connection pool
+will be created.</p>
+<pre><code class="language-ballerina">jdbc:PoolOptions poolOptions1 = {maximumPoolSize: 5};
+
+jdbc:Client testDB1 = new ({
+    url: &quot;jdbc:mysql://localhost:3306/testdb1&quot;,
+    username: &quot;root&quot;,
+    password: &quot;root&quot;,
+    poolOptions: poolOptions1,
+    dbOptions: {useSSL: false}
+});
+
+jdbc:Client testDB2 = new ({
+    url: &quot;jdbc:mysql://localhost:3306/testdb1&quot;,
+    username: &quot;root&quot;,
+    password: &quot;root&quot;,
+    poolOptions: poolOptions1,
+    dbOptions: {useSSL: false}
+});
+
+jdbc:Client testDB3 = new ({
+    url: &quot;jdbc:mysql://localhost:3306/testdb2&quot;,
+    username: &quot;root&quot;,
+    password: &quot;root&quot;,
+    poolOptions: poolOptions1,
+    dbOptions: {useSSL: false}
+});
+</code></pre>
+</li>
+</ol>
+<h2>Database operations</h2>
+<p>Once the client is created, database operations can be executed through that client. This module provides support for
+creating tables and executing stored procedures. It also supports selecting, inserting, deleting, updating, and batch
+updating data. Samples for these operations can be found below.</p>
+<h3>Creating tables</h3>
+<p>This sample creates a table with two columns. One column is of type <code>int</code>, and the other is of type <code>varchar</code>.
+The CREATE statement is executed via the <code>update</code> remote function of the client.</p>
+<pre><code class="language-ballerina">// Create the ‘Students’ table with fields ‘id’, 'name' and ‘age’.
+var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot; +
+                         &quot;age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;);
+if (ret is jdbc:UpdateResult) {
+    io:println(&quot;Students table create status in DB: &quot;, ret.updatedRowCount);
+} else {
+    error err = ret;
+    io:println(&quot;Students table creation failed: &quot;,
+                &lt;string&gt;err.detail()[&quot;message&quot;]);
+}
+</code></pre>
+<h3>Inserting data</h3>
+<p>This sample shows three examples of data insertion by executing an INSERT statement using the <code>update</code> remote function
+of the client.</p>
+<p>In the first example, query parameter values are passed directly into the query statement of the <code>update</code>  remote function:</p>
+<pre><code class="language-ballerina">var ret = testDB-&gt;update(&quot;INSERT INTO student(age, name) &quot; +
+                         &quot;values (23, 'john')&quot;);
+if (ret is jdbc:UpdateResult) {
+    io:println(&quot;Inserted row count to Students table: &quot;, ret.updatedRowCount);
+} else {
+    error err = ret;
+    io:println(&quot;Insert to Students table failed: &quot;,
+                &lt;string&gt;err.detail()[&quot;message&quot;]);
+}
+</code></pre>
+<p>In the second example, the parameter values, which are in local variables, are passed directly as parameters to
+the <code>update</code> remote function. This direct parameter passing can be done for any primitive Ballerina type like <code>string</code>,
+<code>int</code>, <code>float</code>, or <code>boolean</code>. The SQL type of the parameter is derived from the type of the Ballerina variable that
+is passed in.</p>
+<pre><code class="language-ballerina">string name = &quot;Anne&quot;;
+int age = 8;
+var ret = testDB-&gt;update(&quot;INSERT INTO student(age, name) values (?, ?)&quot;,
+                          age, name);
+if (ret is jdbc:UpdateResult) {
+    io:println(&quot;Inserted row count to Students table: &quot;, ret.updatedRowCount);
+} else {
+    error err = ret;
+    io:println(&quot;Insert to Students table failed: &quot;,
+                &lt;string&gt;err.detail()[&quot;message&quot;]);
+}
+</code></pre>
+<p>In the third example, parameter values are passed as a <code>jdbc:Parameter</code> to the <code>update</code> remote function. Use
+<code>jdbc:Parameter</code> when you need to provide more details such as the exact SQL type of the parameter, or the parameter
+direction. The default parameter direction is <code>IN</code>.</p>
+<pre><code class="language-ballerina">jdbc:Parameter p1 = {sqlType: jdbc:TYPE_VARCHAR, value: &quot;James&quot;};
+jdbc:Parameter p2 = {sqlType: jdbc:TYPE_INTEGER, value: 10};
+
+var ret = testDB-&gt;update(&quot;INSERT INTO student(age, name) values (?, ?)&quot;,
+                          p2, p1);
+if (ret is jdbc:UpdateResult) {
+    io:println(&quot;Inserted row count to Students table: &quot;, ret.updatedRowCount);
+} else {
+    error err = ret;
+    io:println(&quot;Insert to Students table failed: &quot;,
+                &lt;string&gt;err.detail()[&quot;message&quot;]);
+}
+</code></pre>
+<h3>Inserting data with auto-generated keys</h3>
+<p>This example demonstrates inserting data while returning the auto-generated keys. It achieves this by using the
+<code>update</code> remote function to execute the INSERT statement.</p>
+<pre><code class="language-ballerina">int age = 31;
+string name = &quot;Kate&quot;;
+var ret = testDB-&gt;update(&quot;INSERT INTO student (age, name) values (?, ?)&quot;,
+                          age, name);
+if (ret is jdbc:UpdateResult) {
+    int count = ret.updatedRowCount;
+    int generatedKey = &lt;int&gt;ret.generatedKeys[&quot;GENERATED_KEY&quot;];
+    io:println(&quot;Inserted row count: &quot;, count);
+    io:println(&quot;Generated key: &quot;, generatedKey);
+} else {
+    error err = ret;
+    io:println(&quot;Insert to table failed: &quot;, &lt;string&gt;err.detail()[&quot;message&quot;]);
+}
+</code></pre>
+<h3>Selecting data</h3>
+<p>This example demonstrates selecting data. First, a type is created to represent the returned result set. Next, the
+SELECT query is executed via the <code>select</code> remote function of the client by passing that result set type. Once the
+query is executed, each data record can be retrieved by looping the result set. The <code>table</code> returned by the select
+operation holds a pointer to the actual data in the database and it loads data from the table only when it is accessed.
+This table can be iterated only once.</p>
+<pre><code class="language-ballerina">// Define a type to represent the results.
+type Student record {
+    int id;
+    int age;
+    string name;
+};
+
+// Select the data from the table. Query Parameters are passed directly. Similar to `update` examples,
+// parameters can be passed as `jdbc:Parameter`s as well.
+var ret = testDB-&gt;select(&quot;SELECT * FROM student WHERE id &lt; ? AND age &gt; ?&quot;,
+                          Student, 10, 12);
+if (ret is table&lt;Student&gt;) {
+    // Iterating returned table.
+    foreach var row in ret {
+        io:println(&quot;Student:&quot;, row.id, &quot;|&quot;, row.name, &quot;|&quot;, row.age);
+    }
+} else {
+    error err = ret;
+    io:println(&quot;Select data from student table failed: &quot;,
+                &lt;string&gt;err.detail()[&quot;message&quot;]);
+}
+</code></pre>
+<h3>Updating data</h3>
+<p>This example demonstrates modifying data by executing an UPDATE statement via the <code>update</code> remote function of
+the client.</p>
+<pre><code class="language-ballerina">var ret = testDB-&gt;update(&quot;UPDATE student SET name = 'John' WHERE age = ?&quot;, 23);
+if (ret is jdbc:UpdateResult) {
+    io:println(&quot;Updated row count in Students table: &quot;, ret.updatedRowCount);
+} else {
+    error err = ret;
+    io:println(&quot;Insert to Students table failed: &quot;,
+                &lt;string&gt;err.detail()[&quot;message&quot;]);
+}
+</code></pre>
+<h3>Batch updating data</h3>
+<p>This example demonstrates how to insert multiple records with a single INSERT statement that is executed via the
+<code>batchUpdate</code> remote function of the client. This is done by first creating multiple parameter arrays, each
+representing a single record, and then passing those arrays to the <code>batchUpdate</code> operation. Similarly, multiple
+UPDATE statements can also be executed via <code>batchUpdate</code>.</p>
+<pre><code class="language-ballerina">// Create the first batch of parameters.
+jdbc:Parameter para1 = {sqlType: jdbc:TYPE_VARCHAR, value: &quot;Alex&quot;};
+jdbc:Parameter para2 = {sqlType: jdbc:TYPE_INTEGER, value: 12};
+jdbc:Parameter[] parameters1 = [para1, para2];
+
+// Create the second batch of parameters.
+jdbc:Parameter para3 = {sqlType: jdbc:TYPE_VARCHAR, value: &quot;Peter&quot;};
+jdbc:Parameter para4 = {sqlType: jdbc:TYPE_INTEGER, value: 6};
+jdbc:Parameter[] parameters2 = [para3, para4];
+
+// Do the batch update by passing the batches.
+jdbc:BatchUpdateResult ret = testDB-&gt;batchUpdate(&quot;INSERT INTO &quot; +
+                             &quot;Student(name, age) values (?, ?)&quot;,
+                             false, parameters1, parameters2);
+error? e = ret.returnedError;
+if (e is error) {
+    io:println(&quot;Error occurred:&quot;, &lt;string&gt;e.detail()[&quot;message&quot;]);
+} else {
+    io:println(&quot;Batch item 1 update count: &quot;, ret.updatedRowCount[0]);
+    io:println(&quot;Batch item 2 update count: &quot;, ret.updatedRowCount[1]);
+}
+</code></pre>
+<h3>Calling stored procedures</h3>
+<p>The following examples demonstrate executing stored procedures via the <code>call</code> remote function of the client.</p>
+<p>The first example shows how to create and call a simple stored procedure that inserts data.</p>
+<pre><code class="language-ballerina">// Create the stored procedure.
+var ret = testDB-&gt;update(&quot;CREATE PROCEDURE INSERTDATA &quot; +
+                            &quot;(IN pName VARCHAR(255), IN pAge INT) &quot; +
+                            &quot;BEGIN &quot; +
+                            &quot;INSERT INTO Student(name, age) &quot; +
+                            &quot;values (pName, pAge); &quot; +
+                            &quot;END&quot;);
+if (ret is jdbc:UpdateResult) {
+    io:println(&quot;Stored proc creation status: : &quot;, ret.updatedRowCount);
+} else {
+    error err = ret;
+    io:println(&quot;Stored proc creation failed: &quot;,
+                &lt;string&gt;err.detail()[&quot;message&quot;]);
+}
+
+// Call the stored procedure.
+var retCall = testDB-&gt;call(&quot;{CALL INSERTDATA(?,?)}&quot;, (), &quot;George&quot;, 15);
+if (retCall is () | table&lt;record {}&gt;[]) {
+    io:println(&quot;Call operation successful&quot;);
+} else {
+    error err = retCall;
+    io:println(&quot;Stored procedure call failed: &quot;,
+                &lt;string&gt;err.detail()[&quot;message&quot;]);
+}
+</code></pre>
+<p>This next example shows how to create and call a stored procedure that accepts <code>INOUT</code> and <code>OUT</code> parameters.</p>
+<pre><code class="language-ballerina">// Create the stored procedure.
+var ret = testDB-&gt;update(&quot;CREATE PROCEDURE GETCOUNT &quot; +
+                            &quot;(INOUT pID INT, OUT pCount INT) &quot; +
+                            &quot;BEGIN &quot; +
+                            &quot;SELECT COUNT(*) INTO pID FROM Student &quot; +
+                                &quot;WHERE id = pID; &quot; +
+                            &quot;SELECT COUNT(*) INTO pCount FROM Student &quot; +
+                                &quot;WHERE id = 2; &quot; +
+                            &quot;END&quot;);
+if (ret is jdbc:UpdateResult) {
+    io:println(&quot;Stored proc creation status: : &quot;, ret.updatedRowCount);
+} else {
+    error err = ret;
+    io:println(&quot;Stored procedure creation failed:  &quot;,
+                &lt;string&gt;err.detail()[&quot;message&quot;]);
+}
+
+// Call the stored procedure.
+jdbc:Parameter param1 = {sqlType: jdbc:TYPE_INTEGER, value: 3,
+                         direction: jdbc:DIRECTION_INOUT};
+jdbc:Parameter param2 = {sqlType: jdbc:TYPE_INTEGER,
+                         direction: jdbc:DIRECTION_OUT};
+var retCall = testDB-&gt;call(&quot;{CALL GETCOUNT(?,?)}&quot;, (), param1, param2);
+if (retCall is () | table&lt;record {}&gt;[]) {
+    io:println(&quot;Call operation successful&quot;);
+    io:print(&quot;Student count with ID = 3: &quot;);
+    io:println(param1.value);
+    io:print(&quot;Student count with ID = 2: &quot;);
+    io:println(param2.value);
+} else {
+    error err = retCall;
+    io:println(&quot;Stored procedure call failed: &quot;,
+                &lt;string&gt;err.detail()[&quot;message&quot;]);
+}
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> The default thread pool size used in Ballerina is the number of processors available * 2. You can configure
+the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environment variable.</p>
+</blockquote>
+
+
+            
+
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ApplicationErrorData" title="ApplicationErrorData">
+                                <a class="records"
+                                   href="records/ApplicationErrorData.html">ApplicationErrorData</a></td>
+                            <td class="module-desc">Represents the properties belonging to an `ApplicationError`
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="BatchUpdateResult" title="BatchUpdateResult">
+                                <a class="records"
+                                   href="records/BatchUpdateResult.html">BatchUpdateResult</a></td>
+                            <td class="module-desc">Represents the output of the `batchUpdate` remote function.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ClientConfiguration" title="ClientConfiguration">
+                                <a class="records"
+                                   href="records/ClientConfiguration.html">ClientConfiguration</a></td>
+                            <td class="module-desc">Provides a set of configurations for the JDBC Client.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="DatabaseErrorData" title="DatabaseErrorData">
+                                <a class="records"
+                                   href="records/DatabaseErrorData.html">DatabaseErrorData</a></td>
+                            <td class="module-desc">Represents the properties belonging to a `DatabaseError`
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Parameter" title="Parameter">
+                                <a class="records"
+                                   href="records/Parameter.html">Parameter</a></td>
+                            <td class="module-desc">Represents a parameter for the JDBC Client remote functions when a variable needs to be passed
+to the remote function.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="PoolOptions" title="PoolOptions">
+                                <a class="records"
+                                   href="records/PoolOptions.html">PoolOptions</a></td>
+                            <td class="module-desc">Represents the properties which are used to configure DB connection pool.
+Default values of the fields can be set through the configuration API.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="UpdateResult" title="UpdateResult">
+                                <a class="records"
+                                   href="records/UpdateResult.html">UpdateResult</a></td>
+                            <td class="module-desc">Represents the output of the `update` remote function.
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+
+            
+             <section class="method-content" id="clients">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#clients">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Clients </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="Client" title="Client">
+                                <a class="clients"
+                                   href="clients/Client.html">Client</a></td>
+                            <td class="module-desc"><p>Represents a JDBC client endpoint.</p>
+</td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+           
+
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DATABASE_ERROR_REASON" title="DATABASE_ERROR_REASON"><a
+                                    class="constant" href="constants.html#DATABASE_ERROR_REASON">DATABASE_ERROR_REASON</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="APPLICATION_ERROR_REASON" title="APPLICATION_ERROR_REASON"><a
+                                    class="constant" href="constants.html#APPLICATION_ERROR_REASON">APPLICATION_ERROR_REASON</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_VARCHAR" title="TYPE_VARCHAR"><a
+                                    class="constant" href="constants.html#TYPE_VARCHAR">TYPE_VARCHAR</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_CHAR" title="TYPE_CHAR"><a
+                                    class="constant" href="constants.html#TYPE_CHAR">TYPE_CHAR</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_LONGVARCHAR" title="TYPE_LONGVARCHAR"><a
+                                    class="constant" href="constants.html#TYPE_LONGVARCHAR">TYPE_LONGVARCHAR</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_NCHAR" title="TYPE_NCHAR"><a
+                                    class="constant" href="constants.html#TYPE_NCHAR">TYPE_NCHAR</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_LONGNVARCHAR" title="TYPE_LONGNVARCHAR"><a
+                                    class="constant" href="constants.html#TYPE_LONGNVARCHAR">TYPE_LONGNVARCHAR</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_NVARCHAR" title="TYPE_NVARCHAR"><a
+                                    class="constant" href="constants.html#TYPE_NVARCHAR">TYPE_NVARCHAR</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_BIT" title="TYPE_BIT"><a
+                                    class="constant" href="constants.html#TYPE_BIT">TYPE_BIT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_BOOLEAN" title="TYPE_BOOLEAN"><a
+                                    class="constant" href="constants.html#TYPE_BOOLEAN">TYPE_BOOLEAN</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_TINYINT" title="TYPE_TINYINT"><a
+                                    class="constant" href="constants.html#TYPE_TINYINT">TYPE_TINYINT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_SMALLINT" title="TYPE_SMALLINT"><a
+                                    class="constant" href="constants.html#TYPE_SMALLINT">TYPE_SMALLINT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_INTEGER" title="TYPE_INTEGER"><a
+                                    class="constant" href="constants.html#TYPE_INTEGER">TYPE_INTEGER</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_BIGINT" title="TYPE_BIGINT"><a
+                                    class="constant" href="constants.html#TYPE_BIGINT">TYPE_BIGINT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_NUMERIC" title="TYPE_NUMERIC"><a
+                                    class="constant" href="constants.html#TYPE_NUMERIC">TYPE_NUMERIC</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_DECIMAL" title="TYPE_DECIMAL"><a
+                                    class="constant" href="constants.html#TYPE_DECIMAL">TYPE_DECIMAL</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_REAL" title="TYPE_REAL"><a
+                                    class="constant" href="constants.html#TYPE_REAL">TYPE_REAL</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_FLOAT" title="TYPE_FLOAT"><a
+                                    class="constant" href="constants.html#TYPE_FLOAT">TYPE_FLOAT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_DOUBLE" title="TYPE_DOUBLE"><a
+                                    class="constant" href="constants.html#TYPE_DOUBLE">TYPE_DOUBLE</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_BINARY" title="TYPE_BINARY"><a
+                                    class="constant" href="constants.html#TYPE_BINARY">TYPE_BINARY</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_BLOB" title="TYPE_BLOB"><a
+                                    class="constant" href="constants.html#TYPE_BLOB">TYPE_BLOB</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_LONGVARBINARY" title="TYPE_LONGVARBINARY"><a
+                                    class="constant" href="constants.html#TYPE_LONGVARBINARY">TYPE_LONGVARBINARY</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_VARBINARY" title="TYPE_VARBINARY"><a
+                                    class="constant" href="constants.html#TYPE_VARBINARY">TYPE_VARBINARY</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_CLOB" title="TYPE_CLOB"><a
+                                    class="constant" href="constants.html#TYPE_CLOB">TYPE_CLOB</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_NCLOB" title="TYPE_NCLOB"><a
+                                    class="constant" href="constants.html#TYPE_NCLOB">TYPE_NCLOB</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_DATE" title="TYPE_DATE"><a
+                                    class="constant" href="constants.html#TYPE_DATE">TYPE_DATE</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_TIME" title="TYPE_TIME"><a
+                                    class="constant" href="constants.html#TYPE_TIME">TYPE_TIME</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_DATETIME" title="TYPE_DATETIME"><a
+                                    class="constant" href="constants.html#TYPE_DATETIME">TYPE_DATETIME</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_TIMESTAMP" title="TYPE_TIMESTAMP"><a
+                                    class="constant" href="constants.html#TYPE_TIMESTAMP">TYPE_TIMESTAMP</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_ARRAY" title="TYPE_ARRAY"><a
+                                    class="constant" href="constants.html#TYPE_ARRAY">TYPE_ARRAY</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_STRUCT" title="TYPE_STRUCT"><a
+                                    class="constant" href="constants.html#TYPE_STRUCT">TYPE_STRUCT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE_REFCURSOR" title="TYPE_REFCURSOR"><a
+                                    class="constant" href="constants.html#TYPE_REFCURSOR">TYPE_REFCURSOR</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DIRECTION_IN" title="DIRECTION_IN"><a
+                                    class="constant" href="constants.html#DIRECTION_IN">DIRECTION_IN</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DIRECTION_OUT" title="DIRECTION_OUT"><a
+                                    class="constant" href="constants.html#DIRECTION_OUT">DIRECTION_OUT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DIRECTION_INOUT" title="DIRECTION_INOUT"><a
+                                    class="constant" href="constants.html#DIRECTION_INOUT">DIRECTION_INOUT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Direction" title="Direction">
+                                <a class="types" href="types.html#Direction">Direction</a>
+                            </td>
+                            <td class="module-desc"><p>The direction of the parameter.</p>
+<p><code>IN</code> - IN parameters are used to send values to stored procedures
+<code>OUT</code> - OUT parameters are used to get values from stored procedures
+<code>INOUT</code> - INOUT parameters are used to send values and get values from stored procedures</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Error" title="Error">
+                                <a class="types" href="types.html#Error">Error</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a database or application level error returned from JDBC client remote functions.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Param" title="Param">
+                                <a class="types" href="types.html#Param">Param</a>
+                            </td>
+                            <td class="module-desc"><p>The parameter passed into the operations.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="SQLType" title="SQLType">
+                                <a class="types" href="types.html#SQLType">SQLType</a>
+                            </td>
+                            <td class="module-desc"><p>The SQL Datatype of the parameter.</p>
+<p><code>VARCHAR</code> - Small, variable-length character string
+<code>CHAR</code> - Small, fixed-length character string
+<code>LONGVARCHAR</code> - Large, variable-length character string
+<code>NCHAR</code> - Small, fixed-length character string with unicode support
+<code>LONGNVARCHAR</code> - Large, variable-length character string with Unicode support</p>
+<p><code>BIT</code> - Single bit value that can be zero or one, or nil
+<code>BOOLEAN</code> - Boolean value either True or false
+<code>TINYINT</code> - 8-bit integer value which may be unsigned or signed
+<code>SMALLINT</code> - 16-bit signed integer value which may be unsigned or signed
+<code>INTEGER</code> - 32-bit signed integer value which may be unsigned or signed
+<code>BIGINT</code> - 64-bit signed integer value which may be unsigned or signed</p>
+<p><code>NUMERIC</code> - Fixed-precision and scaled decimal values
+<code>DECIMAL</code> - Fixed-precision and scaled decimal values
+<code>REAL</code> - Single precision floating point number
+<code>FLOAT</code> - Double precision floating point number
+<code>DOUBLE</code> - Double precision floating point number</p>
+<p><code>BINARY</code> - Small, fixed-length binary value
+<code>BLOB</code> - Binary Large Object
+<code>LONGVARBINARY</code> - Large, variable-length binary value
+<code>VARBINARY</code> - Small, variable-length binary value</p>
+<p><code>CLOB</code> - Character Large Object.
+<code>NCLOB</code> - Character large objects in multibyte national character set</p>
+<p><code>DATE</code> - Date consisting of day, month, and year
+<code>TIME</code> - Time consisting of hours, minutes, and seconds
+<code>DATETIME</code> - Both DATE and TIME with additional a nanosecond field
+<code>TIMESTAMP</code> - Both DATE and TIME with additional a nanosecond field</p>
+<p><code>ARRAY</code> - Composite data value that consists of zero or more elements of a specified data type
+<code>STRUCT</code> - User-defined structured type, consists of one or more attributes
+<code>REFCURSOR</code> - Cursor value</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="ApplicationError" title="ApplicationError">
+                                <a class="errors" href="errors.html#ApplicationError">ApplicationError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents an error originating from application-level causes.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="DatabaseError" title="DatabaseError">
+                                <a class="errors" href="errors.html#DatabaseError">DatabaseError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents an error caused by an issue related to database accessibility, erroneous queries, constraint violations,
+database resource clean-up, and other similar scenarios.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+</body>
+</html>

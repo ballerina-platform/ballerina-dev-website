@@ -71,8 +71,8 @@ public function main() returns error? {
         string issueList = "";
         foreach var issue in data.items {
             issueList += "|";
-            issueList += string `[${issue.title}](${issue.html_url}){:target=\"_blank\" rel=\"noopener\"}|`;
-            issueList += string `[${issue.user.login}](${issue.user.html_url}){:target=\"_blank\" rel=\"noopener\"}|`;
+            issueList += string `[${issue.title}](${issue.html_url})|`;
+            issueList += string `[${issue.user.login}](${issue.user.html_url})|`;
             issueList += string `${issue.comments}|`;
             issueList += string `${issue.created_at.substring(0, 10)}|`;
 
@@ -87,7 +87,7 @@ public function main() returns error? {
             issueList += new_status + "|";
             issueList = issueList + "\n";
         }
-        repoData += string `## [${repository}](https://github.com/ballerina-platform/${repository}){:target=\"_blank\" rel=\"noopener\"}`;
+        repoData += string `## [${repository}](https://github.com/ballerina-platform/${repository})`;
         repoData += "\n\n|Proposal|Author|Comments|Created date|Status| \n|---|----|----|----|---| \n" + string `${issueList}` + "\n";
         io:println("Repo Count:", repoCount);
     }

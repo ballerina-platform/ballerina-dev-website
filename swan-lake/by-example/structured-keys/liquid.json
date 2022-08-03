@@ -1,0 +1,17 @@
+{
+  "title": "Structured keys",
+  "description": "This BBE demonstrates structured keys in tables in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "structured keys",
+    "keys"
+  ],
+  "permalink": "/learn/by-example/structured-keys",
+  "active": "structured-keys",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/structured-keys",
+    "/swan-lake/learn/by-example/structured-keys.html"
+  ]
+}

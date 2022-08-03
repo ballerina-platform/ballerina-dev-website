@@ -5,8 +5,7 @@ permalink: /downloads/swan-lake-release-notes/2201-0-3/
 active: 2201-0-3
 redirect_from: 
     - /downloads/swan-lake-release-notes/2201-0-3
-    - /downloads/swan-lake-release-notes/
-    - /downloads/swan-lake-release-notes
+    - /downloads/swan-lake-release-notes/2201.0.3/
     - /downloads/swan-lake-release-notes/2201-0-3-swan-lake/
     - /downloads/swan-lake-release-notes/2201-0-3-swan-lake
 ---
@@ -27,7 +26,7 @@ redirect_from:
 
 2. Run `bal dist update` ( or `bal dist pull 2201.0.3`) to update your Ballerina version to 2201.0.3 (Swan Lake).
 
-However, if you are using a version below 2201.0.0 (Swan Lake) and if you already ran `bal dist update` (or `bal dist pull 2201.0.3`) before `bal update`, see [Troubleshooting](/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting) to recover your installation.
+However, if you are using a version below 2201.0.0 (Swan Lake) and if you already ran `bal dist update` (or `bal dist pull 2201.0.3`) before `bal update`, see [Troubleshooting](/downloads/swan-lake-release-notes/swan-lake-2201.0.0/#troubleshooting) to recover your installation.
 
 ## Installing Ballerina
 

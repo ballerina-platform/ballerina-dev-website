@@ -1,0 +1,18 @@
+{
+  "title": "Schedule one time job",
+  "description": "BBE on how to schedule a one-time job execution in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "BBE",
+    "task",
+    "job",
+    "scheduler"
+  ],
+  "permalink": "/learn/by-example/task-one-time-job-execution",
+  "active": "task-one-time-job-execution",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/task-one-time-job-execution",
+    "/swan-lake/learn/by-example/task-one-time-job-execution.html"
+  ]
+}

@@ -49,3 +49,16 @@
         - title: Ballerina to OpenAPI 
           url: /learn/cli-documentation/openapi/#ballerina-to-openapi
           active: ballerina-to-openapi
+    - title: GraphQL
+      url: /learn/cli-documentation/graphql/
+      sublinks:
+        - title: GraphQL to Ballerina 
+          url: /learn/cli-documentation/graphql/#graphql-to-ballerina
+          active: graphql-to-ballerina
+    - title: AsyncAPI
+      url: /learn/cli-documentation/asyncapi/
+      sublinks:
+        - title: AsyncAPI to Ballerina 
+          url: /learn/cli-documentation/asyncapi/#asyncapi-to-ballerina
+          active: asyncapi-to-ballerina
+ 

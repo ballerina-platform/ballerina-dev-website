@@ -1,19 +1,18 @@
 {
-	"version":"1.2.29",
-	"release-date":"2022-05-10",
-	"windows-installer":"ballerina-windows-installer-x64-1.2.29.msi",
-	"windows-installer-size":"139mb",
-	"linux-installer":"ballerina-linux-installer-x64-1.2.29.deb",
-	"linux-installer-size":"135mb",
-	"macos-installer":"ballerina-macos-installer-x64-1.2.29.pkg",
-	"macos-installer-size":"149mb",
-	"rpm-installer":"ballerina-linux-installer-x64-1.2.29.rpm",
-	"rpm-installer-size":"141mb",
-	"other-artefacts":[
-		"ballerina-1.2.29.zip",
-		"ballerina-1.2.29.vsix",
-		"ballerina-metrics-grafana-dashboard-prometheus.json"
-	],
-	"api-docs":"ballerina-api-docs-1.2.29.zip",
-	"release-notes":"ballerina-release-notes-1.2.29.md"
+	"version":"1.2.31",
+	"release-date":"2022-07-07",
+	"windows-installer":"ballerina-windows-installer-x64-1.2.31.msi",
+	"windows-installer-size":"144mb",
+	"linux-installer":"ballerina-linux-installer-x64-1.2.31.deb",
+	"linux-installer-size":"138mb",
+	"macos-installer":"ballerina-macos-installer-x64-1.2.31.pkg",
+	"macos-installer-size":"160mb",
+	"rpm-installer":"ballerina-linux-installer-x64-1.2.31.rpm",
+	"rpm-installer-size":"145mb",
+	"other-artefacts":[  
+		"ballerina-1.2.31.zip",
+		"ballerina-1.2.31.vsix"
+ 	],
+	"api-docs":"ballerina-api-docs-1.2.31.zip",
+	"release-notes":"ballerina-release-notes-1.2.31.md"
 }

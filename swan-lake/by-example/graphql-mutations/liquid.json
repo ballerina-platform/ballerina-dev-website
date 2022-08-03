@@ -1,0 +1,17 @@
+{
+  "title": "Mutations",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql mutation"
+  ],
+  "permalink": "/learn/by-example/graphql-mutations",
+  "active": "graphql-mutations",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-mutations",
+    "/swan-lake/learn/by-example/graphql-mutations.html"
+  ]
+}

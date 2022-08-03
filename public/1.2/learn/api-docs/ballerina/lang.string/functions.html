@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides lang library string operations defined by the language specification 2020R1.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,lang.string">
+
+    <title>API Docs - Functions : lang.string</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Functions</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="#codePointCompare" onclick="menuLinkClick()">codePointCompare</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#concat" onclick="menuLinkClick()">concat</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#endsWith" onclick="menuLinkClick()">endsWith</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#equalsIgnoreCaseAscii" onclick="menuLinkClick()">equalsIgnoreCaseAscii</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#fromBytes" onclick="menuLinkClick()">fromBytes</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#fromCodePointInt" onclick="menuLinkClick()">fromCodePointInt</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#fromCodePointInts" onclick="menuLinkClick()">fromCodePointInts</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getCodePoint" onclick="menuLinkClick()">getCodePoint</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#indexOf" onclick="menuLinkClick()">indexOf</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#iterator" onclick="menuLinkClick()">iterator</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#join" onclick="menuLinkClick()">join</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#lastIndexOf" onclick="menuLinkClick()">lastIndexOf</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#length" onclick="menuLinkClick()">length</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#startsWith" onclick="menuLinkClick()">startsWith</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#substring" onclick="menuLinkClick()">substring</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#toBytes" onclick="menuLinkClick()">toBytes</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#toCodePointInt" onclick="menuLinkClick()">toCodePointInt</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#toCodePointInts" onclick="menuLinkClick()">toCodePointInts</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#toLowerAscii" onclick="menuLinkClick()">toLowerAscii</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#toUpperAscii" onclick="menuLinkClick()">toUpperAscii</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#trim" onclick="menuLinkClick()">trim</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../lang.string/index.html" onclick="menuLinkClick()">
+            <h3>lang.string</h3>
+        </a>
+    
+    <ul>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../lang.string/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Functions - </span>
+                
+                    <a href="../lang.string/index.html">lang.string</a>
+                
+            </h1>
+            <div class="constants">
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#codePointCompare">codePointCompare</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Lexicographically compares strings using their Unicode code points.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#concat">concat</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Concatenates zero or more strings.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#endsWith">endsWith</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Tests whether a string ends with another string.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#equalsIgnoreCaseAscii">equalsIgnoreCaseAscii</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Tests whether two strings are the same, ignoring the case of ASCII characters.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#fromBytes">fromBytes</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Constructs a string from its UTF-8 representation in <code>bytes</code>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#fromCodePointInt">fromCodePointInt</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Constructs a single character string from a code point.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#fromCodePointInts">fromCodePointInts</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Constructs a string from an array of code points.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#getCodePoint">getCodePoint</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns the code point of a character in a string.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#indexOf">indexOf</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Finds the first occurrence of one string in another string.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#iterator">iterator</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns an iterator over the string.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#join">join</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Joins zero or more strings together with a separator.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#lastIndexOf">lastIndexOf</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Finds the last occurrence of one string in another string.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#length">length</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns the length of the string.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#startsWith">startsWith</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Tests whether a string starts with another string.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#substring">substring</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns a substring of a string.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#toBytes">toBytes</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Represents <code>str</code> as an array of bytes using UTF-8.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#toCodePointInt">toCodePointInt</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Converts a single character string to a code point.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#toCodePointInts">toCodePointInts</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Converts a string to an array of code points.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#toLowerAscii">toLowerAscii</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Converts occurrences of A-Z to a-z.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#toUpperAscii">toUpperAscii</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Converts occurrences of a-z to A-Z.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#trim">trim</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Removes ASCII white space characters from the start and end of a string.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+                <div>
+                    
+                        <div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="codePointCompare" title="codePointCompare">
+             <a class="url-link" href="#codePointCompare">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > codePointCompare </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str1, <span class="builtin-type">string</span> str2)</p>
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Lexicographically compares strings using their Unicode code points.
+This orders strings in a consistent and well-defined way,
+but the ordering will often not be consistent with cultural expectations
+for sorted order.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str1</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the first string to be compared</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str2</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the second string to be compared</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
+                <li><p>an int that is less than, equal to or greater than zero,
+according as <code>str1</code> is less than, equal to or greater than <code>str2</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="concat" title="concat">
+             <a class="url-link" href="#concat">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > concat </h2>
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">string</span>...</span> strs)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Concatenates zero or more strings.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >strs</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">string</span>...</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>strings to be concatenated</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>concatenation of all of the <code>strs</code>; empty string if <code>strs</code> is empty</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="endsWith" title="endsWith">
+             <a class="url-link" href="#endsWith">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > endsWith </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str, <span class="builtin-type">string</span> substr)</p>
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Tests whether a string ends with another string.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string to be tested</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >substr</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the ending string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>true if <code>str</code> ends with <code>substr</code>; false otherwise</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="equalsIgnoreCaseAscii" title="equalsIgnoreCaseAscii">
+             <a class="url-link" href="#equalsIgnoreCaseAscii">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > equalsIgnoreCaseAscii </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str1, <span class="builtin-type">string</span> str2)</p>
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Tests whether two strings are the same, ignoring the case of ASCII characters.
+A character in the range a-z is treated the same as the corresponding character in the range A-Z.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str1</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the first string to be compared</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str2</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the second string to be compared</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>true if <code>str1</code> is the same as <code>str2</code>, treating upper-case and lower-case
+ASCII letters as the same; false, otherwise</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="fromBytes" title="fromBytes">
+             <a class="url-link" href="#fromBytes">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > fromBytes </h2>
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> bytes)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> | <span class="builtin-type">error</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Constructs a string from its UTF-8 representation in <code>bytes</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >bytes</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>UTF-8 byte array</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p><code>bytes</code> converted to string or error</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="fromCodePointInt" title="fromCodePointInt">
+             <a class="url-link" href="#fromCodePointInt">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > fromCodePointInt </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">int</span> codePoint)</p>
+            
+                <b> returns </b><span class="builtin-type">Char</span> | <span class="builtin-type">error</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Constructs a single character string from a code point.
+An int is a valid code point if it is in the range 0 to 0x10FFFF inclusive,
+but not in the range 0xD800 or 0xDFFF inclusive.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >codePoint</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>an int specifying a code point</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Char</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>a single character string whose code point is <code>codePoint</code>; or an error
+if <code>codePoint</code> is not a valid code point</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="fromCodePointInts" title="fromCodePointInts">
+             <a class="url-link" href="#fromCodePointInts">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > fromCodePointInts </h2>
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">int</span>[]</span> codePoints)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> | <span class="builtin-type">error</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Constructs a string from an array of code points.
+An int is a valid code point if it is in the range 0 to 0x10FFFF inclusive,
+but not in the range 0xD800 or 0xDFFF inclusive.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >codePoints</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">int</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>an array of ints, each specifying a code point</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>a string with a character for each code point in <code>codePoints</code>; or an error
+if any member of <code>codePoints</code> is not a valid code point</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getCodePoint" title="getCodePoint">
+             <a class="url-link" href="#getCodePoint">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getCodePoint </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str, <span class="builtin-type">int</span> index)</p>
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the code point of a character in a string.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >index</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>an index in <code>str</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
+                <li><p>the Unicode code point of the character at <code>index</code> in <code>str</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="indexOf" title="indexOf">
+             <a class="url-link" href="#indexOf">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > indexOf </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str, <span class="builtin-type">string</span> substr, <span class="builtin-type">int</span> startIndex)</p>
+            
+                <b> returns </b><span class="builtin-type">int?</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Finds the first occurrence of one string in another string.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string in which to search</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >substr</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string to search for</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >startIndex</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        <span class="default"> (default 0)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>index to start searching from</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int?</span></span>)</li>
+                <li><p>index of the first occurrence of <code>substr</code> in <code>str</code> that is &gt;= <code>startIndex</code>,
+or <code>()</code> if there is no such occurrence</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="iterator" title="iterator">
+             <a class="url-link" href="#iterator">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > iterator </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str)</p>
+            
+                <b> returns </b><span class="builtin-type">object { public function next () returns (record {| string value; |}?); }</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns an iterator over the string.
+The iterator will yield the substrings of length 1 in order.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string to be iterated over</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">object { public function next () returns (record {| string value; |}?); }</span></span>)</li>
+                <li><p>a new iterator object</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="join" title="join">
+             <a class="url-link" href="#join">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > join </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> separator, <span class="array-type"><span class="builtin-type">string</span>...</span> strs)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Joins zero or more strings together with a separator.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >separator</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>separator string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >strs</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">string</span>...</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>strings to be joined</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>a string consisting of all of <code>strs</code> concatenated in order
+with <code>separator</code> in between them</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="lastIndexOf" title="lastIndexOf">
+             <a class="url-link" href="#lastIndexOf">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > lastIndexOf </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str, <span class="builtin-type">string</span> substr, <span class="builtin-type">int</span> startIndex)</p>
+            
+                <b> returns </b><span class="builtin-type">int?</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Finds the last occurrence of one string in another string.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string in which to search</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >substr</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string to search for</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >startIndex</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        <span class="default"> (default str.length(str) - substr.length(substr))</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>index to start searching backwards from</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int?</span></span>)</li>
+                <li><p>index of the last occurrence of <code>substr</code> in <code>str</code> that is &lt;= <code>startIndex</code>,
+or <code>()</code> if there is no such occurrence</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="length" title="length">
+             <a class="url-link" href="#length">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > length </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str)</p>
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the length of the string.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
+                <li><p>the number of characters (code points) in <code>str</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="startsWith" title="startsWith">
+             <a class="url-link" href="#startsWith">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > startsWith </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str, <span class="builtin-type">string</span> substr)</p>
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Tests whether a string starts with another string.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string to be tested</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >substr</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the starting string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>true if <code>str</code> starts with <code>substr</code>; false otherwise</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="substring" title="substring">
+             <a class="url-link" href="#substring">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > substring </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str, <span class="builtin-type">int</span> startIndex, <span class="builtin-type">int</span> endIndex)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns a substring of a string.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>source string.</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >startIndex</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the starting index, inclusive</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >endIndex</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        <span class="default"> (default str.length(str))</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the ending index, exclusive</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>substring consisting of characters with index &gt;= startIndex and &lt; endIndex</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="toBytes" title="toBytes">
+             <a class="url-link" href="#toBytes">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > toBytes </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str)</p>
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Represents <code>str</code> as an array of bytes using UTF-8.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span></span>)</li>
+                <li><p>UTF-8 byte array</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="toCodePointInt" title="toCodePointInt">
+             <a class="url-link" href="#toCodePointInt">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > toCodePointInt </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">Char</span> ch)</p>
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Converts a single character string to a code point.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >ch</span>
+                        <span class="type">  <span class="builtin-type">Char</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>a single character string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
+                <li><p>the code point of <code>ch</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="toCodePointInts" title="toCodePointInts">
+             <a class="url-link" href="#toCodePointInts">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > toCodePointInts </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str)</p>
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">int</span>[]</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Converts a string to an array of code points.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">int</span>[]</span></span>)</li>
+                <li><p>an array with a code point for each character of <code>str</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="toLowerAscii" title="toLowerAscii">
+             <a class="url-link" href="#toLowerAscii">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > toLowerAscii </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Converts occurrences of A-Z to a-z.
+Other characters are left unchanged.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string to be converted</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p><code>str</code> with any occurrences of A-Z converted to a-z</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="toUpperAscii" title="toUpperAscii">
+             <a class="url-link" href="#toUpperAscii">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > toUpperAscii </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Converts occurrences of a-z to A-Z.
+Other characters are left unchanged.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string to be converted</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p><code>str</code> with any occurrences of a-z converted to A-Z</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="trim" title="trim">
+             <a class="url-link" href="#trim">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > trim </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> str)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Removes ASCII white space characters from the start and end of a string.
+The ASCII white space characters are 0x9...0xD, 0x20.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >str</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p><code>str</code> with leading or trailing ASCII white space characters removed</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

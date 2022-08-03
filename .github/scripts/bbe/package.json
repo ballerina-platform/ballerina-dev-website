@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "axios": "^0.27.2",
+    "js-yaml": "^4.1.0",
+    "markdown-it": "^12.3.2",
+    "markdown-it-container": "^3.0.0"
+  }
+}

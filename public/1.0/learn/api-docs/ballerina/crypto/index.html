@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+      .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+       .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+     <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.0.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>     
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            <div class="primary-list module">
+    
+        <a href="../crypto/index.html">
+            <h3>crypto</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../crypto/index.html#records">Records</a>
+        </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../crypto/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../crypto/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../crypto/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../crypto/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+                
+                <div class="primary-list module">
+    
+        <a href="../crypto/index.html">
+            <h3>crypto</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../crypto/index.html#records">Records</a>
+        </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../crypto/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../crypto/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../crypto/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../crypto/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">crypto</span>
+                    
+                </h1>
+                    <h2>Module overview</h2>
+<p>This module provides the necessary utilities that are required to hash content using different hashing mechanisms and algorithms.</p>
+<h1>Samples</h1>
+<h2>Hashing</h2>
+<p>The sample given below shows how to use hashing functions such as <code>hashSha512</code> to calculate the hash value of a byte array and then encode the byte array using a common encoding algorithm.</p>
+<pre><code class="language-ballerina">import ballerina/crypto;
+import ballerina/io;
+
+public function main() {
+     // Input value for crypto operations.
+     string input = &quot;Hello Ballerina&quot;;
+     byte[] inputArr = input.toBytes();
+
+     // Hashing input value using different hashing algorithms, 
+     // and printing hash value using Hex encoding.
+     byte[] output = crypto:hashMd5(inputArr);
+     io:println(&quot;Hash with MD5: &quot; + output.toBase16());
+
+     output = crypto:hashSha1(inputArr);
+     io:println(&quot;Hash with SHA1: &quot; + output.toBase16());
+
+     output = crypto:hashSha256(inputArr);
+     io:println(&quot;Hash with SHA256: &quot; + output.toBase16());
+
+     output = crypto:hashSha384(inputArr);
+     io:println(&quot;Hash with SHA384: &quot; + output.toBase16());
+
+     output = crypto:hashSha512(inputArr);
+     io:println(&quot;Hash with SHA512: &quot; + output.toBase16());
+}
+</code></pre>
+<h2>HMAC Generation</h2>
+<p>The sample given below shows how to use HMAC functions such as <code>hmacSha512</code> to calculate the HMAC value of a byte array and then encode the byte array using a common encoding algorithm.</p>
+<pre><code class="language-ballerina">import ballerina/crypto;
+import ballerina/io;
+
+public function main() {
+     // Input value for crypto operations.
+     string input = &quot;Hello Ballerina&quot;;
+     byte[] inputArr = input.toBytes();
+
+     // The key used for HMAC generation.
+     string key = &quot;some-secret&quot;;
+     byte[] keyArr = key.toBytes();
+
+     // HMAC generation for input value using different HMAC algorithms, and printing HMAC value using Hex encoding.
+     byte[] output = crypto:hmacMd5(inputArr, keyArr);
+     io:println(&quot;HMAC with MD5: &quot; + output.toBase16());
+
+     output = crypto:hmacSha1(inputArr, keyArr);
+     io:println(&quot;HMAC with SHA1: &quot; + output.toBase16());
+
+     output = crypto:hmacSha256(inputArr, keyArr);
+     io:println(&quot;HMAC with SHA256: &quot; + output.toBase16());
+
+     output = crypto:hmacSha384(inputArr, keyArr);
+     io:println(&quot;HMAC with SHA384: &quot; + output.toBase16());
+
+     output = crypto:hmacSha512(inputArr, keyArr);
+     io:println(&quot;HMAC with SHA512: &quot; + output.toBase16());
+}
+</code></pre>
+<h2>Calculating CRC32B Checksum</h2>
+<p>The sample given below shows how to use <code>crc32b</code> function to calculate the CRC32B checksum.</p>
+<pre><code class="language-ballerina">import ballerina/crypto;
+import ballerina/io;
+
+public function main() {
+    // Input value for crypto operations.
+    string input = &quot;Hello Ballerina&quot;;
+    byte[] inputArr = input.toBytes();
+
+    // Hex encoded CRC32B checksum generation for input value.
+    io:println(&quot;CRC32B for text: &quot; + crypto:crc32b(inputArr));
+
+    // The XML content to be hashed.
+    xml xmlContent = xml `&lt;foo&gt;Hello Ballerina&lt;/foo&gt;`;
+    byte[] xmlContentArr = xmlContent.toString().toBytes();
+    io:println(&quot;CRC32 for xml content: &quot; + crypto:crc32b(xmlContentArr));
+}
+</code></pre>
+<h2>Signing</h2>
+<p>The sample given below shows how to use signing functions such as <code>signRsaSha512</code> to get the signature value of a byte array and then encode the byte array using a common encoding algorithm.</p>
+<pre><code class="language-ballerina">import ballerina/crypto;
+import ballerina/io;
+
+public function main() returns error? {
+     // Input value for crypto operations.
+     string input = &quot;Hello Ballerina&quot;;
+     byte[] inputArr = input.toBytes();
+
+     // PrivateKey used for signing operations.
+     crypto:KeyStore keyStore = { 
+         path: &quot;/home/ballerina/keystore.p12&quot;,
+         password: &quot;ballerina&quot;
+     };
+     crypto:PrivateKey privateKey = 
+        check crypto:decodePrivateKey(keyStore, &quot;ballerina&quot;, &quot;ballerina&quot;);
+
+     // Signing input value using different signature algorithms, 
+     // and printing the signature value using Hex encoding.
+     byte[] output = check crypto:signRsaMd5(inputArr, privateKey);
+     io:println(&quot;RSA-MD5 signature: &quot; + output.toBase16());
+
+     output = check crypto:signRsaSha1(inputArr, privateKey);
+     io:println(&quot;RSA-SHA1 signature: &quot; + output.toBase16());
+
+     output = check crypto:signRsaSha256(inputArr, privateKey);
+     io:println(&quot;RSA-SHA256 signature: &quot; + output.toBase16());
+
+     output = check crypto:signRsaSha384(inputArr, privateKey);
+     io:println(&quot;RSA-SHA384 signature: &quot; + output.toBase16());
+
+     output = check crypto:signRsaSha512(inputArr, privateKey);
+     io:println(&quot;RSA-SHA512 signature: &quot; + output.toBase16());
+}
+</code></pre>
+<h2>RSA Encryption</h2>
+<p>The sample given below shows how to use encryption function <code>encryptRsaEcb</code> and decryption function <code>decryptRsaEcb</code> to perform RSA encryption and decryption.</p>
+<pre><code class="language-ballerina">import ballerina/crypto;
+import ballerina/io;
+import ballerina/lang.'string as str;
+
+public function main() returns error? {
+    // Input value for crypto operations.
+    string input = &quot;Hello Ballerina&quot;;
+    byte[] inputArr = input.toBytes();
+
+    crypto:KeyStore keyStore = {
+        path: &quot;/home/ballerina/keystore.p12&quot;,
+        password: &quot;ballerina&quot;
+    };
+
+    // Public key used for encryption.
+    crypto:PublicKey publicKey = 
+        check crypto:decodePublicKey(keyStore, &quot;ballerina&quot;);
+
+    // Private key used for decryption.
+    crypto:PrivateKey privateKey = 
+        check crypto:decodePrivateKey(keyStore, &quot;ballerina&quot;, &quot;ballerina&quot;);
+
+    // Encrypt and decrypt input value using RSA ECB PKCS1 padding.
+    byte[] output = check crypto:encryptRsaEcb(inputArr, publicKey);
+    output = check crypto:decryptRsaEcb(output, privateKey);
+    io:println(&quot;RSA ECB PKCS1 decrypted value: &quot; + 
+        check str:fromBytes(output));
+
+    // Encrypt and decrypt input value using 
+    // RSA ECB OAEPwithSHA512andMGF1 padding.
+    output = check crypto:encryptRsaEcb(inputArr, publicKey, 
+        crypto:OAEPwithSHA512andMGF1);
+    output = check crypto:decryptRsaEcb(output, privateKey, 
+        crypto:OAEPwithSHA512andMGF1);
+    io:println(&quot;RSA ECB OAEPwithSHA512andMGF1 decrypted value: &quot; + 
+        check str:fromBytes(output));
+}
+</code></pre>
+<h2>AES Encryption</h2>
+<p>The sample given below shows how to use encryption function <code>encryptAesCbc</code> and decryption function <code>decryptAesCbc</code> to perform AES encryption and decryption.</p>
+<pre><code class="language-ballerina">import ballerina/crypto;
+import ballerina/io;
+import ballerina/lang.'string as str;
+import ballerina/math;
+
+public function main() returns error? {
+    // Input value for crypto operations.
+    string input = &quot;Hello Ballerina!&quot;;
+    byte[] inputArr = input.toBytes();
+
+    // Randomly generate a 128 bit key.
+    byte[16] keyArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    foreach var i in 0...15 {
+        keyArr[i] = &lt;byte&gt;math:randomInRange(0, 255);
+    }
+
+    // Randomly generate a 128 bit IV.
+    byte[16] ivArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    foreach var i in 0...15 {
+        ivArr[i] = &lt;byte&gt;math:randomInRange(0, 255);
+    }
+
+    // Encrypt and decrypt input value using AES CBC PKCS5 padding.
+    byte[] output = check crypto:encryptAesCbc(inputArr, keyArr, ivArr);
+    output = check crypto:decryptAesCbc(output, keyArr, ivArr);
+    io:println(&quot;AES CBC PKCS5 decrypted value: &quot; + 
+        check str:fromBytes(output));
+
+    // Encrypt and decrypt input value using AES CBC no padding.
+    output = check crypto:encryptAesCbc(inputArr, keyArr, ivArr, crypto:NONE);
+    output = check crypto:decryptAesCbc(output, keyArr, ivArr, crypto:NONE);
+    io:println(&quot;AES CBC no padding decrypted value: &quot; + 
+        check str:fromBytes(output));
+
+    // Encrypt and decrypt input value using AES GCM PKCS5 padding.
+    output = check crypto:encryptAesGcm(inputArr, keyArr, ivArr);
+    output = check crypto:decryptAesGcm(output, keyArr, ivArr);
+    io:println(&quot;AES GCM PKCS5 decrypted value: &quot; + 
+        check str:fromBytes(output));
+
+    // Encrypt and decrypt input value using AES GCM no padding.
+    output = check crypto:encryptAesGcm(inputArr, keyArr, ivArr, crypto:NONE);
+    output = check crypto:decryptAesGcm(output, keyArr, ivArr, crypto:NONE);
+    io:println(&quot;AES GCM no padding decrypted value: &quot; + 
+        check str:fromBytes(output));
+
+    // Encrypt and decrypt input value using AES ECB PKCS5 padding.
+    output = check crypto:encryptAesEcb(inputArr, keyArr);
+    output = check crypto:decryptAesEcb(output, keyArr);
+    io:println(&quot;AES ECB PKCS5 decrypted value: &quot; + 
+        check str:fromBytes(output));
+
+    // Encrypt and decrypt input value using AES ECB no padding.
+    output = check crypto:encryptAesEcb(inputArr, keyArr, crypto:NONE);
+    output = check crypto:decryptAesEcb(output, keyArr, crypto:NONE);
+    io:println(&quot;AES ECB no padding decrypted value: &quot; + 
+        check str:fromBytes(output));
+}
+</code></pre>
+
+
+            
+
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Certificate" title="Certificate">
+                                <a class="records"
+                                   href="records/Certificate.html">Certificate</a></td>
+                            <td class="module-desc">X509 public key certificate information.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records"
+                                   href="records/Detail.html">Detail</a></td>
+                            <td class="module-desc">Record type to hold the details of an error.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="KeyStore" title="KeyStore">
+                                <a class="records"
+                                   href="records/KeyStore.html">KeyStore</a></td>
+                            <td class="module-desc">Key store related configurations.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="PrivateKey" title="PrivateKey">
+                                <a class="records"
+                                   href="records/PrivateKey.html">PrivateKey</a></td>
+                            <td class="module-desc">Private key used in cryptographic operations.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="PublicKey" title="PublicKey">
+                                <a class="records"
+                                   href="records/PublicKey.html">PublicKey</a></td>
+                            <td class="module-desc">Public key used in cryptographic operations.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="TrustStore" title="TrustStore">
+                                <a class="records"
+                                   href="records/TrustStore.html">TrustStore</a></td>
+                            <td class="module-desc">Trust store related configurations.
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+
+            
+
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="crc32b" title="crc32b"><a
+                                    class="functions" href="functions.html#crc32b">crc32b</a></td>
+                            <td class="module-desc"><p>Returns Hex encoded CRC32B value for the provided element.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="decodePrivateKey" title="decodePrivateKey"><a
+                                    class="functions" href="functions.html#decodePrivateKey">decodePrivateKey</a></td>
+                            <td class="module-desc"><p>Read a private key from the provided PKCS#12 archive file.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="decodePublicKey" title="decodePublicKey"><a
+                                    class="functions" href="functions.html#decodePublicKey">decodePublicKey</a></td>
+                            <td class="module-desc"><p>Read a public key from the provided PKCS#12 archive file.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="decryptAesCbc" title="decryptAesCbc"><a
+                                    class="functions" href="functions.html#decryptAesCbc">decryptAesCbc</a></td>
+                            <td class="module-desc"><p>Returns AES CBC decrypted value for the given AES CBC encrypted data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="decryptAesEcb" title="decryptAesEcb"><a
+                                    class="functions" href="functions.html#decryptAesEcb">decryptAesEcb</a></td>
+                            <td class="module-desc"><p>Returns AES ECB decrypted value for the given AES ECB encrypted data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="decryptAesGcm" title="decryptAesGcm"><a
+                                    class="functions" href="functions.html#decryptAesGcm">decryptAesGcm</a></td>
+                            <td class="module-desc"><p>Returns AES GCM decrypted value for the given AES GCM encrypted data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="decryptRsaEcb" title="decryptRsaEcb"><a
+                                    class="functions" href="functions.html#decryptRsaEcb">decryptRsaEcb</a></td>
+                            <td class="module-desc"><p>Returns RSA decrypted value for the given RSA encrypted data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="encryptAesCbc" title="encryptAesCbc"><a
+                                    class="functions" href="functions.html#encryptAesCbc">encryptAesCbc</a></td>
+                            <td class="module-desc"><p>Returns AES CBC encrypted value for the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="encryptAesEcb" title="encryptAesEcb"><a
+                                    class="functions" href="functions.html#encryptAesEcb">encryptAesEcb</a></td>
+                            <td class="module-desc"><p>Returns AES ECB encrypted value for the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="encryptAesGcm" title="encryptAesGcm"><a
+                                    class="functions" href="functions.html#encryptAesGcm">encryptAesGcm</a></td>
+                            <td class="module-desc"><p>Returns AES GCM encrypted value for the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="encryptRsaEcb" title="encryptRsaEcb"><a
+                                    class="functions" href="functions.html#encryptRsaEcb">encryptRsaEcb</a></td>
+                            <td class="module-desc"><p>Returns RSA encrypted value for the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="hashMd5" title="hashMd5"><a
+                                    class="functions" href="functions.html#hashMd5">hashMd5</a></td>
+                            <td class="module-desc"><p>Returns the MD5 hash of the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="hashSha1" title="hashSha1"><a
+                                    class="functions" href="functions.html#hashSha1">hashSha1</a></td>
+                            <td class="module-desc"><p>Returns the SHA-1 hash of the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="hashSha256" title="hashSha256"><a
+                                    class="functions" href="functions.html#hashSha256">hashSha256</a></td>
+                            <td class="module-desc"><p>Returns the SHA-256 hash of the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="hashSha384" title="hashSha384"><a
+                                    class="functions" href="functions.html#hashSha384">hashSha384</a></td>
+                            <td class="module-desc"><p>Returns the SHA-384 hash of the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="hashSha512" title="hashSha512"><a
+                                    class="functions" href="functions.html#hashSha512">hashSha512</a></td>
+                            <td class="module-desc"><p>Returns the SHA-512 hash of the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="hmacMd5" title="hmacMd5"><a
+                                    class="functions" href="functions.html#hmacMd5">hmacMd5</a></td>
+                            <td class="module-desc"><p>Returns the HMAC using MD-5 hash function of the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="hmacSha1" title="hmacSha1"><a
+                                    class="functions" href="functions.html#hmacSha1">hmacSha1</a></td>
+                            <td class="module-desc"><p>Returns the HMAC using SHA-1 hash function of the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="hmacSha256" title="hmacSha256"><a
+                                    class="functions" href="functions.html#hmacSha256">hmacSha256</a></td>
+                            <td class="module-desc"><p>Returns the HMAC using SHA-256 hash function of the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="hmacSha384" title="hmacSha384"><a
+                                    class="functions" href="functions.html#hmacSha384">hmacSha384</a></td>
+                            <td class="module-desc"><p>Returns the HMAC using SHA-384 hash function of the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="hmacSha512" title="hmacSha512"><a
+                                    class="functions" href="functions.html#hmacSha512">hmacSha512</a></td>
+                            <td class="module-desc"><p>Returns the HMAC using SHA-512 hash function of the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="signRsaMd5" title="signRsaMd5"><a
+                                    class="functions" href="functions.html#signRsaMd5">signRsaMd5</a></td>
+                            <td class="module-desc"><p>Returns RSA-MD5 based signature value for the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="signRsaSha1" title="signRsaSha1"><a
+                                    class="functions" href="functions.html#signRsaSha1">signRsaSha1</a></td>
+                            <td class="module-desc"><p>Returns RSA-SHA1 based signature value for the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="signRsaSha256" title="signRsaSha256"><a
+                                    class="functions" href="functions.html#signRsaSha256">signRsaSha256</a></td>
+                            <td class="module-desc"><p>Returns RSA-SHA256 based signature value for the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="signRsaSha384" title="signRsaSha384"><a
+                                    class="functions" href="functions.html#signRsaSha384">signRsaSha384</a></td>
+                            <td class="module-desc"><p>Returns RSA-SHA384 based signature value for the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="signRsaSha512" title="signRsaSha512"><a
+                                    class="functions" href="functions.html#signRsaSha512">signRsaSha512</a></td>
+                            <td class="module-desc"><p>Returns RSA-SHA512 based signature value for the given data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="verifyRsaMd5Signature" title="verifyRsaMd5Signature"><a
+                                    class="functions" href="functions.html#verifyRsaMd5Signature">verifyRsaMd5Signature</a></td>
+                            <td class="module-desc"><p>Verify RSA-MD5 based signature.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="verifyRsaSha1Signature" title="verifyRsaSha1Signature"><a
+                                    class="functions" href="functions.html#verifyRsaSha1Signature">verifyRsaSha1Signature</a></td>
+                            <td class="module-desc"><p>Verify RSA-SHA1 based signature.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="verifyRsaSha256Signature" title="verifyRsaSha256Signature"><a
+                                    class="functions" href="functions.html#verifyRsaSha256Signature">verifyRsaSha256Signature</a></td>
+                            <td class="module-desc"><p>Verify RSA-SHA256 based signature.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="verifyRsaSha384Signature" title="verifyRsaSha384Signature"><a
+                                    class="functions" href="functions.html#verifyRsaSha384Signature">verifyRsaSha384Signature</a></td>
+                            <td class="module-desc"><p>Verify RSA-SHA384 based signature.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="verifyRsaSha512Signature" title="verifyRsaSha512Signature"><a
+                                    class="functions" href="functions.html#verifyRsaSha512Signature">verifyRsaSha512Signature</a></td>
+                            <td class="module-desc"><p>Verify RSA-SHA512 based signature.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="RSA" title="RSA"><a
+                                    class="constant" href="constants.html#RSA">RSA</a></td>
+                            <td class="module-desc"><p>The <code>RSA</code> algorithm</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="NONE" title="NONE"><a
+                                    class="constant" href="constants.html#NONE">NONE</a></td>
+                            <td class="module-desc"><p>Represents no padding.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PKCS1" title="PKCS1"><a
+                                    class="constant" href="constants.html#PKCS1">PKCS1</a></td>
+                            <td class="module-desc"><p>The <code>PKCS1</code> padding mode</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PKCS5" title="PKCS5"><a
+                                    class="constant" href="constants.html#PKCS5">PKCS5</a></td>
+                            <td class="module-desc"><p>The <code>PKCS5</code> padding mode</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="OAEPwithMD5andMGF1" title="OAEPwithMD5andMGF1"><a
+                                    class="constant" href="constants.html#OAEPwithMD5andMGF1">OAEPwithMD5andMGF1</a></td>
+                            <td class="module-desc"><p>The <code>OAEPwithMD5andMGF1</code> padding mode</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="OAEPWithSHA1AndMGF1" title="OAEPWithSHA1AndMGF1"><a
+                                    class="constant" href="constants.html#OAEPWithSHA1AndMGF1">OAEPWithSHA1AndMGF1</a></td>
+                            <td class="module-desc"><p>The <code>OAEPWithSHA1AndMGF1</code> padding mode</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="OAEPWithSHA256AndMGF1" title="OAEPWithSHA256AndMGF1"><a
+                                    class="constant" href="constants.html#OAEPWithSHA256AndMGF1">OAEPWithSHA256AndMGF1</a></td>
+                            <td class="module-desc"><p>The <code>OAEPWithSHA256AndMGF1</code> padding mode</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="OAEPwithSHA384andMGF1" title="OAEPwithSHA384andMGF1"><a
+                                    class="constant" href="constants.html#OAEPwithSHA384andMGF1">OAEPwithSHA384andMGF1</a></td>
+                            <td class="module-desc"><p>The <code>OAEPwithSHA384andMGF1</code> padding mode</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="OAEPwithSHA512andMGF1" title="OAEPwithSHA512andMGF1"><a
+                                    class="constant" href="constants.html#OAEPwithSHA512andMGF1">OAEPwithSHA512andMGF1</a></td>
+                            <td class="module-desc"><p>The <code>OAEPwithSHA512andMGF1</code> padding mode</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CRYPTO_ERROR" title="CRYPTO_ERROR"><a
+                                    class="constant" href="constants.html#CRYPTO_ERROR">CRYPTO_ERROR</a></td>
+                            <td class="module-desc"><p>Represents the Crypto error reason.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="AesPadding" title="AesPadding">
+                                <a class="types" href="types.html#AesPadding">AesPadding</a>
+                            </td>
+                            <td class="module-desc"><p>Padding algorithms supported with AES encryption and decryption.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="KeyAlgorithm" title="KeyAlgorithm">
+                                <a class="types" href="types.html#KeyAlgorithm">KeyAlgorithm</a>
+                            </td>
+                            <td class="module-desc"><p>The key algorithms supported by crypto module.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="RsaPadding" title="RsaPadding">
+                                <a class="types" href="types.html#RsaPadding">RsaPadding</a>
+                            </td>
+                            <td class="module-desc"><p>Padding algorithms supported with RSA encryption and decryption.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="Error" title="Error">
+                                <a class="errors" href="errors.html#Error">Error</a>
+                            </td>
+                            <td class="module-desc"><p>Represents the Crypto error type with details.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+</body>
+</html>

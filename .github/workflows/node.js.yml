@@ -1,0 +1,49 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Deploy Nextjs app to gh-pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    env:
+      NEXT_PUBLIC_BASE_PATH: ''
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        #node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        #cache: 'npm'
+    - run: npm ci
+    - name: Build project
+      run: npm run build
+    - name: Export static files
+      run: npm run export
+    - name: Add .nojekyll file
+      run: touch ./out/.nojekyll
+    - name: Rearrange files to match the urls  
+      run: |
+         chmod +x ./utils/rearrangeFiles.sh
+         ./utils/rearrangeFiles.sh
+      shell: bash
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4.3.3
+      with:
+        branch: gh-pages
+        folder: out

@@ -1,17 +1,29 @@
 - title: Swan Lake release notes
   url: '#'
   sublinks:
+    - title: 2201.1.1 (Swan Lake Update 1)
+      url: /downloads/swan-lake-release-notes/2201.1.1
+      active: 2201-1-1
+    - title: 2201.1.0 (Swan Lake Update 1)
+      url: /downloads/swan-lake-release-notes/2201.1.0
+      active: 2201-1-0
+    - title: 2201.0.5 (Swan Lake)
+      url: /downloads/swan-lake-release-notes/2201.0.5
+      active: 2201-0-5
+    - title: 2201.0.4 (Swan Lake)
+      url: /downloads/swan-lake-release-notes/2201.0.4
+      active: 2201-0-4
     - title: 2201.0.3 (Swan Lake)
-      url: /downloads/swan-lake-release-notes/2201-0-3
+      url: /downloads/swan-lake-release-notes/2201.0.3
       active: 2201-0-3
     - title: 2201.0.2 (Swan Lake)
-      url: /downloads/swan-lake-release-notes/2201-0-2
+      url: /downloads/swan-lake-release-notes/2201.0.2
       active: 2201-0-2
     - title: 2201.0.1 (Swan Lake)
-      url: /downloads/swan-lake-release-notes/2201-0-1
+      url: /downloads/swan-lake-release-notes/2201.0.1
       active: 2201-0-1
     - title: 2201.0.0 (Swan Lake)
-      url: /downloads/swan-lake-release-notes/2201-0-0
+      url: /downloads/swan-lake-release-notes/2201.0.0
       active: 2201-0-0
     - title: Swan Lake Beta 6
       url: /downloads/swan-lake-release-notes/swan-lake-beta6
@@ -74,6 +86,12 @@
 - title: 1.2 release notes
   url: '#'
   sublinks:
+    - title: 1.2.31
+      url: /downloads/1.2.x-release-notes/1.2.31
+      active: 1.2.31
+    - title: 1.2.30
+      url: /downloads/1.2.x-release-notes/1.2.30
+      active: 1.2.30
     - title: 1.2.29
       url: /downloads/1.2.x-release-notes/1.2.29
       active: 1.2.29

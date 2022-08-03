@@ -1,0 +1,1358 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta
+  name="description"
+  content="Documentation for the Ballerina Programming Language"
+/>
+
+<meta name="author" content="WSO2, Inc." />
+
+<meta
+  name="keywords"
+  content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language"
+/>
+
+<link rel="shortcut icon" href="/img/favicon.ico" />
+<title>Local Transactions</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"
+></script>
+<!--FB-->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Ballerina - Local Transactions" />
+<meta property="og:description" content="" />
+<meta
+  property="og:image"
+  content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"/>
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang" />
+<meta name="twitter:creator" content="@ballerinalang" />
+<meta name="twitter:title" content="Ballerina" />
+<meta name="twitter:description" content="" />
+<meta
+  name="twitter:image"
+  content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"/>
+<meta name="twitter:text:description" content="" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image:width" content="610" />
+<!--LINKED IN  -->
+<meta property="og:title" content="Ballerina" />
+<meta
+  property="og:image"
+  content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"/>
+<meta property="og:description" content="" />
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "UA-92163714-2");
+</script>
+<!-- Google Tag Manager -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+      "gtm.start": new Date().getTime(),
+      event: "gtm.js",
+    });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-PSL2TX4");
+</script>
+<!-- End Google Tag Manager -->
+
+<!--copy to clipboard lib-->
+<script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
+
+<script src="/js/latest-jquery.js"></script>
+<script>
+  var base_url = "";
+</script>
+<link
+  rel="stylesheet"
+  href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+  integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+  crossorigin="anonymous"
+/>
+<!-- Optional theme -->
+<link
+  rel="stylesheet"
+  href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+  integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
+  crossorigin="anonymous"
+/>
+<!-- Latest compiled and minified JavaScript -->
+<script
+  src="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+  integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+  crossorigin="anonymous"
+></script>
+<!-- <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css"> -->
+
+<!-- <script type="text/javascript" src="/js/highlight.pack.js"></script> -->
+
+<link rel="stylesheet" href="/css/prism.css">
+
+<script src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css" />
+<link rel="stylesheet" href="/css/ballerina-io-bbe.css" />
+<link rel="stylesheet" href="/css/bbe-page.css" />
+<script>
+  // Current page data
+  var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, "");
+  var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, "");
+  var mkdocs_page_url = '"/"'.replace(/^"|"$/g, "");
+
+  var releaseNoteFilename = "RELEASE_NOTE.html";
+
+  var nightly_download_url = "https://product-dist.ballerina.io/nightly";
+  var dev_download_url = "https://product-dist.ballerina.io/dev";
+  var base_download_url = "https://dist.ballerina.io/downloads";
+
+  $(document).ready(function () {
+    $("table").removeClass("table-striped");
+    $(".ballerina").addClass("language-ballerina");
+    $("pre").addClass("language-ballerina");
+  });
+</script>
+
+</head>
+<body class="cBallerina-io">
+    <header data-plugin-header="line-numbers"></header>
+<style>
+    .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+    .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+    .cBallerina-io-Gray-row {
+       padding-top: 70px !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .cBallerina-io-Gray-row {
+       padding-top: 140px !important;
+    }
+
+    #noscript-warning{
+        position: relative;
+    text-align: center;
+    padding: 7px 15px;
+    background-color: #57595d;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    }
+</style>
+<noscript>
+    <div id="noscript-warning">Ballerina works best with JavaScript enabled.</div>
+</noscript>
+     <div class="cVersionChangeBanner">
+        This documentation is for Ballerina 1.2.0. <a href="https://ballerina.io/learn/" class="cInfoBannerLink">View documentation for the latest release</a>.
+    </div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina" /></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="/downloads/">Download</a>
+                            </li>
+                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="https://play.ballerina.io/"
+                                    target="_blank">Playground</a>
+                            </li>
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <!--<li class="active toctree-l1" id="eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>-->
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                    target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink"
+                                    href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu">
+                               
+                                <!-- at the end of the HEAD -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<style>
+  .algolia-search-cont {
+    margin-top: -10px;
+  }
+  .algolia-search-wrap {
+    display: flex;
+    align-items: center;
+  }
+  .algolia-search-cont .search-icon {
+    margin-right: 10px;
+  }
+  .algolia-search-cont .algolia-search-box {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+  }
+</style>
+<div class="algolia-search-cont">
+  <div class="algolia-search-wrap form-control">
+    <span
+      class="glyphicon glyphicon-search search-icon"
+      aria-hidden="true"
+    ></span>
+    <input
+      autocapitalize="off"
+      autocomplete="off"
+      autocorrect="off"
+      placeholder="Search..."
+      role="textbox"
+      spellcheck="false"
+      type="text"
+      value=""
+      class="algolia-search-box"
+      id="algolia-search-box"
+    />
+  </div>
+</div>
+
+<!-- at the end of the BODY -->
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"
+></script>
+<script type="text/javascript">
+  docsearch({
+    apiKey: "024f45d96c2949b32403db36d4016c23",
+    indexName: "ballerina",
+    inputSelector: "#algolia-search-box",
+    debug: false, // Set debug to true if you want to inspect the dropdown
+  });
+</script>
+
+                                <!-- <form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field"
+                                        type="search" placeholder="Search" aria-label="Search"><a id="searchBtn"
+                                        href="#" class="cSearchButton"><img src="/img/search.svg" /></a></form> -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="row cBallerina-io-Gray-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                    <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down"
+  >
+  <ul id="breadcrumb-list" class=" cBalleinaBreadcrumbs list-unstyled  wy-breadcrumbs" vocab="http://schema.org/"
+    typeof="BreadcrumbList">
+
+
+    
+    <li><a href="/">Home</a></li>
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/">1.2</a>
+    </li>
+    
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/learn/">Learn</a>
+    </li>
+    
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/learn/by-example/">By example</a>
+    </li>
+    
+    
+    
+    <li>/</li> Local Transactions
+    
+    
+
+  </ul>
+</nav>
+<style type="text/css">
+  .cBalleinaBreadcrumbs li {
+    margin-right: 10px;
+  }
+</style>
+                        <div class="cVersionContainer"></div>
+                    </div>
+                    <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                            <!-- <li class="wy-breadcrumbs-aside">
+                                <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-dev-website/blob/master/1.2/learn/by-example/local-transactions.html">Edit on GitHub</a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="cBlallerina-io-docs-content-container">
+                    <div class="wy-nav-content">
+                        <div class="rst-content">
+                            <div role="main">
+                                <div class="section">
+                                    <div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
+
+<span class="c1">// JDBC Client for H2 database.</span>
+<span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+    <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:h2:file:./local-transactions/testdb&quot;</span><span class="p">,</span>
+    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span>
+<span class="p">});</span>
+
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Create the tables that are required for the transaction.</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE CUSTOMER (ID INTEGER, NAME &quot;</span> <span class="o">+</span>
+                              <span class="s">&quot;VARCHAR(30))&quot;</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create CUSTOMER table&quot;</span><span class="p">);</span>
+
+    <span class="c1">// Populate table with data.</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE SALARY (ID INTEGER, MON_SALARY FLOAT)&quot;</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create SALARY table&quot;</span><span class="p">);</span>
+
+    <span class="c1">// This is a `transaction` block. If you do not explicitly `abort` or</span>
+    <span class="c1">// `retry` a returned error, the transaction will be automatically</span>
+    <span class="c1">// retried until the retry count is reached and aborted.</span>
+    <span class="c1">// The retry count that is given via `retries` is the number of times the</span>
+    <span class="c1">// transaction is retried before it being aborted and the default value is 3.</span>
+    <span class="nx">transaction</span> <span class="nx">with</span> <span class="nx">retries</span> <span class="p">=</span> <span class="mi">4</span> <span class="p">{</span>
+        <span class="c1">// Any transacted action within the `transaction` block may return</span>
+        <span class="c1">// errors such as backend DB errors, connection pool errors etc.</span>
+        <span class="c1">// The user can decide whether to `abort` or `retry` based on the</span>
+        <span class="c1">// returned error.</span>
+        <span class="c1">// This is the first remote function participant of the transaction.</span>
+        <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO CUSTOMER(ID,NAME) &quot;</span> <span class="o">+</span>
+                                     <span class="s">&quot;VALUES (1, &#39;Anne&#39;)&quot;</span><span class="p">);</span>
+        <span class="c1">// This is the second remote function participant of the transaction.</span>
+        <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO SALARY (ID, MON_SALARY) &quot;</span> <span class="o">+</span>
+                             <span class="s">&quot;VALUES (1, 2500)&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Inserted count: &quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
+            <span class="c1">// If the transaction is forced to abort, it will roll back the transaction</span>
+            <span class="c1">// and exit the transaction block without retrying.</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span><span class="p">.</span><span class="nx">updatedRowCount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">abort</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// If the transaction is forced to retry, it will roll back the transaction,</span>
+            <span class="c1">// go to the `onretry` block, and retry from the beginning until the defined</span>
+            <span class="c1">// retry count is reached.</span>
+            <span class="nx">retry</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="c1">// The end curly bracket marks the end of the transaction and the transaction will</span>
+    <span class="c1">// be committed or rolled back at this point.</span>
+    <span class="p">}</span> <span class="nx">onretry</span> <span class="p">{</span>
+        <span class="c1">// The `onretry` block will be executed whenever the transaction is retried until it</span>
+        <span class="c1">// reaches the retry count. A transaction could be retried if it fails due to an</span>
+        <span class="c1">// exception or throw statement or from an explicit retry statement.</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retrying transaction&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nx">committed</span> <span class="p">{</span>
+        <span class="c1">// Any action that needs to be performed after the transaction is</span>
+        <span class="c1">// committed should be added here.</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nx">aborted</span> <span class="p">{</span>
+        <span class="c1">// If the transaction is aborted, any action that needs to perform after</span>
+        <span class="c1">// the abortion should be added here.</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction aborted&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Drop the tables.</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP TABLE CUSTOMER&quot;</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table CUSTOMER&quot;</span><span class="p">);</span>
+
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP TABLE SALARY&quot;</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table SALARY&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Function to handle the return value of the `update` remote function.</span>
+<span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">|</span><span class="nx">error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; status: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returned</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Local Transactions</h2>
+                            <p><p>A Ballerina transaction is a series of data manipulation statements
+ that must either fully complete or fully fail, thereby, leaving the
+ system in a consistent state. This sample uses an H2 database, which is
+ created when running the sample. Prior to running this sample,
+ the DB connection properties need to be changed as required.
+ Ballerina transactions are at the experimental stage,
+ Thus, use the &ndash;experimental flag to enable them.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="mysql-execute-operation.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>MySQL DDL and DML Operations</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="local-transactions-with-participants.html">
+                                        <span>NEXT ></span>
+                                        <p>Local Transactions with participants</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="local-transactions">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <div class="cTopControlsContainer">
+                        <div class="cTopControlsRow">
+                            <div class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/tree/ballerina-1.2.x/examples/local-transactions/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+              
+                    
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>import ballerina/io;
+import ballerinax/java.jdbc;
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>jdbc:Client testDB = new ({
+    url: &quot;jdbc:h2:file:./local-transactions/testdb&quot;,
+    username: &quot;test&quot;,
+    password: &quot;test&quot;
+});
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>JDBC Client for H2 database.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>public function main() {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    var ret = testDB-&gt;update(&quot;CREATE TABLE CUSTOMER (ID INTEGER, NAME &quot; +
+                              &quot;VARCHAR(30))&quot;);
+    handleUpdate(ret, &quot;Create CUSTOMER table&quot;);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create the tables that are required for the transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;CREATE TABLE SALARY (ID INTEGER, MON_SALARY FLOAT)&quot;);
+    handleUpdate(ret, &quot;Create SALARY table&quot;);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Populate table with data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    transaction with retries = 4 {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is a <code>transaction</code> block. If you do not explicitly <code>abort</code> or
+ <code>retry</code> a returned error, the transaction will be automatically
+ retried until the retry count is reached and aborted.
+ The retry count that is given via <code>retries</code> is the number of times the
+ transaction is retried before it being aborted and the default value is 3.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        ret = testDB-&gt;update(&quot;INSERT INTO CUSTOMER(ID,NAME) &quot; +
+                                     &quot;VALUES (1, &#39;Anne&#39;)&quot;);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Any transacted action within the <code>transaction</code> block may return
+ errors such as backend DB errors, connection pool errors etc.
+ The user can decide whether to <code>abort</code> or <code>retry</code> based on the
+ returned error.
+ This is the first remote function participant of the transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        ret = testDB-&gt;update(&quot;INSERT INTO SALARY (ID, MON_SALARY) &quot; +
+                             &quot;VALUES (1, 2500)&quot;);
+        if (ret is jdbc:UpdateResult) {
+            io:println(&quot;Inserted count: &quot;, ret.updatedRowCount);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the second remote function participant of the transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            if (ret.updatedRowCount == 0) {
+                abort;
+            }
+        } else {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the transaction is forced to abort, it will roll back the transaction
+ and exit the transaction block without retrying.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>            retry;
+        }
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the transaction is forced to retry, it will roll back the transaction,
+ go to the <code>onretry</code> block, and retry from the beginning until the defined
+ retry count is reached.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    } onretry {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The end curly bracket marks the end of the transaction and the transaction will
+ be committed or rolled back at this point.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Retrying transaction&quot;);
+    } committed {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>onretry</code> block will be executed whenever the transaction is retried until it
+ reaches the retry count. A transaction could be retried if it fails due to an
+ exception or throw statement or from an explicit retry statement.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Transaction committed&quot;);
+    } aborted {
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Any action that needs to be performed after the transaction is
+ committed should be added here.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>        io:println(&quot;Transaction aborted&quot;);
+    }
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the transaction is aborted, any action that needs to perform after
+ the abortion should be added here.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;DROP TABLE CUSTOMER&quot;);
+    handleUpdate(ret, &quot;Drop table CUSTOMER&quot;);
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Drop the tables.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR">
+
+                                <div class="code leading">
+                                    <div class="highlight"><pre><code class=language-ballerina>    ret = testDB-&gt;update(&quot;DROP TABLE SALARY&quot;);
+    handleUpdate(ret, &quot;Drop table SALARY&quot;);
+}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR hover-enable">
+
+                                <div class="code">
+                                    <div class="highlight"><pre><code class=language-ballerina>function handleUpdate(jdbc:UpdateResult|error returned, string message) {
+    if (returned is jdbc:UpdateResult) {
+        io:println(message + &quot; status: &quot;, returned.updatedRowCount);
+    } else {
+        io:println(message + &quot; failed: &quot;, &lt;string&gt;returned.detail()?.message);
+    }
+}
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Function to handle the return value of the <code>update</code> remote function.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="codeSnippeset">
+
+                        <div class="cBBE-body">
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Before running this sample, change the H2 DB connection properties as required.
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="cTR cOutputTr">
+
+                                <div class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command below.
+ballerina run --experimental local_transactions.bal
+[ballerina/http] started HTTP/WS listener 172.17.0.1:49479
+Create CUSTOMER table status: 0
+Create SALARY table status: 0
+2020-03-18 12:36:26,983 INFO  [ballerina/transactions] - Created transaction: 17130bbc-28e0-414d-b0a0-e20efccdacec
+Inserted count: 1
+2020-03-18 12:36:26,999 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: 17130bbc-28e0-414d-b0a0-e20efccdacec:$anon$.$0
+Transaction committed
+Drop table CUSTOMER status: 0
+Drop table SALARY status: 0
+[ballerina/http] started HTTP/WS listener 192.168.1.3:63458
+[ballerina/http] stopped HTTP/WS listener 192.168.1.3:63458
+</code></pre></div>
+
+                                </div>
+                                <div class="docs">
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+
+                     
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                // hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">DOWNLOAD</a></li>
+            <!--<li><a class="cBioFooterLink" href="/community/#report-issues">REPORT ISSUES</a></li>-->
+            <li data-toggle="modal" data-target="#reportissues" data-whatever="@mdo"><a href="/community/#report-issues">REPORT ISSUES</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">CODE LICENSE</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">SITE LICENSE</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            <li><a class="cBioFooterLink" href="/trademark-usage-policy/">TRADEMARK USAGE POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack-2022.svg" style="width:17px; height:17px;"/></a></li>
+                <li><a class="cBioFooterLink" href="https://www.youtube.com/c/Ballerinalang"><img style="width: 15px;" src="/img/youtube-icon.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+
+
+           <a class="cNLButton" href="/community/#subscribe-to-the-newsletter">Subscribe to the newsletter</a> 
+
+           <div class="modal fade" id="reportissues" tabindex="-1" role="dialog" aria-labelledby="reportissueslabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" style="padding:15px;border-radius:0px;">
+                <div class="modal-header">
+                  <h3 class="modal-title" style="color: #20b6b0;">Report Issues</h3>
+                  <p style="padding: 10px 0px ;">Report issues in the GitHub repositories of the areas and components listed below.
+                  </p>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" style="background-color: #fff; font-size: 20; color: #465867;font-size: 20px;">
+                  <ul class="b">
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank"> Compiler, runtime, or tooling</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank"> Standard Library</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">  Language specification</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">  Website</a></li>
+                    <li><a class="linkText" href="mailto:security@ballerina.io" target="_blank">Security</a> <span style="font-size: 16px;">(For details, see the</span> <a class="linkText" href="/security" target="_blank">security policy</a>.)</li>
+                  </ul>  
+                
+                </div>
+                <div class="modal-footer">
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<div class="cCookie-Policy">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <!-- <div class="closebuttoon"><img src="/img/close-w.svg"/></div> -->
+<h4>Cookie policy</h4>
+<p>This website uses cookies so that we can provide you with the best user experience. Read our <a href="https://ballerina.io/cookie-policy/">Cookie policy</a></a> to find out more.</p>
+<p>If you wish to disable cookies you can do so from your browser. </p>
+  
+<!-- <a href="https://ballerina.io/cookie-policy/"></a> -->
+<a class="cIUnderstand ">I understand </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/prism.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-core.min.js"></script> -->
+<script src="/js/prism-ballerina.js"></script>
+
+
+
+<script>
+
+$(".cIUnderstand ").click(function() {
+    $(".cCookie-Policy").addClass('cHide-Policy');
+   
+    
+});
+
+
+
+</script>
+
+
+<!-- 
+<script>
+    (function () {
+
+if (typeof self === 'undefined' || !self.Prism || !self.document) {
+    return;
+}
+
+/**
+ * Plugin name which is used as a class name for <pre> which is activating the plugin
+ * @type {String}
+ */
+var PLUGIN_NAME = 'line-numbers';
+
+/**
+ * Regular expression used for determining line breaks
+ * @type {RegExp}
+ */
+var NEW_LINE_EXP = /\n(?!$)/g;
+
+/**
+ * Resizes line numbers spans according to height of line of code
+ * @param {Element} element <pre> element
+ */
+var _resizeElement = function (element) {
+    var codeStyles = getStyles(element);
+    var whiteSpace = codeStyles['white-space'];
+
+    if (whiteSpace === 'pre-wrap' || whiteSpace === 'pre-line') {
+        var codeElement = element.querySelector('code');
+        var lineNumbersWrapper = element.querySelector('.line-numbers-rows');
+        if (!codeElement || !lineNumbersWrapper) {
+            return;
+        }
+        var lineNumberSizer = element.querySelector('.line-numbers-sizer');
+        var codeLines = codeElement.textContent.split(NEW_LINE_EXP);
+
+        if (!lineNumberSizer) {
+            lineNumberSizer = document.createElement('span');
+            lineNumberSizer.className = 'line-numbers-sizer';
+
+            codeElement.appendChild(lineNumberSizer);
+        }
+
+        lineNumberSizer.style.display = 'block';
+
+        codeLines.forEach(function (line, lineNumber) {
+            lineNumberSizer.textContent = line || '\n';
+            var lineSize = lineNumberSizer.getBoundingClientRect().height;
+            lineNumbersWrapper.children[lineNumber].style.height = lineSize + 'px';
+        });
+
+        lineNumberSizer.textContent = '';
+        lineNumberSizer.style.display = 'none';
+    }
+};
+
+/**
+ * Returns style declarations for the element
+ * @param {Element} element
+ */
+var getStyles = function (element) {
+    if (!element) {
+        return null;
+    }
+
+    return window.getComputedStyle ? getComputedStyle(element) : (element.currentStyle || null);
+};
+
+window.addEventListener('resize', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('pre.' + PLUGIN_NAME), _resizeElement);
+});
+
+Prism.hooks.add('complete', function (env) {
+    if (!env.code) {
+        return;
+    }
+
+    var code = env.element;
+    var pre = code.parentNode;
+
+    // works only for <code> wrapped inside <pre> (not inline)
+    if (!pre || !/pre/i.test(pre.nodeName)) {
+        return;
+    }
+
+    // Abort if line numbers already exists
+    if (code.querySelector('.line-numbers-rows')) {
+        return;
+    }
+
+    var addLineNumbers = false;
+    var lineNumbersRegex = /(?:^|\s)line-numbers(?:\s|$)/;
+
+    for (var element = code; element; element = element.parentNode) {
+        if (lineNumbersRegex.test(element.className)) {
+            addLineNumbers = true;
+            break;
+        }
+    }
+
+    // only add line numbers if <code> or one of its ancestors has the `line-numbers` class
+    if (!addLineNumbers) {
+        return;
+    }
+
+    // Remove the class 'line-numbers' from the <code>
+    code.className = code.className.replace(lineNumbersRegex, ' ');
+    // Add the class 'line-numbers' to the <pre>
+    if (!lineNumbersRegex.test(pre.className)) {
+        pre.className += ' line-numbers';
+    }
+
+    var match = env.code.match(NEW_LINE_EXP);
+    var linesNum = match ? match.length + 1 : 1;
+    var lineNumbersWrapper;
+
+    var lines = new Array(linesNum + 1).join('<span></span>');
+
+    lineNumbersWrapper = document.createElement('span');
+    lineNumbersWrapper.setAttribute('aria-hidden', 'true');
+    lineNumbersWrapper.className = 'line-numbers-rows';
+    lineNumbersWrapper.innerHTML = lines;
+
+    if (pre.hasAttribute('data-start')) {
+        pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+    }
+
+    env.element.appendChild(lineNumbersWrapper);
+
+    _resizeElement(pre);
+
+    Prism.hooks.run('line-numbers', env);
+});
+
+Prism.hooks.add('line-numbers', function (env) {
+    env.plugins = env.plugins || {};
+    env.plugins.lineNumbers = true;
+});
+
+/**
+ * Global exports
+ */
+Prism.plugins.lineNumbers = {
+    /**
+     * Returns the node of the given line number in the given element.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @param {Number} number
+     * @returns {Element | undefined}
+     */
+    getLine: function (element, number) {
+        if (element.tagName !== 'PRE' || !element.classList.contains(PLUGIN_NAME)) {
+            return;
+        }
+
+        var lineNumberRows = element.querySelector('.line-numbers-rows');
+        var lineNumberStart = parseInt(element.getAttribute('data-start'), 10) || 1;
+        var lineNumberEnd = lineNumberStart + (lineNumberRows.children.length - 1);
+
+        if (number < lineNumberStart) {
+            number = lineNumberStart;
+        }
+        if (number > lineNumberEnd) {
+            number = lineNumberEnd;
+        }
+
+        var lineIndex = number - lineNumberStart;
+
+        return lineNumberRows.children[lineIndex];
+    },
+    /**
+     * Resizes the line numbers of the given element.
+     *
+     * This function will not add line numbers. It will only resize existing ones.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @returns {void}
+     */
+    resize: function (element) {
+        _resizeElement(element);
+    }
+};
+
+}());
+</script> -->
+
+<!-- 
+<style>
+    pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style> -->
+
+<script src="/js/theme.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
+        $('[data-button="iGitStarText"]').replaceWith(gitstar);
+
+        var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
+        $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+        checkIsFromRefrencePage();   
+    });
+    function checkIsFromRefrencePage(){ 
+        var url_string =window.location.href; 
+        var url = new URL(url_string);
+        var isFromRefPage = url.searchParams.get("is_ref_by_example");
+        if(isFromRefPage){ 
+            $('.bbe-by-example-page-row').addClass('hide');
+            $('.bbe-by-reference-page-row').removeClass('hide');
+            $('.cTopButtonContainer').show();
+            $('.cVersionItem').hide();
+        }else{ 
+            $('.bbe-by-example-page-row').removeClass('hide');
+            $('.bbe-by-reference-page-row').addClass('hide');
+            $('.cTopButtonContainer').hide();
+            $('.cVersionItem').show(); 
+        }
+    }
+</script>
+
+<style>
+    .cGitButtonContainer {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 0px;
+    }
+
+    #iGitStarText {
+        height: 20px;
+        float: left;
+        padding: 0;
+        margin: 0;
+    }
+    #iGitStarIframe , #iGitWatchIframe {
+        height: 20px;
+        width: 100px;
+        float: left;
+    }
+</style>
+
+</body>
+</html>
+
+

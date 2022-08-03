@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="RabbitMQ is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,rabbitmq">
+
+    <title>API Docs - ballerina/rabbitmq</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../rabbitmq/index.html" onclick="menuLinkClick()">
+            <h3>rabbitmq</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../rabbitmq/index.html#clients" onclick="menuLinkClick()">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../rabbitmq/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="constants" href="../rabbitmq/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../rabbitmq/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../rabbitmq/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../rabbitmq/index.html#errors" onclick="menuLinkClick()">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">rabbitmq</span>
+                    
+                </h1>
+                    <h2>Module Overview</h2>
+<p><a href="https://www.rabbitmq.com/">RabbitMQ</a> is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.</p>
+<p>Key sections include:</p>
+<ul>
+<li>Connecting to RabbitMQ</li>
+<li>Using Exchanges and Queues</li>
+<li>Publishing Messages</li>
+<li>Consuming Messages Using Consumer Services</li>
+<li>Client Acknowledgements</li>
+</ul>
+<h3>Connecting to RabbitMQ</h3>
+<p>The core APIs are the <code>rabbitmq:Connection</code>, <code>rabbitmq:Channel</code>, and <code>rabbitmq:Message</code> representing an AMQP 0-9-1 Connection, a Channel, and a Ballerina RabbitMQ Message respectively. The following code connects to a RabbitMQ node using the given parameters (host name, port number, etc.):</p>
+<pre><code class="language-ballerina">   rabbitmq:Connection newConnection = new({ host: &quot;localhost&quot;, 
+                                            port: 5672, 
+                                            username: “guest”, 
+                                            password: “guest” });
+</code></pre>
+<p>The <code>rabbitmq:Connection</code> created above can then be used to open a <code>rabbitmq:Channel</code>.</p>
+<pre><code class="language-ballerina">   rabbitmq:Channel newChannel = new(connection);
+</code></pre>
+<p>The <code>rabbitmq:Channel</code> can now be used to send and receive messages as described in the subsequent sections.</p>
+<h4>Enabling TLS</h4>
+<p>It is possible to encrypt the communication between the Ballerina client and the broker by using TLS-enabled connections. Client and server authentication (peer verification) is also supported. To enable the TLS support in the RabbitMQ broker, the node has to be <a href="https://www.rabbitmq.com/ssl.html#enabling-tls">configured</a> to know the location of the Certificate Authority bundle, the server's certificate file, and the server's key. A TLS listener should also be configured to know which port to listen for TLS-enabled client connections.</p>
+<p>Connecting to a TLS-enabled RabbitMQ node using the Ballerina client can be done by passing a <code>rabbitmq:SecureSocket</code> record with the appropriate values to the <code>rabbitmq:ConnectionConfiguration</code> record when initializing the connection.</p>
+<pre><code class="language-ballerina">   rabbitmq:Connection connection = new({ host: &quot;localhost&quot;, 
+                                    	    port: 5671, 
+                                            secureSocket: { trustStore: { path: &quot;/path/to/trustStore&quot;,
+                                                                        password: &quot;rabbitstore&quot; },
+                                                          keystore: { path: &quot;/path/to/client_key.p12&quot;,
+                                                                      password: &quot;MySecretPassword&quot; },
+                                                          verifyHostname: true }});
+</code></pre>
+<h4>Disconnecting from RabbitMQ</h4>
+<p>To disconnect, simply close the open channels and the connections:</p>
+<pre><code class="language-ballerina">   rabbitmq:Error? closeResult = newChannel.close();
+   rabbitmq:Error? closeResult = newConnection.close();
+</code></pre>
+<blockquote>
+<p>Note: Closing the <code>Channel</code> may be a good practice. However, it isn’t strictly necessary in this case as it will be done automatically when the underlying <code>Connection</code> is closed.</p>
+</blockquote>
+<h3>Using exchanges and queues</h3>
+<p>Client applications work with exchanges and queues, which are the high-level building blocks of the AMQP protocol. These must be declared before they can be used. The following code declares an exchange and a server-named queue and then binds them together.</p>
+<pre><code class="language-ballerina">   rabbitmq:Error? exchangeResult = newChannel-&gt;exchangeDeclare({ exchangeName: &quot;MyExchange&quot;,
+                                                      exchangeType: rabbitmq:DIRECT_EXCHANGE,
+                                                      durable: true,
+                                                      autoDelete: true });
+   
+   string|rabbitmq:Error? queueResult = newChannel-&gt;queueDeclare();
+   if (queueResult is string) {
+        rabbitmq:Error? bindResult = newChannel.queueBind(queueResult, &quot;MyExchange&quot;, &quot;routing-key&quot;);
+   }
+</code></pre>
+<p>This sample code will declare,</p>
+<ul>
+<li>a durable auto-delete exchange of the type <code>rabbitmq:DIRECT_EXCHANGE</code></li>
+<li>a non-durable, exclusive auto-delete queue with an auto-generated name</li>
+</ul>
+<p>Next, the above function is called to bind the queue to the exchange with the given routing key.</p>
+<pre><code class="language-ballerina">   rabbitmq:Error? exchangeResult = newChannel-&gt;exchangeDeclare({ exchangeName: &quot;MyExchange&quot;,
+                                                      exchangeType: rabbitmq:DIRECT_EXCHANGE,
+                                                      durable: true,
+                                                      autoDelete: true });
+   
+   string|rabbitmq:Error? queueResult = newChannel-&gt;queueDeclare({ queueName: &quot;MyQueue&quot;, 
+                                                durable: true,
+                                                exclusive: false,
+                                                autoDelete: false });
+
+   rabbitmq:Error? bindResult = newChannel.queueBind(&quot;MyQueue&quot;, &quot;MyExchange&quot;, &quot;routing-key&quot;);
+</code></pre>
+<p>This sample code will declare,</p>
+<ul>
+<li>a durable auto-delete exchange of the type <code>rabbitmq:DIRECT_EXCHANGE</code></li>
+<li>a durable, non-exclusive non-auto-delete queue with a well-known name</li>
+</ul>
+<h4>Deleting entities and purging queues</h4>
+<ul>
+<li>Delete a queue:</li>
+</ul>
+<pre><code class="language-ballerina">   rabbitmq:Error? deleteResult = newChannel-&gt;queueDelete(&quot;MyQueue&quot;);
+</code></pre>
+<ul>
+<li>Delete a queue only if it is empty:</li>
+</ul>
+<pre><code class="language-ballerina">   rabbitmq:Error? deleteResult = newChannel-&gt;queueDelete(&quot;MyQueue&quot;, false, true);
+</code></pre>
+<ul>
+<li>Delete a queue only if it is unused (does not have any consumers):</li>
+</ul>
+<pre><code class="language-ballerina">   rabbitmq:Error? deleteResult = newChannel-&gt;queueDelete(&quot;MyQueue&quot;, true, false);
+</code></pre>
+<ul>
+<li>Delete an exchange:</li>
+</ul>
+<pre><code class="language-ballerina">   rabbitmq:Error? deleteResult = newChannel-&gt;exchangeDelete(&quot;MyExchange&quot;);
+</code></pre>
+<ul>
+<li>Purge a queue (delete all of its messages):</li>
+</ul>
+<pre><code class="language-ballerina">   rabbitmq:Error? purgeResult = newChannel-&gt;queuePurge(&quot;MyQueue&quot;);
+</code></pre>
+<h3>Publishing messages</h3>
+<p>To publish a message to an exchange, use the <code>basicPublish()</code> function as follows:</p>
+<pre><code class="language-ballerina">   rabbitmq:Error? sendResult = newChannel-&gt;basicPublish(&quot;Hello from Ballerina&quot;, &quot;MyQueue&quot;);
+</code></pre>
+<p>Setting other properties of the message such as routing headers can be done by using the <code>BasicProperties</code> record with the appropriate values.</p>
+<h3>Consuming messages using consumer services</h3>
+<p>The most efficient way to receive messages is to set up a subscription using a Ballerina RabbitMQ <code>rabbitmq:Listener</code> and any number of consumer services. The messages will then be delivered automatically as they arrive rather than having to be explicitly requested.</p>
+<p>Multiple consumer services can be bound to one Ballerina RabbitMQ <code>rabbitmq:Listener</code>. The queue to which the service is listening is configured in the <code>rabbitmq:ServiceConfig</code> annotation of the service.</p>
+<pre><code class="language-ballerina">listener rabbitmq:Listener channelListener= new(newConnection);
+
+@rabbitmq:ServiceConfig {
+    queueConfig: {
+        queueName: &quot;MyQueue&quot;
+    }
+}
+service rabbitmqConsumer on channelListener {
+    resource function onMessage(rabbitmq:Message message) {
+        string|rabbitmq:Error? messageContent = message.getTextContent();
+    }
+}
+</code></pre>
+<p>The <code>rabbitmq:Message</code> object received can be used to retrieve its contents and for manual client acknowledgements.</p>
+<h3>Client acknowledgements</h3>
+<p>The message consuming is supported by mainly two types of acknowledgement modes, which are auto acknowledgements and client acknowledgements.
+Client acknowledgements can further be divided into to two different types as positive and negative acknowledgements.
+The default acknowledgement mode is auto-ack (messages are acknowledged immediately after consuming).</p>
+<blockquote>
+<p>WARNING: To ensure the reliability of receiving messages, use the client-ack mode.</p>
+</blockquote>
+<p>The negatively-acknowledged (rejected) messages can be re-queued.</p>
+<blockquote>
+<p><strong>Note:</strong> The default thread pool size used in Ballerina is the number of processors available * 2. You can configure the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environment variable.</p>
+</blockquote>
+<p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>.</p>
+<p>For examples on the usage of the connector, see the following.</p>
+<ul>
+<li><a href="https://ballerina.io/1.2/learn/by-example/rabbitmq-producer.html">Producer Example</a>.</li>
+<li><a href="https://ballerina.io/1.2/learn/by-example/rabbitmq-consumer.html">Consumer Example</a></li>
+<li><a href="https://ballerina.io/1.2/learn/by-example/rabbitmq-consumer-with-client-acknowledgement.html">Client Acknowledgements Example</a></li>
+<li><a href="https://ballerina.io/1.2/learn/by-example/rabbitmq-consumer-with-qos-settings.html">QoS Settings Example</a></li>
+</ul>
+
+
+            
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="BasicProperties" title="BasicProperties">
+                                <a class="records " href="records/BasicProperties.html">BasicProperties</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Basic properties of the message - routing headers etc.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ConnectionConfiguration" title="ConnectionConfiguration">
+                                <a class="records " href="records/ConnectionConfiguration.html">ConnectionConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Configurations used to create a <code>rabbitmq:Connection</code>.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The details of an error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ExchangeConfiguration" title="ExchangeConfiguration">
+                                <a class="records " href="records/ExchangeConfiguration.html">ExchangeConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Configurations used to declare an exchange.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="QueueConfiguration" title="QueueConfiguration">
+                                <a class="records " href="records/QueueConfiguration.html">QueueConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Configurations used to declare a queue.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="RabbitMQServiceConfig" title="RabbitMQServiceConfig">
+                                <a class="records " href="records/RabbitMQServiceConfig.html">RabbitMQServiceConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Configurations required to create a subscription.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SecureSocket" title="SecureSocket">
+                                <a class="records " href="records/SecureSocket.html">SecureSocket</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Configurations for facilitating secure connections.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Connection" title="Connection">
+                                <a class="objects " href="objects/Connection.html">Connection</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents a single network connection to the RabbitMQ broker.
+                            </td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+             <section class="method-content" id="clients">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#clients">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Clients </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="Channel" title="Channel">
+                                <a class="clients " href="clients/Channel.html">Channel</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The Ballerina interface to provide AMQP Channel related functionality.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="Message" title="Message">
+                                <a class="clients " href="clients/Message.html">Message</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Provides the functionality to manipulate the messages received by the consumer services.
+                            </td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+             <section class="method-content" id="listeners">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#listeners">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Listeners </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate listeners" id="Listener" title="Listener">
+                                <a class="listeners " href="listeners/Listener.html">Listener</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Ballerina RabbitMQ Message Listener.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+           
+
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DIRECT_EXCHANGE" title="DIRECT_EXCHANGE">
+                                <a class="constant " href="constants.html#DIRECT_EXCHANGE">DIRECT_EXCHANGE</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Constant for the RabbitMQ Direct Exchange type.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="FANOUT_EXCHANGE" title="FANOUT_EXCHANGE">
+                                <a class="constant " href="constants.html#FANOUT_EXCHANGE">FANOUT_EXCHANGE</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Constant for the RabbitMQ Fan-out Exchange type.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TOPIC_EXCHANGE" title="TOPIC_EXCHANGE">
+                                <a class="constant " href="constants.html#TOPIC_EXCHANGE">TOPIC_EXCHANGE</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Constant for the RabbitMQ Topic Exchange type.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="AUTO_ACK" title="AUTO_ACK">
+                                <a class="constant " href="constants.html#AUTO_ACK">AUTO_ACK</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Constant for the RabbitMQ auto acknowledgement mode.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CLIENT_ACK" title="CLIENT_ACK">
+                                <a class="constant " href="constants.html#CLIENT_ACK">CLIENT_ACK</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Constant for the RabbitMQ client acknowledgement mode.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="RABBITMQ_ERROR" title="RABBITMQ_ERROR">
+                                <a class="constant " href="constants.html#RABBITMQ_ERROR">RABBITMQ_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason for the RabbitMQ module related errors.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="annotations">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#annotations">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Annotations </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="ServiceConfig" title="ServiceConfig">
+                                <a class="annotations " href="annotations.html#ServiceConfig">ServiceConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The annotation, which is used to configure the subscription.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="AcknowledgementMode" title="AcknowledgementMode">
+                                <a class="types " href="types.html#AcknowledgementMode">AcknowledgementMode</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Types of acknowledgement modes supported by the Ballerina RabbitMQ Connector.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="MessageContent" title="MessageContent">
+                                <a class="types " href="types.html#MessageContent">MessageContent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Types of message content that can be published.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="Error" title="Error">
+                                <a class="errors " href="errors.html#Error">Error</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the RabbitMQ module related errors.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

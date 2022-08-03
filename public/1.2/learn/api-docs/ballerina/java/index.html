@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides the API for Java interoperability in Ballerina. It includes a set of Ballerina annotations with which Java constructors, methods, and fields can provide implementations of Ballerina functions with external function bodies.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,java">
+
+    <title>API Docs - ballerina/java</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../java/index.html" onclick="menuLinkClick()">
+            <h3>java</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../java/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../java/index.html#objects" onclick="menuLinkClick()">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../java/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="annotations" href="../java/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
+            </li>
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">java</span>
+                    
+                </h1>
+                    <h2>Module Overview</h2>
+<p>This module provides the API for Java interoperability in Ballerina. It includes a set of Ballerina annotations with which Java constructors, methods, and fields can provide implementations of Ballerina functions with external function bodies.</p>
+<p>For information on the operations, which you can perform with the Java module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the following.</p>
+<ul>
+<li><a href="https://ballerina.io/1.2/learn/by-example/create-java-objects.html">Create Java Objects Example</a></li>
+<li><a href="https://ballerina.io/1.2/learn/by-example/invoke-java-methods.html">Invoke Java Methods Example</a></li>
+<li><a href="https://ballerina.io/1.2/learn/by-example/access-mutate-java-fields.html">Access/Mutate Java Fields Example</a></li>
+<li><a href="https://ballerina.io/1.2/learn/by-example/java-varargs.html">Java Varargs Example</a></li>
+<li><a href="https://ballerina.io/1.2/learn/by-example/overloaded-methods-constructors.html">Overloaded Methods/Constructors Example</a></li>
+<li><a href="https://ballerina.io/1.2/learn/by-example/java-exceptions.html">Java Exceptions Example</a></li>
+</ul>
+
+
+            
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ArrayType" title="ArrayType">
+                                <a class="records " href="records/ArrayType.html">ArrayType</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents a Java array type.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ConstructorData" title="ConstructorData">
+                                <a class="records " href="records/ConstructorData.html">ConstructorData</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Describes a Java constructor.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="FieldData" title="FieldData">
+                                <a class="records " href="records/FieldData.html">FieldData</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Describes a Java field.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="MethodData" title="MethodData">
+                                <a class="records " href="records/MethodData.html">MethodData</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Describes a Java method.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ObjectData" title="ObjectData">
+                                <a class="records " href="records/ObjectData.html">ObjectData</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Describes a Java class that corresponds to a Ballerina object.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="JObject" title="JObject">
+                                <a class="objects " href="objects/JObject.html">JObject</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The Ballerina abstract object which is to be extended by Ballerina
+objects representing Ballerina bindings for Java classes.
+                            </td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="cast" title="cast">
+                                <a class="functions " href="functions.html#cast">cast</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns an <code>JObject|error</code>, which is obtained after casting the provided <code>JObject</code> instance
+to the given <code>JObject</code> type depending on assignability.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="createNull" title="createNull">
+                                <a class="functions " href="functions.html#createNull">createNull</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns a <code>handle</code>, which refers to Java null.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="fromString" title="fromString">
+                                <a class="functions " href="functions.html#fromString">fromString</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns a <code>handle</code>, which refers to the Java string representation of the Ballerina <code>string</code>.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getClass" title="getClass">
+                                <a class="functions " href="functions.html#getClass">getClass</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns a <code>handle</code>, which refers to the Java Class object associated with the class or interface with the given
+string name.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="isNull" title="isNull">
+                                <a class="functions " href="functions.html#isNull">isNull</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns <code>true</code> if this handle refers to Java null.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="jObjToString" title="jObjToString">
+                                <a class="functions " href="functions.html#jObjToString">jObjToString</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns the string representation of a Java object stored in a handle reference.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="toString" title="toString">
+                                <a class="functions " href="functions.html#toString">toString</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns a Ballerina <code>string</code> representation of the Java object referred by the <code>handle</code>.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+
+            
+            <section class="method-content" id="annotations">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#annotations">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Annotations </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="Binding" title="Binding">
+                                <a class="annotations " href="annotations.html#Binding">Binding</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Describes the Java class representing a Ballerina binding.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="Constructor" title="Constructor">
+                                <a class="annotations " href="annotations.html#Constructor">Constructor</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Describes a Java constructor, which provides an implementation of a Ballerina function of which the body is marked as
+<code>external</code>.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="FieldGet" title="FieldGet">
+                                <a class="annotations " href="annotations.html#FieldGet">FieldGet</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Describes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as
+<code>external</code>.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="FieldSet" title="FieldSet">
+                                <a class="annotations " href="annotations.html#FieldSet">FieldSet</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Describes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as
+<code>external</code>.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="Method" title="Method">
+                                <a class="annotations " href="annotations.html#Method">Method</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Describes a Java method, which provides an implementation of a Ballerina function of which the body is marked as
+<code>external</code>.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+
+            
+        </div>
+    </div>
+
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

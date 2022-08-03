@@ -1,0 +1,20 @@
+{
+  "title": "Receive emails using a listener",
+  "description": "This BBE is about receiving emails. It has a listener-based functionality for receiving emails.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "email",
+    "POP3",
+    "POP",
+    "IMAP",
+    "listener"
+  ],
+  "permalink": "/learn/by-example/receive-email-using-listener",
+  "active": "receive-email-using-listener",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/receive-email-using-listener",
+    "/swan-lake/learn/by-example/receive-email-using-listener.html"
+  ]
+}

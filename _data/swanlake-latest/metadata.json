@@ -1,20 +1,19 @@
 {
-	"version":"2201.0.3",
-	"short-version":"2201.0.3",
-	"display-version":"2201.0.3 (Swan Lake)",
-	"release-date":"2022-04-22",
-	"windows-installer":"ballerina-2201.0.3-swan-lake-windows-x64.msi",
+	"version":"2201.1.1",
+	"short-version":"2201.1.1",
+	"display-version":"2201.1.1 (Swan Lake Update 1)",
+	"release-date":"2022-07-04",
+	"windows-installer":"ballerina-2201.1.1-swan-lake-windows-x64.msi",
 	"windows-installer-size":"154mb",
-	"linux-installer":"ballerina-2201.0.3-swan-lake-linux-x64.deb",
-	"linux-installer-size":"179mb",
-	"macos-installer":"ballerina-2201.0.3-swan-lake-macos-x64.pkg",
-	"macos-installer-size":"209mb",
-	"rpm-installer":"ballerina-2201.0.3-swan-lake-linux-x64.rpm",
-	"rpm-installer-size":"213mb",
+	"linux-installer":"ballerina-2201.1.1-swan-lake-linux-x64.deb",
+	"linux-installer-size":"175mb",
+	"macos-installer":"ballerina-2201.1.1-swan-lake-macos-x64.pkg",
+	"macos-installer-size":"210mb",
+	"rpm-installer":"ballerina-2201.1.1-swan-lake-linux-x64.rpm",
+	"rpm-installer-size":"214mb",
 	"other-artefacts":[
-		"ballerina-2201.0.3-swan-lake.zip",
-		"ballerina-metrics-grafana-dashboard-prometheus.json"
-	],
-	"api-docs":"ballerina-api-docs-2201.0.3.zip",
-	"release-notes":"ballerina-release-notes-2201.0.3.md"
+		"ballerina-2201.1.1-swan-lake.zip"
+ 	],
+	"api-docs":"ballerina-api-docs-2201.1.1.zip",
+	"release-notes":"ballerina-release-notes-2201.1.1.md"
 }

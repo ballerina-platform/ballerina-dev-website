@@ -1,0 +1,42 @@
+.hit {
+    background-color: #fff;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #1c1e21;
+    font-weight: 500;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 56px;
+    padding: 0 10px;
+}
+
+.hitBody {
+    display: flex;
+    align-items: center;   
+}
+
+/* .hitBody p {
+    margin-bottom: none !important; 
+} */
+
+.hit:hover {
+    background-color: #20b6b0;
+    color: #fff;
+}
+
+.hit ais-highlight-0000000000 {
+    color: #20b6b0;
+    margin-right: 3px;
+}
+
+.hit:hover ais-highlight-0000000000 {
+    color: #fff;
+}
+
+.hitCategory {
+    color: #20b6b0;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}

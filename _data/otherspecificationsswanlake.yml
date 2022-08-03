@@ -1,0 +1,10 @@
+- title: Other specifications
+  url: /learn/other-specifications
+  sublinks:
+    - title: Released specifications
+      url: /learn/other-specifications/#released-specifications
+      active: released-specifications
+    - title: Current snapshots
+      url: /learn/other-specifications/#current-snapshots
+      active: current-snapshots
+   

@@ -16,3 +16,6 @@
     - title: Import a module from the same package
       url: /learn/organize-ballerina-code/#import-a-module-from-the-same-package
       active: import-a-module-from-the-same-package
+    - title: Package references
+      url: /learn/organize-ballerina-code/package-references/
+      active: package-references

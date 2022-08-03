@@ -51,9 +51,7 @@ const TopNav = (props) => {
               {(launcher === 'docs-learn')?
                 <NavDropdown title={versionPicker} id={styles.navbarScrollingDropdown}>
                   <NavDropdown.Item href={`${prefix}/learn/`}>Swan-Lake</NavDropdown.Item>
-                  <NavDropdown.Item href={`${prefix}/1.2/learn/`}>V 1.2</NavDropdown.Item>
-                  <NavDropdown.Item href={`${prefix}/1.1/learn/`}>V 1.1</NavDropdown.Item>
-                  <NavDropdown.Item href={`${prefix}/1.0/learn/`}>V 1.0</NavDropdown.Item>
+                  <NavDropdown.Item href={`${prefix}/1.2/learn/`}>v1.2</NavDropdown.Item>
                 </NavDropdown>
               : null
               }

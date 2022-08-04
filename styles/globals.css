@@ -331,6 +331,7 @@ pre.default {
   cursor: pointer;
 }
 
+h1.section:hover .mdButton,
 h2.section:hover .mdButton,
 h3.section:hover .mdButton,
 h4.section:hover .mdButton,
@@ -339,6 +340,7 @@ h6.section:hover .mdButton {
   visibility: visible;
 }
 
+h1.section code,
 h2.section code,
 h3.section code,
 h4.section code,

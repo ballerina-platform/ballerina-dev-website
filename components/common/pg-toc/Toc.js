@@ -8,14 +8,19 @@ export default function Toc(props) {
   let uniqueHeadingList = [];
   let hash = false;
 
-  const clickMe = (triggerElement, sectionId) => {
+  const clickMe = (triggerElement, sectionId, unique) => {
     if (triggerElement.tagName.toLowerCase() === "code")
       triggerElement = triggerElement.parentElement;
-    const match = sectionId.match(
-      /(?<id_1>(?:\w|-)+)-(?<count>\d)$|((?<id_2>(?:\w|-)+))/
-    );
-    const id = match.groups.id_1 || match.groups.id_2;
-    const sectionNumber = match.groups.count;
+
+    let id, sectionNumber;
+
+    if (unique) {
+      id = sectionId;
+    } else {
+      const match = sectionId.match(/(?<id>(?:\w|-)+)-(?<count>\d+)$/);
+      id = match.groups.id;
+      sectionNumber = match.groups.count;
+    }
 
     const elements = document.querySelectorAll(`#${id}`);
     let element;
@@ -104,9 +109,10 @@ export default function Toc(props) {
         .use(remarkHtml)
         .process(source);
 
-      const level = "";
-      const text = "";
-      const sectionId = "";
+      let level = "",
+        text = "",
+        sectionId = "",
+        unique = true;
 
       const match = String(file).match(/h(\d)/);
       if (match.length > 1) {
@@ -125,21 +131,23 @@ export default function Toc(props) {
       sectionId = String(text)
         .replace(/<code>/g, "")
         .replace(/<\/code>/g, "")
-        .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
+        .replace(/[&\/\\#,+()!$~%.'’":*?<>{}]/g, "")
         .toLowerCase()
         .replace(/ /g, "-");
 
       const headingCount = getArrayCount(uniqueHeadingList, sectionId);
       uniqueHeadingList.push(sectionId);
       if (headingCount !== 0) {
+        unique = false;
         sectionId = sectionId + "-" + headingCount;
       }
 
       const myObj = {
-        level: level,
-        text: text,
-        sectionId: sectionId,
+        level,
+        text,
+        sectionId,
         active: count === 1 ? true : false,
+        unique,
       };
 
       setData(myObj);
@@ -186,7 +194,7 @@ export default function Toc(props) {
             className={`title-anchor ${item.level}${
               item.active ? " active" : ""
             }`}
-            onClick={(e) => clickMe(e.target, item.sectionId)}
+            onClick={(e) => clickMe(e.target, item.sectionId, item.unique)}
             dangerouslySetInnerHTML={{ __html: item.text }}
           />
         ))}

@@ -164,7 +164,7 @@ export default function PostPage({
     const newArray = array.map(extractText);
     let newId = newArray
       .join("")
-      .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
+      .replace(/[&\/\\#,+()!$~%.'’":*?<>{}]/g, "")
       .toLowerCase();
     newId = newId.replace(/ /g, "-");
     return newId;
@@ -285,7 +285,7 @@ export default function PostPage({
                     id = children[0]
                       .toString()
                       .toLowerCase()
-                      .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
+                      .replace(/[&\/\\#,+()!$~%.'’":*?<>{}]/g, "")
                       .replace(/ /g, "-");
                   } else {
                     id = scanArray(children);
@@ -315,7 +315,7 @@ export default function PostPage({
                     id = children[0]
                       .toString()
                       .toLowerCase()
-                      .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
+                      .replace(/[&\/\\#,+()!$~%.'’":*?<>{}]/g, "")
                       .replace(/ /g, "-");
                   } else {
                     id = scanArray(children);
@@ -345,7 +345,7 @@ export default function PostPage({
                     id = children[0]
                       .toString()
                       .toLowerCase()
-                      .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
+                      .replace(/[&\/\\#,+()!$~%.'’":*?<>{}]/g, "")
                       .replace(/ /g, "-");
                   } else {
                     id = scanArray(children);
@@ -375,7 +375,7 @@ export default function PostPage({
                     id = children[0]
                       .toString()
                       .toLowerCase()
-                      .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
+                      .replace(/[&\/\\#,+()!$~%.'’":*?<>{}]/g, "")
                       .replace(/ /g, "-");
                   } else {
                     id = scanArray(children);
@@ -405,7 +405,7 @@ export default function PostPage({
                     id = children[0]
                       .toString()
                       .toLowerCase()
-                      .replace(/[&\/\\#,+()!$~%.'":*?<>{}]/g, "")
+                      .replace(/[&\/\\#,+()!$~%.'’":*?<>{}]/g, "")
                       .replace(/ /g, "-");
                   } else {
                     id = scanArray(children);

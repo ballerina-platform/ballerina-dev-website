@@ -161,7 +161,7 @@ export default function BBEPage({ navContent, bbesJson }) {
         <meta
           property="twitter:image"
           content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
-        ></meta>
+        />
       </Head>
 
       <Layout>

@@ -177,7 +177,7 @@ Resources enable a data-oriented approach to expose the service interface. They 
 
 ## Resources
 
-In Ballerina, you can define a resource method in a service object.
+In Ballerina, you can define a resource method in both service object and client object.
 
 ```ballerina
 import ballerina/http;
@@ -213,7 +213,7 @@ A single listener can have multiple services attached to it, each with different
 
 ## Resource path parameters
 
-The resource paths can also be parameterized such that instead of having fixed, static paths, they can be dynamically assigned during the service invocation.  
+The resource paths can also be parameterized such that instead of having fixed, static paths, they can be dynamically assigned during the resource access.  
 
 ```ballerina
 // GET /demo/greeting/James would return "Hello, James"
@@ -226,6 +226,86 @@ service /demo on new http:Listener(8080) {
 ```
 
 In this case, the fixed resource path is **``/demo/greeting``** followed by a parameterized segment defined within `'[ ]'` in the resource method. This arrangement is similar to how HTTP resources are defined with parameterized path segments for RESTful services.
+
+## Accessing resources in client objects
+
+A resource of a client object can be accessed only using a `client resource access action`.
+
+A resource of a service object is accessed by a listener object provided by a library module; Ballerina does not yet define a mechanism to allow such a library module to be implemented completely in Ballerina.
+
+```ballerina
+import ballerina/io;
+
+var clinetObj = client object {
+    resource function get greeting/[string name]() returns string {
+        return "Hello, " + name;
+    }
+};
+
+public function main() {
+    string result = clinetObj->/greeting/James;
+    // Will print Hello, James
+    io:println(result);
+}
+```
+
+In the above example the resource `greeting/[string name]` in `clinetObj` is accessed with the call syntax `->/`. This notation signifies that it is a resource access action on a client object.
+
+Resource access path segments `greeting/James` after `->/` specifies the target resource to access on `clinetObj`. The default resource method name will be`get` if not specified in the client resource access action.
+
+Resource access action can specify the query parameters as arguments.
+
+```ballerina
+import ballerina/io;
+
+var clinetObj = client object {
+    resource function get greeting(string name) returns string {
+        return "Hello, " + name;
+    }
+};
+
+public function main() {
+    string result = clinetObj->/greeting.get("James");
+    // Will print Hello, James
+    io:println(result);
+    // Default resource access method name will be `get` if not specified
+    result = clinetObj->/greeting("Ann");
+    // Will print Hello, Ann
+    io:println(result);
+}
+```
+
+Resource access path segments can also be dynamically assigned using computed resource access segments and resource access rest segments.
+
+```ballerina
+import ballerina/io;
+
+var clinetObj = client object {
+    resource function get greeting/[string name]() returns string {
+        return "Hello, " + name;
+    }
+
+    resource function post game/[string name]/[int players]() returns string {
+        return name + ": " + players.toString();
+    }
+};
+
+public function main() {
+    string name = "Mark";
+    string result = clinetObj->/greeting/[name];
+    // Will print Hello, Mark
+    io:println(result);
+
+    [string, int] gameDetails = ["Chess", 2];
+    result = clinetObj->/game/[...gameDetails].post;
+    // Will print Chess: 2
+    io:println(result);
+}
+```
+
+In the above example we have used `[]` in the resource access path segments and inside that we can include an expression. The static type of this expression should be  `int`, `string`, `float`, `boolean`, or `decimal`.
+
+We can include resource access rest segments with the notation of `[...expression]`. The static type of this expression should be an array of `int|string|float|boolean|decimal`.
 
 ## Hierarchical services
 

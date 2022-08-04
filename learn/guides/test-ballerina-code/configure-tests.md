@@ -278,9 +278,6 @@ Configurations for testing can be provided using configurable variables. The val
 provided in a file named `Config.toml` located in the `tests` directory, which will only be initialized when the tests
 are run. 
 
->**Note:** If the `Config.toml` is not specified in the `tests` directory, the values will
-be either taken from the `Config.toml` in the root directory or default values will be used.
-
 Configurable variables are useful when you require separate configurations that cannot be feasibly used outside of 
 testing. This is particularly useful when testing services and clients where you may need different host values when you
 are trying to test the service or client.

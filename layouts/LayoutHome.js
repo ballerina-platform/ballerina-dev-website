@@ -15,6 +15,8 @@ export default function Layout({ children }) {
         
         <title>Ballerina Home</title>
 
+        <meta name="description" content="Ballerina is an open-source programming language for the cloud that makes it easier to use, combine and create network services."></meta>
+
         {/* Google analytics */}
         <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js" />
         <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PSL2TX4" />

@@ -10,7 +10,7 @@ const pages = ['Download', 'Playground', 'Learn', 'Central', 'Community', 'Blog'
 
 const TopNav = (props) => {
   const launcher = props.launcher;
-  const versionPicker = 'Swan-Lake';
+  const versionPicker = 'Swan Lake';
   const version = '';
 
   if (global.location.pathname.indexOf('learn') > 0) {

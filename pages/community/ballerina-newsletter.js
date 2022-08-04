@@ -2,6 +2,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
+import Head from 'next/head';
 
 
 import Layout from '../../layouts/LayoutCommunity';
@@ -35,52 +36,73 @@ export async function getStaticProps() {
 export default function BallerinaNewsLetter({ posts }) {
 
   return (
-    <Layout>
-      <Col sm={12}>
+    <>
+      <Head>
+        <meta name="description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
+        <title>Ballerina newsletter</title>
 
-        <Container>
+        {/* <!--FB--> */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Ballerina - Ballerina newsletter" />
+        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
-          <Row className="pageHeader pageContentRow communityRow">
-            <Col xs={12}>
-              <h1>Ballerina newsletter</h1>
-            </Col>
-          </Row>
-
-          <Row className="pageContentRow communityRow">
-            <Col xs={12} md={6}>
-              <p>This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.</p>
-              <NewsletterSubscription />
-            </Col>
-          </Row>
+        {/* <!--LINKED IN  --> */}
+        <meta property="og:title" content="Ballerina" />
+        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
 
+        {/* <!--TWITTER--> */}
+        <meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
-          <Row className="pageContentRow communityRow">
-            <Col xs={12}>
-              {posts.reverse().map(({ slug, frontmatter }, index) => (
-                <>
-                  {
-                    (index === 0) ?
-                      <h2 id="current-issues" className='newsletterCat'>Current issue </h2>
-                      : (index === 1) ?
-                        <h2 id="past-issues" className='newsletterCat'>Past issues </h2>
-                        : null
-                  }
-                  <div key={index} className='newsletterInfo'>
-                    <p className='newsletterDate'>{frontmatter.issue}</p>
-                    <a className='newsletterLink' target="_blank" rel="noreferrer" href={`${prefix}/community/newsletter/${slug}`} >
-                      <h4 className='newsletterTitle'>{frontmatter.title}</h4>
-                    </a>
-                  </div>
-                </>
-              ))}
-            </Col>
-          </Row>
+      </Head>
+      <Layout>
+        <Col sm={12}>
 
-        </Container>
+          <Container>
 
-      </Col>
-    </Layout>
+            <Row className="pageHeader pageContentRow communityRow">
+              <Col xs={12}>
+                <h1>Ballerina newsletter</h1>
+              </Col>
+            </Row>
 
+            <Row className="pageContentRow communityRow">
+              <Col xs={12} md={6}>
+                <p>This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.</p>
+                <NewsletterSubscription />
+              </Col>
+            </Row>
+
+
+
+            <Row className="pageContentRow communityRow">
+              <Col xs={12}>
+                {posts.reverse().map(({ slug, frontmatter }, index) => (
+                  <>
+                    {
+                      (index === 0) ?
+                        <h2 id="current-issues" className='newsletterCat'>Current issue </h2>
+                        : (index === 1) ?
+                          <h2 id="past-issues" className='newsletterCat'>Past issues </h2>
+                          : null
+                    }
+                    <div key={index} className='newsletterInfo'>
+                      <p className='newsletterDate'>{frontmatter.issue}</p>
+                      <a className='newsletterLink' target="_blank" rel="noreferrer" href={`${prefix}/community/newsletter/${slug}`} >
+                        <h4 className='newsletterTitle'>{frontmatter.title}</h4>
+                      </a>
+                    </div>
+                  </>
+                ))}
+              </Col>
+            </Row>
+
+          </Container>
+
+        </Col>
+      </Layout>
+    </>
   );
 }

@@ -23,7 +23,7 @@ export default function Learn() {
             </div>
 
             <div className='useRow'>
-              <h2>Websoket</h2>
+              <h2>Websocket</h2>
               <p><a href="#">Chat application</a></p>
               <p><a href="#">Taxi management service</a></p>
             </div>

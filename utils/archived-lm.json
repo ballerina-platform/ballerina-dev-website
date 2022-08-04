@@ -15,6 +15,14 @@
             "id": "swan-lake-archived-versions",
             "subDirectories": [
                 {
+                    "dirName": "API Docs",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "https://lib.ballerina.io/",
+                    "id": "swan-lake-api-docs"
+                },
+                {
                     "dirName": "2201.1.1",
                     "level": 2,
                     "position": 0,
@@ -241,6 +249,14 @@
             "url": "#1.2.x-archived-versions",
             "id": "1.2.x-archived-versions",
             "subDirectories": [
+                {
+                    "dirName": "API Docs",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/1.2/learn/api-docs/ballerina/",
+                    "id": "1.2.x-api-docs"
+                },
                 {
                     "dirName": "1.2.31",
                     "level": 2,
@@ -508,6 +524,14 @@
             "id": "1.1.x-archived-versions",
             "subDirectories": [
                 {
+                    "dirName": "API Docs",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/1.1/learn/api-docs/ballerina/",
+                    "id": "1.1.x-api-docs"
+                },
+                {
                     "dirName": "1.1.4",
                     "level": 2,
                     "position": 1,
@@ -562,6 +586,14 @@
             "url": "#1.0.x-archived-versions",
             "id": "1.0.x-archived-versions",
             "subDirectories": [
+                {
+                    "dirName": "API Docs",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/1.0/learn/api-docs/ballerina/",
+                    "id": "1.0.x-api-docs"
+                },
                 {
                     "dirName": "1.0.5",
                     "level": 2,
@@ -626,6 +658,14 @@
             "url": "/downloads/0.9.x-archived-versions",
             "id": "0.9.x-archived-versions",
             "subDirectories": [
+                {
+                    "dirName": "API Docs",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/0.990/learn/api-docs/ballerina/",
+                    "id": "0.9.x-api-docs"
+                },
                 {
                     "dirName": "0.990.7",
                     "level": 2,

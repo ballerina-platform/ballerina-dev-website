@@ -1,0 +1,57 @@
+name: Generate Proposal MD
+
+on:
+  workflow_dispatch: 
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  generateMD:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: website-revamp
+          token: ${{ secrets.BALLERINA_BOT_TOKEN }}
+      - name: Run Proposals Bot
+        uses: ballerina-platform/ballerina-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        with:
+          args: 
+            run .github/scripts/bal_proposals_bot
+      - name: Commit files and Push
+        id: commit
+        run: |
+          DIFF_VAR=false
+          if git diff --quiet HEAD --; then
+              echo "No changes"             
+          else
+              DIFF_VAR=true
+              UUID_VAL=$(uuidgen)
+              git checkout automate-proposals-$UUID_VAL 2>/dev/null || git checkout -b automate-proposals-$UUID_VAL
+              git config --local user.email ${{ secrets.BALLERINA_BOT_USERNAME }}
+              git config --local user.name ${{ secrets.BALLERINA_BOT_EMAIL }}
+              git add community/proposals/active-proposals.md
+              if [-z "$(git status --porcelain)"]; then
+                echo "::set-output name=push::false"
+              else
+                git commit --allow-empty -m "Generate proposal HTML" 
+                echo "::set-output name=push::true"
+              fi
+              git push --set-upstream origin automate-proposals-$UUID_VAL
+          fi
+          echo "::set-output name=difference::$DIFF_VAR"
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+        shell: bash
+      - name: Create pull request for new proposals
+        shell: bash
+        run: |
+          if [ ${{ steps.commit.outputs.difference }} == true ]
+          then
+            curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+            bin/hub pull-request -b website-revamp -m '[Automated] Update Ballerina active proposals'
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}

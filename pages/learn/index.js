@@ -99,7 +99,7 @@ export default function Learn() {
           <LearnTheLanguage />
           <UseCases />
           <Platform />
-          <New />
+          {/* <New /> */}
         </Col>
       </Layout>
     </>

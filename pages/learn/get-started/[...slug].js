@@ -8,7 +8,6 @@ import Image from "next-image-export-optimizer";
 import rehypeRaw from "rehype-raw";
 import Head from "next/head";
 import { Liquid } from "liquidjs";
-import remarkExternalLinks from 'remark-external-links'
 
 import { getHighlighter, setCDN } from "shiki";
 
@@ -447,7 +446,7 @@ export default function PostPage({
                   );
                 },
               }}
-              remarkPlugins={[remarkGfm, remarkExternalLinks]}
+              remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}
             >
               {AddLiquid(content)}

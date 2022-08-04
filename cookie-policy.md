@@ -47,7 +47,7 @@ Our website will set several types of third-party cookie, and we do not control 
 
 - Google Analytics - we use Google Analytics to collect data about website usage. This data does not include personally identifiable information. For more information, view the [Google Privacy Policy](https://policies.google.com/privacy).
 
-## What type of cokkies do we use?
+## What type of cookies do we use?
 
 We use session cookies. A session cookie is a cookie that is erased when the user closes the Web browser. The session cookie is stored in temporary memory and is not retained after the browser is closed. Session cookies do not collect information from the users computer.
 

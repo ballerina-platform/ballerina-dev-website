@@ -59,7 +59,7 @@ export default function SequenceDiagrams() {
 
       <p>
         <img
-          src="/images/sequence-diagram.png"
+          src="/learn/by-example/images/sequence-diagram.png"
           alt="Sequence diagrams"
           title="Sequence Diagram"
         />

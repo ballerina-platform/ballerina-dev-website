@@ -2,14 +2,13 @@ import React from 'react';
 import { Row, Col, Button, Offcanvas, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 
 import Layout from '../../layouts/LayoutRN';
 import { prefix } from '../../utils/prefix';
 import archive from '../../_data/release_notes_versions.json';
 import SLArchive from '../../_data/swanlake_release_notes_versions.json';
 import archivedToc from '../../utils/archived-lm.json';
-
-import dynamic from 'next/dynamic';
 
 
 export default function AllArchived() {
@@ -100,6 +99,18 @@ export default function AllArchived() {
                 <meta name="keywords" content="ballerina, ballerina downloads, release notes, getting started, programming language" />
 
                 <title>Archived versions</title>
+
+                {/* <!--FB--> */}
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Ballerina - Archived versions" />
+                <meta property="og:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
+
+                {/* <!--LINKED IN  --> */}
+                <meta property="og:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
+
+                {/* <!--TWITTER--> */}
+                <meta name="twitter:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
+                <meta name="twitter:text:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
             </Head>
             <Layout>
                 <Col sm={3} xxl={2} className='leftNav d-none d-sm-block'>
@@ -509,15 +520,10 @@ export default function AllArchived() {
                                         </div>
                                     ))}
                                 </Row>
-
                             </Col>
                         </Row>
-
-
                     </Container>
                 </Col>
-
-
             </Layout>
         </>
     );

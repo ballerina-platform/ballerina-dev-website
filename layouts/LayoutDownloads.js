@@ -16,7 +16,6 @@ export default function Layout({ children }) {
         <meta name="keywords" content="ballerina, ballerina downloads, release notes, getting started, programming language"/>
 
         {/* <!--FB--> */}
-        <meta property="og:type" content="article"/>
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="Ballerina - Ballerina downloads"/>
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/>

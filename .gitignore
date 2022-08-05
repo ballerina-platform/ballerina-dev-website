@@ -34,3 +34,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#folders
+.github/scripts/bal_proposals_bot/target/

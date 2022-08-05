@@ -19,18 +19,18 @@ export default function LeftNav(props) {
   function CheckActive(eventKey) {
 
     if (mainDir !== eventKey) {
-      document.querySelectorAll('[item-id='+ "\'"+ mainDir + "\'" +']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
-      document.querySelectorAll('[item-id='+ "\'"+ mainDir + "\'" +']')[0].getElementsByTagName('button')[0].style.fontWeight = '500';
+      document.querySelectorAll('[item-id=' + "\'" + mainDir + "\'" + ']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
+      document.querySelectorAll('[item-id=' + "\'" + mainDir + "\'" + ']')[0].getElementsByTagName('button')[0].style.fontWeight = '500';
     }
 
     if (sub && sub !== eventKey) {
-      document.querySelectorAll('[item-id='+ sub +']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
-      document.querySelectorAll('[item-id='+ sub +']')[0].getElementsByTagName('button')[0].style.fontWeight = '500';
+      document.querySelectorAll('[item-id=' + sub + ']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
+      document.querySelectorAll('[item-id=' + sub + ']')[0].getElementsByTagName('button')[0].style.fontWeight = '500';
     }
 
     if (third && third !== eventKey) {
-      document.querySelectorAll('[item-id='+ third +']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
-      document.querySelectorAll('[item-id='+ third +']')[0].getElementsByTagName('button')[0].style.fontWeight = '500';
+      document.querySelectorAll('[item-id=' + third + ']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
+      document.querySelectorAll('[item-id=' + third + ']')[0].getElementsByTagName('button')[0].style.fontWeight = '500';
     }
   }
 
@@ -84,10 +84,18 @@ export default function LeftNav(props) {
             :
             (directory.position > 0) ?
               <li key={directory.id}>
-                <a id={directory.id} className={(id === directory.id) ? styles.active : null}
-                  href={(`${prefix}`) ? `${prefix}` + directory.url : directory.url}>
-                  {directory.dirName}
-                </a>
+                {(directory.dirName === 'API Docs') ?
+                  <a id={directory.id} className={(id === directory.id) ? styles.active : null}
+                    href={(`${prefix}`) ? `${prefix}` + directory.url : directory.url}
+                    target='_blank' rel="noreferrer">
+                    {directory.dirName}
+                  </a>
+                  :
+                  <a id={directory.id} className={(id === directory.id) ? styles.active : null}
+                    href={(`${prefix}`) ? `${prefix}` + directory.url : directory.url}>
+                    {directory.dirName}
+                  </a>
+                }
               </li>
               : null
         }

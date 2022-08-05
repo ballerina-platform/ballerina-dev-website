@@ -22,13 +22,11 @@ kafka:ProducerConfiguration producerConfigs = {
     retryCount: 3,
     // The \`enableIdempotence\` should set to \`true\` to make a producer transactional.
     enableIdempotence: true,
-
     // A \`transactionalId\` must be provided to make a producer transactional.
     transactionalId: "test-transactional-id"
 };
 
-kafka:Producer transactionalProducer =
-                check new (kafka:DEFAULT_URL, producerConfigs);
+kafka:Producer transactionalProducer = check new (kafka:DEFAULT_URL, producerConfigs);
 
 public function main() returns error? {
     transaction {
@@ -37,7 +35,6 @@ public function main() returns error? {
             topic: "test-kafka-topic",
             value: "Hello World Transaction Message"
         });
-
         check commit;
     }
 }
@@ -76,14 +73,12 @@ export default function KafkaProducerTransactional() {
 
       <p>this to work properly, an active Kafka broker should be present.</p>
 
-      <p>&lt;br/&gt;&lt;br/&gt;</p>
-
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          Kafka module
+          <code>kafka</code> module
         </a>
         .
       </p>
@@ -216,7 +211,7 @@ export default function KafkaProducerTransactional() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run kafka_message_producer_transactional.bal`}</span>
+              <span>{`\$ bal run kafka_message_producer_transactional.bal`}</span>
               <span>{`Transaction successful`}</span>
             </code>
           </pre>

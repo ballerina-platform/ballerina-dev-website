@@ -61,14 +61,12 @@ export default function HttpAccessLogs() {
 
       <p>
         Also, the <code>path</code> field can be used to specify the file path
-        to save the access logs.&lt;br/&gt;&lt;br/&gt;
+        to save the access logs.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -151,6 +149,8 @@ export default function HttpAccessLogs() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -202,13 +202,35 @@ export default function HttpAccessLogs() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Invoke the service.`}</span>
-              <span>{`curl http://localhost:9095/hello`}</span>
-              <span>{`Successful`}</span>
+              <span>
+                {`# Run the service by setting the configurations in the `}
+                <code>{`Config.toml`}</code>
+                {` file as follows to have logs in the console.`}
+              </span>
+              <span>{`\$ echo '[ballerina.http.accessLogConfig] console = true' > Config.toml`}</span>
+              <span>{``}</span>
+              <span>{`\$ bal run http_access_logs.bal`}</span>
+              <span>{`ballerina: HTTP access log enabled`}</span>
+              <span>{`0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /hello HTTP/1.1" 200 10 "-" "curl/7.64.1"`}</span>
+              <span>{``}</span>
+              <span>
+                {`# Else, change the `}
+                <code>{`Config.toml`}</code>
+                {` file as follows to direct the log to the specified file.`}
+              </span>
+              <span>{`\$ echo '[ballerina.http.accessLogConfig] path = "testAccessLog.txt"' > Config.toml`}</span>
+              <span>{``}</span>
+              <span>{`\$ bal run http_access_logs.bal`}</span>
+              <span>{`ballerina: HTTP access log enabled`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -261,28 +283,8 @@ export default function HttpAccessLogs() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>
-                {`# Run the service by setting the configurations in the `}
-                <code>{`Config.toml`}</code>
-                {` file as follows to have logs in the console.`}
-              </span>
-              <span>{`echo '[ballerina.http.accessLogConfig]`}</span>
-              <span>{`console = true' > Config.toml`}</span>
-              <span>{``}</span>
-              <span>{`bal run http_access_logs.bal`}</span>
-              <span>{`ballerina: HTTP access log enabled`}</span>
-              <span>{`0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /hello HTTP/1.1" 200 10 "-" "curl/7.64.1"`}</span>
-              <span>{``}</span>
-              <span>
-                {`# Else, change the `}
-                <code>{`Config.toml`}</code>
-                {` file as follows to direct the log to the specified file.`}
-              </span>
-              <span>{`echo '[ballerina.http.accessLogConfig]`}</span>
-              <span>{`path = "testAccessLog.txt"' > Config.toml`}</span>
-              <span>{``}</span>
-              <span>{`bal run http_access_logs.bal`}</span>
-              <span>{`ballerina: HTTP access log enabled`}</span>
+              <span>{`\$ curl http://localhost:9095/hello`}</span>
+              <span>{`Successful`}</span>
             </code>
           </pre>
         </Col>

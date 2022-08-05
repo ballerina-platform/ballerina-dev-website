@@ -20,7 +20,6 @@ public function main() {
         // Use \`-> W\` to send a message to worker \`W\`.
         1 -> B;
         2 -> C;
-
     }
 
     worker B {
@@ -29,7 +28,6 @@ public function main() {
 
         // Use \`function\` to refer to the function's default worker.
         x1 -> function;
-
     }
 
     worker C {
@@ -39,7 +37,7 @@ public function main() {
 
     int y1 = <- B;
     int y2 = <- C;
-    
+
     io:println(y1 + y2);
 }
 `,
@@ -70,25 +68,17 @@ export default function InterWorkerMessagePassing() {
 
       <p>
         Use <code>-&gt; W</code> or <code>&lt;- W</code> to send a message to or
-        receive a message from worker <code>W</code> (use
+        receive a message to/from the worker <code>W</code> (use{" "}
+        <code>function</code> to refer to the function's default worker). The
+        messages are copied using{" "}
+        <a href="https://lib.ballerina.io/ballerina/lang.value/0.0.0/functions#clone">
+          <code>clone()</code>
+        </a>
+        . It implies that immutable values are passed without a copy. Message
+        sends and receives are paired up at compile time. Each pair turns into a
+        horizontal line in the sequence diagram. They are easy to use and safe
+        but are limited in expressiveness.
       </p>
-
-      <p>
-        <code>function</code> to refer to the function's default worker).
-      </p>
-
-      <p>
-        The messages are copied using <code>clone()</code>. It implies immutable
-        values are passed
-      </p>
-
-      <p>without a copy.</p>
-
-      <p>Message sends and receives are paired up at compile-time.</p>
-
-      <p>Each pair turns into a horizontal line in the sequence diagram.</p>
-
-      <p>Easy to use and safe, but limited expressiveness.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -96,7 +86,7 @@ export default function InterWorkerMessagePassing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=22bd64ad4c20318ecd730ca8c090ad3d&file=inter_worker_message_passing.bal",
+                "https://play.ballerina.io/?gist=3affd143a093f5a96399fcde5b6fbcfd&file=inter_worker_message_passing.bal",
                 "_blank"
               );
             }}
@@ -241,7 +231,7 @@ export default function InterWorkerMessagePassing() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run inter_worker_message_passing.bal`}</span>
+              <span>{`\$ bal run inter_worker_message_passing.bal`}</span>
               <span>{`3`}</span>
             </code>
           </pre>

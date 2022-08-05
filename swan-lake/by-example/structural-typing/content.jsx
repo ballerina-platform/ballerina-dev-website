@@ -19,7 +19,6 @@ public function main() {
     io:println(1 is int);
     // [10, 20, 30] belongs to \`int[]\`.
     io:println([10, 20, 30] is int[]);
-
 }
 `,
 ];
@@ -48,34 +47,26 @@ export default function StructuralTyping() {
       <h1>Structural typing</h1>
 
       <p>
-        Typing in Ballerina is structural: a type describes a set of values.
-        Ballerina has semantic subtyping:
-      </p>
-
-      <p>
-        subtype means subset. Universe of values is partitioned into basic
-        types. Each value belongs to
-      </p>
-
-      <p>
-        exactly one basic type. You can think of each value as being tagged with
-        its basic type.
+        Typing in Ballerina is structural: when a type describes a set of
+        values. Ballerina has semantic subtyping: subtype means subset. Universe
+        of values is partitioned into basic types. Each value belongs to exactly
+        one basic type. You can think of each value as being tagged with its
+        basic type.
       </p>
 
       <p>
         There is a complexity in making structural typing work with mutation.
-        &lt;br/&gt;&lt;br/&gt;
       </p>
 
       <p>
         Immutable basic types (so far): <code>nil</code>, <code>boolean</code>,{" "}
-        <code>int</code>, <code>float</code>, <code>string</code>{" "}
-        &lt;br/&gt;&lt;br/&gt;
+        <code>int</code>, <code>float</code>, <code>decimal</code>,{" "}
+        <code>string</code>
       </p>
 
       <p>
-        Mutable basic types (so far): <code>array</code>, <code>map</code>, and{" "}
-        <code>record</code>
+        Mutable basic types (so far): <code>array</code>, <code>tuple</code>,{" "}
+        <code>map</code> and <code>record</code>
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -206,7 +197,7 @@ export default function StructuralTyping() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run structural_typing.bal`}</span>
+              <span>{`\$ bal run structural_typing.bal`}</span>
               <span>{`true`}</span>
               <span>{`true`}</span>
             </code>

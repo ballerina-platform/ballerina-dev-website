@@ -55,18 +55,12 @@ export default function TimeUtc() {
 
       <p>
         The Ballerina <code>time</code> library contains an API to obtain the
-        current
+        current time from the epoch <code>1970-01-01T00:00:00</code>.
       </p>
 
       <p>
-        time from the epoch <code>1970-01-01T00:00:00</code>.
-      </p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/time/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/time/latest/">
           Time module
         </a>
         .
@@ -78,7 +72,7 @@ export default function TimeUtc() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f995802f1f5749491fbd1629b1d24df2&file=time_utc.bal",
+                "https://play.ballerina.io/?gist=019b18dbfa46aa729caf60b0e11e35be&file=time_utc.bal",
                 "_blank"
               );
             }}
@@ -172,6 +166,10 @@ export default function TimeUtc() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -223,7 +221,7 @@ export default function TimeUtc() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run time_utc.bal`}</span>
+              <span>{`\$ bal run time_utc.bal`}</span>
               <span>{`Number of seconds from the epoch: 1621839972s`}</span>
               <span>{`Nanoseconds fraction: 0.005413000s`}</span>
             </code>

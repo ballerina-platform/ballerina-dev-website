@@ -21,11 +21,10 @@ type Coord record {
 
 public function main() {
     json j = {x: 1.0, y: 2.0};
-    
-    
+
     // With mutable values, it would not be type-safe to allow a cast.
-    // Cast to \`T\` will work on the mutable structure \`s\` only if the inherent type
-    // of \`s\` is a subtype of \`T\`.
+    // Cast to \`T\` will work on the mutable structure \`s\` only if the inherent
+    // type of \`s\` is a subtype of \`T\`.
     // Use \`cloneReadOnly()\` to create a read-only copy of the mutable value.
     // Then, you can cast the resulting immutable value successfully.
     json k = j.cloneReadOnly();
@@ -60,25 +59,13 @@ export default function ConvertingFromJsonToUserDefinedType() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Converting from JSON to user-defined type</h1>
 
-      <p>With mutable values, it would not be type-safe to allow a cast.</p>
-
       <p>
-        Mutable structures have the <code>inherent</code> type that limits
-        mutation.
-      </p>
-
-      <p>
+        With mutable values, it would not be type-safe to allow a cast. Mutable
+        structures have the <code>inherent</code> type that limits mutation.
         Cast to <code>T</code> will work on mutable structure <code>s</code>{" "}
-        only if the <code>inherent</code> type
-      </p>
-
-      <p>
-        of <code>s</code> is a subtype of <code>T</code>.
-      </p>
-
-      <p>
-        Casting immutable values will work but it does not do numeric
-        conversions.
+        only if the <code>inherent</code> type of <code>s</code> is a subtype of{" "}
+        <code>T</code>. Casting immutable values will work, but it does not do
+        numeric conversions.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -87,7 +74,7 @@ export default function ConvertingFromJsonToUserDefinedType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5b49cdd92134b1b9ebeb718e1b3a8a65&file=converting_from_json_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=9dbd3b53bce2081226431eea94d9744c&file=converting_from_json_to_user_defined_type.bal",
                 "_blank"
               );
             }}
@@ -243,7 +230,7 @@ export default function ConvertingFromJsonToUserDefinedType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Convert from user-defined type to JSON"
+            title="Converting from user-defined type to JSON"
             href="/learn/by-example/converting-from-user-defined-type-to-json"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -271,7 +258,7 @@ export default function ConvertingFromJsonToUserDefinedType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Convert from user-defined type to JSON
+                  Converting from user-defined type to JSON
                 </span>
               </div>
             </div>
@@ -279,7 +266,7 @@ export default function ConvertingFromJsonToUserDefinedType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Convert to user-defined type"
+            title="Converting to user-defined type"
             href="/learn/by-example/converting-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -290,7 +277,7 @@ export default function ConvertingFromJsonToUserDefinedType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Convert to user-defined type
+                  Converting to user-defined type
                 </span>
               </div>
               <svg

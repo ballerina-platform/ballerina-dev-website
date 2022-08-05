@@ -14,15 +14,16 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-// Usually it is an error to import a module without using it, but if you want to import a module because of what its initialization does,
-//  then use \`as _\` as in this example.
+// Usually, it is an error to import a module without using it but if you want to import a module because of what its initialization does,
+// then, use \`as _\` as done in this example.
 import ballerina/grpc as _;
 
-// A module can have an \`init\` function just like an object. 
-// The initialization of a module ends by called its \`init\` function if there is one.
+// A module can have an \`init\` function just like an object.
+// The initialization of a module ends by calling its \`init\` function if there is one.
 function init() {
     io:println("Hello world");
-}`,
+}
+`,
 ];
 
 export default function ModuleLifecycle() {
@@ -49,26 +50,22 @@ export default function ModuleLifecycle() {
       <h1>Module lifecycle</h1>
 
       <p>
-        All modules are initialized at program startup. Module initialization is
-        ordered so that if module A imports module B,
+        All modules are initialized at the program startup. Module
+        initialization is ordered so that if <code>module A</code> imports{" "}
+        <code>module B</code>, then <code>module A</code> is initialized after{" "}
+        <code>module B</code>. The initialization phase ends by calling the{" "}
+        <code>main</code> function if there is one.
       </p>
 
       <p>
-        then module A is initialized after module B. The initialization phase
-        ends by calling the <code>main</code> function if there is one.
-        &lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>A module's listeners are registered during module initialization.</p>
-
-      <p>
-        If there are registered listeners, then the initialization phase is
-        followed by the listening phase. &lt;br/&gt;&lt;br/&gt;
+        A module's listeners are registered during the module initialization. If
+        there are registered listeners, then, the initialization phase is
+        followed by the listening phase.
       </p>
 
       <p>
         The listening phase starts by calling the <code>start</code> method on
-        each registered listener. The listening phase is terminated by signal
+        each registered listener. The listening phase is terminated by a signal
         (e.g. <code>SIGINT</code>, <code>SIGTERM</code>).
       </p>
 
@@ -78,7 +75,7 @@ export default function ModuleLifecycle() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ee4e338429399d4598c0166a19e49643&file=module_lifecycle.bal",
+                "https://play.ballerina.io/?gist=7d6007860261e77b4511d35e9bf0cde4&file=module_lifecycle.bal",
                 "_blank"
               );
             }}
@@ -223,7 +220,7 @@ export default function ModuleLifecycle() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run module_lifecycle.bal`}</span>
+              <span>{`\$ bal run module_lifecycle.bal`}</span>
               <span>{`Hello world`}</span>
             </code>
           </pre>
@@ -233,7 +230,7 @@ export default function ModuleLifecycle() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Provide services"
+            title="Providing services"
             href="/learn/by-example/providing-services"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -261,7 +258,7 @@ export default function ModuleLifecycle() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Provide services
+                  Providing services
                 </span>
               </div>
             </div>

@@ -17,7 +17,7 @@ const codeSnippetData = [
 // A WebSocket listener can be configured to communicate through WSS as well.
 // To secure a listener using SSL/TLS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
-// The [\`websocket:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket) record
+// The [\`websocket:ListenerSecureSocket\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket) record
 // provides the SSL-related listener configurations of the listener.
 listener websocket:Listener securedEP = new(9090,
     secureSocket = {
@@ -36,8 +36,7 @@ service /foo on securedEP {
 
 service class WsService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller,
-                             string text) returns websocket:Error? {
+    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
         check caller->writeMessage(text);
     }
 }
@@ -77,13 +76,11 @@ export default function WebsocketServiceSslTls() {
         to the server to
       </p>
 
-      <p>expose an WSS connection.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>expose an WSS connection.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/">
           WebSocket module
         </a>
         .
@@ -218,7 +215,7 @@ export default function WebsocketServiceSslTls() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>{`bal run websocket_service_ssl_tls.bal`}</span>
+              <span>{`\$ bal run websocket_service_ssl_tls.bal`}</span>
             </code>
           </pre>
         </Col>

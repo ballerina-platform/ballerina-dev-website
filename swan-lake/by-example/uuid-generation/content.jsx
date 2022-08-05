@@ -87,13 +87,15 @@ export default function UuidGeneration() {
       <h1>Generate UUID</h1>
 
       <p>
-        The <code>uuid</code> library provides functions related to UUIDs
-        (Universal Unique Identifiers).
+        The <code>uuid</code> library provides functions related to
+        UUID(Universal Unique Identifier).&lt;br/&gt;&lt;br/&gt;
       </p>
 
+      <p>For more information on the underlying module,</p>
+
       <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/uuid/latest/">
+        see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/uuid/latest/">
           UUID module
         </a>
         .
@@ -105,7 +107,7 @@ export default function UuidGeneration() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d4b9e3a0d109c34761cfa2fc5f344c18&file=uuid_generation.bal",
+                "https://play.ballerina.io/?gist=bf3995cc75f981f76aa8342c767b77b2&file=uuid_generation.bal",
                 "_blank"
               );
             }}
@@ -199,10 +201,6 @@ export default function UuidGeneration() {
         </Col>
       </Row>
 
-      <p>
-        To run this sample, use the <code>bal run</code> command.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -254,7 +252,7 @@ export default function UuidGeneration() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run uuid_generation.bal`}</span>
+              <span>{`\$ bal run uuid_generation.bal`}</span>
               <span>{`UUID of type 1 as a string: 01eb3f05-fbf8-1b92-8711-dc6a5719bb63`}</span>
               <span>{`UUID of type 1 as a record: {"timeLow":32194310,"timeMid":7997,"timeHiAndVersion":5524,"clockSeqHiAndReserved":170,"clockSeqLo":116,"node":82490221220318}`}</span>
               <span>{`UUID of type 3 as a string: cea5c405-7d11-3fbb-bdfb-9b68497be28b`}</span>

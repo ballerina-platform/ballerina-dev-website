@@ -30,21 +30,19 @@ public type Order record {|
     boolean isValid;
 |};
 
-// Create a subtype of \`kafka:AnydataConsumerRecord\`
+// Create a subtype of \`kafka:AnydataConsumerRecord\`.
 public type OrderConsumerRecord record {|
     *kafka:AnydataConsumerRecord;
     Order value;
 |};
 
 service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {
-    remote function onConsumerRecord(OrderConsumerRecord[] records)
-                                                        returns error? {
+    remote function onConsumerRecord(OrderConsumerRecord[] records) returns error? {
         // The set of Kafka records received by the service are processed one by one.
         check from OrderConsumerRecord orderRecord in records
             where orderRecord.value.isValid
             do {
-                log:printInfo("Received Valid Order: " +
-                                    orderRecord.value.toString());
+                log:printInfo("Received Valid Order: " + orderRecord.value.toString());
             };
     }
 }
@@ -74,13 +72,13 @@ export default function KafkaConsumerService() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Consumer service</h1>
 
-      <p>Here, a Kafka consumer is used as a listener</p>
-
-      <p>to a service with manual offset commits.</p>
+      <p>
+        Here, a Kafka consumer is used as a listener to a service with manual
+        offset commits.
+      </p>
 
       <p>
-        For this to work properly, an active Kafka broker should be
-        present.&lt;br/&gt;&lt;br/&gt;
+        For this to work properly, an active Kafka broker should be present.
       </p>
 
       <p>For more information on the underlying module,</p>
@@ -88,7 +86,7 @@ export default function KafkaConsumerService() {
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          Kafka module
+          <code>kafka</code> module
         </a>
         .
       </p>
@@ -221,7 +219,7 @@ export default function KafkaConsumerService() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run kafka_consumer_service.bal`}</span>
+              <span>{`\$ bal run kafka_consumer_service.bal`}</span>
             </code>
           </pre>
         </Col>

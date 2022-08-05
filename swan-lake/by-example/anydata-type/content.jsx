@@ -52,26 +52,27 @@ export default function AnydataType() {
       <h1>Anydata type</h1>
 
       <p>
-        The type for plain data is <code>anydata</code>. It is a subtype of{" "}
-        <code>any</code>. <code>==</code> and <code>!=</code> operators test for
-        deep equality.
+        The type for plain data is <code>anydata</code>, which is a subtype of{" "}
+        <code>any</code>.
       </p>
 
       <p>
-        <code>x.clone()</code> returns a deep copy with the same mutability.{" "}
-        <code>x.cloneReadOnly()</code> returns a deep copy that is
+        The <code>==</code> and <code>!=</code> operators test for deep
+        equality.{" "}
+        <a href="https://lib.ballerina.io/ballerina/lang.value/0.0.0/functions#clone">
+          <code>x.clone()</code>
+        </a>{" "}
+        returns a deep copy with the same mutability.{" "}
+        <a href="https://lib.ballerina.io/ballerina/lang.value/0.0.0/functions#cloneReadOnly">
+          <code>x.cloneReadOnly()</code>
+        </a>{" "}
+        returns a deep copy that is immutable. Ballerina syntax uses{" "}
+        <code>readonly</code> to mean immutable. Both <code>x.clone()</code> and{" "}
+        <code>x.cloneReadOnly()</code> do not copy immutable parts of{" "}
+        <code>x</code>. Ballerina also allows <code>const</code> structures.
       </p>
 
-      <p>
-        immutable. Ballerina syntax uses <code>readonly</code> to mean
-        immutable. Both <code>x.clone()</code> and{" "}
-        <code>x.cloneReadOnly()</code> do
-      </p>
-
-      <p>
-        not copy immutable parts of <code>x</code>. <code>const</code>{" "}
-        structures are allowed. Equality and cloning handle cycles.
-      </p>
+      <p>Equality and cloning handle cycles.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -79,7 +80,7 @@ export default function AnydataType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2bfa3be6b71136a23602a510694c00a1&file=anydata_type.bal",
+                "https://play.ballerina.io/?gist=76955eb32972258374aac9898f0a6276&file=anydata_type.bal",
                 "_blank"
               );
             }}
@@ -224,7 +225,7 @@ export default function AnydataType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run anydata_type.bal`}</span>
+              <span>{`\$ bal run anydata_type.bal`}</span>
               <span>{`[1,"string",true]`}</span>
               <span>{`true`}</span>
             </code>

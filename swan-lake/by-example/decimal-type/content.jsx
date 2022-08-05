@@ -26,8 +26,8 @@ public function main() {
     floatSurprise();
     io:println(nanos);
 
-    // Numeric literals can use the \`d\` suffix for them to be interpreted as \`decimal\` values
-    // (similarly, the \`f\` suffix can be used for \`float\`).
+    // Numeric literals can use \`d\` or \`D\` suffix for them to be interpreted as \`decimal\` values.
+    // (Similarly, the \`f\` or \`F\` suffix can be used for \`float\`).
     var d = 12345d;
     io:println(d is decimal);
 }
@@ -59,30 +59,14 @@ export default function DecimalType() {
 
       <p>
         The <code>decimal</code> type is the third numeric type. It works like{" "}
-        <code>int</code> and <code>float</code> types.
+        <code>int</code> and <code>float</code> types. It is a separate basic
+        type and belongs to the <code>anydata</code> type. There are no implicit
+        conversions between <code>decimal</code> and other numeric types. It can
+        represent <code>decimal</code> fractions exactly and it preserves
+        precision. The <code>decimal</code> type does not include infinity, NaN,
+        or negative zero. It supports floating-point precision to 34 decimal
+        digits.
       </p>
-
-      <p>
-        It is a separate basic type and belongs to the <code>anydata</code>{" "}
-        type.
-      </p>
-
-      <p>
-        There is no implicit conversions between <code>decimal</code> and other
-        numeric types.
-      </p>
-
-      <p>
-        It can represent <code>decimal</code> fractions exactly and it preserves
-        precision.
-      </p>
-
-      <p>
-        The <code>decimal</code> type does not include infinity, NaN, or
-        negative zero.
-      </p>
-
-      <p>It supports floating-point precision to 34 decimal digits.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -90,7 +74,7 @@ export default function DecimalType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4fd36a364b2ae830bbc0bada0f1b040f&file=decimal_type.bal",
+                "https://play.ballerina.io/?gist=96d4e04445f42d91e76c3b184c80526e&file=decimal_type.bal",
                 "_blank"
               );
             }}
@@ -235,7 +219,7 @@ export default function DecimalType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run decimal_type.bal`}</span>
+              <span>{`\$ bal run decimal_type.bal`}</span>
               <span>{`100.08999999999999`}</span>
               <span>{`1E-9`}</span>
               <span>{`true`}</span>

@@ -52,12 +52,14 @@ export default function RandomNumbers() {
 
       <p>
         The <code>random</code> library provides functions related to random
-        number generation.
+        number generation.&lt;br/&gt;&lt;br/&gt;
       </p>
 
+      <p>For more information on the underlying module,</p>
+
       <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/random/latest/">
+        see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/random/latest/">
           Random module
         </a>
         .
@@ -69,7 +71,7 @@ export default function RandomNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6f741d89c0cdaee7b142b294d56a3657&file=random_numbers.bal",
+                "https://play.ballerina.io/?gist=875bd0990d7ca21e093283b2e5e13362&file=random_numbers.bal",
                 "_blank"
               );
             }}
@@ -163,10 +165,6 @@ export default function RandomNumbers() {
         </Col>
       </Row>
 
-      <p>
-        To run this sample, use the <code>bal run</code> command.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -218,7 +216,7 @@ export default function RandomNumbers() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run random_numbers.bal`}</span>
+              <span>{`\$ bal run random_numbers.bal`}</span>
               <span>{`Random decimal number: 0.6146990788006506`}</span>
               <span>{`Random integer number in range: 94`}</span>
             </code>

@@ -26,7 +26,7 @@ service class RequestInterceptor {
 
     // This will return a \`HeaderNotFoundError\` if you do not set this header. 
     // Then, the execution will jump to the nearest \`RequestErrorInterceptor\`.
-    resource function 'default [string... path](http:RequestContext ctx, 
+    resource function 'default [string... path](http:RequestContext ctx,
             @http:Header string checkHeader) returns http:NextService|error? {
         io:println("Check Header Value : ", checkHeader);
         return ctx.next();
@@ -43,8 +43,8 @@ service class RequestErrorInterceptor {
 
     // The resource function inside a \`RequestErrorInterceptor\` is only allowed 
     // to have the default method and path. The error occurred in the interceptor
-    // execution can be accessed by the mandatory argument : \`error\`.
-    resource function 'default [string... path](error err, http:Request req, 
+    // execution can be accessed by the mandatory argument: \`error\`.
+    resource function 'default [string... path](error err, http:Request req,
             http:RequestContext ctx) returns http:NextService|error? {
         // In this case, a header is set to the request, and then, the modified request
         // is dispatched to the target service. Moreover, you can send different 
@@ -66,8 +66,7 @@ listener http:Listener interceptorListener = new http:Listener(9090, config = {
 
 service / on interceptorListener {
 
-    resource function get greeting(@http:Header string checkHeader) 
-            returns http:Ok {
+    resource function get greeting(@http:Header string checkHeader) returns http:Ok {
         return {
             headers: {
                 "checkedHeader": checkHeader
@@ -132,11 +131,11 @@ export default function HttpInterceptorErrorHandling() {
         can modify the
       </p>
 
-      <p>request and dipatch it to the target service.</p>
+      <p>request and dispatch it to the target service.</p>
 
       <p>
         For more information, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -219,6 +218,8 @@ export default function HttpInterceptorErrorHandling() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -270,29 +271,16 @@ export default function HttpInterceptorErrorHandling() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Invoke the service.`}</span>
-              <span>{`curl -v http://localhost:9090/greeting`}</span>
-              <span>{`*   Trying ::1:9090...`}</span>
-              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
-              <span>{`> GET /greeting HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.77.0`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`> `}</span>
-              <span>{`* Mark bundle as not supporting multiuse.`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< checkedHeader: RequestErrorInterceptor`}</span>
-              <span>{`< content-type: application/org+json`}</span>
-              <span>{`< content-length: 24`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 19 Apr 2022 12:37:21 +0530`}</span>
-              <span>{`< `}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`{"message":"Greetings!"}`}</span>
+              <span>{`\$ bal run http_interceptor_error_handling.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -345,8 +333,24 @@ export default function HttpInterceptorErrorHandling() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Run the service.`}</span>
-              <span>{`bal run http_interceptor_error_handling.bal`}</span>
+              <span>{`\$ curl -v http://localhost:9090/greeting`}</span>
+              <span>{`*   Trying ::1:9090...`}</span>
+              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
+              <span>{`> GET /greeting HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.77.0`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`> `}</span>
+              <span>{`* Mark bundle as not supporting multiuse.`}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< checkedHeader: RequestErrorInterceptor`}</span>
+              <span>{`< content-type: application/org+json`}</span>
+              <span>{`< content-length: 24`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Tue, 19 Apr 2022 12:37:21 +0530`}</span>
+              <span>{`< `}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`{"message":"Greetings!"}`}</span>
             </code>
           </pre>
         </Col>

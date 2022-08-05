@@ -53,40 +53,32 @@ export default function BacktickTemplates() {
 
       <p>
         The backtick templates consist of a tag followed by characters
-        surrounded by backticks. They can contain
+        surrounded by backticks. They can contain expressions in{" "}
+        <code>$&#123;...&#125;</code> to be interpolated. If no escapes are
+        recognized, use an expression to escape. They can contain new lines.
+        Backtick templates are processed in the two phases below.
       </p>
 
-      <p>
-        <code>expressions</code> in <code>$&#123;...&#125;</code> to be
-        interpolated. If no escapes are recognized: use an{" "}
-        <code>expression</code> to escape.
-      </p>
-
-      <p>They can contain newlines. &lt;br&gt;&lt;/br&gt;</p>
-
-      <p>Processed in two phases.</p>
-
-      <p>&lt;ul&gt;</p>
-
-      <p>
-        &lt;li&gt;Phase 1 does tag-independent parse: result is a list of{" "}
-        <code>strings</code> and <code>expressions</code>&lt;/li&gt;
-      </p>
-
-      <p>&lt;li&gt;Phase 2 is tag-dependent&lt;/li&gt;</p>
-
-      <p>&lt;/ul&gt;</p>
-
-      <p>//&lt;br&gt;&lt;/br&gt;</p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Phase 1 does the tag-independent parse of which the result is a list
+            of strings and expressions
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Phase 2 is tag-dependent</span>
+        </li>
+      </ul>
 
       <p>
-        Phase 2 for <code>string...</code> converts <code>expressions</code> to{" "}
-        <code>strings</code> and concatenates. <code>base16</code> and{" "}
-        <code>base64</code>
-      </p>
-
-      <p>
-        tags do not allow <code>expressions</code>.
+        Phase 2 for <code>string...</code> converts expressions to strings and
+        concatenates them. The <code>base16</code> and <code>base64</code> tags
+        do not allow expressions.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -95,7 +87,7 @@ export default function BacktickTemplates() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f3bfef3bfd1a980ea255f6737fba24eb&file=backtick_templates.bal",
+                "https://play.ballerina.io/?gist=238cc502d6cb6a02e112a6cb75a43298&file=backtick_templates.bal",
                 "_blank"
               );
             }}
@@ -240,7 +232,7 @@ export default function BacktickTemplates() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run backtick_templates.bal`}</span>
+              <span>{`\$ bal run backtick_templates.bal`}</span>
               <span>{`Hello, James`}</span>
               <span>{`Backtick:`}</span>
             </code>

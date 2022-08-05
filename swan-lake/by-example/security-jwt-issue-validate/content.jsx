@@ -16,15 +16,16 @@ const codeSnippetData = [
 import ballerina/jwt;
 
 public function main() returns error? {
-    // Defines the JWT issuer configurations with the private key file configurations, which are used to self-sign the JWT.
+    // Defines the JWT issuer configurations with the private key file configurations, 
+    // which are used to self-sign the JWT.
     jwt:IssuerConfig issuerConfig = {
         username: "ballerina",
         issuer: "wso2",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         keyId: "NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ",
         expTime: 3600,
-        // Signature can be created using either the private key configurations or keystore configurations.
-        // [jwt:IssuerSignatureConfig](https://lib.ballerina.io/ballerina/jwt/latest/records/IssuerSignatureConfig)
+        // Signature can be created using either the private key configurations or 
+        // keystore configurations. Refer [\`jwt:IssuerSignatureConfig\`](https://docs.central.ballerina.io/ballerina/jwt/latest/records/IssuerSignatureConfig) for more information.
         signatureConfig: {
             config: {
                 keyFile: "../resource/path/to/private.key"
@@ -36,14 +37,15 @@ public function main() returns error? {
     string jwt = check jwt:issue(issuerConfig);
     io:println("Issued JWT: ", jwt);
 
-    // Defines the JWT validator configurations with the public certificate file configurations, which are used to
-    // validate the signature of JWT.
+    // Defines the JWT validator configurations with the public certificate file configurations, 
+    // which are used to validate the signature of JWT.
     jwt:ValidatorConfig validatorConfig = {
         issuer: "wso2",
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         clockSkew: 60,
-        // Signature can be validated using the public certificate file, truststore configurations, or JWKS configurations.
-        // [jwt:ValidatorSignatureConfig](https://lib.ballerina.io/ballerina/jwt/latest/records/ValidatorSignatureConfig)
+        // Signature can be validated using the public certificate file, 
+        // truststore configurations, or JWKS configurations. 
+        // Refer [\`jwt:ValidatorSignatureConfig\`](https://docs.central.ballerina.io/ballerina/jwt/latest/records/ValidatorSignatureConfig) for more information.
         signatureConfig: {
             certFile: "../resource/path/to/public.crt"
         }
@@ -79,15 +81,17 @@ export default function SecurityJwtIssueValidate() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>JWT issue/validate</h1>
 
-      <p>This example demonstrates how to issue a self-signed JWT and</p>
-
-      <p>validate a JWT.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        This example demonstrates how to issue a self-signed JWT and validate a
+        JWT.
+      </p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/jwt/latest/">JWT module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/jwt/latest/">
+          <code>jwt</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -167,6 +171,8 @@ export default function SecurityJwtIssueValidate() {
         </Col>
       </Row>
 
+      <p>Run the program by executing following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -220,7 +226,7 @@ export default function SecurityJwtIssueValidate() {
             <code className="d-flex flex-column">
               <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
               <span>{`# trusted certificate file path.`}</span>
-              <span>{`bal run security_jwt_issue_validate.bal`}</span>
+              <span>{`\$ bal run security_jwt_issue_validate.bal`}</span>
               <span>{`Issued JWT: eyJhbGciOiJSUzI1NiIsICJ0eXAiOiJKV1QiLCAia2lkIjoiTlRBeFptTXhORE15WkR`}</span>
               <span>{`            nM01UVTFaR00wTXpFek9ESmhaV0k0TkRObFpEVTFPR0ZrTmpGaU1RIn0.eyJpc3MiOi`}</span>
               <span>{`            JiYWxsZXJpbmEiLCAic3ViIjoiYWRtaW4iLCAiYXVkIjoidkV3emJjYXNKVlFtMWpWW`}</span>

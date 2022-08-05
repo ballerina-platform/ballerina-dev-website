@@ -18,10 +18,9 @@ int counter = 0;
 
 function demo() returns int|error {
     worker A returns error? {
-        // Workers may need to call functions that can return an \`error\`.
-        // Pairing up of sends and receives guarantees that each send will be
-        // received, and vice-versa, provided neither sending nor receiving worker 
-        // has failed.
+        // Workers may need to call functions that can return an \`error\`. 
+        // Pairing up of sends and receives guarantees that each send will be received and vice-versa
+        // provided that the worker has failed on both sending and receiving.
         error? res = foo();
         if res is error {
             return res;
@@ -78,18 +77,11 @@ export default function InterWorkerFailurePropagation() {
 
       <p>
         Workers may need to call functions that can return an <code>error</code>
-        .
+        . Pairing up of sends and receives guarantees that each send will be
+        received and vice-versa provided that the worker has failed on both
+        sending and receiving. Sending or receiving of the failed worker will
+        propagate the failure.
       </p>
-
-      <p>Pairing up of sends and receives guarantees that each send will be</p>
-
-      <p>
-        received, and vice-versa, provided neither sending nor receiving worker
-      </p>
-
-      <p>has failed.</p>
-
-      <p>Send to or receive from failed worker will propagate the failure.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -97,7 +89,7 @@ export default function InterWorkerFailurePropagation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=38da19970976e6e6c137958adf02f375&file=inter_worker_failure_propagation.bal",
+                "https://play.ballerina.io/?gist=8744eab4cb169019957cadb2502fdfb6&file=inter_worker_failure_propagation.bal",
                 "_blank"
               );
             }}
@@ -242,7 +234,7 @@ export default function InterWorkerFailurePropagation() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run inter_worker_failure_propagation.bal`}</span>
+              <span>{`\$ bal run inter_worker_failure_propagation.bal`}</span>
               <span>{`42`}</span>
               <span>{`error: maximum count exceeded`}</span>
             </code>

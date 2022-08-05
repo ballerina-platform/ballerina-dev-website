@@ -21,7 +21,6 @@ type Row record {
     // Both the field and its value are immutable.
     readonly string k;
     int value;
-
 };
 
 table<Row> key(k) t = table [
@@ -31,7 +30,6 @@ table<Row> key(k) t = table [
 public function main() {
     // Can safely use \`s\` as a key.
     t.add({k: s, value: 18});
-
     io:println(t);
 }
 `,
@@ -89,7 +87,7 @@ export default function ReadonlyType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=229763c1d2e1e344576e20d8bcc065eb&file=readonly_type.bal",
+                "https://play.ballerina.io/?gist=7e20e1e1746114702f74895cb9aa78c7&file=readonly_type.bal",
                 "_blank"
               );
             }}
@@ -182,6 +180,8 @@ export default function ReadonlyType() {
           )}
         </Col>
       </Row>
+
+      <p>Executing the above code gives the output below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

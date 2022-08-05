@@ -22,7 +22,6 @@ service / on new http:Listener(8080) {
     resource function get hello(string name) returns string {
         return "Hello, " + name;
     }
-
 }
 `,
 ];
@@ -53,24 +52,16 @@ export default function ResourceMethods() {
       <h1>Resource methods</h1>
 
       <p>
-        Service objects use <code>remote</code> methods to expose services in
-        procedural style: remote methods are named by verbs.
-        &lt;br/&gt;&lt;br/&gt;
+        Service objects use <code>remote</code> methods to expose services in a
+        procedural style. Remote methods are named by verbs.
       </p>
 
       <p>
         Service objects use <code>resource</code> methods to expose services in
-        an RESTful style: resources are named by nouns. &lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>
-        Resources are motivated by HTTP, but are general enough also to work for
-        GraphQL.
-      </p>
-
-      <p>
+        a RESTful style. Resources are named by nouns. Resources are motivated
+        by HTTP but are general enough to work for GraphQL.{" "}
         <code>resource</code> methods are a network-oriented generalization of
-        OO getter/setter concept.
+        the OO <code>getter/setter</code> concept.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -150,6 +141,10 @@ export default function ResourceMethods() {
         </Col>
       </Row>
 
+      <p>
+        Run the service using the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -201,13 +196,13 @@ export default function ResourceMethods() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Run this cURL command to invoke the resource.`}</span>
-              <span>{`curl "localhost:8080/hello?name=Ballerina"`}</span>
-              <span>{`Hello, Ballerina`}</span>
+              <span>{`\$ bal run resource_methods.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Run this cURL command to invoke the resource.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -260,7 +255,8 @@ export default function ResourceMethods() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run resource_methods.bal`}</span>
+              <span>{`\$ curl "localhost:8080/hello?name=Ballerina"`}</span>
+              <span>{`Hello, Ballerina`}</span>
             </code>
           </pre>
         </Col>

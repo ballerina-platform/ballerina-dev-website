@@ -15,14 +15,10 @@ const codeSnippetData = [
   `import ballerina/io;
 
 // This is shorthand for,
-//
-// \`const RED = "RED";\`
-//
-// \`const GREEN = "GREEN";\`
-//
-// \`const BLUE = "BLUE";\`
-//
-// \`type Color RED|GREEN|BLUE;\`
+// const RED = "RED";
+// const GREEN = "GREEN";
+// const BLUE = "BLUE";
+// type Color RED|GREEN|BLUE;
 enum Color {
     RED,
     GREEN,
@@ -69,12 +65,8 @@ export default function Enumerations() {
       <p>
         <code>Enumerations</code> are shorthand for unions of{" "}
         <code>string</code> constants. A <code>const</code> can be used as a
-        singleton type.
-      </p>
-
-      <p>
-        An <code>enum</code> is not a distinct type. You can specify the string
-        constants explicitly.
+        singleton type. An <code>enum</code> is not a distinct type. You can
+        specify the string constants explicitly.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -83,7 +75,7 @@ export default function Enumerations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fb9d591cc130abe0b91901b5689557dc&file=enumerations.bal",
+                "https://play.ballerina.io/?gist=9ce8fa275f6790d9eb80ae8e4ea17344&file=enumerations.bal",
                 "_blank"
               );
             }}

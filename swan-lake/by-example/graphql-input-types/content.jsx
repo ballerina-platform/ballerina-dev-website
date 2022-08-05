@@ -16,12 +16,10 @@ const codeSnippetData = [
 
 service /graphql on new graphql:Listener(4000) {
 
-    // The input parameters in a resource function becomes input values of the
-    // corresponding GraphQL field. In this GraphQL schema, the 
-    // \`greeting\` field of \`Query\` type  has a \`name\`  input value, which accepts
-    // \`string\` values.
+    // The input parameters of a resource function become input values of the corresponding
+    // GraphQL field. In this GraphQL schema, the \`greeting\` field of the \`Query\` type has a \`name\`
+    // input value, which accepts \`string\` values.
     resource function get greeting(string name) returns string {
-
         return string\`Hello, \${name}\`;
     }
 }
@@ -55,26 +53,16 @@ export default function GraphqlInputTypes() {
 
       <p>
         GraphQL resources can have input parameters, which will be mapped to
-        input
+        input values in the generated GraphQL schema. Currently, the supported
+        input types are: <code>string</code>, <code>int</code>,{" "}
+        <code>boolean</code>, <code>float</code>, and <code>enum</code>. Any of
+        these types can be an optional and/or defaultable types.
       </p>
 
       <p>
-        values in the generated GraphQL schema. Currently, the supported input
-        types
-      </p>
-
-      <p>
-        are: <code>string</code>, <code>int</code>, <code>boolean</code>,{" "}
-        <code>float</code>, and <code>enum</code>. Any of these types can
-      </p>
-
-      <p>be an optional and/or defaultable types.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying package, see the</p>
-
-      <p>
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+        For more information on the underlying package, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+          <code>graphql</code> package
         </a>
         .
       </p>
@@ -156,6 +144,8 @@ export default function GraphqlInputTypes() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -207,14 +197,13 @@ export default function GraphqlInputTypes() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
-              <span>{`# The query used: { greeting(name: "Walter") }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ greeting(name: \\"Walter\\") }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"greeting":"Hello, Walter"}}`}</span>
+              <span>{`\$ bal run graphql_input_types.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -267,7 +256,10 @@ export default function GraphqlInputTypes() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run graphql_input_types.bal`}</span>
+              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
+              <span>{`# The query used: { greeting(name: "Walter") }`}</span>
+              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ greeting(name: \\"Walter\\") }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`{"data":{"greeting":"Hello, Walter"}}`}</span>
             </code>
           </pre>
         </Col>
@@ -276,7 +268,7 @@ export default function GraphqlInputTypes() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Return service objects"
+            title="Returning service objects"
             href="/learn/by-example/graphql-returning-service-objects"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -304,7 +296,7 @@ export default function GraphqlInputTypes() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Return service objects
+                  Returning service objects
                 </span>
               </div>
             </div>

@@ -69,25 +69,22 @@ export default function TesterinaBeforeAndAfterTest() {
 
       <p>
         Similarly, the <code>after</code> attribute can be used to execute a
-        function after a test function.&lt;br/&gt;&lt;br/&gt;
+        function after a test function. These annotations can be used
       </p>
 
-      <p>
-        These annotations can be used to set up the prerequisites and post
-        actions for a test case.&lt;br/&gt;&lt;br/&gt;
-      </p>
+      <p>to set up the prerequisites and post actions for a test case.</p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
         </a>
       </p>
 
       <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -220,7 +217,7 @@ export default function TesterinaBeforeAndAfterTest() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal test test_module`}</span>
+              <span>{`\$ bal test test_module`}</span>
               <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>

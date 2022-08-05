@@ -55,20 +55,18 @@ export default function HttpPathParam() {
       <h1>Path parameter</h1>
 
       <p>
-        HTTP module provides first class support for specifying{" "}
+        The <code>http</code> module provides first-class support for specifying{" "}
         <code>Path parameters</code> in the resource path along with the type.
       </p>
 
       <p>
-        The supported types are string, int, float, boolean, and decimal (e.g.,
-        path/[string foo]).&lt;br/&gt;&lt;br/&gt;
+        The supported types are string, int, float, boolean, and decimal (e.g.,{" "}
+        <code>path/[string foo]</code>).
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -151,6 +149,8 @@ export default function HttpPathParam() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -202,16 +202,16 @@ export default function HttpPathParam() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Run the cURL command below to invoke the service.`}</span>
-              <span>{`curl "http://localhost:9090/company/empId/23"`}</span>
-              <span>{`{"empId":23}`}</span>
-              <span>{``}</span>
-              <span>{`curl "http://localhost:9090/company/empName/Adele/Ferguson"`}</span>
-              <span>{`{"firstName":"Adele", "lastName":"Ferguson"}`}</span>
+              <span>{`\$ bal run http_path_param.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -264,7 +264,11 @@ export default function HttpPathParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_path_param.bal`}</span>
+              <span>{`\$ curl "http://localhost:9090/company/empId/23"`}</span>
+              <span>{`{"empId":23}`}</span>
+              <span>{``}</span>
+              <span>{`\$ curl "http://localhost:9090/company/empName/Adele/Ferguson"`}</span>
+              <span>{`{"firstName":"Adele", "lastName":"Ferguson"}`}</span>
             </code>
           </pre>
         </Col>

@@ -61,18 +61,17 @@ export default function AnyType() {
       <h1>Any type</h1>
 
       <p>
-        <code>any</code> means any value except an <code>error</code> value.
-      </p>
-
-      <p>Equivalent to a union of all non-error basic types.</p>
-
-      <p>
-        Use <code>any|error</code> for absolutely any value.
+        <code>any</code> means any value except an <code>error</code> value,
+        which is equivalent to a union of all non-error basic types. Use{" "}
+        <code>any|error</code> for absolutely any value.
       </p>
 
       <p>
-        The <code>lang.value</code> lang library contains functions that apply
-        to multiple basic types.
+        The{" "}
+        <a href="https://lib.ballerina.io/ballerina/lang.value/0.0.0">
+          <code>lang.value</code>
+        </a>{" "}
+        lang library contains functions that apply to multiple basic types.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -81,7 +80,7 @@ export default function AnyType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0e3bbe9bf503fe629554d2b539a80dc8&file=any_type.bal",
+                "https://play.ballerina.io/?gist=468033ee9d96d9b4d36c9e146ab19c24&file=any_type.bal",
                 "_blank"
               );
             }}
@@ -226,7 +225,7 @@ export default function AnyType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run any_type.bal`}</span>
+              <span>{`\$ bal run any_type.bal`}</span>
               <span>{`1`}</span>
               <span>{`true`}</span>
               <span>{`1.0`}</span>

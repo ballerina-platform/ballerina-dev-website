@@ -30,37 +30,37 @@ public function main() {
             <pen><kind>marker</kind><color>blue</color></pen>
         </items>\`;
 
-    // \`x.<items>\` - every element in \`x\` named \`items\`.
+    // \`x.<items>\` - retrieves every element in \`x\` named \`items\`.
     xml a = x.<items>;
     io:println(a);
 
-    // \`x/*\` - for every element \`e\` in \`x\`, the children of \`e\`.
+    // \`x/*\` - for every element \`e\` in \`x\`, retrieves the children of \`e\`.
     xml b = x/*;
     io:println(b);
 
-    // \`x/<planner>\` - for every element \`e\` in \`x\`, every element named \`planner\` in the children of \`e\`.
+    // \`x/<planner>\` - for every element \`e\` in \`x\`, retrieves every element named \`planner\` 
+    // in the children of \`e\`.
     xml c = x/<planner>;
     io:println(c);
 
-    // \`x/<planner|pen>\` - for every element \`e\` in \`x\`, every element named \`planner\` or \`pen\` in the
-    // children of \`e\`.
+    // \`x/<planner|pen>\` - for every element \`e\` in \`x\`, retrieves every element named 
+    // \`planner\` or \`pen\` in the children of \`e\`.
     xml d = x/<planner|pen>;
     io:println(d);
 
-    // \`x/<*>\` - for every element \`e\` in \`x\`, every element in the children of \`e\`.
+    // \`x/<*>\` - for every element \`e\` in \`x\`, retrieves every element in the children of \`e\`.
     xml e = x/<*>;
     io:println(e);
 
-    // x/**/<name>  - for every element \`e\` in \`x\`, every element named \`name\` in
+    // \`x/**/<name>\` - for every element \`e\` in \`x\`, retrieves every element named \`name\` in
     // the descendants of \`e\`.
     xml f = x/**/<name>;
     io:println(f);
 
-    // x/<book>[0]  - for every element \`e\` in \`x\`, first element named \`book\` in
+    // \`x/<book>[0]\` - for every element \`e\` in \`x\`, retrieves the first element named \`book\` in
     // the children of \`e\`.
     xml g = x/<book>[0];
     io:println(g);
-
 }
 `,
 ];
@@ -88,9 +88,10 @@ export default function XmlNavigation() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>XML navigation</h1>
 
-      <p>XML navigation expressions allow for convenient navigation of XML</p>
-
-      <p>element structure, in a similar way to XPath.</p>
+      <p>
+        XML navigation expressions allow convenient navigation of XML element
+        structure in a similar way to XPath.
+      </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -98,7 +99,7 @@ export default function XmlNavigation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0e3e5bf0fb362da993e3d5691736e55a&file=xml_navigation.bal",
+                "https://play.ballerina.io/?gist=1d77eadca5af856164fd0f88828b2863&file=xml_navigation.bal",
                 "_blank"
               );
             }}
@@ -243,7 +244,7 @@ export default function XmlNavigation() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run xml_navigation.bal`}</span>
+              <span>{`\$ bal run xml_navigation.bal`}</span>
               <span>{`<items>`}</span>
               <span>{`            <!--Contents-->`}</span>
               <span>{`            <book>`}</span>

@@ -70,7 +70,7 @@ service / on new http:Listener(9090) {
 service / on new http:Listener(8080) {
     private int counter = 1;
     resource function get hello() returns string|http:InternalServerError {
-        if (self.counter % 5 == 3) {
+        if self.counter % 5 == 3 {
             self.counter += 1;
             return {body:"Error occurred while processing the request."};
         } else {
@@ -128,15 +128,14 @@ export default function HttpCircuitBreaker() {
           <span>4.</span>
           <span>
             ) Timeout is reached and the circuit breaker falls back to closed
-            state. &lt;br/&gt;&lt;br/&gt;
+            state.
           </span>
         </li>
       </ul>
-      <p>For more information on the underlying module,</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -219,6 +218,8 @@ export default function HttpCircuitBreaker() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -270,13 +271,16 @@ export default function HttpCircuitBreaker() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Keep sending the below request to experience how circuit breaker works.`}</span>
-              <span>{`curl http://localhost:9090/cb`}</span>
-              <span>{`Hello World!!!`}</span>
+              <span>{`\$ bal run http_circuit_breaker.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -329,7 +333,8 @@ export default function HttpCircuitBreaker() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_circuit_breaker.bal`}</span>
+              <span>{`\$ curl http://localhost:9090/cb`}</span>
+              <span>{`Hello World!!!`}</span>
             </code>
           </pre>
         </Col>

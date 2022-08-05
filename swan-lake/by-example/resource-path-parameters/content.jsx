@@ -17,7 +17,6 @@ const codeSnippetData = [
 service /demo on new http:Listener(8080) {
     // Here is how you can make path segments as parameters.
     resource function get greeting/hello/[string name]() returns string {
-
         return "Hello, " + name;
     }
 }
@@ -128,6 +127,10 @@ export default function ResourcePathParameters() {
         </Col>
       </Row>
 
+      <p>
+        Run the service using the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -179,13 +182,13 @@ export default function ResourcePathParameters() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Run this cURL command to invoke the resource.`}</span>
-              <span>{`curl "localhost:8080/demo/greeting/hello/Ballerina" `}</span>
-              <span>{`Hello, Ballerina`}</span>
+              <span>{`\$ bal run resource_path_parameters.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Run this cURL command to invoke the resource.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -238,7 +241,8 @@ export default function ResourcePathParameters() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run resource_path_parameters.bal`}</span>
+              <span>{`\$ curl "localhost:8080/demo/greeting/hello/Ballerina"`}</span>
+              <span>{`Hello, Ballerina`}</span>
             </code>
           </pre>
         </Col>

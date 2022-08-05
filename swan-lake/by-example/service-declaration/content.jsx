@@ -51,26 +51,12 @@ export default function ServiceDeclaration() {
 
       <p>
         A service represents a collection of remotely accessible methods
-        attached to a particular listener.
-      </p>
-
-      <p>
-        A service declaration is syntactic sugar for creating services in
-        Ballerina.
-      </p>
-
-      <p>
-        A service declaration gets desugared into several things including
-        creating a listener object,
-      </p>
-
-      <p>
+        attached to a particular listener. A service declaration is a syntactic
+        sugar for creating services in Ballerina. A service declaration gets
+        desugared into several things including creating a listener object,
         registering it with the module, creating a service object, attaching the
-        service object to the listener object, etc,.
-      </p>
-
-      <p>
-        The type of the listener determines required type of remote methods.
+        service object to the listener object, etc. The type of the listener
+        determines the required type of the remote methods.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -150,6 +136,10 @@ export default function ServiceDeclaration() {
         </Col>
       </Row>
 
+      <p>
+        Run the service using the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -201,13 +191,16 @@ export default function ServiceDeclaration() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Use the following Netcat (or nc) command to send packets to the service. `}</span>
-              <span>{`nc -u localhost 8080`}</span>
-              <span>{`Hello, Ballerina`}</span>
+              <span>{`\$ bal run service_declaration.bal`}</span>
+              <span>{`bytes received: 17`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Use the following Netcat (or nc) command to send packets to the service.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -260,8 +253,8 @@ export default function ServiceDeclaration() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run service_declaration.bal`}</span>
-              <span>{`bytes received: 17`}</span>
+              <span>{`\$ nc -u localhost 8080`}</span>
+              <span>{`Hello, Ballerina`}</span>
             </code>
           </pre>
         </Col>

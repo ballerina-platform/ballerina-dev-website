@@ -60,16 +60,10 @@ export default function StructuredKeys() {
 
       <p>
         Key fields can be structured as long as they belong to any subtype of
-        plain data. The value of the key field
-      </p>
-
-      <p>
-        must be immutable. The initializer of the <code>readonly</code> field
-        will be constructed as immutable. In other cases,
-      </p>
-
-      <p>
-        can use <code>cloneReadOnly()</code> to create an immutable value.
+        plain data. The value of the key field must be immutable. The
+        initializer of the <code>readonly</code> field will be constructed as
+        immutable. In other cases, <code>cloneReadOnly()</code> can be used to
+        create an immutable value.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -78,7 +72,7 @@ export default function StructuredKeys() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5f0699558bf5197dece937ffc2eaa76c&file=structured_keys.bal",
+                "https://play.ballerina.io/?gist=9ca18db6e5d2832146140563a74228a8&file=structured_keys.bal",
                 "_blank"
               );
             }}
@@ -223,7 +217,7 @@ export default function StructuredKeys() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run structured_keys.bal`}</span>
+              <span>{`\$ bal run structured_keys.bal`}</span>
               <span>{`{"name":{"first":"Fred","last":"Bloggs"},"salary":200}`}</span>
             </code>
           </pre>

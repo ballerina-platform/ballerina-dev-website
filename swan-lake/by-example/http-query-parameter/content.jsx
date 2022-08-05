@@ -21,10 +21,10 @@ service /product on new http:Listener(9090) {
         return { count : a + b};
     }
 
-    // The query param type is nilable which means the URI may contain the param.
-    // In the absence of the query param \`id\` the type is nil.
+    // The query param type is nilable, which means the URI may contain the param.
+    // In the absence of the query param \`id\`, the type is nil.
     resource function get name(string? id) returns string {
-        if (id is string) {
+        if id is string {
             return "product_" + id;
         }
         return "product_0000";
@@ -64,8 +64,8 @@ export default function HttpQueryParameter() {
       <h1>Query parameter</h1>
 
       <p>
-        HTTP module provides first class support for reading URL query
-        parameters as resource method argument.
+        The <code>http</code> module provides first-class support for reading
+        URL query parameters as the resource method argument.
       </p>
 
       <p>
@@ -74,17 +74,15 @@ export default function HttpQueryParameter() {
       </p>
 
       <p>
-        query param type can be nilable (e.g., (string? bar)). The request also
-        provide certain method to retrieve query
+        query param type can be nilable (e.g., <code>(string? bar)</code>). The
+        request also provides a certain method to retrieve query
       </p>
 
-      <p>param at their convenience &lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>param at their convenience.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -167,6 +165,8 @@ export default function HttpQueryParameter() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -218,21 +218,16 @@ export default function HttpQueryParameter() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`Run the cURL command below to invoke product/count resource.`}</span>
-              <span>{`curl "http://localhost:9090/product/count?a=315&b=585"`}</span>
-              <span>{`{"count":900}`}</span>
-              <span>{``}</span>
-              <span>{`Run the cURL command below to invoke product/name resource.`}</span>
-              <span>{`curl "http://localhost:9090/product/name?id=432423"`}</span>
-              <span>{`product_432423`}</span>
-              <span>{``}</span>
-              <span>{`Run the cURL command below to invoke product/detail resource.`}</span>
-              <span>{`curl "http://localhost:9090/product/detail?colour=red&colour=green"`}</span>
-              <span>{`{"product_colour":["red", "green"]}`}</span>
+              <span>{`\$ bal run http_query_parameter.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -285,7 +280,14 @@ export default function HttpQueryParameter() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_query_parameter.bal`}</span>
+              <span>{`\$ curl "http://localhost:9090/product/count?a=315&b=585"`}</span>
+              <span>{`{"count":900}`}</span>
+              <span>{``}</span>
+              <span>{`\$ curl "http://localhost:9090/product/name?id=432423"`}</span>
+              <span>{`product_432423`}</span>
+              <span>{``}</span>
+              <span>{`\$ curl "http://localhost:9090/product/detail?colour=red&colour=green"`}</span>
+              <span>{`{"product_colour":["red", "green"]}`}</span>
             </code>
           </pre>
         </Col>

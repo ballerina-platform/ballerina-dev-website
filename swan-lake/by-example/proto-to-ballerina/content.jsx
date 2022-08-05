@@ -113,7 +113,7 @@ export default function ProtoToBallerina() {
 
       <p>
         see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
+        <a href="https://docs.central.ballerina.io/ballerina/grpc/latest/">
           GRPC module
         </a>{" "}
         and

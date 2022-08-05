@@ -29,7 +29,8 @@ public function main() returns error? {
 
     // Writes the given JSON to a file.
     check io:fileWriteJson(jsonFilePath, jsonContent);
-    // If the write operation was successful, then, performs a read operation to read the JSON content.
+    // If the write operation was successful, then,
+    // performs a read operation to read the JSON content.
     json readJson = check io:fileReadJson(jsonFilePath);
     io:println(readJson);
 }
@@ -61,14 +62,15 @@ export default function IoJson() {
 
       <p>
         The Ballerina <code>io</code> library contains APIs to read/write JSON
-        objects from/to a file.&lt;br/&gt;&lt;br/&gt;
+        objects from/to a file.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/io/latest/">IO module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/io/latest/">
+          <code>io</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -77,7 +79,7 @@ export default function IoJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a0044f2f95b71a2e218ade798946bffa&file=io_json.bal",
+                "https://play.ballerina.io/?gist=809bebd81c1424d888abab3bcbe530cf&file=io_json.bal",
                 "_blank"
               );
             }}
@@ -171,6 +173,10 @@ export default function IoJson() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -222,7 +228,7 @@ export default function IoJson() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run io_json.bal`}</span>
+              <span>{`\$ bal run io_json.bal`}</span>
               <span>{`{"Store":{"@id":"AST","name":"Anne","address":{"street":"Main","city":"94"},"codes":["4","8"]}}`}</span>
             </code>
           </pre>

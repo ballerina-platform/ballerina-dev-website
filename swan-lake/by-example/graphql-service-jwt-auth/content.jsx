@@ -23,12 +23,10 @@ listener graphql:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with JWT Auth and can be authorized
-// optionally. JWT Auth can be enabled by setting the
-// \`graphql:JwtValidatorConfig\` configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type
-// configurations for \`scopes\` field.
+// The service can be secured with JWT Auth and can be authorized optionally. JWT Auth can be
+// enabled by setting the \`graphql:JwtValidatorConfig\` configurations. Authorization is based on
+// scopes. A scope maps to one or more groups. Authorization can be enabled by setting the
+// \`string|string[]\` type configurations for the \`scopes\` field.
 @graphql:ServiceConfig {
     auth: [
         {
@@ -75,47 +73,31 @@ export default function GraphqlServiceJwtAuth() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Service - JWT Auth</h1>
 
-      <p>A GraphQL service can be secured with JWT and by enforcing</p>
-
-      <p>authorization optionally. Then, it validates the JWT sent in the</p>
-
       <p>
-        <code>Authorization</code> header against the provided
-        configurations.&lt;br/&gt;
+        A GraphQL service can be secured with JWT and by enforcing authorization
+        optionally. Then, it validates the JWT sent in the{" "}
+        <code>Authorization</code> header against the provided configurations.
       </p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared
+        declared in a service can be bound to one/more scope(s). The scope can
+        be included in the JWT using a custom claim attribute. That custom claim
+        attribute also can be configured as the <code>scopeKey</code>.
       </p>
 
       <p>
-        in a service can be bound to one/more scope(s). The scope can be
-        included
-      </p>
-
-      <p>
-        in the JWT using a custom claim attribute. That custom claim attribute
-      </p>
-
-      <p>
-        also can be configured as the <code>scopeKey</code>.&lt;br/&gt;
-      </p>
-
-      <p>In the authorization phase, the scopes of the service are compared</p>
-
-      <p>
+        In the authorization phase, the scopes of the service are compared
         against the scope included in the JWT for at least one match between the
-        two
+        two sets.
       </p>
 
-      <p>sets.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/jwt/latest/">JWT module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/jwt/latest/">
+          <code>jwt</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -195,6 +177,8 @@ export default function GraphqlServiceJwtAuth() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -247,7 +231,7 @@ export default function GraphqlServiceJwtAuth() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>{`bal run graphql_service_jwt_auth.bal`}</span>
+              <span>{`\$ bal run graphql_service_jwt_auth.bal`}</span>
             </code>
           </pre>
         </Col>

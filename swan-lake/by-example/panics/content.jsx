@@ -26,12 +26,19 @@ function divide(int m, int n) returns int {
 }
 
 public function main() {
-    int x = divide(1, 0);
+    
+    // Even though \`divide(1, 0)\` panics, due to the trap expression, the program will not terminate here.
+    int|error x = trap divide(1, 0);
 
-    // Since \`divide(1, 0)\` panics, the program will
-    // terminate and the following code will not be
+    if x is error {
+        io:println(x);
+    }
+    
+    int y = divide(1, 0);
+
+    // If \`divide(1, 0)\` panics, the program will terminate and the following code will not be
     // executed.
-    io:println(x);
+    io:println(y);
 
 }
 `,
@@ -60,20 +67,18 @@ export default function Panics() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Panics</h1>
 
-      <p>Ballerina distinguishes normal errors from abnormal errors.</p>
-
-      <p>Normal errors are handled by returning error values.</p>
-
-      <p>Abnormal errors are handled using the panic statement.</p>
-
       <p>
-        Abnormal errors should typically result in immediate program
-        termination.
+        Ballerina distinguishes normal errors from abnormal errors. Normal
+        errors are handled by returning error values. Abnormal errors are
+        handled using the <code>panic</code> statement. Abnormal errors should
+        typically result in immediate program termination (e.g., a programming
+        bug or out-of-memory error). Panic has an associated error value.
       </p>
 
-      <p>e.g., A programming bug or out of memory.</p>
-
-      <p>A panic has an associated error value.</p>
+      <p>
+        The <code>trap</code> expression stops a panic and gives access to the
+        error value associated with the panic.
+      </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -81,7 +86,7 @@ export default function Panics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0cfd78a3e17cfd47092835fa2e873a62&file=panics.bal",
+                "https://play.ballerina.io/?gist=1925a638b6a273123a4e3a3f2b39e3b5&file=panics.bal",
                 "_blank"
               );
             }}
@@ -227,9 +232,10 @@ export default function Panics() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`bal run panics.bal`}</span>
+              <span>{`error("division by 0")`}</span>
               <span>{`error: division by 0`}</span>
               <span>{`        at panics:divide(panics.bal:8)`}</span>
-              <span>{`           panics:main(panics.bal:15)`}</span>
+              <span>{`           panics:main(panics.bal:23)`}</span>
             </code>
           </pre>
         </Col>
@@ -274,7 +280,7 @@ export default function Panics() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Ignore return values and errors"
+            title="Ignoring return values and errors"
             href="/learn/by-example/ignoring-return-values-and-errors"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -285,7 +291,7 @@ export default function Panics() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Ignore return values and errors
+                  Ignoring return values and errors
                 </span>
               </div>
               <svg

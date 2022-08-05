@@ -17,11 +17,10 @@ const codeSnippetData = [
 // The \`absolute resource path\` can be omitted. Then, it defaults to \`/\`.
 service on new http:Listener(9090) {
 
-    // The \`default\` accessor name can be used to match with all methods including standard HTTP methods
+    // The \`default\` accessor name can be used to match with all methods including the standard HTTP methods
     // and custom methods. The rest param is used to represent the wildcard of the \`resource path\` in which any path
     // segment will get dispatched to the resource in the absence of an exact path match.
-    resource function 'default [string... paths](http:Request req)
-            returns json {
+    resource function 'default [string... paths](http:Request req) returns json {
         return {method: req.method, path: paths};
     }
 }
@@ -54,20 +53,15 @@ export default function HttpDefaultResource() {
       <h1>Default resource</h1>
 
       <p>
-        Ballerina provides rest params in the resource path and the default
-        resource method to help designing proxy services
+        Ballerina provides rest params in the resource path and default resource
+        method to help in designing proxy services
       </p>
 
-      <p>
-        and default resources. It can be used to handle unmatched
-        requests.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying module,</p>
+      <p>and default resources. It can be used to handle unmatched requests.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -150,6 +144,8 @@ export default function HttpDefaultResource() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -201,13 +197,16 @@ export default function HttpDefaultResource() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`Run the cURL command below with the unmatched path and method.`}</span>
-              <span>{`curl "http://localhost:9090/foo/bar" -X POST`}</span>
-              <span>{`{"method":"POST", "path":["foo", "bar"]}`}</span>
+              <span>{`\$ bal run http_default_resource.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -260,7 +259,8 @@ export default function HttpDefaultResource() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_default_resource.bal`}</span>
+              <span>{`\$ curl "http://localhost:9090/foo/bar" -X POST`}</span>
+              <span>{`{"method":"POST", "path":["foo", "bar"]}`}</span>
             </code>
           </pre>
         </Col>

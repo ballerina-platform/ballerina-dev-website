@@ -19,6 +19,11 @@ public function main() {
 
     int n = 5;
 
+    // Numeric literals can use \`f\` or \`F\` suffix for them to be interpreted as \`float\` values.
+    // (Similarly, the \`d\` or \`D\` suffix can be used for \`decimal\`).
+    var f = 12345f;
+    io:println(f is float);
+
     // No implicit conversions between integers and floating point values are allowed.
     // You can use \`<T>\` for explicit conversions.
     float y = x + <float>n;
@@ -54,9 +59,6 @@ export default function FloatingPointNumbers() {
       <p>
         The <code>float</code> type is IEEE 64-bit binary floating point (same
         as <code>double</code> in Java) and supports the same arithmetic
-      </p>
-
-      <p>
         operators as <code>int</code>.
       </p>
 
@@ -66,7 +68,7 @@ export default function FloatingPointNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=46545ea15950647dc81e2013a156894a&file=floating_point_numbers.bal",
+                "https://play.ballerina.io/?gist=597a0622ee1f21f8cd540dd4b9a978d9&file=floating_point_numbers.bal",
                 "_blank"
               );
             }}
@@ -211,7 +213,8 @@ export default function FloatingPointNumbers() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run floating_point_numbers.bal `}</span>
+              <span>{`\$ bal run floating_point_numbers.bal `}</span>
+              <span>{`true`}</span>
               <span>{`6.0`}</span>
             </code>
           </pre>

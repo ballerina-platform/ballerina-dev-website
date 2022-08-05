@@ -30,18 +30,17 @@ public function main() returns error? {
 
 // Called within the transaction statement.
 transactional function doUpdate(Update u) returns error? {
-    // Calls the \`foo()\` non-transactional function.
+    // Calls \`foo()\` non-transactional function.
     foo(u);
-    // Calls the \`bar()\` transactional function.
+    // Calls \`bar()\` transactional function.
     bar(u);
     return;
 }
 
 function foo(Update u) {
     if transactional {
-        // This is a transactional context.
+        // This is in the transactional context.
         bar(u);
-
     }
 }
 
@@ -75,13 +74,9 @@ export default function TransactionalQualifier() {
       <h1>Transactional qualifier</h1>
 
       <p>
-        At compile-time, regions of code are typed as being a transactional
-        context.
-      </p>
-
-      <p>
-        Ballerina guarantees that, whenever that region is executed, there will
-        be a current transaction.
+        At compile-time, regions of code are typed as being transactional
+        context; Ballerina guarantees that whenever that region is executed,
+        there will be a current transaction.
       </p>
 
       <p>
@@ -102,7 +97,7 @@ export default function TransactionalQualifier() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d3f3f9983219ea774a2a3c24439fdb55&file=transactional_qualifier.bal",
+                "https://play.ballerina.io/?gist=6a95ca17b0a9e13ad9884c071e72b1f8&file=transactional_qualifier.bal",
                 "_blank"
               );
             }}
@@ -247,7 +242,7 @@ export default function TransactionalQualifier() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run transactional_qualifier.bal`}</span>
+              <span>{`\$ bal run transactional_qualifier.bal`}</span>
               <span>{`Calling from a transactional context`}</span>
               <span>{`Calling from a transactional context`}</span>
             </code>

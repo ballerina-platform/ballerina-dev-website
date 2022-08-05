@@ -17,8 +17,8 @@ import ballerina/websocket;
 
 // Defines the WebSocket client to call the Basic Auth secured APIs.
 // The client is enriched with the \`Authorization: Basic <token>\` header by
-// passing the [\`websocket:CredentialsConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/CredentialsConfig) for the \`auth\` configuration of the
-// client.
+// passing the [\`websocket:CredentialsConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/CredentialsConfig)
+// for the \`auth\` configuration of the client.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
         username: "ldclakmal",
@@ -61,28 +61,23 @@ export default function WebsocketClientBasicAuth() {
       <h1>Client - Basic Auth</h1>
 
       <p>
-        A client, which is secured with Basic Auth can be used to connect to
+        A client, which is secured with Basic Auth can be used to connect to a
+        secured service.
       </p>
-
-      <p>a secured service.&lt;br/&gt;</p>
 
       <p>
         The client is enriched with the{" "}
-        <code>Authorization: Basic &lt;token&gt;</code> header by
+        <code>Authorization: Basic &lt;token&gt;</code> header by passing the
       </p>
 
       <p>
-        passing the <code>websocket:CredentialsConfig</code> for the{" "}
-        <code>auth</code> configuration of the
+        <code>websocket:CredentialsConfig</code> for the <code>auth</code>{" "}
+        configuration of the client.
       </p>
 
-      <p>client.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
           Auth module
         </a>
         .
@@ -218,7 +213,7 @@ export default function WebsocketClientBasicAuth() {
             <code className="d-flex flex-column">
               <span>{`# As a prerequisite, start a sample echo WebSocket service secured with Basic Auth.`}</span>
               <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>{`bal run websocket_client_basic_auth.bal`}</span>
+              <span>{`\$ bal run websocket_client_basic_auth.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

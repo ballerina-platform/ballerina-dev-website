@@ -25,12 +25,10 @@ public function main() returns error? {
     // Argument is a \`typedesc\` value.
     // The static return type depends on the argument.
     Coord c = check j.cloneWithType(Coord);
-
     io:println(c.x);
 
     // Argument defaulted from the context.
     Coord d = check j.cloneWithType();
-
     io:println(d.x);
     return;
 }
@@ -61,30 +59,14 @@ export default function ConvertingToUserDefinedType() {
       <h1>Converting to user-defined type</h1>
 
       <p>
-        The <code>cloneWithType()</code> langlib function in the lang.value
-      </p>
-
-      <p>module can be used to convert a value to a user-defined type.</p>
-
-      <p>
-        Result recursively uses specified type as inherent type of new value.
-      </p>
-
-      <p>Automatically performs numeric conversions as necessary.</p>
-
-      <p>
-        Every part of the value is cloned including immutable structural values.
-      </p>
-
-      <p>Graph structure is not preserved.</p>
-
-      <p>
-        Variant <code>fromJsonWithType()</code> also does reverse of conversions
-        done by
-      </p>
-
-      <p>
-        <code>toJson</code>.
+        The <code>cloneWithType()</code> langlib function in the{" "}
+        <code>lang.value</code> module can be used to convert a value to a
+        user-defined type. The result recursively uses the specified type as the
+        inherent type of the new value. It automatically performs numeric
+        conversions as necessary. Every part of the value is cloned including
+        immutable, structural values. The graph structure is not preserved. The{" "}
+        <code>fromJsonWithType()</code> variant also does the reverse of the
+        conversions done by <code>toJson()</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -93,7 +75,7 @@ export default function ConvertingToUserDefinedType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=63d22ef020fbf6bf84c14701b3332133&file=converting_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=629f804c61434146060529c396ea63de&file=converting_to_user_defined_type.bal",
                 "_blank"
               );
             }}
@@ -249,7 +231,7 @@ export default function ConvertingToUserDefinedType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Convert from JSON to user-defined type"
+            title="Converting from JSON to user-defined type"
             href="/learn/by-example/converting-from-json-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -277,7 +259,7 @@ export default function ConvertingToUserDefinedType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Convert from JSON to user-defined type
+                  Converting from JSON to user-defined type
                 </span>
               </div>
             </div>

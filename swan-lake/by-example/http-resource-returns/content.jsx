@@ -21,21 +21,19 @@ type PersonAccount record {
 
 service /bank on new http:Listener(9090) {
 
-    // The resource returns the json type values and the \`Content-type\` header is set according to the \`mediaType\`
-    // field of [@http:Payload](https://lib.ballerina.io/ballerina/http/latest/records/HttpPayload)
+    // The resource returns the \`json\` type values and the \`Content-type\` header is set according to the \`mediaType\`
+    // field of the [\`@http:Payload\`](https://docs.central.ballerina.io/ballerina/http/latest/records/HttpPayload)
     // annotation.
-    resource function get branch() returns
-            @http:Payload {mediaType:"application/json+id"} json {
+    resource function get branch() returns @http:Payload {mediaType:"application/json+id"} json {
         return { branch : ["Colombo, Srilanka"]};
     }
 
-    // The [StatusCodeResponse](https://lib.ballerina.io/ballerina/http/latest/types#StatusCodeResponse)
-    // can be state as return type to send responses with specific HTTP status codes.
-    resource function get [string 'type]()
-            returns http:Ok|http:InternalServerError {
+    // The [\`StatusCodeResponse\`](https://docs.central.ballerina.io/ballerina/http/latest/types#StatusCodeResponse)
+    // can be stated as the return type to send responses with specific HTTP status codes.
+    resource function get [string 'type]() returns http:Ok|http:InternalServerError {
         if 'type == "open" {
 
-            // Creates response with 200 status code and set body as response payload.
+            // Create a response with the \`200\` status code and set the body as the response payload.
             http:Ok ok = {body: "Bank is open"};
             return ok;
         } else {
@@ -47,7 +45,7 @@ service /bank on new http:Listener(9090) {
     }
 
     // Inline response records are useful to return headers and body along with status code. In this instance the
-    // return type is a subtype of [http:Created](https://lib.ballerina.io/ballerina/http/latest/records/Created)
+    // return type is a subtype of [http:Created](https://docs.central.ballerina.io/ballerina/http/latest/records/Created)
     // record, hence 201 response will be sent.
     resource function put account(@http:Payload string name)
             returns record {|*http:Created; PersonAccount body;|} {
@@ -111,11 +109,9 @@ export default function HttpResourceReturns() {
         return value type will be added.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -198,6 +194,8 @@ export default function HttpResourceReturns() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -249,60 +247,16 @@ export default function HttpResourceReturns() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`Run the cURL command below to invoke bank/branch resource.`}</span>
-              <span>{`curl -v "http://localhost:9090/bank/branch"`}</span>
-              <span>{`> GET /bank/branch HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: application/json+id`}</span>
-              <span>{`< content-length: 32`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Sat, 15 May 2021 16:14:10 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`{"branch":["Colombo, Srilanka"]}* Closing connection 0`}</span>
-              <span>{``}</span>
-              <span>{`Run the cURL command below to invoke second resource.`}</span>
-              <span>{`curl -v "http://localhost:9090/bank/open"`}</span>
-              <span>{`> GET /bank/open HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 12`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Sat, 15 May 2021 16:16:56 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`Bank is open* Closing connection 0`}</span>
-              <span>{``}</span>
-              <span>{`Run the cURL command below to invoke bank/account resource.`}</span>
-              <span>{`curl -v "http://localhost:9090/bank/account" -d "bal" -X PUT`}</span>
-              <span>{`> PUT /bank/account HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`> Content-Length: 3`}</span>
-              <span>{`> Content-Type: application/x-www-form-urlencoded`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 201 Created`}</span>
-              <span>{`< Location: /myServer/084230`}</span>
-              <span>{`< content-type: application/account+json`}</span>
-              <span>{`< content-length: 33`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Sat, 15 May 2021 16:19:31 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`{"name":"bal", "accountNo":84230}* Closing connection 0`}</span>
+              <span>{`\$ bal run http_resource_returns.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -355,7 +309,53 @@ export default function HttpResourceReturns() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_resource_returns.bal`}</span>
+              <span>{`\$ curl -v "http://localhost:9090/bank/branch"`}</span>
+              <span>{`> GET /bank/branch HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`>`}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< content-type: application/json+id`}</span>
+              <span>{`< content-length: 32`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Sat, 15 May 2021 16:14:10 +0530`}</span>
+              <span>{`<`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`{"branch":["Colombo, Srilanka"]}* Closing connection 0`}</span>
+              <span>{``}</span>
+              <span>{`\$ curl -v "http://localhost:9090/bank/open"`}</span>
+              <span>{`> GET /bank/open HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`>`}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< content-type: text/plain`}</span>
+              <span>{`< content-length: 12`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Sat, 15 May 2021 16:16:56 +0530`}</span>
+              <span>{`<`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`Bank is open* Closing connection 0`}</span>
+              <span>{``}</span>
+              <span>{`\$ curl -v "http://localhost:9090/bank/account" -d "bal" -X PUT`}</span>
+              <span>{`> PUT /bank/account HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`> Content-Length: 3`}</span>
+              <span>{`> Content-Type: application/x-www-form-urlencoded`}</span>
+              <span>{`>`}</span>
+              <span>{`< HTTP/1.1 201 Created`}</span>
+              <span>{`< Location: /myServer/084230`}</span>
+              <span>{`< content-type: application/account+json`}</span>
+              <span>{`< content-length: 33`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Sat, 15 May 2021 16:19:31 +0530`}</span>
+              <span>{`<`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`{"name":"bal", "accountNo":84230}* Closing connection 0`}</span>
             </code>
           </pre>
         </Col>

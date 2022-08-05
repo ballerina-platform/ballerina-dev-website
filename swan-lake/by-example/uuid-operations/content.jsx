@@ -88,13 +88,15 @@ export default function UuidOperations() {
       <h1>UUID operations</h1>
 
       <p>
-        The <code>uuid</code> library provides functions related to UUIDs
-        (Universal Unique Identifiers).
+        The <code>uuid</code> library provides functions related to
+        UUID(Universal Unique Identifier).&lt;br/&gt;&lt;br/&gt;
       </p>
 
+      <p>For more information on the underlying module,</p>
+
       <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/uuid/latest/">
+        see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/uuid/latest/">
           UUID module
         </a>
         .
@@ -106,7 +108,7 @@ export default function UuidOperations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=baf5ceece5f2a76f6d4baab3b7da244a&file=uuid_operations.bal",
+                "https://play.ballerina.io/?gist=ec26d2f834af477f2afb449a021ce901&file=uuid_operations.bal",
                 "_blank"
               );
             }}
@@ -200,10 +202,6 @@ export default function UuidOperations() {
         </Col>
       </Row>
 
-      <p>
-        To run this sample use the <code>bal run</code> command.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -255,7 +253,7 @@ export default function UuidOperations() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run uuid_operations.bal`}</span>
+              <span>{`\$ bal run uuid_operations.bal`}</span>
               <span>{`UUID validated: true`}</span>
               <span>{`UUID version: V1`}</span>
               <span>{`UUID bytes: [67,151,70,94,53,249,17,235,173,193,2,66,172,18,0,2]`}</span>

@@ -31,15 +31,15 @@ public function main() {
     ];
 
     // The \`from\` clause iterates the \`employees\` table.
-    // Since the contextually-expected type for the query expression is \`int[]\` evaluation of the query expression will result in an integer array.
+    // Since the contextually-expected type for the query expression is \`int[]\`,
+    // the evaluation of the query expression will result in an integer array.
     int[] salaries = from var {salary} in employees
                      select salary;
 
-
     io:println(salaries);
 
-    // The \`from\` clause iterates \`employees\` \`table\` and creates a \`table\`.
-    // The query expression creates a \`table\` based on the contextually-expected type.
+    // The \`from\` clause iterates the \`employees\` table and creates a table.
+    // The query expression creates a table based on the contextually-expected type.
     table<Employee> smiths = from Employee emp in employees
                      where emp.lastName == "Smith" select emp;
 
@@ -74,13 +74,9 @@ export default function QueryingTables() {
       <h1>Querying tables</h1>
 
       <p>
-        Tables can be nicely combined with <code>query expressions</code> unlike{" "}
-        <code>maps</code>. Basic type of the output of
-      </p>
-
-      <p>
-        <code>query expression</code> is determined by the contextually expected
-        type and the input type.
+        Tables can be combined with query expressions, unlike maps. The basic
+        type of the output of a query expression is determined by the
+        contextually expected type and the input type.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -89,7 +85,7 @@ export default function QueryingTables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=210f1f0c6d1279fb5359df3de9dca20f&file=querying_tables.bal",
+                "https://play.ballerina.io/?gist=7f79ad526c312506a09a71b8ed90f188&file=querying_tables.bal",
                 "_blank"
               );
             }}
@@ -234,7 +230,7 @@ export default function QueryingTables() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run querying_tables.bal`}</span>
+              <span>{`\$ bal run querying_tables.bal`}</span>
               <span>{`[100,150,200,300,250]`}</span>
               <span>{`John Smith`}</span>
               <span>{`Jane Smith`}</span>
@@ -280,7 +276,7 @@ export default function QueryingTables() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Create tables with query"
+            title="Creating tables with query"
             href="/learn/by-example/creating-tables-with-query"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -291,7 +287,7 @@ export default function QueryingTables() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Create tables with query
+                  Creating tables with query
                 </span>
               </div>
               <svg

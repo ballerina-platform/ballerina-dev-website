@@ -22,33 +22,28 @@ public function main() returns error? {
     // The \`json\` type allows \`int|float|decimal\`.
     json[] d = [a, b, c];
 
-    // \`toJsonString()\` will convert \`int|float|decimal\` into JSON
-    // numeric syntax.
+    // \`toJsonString()\` will convert \`int|float|decimal\` into the JSON numeric
+    // syntax.
     string e = d.toJsonString();
-
     io:println(e);
 
-    // \`fromJsonString()\` converts JSON numeric syntax into \`int\`,
-    // if possible, and otherwise \`decimal\`.
+    // \`fromJsonString()\` converts JSON numeric syntax into \`int\`, if possible
+    // and \`decimal\` otherwise.
     json f = check e.fromJsonString();
-
     io:println(f);
 
     json[] g = <json[]> f;
-
     io:println(typeof g[0]);
     io:println(typeof g[1]);
     io:println(typeof g[2]);
 
-    // \`cloneWithType()\` or \`ensureType()\` will convert from \`int\` or \`decimal\` into the user's
-    // chosen numeric type.
+    // \`cloneWithType()\` or \`ensureType()\` will convert from \`int\` or \`decimal\`
+    // into the user's chosen numeric type.
     float h = check g[2].ensureType();
-
     io:println(h);
 
     // \`-0\` is an edge case: represented as \`float\`.
     string i = "-0";
-
     io:println(typeof check i.fromJsonString());
     return;
 }
@@ -78,42 +73,22 @@ export default function JsonNumbers() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>JSON numbers</h1>
 
-      <p>Ballerina has three numeric types; but JSON has one.</p>
-
       <p>
-        The <code>json</code> type allows <code>int|float|decimal</code>.
-      </p>
-
-      <p>
+        Ballerina has three numeric types; but JSON has one. The{" "}
+        <code>json</code> type allows <code>int|float|decimal</code>.{" "}
         <code>toJsonString()</code> will convert <code>int|float|decimal</code>{" "}
-        into JSON numeric syntax.
-      </p>
-
-      <p>
-        <code>fromJsonString()</code> converts JSON numeric syntax into{" "}
-        <code>int</code>, if possible, and
-      </p>
-
-      <p>
-        otherwise <code>decimal</code>.
-      </p>
-
-      <p>
-        <code>cloneWithType()</code> or <code>ensureType()</code> will convert
-        from <code>int</code> or <code>decimal</code> into user's
-      </p>
-
-      <p>chosen numeric type.</p>
-
-      <p>
-        Net result is that you can use <code>json</code> to exchange full range
-        of all three Ballerina
-      </p>
-
-      <p>numeric types.</p>
-
-      <p>
-        <code>-0</code> is an edge case: represented as <code>float</code>.
+        into JSON numeric syntax. <code>fromJsonString()</code> converts JSON
+        numeric syntax into <code>int if possible or otherwise to </code>decimal
+        <code>. </code>cloneWithType()<code>or</code>ensureType()
+        <code>will convert from</code>int<code>or</code>decimal
+        <code>
+          into your chosen numeric type. The net result is that you can use
+        </code>
+        json
+        <code>
+          to exchange the full range of all three Ballerina numeric types.
+        </code>
+        -0<code>is an edge case: represented as</code>float`.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -122,7 +97,7 @@ export default function JsonNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e91cf8137ffb4ff0bff6613bbdcfdbe6&file=json_numbers.bal",
+                "https://play.ballerina.io/?gist=b03876dcac2475aea47b7634ada38d15&file=json_numbers.bal",
                 "_blank"
               );
             }}

@@ -130,7 +130,7 @@ sublinks:
           - title: Open records
             id: 2
             url: open-records
-          - title: Control openness
+          - title: Controlling openness
             id: 3
             url: controlling-openness
       - title: Objects
@@ -139,7 +139,7 @@ sublinks:
           - title: Object
             id: 1
             url: object
-          - title: Define classes
+          - title: Defining classes
             id: 2
             url: defining-classes
           - title: Init return type
@@ -160,10 +160,10 @@ sublinks:
           - title: Panics
             id: 4
             url: panics
-      - title: Ignore return values and errors
+      - title: Ignoring return values and errors
         id: 14
         sublinks:
-          - title: Ignore return values and errors
+          - title: Ignoring return values and errors
             id: 1
             url: ignoring-return-values-and-errors
       - title: Mutability and identity
@@ -187,19 +187,19 @@ sublinks:
           - title: JSON type
             id: 1
             url: json-type
-          - title: Work directly with JSON
+          - title: Working directly with JSON
             id: 2
             url: working-directly-with-json
           - title: Match statement with maps
             id: 3
             url: match-statement-with-maps
-          - title: Convert from user-defined type to JSON
+          - title: Converting from user-defined type to JSON
             id: 4
             url: converting-from-user-defined-type-to-json
-          - title: Convert from JSON to user-defined type
+          - title: Converting from JSON to user-defined type
             id: 5
             url: converting-from-json-to-user-defined-type
-          - title: Convert to user-defined type
+          - title: Converting to user-defined type
             id: 6
             url: converting-to-user-defined-type
           - title: Resource method typing
@@ -226,7 +226,7 @@ sublinks:
           - title: Query expressions
             id: 1
             url: query-expressions
-          - title: Destructure records
+          - title: Destructuring records
             id: 2
             url: destructuring-records
           - title: Let clause
@@ -241,7 +241,7 @@ sublinks:
           - title: Querying tables
             id: 6
             url: querying-tables
-          - title: Create tables with query
+          - title: Creating tables with query
             id: 7
             url: creating-tables-with-query
           - title: Join clause
@@ -301,10 +301,10 @@ sublinks:
       - title: Network interaction
         id: 22
         sublinks:
-          - title: 'Consume services: client objects'
+          - title: 'Consuming services: client objects'
             id: 1
             url: consuming-services
-          - title: Provide services
+          - title: Providing services
             id: 2
             url: providing-services
           - title: Module lifecycle
@@ -340,7 +340,7 @@ sublinks:
           - title: Sequence diagrams
             id: 3
             url: sequence-diagrams
-          - title: Wait for workers
+          - title: Waiting for workers
             id: 4
             url: waiting-for-workers
           - title: Strands
@@ -451,7 +451,7 @@ sublinks:
           - title: Object mocking
             id: 10
             url: testerina-mocking-objects
-  - title: Work over the network
+  - title: Network libraries
     id: 2
     sublinks:
       - title: REST API
@@ -592,7 +592,7 @@ sublinks:
           - title: Error Handling
             id: 2
             url: http-error-handling
-          - title: Interceptor error handling
+          - title: Interceptor Error Handling
             id: 3
             url: http-interceptor-error-handling
       - title: HTTP2
@@ -610,13 +610,13 @@ sublinks:
           - title: Hello world
             id: 1
             url: graphql-hello-world
-          - title: Return record values
+          - title: Returning record values
             id: 2
             url: graphql-returning-record-values
           - title: Hierarchical resource paths
             id: 3
             url: graphql-hierarchical-resource-paths
-          - title: Return service objects
+          - title: Returning service objects
             id: 4
             url: graphql-returning-service-objects
           - title: Input types
@@ -625,18 +625,18 @@ sublinks:
           - title: Mutations
             id: 6
             url: graphql-mutations
-          - title: Subscriptions
-            id: 7
-            url: graphql-subscriptions
           - title: Context
-            id: 8
+            id: 7
             url: graphql-context
           - title: File upload
-            id: 9
+            id: 8
             url: graphql-file-upload
           - title: Documentation
-            id: 10
+            id: 9
             url: graphql-documentation
+          - title: Interceptors
+            id: 10
+            url: graphql-interceptors
       - title: GraphQL security
         id: 8
         sublinks:
@@ -1132,6 +1132,12 @@ sublinks:
           - title: 'JSON to XML conversion '
             id: 2
             url: xml-from-json-conversion
+          - title: XML to record conversion
+            id: 3
+            url: xml-to-record-conversion
+          - title: Record to XML conversion
+            id: 4
+            url: xml-from-record-conversion
   - title: Observability
     id: 4
     sublinks:
@@ -1156,9 +1162,12 @@ sublinks:
       - title: Code to Cloud
         id: 1
         sublinks:
-          - title: Kubernetes
+          - title: Docker
             id: 1
-            url: c2c-deployment
+            url: c2c-docker-deployment
+          - title: Kubernetes
+            id: 2
+            url: c2c-k8s-deployment
       - title: Function as a Service
         id: 2
         sublinks:

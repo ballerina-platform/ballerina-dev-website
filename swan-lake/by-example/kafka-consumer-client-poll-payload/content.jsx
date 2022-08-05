@@ -20,7 +20,6 @@ kafka:ConsumerConfiguration consumerConfiguration = {
     offsetReset: "earliest",
     // Subscribes to the topic \`test-kafka-topic\`.
     topics: ["test-kafka-topic"]
-
 };
 
 public type Order record {|
@@ -30,8 +29,7 @@ public type Order record {|
     boolean isValid;
 |};
 
-kafka:Consumer orderConsumer =
-            check new (kafka:DEFAULT_URL, consumerConfiguration);
+kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
 
 public function main() returns error? {
     // Polls the consumer for payload.
@@ -74,10 +72,9 @@ export default function KafkaConsumerClientPollPayload() {
       </p>
 
       <p>
-        consumer for the instances where the metadata related to the message
+        consumer for the instances where the metadata related to the message is
+        not needed.
       </p>
-
-      <p>is not needed.</p>
 
       <p>This consumer uses the builtin byte array deserializer for</p>
 
@@ -85,14 +82,12 @@ export default function KafkaConsumerClientPollPayload() {
 
       <p>this to work properly, an active Kafka broker should be present.</p>
 
-      <p>&lt;br/&gt;&lt;br/&gt;</p>
-
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          Kafka module
+          <code>kafka</code> module
         </a>
         .
       </p>
@@ -225,7 +220,7 @@ export default function KafkaConsumerClientPollPayload() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run kafka_consumer_client_poll_payload.bal`}</span>
+              <span>{`\$ bal run kafka_consumer_client_poll_payload.bal`}</span>
             </code>
           </pre>
         </Col>

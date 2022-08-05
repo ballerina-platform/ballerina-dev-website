@@ -24,7 +24,6 @@ isolated class Counter {
         lock {
             // \`n\` can only be accessed using \`self\`.
             return self.n;
-
         }
     }
 
@@ -39,7 +38,6 @@ public function main() {
     // The object’s mutable state is accessible only via the
     // object itself making it an “isolated root”.
     Counter c = new;
-
     c.inc();
     int v = c.get();
     io:println(v);
@@ -125,7 +123,7 @@ export default function IsolatedObjects() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cfa8c0bba28ebbd379770ca5791fe1a0&file=isolated_objects.bal",
+                "https://play.ballerina.io/?gist=c65470aa21808c7bcd9253912ec536bf&file=isolated_objects.bal",
                 "_blank"
               );
             }}
@@ -218,6 +216,8 @@ export default function IsolatedObjects() {
           )}
         </Col>
       </Row>
+
+      <p>Executing the above code gives the output below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

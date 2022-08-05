@@ -13,62 +13,33 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerinax/awslambda;
-import ballerina/uuid;
 import ballerina/io;
 
-// The \`@awslambda:Function\` annotation marks a function to
-// generate an AWS Lambda function
+// The \`@awslambda:Function\` annotation marks a function to generate an AWS Lambda function.
 @awslambda:Function
 public function echo(awslambda:Context ctx, json input) returns json {
-   return input;
+    return input;
 }
 
-@awslambda:Function
-public function uuid(awslambda:Context ctx, json input) returns json {
-   return uuid:createType1AsString();
-}
-
-// The \`awslambda:Context\` object contains request execution
-// context information
+// The \`awslambda:Context\` object contains request execution context information.
 @awslambda:Function
 public function ctxinfo(awslambda:Context ctx, json input) returns json|error {
-   json result = { RequestID: ctx.getRequestId(),
-                   DeadlineMS: ctx.getDeadlineMs(),
-                   InvokedFunctionArn: ctx.getInvokedFunctionArn(),
-                   TraceID: ctx.getTraceId(),
-                   RemainingExecTime: ctx.getRemainingExecutionTime() };
-   return result;
+    return {
+        RequestID: ctx.getRequestId(),
+        DeadlineMS: ctx.getDeadlineMs(),
+        InvokedFunctionArn: ctx.getInvokedFunctionArn(),
+        TraceID: ctx.getTraceId(),
+        RemainingExecTime: ctx.getRemainingExecutionTime()
+    };
 }
 
+// If you know the external service that's being used for the function, you can use the built-in types such as 
+// \`S3Event\`, \`DynamoDBEvent\`, \`SESEvent\` etc. for data binding.
 @awslambda:Function
-public function notifySQS(awslambda:Context ctx, 
-                          awslambda:SQSEvent event) returns json {
-    return event.Records[0].body;
+public function notifyS3(awslambda:Context ctx, awslambda:S3Event event) {
+    io:println(event.Records[0].s3.'object.key);
 }
-
-@awslambda:Function
-public function notifyS3(awslambda:Context ctx, 
-                         awslambda:S3Event event) returns json {
-    return event.Records[0].s3.'object.key;
-}
-
-@awslambda:Function
-public function notifyDynamoDB(awslambda:Context ctx, 
-                               awslambda:DynamoDBEvent event) returns json {
-    return event.Records[0].dynamodb.Keys.toString();
-}
-
-@awslambda:Function
-public function notifySES(awslambda:Context ctx, 
-                          awslambda:SESEvent event) returns json {
-    return event.Records[0].ses.mail.commonHeaders.subject;
-}
-
-@awslambda:Function
-public function apigwRequest(awslambda:Context ctx, 
-                             awslambda:APIGatewayProxyRequest request) {
-    io:println("Path: ", request.path);
-}`,
+`,
 ];
 
 export default function AwsLambdaDeployment() {
@@ -76,6 +47,12 @@ export default function AwsLambdaDeployment() {
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
+  const [outputClick3, updateOutputClick3] = useState(false);
+  const ref3 = createRef();
+  const [outputClick4, updateOutputClick4] = useState(false);
+  const ref4 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -94,29 +71,10 @@ export default function AwsLambdaDeployment() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>AWS Lambda</h1>
 
-      <p>AWS Lambda is an event driven, serverless computing platform.</p>
-
-      <p>Ballerina functions can be deployed in AWS Lambda by annotating</p>
-
       <p>
-        a Ballerina function with &quot;@awslambda:Function&quot;, which should
-        have
-      </p>
-
-      <p>
-        the function signature{" "}
-        <code>
-          function (awslambda:Context, json|EventType) returns json|error
-        </code>
-        .&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>
-        For more information, see the{" "}
-        <a href="https://ballerina.io/learn/deployment/aws-lambda/">
-          AWS Lambda Deployment Guide
-        </a>
-        .
+        AWS Lambda is an event driven, serverless computing platform. Ballerina
+        functions can be deployed in AWS Lambda by annotating a Ballerina
+        function with <code>@awslambda:Function</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -196,6 +154,11 @@ export default function AwsLambdaDeployment() {
         </Col>
       </Row>
 
+      <p>
+        Create a ballerina package and replace the content of the generated
+        ballerina file with the content above.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -247,64 +210,236 @@ export default function AwsLambdaDeployment() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Prerequisites: AWS CLI tools installation and configuration. Visit [AWS Lambda Deployment Guide](https://ballerina.io/learn/deployment/aws-lambda/) for detailed steps.`}</span>
-              <span>{``}</span>
-              <span>{`# Create a ballerina package and replace the contents of the generated bal file with the contents above.`}</span>
-              <span>{`bal new aws_lambda_deployment`}</span>
-              <span>{``}</span>
-              <span>{`# Build the Ballerina program to generate the AWS Lambda functions`}</span>
+              <span>{`\$ bal new aws_lambda_deployment`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>Build the Ballerina program to generate the AWS Lambda artifacts</p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#00FF19"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
               <span>{`\$ bal build`}</span>
               <span>{`Compiling source`}</span>
-              <span>{`	wso2/aws_lambda_deployment:0.1.0`}</span>
+              <span>{`        wso2/aws_lambda_deployment:0.1.0`}</span>
               <span>{``}</span>
-              <span>{`Generating executables`}</span>
-              <span>{`	@awslambda:Function: echo, uuid, ctxinfo, notifySQS, notifyS3`}</span>
+              <span>{`Generating executable`}</span>
+              <span>{`        @awslambda:Function: echo, ctxinfo, notifyS3`}</span>
               <span>{``}</span>
-              <span>{`	Run the following command to deploy each Ballerina AWS Lambda function:`}</span>
-              <span>{`	aws lambda create-function --function-name \$FUNCTION_NAME --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.\$FUNCTION_NAME --runtime provided --role \$LAMBDA_ROLE_ARN --layers arn:aws:lambda:\$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
+              <span>{`        Run the following command to deploy each Ballerina AWS Lambda function:`}</span>
+              <span>{`        aws lambda create-function --function-name \$FUNCTION_NAME --zip-file fileb://<project-dir>/aws_lambda_deployment/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.\$FUNCTION_NAME --runtime provided --role \$LAMBDA_ROLE_ARN --layers arn:aws:lambda:\$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
               <span>{``}</span>
-              <span>{`	Run the following command to re-deploy an updated Ballerina AWS Lambda function:`}</span>
-              <span>{`	aws lambda update-function-code --function-name \$FUNCTION_NAME --zip-file fileb://<project_dir>/target/bin/aws-ballerina-lambda-functions.zip`}</span>
-              <span>{`    `}</span>
-              <span>{`    target/bin/aws_lambda_deployment.jar`}</span>
-              <span>{`# Execute the AWS CLI commands to create and publish the functions; and set your respective AWS \$LAMBDA_ROLE_ARN, \$REGION_ID, and \$FUNCTION_NAME values; following are some examples:-`}</span>
-              <span>{`\$ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role`}</span>
-              <span>{` --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
-              <span>{`\$ aws lambda create-function --function-name uuid --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.uuid --runtime provided --role arn:aws:iam::908363916111:role/lambda-role`}</span>
-              <span>{` --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
-              <span>{`\$ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.ctxinfo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role`}</span>
-              <span>{` --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
-              <span>{``}</span>
-              <span>{``}</span>
-              <span>{`# Invoke the functions`}</span>
+              <span>{`        Run the following command to re-deploy an updated Ballerina AWS Lambda function:`}</span>
+              <span>{`        aws lambda update-function-code --function-name \$FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        Execute the AWS CLI commands to create and publish the functions; and
+        set your respective AWS <code>$LAMBDA_ROLE_ARN</code>,{" "}
+        <code>$REGION_ID</code>, and <code>$FUNCTION_NAME</code> values.
+      </p>
+
+      <p>
+        For instructions on getting the value for the
+        <code>$LAMBDA_ROLE_ARN</code>, see{" "}
+        <a href="/learn/deployment/aws-lambda/">AWS Lambda deployment</a>.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick3 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#00FF19"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick3(true);
+                const extractedText = extractOutput(ref3.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick3(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref3}>
+            <code className="d-flex flex-column">
+              <span>{`\$ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role--layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
+              <span>{`\$ aws lambda create-function --function-name uuid --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.uuid --runtime provided --role arn:aws:iam::908363916111:role/lambda-role--layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
+              <span>{`\$ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.ctxinfo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>Invoke the functions.</p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick4 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#00FF19"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick4(true);
+                const extractedText = extractOutput(ref4.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick4(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref4}>
+            <code className="d-flex flex-column">
               <span>{`\$ echo '{"MESSAGE":"HELLO"}' > input.json`}</span>
               <span>{`\$ aws lambda invoke --function-name echo --payload fileb://input.json echo-response.txt`}</span>
               <span>{`{`}</span>
-              <span>{`    "ExecutedVersion": "\$LATEST", `}</span>
-              <span>{`    "StatusCode": 200`}</span>
+              <span>{`"ExecutedVersion": "\$LATEST",`}</span>
+              <span>{`"StatusCode": 200`}</span>
               <span>{`}`}</span>
-              <span>{`\$ cat echo-response.txt `}</span>
+              <span>{`\$ cat echo-response.txt`}</span>
               <span>{`{"MESSAGE":"HELLO"}`}</span>
-              <span>{``}</span>
-              <span>{`\$ aws lambda invoke --function-name uuid uuid-response.txt`}</span>
-              <span>{`{`}</span>
-              <span>{`    "ExecutedVersion": "\$LATEST", `}</span>
-              <span>{`    "StatusCode": 200`}</span>
-              <span>{`}`}</span>
-              <span>{`\$ cat uuid-response.txt `}</span>
-              <span>{`"711cd328-1937-40cc-9078-c3628c6edb02"`}</span>
               <span>{``}</span>
               <span>{`\$ aws lambda invoke --function-name ctxinfo ctxinfo-response.txt`}</span>
               <span>{`{`}</span>
-              <span>{`    "ExecutedVersion": "\$LATEST", `}</span>
-              <span>{`    "StatusCode": 200`}</span>
+              <span>{`"ExecutedVersion": "\$LATEST",`}</span>
+              <span>{`"StatusCode": 200`}</span>
               <span>{`}`}</span>
-              <span>{`\$ cat ctxinfo-response.txt `}</span>
+              <span>{`\$ cat ctxinfo-response.txt`}</span>
               <span>{`{"RequestID":"d55f7d06-f2ab-4b6e-8606-482607785a91", "DeadlineMS":1548069389978, "InvokedFunctionArn":"arn:aws:lambda:us-west-2:908363916138:function:ctxinfo", "TraceID":"Root=1-5c45aa03-f8aff4c9e24dc4fbf48f2990;Parent=17ad3b290def98fd;Sampled=0", "RemainingExecTime":9946}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        To invoke the <code>notifyS3</code> function, it needs to be registered
+        in the S3 bucket.
+      </p>
+
+      <p>
+        For registration and execution details, see{" "}
+        <a href="/learn/deployment/aws-lambda/">AWS Lambda deployment</a>.
+      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

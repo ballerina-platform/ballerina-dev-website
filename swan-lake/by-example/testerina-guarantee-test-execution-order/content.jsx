@@ -70,25 +70,25 @@ export default function TesterinaGuaranteeTestExecutionOrder() {
 
       <p>
         function depends on. These functions will be executed before the
-        execution of that test.&lt;br/&gt;&lt;br/&gt;
+        execution of that test.
       </p>
 
       <p>
         This allows you to ensure that the tests are being executed in the
-        expected order.&lt;br/&gt;&lt;br/&gt;
+        expected order.
       </p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
         </a>
       </p>
 
       <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -221,7 +221,7 @@ export default function TesterinaGuaranteeTestExecutionOrder() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal test test_module`}</span>
+              <span>{`\$ bal test test_module`}</span>
               <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>

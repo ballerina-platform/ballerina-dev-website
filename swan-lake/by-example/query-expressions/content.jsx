@@ -17,21 +17,15 @@ const codeSnippetData = [
 public function main() {
     int[] nums = [1, 2, 3, 4];
 
+    // This is based on the \`{ 10 × i | i ∈ nums }\` set builder notation.
     // The \`from\` clause works similar to a \`foreach\` statement.
     int[] numsTimes10 = from var i in nums
                         // The \`select\` clause is evaluated for each iteration.
                         select i * 10;
 
-                        
     io:println(numsTimes10);
 
-    // This is based on
-    //
-    // \`{ 10 × i | i ∈ nums }\`
-    //
-    // \`{ i | i mod 2 = 0, i ∈ nums }\`
-    //
-    // set builder notation.
+    // This is based on the \`{ i | i mod 2 = 0, i ∈ nums }\` set builder notation.
     int[] evenNums = from var i in nums
                      where i % 2 == 0
                      select i;
@@ -66,12 +60,8 @@ export default function QueryExpressions() {
 
       <p>
         Query-like expressions start with a <code>from</code> clause and end
-        with a <code>select</code> clause. It is a
-      </p>
-
-      <p>
-        list comprehension, based on mathematical &quot;set builder&quot;
-        notation.
+        with a <code>select</code> clause. It is a list comprehension based on
+        the <code>set builder</code> mathematical notation.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -80,7 +70,7 @@ export default function QueryExpressions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=84cb2a07ad0e5df4bc0eb31d4db22221&file=query_expressions.bal",
+                "https://play.ballerina.io/?gist=fcd700031596bcc151f93394c8d49bde&file=query_expressions.bal",
                 "_blank"
               );
             }}
@@ -225,7 +215,7 @@ export default function QueryExpressions() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run query_expressions.bal`}</span>
+              <span>{`\$ bal run query_expressions.bal`}</span>
               <span>{`[10,20,30,40]`}</span>
               <span>{`[2,4]`}</span>
             </code>
@@ -272,7 +262,7 @@ export default function QueryExpressions() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Destructure records"
+            title="Destructuring records"
             href="/learn/by-example/destructuring-records"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -283,7 +273,7 @@ export default function QueryExpressions() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructure records
+                  Destructuring records
                 </span>
               </div>
               <svg

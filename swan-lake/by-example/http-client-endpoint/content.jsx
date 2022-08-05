@@ -17,8 +17,7 @@ import ballerina/io;
 
 public function main() returns error? {
     // Creates a new client with the backend URL.
-    final http:Client clientEndpoint = 
-                        check new ("http://postman-echo.com");
+    final http:Client clientEndpoint = check new ("http://postman-echo.com");
     
     // Sends a \`GET\` request to the specified endpoint.
     io:println("GET request:");
@@ -27,8 +26,7 @@ public function main() returns error? {
 
     // The \`get()\`, \`head()\`, and \`options()\` have the optional headers parameter to send out headers,
     io:println("\\nGET request with Headers:");
-    resp = check clientEndpoint->get("/get",
-            {"Sample-Name": "http-client-connector"});
+    resp = check clientEndpoint->get("/get", {"Sample-Name": "http-client-connector"});
     io:println(resp.toJsonString());
 
     // Sends a \`POST\` request to the specified endpoint.
@@ -38,8 +36,7 @@ public function main() returns error? {
 
     // Uses the \`execute()\` remote function for custom HTTP verbs.
     io:println("\\nUse custom HTTP verbs:");
-    http:Response response = check clientEndpoint->execute(
-                        "COPY", "/get", "CUSTOM: Hello World");
+    http:Response response = check clientEndpoint->execute("COPY", "/get", "CUSTOM: Hello World");
 
     io:println("Status code: " + response.statusCode.toString());
 }
@@ -71,15 +68,13 @@ export default function HttpClientEndpoint() {
 
       <p>
         The HTTP Client Connector can be used to connect to and interact with an
-        HTTP server.&lt;br/&gt;&lt;br/&gt;
+        HTTP server.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -90,7 +85,7 @@ export default function HttpClientEndpoint() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a69fefe406e53e352aba88e7a2ac2b6c&file=http_client_endpoint.bal",
+                "https://play.ballerina.io/?gist=35fca2462341c1193ca6fad6b3a27d43&file=http_client_endpoint.bal",
                 "_blank"
               );
             }}
@@ -184,6 +179,8 @@ export default function HttpClientEndpoint() {
         </Col>
       </Row>
 
+      <p>Run the client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -235,7 +232,7 @@ export default function HttpClientEndpoint() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_client_endpoint.bal`}</span>
+              <span>{`\$ bal run http_client_endpoint.bal`}</span>
               <span>{`GET request:`}</span>
               <span>{`{"args":{"test":"123"}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e3-2cec8477340e121571a5df88", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get?test=123"}`}</span>
               <span>{``}</span>

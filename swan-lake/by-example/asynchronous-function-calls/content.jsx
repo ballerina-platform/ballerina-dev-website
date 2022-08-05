@@ -55,23 +55,12 @@ export default function AsynchronousFunctionCalls() {
 
       <p>
         <code>start</code> calls a function asynchronously and the function runs
-        on a separate logical thread (<code>strand</code>).
-      </p>
-
-      <p>It is cooperatively multitasked by default.</p>
-
-      <p>
-        The result will be of type <code>future&lt;T&gt;</code> and{" "}
-        <code>future</code> is a separate basic type.
-      </p>
-
-      <p>
-        Waiting for the same <code>future</code> more than once gives an{" "}
-        <code>error</code>.
-      </p>
-
-      <p>
-        Use <code>f.cancel()</code> to terminate a <code>future</code>.
+        on a separate logical thread (<code>strand</code>). It is cooperatively
+        multitasked by default. The result will be of type{" "}
+        <code>future&lt;T&gt;</code> and <code>future</code> is a separate basic
+        type. Waiting for the same <code>future</code> more than once gives an{" "}
+        <code>error</code>. Use <code>f.cancel()</code> to terminate a{" "}
+        <code>future</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -80,7 +69,7 @@ export default function AsynchronousFunctionCalls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ea872233e75661e54c178545dccfc5aa&file=asynchronous_function_calls.bal",
+                "https://play.ballerina.io/?gist=7c8ec52eb9ea85da519437011aeb4cae&file=asynchronous_function_calls.bal",
                 "_blank"
               );
             }}
@@ -225,7 +214,7 @@ export default function AsynchronousFunctionCalls() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run asynchronous_function_calls.bal`}</span>
+              <span>{`\$ bal run asynchronous_function_calls.bal`}</span>
               <span>{`10`}</span>
             </code>
           </pre>

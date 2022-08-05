@@ -20,7 +20,6 @@ public function main() {
         // It is safe to access the parameters of \`sayHello\` for the
         // duration of the function call.
         string a = sayHello("John");
-
         io:println(a);
     }
 
@@ -31,7 +30,6 @@ public function main() {
 
     // \`sayHello\` is inferred to be an \`isolated\` function.
     boolean c = sayHello is isolated function (string str) returns string;
-
     io:println(c);
 }
 
@@ -114,7 +112,7 @@ export default function InferringIsolated() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4e394e7ccf34524ed251a937b26db37b&file=inferring_isolated.bal",
+                "https://play.ballerina.io/?gist=ad4b8a9e1b917d224b8ad48e3087040d&file=inferring_isolated.bal",
                 "_blank"
               );
             }}
@@ -207,6 +205,8 @@ export default function InferringIsolated() {
           )}
         </Col>
       </Row>
+
+      <p>Executing the above code gives the output below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

@@ -20,7 +20,6 @@ kafka:ConsumerConfiguration consumerConfiguration = {
     offsetReset: "earliest",
     // Subscribes to the topic \`test-kafka-topic\`.
     topics: ["test-kafka-topic"]
-
 };
 
 public type Order record {|
@@ -30,14 +29,13 @@ public type Order record {|
     boolean isValid;
 |};
 
-// Create a subtype of \`kafka:AnydataConsumerRecord\`
+// Create a subtype of \`kafka:AnydataConsumerRecord\`.
 public type OrderConsumerRecord record {|
     *kafka:AnydataConsumerRecord;
     Order value;
 |};
 
-kafka:Consumer orderConsumer =
-                check new (kafka:DEFAULT_URL, consumerConfiguration);
+kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
 
 public function main() returns error? {
     // Polls the consumer for order records.
@@ -77,13 +75,11 @@ export default function KafkaConsumerClientPollConsumerRecord() {
 
       <p>
         This shows how to use a <code>kafka:Consumer</code> as a simple record
+        consumer.
       </p>
 
       <p>
-        consumer. The records from a subscribed topic can be retrieved using the
-      </p>
-
-      <p>
+        The records from a subscribed topic can be retrieved using the{" "}
         <code>poll()</code> function.
       </p>
 
@@ -106,14 +102,12 @@ export default function KafkaConsumerClientPollConsumerRecord() {
         For this to work properly, an active Kafka broker should be present.
       </p>
 
-      <p>&lt;br/&gt;&lt;br/&gt;</p>
-
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          Kafka module
+          <code>kafka</code> module
         </a>
         .
       </p>
@@ -246,7 +240,7 @@ export default function KafkaConsumerClientPollConsumerRecord() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run kafka_consumer_client_poll_consumer_record.bal`}</span>
+              <span>{`\$ bal run kafka_consumer_client_poll_consumer_record.bal`}</span>
             </code>
           </pre>
         </Col>

@@ -67,24 +67,11 @@ export default function DefiningClasses() {
       <h1>Defining classes</h1>
 
       <p>
-        A module can contain <code>class</code> definitions.
-      </p>
-
-      <p>
-        <code>init</code> method initializes the object.
-      </p>
-
-      <p>
-        Arguments to <code>new</code> are passed as arguments to{" "}
-        <code>init</code>.
-      </p>
-
-      <p>
-        Methods use <code>self</code> to access their object.
-      </p>
-
-      <p>
-        <code>private</code> means accessible only by code within the{" "}
+        A module can contain <code>class</code> definitions. <code>init</code>{" "}
+        method initializes the object and arguments to <code>new</code> are
+        directed as arguments to <code>init</code>. Methods use{" "}
+        <code>self</code> to access their object. The <code>private</code>{" "}
+        qualifier used in members means accessible only by the code within the{" "}
         <code>class</code> definition.
       </p>
 
@@ -94,7 +81,7 @@ export default function DefiningClasses() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c81dcbf8069cfa1d53119bb7e350b092&file=defining_classes.bal",
+                "https://play.ballerina.io/?gist=a6fca7257842a708406bdfc76f874dd4&file=defining_classes.bal",
                 "_blank"
               );
             }}
@@ -239,7 +226,7 @@ export default function DefiningClasses() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run defining_classes.bal`}</span>
+              <span>{`\$ bal run defining_classes.bal`}</span>
               <span>{`12`}</span>
             </code>
           </pre>

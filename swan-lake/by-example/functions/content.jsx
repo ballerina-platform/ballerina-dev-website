@@ -17,11 +17,9 @@ const codeSnippetData = [
 // This function definition has two parameters of type \`int\`. 
 // \`returns\` clause specifies type of return value.
 function add(int x, int y) returns int {
-
     int sum = x + y;
     // \`return\` statement returns a value.
     return sum;
-
 }
 
 public function main() {
@@ -55,11 +53,8 @@ export default function Functions() {
 
       <p>
         A function accepts zero or more arguments and returns a single value.
-      </p>
-
-      <p>
-        Function parameters are declared as in C. You are not allowed to assign
-        to parameters in Ballerina.
+        Function parameters are declared similar to the C language. You are not
+        allowed to assign values to parameters in Ballerina.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -68,7 +63,7 @@ export default function Functions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a81f9fef82ca30cd4667d6ab8eefb950&file=functions.bal",
+                "https://play.ballerina.io/?gist=bfbd92e550e1b8da5895e53c66fe868b&file=functions.bal",
                 "_blank"
               );
             }}
@@ -213,7 +208,7 @@ export default function Functions() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run functions.bal`}</span>
+              <span>{`\$ bal run functions.bal`}</span>
               <span>{`16`}</span>
             </code>
           </pre>

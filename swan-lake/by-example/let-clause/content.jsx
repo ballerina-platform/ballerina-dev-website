@@ -31,7 +31,6 @@ public function main() {
                      let int len1 = first.length()
                      // The \`where\` clause provides a way to perform conditional execution.
                      where len1 > 0
-
                      let int len2 = last.length()
                      where len2 > 0
                      let string name = first + " " + last
@@ -67,12 +66,9 @@ export default function LetClause() {
 
       <p>
         Query expressions can have <code>let</code> clauses. They can be
-        anywhere between <code>from</code> and <code>select</code>
-      </p>
-
-      <p>
-        clauses. Multiple <code>where</code> clauses are also allowed. The
-        semantics are similar to <code>XQuery FLWOR</code>.
+        anywhere between the <code>from</code> and <code>select</code> clauses.
+        Multiple <code>where</code> clauses are also allowed. The semantics are
+        similar to the XQuery FLWOR expressions.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -81,7 +77,7 @@ export default function LetClause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=caf60840c83593c3c03f0dc3d538654c&file=let_clause.bal",
+                "https://play.ballerina.io/?gist=4fb6944f0110ce631860fe5514d9494d&file=let_clause.bal",
                 "_blank"
               );
             }}
@@ -226,7 +222,7 @@ export default function LetClause() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run let_clause.bal`}</span>
+              <span>{`\$ bal run let_clause.bal`}</span>
               <span>{`["Melina Kodel","Tom Riddle"]`}</span>
             </code>
           </pre>
@@ -236,7 +232,7 @@ export default function LetClause() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Destructure records"
+            title="Destructuring records"
             href="/learn/by-example/destructuring-records"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -264,7 +260,7 @@ export default function LetClause() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructure records
+                  Destructuring records
                 </span>
               </div>
             </div>

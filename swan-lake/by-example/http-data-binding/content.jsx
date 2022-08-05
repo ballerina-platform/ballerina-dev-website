@@ -23,10 +23,9 @@ type Student record {
 
 service /hello on new http:Listener(9090) {
 
-    // The \`Student\` parameter in [Payload annotation](https://lib.ballerina.io/ballerina/http/latest/records/Payload)
+    // The \`Student\` parameter in the [payload annotation](https://docs.central.ballerina.io/ballerina/http/latest/records/Payload)
     // represents the entity body of the inbound request.
-    resource function post student(@http:Payload Student student)
-            returns json {
+    resource function post student(@http:Payload Student student) returns json {
         string name = student.Name;
         return {Name: name};
     }
@@ -76,15 +75,13 @@ export default function HttpDataBinding() {
       </p>
 
       <p>
-        Binding failures will be responded with 400[Bad Request]
-        response&lt;br/&gt;&lt;br/&gt;
+        Binding failures will be responded to with a{" "}
+        <code>400[Bad Request]</code> response.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -167,6 +164,8 @@ export default function HttpDataBinding() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -218,25 +217,16 @@ export default function HttpDataBinding() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# To invoke the `}
-                <code>{`student`}</code>
-                {` resource, execute the below HTTP request.`}
-              </span>
-              <span>{`curl http://localhost:9090/hello/student -d '{ "Name": "John", "Grade": 12, "Marks": {"English" : "85", "IT" : "100"}}' -H "Content-Type:application/json"`}</span>
-              <span>{`{"Name":"John"}`}</span>
-              <span>{``}</span>
-              <span>
-                {`# To invoke the `}
-                <code>{`store`}</code>
-                {` resource, execute the below HTTP request.`}
-              </span>
-              <span>{`curl http://localhost:9090/hello/store -d "<h:Store id = \\"AST\\" xmlns:h=\\"http://www.test.com\\"><h:street>Main</h:street><h:city>94</h:city></h:Store>" -H "Content-Type:application/xml"`}</span>
-              <span>{`<h:city xmlns:h="http://www.test.com">94</h:city>`}</span>
+              <span>{`\$ bal run http_data_binding.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -289,7 +279,16 @@ export default function HttpDataBinding() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_data_binding.bal`}</span>
+              <span>{`\$ curl http://localhost:9090/hello/student -d '{ "Name": "John", "Grade": 12, "Marks": {"English" : "85", "IT" : "100"}}' -H "Content-Type:application/json"`}</span>
+              <span>{`{"Name":"John"}`}</span>
+              <span>{``}</span>
+              <span>
+                {`# To invoke the `}
+                <code>{`store`}</code>
+                {` resource, execute the below HTTP request.`}
+              </span>
+              <span>{`\$ curl http://localhost:9090/hello/store -d "<h:Store id = \\"AST\\" xmlns:h=\\"http://www.test.com\\"><h:street>Main</h:street><h:city>94</h:city></h:Store>" -H "Content-Type:application/xml"`}</span>
+              <span>{`<h:city xmlns:h="http://www.test.com">94</h:city>`}</span>
             </code>
           </pre>
         </Col>

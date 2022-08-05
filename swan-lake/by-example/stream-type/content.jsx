@@ -14,10 +14,8 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-// Defines a class called \`EvenNumberGenerator\`.
-// Each class has its own \`next()\` method, which gets 
-// invoked when the stream's \`next()\` function
-// gets called.
+// Defines a class called \`EvenNumberGenerator\`. Each class has its own \`next()\` method, which gets
+// invoked when the stream's \`next()\` function gets called.
 class EvenNumberGenerator {
     int i = 0;
     public isolated function next() returns record {| int value; |}|error? {
@@ -32,8 +30,8 @@ type ResultValue record {|
 
 public function main() {
     EvenNumberGenerator evenGen = new();
-    // Creates a \`stream\` passing an \`EvenNumberGenerator\` object
-    // to the \`stream\` constructor.
+
+    // Creates a \`stream\` passing an \`EvenNumberGenerator\` object to the \`stream\` constructor.
     stream<int, error?> evenNumberStream = new(evenGen);
 
     var evenNumber = evenNumberStream.next();
@@ -71,21 +69,13 @@ export default function StreamType() {
       <p>
         A <code>stream</code> represents a sequence of values that are generated
         as needed. The end of a <code>stream</code> is indicated with a
+        termination value, which is <code>error</code> or <code>nil</code>. The{" "}
+        <code>stream&lt;T,E&gt;</code> type is a <code>stream</code> in which
+        the members of the sequence are type <code>T</code> and the termination
+        value is type <code>E</code>. <code>stream&lt;T&gt;</code> means{" "}
+        <code>stream&lt;T,()&gt;</code>. The <code>stream</code> type is a
+        separate basic type but it is like an object.
       </p>
-
-      <p>
-        termination value, which is <code>error</code> or <code>nil</code>. The
-        type <code>stream&lt;T,E&gt;</code> is a <code>stream</code> where the
-        members of the
-      </p>
-
-      <p>
-        sequence are type <code>T</code> and termination value is type{" "}
-        <code>E</code>. <code>stream&lt;T&gt;</code> means{" "}
-        <code>stream&lt;T,()&gt;</code>. The <code>stream</code> type
-      </p>
-
-      <p>is a separate basic type, but like an object.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -93,7 +83,7 @@ export default function StreamType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c8b32c76d22857e0d824a46ddbfc75ab&file=stream_type.bal",
+                "https://play.ballerina.io/?gist=e25cad4b2ae6c04c6b449525ed04f96d&file=stream_type.bal",
                 "_blank"
               );
             }}
@@ -238,7 +228,7 @@ export default function StreamType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run stream_type.bal`}</span>
+              <span>{`\$ bal run stream_type.bal`}</span>
               <span>{`Retrieved even number: 2`}</span>
             </code>
           </pre>

@@ -42,12 +42,12 @@ service / on new http:Listener(8080) {
 
         // Delay the response for 30 seconds to mimic network level delays.
         runtime:sleep(30);
-        return "echo Resource is invoked";
+        return "The echo resource is invoked";
     }
 
     // Define the sample resource to mock a healthy service.
     resource function 'default mock() returns string {
-        return "Mock Resource is Invoked.";
+        return "The mock resource is invoked.";
     }
 }
 `,
@@ -96,20 +96,18 @@ export default function HttpFailover() {
       <p>are configured to mimic failure backends.</p>
 
       <p>
-        After the first invocation the client resumes the failover from the last
-        successful target. In this case it is
+        After the first invocation, the client resumes the failover from the
+        last successful target. In this case, it is
       </p>
 
       <p>
-        the third target and the client will get the immediate response for
-        subsequent calls.&lt;br/&gt;&lt;br/&gt;
+        the third target, which will be used and the client will get the
+        immediate response for subsequent calls.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -192,6 +190,8 @@ export default function HttpFailover() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -243,14 +243,16 @@ export default function HttpFailover() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# To invoke the Failover Service, use the cURL command below.`}</span>
-              <span>{`# The first invocation will take a while but the subsequent invocations will be faster.`}</span>
-              <span>{`curl http://localhost:9090/fo`}</span>
-              <span>{`Mock Resource is Invoked.`}</span>
+              <span>{`\$ bal run http_failover.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -303,7 +305,9 @@ export default function HttpFailover() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_failover.bal`}</span>
+              <span>{`# The first invocation will take a while but the subsequent invocations will be faster.`}</span>
+              <span>{`\$ curl http://localhost:9090/fo`}</span>
+              <span>{`Mock Resource is Invoked.`}</span>
             </code>
           </pre>
         </Col>

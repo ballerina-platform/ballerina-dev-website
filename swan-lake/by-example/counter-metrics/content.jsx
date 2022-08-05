@@ -217,6 +217,8 @@ export default function CounterMetrics() {
         </Col>
       </Row>
 
+      <p>Invoke the service using the cURL command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -268,17 +270,20 @@ export default function CounterMetrics() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`// Invoke the service three times using the cURL command below.`}</span>
-              <span>{`curl http://localhost:9090/onlineStoreService/makeOrder`}</span>
-              <span>{`Order Processed!`}</span>
-              <span>{`curl http://localhost:9090/onlineStoreService/makeOrder`}</span>
-              <span>{`Order Processed!`}</span>
-              <span>{`curl http://localhost:9090/onlineStoreService/makeOrder`}</span>
+              <span>{`\$ curl http://localhost:9090/onlineStoreService/makeOrder`}</span>
               <span>{`Order Processed!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>To start the service, navigate to the directory that contains the</p>
+
+      <p>
+        <code>.bal</code> file, and execute the <code>bal run</code> command
+        below with the <code>--observability-included</code> build time flag and
+        the <code>Config.toml</code> runtime configuration file.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -331,20 +336,7 @@ export default function CounterMetrics() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# To start the service, navigate to the directory that contains the`}</span>
-              <span>
-                {`# `}
-                <code>{`.bal`}</code>
-                {` file and execute the `}
-                <code>{`bal run`}</code>
-                {` command below with the `}
-                <code>{`--observability-included`}</code>
-                {` build time flag and the `}
-                <code>{`Config.toml`}</code>
-                {` runtime configuration file.`}
-              </span>
-              <span>{`BAL_CONFIG_FILES=Config.toml bal run --observability-included counter_metrics.bal`}</span>
-              <span>{``}</span>
+              <span>{`\$ BAL_CONFIG_FILES=Config.toml bal run --observability-included counter_metrics.bal`}</span>
               <span>{`ballerina: started Prometheus HTTP listener 0.0.0.0:9797`}</span>
               <span>{`------------------------------------------`}</span>
               <span>{`Global Counter = 1`}</span>

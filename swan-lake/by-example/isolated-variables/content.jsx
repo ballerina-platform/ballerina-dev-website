@@ -24,7 +24,6 @@ isolated function push(int n) {
     lock {
         stack.push(n);
     }
-
 }
 
 isolated function pop() returns int {
@@ -116,7 +115,7 @@ export default function IsolatedVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9b33ac4f9b8dec476ba993656c3b70b0&file=isolated_variables.bal",
+                "https://play.ballerina.io/?gist=e18caead345e3dfb4c844938c03e39c5&file=isolated_variables.bal",
                 "_blank"
               );
             }}
@@ -209,6 +208,8 @@ export default function IsolatedVariables() {
           )}
         </Col>
       </Row>
+
+      <p>Executing the above code gives the output below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

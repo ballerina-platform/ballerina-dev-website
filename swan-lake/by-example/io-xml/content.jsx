@@ -21,7 +21,8 @@ public function main() returns error? {
 
     // Writes the given XML to a file.
     check io:fileWriteXml(xmlFilePath, xmlContent);
-    // If the write operation was successful, then, performs a read operation to read the XML content.
+    // If the write operation was successful, then,
+    // performs a read operation to read the XML content.
     xml readXml = check io:fileReadXml(xmlFilePath);
     io:println(readXml);
 }
@@ -53,14 +54,15 @@ export default function IoXml() {
 
       <p>
         The Ballerina <code>io</code> library contains APIs to read/write XML
-        content from/to a file.&lt;br/&gt;&lt;br/&gt;
+        content from/to a file.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/io/latest/">IO module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/io/latest/">
+          <code>io</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -69,7 +71,7 @@ export default function IoXml() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2ee3abf7396a07e4f6cda094264a71f4&file=io_xml.bal",
+                "https://play.ballerina.io/?gist=2a030944fe927348c8265cbaeb71f07e&file=io_xml.bal",
                 "_blank"
               );
             }}
@@ -163,6 +165,10 @@ export default function IoXml() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -214,7 +220,7 @@ export default function IoXml() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run io_xml.bal`}</span>
+              <span>{`\$ bal run io_xml.bal`}</span>
               <span>{`<book>The Lost World</book>`}</span>
             </code>
           </pre>

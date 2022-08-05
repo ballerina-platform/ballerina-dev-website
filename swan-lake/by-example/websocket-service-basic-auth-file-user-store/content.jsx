@@ -25,7 +25,7 @@ listener websocket:Listener securedEP = new(9090,
 
 // The service can be secured with Basic Auth and can be authorized optionally.
 // Using Basic Auth with the file user store can be enabled by setting the
-// [\`websocket:FileUserStoreConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/FileUserStoreConfig) configurations.
+// [\`websocket:FileUserStoreConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/FileUserStoreConfig) configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -45,8 +45,7 @@ service /foo on securedEP {
 
 service class WsService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller,
-                             string text) returns websocket:Error? {
+    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
         check caller->writeMessage(text);
     }
 }
@@ -78,57 +77,46 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
 
       <p>
         A WebSocket service can be secured with Basic Auth and optionally by
+        enforcing authorization.
       </p>
 
       <p>
-        enforcing authorization. Then, it validates the Basic Auth token sent in
-        the
-      </p>
-
-      <p>
+        Then, it validates the Basic Auth token sent in the{" "}
         <code>Authorization</code> header against the provided configurations.
-        This reads data
       </p>
 
       <p>
-        from a file, which has a TOML format. This stores the usernames,
-        passwords
+        This reads data from a file, which has a TOML format. This stores the
+        usernames, passwords
       </p>
 
-      <p>for authentication, and scopes for authorization.&lt;br/&gt;</p>
+      <p>for authentication, and scopes for authorization.</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared
+        declared in a service can be
       </p>
 
-      <p>in a service can be bound to one/more scope(s).&lt;br/&gt;</p>
-
-      <p>In the authorization phase, the scopes of the service are compared</p>
+      <p>bound to one/more scope(s).</p>
 
       <p>
-        against the scope included in the user store for at least one match
-        between
+        In the authorization phase, the scopes of the service are compared
+        against the scope included in
       </p>
 
-      <p>the two sets.&lt;br/&gt;</p>
+      <p>the user store for at least one match between the two sets.</p>
 
       <p>
-        <code>Config.toml</code> has defined three users - alice, ldclakmal and
-        eve. Each user has a
+        <code>Config.toml</code> has defined three users - alice, ldclakmal, and
+        eve. Each user has a password and
       </p>
 
-      <p>
-        password and optionally assigned scopes as an
-        array.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying module,</p>
+      <p>optionally assigned scopes as an array.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          Auth module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
+          <code>auth</code> module
         </a>
         .
       </p>
@@ -277,7 +265,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
               <span>{`scopes=["scope2", "scope3"]' > Config.toml`}</span>
               <span>{``}</span>
               <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>{`bal run websocket_service_basic_auth_file_user_store.bal`}</span>
+              <span>{`\$ bal run websocket_service_basic_auth_file_user_store.bal`}</span>
             </code>
           </pre>
         </Col>

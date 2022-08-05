@@ -15,9 +15,8 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// An HTTP client can be configured to initiate new connections that are
-// secured via mutual SSL.
-// The [\`http:ClientSecureSocket\`](https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record provides the SSL-related configurations.
+// An HTTP client can be configured to initiate new connections that are secured via mutual SSL.
+// The [\`http:ClientSecureSocket\`](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record provides the SSL-related configurations.
 http:Client securedEP = check new("https://localhost:9090",
     secureSocket = {
         key: {
@@ -65,27 +64,19 @@ export default function HttpClientMutualSsl() {
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
-        authentication
-      </p>
-
-      <p>
-        process in which two parties (the client and server) authenticate each
-        other by
+        authentication process in which two parties (the client and server)
+        authenticate each other by
       </p>
 
       <p>
         verifying the digital certificates. It ensures that both parties are
-        assured
+        assured of each other's identity.
       </p>
 
-      <p>of each other's identity.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -167,6 +158,8 @@ export default function HttpClientMutualSsl() {
         </Col>
       </Row>
 
+      <p>Run the client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -221,7 +214,7 @@ export default function HttpClientMutualSsl() {
               <span>{`# As a prerequisite, start a sample service secured with mutual SSL.`}</span>
               <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
               <span>{`# trusted certificate file path.`}</span>
-              <span>{`bal run http_client_mutual_ssl.bal`}</span>
+              <span>{`\$ bal run http_client_mutual_ssl.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

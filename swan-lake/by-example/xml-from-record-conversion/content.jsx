@@ -12,20 +12,51 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/http;
+  `import ballerina/io;
+import ballerina/xmldata;
 
-// This code is completely focused on the business logic and it does not specify anything related to operations.
-listener http:Listener helloEP = new(9090);
+// Defines a record type with annotations.
+@xmldata:Namespace {
+    prefix: "ns",
+    uri: "http://sdf.com"
+}
+type Invoice record {
+    int id;
+    Item[] items;
+    @xmldata:Attribute
+    string 'xmlns = "example.com";
+    @xmldata:Attribute
+    string status?;
+};
 
-service http:Service /helloWorld on helloEP {
-    resource function get sayHello() returns string {
-        return "Hello, World from service helloWorld ! \\n";
-    }
+@xmldata:Namespace {
+    uri: "http://example1.com"
+}
+
+type Item record {
+    string itemCode;
+    int count;
+};
+
+public function main() returns error? {
+    // Creates an \`Invoice\` record.
+    Invoice data = {
+        id: 1,
+        items: [
+            {itemCode: "223345", count: 1},
+            {itemCode: "223300", count: 7}
+        ],
+        status: "paid"
+    };
+
+    // Converts a \`record\` representation to its XML representation.
+    xml result = check xmldata:toXml(data);
+    io:println(result);
 }
 `,
 ];
 
-export default function C2cDeployment() {
+export default function XmlFromRecordConversion() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -46,32 +77,17 @@ export default function C2cDeployment() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kubernetes</h1>
+      <h1>Record to XML conversion</h1>
 
       <p>
-        Ballerina supports generating Docker and Kubernetes artifacts from code
-        without any additional configuration.
+        The <code>xmldata</code> library provides APIs to perform the conversion
+        from <code>Ballerina record/map&lt;anydata&gt;</code> to XML.
       </p>
 
       <p>
-        This simplifies the experience of developing and deploying Ballerina
-        code in the cloud.
-      </p>
-
-      <p>
-        Code to Cloud builds the containers and required artifacts by deriving
-        the required values from the code.
-      </p>
-
-      <p>
-        If you want to override the default values taken by the compiler, you
-        can use a <code>Cloud.toml</code> file. &lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>
-        For more information, see{" "}
-        <a href="/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/">
-          Code to Cloud deployment
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/xmldata/latest/">
+          <code>xmldata</code> module
         </a>
         .
       </p>
@@ -82,7 +98,30 @@ export default function C2cDeployment() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/c2c-deployment",
+                "https://play.ballerina.io/?gist=09d677f003bf13093a9d1d32b5d77190&file=xml_from_record_conversion.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/xml-from-record-conversion",
                 "_blank"
               );
             }}
@@ -153,6 +192,10 @@ export default function C2cDeployment() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -204,152 +247,8 @@ export default function C2cDeployment() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# Before you build the package, you need to override some of the default values taken by the compiler. To do this, create a filed named `}
-                <code>{`Cloud.toml`}</code>
-                {` `}
-              </span>
-              <span>{`in the package directory, and add the content below to it.`}</span>
-              <span>{``}</span>
-              <span>{`# For all the supported key value properties, see [Code to Cloud deployment](/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/).`}</span>
-              <span>{``}</span>
-              <span>{`[container.image]`}</span>
-              <span>{`repository="wso2inc"`}</span>
-              <span>{`name="hello"`}</span>
-              <span>{`tag="v0.1.0"`}</span>
-              <span>{``}</span>
-              <span>{`# Additionally, if you are using Minikube, execute the command below to reuse the Docker daemon from Minikube.`}</span>
-              <span>
-                {``}
-                <code>{`eval \$(minikube docker-env)`}</code>
-                {``}
-              </span>
-              <span>{``}</span>
-              <span>
-                {`# Execute the `}
-                <code>{`bal build`}</code>
-                {` command to build the Ballerina package. Code to Cloud generates only one container per package.`}
-              </span>
-              <span>
-                {``}
-                <code>{`bal build`}</code>
-                {``}
-              </span>
-              <span>{``}</span>
-              <span>{`Compiling source`}</span>
-              <span>{`        wso2/hello:0.1.0`}</span>
-              <span>{``}</span>
-              <span>{`Creating balas`}</span>
-              <span>{`        target/bala/hello-2020r2-any-0.1.0.bala`}</span>
-              <span>{``}</span>
-              <span>{`Running Tests`}</span>
-              <span>{``}</span>
-              <span>{`        wso2/hello:0.1.0`}</span>
-              <span>{`        No tests found`}</span>
-              <span>{``}</span>
-              <span>{`Generating executables`}</span>
-              <span>{`        target/bin/hello.jar`}</span>
-              <span>{``}</span>
-              <span>{`Generating artifacts...`}</span>
-              <span>{``}</span>
-              <span>{`        @kubernetes:Service                      - complete 1/1`}</span>
-              <span>{`        @kubernetes:Deployment                   - complete 1/1`}</span>
-              <span>{`        @kubernetes:HPA                          - complete 1/1`}</span>
-              <span>{`        @kubernetes:Docker                       - complete 2/2`}</span>
-              <span>{``}</span>
-              <span>{`        Execute the below command to deploy the Kubernetes artifacts:`}</span>
-              <span>{`        kubectl apply -f /home/wso2/project/target/kubernetes/hello-0.1.0`}</span>
-              <span>{``}</span>
-              <span>{`        Execute the below command to access service via NodePort:`}</span>
-              <span>{`        kubectl expose deployment wso2-hello-0--deployment --type=NodePort --name=wso2-hello-0--svc-local`}</span>
-              <span>{``}</span>
-              <span>{`# First, let’s try executing the Docker image separately.`}</span>
-              <span>{``}</span>
-              <span>
-                {`# Verify if the Docker image is generated. (If you have used the `}
-                <code>{`minikube docker-env`}</code>
-                {`, skip this and go to the Kubernetes deployment directly.)`}
-              </span>
-              <span>
-                {``}
-                <code>{`docker images`}</code>
-                {``}
-              </span>
-              <span>{``}</span>
-              <span>{`REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE`}</span>
-              <span>{`wso2inc/hello                       v0.1.0              60d95f0928b2        About a minute ago   228MB`}</span>
-              <span>{``}</span>
-              <span>{`# Run the generated Docker image.`}</span>
-              <span>
-                {``}
-                <code>{`docker run -d -p 9090:9090 wso2inc/hello:v0.1.0`}</code>
-                {``}
-              </span>
-              <span>{`c04194eb0b4d0d78cbc8ca55e0527d381d8ab4a1a68f8ea5dd3770a0845d5fbb`}</span>
-              <span>{``}</span>
-              <span>{`# Access the service.`}</span>
-              <span>
-                {``}
-                <code>{`curl http://localhost:9090/helloWorld/sayHello`}</code>
-                {``}
-              </span>
-              <span>{`Hello, World from service helloWorld !`}</span>
-              <span>{``}</span>
-              <span>{`# Execute the Kubernetes service now.`}</span>
-              <span>
-                {``}
-                <code>{`kubectl apply -f /home/wso2/project/target/kubernetes/hello-0.1.0`}</code>
-                {``}
-              </span>
-              <span>{`service/helloep-svc created`}</span>
-              <span>{`deployment.apps/wso2-hello-0--deployment created`}</span>
-              <span>{`horizontalpodautoscaler.autoscaling/wso2-hello-0--hpa created`}</span>
-              <span>{``}</span>
-              <span>{`# Verify the Kubernetes pods.`}</span>
-              <span>
-                {``}
-                <code>{`kubectl get pods`}</code>
-                {``}
-              </span>
-              <span>{`NAME                                          READY   STATUS    RESTARTS   AGE`}</span>
-              <span>{`wso2-hello-0--deployment-7d4d56457b-7jlzx   1/1     Running   0          57s`}</span>
-              <span>{``}</span>
-              <span>{`# Expose via Nodeport to test in the developer environment.`}</span>
-              <span>
-                {``}
-                <code>{`kubectl expose deployment wso2-hello-0--deployment --type=NodePort --name=wso2-hello-0--svc-local`}</code>
-                {``}
-              </span>
-              <span>{`service/wso2-hello-0--svc-local exposed`}</span>
-              <span>{``}</span>
-              <span>{`# Get the IP and port of the Kubernetes service.`}</span>
-              <span>
-                {``}
-                <code>{`kubectl get svc`}</code>
-                {``}
-              </span>
-              <span>{`NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE`}</span>
-              <span>{`wso2-hello-0--svc-local   NodePort    10.111.61.112    <none>        9090:32437/TCP   4m17s`}</span>
-              <span>{``}</span>
-              <span>
-                {`# If you are using Minikube, the IP address should be changed according to the output of the `}
-                <code>{`minikube ip`}</code>
-                {` command.`}
-              </span>
-              <span>
-                {``}
-                <code>{`minikube ip`}</code>
-                {``}
-              </span>
-              <span>{`192.168.49.2`}</span>
-              <span>{``}</span>
-              <span>{`# Access the deployed service via CURL.`}</span>
-              <span>
-                {``}
-                <code>{`curl http://192.168.49.2:32437/helloWorld/sayHello`}</code>
-                {``}
-              </span>
-              <span>{`Hello, World from service helloWorld !`}</span>
+              <span>{`\$ bal run xml_from_record_conversion.bal`}</span>
+              <span>{`<ns:Invoice xmlns="example.com" xmlns:ns="http://sdf.com" status="paid"><id>1</id><items xmlns="http://example1.com"><itemCode>223345</itemCode><count>1</count></items><items xmlns="http://example1.com"><itemCode>223300</itemCode><count>7</count></items></ns:Invoice>`}</span>
             </code>
           </pre>
         </Col>
@@ -358,8 +257,8 @@ export default function C2cDeployment() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Gauge-based metrics"
-            href="/learn/by-example/gauge-metrics"
+            title="XML to record conversion"
+            href="/learn/by-example/xml-to-record-conversion"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -386,17 +285,14 @@ export default function C2cDeployment() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Gauge-based metrics
+                  XML to record conversion
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Azure Functions"
-            href="/learn/by-example/azure-functions-deployment"
-          >
+          <Link title="Distributed tracing" href="/learn/by-example/tracing">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -405,7 +301,7 @@ export default function C2cDeployment() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Azure Functions
+                  Distributed tracing
                 </span>
               </div>
               <svg

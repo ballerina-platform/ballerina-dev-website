@@ -17,7 +17,7 @@ import ballerina/websocket;
 
 // Defines the WebSocket client to call the JWT Auth secured APIs.
 // The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the [\`websocket:JwtIssuerConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/JwtIssuerConfig) for the \`auth\` configuration of the
+// passing the [\`websocket:JwtIssuerConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/JwtIssuerConfig) for the \`auth\` configuration of the
 // client. A self-signed JWT is issued before the request is sent.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
@@ -75,28 +75,23 @@ export default function WebsocketClientSelfSignedJwtAuth() {
         to
       </p>
 
-      <p>a secured service.&lt;br/&gt;</p>
+      <p>a secured service.</p>
 
       <p>
         The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the
       </p>
 
       <p>
-        passing the <code>websocket:JwtIssuerConfig</code> to the{" "}
-        <code>auth</code> configuration of the
+        <code>websocket:JwtIssuerConfig</code> to the <code>auth</code>{" "}
+        configuration of the client. A self-signed JWT is issued
       </p>
 
-      <p>
-        client. A self-signed JWT is issued before the request is
-        sent.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying module,</p>
+      <p>before the request is sent.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
           OAuth2 module
         </a>
         .
@@ -232,7 +227,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
             <code className="d-flex flex-column">
               <span>{`# Before testing this sample, first start a sample service secured with JWT Auth.`}</span>
               <span>{`# You may need to change the trusted certificate file path and private key file path.`}</span>
-              <span>{`bal run websocket_client_self_signed_jwt_auth.bal`}</span>
+              <span>{`\$ bal run websocket_client_self_signed_jwt_auth.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

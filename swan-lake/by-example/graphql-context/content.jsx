@@ -17,18 +17,16 @@ import ballerina/http;
 import ballerina/lang.value;
 
 @graphql:ServiceConfig {
-    // Initialization of the \`graphqlContext\` should be provided to the
-    // \`contextInit\` field.
-    contextInit: isolated function (http:RequestContext requestContext,
-                                    http:Request request)
+    // Initialization of the \`graphqlContext\` should be provided to the \`contextInit\` field.
+    contextInit: isolated function (http:RequestContext requestContext, http:Request request)
                                     returns graphql:Context|error {
 
         // Initialize the \`graphql:Context\` object.
         graphql:Context context = new;
 
-        // Retrieve the header named \`scope\` and set it to the context with the
-        // \`scope\` key. If the header does not exist, this will return an
-        // \`error\`, and thereby, the request will not be processed.
+        // Retrieve the header named \`scope\` and set it to the context with the \`scope\` key. If the
+        // header does not exist, this will return an \`error\`, and thereby, the request will not be
+        // processed.
         context.set("scope", check request.getHeader("scope"));
 
         // Finally, the context object has to be returned.
@@ -44,7 +42,6 @@ service /graphql on new graphql:Listener(4000) {
     function init() {
         // Initialize the \`person\` value.
         self.person = new("Walter White", 51, 737000.00);
-
     }
 
     // Resource functions can be defined without a context parameter.
@@ -52,18 +49,16 @@ service /graphql on new graphql:Listener(4000) {
         return "Hello, world";
     }
 
-    // If the context is needed, it should be defined as the first paramter of
-    // the resolver function.
+    // If the context is needed, it should be defined as the first parameter of the resolver
+    // function.
     resource function get profile(graphql:Context context)
     returns Person|error {
 
-        // Retrieve the \`scope\` attribute from the context. This will return
-        // a \`graphql:Error\` if the \`scope\` is not
-        // found in the context.
+        // Retrieve the \`scope\` attribute from the context. This will return a \`graphql:Error\` if
+        // the \`scope\` is not found in the context.
         value:Cloneable|isolated object {} scope = check context.get("scope");
 
-        // The profile information will be returned for the scope of either
-        // \`admin\` or \`user\`.
+        // The profile information will be returned for the scope of either \`admin\` or \`user\`.
         if scope is string {
             if scope == "admin" || scope == "user" {
                 return self.person;
@@ -110,7 +105,6 @@ public service class Person {
 
         // Return an \`error\` if the required scope is not found.
         return error("Permission denied");
-
     }
 }
 `,
@@ -143,42 +137,23 @@ export default function GraphqlContext() {
 
       <p>
         The <code>graphql:Context</code> object can be used to pass meta
-        information between the resolver functions. An init function
-      </p>
-
-      <p>
-        should be provided using the <code>graphql:ServiceConfig</code>{" "}
-        parameter named <code>contextInit</code>. Inside the init function, the
-      </p>
-
-      <p>
+        information between the resolver functions. An init function should be
+        provided using the <code>graphql:ServiceConfig</code> parameter named{" "}
+        <code>contextInit</code>. Inside the init function, the{" "}
         <code>graphql:Context</code> can be initialized. Values from the{" "}
         <code>http:RequestContext</code> and <code>http:Request</code> can be
-        added as well as
+        added as well as other values. These values are stored as key-value
+        pairs. The key is a <code>string</code> and the value can be any{" "}
+        <code>readonly</code> value or an <code>isolated</code> object. If the{" "}
+        <code>init</code> function is not provided, an empty context object will
+        be created. The context can be accessed by defining it as the first
+        parameter of any resolver (resource/remote) function.
       </p>
 
       <p>
-        other values. These values are stored as key-value pairs. The key is a{" "}
-        <code>string</code> and the value can be any <code>readonly</code>
-      </p>
-
-      <p>
-        value or an <code>isolated</code> object. If the init function is not
-        provided, an empty context object will be created.
-      </p>
-
-      <p>
-        The context can be accessed by defining it as the first parameter of any
-        resolver (resource/remote) function.
-      </p>
-
-      <p>&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying package, see the</p>
-
-      <p>
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+        For more information on the underlying package, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+          <code>graphql</code> package
         </a>
         .
       </p>
@@ -260,6 +235,8 @@ export default function GraphqlContext() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -311,46 +288,13 @@ export default function GraphqlContext() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# Send a query to the GraphQL endpoint using a cURL command. Set the `}
-                <code>{`scope`}</code>
-                {` header value to `}
-                <code>{`admin`}</code>
-                {`.`}
-              </span>
-              <span>{` # The query used: { profile { name salary } }`}</span>
-              <span>{` curl -X POST -H "Content-type: application/json" -H "scope: admin" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{` {"data":{"profile":{"name":"Walter White", "salary":737000.0}}}`}</span>
-              <span>{``}</span>
-              <span>
-                {` # Now, send a query with the `}
-                <code>{`scope`}</code>
-                {` header value set to `}
-                <code>{`user`}</code>
-                {`. This will return an error in the `}
-                <code>{`salary`}</code>
-                {` field.`}
-              </span>
-              <span>{` # The query used: { profile { name salary } }`}</span>
-              <span>{` curl -X POST -H "Content-type: application/json" -H "scope: user" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{` {"errors":[{"message":"Permission denied", "locations":[{"line":1, "column":18}], "path":["profile", "salary"]}], "data":null}`}</span>
-              <span>{``}</span>
-              <span>
-                {` # Now, send a query with the `}
-                <code>{`scope`}</code>
-                {` header value set to `}
-                <code>{`unknown`}</code>
-                {`. This will return an error in the `}
-                <code>{`profile`}</code>
-                {` field.`}
-              </span>
-              <span>{` # The query used: { profile { name salary } }`}</span>
-              <span>{` curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{` {"errors":[{"message":"Permission denied", "locations":[{"line":1, "column":3}], "path":["profile"]}], "data":null}`}</span>
+              <span>{`\$ bal run graphql_context.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -403,7 +347,42 @@ export default function GraphqlContext() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run graphql_context.bal`}</span>
+              <span>
+                {`# Send a query to the GraphQL endpoint using a cURL command. Set the `}
+                <code>{`scope`}</code>
+                {` header value to `}
+                <code>{`admin`}</code>
+                {`.`}
+              </span>
+              <span>{` # The query used: { profile { name salary } }`}</span>
+              <span>{` curl -X POST -H "Content-type: application/json" -H "scope: admin" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{` {"data":{"profile":{"name":"Walter White", "salary":737000.0}}}`}</span>
+              <span>{``}</span>
+              <span>
+                {` # Now, send a query with the `}
+                <code>{`scope`}</code>
+                {` header value set to `}
+                <code>{`user`}</code>
+                {`. This will return an error in the `}
+                <code>{`salary`}</code>
+                {` field.`}
+              </span>
+              <span>{` # The query used: { profile { name salary } }`}</span>
+              <span>{` curl -X POST -H "Content-type: application/json" -H "scope: user" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{` {"errors":[{"message":"Permission denied", "locations":[{"line":1, "column":18}], "path":["profile", "salary"]}], "data":null}`}</span>
+              <span>{``}</span>
+              <span>
+                {` # Now, send a query with the `}
+                <code>{`scope`}</code>
+                {` header value set to `}
+                <code>{`unknown`}</code>
+                {`. This will return an error in the `}
+                <code>{`profile`}</code>
+                {` field.`}
+              </span>
+              <span>{` # The query used: { profile { name salary } }`}</span>
+              <span>{` curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{` {"errors":[{"message":"Permission denied", "locations":[{"line":1, "column":3}], "path":["profile"]}], "data":null}`}</span>
             </code>
           </pre>
         </Col>
@@ -411,10 +390,7 @@ export default function GraphqlContext() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Subscriptions"
-            href="/learn/by-example/graphql-subscriptions"
-          >
+          <Link title="Mutations" href="/learn/by-example/graphql-mutations">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -440,7 +416,7 @@ export default function GraphqlContext() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Subscriptions
+                  Mutations
                 </span>
               </div>
             </div>

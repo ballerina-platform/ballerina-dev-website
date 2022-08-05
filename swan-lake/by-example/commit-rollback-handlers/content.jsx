@@ -24,9 +24,9 @@ public function main() returns error? {
 
 transactional function update() returns error? {
     check updateDatabase();
-    //  Registers a commit handler to be invoked when the \`commit\` is executed.
-    'transaction:onCommit(sendEmail);
-    'transaction:onRollback(logError);
+    // Registers a commit handler to be invoked when \`commit\` is executed.
+    transaction:onCommit(sendEmail);
+    transaction:onRollback(logError);
 }
 
 function updateDatabase() returns error? {
@@ -38,8 +38,7 @@ isolated function sendEmail('transaction:Info info) {
     io:println("Email sent.");
 }
 
-isolated function logError('transaction:Info info,
-                            error? cause, boolean willRetry) {
+isolated function logError(transaction:Info info, error? cause, boolean willRetry) {
     io:println("Logged database update failure");
 }
 `,
@@ -75,12 +74,9 @@ export default function CommitRollbackHandlers() {
 
       <p>
         Testing the result of the <code>commit</code> within the transaction
-        statement works. However, it is inconvenient
-      </p>
-
-      <p>
-        from a modularity perspective, particularly, when you want to undo
-        changes on <code>rollback</code>.
+        statement works. However, it is inconvenient from a modularity
+        perspective, particularly, when you want to undo changes on{" "}
+        <code>rollback</code>.
       </p>
 
       <p>
@@ -90,10 +86,9 @@ export default function CommitRollbackHandlers() {
 
       <p>
         Ballerina provides <code>commit</code>/<code>rollback</code> handlers,
-        which are functions that get executed when the decision
+        which are functions that get executed when the decision whether to
+        commit is known.
       </p>
-
-      <p>whether to commit is known.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -101,7 +96,7 @@ export default function CommitRollbackHandlers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b280c97a57f7bca032ffdf2fff10a3ae&file=commit_rollback_handlers.bal",
+                "https://play.ballerina.io/?gist=365ae58b45487b8127f3acb50eaca243&file=commit_rollback_handlers.bal",
                 "_blank"
               );
             }}
@@ -246,7 +241,7 @@ export default function CommitRollbackHandlers() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run commit_rollback_handlers.bal`}</span>
+              <span>{`\$ bal run commit_rollback_handlers.bal`}</span>
               <span>{`Database updated`}</span>
               <span>{`Email sent.`}</span>
             </code>

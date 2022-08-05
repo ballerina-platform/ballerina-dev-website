@@ -68,13 +68,13 @@ export default function ForeachStatement() {
       <h1>Foreach statement</h1>
 
       <p>
-        The <code>foreach</code> statement iterates over an iterable value, by
-        binding a variable to each member of the
+        The <code>foreach</code> statement iterates over an iterable value by
+        binding a variable to each member of the iterable value.
       </p>
 
       <p>
-        iterable value in order. <code>foreach</code> also works for strings,
-        and will iterate over each character of the <code>string</code>.
+        <code>foreach</code> also works for strings and will iterate over each
+        character of the <code>string</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -83,7 +83,7 @@ export default function ForeachStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8b5b1d2617fa9de43d48e33064477f0f&file=foreach_statement.bal",
+                "https://play.ballerina.io/?gist=9b669bf9ef8cedc3dc4a38d8961fe9ac&file=foreach_statement.bal",
                 "_blank"
               );
             }}

@@ -20,13 +20,13 @@ boolean flag = true;
 int n = flag ? 1 : 2;
 
 public function main() {
-    // Parentheses are optional in conditions, but curly braces are required in \`if/else\` and other compound statements.
+    // Parentheses are optional in conditions
+    // but curly braces are required in \`if/else\` and other compound statements.
     if flag {
         io:println(1);
     } else {
         io:println(2);
     }
-
 }
 `,
 ];
@@ -56,19 +56,11 @@ export default function Booleans() {
 
       <p>
         The <code>boolean</code> type has two values: <code>true</code>,{" "}
-        <code>false</code>.
-      </p>
-
-      <p>
-        The <code>!</code> operator works on booleans only.{" "}
+        <code>false</code>. The <code>!</code> operator works only on booleans.{" "}
         <code>&amp;&amp;</code> and <code>||</code> operators short-circuit as
-        in C.
-      </p>
-
-      <p>
-        Usual comparison operators (<code>==</code>, <code>!=</code>,{" "}
-        <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, and{" "}
-        <code>&gt;=</code>) produce boolean values.
+        in C language. Usual comparison operators (<code>==</code>,{" "}
+        <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>,{" "}
+        <code>&lt;=</code>, and <code>&gt;=</code>) produce boolean values.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -77,7 +69,7 @@ export default function Booleans() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0e64407fd9e74717b2b3df9c591ca335&file=booleans.bal",
+                "https://play.ballerina.io/?gist=4bc87b9b756ee9cae058b484923bb7be&file=booleans.bal",
                 "_blank"
               );
             }}
@@ -222,7 +214,7 @@ export default function Booleans() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run booleans.bal`}</span>
+              <span>{`\$ bal run booleans.bal`}</span>
               <span>{`1`}</span>
             </code>
           </pre>

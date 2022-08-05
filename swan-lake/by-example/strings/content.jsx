@@ -21,12 +21,10 @@ public function main() {
 
     // String concatenation uses \`+\` operator.
     string greeting = "Hello" + grin;
-
     io:println(greeting);
 
     // \`greeting[1]\` accesses character at index 1 (zero-based).
     io:println(greeting[1]);
-
 }
 `,
 ];
@@ -55,27 +53,15 @@ export default function Strings() {
       <h1>Strings</h1>
 
       <p>
-        The <code>string</code> type represents immutable sequence of zero or
-        more Unicode characters.
+        The <code>string</code> type represents an immutable sequence of zero or
+        more Unicode characters. There is no separate character type: a
+        character is represented by a <code>string</code> of length 1. Two{" "}
+        <code>string</code> values are <code>==</code> if both sequences have
+        the same characters. You can use <code>&lt;</code>, <code>&lt;=</code>,{" "}
+        <code>&gt;</code>, and <code>&gt;=</code> operators on{" "}
+        <code>string</code> values and they work by comparing code points.
+        Unpaired surrogates are not allowed.
       </p>
-
-      <p>
-        There is no separate character type: a character is represented by a{" "}
-        <code>string</code> of length 1.
-      </p>
-
-      <p>
-        Two <code>string</code> values are <code>==</code> if both sequences
-        have the same characters.
-      </p>
-
-      <p>
-        You can use <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>,
-        and <code>&gt;=</code> operators on <code>string</code> values and they
-        work by comparing code points.
-      </p>
-
-      <p>Unpaired surrogates are not allowed.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -83,7 +69,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=83bf6d494e68dde9b741d2edc6a36439&file=strings.bal",
+                "https://play.ballerina.io/?gist=e7149a45c2cc188547421283e5aedb25&file=strings.bal",
                 "_blank"
               );
             }}
@@ -228,7 +214,7 @@ export default function Strings() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run strings.bal`}</span>
+              <span>{`\$ bal run strings.bal`}</span>
               <span>{`Hello😀`}</span>
               <span>{`e`}</span>
             </code>

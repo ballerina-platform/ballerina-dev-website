@@ -37,16 +37,13 @@ public function main() {
     ];
 
     string[] loginLog = from var login in logins
-                        // The \`join\` clause iterates any iterable value similarly to the
-                        // \`from\` clause.
+                        // The \`join\` clause iterates any iterable value similarly to the \`from\` clause.
                         join var user in users
-                        // The \`on\` condition is used to match the \`login\` with the \`user\`
-                        // based on the \`userId\`. The iteration is skipped when the
-                        // condition is not satisfied.
+                        // The \`on\` condition is used to match the \`login\` with the \`user\` based on the \`userId\`.
+                        // The iteration is skipped when the condition is not satisfied.
                         on login.userId equals user.id
-
-
                         select user.name + ":" + login.time;
+
     io:println(loginLog);
 }
 `,
@@ -76,19 +73,11 @@ export default function JoinClause() {
       <h1>Join clause</h1>
 
       <p>
-        <code>Query</code> can take advantage of <code>table</code> keys by
-        using a <code>join clause</code>. Performs an{" "}
-        <code>inner equijoin</code>.
-      </p>
-
-      <p>
-        The result is similar to using nested <code>from clause</code> and{" "}
-        <code>where clause</code>. It is implemented as
-      </p>
-
-      <p>
-        a hash join: <code>table</code> keys allow you to avoid building a hash
-        table. The type to join on must be <code>anydata</code>.
+        A query expression can take advantage of keys of a table by using a{" "}
+        <code>join</code> clause. It performs an inner equijoin. The result is
+        similar to using nested <code>from</code> clauses and <code>where</code>{" "}
+        clause. It is implemented as a hash join. Table keys allow you to avoid
+        building a hash table. The type to join must be <code>anydata</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -97,7 +86,7 @@ export default function JoinClause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b4f7a480dea9ee07104c9389b7c66601&file=join_clause.bal",
+                "https://play.ballerina.io/?gist=fddd3a4d15f792c2e266e07c00707a9a&file=join_clause.bal",
                 "_blank"
               );
             }}
@@ -242,7 +231,7 @@ export default function JoinClause() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run join_clause.bal`}</span>
+              <span>{`\$ bal run join_clause.bal`}</span>
               <span>{`["Anne:20:10:23","Keith:10:30:02"]`}</span>
             </code>
           </pre>
@@ -252,7 +241,7 @@ export default function JoinClause() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Create tables with query"
+            title="Creating tables with query"
             href="/learn/by-example/creating-tables-with-query"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -280,7 +269,7 @@ export default function JoinClause() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Create tables with query
+                  Creating tables with query
                 </span>
               </div>
             </div>

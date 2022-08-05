@@ -19,8 +19,7 @@ class File {
 
     string path;
     string contents;
-    // The \`init()\` method is used to initialize the \`object\`.
-    // when creating a new \`object\`.
+    // The \`init()\` method is used to initialize the \`object\` when creating a new \`object\`.
     function init(string p, string? c) returns error? {
         self.path = p;
         self.contents = check c.ensureType(string);
@@ -63,23 +62,15 @@ export default function InitReturnType() {
       <h1>Init return type</h1>
 
       <p>
-        <code>init</code> function has a return type, which must be a subtype of{" "}
-        <code>error?</code>. If <code>init</code> returns <code>()</code>,
-      </p>
-
-      <p>
-        then <code>new</code> returns the newly constructed <code>object</code>.
-        If <code>init</code> returns an <code>error</code>, then{" "}
-        <code>new</code> returns
-      </p>
-
-      <p>
-        that <code>error</code>. If <code>init</code> does not specify a return
-        type, then the return type defaults to <code>()</code> as usual,
-      </p>
-
-      <p>
-        meaning that <code>new</code> will never return an <code>error</code>.
+        The <code>init</code> function has a return type, which must be a
+        subtype of <code>error?</code>. If <code>init</code> returns{" "}
+        <code>()</code>, then, the <code>new</code> expression returns the newly
+        constructed <code>object</code> to the caller. If <code>init</code>{" "}
+        returns an <code>error</code>, then, the <code>new</code> expression
+        also returns the same <code>error</code> to the caller. If{" "}
+        <code>init</code> does not specify a return type, then, the return type
+        defaults to <code>()</code> as usual meaning that <code>new</code> will
+        never return an <code>error</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -88,7 +79,7 @@ export default function InitReturnType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=69429c7cc509e5254017ec8ad7909e08&file=init_return_type.bal",
+                "https://play.ballerina.io/?gist=35f73aa140621d24e96f472986f219db&file=init_return_type.bal",
                 "_blank"
               );
             }}
@@ -233,7 +224,7 @@ export default function InitReturnType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run init_return_type.bal`}</span>
+              <span>{`\$ bal run init_return_type.bal`}</span>
               <span>{`Hello World`}</span>
             </code>
           </pre>
@@ -243,7 +234,7 @@ export default function InitReturnType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Define classes"
+            title="Defining classes"
             href="/learn/by-example/defining-classes"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -271,7 +262,7 @@ export default function InitReturnType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Define classes
+                  Defining classes
                 </span>
               </div>
             </div>

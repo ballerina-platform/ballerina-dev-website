@@ -21,15 +21,13 @@ public function main() returns error? {
     check initialize();
 
     // Initializes the MySQL client. The \`mysqlClient\` can be reused to access the database throughout the application execution.
-    mysql:Client mysqlClient = check new (user = "root",
-            password = "Test@123", database = "CUSTOMER");
+    mysql:Client mysqlClient = check new (user = "root", password = "Test@123", database = "CUSTOMER");
 
     float newCreditLimit = 15000.5;
 
     // Execute the query.
-    sql:ExecutionResult result = check mysqlClient->execute(
-            \`UPDATE Customers SET creditLimit = \${newCreditLimit} 
-            where customerId = 1\`);
+    sql:ExecutionResult result = check mysqlClient->execute(\`UPDATE Customers
+                                        SET creditLimit = \${newCreditLimit} WHERE customerId = 1\`);
 
     // Process returned metadata.
     io:println(\`Updated Row count: \${result?.affectedRowCount}\`);
@@ -40,6 +38,9 @@ public function main() returns error? {
     // Performs the cleanup after the example.
     check cleanup();
 }
+`,
+  `import ballerina/sql;
+import ballerinax/mysql;
 
 // Initializes the database as a prerequisite to the example.
 function initialize() returns sql:Error? {
@@ -50,8 +51,8 @@ function initialize() returns sql:Error? {
 
     //Creates a table in the database.
     _ = check mysqlClient->execute(\`CREATE TABLE CUSTOMER.Customers
-            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName  
-            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER, 
+            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName
+            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,
             creditLimit DOUBLE, country VARCHAR(300),
             PRIMARY KEY (customerId))\`);
 
@@ -66,22 +67,12 @@ function initialize() returns sql:Error? {
 
     check mysqlClient.close();
 }
-
-// Cleans up the database after running the example.
-function cleanup() returns sql:Error? {
-    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
-
-    // Cleans the database.
-    _ = check mysqlClient->execute(\`DROP DATABASE CUSTOMER\`);
-
-    // Closes the MySQL client.
-    check mysqlClient.close();
-}
 `,
 ];
 
 export default function MysqlExecuteOperation() {
   const [codeClick1, updateCodeClick1] = useState(false);
+  const [codeClick2, updateCodeClick2] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
@@ -107,16 +98,18 @@ export default function MysqlExecuteOperation() {
         This BBE demonstrates how to use the MySQL client with the DDL and DML
       </p>
 
+      <p>operations.</p>
+
       <p>
-        operations. Note that the MySQL database driver JAR should be defined in
-        the <code>Ballerina.toml</code> file as a dependency.
+        Note that the MySQL database driver JAR should be defined in the{" "}
+        <code>Ballerina.toml</code> file as a dependency.
       </p>
 
       <p>
         For a sample configuration and more information on the underlying
         module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
-          MySQL module
+        <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">
+          <code>mysql</code> module
         </a>
         .
       </p>
@@ -126,10 +119,7 @@ export default function MysqlExecuteOperation() {
         onwards. Therefore, it is
       </p>
 
-      <p>
-        recommended to use a MySQL driver version greater than
-        8.0.13.&lt;br&gt;&lt;br&gt;
-      </p>
+      <p>recommended to use a MySQL driver version greater than 8.0.13.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -266,13 +256,97 @@ export default function MysqlExecuteOperation() {
                 {` file.`}
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
-              <span>{`bal run`}</span>
+              <span>{`\$ bal run`}</span>
               <span>{``}</span>
               <span>{`Updated Row count: 1`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        The following util files will initialize the test database before
+        running the BBE and clean it up afterward.
+      </p>
+
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/mysql-execute-operation",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
+          {codeClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2"
+              disabled
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#45FF00"
+                className="bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2"
+              onClick={() => {
+                updateCodeClick2(true);
+                copyToClipboard(codeSnippetData[1]);
+                setTimeout(() => {
+                  updateCodeClick2(false);
+                }, 3000);
+              }}
+              aria-label="Copy to Clipboard"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#000"
+                className="bi bi-clipboard"
+                viewBox="0 0 16 16"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          {codeSnippets[1] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[1]),
+              }}
+            />
+          )}
+        </Col>
+      </Row>
+
+      <p>::: cleanup.bal</p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

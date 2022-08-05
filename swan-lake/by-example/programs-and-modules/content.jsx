@@ -22,7 +22,6 @@ import ballerina/io;
 public function main() {
     // Here \`io:println\` means function \`println\` is in the module bound to prefix \`io\`.
     io:println("Hello, World!");
-
 }
 `,
 ];
@@ -51,8 +50,8 @@ export default function ProgramsAndModules() {
       <h1>Programs and modules</h1>
 
       <p>
-        Every Ballerina program consists of modules. Modules are one or more{" "}
-        <code>.bal</code> files.
+        Every Ballerina program consists of modules. A module consists of one or
+        more <code>.bal</code> files.
       </p>
 
       <p>
@@ -65,7 +64,7 @@ export default function ProgramsAndModules() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8d3d2bb6c63652a9be2cc7c0b2cafc16&file=programs_and_modules.bal",
+                "https://play.ballerina.io/?gist=4e4ed5b1bdf37618157a79c63afcd765&file=programs_and_modules.bal",
                 "_blank"
               );
             }}
@@ -210,7 +209,7 @@ export default function ProgramsAndModules() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run programs_and_modules.bal`}</span>
+              <span>{`\$ bal run programs_and_modules.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

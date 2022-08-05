@@ -18,20 +18,16 @@ function demo() returns future<int> {
     worker A returns int {
         return 42;
     }
-    
-    // Futures and workers are the same thing.
+
     // A reference to a named worker can be implicitly converted into a \`future\`.
     return A;
-
 }
 
 type FuncInt function () returns int;
 
 function startInt(FuncInt f) returns future<int> {
-    // \`start\` is sugar for calling a function with a named worker and returning
-    // the named worker as a \`future\`.
+    // \`start\` is sugar for calling a function with a named worker and returning the named worker as a \`future\`.
     return start f();
-
 }
 
 public function main() returns error? {
@@ -69,23 +65,13 @@ export default function NamedWorkersAndFutures() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Named workers and futures</h1>
 
-      <p>Futures and workers are the same thing.</p>
-
       <p>
-        A reference to a named worker can be implicitly converted into a{" "}
-        <code>future</code>.
-      </p>
-
-      <p>
+        Futures and workers are the same thing. A reference to a named worker
+        can be implicitly converted into a <code>future</code>.{" "}
         <code>start</code> is sugar for calling a function with a named worker
-        and returning
+        and returning the named worker as a <code>future</code>. Cancellation of
+        futures only happens at yield points.
       </p>
-
-      <p>
-        the named worker as a <code>future</code>.
-      </p>
-
-      <p>Cancellation of futures only happens at yield points.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -93,7 +79,7 @@ export default function NamedWorkersAndFutures() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=549be164dd380eabb08b58c6fee93203&file=named_workers_and_futures.bal",
+                "https://play.ballerina.io/?gist=7acdecf51a4885100591d756b0056c0d&file=named_workers_and_futures.bal",
                 "_blank"
               );
             }}
@@ -238,7 +224,7 @@ export default function NamedWorkersAndFutures() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run named_workers_and_futures.bal`}</span>
+              <span>{`\$ bal run named_workers_and_futures.bal`}</span>
               <span>{`42`}</span>
               <span>{`100`}</span>
             </code>

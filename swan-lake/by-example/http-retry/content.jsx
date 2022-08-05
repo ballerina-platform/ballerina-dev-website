@@ -59,16 +59,14 @@ service / on new http:Listener(8080) {
 
     resource function get hello() returns string {
         self.counter += 1;
-        // Delay the response by 5 seconds to mimic network level delays.
-        if (self.counter % 4 != 0) {
-            log:printInfo(
-                "Request received from the client to delayed service.");
+        // Delay the response by 5 seconds to mimic network-level delays.
+        if self.counter % 4 != 0 {
+            log:printInfo("Request received from the client to delayed service.");
             runtime:sleep(5);
 
             return "Hello World!!!";
         } else {
-            log:printInfo(
-                "Request received from the client to healthy service.");
+            log:printInfo("Request received from the client to healthy service.");
             return "Hello World!!!";
         }
     }
@@ -103,14 +101,12 @@ export default function HttpRetry() {
 
       <p>
         The HTTP retry client tries sending over the same request to the backend
-        service when there is a network level failure.&lt;br/&gt;&lt;br/&gt;
+        service when there is a network level failure.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -193,6 +189,8 @@ export default function HttpRetry() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -244,17 +242,25 @@ export default function HttpRetry() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# If the request that was sent to the `}
-                <code>{`retry`}</code>
-                {` resource fails due to an error, the client tries sending the request again.`}
-              </span>
-              <span>{`curl http://localhost:9090/retry`}</span>
-              <span>{`Hello World!!!`}</span>
+              <span>{`\$ bal run http_retry.bal.bal`}</span>
+              <span>{`time = 2021-01-21 19:00:21,374 level = INFO  module = "" message = "Request received from the client to delayed service."`}</span>
+              <span>{`time = 2021-01-21 19:00:26,379 level = INFO  module = "" message = "Request received from the client to delayed service."`}</span>
+              <span>{`time = 2021-01-21 19:00:34,402 level = INFO  module = "" message = "Request received from the client to delayed service."`}</span>
+              <span>{`time = 2021-01-21 19:00:48,404 level = INFO  module = "" message = "Request received from the client to healthy service."`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
+
+      <p>
+        If the request that was sent to the <code>retry</code> resource fails
+        due to an error, the client tries sending the request again.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -307,11 +313,13 @@ export default function HttpRetry() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_retry.bal.bal`}</span>
-              <span>{`time = 2021-01-21 19:00:21,374 level = INFO  module = "" message = "Request received from the client to delayed service."`}</span>
-              <span>{`time = 2021-01-21 19:00:26,379 level = INFO  module = "" message = "Request received from the client to delayed service."`}</span>
-              <span>{`time = 2021-01-21 19:00:34,402 level = INFO  module = "" message = "Request received from the client to delayed service."`}</span>
-              <span>{`time = 2021-01-21 19:00:48,404 level = INFO  module = "" message = "Request received from the client to healthy service."`}</span>
+              <span>
+                {`# If the request that was sent to the `}
+                <code>{`retry`}</code>
+                {` resource fails due to an error, the client tries sending the request again.`}
+              </span>
+              <span>{`\$ curl http://localhost:9090/retry`}</span>
+              <span>{`Hello World!!!`}</span>
             </code>
           </pre>
         </Col>

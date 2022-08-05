@@ -16,8 +16,7 @@ const codeSnippetData = [
 import ballerina/websocket;
 
 service /echo on new websocket:Listener(9090) {
-   resource function get .()
-                     returns websocket:Service|websocket:Error {
+   resource function get .() returns websocket:Service|websocket:Error {
        // Accept the WebSocket upgrade by returning a \`websocket:Service\`.
        return new WsService();
    }
@@ -29,8 +28,7 @@ service class WsService {
     // from a client. It accepts \`anydata\` as the function argument. The received data 
     // will be converted to the data type stated as the function argument.
     // For more information on data binding, see the [spec](https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md)
-    remote function onMessage(websocket:Caller caller,
-                                 string text) returns websocket:Error? {
+    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
         io:println("\\ntext message: " + text);
         return caller->writeMessage("You said: " + text);
     }
@@ -61,17 +59,12 @@ export default function WebsocketBasicSample() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Service</h1>
 
-      <p>
-        This explains the basic functions of a WebSocket
-        server.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying module,</p>
+      <p>This explains the basic functions of a WebSocket server.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
-          WebSocket module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/">
+          <code>websocket</code> module
         </a>
         .
       </p>
@@ -204,7 +197,7 @@ export default function WebsocketBasicSample() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run websocket_basic_sample.bal`}</span>
+              <span>{`\$ bal run websocket_basic_sample.bal`}</span>
             </code>
           </pre>
         </Col>

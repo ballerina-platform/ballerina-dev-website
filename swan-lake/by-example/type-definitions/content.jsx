@@ -64,7 +64,7 @@ export default function TypeDefinitions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=df7f9581d1557a9a117ae1cd5de19f78&file=type_definitions.bal",
+                "https://play.ballerina.io/?gist=cfabe2fba98de18001af32c868da7803&file=type_definitions.bal",
                 "_blank"
               );
             }}
@@ -209,7 +209,7 @@ export default function TypeDefinitions() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run type_definitions.bal`}</span>
+              <span>{`\$ bal run type_definitions.bal`}</span>
               <span>{`{"x":"foo"}`}</span>
             </code>
           </pre>

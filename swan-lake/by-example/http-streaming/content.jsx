@@ -16,36 +16,32 @@ const codeSnippetData = [
 import ballerina/io;
 import ballerina/mime;
 
-// Creates an endpoint for the [client](https://lib.ballerina.io/ballerina/http/latest/clients/Client).
+// Creates an endpoint for the [client](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client).
 http:Client clientEndpoint = check new ("http://localhost:9090");
 
 service /'stream on new http:Listener(9090) {
 
-    resource function get fileupload() returns http:Response|error? {
+    resource function get fileupload() returns string|error {
         http:Request request = new;
 
-        //[Sets the file](https://lib.ballerina.io/ballerina/http/latest/classes/Request#setFileAsPayload) as the request payload.
-        request.setFileAsPayload("./files/BallerinaLang.pdf",
-            contentType = mime:APPLICATION_PDF);
+        //[Sets the file](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setFileAsPayload) as the request payload.
+        request.setFileAsPayload("./files/BallerinaLang.pdf", contentType = mime:APPLICATION_PDF);
 
-        //Sends the request to the client with the file content.
-        http:Response clientResponse =
-            check clientEndpoint->post("/stream/receiver", request);
+        //Sends the request to the receiver service with the file content.
+        string clientResponse = check clientEndpoint->post("/stream/receiver", request);
 
-        // forward received response to caller
+        // forward the received payload to the caller.
         return clientResponse;
     }
 
-    resource function post receiver(http:Caller caller,
-                                    http:Request request) returns error? {
-        //[Retrieve the byte stream](https://lib.ballerina.io/ballerina/http/latest/classes/Request#getByteStream).
+    resource function post receiver(http:Request request) returns string|error {
+        //[Retrieve the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getByteStream).
         stream<byte[], io:Error?> streamer = check request.getByteStream();
 
-        //Writes the incoming stream to a file using \`io:fileWriteBlocksFromStream\` API by providing the file location to which the content should be written to.
-        check io:fileWriteBlocksFromStream(
-                                    "./files/ReceivedFile.pdf", streamer);
+        //Writes the incoming stream to a file using the \`io:fileWriteBlocksFromStream\` API by providing the file location to which the content should be written.
+        check io:fileWriteBlocksFromStream("./files/ReceivedFile.pdf", streamer);
         check streamer.close();
-        check caller->respond("File Received!");
+        return "File Received!";
     }
 }
 `,
@@ -78,14 +74,12 @@ export default function HttpStreaming() {
 
       <p>
         Ballerina supports HTTP input and output streaming capability based on
-        the Ballerina <code>stream</code> type.&lt;br/&gt;&lt;br/&gt;
+        the Ballerina <code>stream</code> type.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -168,6 +162,8 @@ export default function HttpStreaming() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -219,13 +215,25 @@ export default function HttpStreaming() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`#Send a request to the streaming service.`}</span>
-              <span>{`curl -X GET http://localhost:9090/stream/fileupload`}</span>
-              <span>{`File Received!`}</span>
+              <span>{`\$ bal run http_streaming.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
+
+      <p>
+        In the directory, which contains the <code>.bal</code> file, create a
+        directory named <code>files</code>,
+      </p>
+
+      <p>
+        and add a PDF file named <code>BallerinaLang.pdf</code> in it.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -278,19 +286,8 @@ export default function HttpStreaming() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>
-                {`# In the directory, which contains the `}
-                <code>{`.bal`}</code>
-                {` file, create a directory named `}
-                <code>{`files`}</code>
-                {`,`}
-              </span>
-              <span>
-                {`# and add a PDF file named `}
-                <code>{`BallerinaLang.pdf`}</code>
-                {` in it.`}
-              </span>
-              <span>{`bal run http_streaming.bal`}</span>
+              <span>{`\$ curl -X GET http://localhost:9090/stream/fileupload`}</span>
+              <span>{`File Received!`}</span>
             </code>
           </pre>
         </Col>

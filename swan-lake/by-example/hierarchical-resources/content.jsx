@@ -16,11 +16,10 @@ const codeSnippetData = [
 
 // Base path of this service is \`/demo\`.
 service /demo on new http:Listener(8080) {
-    // You can combine base path and relative path to get the path of the resource, that is \`/demo/greeting/hello\`.
+    // You can combine the base path and the relative path to get the path of the resource (i.e., \`/demo/greeting/hello\`).
     resource function get greeting/hello(string name) returns string {
         return "Hello, " + name;
     }
-
 }
 `,
 ];
@@ -51,12 +50,9 @@ export default function HierarchicalResources() {
       <h1>Hierarchical resources</h1>
 
       <p>
-        Resource name is relative path, which can have multiple path segments.
-      </p>
-
-      <p>
-        Base path is absolute path. A listener can have multiple services each
-        with different base paths.
+        Resource name is a relative path, which can have multiple path segments.
+        Base path is an absolute path. A listener can have multiple services
+        each with different base paths.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -136,6 +132,10 @@ export default function HierarchicalResources() {
         </Col>
       </Row>
 
+      <p>
+        Run the service using the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -187,13 +187,13 @@ export default function HierarchicalResources() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Run this cURL command to invoke the resource.`}</span>
-              <span>{`curl "localhost:8080/demo/greeting/hello?name=Ballerina"`}</span>
-              <span>{`Hello, Ballerina`}</span>
+              <span>{`bal run hierarchical_resources.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Run this cURL command to invoke the resource.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -246,7 +246,8 @@ export default function HierarchicalResources() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run hierarchical_resources.bal`}</span>
+              <span>{`\$ curl "localhost:8080/demo/greeting/hello?name=Ballerina"`}</span>
+              <span>{`Hello, Ballerina`}</span>
             </code>
           </pre>
         </Col>

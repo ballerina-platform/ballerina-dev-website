@@ -17,12 +17,10 @@ const codeSnippetData = [
 public function main() returns error? {
     string message = "Hello from Ballerina";
     // Initializes a NATS client.
-    nats:Client natsClient = check new(nats:DEFAULT_URL);
+    nats:Client natsClient = check new (nats:DEFAULT_URL);
 
     // Produces a message to the specified subject.
-    check natsClient->publishMessage({
-                             content: message.toBytes(),
-                             subject: "demo.bbe"});
+    check natsClient->publishMessage({content: message.toBytes(), subject: "demo.bbe"});
 
     // Closes the client connection.
     check natsClient.close();
@@ -32,19 +30,14 @@ public function main() returns error? {
 import ballerinax/nats;
 
 // Initializes a NATS listener.
-listener nats:Listener subscription = new(nats:DEFAULT_URL);
+listener nats:Listener subscription = new (nats:DEFAULT_URL);
 
-// Binds the consumer to listen to the messages published
-// to the 'demo.bbe' subject.
+// Binds the consumer to listen to the messages published to the 'demo.bbe' subject.
 service "demo.bbe" on subscription {
-
     remote function onMessage(nats:Message message) returns error? {
-
         // Logs the incoming message.
-        string|error messageContent = string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("Received message: " + messageContent);
-        }
+        string messageContent = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageContent);
     }
 }
 `,
@@ -74,7 +67,7 @@ export default function NatsBasicPubSub() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Publish/subscribe</h1>
+      <h1>Publish/Subscribe</h1>
 
       <p>
         The NATS client is used either to produce a message to a subject or
@@ -93,7 +86,7 @@ export default function NatsBasicPubSub() {
         <a href="https://docs.nats.io/nats-server/installation">
           NATS Server Installation
         </a>
-        .&lt;br/&gt;&lt;br/&gt;
+        .
       </p>
 
       <p>This is a simple publish/subscribe messaging pattern example.</p>
@@ -103,7 +96,7 @@ export default function NatsBasicPubSub() {
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/nats/latest">
-          NATS module
+          <code>nats</code> module
         </a>
         .
       </p>
@@ -236,7 +229,7 @@ export default function NatsBasicPubSub() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run publisher.bal`}</span>
+              <span>{`\$ bal run publisher.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -370,7 +363,7 @@ export default function NatsBasicPubSub() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run subscriber.bal`}</span>
+              <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-19T10:15:49.269+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>
           </pre>

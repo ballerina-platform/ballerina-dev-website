@@ -30,7 +30,6 @@ function foo() returns () {
 
 // Leaving off return type is equivalent to \`returns ()\`.
 public function main() {
-
     io:println(v);
 }
 `,
@@ -61,20 +60,10 @@ export default function Nil() {
 
       <p>
         Ballerina's version of <code>null</code> is called <code>nil</code> and
-        written as <code>()</code>.
-      </p>
-
-      <p>
-        Ballerina types do not implicitly allow <code>nil</code>.
-      </p>
-
-      <p>
-        Type <code>T?</code> means <code>T</code> or <code>nil</code>. You can
-        use <code>==</code> and <code>!=</code> to test whether a value is{" "}
-        <code>nil</code>: no implicit conversion to
-      </p>
-
-      <p>
+        written as <code>()</code>. Ballerina types do not implicitly allow{" "}
+        <code>nil</code>. Type <code>T?</code> means <code>T</code> or{" "}
+        <code>nil</code>. You can use <code>==</code> and <code>!=</code> to
+        test whether a value is <code>nil</code>: no implicit conversion to{" "}
         <code>boolean</code>.
       </p>
 
@@ -84,7 +73,7 @@ export default function Nil() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6c59a9e6934fd44ca7ac5421a0f0de06&file=nil.bal",
+                "https://play.ballerina.io/?gist=d058e65e7f6425c0695b2ab26eb5f0be&file=nil.bal",
                 "_blank"
               );
             }}
@@ -229,7 +218,7 @@ export default function Nil() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run nil.bal`}</span>
+              <span>{`\$ bal run nil.bal`}</span>
             </code>
           </pre>
         </Col>

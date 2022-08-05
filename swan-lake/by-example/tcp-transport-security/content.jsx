@@ -18,8 +18,7 @@ import ballerina/tcp;
 // An TCP client can be configured to communicate through SSL/TLS as well.
 // To secure a client using SSL/TLS, the client needs to be configured with
 // a certificate file of the listener.
-// The [\`tcp:ClientSecureSocket\`](https://lib.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket) record
-// provides the SSL-related configurations of the client.
+// The [\`tcp:ClientSecureSocket\`](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket) record provides the SSL-related configurations of the client.
 tcp:Client securedClientEP = check new("localhost", 3000,
     secureSocket = {
         cert: "../resource/path/to/public.crt"
@@ -39,8 +38,7 @@ import ballerina/tcp;
 // An HTTP listener can be configured to communicate through SSL/TLS as well.
 // To secure a listener using SSL/TLS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
-// The [\`tcp:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket) record
-// provides the SSL-related listener configurations of the listener.
+// The [\`tcp:ListenerSecureSocket\`](https://docs.central.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations of the listener.
 listener tcp:Listener securedListnerEP = check new(3000,
     secureSocket = {
         key: {
@@ -51,8 +49,7 @@ listener tcp:Listener securedListnerEP = check new(3000,
 );
 
 service "tcp" on securedListnerEP {
-    isolated remote function onConnect(tcp:Caller caller)
-                             returns tcp:ConnectionService {
+     remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println("Client connected on server port: ", caller.remotePort);
         return new EchoService();
     }
@@ -95,24 +92,29 @@ export default function TcpTransportSecurity() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Transport security</h1>
 
-      <p>This demonstrates how the Ballerina TCP client can be configured to</p>
-
-      <p>connect to an SSL/TLS listener through a one-way SSL/TLS connection</p>
-
       <p>
-        (i.e., the server is verified by the client). This example uses the
-        Ballerina
+        This demonstrates how the Ballerina TCP client can be configured to
+        connect to an SSL/TLS listener
       </p>
 
-      <p>TCP listener to host a service and the TCP client sends</p>
-
-      <p>requests to that listener.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        through a one-way SSL/TLS connection(i.e., the server is verified by the
+        client).
+      </p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/tcp/latest">TCP module</a>.
+        This example uses the Ballerina TCP listener to host a service and the
+        TCP client sends
+      </p>
+
+      <p>requests to that listener.</p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/tcp/latest">
+          TCP module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -244,7 +246,7 @@ export default function TcpTransportSecurity() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>{`bal run tcp_transport_security_client.bal`}</span>
+              <span>{`\$ bal run tcp_transport_security_client.bal`}</span>
               <span>{`Received message: Hello, World!`}</span>
             </code>
           </pre>
@@ -380,7 +382,7 @@ export default function TcpTransportSecurity() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>{`bal run tcp_transport_security_service.bal`}</span>
+              <span>{`\$ bal run tcp_transport_security_service.bal`}</span>
               <span>{`Client connected on server port: 5639`}</span>
               <span>{`Received message: Hello, World!`}</span>
             </code>

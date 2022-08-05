@@ -35,9 +35,9 @@ service class RequestInterceptor1 {
     *http:RequestInterceptor;
 
     // A default resource function, which will be executed for all the requests. 
-    // A \`RequestContext\` is used to share data between interceptors.
-    resource function 'default [string... path](http:RequestContext ctx, 
-                            http:Request req) returns http:NextService|error? {
+    // A \`RequestContext\` is used to share data between the interceptors.
+    resource function 'default [string... path](http:RequestContext ctx, http:Request req)
+            returns http:NextService|error? {
         // Sets a header to the request inside the interceptor service.
         req.setHeader(interceptor_header1, interceptor_header_value1);
         // Returns the next interceptor or the target service in the pipeline. 
@@ -56,8 +56,8 @@ service class RequestInterceptor2 {
 
     // This interceptor is executed only for GET requests with the relative path 
     // \`greeting\`. 
-    resource function get greeting(http:RequestContext ctx, 
-                            http:Request req) returns http:NextService|error? {
+    resource function get greeting(http:RequestContext ctx, http:Request req)
+            returns http:NextService|error? {
         req.setHeader(interceptor_header2, interceptor_header_value2);
         return ctx.next();
     }
@@ -74,8 +74,8 @@ service class ResponseInterceptor {
 
     // The \`interceptResponse\` remote function, which will be executed for all the
     // responses. A \`RequestContext\` is used to share data between interceptors.
-    remote function interceptResponse(http:RequestContext ctx, 
-            http:Response res) returns http:NextService|error? {
+    remote function interceptResponse(http:RequestContext ctx, http:Response res)
+            returns http:NextService|error? {
         // Sets a header to the response inside the interceptor service.
         res.setHeader(interceptor_header3, interceptor_header_value3);
         // Returns the next interceptor in the pipeline or \`nil\` if there is no 
@@ -187,7 +187,7 @@ export default function HttpInterceptors() {
 
       <p>
         For more information, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -270,6 +270,8 @@ export default function HttpInterceptors() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -321,31 +323,16 @@ export default function HttpInterceptors() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Invoke the service.`}</span>
-              <span>{`curl -v http://localhost:9090/user/greeting`}</span>
-              <span>{`*   Trying ::1:9090...`}</span>
-              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
-              <span>{`> GET /user/greeting HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.77.0`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`> `}</span>
-              <span>{`* Mark bundle as not supporting multiuse.`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< requestHeader1: RequestInterceptor1`}</span>
-              <span>{`< requestHeader2: RequestInterceptor2`}</span>
-              <span>{`< content-type: application/org+json`}</span>
-              <span>{`< responseHeader: ResponseInterceptor`}</span>
-              <span>{`< content-length: 24`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 19 Apr 2022 12:42:44 +0530`}</span>
-              <span>{`< `}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`{"message":"Greetings!"}`}</span>
+              <span>{`\$ bal run http_interceptors.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -398,8 +385,26 @@ export default function HttpInterceptors() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Run the service.`}</span>
-              <span>{`bal run http_interceptors.bal`}</span>
+              <span>{`\$ curl -v http://localhost:9090/user/greeting`}</span>
+              <span>{`*   Trying ::1:9090...`}</span>
+              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
+              <span>{`> GET /user/greeting HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.77.0`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`> `}</span>
+              <span>{`* Mark bundle as not supporting multiuse.`}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< requestHeader1: RequestInterceptor1`}</span>
+              <span>{`< requestHeader2: RequestInterceptor2`}</span>
+              <span>{`< content-type: application/org+json`}</span>
+              <span>{`< responseHeader: ResponseInterceptor`}</span>
+              <span>{`< content-length: 24`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Tue, 19 Apr 2022 12:42:44 +0530`}</span>
+              <span>{`< `}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`{"message":"Greetings!"}`}</span>
             </code>
           </pre>
         </Col>

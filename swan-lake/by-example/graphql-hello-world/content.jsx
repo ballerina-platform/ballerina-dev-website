@@ -17,10 +17,9 @@ const codeSnippetData = [
 // The \`graphql:Service\` exposes a GraphQL service on the provided port.
 service /graphql on new graphql:Listener(4000) {
 
-    // A resource function inside a \`graphql:Service\` represents a resolver.
-    // This resource can be queried using the \`{ greeting }\`.
+    // A resource function inside a \`graphql:Service\` represents a resolver. This resource can be
+    // queried using the \`{ greeting }\`.
     resource function get greeting() returns string {
-
         return "Hello, World";
     }
 }
@@ -54,26 +53,18 @@ export default function GraphqlHelloWorld() {
 
       <p>
         A GraphQL service in Ballerina represents a GraphQL schema. Each
-        resource function of the <code>graphql:Service</code>
+        resource function of the <code>graphql:Service</code> represents a
+        resolver function in the root <code>Query</code> type. The return type
+        of each resource function will be the type of each field represented by
+        the resource function.
       </p>
 
       <p>
-        represents a resolver function in the root <code>Query</code> type. The
-        return type of each resource function will be the
-      </p>
-
-      <p>
-        type of each field represented by the resource
-        function.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying package, see the</p>
-
-      <p>
+        For more information on the underlying package, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+          <code>graphql</code> package
         </a>
-        .&lt;br/&gt;&lt;br/&gt;
+        .
       </p>
 
       <p>
@@ -158,6 +149,8 @@ export default function GraphqlHelloWorld() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -209,14 +202,13 @@ export default function GraphqlHelloWorld() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
-              <span>{`# The query used: { greeting }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ greeting }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"greeting":"Hello, World"}}`}</span>
+              <span>{`\$ bal run graphql_hello_world.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -269,7 +261,10 @@ export default function GraphqlHelloWorld() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run graphql_hello_world.bal`}</span>
+              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
+              <span>{`# The query used: { greeting }`}</span>
+              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ greeting }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`{"data":{"greeting":"Hello, World"}}`}</span>
             </code>
           </pre>
         </Col>
@@ -314,7 +309,7 @@ export default function GraphqlHelloWorld() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Return record values"
+            title="Returning record values"
             href="/learn/by-example/graphql-returning-record-values"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -325,7 +320,7 @@ export default function GraphqlHelloWorld() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Return record values
+                  Returning record values
                 </span>
               </div>
               <svg

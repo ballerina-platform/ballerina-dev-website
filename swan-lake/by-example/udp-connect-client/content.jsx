@@ -67,11 +67,17 @@ export default function UdpConnectClient() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Connection-oriented client</h1>
 
-      <p>The ConnectClient is configured so that it only receives data from,</p>
+      <p>
+        The ConnectClient is configured so that it only receives data from, and
+        sends data to,
+      </p>
 
-      <p>and sends data to, the given remote peer address. Once connected,</p>
+      <p>
+        the given remote peer address. Once connected, data may not be received
+        from or sent to
+      </p>
 
-      <p>data may not be received from or sent to any other address.</p>
+      <p>any other address.</p>
 
       <p>
         The client remains connected until it is explicitly disconnected or
@@ -80,14 +86,15 @@ export default function UdpConnectClient() {
 
       <p>
         This sample demonstrates how to send data to a connected server and
-        print the echoed response.&lt;br/&gt;&lt;br/&gt;
+        print the echoed response.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/udp/latest">UDP module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/udp/latest">
+          UDP module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -218,7 +225,7 @@ export default function UdpConnectClient() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run udp_connect_client.bal`}</span>
+              <span>{`\$ bal run udp_connect_client.bal`}</span>
               <span>{``}</span>
               <span>{`# This will print the output below upon a successful write.`}</span>
               <span>{`Data was sent to the remote host.`}</span>

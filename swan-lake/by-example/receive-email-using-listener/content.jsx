@@ -13,11 +13,10 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/email;
-import ballerina/io;
+import ballerina/log;
 
-// Creates the listener with the connection parameters and the protocol-related
-// configuration. The polling interval specifies the time duration between each
-// poll performed by the listener in seconds.
+// Creates the listener with the connection parameters and the protocol-related configuration. 
+// The \`pollingInterval\` specifies the duration between each poll in seconds.
 listener email:PopListener emailListener = check new ({
     host: "pop.email.com",
     username: "reader@email.com",
@@ -26,28 +25,24 @@ listener email:PopListener emailListener = check new ({
     port: 995
 });
 
-// One or many services can listen to the email listener for the
-// periodically-polled emails.
+// One or many services can listen to the email listener for the periodically-polled emails.
 service "emailObserver" on emailListener {
 
     // When an email is successfully received, the \`onMessage\` method is
     // called.
     remote function onMessage(email:Message emailMessage) {
-        io:println("POP Listener received an email.");
-        io:println("Email Subject: ", emailMessage.subject);
-        io:println("Email Body: ", emailMessage?.body);
+        log:printInfo("POP Listener received an email", subject = emailMessage.subject,
+            content = emailMessage?.body);
     }
 
-    // When an error occurs during the email poll operations, the \`onError\`
-    // method is called.
+    // When an error occurs during the email poll operations, the \`onError\` method is called.
     remote function onError(email:Error emailError) {
-        io:println("Error while polling for the emails: "
-            + emailError.message());
+        log:printError("Error while polling for the emails", 'error = emailError);
     }
 
     // When the listener is closed, the \`onClose\` method is called.
     remote function onClose(email:Error? closeError) {
-        io:println("Closed the listener.");
+        log:printInfo("Closed the listener");
     }
 
 }
@@ -77,20 +72,20 @@ export default function ReceiveEmailUsingListener() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Receive emails using a listener</h1>
 
-      <p>The email listener is used to receive (with POP3 or IMAP4) emails</p>
-
-      <p>using the SSL or STARTTLS protocols. This sample includes receiving</p>
-
-      <p>emails from a listener with default configurations over SSL using</p>
-
-      <p>the default ports.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        The email listener is used to receive (with POP3 or IMAP4) emails using
+        the SSL or STARTTLS protocols.
+      </p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/email/latest/">
-          Email module
+        This sample includes receiving emails from a listener with default
+        configurations over SSL using the default ports.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/email/latest/">
+          <code>email</code> module
         </a>
         .
       </p>
@@ -172,6 +167,8 @@ export default function ReceiveEmailUsingListener() {
         </Col>
       </Row>
 
+      <p>Run the email service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -223,7 +220,7 @@ export default function ReceiveEmailUsingListener() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run receive_email_using_listener.bal`}</span>
+              <span>{`\$ bal run receive_email_using_listener.bal`}</span>
               <span>{``}</span>
               <span>{`# Subject and the content body of the listened emails will be printed for each`}</span>
               <span>{`# of the polled emails.`}</span>

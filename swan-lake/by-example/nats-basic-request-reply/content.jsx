@@ -18,13 +18,13 @@ import ballerinax/nats;
 public function main() returns error? {
     string message = "Hello from Ballerina";
     // Initializes a NATS client.
-    nats:Client natsClient = check new(nats:DEFAULT_URL);
+    nats:Client natsClient = check new (nats:DEFAULT_URL);
 
     // Sends a request and returns the reply.
     nats:Message reply = check natsClient->requestMessage({
-                             content: message.toBytes(),
-                             subject: "demo.bbe"});
-
+        content: message.toBytes(),
+        subject: "demo.bbe"
+    });
     // Prints the reply message.
     string replyContent = check string:fromBytes(reply.content);
     io:println("Reply message: " + replyContent);
@@ -37,22 +37,15 @@ public function main() returns error? {
 import ballerinax/nats;
 
 // Initializes the NATS listener.
-listener nats:Listener subscription = new(nats:DEFAULT_URL);
+listener nats:Listener subscription = new (nats:DEFAULT_URL);
 
-// Binds the consumer to listen to the messages published
-// to the 'demo.bbe' subject.
+// Binds the consumer to listen to the messages published to the 'demo.bbe' subject.
 service "demo.bbe" on subscription {
-
-    remote function onRequest(nats:Message message) returns string {
-
+    remote function onRequest(nats:Message message) returns string|error {
         // Logs the incoming message.
-        string|error messageContent = string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("Received message: " + messageContent);
-        }
-
-        // Sends the reply message to the \`replyTo\` subject
-        // of the received message.
+        string messageContent = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageContent);
+        // Sends the reply message to the \`replyTo\` subject of the received message.
         return "Hello Back!";
     }
 }
@@ -83,7 +76,7 @@ export default function NatsBasicRequestReply() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Request/reply</h1>
+      <h1>Request/Reply</h1>
 
       <p>
         The NATS client is used either to produce a message to a subject or
@@ -102,7 +95,7 @@ export default function NatsBasicRequestReply() {
         <a href="https://docs.nats.io/nats-server/installation">
           NATS Server Installation
         </a>
-        .&lt;br/&gt;&lt;br/&gt;
+        .
       </p>
 
       <p>This is a simple request/reply messaging pattern example.</p>
@@ -112,7 +105,7 @@ export default function NatsBasicRequestReply() {
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/nats/latest">
-          NATS module
+          <code>nats</code> module
         </a>
         .
       </p>
@@ -245,7 +238,7 @@ export default function NatsBasicRequestReply() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run publisher.bal`}</span>
+              <span>{`\$ bal run publisher.bal`}</span>
               <span>{`Reply message: Hello Back!`}</span>
             </code>
           </pre>
@@ -380,7 +373,7 @@ export default function NatsBasicRequestReply() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run subscriber.bal`}</span>
+              <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-19T10:14:09.200+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>
           </pre>

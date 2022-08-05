@@ -16,9 +16,8 @@ const codeSnippetData = [
 import ballerina/websocket;
 
 // Defines the WebSocket client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the [\`websocket:OAuth2JwtBearerGrantConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2JwtBearerGrantConfig) for the \`auth\` configuration of the
-// client.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by passing the
+// [\`websocket:OAuth2JwtBearerGrantConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/OAuth2JwtBearerGrantConfig) for the \`auth\` configuration of the client.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
         tokenUrl: "https://localhost:9445/oauth2/token",
@@ -70,27 +69,21 @@ export default function WebsocketClientOauth2JwtBearerGrantType() {
 
       <p>
         A client, which is secured with an OAuth2 JWT bearer grant type can be
+        used to connect to a secured service.
       </p>
-
-      <p>used to connect to a secured service.&lt;br/&gt;</p>
 
       <p>
         The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by
-      </p>
-
-      <p>
-        passing the <code>websocket:OAuth2JwtBearerGrantConfig</code> to the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
+        <code>websocket:OAuth2JwtBearerGrantConfig</code> to the{" "}
         <code>auth</code>
       </p>
 
-      <p>configuration of the client.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>configuration of the client.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
           OAuth2 module
         </a>
         .
@@ -226,7 +219,7 @@ export default function WebsocketClientOauth2JwtBearerGrantType() {
             <code className="d-flex flex-column">
               <span>{`# As a prerequisite, start a sample service secured with OAuth2.`}</span>
               <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>{`bal run websocket_client_oauth2_jwt_bearer_grant_type.bal`}</span>
+              <span>{`\$ bal run websocket_client_oauth2_jwt_bearer_grant_type.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

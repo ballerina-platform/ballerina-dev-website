@@ -107,26 +107,27 @@ export default function TesterinaAssertions() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Assertions</h1>
 
-      <p>Testerina has in-built assertions that enable you to</p>
-
-      <p>assert an outcome against an expected outcome.</p>
+      <p>
+        Testerina has in-built assertions that enable you to assert an outcome
+        against
+      </p>
 
       <p>
-        This example illustrates how to use different
-        assertions.&lt;br/&gt;&lt;br/&gt;
+        an expected outcome. This example illustrates how to use different
+        assertions.
       </p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
         </a>
       </p>
 
       <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -259,7 +260,7 @@ export default function TesterinaAssertions() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal test test_module`}</span>
+              <span>{`\$ bal test test_module`}</span>
               <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>

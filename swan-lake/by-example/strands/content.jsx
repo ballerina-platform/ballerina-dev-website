@@ -14,21 +14,27 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
+function userSpeakerService(string userName) {
+    string messagePrefix = userName + " speaking : ";
+    foreach int i in 0...9 {
+       io:println(messagePrefix, i);
+    }
+}
+
 public function main() {
     // By default, named workers are multitasked cooperatively, not preemptively.
-    // Each named worker has a "strand" (logical thread of control) and execution
-    // switches between strands only at specific "yield" points.
+    // Each named worker has a \`strand\` (a logical thread of control) and 
+    // the execution switches between strands only at specific \`yield\` points.
     worker A {
         io:println("In worker A");
-    }
-
-    // An annotation can be used to make a strand run on a separate thread.
-    @strand {
-        thread: "any"
+        userSpeakerService("Worker A");
+        io:println("Worker A end");
     }
 
     worker B {
         io:println("In worker B");
+        future<()> _ = start userSpeakerService("Worker B");
+        io:println("Worker B end");
     }
 
     io:println("In function worker");
@@ -61,26 +67,13 @@ export default function Strands() {
 
       <p>
         By default, named workers are multitasked cooperatively, not
-        preemptively.
+        preemptively. Each named worker has a <code>strand</code> (a logical
+        thread of control) and execution switches between strands only at
+        specific <code>yield</code> points such as doing a wait or when a
+        library function invokes a system call that would block. This avoids the
+        need for you to lock variables that are accessed from multiple named
+        workers.
       </p>
-
-      <p>
-        Each named worker has a &quot;strand&quot; (logical thread of control)
-        and execution
-      </p>
-
-      <p>
-        switches between strands only at specific &quot;yield&quot; points such
-        as doing a wait
-      </p>
-
-      <p>or when a library function invokes a system call that would block.</p>
-
-      <p>
-        This avoids the need for users to lock variables that are accessed from
-      </p>
-
-      <p>multiple named workers.</p>
 
       <p>
         An annotation can be used to make a strand run on a separate thread.
@@ -92,7 +85,7 @@ export default function Strands() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d61d5af42451a0663619a1dd824641de&file=strands.bal",
+                "https://play.ballerina.io/?gist=46c233a3c3ed9c7cb18a4a3887f4862d&file=strands.bal",
                 "_blank"
               );
             }}
@@ -237,10 +230,32 @@ export default function Strands() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run strands.bal`}</span>
-              <span>{`In worker B`}</span>
+              <span>{`\$ bal run strands.bal`}</span>
               <span>{`In function worker`}</span>
+              <span>{`In worker B`}</span>
+              <span>{`Worker B end`}</span>
               <span>{`In worker A`}</span>
+              <span>{`Worker A speaking : 0`}</span>
+              <span>{`Worker A speaking : 1`}</span>
+              <span>{`Worker B speaking : 0`}</span>
+              <span>{`Worker A speaking : 2`}</span>
+              <span>{`Worker A speaking : 3`}</span>
+              <span>{`Worker A speaking : 4`}</span>
+              <span>{`Worker B speaking : 1`}</span>
+              <span>{`Worker A speaking : 5`}</span>
+              <span>{`Worker B speaking : 2`}</span>
+              <span>{`Worker B speaking : 3`}</span>
+              <span>{`Worker A speaking : 6`}</span>
+              <span>{`Worker B speaking : 4`}</span>
+              <span>{`Worker A speaking : 7`}</span>
+              <span>{`Worker B speaking : 5`}</span>
+              <span>{`Worker A speaking : 8`}</span>
+              <span>{`Worker B speaking : 6`}</span>
+              <span>{`Worker A speaking : 9`}</span>
+              <span>{`Worker B speaking : 7`}</span>
+              <span>{`Worker A end`}</span>
+              <span>{`Worker B speaking : 8`}</span>
+              <span>{`Worker B speaking : 9`}</span>
             </code>
           </pre>
         </Col>
@@ -249,7 +264,7 @@ export default function Strands() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Wait for workers"
+            title="Waiting for workers"
             href="/learn/by-example/waiting-for-workers"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -277,7 +292,7 @@ export default function Strands() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Wait for workers
+                  Waiting for workers
                 </span>
               </div>
             </div>

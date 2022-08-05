@@ -29,7 +29,6 @@ isolated function setGlobal(int n) {
     lock {
         r.v = n;
     }
-
 }
 
 public function main() {
@@ -39,7 +38,6 @@ public function main() {
     lock {
        io:println(r);
     }
-
 }
 `,
 ];
@@ -125,7 +123,7 @@ export default function CombiningIsolatedFunctionsAndLock() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=86c82a1721d91082392c4c7379fe0064&file=combining_isolated_functions_and_lock.bal",
+                "https://play.ballerina.io/?gist=1a3bc4f1603812ab2ede978d1dc876cf&file=combining_isolated_functions_and_lock.bal",
                 "_blank"
               );
             }}
@@ -218,6 +216,11 @@ export default function CombiningIsolatedFunctionsAndLock() {
           )}
         </Col>
       </Row>
+
+      <p>
+        Executing the above code changes the value of <code>V</code> to 200 as
+        shown below.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

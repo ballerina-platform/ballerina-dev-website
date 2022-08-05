@@ -46,18 +46,11 @@ export default function ConfigurableVariables() {
 
       <p>
         A module-level variable can be declared as <code>configurable</code>.
-        The initializer of a <code>configurable</code> variable
-      </p>
-
-      <p>
-        can be overridden at runtime (e.g., by a TOML file). A variable for
-        which a configuration is required
-      </p>
-
-      <p>
-        can use an initializer of <code>?</code>. The type of a{" "}
-        <code>configurable</code> variable must be a subtype of{" "}
-        <code>anydata</code>.&lt;br/&gt;&lt;br/&gt;
+        The initializer of a <code>configurable</code> variable can be
+        overridden at runtime (e.g., by a TOML file). A variable for which a
+        configuration is required can use an initializer of <code>?</code>. The
+        type of a <code>configurable</code> variable must be a subtype of{" "}
+        <code>anydata</code>.
       </p>
 
       <p>
@@ -74,7 +67,7 @@ export default function ConfigurableVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=16b79ca1912d7fcf10c85cd110535353&file=configurable_variables.bal",
+                "https://play.ballerina.io/?gist=2f838bda484649b4fab0d1ca61b10836&file=configurable_variables.bal",
                 "_blank"
               );
             }}
@@ -219,7 +212,7 @@ export default function ConfigurableVariables() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run configurable_variables.bal`}</span>
+              <span>{`\$ bal run configurable_variables.bal`}</span>
             </code>
           </pre>
         </Col>

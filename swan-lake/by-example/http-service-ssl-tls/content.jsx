@@ -14,11 +14,9 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// An HTTP listener can be configured to communicate through HTTPS as well.
-// To secure a listener using HTTPS, the listener needs to be configured with
-// a certificate file and a private key file for the listener.
-// The [\`http:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record
-// provides the SSL-related listener configurations of the listener.
+// An HTTP listener can be configured to communicate via HTTPS. To secure the listener, listener 
+// needs to be configured with certificate file and a private key file.
+// The [\`http:ListenerSecureSocket\`](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record contains the configurations related to listener SSL. 
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -68,17 +66,13 @@ export default function HttpServiceSslTls() {
 
       <p>
         Provide the <code>http:ListenerSecureSocket</code> configurations to the
-        server to
+        server to expose an HTTPS connection.
       </p>
 
-      <p>expose an HTTPS connection.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -160,6 +154,8 @@ export default function HttpServiceSslTls() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -211,12 +207,14 @@ export default function HttpServiceSslTls() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# To invoke the service, use the cURL commands below.`}</span>
-              <span>{`curl https://localhost:9090/foo/bar --cacert /path/to/server-public.crt`}</span>
+              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
+              <span>{`\$ bal run http_service_ssl_tls.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -269,8 +267,8 @@ export default function HttpServiceSslTls() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>{`bal run http_service_ssl_tls.bal`}</span>
+              <span>{`# To invoke the service, use the cURL commands below.`}</span>
+              <span>{`\$ curl https://localhost:9090/foo/bar --cacert /path/to/server-public.crt`}</span>
             </code>
           </pre>
         </Col>

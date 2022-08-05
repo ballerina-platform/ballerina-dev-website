@@ -18,12 +18,13 @@ import ballerinax/stan;
 // Produces a message to a subject in the NATS sever.
 public function main() returns error? {
     string message = "Hello from Ballerina";
-    stan:Client stanClient = check new(stan:DEFAULT_URL);
+    stan:Client stanClient = check new (stan:DEFAULT_URL);
 
     // Produces a message to the specified subject.
     string result = check stanClient->publishMessage({
-                                    content: message.toBytes(),
-                                    subject: "demo"});
+        content: message.toBytes(),
+        subject: "demo"
+    });
     io:println("GUID " + result + " received for the produced message.");
     // Closes the client connection.
     check stanClient.close();
@@ -33,19 +34,17 @@ public function main() returns error? {
 import ballerinax/stan;
 
 // Initializes the NATS Streaming listener.
-listener stan:Listener lis = new(stan:DEFAULT_URL);
+listener stan:Listener lis = new (stan:DEFAULT_URL);
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
 @stan:ServiceConfig {
     subject: "demo"
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
+    remote function onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
-        string|error messageData = string:fromBytes(message.content);
-        if messageData is string {
-            log:printInfo("Received message: " + messageData);
-        }
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageData);
     }
 }
 `,
@@ -75,7 +74,7 @@ export default function NatsStreamingPubSub() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Publish/subscribe</h1>
+      <h1>Publish/Subscribe</h1>
 
       <p>
         The <code>nats</code> streaming library provides the functionality of a
@@ -84,17 +83,14 @@ export default function NatsStreamingPubSub() {
 
       <p>In order to run this sample, a NATS Streaming server should be</p>
 
-      <p>
-        running on the corresponding port used in the
-        sample.&lt;br/&gt;&lt;br/&gt;
-      </p>
+      <p>running on the corresponding port used in the sample.</p>
 
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
-          STAN module
+          <code>stan</code> module
         </a>
         .
       </p>
@@ -227,7 +223,7 @@ export default function NatsStreamingPubSub() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run publisher.bal`}</span>
+              <span>{`\$ bal run publisher.bal`}</span>
               <span>{`GUID m2jS6SLLefK325DWTkkwBh received for the produced message.`}</span>
             </code>
           </pre>
@@ -362,7 +358,7 @@ export default function NatsStreamingPubSub() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run subscriber.bal`}</span>
+              <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-20T12:51:47.417+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>
           </pre>

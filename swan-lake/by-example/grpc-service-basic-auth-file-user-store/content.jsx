@@ -14,6 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `// This is the service definition for the scenario.
 syntax = "proto3";
+
 import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
@@ -102,14 +103,14 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         passwords
       </p>
 
-      <p>for authentication, and scopes for authorization.&lt;br/&gt;</p>
+      <p>for authentication, and scopes for authorization.</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
         declared
       </p>
 
-      <p>in a service can be bound to one/more scope(s).&lt;br/&gt;</p>
+      <p>in a service can be bound to one/more scope(s).</p>
 
       <p>
         In the authorization phase, the scopes of the service/resource are
@@ -118,32 +119,41 @@ export default function GrpcServiceBasicAuthFileUserStore() {
 
       <p>
         against the scope included in the user store for at least one match
-        between
+        between the two sets.
       </p>
-
-      <p>the two sets.&lt;br/&gt;</p>
 
       <p>
         <code>Config.toml</code> has defined three users - alice, ldclakmal, and
         eve. Each user has a
       </p>
 
-      <p>
-        password and optionally assigned scopes as an
-        array.&lt;br/&gt;&lt;br/&gt;
-      </p>
+      <p>password and optionally assigned scopes as an array.</p>
 
-      <p>For more information on the underlying module,</p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on the underlying module,
+          see the{" "}
+          <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+            <code>auth</code> module
+          </a>
+          .
+        </p>
+      </blockquote>
 
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          Auth module
-        </a>
-        .
-      </p>
+      <h2>Generate the service definition</h2>
 
-      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>
+            Create a new Protocol Buffers definition file named{" "}
+            <code>grpc_service.proto</code> and add the service definition to
+            it.
+          </span>
+        </li>
+      </ul>
+
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "32px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -220,9 +230,19 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         </Col>
       </Row>
 
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Run the command below in the Ballerina tools distribution for stub
+            generation.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "0px" }}
+        style={{ marginLeft: "32px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
@@ -271,27 +291,60 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# Create a new Protocol Buffers definition file named `}
-                <code>{`grpc_service.proto`}</code>
-                {` and add the service definition to it.`}
-              </span>
-              <span>{`# Run the command below in the Ballerina tools distribution for stub generation.`}</span>
-              <span>{`bal grpc --input grpc_service.proto --output stubs`}</span>
-              <span>{``}</span>
-              <span>
-                {`# Once you run the command, `}
-                <code>{`grpc_service_pb.bal`}</code>
-                {` file is generated inside stubs directory.`}
-              </span>
-              <span>{``}</span>
-              <span>{`# For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto To Ballerina</a> example.`}</span>
+              <span>{`\$ bal grpc --input grpc_service.proto --output stubs`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+      <p>
+        Once you run the command, the <code>grpc_service_pb.bal</code> file is
+        generated inside the stubs directory.
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on how to use the
+          Ballerina Protocol Buffers tool, see the &lt;a
+          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
+          To Ballerina&lt;/a&gt; example.
+        </p>
+      </blockquote>
+
+      <h2>Implement and run the service</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>Create a Ballerina package.</span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Copy the generated <code>grpc_secured_pb.bal</code> stub file to the
+            package. For example, if you create a package named{" "}
+            <code>service</code>, copy the stub file to the <code>service</code>{" "}
+            package.
+          </span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
+          <span>
+            Create a new{" "}
+            <code>grpc_service_basic_auth_file_user_store.bal</code> Ballerina
+            file inside the <code>service</code> package and add the service
+            implementation.
+          </span>
+        </li>
+      </ul>
+
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "24px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -368,9 +421,28 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         </Col>
       </Row>
 
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>4.</span>
+          <span>
+            As a prerequisite, ensure that the <code>Config.toml</code> file is
+            populated correctly with the user information.
+          </span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>6.</span>
+          <span>
+            Execute the commands below to build and run the 'service' package.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "0px" }}
+        style={{ marginLeft: "24px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick2 ? (
@@ -419,34 +491,6 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina package.`}</span>
-              <span>
-                {`# Copy the generated `}
-                <code>{`grpc_secured_pb.bal`}</code>
-                {` stub file to the package.`}
-              </span>
-              <span>
-                {`# For example, if you create a package named `}
-                <code>{`service`}</code>
-                {`, copy the stub file to the `}
-                <code>{`service`}</code>
-                {` package.`}
-              </span>
-              <span>{``}</span>
-              <span>
-                {`# Create a new `}
-                <code>{`grpc_service_basic_auth_file_user_store.bal`}</code>
-                {` Ballerina file inside the `}
-                <code>{`service`}</code>
-                {` package and add the service implementation.`}
-              </span>
-              <span>{``}</span>
-              <span>
-                {`# As a prerequisite, ensure that the `}
-                <code>{`Config.toml`}</code>
-                {` file is populated correctly`}
-              </span>
-              <span>{`# with the user information.`}</span>
               <span>{`echo '[["ballerina.auth.users"]]`}</span>
               <span>{`username="alice"`}</span>
               <span>{`password="password1"`}</span>
@@ -456,20 +500,18 @@ export default function GrpcServiceBasicAuthFileUserStore() {
               <span>{`password="password2"`}</span>
               <span>{`scopes=["scope2", "scope3"]' > Config.toml`}</span>
               <span>{``}</span>
-              <span>{`# Execute the command below to build the 'service' package.`}</span>
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>
-                {``}
-                <code>{`bal build service`}</code>
-                {``}
-              </span>
+              <span>{`\$ bal build service`}</span>
               <span>{``}</span>
-              <span>{`# Run the service using the command below.`}</span>
-              <span>{`bal run service/target/bin/service.jar`}</span>
+              <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        You may need to change the certificate file path and private key file
+        path.
+      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

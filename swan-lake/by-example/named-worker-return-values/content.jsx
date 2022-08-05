@@ -15,16 +15,13 @@ const codeSnippetData = [
   `import ballerina/io;
 
 function demo(string s) returns int|error {
-    // Named workers have a return type, which defaults to nil
-    // if not specified.
+    // Named workers have a return type, which defaults to nil if not specified.
     worker A returns int|error {
-        // A return statement in a named worker terminates 
-        // the worker, not the function.
-        // Similarly, when \`check\` is used and the expression evaluates
-        // to an \`error\`, the \`error\` value is returned terminating only the worker.
+        // A return statement in a named worker terminates the worker, not the function.
+        // Similarly, when \`check\` is used and the expression evaluates to an \`error\`,
+        // the \`error\` value is returned terminating only the worker.
         int x = check int:fromString(s);
         return x + 1;
-
     }
 
     io:println("In function worker");
@@ -68,24 +65,14 @@ export default function NamedWorkerReturnValues() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Named worker return values</h1>
 
-      <p>Named workers have a return type, which defaults to nil.</p>
-
       <p>
-        A <code>return</code> statement in a named worker terminates
+        Named workers have a return type, which defaults to nil. A{" "}
+        <code>return</code> statement in a named worker terminates the worker,
+        not the function. Similarly, when <code>check</code> is used and the
+        expression evaluates to an <code>error</code>, the <code>error</code>{" "}
+        value is returned terminating the worker. Waiting on a named worker will
+        give its return value.
       </p>
-
-      <p>the worker, not the function.</p>
-
-      <p>
-        Similarly, when <code>check</code> is used and the expression evaluates
-      </p>
-
-      <p>
-        to an <code>error</code>, the <code>error</code> value is returned
-        terminating the worker.
-      </p>
-
-      <p>Waiting on a named worker will give its return value.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -93,7 +80,7 @@ export default function NamedWorkerReturnValues() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7196c89d5670dee21a83d73301da9dbc&file=named_worker_return_values.bal",
+                "https://play.ballerina.io/?gist=b8b45bf0234f2d004f944fb24d2d052a&file=named_worker_return_values.bal",
                 "_blank"
               );
             }}
@@ -238,7 +225,7 @@ export default function NamedWorkerReturnValues() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run named_worker_return_values.bal`}</span>
+              <span>{`\$ bal run named_worker_return_values.bal`}</span>
               <span>{`In function worker`}</span>
               <span>{`52`}</span>
               <span>{`In function worker`}</span>

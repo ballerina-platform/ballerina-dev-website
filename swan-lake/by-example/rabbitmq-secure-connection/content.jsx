@@ -15,15 +15,13 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
-listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
-
-    // To secure the client connections using username/password authentication, provide the credentials
-    // with the [\`rabbitmq:Credentials\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
+listener rabbitmq:Listener securedEP = new (rabbitmq:DEFAULT_HOST, 5671,
+    // To secure the client connections using username/password authentication,
+    // provide the credentials with the [\`rabbitmq:Credentials\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
     auth = {
-         username: "alice",
-         password: "alice@123"
+        username: "alice",
+        password: "alice@123"
     },
-
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     // The [\`rabbitmq:SecureSocket\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket)
@@ -38,11 +36,9 @@ listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
 }
 // Attaches the service to the listener.
 service rabbitmq:Service on securedEP {
-    remote function onMessage(rabbitmq:Message message) {
-        string|error messageContent = string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("Received message: " + messageContent);
-        }
+    remote function onMessage(rabbitmq:Message message) returns error? {
+        string messageContent = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageContent);
     }
 }
 `,
@@ -51,14 +47,12 @@ service rabbitmq:Service on securedEP {
 public function main() returns error? {
     // Creates a ballerina RabbitMQ client with TLS/SSL and username/password authentication.
     rabbitmq:Client rabbitmqClient = check new(rabbitmq:DEFAULT_HOST, 5671,
-
-        // To secure the client connections using username/password authentication, provide the credentials
-        // with the [\`rabbitmq:Credentials\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
+        // To secure the client connections using username/password authentication,
+        // provide the credentials with the [\`rabbitmq:Credentials\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
         auth = {
              username: "alice",
              password: "alice@123"
         },
-
         // To secure the client connection using TLS/SSL, the client needs to be configured with
         // a certificate file of the server.
         // The [\`rabbitmq:SecureSocket\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket)
@@ -73,8 +67,7 @@ public function main() returns error? {
 
     // Publishes the message using the \`rabbitmqClient\` and the routing key named \`Secured\`.
     string message = "Hello from Ballerina";
-    check rabbitmqClient->publishMessage({ content: message.toBytes(),
-                                            routingKey: "Secured" });
+    check rabbitmqClient->publishMessage({content: message.toBytes(), routingKey: "Secured"});
 }
 `,
 ];
@@ -107,14 +100,14 @@ export default function RabbitmqSecureConnection() {
 
       <p>The underlying connections of the consumer and the producer are</p>
 
-      <p>secured with TLS/SSL and Basic Auth.&lt;br/&gt;&lt;br/&gt;</p>
+      <p>secured with TLS/SSL and Basic Auth.</p>
 
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          RabbitMQ module
+          <code>rabbitmq</code> module
         </a>
         .
       </p>
@@ -247,7 +240,7 @@ export default function RabbitmqSecureConnection() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run consumer.bal`}</span>
+              <span>{`\$ bal run consumer.bal`}</span>
               <span>{`time = 2021-05-20T14:49:11.011+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>
           </pre>
@@ -382,7 +375,7 @@ export default function RabbitmqSecureConnection() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run producer.bal`}</span>
+              <span>{`\$ bal run producer.bal`}</span>
             </code>
           </pre>
         </Col>

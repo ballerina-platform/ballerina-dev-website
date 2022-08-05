@@ -20,8 +20,7 @@ public function main() returns error? {
     // Create a new TCP client by providing the \`remoteHost\` and \`remotePort\`.
     // Optionally, you can provide the interface that the socket needs to bind 
     // and the timeout in seconds, which specifies the read timeout value.
-    // tcp:Client client = check new ("localhost", 3000, localHost = "localhost",
-    //                             timeout = 5);
+    // tcp:Client client = check new ("localhost", 3000, localHost = "localhost", timeout = 5);
     tcp:Client socketClient = check new ("localhost", 3000);
 
     // Send the desired content to the server.
@@ -66,14 +65,15 @@ export default function TcpClient() {
 
       <p>
         This sample demonstrates how the TCP client interacts with the TCP
-        server.&lt;br/&gt;&lt;br/&gt;
+        server.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/tcp/latest">TCP module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/tcp/latest">
+          TCP module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -205,7 +205,7 @@ export default function TcpClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# As a prerequisite, start a sample TCP service.`}</span>
-              <span>{`bal run tcp_client.bal`}</span>
+              <span>{`\$ bal run tcp_client.bal`}</span>
               <span>{`Received: Hello Ballerina Echo from client`}</span>
             </code>
           </pre>

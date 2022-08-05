@@ -12,53 +12,19 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/uuid;
-import ballerinax/azure_functions as af;
+  `import ballerinax/azure_functions as af;
 
-// HTTP request/response with no authentication
+// This function gets triggered by an HTTP call and returns a processed HTTP output to the caller.
 @af:Function
-public function hello(@af:HTTPTrigger { authLevel: "anonymous" }
-                      string payload)
-                      returns @af:HTTPOutput string|error {
+public function hello(@af:HTTPTrigger { authLevel: "anonymous" } string payload) returns @af:HTTPOutput string|error {
     return "Hello, " + payload + "!";
 }
 
-// HTTP request to add data to a queue
+// This function gets executed by an HTTP call and when it gets executed, it will query the blob storage and pick the 
+// appropriate blob according to the query parameter. Then, it will return the processed output as an HTTP response.
 @af:Function
-public function fromHttpToQueue(af:Context ctx, 
-            @af:HTTPTrigger af:HTTPRequest req, 
-            @af:QueueOutput { queueName: "queue1" } af:StringOutputBinding msg) 
-            returns @af:HTTPOutput af:HTTPBinding {
-    msg.value = req.body;
-    return { statusCode: 200, payload: "Request: " + req.toString() };
-}
-
-// A message put to a queue is copied to another queue
-@af:Function
-public function fromQueueToQueue(af:Context ctx, 
-        @af:QueueTrigger { queueName: "queue2" } string inMsg,
-        @af:QueueOutput { queueName: "queue3" } af:StringOutputBinding outMsg) {
-    ctx.log("In Message: " + inMsg);
-    ctx.log("Metadata: " + ctx.metadata.toString());
-    outMsg.value = inMsg;
-}
-
-// A blob added to a container is copied to a queue
-@af:Function
-public function fromBlobToQueue(af:Context ctx, 
-        @af:BlobTrigger { path: "bpath1/{name}" } byte[] blobIn,
-        @af:BindingName  string name,
-        @af:QueueOutput { queueName: "queue3" } af:StringOutputBinding outMsg) 
-        returns error? {
-    outMsg.value = "Name: " + name + " Content: " + blobIn.toString();
-}
-
-// HTTP request to read a blob value
-@af:Function
-public function httpTriggerBlobInput(@af:HTTPTrigger af:HTTPRequest req, 
-                    @af:BlobInput { path: "bpath1/{Query.name}" }
-                    byte[]? blobIn)
-                    returns @af:HTTPOutput string {
+public function httpTriggerBlobInput(@af:HTTPTrigger { authLevel: "anonymous" } af:HTTPRequest req, 
+                    @af:BlobInput { path: "bpath1/{Query.name}" }byte[]? blobIn) returns @af:HTTPOutput string {
     int length = 0;
     if blobIn is byte[] {
         length = blobIn.length();
@@ -67,141 +33,12 @@ public function httpTriggerBlobInput(@af:HTTPTrigger af:HTTPRequest req,
             length.toString() + " Content: " + blobIn.toString();
 }
 
-// HTTP request to add a new blob
+// This function gets executed every 10 seconds by the Azure function app. Once the function is executed, the timer 
+// details will be stored in the selected queue storage for every invocation.
 @af:Function
-public function httpTriggerBlobOutput(@af:HTTPTrigger af:HTTPRequest req, 
-        @af:BlobOutput { path: "bpath1/{Query.name}" }
-            af:StringOutputBinding bb)
-        returns @af:HTTPOutput string|error {
-    bb.value = req.body;
-    return "Blob: " + req.query["name"].toString() + " Content: " + 
-            bb?.value.toString();
-}
-
-// HTTP request to add a new blob
-@af:Function
-public function httpTriggerBlobOutput2(@af:HTTPTrigger af:HTTPRequest req,
-        @af:BlobOutput { path: "bpath1/{Query.name}" } af:BytesOutputBinding bb)
-        returns @af:HTTPOutput string|error {
-    bb.value = [65, 66, 67, 97, 98];
-    return "Blob: " + req.query["name"].toString() + " Content: " +
-            bb?.value.toString();
-}
-
-// Sending an SMS
-@af:Function
-public function sendSMS(@af:HTTPTrigger af:HTTPRequest req, 
-                        @af:TwilioSmsOutput { fromNumber: "+12069845840" } 
-                                              af:TwilioSmsOutputBinding tb)
-                        returns @af:HTTPOutput string {
-    tb.to = req.query["to"].toString();
-    tb.body = req.body.toString();
-    return "Message - to: " + tb?.to.toString() + " body: " +
-            tb?.body.toString();
-}
-
-public type Person record {
-    string id;
-    string name;
-    string country;
-};
-
-// CosmosDB record trigger
-@af:Function
-public function cosmosDBToQueue1(@af:CosmosDBTrigger { 
-        connectionStringSetting: "CosmosDBConnection", databaseName: "db1",
-        collectionName: "c1" } Person[] req, 
-        @af:QueueOutput { queueName: "queue3" } af:StringOutputBinding outMsg) {
-    outMsg.value = req.toString();
-}
-
-@af:Function
-public function cosmosDBToQueue2(@af:CosmosDBTrigger { 
-        connectionStringSetting: "CosmosDBConnection", databaseName: "db1", 
-        collectionName: "c2" } json req,
-        @af:QueueOutput { queueName: "queue3" } af:StringOutputBinding outMsg) {
-    outMsg.value = req.toString();
-}
-
-// HTTP request to read CosmosDB records
-@af:Function
-public function httpTriggerCosmosDBInput1(
-            @af:HTTPTrigger af:HTTPRequest httpReq, 
-            @af:CosmosDBInput { connectionStringSetting: "CosmosDBConnection", 
-                databaseName: "db1", collectionName: "c1", 
-                id: "{Query.id}", partitionKey: "{Query.country}" } json dbReq)
-                returns @af:HTTPOutput string|error {
-    return dbReq.toString();
-}
-
-@af:Function
-public function httpTriggerCosmosDBInput2(
-            @af:HTTPTrigger af:HTTPRequest httpReq, 
-            @af:CosmosDBInput { connectionStringSetting: "CosmosDBConnection", 
-                databaseName: "db1", collectionName: "c1", 
-                id: "{Query.id}", partitionKey: "{Query.country}" }
-                      Person? dbReq)
-                returns @af:HTTPOutput string|error {
-    return dbReq.toString();
-}
-
-@af:Function
-public function httpTriggerCosmosDBInput3(
-        @af:HTTPTrigger { route: "c1/{country}" } af:HTTPRequest httpReq, 
-        @af:CosmosDBInput { connectionStringSetting: "CosmosDBConnection", 
-        databaseName: "db1", collectionName: "c1", 
-        sqlQuery: "select * from c1 where c1.country = {country}" } 
-        Person[] dbReq)
-        returns @af:HTTPOutput string|error {
-    return dbReq.toString();
-}
-
-// HTTP request to write records to CosmosDB
-@af:Function
-public function httpTriggerCosmosDBOutput1(
-    @af:HTTPTrigger af:HTTPRequest httpReq, @af:HTTPOutput af:HTTPBinding hb) 
-    returns @af:CosmosDBOutput { connectionStringSetting: "CosmosDBConnection", 
-                                 databaseName: "db1", collectionName: "c1" }
-                                 json {
-    json entry = { id: uuid:createType1AsString(), name: "Saman",
-                    country: "Sri Lanka" };
-    hb.payload = "Adding entry: " + entry.toString();
-    return entry;
-}
-
-@af:Function
-public function httpTriggerCosmosDBOutput2(
-        @af:HTTPTrigger af:HTTPRequest httpReq, 
-        @af:HTTPOutput af:HTTPBinding hb) 
-        returns @af:CosmosDBOutput { 
-            connectionStringSetting: "CosmosDBConnection", 
-            databaseName: "db1", collectionName: "c1" } json {
-    json entry = [{ id: uuid:createType1AsString(),
-                    name: "John Doe A", country: "USA" },
-                  { id: uuid:createType1AsString(),
-                    name: "John Doe B", country: "USA" }];
-    hb.payload = "Adding entries: " + entry.toString();
-    return entry;
-}
-
-@af:Function
-public function httpTriggerCosmosDBOutput3(
-                    @af:HTTPTrigger af:HTTPRequest httpReq) 
-                    returns @af:CosmosDBOutput { 
-                        connectionStringSetting: "CosmosDBConnection", 
-                        databaseName: "db1", collectionName: "c1" } Person[] {
-    Person[] persons = [];
-    persons.push({id: uuid:createType1AsString(), name: "Jack", country: "UK"});
-    persons.push({id: uuid:createType1AsString(), name: "Will", country: "UK"});
-    return persons;
-}
-
-// A timer function which is executed every 10 seconds.
-@af:Function
-public function queuePopulationTimer(
-            @af:TimerTrigger { schedule: "*/10 * * * * *" } json triggerInfo, 
-            @af:QueueOutput { queueName: "queue4" }
-             af:StringOutputBinding msg) {msg.value = triggerInfo.toString();
+public function queuePopulationTimer(@af:TimerTrigger { schedule: "*/10 * * * * *" } json triggerInfo,
+            @af:QueueOutput { queueName: "queue4" } af:StringOutputBinding msg) {
+                 msg.value = triggerInfo.toString();
 }
 `,
 ];
@@ -211,6 +48,12 @@ export default function AzureFunctionsDeployment() {
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
+  const [outputClick3, updateOutputClick3] = useState(false);
+  const ref3 = createRef();
+  const [outputClick4, updateOutputClick4] = useState(false);
+  const ref4 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -229,20 +72,17 @@ export default function AzureFunctionsDeployment() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Azure Functions</h1>
 
-      <p>Azure Functions is an event driven, serverless computing platform.</p>
-
       <p>
+        Azure Functions is an event-driven, serverless computing platform.
         Ballerina functions can be deployed in Azure Functions by annotating a
-        Ballerina function with Azure functions annotation&quot;. You can view
-        the code examples below.
+        Ballerina function with the Azure functions annotation.
       </p>
 
       <p>
-        For more information, see the{" "}
-        <a href="https://ballerina.io/learn/deployment/azure-functions/">
-          Azure Deployment Guide
-        </a>
-        .
+        The <code>Trigger</code>, <code>Input</code>, and <code>Output</code>{" "}
+        bindings parameter annotations were introduced as per the Azure
+        functions programming model. For more information, see{" "}
+        <a href="/learn/deployment/azure-functions/">Azure deployment</a>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -322,6 +162,11 @@ export default function AzureFunctionsDeployment() {
         </Col>
       </Row>
 
+      <p>
+        Create a Ballerina package and replace the content of the generated BAL
+        file with the content above.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -373,95 +218,255 @@ export default function AzureFunctionsDeployment() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Prerequisites: Azure CLI tools installation and configuration. Visit [Azure Deployment Guide](https://ballerina.io/learn/deployment/azure-functions/) for detailed steps.`}</span>
-              <span>{``}</span>
-              <span>{`# Create a ballerina package and replace the contents of the generated bal file with the contents above.`}</span>
-              <span>{`bal new azure_functions_deployment`}</span>
-              <span>{``}</span>
-              <span>{`# Build the Ballerina program to generate the Azure Functions`}</span>
-              <span>{`bal build`}</span>
-              <span>{`Compiling source`}</span>
-              <span>{`	wso2/azure_functions_deployment:0.1.0`}</span>
-              <span>{``}</span>
-              <span>{`Generating executables`}</span>
-              <span>{`	@azure_functions:Function: hello, fromHttpToQueue, fromQueueToQueue, fromBlobToQueue, httpTriggerBlobInput, httpTriggerBlobOutput, sendSMS, cosmosDBToQueue1, cosmosDBToQueue2, httpTriggerCosmosDBInput1, httpTriggerCosmosDBInput2, httpTriggerCosmosDBInput3, httpTriggerCosmosDBOutput1, httpTriggerCosmosDBOutput2, httpTriggerCosmosDBOutput3, queuePopulationTimer`}</span>
-              <span>{``}</span>
-              <span>{`	Run the following command to deploy Ballerina Azure Functions:`}</span>
-              <span>{`	az functionapp deployment source config-zip -g <resource_group> -n <function_app_name> --src <project_dir>/target/bin/azure-functions.zip`}</span>
-              <span>{`	`}</span>
-              <span>{`    target/bin/azure_functions_deployment.jar`}</span>
-              <span>{`# Execute the Azure CLI command given by the compiler to publish the functions (replace with your respective Azure <resource_group> and <function_app_name>)`}</span>
-              <span>{`az functionapp deployment source config-zip -g functions1777 -n functions1777 --src  <project_dir>/target/bin/azure-functions.zip`}</span>
-              <span>{`Getting scm site credentials for zip deployment`}</span>
-              <span>{`Starting zip deployment. This operation can take a while to complete ...`}</span>
-              <span>{`Deployment endpoint responded with status code 202`}</span>
-              <span>{`{`}</span>
-              <span>{`  "active": true,`}</span>
-              <span>{`  "author": "N/A",`}</span>
-              <span>{`  "author_email": "N/A",`}</span>
-              <span>{`  "complete": true,`}</span>
-              <span>{`  "deployer": "ZipDeploy",`}</span>
-              <span>{`  "end_time": "2020-07-02T06:48:08.7706207Z",`}</span>
-              <span>{`  "id": "2bacf185fb114d42aab762dfd5f303dc",`}</span>
-              <span>{`  "is_readonly": true,`}</span>
-              <span>{`  "is_temp": false,`}</span>
-              <span>{`  "last_success_end_time": "2020-07-02T06:48:08.7706207Z",`}</span>
-              <span>{`  "log_url": "https://functions1777.scm.azurewebsites.net/api/deployments/latest/log",`}</span>
-              <span>{`  "message": "Created via a push deployment",`}</span>
-              <span>{`  "progress": "",`}</span>
-              <span>{`  "provisioningState": null,`}</span>
-              <span>{`  "received_time": "2020-07-02T06:47:56.2756472Z",`}</span>
-              <span>{`  "site_name": "functions1777",`}</span>
-              <span>{`  "start_time": "2020-07-02T06:47:56.7600364Z",`}</span>
-              <span>{`  "status": 4,`}</span>
-              <span>{`  "status_text": "",`}</span>
-              <span>{`  "url": "https://functions1777.scm.azurewebsites.net/api/deployments/latest"`}</span>
-              <span>{`}`}</span>
-              <span>{``}</span>
-              <span>{`# Invoke the functions (replace with your <auth_code> value in authenticated requests)`}</span>
-              <span>{`curl -d "Jack" https://functions1777.azurewebsites.net/api/hello`}</span>
-              <span>{`Hello, Jack!`}</span>
-              <span>{``}</span>
-              <span>{`curl -d "ABCDE" https://functions1777.azurewebsites.net/api/fromHttpToQueue?code=<auth_code>`}</span>
-              <span>{`Request: url=https://functions1777.azurewebsites.net/api/fromHttpToQueue... body=ABCDE`}</span>
-              <span>{``}</span>
-              <span>{`curl "https://functions1777.azurewebsites.net/api/httpTriggerBlobInput?name=input.txt&code=<auth_code>"`}</span>
-              <span>{`Blob: input.txt Length: 6 Content: 65 66 67 68 69 10`}</span>
-              <span>{``}</span>
-              <span>{`curl -d "123456" "https://functions1777.azurewebsites.net/api/httpTriggerBlobOutput?name=payload.txt&code=<auth_code>"`}</span>
-              <span>{`Blob: payload.txt Content: 123456`}</span>
-              <span>{``}</span>
-              <span>{`curl -d "123456" "https://functions1777.azurewebsites.net/api/httpTriggerBlobOutput2?name=payload.txt&code=<auth_code>"`}</span>
-              <span>{`Blob: payload.txt Content: 65 66 67 97 98`}</span>
-              <span>{``}</span>
-              <span>{`curl -d "Hello!" "https://functions1777.azurewebsites.net/api/sendSMS?to=xxxxxxxxxx&code=<auth_code>"`}</span>
-              <span>{`Message - to: xxxxxxxxxx body: Hello!`}</span>
-              <span>{``}</span>
-              <span>{`curl "https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBInput1?id=id1&code=<auth_code>"`}</span>
-              <span>{`id=id1 _rid=zEkwANYTRPoFAAAAAAAAAA== _self=dbs/zEkwAA==/colls/zEkwANYTRPo=/docs/zEkwANYTRPoFAAAAAAAAAA==/ _ts=1591201470 _etag="10009f6c-0000-0100-0000-5ed7cebe0000" name=Tom birthYear=1950 country=Sri Lanka pk=p1`}</span>
-              <span>{``}</span>
-              <span>{`curl "https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBInput2?id=id1&code=<auth_code>"`}</span>
-              <span>{`id=id1 name=Tom birthYear=1950 _rid=zEkwANYTRPoFAAAAAAAAAA== _self=dbs/zEkwAA==/colls/zEkwANYTRPo=/docs/zEkwANYTRPoFAAAAAAAAAA==/ _ts=1591201470 _etag="10009f6c-0000-0100-0000-5ed7cebe0000" country=Sri Lanka pk=p1`}</span>
-              <span>{``}</span>
-              <span>{`curl "https://functions1777.azurewebsites.net/api/c1/Sri%20Lanka?code=<auth_code>"`}</span>
-              <span>{`id=id3 name=Jack X birthYear=1950 country=Sri Lanka pk=p1 _rid=zEkwANYTRPoEAAAAAAAAAA== _self=dbs/zEkwAA==/colls/zEkwANYTRPo=/docs/zEkwANYTRPoEAAAAAAAAAA==/ _etag="1000076b-0000-0100-0000-5ed7cc110000" _attachments=attachments/ _ts=1591200785 id=id4 name=Tom birthYear=1950 country=Sri Lanka pk=p1 _rid=zEkwANYTRPoFAAAAAAAAAA== _self=dbs/zEkwAA==/colls/zEkwANYTRPo=/docs/zEkwANYTRPoFAAAAAAAAAA==/ _etag="10009f6c-0000-0100-0000-5ed7cebe0000" _attachments=attachments/ _ts=1591201470`}</span>
-              <span>{``}</span>
-              <span>{`curl https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBOutput1?code=<auth_code>`}</span>
-              <span>{`Adding entry: id=abf42517-53d7-4fa3-a30c-87cb65e9597d name=John Doe birthYear=1980`}</span>
-              <span>{``}</span>
-              <span>{`curl https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBOutput2?code=<auth_code>`}</span>
-              <span>{`Adding entries: id=f510e0d2-5341-4901-8c12-9aac1b212378 name=John Doe A birthYear=1985 id=cc145a0f-cb4f-4a5f-8d0f-fbf01209aa2d name=John Doe B birthYear=1990`}</span>
-              <span>{``}</span>
-              <span>{`curl https://functions1777.azurewebsites.net/api/httpTriggerCosmosDBOutput3?code=<auth_code>`}</span>
-              <span>{`[{"id":"4ba53cb4-47a1-4028-af7b-2515f0a9c6bf","name":"Jack","birthYear":2001},{"id":"5b8a6697-c9e9-488d-91b3-3942574efeef","name":"Will","birthYear":2005}]`}</span>
+              <span>{`\$ bal new azure_functions_deployment`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <p>
+        Build the Ballerina program to generate the Azure Functions artifacts.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#00FF19"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`\$ bal build`}</span>
+              <span>{`Compiling source`}</span>
+              <span>{`        wso2/azure_functions_deployment:0.1.0`}</span>
+              <span>{``}</span>
+              <span>{`Generating executable`}</span>
+              <span>{`        @azure_functions:Function: hello, httpTriggerBlobInput, queuePopulationTimer`}</span>
+              <span>{``}</span>
+              <span>{`        Execute the below command to deploy Ballerina Azure Functions:`}</span>
+              <span>{`        az functionapp deployment source config-zip -g <resource_group> -n <function_app_name> --src <project-dir>/azure_functions_deployment/target/bin/azure-functions.zip`}</span>
+              <span>{``}</span>
+              <span>{``}</span>
+              <span>{`        target/bin/azure_functions_deployment.jar`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        Execute the Azure CLI command given by the compiler to publish the
+        functions (replace with your respective Azure{" "}
+        <code>&lt;resource_group&gt;</code> and{" "}
+        <code>&lt;function_app_name&gt;</code>).
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick3 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#00FF19"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick3(true);
+                const extractedText = extractOutput(ref3.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick3(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref3}>
+            <code className="d-flex flex-column">
+              <span>{`\$ az functionapp deployment source config-zip -g functions1777 -n functions1777 --src  <project_dir>/target/bin/azure-functions.zip`}</span>
+              <span>{`Getting the SCM site credentials for the ZIP file deployment.`}</span>
+              <span>{`Starting the ZIP deployment. This operation can take a while to complete ...`}</span>
+              <span>{`The deployment endpoint responded with the status code 202.`}</span>
+              <span>{`{`}</span>
+              <span>{`"active": true,`}</span>
+              <span>{`"author": "N/A",`}</span>
+              <span>{`"author_email": "N/A",`}</span>
+              <span>{`"complete": true,`}</span>
+              <span>{`"deployer": "ZipDeploy",`}</span>
+              <span>{`"end_time": "2020-07-02T06:48:08.7706207Z",`}</span>
+              <span>{`"id": "2bacf185fb114d42aab762dfd5f303dc",`}</span>
+              <span>{`"is_readonly": true,`}</span>
+              <span>{`"is_temp": false,`}</span>
+              <span>{`"last_success_end_time": "2020-07-02T06:48:08.7706207Z",`}</span>
+              <span>{`"log_url": "https://functions1777.scm.azurewebsites.net/api/deployments/latest/log",`}</span>
+              <span>{`"message": "Created via a push deployment",`}</span>
+              <span>{`"progress": "",`}</span>
+              <span>{`"provisioningState": null,`}</span>
+              <span>{`"received_time": "2020-07-02T06:47:56.2756472Z",`}</span>
+              <span>{`"site_name": "functions1777",`}</span>
+              <span>{`"start_time": "2020-07-02T06:47:56.7600364Z",`}</span>
+              <span>{`"status": 4,`}</span>
+              <span>{`"status_text": "",`}</span>
+              <span>{`"url": "https://functions1777.scm.azurewebsites.net/api/deployments/latest"`}</span>
+              <span>{`}`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        Invoke the <code>HTTP Trigger</code> functions.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick4 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#00FF19"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick4(true);
+                const extractedText = extractOutput(ref4.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick4(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref4}>
+            <code className="d-flex flex-column">
+              <span>{`\$ curl -d "Jack" https://functions1777.azurewebsites.net/api/hello`}</span>
+              <span>{`Hello, Jack!`}</span>
+              <span>{``}</span>
+              <span>{`\$ curl "https://functions1777.azurewebsites.net/api/httpTriggerBlobInput?name=input.txt"`}</span>
+              <span>{`Blob: input.txt Length: 6 Content: 65 66 67 68 69 10`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        The <code>queuePopulationTimer</code> function is being triggered by the
+        Azure Function App from a timer. You can check the
+      </p>
+
+      <p>
+        queue storage to see the output. For more information on the
+        infrastructure, see{" "}
+        <a href="/learn/deployment/azure-functions/">
+          Azure Functions deployment
+        </a>
+        .
+      </p>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Kubernetes" href="/learn/by-example/c2c-deployment">
+          <Link title="Kubernetes" href="/learn/by-example/c2c-k8s-deployment">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

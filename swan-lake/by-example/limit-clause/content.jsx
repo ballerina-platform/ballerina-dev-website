@@ -32,8 +32,6 @@ public function main() {
                       order by e.salary descending
                       // The \`limit\` clause limits the number of output items to 3.
                       limit 3
-
-
                       select e;
 
     foreach var emp in top3 {
@@ -77,7 +75,7 @@ export default function LimitClause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6f4c5a8e92cd728a812db05ff2b7cd34&file=limit_clause.bal",
+                "https://play.ballerina.io/?gist=912d506688b1a05b75ead69463526962&file=limit_clause.bal",
                 "_blank"
               );
             }}
@@ -222,7 +220,7 @@ export default function LimitClause() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run limit_clause.bal`}</span>
+              <span>{`\$ bal run limit_clause.bal`}</span>
               <span>{`{"firstName":"Michael","lastName":"Cain","salary":10000.00}`}</span>
               <span>{`{"firstName":"Anne","lastName":"Frank","salary":5000.00}`}</span>
               <span>{`{"firstName":"Tom","lastName":"Hiddleston","salary":2000.00}`}</span>

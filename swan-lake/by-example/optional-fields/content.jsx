@@ -70,12 +70,9 @@ export default function OptionalFields() {
       <p>
         Such fields can be accessed via optional field access (e.g.,{" "}
         <code>p?.name</code>) or member access (e.g.,{" "}
-        <code>p[&quot;name&quot;]</code>),
-      </p>
-
-      <p>
-        which will both return <code>()</code> if the field is not present in
-        the <code>record</code> value.
+        <code>p[&quot;name&quot;]</code>), which will both return{" "}
+        <code>()</code> if the field is not present in the <code>record</code>{" "}
+        value.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -84,7 +81,7 @@ export default function OptionalFields() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=364002009908b49ff6b869480ffd7fed&file=optional_fields.bal",
+                "https://play.ballerina.io/?gist=41a2e509984090d945bf7bb742a56390&file=optional_fields.bal",
                 "_blank"
               );
             }}

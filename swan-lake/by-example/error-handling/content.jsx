@@ -19,10 +19,8 @@ function intFromBytes(byte[] bytes) returns int|error {
 
     string|error ret = string:fromBytes(bytes);
 
-    // The \`is\` operator can be used to distinguish errors
-    // from other values.
+    // The \`is\` operator can be used to distinguish errors from other values.
     if ret is error {
-
         return ret;
     } else {
         return int:fromString(ret);
@@ -32,12 +30,12 @@ function intFromBytes(byte[] bytes) returns int|error {
 // The \`main\` function can return an \`error\` value.
 public function main() returns error? {
 
-    int|error res = intFromBytes([104, 101, 108, 108, 111]);    
+    int|error res = intFromBytes([104, 101, 108, 108, 111]);
+    
     if res is error {
         // The \`check\` expression is the shorthand for this pattern of
-        // checking if a value is an \`error\` value and returning that value.
+        // checking if a value is an \`error\` value and it is returning that value.
         return res;
-
     } else {
         io:println("result: ", res);
         return;
@@ -70,12 +68,8 @@ export default function ErrorHandling() {
       <h1>Error handling</h1>
 
       <p>
-        Usually, a function handles errors by passing them up to its caller.
-      </p>
-
-      <p>
-        The <code>main</code> function can also return an <code>error</code>{" "}
-        value.
+        Usually, a function handles errors by passing them up to its caller. The{" "}
+        <code>main</code> function can also return an <code>error</code> value.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -84,7 +78,7 @@ export default function ErrorHandling() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c53f26fab13c6e27d511604d0b992da7&file=error_handling.bal",
+                "https://play.ballerina.io/?gist=ee82213cf5248c80a5fb3816b9bca515&file=error_handling.bal",
                 "_blank"
               );
             }}

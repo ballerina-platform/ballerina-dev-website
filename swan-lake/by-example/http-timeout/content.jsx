@@ -26,13 +26,13 @@ service / on new http:Listener(9090) {
     resource function get timeout() returns string|http:InternalServerError {
         string|error response = backendClientEP->get("/hello");
 
-        // If \`response\` is a \`string\` (text/plain), it is sent back to the
-        // client. If \`response\` is an \`http:ClientError\`, an internal
+        // If the \`response\` is a \`string\` (text/plain), it is sent back to the
+        // client. Also, if the \`response\` is an \`http:ClientError\`, an internal
         // server error is returned to the client.
-        if (response is string) {
+        if response is string {
             return response;
         } else {
-            if (response is http:IdleTimeoutError) {
+            if response is http:IdleTimeoutError {
                 return { body: 
                 "Request timed out. Please try again in sometime."};
             } else {
@@ -81,15 +81,13 @@ export default function HttpTimeout() {
       <h1>Timeout</h1>
 
       <p>
-        The Timeout is used to gracefully handle network timeouts, which occur
-        when using the HTTP Client.&lt;br/&gt;&lt;br/&gt;
+        The <code>Timeout</code> is used to gracefully handle network timeouts,
+        which occur when using the HTTP Client.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -172,6 +170,8 @@ export default function HttpTimeout() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -223,29 +223,16 @@ export default function HttpTimeout() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`// Invoke the service using "cURL".`}</span>
-              <span>{`curl -v http://localhost:9090/timeout`}</span>
-              <span>{`*   Trying 127.0.0.1:9090...`}</span>
-              <span>{`* TCP_NODELAY set`}</span>
-              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> GET /timeout HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.68.0`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`> `}</span>
-              <span>{`* Mark bundle as not supporting multiuse`}</span>
-              <span>{`< HTTP/1.1 500 Internal Server Error`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 48`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Mon, 21 Sep 2020 20:36:56 +0530`}</span>
-              <span>{`< `}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`Request timed out. Please try again in sometime.`}</span>
+              <span>{`\$ bal run http_timeout.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -298,7 +285,24 @@ export default function HttpTimeout() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_timeout.bal`}</span>
+              <span>{`\$ curl -v http://localhost:9090/timeout`}</span>
+              <span>{`*   Trying 127.0.0.1:9090...`}</span>
+              <span>{`* TCP_NODELAY set`}</span>
+              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
+              <span>{`> GET /timeout HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.68.0`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`> `}</span>
+              <span>{`* Mark bundle as not supporting multiuse`}</span>
+              <span>{`< HTTP/1.1 500 Internal Server Error`}</span>
+              <span>{`< content-type: text/plain`}</span>
+              <span>{`< content-length: 48`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Mon, 21 Sep 2020 20:36:56 +0530`}</span>
+              <span>{`< `}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`Request timed out. Please try again in sometime.`}</span>
             </code>
           </pre>
         </Col>

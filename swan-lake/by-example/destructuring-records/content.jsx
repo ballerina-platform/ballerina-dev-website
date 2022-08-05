@@ -26,19 +26,16 @@ public function main() {
         {first: "Tom", last: "Riddle", yearOfBirth: 1926}
     ];
 
-    // A \`Person\` record is destructured here, as a
-    // projection with \`first\` and \`last\` fields.
-    // \`{first: f, last: l}\` is the \`binding pattern\`.
+    // A \`Person\` record is destructured here as a projection with the \`first\` and \`last\` fields.
+    // \`{first: f, last: l}\` is the binding pattern.
     var names1 = from var {first: f, last: l} in persons
                 select {first: f, last: l};
-
 
     io:println(names1);
 
     // The same can be simplified as this.
     var names2 = from var {first, last} in persons
                 select {first, last};
-
 
     io:println(names2);
 }
@@ -70,16 +67,9 @@ export default function DestructuringRecords() {
 
       <p>
         Destructuring records is particularly useful with query expressions but
-        works anywhere you can have <code>var</code>.
-      </p>
-
-      <p>
-        <code>var</code> is followed by a <code>binding pattern</code>. The
-        semantics of <code>binding pattern</code> is open.{" "}
-        <code>&#123;x&#125;</code> is short for
-      </p>
-
-      <p>
+        works anywhere you can have <code>var</code>. <code>var</code> is
+        followed by a binding pattern. The semantics of the binding pattern is
+        open. <code>&#123;x&#125;</code> is short for{" "}
         <code>&#123;x: x&#125;</code> in both binding patterns and record
         constructors.
       </p>
@@ -90,7 +80,7 @@ export default function DestructuringRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7d4e460b4bcb2f6f2623e51ff1ae03d3&file=destructuring_records.bal",
+                "https://play.ballerina.io/?gist=747bc20ea5ea45385a96be29d88f8ee7&file=destructuring_records.bal",
                 "_blank"
               );
             }}
@@ -235,7 +225,7 @@ export default function DestructuringRecords() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run destructuring_records.bal`}</span>
+              <span>{`\$ bal run destructuring_records.bal`}</span>
               <span>{`[{"first":"Melina","last":"Kodel"},{"first":"Tom","last":"Riddle"}]`}</span>
               <span>{`[{"first":"Melina","last":"Kodel"},{"first":"Tom","last":"Riddle"}]`}</span>
             </code>

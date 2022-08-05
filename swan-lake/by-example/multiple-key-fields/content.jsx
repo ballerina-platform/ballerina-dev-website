@@ -30,7 +30,6 @@ public function main() {
     // The key sequence provides keyed access to members of the \`table\`.
     Employee? e = t["Fred", "Bloggs"];
 
-
     io:println(e);
 }
 `,
@@ -60,16 +59,11 @@ export default function MultipleKeyFields() {
       <h1>Multiple key fields</h1>
 
       <p>
-        A <code>table</code> provides access to its members using a key that
-        comes from the <code>read-only</code> fields of the member.
+        A table provides access to its members using a key that comes from the{" "}
+        <code>readonly</code> fields of the member. It is a key sequence, which
+        is used to provide keyed access to its members. The key sequence is an
+        ordered sequence of field names.
       </p>
-
-      <p>
-        It is a key sequence, which is used to provide keyed access to its
-        members. The key sequence is an ordered
-      </p>
-
-      <p>sequence of field names.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -77,7 +71,7 @@ export default function MultipleKeyFields() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ae2c78ed5a1d7f48f1a91e5909c6ddbd&file=multiple_key_fields.bal",
+                "https://play.ballerina.io/?gist=4c94929a20be524c286825096749afa2&file=multiple_key_fields.bal",
                 "_blank"
               );
             }}
@@ -222,7 +216,7 @@ export default function MultipleKeyFields() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run multiple_key_fields.bal`}</span>
+              <span>{`\$ bal run multiple_key_fields.bal`}</span>
               <span>{`{"firstName":"Fred","lastName":"Bloggs","salary":200}`}</span>
             </code>
           </pre>

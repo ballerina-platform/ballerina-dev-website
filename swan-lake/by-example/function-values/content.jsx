@@ -30,18 +30,15 @@ function isEven(int n) returns boolean {
 public function main() {
     // The \`isEven\` function  referred as a value.
     IntFilter f = isEven;
-
     int[] nums = [1, 2, 3];
 
     // Arrays provide the usual functional methods: 
     // \`filter\`, \`map\`, \`forEach\`, and \`reduce\`.
     int[] evenNums = nums.filter(f);
-
     io:println(evenNums);
 
     // Shorthand syntax when the type is inferred and the body is an expression.
     int[] oddNums = nums.filter(n => n % 2 != 0);
-
     io:println(oddNums);
 }
 `,
@@ -70,13 +67,10 @@ export default function FunctionValues() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Function values</h1>
 
-      <p>Functions are values and work as closures.</p>
-
-      <p>Function type is a separate basic type.</p>
-
       <p>
-        Anonymous function and type syntax look like function definition without
-        the name.
+        Functions are values, which work as closures. The function type is a
+        separate basic type. Anonymous functions and the type syntax look like a
+        function definition without the name.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -85,7 +79,7 @@ export default function FunctionValues() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=87763b7d326b6a752b7ae0dc29a6f025&file=function_values.bal",
+                "https://play.ballerina.io/?gist=f11ff2cb61efc301d729d4dfa02f5a8d&file=function_values.bal",
                 "_blank"
               );
             }}
@@ -230,7 +224,7 @@ export default function FunctionValues() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run function_values.bal`}</span>
+              <span>{`\$ bal run function_values.bal`}</span>
               <span>{`[2]`}</span>
               <span>{`[1,3]`}</span>
             </code>

@@ -15,7 +15,8 @@ const codeSnippetData = [
   `import ballerina/log;
 
 public function main() {
-    // The Ballerina log API provides functions to log at four levels, which are \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
+    // The Ballerina log API provides functions to log at four levels, which are
+    // \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
     log:printDebug("debug log");
     log:printError("error log");
     log:printInfo("info log");
@@ -57,13 +58,18 @@ export default function Logging() {
       <h1>Logging</h1>
 
       <p>
-        The <code>log</code> library contains the application log handling
-        functions.
+        The Ballerina Log API contains the application log handling
+        functions.&lt;br/&gt;&lt;br/&gt;
       </p>
 
+      <p>For more information on the underlying module,</p>
+
       <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/log/latest/">Log module</a>.
+        see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/log/latest/">
+          Log module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -72,7 +78,7 @@ export default function Logging() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e7b5b0df9c847d26dab29c27c0bd2342&file=logging.bal",
+                "https://play.ballerina.io/?gist=8d446d155d7e52debcee5640af70483b&file=logging.bal",
                 "_blank"
               );
             }}
@@ -166,10 +172,6 @@ export default function Logging() {
         </Col>
       </Row>
 
-      <p>
-        To run this sample use the <code>bal run</code> command.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -221,7 +223,7 @@ export default function Logging() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run logging.bal`}</span>
+              <span>{`\$ bal run logging.bal`}</span>
               <span>{`time = 2021-05-25T11:29:58.290+05:30 level = DEBUG module = "" message = "debug log"`}</span>
               <span>{`time = 2021-05-25T11:29:58.305+05:30 level = ERROR module = "" message = "error log"`}</span>
               <span>{`time = 2021-05-25T11:29:58.306+05:30 level = INFO module = "" message = "info log"`}</span>

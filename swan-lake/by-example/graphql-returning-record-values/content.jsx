@@ -16,9 +16,9 @@ const codeSnippetData = [
 
 service /graphql on new graphql:Listener(4000) {
 
-    // Ballerina GraphQL resolvers can return \`record\` values. The record will be mapped to an \`OBJECT\` type.
+    // Ballerina GraphQL resolvers can return \`record\` values. The record will be mapped to an
+    // \`OBJECT\` type.
     resource function get profile() returns Person {
-
         return {
             name: "Walter White",
             age: 51,
@@ -37,6 +37,7 @@ public type Person record {
     int age;
     Address address;
 };
+
 public type Address record {
     string number;
     string street;
@@ -70,30 +71,25 @@ export default function GraphqlReturningRecordValues() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Returning record values</h1>
 
-      <p>In Ballerina GraphQL, a service represents the GraphQL endpoint.</p>
-
       <p>
-        Each resource function inside the service represents a resolver function
-        for a field in the root Query type.&lt;br/&gt;&lt;br/&gt;
+        In Ballerina GraphQL, a service represents the GraphQL endpoint. Each
+        resource function inside the service represents a resolver function for
+        a field in the root Query type.
       </p>
 
-      <p>For more information on the underlying package, see the</p>
-
       <p>
+        For more information on the underlying package, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+          <code>graphql</code> package
         </a>
-        .&lt;br/&gt;&lt;br/&gt;
+        .
       </p>
 
       <p>
         This example shows a GraphQL endpoint, which has a field{" "}
-        <code>profile</code> of type <code>Person</code>.
-      </p>
-
-      <p>
-        A GraphQL client can query on this service to retrieve specific fields
-        or subfields of the <code>Person</code> object.
+        <code>profile</code> of type <code>Person</code>. A GraphQL client can
+        query on this service to retrieve specific fields or subfields of the{" "}
+        <code>Person</code> object.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -173,6 +169,8 @@ export default function GraphqlReturningRecordValues() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -224,14 +222,13 @@ export default function GraphqlReturningRecordValues() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
-              <span>{`# The query used: { profile { name, address { city } } }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address { city } } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"profile":{"name":"Walter White", "address":{"city":"Albuquerque"}}}}`}</span>
+              <span>{`\$ bal run graphql_returning_record_values.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -284,7 +281,10 @@ export default function GraphqlReturningRecordValues() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run graphql_returning_record_values.bal`}</span>
+              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
+              <span>{`# The query used: { profile { name, address { city } } }`}</span>
+              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address { city } } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`{"data":{"profile":{"name":"Walter White", "address":{"city":"Albuquerque"}}}}`}</span>
             </code>
           </pre>
         </Col>

@@ -65,11 +65,9 @@ export default function WhileStatement() {
 
       <p>
         The <code>while</code> statement is a more flexible iteration than{" "}
-        <code>foreach</code>. <code>break</code> and <code>continue</code>{" "}
-        statements
+        <code>foreach</code>. The <code>break</code> and <code>continue</code>{" "}
+        statements can be used within the loops to alter control flow.
       </p>
-
-      <p>can be used within the loops to alter control flow.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>

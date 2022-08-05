@@ -14,12 +14,12 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// The HTTP client's chunking behavior can be configured as [CHUNKING_AUTO](https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO),
-// [CHUNKING_ALWAYS](https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_ALWAYS),
-// or [CHUNKING_NEVER](https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_NEVER).
+// The HTTP client's chunking behavior can be configured as [CHUNKING_AUTO](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO),
+// [CHUNKING_ALWAYS](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_ALWAYS),
+// or [CHUNKING_NEVER](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_NEVER).
 // In this example, it is set to \`CHUNKING_NEVER\`, which means that chunking never happens irrespective of the request size. 
 // When chunking is set to \`CHUNKING_AUTO\`, chunking is done based on the request.
-// [http1Settings](https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings) annotation
+// [http1Settings](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings) annotation
 // provides the chunking-related configurations.
 final http:Client clientEndpoint = check new ("http://localhost:9090",
                         {http1Settings: {chunking: http:CHUNKING_NEVER}});
@@ -27,16 +27,14 @@ final http:Client clientEndpoint = check new ("http://localhost:9090",
 service / on new http:Listener(9092) {
     resource function get chunkingSample() returns json|error {
         //Invoke endpoint along with a JSON payload.
-        json clientResponse =
-            check clientEndpoint->post("/echo", {"name": "Ballerina"});
+        json clientResponse = check clientEndpoint->post("/echo", {"name": "Ballerina"});
         return clientResponse;
     }
 }
 
 // A sample backend, which responds according to the chunking behavior.
 service / on new http:Listener(9090) {
-    resource function post echo(@http:Header{name:"Content-length"} string cLen)
-             returns json {
+    resource function post echo(@http:Header{name:"Content-length"} string cLen) returns json {
         //Set the response with the content length.
         string value = "Length-" + cLen;
         return {"Outbound request content": value};
@@ -86,7 +84,7 @@ export default function HttpDisableChunking() {
 
       <p>
         see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -169,6 +167,8 @@ export default function HttpDisableChunking() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -220,13 +220,16 @@ export default function HttpDisableChunking() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`To use the client, execute the cURL command below. `}</span>
-              <span>{`curl http://localhost:9092/chunkingSample`}</span>
-              <span>{`{"Outbound request content":"Length-20"}`}</span>
+              <span>{`\$ bal run http_disable_chunking.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -279,7 +282,8 @@ export default function HttpDisableChunking() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_disable_chunking.bal`}</span>
+              <span>{`\$ curl http://localhost:9092/chunkingSample`}</span>
+              <span>{`{"Outbound request content":"Length-20"}`}</span>
             </code>
           </pre>
         </Col>

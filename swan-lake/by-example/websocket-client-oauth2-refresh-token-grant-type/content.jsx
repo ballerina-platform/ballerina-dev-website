@@ -16,9 +16,8 @@ const codeSnippetData = [
 import ballerina/websocket;
 
 // Defines the WebSocket client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the [\`websocket:OAuth2RefreshTokenGrantConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2RefreshTokenGrantConfig) for the \`auth\` configuration of the
-// client.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by passing the
+// [\`websocket:OAuth2RefreshTokenGrantConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/OAuth2RefreshTokenGrantConfig) for the \`auth\` configuration of the client.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
         refreshUrl: "https://localhost:9445/oauth2/token",
@@ -73,25 +72,21 @@ export default function WebsocketClientOauth2RefreshTokenGrantType() {
         be
       </p>
 
-      <p>used to connect to a secured service.&lt;br/&gt;</p>
+      <p>used to connect to a secured service.</p>
 
       <p>
         The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the
       </p>
 
       <p>
-        passing the <code>websocket:OAuth2RefreshTokenGrantConfig</code> to the{" "}
-        <code>auth</code>
+        <code>websocket:OAuth2RefreshTokenGrantConfig</code> to the{" "}
+        <code>auth</code> of the client.
       </p>
 
-      <p>configuration of the client.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
           OAuth2 module
         </a>
         .
@@ -227,7 +222,7 @@ export default function WebsocketClientOauth2RefreshTokenGrantType() {
             <code className="d-flex flex-column">
               <span>{`# As a prerequisite, start a sample service secured with OAuth2.`}</span>
               <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>{`bal run websocket_client_oauth2_refresh_token_grant_type.bal`}</span>
+              <span>{`\$ bal run websocket_client_oauth2_refresh_token_grant_type.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

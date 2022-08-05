@@ -14,8 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-//\`var\` says that the type of the variable is from the type of expression
-// used to initialize it.
+//\`var\` says that the type of the variable is from the type of expression, which is used to initialize it.
 var x = "str";
 
 function printLines(string[] sv) {
@@ -70,9 +69,10 @@ export default function TypeInference() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Type inference</h1>
 
-      <p>Type inference is local and restricted to a single expression.</p>
-
-      <p>Overuse of type inference can make the code harder to understand.</p>
+      <p>
+        Type inference is local and restricted to a single expression. Overuse
+        of the type inference can make the code harder to understand.
+      </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -80,7 +80,7 @@ export default function TypeInference() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=71e69668fde5ff04260f9f2e4547ddfa&file=type_inference.bal",
+                "https://play.ballerina.io/?gist=5cf5455ba0dd24739964fad6ad198374&file=type_inference.bal",
                 "_blank"
               );
             }}
@@ -225,7 +225,7 @@ export default function TypeInference() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run type_inference.bal`}</span>
+              <span>{`\$ bal run type_inference.bal`}</span>
               <span>{`str`}</span>
               <span>{`str`}</span>
             </code>

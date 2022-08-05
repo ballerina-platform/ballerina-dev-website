@@ -17,8 +17,7 @@ const codeSnippetData = [
 const KEY = "xyzzy";
 
 function matchTest(any v) returns string {
-    // The value of the \`v\` variable is matched against the
-    // given value match patterns.
+    // The value of the \`v\` variable is matched against the given value match patterns.
     match v {
         17 => {
             return "number";
@@ -39,7 +38,6 @@ function matchTest(any v) returns string {
             return "any";
         }
     }
-
 }
 
 public function main() {
@@ -74,26 +72,15 @@ export default function MatchStatement() {
       <h1>Match statement</h1>
 
       <p>
-        <code>match</code> statement is similar to <code>switch</code> statement
-        in <code>C</code> and <code>JavaScript</code>. It matches the value, not
-        the type.
-      </p>
-
-      <p>
-        <code>==</code> is used to test whether left hand side matches the value
-        being matched. Left hand side can be a
-      </p>
-
-      <p>
-        simple literal (<code>nil</code>, <code>boolean</code>, <code>int</code>
-        , <code>float</code>, <code>string</code>) identifier referring to a
-        constant.
-      </p>
-
-      <p>
-        Left hand side of <code>_</code> matches if the value is of type{" "}
-        <code>any</code>. You can use <code>|</code> to match more than one
-        value.
+        The <code>match</code> statement is similar to the <code>switch</code>{" "}
+        statement in <code>C</code> and <code>JavaScript</code>. It matches the
+        value (not the type). <code>==</code> is used to test whether the
+        left-hand side matches the value being matched. The left-hand side can
+        be a simple literal (<code>nil</code>, <code>boolean</code>,{" "}
+        <code>int</code>, <code>float</code>, <code>string</code>) identifier
+        referring to a constant. The left-hand side of <code>_</code> matches if
+        the value is of type <code>any</code>. You can use <code>|</code> to
+        match more than one value.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -102,7 +89,7 @@ export default function MatchStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d43c77e5723d56f965ecf1f56437ed5f&file=match_statement.bal",
+                "https://play.ballerina.io/?gist=437390632c4816616158240df34445c9&file=match_statement.bal",
                 "_blank"
               );
             }}
@@ -247,7 +234,7 @@ export default function MatchStatement() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run match_statement.bal`}</span>
+              <span>{`\$ bal run match_statement.bal`}</span>
               <span>{`string`}</span>
               <span>{`number`}</span>
               <span>{`any`}</span>

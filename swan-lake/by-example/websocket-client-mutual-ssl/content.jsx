@@ -18,7 +18,7 @@ import ballerina/websocket;
 
 // A WebSocket client can be configured to initiate new connections that are
 // secured via mutual SSL.
-// The [\`websocket:ClientSecureSocket\`](https://lib.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket) record provides the SSL-related configurations.
+// The [\`websocket:ClientSecureSocket\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket) record provides the SSL-related configurations.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     secureSocket = {
         key: {
@@ -67,26 +67,19 @@ export default function WebsocketClientMutualSsl() {
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
-        authentication
+        authentication process in which two
       </p>
 
       <p>
-        process in which two parties (the client and server) authenticate each
-        other by
+        parties (the client and server) authenticate each other by verifying the
+        digital certificates.
       </p>
 
-      <p>
-        verifying the digital certificates. It ensures that both parties are
-        assured
-      </p>
-
-      <p>of each other's identity.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>It ensures that both parties are assured of each other's identity.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/">
           WebSocket module
         </a>
         .

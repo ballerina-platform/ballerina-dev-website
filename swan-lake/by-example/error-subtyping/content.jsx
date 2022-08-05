@@ -20,9 +20,8 @@ type YErr distinct error;
 
 type Err XErr|YErr;
 
-// The name of the distinct type can be used with the error
-// constructor to create an \`error\` value of that type.
-// \`err\` holds an \`error\` value of type \`XErr\`.
+// The name of the distinct type can be used with the \`error\` constructor to create an error value 
+// of that type. \`err\` holds an \`error\` value of type \`XErr\`.
 Err err = error XErr("Whoops!");
 
 function desc(Err err) returns string {
@@ -61,33 +60,17 @@ export default function ErrorSubtyping() {
       <h1>Error subtyping</h1>
 
       <p>
-        <code>distinct</code> creates a new subtype and can be used to define
+        The <code>distinct</code> expression creates a new subtype and can be
+        used to define subtypes of <code>error</code>. The name of the distinct{" "}
+        <code>error</code> type can be used with the error constructor to create
+        an <code>error</code> value of that type. It works like a nominal type.
       </p>
 
       <p>
-        subtypes of <code>error</code>.
+        The <code>is</code> operator can be used to distinguish distinct
+        subtypes. Each occurrence of <code>distinct</code> has a unique
+        identifier that is used to tag instances of the type.
       </p>
-
-      <p>
-        The name of the distinct <code>error</code> type can be used with the
-        error
-      </p>
-
-      <p>
-        constructor to create an <code>error</code> value of that type.
-      </p>
-
-      <p>
-        Works like a nominal type. The <code>is</code> operator can be used to
-      </p>
-
-      <p>distinguish distinct subtypes.</p>
-
-      <p>
-        Each occurrence of <code>distinct</code> has a unique identifier that is
-      </p>
-
-      <p>used to tag instances of the type.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -95,7 +78,7 @@ export default function ErrorSubtyping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5e9709021607f74e952d365cce4a8c2d&file=error_subtyping.bal",
+                "https://play.ballerina.io/?gist=bbc7a63f6999ee974b4d182a9c7b7cf0&file=error_subtyping.bal",
                 "_blank"
               );
             }}

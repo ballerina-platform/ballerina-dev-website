@@ -77,7 +77,7 @@ export default function LockStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e224125c365fb0db4e9c1445c48b855e&file=lock_statement.bal",
+                "https://play.ballerina.io/?gist=c7af2bdfc2692c456470973649827178&file=lock_statement.bal",
                 "_blank"
               );
             }}
@@ -170,6 +170,8 @@ export default function LockStatement() {
           )}
         </Col>
       </Row>
+
+      <p>Executing the above code gives the output below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

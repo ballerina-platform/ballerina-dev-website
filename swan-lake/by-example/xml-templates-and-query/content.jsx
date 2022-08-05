@@ -23,7 +23,6 @@ function personsToXml(Person[] persons) returns xml {
     // Uses a template containing a query expression, which also contains a template.
     return xml\`<data>\${from var {name, country} in persons
            select xml\`<person country="\${country}">\${name}</person>\`}</data>\`;
-
 }
 
 public function main() {
@@ -72,7 +71,7 @@ export default function XmlTemplatesAndQuery() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3d43aef8c709d1e83a618de487be85da&file=xml_templates_and_query.bal",
+                "https://play.ballerina.io/?gist=4ec6797a64fdecd9d897881bf6639e9a&file=xml_templates_and_query.bal",
                 "_blank"
               );
             }}
@@ -217,7 +216,7 @@ export default function XmlTemplatesAndQuery() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run xml_templates_and_query.bal`}</span>
+              <span>{`\$ bal run xml_templates_and_query.bal`}</span>
               <span>{`<data><person country="USA">Jane</person><person country="Germany">Mike</person></data>`}</span>
             </code>
           </pre>

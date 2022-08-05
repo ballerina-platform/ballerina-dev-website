@@ -15,16 +15,14 @@ const codeSnippetData = [
   `import ballerina/io;
 
 public function main() {
-    // Code before any named workers is executed before named 
-    // workers start.
+    // Code before any named workers are executed before named workers start.
     io:println("Initializing");
     final string greeting = "Hello";
 
-    // A function can declare named workers, which run concurrently with the
-    // function's default worker and other named workers.
+    // A function can declare named workers, which run concurrently with the function's default worker
+    // and other named workers.
     worker A {
-        // Variables declared before all named workers and function 
-        // parameters are accessible in named workers.
+        // Variables declared before all named workers and function parameters are accessible by named workers.
         io:println(greeting + " from worker A");
 
     }
@@ -62,28 +60,17 @@ export default function NamedWorkers() {
       <h1>Named workers</h1>
 
       <p>
-        Normally all of a function's code belongs to the function's default
-        worker,
-      </p>
-
-      <p>which has a single logical thread of control.</p>
-
-      <p>
-        A function can also declare named workers, which run concurrently with
-        the
-      </p>
-
-      <p>function's default worker and other named workers.</p>
-
-      <p>
-        Code before any named workers is executed before named workers start.
+        Normally, all of a function's code belong to the function's default
+        worker, which has a single logical thread of control. A function can
+        also declare named workers, which run concurrently with the function's
+        default worker and other named workers.
       </p>
 
       <p>
+        Code before any named workers are executed before named workers start.
         Variables declared before all named workers and function parameters are
+        accessible by named workers.
       </p>
-
-      <p>accessible in named workers.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -91,7 +78,7 @@ export default function NamedWorkers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fb645aade2c4780ec28252de54132706&file=named_workers.bal",
+                "https://play.ballerina.io/?gist=629c81a59934868bb2fbde44845f4255&file=named_workers.bal",
                 "_blank"
               );
             }}
@@ -236,7 +223,7 @@ export default function NamedWorkers() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run named_workers.bal`}</span>
+              <span>{`\$ bal run named_workers.bal`}</span>
               <span>{`Initializing`}</span>
               <span>{`Hello from function worker`}</span>
               <span>{`Hello from worker B`}</span>

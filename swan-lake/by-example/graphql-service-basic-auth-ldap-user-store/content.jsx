@@ -23,12 +23,10 @@ listener graphql:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with Basic Auth and can be authorized  optionally.
-// Basic Auth using the LDAP user store can be enabled by setting the
-// \`graphql:LdapUserStoreConfig\` configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type
-// configurations for \`scopes\` field.
+// The service can be secured with Basic Auth and can be authorized optionally. Basic Auth using
+// the LDAP user store can be enabled by setting the \`graphql:LdapUserStoreConfig\` configurations.
+// Authorization is based on scopes. A scope maps to one or more groups. Authorization can be
+// enabled by setting the \`string|string[]\` type configurations for the \`scopes\` field.
 @graphql:ServiceConfig {
     auth: [
         {
@@ -88,44 +86,29 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Service - Basic Auth LDAP user store</h1>
 
-      <p>A GraphQL service can be secured with Basic Auth and by enforcing</p>
-
       <p>
+        A GraphQL service can be secured with Basic Auth and by enforcing
         authorization optionally. Then, it validates the Basic Auth token sent
-        in
+        in the <code>Authorization</code> header against the provided
+        configurations. This reads data from the configured LDAP. This stores
+        usernames, passwords for authentication, and scopes for authorization.
       </p>
-
-      <p>
-        the <code>Authorization</code> header against the provided
-        configurations. This reads
-      </p>
-
-      <p>data from the configured LDAP. This stores usernames, passwords for</p>
-
-      <p>authentication, and scopes for authorization.&lt;br/&gt;</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared
+        declared in a service can be bound to one/more scope(s).
       </p>
 
-      <p>in a service can be bound to one/more scope(s).&lt;br/&gt;</p>
-
-      <p>In the authorization phase, the scopes of the service are compared</p>
-
       <p>
+        In the authorization phase, the scopes of the service are compared
         against the scope included in the user store for at least one match
-        between
+        between the two sets.
       </p>
 
-      <p>the two sets.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          Auth module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
+          <code>auth</code> module
         </a>
         .
       </p>
@@ -207,6 +190,8 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -259,7 +244,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>{`bal run graphql_service_basic_auth_ldap_user_store.bal`}</span>
+              <span>{`\$ bal run graphql_service_basic_auth_ldap_user_store.bal`}</span>
             </code>
           </pre>
         </Col>

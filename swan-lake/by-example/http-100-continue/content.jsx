@@ -17,39 +17,32 @@ import ballerina/log;
 
 service / on new http:Listener(9090) {
 
-    resource function 'default hello(http:Caller caller, http:Request request)
-            returns error? {
-        // [Check if the client expects a 100-continue response](https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue).
-        if (request.expects100Continue()) {
+    resource function 'default hello(http:Caller caller, http:Request request) returns error? {
+        // [Check if the client expects a \`100-continue\` response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue).
+        if request.expects100Continue() {
             string mediaType = request.getContentType();
-            if (mediaType.toLowerAscii() == "text/plain") {
+            if mediaType.toLowerAscii() == "text/plain" {
 
-                // Send a 100-continue response to the client.
-                var result = caller->continue();
-                if (result is error) {
-                    log:printError("Error sending response", 'error = result);
-                }
+                // Send a \`100-continue\` response to the client.
+                check caller->continue();
 
-            // Send a 417 response to ignore the payload since content type is mismatched
+            // Send a \`417\` response to ignore the payload as the content type is mismatched
             // with the expected content type.
             } else {
-                http:Response resp = new;
-                resp.statusCode = http:STATUS_EXPECTATION_FAILED;
-                resp.setPayload("Unprocessable Entity");
+                http:ExpectationFailed resp = {body: "Unprocessable Entity"};
                 check caller->respond(resp);
+                return;
             }
         }
 
         // The client starts sending the payload once it receives the
-        // 100-continue response. Retrieve the payload that is sent by the client.
+        // \`100-continue\` response. The payload that is sent by the client is retrieved.
         var payload = request.getTextPayload();
-        if (payload is string) {
+        if payload is string {
             log:printInfo(payload);
             check caller->respond("Hello World!\\n");
         } else {
-            http:Response resp = new;
-            resp.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            resp.setPayload(payload.message());
+            http:InternalServerError resp = {body: payload.message()};
             check caller->respond(resp);
         }
     }
@@ -84,25 +77,18 @@ export default function Http100Continue() {
 
       <p>
         Convenience functions are provided in the HTTP library for ease of use
-        when handling 100-continue scenarios.
+        when handling <code>100-continue</code> scenarios.
       </p>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            00-continue indicates that the server has received the request
-            headers and the client can proceed with sending the
-            request.&lt;br/&gt;&lt;br/&gt;
-          </span>
-        </li>
-      </ul>
-      <p>For more information on the underlying module,</p>
+      <p>
+        <code>100-continue</code> indicates that the server has received the
+        request headers and the client can proceed with sending the request.
+      </p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -184,6 +170,8 @@ export default function Http100Continue() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -235,56 +223,17 @@ export default function Http100Continue() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`#Run the cURL command below to run the client.`}</span>
-              <span>{`curl -v -d "TEST 100 CONTINUE" http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: text/plain'`}</span>
-              <span>{`*   Trying 127.0.0.1...`}</span>
-              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> POST /hello HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.58.0`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`> Expect:100-continue`}</span>
-              <span>{`> Content-Length: 17`}</span>
-              <span>{`> Content-Type: text/plain`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 100 Continue`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Sep 2020 09:16:18 +0530`}</span>
-              <span>{`* We are completely uploaded and fine`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 13`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Sep 2020 09:16:18 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`Hello World!`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{``}</span>
-              <span>{`# Use the following client to invoke the service using an unsupported media type. Service is supposed to ignore`}</span>
-              <span>{`# the payload if the content type does not matched.`}</span>
-              <span>{`curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: application/json'`}</span>
-              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> POST /hello HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.58.0`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`> Expect:100-continue`}</span>
-              <span>{`> Content-Type: application/json`}</span>
-              <span>{`> Content-Length: 25`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 417 Expectation Failed`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 20`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Sep 2020 09:19:53 +0530`}</span>
-              <span>{`* HTTP error before end of send, stop sending`}</span>
-              <span>{`<`}</span>
-              <span>{`* Closing connection 0`}</span>
-              <span>{`Unprocessable Entity`}</span>
+              <span>{`\$ bal run http_expect_header.bal`}</span>
+              <span>{`time = 2021-01-21 20:31:28,347 level = INFO  module = "" message = "TEST 100 CONTINUE"`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL commands in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -337,8 +286,51 @@ export default function Http100Continue() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_expect_header.bal`}</span>
-              <span>{`time = 2021-01-21 20:31:28,347 level = INFO  module = "" message = "TEST 100 CONTINUE"`}</span>
+              <span>{`\$ curl -v -d "TEST 100 CONTINUE" http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: text/plain'`}</span>
+              <span>{`*   Trying 127.0.0.1...`}</span>
+              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
+              <span>{`> POST /hello HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.58.0`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`> Expect:100-continue`}</span>
+              <span>{`> Content-Length: 17`}</span>
+              <span>{`> Content-Type: text/plain`}</span>
+              <span>{`>`}</span>
+              <span>{`< HTTP/1.1 100 Continue`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Tue, 22 Sep 2020 09:16:18 +0530`}</span>
+              <span>{`* We are completely uploaded and fine`}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< content-type: text/plain`}</span>
+              <span>{`< content-length: 13`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Tue, 22 Sep 2020 09:16:18 +0530`}</span>
+              <span>{`<`}</span>
+              <span>{`Hello World!`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{``}</span>
+              <span>{`# Use the following client to invoke the service using an unsupported media type. The service is supposed to ignore`}</span>
+              <span>{`# the payload if the content type does not match.`}</span>
+              <span>{`\$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: application/json'`}</span>
+              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
+              <span>{`> POST /hello HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.58.0`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`> Expect:100-continue`}</span>
+              <span>{`> Content-Type: application/json`}</span>
+              <span>{`> Content-Length: 25`}</span>
+              <span>{`>`}</span>
+              <span>{`< HTTP/1.1 417 Expectation Failed`}</span>
+              <span>{`< content-type: text/plain`}</span>
+              <span>{`< content-length: 20`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Tue, 22 Sep 2020 09:19:53 +0530`}</span>
+              <span>{`* HTTP error before end of send, stop sending`}</span>
+              <span>{`<`}</span>
+              <span>{`* Closing connection 0`}</span>
+              <span>{`Unprocessable Entity`}</span>
             </code>
           </pre>
         </Col>

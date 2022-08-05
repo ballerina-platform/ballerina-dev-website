@@ -31,13 +31,15 @@ public function main() returns error? {
 
     // Writes the given array of lines to a file.
     check io:fileWriteLines(textFilePath2, lines);
-    // If the write operation was successful, then, performs a read operation to read the lines as an array.
+    // If the write operation was successful, then,
+    // performs a read operation to read the lines as an array.
     string[] readLines = check io:fileReadLines(textFilePath2);
     io:println(readLines);
 
     // Writes the given stream of lines to a file.
     check io:fileWriteLinesFromStream(textFilePath3, lines.toStream());
-    // If the write operation was successful, then, performs a read operation to read the lines as a stream.
+    // If the write operation was successful, then,
+    // performs a read operation to read the lines as a stream.
     stream<string, io:Error?> lineStream = check
                                     io:fileReadLinesAsStream(textFilePath3);
     // Iterates through the stream and prints the content.
@@ -73,14 +75,15 @@ export default function IoStrings() {
 
       <p>
         The Ballerina <code>io</code> library contains APIs to read/write text
-        content from/to a file.&lt;br/&gt;&lt;br/&gt;
+        content from/to a file.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/io/latest/">IO module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/io/latest/">
+          <code>io</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -89,7 +92,7 @@ export default function IoStrings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6180424352f1b2437c58ba8b32393850&file=io_strings.bal",
+                "https://play.ballerina.io/?gist=4d7f4c8fa043489980f6507b833eec82&file=io_strings.bal",
                 "_blank"
               );
             }}
@@ -183,6 +186,10 @@ export default function IoStrings() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -234,7 +241,7 @@ export default function IoStrings() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run io_strings.bal`}</span>
+              <span>{`\$ bal run io_strings.bal`}</span>
               <span>{`Ballerina is an open source programming language.`}</span>
               <span>{`["The Big Bang Theory","F.R.I.E.N.D.S","Game of Thrones","LOST"]`}</span>
               <span>{`The Big Bang Theory`}</span>

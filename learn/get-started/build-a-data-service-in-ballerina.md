@@ -141,7 +141,7 @@ The MySQL driver JAR is necessary to connect to and interact with a MySQL server
    
 ### Define MySQL configurations
 
-In the newly created directory `"data_service"` (using the `bal new` command), create a new file named `Config.toml` and specify the configurations below to connect to the MySQL database.
+In the  `data_service` directory (you created above using the `bal new` command), create a new file named `Config.toml`, and specify the configurations below to connect to the MySQL database. 
 
 ```toml
 USER="root"
@@ -480,14 +480,14 @@ bal run
 
 You view the output below.
 
->**Info:** This creates an `/employees` endpoint on port `8080`, which can 
-be accessed via a browser by visiting `http://localhost:8080/employees`.
+>**Info:** This creates an `/employees` endpoint on port `8080`, which can
+be accessed by visiting `http://localhost:8080/employees`.
 
 ## Try the service
 
 Invoke the defined resource function by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
 
->**Info:** The following CURL command only works with Unix operating systems.
+>**Info:** The following cURL command only works with Unix operating systems.
 ```bash
 curl --location --request POST 'http://localhost:8080/employees/' \
     --header 'Content-Type: application/json' \

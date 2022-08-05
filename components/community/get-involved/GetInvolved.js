@@ -51,7 +51,7 @@ export default function GetInvolved() {
             <h4 id="join-dev-google-group-title">
               Active proposals for Ballerina
             </h4>
-            <p>Want to find out the active proposals proposed by the Ballerina community? Checkout <a className={styles.getStartLinks} rel="noreferrer" target="_blank" href="/community/active-proposals">Active proposals list</a>.</p>
+            <p>Want to find out the active proposals proposed by the Ballerina community? Check out the <a className={styles.getStartLinks} rel="noreferrer" target="_blank" href="/community/active-proposals">active proposals list</a>.</p>
           </Col>
           <Col xs={12} md={4} lg={4} className={styles.card}>
             <span className="bookMarkOnPage" id="submit-a-use-case"></span>

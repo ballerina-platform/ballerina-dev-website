@@ -2,7 +2,7 @@
 layout: ballerina-inner-page 
 title: Active proposals 
 description: This is a collection of active proposals for Ballerina by the Ballerina community. 
-intro: The active proposal list for the Ballerina GitHub repositories. 
+intro: The active proposals list for the Ballerina GitHub repositories. 
 keywords: ballerina, community, ballerina community 
 permalink: /community/active-proposals 
 --- 

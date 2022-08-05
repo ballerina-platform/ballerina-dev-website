@@ -15,7 +15,7 @@ redirect_from:
 ## Ballerina bindings to Java code
 You can write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the diagram below.
 
-<img src="/learn/images/interoperability-diagram-new.png" alt="Ballerina bindings to Java code" width="300" height="450" style='width:auto !important'>
+<img src="/learn/images/ballerina-interop-diagram-without-margin.png" alt="Ballerina bindings to Java code" width="300" height="450" style='width:auto !important; padding-top:20px; padding-bottom:20px;'>
 
 The [Ballerina FFI](https://dev.ballerina.io/learn/java-interoperability/ballerina-ffi/) explains how to write the Ballerina bindings manually. Learning to write them manually helps you to understand the inner workings of calling Java from Ballerina. 
 

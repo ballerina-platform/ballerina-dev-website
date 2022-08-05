@@ -20,9 +20,8 @@ service /graphql on new graphql:Listener(4000) {
     private Person person;
 
     function init() {
-        // Initialize the \`person\` value.
+        // Initializes the \`person\` value.
         self.person = new("Walter White", 51);
-
     }
 
     // A resource function represents a field in the root \`Query\` operation.
@@ -31,17 +30,15 @@ service /graphql on new graphql:Listener(4000) {
         return self.person;
     }
 
-    // A remote function represents a field in the root \`Mutation\` operation.
-    // After updating the name, the \`person\` object will be returned.
+    // A remote function represents a field in the root \`Mutation\` operation. After updating the
+    // name, the \`person\` object will be returned.
     remote function updateName(string name) returns Person {
-
         self.person.setName(name);
         return self.person;
     }
 
     // Remote function to update the age.
     remote function updateAge(int age) returns Person {
-
         self.person.setAge(age);
         return self.person;
     }
@@ -105,39 +102,18 @@ export default function GraphqlMutations() {
 
       <p>
         A remote function inside a GraphQL service represents a field in the
-        root
+        root <code>Mutation</code> object type. Therefore, if a remote function
+        is present inside the Ballerina GraphQL service, the auto-generated
+        schema will have a <code>Mutation</code> type. Each remote function in
+        the service will be added as a field of the <code>Mutation</code> type.
+        The field name will be the remote function name and the field type will
+        be the return type of the remote function.
       </p>
 
       <p>
-        <code>Mutation</code> object type. Therefore, if a remote function is
-        present inside
-      </p>
-
-      <p>
-        the Ballerina GraphQL service, the auto-generated schema will have a
-      </p>
-
-      <p>
-        <code>Mutation</code> type. Each remote function in the service will be
-        added as a
-      </p>
-
-      <p>
-        field of the <code>Mutation</code> type. The field name will be the
-        remote function
-      </p>
-
-      <p>
-        name and the field type will be the return type of the remote function.
-      </p>
-
-      <p>&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying package, see the</p>
-
-      <p>
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+        For more information on the underlying package, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+          <code>graphql</code> package
         </a>
         .
       </p>
@@ -219,6 +195,8 @@ export default function GraphqlMutations() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -270,24 +248,13 @@ export default function GraphqlMutations() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
-              <span>{`# The query used: { profile { name isAdult } }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name age } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"profile":{"name":"Walter White", "age":51}}}`}</span>
-              <span>{``}</span>
-              <span>{`# Now send a mutation to update the name.`}</span>
-              <span>{`# The document used for this: mutation { updateName(name: \\"Mr. Lambert\\") { name age } }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation { updateName(name: \\"Mr. Lambert\\") { name age } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"updateName":{"name":"Mr. Lambert", "age":51}}}`}</span>
-              <span>{``}</span>
-              <span>{`# Then send a mutation to update the age.`}</span>
-              <span>{`# The document used for this: mutation { updateAge(age: 52) { name age } }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation { updateAge(age: 52) { name age } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"updateAge":{"name":"Mr. Lambert", "age":52}}}`}</span>
+              <span>{`\$ bal run graphql_mutations.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -340,7 +307,20 @@ export default function GraphqlMutations() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run graphql_mutations.bal`}</span>
+              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
+              <span>{`# The query used: { profile { name isAdult } }`}</span>
+              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name age } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`{"data":{"profile":{"name":"Walter White", "age":51}}}`}</span>
+              <span>{``}</span>
+              <span>{`# Now send a mutation to update the name.`}</span>
+              <span>{`# The document used for this: mutation { updateName(name: \\"Mr. Lambert\\") { name age } }`}</span>
+              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation { updateName(name: \\"Mr. Lambert\\") { name age } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`{"data":{"updateName":{"name":"Mr. Lambert", "age":51}}}`}</span>
+              <span>{``}</span>
+              <span>{`# Then send a mutation to update the age.`}</span>
+              <span>{`# The document used for this: mutation { updateAge(age: 52) { name age } }`}</span>
+              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation { updateAge(age: 52) { name age } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`{"data":{"updateAge":{"name":"Mr. Lambert", "age":52}}}`}</span>
             </code>
           </pre>
         </Col>
@@ -384,10 +364,7 @@ export default function GraphqlMutations() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Subscriptions"
-            href="/learn/by-example/graphql-subscriptions"
-          >
+          <Link title="Context" href="/learn/by-example/graphql-context">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -396,7 +373,7 @@ export default function GraphqlMutations() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Subscriptions
+                  Context
                 </span>
               </div>
               <svg

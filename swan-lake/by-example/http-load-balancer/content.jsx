@@ -87,13 +87,11 @@ export default function HttpLoadBalancer() {
         be load balanced across a given
       </p>
 
-      <p>set of target endpoints.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>set of target endpoints.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -176,6 +174,8 @@ export default function HttpLoadBalancer() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -227,25 +227,16 @@ export default function HttpLoadBalancer() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# To invoke the Load Balancer Demo Service, use the cURL command below.`}</span>
-              <span>{`curl  http://localhost:9090/lb`}</span>
-              <span>{`Mock1 resource was invoked.`}</span>
-              <span>{``}</span>
-              <span>{`# Repeat the same cURL command to invoke the service again and it will be load balanced to the second mock service.`}</span>
-              <span>{`curl http://localhost:9090/lb`}</span>
-              <span>{`Mock2 resource was invoked.`}</span>
-              <span>{``}</span>
-              <span>{`# The following request will be load balanced to the third mock service.`}</span>
-              <span>{`curl http://localhost:9090/lb`}</span>
-              <span>{`Mock3 resource was invoked.`}</span>
-              <span>{``}</span>
-              <span>{`# The following request will be load balanced to the first mock service again.`}</span>
-              <span>{`curl http://localhost:9090/lb`}</span>
-              <span>{`Mock1 resource was invoked.`}</span>
+              <span>{`\$ bal run http_load_balancer.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -298,7 +289,20 @@ export default function HttpLoadBalancer() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_load_balancer.bal`}</span>
+              <span>{`\$ curl  http://localhost:9090/lb`}</span>
+              <span>{`Mock1 resource was invoked.`}</span>
+              <span>{``}</span>
+              <span>{`# Repeat the same cURL command to invoke the service again and it will be load balanced to the second mock service.`}</span>
+              <span>{`\$ curl http://localhost:9090/lb`}</span>
+              <span>{`Mock2 resource was invoked.`}</span>
+              <span>{``}</span>
+              <span>{`# The following request will be load balanced to the third mock service.`}</span>
+              <span>{`\$ curl http://localhost:9090/lb`}</span>
+              <span>{`Mock3 resource was invoked.`}</span>
+              <span>{``}</span>
+              <span>{`# The following request will be load balanced to the first mock service again.`}</span>
+              <span>{`\$ curl http://localhost:9090/lb`}</span>
+              <span>{`Mock1 resource was invoked.`}</span>
             </code>
           </pre>
         </Col>

@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// Service-level [CORS config](https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig) applies
+// Service-level [CORS config](https://docs.central.ballerina.io/ballerina/http/latest/records/CorsConfig) applies
 // globally to each \`resource\`.
 @http:ServiceConfig {
     cors: {
@@ -27,7 +27,7 @@ const codeSnippetData = [
 }
 service /crossOriginService on new http:Listener(9092) {
 
-    // Resource-level [CORS config](https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig)
+    // Resource-level [CORS config](https://docs.central.ballerina.io/ballerina/http/latest/records/CorsConfig)
     // overrides the service-level CORS headers.
     @http:ResourceConfig {
         cors: {
@@ -81,14 +81,12 @@ export default function HttpCors() {
 
       <p>
         unless there are headers configured at the resource-level. Ballerina
-        CORS supports both simple and pre-flight requests.&lt;br/&gt;&lt;br/&gt;
+        CORS supports both simple and pre-flight requests.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -171,6 +169,8 @@ export default function HttpCors() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -222,46 +222,16 @@ export default function HttpCors() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Run the cURL command below to send a CORS simple request. `}</span>
-              <span>{`curl -v "http://localhost:9092/crossOriginService/company" -H "Origin:http://www.bbc.com"`}</span>
-              <span>{`> GET /crossOriginService/company HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9092`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`> Origin:http://www.bbc.com`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: application/json`}</span>
-              <span>{`< access-control-allow-origin: http://www.bbc.com`}</span>
-              <span>{`< access-control-allow-credentials: true`}</span>
-              <span>{`< content-length: 21`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`{"type":"middleware"}* Closing connection 0`}</span>
-              <span>{``}</span>
-              <span>{`# Run the cURL command below to send a CORS preflight request. `}</span>
-              <span>{`curl -v "http://localhost:9092/crossOriginService/lang" -X OPTIONS -H "Origin:http://www.m3.com" -H "Access-Control-Request-Method:POST"`}</span>
-              <span>{`> OPTIONS /crossOriginService/lang HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9092`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`> Origin:http://www.m3.com`}</span>
-              <span>{`> Access-Control-Request-Method:POST`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 204 No Content`}</span>
-              <span>{`< access-control-allow-origin: http://www.m3.com`}</span>
-              <span>{`< access-control-max-age: 84900`}</span>
-              <span>{`< access-control-allow-methods: POST`}</span>
-              <span>{`< content-length: 0`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`* Closing connection 0`}</span>
+              <span>{`\$ bal run http_cors.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL commands in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -314,7 +284,42 @@ export default function HttpCors() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_cors.bal`}</span>
+              <span>{`# To send a CORS simple request.`}</span>
+              <span>{`\$ curl -v "http://localhost:9092/crossOriginService/company" -H "Origin:http://www.bbc.com"`}</span>
+              <span>{`> GET /crossOriginService/company HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9092`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`> Origin:http://www.bbc.com`}</span>
+              <span>{`>`}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< content-type: application/json`}</span>
+              <span>{`< access-control-allow-origin: http://www.bbc.com`}</span>
+              <span>{`< access-control-allow-credentials: true`}</span>
+              <span>{`< content-length: 21`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`<`}</span>
+              <span>{`* Connection #0 to host localhost left intact.`}</span>
+              <span>{`{"type":"middleware"}* Closing connection 0`}</span>
+              <span>{``}</span>
+              <span>{`# To send a CORS preflight request.`}</span>
+              <span>{`\$ curl -v "http://localhost:9092/crossOriginService/lang" -X OPTIONS -H "Origin:http://www.m3.com" -H "Access-Control-Request-Method:POST"`}</span>
+              <span>{`> OPTIONS /crossOriginService/lang HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9092`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`> Origin:http://www.m3.com`}</span>
+              <span>{`> Access-Control-Request-Method:POST`}</span>
+              <span>{`>`}</span>
+              <span>{`< HTTP/1.1 204 No Content`}</span>
+              <span>{`< access-control-allow-origin: http://www.m3.com`}</span>
+              <span>{`< access-control-max-age: 84900`}</span>
+              <span>{`< access-control-allow-methods: POST`}</span>
+              <span>{`< content-length: 0`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`<`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`* Closing connection 0`}</span>
             </code>
           </pre>
         </Col>

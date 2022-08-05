@@ -12,8 +12,8 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/url;
-import ballerina/io;
+  `import ballerina/io;
+import ballerina/url;
 
 public function main() returns error? {
     string value1 = "data=value";
@@ -53,15 +53,15 @@ export default function UrlEncodeDecode() {
       <h1>URL encode/decode operations</h1>
 
       <p>
-        Ballerina URL API supports encoding/decoding a URL or part of a
-        URL.&lt;br/&gt;&lt;br/&gt;
+        Ballerina URL API supports encoding/decoding a URL or part of a URL.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/url/latest/">URL module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/url/latest/">
+          <code>url</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -70,7 +70,7 @@ export default function UrlEncodeDecode() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5f6647f536242ad25cbc863bb9d9f007&file=url_encode_decode.bal",
+                "https://play.ballerina.io/?gist=b0159f3a644865ff2c4d5233958b4a8b&file=url_encode_decode.bal",
                 "_blank"
               );
             }}
@@ -164,6 +164,12 @@ export default function UrlEncodeDecode() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, place the source code in a file named{" "}
+        <code>url_encode_decode.bal</code> and use the <code>bal run</code>{" "}
+        command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -215,7 +221,7 @@ export default function UrlEncodeDecode() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run url_encode_decode.bal`}</span>
+              <span>{`\$ bal run url_encode_decode.bal`}</span>
               <span>{`URL encoded value: data%3Dvalue`}</span>
               <span>{`URL decoded value: data=value`}</span>
             </code>

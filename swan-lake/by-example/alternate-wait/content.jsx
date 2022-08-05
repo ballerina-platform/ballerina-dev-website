@@ -82,7 +82,7 @@ export default function AlternateWait() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c510940559635ba5327ef08759f6066c&file=alternate_wait.bal",
+                "https://play.ballerina.io/?gist=b214b1dfbd92e3ae9e4429edd7ffdb6e&file=alternate_wait.bal",
                 "_blank"
               );
             }}
@@ -227,7 +227,7 @@ export default function AlternateWait() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run alternate_wait.bal`}</span>
+              <span>{`\$ bal run alternate_wait.bal`}</span>
               <span>{`{"lang":"ballerina"}`}</span>
             </code>
           </pre>

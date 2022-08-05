@@ -31,7 +31,6 @@ function increaseSalary(int n) {
     foreach Employee e in t {
         e.salary += n;
     }
-    
 }
 
 public function main() {
@@ -75,54 +74,41 @@ export default function TableSyntax() {
 
       <p>
         A <code>table</code> is plain data if and only if its rows are plain
-        data. A <code>table</code> maintains an invariant
+        data. A <code>table</code> maintains an invariant that each row is
+        uniquely identified by a key. Each row’s key is stored in fields, which
+        must be immutable.
       </p>
-
-      <p>
-        that each row is uniquely identified by a key. Each row’s key is stored
-        in fields, which
-      </p>
-
-      <p>must be immutable. &lt;br/&gt;&lt;br/&gt;</p>
 
       <p>Compared to maps,</p>
 
-      <p>&lt;ul&gt;</p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>A key is part of the value rather than being separate.</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            The type of the key is not restricted to <code>string</code>.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>The order of the members is preserved.</span>
+        </li>
+      </ul>
 
       <p>
-        &lt;li&gt;key is part of the value rather than being
-        separate.&lt;/li&gt;
-      </p>
-
-      <p>
-        &lt;li&gt;The type of the key is not restricted to <code>string</code>
-        .&lt;/li&gt;
-      </p>
-
-      <p>&lt;li&gt;The order of the members is preserved.&lt;/li&gt;</p>
-
-      <p>&lt;/ul&gt;</p>
-
-      <p>&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>
-        &lt;p&gt;A <code>record</code> field can be declared as{" "}
-        <code>readonly</code>. A value cannot be assigned to such a field
-      </p>
-
-      <p>
-        after the record is created. The <code>table</code> type gives the type
-        of the row and the name of the key field.
-      </p>
-
-      <p>
-        The <code>table constructor expression</code> looks like an{" "}
-        <code>array constructor</code>. The <code>foreach</code> statement will
-      </p>
-
-      <p>
-        iterate over a table's rows in their order. Use <code>t[k]</code> to
-        access a row using its key.&lt;/p&gt;
+        A record field can be declared as <code>readonly</code>. A value cannot
+        be assigned to such a field after the record is created. The table type
+        gives the type of the row and the name of the key field. A table
+        constructor expression looks like an array constructor. The{" "}
+        <code>foreach</code> statement will iterate over a table's rows in their
+        order. Use <code>t[k]</code> to access a row using its key.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -131,7 +117,7 @@ export default function TableSyntax() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b3eec32c85f2b16c220b64ce706713de&file=table_syntax.bal",
+                "https://play.ballerina.io/?gist=9f15fa2f4c4595215dea6e282b62c560&file=table_syntax.bal",
                 "_blank"
               );
             }}
@@ -276,7 +262,7 @@ export default function TableSyntax() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run table_syntax.bal`}</span>
+              <span>{`\$ bal run table_syntax.bal`}</span>
               <span>{`()`}</span>
               <span>{`[{"name":"John","salary":200},{"name":"Jane","salary":300}]`}</span>
             </code>

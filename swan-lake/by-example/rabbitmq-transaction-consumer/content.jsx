@@ -21,26 +21,20 @@ import ballerinax/rabbitmq;
     autoAck: false
 }
 // Attaches the service to the listener.
-service /transactionConsumer on
-    new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
-
+service on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
     // Gets triggered when a message is received by the queue.
-    remote function onMessage(rabbitmq:Message message,
-                        rabbitmq:Caller caller) returns error? {
-
+    remote function onMessage(rabbitmq:Message message, rabbitmq:Caller caller) returns error? {
         string|error messageContent = 'string:fromBytes(message.content);
         if messageContent is string {
             log:printInfo("The message received: " + messageContent);
         }
-
         // Acknowledges a single message positively.
         // The acknowledgement gets committed upon successful execution of the transaction,
         // or will rollback otherwise.
         transaction {
             rabbitmq:Error? result = caller->basicAck();
             if result is error {
-                log:printError(
-                            "Error occurred while acknowledging the message.");
+                log:printError("Error occurred while acknowledging the message.");
             }
             check commit;
         }
@@ -72,9 +66,10 @@ export default function RabbitmqTransactionConsumer() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Transactional consumer</h1>
 
-      <p>The messages are consumed from an</p>
-
-      <p>existing queue using the Ballerina RabbitMQ message listener</p>
+      <p>
+        The messages are consumed from an existing queue using the Ballerina
+        RabbitMQ message listener
+      </p>
 
       <p>and Ballerina transactions.</p>
 
@@ -93,7 +88,7 @@ export default function RabbitmqTransactionConsumer() {
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          RabbitMQ module
+          <code>rabbitmq</code> module
         </a>
         .
       </p>
@@ -226,7 +221,7 @@ export default function RabbitmqTransactionConsumer() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run rabbitmq_transaction_consumer.bal`}</span>
+              <span>{`\$ bal run rabbitmq_transaction_consumer.bal`}</span>
               <span>{`time = 2021-01-18 15:15:36,514 level = INFO  module = "" message = "The message received: Hello from Ballerina"`}</span>
             </code>
           </pre>

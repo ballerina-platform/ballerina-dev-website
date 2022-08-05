@@ -16,9 +16,7 @@ const codeSnippetData = [
 
 public function main() returns error? {
     do {
-        // If either \`foo()\` or \`bar()\` invocations returns an error,
-        // the error will be returned from the \`main\` function and execution
-        // of the \`main\` function ends.
+        // If  \`check\` gets an error from either \`foo()\` or \`bar()\` invocations, the error will be caught at the \`on fail\`
         check foo();
         check bar();
 
@@ -79,30 +77,29 @@ export default function CheckSemantics() {
       <h1>Check semantics</h1>
 
       <p>
-        <code>check</code> semantics is not to simply return on an{" "}
+        <code>check</code> semantics does not simply return an{" "}
         <code>error</code> value.
       </p>
 
       <p>
-        When <code>check</code> gets an <code>error</code> value, it fails.
+        When <code>check</code> gets an <code>error</code> value, it fails. The
+        enclosing block decides how to handle the failure.
       </p>
 
-      <p>The enclosing block decides how to handle the failure.</p>
-
-      <p>Most blocks pass the failure up to the enclosing block.</p>
-
-      <p>Function definition handles the failure by returning the error.</p>
+      <p>
+        Most blocks pass the failure up to the enclosing block. The function
+        definition handles the failure by returning the error.
+      </p>
 
       <p>
         <code>on fail</code> can catch the error.
       </p>
 
       <p>
-        <code>fail</code> statement is like <code>check</code>, but it always
-        fails.
+        The <code>fail</code> statement is like <code>check</code>, but it
+        always fails. It differs from the exceptions in that the control flow,
+        which are explicit.
       </p>
-
-      <p>Differs from exceptions in that control flow is explicit.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -110,7 +107,7 @@ export default function CheckSemantics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2cb0fbf66a23df8edab4fdb3e77e5703&file=check_semantics.bal",
+                "https://play.ballerina.io/?gist=78eace3dbd2def67f847bd1967ec3c12&file=check_semantics.bal",
                 "_blank"
               );
             }}
@@ -255,7 +252,7 @@ export default function CheckSemantics() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run check_semantics.bal`}</span>
+              <span>{`\$ bal run check_semantics.bal`}</span>
               <span>{`OK`}</span>
               <span>{`OK`}</span>
               <span>{`error("not OK")`}</span>

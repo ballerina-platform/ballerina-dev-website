@@ -25,10 +25,9 @@ listener http:Listener securedEP = new(9090,
 
 // The service can be secured with Basic Auth and can be authorized  optionally.
 // Basic Auth using the LDAP user store can be enabled by setting the
-// [\`http:LdapUserStoreConfig\`](https://lib.ballerina.io/ballerina/http/latest/records/LdapUserStoreConfig) configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type
-// configurations for \`scopes\` field.
+// [\`http:LdapUserStoreConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/LdapUserStoreConfig) configurations.
+// Authorization is based on scopes. A scope maps to one or more groups. Authorization can be 
+// enabled by setting the \`string|string[]\` type configurations for the \`scopes\` field.
 @http:ServiceConfig {
     auth: [
         {
@@ -94,47 +93,33 @@ export default function HttpServiceBasicAuthLdapUserStore() {
 
       <p>
         An HTTP service/resource can be secured with Basic Auth and by enforcing
-      </p>
-
-      <p>
         authorization optionally. Then, it validates the Basic Auth token sent
         in
       </p>
 
       <p>
         the <code>Authorization</code> header against the provided
-        configurations. This reads
+        configurations. This reads data from the configured LDAP. This stores
+        usernames, passwords for
       </p>
 
-      <p>data from the configured LDAP. This stores usernames, passwords for</p>
-
-      <p>authentication, and scopes for authorization.&lt;br/&gt;</p>
+      <p>authentication, and scopes for authorization.</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared
+        declared in a service can be bound to one/more scope(s).
       </p>
-
-      <p>in a service can be bound to one/more scope(s).&lt;br/&gt;</p>
 
       <p>
         In the authorization phase, the scopes of the service/resource are
-        compared
+        compared against the scope included in the user store for at least one
+        match between the two sets.
       </p>
 
       <p>
-        against the scope included in the user store for at least one match
-        between
-      </p>
-
-      <p>the two sets.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          Auth module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
+          <code>auth</code> module
         </a>
         .
       </p>
@@ -216,6 +201,8 @@ export default function HttpServiceBasicAuthLdapUserStore() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -268,7 +255,7 @@ export default function HttpServiceBasicAuthLdapUserStore() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>{`bal run http_service_basic_auth_ldap_user_store.bal`}</span>
+              <span>{`\$ bal run http_service_basic_auth_ldap_user_store.bal`}</span>
             </code>
           </pre>
         </Col>

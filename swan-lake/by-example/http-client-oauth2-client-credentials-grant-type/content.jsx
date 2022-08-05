@@ -16,9 +16,8 @@ const codeSnippetData = [
 import ballerina/io;
 
 // Defines the HTTP client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the [\`http:OAuth2ClientCredentialsGrantConfig\`](https://lib.ballerina.io/ballerina/http/latest/records/OAuth2ClientCredentialsGrantConfig) for the \`auth\` configuration
-// of the client.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by passing
+// the [\`http:OAuth2ClientCredentialsGrantConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/OAuth2ClientCredentialsGrantConfig) for the \`auth\` configuration of the client.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
         tokenUrl: "https://localhost:9445/oauth2/token",
@@ -67,29 +66,23 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
       <h1>Client - OAuth2 Client Credentials grant type</h1>
 
       <p>
-        A client, which is secured with OAuth2 client credentials grant type
+        A client, which is secured with OAuth2 client credentials grant type can
+        be used to connect to a secured service.
       </p>
-
-      <p>can be used to connect to a secured service.&lt;br/&gt;</p>
 
       <p>
         The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by
-      </p>
-
-      <p>
-        passing the <code>http:OAuth2ClientCredentialsGrantConfig</code> for the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
+        <code>http:OAuth2ClientCredentialsGrantConfig</code> for the{" "}
         <code>auth</code>
       </p>
 
-      <p>configuration of the client.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>configuration of the client.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          OAuth2 module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
+          <code>oauth2</code> module
         </a>
         .
       </p>
@@ -171,6 +164,8 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
         </Col>
       </Row>
 
+      <p>Run the client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -224,7 +219,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
             <code className="d-flex flex-column">
               <span>{`# As a prerequisite, start a sample service secured with OAuth2.`}</span>
               <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>{`bal run http_client_oauth2_client_credentials_grant_type.bal`}</span>
+              <span>{`\$ bal run http_client_oauth2_client_credentials_grant_type.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

@@ -16,36 +16,31 @@ const codeSnippetData = [
 import ballerina/log;
 
 // Create an endpoint with port 7090 to accept HTTP requests.
-// HTTP version is set to 2.0.
-listener http:Listener http2ServiceEP = new (7090,
-    config = {httpVersion: "2.0"});
+listener http:Listener http2ServiceEP = new (7090);
 
 service /http2Service on http2ServiceEP {
 
     resource function 'default .(http:Caller caller) {
 
-        // [Send a Push Promise](https://lib.ballerina.io/ballerina/http/latest/clients/Caller#promise).
+        // [Send a Push Promise](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller#promise).
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");
         var promiseResponse1 = caller->promise(promise1);
-        if (promiseResponse1 is error) {
-            log:printError("Error occurred while sending the promise1",
-                'error = promiseResponse1);
+        if promiseResponse1 is error {
+            log:printError("Error occurred while sending the promise1", 'error = promiseResponse1);
         }
 
         // Send another Push Promise.
         http:PushPromise promise2 = new (path = "/resource2", method = "GET");
         var promiseResponse2 = caller->promise(promise2);
-        if (promiseResponse2 is error) {
-            log:printError("Error occurred while sending the promise2",
-                'error = promiseResponse2);
+        if promiseResponse2 is error {
+            log:printError("Error occurred while sending the promise2", 'error = promiseResponse2);
         }
 
         // Send one more Push Promise.
         http:PushPromise promise3 = new (path = "/resource3", method = "GET");
         var promiseResponse3 = caller->promise(promise3);
-        if (promiseResponse3 is error) {
-            log:printError("Error occurred while sending the promise3",
-                'error = promiseResponse3);
+        if promiseResponse3 is error {
+            log:printError("Error occurred while sending the promise3", 'error = promiseResponse3);
         }
 
         // Construct the requested resource.
@@ -55,9 +50,8 @@ service /http2Service on http2ServiceEP {
 
         // Send the requested resource.
         var response = caller->respond(res);
-        if (response is error) {
-            log:printError("Error occurred while sending the response",
-                'error = response);
+        if response is error {
+            log:printError("Error occurred while sending the response", 'error = response);
         }
 
         // Construct promised resource1.
@@ -65,11 +59,11 @@ service /http2Service on http2ServiceEP {
         msg = {"push": {"name": "resource1"}};
         push1.setPayload(msg);
 
-        // [Push promised resource1](https://lib.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse).
+        // [Push promised resource1](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse).
         var pushResponse1 = caller->pushPromisedResponse(promise1, push1);
-        if (pushResponse1 is error) {
-            log:printError("Error occurred while sending the promised " +
-                           "response1", 'error = pushResponse1);
+        if pushResponse1 is error {
+            log:printError("Error occurred while sending the promised response1", 
+                    'error = pushResponse1);
         }
 
         // Construct promised resource2.
@@ -79,9 +73,9 @@ service /http2Service on http2ServiceEP {
 
         // Push promised resource2.
         var pushResponse2 = caller->pushPromisedResponse(promise2, push2);
-        if (pushResponse2 is error) {
-            log:printError("Error occurred while sending the promised " +
-                            "response2", 'error = pushResponse2);
+        if pushResponse2 is error {
+            log:printError("Error occurred while sending the promised response2", 
+                    'error = pushResponse2);
         }
 
         // Construct promised resource3.
@@ -91,9 +85,9 @@ service /http2Service on http2ServiceEP {
 
         // Push promised resource3.
         var pushResponse3 = caller->pushPromisedResponse(promise3, push3);
-        if (pushResponse3 is error) {
-            log:printError("Error occurred while sending the promised " +
-                            "response3", 'error = pushResponse3);
+        if pushResponse3 is error {
+            log:printError("Error occurred while sending the promised response3", 
+                    'error = pushResponse3);
         }
     }
 }
@@ -101,37 +95,34 @@ service /http2Service on http2ServiceEP {
   `import ballerina/http;
 import ballerina/log;
 
-// Create an [HTTP client](https://lib.ballerina.io/ballerina/http/latest/clients/Client) that can send HTTP/2 messages.
-// HTTP version is set to 2.0.
-final http:Client clientEP =
-        check new ("http://localhost:7090", {httpVersion: "2.0"});
+// Create an [HTTP client](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client) that can send HTTP/2 messages.
+final http:Client clientEP = check new ("http://localhost:7090");
 
 public function main() {
 
     http:Request serviceReq = new;
     http:HttpFuture httpFuture = new;
-    // [Submit a request](https://lib.ballerina.io/ballerina/http/latest/clients/Client#submit).
+    // [Submit a request](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#submit).
     var submissionResult = clientEP->submit("GET", "/http2Service", serviceReq);
 
-    if (submissionResult is http:HttpFuture) {
+    if submissionResult is http:HttpFuture {
         httpFuture = submissionResult;
     } else {
-        log:printError("Error occurred while submitting a request",
-            'error = submissionResult);
+        log:printError("Error occurred while submitting a request", 'error = submissionResult);
         return;
     }
 
     http:PushPromise?[] promises = [];
     int promiseCount = 0;
-    // [Check if promises exists](https://lib.ballerina.io/ballerina/http/latest/clients/Client#hasPromise).
+    // [Check if promises exists](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#hasPromise).
     boolean hasPromise = clientEP->hasPromise(httpFuture);
 
-    while (hasPromise) {
+    while hasPromise {
         http:PushPromise pushPromise = new;
-        // [Get the next promise](https://lib.ballerina.io/ballerina/http/latest/clients/Client#getNextPromise).
+        // [Get the next promise](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#getNextPromise).
         var nextPromiseResult = clientEP->getNextPromise(httpFuture);
 
-        if (nextPromiseResult is http:PushPromise) {
+        if nextPromiseResult is http:PushPromise {
             pushPromise = nextPromiseResult;
         } else {
             log:printError("Error occurred while fetching a push promise",
@@ -140,9 +131,9 @@ public function main() {
         }
         log:printInfo("Received a promise for " + pushPromise.path);
 
-        if (pushPromise.path == "/resource2") {
+        if pushPromise.path == "/resource2" {
             // The client is not interested in receiving \`/resource2\`.
-            // Therefore, [reject the promise](https://lib.ballerina.io/ballerina/http/latest/clients/Client#rejectPromise).
+            // Therefore, [reject the promise](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#rejectPromise).
             clientEP->rejectPromise(pushPromise);
 
             log:printInfo("Push promise for resource2 rejected");
@@ -156,10 +147,10 @@ public function main() {
     }
 
     http:Response response = new;
-    // [Get the requested resource](https://lib.ballerina.io/ballerina/http/latest/clients/Client#getResponse).
+    // [Get the requested resource](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#getResponse).
     var result = clientEP->getResponse(httpFuture);
 
-    if (result is http:Response) {
+    if result is http:Response {
         response = result;
     } else {
         log:printError("Error occurred while fetching response",
@@ -168,11 +159,10 @@ public function main() {
     }
 
     var responsePayload = response.getJsonPayload();
-    if (responsePayload is json) {
+    if responsePayload is json {
         log:printInfo("Response : " + responsePayload.toJsonString());
     } else {
-        log:printError("Expected response payload not received",
-          'error = responsePayload);
+        log:printError("Expected response payload not received", 'error = responsePayload);
     }
 
     // Fetch required promise responses.
@@ -180,7 +170,7 @@ public function main() {
         http:PushPromise promise = <http:PushPromise>p;
         http:Response promisedResponse = new;
         var promisedResponseResult = clientEP->getPromisedResponse(promise);
-        if (promisedResponseResult is http:Response) {
+        if promisedResponseResult is http:Response {
             promisedResponse = promisedResponseResult;
         } else {
             log:printError("Error occurred while fetching promised response",
@@ -188,9 +178,8 @@ public function main() {
             return;
         }
         var promisedPayload = promisedResponse.getJsonPayload();
-        if (promisedPayload is json) {
-            log:printInfo("Promised resource : " +
-                           promisedPayload.toJsonString());
+        if promisedPayload is json {
+            log:printInfo("Promised resource : " + promisedPayload.toJsonString());
         } else {
             log:printError("Expected promised response payload not received",
                 'error = promisedPayload);
@@ -228,20 +217,14 @@ export default function Http20ServerPush() {
 
       <p>
         HTTP/2 server push messages can be sent and received using the Ballerina{" "}
-        <code>http</code> library.
+        <code>http</code> library. HTTP/2 Server Push messages allow the server
+        to send resources to the client before the client requests for it.
       </p>
 
       <p>
-        HTTP/2 Server Push messages allow the server to send resources to the
-        client before the client requests for it.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -323,6 +306,8 @@ export default function Http20ServerPush() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -374,7 +359,7 @@ export default function Http20ServerPush() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_2.0_service.bal`}</span>
+              <span>{`\$ bal run http_2.0_service.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -457,6 +442,8 @@ export default function Http20ServerPush() {
         </Col>
       </Row>
 
+      <p>Run the client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -508,7 +495,7 @@ export default function Http20ServerPush() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_client.bal`}</span>
+              <span>{`\$ bal run http_client.bal`}</span>
               <span>{`time = 2021-01-21 18:54:45,237 level = INFO  module = "" message = "Received a promise for /resource1"`}</span>
               <span>{`time = 2021-01-21 18:54:45,278 level = INFO  module = "" message = "Received a promise for /resource2"`}</span>
               <span>{`time = 2021-01-21 18:54:45,281 level = INFO  module = "" message = "Push promise for resource2 rejected"`}</span>

@@ -31,7 +31,7 @@ public function main() returns error? {
                         <author>Sir Arthur Conan Doyle</author>
                         <language>English</language>
                   </details>\`;
-    // \`==\` does deep equals.
+    // \`==\` does a deep equality check.
     boolean eq = x3 == x4;
 
     io:println(eq);
@@ -41,27 +41,36 @@ public function main() returns error? {
         io:println(item);
     }
 
-    // \`x[i]\` gives i-th item (empty sequence if none).
+    // \`x[i]\` gives the \`i-th\` item (empty sequence if none).
     io:println(x3[0]);
 
-    // \`x.id\` accesses required attribute named \`id\`:
-    // result is \`error\` if there is no such attribute
-    // or if \`x\` is not a singleton.
+    // \`x.id\` accesses a required attribute named \`id\`: the result is \`error\` if there is no such 
+    // attribute or if \`x\` is not a singleton.
     xml x5 = xml \`<para id="greeting">Hello</para>\`;
     string id = check x5.id;
 
+    // Since an attribute named \`id\` exists in the \`xml\` value on which required attribute access 
+    // is done, the result of the access will be the value of the attribute (\`"greeting"\`).
     io:println(id);
 
-    // \`x?.id\` accesses optional attribute named \`id\`:
-    // result is \`()\` if there is no such attribute.
+    // \`x?.id\` accesses an optional attribute named \`id\`: the result is \`()\` if there is no such 
+    // attribute.
     string? name = check x5?.name;
 
+    // Since an attribute named \`name\` does not exist in the \`xml\` value on which optional 
+    // attribute access is done, the result of the access is nil. Therefore, the following
+    // \`is\` check evaluates to \`true\`.
     io:println(name is ());
 
     // Mutate an element using \`e.setChildren(x)\`.
     x2.setChildren(xml \`<language>French</language>\`);
 
+    // The \`xml\` value assigned to \`x2\` will now include \`<language>French</language>\` as a 
+    // child element.
     io:println(x2);
+
+    // Since the value assigned to \`x3\` used \`x2\` in the concatenation, the change will also 
+    // be reflected in \`x3\`.
     io:println(x3);
 }
 `,
@@ -91,40 +100,77 @@ export default function XmlOperations() {
       <h1>XML operations</h1>
 
       <p>
-        <code>+</code> does concatenation.
+        Numerous operations including those listed below can be performed on{" "}
+        <code>xml</code> values.
       </p>
 
-      <p>
-        <code>==</code> does deep equals.
-      </p>
-
-      <p>
-        <code>foreach</code> iterates over each item.
-      </p>
-
-      <p>
-        <code>x[i]</code> gives i-th item (empty sequence if none).
-      </p>
-
-      <p>
-        <code>x.id</code> accesses required attribute named <code>id</code>:
-      </p>
-
-      <p>result is error if there is no such attribute</p>
-
-      <p>or if x is not a singleton.</p>
-
-      <p>
-        <code>x?.id</code> accesses optional attribute named <code>id</code>:
-      </p>
-
-      <p>result is () if there is no such attribute.</p>
-
-      <p>Langlib lang.xml provides other operations.</p>
-
-      <p>
-        Mutate an element using <code>e.setChildren(x)</code>.
-      </p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>+</code> does concatenation
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>==</code> does a deep equality check
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>foreach</code> iterates over each item
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>x[i]</code> gives the <code>i-th</code> item (empty sequence
+            if none)
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>x.id</code> accesses a required attribute named{" "}
+            <code>id</code>. The result will be an error if there is no such
+            attribute or if <code>x</code> is not a singleton.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>x?.id</code> accesses an optional attribute named{" "}
+            <code>id</code>. The result will be <code>()</code> if there is no
+            such attribute.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            The{" "}
+            <a href="https://lib.ballerina.io/ballerina/lang.xml/0.0.0">
+              XML language library
+            </a>{" "}
+            provides many other ways to manipulate XML. For example, an XML
+            element can be mutated using the <code>e.setChildren(x)</code> lang
+            library function.
+          </span>
+        </li>
+      </ul>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -132,7 +178,7 @@ export default function XmlOperations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=762c390b800249b20f0025593de46ad7&file=xml_operations.bal",
+                "https://play.ballerina.io/?gist=c7513f500b9b7014a58bbb5e09147c74&file=xml_operations.bal",
                 "_blank"
               );
             }}
@@ -277,7 +323,7 @@ export default function XmlOperations() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run xml_operations.bal`}</span>
+              <span>{`\$ bal run xml_operations.bal`}</span>
               <span>{`<name>Sherlock Holmes</name><details>`}</span>
               <span>{`                <author>Sir Arthur Conan Doyle</author>`}</span>
               <span>{`                <language>English</language>`}</span>

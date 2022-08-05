@@ -22,7 +22,6 @@ any[] av = iv;
 public function main() {
     // A runtime error or else \`iv[0]\` would have the wrong type.
     av[0] = "str";
-
 }
 `,
 ];
@@ -50,23 +49,15 @@ export default function Covariance() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Covariance</h1>
 
-      <p>Arrays and maps are covariant.</p>
+      <p>
+        Covariance means that a write to a mutable structure may result in a
+        runtime error. Lists and mappings are covariant. Arrays, maps, tuples,
+        and records have an <code>inherent</code> type that constrains mutation.
+      </p>
 
       <p>
         Static type-checking guarantees that the result of a read from a mutable
-      </p>
-
-      <p>structure will be consistent with the static type.</p>
-
-      <p>
-        Covariance means that a write to a mutable structure may result in a
-      </p>
-
-      <p>runtime error.</p>
-
-      <p>
-        Arrays, maps, and records have an &quot;inherent&quot; type that
-        constrains mutation.
+        structure will be consistent with the static type.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -75,7 +66,7 @@ export default function Covariance() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=390f29ad6c5f857c6d2ae65dfe0666d0&file=covariance.bal",
+                "https://play.ballerina.io/?gist=c8d75c639d83febe0d74a24029bdbb88&file=covariance.bal",
                 "_blank"
               );
             }}
@@ -220,7 +211,7 @@ export default function Covariance() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run covariance.bal`}</span>
+              <span>{`\$ bal run covariance.bal`}</span>
               <span>{`error: {ballerina/lang.array}InherentTypeViolation {"message":"incompatible types: expected 'int', found 'string'"}`}</span>
               <span>{`        at covariance:main(covariance.bal:10)`}</span>
             </code>

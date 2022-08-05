@@ -32,10 +32,9 @@ public function main() {
     io:println(x4);
 
     // Multiple XML items can be combined to form a sequence of XML.
-    // The resulting sequence is another XML on its own.
+    // The resulting sequence is another \`xml\` value on its own.
     xml x5 = x1 + x2 + x3 + x4;
     io:println(x5);
-
 }
 `,
 ];
@@ -65,72 +64,92 @@ export default function XmlDataModel() {
 
       <p>
         An <code>xml</code> value is a sequence representing the parsed content
-        of an XML element. &lt;br&gt;&lt;/br&gt;
+        of an XML element. It consists of the four items below:
+      </p>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Element</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Processing Instruction</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Comment</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Text</span>
+        </li>
+      </ul>
+
+      <p>
+        The element, processing instruction, and comment singletons correspond
+        directly to the items in the XML information set. The text item
+        corresponds to one or more character information items.
       </p>
 
       <p>
-        An <code>xml</code> value has four kinds of items.
-      </p>
-
-      <p>&lt;ul&gt;</p>
-
-      <p>
-        &lt;li&gt;The element, processing instruction, and comment singletons
-        correspond directly to the items in the XML information set&lt;/li&gt;
-      </p>
-
-      <p>
-        &lt;li&gt;The text item corresponds to one or more character information
-        items&lt;/li&gt;
-      </p>
-
-      <p>&lt;/ul&gt;</p>
-
-      <p>//&lt;br&gt;&lt;/br&gt;</p>
-
-      <p>
-        &lt;p&gt;XML document is an <code>xml</code> sequence with only one{" "}
+        An XML document is an <code>xml</code> sequence with only one{" "}
         <code>element</code> and no <code>text</code>. An <code>element</code>{" "}
-        item is mutable
+        item is mutable and consists of:
       </p>
 
-      <p>and consists of:&lt;/p&gt;</p>
-
-      <p>&lt;ul&gt;</p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>name</code>: type <code>string</code>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>attributes</code>: type <code>map&lt;string&gt;</code>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>children</code>: type <code>xml</code>
+          </span>
+        </li>
+      </ul>
 
       <p>
-        &lt;li&gt;name: type <code>string</code>&lt;/li&gt;
+        An XML <code>text</code> item is immutable.
       </p>
 
-      <p>
-        &lt;li&gt;attributes: type <code>map&lt;string&gt;</code>&lt;/li&gt;
-      </p>
-
-      <p>
-        &lt;li&gt;children: type <code>xml</code>&lt;/li&gt;
-      </p>
-
-      <p>&lt;/ul&gt;</p>
-
-      <p>//&lt;br&gt;&lt;/br&gt;</p>
-
-      <p>
-        &lt;p&gt;A <code>text</code> item is immutable.&lt;/p&gt;
-      </p>
-
-      <p>&lt;ul&gt;</p>
-
-      <p>
-        &lt;li&gt;it has no identity: <code>==</code> is the same as{" "}
-        <code>===</code>&lt;/li&gt;
-      </p>
-
-      <p>
-        &lt;li&gt;consecutive <code>text</code> items never occur in an{" "}
-        <code>xml</code> value: they are always merged&lt;/li&gt;
-      </p>
-
-      <p>&lt;/ul&gt;</p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            It has no identity: <code>==</code> is the same as <code>===</code>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Consecutive <code>text</code> items never occur in an{" "}
+            <code>xml</code> value: they are always merged
+          </span>
+        </li>
+      </ul>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -138,7 +157,7 @@ export default function XmlDataModel() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=71c15d3711bc8e65c309b45688e729ae&file=xml_data_model.bal",
+                "https://play.ballerina.io/?gist=fd81d32019c43e272170aed4ccb76b1b&file=xml_data_model.bal",
                 "_blank"
               );
             }}
@@ -283,7 +302,7 @@ export default function XmlDataModel() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run xml.bal`}</span>
+              <span>{`\$ bal run xml.bal`}</span>
               <span>{`<book>The Lost World</book>`}</span>
               <span>{`Hello, world!`}</span>
               <span>{`<!--I am a comment-->`}</span>

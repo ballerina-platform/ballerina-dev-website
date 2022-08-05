@@ -20,10 +20,8 @@ function intFromBytes(byte[] bytes) returns int|error {
     // Use \`check\` with an expression that may return \`error\`.
     // If \`string:fromBytes(bytes)\` returns an \`error\` value, \`check\`
     // makes the function return the \`error\` value here.
-    // If not, the returned \`string\` value is used as the
-    // value of the \`str\` variable.
+    // If not, the returned \`string\` value is used as the value of the \`str\` variable.
     string str = check string:fromBytes(bytes);
-
 
     return int:fromString(str);
 }
@@ -60,22 +58,15 @@ export default function CheckExpression() {
 
       <p>
         <code>check E</code> is used with an expression <code>E</code> that
-        might result in an <code>error</code> value.
+        might result in an <code>error</code> value. If <code>E</code> results
+        in an <code>error</code> value, then, <code>check</code> makes the
+        function return that <code>error</code> value immediately.
       </p>
 
       <p>
-        If <code>E</code> results in an <code>error</code> value , then{" "}
-        <code>check</code> makes the function return that <code>error</code>{" "}
-        value
+        Type of <code>check E</code> does not include <code>error</code>. The
+        control flow remains explicit.
       </p>
-
-      <p>immediately.</p>
-
-      <p>
-        Type of <code>check E</code> does not include <code>error</code>.
-      </p>
-
-      <p>The control flow remains explicit.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -83,7 +74,7 @@ export default function CheckExpression() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b6f981017b61e7173b80382afee7c6dc&file=check_expression.bal",
+                "https://play.ballerina.io/?gist=37233728f55b54cb5ef4005eeb8e09f0&file=check_expression.bal",
                 "_blank"
               );
             }}

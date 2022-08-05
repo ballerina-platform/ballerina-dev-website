@@ -15,16 +15,13 @@ const codeSnippetData = [
   `import ballerina/io;
 
 public function main() returns error? {
-    // Compile-time guarantees that transactions are bracketed with
-    // begin and commit or rollback. Transaction statement begins
-    // a new transaction and executes a block.
+    // The transaction statement begins a new transaction and executes a block.
     transaction {
         doStage1();
         doStage2();
 
         // Commit of a transaction must be done explicitly using commit.
-        // Commit must be lexically within a transaction statement and may
-        // return an error;
+        // A commit must be lexically within a transaction statement and may return an error;
         check commit;
 
     }
@@ -66,22 +63,11 @@ export default function TransactionStatement() {
 
       <p>
         Ballerina provides support for interacting with a transaction manager.
-      </p>
-
-      <p>
-        Compile-time guarantees that transactions are bracketed with begin and{" "}
-        <code>commit</code> or <code>rollback</code>.
-      </p>
-
-      <p>The region in the middle is typed as being a transactional context.</p>
-
-      <p>
-        Ballerina does not have a transactional memory and includes a
-        transaction manager.
-      </p>
-
-      <p>
-        The current transaction is a part of the execution context of a strand.
+        The compile-time guarantees that transactions are bracketed with begin
+        and <code>commit</code> or <code>rollback</code>. The region in the
+        middle is typed as being a transactional context. Ballerina does not
+        have a transactional memory and includes a transaction manager. The
+        current transaction is a part of the execution context of a strand.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -90,7 +76,7 @@ export default function TransactionStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7797a737f300b3c1d12129f53bb184a8&file=transaction_statement.bal",
+                "https://play.ballerina.io/?gist=2fa95b5d5cd10176501af84b7cee4343&file=transaction_statement.bal",
                 "_blank"
               );
             }}
@@ -235,7 +221,7 @@ export default function TransactionStatement() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run transaction_statement.bal`}</span>
+              <span>{`\$ bal run transaction_statement.bal`}</span>
               <span>{`Stage1 completed`}</span>
               <span>{`Stage2 completed`}</span>
             </code>

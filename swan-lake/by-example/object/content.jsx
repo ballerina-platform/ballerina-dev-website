@@ -65,31 +65,17 @@ export default function Object() {
       <h1>Object</h1>
 
       <p>
-        The <code>object</code> type is a separate basic type.
+        The <code>object</code> type is a separate basic type. An{" "}
+        <code>object</code> value has named methods and fields, which are in the
+        same symbol space.
       </p>
-
-      <p>
-        An <code>object</code> value has named methods and fields.
-      </p>
-
-      <p>Methods and fields are in the same symbol space.</p>
 
       <p>
         A <code>class</code> defines an <code>object</code> type and provides a
-        way to construct an object.
-      </p>
-
-      <p>
-        Apply the <code>new</code> operator with a <code>class</code> to get an
-        object.
-      </p>
-
-      <p>
-        Call method using <code>obj.foo(args)</code>.
-      </p>
-
-      <p>
-        Access field using <code>obj.x</code>.
+        way to construct an object. Apply the <code>new</code> operator with a{" "}
+        <code>class</code> to get an object. Obejct methods can be called using{" "}
+        <code>obj.foo(args)</code> and object fields can be accessed using{" "}
+        <code>obj.x</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -98,7 +84,7 @@ export default function Object() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=44aa8849d3545c8202b115129f873c8d&file=object.bal",
+                "https://play.ballerina.io/?gist=caa4883dababeabdf0641bb3096eb1fd&file=object.bal",
                 "_blank"
               );
             }}
@@ -243,7 +229,7 @@ export default function Object() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run object.bal`}</span>
+              <span>{`\$ bal run object.bal`}</span>
               <span>{`1235`}</span>
             </code>
           </pre>
@@ -253,7 +239,7 @@ export default function Object() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Control openness"
+            title="Controlling openness"
             href="/learn/by-example/controlling-openness"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -281,7 +267,7 @@ export default function Object() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Control openness
+                  Controlling openness
                 </span>
               </div>
             </div>
@@ -289,7 +275,7 @@ export default function Object() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Define classes"
+            title="Defining classes"
             href="/learn/by-example/defining-classes"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -300,7 +286,7 @@ export default function Object() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Define classes
+                  Defining classes
                 </span>
               </div>
               <svg

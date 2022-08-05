@@ -12,19 +12,31 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `// The identifier followed by the \`as\` keyword is the prefix bound
-// to this namespace name.
+  `import ballerina/io;
+
+// The identifier followed by the \`as\` keyword is the prefix bound to the namespace name.
+// Here \`eg\` is bound to \`"http://example.com"\`.
 xmlns "http://example.com" as eg;
 
-xml x = xml\`<eg:doc>Hello</eg:doc>\`;
+public function main() {
+    // The prefixes to which namespaces declarations are bound to can be used in XML templates.
+    xml x = xml \`<eg:doc>Hello</eg:doc>\`;
 
-xmlns "http://example.com" as ex;
+    // \`xmlns\` declarations are also allowed at block level.
+    // The \`ex\` prefix is also bound to \`"http://example.com"\`.
+    xmlns "http://example.com" as ex;
 
-// \`b\` will be \`true\`.
-boolean b = (x === x.<ex:doc>);
+    // The prefixes can also be used in XML navigation. 
+    boolean b = x === x.<ex:doc>;
 
-// \`exdoc\` will be \`{http://example.com}doc\`.
-string exdoc = ex:doc;
+    // Since both \`eg\` and \`ex\` bind to the same namespace URL, the following evaluates to \`true\`.
+    io:println(b);
+
+    // An XML qualified name \`ex:doc\` evaluates to the string \`{http://example.com}doc\` where 
+    // \`http://example.com\` is the namespace URL bound to \`ex\`.
+    string exdoc = ex:doc;
+    io:println(exdoc);
+}
 `,
 ];
 
@@ -52,23 +64,19 @@ export default function XmlnsDeclarations() {
       <h1>XMLNS declarations</h1>
 
       <p>
-        The <code>xmlns</code> declarations are like import declarations, but
-        bind the prefix to a namespace URL rather than
+        <code>xmlns</code> declarations are like import declarations but they
+        bind the prefix to a namespace URL rather than a module.
       </p>
 
       <p>
-        a module. The <code>xmlns</code> declarations in the Ballerina module
-        provide namespace context for parsing <code>xml</code>
+        <code>xmlns</code> declarations in a Ballerina module provide namespace
+        contexts for parsing <code>xml</code> templates. Qualified names in
+        Ballerina modules are expanded into strings using the <code>xmlns</code>{" "}
+        declarations in the module.
       </p>
 
       <p>
-        templates. The Qualified names in Ballerina modules are expanded into{" "}
-        <code>strings</code> using the <code>xmlns</code>
-      </p>
-
-      <p>
-        declarations in the module. The <code>xmlns</code> declarations are also
-        allowed at block level.
+        <code>xmlns</code> declarations are also allowed at block level.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -77,7 +85,7 @@ export default function XmlnsDeclarations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d839442be5e3f30bcfd74690b66b3a25&file=xmlns_declarations.bal",
+                "https://play.ballerina.io/?gist=928f81ffb02cc06d69f687b536d8429f&file=xmlns_declarations.bal",
                 "_blank"
               );
             }}
@@ -222,7 +230,9 @@ export default function XmlnsDeclarations() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run xmlns_declarations.bal`}</span>
+              <span>{`\$ bal run xmlns_declarations.bal`}</span>
+              <span>{`true`}</span>
+              <span>{`{http://example.com}doc`}</span>
             </code>
           </pre>
         </Col>

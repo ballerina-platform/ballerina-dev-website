@@ -20,7 +20,6 @@ service / on new http:Listener(9090) {
     resource function get greeting() returns string {
         return "Hello, World!";
     }
-
 }
 `,
 ];
@@ -134,6 +133,8 @@ export default function HelloWorldService() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -185,13 +186,16 @@ export default function HelloWorldService() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Invoke the service using the "cURL" command below.`}</span>
-              <span>{`curl http://localhost:9090/greeting`}</span>
-              <span>{`Hello, World!`}</span>
+              <span>{`\$ bal run hello_world_service.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -244,7 +248,8 @@ export default function HelloWorldService() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run hello_world_service.bal`}</span>
+              <span>{`\$ curl http://localhost:9090/greeting`}</span>
+              <span>{`Hello, World!`}</span>
             </code>
           </pre>
         </Col>

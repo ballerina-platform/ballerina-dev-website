@@ -14,6 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `// This is the service definition for the scenario.
 syntax = "proto3";
+
 import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
@@ -23,7 +24,7 @@ service HelloWorld {
 `,
   `import ballerina/grpc;
 
-listener grpc:Listener securedEP = new(9090,
+listener grpc:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -105,7 +106,7 @@ export default function GrpcServiceOauth2() {
         This calls the
       </p>
 
-      <p>configured introspection endpoint to validate.&lt;br/&gt;</p>
+      <p>configured introspection endpoint to validate.</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
@@ -123,8 +124,7 @@ export default function GrpcServiceOauth2() {
       </p>
 
       <p>
-        claim attribute also can be configured as the <code>scopeKey</code>
-        .&lt;br/&gt;
+        claim attribute also can be configured as the <code>scopeKey</code>.
       </p>
 
       <p>
@@ -137,19 +137,33 @@ export default function GrpcServiceOauth2() {
         one
       </p>
 
-      <p>match between the two sets.&lt;br/&gt;&lt;br/&gt;</p>
+      <p>match between the two sets.</p>
 
-      <p>For more information on the underlying module,</p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on the underlying module,
+          see the{" "}
+          <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+            <code>oauth2</code> module
+          </a>
+          .
+        </p>
+      </blockquote>
 
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          OAuth2 module
-        </a>
-        .
-      </p>
+      <h2>Generate the service definition</h2>
 
-      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>
+            Create a new Protocol Buffers definition file named{" "}
+            <code>grpc_service.proto</code> and add the service definition to
+            it.
+          </span>
+        </li>
+      </ul>
+
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "32px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -226,9 +240,19 @@ export default function GrpcServiceOauth2() {
         </Col>
       </Row>
 
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Run the command below in the Ballerina tools distribution for stub
+            generation.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "0px" }}
+        style={{ marginLeft: "24px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
@@ -277,27 +301,59 @@ export default function GrpcServiceOauth2() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# Create a new Protocol Buffers definition file named `}
-                <code>{`grpc_service.proto`}</code>
-                {` and add the service definition to it.`}
-              </span>
-              <span>{`# Run the command below in the Ballerina tools distribution for stub generation.`}</span>
-              <span>{`bal grpc --input grpc_service.proto --output stubs`}</span>
-              <span>{``}</span>
-              <span>
-                {`# Once you run the command, `}
-                <code>{`grpc_service_pb.bal`}</code>
-                {` file is generated inside stubs directory.`}
-              </span>
-              <span>{``}</span>
-              <span>{`# For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto To Ballerina</a> example.`}</span>
+              <span>{`\$ bal grpc --input grpc_service.proto --output stubs`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+      <p>
+        Once you run the command, the <code>grpc_service_pb.bal</code> file is
+        generated inside the stubs directory.
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on how to use the
+          Ballerina Protocol Buffers tool, see the &lt;a
+          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
+          To Ballerina&lt;/a&gt; example.
+        </p>
+      </blockquote>
+
+      <h2>Implement and run the service</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>Create a Ballerina package.</span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Copy the generated <code>grpc_secured_pb.bal</code> stub file to the
+            package. For example, if you create a package named{" "}
+            <code>service</code>, copy the stub file to the <code>service</code>{" "}
+            package.
+          </span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
+          <span>
+            Create a new <code>grpc_service_oauth2.bal</code> Ballerina file
+            inside the <code>service</code> package and add the service
+            implementation.
+          </span>
+        </li>
+      </ul>
+
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "24px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -374,9 +430,18 @@ export default function GrpcServiceOauth2() {
         </Col>
       </Row>
 
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>4.</span>
+          <span>
+            Execute the commands below to build and run the 'service' package.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "0px" }}
+        style={{ marginLeft: "24px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick2 ? (
@@ -425,42 +490,18 @@ export default function GrpcServiceOauth2() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina package.`}</span>
-              <span>
-                {`# Copy the generated `}
-                <code>{`grpc_secured_pb.bal`}</code>
-                {` stub file to the package.`}
-              </span>
-              <span>
-                {`# For example, if you create a package named `}
-                <code>{`service`}</code>
-                {`, copy the stub file to the `}
-                <code>{`service`}</code>
-                {` package.`}
-              </span>
+              <span>{`\$ bal build service`}</span>
               <span>{``}</span>
-              <span>
-                {`# Create a new `}
-                <code>{`grpc_service_oauth2.bal`}</code>
-                {` Ballerina file inside the `}
-                <code>{`service`}</code>
-                {` package and add the service implementation.`}
-              </span>
-              <span>{``}</span>
-              <span>{`# Execute the command below to build the 'service' package.`}</span>
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>
-                {``}
-                <code>{`bal build service`}</code>
-                {``}
-              </span>
-              <span>{``}</span>
-              <span>{`# Run the service using the command below.`}</span>
-              <span>{`bal run service/target/bin/service.jar`}</span>
+              <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        You may need to change the certificate file path and private key file
+        path.
+      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// [COMPRESSION_ALWAYS](https://lib.ballerina.io/ballerina/http/latest/constants#COMPRESSION_ALWAYS)
+// [COMPRESSION_ALWAYS](https://docs.central.ballerina.io/ballerina/http/latest/constants#COMPRESSION_ALWAYS)
 // guarantees a compressed response entity body. Compression scheme is set to the
 // value indicated in Accept-Encoding request header. When a particular header is not present or the header
 // value is "identity", encoding is done using the "gzip" scheme.
@@ -31,7 +31,7 @@ service / on new http:Listener(9090) {
 
     // The response entity body is always compressed since MIME type has matched.
     resource function 'default alwaysCompress() returns string {
-        return "Type : This is a string";
+        return "Type : This is a string.";
     }
 }
 `,
@@ -68,30 +68,25 @@ export default function HttpCompression() {
       </p>
 
       <p>
-        compresses the response entity body with the scheme(gzip, deflate) that
-        is specified in the Accept-Encoding request header. When
+        compresses the response entity body with the scheme (gzip, deflate) that
+        is specified in the <code>Accept-Encoding</code> request header. When
       </p>
 
       <p>
-        the particular header is not present or the header value is
-        &quot;identity&quot;, the server does not perform any compression.
+        the particular header is not present or the header value is{" "}
+        <code>identity</code>, the server does not perform any compression.
         Compression
       </p>
 
       <p>
         is disabled when the option is set to <code>COMPRESSION_NEVER</code> and
         always enabled when the option is set to <code>COMPRESSION_ALWAYS</code>
-        &lt;br/&gt;&lt;br/&gt;
       </p>
 
       <p>
-        In the same way <code>http:Client</code> can be configured as well. For
-        more information on the underlying module,
-      </p>
-
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        In the same way, an <code>http:Client</code> can be configured as well.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -174,6 +169,8 @@ export default function HttpCompression() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -225,31 +222,20 @@ export default function HttpCompression() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# To invoke the alwaysCompress Service to get the String payload, use the following curl command.`}</span>
-              <span>
-                {`# Here the `}
-                <code>{`Accept-Encoding`}</code>
-                {` header is not specified.`}
-              </span>
-              <span>{`curl -v --output - http://localhost:9090/alwaysCompress`}</span>
-              <span>{`> GET /alwaysCompress/getString HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.58.0`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< content-encoding: gzip`}</span>
-              <span>{`< content-length: 48`}</span>
-              <span>{`<`}</span>
-              <span>{`�`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`�,HU���,V�D�⒢̼t��ʴ��`}</span>
+              <span>{`\$ bal run http_compression.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
+
+      <p>
+        Here, the <code>Accept-Encoding</code> header is not specified.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -302,9 +288,21 @@ export default function HttpCompression() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_compression.bal`}</span>
-              <span>{`ballerina: started HTTP/WS listener 0.0.0.0:9092`}</span>
-              <span>{`ballerina: started HTTP/WS listener 0.0.0.0:9090`}</span>
+              <span>{`\$ curl -v --output - http://localhost:9090/alwaysCompress`}</span>
+              <span>{`> GET /alwaysCompress/getString HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.58.0`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`>`}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< content-type: text/plain`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< content-encoding: gzip`}</span>
+              <span>{`< content-length: 48`}</span>
+              <span>{`<`}</span>
+              <span>{`�`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`�,HU���,V�D�⒢̼t��ʴ��`}</span>
             </code>
           </pre>
         </Col>

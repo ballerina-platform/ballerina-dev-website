@@ -15,16 +15,15 @@ const codeSnippetData = [
   `import ballerina/http;
 
 // HTTP version is set to 2.0.
-http:Client http2serviceClientEP =
-        check new ("http://localhost:7090", {httpVersion: "2.0"});
+final http:Client http2serviceClientEP = check new ("http://localhost:7090");
 
-service / on new http:Listener(9090) {
+// Since the default HTTP version is 2.0, HTTP version is set to 1.1.
+service / on new http:Listener(9090, httpVersion = "1.1") {
 
     resource function 'default http11Service(http:Request clientRequest)
             returns json|error {
-        // Forward the [clientRequest](https://lib.ballerina.io/ballerina/http/latest/classes/Request) to the \`http2\` service.
-        json clientResponse = check
-            http2serviceClientEP->forward("/http2service", clientRequest);
+        // Forward the [clientRequest](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request) to the \`http2\` service.
+        json clientResponse = check http2serviceClientEP->forward("/http2service", clientRequest);
 
         // Send the response back to the caller.
         return clientResponse;
@@ -32,11 +31,7 @@ service / on new http:Listener(9090) {
     }
 }
 
-// HTTP version is set to 2.0.
-listener http:Listener http2serviceEP = new (7090,
-    config = {httpVersion: "2.0"});
-
-service / on http2serviceEP {
+service / on new http:Listener(7090) {
 
     resource function 'default http2service() returns json {
         // Send the response back to the caller (http11Service).
@@ -77,19 +72,13 @@ export default function Http11To20ProtocolSwitch() {
 
       <p>
         The HTTP service receives a message over the HTTP/1.1 protocol and
-        forwards it
+        forwards it to another service over the HTTP/2.0 protocol.
       </p>
 
       <p>
-        to another service over the HTTP/2.0 protocol.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -171,6 +160,8 @@ export default function Http11To20ProtocolSwitch() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -222,13 +213,13 @@ export default function Http11To20ProtocolSwitch() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`// Invoke the HTTP/1.1 service using "cURL".`}</span>
-              <span>{`curl http://localhost:9090/http11Service`}</span>
-              <span>{`{"response":{"message":"response from http2 service"}}`}</span>
+              <span>{`\$ bal run http_1_1_to_2_0_protocol_switch.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -281,7 +272,9 @@ export default function Http11To20ProtocolSwitch() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_1_1_to_2_0_protocol_switch.bal`}</span>
+              <span>{`// Invoke the HTTP/1.1 service using "cURL".`}</span>
+              <span>{`\$ curl http://localhost:9090/http11Service`}</span>
+              <span>{`{"response":{"message":"response from http2 service"}}`}</span>
             </code>
           </pre>
         </Col>
@@ -290,7 +283,7 @@ export default function Http11To20ProtocolSwitch() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Interceptor error handling"
+            title="Interceptor Error Handling"
             href="/learn/by-example/http-interceptor-error-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -318,7 +311,7 @@ export default function Http11To20ProtocolSwitch() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interceptor error handling
+                  Interceptor Error Handling
                 </span>
               </div>
             </div>

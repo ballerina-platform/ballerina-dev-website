@@ -271,6 +271,8 @@ export default function GaugeMetrics() {
         </Col>
       </Row>
 
+      <p>Invoke the service using the cURL command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -322,17 +324,20 @@ export default function GaugeMetrics() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`// Invoke the service three times using the cURL commands below.`}</span>
-              <span>{`curl http://localhost:9090/onlineStoreService/makeOrder`}</span>
-              <span>{`Order Processed!`}</span>
-              <span>{`curl http://localhost:9090/onlineStoreService/makeOrder`}</span>
-              <span>{`Order Processed!`}</span>
-              <span>{`curl http://localhost:9090/onlineStoreService/makeOrder`}</span>
+              <span>{`\$ curl http://localhost:9090/onlineStoreService/makeOrder`}</span>
               <span>{`Order Processed!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>To start the service, navigate to the directory that contains the</p>
+
+      <p>
+        <code>.bal</code> file, and execute the <code>bal run</code> command
+        below with the <code>--observability-included</code> build time flag and
+        the <code>Config.toml</code> runtime configuration file.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -385,20 +390,7 @@ export default function GaugeMetrics() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# To start the service, navigate to the directory that contains the`}</span>
-              <span>
-                {`# `}
-                <code>{`.bal`}</code>
-                {` file and execute the `}
-                <code>{`bal run`}</code>
-                {` command below with the `}
-                <code>{`--observability-included`}</code>
-                {` build time flag and the `}
-                <code>{`Config.toml`}</code>
-                {` runtime configuration file.`}
-              </span>
-              <span>{`BAL_CONFIG_FILES=Config.toml bal run --observability-included gauge_metrics.bal`}</span>
-              <span>{``}</span>
+              <span>{`\$ BAL_CONFIG_FILES=Config.toml bal run --observability-included gauge_metrics.bal`}</span>
               <span>{`ballerina: started Prometheus HTTP listener 0.0.0.0:9797`}</span>
               <span>{`------------------------------------------`}</span>
               <span>{`Gauge - global_gauge Snapshot: [{"timeWindow":600000, "mean":15.0, "max":15.0, "min":15.0, "stdDev":0.0, "percentileValues":[{"percentile":0.33, "value":15.0}, {"percentile":0.5, "value":15.0}, {"percentile":0.66, "value":15.0}, {"percentile":0.75, "value":15.0}, {"percentile":0.95, "value":15.0}, {"percentile":0.99, "value":15.0}, {"percentile":0.999, "value":15.0}]}]`}</span>
@@ -479,7 +471,7 @@ export default function GaugeMetrics() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Kubernetes" href="/learn/by-example/c2c-deployment">
+          <Link title="Docker" href="/learn/by-example/c2c-docker-deployment">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -488,7 +480,7 @@ export default function GaugeMetrics() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Kubernetes
+                  Docker
                 </span>
               </div>
               <svg

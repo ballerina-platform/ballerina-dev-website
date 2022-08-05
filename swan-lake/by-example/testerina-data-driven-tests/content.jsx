@@ -77,8 +77,8 @@ export default function TesterinaDataDrivenTests() {
       <h1>Data driven tests</h1>
 
       <p>
-        The Ballerina Test framework provides in-built support for data-driven
-        tests.&lt;br/&gt;&lt;br/&gt;
+        The Ballerina test framework provides in-built support for data-driven
+        tests.
       </p>
 
       <p>
@@ -88,20 +88,20 @@ export default function TesterinaDataDrivenTests() {
 
       <p>
         The test execution will iterate the same test function over the provided
-        dataset.&lt;br/&gt;&lt;br/&gt;
+        dataset.
       </p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
         </a>
       </p>
 
       <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -234,7 +234,7 @@ export default function TesterinaDataDrivenTests() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal test test_module`}</span>
+              <span>{`\$ bal test test_module`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
               <span>{``}</span>

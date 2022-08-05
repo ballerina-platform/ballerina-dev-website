@@ -32,20 +32,17 @@ service /multiparts on new http:Listener(9092) {
         // Creates another child part with a file.
         mime:Entity childPart2 = new;
         // This file path is relative to where the Ballerina is running.
-        //If your file is located outside, please give the
+        //If your file is located outside, give the
         //absolute file path instead.
-        childPart2.setFileAsEntityBody("./files/test.xml",
-            contentType = mime:TEXT_XML);
+        childPart2.setFileAsEntityBody("./files/test.xml", contentType = mime:TEXT_XML);
         // Creates an array to hold the child parts.
         mime:Entity[] childParts = [childPart1, childPart2];
-        // [Sets the child parts to the parent part](https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#setBodyParts).
-        parentPart.setBodyParts(childParts,
-            contentType = mime:MULTIPART_MIXED);
+        // [Sets the child parts to the parent part](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#setBodyParts).
+        parentPart.setBodyParts(childParts, contentType = mime:MULTIPART_MIXED);
         // Creates an array to hold the parent part and set it to the response.
         mime:Entity[] immediatePartsToResponse = [parentPart];
         http:Response outResponse = new;
-        outResponse.setBodyParts(immediatePartsToResponse,
-            contentType = mime:MULTIPART_FORM_DATA);
+        outResponse.setBodyParts(immediatePartsToResponse, contentType = mime:MULTIPART_FORM_DATA);
         return outResponse;
     }
 }
@@ -54,12 +51,10 @@ service /multiparts on new http:Listener(9092) {
 service /multiparts on new http:Listener(9090) {
 
     // This resource accepts multipart responses.
-    resource function get decode_in_response()
-            returns string|http:InternalServerError {
-        http:Response|error returnResult = clientEP->get(
-                        "/multiparts/encode_out_response");
+    resource function get decode_in_response() returns string|http:InternalServerError {
+        http:Response|error returnResult = clientEP->get("/multiparts/encode_out_response");
         if (returnResult is http:Response) {
-            // [Extracts the body parts](https://lib.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts)  from the response.
+            // [Extracts the body parts](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts)  from the response.
             var parentParts = returnResult.getBodyParts();
             if (parentParts is mime:Entity[]) {
                 //Loops through body parts.
@@ -87,8 +82,7 @@ function handleNestedParts(mime:Entity parentPart) {
                 handleContent(childPart);
             }
         } else {
-            log:printError("Error retrieving child parts! " +
-                            childParts.message());
+            log:printError("Error retrieving child parts! " + childParts.message());
         }
     }
 }
@@ -98,7 +92,7 @@ function handleNestedParts(mime:Entity parentPart) {
 function handleContent(mime:Entity bodyPart) {
     string baseType = getBaseType(bodyPart.getContentType());
     if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
-        // [Extracts XML data](https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getXml) from the body part.
+        // [Extracts XML data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getXml) from the body part.
         var payload = bodyPart.getXml();
         if (payload is xml) {
              log:printInfo("XML data: " + payload.toString());
@@ -106,7 +100,7 @@ function handleContent(mime:Entity bodyPart) {
              log:printError("Error in parsing XML data", 'error = payload);
         }
     } else if (mime:APPLICATION_JSON == baseType) {
-        // [Extracts JSON data](https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getJson) from the body part.
+        // [Extracts JSON data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getJson) from the body part.
         var payload = bodyPart.getJson();
         if (payload is json) {
             log:printInfo("JSON data: " + payload.toJsonString());
@@ -114,7 +108,7 @@ function handleContent(mime:Entity bodyPart) {
              log:printError("Error in parsing JSON data", 'error = payload);
         }
     } else if (mime:TEXT_PLAIN == baseType) {
-        // [Extracts text data](https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getText) from the body part.
+        // [Extracts text data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getText) from the body part.
         var payload = bodyPart.getText();
         if (payload is string) {
             log:printInfo("Text data: " + payload);
@@ -122,21 +116,18 @@ function handleContent(mime:Entity bodyPart) {
             log:printError("Error in parsing text data", 'error = payload);
         }
     } else if (mime:APPLICATION_PDF == baseType) {
-        // [Extracts the byte stream](https://lib.ballerina.io/ballerina/http/latest/classes/Response#getByteStream) from the body part and saves it as a file.
+        // [Extracts the byte stream](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#getByteStream) from the body part and saves it as a file.
         var payload = bodyPart.getByteStream();
         if (payload is stream<byte[], io:Error?>) {
-            //Writes the incoming stream to a file using \`io:fileWriteBlocksFromStream\` API by providing the file location to which the content should be written to.
-            io:Error? result = io:fileWriteBlocksFromStream(
-                                    "./files/ReceivedFile.pdf", payload);
+            //Writes the incoming stream to a file using the \`io:fileWriteBlocksFromStream\` API by providing the file location to which the content should be written.
+            io:Error? result = io:fileWriteBlocksFromStream("./files/ReceivedFile.pdf", payload);
 
             if (result is error) {
-                log:printError("Error occurred while writing ",
-                                'error = result);
+                log:printError("Error occurred while writing ", 'error = result);
             }
             close(payload);
         } else {
-            log:printError("Error in parsing byte channel :",
-                            'error = payload);
+            log:printError("Error in parsing byte channel :", 'error = payload);
         }
     }
 }
@@ -155,8 +146,7 @@ function getBaseType(string contentType) returns string {
 function close(stream<byte[], io:Error?> byteStream) {
     var cr = byteStream.close();
     if (cr is error) {
-        log:printError("Error occurred while closing the stream: ",
-                       'error = cr);
+        log:printError("Error occurred while closing the stream: ", 'error = cr);
     }
 }
 `,
@@ -199,14 +189,12 @@ export default function HttpResponseWithMultiparts() {
 
       <p>
         entities). If the received parts contain nested parts, you can loop
-        through the parent parts and get the child parts.&lt;br/&gt;&lt;br/&gt;
+        through the parent parts and get the child parts.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/mime/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/mime/latest/">
           Mime module
         </a>
         .
@@ -289,6 +277,8 @@ export default function HttpResponseWithMultiparts() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -340,33 +330,40 @@ export default function HttpResponseWithMultiparts() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`#To encode the outbound response with multiparts.`}</span>
-              <span>{`curl -X GET http://localhost:9092/multiparts/encode_out_response`}</span>
-              <span>{`--5afd3d91ee639af3`}</span>
-              <span>{`content-type: multipart/mixed;boundary=de5520ef3bc703d7`}</span>
-              <span>{``}</span>
-              <span>{`--de5520ef3bc703d7`}</span>
-              <span>{`content-type: application/json`}</span>
-              <span>{``}</span>
-              <span>{`{"name":"wso2"}`}</span>
-              <span>{`--de5520ef3bc703d7`}</span>
-              <span>{`content-type: text/xml`}</span>
-              <span>{``}</span>
-              <span>{`<ballerinalang>`}</span>
+              <span>
+                {`# In the directory, which contains the `}
+                <code>{`.bal`}</code>
+                {` file, create a directory named `}
+                <code>{`files`}</code>
+                {`,`}
+              </span>
+              <span>
+                {`# and add an XML file named `}
+                <code>{`test.xml`}</code>
+                {` in it.`}
+              </span>
+              <span>{`\$ bal run response_with_multiparts.bal`}</span>
+              <span>{`time = 2021-01-21 22:20:38,143 level = INFO  module = "" message = "Nested Parts Detected!" `}</span>
+              <span>{`time = 2021-01-21 22:20:38,185 level = INFO  module = "" message = "JSON data: {"name":"wso2"}" `}</span>
+              <span>{`time = 2021-01-21 22:20:38,324 level = INFO  module = "" message = "XML data: <ballerinalang>`}</span>
               <span>{`    <version>0.963</version>`}</span>
               <span>{`    <test>test xml file to be used as a file part</test>`}</span>
-              <span>{`</ballerinalang>`}</span>
-              <span>{`--de5520ef3bc703d7--`}</span>
-              <span>{``}</span>
-              <span>{`--5afd3d91ee639af3--`}</span>
-              <span>{``}</span>
-              <span>{`#To decode the inbound response with multiparts.`}</span>
-              <span>{`curl -X GET http://localhost:9090/multiparts/decode_in_response`}</span>
-              <span>{`Body Parts Received!`}</span>
+              <span>{`</ballerinalang>"`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
+
+      <p>
+        In the directory, which contains the <code>.bal</code> file, create a
+        directory named <code>files</code>, and add an XML file named{" "}
+        <code>test.xml</code> in it.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -419,25 +416,28 @@ export default function HttpResponseWithMultiparts() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>
-                {`# In the directory, which contains the `}
-                <code>{`.bal`}</code>
-                {` file, create a directory named `}
-                <code>{`files`}</code>
-                {`,`}
-              </span>
-              <span>
-                {`# and add an XML file named `}
-                <code>{`test.xml`}</code>
-                {` in it.`}
-              </span>
-              <span>{`bal run response_with_multiparts.bal`}</span>
-              <span>{`time = 2021-01-21 22:20:38,143 level = INFO  module = "" message = "Nested Parts Detected!" `}</span>
-              <span>{`time = 2021-01-21 22:20:38,185 level = INFO  module = "" message = "JSON data: {"name":"wso2"}" `}</span>
-              <span>{`time = 2021-01-21 22:20:38,324 level = INFO  module = "" message = "XML data: <ballerinalang>`}</span>
+              <span>{`\$ curl -X GET http://localhost:9092/multiparts/encode_out_response`}</span>
+              <span>{`--5afd3d91ee639af3`}</span>
+              <span>{`content-type: multipart/mixed;boundary=de5520ef3bc703d7`}</span>
+              <span>{``}</span>
+              <span>{`--de5520ef3bc703d7`}</span>
+              <span>{`content-type: application/json`}</span>
+              <span>{``}</span>
+              <span>{`{"name":"wso2"}`}</span>
+              <span>{`--de5520ef3bc703d7`}</span>
+              <span>{`content-type: text/xml`}</span>
+              <span>{``}</span>
+              <span>{`<ballerinalang>`}</span>
               <span>{`    <version>0.963</version>`}</span>
               <span>{`    <test>test xml file to be used as a file part</test>`}</span>
-              <span>{`</ballerinalang>"`}</span>
+              <span>{`</ballerinalang>`}</span>
+              <span>{`--de5520ef3bc703d7--`}</span>
+              <span>{``}</span>
+              <span>{`--5afd3d91ee639af3--`}</span>
+              <span>{``}</span>
+              <span>{`#To decode the inbound response with multiparts.`}</span>
+              <span>{`\$ curl -X GET http://localhost:9090/multiparts/decode_in_response`}</span>
+              <span>{`Body Parts Received!`}</span>
             </code>
           </pre>
         </Col>

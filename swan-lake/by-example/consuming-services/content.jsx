@@ -20,8 +20,7 @@ public function main() returns error? {
     http:Client httpClient = check new ("https://api.github.com");
 
     // The remote method calls use the \`->\` syntax. This enables the sequence diagram view.
-    http:Response resp =
-                    check httpClient->get("/orgs/ballerina-platform/repos");
+    http:Response resp = check httpClient->get("/orgs/ballerina-platform/repos");
 
     io:println(resp.statusCode);
 }
@@ -51,20 +50,13 @@ export default function ConsumingServices() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Consuming services: client objects</h1>
 
-      <p>Ballerina has a language construct called client objects.</p>
-
       <p>
-        They are a special kind of objects that contain <code>remote</code>{" "}
-        methods in addition to regular methods.
-      </p>
-
-      <p>
-        <code>remote</code> methods are used to interact with a remote service.
-      </p>
-
-      <p>
-        Applications typically do not need to write client classes, which are
-        either provided by library modules or generated from some flavor of IDL.
+        Ballerina has a language construct called client objects. They are a
+        special kind of objects that contain <code>remote</code> methods in
+        addition to the regular methods. <code>remote</code> methods are used to
+        interact with a remote service. Applications typically do not need to
+        write client classes, which are either provided by library modules or
+        generated from some flavor of IDL.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -73,7 +65,7 @@ export default function ConsumingServices() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b73a0ae9d5746a582d01c8d28a47bbe4&file=consuming_services.bal",
+                "https://play.ballerina.io/?gist=25f294b4f29c22006b9f8fd30ae34128&file=consuming_services.bal",
                 "_blank"
               );
             }}
@@ -218,7 +210,7 @@ export default function ConsumingServices() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run consuming_services.bal`}</span>
+              <span>{`\$ bal run consuming_services.bal`}</span>
               <span>{`200`}</span>
             </code>
           </pre>
@@ -261,7 +253,7 @@ export default function ConsumingServices() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Provide services"
+            title="Providing services"
             href="/learn/by-example/providing-services"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -272,7 +264,7 @@ export default function ConsumingServices() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Provide services
+                  Providing services
                 </span>
               </div>
               <svg

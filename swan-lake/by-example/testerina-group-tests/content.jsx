@@ -43,6 +43,10 @@ export default function TesterinaGroupTests() {
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
+  const [outputClick3, updateOutputClick3] = useState(false);
+  const ref3 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -66,10 +70,7 @@ export default function TesterinaGroupTests() {
         names (one or more).
       </p>
 
-      <p>
-        This allows you to control the execution of selected
-        tests.&lt;br/&gt;&lt;br/&gt;
-      </p>
+      <p>This allows you to control the execution of selected tests.</p>
 
       <p>
         In order to execute tests belonging to a selected test group, you can
@@ -79,21 +80,20 @@ export default function TesterinaGroupTests() {
       <p>test groups that are to be executed when you run the tests.</p>
 
       <p>
-        Likewise, you can exclude executing the selected test groups as
-        well.&lt;br/&gt;&lt;br/&gt;
+        Likewise, you can exclude executing the selected test groups as well.
       </p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
         </a>
       </p>
 
       <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -175,6 +175,11 @@ export default function TesterinaGroupTests() {
         </Col>
       </Row>
 
+      <p>
+        Run the tests belonging to the <code>g1</code> and <code>g2</code>{" "}
+        groups.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -226,23 +231,7 @@ export default function TesterinaGroupTests() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# To run this sample, navigate to the directory that contains the`}</span>
-              <span>
-                {`# `}
-                <code>{`.bal`}</code>
-                {` file, and execute the `}
-                <code>{`ballerina test`}</code>
-                {` command below.`}
-              </span>
-              <span>{``}</span>
-              <span>
-                {`# Run the tests belonging to the `}
-                <code>{`g1`}</code>
-                {` and `}
-                <code>{`g2`}</code>
-                {` groups`}
-              </span>
-              <span>{`bal test --groups g1,g2 testerina_group_tests.bal`}</span>
+              <span>{`\$ bal test --groups g1,g2 testerina_group_tests.bal`}</span>
               <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`    testerina_group_tests.bal`}</span>
@@ -259,13 +248,67 @@ export default function TesterinaGroupTests() {
               <span>{`        2 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>
-              <span>{``}</span>
-              <span>
-                {`# Run the tests belonging to the `}
-                <code>{`g1`}</code>
-                {` group`}
-              </span>
-              <span>{`bal test --groups g1 testerina_group_tests.bal`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        Run the tests belonging to the <code>g1</code> group.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#00FF19"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`\$ bal test --groups g1 testerina_group_tests.bal`}</span>
               <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`    testerina_group_tests.bal`}</span>
@@ -282,13 +325,68 @@ export default function TesterinaGroupTests() {
               <span>{`        2 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>
-              <span>{``}</span>
-              <span>
-                {`# Run all tests other than the tests belonging to the `}
-                <code>{`g2`}</code>
-                {` group`}
-              </span>
-              <span>{`bal test --disable-groups g2 testerina_group_tests.bal`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        Run all tests other than the tests belonging to the <code>g2</code>{" "}
+        group.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick3 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#00FF19"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick3(true);
+                const extractedText = extractOutput(ref3.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick3(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref3}>
+            <code className="d-flex flex-column">
+              <span>{`\$ bal test --disable-groups g2 testerina_group_tests.bal`}</span>
               <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`    testerina_group_tests.bal`}</span>

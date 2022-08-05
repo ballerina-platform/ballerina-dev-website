@@ -20,16 +20,15 @@ jdbc:Client dbClient = check new (url = "jdbc:h2:file:./master/orderdb",
                            user = "test", password = "test");
 
 public function main() returns error? {
-    // Uses a raw template to create \`Orders\` table.
+    // Uses a raw template to create the \`Orders\` table.
     _ = check dbClient->execute(\`CREATE TABLE IF NOT EXISTS Orders
-                                (orderId INTEGER NOT NULL,
-                                customerId INTEGER, noOfItems INTEGER,
+                                (orderId INTEGER NOT NULL, customerId INTEGER, noOfItems INTEGER,
                                 PRIMARY KEY (orderId))\`);
-    // Uses a raw template to insert values to \`Orders\` table.
-    _ = check dbClient->execute(\`INSERT INTO Orders (orderId, customerId,
-                                noOfItems) VALUES (1, 1, 20)\`);
-    _ = check dbClient->execute(\`INSERT INTO Orders (orderId, customerId,
-                                noOfItems) VALUES (2, 1, 15)\`);
+    // Uses a raw template to insert values to the \`Orders\` table.
+    _ = check dbClient->execute(\`INSERT INTO Orders (orderId, customerId, noOfItems)
+                                 VALUES (1, 1, 20)\`);
+    _ = check dbClient->execute(\`INSERT INTO Orders (orderId, customerId, noOfItems)
+                                 VALUES (2, 1, 15)\`);
 
     stream<record {| anydata...; |}, sql:Error?> strm = getOrders(1);
     record {|record {} value;|}|sql:Error? v = strm.next();
@@ -40,18 +39,19 @@ public function main() returns error? {
     }
 }
 
-function getOrders(int customerId)
-    returns stream<record {| anydata...; |}, sql:Error?> {
+function getOrders(int customerId) returns stream<record {| anydata...; |}, sql:Error?> {
     // In this raw template, the \`customerId\` variable is interpolated in the literal.
-    return dbClient->query(\`SELECT * FROM orders
-                          WHERE customerId = \${customerId}\`);
-
+    return dbClient->query(\`SELECT * FROM orders WHERE customerId = \${customerId}\`);
 }
+`,
+  `[[platform.java11.dependency]]
+path = "h2-2.1.210.jar"
 `,
 ];
 
 export default function RawTemplates() {
   const [codeClick1, updateCodeClick1] = useState(false);
+  const [codeClick2, updateCodeClick2] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
@@ -74,55 +74,47 @@ export default function RawTemplates() {
       <h1>Raw templates</h1>
 
       <p>
-        A raw template is a backtick template without a tag. Exposes result of
-        phase 1 without further processing.
+        A raw template is a backtick template without a tag. It exposes the
+        result of phase 1 without further processing. It is evaluated by
+        evaluating each expression and creating an object containing:
       </p>
 
-      <p>
-        Raw template is evaluated by evaluating each expression and creating an
-        object containing.
-      </p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>an array of the strings separated by insertions</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            an array of the results of the expression evaluation and an array of
+            strings separating them
+          </span>
+        </li>
+      </ul>
 
-      <p>&lt;ul&gt;</p>
+      <p>Using raw templates in SQL parameters is an important use case.</p>
 
-      <p>
-        &lt;li&gt;an <code>array</code> of the <code>strings</code> separated by
-        insertions&lt;/li&gt;
-      </p>
-
-      <p>
-        &lt;li&gt;an <code>array</code> of the results of expression evaluation
-        and an <code>array</code> of <code>strings</code> separating&lt;/li&gt;
-      </p>
-
-      <p>&lt;/ul&gt;</p>
-
-      <p>//&lt;br&gt;&lt;/br&gt;</p>
-
-      <p>&lt;p&gt;Important use case: SQL parameters.&lt;/p&gt;</p>
-
-      <p>
-        Note that the relevant database driver JAR should be defined in the{" "}
-        <code>Ballerina.toml</code> file as a dependency.
-      </p>
-
-      <p>
-        This sample is based on an H2 database and the H2 database driver JAR
-        need to be added to <code>Ballerina.toml</code> file.
-      </p>
-
-      <p>
-        For a sample configuration and more information on the underlying
-        module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
-          JDBC module
-        </a>{" "}
-        .&lt;br&gt;&lt;br&gt;
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> The relevant database driver JAR should be
+          defined in the <code>Ballerina.toml</code> file as a dependency. This
+          sample is based on an H2 database and the H2 database driver JAR needs
+          to be added to the <code>Ballerina.toml</code> file. For a sample
+          configuration and more information on the underlying module, see the{" "}
+          <a href="https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/">
+            <code>jdbc</code> module
+          </a>
+          . This sample is written using H2 2.1.210 and it is recommended to use
+          an H2 JAR with versions higher than 2.1.210.
+        </p>
+      </blockquote>
 
       <p>
-        This sample is written using H2 2.1.210 and it is recommended to use H2
-        JAR with versions higher than 2.1.210.
+        Create a Ballerina project and copy the following example to the
+        project.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -202,6 +194,92 @@ export default function RawTemplates() {
         </Col>
       </Row>
 
+      <p>
+        Add the relevant database driver JAR details to the{" "}
+        <code>Ballerina.toml</code> file.
+      </p>
+
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+        <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/raw-templates",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
+          {codeClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2"
+              disabled
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#45FF00"
+                className="bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2"
+              onClick={() => {
+                updateCodeClick2(true);
+                copyToClipboard(codeSnippetData[1]);
+                setTimeout(() => {
+                  updateCodeClick2(false);
+                }, 3000);
+              }}
+              aria-label="Copy to Clipboard"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#000"
+                className="bi bi-clipboard"
+                viewBox="0 0 16 16"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          {codeSnippets[1] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[1]),
+              }}
+            />
+          )}
+        </Col>
+      </Row>
+
+      <p>
+        Build and run the project using the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -253,15 +331,7 @@ export default function RawTemplates() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina project.`}</span>
-              <span>
-                {`# Copy the example to the project and add relevant database driver jar details to the `}
-                <code>{`Ballerina.toml`}</code>
-                {` file.`}
-              </span>
-              <span>{`# Execute the command below to build and run the project.`}</span>
-              <span>{`bal run`}</span>
-              <span>{``}</span>
+              <span>{`\$ bal run`}</span>
               <span>{`{"ORDERID":1,"CUSTOMERID":1,"NOOFITEMS":20}`}</span>
               <span>{`{"ORDERID":2,"CUSTOMERID":1,"NOOFITEMS":15}`}</span>
             </code>

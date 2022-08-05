@@ -15,8 +15,7 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
-listener rabbitmq:Listener channelListener =
-        new(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
 // The consumer service listens to the "MyQueue" queue.
 // The \`ackMode\` is by default rabbitmq:AUTO_ACK where messages are acknowledged
@@ -25,12 +24,10 @@ listener rabbitmq:Listener channelListener =
     queueName: "MyQueue"
 }
 // Attaches the service to the listener.
-service rabbitmq:Service on channelListener {
-    remote function onMessage(rabbitmq:Message message) {
-        string|error messageContent = string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("Received message: " + messageContent);
-        }
+service on channelListener {
+    remote function onMessage(rabbitmq:Message message) returns error? {
+        string messageContent = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageContent);
     }
 }
 `,
@@ -59,29 +56,26 @@ export default function RabbitmqConsumer() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Consumer</h1>
 
-      <p>The messages are consumed from an</p>
-
-      <p>existing queue using the Ballerina RabbitMQ message listener.</p>
+      <p>
+        The messages are consumed from an existing queue using the Ballerina
+        RabbitMQ message listener.
+      </p>
 
       <p>
         The Ballerina RabbitMQ connection used here can be re-used to create
+        multiple channels.
       </p>
-
-      <p>multiple channels.</p>
 
       <p>Multiple services consuming messages from the same queue or from</p>
 
-      <p>
-        different queues can be attached to the same
-        Listener.&lt;br/&gt;&lt;br/&gt;
-      </p>
+      <p>different queues can be attached to the same Listener.</p>
 
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          RabbitMQ module
+          <code>rabbitmq</code> module
         </a>
         .
       </p>
@@ -214,7 +208,7 @@ export default function RabbitmqConsumer() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run rabbitmq_consumer.bal`}</span>
+              <span>{`\$ bal run rabbitmq_consumer.bal`}</span>
               <span>{`time = 2021-05-20T14:49:11.011+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>
           </pre>

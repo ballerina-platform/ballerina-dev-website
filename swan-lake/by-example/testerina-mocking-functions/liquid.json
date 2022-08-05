@@ -1,6 +1,6 @@
 {
   "title": "Function mocking",
-  "description": "This Ballerina sample demonstrates how to mock functions for unit testing.",
+  "description": "BBE on how to mock functions for unit testing.",
   "keywords": ["ballerina", "programming language", "testing", "mocking"],
   "permalink": "/learn/by-example/testerina-mocking-functions",
   "active": "testerina-mocking-functions",

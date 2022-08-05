@@ -21,8 +21,7 @@ type Update record {
 public function main() returns error? {
 
     // Creates an array of \`Update\` records.
-    Update[] updates =
-    [
+    Update[] updates = [
         {updateIndex: 0, stockMnt: 2000},
         {updateIndex: 1, stockMnt: -1000},
         {updateIndex: 2, stockMnt: 1500},
@@ -44,11 +43,9 @@ function transfer(Update[] updates) returns error? {
             // If an error is returned, the \`transfer\` function returns with
             // that error and the transaction is rolled back.
             check doUpdate(u);
-
         }
         // \`commit\` will not be called because of an implicit rollback.
         check commit;
-
     }
     return;
 }
@@ -111,7 +108,7 @@ export default function Rollback() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2a8c8b5eaabd50d4015d39cdccc1b8f7&file=rollback.bal",
+                "https://play.ballerina.io/?gist=f01a70de50f6027f5542b1a26f0ccee5&file=rollback.bal",
                 "_blank"
               );
             }}
@@ -256,7 +253,7 @@ export default function Rollback() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run rollback.bal`}</span>
+              <span>{`\$ bal run rollback.bal`}</span>
               <span>{`error: Not enough Stocks:  {"stockIndex":4}`}</span>
             </code>
           </pre>

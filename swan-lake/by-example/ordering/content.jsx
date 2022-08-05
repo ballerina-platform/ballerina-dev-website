@@ -33,13 +33,10 @@ public function main() {
     ];
 
     Employee[] sorted = from var e in employees
-                        // The \`order by\` clause sorts the output items based on the
-                        // given \`order-key\` and \`order-direction\`. The \`order-key\`
-                        // must be an \`ordered\` type. The \`order-direction\` is \`ascending\`
-                        // if not specified explicitly.
+                        // The \`order by\` clause sorts the output items based on the given \`order-key\` and \`order-direction\`.
+                        // The \`order-key\` must be an ordered type.
+                        // The \`order-direction\` is \`ascending\` if not specified explicitly.
                         order by e.firstName ascending, e.lastName descending
-
-
                         select e;
 
     foreach Employee e in sorted {
@@ -73,24 +70,12 @@ export default function Ordering() {
       <h1>Ordering</h1>
 
       <p>
-        Ordering works consistently with <code>&lt;</code>, <code>&lt;=</code>,{" "}
-        <code>&gt;</code>, <code>&gt;=</code> operators. Some comparisons
-        involving
-      </p>
-
-      <p>
-        <code>()</code> and <code>float NaN</code> are considered{" "}
-        <code>unordered</code>. <code>order by</code> clause allows{" "}
-        <code>expressions</code> not just
-      </p>
-
-      <p>
-        <code>field access</code>. A library module can enable Unicode-aware
-        sorting by providing a
-      </p>
-
-      <p>
-        <code>unicode:sortKey(str, locale)</code> function.
+        Ordering works consistently with the <code>&lt;</code>,{" "}
+        <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code> operators.
+        Some comparisons involving <code>()</code> and <code>float:NaN</code>{" "}
+        are considered unordered. The <code>order by</code> clause allows
+        expressions. A library module can enable unicode-aware sorting by
+        providing a <code>unicode:sortKey(str, locale)</code> function.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -99,7 +84,7 @@ export default function Ordering() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=38df0772b7675421ac76b1f1064f6c45&file=ordering.bal",
+                "https://play.ballerina.io/?gist=e38bd28504e8262bcfd78cc093cd155a&file=ordering.bal",
                 "_blank"
               );
             }}
@@ -244,7 +229,7 @@ export default function Ordering() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run ordering.bal`}</span>
+              <span>{`\$ bal run ordering.bal`}</span>
               <span>{`Anne Perera`}</span>
               <span>{`Anne Frank`}</span>
               <span>{`Jermaine Perera`}</span>

@@ -19,12 +19,10 @@ class EvenNumber {
 
     // \`isolated\` method.
     isolated function generate() returns int {
-
         lock {
             // Uses \`self\` to access mutable field \`i\`
             // within a \`lock\` statement.
             return self.i * 2;
-
         }
     }
 }
@@ -99,7 +97,7 @@ export default function IsolatedMethods() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=364e86d4914ab988d2fe032f94d304ef&file=isolated_methods.bal",
+                "https://play.ballerina.io/?gist=6aaa03890a366c48e6df5c83375aaf53&file=isolated_methods.bal",
                 "_blank"
               );
             }}
@@ -192,6 +190,8 @@ export default function IsolatedMethods() {
           )}
         </Col>
       </Row>
+
+      <p>Executing the above code gives the output below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

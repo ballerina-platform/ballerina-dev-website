@@ -15,12 +15,10 @@ const codeSnippetData = [
   `import ballerina/email;
 
 public function main() returns error? {
-    // Creates an SMTP client with the connection parameters, host, username,
-    // and password. The default port number \`465\` is used over SSL with these
-    // configurations. \`SmtpConfig\` can be configured and passed to this
-    // client if the port or security is to be customized.
-    email:SmtpClient smtpClient = check new ("smtp.email.com",
-        "sender@email.com" , "pass123");
+    // Creates an SMTP client with the connection parameters, host, username, and password. 
+    // The default port number \`465\` is used over SSL with these configurations. \`SmtpConfig\` can 
+    // be configured and passed to this client if the port or security is to be customized.
+    email:SmtpClient smtpClient = check new ("smtp.email.com", "sender@email.com" , "pass123");
 
     // Defines the email that is required to be sent.
     email:Message email = {
@@ -31,27 +29,23 @@ public function main() returns error? {
         bcc: ["receiver5@email.com"],
         // Subject of the email is added as follows. This field is mandatory.
         subject: "Sample Email",
-        // Body content (text) of the email is added as follows.
-        // This field is optional.
+        // Body content (text) of the email is added as follows. This field is optional.
         body: "This is a sample email.",
         // Email author's address is added as follows. This field is mandatory.
         'from: "author@email.com",
-        // Email sender service address is added as follows.
-        // This field is optional. \`Sender\` is same as the \`'from\` when the
-        // email author himself sends the email.
+        // Email sender service address is added as follows. This field is optional. \`Sender\` is 
+        // the same as the \`from\` when the email author himself sends the email.
         sender: "sender@email.com",
-        // List of recipients when replying to the email is added as follows.
-        // This field is optional. These addresses are required when the emails
-        // are to be replied to some other address(es) other than the sender or
-        // the author.
+        // List of recipients when replying to the email is added as follows. This field is 
+        // optional. These addresses are required when the emails are to be replied to some other 
+        // address(es) other than the sender or the author.
         replyTo: ["replyTo1@email.com", "replyTo2@email.com"]
     };
 
-    // Sends the email message with the client. The \`send\` method can be used
-    // instead, if the email is required to be sent with mandatory and optional
-    // parameters instead of configuring an \`email:Message\` record.
+    // Sends the email message with the client. The \`send\` method can be used instead if the 
+    // email is required to be sent with mandatory and optional parameters instead of 
+    // configuring an \`email:Message\` record.
     check smtpClient->sendMessage(email);
-
 }
 `,
 ];
@@ -79,20 +73,20 @@ export default function SendEmail() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Send emails</h1>
 
-      <p>The Email Connector is used to send (with SMTP) emails</p>
-
-      <p>using the SSL or STARTTLS protocols. This sample</p>
-
-      <p>includes sending emails with default configurations</p>
-
-      <p>over SSL using the default ports.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        The Email connector is used to send (with SMTP) emails using the SSL or
+        STARTTLS protocols.
+      </p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/email/latest/">
-          Email module
+        This sample includes sending emails with default configurations over SSL
+        using the default ports.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/email/latest/">
+          <code>email</code> module
         </a>
         .
       </p>
@@ -174,6 +168,8 @@ export default function SendEmail() {
         </Col>
       </Row>
 
+      <p>Run the SMTP client by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -225,7 +221,7 @@ export default function SendEmail() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run send_email.bal`}</span>
+              <span>{`\$ bal run send_email.bal`}</span>
               <span>{``}</span>
               <span>{`# Check the inbox to view the sent emails.`}</span>
             </code>

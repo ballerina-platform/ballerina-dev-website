@@ -15,19 +15,16 @@ const codeSnippetData = [
   `import ballerinax/nats;
 
 public function main() returns error? {
-
     string message = "Hello from Ballerina";
 
     // Initializes a NATS client with TLS/SSL and username/password authentication.
     nats:Client natsClient = check new(nats:DEFAULT_URL,
-
-        // To secure the client connections using username/password authentication, provide the credentials
-        // with the [\`nats:Credentials\`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
+        // To secure the client connections using username/password authentication,
+        // provide the credentials with the [\`nats:Credentials\`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
         auth = {
-             username: "alice",
-             password: "alice@123"
+            username: "alice",
+            password: "alice@123"
         },
-
         // To secure the client connection using TLS/SSL, the client needs to be configured with
         // a certificate file of the server.
         // The [\`nats:SecureSocket\`](https://lib.ballerina.io/ballerinax/nats/latest/records/SecureSocket)
@@ -36,11 +33,8 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-
     // Produces a message to the specified subject.
-    check natsClient->publishMessage({
-                             content: message.toBytes(),
-                             subject: "security.demo"});
+    check natsClient->publishMessage({content: message.toBytes(), subject: "security.demo"});
 
     // Closes the client connection.
     check natsClient.close();
@@ -51,14 +45,12 @@ import ballerinax/nats;
 
 // Initializes a NATS listener with TLS/SSL and username/password authentication.
 listener nats:Listener securedEP = new(nats:DEFAULT_URL,
-
-    // To secure the client connections using username/password authentication, provide the credentials
-    // with the [\`nats:Credentials\`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
+    // To secure the client connections using username/password authentication,
+    // provide the credentials with the [\`nats:Credentials\`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
     auth = {
          username: "alice",
          password: "alice@123"
     },
-
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     // The [\`nats:SecureSocket\`](https://lib.ballerina.io/ballerinax/nats/latest/records/SecureSocket)
@@ -68,15 +60,11 @@ listener nats:Listener securedEP = new(nats:DEFAULT_URL,
     }
 );
 
-// Binds the consumer to listen to the messages published
-// to the 'security.demo' subject.
+// Binds the consumer to listen to the messages published to the 'security.demo' subject.
 service "security.demo" on securedEP {
-
     remote function onMessage(nats:Message message) returns error? {
-        string|error messageContent = string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("Received message: " + messageContent);
-        }
+        string messageContent = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageContent);
     }
 }
 `,
@@ -109,18 +97,16 @@ export default function NatsBasicSecureConnection() {
       <h1>Secured connection</h1>
 
       <p>
-        In this example, the underlying connections of the subscriber and the
+        In this example, the underlying connections of the subscriber, and the
         publisher are
       </p>
 
-      <p>secured with TLS/SSL and Basic Auth.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>secured with TLS/SSL and Basic Auth.</p>
 
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/nats/latest">
-          NATS module
+          <code>nats</code> module
         </a>
         .
       </p>
@@ -253,7 +239,7 @@ export default function NatsBasicSecureConnection() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run publisher.bal`}</span>
+              <span>{`\$ bal run publisher.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -387,7 +373,7 @@ export default function NatsBasicSecureConnection() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run subscriber.bal`}</span>
+              <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-19T10:15:49.269+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>
           </pre>

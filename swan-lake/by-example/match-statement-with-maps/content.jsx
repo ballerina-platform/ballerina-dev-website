@@ -16,11 +16,11 @@ const codeSnippetData = [
 
 function foo(json j) returns error? {
     match j {
-        // Match statement can be used to match maps.
+        // A \`match\` statement can be used to match maps.
         // Patterns on the left hand side in a match statement can have variable
         // parts that can be captured.
-        // Match semantics are open (may have fields other than those 
-        // specified in the pattern).
+        // Match semantics are open (may have fields other than those specified
+        // in the pattern).
         {command: "add", amount: var x} => {
             decimal n = check x.ensureType(decimal);
             add(n);
@@ -72,19 +72,10 @@ export default function MatchStatementWithMaps() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Match statement with maps</h1>
 
-      <p>Match statement can be used to match maps.</p>
-
       <p>
-        Patterns on the left hand side in a match statement can have variable
-      </p>
-
-      <p>parts that can be captured.</p>
-
-      <p>
-        Useful for working directly with <code>json</code>.
-      </p>
-
-      <p>
+        A <code>match</code> statement can be used to match maps. Patterns on
+        the left-hand side in a match statement can have variable parts that can
+        be captured. It is useful for working directly with <code>json</code>.
         Match semantics are open (may have fields other than those specified in
         the pattern).
       </p>
@@ -95,7 +86,7 @@ export default function MatchStatementWithMaps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4dd82fc7dc471fccdc2bc8fb4e245ee8&file=match_statement_with_maps.bal",
+                "https://play.ballerina.io/?gist=a54e71033864c8c33c9646c838b93dc8&file=match_statement_with_maps.bal",
                 "_blank"
               );
             }}
@@ -252,7 +243,7 @@ export default function MatchStatementWithMaps() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Work directly with JSON"
+            title="Working directly with JSON"
             href="/learn/by-example/working-directly-with-json"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -280,7 +271,7 @@ export default function MatchStatementWithMaps() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Work directly with JSON
+                  Working directly with JSON
                 </span>
               </div>
             </div>
@@ -288,7 +279,7 @@ export default function MatchStatementWithMaps() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Convert from user-defined type to JSON"
+            title="Converting from user-defined type to JSON"
             href="/learn/by-example/converting-from-user-defined-type-to-json"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -299,7 +290,7 @@ export default function MatchStatementWithMaps() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Convert from user-defined type to JSON
+                  Converting from user-defined type to JSON
                 </span>
               </div>
               <svg

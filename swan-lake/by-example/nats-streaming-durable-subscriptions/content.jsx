@@ -18,12 +18,13 @@ import ballerinax/stan;
 // Produces a message to a subject in the NATS sever.
 public function main() returns error? {
     string message = "Hello from Ballerina";
-    stan:Client stanClient = check new(stan:DEFAULT_URL);
+    stan:Client stanClient = check new (stan:DEFAULT_URL);
 
     // Produces a message to the specified subject.
     string result = check stanClient->publishMessage({
-                                    content: message.toBytes(),
-                                    subject: "demo"});
+        content: message.toBytes(),
+        subject: "demo"
+    });
     io:println("GUID " + result + " received for the produced message.");
     // Closes the client connection.
     check stanClient.close();
@@ -33,7 +34,7 @@ public function main() returns error? {
 import ballerinax/stan;
 
 // Initializes the NATS Streaming listener with a specific client ID.
-listener stan:Listener lis = new(stan:DEFAULT_URL, clientId = "c0");
+listener stan:Listener lis = new (stan:DEFAULT_URL, clientId = "c0");
 
 // Provides the durable name to create a durable subscription.
 @stan:ServiceConfig {
@@ -41,12 +42,10 @@ listener stan:Listener lis = new(stan:DEFAULT_URL, clientId = "c0");
     durableName: "sample-name"
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
+    remote function onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
-        string|error messageData = string:fromBytes(message.content);
-        if messageData is string {
-            log:printInfo("Received message: " + messageData);
-        }
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageData);
     }
 }
 `,
@@ -83,23 +82,21 @@ export default function NatsStreamingDurableSubscriptions() {
         subscriptions.
       </p>
 
-      <p>Regular subscriptions remember</p>
-
-      <p>their position while the client is connected. If the client</p>
+      <p>
+        Regular subscriptions remember their position while the client is
+        connected. If the client
+      </p>
 
       <p>disconnects, the position is lost. Durable subscriptions</p>
 
-      <p>
-        remember their position even if the client is
-        disconnected.&lt;br/&gt;&lt;br/&gt;
-      </p>
+      <p>remember their position even if the client is disconnected.</p>
 
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
-          STAN module
+          <code>stan</code> module
         </a>
         .
       </p>
@@ -232,7 +229,7 @@ export default function NatsStreamingDurableSubscriptions() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run publisher.bal`}</span>
+              <span>{`\$ bal run publisher.bal`}</span>
               <span>{`GUID m2jS6SLLefK325DWTkkwBh received for the produced message.`}</span>
             </code>
           </pre>
@@ -316,6 +313,15 @@ export default function NatsStreamingDurableSubscriptions() {
         </Col>
       </Row>
 
+      <p>Stop the subscriber and publish some messages while it is stopped.</p>
+
+      <p>Run the subscriber again.</p>
+
+      <p>
+        All messages which had been published while the subscriber wasn't
+        running should be received.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -367,15 +373,10 @@ export default function NatsStreamingDurableSubscriptions() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run subscriber.bal`}</span>
+              <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-20T13:03:23.344+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
               <span>{``}</span>
-              <span>{`# Stop the subscriber and publish some messages while it is stopped.`}</span>
-              <span>{`# Run the subscriber again.`}</span>
-              <span>{`# All messages which had been published while the subscriber`}</span>
-              <span>{`# wasn't running should be received.`}</span>
-              <span>{``}</span>
-              <span>{`bal run subscriber.bal`}</span>
+              <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-20T13:03:46.928+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>
           </pre>

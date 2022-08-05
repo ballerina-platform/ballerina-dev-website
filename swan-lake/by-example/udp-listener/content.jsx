@@ -16,18 +16,15 @@ const codeSnippetData = [
 import ballerina/udp;
 
 // Binds the service to the port.
-// Optionally, you can provide the \`remoteHost\` and \`remotePort\` to
-// configure the listener as a connected listener, which only
-// reads and writes to the configured remote host.
-// E.g.: \`udp:Listener(8080, remoteHost
-// = "www.remote-clinet.com", remotePort = 9090)\`
+// Optionally, you can provide the \`remoteHost\` and \`remotePort\` to configure the listener
+// as a connected listener, which only reads and writes to the configured remote host.
+// E.g.: \`udp:Listener(8080, remoteHost = "www.remote-clinet.com", remotePort = 9090)\`
 service on new udp:Listener(8080) {
 
     // This remote method is invoked once the content is received from the
     // client. You may replace the \`onBytes\` method with \`onDatagram\`, which
     // reads the data as \`readonly & udp:Datagram\`.
-    remote function onDatagram(readonly & udp:Datagram datagram) 
-        returns udp:Datagram|udp:Error? {
+    remote function onDatagram(readonly & udp:Datagram datagram) returns udp:Datagram|udp:Error? {
         io:println("Received by listener: ", string:fromBytes(datagram.data));
         // Echoes back the data to the same client.
         // This is similar to calling \`caller->sendDatagram(data);\`.
@@ -69,15 +66,14 @@ export default function UdpListener() {
         data to a remote UDP server.
       </p>
 
-      <p>
-        This sample demonstrates the UDP socket listener.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying module,</p>
+      <p>This sample demonstrates the UDP socket listener.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/udp/latest">UDP module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/udp/latest">
+          UDP module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -208,7 +204,7 @@ export default function UdpListener() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run udp_listener.bal`}</span>
+              <span>{`\$ bal run udp_listener.bal`}</span>
               <span>{``}</span>
               <span>{`# This will print the output below upon a successful read by the listener.`}</span>
               <span>{`Received by listener: Hello Ballerina echo`}</span>

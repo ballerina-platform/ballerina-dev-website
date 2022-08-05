@@ -30,12 +30,11 @@ function multiFetch(string urlA, string urlB) returns Result {
 
     // The \`wait\` action can be used to wait for multiple named workers.
     return wait {a: WA, b: WB};
-
 }
 
 public function main() returns error? {
-    Result res =  multiFetch("https://postman-echo.com/get?lang=ballerina",
-                             "https://postman-echo.com/get?greeting=hello");
+    Result res = multiFetch("https://postman-echo.com/get?lang=ballerina",
+                            "https://postman-echo.com/get?greeting=hello");
     io:println(res);
     return;
 }
@@ -73,10 +72,8 @@ export default function MultipleWait() {
 
       <p>
         The <code>wait</code> action can be used to wait for multiple named
-        workers.
+        workers. <code>wait</code> works with futures also.
       </p>
-
-      <p>Works with futures also.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -84,7 +81,7 @@ export default function MultipleWait() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a893deb044c97fe5399c309628d00411&file=multiple_wait.bal",
+                "https://play.ballerina.io/?gist=1f335eb6055a9a1036d7da21214a5014&file=multiple_wait.bal",
                 "_blank"
               );
             }}
@@ -229,7 +226,7 @@ export default function MultipleWait() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run multiple_wait.bal`}</span>
+              <span>{`\$ bal run multiple_wait.bal`}</span>
               <span>{`{"a":"{"lang":"ballerina"}","b":"{"greeting":"hello"}"}`}</span>
             </code>
           </pre>

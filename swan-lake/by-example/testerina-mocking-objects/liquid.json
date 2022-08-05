@@ -1,6 +1,6 @@
 {
   "title": "Object mocking",
-  "description": "This Ballerina sample demonstrates how to mock objects for unit testing.",
+  "description": "BBE on how to mock objects for unit testing.",
   "keywords": ["ballerina", "programming language", "testing", "mocking"],
   "permalink": "/learn/by-example/testerina-mocking-objects",
   "active": "testerina-mocking-objects",

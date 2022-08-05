@@ -16,18 +16,16 @@ const codeSnippetData = [
 import ballerina/io;
 
 public function main() returns error? {
-    // Creates the client with the connection parameters, host, username, and
-    // password. An error is returned in a failure. The default port number
-    // \`995\` is used over SSL with these configurations.
-    email:PopClient popClient = check new ("pop.email.com", "reader@email.com",
-        "pass456");
+    // Creates the client with the connection parameters, host, username, and password. 
+    // An error is returned in a failure. The default port number \`995\` is used over SSL with 
+    // these configurations.
+    email:PopClient popClient = check new ("pop.email.com", "reader@email.com", "pass456");
 
-    // Reads the first unseen email received by the POP3 server. \`()\` is
-    // returned when there are no new unseen emails. In error cases, an
-    // error is returned.
+    // Reads the first unseen email received by the POP3 server. \`()\` is returned when there are 
+    // no new unseen emails. In error cases, an error is returned.
     email:Message? emailResponse = check popClient->receiveMessage();
 
-    if (emailResponse is email:Message) {
+    if emailResponse is email:Message {
         io:println("POP client received an email.");
         io:println("Email Subject: ", emailResponse.subject);
         io:println("Email Body: ", emailResponse?.body);
@@ -39,18 +37,17 @@ public function main() returns error? {
     // Closes the POP3 store, which would close the TCP connection.
     check popClient->close();
 
-    // Creates the client with the connection parameters, host, username, and
-    // password. An error is received in a failure. The default port number
-    // \`993\` is used over SSL with these configurations.
+    // Creates the client with the connection parameters, host, username, and password. 
+    // An error is received in a failure. The default port number \`993\` is used over SSL with 
+    // these configurations.
     email:ImapClient imapClient = check new ("imap.email.com",
         "reader@email.com", "pass456");
 
-    // Reads the first unseen email received by the IMAP4 server. \`()\` is
-    // returned when there are no new unseen emails. In error cases, an
-    // error is returned.
+    // Reads the first unseen email received by the IMAP4 server. \`()\` is returned when there are 
+    // no new unseen emails. In error cases, an error is returned.
     emailResponse = check imapClient->receiveMessage();
 
-    if (emailResponse is email:Message) {
+    if emailResponse is email:Message {
         io:println("IMAP client received an email.");
         io:println("Email Subject: ", emailResponse.subject);
         io:println("Email Body: ", emailResponse?.body);
@@ -89,20 +86,20 @@ export default function ReceiveEmailUsingClient() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Receive emails using a client</h1>
 
-      <p>The email client is used to receive (with POP3 or IMAP4) emails</p>
-
-      <p>using the SSL or STARTTLS protocols. This sample includes receiving</p>
-
-      <p>emails with default configurations over SSL using the default</p>
-
-      <p>ports.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        The email client is used to receive (with POP3 or IMAP4) emails using
+        the SSL or STARTTLS protocols.
+      </p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/email/latest/">
-          Email module
+        This sample includes receiving emails with default configurations over
+        SSL using the default ports.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/email/latest/">
+          <code>email</code> module
         </a>
         .
       </p>
@@ -184,6 +181,8 @@ export default function ReceiveEmailUsingClient() {
         </Col>
       </Row>
 
+      <p>Run the sample code by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -235,7 +234,7 @@ export default function ReceiveEmailUsingClient() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run receive_email_using_client.bal`}</span>
+              <span>{`\$ bal run receive_email_using_client.bal`}</span>
               <span>{``}</span>
               <span>{`# Subject and the content body of the received emails would be printed.`}</span>
             </code>

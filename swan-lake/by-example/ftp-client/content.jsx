@@ -26,18 +26,14 @@ public function main() returns error? {
         port: 21,
         auth: {credentials: {username: "user1", password: "pass456"}}
     };
-    ftp:Client clientEp = check new(config);
+    ftp:Client clientEp = check new (config);
 
-    // Reads a file from a FTP server for a given file path. In error cases, 
+    // Reads a file from an FTP server for a given file path. In error cases,
     // an error is returned.
-    stream<byte[] & readonly, io:Error?> fileStream
-        = check clientEp->get("/server/book.txt");
-    check fileStream.forEach(isolated 
-        function(byte[] & readonly fileContent) {
-            io:println("File content received: "
-                + checkpanic strings:fromBytes(fileContent));
-        }
-    );
+    stream<byte[] & readonly, io:Error?> fileStream = check clientEp->get("/server/book.txt");
+    check fileStream.forEach(isolated function(byte[] & readonly fileContent) {
+        io:println("File content received: " + checkpanic strings:fromBytes(fileContent));
+    });
 
     // Add a new file to the given file location. In error cases, 
     // an error is returned. The local file is provided as a stream of
@@ -48,7 +44,6 @@ public function main() returns error? {
 
     // Closes the file stream to finish the \`get\` and \`put\` operations.    
     check fileStream.close();
-
 }
 `,
 ];
@@ -85,16 +80,13 @@ export default function FtpClient() {
         using the FTP protocol. This sample includes getting and putting file
       </p>
 
-      <p>
-        content with default configurations using the default port
-        number.&lt;br/&gt;&lt;br/&gt;
-      </p>
+      <p>content with default configurations using the default port number.</p>
 
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">FTP module</a>.
+        <a href="https://lib.ballerina.io/ballerina/ftp/latest">FTP module</a>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -174,6 +166,10 @@ export default function FtpClient() {
         </Col>
       </Row>
 
+      <p>File content of the received file would get printed.</p>
+
+      <p>The newly-added file will appear in the FTP server.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -225,10 +221,7 @@ export default function FtpClient() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run ftp_client.bal`}</span>
-              <span>{``}</span>
-              <span>{`# File content of the received file would get printed.`}</span>
-              <span>{`# The newly-added file will appear in the FTP server.`}</span>
+              <span>{`\$ bal run ftp_client.bal`}</span>
             </code>
           </pre>
         </Col>

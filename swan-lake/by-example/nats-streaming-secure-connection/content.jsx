@@ -22,14 +22,12 @@ public function main() returns error? {
     // Initializes the NATS Streaming client with TLS/SSL and username/password authentication.
     stan:Client stanClient = check new(stan:DEFAULT_URL,
         clusterId = "my_secure_cluster",
-
-        // To secure the client connections using username/password authentication, provide the credentials
-        // with the [\`stan:Credentials\`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
+        // To secure the client connections using username/password authentication,
+        // provide the credentials with the [\`stan:Credentials\`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
         auth = {
-             username: "alice",
-             password: "alice@123"
+            username: "alice",
+            password: "alice@123"
         },
-
         // To secure the client connection using TLS/SSL, the client needs to be configured with
         // a certificate file of the server.
         // The [\`stan:SecureSocket\`](https://lib.ballerina.io/ballerinax/stan/latest/records/SecureSocket)
@@ -41,8 +39,9 @@ public function main() returns error? {
 
     // Produces a message to the specified subject.
     string result = check stanClient->publishMessage({
-                                    content: message.toBytes(),
-                                    subject: "demo"});
+        content: message.toBytes(),
+        subject: "demo"
+    });
     io:println("GUID " + result + " received for the produced message.");
     // Closes the client connection.
     check stanClient.close();
@@ -54,14 +53,12 @@ import ballerinax/stan;
 // Initializes the NATS Streaming listener with TLS/SSL and username/password authentication.
 listener stan:Listener securedEP = new(stan:DEFAULT_URL,
     clusterId = "my_secure_cluster",
-
-    // To secure the client connections using username/password authentication, provide the credentials
-    // with the [\`stan:Credentials\`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
+    // To secure the client connections using username/password authentication,
+    // provide the credentials with the [\`stan:Credentials\`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
     auth = {
          username: "alice",
          password: "alice@123"
     },
-
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     // The [\`stan:SecureSocket\`](https://lib.ballerina.io/ballerinax/stan/latest/records/SecureSocket)
@@ -76,12 +73,10 @@ listener stan:Listener securedEP = new(stan:DEFAULT_URL,
     subject: "security.demo"
 }
 service stan:Service on securedEP {
-    remote function onMessage(stan:Message message) {
+    remote function onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
-        string|error messageData = string:fromBytes(message.content);
-        if messageData is string {
-            log:printInfo("Received message: " + messageData);
-        }
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageData);
     }
 }
 `,
@@ -115,14 +110,14 @@ export default function NatsStreamingSecureConnection() {
 
       <p>The underlying connections of the subscriber and the publisher are</p>
 
-      <p>secured with TLS/SSL and Basic Auth.&lt;br/&gt;&lt;br/&gt;</p>
+      <p>secured with TLS/SSL and Basic Auth.</p>
 
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
-          STAN module
+          <code>stan</code> module
         </a>
         .
       </p>
@@ -255,7 +250,7 @@ export default function NatsStreamingSecureConnection() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run publisher.bal`}</span>
+              <span>{`\$ bal run publisher.bal`}</span>
               <span>{`GUID m2jS6SLLefK325DWTkkwBh received for the produced message.`}</span>
             </code>
           </pre>
@@ -390,7 +385,7 @@ export default function NatsStreamingSecureConnection() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run subscriber.bal`}</span>
+              <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-20T12:51:47.417+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>
           </pre>

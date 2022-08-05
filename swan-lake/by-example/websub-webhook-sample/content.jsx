@@ -31,8 +31,7 @@ import ballerina/io;
 }
 service /JuApTOXq19 on new websub:Listener(9090) {
     // Defines the remote function that accepts the event notification request for the WebHook.
-    remote function onEventNotification(
-                    websub:ContentDistributionMessage event) returns error? {
+    remote function onEventNotification(websub:ContentDistributionMessage event) returns error? {
         var retrievedContent = event.content;
         if retrievedContent is json {
             if retrievedContent.zen is string {
@@ -101,15 +100,13 @@ export default function WebsubWebhookSample() {
 
       <p>
         In this example, a WebSub Subscriber service is used to implement a
-        GitHub-based WebHook service.&lt;br/&gt;&lt;br/&gt;
+        GitHub-based WebHook service.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websub/latest/">
-          WebSub module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/websub/latest/">
+          <code>websub</code> module
         </a>
         .
       </p>
@@ -191,6 +188,8 @@ export default function WebsubWebhookSample() {
         </Col>
       </Row>
 
+      <p>Run the subscriber service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -242,7 +241,7 @@ export default function WebsubWebhookSample() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run websub_webhook_sample.bal`}</span>
+              <span>{`\$ bal run websub_webhook_sample.bal`}</span>
               <span>{`time = 2022-01-24T17:48:07.207+05:30 level = WARN module = ballerina/websub message = "HTTPS is recommended but using HTTP"`}</span>
               <span>{`PingEvent received for webhook [287075824]`}</span>
               <span>{`Event sender [77491511]`}</span>

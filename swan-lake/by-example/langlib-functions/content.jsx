@@ -17,7 +17,6 @@ const codeSnippetData = [
 public function main() {
     // You can call langlib functions using the method-call syntax.
     string s = "abc".substring(1, 2);
-
     io:println(s);
 
     // \`n\` will be 1.
@@ -27,7 +26,6 @@ public function main() {
     // \`s.length()\` is same as \`string:length(s)\`.
     int m = string:length(s);
     io:println(m);
-
 }
 `,
 ];
@@ -56,22 +54,12 @@ export default function LanglibFunctions() {
       <h1>Langlib functions</h1>
 
       <p>
-        Langlib is a small library defined by language providing fundamental
-        operations on built-in data types.
-      </p>
-
-      <p>
-        Langlib functions can be called using convenient method-call syntax, but
-        these types are not objects!
-      </p>
-
-      <p>
-        There exists a <code>ballerina/lang.T</code> module for each built-in
-        type <code>T</code> and they are automatically imported
-      </p>
-
-      <p>
-        using <code>T</code> prefix.
+        Langlib is a small library defined by the Ballerina language providing
+        fundamental operations on the built-in data types. Langlib functions can
+        be called using a convenient method-call syntax but these types are not
+        objects. There exists a <code>ballerina/lang.T</code> module for each
+        built-in type <code>T</code> and they are imported automatically using
+        the <code>T</code> prefix.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -80,7 +68,7 @@ export default function LanglibFunctions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b06f3dcd0c24809997cf93e988401ca0&file=langlib_functions.bal",
+                "https://play.ballerina.io/?gist=e6c0733d712a10c02d090216546f63dd&file=langlib_functions.bal",
                 "_blank"
               );
             }}
@@ -225,7 +213,7 @@ export default function LanglibFunctions() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run langlib_functions.bal`}</span>
+              <span>{`\$ bal run langlib_functions.bal`}</span>
               <span>{`b`}</span>
               <span>{`1`}</span>
               <span>{`1`}</span>

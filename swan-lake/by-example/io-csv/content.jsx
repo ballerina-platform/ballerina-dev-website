@@ -15,30 +15,29 @@ const codeSnippetData = [
   `import ballerina/io;
 
 public function main() returns error? {
-    // Initializes the CSV file path and content.
+    // Initializes the CSV file paths and content.
     string csvFilePath1 = "./files/csvFile1.csv";
     string csvFilePath2 = "./files/csvFile2.csv";
     string[][] csvContent = [["1", "James", "10000"], ["2", "Nathan", "150000"],
     ["3", "Ronald", "120000"], ["4", "Roy", "6000"],
     ["5", "Oliver", "1100000"]];
 
-    // Writes the given content string[][] to a CSV file.
+    // Writes the given content \`string[][]\` to a CSV file in csvFilePath1.
     check io:fileWriteCsv(csvFilePath1, csvContent);
-    // If the write operation was successful, then, performs a read operation to read the CSV content as a string array of arrays.
+    // Reads the previously-saved CSV file as a \`string[][]\`.
     string[][] readCsv = check io:fileReadCsv(csvFilePath1);
     io:println(readCsv);
 
-    // Writes the given content stream to a CSV file.
+    // Writes the given content as a stream to a CSV file.
     check io:fileWriteCsvFromStream(csvFilePath2, csvContent.toStream());
-    // If the write operation was successful, then, perform a read operation to read the CSV content as a stream.
+    // Reads the previously-saved CSV file as a stream.
     stream<string[], io:Error?> csvStream = check
                                         io:fileReadCsvAsStream(csvFilePath2);
     // Iterates through the stream and prints the content.
     check csvStream.forEach(function(string[] val) {
                               io:println(val);
                           });
-}
-`,
+}`,
 ];
 
 export default function IoCsv() {
@@ -66,14 +65,15 @@ export default function IoCsv() {
 
       <p>
         The Ballerina <code>io</code> library contains APIs to read/write CSV
-        content from/to a file.&lt;br/&gt;&lt;br/&gt;
+        content from/to a file.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/io/latest/">IO module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/io/latest/">
+          <code>io</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -82,7 +82,7 @@ export default function IoCsv() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=680ef5268d964abb05dadf7d6a0afac9&file=io_csv.bal",
+                "https://play.ballerina.io/?gist=fa8f7aad8885db4394dff6405ba58bde&file=io_csv.bal",
                 "_blank"
               );
             }}
@@ -176,6 +176,10 @@ export default function IoCsv() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -227,7 +231,7 @@ export default function IoCsv() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run io_csv.bal`}</span>
+              <span>{`\$ bal run io_csv.bal`}</span>
               <span>{`[["1","James","10000"],["2","Nathan","150000"],["3","Ronald","120000"],["4","Roy","6000"],["5","Oliver","1100000"]]`}</span>
               <span>{`["1","James","10000"]`}</span>
               <span>{`["2","Nathan","150000"]`}</span>

@@ -17,7 +17,7 @@ import ballerina/websocket;
 
 // A WebSocket listener can be configured to accept new connections that are
 // secured via mutual SSL.
-// The [\`websocket:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
+// The [\`websocket:ListenerSecureSocket\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
 listener websocket:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -81,26 +81,19 @@ export default function WebsocketServiceMutualSsl() {
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
-        authentication
+        authentication process in which two
       </p>
 
       <p>
-        process in which two parties (the client and server) authenticate each
-        other by
+        parties (the client and server) authenticate each other by verifying the
+        digital certificates.
       </p>
 
-      <p>
-        verifying the digital certificates. It ensures that both parties are
-        assured
-      </p>
-
-      <p>of each other's identity.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>It ensures that both parties are assured of each other's identity.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/">
           WebSocket module
         </a>
         .
@@ -236,7 +229,7 @@ export default function WebsocketServiceMutualSsl() {
             <code className="d-flex flex-column">
               <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
               <span>{`# trusted certificate file path.`}</span>
-              <span>{`bal run websocket_service_mutual_ssl.bal`}</span>
+              <span>{`\$ bal run websocket_service_mutual_ssl.bal`}</span>
             </code>
           </pre>
         </Col>

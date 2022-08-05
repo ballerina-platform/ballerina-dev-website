@@ -29,8 +29,7 @@ public function main() {
     // Adds a new entry for \`z\`.
     m["z"] = 5;
 
-    // Using \`m["x"]\` wouldn't work here because type would be \`int?\`,
-    // not \`int\`.
+    // Using \`m["x"]\` wouldn't work here because the type would be \`int?\` and not \`int\`.
     m["z"] = m.get("x");
 
 }
@@ -62,28 +61,15 @@ export default function Maps() {
 
       <p>
         The <code>map&lt;T&gt;</code> type is a mapping from strings to{" "}
-        <code>T</code>. The map syntax is similar to JSON. Maps are mutable.
-      </p>
-
-      <p>
-        <code>m[k]</code> is an &quot;lvalue&quot;. <code>foreach</code> will
+        <code>T</code>. The map syntax is similar to JSON. Maps are mutable.{" "}
+        <code>m[k]</code> is an <code>lvalue</code>. <code>foreach</code> will
         iterate over the values of the <code>map</code>. <code>m[k]</code> gets
-        entry for <code>k</code>; <code>nil</code> if
-      </p>
-
-      <p>
-        missing. Use <code>m.get(k)</code> when you know that there is an entry
-        for <code>k</code>. <code>m.keys()</code> can be used
-      </p>
-
-      <p>
-        to iterate over keys to get the keys as an <code>array</code> of
-        strings. <code>==</code> and <code>!=</code> on maps is deep. Two maps
-      </p>
-
-      <p>
-        are equal if they have the same set of keys and the values for each key
-        are equal.
+        an entry for <code>k</code>; if <code>nil</code> is missing. Use{" "}
+        <code>m.get(k)</code> when you know that there is an entry for{" "}
+        <code>k</code>. <code>m.keys()</code> can be used to iterate over keys
+        to get the keys as an <code>array</code> of strings. <code>==</code> and{" "}
+        <code>!=</code> on maps is deep. Two maps are equal if they have the
+        same set of keys and the values of each key are equal.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -92,7 +78,7 @@ export default function Maps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2b99d62a94aace1e3ffbafd09ee63588&file=maps.bal",
+                "https://play.ballerina.io/?gist=233b080fc25836e0897f999aece848f8&file=maps.bal",
                 "_blank"
               );
             }}

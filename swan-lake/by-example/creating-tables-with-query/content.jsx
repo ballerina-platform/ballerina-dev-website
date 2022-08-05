@@ -28,12 +28,11 @@ public function main() {
     ];
 
     // The query expression starts with \`table\`.
-    // The key specifier \`key(id)\` specifies the key sequence of the constructed \`table\`.
-    // The result of the query expression is a \`table\`.
+    // The \`key(id)\` key specifier specifies the key sequence of the constructed table.
+    // The result of the query expression is a table.
     var highPaidEmployees = table key(id) from var e in employees
                             where e.salary >= 1000
                             select e;
-
 
     io:println(highPaidEmployees);
 }
@@ -64,8 +63,8 @@ export default function CreatingTablesWithQuery() {
       <h1>Creating tables with query</h1>
 
       <p>
-        Query expressions can create tables. The key of the created{" "}
-        <code>table</code> can be specified explicitly.
+        Query expressions can create tables. The key of the created table can be
+        specified explicitly.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -74,7 +73,7 @@ export default function CreatingTablesWithQuery() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f30adec1a3653564d828b51e7574dca3&file=creating_tables_with_query.bal",
+                "https://play.ballerina.io/?gist=56ba78eb6ae94765d1d7226f09f2ba7b&file=creating_tables_with_query.bal",
                 "_blank"
               );
             }}
@@ -219,7 +218,7 @@ export default function CreatingTablesWithQuery() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run creating_tables_with_query.bal`}</span>
+              <span>{`\$ bal run creating_tables_with_query.bal`}</span>
               <span>{`[{"id":2,"firstName":"Fred","lastName":"Bloggs","salary":2000}]`}</span>
             </code>
           </pre>

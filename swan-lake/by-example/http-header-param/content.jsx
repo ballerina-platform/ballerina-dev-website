@@ -18,8 +18,8 @@ import ballerina/log;
 service / on new http:Listener(9090) {
     // The \`clientKey\` method argument is considered as the value for the
     // \`X-Client-Key\` HTTP header.
-    resource function get hello(@http:Header {name: "X-Client-Key"}
-            string clientKey) returns string {
+    resource function get hello(@http:Header {name: "X-Client-Key"} string clientKey)
+            returns string {
 
         log:printInfo("Received header value: " + clientKey);
         return clientKey;
@@ -74,8 +74,8 @@ export default function HttpHeaderParam() {
       </p>
 
       <p>
-        type is optional, the request will be responded with a 400 Bad request
-        in the absence of the mentioned header.
+        type is optional, the request will be responded with a{" "}
+        <code>400 Bad request</code> in the absence of the mentioned header.
       </p>
 
       <p>
@@ -83,16 +83,11 @@ export default function HttpHeaderParam() {
         <code>http:Headers</code> header object, which also can be accessed as
       </p>
 
-      <p>
-        a resource method argument without using the
-        annotation.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying module,</p>
+      <p>a resource method argument without using the annotation.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -175,6 +170,8 @@ export default function HttpHeaderParam() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -226,13 +223,17 @@ export default function HttpHeaderParam() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`#Run the cURL command below to run the client.`}</span>
-              <span>{`curl http://localhost:9090/hello -H "X-Client-Key: 0987654321" `}</span>
-              <span>{`0987654321`}</span>
+              <span>{`\$ bal run http_headers.bal`}</span>
+              <span>{`time = 2021-06-25T11:56:13.746+05:30 level = INFO module = "" message = "Received header value 0987654321"`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -285,8 +286,8 @@ export default function HttpHeaderParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_headers.bal`}</span>
-              <span>{`time = 2021-06-25T11:56:13.746+05:30 level = INFO module = "" message = "Received header value 0987654321"`}</span>
+              <span>{`\$ curl http://localhost:9090/hello -H "X-Client-Key: 0987654321"`}</span>
+              <span>{`0987654321`}</span>
             </code>
           </pre>
         </Col>

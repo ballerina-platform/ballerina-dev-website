@@ -15,8 +15,7 @@ const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/http;
 
-// An GraphQL listener can be configured to accept new connections that are
-// secured via mutual SSL.
+// A GraphQL listener can be configured to accept new connections that are secured via mutual SSL.
 // The [\`graphql:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
 listener graphql:Listener securedEP = new(9090,
     secureSocket = {
@@ -36,7 +35,6 @@ listener graphql:Listener securedEP = new(9090,
         },
         // Configures the preferred ciphers.
         ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-
     }
 );
 
@@ -73,27 +71,15 @@ export default function GraphqlServiceMutualSsl() {
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
-        authentication
+        authentication process in which two parties (the client and server)
+        authenticate each other by verifying the digital certificates. It
+        ensures that both parties are assured of each other's identity.
       </p>
 
       <p>
-        process in which two parties (the client and server) authenticate each
-        other by
-      </p>
-
-      <p>
-        verifying the digital certificates. It ensures that both parties are
-        assured
-      </p>
-
-      <p>of each other's identity.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+          <code>graphql</code> module
         </a>
         .
       </p>
@@ -175,6 +161,8 @@ export default function GraphqlServiceMutualSsl() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -228,7 +216,7 @@ export default function GraphqlServiceMutualSsl() {
             <code className="d-flex flex-column">
               <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
               <span>{`# trusted certificate file path.`}</span>
-              <span>{`bal run graphql_service_mutual_ssl.bal`}</span>
+              <span>{`\$ bal run graphql_service_mutual_ssl.bal`}</span>
             </code>
           </pre>
         </Col>

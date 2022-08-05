@@ -21,7 +21,7 @@ public type Order record {|
     boolean isValid;
 |};
 
-// Create a subtype of \`kafka:AnydataProducerRecord\`
+// Create a subtype of \`kafka:AnydataProducerRecord\`.
 public type OrderProducerRecord record {|
     *kafka:AnydataProducerRecord;
     Order value;
@@ -70,21 +70,21 @@ export default function KafkaProducer() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Producer</h1>
 
-      <p>This shows how to send messages to a Kafka topic using a</p>
-
       <p>
-        <code>kafka:Producer</code> client. For this to work properly, an active
-        Kafka
+        This shows how to send messages to a Kafka topic using a{" "}
+        <code>kafka:Producer</code> client.
       </p>
 
-      <p>broker should be present.&lt;br/&gt;&lt;br/&gt;</p>
+      <p>
+        For this to work properly, an active Kafka broker should be present.
+      </p>
 
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          Kafka module
+          <code>kafka</code> module
         </a>
         .
       </p>
@@ -217,7 +217,7 @@ export default function KafkaProducer() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run kafka_producer.bal`}</span>
+              <span>{`\$ bal run kafka_producer.bal`}</span>
             </code>
           </pre>
         </Col>

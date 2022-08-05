@@ -15,11 +15,9 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// An HTTP client can be configured to communicate through HTTPS as well.
-// To secure a client using HTTPS, the client needs to be configured with
-// a certificate file of the listener.
-// The [\`http:ClientSecureSocket\`](https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record
-// provides the SSL-related configurations of the client.
+// An HTTP client can be configured to communicate through HTTPS as well. For HTTPS communication, 
+// the client needs to be configured with the certificate file of the server.
+// The [\`http:ClientSecureSocket\`](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record provides the SSL-related configurations of the client.
 http:Client securedEP = check new("https://localhost:9090",
     secureSocket = {
         cert: "../resource/path/to/public.crt"
@@ -58,22 +56,14 @@ export default function HttpClientSslTls() {
 
       <p>
         You can use the HTTPS client to connect or interact with an HTTPS
-        listener.
+        listener. Provide the <code>http:ClientSecureSocket</code>{" "}
+        configurations to the client to initiate an HTTPS connection.
       </p>
 
       <p>
-        Provide the <code>http:ClientSecureSocket</code> configurations to the
-        client to
-      </p>
-
-      <p>initiate an HTTPS connection.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -155,6 +145,8 @@ export default function HttpClientSslTls() {
         </Col>
       </Row>
 
+      <p>Run the secure client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -208,7 +200,7 @@ export default function HttpClientSslTls() {
             <code className="d-flex flex-column">
               <span>{`# As a prerequisite, start a sample service secured with SSL.`}</span>
               <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>{`bal run http_client_ssl_tls.bal`}</span>
+              <span>{`\$ bal run http_client_ssl_tls.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

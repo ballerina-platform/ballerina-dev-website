@@ -14,30 +14,36 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-// An \`xml\` value belongs to \`xml:Element\` if it consists of just an element
-// item. 
+// An \`xml\` value belongs to \`xml:Element\` if it consists of just an element item. 
 xml:Element element = xml \`<p>Hello</p>\`;
 
-// Similarly for \`xml:Comment\` and \`xml:ProcessingInstruction\`.
+// Similarly, a value belongs to \`xml:Comment\` or \`xml:ProcessingInstruction\` if it 
+// consists of just a comment item or a processing instruction item.
 xml:Comment comment = xml \`<!--This is a comment-->\`;
 xml:ProcessingInstruction procInst = xml \`<?target data?>\`;
 
-public function main() {
-    // An \`xml\` value belongs to the \`xml:Text\` if it consists of a text item or is empty.
-    xml:Text _ = xml \`\`;
-    xml:Text _ = xml \`Hello World\`;
+// An \`xml\` value belongs to \`xml:Text\` if it consists of only a text item or is empty.
+xml:Text empty = xml \`\`;
+xml:Text text = xml \`Hello World\`;
 
+public function main() {
     string hello = "Hello";
     string world = "World";
+
+    // The return type of \`stringToXml\` is \`xml:Text\`, which indicates that it will
+    // return an XML text item.
     xml:Text c = stringToXml(hello + " " + world);
     io:println(c);
 
     xml:Element otherElement = xml \`<q>World</q>\`;
 
+    // Concatenating multiple items results in a sequence of items (\`xml<T>\`).
+    // The concatenation below will result in a sequence of XML elements (\`xml<xml:Element>\`).
     xml d = element + otherElement;
+
     xml e = xml \`<p>hello</p>World\`;
-    // An \`xml\` value belongs to the type \`xml<T>\` if each of its members belong 
-    // to \`T\`.
+
+    // An \`xml\` value belongs to the \`xml<T>\` type if each of its members belongs to type \`T\`.
     io:println(element is xml<xml:Element>);
     io:println(d is xml<xml:Element>);
     io:println(e is xml<xml:Element>);
@@ -91,46 +97,32 @@ export default function XmlSubtyping() {
 
       <p>
         An <code>xml</code> value belongs to <code>xml:Element</code> if it
-        consists of just an element
-      </p>
-
-      <p>
-        item. Similarly for <code>xml:Comment</code> and{" "}
-        <code>xml:ProcessingInstruction</code>.
+        consists of just an element item. Similarly, an <code>xml</code> value
+        belongs to <code>xml:Comment</code> or{" "}
+        <code>xml:ProcessingInstruction</code> if it consists of just a comment
+        item or a processing instruction item respectively.
       </p>
 
       <p>
         An <code>xml</code> value belongs to <code>xml:Text</code> if it
-        consists of a text item or is
+        consists of only a text item or is empty.
       </p>
-
-      <p>empty.</p>
 
       <p>
         An <code>xml</code> value belongs to the type <code>xml&lt;T&gt;</code>{" "}
-        if each of its members belong
+        if each of its members belongs to <code>T</code>.
       </p>
 
       <p>
-        to <code>T</code>.
+        Functions in the <code>lang.xml</code> module use this to provide safe
+        and convenient typing. For example, <code>x.elements()</code> returns
+        element items in <code>x</code> as type{" "}
+        <code>xml&lt;xml:Element&gt;</code>.
       </p>
 
       <p>
-        Functions in lang.xml use this to provide safe and convenient typing.
-      </p>
-
-      <p>
-        For example, <code>x.elements()</code> returns element items in{" "}
-        <code>x</code> as type
-      </p>
-
-      <p>
-        <code>xml&lt;xml:Element&gt;</code> and <code>e.getName()</code> and{" "}
-        <code>e.setName()</code> are defined when
-      </p>
-
-      <p>
-        <code>e</code> has type <code>xml:Element</code>.
+        The <code>e.getName()</code> and <code>e.setName()</code> functions are
+        defined when <code>e</code> has the <code>xml:Element</code> type.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -261,7 +253,7 @@ export default function XmlSubtyping() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run xml_subtyping.bal`}</span>
+              <span>{`\$ bal run xml_subtyping.bal`}</span>
               <span>{`Hello World`}</span>
               <span>{`true`}</span>
               <span>{`true`}</span>

@@ -56,19 +56,24 @@ export default function Arrays() {
       <h1>Arrays</h1>
 
       <p>
-        <code>T[]</code> is an <code>array</code> of <code>T</code>. Arrays are
-        mutable. <code>==</code> and <code>!=</code> on arrays is deep: two
-        arrays are
+        When defining an array, <code>T[]</code> is an <code>array</code> of{" "}
+        <code>T</code>. Arrays are mutable. When comparing arrays,{" "}
+        <code>==</code> and <code>!=</code> operators on arrays are deep: two
+        arrays are equal if they have the same members in the same order.
+        Ordering is lexicographical based on the ordering of the members.
       </p>
 
       <p>
-        equal if they have the same members in the same order. Ordering is
-        lexicographical based on the
-      </p>
-
-      <p>
-        ordering of the members. Langlib <code>arr.length()</code> function gets
-        the length; <code>arr.setLength(n)</code> sets the length.
+        Langlib{" "}
+        <a href="https://lib.ballerina.io/ballerina/lang.array/0.0.0/functions#length">
+          arr.length()
+        </a>{" "}
+        function can be used to get the array length. You can also set the array
+        length using{" "}
+        <a href="https://lib.ballerina.io/ballerina/lang.array/0.0.0/functions#setLength">
+          <code>arr.setLength(n)</code>
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -77,7 +82,7 @@ export default function Arrays() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=12877a583e624b5672af81d8ac9e7b69&file=arrays.bal",
+                "https://play.ballerina.io/?gist=f73a77fa851e52077f127a5541502a42&file=arrays.bal",
                 "_blank"
               );
             }}
@@ -222,7 +227,7 @@ export default function Arrays() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run arrays.bal`}</span>
+              <span>{`\$ bal run arrays.bal`}</span>
               <span>{`1`}</span>
               <span>{`4`}</span>
             </code>

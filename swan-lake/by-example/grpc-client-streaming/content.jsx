@@ -14,10 +14,11 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `// This is the service definition for the client streaming scenario.
 syntax = "proto3";
+
 import "google/protobuf/wrappers.proto";
+
 service HelloWorld {
-	rpc lotsOfGreetings (stream google.protobuf.StringValue)
-			returns (google.protobuf.StringValue);
+	rpc lotsOfGreetings (stream google.protobuf.StringValue) returns (google.protobuf.StringValue);
 }
 `,
   `// This is the server implementation of the client streaming scenario.
@@ -28,16 +29,16 @@ import ballerina/log;
     descriptor: GRPC_CLIENT_STREAMING_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
-    isolated remote function lotsOfGreetings(
-                            stream<string, error?> clientStream)
-                            returns string|error {
+    isolated remote function lotsOfGreetings(stream<string, error?> clientStream)
+                        returns string|error {
         log:printInfo("Client connected successfully.");
         // Reads and processes each message in the client stream.
         _ = check from string name in clientStream
             do {
                 log:printInfo(string \`Greet received: \${name}\`);
             };
-        // Once the client sends a notification to indicate the end of the stream, '()' is returned by the stream.
+        // Once the client sends a notification to indicate the end of the stream,
+        // '()' is returned by the stream.
         return "Ack";
     }
 }
@@ -46,9 +47,9 @@ service "HelloWorld" on new grpc:Listener(9090) {
 import ballerina/io;
 
 // Creates a gRPC client to interact with the remote server.
-HelloWorldClient ep = check new("http://localhost:9090");
+HelloWorldClient ep = check new ("http://localhost:9090");
 
-public function main () returns error? {
+public function main() returns error? {
     // Executes the client-streaming RPC call and receives the streaming client.
     LotsOfGreetingsStreamingClient streamingClient = check
     ep->lotsOfGreetings();
@@ -65,7 +66,6 @@ public function main () returns error? {
     // Receives the server response.
     string? response = check streamingClient->receiveString();
     io:println(response);
-
 }
 `,
 ];
@@ -110,20 +110,33 @@ export default function GrpcClientStreaming() {
 
       <p>
         Once the client has finished writing the messages, it waits for the
-        server to read them and return a response.&lt;br/&gt;&lt;br/&gt;
+        server to read them and return a response.
       </p>
 
-      <p>For more information on the underlying module,</p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on the underlying module,
+          see the{" "}
+          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
+            <code>grpc</code> module
+          </a>
+          .
+        </p>
+      </blockquote>
 
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-          GRPC module
-        </a>
-        .
-      </p>
+      <h2>Generate the service definition</h2>
 
-      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>
+            Create new Protocol Buffers definition file{" "}
+            <code>grpc_client_streaming.proto</code> and add service definition.
+          </span>
+        </li>
+      </ul>
+
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "24px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -200,9 +213,19 @@ export default function GrpcClientStreaming() {
         </Col>
       </Row>
 
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Run the command below in the Ballerina tools distribution for stub
+            generation.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "0px" }}
+        style={{ marginLeft: "24px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
@@ -251,27 +274,59 @@ export default function GrpcClientStreaming() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# Create new Protocol Buffers definition file `}
-                <code>{`grpc_client_streaming.proto`}</code>
-                {` and add service definition.`}
-              </span>
-              <span>{`# Run the command below in the Ballerina tools distribution for stub generation.`}</span>
-              <span>{`bal grpc --input grpc_client_streaming.proto  --output stubs`}</span>
-              <span>{``}</span>
-              <span>
-                {`# Once you run the command, `}
-                <code>{`grpc_client_streaming_pb.bal`}</code>
-                {` file is generated inside stubs directory.`}
-              </span>
-              <span>{``}</span>
-              <span>{`# For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto To Ballerina</a> example.`}</span>
+              <span>{`\$ bal grpc --input grpc_client_streaming.proto  --output stubs`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+      <p>
+        Once you run the command, the <code>grpc_client_streaming_pb.bal</code>{" "}
+        file is generated inside the stubs directory.
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on how to use the
+          Ballerina Protocol Buffers tool, see the &lt;a
+          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
+          To Ballerina&lt;/a&gt; example.
+        </p>
+      </blockquote>
+
+      <h2>Implement and run the service</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>Create a Ballerina package.</span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Copy the generated <code>grpc_client_streaming_pb.bal</code> stub
+            file to the package. For example, if you create a package named{" "}
+            <code>service</code>, copy the stub file to the <code>service</code>{" "}
+            package.
+          </span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
+          <span>
+            Create a new <code>grpc_client_streaming.bal</code> Ballerina file
+            inside the <code>service</code> package and add the service
+            implementation.
+          </span>
+        </li>
+      </ul>
+
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "24px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -348,9 +403,18 @@ export default function GrpcClientStreaming() {
         </Col>
       </Row>
 
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>4.</span>
+          <span>
+            Execute the commands below to build and run the 'service' package.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "0px" }}
+        style={{ marginLeft: "24px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick2 ? (
@@ -399,39 +463,47 @@ export default function GrpcClientStreaming() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina package.`}</span>
-              <span>
-                {`# Copy the generated `}
-                <code>{`grpc_client_streaming_pb.bal`}</code>
-                {` stub file to the package.`}
-              </span>
-              <span>
-                {`# For example, if you create a package named `}
-                <code>{`service`}</code>
-                {`, copy the stub file to the `}
-                <code>{`service`}</code>
-                {` package.`}
-              </span>
+              <span>{`\$ bal build service`}</span>
               <span>{``}</span>
-              <span>
-                {`# Create a new `}
-                <code>{`grpc_client_streaming.bal`}</code>
-                {` Ballerina file inside the `}
-                <code>{`service`}</code>
-                {` package and add the service implementation.`}
-              </span>
-              <span>{``}</span>
-              <span>{`# Execute the command below to build the 'service' package.`}</span>
-              <span>{`bal build service`}</span>
-              <span>{``}</span>
-              <span>{`# Run the service using the command below.`}</span>
-              <span>{`bal run service/target/bin/service.jar`}</span>
+              <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+      <h2>Implement and run the client</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>Create a Ballerina package.</span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Copy the generated <code>grpc_client_streaming_pb.bal</code> stub
+            file to the package. For example, if you create a package named{" "}
+            <code>client</code>, copy the stub file to the <code>client</code>{" "}
+            package.
+          </span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
+          <span>
+            Create a new <code>grpc_client_streaming_client.bal</code> Ballerina
+            file inside the <code>client</code> package and add the client
+            implementation.
+          </span>
+        </li>
+      </ul>
+
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "24px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -508,9 +580,18 @@ export default function GrpcClientStreaming() {
         </Col>
       </Row>
 
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>4.</span>
+          <span>
+            Execute the commands below to build and run the 'client' package.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "0px" }}
+        style={{ marginLeft: "24px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick3 ? (
@@ -559,33 +640,9 @@ export default function GrpcClientStreaming() {
         <Col sm={12}>
           <pre ref={ref3}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina package.`}</span>
-              <span>
-                {`# Copy the generated `}
-                <code>{`grpc_client_streaming_pb.bal`}</code>
-                {` stub file to the package.`}
-              </span>
-              <span>
-                {`# For example, if you create a package named `}
-                <code>{`client`}</code>
-                {`, copy the stub file to the `}
-                <code>{`client`}</code>
-                {` package.`}
-              </span>
+              <span>{`\$ bal build client`}</span>
               <span>{``}</span>
-              <span>
-                {`# Create a new `}
-                <code>{`grpc_client_streaming_client.bal`}</code>
-                {` Ballerina file inside the `}
-                <code>{`client`}</code>
-                {` package and add the client implementation.`}
-              </span>
-              <span>{``}</span>
-              <span>{`# Execute the command below to build the 'client' package.`}</span>
-              <span>{`bal build client`}</span>
-              <span>{``}</span>
-              <span>{`# Run the client using the command below.`}</span>
-              <span>{`bal run client/target/bin/client.jar`}</span>
+              <span>{`\$ bal run client/target/bin/client.jar`}</span>
             </code>
           </pre>
         </Col>

@@ -20,7 +20,7 @@ service /sample on new http:Listener(9090) {
     // request URI.
     resource function get path/[string foo](http:Request req) returns json {
 
-        // Gets the [MatrixParams](https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams).
+        // Gets the [MatrixParams](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams).
         map<any> pathMParams = req.getMatrixParams("/sample/path");
         var a = <string>pathMParams["a"];
         var b = <string>pathMParams["b"];
@@ -70,15 +70,13 @@ export default function HttpMatrixParam() {
       <h1>Matrix parameter</h1>
 
       <p>
-        Ballerina supports extracting <code>MatrixParam</code> values using{" "}
-        <code>http:Request</code> support method.&lt;br/&gt;&lt;br/&gt;
+        Ballerina supports extracting <code>MatrixParam</code> values using the{" "}
+        <code>http:Request</code> support method.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -161,6 +159,8 @@ export default function HttpMatrixParam() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -212,13 +212,16 @@ export default function HttpMatrixParam() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Run the cURL command below to invoke the service.`}</span>
-              <span>{`curl "http://localhost:9090/sample/path;a=4;b=5/value1;x=10;y=15"`}</span>
-              <span>{`{"pathParam":"value1", "matrix":{"path":"a=4, b=5", "foo":"x=10, y=15"}}`}</span>
+              <span>{`\$ bal run http_matrix_param.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -271,7 +274,8 @@ export default function HttpMatrixParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run http_matrix_param.bal`}</span>
+              <span>{`\$ curl "http://localhost:9090/sample/path;a=4;b=5/value1;x=10;y=15"`}</span>
+              <span>{`{"pathParam":"value1", "matrix":{"path":"a=4, b=5", "foo":"x=10, y=15"}}`}</span>
             </code>
           </pre>
         </Col>

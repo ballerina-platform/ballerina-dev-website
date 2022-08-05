@@ -53,7 +53,7 @@ export default function HelloWorld() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=610658556a70045cab67872d48ed26f8&file=hello_world.bal",
+                "https://play.ballerina.io/?gist=da542d1ceff660bec23d90c11fb37b35&file=hello_world.bal",
                 "_blank"
               );
             }}
@@ -147,6 +147,11 @@ export default function HelloWorld() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, place the source code in a file named{" "}
+        <code>hello_world.bal</code> and use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -198,15 +203,7 @@ export default function HelloWorld() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# To run this sample, place the source code in `}</span>
-              <span>
-                {`# `}
-                <code>{`hello_world.bal`}</code>
-                {` file and use `}
-                <code>{`bal run`}</code>
-                {` command.`}
-              </span>
-              <span>{`bal run hello_world.bal`}</span>
+              <span>{`\$ bal run hello_world.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

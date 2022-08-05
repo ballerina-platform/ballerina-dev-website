@@ -16,11 +16,9 @@ const codeSnippetData = [
 
 service /graphql on new graphql:Listener(4000) {
 
-    // Resource functions can return service objects. The returning service
-    // object is mapped to an \`OBJECT\` type in GraphQL. Each resource
-    // function is mapped to a field in the \`OBJECT\`.
+    // Resource functions can return service objects. The returning service object is mapped to an
+    // \`OBJECT\` type in GraphQL. Each resource function is mapped to a field in the \`OBJECT\`.
     resource function get profile() returns Person {
-
         return new("Walter White", 51);
     }
 }
@@ -76,26 +74,15 @@ export default function GraphqlReturningServiceObjects() {
 
       <p>
         A GraphQL resource function can return service objects. The returning
-      </p>
-
-      <p>
         service objects are mapped to the <code>OBJECT</code> type in the
-        GraphQL schema. Each
+        GraphQL schema. Each resource function in the returned service object
+        becomes a field in the created <code>OBJECT</code> type.
       </p>
 
       <p>
-        resource function in the returned service object becomes a field in the
-      </p>
-
-      <p>
-        created <code>OBJECT</code> type.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying package, see the</p>
-
-      <p>
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+        For more information on the underlying package, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+          <code>graphql</code> package
         </a>
         .
       </p>
@@ -177,6 +164,8 @@ export default function GraphqlReturningServiceObjects() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -228,14 +217,13 @@ export default function GraphqlReturningServiceObjects() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
-              <span>{`# The query used: { profile { name isAdult } }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name isAdult } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"profile":{"name":"Walter White", "isAdult":true}}}`}</span>
+              <span>{`\$ bal run graphql_returning_service_objects.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -288,7 +276,10 @@ export default function GraphqlReturningServiceObjects() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run graphql_returning_service_objects.bal`}</span>
+              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
+              <span>{`# The query used: { profile { name isAdult } }`}</span>
+              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name isAdult } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`{"data":{"profile":{"name":"Walter White", "isAdult":true}}}`}</span>
             </code>
           </pre>
         </Col>

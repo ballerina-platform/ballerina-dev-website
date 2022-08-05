@@ -14,14 +14,12 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// This service has multiple resources with hierarchical resource paths.
-// The root operation has a field named \`profile\` and it is the first segment
-// of the hierarchical path in this service. The type of this field will also
-// be \`profile\`. (For hierarchical paths, the field name and the type name will
-// be the same). The \`profile\` type has two fields: \`quote\` and \`name\`. The
-// type of the \`quote\` field is \`String\` and the type of the \`name\` field is
-// \`name\`. The \`name\` type has two fields:\`first\` and the \`last\`. Both of the
-// fields are of type \`String\`.
+// This service has multiple resources with hierarchical resource paths. The root operation has a
+// field named \`profile\` and it is the first segment of the hierarchical path in this service. The
+// type of this field will also be \`profile\`. (For hierarchical paths, the field name and the type
+// name will be the same). The \`profile\` type has two fields: \`quote\` and \`name\`. The type of the
+// \`quote\` field is \`String\` and the type of the \`name\` field is \`name\`. The \`name\` type has two
+// fields:\`first\` and the \`last\`. Both of the fields are of type \`String\`.
 service /graphql on new graphql:Listener(4000) {
 
     // This resource represents the \`quote\` field under the \`profile\` object.
@@ -29,14 +27,14 @@ service /graphql on new graphql:Listener(4000) {
         return "I am the one who knocks!";
     }
 
-    // This resource represents the \`first\` field under the \`name\` object type.
-    // The \`name\` field in the \`profile\` object is of type \`name\`.
+    // This resource represents the \`first\` field under the \`name\` object type. The \`name\` field
+    // in the \`profile\` object is of type \`name\`.
     resource function get profile/name/first() returns string {
         return "Walter";
     }
 
-    // This resource represents the \`last\` field under the \`name\` object type.
-    // The \`name\` field in the \`profile\` object is of type \`name\`.
+    // This resource represents the \`last\` field under the \`name\` object type. The \`name\` field in
+    // the \`profile\` object is of type \`name\`.
     resource function get profile/name/last() returns string {
         return "White";
     }
@@ -71,41 +69,25 @@ export default function GraphqlHierarchicalResourcePaths() {
 
       <p>
         The resources in Ballerina GraphQL services can have hierarchical
-        resource
+        resource paths. When a hierarchical path is present, an{" "}
+        <code>OBJECT</code> type is created for each intermediate path segment
+        with the same name. Every sub path under a path segment will be added as
+        a field of the created type.
       </p>
 
       <p>
-        paths. When a hierarchical path is present, an <code>OBJECT</code> type
-        is created for
-      </p>
-
-      <p>
-        each intermediate path segment with the same name. Every sub path under
-        a
-      </p>
-
-      <p>
-        path segment will be added as a field of the created
-        type.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying package, see the</p>
-
-      <p>
+        For more information on the underlying package, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+          <code>graphql</code> package
         </a>
-        .&lt;br/&gt;&lt;br/&gt;
+        .
       </p>
 
       <p>
         This example shows a GraphQL endpoint, which has a <code>profile</code>{" "}
-        field of type <code>Person</code>.
-      </p>
-
-      <p>
-        A GraphQL client can query this service to retrieve specific fields or
-        subfields of the <code>Person</code> object.
+        field of type <code>Person</code>. A GraphQL client can query this
+        service to retrieve specific fields or subfields of the{" "}
+        <code>Person</code> object.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -185,6 +167,8 @@ export default function GraphqlHierarchicalResourcePaths() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -236,14 +220,13 @@ export default function GraphqlHierarchicalResourcePaths() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
-              <span>{`# The query used: { profile { quote name { first } } }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { quote name { first } } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"profile":{"quote":"I am the one who knocks!", "name":{"first":"Walter"}}}}`}</span>
+              <span>{`\$ bal run graphql_hierarchical_resource_paths.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -296,7 +279,10 @@ export default function GraphqlHierarchicalResourcePaths() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run graphql_hierarchical_resource_paths.bal`}</span>
+              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
+              <span>{`# The query used: { profile { quote name { first } } }`}</span>
+              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { quote name { first } } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`{"data":{"profile":{"quote":"I am the one who knocks!", "name":{"first":"Walter"}}}}`}</span>
             </code>
           </pre>
         </Col>
@@ -305,7 +291,7 @@ export default function GraphqlHierarchicalResourcePaths() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Return record values"
+            title="Returning record values"
             href="/learn/by-example/graphql-returning-record-values"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -333,7 +319,7 @@ export default function GraphqlHierarchicalResourcePaths() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Return record values
+                  Returning record values
                 </span>
               </div>
             </div>
@@ -341,7 +327,7 @@ export default function GraphqlHierarchicalResourcePaths() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Return service objects"
+            title="Returning service objects"
             href="/learn/by-example/graphql-returning-service-objects"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -352,7 +338,7 @@ export default function GraphqlHierarchicalResourcePaths() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Return service objects
+                  Returning service objects
                 </span>
               </div>
               <svg

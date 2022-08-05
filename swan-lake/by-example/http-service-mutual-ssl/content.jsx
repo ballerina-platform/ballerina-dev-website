@@ -14,9 +14,8 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// An HTTP listener can be configured to accept new connections that are
-// secured via mutual SSL.
-// The [\`http:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
+// An HTTP listener can be configured to accept new connections that are secured via mutual SSL.
+// The [\`http:ListenerSecureSocket\`](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -74,27 +73,19 @@ export default function HttpServiceMutualSsl() {
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
-        authentication
-      </p>
-
-      <p>
-        process in which two parties (the client and server) authenticate each
-        other by
+        authentication process in which two parties (the client and server)
+        authenticate each other by
       </p>
 
       <p>
         verifying the digital certificates. It ensures that both parties are
-        assured
+        assured of each other's identity.
       </p>
 
-      <p>of each other's identity.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -176,6 +167,8 @@ export default function HttpServiceMutualSsl() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -227,13 +220,15 @@ export default function HttpServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# To invoke the service, use the cURL commands below.`}</span>
-              <span>{`curl https://localhost:9090/foo/bar --cert /path/to/client-public.crt`}</span>
-              <span>{`    --key /path/to/client-private.key --cacert /path/to/server-public.crt`}</span>
+              <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
+              <span>{`# trusted certificate file path.`}</span>
+              <span>{`\$ bal run http_service_mutual_ssl.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -286,9 +281,9 @@ export default function HttpServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
-              <span>{`# trusted certificate file path.`}</span>
-              <span>{`bal run http_service_mutual_ssl.bal`}</span>
+              <span>{`# To invoke the service, use the cURL commands below.`}</span>
+              <span>{`\$ curl https://localhost:9090/foo/bar --cert /path/to/client-public.crt`}</span>
+              <span>{`    --key /path/to/client-private.key --cacert /path/to/server-public.crt`}</span>
             </code>
           </pre>
         </Col>

@@ -105,7 +105,7 @@ export default function TesterinaMockingFunctions() {
 
       <p>
         This allows you to isolate your tests from the other modules and
-        functions.&lt;br/&gt;&lt;br/&gt;
+        functions.
       </p>
 
       <p>
@@ -113,22 +113,24 @@ export default function TesterinaMockingFunctions() {
         user-defined function,
       </p>
 
+      <p>which has the same signature as the original function.</p>
+
       <p>
-        which has the same signature as the original
-        function.&lt;br/&gt;&lt;br/&gt;
+        Function mocking is not supported for testing single <code>.bal</code>{" "}
+        files.
       </p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
         </a>
       </p>
 
       <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -338,34 +340,7 @@ export default function TesterinaMockingFunctions() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# To run this sample, create a Ballerina project named `}
-                <code>{`bbe_mocking`}</code>
-                {` and create a `}
-                <code>{`tests`}</code>
-                {` directory inside.`}
-              </span>
-              <span>
-                {`# Replace the content of the `}
-                <code>{`main.bal`}</code>
-                {` and add the `}
-                <code>{`main_test.bal`}</code>
-                {` to the `}
-                <code>{`tests`}</code>
-                {` directory.`}
-              </span>
-              <span>
-                {`# Execute the `}
-                <code>{`bal test`}</code>
-                {` command below.`}
-              </span>
-              <span>
-                {`# Function mocking is not supported for testing single `}
-                <code>{`.bal`}</code>
-                {` files.`}
-              </span>
-              <span>{``}</span>
-              <span>{`bal test bbe_mocking`}</span>
+              <span>{`\$ bal test bbe_mocking`}</span>
               <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/bbe_mocking:0.1.0`}</span>

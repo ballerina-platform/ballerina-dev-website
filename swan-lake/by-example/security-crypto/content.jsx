@@ -21,7 +21,7 @@ function hash() returns error? {
     string value = "Hello Ballerina!";
     byte[] input = value.toBytes();
 
-    // Hashing input value using the [MD5 hashing algorithm](https://lib.ballerina.io/ballerina/crypto/latest/functions#hashMd5), and printing the hash value using the Hex encoding.
+    // Hashing input value using the [MD5 hashing algorithm](https://docs.central.ballerina.io/ballerina/crypto/latest/functions#hashMd5), and printing the hash value using the Hex encoding.
     byte[] output = crypto:hashMd5(input);
     io:println("Hex encoded hash with MD5: " + output.toBase16());
 
@@ -78,21 +78,18 @@ function hmac() returns error? {
 function decodePrivateKey() returns crypto:PrivateKey|error {
     // Obtaining the reference to an RSA private key by a key file.
     string keyFile = "../resource/path/to/private.key";
-    crypto:PrivateKey privateKey =
-        check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile);
+    crypto:PrivateKey privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile);
 
     // Obtaining the reference to an RSA private key by an encrypted key file.
     string encryptedKeyFile = "../resource/path/to/encryptedPrivate.key";
-    privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(encryptedKeyFile,
-                                                         "ballerina");
+    privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(encryptedKeyFile, "ballerina");
 
     // Obtaining the reference to an RSA private key stored within a PKCS#12 or PFX format archive file.
     crypto:KeyStore keyStore = {
         path: "../resource/path/to/ballerinaKeystore.p12",
         password: "ballerina"
     };
-    privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore,
-                                              "ballerina", "ballerina");
+    privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore, "ballerina", "ballerina");
 
     return privateKey;
 }
@@ -100,16 +97,14 @@ function decodePrivateKey() returns crypto:PrivateKey|error {
 function decodePublicKey() returns crypto:PublicKey|error {
     // Obtaining the reference to an RSA public key by a cert file.
     string certFile = "../resource/path/to/public.crt";
-    crypto:PublicKey publicKey =
-        check crypto:decodeRsaPublicKeyFromCertFile(certFile);
+    crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromCertFile(certFile);
 
     // Obtaining reference to a RSA public key stored within a PKCS#12 or PFX format archive file.
     crypto:TrustStore trustStore = {
         path: "../resource/path/to/ballerinaTruststore.p12",
         password: "ballerina"
     };
-    publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(trustStore,
-                                                             "ballerina");
+    publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(trustStore, "ballerina");
 
     return publicKey;
 }
@@ -127,8 +122,7 @@ function sign() returns error? {
     byte[] output = check crypto:signRsaMd5(input, privateKey);
     io:println("Hex encoded RSA-MD5 signature: " + output.toBase16());
 
-    boolean verified =
-        check crypto:verifyRsaMd5Signature(input, output, publicKey);
+    boolean verified = check crypto:verifyRsaMd5Signature(input, output, publicKey);
     io:println("RSA-MD5 signature verified: " + verified.toString());
 
     // Signing the input value using the RSA-MD5 signature algorithms, and printing the signature value using the Base64 encoding.
@@ -172,16 +166,12 @@ function encrypt() returns error? {
     // Encrypts and decrypts an input value using the \`RSA ECB PKCS1\` padding.
     byte[] output = check crypto:encryptRsaEcb(input, publicKey);
     output = check crypto:decryptRsaEcb(output, privateKey);
-    io:println("RSA ECB PKCS1 decrypted value: " +
-        check string:fromBytes(output));
+    io:println("RSA ECB PKCS1 decrypted value: " + check string:fromBytes(output));
 
     // Encrypts and decrypts an input value using the \`RSA ECB OAEPwithSHA512andMGF1\` padding.
-    output = check crypto:encryptRsaEcb(input, publicKey,
-                                        crypto:OAEPwithSHA512andMGF1);
-    output = check crypto:decryptRsaEcb(output, privateKey,
-                                        crypto:OAEPwithSHA512andMGF1);
-    io:println("RSA ECB OAEPwithSHA512andMGF1 decrypted value: " +
-        check string:fromBytes(output));
+    output = check crypto:encryptRsaEcb(input, publicKey, crypto:OAEPwithSHA512andMGF1);
+    output = check crypto:decryptRsaEcb(output, privateKey, crypto:OAEPwithSHA512andMGF1);
+    io:println("RSA ECB OAEPwithSHA512andMGF1 decrypted value: " + check string:fromBytes(output));
 
     // Randomly generates a 128 bit key for the AES encryption.
     byte[16] aesKey = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -198,38 +188,32 @@ function encrypt() returns error? {
     // Encrypts and decrypts an input value using the \`AES CBC PKCS5\` padding.
     output = check crypto:encryptAesCbc(input, aesKey, iv);
     output = check crypto:decryptAesCbc(output, aesKey, iv);
-    io:println("AES CBC PKCS5 decrypted value: " +
-        check string:fromBytes(output));
+    io:println("AES CBC PKCS5 decrypted value: " + check string:fromBytes(output));
 
     // Encrypts and decrypts an input value using the \`AES CBC\` without padding.
     output = check crypto:encryptAesCbc(input, aesKey, iv, crypto:NONE);
     output = check crypto:decryptAesCbc(output, aesKey, iv, crypto:NONE);
-    io:println("AES CBC no padding decrypted value: " +
-        check string:fromBytes(output));
+    io:println("AES CBC no padding decrypted value: " + check string:fromBytes(output));
 
     // Encrypts and decrypts an input value using the \`AES GCM PKCS5\` padding.
     output = check crypto:encryptAesGcm(input, aesKey, iv);
     output = check crypto:decryptAesGcm(output, aesKey, iv);
-    io:println("AES GCM PKCS5 decrypted value: " +
-        check string:fromBytes(output));
+    io:println("AES GCM PKCS5 decrypted value: " + check string:fromBytes(output));
 
     // Encrypts and decrypts an input value using the \`AES GCM\` without padding.
     output = check crypto:encryptAesGcm(input, aesKey, iv, crypto:NONE);
     output = check crypto:decryptAesGcm(output, aesKey, iv, crypto:NONE);
-    io:println("AES GCM no padding decrypted value: " +
-        check string:fromBytes(output));
+    io:println("AES GCM no padding decrypted value: " + check string:fromBytes(output));
 
     // Encrypts and decrypts an input value using the \`AES ECB PKCS5 padding\`.
     output = check crypto:encryptAesEcb(input, aesKey);
     output = check crypto:decryptAesEcb(output, aesKey);
-    io:println("AES ECB PKCS5 decrypted value: " +
-        check string:fromBytes(output));
+    io:println("AES ECB PKCS5 decrypted value: " + check string:fromBytes(output));
 
     // Encrypts and decrypts an input value using the \`AES ECB\` without padding.
     output = check crypto:encryptAesEcb(input, aesKey, crypto:NONE);
     output = check crypto:decryptAesEcb(output, aesKey, crypto:NONE);
-    io:println("AES ECB no padding decrypted value: " +
-        check string:fromBytes(output));
+    io:println("AES ECB no padding decrypted value: " + check string:fromBytes(output));
 }
 
 public function main() returns error? {
@@ -274,13 +258,11 @@ export default function SecurityCrypto() {
         digitally signing data and
       </p>
 
-      <p>verifying digitally signed data.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>verifying digitally signed data.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/crypto/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/crypto/latest/">
           Crypto module
         </a>
         .
@@ -416,7 +398,7 @@ export default function SecurityCrypto() {
             <code className="d-flex flex-column">
               <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
               <span>{`# trusted certificate file path.`}</span>
-              <span>{`bal run security_crypto.bal`}</span>
+              <span>{`\$ bal run security_crypto.bal`}</span>
               <span>{`Hex encoded hash with MD5: 0605402ee16d8e96511a58ff105bc24a`}</span>
               <span>{`Base64 encoded hash with SHA1: /8fwbGIevBvv2Nl3gEL9DtWas+Q=`}</span>
               <span>{`Hex encoded hash with SHA256: a984a643c350b17f0738bac0fef17f2cd91d91e04596351d0af`}</span>

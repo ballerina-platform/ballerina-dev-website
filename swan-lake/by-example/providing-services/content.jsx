@@ -44,57 +44,40 @@ export default function ProvidingServices() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Providing services</h1>
 
-      <p>
-        Providing services involves the interaction of three main things
-        &lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>//</p>
+      <p>Providing services involves the interaction of three main things.</p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>1.</span>
           <span>
-            ) Service objects are the counterpart of client objects. Service
-            objects also have remote methods and they are remotely accessible to
-            clients.
+            <strong>Service objects</strong> are the counterpart of client
+            objects. Service objects also have remote methods and they are
+            remotely accessible to clients. Typically, the remote method of a
+            client object calls the remote method of a service object.
           </span>
         </li>
       </ul>
-      <p>
-        Remote method of a client object typically calls the remote method of a
-        service object.
-      </p>
-
-      <p>//</p>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>2.</span>
           <span>
-            ) Listener is the entity that receives the network input and then it
-            makes calls to remote methods of attached service objects.
+            <strong>Listener</strong> is the entity, which receives the network
+            input and then, it makes calls to the remote methods of the attached
+            service objects. Listeners are registered with the module as
+            illustrated in the following example.
           </span>
         </li>
       </ul>
-      <p>
-        Listeners are registered with the module as illustrated in the following
-        example.
-      </p>
-
-      <p>//</p>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>3.</span>
           <span>
-            ) Modules have a lifecycle and they are initialized on program
-            startup. Modules start up the registered listeners after the
-            initialization and
+            <strong>Modules</strong> have a lifecycle and they are initialized
+            on program startup. Modules start up the registered listeners after
+            the initialization and shut them down during the program shutdown.
           </span>
         </li>
       </ul>
-      <p>shut them down during the program shutdown.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -224,7 +207,7 @@ export default function ProvidingServices() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run providing_services.bal`}</span>
+              <span>{`\$ bal run providing_services.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -233,7 +216,7 @@ export default function ProvidingServices() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Consume services: client objects"
+            title="Consuming services: client objects"
             href="/learn/by-example/consuming-services"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -261,7 +244,7 @@ export default function ProvidingServices() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consume services: client objects
+                  Consuming services: client objects
                 </span>
               </div>
             </div>

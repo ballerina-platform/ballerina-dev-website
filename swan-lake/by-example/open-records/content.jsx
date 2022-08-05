@@ -72,16 +72,13 @@ export default function OpenRecords() {
 
       <p>
         Record types are open by default. They allow fields other than those
-        specified. The type of unspecified
+        specified. The type of unspecified fields is <code>anydata</code>.
       </p>
 
       <p>
-        fields is <code>anydata</code>. Records are <code>maps</code>. Open
-        records belong to <code>map&lt;anydata&gt;</code>. Use quoted keys for
-      </p>
-
-      <p>
-        fields not mentioned in the <code>record</code> type.
+        Records are <code>maps</code>. Open records belong to{" "}
+        <code>map&lt;anydata&gt;</code>. Use quoted keys for fields not
+        mentioned in the <code>record</code> type.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -90,7 +87,7 @@ export default function OpenRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=321449d83abd923e5816c7179e69a001&file=open_records.bal",
+                "https://play.ballerina.io/?gist=bcd863f06c86da045bcf12588efae801&file=open_records.bal",
                 "_blank"
               );
             }}
@@ -282,7 +279,7 @@ export default function OpenRecords() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Control openness"
+            title="Controlling openness"
             href="/learn/by-example/controlling-openness"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -293,7 +290,7 @@ export default function OpenRecords() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Control openness
+                  Controlling openness
                 </span>
               </div>
               <svg

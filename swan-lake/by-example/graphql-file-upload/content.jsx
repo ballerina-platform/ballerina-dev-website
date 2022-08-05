@@ -17,40 +17,34 @@ import ballerina/io;
 
 service /fileUpload on new graphql:Listener(4000) {
 
-    // Store the file information that need to be shared between the remote and
-    // resource functions.
+    // Store the file information that need to be shared between the remote and resource functions.
     string[] uploadedFiles = [];
 
-    // Remote functions can use the \`graphql:Upload\` type as an input
-    // parameter type.
+    // Remote functions can use the \`graphql:Upload\` type as an input parameter type.
     remote function singleFileUpload(graphql:Upload file)
         returns string|error {
 
-        // Access the file name from the \`graphql:Upload\` type parameter.
-        // Similarly, it can access the mime type as \`file.mimeType\`
-        // and encoding as \`file.encoding\`. Except the \`byteStream\` field, all
-        // other fields in the \`graphql:Upload\` are \`string\` values.
+        // Access the file name from the \`graphql:Upload\` type parameter. Similarly, it can access
+        // the mime type as \`file.mimeType\` and encoding as \`file.encoding\`. Except the
+        // \`byteStream\` field, all other fields in the \`graphql:Upload\` are \`string\` values.
         string fileName = file.fileName;
         string path = string\`./uploads/\${fileName}\`;
 
-        // Access the byte stream of the file from the \`graphql:Upload\` type
-        // parameter. The type of the \`byteStream\` field is
-        // \`stream<byte[], io:Error?>\`
+        // Access the byte stream of the file from the \`graphql:Upload\` type parameter. The type
+        // of the \`byteStream\` field is \`stream<byte[], io:Error?>\`.
         stream<byte[], io:Error?> byteStream = file.byteStream;
 
-        // Store the received file using the ballerina \`io\` package. If any
-        // \`error\` occurred during the file write, it can be returned as the
-        // resolver function output.
+        // Store the received file using the ballerina \`io\` package. If any \`error\` occurred during
+        // the file write, it can be returned as the resolver function output.
         check io:fileWriteBlocksFromStream(path, byteStream);
 
         // Returns the message if the uploading process is successful.
         return "Successfully Uploaded";
     }
 
-    // Remote functions in GraphQL services can use the \`graphql:Upload[]\` as
-    // an input parameter type. Therefore, remote functions can accept an array
-    // of \`graphql:Upload\` values. This can be used to store multiple files via
-    // a single request.
+    // Remote functions in GraphQL services can use the \`graphql:Upload[]\` as an input parameter
+    // type. Therefore, remote functions can accept an array of \`graphql:Upload\` values. This can
+    // be used to store multiple files via a single request.
     remote function multipleFileUpload(graphql:Upload[] files)
         returns string[]|error {
 
@@ -100,38 +94,21 @@ export default function GraphqlFileUpload() {
 
       <p>
         GraphQL package provides a way to upload files through the GraphQL
-        endpoints with GraphQL mutations. To define
+        endpoints with GraphQL mutations. To define an endpoint with the file
+        upload capability, the <code>graphql:Upload</code> type can be used as
+        the input parameter of resolver functions. The{" "}
+        <code>graphql:Upload</code> type can represent the details of the file
+        that needs to be uploaded and that can be used only with the remote
+        functions. The value of <code>graphql:Upload</code> type is extracted
+        from the HTTP multipart request, which will be received by the GraphQL
+        endpoints. This example shows how to implement a GraphQL endpoint that
+        can be used to upload files.
       </p>
 
       <p>
-        an endpoint with the file upload capability, the{" "}
-        <code>graphql:Upload</code> type can be used as the input parameter of
-      </p>
-
-      <p>
-        resolver functions. The <code>graphql:Upload</code> type can represent
-        the details of the file that needs to be uploaded and
-      </p>
-
-      <p>
-        that can be used only with the remote functions. The value of{" "}
-        <code>graphql:Upload</code> type is extracted from the HTTP
-      </p>
-
-      <p>
-        multipart request, which will be received by the GraphQL endpoints. This
-        example shows how to implement a GraphQL endpoint that
-      </p>
-
-      <p>can be used to upload files.</p>
-
-      <p>&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying package, see the</p>
-
-      <p>
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+        For more information on the underlying package, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+          <code>graphql</code> package
         </a>
         .
       </p>
@@ -213,6 +190,8 @@ export default function GraphqlFileUpload() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -263,6 +242,65 @@ export default function GraphqlFileUpload() {
         </Col>
         <Col sm={12}>
           <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`\$ bal run graphql_file_upload.bal`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>Invoke the service as follows.</p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#00FF19"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`# Send a HTTP multipart request to upload a single file via the GraphQL endpoint using a cURL command.`}</span>
               <span>
@@ -365,63 +403,6 @@ export default function GraphqlFileUpload() {
               <span>{`  -F 0=@file1.png \\`}</span>
               <span>{`  -F 1=@file2.png`}</span>
               <span>{`  {"data":{"multipleFileUpload":["file1.png", "file2.png"]}}`}</span>
-            </code>
-          </pre>
-        </Col>
-      </Row>
-
-      <Row
-        className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={12} className="d-flex align-items-start">
-          {outputClick2 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#00FF19"
-                className="output-btn bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              onClick={() => {
-                updateOutputClick2(true);
-                const extractedText = extractOutput(ref2.current.innerText);
-                copyToClipboard(extractedText);
-                setTimeout(() => {
-                  updateOutputClick2(false);
-                }, 3000);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#EEEEEE"
-                className="output-btn bi bi-clipboard"
-                viewBox="0 0 16 16"
-                aria-label="Copy to Clipboard"
-              >
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          <pre ref={ref2}>
-            <code className="d-flex flex-column">
-              <span>{`bal run graphql_file_upload.bal`}</span>
             </code>
           </pre>
         </Col>

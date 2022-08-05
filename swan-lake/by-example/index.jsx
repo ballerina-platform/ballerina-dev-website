@@ -170,10 +170,10 @@ import GraphqlHierarchicalResourcePaths from "./graphql-hierarchical-resource-pa
 import GraphqlReturningServiceObjects from "./graphql-returning-service-objects/content.jsx";
 import GraphqlInputTypes from "./graphql-input-types/content.jsx";
 import GraphqlMutations from "./graphql-mutations/content.jsx";
-import GraphqlSubscriptions from "./graphql-subscriptions/content.jsx";
 import GraphqlContext from "./graphql-context/content.jsx";
 import GraphqlFileUpload from "./graphql-file-upload/content.jsx";
 import GraphqlDocumentation from "./graphql-documentation/content.jsx";
+import GraphqlInterceptors from "./graphql-interceptors/content.jsx";
 import GraphqlServiceSslTls from "./graphql-service-ssl-tls/content.jsx";
 import GraphqlServiceMutualSsl from "./graphql-service-mutual-ssl/content.jsx";
 import GraphqlServiceBasicAuthFileUserStore from "./graphql-service-basic-auth-file-user-store/content.jsx";
@@ -305,10 +305,13 @@ import RegularExpressions from "./regular-expressions/content.jsx";
 import EnvironmentVariables from "./environment-variables/content.jsx";
 import XmlToJsonConversion from "./xml-to-json-conversion/content.jsx";
 import XmlFromJsonConversion from "./xml-from-json-conversion/content.jsx";
+import XmlToRecordConversion from "./xml-to-record-conversion/content.jsx";
+import XmlFromRecordConversion from "./xml-from-record-conversion/content.jsx";
 import Tracing from "./tracing/content.jsx";
 import CounterMetrics from "./counter-metrics/content.jsx";
 import GaugeMetrics from "./gauge-metrics/content.jsx";
-import C2cDeployment from "./c2c-deployment/content.jsx";
+import C2cDockerDeployment from "./c2c-docker-deployment/content.jsx";
+import C2cK8sDeployment from "./c2c-k8s-deployment/content.jsx";
 import AzureFunctionsDeployment from "./azure-functions-deployment/content.jsx";
 import AwsLambdaDeployment from "./aws-lambda-deployment/content.jsx";
 
@@ -485,10 +488,10 @@ const BBEs = {
   GraphqlReturningServiceObjects,
   GraphqlInputTypes,
   GraphqlMutations,
-  GraphqlSubscriptions,
   GraphqlContext,
   GraphqlFileUpload,
   GraphqlDocumentation,
+  GraphqlInterceptors,
   GraphqlServiceSslTls,
   GraphqlServiceMutualSsl,
   GraphqlServiceBasicAuthFileUserStore,
@@ -620,10 +623,13 @@ const BBEs = {
   EnvironmentVariables,
   XmlToJsonConversion,
   XmlFromJsonConversion,
+  XmlToRecordConversion,
+  XmlFromRecordConversion,
   Tracing,
   CounterMetrics,
   GaugeMetrics,
-  C2cDeployment,
+  C2cDockerDeployment,
+  C2cK8sDeployment,
   AzureFunctionsDeployment,
   AwsLambdaDeployment,
 };

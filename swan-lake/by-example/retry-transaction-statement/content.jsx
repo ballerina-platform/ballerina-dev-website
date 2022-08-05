@@ -16,8 +16,8 @@ const codeSnippetData = [
 
 public function main() returns error? {
     // Short for \`retry<DefaultRetryManager>(3)\`.
-    // If any of the \`doStage1\` and \`doStage2\` returns  \`error:Retriable\`,
-    // the program will retry execution until execution succeeds without an \`error:Retriable\` error.
+    // If any of the \`doStage1\` and \`doStage2\` returns \`error:Retriable\`, the program will retry execution
+    // until execution succeeds without an \`error:Retriable\` error.
     // By default, it will retry 3 times with the \`DefaultRetryManager\`.
     retry transaction {
         check doStage1();
@@ -34,10 +34,9 @@ function doStage1() returns error? {
 }
 
 function doStage2() returns error? {
-    // Returns \`error:Retriable\` error for retrying.
+    // Returns an \`error:Retriable\` error for retrying.
     // To support custom errors, a custom implementation of the \`RetryManager\` is required.
     return error 'error:Retriable("Stage2 failed");
-
 }
 `,
 ];
@@ -68,23 +67,24 @@ export default function RetryTransactionStatement() {
       <p>Transactional errors are often transient: retrying will fix them.</p>
 
       <p>
-        This works by creating a RetryManager object <code>r</code>, before
-        executing the transaction.
+        This works by creating a <code>RetryManager</code> object <code>r</code>{" "}
+        before executing the transaction.
       </p>
 
       <p>
-        If the block fails with error <code>e</code>, it calls{" "}
-        <code>r.shouldRetry(e)</code>.
+        If the block fails with an error <code>e</code>, it calls{" "}
+        <code>r.shouldRetry(e)</code>. If that returns <code>true</code>, then
+        it executes the block again.
       </p>
 
       <p>
-        If that returns <code>true</code>, then it executes the block again.
+        The <code>retry</code> statement accepts an optional type parameter,
+        which is a class of the <code>RetryManager</code> and optional arguments
+        for the <code>init</code> method of the class.
       </p>
 
       <p>
-        <code>retry</code> has an optional type parameter giving class of{" "}
-        <code>RetryManager</code> to create, and optional arguments to new{" "}
-        <code>DefaultRetryManager</code> tries <code>n</code> times.
+        <code>DefaultRetryManager</code> tries 3 times.
       </p>
 
       <p>
@@ -97,7 +97,7 @@ export default function RetryTransactionStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=94fa27240697efe6563a84c9058c7a4e&file=retry_transaction_statement.bal",
+                "https://play.ballerina.io/?gist=547297b67b5c39733643f38571a58f1d&file=retry_transaction_statement.bal",
                 "_blank"
               );
             }}
@@ -242,7 +242,7 @@ export default function RetryTransactionStatement() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run retry_transaction_statement.bal`}</span>
+              <span>{`\$ bal run retry_transaction_statement.bal`}</span>
               <span>{`Stage1 completed`}</span>
               <span>{`Stage1 completed`}</span>
               <span>{`Stage1 completed`}</span>

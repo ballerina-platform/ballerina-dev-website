@@ -14,14 +14,13 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `public function main() {
     // Creates a \`byte\` array using the \`base64\` byte array literal.
-    byte[] _ = base64\`yPHaytRgJPg+QjjylUHakEwz1fWPx/wXCW41JSmqYW8=\`;
+    byte[] _ = base64 \`yPHaytRgJPg+QjjylUHakEwz1fWPx/wXCW41JSmqYW8=\`;
 
     // Creates a \`byte\` using a hexadecimal numeral.
     byte x = 0xA;
 
     // \`byte & int\` will be \`byte\`.
     byte _ = x & 0xFF;
-
 }
 `,
 ];
@@ -51,29 +50,19 @@ export default function BinaryData() {
 
       <p>
         Binary data is represented by arrays of <code>byte</code> values. It is
-        a special syntax for <code>byte</code> arrays
+        a special syntax for <code>byte</code> arrays in <code>base 64</code>{" "}
+        and <code>base 16</code>.
       </p>
 
       <p>
-        in <code>base 64</code> and <code>base 16</code>. The relationship
-        between <code>byte</code> and <code>int</code> is not the same as
-      </p>
-
-      <p>
-        what you are used to. A <code>byte</code> is an <code>int</code> in the
-        range <code>0</code> to <code>0xFF</code>. <code>byte</code> is a
-        subtype of int.
-      </p>
-
-      <p>
-        <code>int</code> type supports normal bitwise operators:{" "}
-        <code>&amp;</code> <code>|</code> <code>^</code> <code>~</code>{" "}
-        <code>&lt;&lt;</code> <code>&gt;&gt;</code> <code>&gt;&gt;&gt;</code>.
-      </p>
-
-      <p>
-        Ballerina knows the obvious rules about when bitwise operations produce
-        a <code>byte</code>.
+        The relationship between <code>byte</code> and <code>int</code> is not
+        the same as what you are used to. A <code>byte</code> is an{" "}
+        <code>int</code> in the range <code>0</code> to <code>0xFF</code>.{" "}
+        <code>byte</code> is a subtype of int. The <code>int</code> type
+        supports normal bitwise operators: <code>&amp;</code> <code>|</code>{" "}
+        <code>^</code> <code>~</code> <code>&lt;&lt;</code>{" "}
+        <code>&gt;&gt;</code> <code>&gt;&gt;&gt;</code>. Ballerina knows the
+        obvious rules about when bitwise operations produce a <code>byte</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -82,7 +71,7 @@ export default function BinaryData() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f5815e78cd58c94e11ae73c5560b6e30&file=binary_data.bal",
+                "https://play.ballerina.io/?gist=2a4b0b0df32beb3427702097f891de75&file=binary_data.bal",
                 "_blank"
               );
             }}
@@ -227,7 +216,7 @@ export default function BinaryData() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run binary_data.bal`}</span>
+              <span>{`\$ bal run binary_data.bal`}</span>
             </code>
           </pre>
         </Col>

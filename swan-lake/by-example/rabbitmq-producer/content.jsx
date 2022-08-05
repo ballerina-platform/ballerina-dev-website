@@ -16,8 +16,7 @@ const codeSnippetData = [
 
 public function main() returns error? {
     // Creates a ballerina RabbitMQ client.
-    rabbitmq:Client newClient =
-                check new(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+    rabbitmq:Client newClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
     // Declares the queue, MyQueue.
     check newClient->queueDeclare("MyQueue");
@@ -25,8 +24,7 @@ public function main() returns error? {
     // Publishing messages to an exchange using a routing key.
     // Publishes the message using newClient and the routing key named MyQueue.
     string message = "Hello from Ballerina";
-    check newClient->publishMessage({ content: message.toBytes(),
-                                            routingKey: "MyQueue" });
+    check newClient->publishMessage({content: message.toBytes(), routingKey: "MyQueue"});
 }
 `,
 ];
@@ -58,7 +56,7 @@ export default function RabbitmqProducer() {
 
       <p>
         to one queue using the same channel and to the other using two different
-        channels.&lt;br/&gt;&lt;br/&gt;
+        channels.
       </p>
 
       <p>For more information on the underlying module,</p>
@@ -66,7 +64,7 @@ export default function RabbitmqProducer() {
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          RabbitMQ module
+          <code>rabbitmq</code> module
         </a>
         .
       </p>
@@ -199,7 +197,7 @@ export default function RabbitmqProducer() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run rabbitmq_producer.bal`}</span>
+              <span>{`\$ bal run rabbitmq_producer.bal`}</span>
             </code>
           </pre>
         </Col>

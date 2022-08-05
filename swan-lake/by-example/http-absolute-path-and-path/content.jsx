@@ -63,21 +63,18 @@ export default function HttpAbsolutePathAndPath() {
 
       <p>
         You can use the <code>absolute-resource-path</code> and{" "}
-        <code>resource-name</code> to access a resource function while the{" "}
-        <code>accessor-name</code>,
+        <code>resource-name</code> to access a resource function while having
+        the <code>accessor-name</code>,
       </p>
 
       <p>
         which is an HTTP verb as <code>post</code> and <code>get</code> to
-        constrain your resource function in a RESTful
-        manner.&lt;br/&gt;&lt;br/&gt;
+        constrain your resource function in a RESTful manner.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -160,6 +157,8 @@ export default function HttpAbsolutePathAndPath() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -211,13 +210,16 @@ export default function HttpAbsolutePathAndPath() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`Run the cURL command below to invoke the resource.`}</span>
-              <span>{`curl http://localhost:9090/foo/bar -d "{\\"hello\\": \\"world\\"}" -H "Content-Type: application/json"`}</span>
-              <span>{`{"hello":"world"}`}</span>
+              <span>{`\$ bal run absolute_path_and_path.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -270,7 +272,8 @@ export default function HttpAbsolutePathAndPath() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run absolute_path_and_path.bal`}</span>
+              <span>{`\$ curl http://localhost:9090/foo/bar -d "{\\"hello\\": \\"world\\"}" -H "Content-Type: application/json"`}</span>
+              <span>{`{"hello":"world"}`}</span>
             </code>
           </pre>
         </Col>

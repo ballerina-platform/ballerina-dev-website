@@ -14,14 +14,12 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `// Lines starting with \`#\` contain structured documentation in Markdown format.
 # Adds two integers.
-// Documenting parameters of the function
+// Documents the parameters of the function.
 # + x - an integer
 # + y - another integer
-// Documenting return parameter of the function
+// Documents the return parameter of the function.
 # + return - the sum of \`x\` and \`y\`
-public function add(int x, int y)
-                    returns int {
-
+public function add(int x, int y) returns int {
     return x + y;
 }
 `,
@@ -52,15 +50,10 @@ export default function Documentation() {
 
       <p>
         Annotations would be inconvenient for specifying structured
-        documentation.
+        documentation. Ballerina-flavored Markdown (BFM) is an additional
+        convention on top of Markdown, which makes it more convenient for
+        documenting Ballerina code.
       </p>
-
-      <p>
-        Ballerina-flavored Markdown (BFM) is an additional convention on top of
-        Markdown,
-      </p>
-
-      <p>which makes it more convenient for documenting Ballerina code.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -68,7 +61,7 @@ export default function Documentation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2df7ea54a7a6495c417adc3c1c399591&file=documentation.bal",
+                "https://play.ballerina.io/?gist=b61cedab98ced22e52a79ab7252c4b11&file=documentation.bal",
                 "_blank"
               );
             }}
@@ -213,7 +206,7 @@ export default function Documentation() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run documentation.bal`}</span>
+              <span>{`\$ bal run documentation.bal`}</span>
             </code>
           </pre>
         </Col>

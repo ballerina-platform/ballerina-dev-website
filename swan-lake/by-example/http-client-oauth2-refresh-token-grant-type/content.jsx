@@ -16,9 +16,8 @@ const codeSnippetData = [
 import ballerina/io;
 
 // Defines the HTTP client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the [\`http:OAuth2RefreshTokenGrantConfig\`](https://lib.ballerina.io/ballerina/http/latest/records/OAuth2RefreshTokenGrantConfig) for the \`auth\` configuration of the
-// client.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by passing 
+// the [\`http:OAuth2RefreshTokenGrantConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/OAuth2RefreshTokenGrantConfig) for the \`auth\` configuration of the client.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
         refreshUrl: "https://localhost:9445/oauth2/token",
@@ -69,29 +68,20 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
 
       <p>
         A client, which is secured with an OAuth2 refresh token grant type can
-        be
+        be used to connect to a secured service.
       </p>
-
-      <p>used to connect to a secured service.&lt;br/&gt;</p>
 
       <p>
         The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
+        <code>http:OAuth2RefreshTokenGrantConfig</code> to the <code>auth</code>{" "}
+        configuration of the client.
       </p>
 
       <p>
-        passing the <code>http:OAuth2RefreshTokenGrantConfig</code> to the{" "}
-        <code>auth</code>
-      </p>
-
-      <p>configuration of the client.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          OAuth2 module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
+          <code>oauth2</code> module
         </a>
         .
       </p>
@@ -173,6 +163,8 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
         </Col>
       </Row>
 
+      <p>Run the client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -226,7 +218,7 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
             <code className="d-flex flex-column">
               <span>{`# As a prerequisite, start a sample service secured with OAuth2.`}</span>
               <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>{`bal run http_client_oauth2_refresh_token_grant_type.bal`}</span>
+              <span>{`\$ bal run http_client_oauth2_refresh_token_grant_type.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

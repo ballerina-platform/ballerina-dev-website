@@ -64,25 +64,20 @@ export default function GraphqlDocumentation() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Documentation</h1>
 
-      <p>A GraphQL schema can include documentation for the schema. These</p>
-
       <p>
+        A GraphQL schema can include documentation for the schema. These
         documentation can help you to understand the schema.
-        &lt;br/&gt;&lt;br/&gt;
       </p>
 
       <p>
         In Ballerina, the Ballerina doc comments can be used to add
-        documentation to
+        documentation to various schema members.
       </p>
 
-      <p>various schema members. &lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying package, see the</p>
-
       <p>
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+        For more information on the underlying package, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+          <code>graphql</code> package
         </a>
         .
       </p>
@@ -164,6 +159,8 @@ export default function GraphqlDocumentation() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -215,15 +212,13 @@ export default function GraphqlDocumentation() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
-              <span>{`# The query used: { __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }" }'`}</span>
-              <span>{`'http://localhost:4000/graphql'`}</span>
-              <span>{`{ "data": { "__schema": { "queryType": { "fields": [ { "name": "profile", "description": "Returns a person using the provided id.", "type": { "name": "Person", "description": "Represents a Person.", "fields": [ { "name": "name", "description": "The name of the person" }, { "name": "age", "description": "The age of the person" } ] }, "args": [ { "name": "id", "description": "The ID of the person" } ] } ] } } } }`}</span>
+              <span>{`\$ bal run graphql_documentation.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -276,7 +271,11 @@ export default function GraphqlDocumentation() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run graphql_documentation.bal`}</span>
+              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
+              <span>{`# The query used: { __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }`}</span>
+              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }" }'`}</span>
+              <span>{`'http://localhost:4000/graphql'`}</span>
+              <span>{`{ "data": { "__schema": { "queryType": { "fields": [ { "name": "profile", "description": "Returns a person using the provided id.", "type": { "name": "Person", "description": "Represents a Person.", "fields": [ { "name": "name", "description": "The name of the person" }, { "name": "age", "description": "The age of the person" } ] }, "args": [ { "name": "id", "description": "The ID of the person" } ] } ] } } } }`}</span>
             </code>
           </pre>
         </Col>
@@ -321,8 +320,8 @@ export default function GraphqlDocumentation() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - SSL/TLS"
-            href="/learn/by-example/graphql-service-ssl-tls"
+            title="Interceptors"
+            href="/learn/by-example/graphql-interceptors"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -332,7 +331,7 @@ export default function GraphqlDocumentation() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  Interceptors
                 </span>
               </div>
               <svg

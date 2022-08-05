@@ -32,8 +32,7 @@ public function main() returns error? {
 
 // A \`transactional\` function can only be called from a \`transactional\` context
 transactional function exec(Update u) returns error? {
-    // A \`transactional\` named worker starts a transaction branch
-    // in the current transaction.
+    // A \`transactional\` named worker starts a transaction branch in the current transaction.
     transactional worker A {
         bar();
     }
@@ -84,7 +83,7 @@ export default function TransactionalNamedWorkers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7bef2e9ca98e1e59816efc6665164543&file=transactional_named_workers.bal",
+                "https://play.ballerina.io/?gist=ecd416dc56a518b03c02e400118dba83&file=transactional_named_workers.bal",
                 "_blank"
               );
             }}
@@ -229,7 +228,7 @@ export default function TransactionalNamedWorkers() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run transactional_named_workers.bal`}</span>
+              <span>{`\$ bal run transactional_named_workers.bal`}</span>
               <span>{`bar() invoked`}</span>
             </code>
           </pre>

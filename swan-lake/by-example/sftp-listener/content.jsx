@@ -13,13 +13,13 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/ftp;
-import ballerina/io;
+import ballerina/log;
 
 // Creates the listener with the connection parameters and the protocol-related
 // configuration. The polling interval specifies the time duration between each
 // poll performed by the listener in seconds. The listener listens to the files
 // with the given file name pattern located in the specified path.
-listener ftp:Listener remoteServer = check new({
+listener ftp:Listener remoteServer = check new ({
     protocol: ftp:SFTP,
     host: "sftp.example.com",
     auth: {
@@ -41,21 +41,18 @@ listener ftp:Listener remoteServer = check new({
 // One or many services can listen to the SFTP listener for the
 // periodically-polled file related events.
 service on remoteServer {
-
-    // When a file event is successfully received, the \`onFileChange\` method is
-    // called.
+    // When a file event is successfully received, the \`onFileChange\` method is called.
     remote function onFileChange(ftp:WatchEvent event) {
-
         // \`addedFiles\` contains the paths of the newly-added files/directories
         // after the last polling was called.
         foreach ftp:FileInfo addedFile in event.addedFiles {
-            io:println("Added file path: " + addedFile.path);
+            log:printInfo("Added file path: " + addedFile.path);
         }
 
         // \`deletedFiles\` contains the paths of the deleted files/directories
         // after the last polling was called.
         foreach string deletedFile in event.deletedFiles {
-            io:println("Deleted file path: " + deletedFile);
+            log:printInfo("Deleted file path: " + deletedFile);
         }
     }
 }
@@ -96,13 +93,16 @@ export default function SftpListener() {
 
       <p>file/directory related change events from a listener with default</p>
 
-      <p>configurations using the default port.&lt;br/&gt;&lt;br/&gt;</p>
+      <p>configurations using the default port.</p>
 
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">FTP module</a>.
+        <a href="https://lib.ballerina.io/ballerina/ftp/latest">
+          <code>ftp</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -182,6 +182,12 @@ export default function SftpListener() {
         </Col>
       </Row>
 
+      <p>
+        Paths of the newly-added and newly-deleted files/directories during the
+      </p>
+
+      <p>latest polling will be printed for each of the polled events.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -233,10 +239,7 @@ export default function SftpListener() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run sftp_listener.bal`}</span>
-              <span>{``}</span>
-              <span>{`# Paths of the newly-added and newly-deleted files/directories during the`}</span>
-              <span>{`# latest polling will be printed for each of the polled events.`}</span>
+              <span>{`\$ bal run sftp_listener.bal`}</span>
             </code>
           </pre>
         </Col>

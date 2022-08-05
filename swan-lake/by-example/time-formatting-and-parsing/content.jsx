@@ -82,20 +82,14 @@ export default function TimeFormattingAndParsing() {
 
       <p>
         The Ballerina <code>time</code> library contains APIs to convert UTC and
-      </p>
-
-      <p>
         local time to different string representations (RFC 5322 and RFC 3339)
+        and vice versa.
       </p>
 
-      <p>vice versa.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/time/latest/">
-          Time module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/time/latest/">
+          <code>time</code> module
         </a>
         .
       </p>
@@ -106,7 +100,7 @@ export default function TimeFormattingAndParsing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2689e184d09c5b261a8d1d3f9e7976fc&file=time_formatting_and_parsing.bal",
+                "https://play.ballerina.io/?gist=773a718a231eebf861b6c217339c90f3&file=time_formatting_and_parsing.bal",
                 "_blank"
               );
             }}
@@ -200,6 +194,10 @@ export default function TimeFormattingAndParsing() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -251,7 +249,7 @@ export default function TimeFormattingAndParsing() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run time_formatting_and_parsing.bal`}</span>
+              <span>{`\$ bal run time_formatting_and_parsing.bal`}</span>
               <span>{`UTC value: [1196676930,0.12]`}</span>
               <span>{`UTC string representation: 2007-12-03T10:15:30.120Z`}</span>
               <span>{`Converted civil value: {"utcOffset":{"hours":5,"minutes":30},"timeAbbrev":"Asia/Colombo","dayOfWeek":1,"year":2021,"month":4,"day":12,"hour":23,"minute":20,"second":50.52}`}</span>

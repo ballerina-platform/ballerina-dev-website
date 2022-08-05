@@ -85,7 +85,7 @@ export default function ControllingOpenness() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=56bfdbf7098a99ecae455fe355ba81d1&file=controlling_openness.bal",
+                "https://play.ballerina.io/?gist=b4e9013e909e0f365ae24f430ffe4ce8&file=controlling_openness.bal",
                 "_blank"
               );
             }}
@@ -230,7 +230,7 @@ export default function ControllingOpenness() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run controlling_openness.bal`}</span>
+              <span>{`\$ bal run controlling_openness.bal`}</span>
               <span>{`{"x":1.0,"y":2.0}`}</span>
               <span>{`{"from":"Jane","to":"John"}`}</span>
             </code>

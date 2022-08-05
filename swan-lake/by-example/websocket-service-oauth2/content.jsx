@@ -25,7 +25,7 @@ listener websocket:Listener securedEP = new(9090,
 
 // The service can be secured with OAuth2 and by enforcing authorization
 // optionally. It can be enabled by setting the
-// [\`websocket:OAuth2IntrospectionConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2IntrospectionConfig) configurations.
+// [\`websocket:OAuth2IntrospectionConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/OAuth2IntrospectionConfig) configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -55,8 +55,7 @@ service /foo on securedEP {
 
 service class WsService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller,
-                             string text) returns websocket:Error? {
+    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
         check caller->writeMessage(text);
     }
 }
@@ -86,54 +85,48 @@ export default function WebsocketServiceOauth2() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Service - OAuth2</h1>
 
-      <p>A WebSocket service can be secured with OAuth2 and by enforcing</p>
-
       <p>
-        authorization optionally. Then, it validates the OAuth2 token sent in
-        the
+        A WebSocket service can be secured with OAuth2 and by enforcing
+        authorization optionally.
       </p>
 
       <p>
-        <code>Authorization</code> header against the provided configurations.
-        This calls the
+        Then, it validates the OAuth2 token sent in the
+        <code>Authorization</code> header against the provided
       </p>
 
-      <p>configured introspection endpoint to validate.&lt;br/&gt;</p>
+      <p>
+        configurations. This calls the configured introspection endpoint to
+        validate.
+      </p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared
+        declared in a service can be
       </p>
 
       <p>
-        in a service can be bound to one/more scope(s). The scope can be
-        included
+        bound to one/more scope(s). The scope can be included in the
+        introspection response using a custom
       </p>
 
       <p>
-        in the introspection response using a custom claim attribute. That
-        custom
+        claim attribute. That custom claim attribute also can be configured as
+        the <code>scopeKey</code>.
       </p>
 
       <p>
-        claim attribute also can be configured as the <code>scopeKey</code>
-        .&lt;br/&gt;
+        In the authorization phase, the scopes of the service are compared
+        against the scope included in
       </p>
 
-      <p>In the authorization phase, the scopes of the service are compared</p>
-
       <p>
-        against the scope included in the introspection response for at least
-        one
+        the introspection response for at least one match between the two sets.
       </p>
 
-      <p>match between the two sets.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
           OAuth2 module
         </a>
         .
@@ -268,7 +261,7 @@ export default function WebsocketServiceOauth2() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>{`bal run websocket_service_oauth2.bal`}</span>
+              <span>{`\$ bal run websocket_service_oauth2.bal`}</span>
             </code>
           </pre>
         </Col>

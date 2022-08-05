@@ -23,13 +23,12 @@ listener http:Listener h = new (9090);
 
 service /calc on h {
     // Resource method arguments can use user-defined types.
-    // Annotations can be used to refine the mapping between 
-    // Ballerina-declared type and wire format.
+    // Annotations can be used to refine the mapping between the Ballerina-declared
+    // type and wire format.
     resource function post add(@http:Payload Args args) 
             returns decimal {
         return args.x + args.y;
     }
-
 }
 `,
 ];
@@ -59,30 +58,17 @@ export default function ResourceMethodTyping() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Resource method typing</h1>
 
-      <p>Resource method arguments can use user-defined types.</p>
-
-      <p>Listener will use introspection to map from protocol format</p>
-
       <p>
-        (typically JSON) to user-defined type, using <code>cloneWithType</code>.
+        Resource method arguments can use user-defined types. The listener will
+        use introspection to map from the protocol format (typically JSON) to
+        the user-defined type using <code>cloneWithType()</code>. The return
+        value, which is a subtype of <code>anydata</code> will be mapped from
+        the user-defined type to the protocol format, typically JSON, using{" "}
+        <code>toJson()</code>. It can generate an API description (e.g.,
+        OpenAPI) from the Ballerina service declaration. Annotations can be used
+        to refine the mapping between the Ballerina-declared type and wire
+        format.
       </p>
-
-      <p>
-        Return value that is subtype of <code>anydata</code> will be mapped from
-      </p>
-
-      <p>
-        user-defined type to protocol format, typically JSON, using{" "}
-        <code>toJson</code>.
-      </p>
-
-      <p>Can generate API description (e.g. OpenAPI) from Ballerina</p>
-
-      <p>service declaration.</p>
-
-      <p>Annotations can be used to refine the mapping between</p>
-
-      <p>Ballerina-declared type and wire format.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -161,6 +147,10 @@ export default function ResourceMethodTyping() {
         </Col>
       </Row>
 
+      <p>
+        Run the service using the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -212,12 +202,13 @@ export default function ResourceMethodTyping() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`curl http://localhost:9090/calc/add -d "{\\"x\\": 1.0, \\"y\\": 2.0}"`}</span>
-              <span>{`3.0`}</span>
+              <span>{`bal run resource_method_typing.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Run this cURL command to invoke the resource.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -270,7 +261,8 @@ export default function ResourceMethodTyping() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run resource_method_typing.bal`}</span>
+              <span>{`curl http://localhost:9090/calc/add -d "{\\"x\\": 1.0, \\"y\\": 2.0}"`}</span>
+              <span>{`3.0`}</span>
             </code>
           </pre>
         </Col>
@@ -279,7 +271,7 @@ export default function ResourceMethodTyping() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Convert to user-defined type"
+            title="Converting to user-defined type"
             href="/learn/by-example/converting-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -307,7 +299,7 @@ export default function ResourceMethodTyping() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Convert to user-defined type
+                  Converting to user-defined type
                 </span>
               </div>
             </div>

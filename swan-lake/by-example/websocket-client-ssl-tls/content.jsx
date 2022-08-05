@@ -18,7 +18,7 @@ import ballerina/io;
 // A WebSocket client can be configured to communicate through WSS as well.
 // To secure a client using TLS/SSL, the client needs to be configured with
 // a certificate file of the listener.
-// The [\`websocket:ClientSecureSocket\`](https://lib.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket) record
+// The [\`websocket:ClientSecureSocket\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket) record
 // provides the SSL-related configurations of the client.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     secureSocket = {
@@ -66,13 +66,11 @@ export default function WebsocketClientSslTls() {
         the client to
       </p>
 
-      <p>initiate an WSS connection.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>initiate an WSS connection.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/">
           WebSocket module
         </a>
         .
@@ -208,7 +206,7 @@ export default function WebsocketClientSslTls() {
             <code className="d-flex flex-column">
               <span>{`# As a prerequisite, start a sample service secured with SSL.`}</span>
               <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>{`bal run http_client_ssl_tls.bal`}</span>
+              <span>{`\$ bal run http_client_ssl_tls.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

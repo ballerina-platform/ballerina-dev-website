@@ -15,8 +15,7 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
-listener rabbitmq:Listener channelListener =
-        new(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
 // The consumer service listens to the "MyQueue" queue.
 // The \`ackMode\` is by default rabbitmq:AUTO_ACK where messages are acknowledged
@@ -26,13 +25,9 @@ listener rabbitmq:Listener channelListener =
 }
 // Attaches the service to the listener.
 service rabbitmq:Service on channelListener {
-    remote function onMessage(rabbitmq:Message message,
-                            rabbitmq:Caller caller) returns error? {
-        string|error messageContent = string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("Received message: " + messageContent);
-        }
-
+    remote function onMessage(rabbitmq:Message message, rabbitmq:Caller caller) returns error? {
+        string messageContent = check string:fromBytes(message.content);
+        log:printInfo("Received message: " + messageContent);
         // Positively acknowledges a single message.
         check caller->basicAck();
     }
@@ -63,9 +58,10 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Client acknowledgements</h1>
 
-      <p>The messages are consumed from an</p>
-
-      <p>existing queue using the Ballerina RabbitMQ message listener.</p>
+      <p>
+        The messages are consumed from an existing queue using the Ballerina
+        RabbitMQ message listener.
+      </p>
 
       <p>The received messages are acknowledged manually.</p>
 
@@ -74,14 +70,14 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
         acknowledge
       </p>
 
-      <p>all messages once consumed.&lt;br/&gt;&lt;br/&gt;</p>
+      <p>all messages once consumed.</p>
 
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          RabbitMQ module
+          <code>rabbitmq</code> module
         </a>
         .
       </p>
@@ -214,7 +210,7 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run rabbitmq_consumer_with_client_acknowledgement.bal`}</span>
+              <span>{`\$ bal run rabbitmq_consumer_with_client_acknowledgement.bal`}</span>
               <span>{`time = 2021-05-20T14:53:56.067+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>
           </pre>

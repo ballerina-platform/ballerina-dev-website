@@ -16,10 +16,9 @@ const codeSnippetData = [
 
 string url = "https://ballerina.io";
 
-xml content = 
-    // \`xml\` values can be constructed using an XML template expression.
-    // Attribute values can have \`string\` values as interpolated expressions.
-    xml \`<a href="\${url}">Ballerina</a> is an <em>exciting</em> new language!\`;
+// \`xml\` values can be constructed using an XML template expression.
+// Attribute values can have \`string\` values as interpolated expressions.
+xml content = xml \`<a href="\${url}">Ballerina</a> is an <em>exciting</em> new language!\`;
 
 // Interpolated expressions can also be in content (\`xml\` or \`string\` values).
 xml p = xml \`<p>\${content}</p>\`;
@@ -56,25 +55,12 @@ export default function XmlTemplates() {
 
       <p>
         <code>xml</code> values can be constructed using an XML template
-        expression.
-      </p>
-
-      <p>
-        Phase 2 processing for <code>xml</code> template tag parses strings
-        using
-      </p>
-
-      <p>the XML 1.0 Recommendation's grammar for content (what XML allows</p>
-
-      <p>between a start-tag and an end-tag).</p>
-
-      <p>
-        Interpolated expressions can be in content (<code>xml</code> or{" "}
-        <code>string</code> values)
-      </p>
-
-      <p>
-        or in attribute values (<code>string</code> values).
+        expression. In Phase 2 of the processing, the <code>xml</code> template
+        tag parses the strings using the XML 1.0 recommendation's grammar for
+        the content (what XML allows between a start-tag and an end-tag).
+        Interpolated expressions can be in the content (<code>xml</code> or{" "}
+        <code>string</code> values) or in attribute values (<code>string</code>{" "}
+        values).
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -83,7 +69,7 @@ export default function XmlTemplates() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e4c5d12964d42db84e84ccd834168b22&file=xml_templates.bal",
+                "https://play.ballerina.io/?gist=41d7fe08cb23f1ddb1c568df7d68fd1f&file=xml_templates.bal",
                 "_blank"
               );
             }}
@@ -228,7 +214,7 @@ export default function XmlTemplates() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run xml_templates.bal`}</span>
+              <span>{`\$ bal run xml_templates.bal`}</span>
               <span>{`<a href="https://ballerina.io">Ballerina</a> is an <em>exciting</em> new language!`}</span>
               <span>{`<p><a href="https://ballerina.io">Ballerina</a> is an <em>exciting</em> new language!</p>`}</span>
             </code>

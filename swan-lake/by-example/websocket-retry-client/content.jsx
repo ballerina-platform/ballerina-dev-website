@@ -24,8 +24,7 @@ public function main() returns error? {
     // Read the message sent from the server upon upgrading to a WebSocket connection.
     string text = check wsClient->readMessage();
     io:println(text);
-    io:println("Please shutdown the server now." +
-                        "And restart at least within 15 seconds");
+    io:println("Please shutdown the server now. And restart at least within 15 seconds");
     // Client will retry 20 times(20 seconds in time) until the server gets started.
     string retryMsg = check wsClient->readMessage();
     io:println(retryMsg);
@@ -63,13 +62,11 @@ export default function WebsocketRetryClient() {
 
       <p>
         reconnect to the given backend. If the maximum reconnect attempt is
-        reached it gives up on the connection. &lt;br/&gt;&lt;br/&gt;
+        reached it gives up on the connection.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
           WebSocket module
         </a>
@@ -212,7 +209,7 @@ export default function WebsocketRetryClient() {
               </span>
               <span>{`# The client will first connect to the server and then it will wait for 5 seconds to give time for the server to shut down.`}</span>
               <span>{`# Start the server after 5 seconds so that the client will start retrying to connect to the server and read messages.`}</span>
-              <span>{`bal run websocket_retry_client.bal`}</span>
+              <span>{`\$ bal run websocket_retry_client.bal`}</span>
               <span>{`Hello World!`}</span>
               <span>{`Please shutdown the server now. And restart at least within 15 seconds`}</span>
               <span>{`Hello World!`}</span>

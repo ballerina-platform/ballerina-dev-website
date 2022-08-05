@@ -212,6 +212,11 @@ export default function Tracing() {
         </Col>
       </Row>
 
+      <p>
+        Invoke the service using cURL and access{" "}
+        <a href="%60http://localhost:16686%60">Jaeger UI</a>.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -263,17 +268,25 @@ export default function Tracing() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`// Invoke the service using cURL and access Jaeger UI in `}
-                <code>{`http://localhost:16686`}</code>
-                {`.`}
-              </span>
-              <span>{`curl http://localhost:9234/hello/sayHello`}</span>
+              <span>{`\$ curl http://localhost:9234/hello/sayHello`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Jaeger is the default tracing tool used in Ballerina. To start the
+        Jaeger, execute the command below.
+      </p>
+
+      <p>To start the service, navigate to the directory that contains the</p>
+
+      <p>
+        <code>.bal</code> file, and execute the <code>bal run</code> command
+        below with the <code>--observability-included</code> build time flag and
+        the <code>Config.toml</code> runtime configuration file.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -326,23 +339,8 @@ export default function Tracing() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Jaeger is the default tracing tool used in Ballerina. To start the Jaeger execute the below command.`}</span>
-              <span>{`docker run -d -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opentelemetry-all-in-one`}</span>
-              <span>{``}</span>
-              <span>{`# To start the service, navigate to the directory that contains the`}</span>
-              <span>
-                {`# `}
-                <code>{`.bal`}</code>
-                {` file and execute the `}
-                <code>{`bal run`}</code>
-                {` command below with the `}
-                <code>{`--observability-included`}</code>
-                {` build time flag and the `}
-                <code>{`Config.toml`}</code>
-                {` runtime configuration file.`}
-              </span>
-              <span>{`BAL_CONFIG_FILES=Config.toml bal run --observability-included tracing.bal`}</span>
-              <span>{``}</span>
+              <span>{`\$ docker run -d -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opentelemetry-all-in-one`}</span>
+              <span>{`\$ BAL_CONFIG_FILES=Config.toml bal run --observability-included tracing.bal`}</span>
               <span>{`ballerina: started publishing traces to Jaeger on localhost:55680`}</span>
             </code>
           </pre>
@@ -352,8 +350,8 @@ export default function Tracing() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="JSON to XML conversion "
-            href="/learn/by-example/xml-from-json-conversion"
+            title="Record to XML conversion"
+            href="/learn/by-example/xml-from-record-conversion"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -380,7 +378,7 @@ export default function Tracing() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  JSON to XML conversion
+                  Record to XML conversion
                 </span>
               </div>
             </div>

@@ -14,8 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-// Constants can be defined without the type.
-// Then the type is inferred from the right hand side.
+// Constants can be defined without the type. Then, the type is inferred from the right-hand side.
 const MAX_VALUE = 1000;
 const URL = "https://ballerina.io";
 
@@ -64,10 +63,8 @@ export default function ConstAndFinal() {
 
       <p>
         A variable or a class field can be declared as <code>final</code>, which
-        means it cannot be assigned after
+        means it cannot be assigned after it has been initialized.
       </p>
-
-      <p>it has been initialized.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -75,7 +72,7 @@ export default function ConstAndFinal() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=45ab5e9e9581b9446060f66d91831a24&file=const_and_final.bal",
+                "https://play.ballerina.io/?gist=0156c2e471b697eca8dcd0a148ecb0e1&file=const_and_final.bal",
                 "_blank"
               );
             }}

@@ -21,20 +21,16 @@ type Student record {|
 |};
 
 public function main() {
-    // Creates an immutable \`Student\` value using an intersection
-    // type with \`readonly\`.
+    // Creates an immutable \`Student\` value using an intersection type with \`readonly\`.
     Student & readonly student = {
-
         grade: 12,
         name: "John",
-        // The applicable contextually-expected type for \`marks\`
-        // is now \`map<int> & readonly\`. Thus, the value for \`marks\`
-        // will be constructed as an immutable map.
+        // The applicable contextually-expected type for marks now is \`map<int> & readonly\`.
+        // Thus, the value for marks will be constructed as an immutable map.
         marks: {
             "Maths": 75,
             "English": 90
         }
-
     };
     boolean x = student["marks"] is map<int> & readonly;
     io:println(x);
@@ -67,25 +63,11 @@ export default function Immutability() {
 
       <p>
         <code>anydata</code> values can be made immutable. Simple and{" "}
-        <code>string</code> values are inherently immutable.
-      </p>
-
-      <p>
-        A structural value can be constructed as mutable or immutable. A value
-        includes an immutable flag.
-      </p>
-
-      <p>
-        The immutable flag is fixed at the time of construction. Attempting to
-        mutate an immutable structure
-      </p>
-
-      <p>
-        causes a panic at runtime. Immutability is deep: an immutable structure
-        can only have immutable
-      </p>
-
-      <p>
+        <code>string</code> values are inherently immutable. A structural value
+        can be constructed as mutable or immutable. A value includes an
+        immutable flag. The immutable flag is fixed at the time of construction.
+        Attempting to mutate an immutable structure causes a panic at runtime.
+        Immutability is deep: an immutable structure can only have immutable
         members. An immutable value is safe for concurrent access without
         locking.
       </p>

@@ -46,7 +46,7 @@ class LineGenerator {
 
 // This method strips the blank lines.
 function strip(LineStream lines) returns LineStream {
-    // Creates a \`stream\` from the query expression.
+    // Creates a \`stream\` from a query expression.
     LineStream res = stream from var line in lines
              where line.trim().length() > 0
              select line;
@@ -56,8 +56,8 @@ function strip(LineStream lines) returns LineStream {
 
 function count(LineStream lines) returns int|Error {
     int nLines = 0;
-    // Counts the number of lines by iterating the \`stream\`
-    // in \`query action\`.
+
+    // Counts the number of lines by iterating the \`stream\` in a query action.
     var _ = check from var _ in lines
               do {
                   nLines += 1;
@@ -106,30 +106,16 @@ export default function QueryingWithStreams() {
       <h1>Querying with streams</h1>
 
       <p>
-        If stream terminates with <code>error</code>, result of{" "}
-        <code>query expression</code> is an <code>error</code>. You cannot use{" "}
-        <code>foreach</code>
-      </p>
-
-      <p>
-        on <code>stream</code> type with termination type that allows{" "}
-        <code>error</code>. Instead use <code>from</code> with <code>do</code>{" "}
-        clause; the
-      </p>
-
-      <p>
-        result is a subtype of <code>error?</code>. Use <code>stream</code>{" "}
-        keyword in front of <code>from</code> to create a <code>stream</code>{" "}
-        which is
-      </p>
-
-      <p>
-        lazily evaluated. The failure of <code>check</code> within the{" "}
-        <code>query</code> will cause the <code>stream</code> to produce an
-      </p>
-
-      <p>
-        <code>error</code> termination value.
+        If a stream terminates with <code>error</code>, the result of the query
+        expression is an <code>error</code>. You cannot use <code>foreach</code>{" "}
+        on a <code>stream</code> type with a termination type that allows{" "}
+        <code>error</code>. Instead, use <code>from</code> with the{" "}
+        <code>do</code> clause where the result is a subtype of{" "}
+        <code>error?</code>. Use the <code>stream</code> keyword in front of{" "}
+        <code>from</code> to create a <code>stream</code>, which is lazily
+        evaluated. The failure of <code>check</code> within the query will cause
+        the <code>stream</code> to produce an <code>error</code> termination
+        value.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -138,7 +124,7 @@ export default function QueryingWithStreams() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=376cf7ecca5c2a5d57202deaaa2b9f74&file=querying_with_streams.bal",
+                "https://play.ballerina.io/?gist=978af1ab49e22467c0c21c4912992853&file=querying_with_streams.bal",
                 "_blank"
               );
             }}
@@ -283,7 +269,7 @@ export default function QueryingWithStreams() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run querying_with_streams.bal`}</span>
+              <span>{`\$ bal run querying_with_streams.bal`}</span>
               <span>{`Input line count: 5`}</span>
               <span>{`Non blank line count: 3`}</span>
             </code>

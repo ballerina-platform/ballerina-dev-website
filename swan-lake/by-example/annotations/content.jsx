@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-// The \`@display\` annotation applies to the transform function.
+// The \`@display\` annotation is applied to the \`transform\` function.
 @display {
     label: "Transform",
     iconPath: "transform.png"
@@ -23,16 +23,28 @@ public function transform(string s) returns string {
     return s.toUpperAscii();
 }
 
-public function main() {
-    // The \`@strand\` annotation applies to the \`start\` action.
-    future<int> fut = @strand {thread: "any"} start foo();
+type AnnotRecord record {|
+    string value;
+|};
 
-    int|error x = wait fut;
-    io:println(x);
+// Declares an annotation tag on type.
+annotation AnnotRecord annot on type;
+
+// The \`@annot\` annotation applies to the \`T1\` record type.
+@annot {
+    value: "T1"
 }
+type T1 record {
+    string name;
+};
 
-public function foo() returns int {
-    return 10;
+public function main() {
+    T1 a = {name: "John"};
+    typedesc<any> t = typeof a;
+    // Access annotation.
+    AnnotRecord? ann = t.@annot;
+
+    io:println(ann);
 }
 `,
 ];
@@ -61,16 +73,10 @@ export default function Annotations() {
       <h1>Annotations</h1>
 
       <p>
-        Annotations start with <code>@tag</code> and they come before what they
-        apply to.
-      </p>
-
-      <p>Unprefixed tags refer to standard platform-defined annotations and</p>
-
-      <p>prefixed tags refer to annotations declared in modules.</p>
-
-      <p>
-        <code>@tag</code> can be followed by record constructor expression.
+        Annotations start with the <code>@tag</code> and they come before what
+        they apply to. Unprefixed tags refer to standard platform-defined
+        annotations and prefixed tags refer to annotations declared in modules.{" "}
+        <code>@tag</code> can be followed by a record constructor expression.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -79,7 +85,7 @@ export default function Annotations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=604b80c6e0bae9bc75ad4b97209a6967&file=annotations.bal",
+                "https://play.ballerina.io/?gist=9756a8d385148be0f9ce0fa9d2122ef4&file=annotations.bal",
                 "_blank"
               );
             }}
@@ -224,8 +230,8 @@ export default function Annotations() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run annotations.bal`}</span>
-              <span>{`10`}</span>
+              <span>{`\$ bal run annotations.bal`}</span>
+              <span>{`{"value":"T1"}`}</span>
             </code>
           </pre>
         </Col>
@@ -267,7 +273,7 @@ export default function Annotations() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Consume services: client objects"
+            title="Consuming services: client objects"
             href="/learn/by-example/consuming-services"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -278,7 +284,7 @@ export default function Annotations() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consume services: client objects
+                  Consuming services: client objects
                 </span>
               </div>
               <svg

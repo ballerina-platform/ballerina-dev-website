@@ -24,12 +24,12 @@ json j = {
     }
 };
 
-// Field access is allowed on the \`json\`-typed variable. However, the return
+// Field access is allowed on the \`json\` typed variable. However, the return
 // type would be a union of \`json\` and \`error\`.
 json v = check j.x.y;
 string s1 = check v.z;
 
-// \`ensureType\` method can also be used to perform conversions.
+// The \`ensureType()\` method can also be used to perform conversions.
 string s2 = check value:ensureType(v.z, string);
 
 public function main() {
@@ -64,25 +64,11 @@ export default function WorkingDirectlyWithJson() {
 
       <p>
         Ballerina defines certain types as lax types for which static typing
-        rules are less strict.
-      </p>
-
-      <p>
-        For example, field access (<code>.</code>) and optional field access (
-        <code>?.</code>), which are generally allowed on
-      </p>
-
-      <p>
+        rules are less strict. For example, field access (<code>.</code>) and
+        optional field access (<code>?.</code>), which are generally allowed on
         records and objects for fields that are defined in the type descriptors,
-        are also additionally
-      </p>
-
-      <p>
-        allowed on lax types. For such operations, some of the type checking is
-        moved from compile time to runtime.
-      </p>
-
-      <p>
+        are also additionally allowed on lax types. For such operations, some of
+        the type checking is moved from compile time to runtime.{" "}
         <code>json</code> is defined to be a lax type along with any{" "}
         <code>map&lt;T&gt;</code> where <code>T</code> is a lax type.
       </p>
@@ -93,7 +79,7 @@ export default function WorkingDirectlyWithJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b3c957031c5d193d47961a30a9992358&file=working_directly_with_json.bal",
+                "https://play.ballerina.io/?gist=b274ebdd7e355a2151de62c0364ae1fd&file=working_directly_with_json.bal",
                 "_blank"
               );
             }}
@@ -187,6 +173,8 @@ export default function WorkingDirectlyWithJson() {
         </Col>
       </Row>
 
+      <p>Run the example as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -238,7 +226,7 @@ export default function WorkingDirectlyWithJson() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run working_directly_with_json.bal`}</span>
+              <span>{`\$ bal run working_directly_with_json.bal`}</span>
               <span>{`Value of s1: ballerina`}</span>
               <span>{`Value of s2: ballerina`}</span>
             </code>

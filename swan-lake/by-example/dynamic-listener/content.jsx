@@ -23,9 +23,8 @@ http:Service helloService =  service object {
     resource function get sayHello(http:Caller caller, http:Request req) {
         // Send a response back to the caller.
         var respondResult = caller->respond("Hello, World!");
-        if (respondResult is error) {
-            log:printError("Error occurred when responding.", 
-                'error = respondResult);
+        if respondResult is error {
+            log:printError("Error occurred when responding.", 'error = respondResult);
         }
     }
 
@@ -39,20 +38,18 @@ http:Service helloService =  service object {
         // Deregister the listener dynamically.
         runtime:deregisterListener(httpListener);
         // Handle the errors at the end.
-        if (respondResult is error) {
-            log:printError("Error occurred when responding.", 
-                'error = respondResult);
+        if respondResult is error {
+            log:printError("Error occurred when responding.", 'error = respondResult);
         } 
-        if (stopResult is error) {
-            log:printError("Error occurred when stopping the listener. ", 
-                'error = stopResult);
+        if stopResult is error {
+            log:printError("Error occurred when stopping the listener. ", 'error = stopResult);
         }
     }
 };
 
 public function main() returns error? {
-    // Attach the service to the listener.
-    check httpListener.attach(helloService);
+    // Attach the service to the listener along with the resource path.
+    check httpListener.attach(helloService, "foo/bar");
     // Start the listener.
     check httpListener.'start();
     // Register the listener dynamically.
@@ -175,6 +172,8 @@ export default function DynamicListener() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -226,17 +225,16 @@ export default function DynamicListener() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Invoke the service using "cURL".`}</span>
-              <span>{`curl http://localhost:9090/sayHello`}</span>
-              <span>{`Hello, World!`}</span>
-              <span>{``}</span>
-              <span>{`# Invoke the shutdown resource to deregister the listener.`}</span>
-              <span>{`curl http://localhost:9090/shutDownServer`}</span>
-              <span>{`Shutting down the server`}</span>
+              <span>{`\$ bal run dynamic_listener.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -289,10 +287,12 @@ export default function DynamicListener() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Navigate to the directory that contains the`}</span>
-              <span>{`# 'dynamic_listener.bal' file, and run the 'bal run' command below.`}</span>
+              <span>{`\$ curl http://localhost:9090/foo/bar/sayHello`}</span>
+              <span>{`Hello, World!`}</span>
               <span>{``}</span>
-              <span>{`bal run dynamic_listener.bal`}</span>
+              <span>{`# Invoke the shutdown resource to deregister the listener.`}</span>
+              <span>{`\$ curl http://localhost:9090/foo/bar/shutDownServer`}</span>
+              <span>{`Shutting down the server`}</span>
             </code>
           </pre>
         </Col>

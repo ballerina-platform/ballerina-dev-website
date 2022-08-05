@@ -21,18 +21,17 @@ const string ESCAPE = "!q";
 // Produces a message to a subject in the NATS Streaming sever.
 public function main() returns error? {
     string message = "";
-    stan:Client publisher = check new(stan:DEFAULT_URL);
+    stan:Client publisher = check new (stan:DEFAULT_URL);
 
     while (message != ESCAPE) {
         message = io:readln("Message: ");
         if message != ESCAPE {
-
             // Produces a message to the specified subject.
             string result = check publisher->publishMessage({
-                                    content: message.toBytes(),
-                                    subject: "demo"});
-            io:println("GUID " + result +
-                            " received for the produced message.");
+                content: message.toBytes(),
+                subject: "demo"
+            });
+            io:println("GUID " + result + " received for the produced message.");
         }
     }
 }
@@ -41,54 +40,45 @@ public function main() returns error? {
 import ballerinax/stan;
 
 // Initializes the NATS Streaming listeners.
-listener stan:Listener lis = new(stan:DEFAULT_URL);
+listener stan:Listener lis = new (stan:DEFAULT_URL);
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
-// Belongs to the queue group named "sample-queue-group"
+// Belongs to the queue group named "sample-queue-group".
 @stan:ServiceConfig {
     subject: "demo",
     queueGroup: "sample-queue-group"
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
-       // Prints the incoming message in the console.
-       string|error messageData = string:fromBytes(message.content);
-       if messageData is string {
-            log:printInfo("Message Received to first queue group member: "
-                                                        + messageData);
-       }
+    remote function onMessage(stan:Message message) returns error? {
+        // Prints the incoming message in the console.
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Message Received to first queue group member: " + messageData);
     }
 }
 
-// Belongs to the queue group named "sample-queue-group"
+// Belongs to the queue group named "sample-queue-group".
 @stan:ServiceConfig {
     subject: "demo",
     queueGroup: "sample-queue-group"
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
-       // Prints the incoming message in the console.
-       string|error messageData = string:fromBytes(message.content);
-       if messageData is string {
-            log:printInfo("Message Received to second queue group member: "
-                                                        + messageData);
-       }
+    remote function onMessage(stan:Message message) returns error? {
+        // Prints the incoming message in the console.
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Message Received to second queue group member: " + messageData);
     }
 }
 
-// Belongs to the queue group named "sample-queue-group"
+// Belongs to the queue group named "sample-queue-group".
 @stan:ServiceConfig {
     subject: "demo",
     queueGroup: "sample-queue-group"
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
-       // Prints the incoming message in the console.
-       string|error messageData = string:fromBytes(message.content);
-       if messageData is string {
-            log:printInfo("Message Received to third queue group member: "
-                                                        + messageData);
-       }
+    remote function onMessage(stan:Message message) returns error? {
+        // Prints the incoming message in the console.
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Message Received to third queue group member: " + messageData);
     }
 }
 `,
@@ -137,14 +127,14 @@ export default function NatsStreamingQueueGroup() {
         to receive the message. Although queue groups have multiple subscribers,
       </p>
 
-      <p>each message is consumed by only one.&lt;br/&gt;&lt;br/&gt;</p>
+      <p>each message is consumed by only one.</p>
 
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
-          STAN module
+          <code>stan</code> module
         </a>
         .
       </p>
@@ -277,7 +267,7 @@ export default function NatsStreamingQueueGroup() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run publisher.bal`}</span>
+              <span>{`\$ bal run publisher.bal`}</span>
               <span>{`Message: First Message`}</span>
               <span>{`GUID ywNe3mXd96jFL33ouJbFfg received for the produced message.`}</span>
               <span>{`Message: Second Message`}</span>
@@ -366,6 +356,15 @@ export default function NatsStreamingQueueGroup() {
         </Col>
       </Row>
 
+      <p>
+        <code>queue-group.bal</code> contains three services belonging to the
+        same queue group.
+      </p>
+
+      <p>When several messages are published, it can be noticed that</p>
+
+      <p>each message is received by only one queue group member.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -417,15 +416,7 @@ export default function NatsStreamingQueueGroup() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>
-                {`# `}
-                <code>{`queue-group.bal`}</code>
-                {` contains three services belonging to the same`}
-              </span>
-              <span>{`# queue group.`}</span>
-              <span>{`# When several messages are published, it can be noticed that`}</span>
-              <span>{`# each message is received by only one queue group member.`}</span>
-              <span>{`bal run queue-group.bal`}</span>
+              <span>{`\$ bal run queue-group.bal`}</span>
               <span>{`Message Received to first queue group member: First Message`}</span>
               <span>{`Message Received to third queue group member: Second Message`}</span>
               <span>{`Message Received to second queue group member: Third Message`}</span>

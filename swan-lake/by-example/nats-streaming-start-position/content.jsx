@@ -21,18 +21,17 @@ const string ESCAPE = "!q";
 // Produces a message to a subject in the NATS Streaming sever.
 public function main() returns error? {
     string message = "";
-    stan:Client publisher = check new(stan:DEFAULT_URL);
+    stan:Client publisher = check new (stan:DEFAULT_URL);
 
     while (message != ESCAPE) {
         message = io:readln("Message: ");
         if message != ESCAPE {
-
             // Produces a message to the specified subject.
             string result = check publisher->publishMessage({
-                                    content: message.toBytes(),
-                                    subject: "demo"});
-            io:println("GUID " + result +
-                            " received for the produced message.");
+                content: message.toBytes(),
+                subject: "demo"
+            });
+            io:println("GUID " + result + " received for the produced message.");
         }
     }
 }
@@ -41,7 +40,7 @@ public function main() returns error? {
 import ballerinax/stan;
 
 // Initializes the NATS Streaming listener.
-listener stan:Listener lis = new(stan:DEFAULT_URL);
+listener stan:Listener lis = new (stan:DEFAULT_URL);
 
 // Binds the consumer to listen to the messages published to the 'demo' subject.
 // By default, only new messages are received.
@@ -49,13 +48,10 @@ listener stan:Listener lis = new(stan:DEFAULT_URL);
     subject: "demo"
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
+    remote function onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
-        string|error messageData = string:fromBytes(message.content);
-        if messageData is string {
-            log:printInfo("Message Received to service receiveNewOnly: "
-                + messageData);
-        }
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Message Received to service receiveNewOnly: " + messageData);
     }
 }
 
@@ -66,13 +62,10 @@ service stan:Service on lis {
     startPosition: stan:FIRST
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
+    remote function onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
-        string|error messageData = string:fromBytes(message.content);
-        if messageData is string {
-            log:printInfo("Message Received to service receiveFromBegining: "
-                + messageData);
-        }
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Message Received to service receiveFromBegining: " + messageData);
     }
 }
 
@@ -83,17 +76,15 @@ service stan:Service on lis {
     startPosition: stan:LAST_RECEIVED
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
+    remote function onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
-        string|error messageData = string:fromBytes(message.content);
-        if messageData is string {
-            log:printInfo("Message Received to service " +
-            "receiveFromLastReceived: " + messageData);
-        }
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Message Received to service " + "receiveFromLastReceived: " + messageData);
     }
 }
 
 [stan:SEQUENCE_NUMBER, int] sequenceNo = [stan:SEQUENCE_NUMBER, 3];
+
 // Binds the consumer to listen to the messages published to the 'demo' subject.
 // Receives messages starting from the provided sequence number.
 @stan:ServiceConfig {
@@ -101,17 +92,15 @@ service stan:Service on lis {
     startPosition: sequenceNo
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
+    remote function onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
-        string|error messageData = string:fromBytes(message.content);
-        if messageData is string {
-            log:printInfo("Message Received to service receiveFromGivenIndex: "
-                + messageData);
-        }
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Message Received to service receiveFromGivenIndex: " + messageData);
     }
 }
 
 [stan:TIME_DELTA_START, int] timeDelta = [stan:TIME_DELTA_START, 5];
+
 // Binds the consumer to listen to the messages published to the 'demo' subject.
 // Receives messages since the provided historical time delta.
 @stan:ServiceConfig {
@@ -119,13 +108,10 @@ service stan:Service on lis {
     startPosition: timeDelta
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) {
+    remote function onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
-        string|error messageData = string:fromBytes(message.content);
-        if messageData is string {
-            log:printInfo("Message Received to service receiveSinceTimeDelta: "
-                + messageData);
-        }
+        string messageData = check string:fromBytes(message.content);
+        log:printInfo("Message Received to service receiveSinceTimeDelta: " + messageData);
     }
 }
 `,
@@ -173,7 +159,7 @@ export default function NatsStreamingStartPosition() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>1.</span>
-          <span>The earliest message stored for this subject</span>
+          <span>The earliest message stored for this subject.</span>
         </li>
       </ul>
       <ul style={{ marginLeft: "0px" }}>
@@ -187,23 +173,25 @@ export default function NatsStreamingStartPosition() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>3.</span>
-          <span>A historical offset from the current server date/time</span>
+          <span>
+            A historical offset from the current server date/time (e.g., the
+            last 30 seconds).
+          </span>
         </li>
       </ul>
-      <p>(e.g., the last 30 seconds).</p>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
-          <span>A specific message sequence number&lt;br/&gt;&lt;br/&gt;</span>
+          <span>A specific message sequence number.</span>
         </li>
       </ul>
+
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
-          STAN module
+          <code>stan</code> module
         </a>
         .
       </p>
@@ -336,7 +324,7 @@ export default function NatsStreamingStartPosition() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run publisher.bal`}</span>
+              <span>{`\$ bal run publisher.bal`}</span>
               <span>{`Message: First Message`}</span>
               <span>{`GUID UBMEgrERHdxZRqUBP05PtD received for the produced message.`}</span>
               <span>{`Message: Second Message`}</span>
@@ -427,6 +415,77 @@ export default function NatsStreamingStartPosition() {
         </Col>
       </Row>
 
+      <p>When you start the subscriber after publishing several messages,</p>
+
+      <p>You'll notice that,</p>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>
+            <code>receiveSinceTimeDelta</code> service receives the messages if
+          </span>
+        </li>
+      </ul>
+      <pre>
+        <code>
+          the messages were sent within a historical offset of 5 seconds
+        </code>
+      </pre>
+
+      <pre>
+        <code>from the current server date/time.</code>
+      </pre>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            <code>receiveFromGivenIndex</code> service receives services
+            messages
+          </span>
+        </li>
+      </ul>
+      <pre>
+        <code>starting from the third message published.</code>
+      </pre>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
+          <span>
+            <code>receiveFromLastReceived</code> service receives messages
+            starting
+          </span>
+        </li>
+      </ul>
+      <pre>
+        <code>from the last published message.</code>
+      </pre>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>4.</span>
+          <span>
+            <code>receiveFromBeginning</code> service receives all messages ever
+          </span>
+        </li>
+      </ul>
+      <pre>
+        <code>published.</code>
+      </pre>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>5.</span>
+          <span>
+            <code>receiveNewOnly</code> service receives only the messages,
+            which are
+          </span>
+        </li>
+      </ul>
+      <p>published after the subscriber starts.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -478,41 +537,7 @@ export default function NatsStreamingStartPosition() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# When you start the subscriber after publishing several messages,`}</span>
-              <span>{`# You'll notice that,`}</span>
-              <span>
-                {`# 1. `}
-                <code>{`receiveSinceTimeDelta`}</code>
-                {` service receives the messages if`}
-              </span>
-              <span>{`#     the messages were sent within a historical offset of 5 seconds`}</span>
-              <span>{`#     from the current server date/time`}</span>
-              <span>
-                {`# 2. `}
-                <code>{`receiveFromGivenIndex`}</code>
-                {` service receives services messages`}
-              </span>
-              <span>{`#     starting from the third message published.`}</span>
-              <span>
-                {`# 3. `}
-                <code>{`receiveFromLastReceived`}</code>
-                {` service receives messages starting`}
-              </span>
-              <span>{`#     from the last published message.`}</span>
-              <span>
-                {`# 4. `}
-                <code>{`receiveFromBeginning`}</code>
-                {` service receives all messages ever`}
-              </span>
-              <span>{`#     published`}</span>
-              <span>
-                {`# 5. `}
-                <code>{`receiveNewOnly`}</code>
-                {` service receives only the messages, which are`}
-              </span>
-              <span>{`#    published after the subscriber starts.`}</span>
-              <span>{``}</span>
-              <span>{`bal run subscriber.bal`}</span>
+              <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`Message Received to service receiveSinceTimeDelta: Third Message`}</span>
               <span>{`Message Received to service receiveFromGivenIndex: Third Message`}</span>
               <span>{`Message Received to service receiveFromLastReceived: Third Message`}</span>

@@ -75,15 +75,17 @@ export default function UdpClient() {
         UDP protocol.
       </p>
 
-      <p>This sample demonstrates how to send a datagram to a remote server</p>
-
-      <p>and print the echoed response.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        This sample demonstrates how to send a datagram to a remote server and
+        print the echoed response.
+      </p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/udp/latest">UDP module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/udp/latest">
+          UDP module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -214,7 +216,7 @@ export default function UdpClient() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run udp_client.bal`}</span>
+              <span>{`\$ bal run udp_client.bal`}</span>
               <span>{``}</span>
               <span>{`# This will print the output below upon a successful write.`}</span>
               <span>{`Datagram was sent to the remote host.`}</span>

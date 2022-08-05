@@ -76,22 +76,19 @@ export default function TesterinaBeforeAndAfterGroups() {
         <code>AfterGroups</code> annotation is executed once after all
       </p>
 
-      <p>
-        the tests belonging to the specified group is
-        executed.&lt;br/&gt;&lt;br/&gt;
-      </p>
+      <p>the tests belonging to the specified group is executed.</p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
         </a>
       </p>
 
       <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -224,7 +221,7 @@ export default function TesterinaBeforeAndAfterGroups() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal test test_module`}</span>
+              <span>{`\$ bal test test_module`}</span>
               <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>

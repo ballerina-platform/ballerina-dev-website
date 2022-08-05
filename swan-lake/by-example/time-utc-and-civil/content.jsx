@@ -69,17 +69,13 @@ export default function TimeUtcAndCivil() {
 
       <p>
         The Ballerina <code>time</code> library contains APIs to convert UTC to
-        local time and
+        local time and vice versa.
       </p>
 
-      <p>vice versa.</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/time/latest/">
-          Time module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/time/latest/">
+          <code>time</code> module
         </a>
         .
       </p>
@@ -90,7 +86,7 @@ export default function TimeUtcAndCivil() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a36467841ae4c5eccfa9b45a98401ded&file=time_utc_and_civil.bal",
+                "https://play.ballerina.io/?gist=b339ec7f0773a138f353b13e3a1ab8d5&file=time_utc_and_civil.bal",
                 "_blank"
               );
             }}
@@ -184,6 +180,10 @@ export default function TimeUtcAndCivil() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -235,7 +235,7 @@ export default function TimeUtcAndCivil() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run time_utc_and_civil.bal`}</span>
+              <span>{`\$ bal run time_utc_and_civil.bal`}</span>
               <span>{`Civil record: {"timeAbbrev":"Z","dayOfWeek":1,"year":2021,"month":5,"day":24,"hour":7,"minute":7,"second":15.757818}`}</span>
               <span>{`UTC value of the civil record: [1618269650,0.52]`}</span>
             </code>

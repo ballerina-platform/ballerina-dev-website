@@ -15,10 +15,9 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the Basic Auth secured APIs.
-// The client is enriched with the \`Authorization: Basic <token>\` header by
-// passing the [\`http:CredentialsConfig\`](https://lib.ballerina.io/ballerina/http/latest/records/CredentialsConfig) for the \`auth\` configuration of the
-// client.
+// Defines the HTTP client to call the Basic Auth secured APIs. The client is enriched with the \`
+// Authorization: Basic <token>\` header by passing the [\`http:CredentialsConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/CredentialsConfig) for the .
+// \`auth\` configuration of the client.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
         username: "ldclakmal",
@@ -60,29 +59,21 @@ export default function HttpClientBasicAuth() {
       <h1>Client - Basic Auth</h1>
 
       <p>
-        A client, which is secured with Basic Auth can be used to connect to
+        A client, which is secured with Basic Auth can be used to connect to a
+        secured service.
       </p>
-
-      <p>a secured service.&lt;br/&gt;</p>
 
       <p>
         The client is enriched with the{" "}
-        <code>Authorization: Basic &lt;token&gt;</code> header by
+        <code>Authorization: Basic &lt;token&gt;</code> header by passing the{" "}
+        <code>http:CredentialsConfig</code> for the <code>auth</code>{" "}
+        configuration of the client.
       </p>
 
       <p>
-        passing the <code>http:CredentialsConfig</code> for the{" "}
-        <code>auth</code> configuration of the
-      </p>
-
-      <p>client.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          Auth module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
+          <code>auth</code> module
         </a>
         .
       </p>
@@ -164,6 +155,8 @@ export default function HttpClientBasicAuth() {
         </Col>
       </Row>
 
+      <p>Run the client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -217,7 +210,7 @@ export default function HttpClientBasicAuth() {
             <code className="d-flex flex-column">
               <span>{`# As a prerequisite, start a sample service secured with Basic Auth.`}</span>
               <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>{`bal run http_client_basic_auth.bal`}</span>
+              <span>{`\$ bal run http_client_basic_auth.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

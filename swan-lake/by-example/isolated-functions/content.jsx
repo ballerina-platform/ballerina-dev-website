@@ -30,7 +30,6 @@ isolated function set(R r) returns R {
     // is \`final\` and the type is a subtype of \`readonly\` or
     // \`isolated object {}\`.
     r.v = N;
-
     return r;
 }
 
@@ -38,7 +37,6 @@ R r = {v: 0};
 
 // This is not an \`isolated\` function.
 function setGlobal(int n) {
-
     r.v = n;
 }
 
@@ -117,7 +115,7 @@ export default function IsolatedFunctions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5d661b61da8fe86cb1ffdf72681aa8e7&file=isolated_functions.bal",
+                "https://play.ballerina.io/?gist=de6a4b496aa129f3259da48a76644aa3&file=isolated_functions.bal",
                 "_blank"
               );
             }}
@@ -210,6 +208,11 @@ export default function IsolatedFunctions() {
           )}
         </Col>
       </Row>
+
+      <p>
+        By executing the above code, it can be seen that the value of{" "}
+        <code>v</code> is changed to 100 by calling <code>set</code> function.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

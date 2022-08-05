@@ -1,5 +1,5 @@
 {
-  "title": "Return service objects",
+  "title": "Returning service objects",
   "description": "A GraphQL service endpoint written in Ballerina",
   "keywords": [
     "ballerina",

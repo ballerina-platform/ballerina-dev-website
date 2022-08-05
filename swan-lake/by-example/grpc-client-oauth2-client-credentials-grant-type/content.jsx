@@ -14,6 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `// This is the service definition for the scenario.
 syntax = "proto3";
+
 import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
@@ -25,7 +26,7 @@ service HelloWorld {
 
 // Defines the gRPC client to call the OAuth2 secured APIs.
 // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-// header by passing the [\`grpc:OAuth2ClientCredentialsGrantConfig\`]((https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2ClientCredentialsGrantConfig) for the
+// header by passing the [\`grpc:OAuth2ClientCredentialsGrantConfig\`](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2ClientCredentialsGrantConfig) for the
 // \`auth\` configuration of the client.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     auth = {
@@ -78,36 +79,44 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
       <h1>Client - OAuth2 Client Credentials grant type</h1>
 
       <p>
-        A client, which is secured with OAuth2 client credentials grant type
+        A client, which is secured with OAuth2 client credentials grant type can
+        be used to connect to a secured service.
       </p>
-
-      <p>can be used to connect to a secured service.&lt;br/&gt;</p>
 
       <p>
         The client metadata is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code>
-      </p>
-
-      <p>
-        header by passing the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>grpc:OAuth2ClientCredentialsGrantConfig</code> for the
       </p>
 
       <p>
-        <code>auth</code> configuration of the client.&lt;br/&gt;&lt;br/&gt;
+        <code>auth</code> configuration of the client.
       </p>
 
-      <p>For more information on the underlying module,</p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on the underlying module,
+          see the{" "}
+          <a href="https://lib.ballerina.io/ballerina/oauth2/latest">
+            <code>oauth2</code> module
+          </a>
+          .
+        </p>
+      </blockquote>
 
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          OAuth2 module
-        </a>
-        .
-      </p>
+      <h2>Generate the service definition</h2>
 
-      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>
+            Create a new Protocol Buffers definition file named{" "}
+            <code>grpc_client.proto</code> and add the service definition to it.
+          </span>
+        </li>
+      </ul>
+
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "32px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -184,9 +193,19 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
         </Col>
       </Row>
 
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Run the command below in the Ballerina tools distribution for stub
+            generation.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "0px" }}
+        style={{ marginLeft: "32px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
@@ -235,27 +254,60 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# Create a new Protocol Buffers definition file named `}
-                <code>{`grpc_client.proto`}</code>
-                {` and add the service definition to it.`}
-              </span>
-              <span>{`# Run the command below in the Ballerina tools distribution for stub generation.`}</span>
-              <span>{`bal grpc --input grpc_client.proto --output stubs`}</span>
-              <span>{``}</span>
-              <span>
-                {`# Once you run the command, `}
-                <code>{`grpc_client_pb.bal`}</code>
-                {` file is generated inside stubs directory.`}
-              </span>
-              <span>{``}</span>
-              <span>{`# For more information on how to use the Ballerina Protocol Buffers tool, see the <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">Proto To Ballerina</a> example.`}</span>
+              <span>{`\$ bal grpc --input grpc_client.proto --output stubs`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
+      <p>
+        Once you run the command, the <code>grpc_client_pb.bal</code> file is
+        generated inside the stubs directory.
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on how to use the
+          Ballerina Protocol Buffers tool, see the &lt;a
+          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
+          To Ballerina&lt;/a&gt; example.
+        </p>
+      </blockquote>
+
+      <h2>Implement and run the client</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>Create a Ballerina package.</span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Copy the generated <code>grpc_secured_pb.bal</code> stub file to the
+            package. For example, if you create a package named{" "}
+            <code>client</code>, copy the stub file to the <code>client</code>{" "}
+            package.
+          </span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
+          <span>
+            Create a new{" "}
+            <code>grpc_client_oauth2_client_credentials_grant_type.bal</code>{" "}
+            Ballerina file inside the <code>client</code> package and add the
+            client implementation.
+          </span>
+        </li>
+      </ul>
+
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "24px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -332,9 +384,18 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
         </Col>
       </Row>
 
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>4.</span>
+          <span>
+            Execute the commands below to build and run the 'client' package.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "0px" }}
+        style={{ marginLeft: "24px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick2 ? (
@@ -383,44 +444,18 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina package.`}</span>
-              <span>
-                {`# Copy the generated `}
-                <code>{`grpc_secured_pb.bal`}</code>
-                {` stub file to the package.`}
-              </span>
-              <span>
-                {`# For example, if you create a package named `}
-                <code>{`client`}</code>
-                {`, copy the stub file to the `}
-                <code>{`client`}</code>
-                {` package.`}
-              </span>
+              <span>{`\$ bal build client`}</span>
               <span>{``}</span>
-              <span>
-                {`# Create a new `}
-                <code>{`grpc_client_oauth2_client_credentials_grant_type.bal`}</code>
-                {` Ballerina file inside the `}
-                <code>{`client`}</code>
-                {` package and add the client implementation.`}
-              </span>
-              <span>{``}</span>
-              <span>{`# Execute the command below to build the 'client' package.`}</span>
-              <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>
-                {``}
-                <code>{`bal build client`}</code>
-                {``}
-              </span>
-              <span>{``}</span>
-              <span>{`# Run the client using the command below.`}</span>
-              <span>{`# As a prerequisite, start a sample service secured with OAuth2.`}</span>
-              <span>{`bal run client/target/bin/client.jar`}</span>
+              <span>{`\$ bal run client/target/bin/client.jar`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>You may need to change the trusted certificate file path.</p>
+
+      <p>As a prerequisite, start a sample service secured with OAuth2.</p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

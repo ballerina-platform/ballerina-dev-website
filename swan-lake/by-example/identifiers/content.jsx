@@ -18,7 +18,6 @@ const codeSnippetData = [
 function พิมพ์ชื่อ(string ชื่อ) {
     // Use \\u{H} to specify character using Unicode code point in hex.
    io:println(ชื่\\u{E2D});
-
 }
 
 // Prefix reserved keywords with a single quote.
@@ -63,7 +62,7 @@ export default function Identifiers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7e8ae90425d770cc73c2a212b62561cf&file=identifiers.bal",
+                "https://play.ballerina.io/?gist=b974d9a143cdaaff2441e435e846684e&file=identifiers.bal",
                 "_blank"
               );
             }}
@@ -208,7 +207,7 @@ export default function Identifiers() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run identifiers.bal`}</span>
+              <span>{`\$ bal run identifiers.bal`}</span>
               <span>{`ආයුබෝවන්`}</span>
             </code>
           </pre>

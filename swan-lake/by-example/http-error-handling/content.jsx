@@ -21,11 +21,10 @@ service class ResponseErrorInterceptor {
     *http:ResponseErrorInterceptor;
 
     // The error occurred in the request-response path can be accessed by the 
-    // mandatory argument : \`error\`. The remote function can return a response,
+    // mandatory argument: \`error\`. The remote function can return a response,
     // which will overwrite the existing error response.
-    remote function interceptResponseError(error err) 
-            returns http:InternalServerError {
-        // In this case, all of the errors are sent as HTTP 500 internal server 
+    remote function interceptResponseError(error err) returns http:InternalServerError {
+        // In this case, all of the errors are sent as \`HTTP 500 internal server\` 
         // errors with a customized media type and body. Moreover, you can send different
         // responses according to the error type.        
         return {
@@ -52,8 +51,7 @@ service / on interceptorListener {
 
     // If the request does not include a \`checkHeader\`, then, this will return an error
     // and the execution will jump to the nearest \`ResponseErrorInterceptor\`.
-    resource function get greeting(@http:Header string checkHeader) 
-            returns http:Ok {
+    resource function get greeting(@http:Header string checkHeader) returns http:Ok {
         return {
             headers: {
                 "checkedHeader" : checkHeader
@@ -125,7 +123,7 @@ export default function HttpErrorHandling() {
 
       <p>
         For more information, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -208,6 +206,8 @@ export default function HttpErrorHandling() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -259,28 +259,16 @@ export default function HttpErrorHandling() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Invoke the service.`}</span>
-              <span>{`curl -v http://localhost:9090/greeting`}</span>
-              <span>{`*   Trying ::1:9090...`}</span>
-              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
-              <span>{`> GET /greeting HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.77.0`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`> `}</span>
-              <span>{`* Mark bundle as not supporting multiuse.`}</span>
-              <span>{`< HTTP/1.1 500 Internal Server Error`}</span>
-              <span>{`< content-type: application/org+json`}</span>
-              <span>{`< content-length: 53`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 19 Apr 2022 10:51:11 +0530`}</span>
-              <span>{`< `}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`{"message":"no header value found for 'checkHeader'"}`}</span>
+              <span>{`\$ bal run http_error_handling.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -333,8 +321,23 @@ export default function HttpErrorHandling() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Run the service.`}</span>
-              <span>{`bal run http_error_handling.bal`}</span>
+              <span>{`\$ curl -v http://localhost:9090/greeting`}</span>
+              <span>{`*   Trying ::1:9090...`}</span>
+              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
+              <span>{`> GET /greeting HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.77.0`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`> `}</span>
+              <span>{`* Mark bundle as not supporting multiuse.`}</span>
+              <span>{`< HTTP/1.1 500 Internal Server Error`}</span>
+              <span>{`< content-type: application/org+json`}</span>
+              <span>{`< content-length: 53`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Tue, 19 Apr 2022 10:51:11 +0530`}</span>
+              <span>{`< `}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`{"message":"no header value found for 'checkHeader'"}`}</span>
             </code>
           </pre>
         </Col>
@@ -376,7 +379,7 @@ export default function HttpErrorHandling() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Interceptor error handling"
+            title="Interceptor Error Handling"
             href="/learn/by-example/http-interceptor-error-handling"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -387,7 +390,7 @@ export default function HttpErrorHandling() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interceptor error handling
+                  Interceptor Error Handling
                 </span>
               </div>
               <svg

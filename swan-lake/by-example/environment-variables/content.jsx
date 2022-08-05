@@ -56,12 +56,17 @@ export default function EnvironmentVariables() {
 
       <p>
         The <code>os</code> library provides functions to retrieve information
-        about the OS and the current users of the OS.
+        about the OS and the current users of the OS.&lt;br/&gt;&lt;br/&gt;
       </p>
 
+      <p>For more information on the underlying module,</p>
+
       <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/os/latest/">OS module</a>.
+        see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/os/latest/">
+          OS module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -70,7 +75,7 @@ export default function EnvironmentVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=896e1a12edb17226014faf97ecd0fa74&file=environment_variables.bal",
+                "https://play.ballerina.io/?gist=be72ce9b385fa8d50f18bb1436cad109&file=environment_variables.bal",
                 "_blank"
               );
             }}
@@ -164,10 +169,6 @@ export default function EnvironmentVariables() {
         </Col>
       </Row>
 
-      <p>
-        To run this sample use the <code>bal run</code> command.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -219,7 +220,7 @@ export default function EnvironmentVariables() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run environment_variables.bal`}</span>
+              <span>{`\$ bal run environment_variables.bal`}</span>
               <span>{`HTTP_PORT: 5005`}</span>
               <span>{`Username: Alex`}</span>
               <span>{`Userhome: /Users/Alex`}</span>

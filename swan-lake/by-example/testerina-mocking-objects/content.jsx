@@ -183,7 +183,7 @@ export default function TesterinaMockingObjects() {
 
       <p>
         the member functions of an object. Mocking of objects can be done in two
-        ways. &lt;br/&gt;&lt;br/&gt;
+        ways.
       </p>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -191,7 +191,7 @@ export default function TesterinaMockingObjects() {
           <span>1.</span>
           <span>
             Creating a test double - providing an equivalent mock object in
-            place of the real&lt;br/&gt;
+            place of the real
           </span>
         </li>
       </ul>
@@ -204,7 +204,7 @@ export default function TesterinaMockingObjects() {
           </span>
         </li>
       </ul>
-      <p>and values of variables&lt;br/&gt;&lt;br/&gt;</p>
+      <p>and values of variables</p>
 
       <p>
         Creating a test double is suitable when a single mock function/object
@@ -216,19 +216,19 @@ export default function TesterinaMockingObjects() {
         behaviors for
       </p>
 
-      <p>different test cases is required.&lt;br/&gt;&lt;br/&gt;</p>
+      <p>different test cases is required.</p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
         </a>
       </p>
 
       <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -438,29 +438,7 @@ export default function TesterinaMockingObjects() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# To run this sample, create a Ballerina project named `}
-                <code>{`bbe_mocking`}</code>
-                {` and create a `}
-                <code>{`tests`}</code>
-                {` directory inside.`}
-              </span>
-              <span>
-                {`# Replace the content of the `}
-                <code>{`main.bal`}</code>
-                {` and add the `}
-                <code>{`main_test.bal`}</code>
-                {` to the `}
-                <code>{`tests`}</code>
-                {` directory.`}
-              </span>
-              <span>
-                {`# Execute the `}
-                <code>{`bal test`}</code>
-                {` command below.`}
-              </span>
-              <span>{``}</span>
-              <span>{`bal test bbe_mocking`}</span>
+              <span>{`\$ bal test bbe_mocking`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/bbe_mocking:0.1.0`}</span>
               <span>{``}</span>

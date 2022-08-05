@@ -12,9 +12,15 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `xml:Element e = xml\`<p:e xmlns:p="http://example.com/"/>\`;
-// \`name\` will be \`{http://example.com}e\`.
-string name = e.getName();
+  `import ballerina/io;
+
+public function main() {
+    // The \`p:e\` qualified name, where \`http://example.com/\` is the namespace name bound to \`p\`,
+    // is expanded into \`{http://example.com/}e\`.
+    xml:Element e = xml \`<p:e xmlns:p="http://example.com/"/>\`;
+    string name = e.getName();
+    io:println(name);
+}
 `,
 ];
 
@@ -42,19 +48,19 @@ export default function XmlNamespaces() {
       <h1>XML namespaces</h1>
 
       <p>
-        The goal is to support namespaces without adding complexity if you don’t
-        use them. The
+        The <code>ns:x</code> qualified name in XML is expanded into{" "}
+        <code>&#123;url&#125;x</code> in which <code>url</code> is the namespace
+        name bound to <code>ns</code>. The XML namespace declarations are kept
+        as attributes using the standard binding of{" "}
+        <a href="http://www.w3.org/2000/xmlns/">
+          <code>xmlns</code>
+        </a>
+        .
       </p>
 
       <p>
-        <code>ns:x</code> qualified name in XML is expanded into{" "}
-        <code>&#123;url&#125;x</code> where <code>url</code> is the namespace
-        name bound to <code>ns</code>. The XML namespace
-      </p>
-
-      <p>
-        declarations are kept as attributes using the standard binding of{" "}
-        <a href="http://www.w3.org/2000/xmlns/">xmlns</a>.
+        XML namespaces are supported in such a way that they do not add
+        complexity if you do not use them.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -63,7 +69,7 @@ export default function XmlNamespaces() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b279ff8cb9e38ba9e9e74d6917176304&file=xml_namespaces.bal",
+                "https://play.ballerina.io/?gist=178fa9b9594ab492fb2c14e9cf12dbd7&file=xml_namespaces.bal",
                 "_blank"
               );
             }}
@@ -208,7 +214,8 @@ export default function XmlNamespaces() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run xml_namespaces.bal`}</span>
+              <span>{`\$ bal run xml_namespaces.bal`}</span>
+              <span>{`{http://example.com/}e`}</span>
             </code>
           </pre>
         </Col>

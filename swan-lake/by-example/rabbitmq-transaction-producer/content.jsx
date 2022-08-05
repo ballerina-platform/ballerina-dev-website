@@ -16,16 +16,14 @@ const codeSnippetData = [
 
 public function main() returns error? {
     // Creates a ballerina RabbitMQ Client.
-    rabbitmq:Client newClient =
-            check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+    rabbitmq:Client newClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
     // Declares the queue.
     check newClient->queueDeclare("MyQueue");
     transaction {
         string message = "Hello from Ballerina";
         // Publishes the message using the routing key named "MyQueue".
-        check newClient->publishMessage({ content: message.toBytes(),
-                                                    routingKey: "MyQueue" });
+        check newClient->publishMessage({content: message.toBytes(), routingKey: "MyQueue"});
         check commit;
     }
 }
@@ -68,7 +66,7 @@ export default function RabbitmqTransactionProducer() {
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          RabbitMQ module
+          <code>rabbitmq</code> module
         </a>
         .
       </p>
@@ -201,7 +199,7 @@ export default function RabbitmqTransactionProducer() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run rabbitmq_transaction_producer.bal`}</span>
+              <span>{`\$ bal run rabbitmq_transaction_producer.bal`}</span>
             </code>
           </pre>
         </Col>

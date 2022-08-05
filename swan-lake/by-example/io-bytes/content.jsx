@@ -63,14 +63,15 @@ export default function IoBytes() {
 
       <p>
         The Ballerina <code>io</code> library contains APIs to read/write bytes
-        from/to a file.&lt;br/&gt;&lt;br/&gt;
+        from/to a file.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/io/latest/">IO module</a>.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/io/latest/">
+          <code>io</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -150,6 +151,10 @@ export default function IoBytes() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -217,7 +222,7 @@ export default function IoBytes() {
               <span>{`# ├── files`}</span>
               <span>{`# │   └── ballerina.jpeg`}</span>
               <span>{`# └── io_bytes.bal`}</span>
-              <span>{`bal run io_bytes.bal`}</span>
+              <span>{`\$ bal run io_bytes.bal`}</span>
               <span>{`Successfully copied the image as a byte array.`}</span>
               <span>{`Successfully copied the image as a stream.`}</span>
             </code>

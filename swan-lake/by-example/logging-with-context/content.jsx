@@ -17,8 +17,10 @@ import ballerina/random;
 import ballerina/time;
 
 public function main() {
-    // The Ballerina log API provides functions to log at four levels, which are \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
-    // You can pass key/value pairs of which the values are function pointers. These functions can return values, which change dynamically.
+    // The Ballerina log API provides functions to log at four levels, which are
+    // \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
+    // You can pass key/value pairs where the values are function pointers.
+    // These functions can return values, which change dynamically.
     // The following log prints the current UTC time as a key/value pair.
     log:printInfo("info log",
                   current_time = isolated function() returns string {
@@ -55,13 +57,18 @@ export default function LoggingWithContext() {
       <h1>Logging with context</h1>
 
       <p>
-        The <code>log</code> library contains the application log handling
-        functions.
+        The Ballerina Log API contains the application log handling
+        functions.&lt;br/&gt;&lt;br/&gt;
       </p>
 
+      <p>For more information on the underlying module,</p>
+
       <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/log/latest/">Log module</a>.
+        see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/log/latest/">
+          Log module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -70,7 +77,7 @@ export default function LoggingWithContext() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cf7207f057a82d4bc610860357141b4b&file=logging_with_context.bal",
+                "https://play.ballerina.io/?gist=74d0722f23707357659271d62239ba7f&file=logging_with_context.bal",
                 "_blank"
               );
             }}
@@ -164,10 +171,6 @@ export default function LoggingWithContext() {
         </Col>
       </Row>
 
-      <p>
-        To run this sample, use the <code>bal run</code> command.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -219,7 +222,7 @@ export default function LoggingWithContext() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run logging_with_context.bal`}</span>
+              <span>{`\$ bal run logging_with_context.bal`}</span>
               <span>{`time = 2021-05-25T10:34:25.460+05:30 level = INFO module = "" message = "info log" current_time = "2021-05-25T05:04:25.473981Z"`}</span>
               <span>{`time = 2021-05-25T10:34:25.487+05:30 level = INFO module = "" message = "info log" percentage = 38.4141353500368`}</span>
             </code>

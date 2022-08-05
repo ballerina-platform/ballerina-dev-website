@@ -14,8 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-// Parses a \`string\` value to convert to an \`int\` value.
-// This function may return error values.
+// Parses a \`string\` value to convert to an \`int\` value. This function may return error values.
 // The return type is a union with \`error\`.
 function parse(string s) returns int|error {
 
@@ -24,8 +23,7 @@ function parse(string s) returns int|error {
     foreach int cp in cps {
         int p = cp - 0x30;
         if p < 0 || p > 9 {
-            // If \`p\` is not a digit construct, it returns
-            // an \`error\` value with \`not a digit\` as the error message.
+            // If \`p\` is not a digit construct, it returns an \`error\` value with \`not a digit\` as the error message.
             return error("not a digit");
 
         }
@@ -35,14 +33,12 @@ function parse(string s) returns int|error {
 }
 
 public function main() {
-    // An \`int\` value is returned when the argument is a \`string\` value,
-    // which can be parsed successfully as an integer.
+    // An \`int\` value is returned when the argument is a \`string\` value, which can be parsed as an integer.
     int|error x = parse("123");
 
     io:println(x);
 
-    // An \`error\` value is returned when the argument is a \`string\` value,
-    // which has a character that is not a digit.
+    // An \`error\` value is returned when the argument is a \`string\` value, which has a character that is not a digit.
     int|error y = parse("1h");
 
     io:println(y);
@@ -75,33 +71,21 @@ export default function ErrorReporting() {
 
       <p>
         Ballerina does not have exceptions. Errors are reported by functions
-        returning
-      </p>
-
-      <p>
-        <code>error</code> values.
-      </p>
-
-      <p>
+        returning <code>error</code> values and are immutable.{" "}
         <code>error</code> is its own basic type.
       </p>
 
       <p>
-        The return type of a function that may return an <code>error</code>{" "}
-        value will be a union with <code>error</code>.
+        The return type <code>T</code> of a function that may return an{" "}
+        <code>error</code> value will be a union with <code>error</code>,{" "}
+        <code>T|error</code>.
       </p>
 
       <p>
-        An <code>error</code> value includes a <code>string</code> message.
+        An <code>error</code> value includes a <code>string</code> message and
+        also the stack trace from the point at which the error is constructed
+        (i.e., <code>error(msg)</code> is called).
       </p>
-
-      <p>
-        An <code>error</code> value includes the stack trace from the point at
-        which the error is constructed (i.e., <code>error(msg)</code> is
-        called).
-      </p>
-
-      <p>Error values are immutable.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -109,7 +93,7 @@ export default function ErrorReporting() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c53dacb954facb671c398dd37aa86ca2&file=error_reporting.bal",
+                "https://play.ballerina.io/?gist=a1c13b3b0ef335c3c08a4a682c6ee8f4&file=error_reporting.bal",
                 "_blank"
               );
             }}
@@ -254,7 +238,7 @@ export default function ErrorReporting() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run error_reporting.bal`}</span>
+              <span>{`\$ bal run error_reporting.bal`}</span>
               <span>{`123`}</span>
               <span>{`error("not a digit")`}</span>
             </code>

@@ -19,12 +19,14 @@ import ballerinax/kafka;
 const string SASL_URL = "localhost:9093";
 
 kafka:ProducerConfiguration producerConfig = {
-    // Provide the relevant authentication configurations to authenticate the producer by [\`kafka:AuthenticationConfiguration\`](https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration).
+    // Provide the relevant authentication configurations to authenticate the producer by
+    // [\`kafka:AuthenticationConfiguration\`](https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration).
     auth: {
         // Provide the authentication mechanism used by the Kafka server.
         mechanism: kafka:AUTH_SASL_PLAIN,
         // Username and password should be set here in order to authenticate the producer.
-        // For information on how to secure values instead of directly using plain text values, see [Defining Configurable Variables](https://ballerina.io/learn/user-guide/configurability/defining-configurable-variables/#securing-sensitive-data-using-configurable-variables).
+        // For information on how to secure values instead of directly using plain text values,
+        // see [Defining Configurable Variables](https://ballerina.io/learn/by-example/configurable-variables.html).
         username: "alice",
         password: "alice@123"
     },
@@ -68,28 +70,26 @@ export default function KafkaAuthenticationSaslPlainProducer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>SASL authentication - producer</h1>
+      <h1>SASL authentication - Producer</h1>
 
       <p>
         This shows how the SASL/PLAIN authentication is done in the{" "}
         <code>kafka:Producer</code>.
       </p>
 
-      <p>For this to work properly, an active Kafka server must be present</p>
+      <p>For this to work properly, an active Kafka server must be present,</p>
 
       <p>
         and it should be configured to use the SASL/PLAIN authentication
         mechanism.
       </p>
 
-      <p>&lt;br/&gt;&lt;br/&gt;</p>
-
       <p>For more information on the underlying module,</p>
 
       <p>
         see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          Kafka module
+          <code>kafka</code> module
         </a>
         .
       </p>
@@ -222,7 +222,7 @@ export default function KafkaAuthenticationSaslPlainProducer() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run kafka_authentication_sasl_plain_producer.bal`}</span>
+              <span>{`\$ bal run kafka_authentication_sasl_plain_producer.bal`}</span>
               <span>{`Message published successfully.`}</span>
             </code>
           </pre>

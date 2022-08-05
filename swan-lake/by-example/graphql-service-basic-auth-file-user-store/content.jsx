@@ -23,12 +23,11 @@ listener graphql:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with Basic Auth and can be authorized optionally.
-// Using Basic Auth with the file user store can be enabled by setting the
-// \`graphql:FileUserStoreConfig\` configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type
-// configurations for \`scopes\` field.
+// The service can be secured with Basic Auth and can be authorized optionally. Using Basic Auth
+// with the file user store can be enabled by setting the \`graphql:FileUserStoreConfig\`
+// configurations. Authorization is based on scopes. A scope maps to one or more groups.
+// Authorization can be enabled by setting the \`string|string[]\` type configurations for the
+// \`scopes\` field.
 @graphql:ServiceConfig {
     auth: [
         {
@@ -68,57 +67,36 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Service - Basic Auth file user store</h1>
 
-      <p>A GraphQL service can be secured with Basic Auth and optionally by</p>
-
       <p>
+        A GraphQL service can be secured with Basic Auth and optionally by
         enforcing authorization. Then, it validates the Basic Auth token sent in
-        the
+        the <code>Authorization</code> header against the provided
+        configurations. This reads data from a file, which has a TOML format.
+        This stores the usernames, passwords for authentication, and scopes for
+        authorization.
       </p>
-
-      <p>
-        <code>Authorization</code> header against the provided configurations.
-        This reads data
-      </p>
-
-      <p>
-        from a file, which has a TOML format. This stores the usernames,
-        passwords
-      </p>
-
-      <p>for authentication, and scopes for authorization.&lt;br/&gt;</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared
+        declared in a service can be bound to one/more scope(s).
       </p>
 
-      <p>in a service can be bound to one/more scope(s).&lt;br/&gt;</p>
-
-      <p>In the authorization phase, the scopes of the service are compared</p>
-
       <p>
+        In the authorization phase, the scopes of the service are compared
         against the scope included in the user store for at least one match
-        between
-      </p>
-
-      <p>the two sets.&lt;br/&gt;</p>
-
-      <p>
-        <code>Config.toml</code> has defined three users - alice, ldclakmal and
-        eve. Each user has a
+        between the two sets.
       </p>
 
       <p>
-        password and optionally assigned scopes as an
-        array.&lt;br/&gt;&lt;br/&gt;
+        The <code>Config.toml</code> file has defined three users - alice,
+        ldclakmal, and eve. Each user has a password and optionally assigned
+        scopes as an array.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          Auth module
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
+          <code>auth</code> module
         </a>
         .
       </p>
@@ -200,6 +178,8 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -257,7 +237,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
                 {` file is populated correctly`}
               </span>
               <span>{`# with the user information.`}</span>
-              <span>{`echo '[["ballerina.auth.users"]]`}</span>
+              <span>{`\$ echo '[["ballerina.auth.users"]]`}</span>
               <span>{`username="alice"`}</span>
               <span>{`password="password1"`}</span>
               <span>{`scopes=["scope1"]`}</span>
@@ -267,7 +247,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
               <span>{`scopes=["scope2", "scope3"]' > Config.toml`}</span>
               <span>{``}</span>
               <span>{`# You may need to change the certificate file path and private key file path.`}</span>
-              <span>{`bal run graphql_service_basic_auth_file_user_store.bal`}</span>
+              <span>{`\$ bal run graphql_service_basic_auth_file_user_store.bal`}</span>
             </code>
           </pre>
         </Col>

@@ -15,7 +15,7 @@ const codeSnippetData = [
   `import ballerina/http;
 
 service on new http:Listener(9092) {
-    // The \`consumes\` and \`produces\` annotations of the [resource configuration](https://lib.ballerina.io/ballerina/http/latest/records/HttpResourceConfig)
+    // The \`consumes\` and \`produces\` annotations of the [resource configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/HttpResourceConfig)
     // contain MIME types as an array of strings. The resource can only consume/accept \`text/json\` and
     // \`application/json\` media types. Therefore, the \`Content-Type\` header
     // of the request must be in one of these two types. The resource can produce
@@ -27,7 +27,7 @@ service on new http:Listener(9092) {
     resource function post infoService(@http:Payload json msg)
             returns xml|http:InternalServerError {
         json|error nameString = msg.name;
-        if (nameString is json) {
+        if nameString is json {
             xml name = xml \`<name>\${<string>nameString}</name>\`;
             return name;
         }
@@ -63,22 +63,20 @@ export default function HttpRestrictByMediaType() {
       <h1>Restrict by media type</h1>
 
       <p>
-        You can configure resources of HTTP services to restrict the types of
-        media they consume and produce.
+        You can configure the resources of the HTTP services to restrict the
+        types of media they consume and produce.
       </p>
 
       <p>
         This is done through the <code>consumes</code> and <code>produces</code>{" "}
-        annotation attributes of the <code>ResourceConfig</code> annotation,
+        attributes of the <code>ResourceConfig</code> annotation,
       </p>
 
-      <p>which is used with resources.&lt;br/&gt;&lt;br/&gt;</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>which is used with resources.</p>
 
       <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -161,6 +159,8 @@ export default function HttpRestrictByMediaType() {
         </Col>
       </Row>
 
+      <p>Run the service as follows.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -212,76 +212,16 @@ export default function HttpRestrictByMediaType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# To invoke the service, execute the following cURL request.`}</span>
-              <span>{`curl -v http://localhost:9092/infoService -H "Accept:application/xml" -H "Content-Type:application/json" -d '{"name":"Ballerina"}'`}</span>
-              <span>{`> POST /infoService HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9092`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept:application/xml`}</span>
-              <span>{`> Content-Type:application/json`}</span>
-              <span>{`> Content-Length: 20`}</span>
-              <span>{`>`}</span>
-              <span>{`* upload completely sent off: 20 out of 20 bytes`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: application/xml`}</span>
-              <span>{`< content-length: 22`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Wed, 23 Sep 2020 10:25:55 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`<name>Ballerina</name>* Closing connection 0`}</span>
-              <span>{``}</span>
-              <span>{`# To invoke the service using unsupported media type, execute the following cURL request. The content type of the`}</span>
-              <span>
-                {`# request is not listed under the `}
-                <code>{`consumes`}</code>
-                {` resource configuration.`}
-              </span>
-              <span>{`curl -v http://localhost:9092/infoService -H "Accept:application/xml" -H "Content-Type:text/plain" -d "Hello ballerina"`}</span>
-              <span>{`> POST /infoService HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9092`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept:application/xml`}</span>
-              <span>{`> Content-Type:text/plain`}</span>
-              <span>{`> Content-Length: 15`}</span>
-              <span>{`>`}</span>
-              <span>{`* upload completely sent off: 15 out of 15 bytes`}</span>
-              <span>{`< HTTP/1.1 415 Unsupported Media Type`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 0`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Wed, 23 Sep 2020 10:26:50 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`* Closing connection 0`}</span>
-              <span>{``}</span>
-              <span>{`# To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned`}</span>
-              <span>
-                {`# in the Accept header is not listed under the `}
-                <code>{`produces`}</code>
-                {` resource configuration.`}
-              </span>
-              <span>{`curl -v http://localhost:9092/infoService -H "Accept:text/html" -H "Content-Type:application/json" -d '{"name":"Ballerina"}'`}</span>
-              <span>{`> POST /infoService HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9092`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept:text/html`}</span>
-              <span>{`> Content-Type:application/json`}</span>
-              <span>{`> Content-Length: 20`}</span>
-              <span>{`>`}</span>
-              <span>{`* upload completely sent off: 20 out of 20 bytes`}</span>
-              <span>{`< HTTP/1.1 406 Not Acceptable`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 0`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Wed, 23 Sep 2020 10:27:28 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`* Closing connection 0`}</span>
+              <span>{`\$ bal run restrict_by_media_type.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -334,7 +274,73 @@ export default function HttpRestrictByMediaType() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run restrict_by_media_type.bal`}</span>
+              <span>{`\$ curl -v http://localhost:9092/infoService -H "Accept:application/xml" -H "Content-Type:application/json" -d '{"name":"Ballerina"}'`}</span>
+              <span>{`> POST /infoService HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9092`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> Accept:application/xml`}</span>
+              <span>{`> Content-Type:application/json`}</span>
+              <span>{`> Content-Length: 20`}</span>
+              <span>{`>`}</span>
+              <span>{`* upload completely sent off: 20 out of 20 bytes`}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< content-type: application/xml`}</span>
+              <span>{`< content-length: 22`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Wed, 23 Sep 2020 10:25:55 +0530`}</span>
+              <span>{`<`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`<name>Ballerina</name>* Closing connection 0`}</span>
+              <span>{``}</span>
+              <span>{`# To invoke the service using an unsupported media type, execute the following cURL request. The content type of the`}</span>
+              <span>
+                {`# request is not listed under the `}
+                <code>{`consumes`}</code>
+                {` resource configuration.`}
+              </span>
+              <span>{`\$ curl -v http://localhost:9092/infoService -H "Accept:application/xml" -H "Content-Type:text/plain" -d "Hello ballerina"`}</span>
+              <span>{`> POST /infoService HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9092`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> Accept:application/xml`}</span>
+              <span>{`> Content-Type:text/plain`}</span>
+              <span>{`> Content-Length: 15`}</span>
+              <span>{`>`}</span>
+              <span>{`* upload completely sent off: 15 out of 15 bytes`}</span>
+              <span>{`< HTTP/1.1 415 Unsupported Media Type`}</span>
+              <span>{`< content-type: text/plain`}</span>
+              <span>{`< content-length: 0`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Wed, 23 Sep 2020 10:26:50 +0530`}</span>
+              <span>{`<`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`* Closing connection 0`}</span>
+              <span>{``}</span>
+              <span>{`# To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned`}</span>
+              <span>
+                {`# in the `}
+                <code>{`Accept`}</code>
+                {` header is not listed under the `}
+                <code>{`produces`}</code>
+                {` resource configuration.`}
+              </span>
+              <span>{`\$ curl -v http://localhost:9092/infoService -H "Accept:text/html" -H "Content-Type:application/json" -d '{"name":"Ballerina"}'`}</span>
+              <span>{`> POST /infoService HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9092`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> Accept:text/html`}</span>
+              <span>{`> Content-Type:application/json`}</span>
+              <span>{`> Content-Length: 20`}</span>
+              <span>{`>`}</span>
+              <span>{`* upload completely sent off: 20 out of 20 bytes`}</span>
+              <span>{`< HTTP/1.1 406 Not Acceptable`}</span>
+              <span>{`< content-type: text/plain`}</span>
+              <span>{`< content-length: 0`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Wed, 23 Sep 2020 10:27:28 +0530`}</span>
+              <span>{`<`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`* Closing connection 0`}</span>
             </code>
           </pre>
         </Col>

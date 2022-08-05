@@ -17,23 +17,23 @@ const codeSnippetData = [
 // Defines a \`record\` type named \`Coord\`.
 type Coord record {
     int x;
-    int y;
+    string y;
 };
 
 public function main() {
     // Creates a \`record\`, specifying values for its fields.
-    record { int x; int y; } r = {
+    record { int x; string y; } r = {
         x: 1,
-        y: 2
+        y: "2"
     };
 
     // Creates a \`Coord\` record.
     Coord c = {
         x: 1,
-        y: 2
+        y: "2"
     };
 
-    int a = r.y;
+    string a = r.y;
     io:println(a);
 
     int b = c.x;
@@ -66,22 +66,12 @@ export default function Records() {
       <h1>Records</h1>
 
       <p>
-        A <code>record</code> type has specific named fields. Fields can be
-        accessed with <code>r.x</code>. Records are mutable. <code>r.x</code> is
-        an
-      </p>
-
-      <p>
-        <code>lvalue</code>. Records can be constructed using a similar syntax
-        to a <code>map</code>. Typically, a <code>record</code> type is combined
-      </p>
-
-      <p>
-        with a type definition. The name of the type is not significant. A{" "}
-        <code>record</code> is just a collection of fields.
-      </p>
-
-      <p>
+        A <code>record</code> type has specific named fields. These fields can
+        be accessed with <code>r.x</code>. Records are mutable. <code>r.x</code>{" "}
+        is an <code>lvalue</code>. Records can be constructed using a similar
+        syntax to a <code>map</code>. Typically, a <code>record</code> type is
+        combined with a type definition. The name of the type is not
+        significant. A <code>record</code> is just a collection of fields.
         Record equality works the same as <code>map</code> equality.
       </p>
 
@@ -91,7 +81,7 @@ export default function Records() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=72f9fdb16836390dd87404c912a077a2&file=records.bal",
+                "https://play.ballerina.io/?gist=1d9df8a869d8f3e03d356bf67dfc1b63&file=records.bal",
                 "_blank"
               );
             }}

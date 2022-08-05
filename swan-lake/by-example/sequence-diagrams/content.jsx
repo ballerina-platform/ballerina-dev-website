@@ -16,12 +16,10 @@ const codeSnippetData = [
 import ballerina/io;
 
 // A function can be viewed as a sequence diagram.
-// The diagram has a lifeline (vertical line) for each worker (both named 
-// worker and function's default worker).
+// The diagram has a lifeline (vertical line) for each worker (both named worker and function's default worker).
 public function main() returns error? {
     // The diagram also has a lifeline for each client object parameter or variable in 
-    // the initialization section, representing the remote system to which the client  
-    // object is sending messages.
+    // the initialization section, representing the remote system to which the client object is sending messages.
     http:Client cl = check new ("https://www.mocky.io");
 
     // Each remote method call on a client object is represented as a horizontal line
@@ -59,42 +57,22 @@ export default function SequenceDiagrams() {
 
       <p>A function can be viewed as a sequence diagram as shown below.</p>
 
-      <p>&lt;br/&gt;&lt;br/&gt;</p>
-
       <p>
-        &lt;img src=&quot;/learn/by-example/images/sequence-diagram.png&quot;
-        alt=&quot;Sequence Diagrams&quot; width=&quot;600&quot;
-        height=&quot;500&quot;&gt;
+        <img
+          src="/images/sequence-diagram.png"
+          alt="Sequence diagrams"
+          title="Sequence Diagram"
+        />
       </p>
-
-      <p>&lt;br/&gt;&lt;br/&gt;</p>
 
       <p>
         The diagram has a lifeline (vertical line) for each worker (both named
-      </p>
-
-      <p>worker and function's default worker).</p>
-
-      <p>
-        The diagram also has a lifeline for each client object parameter or
-        variable in
-      </p>
-
-      <p>
-        the initialization section, representing the remote system to which the
-        client
-      </p>
-
-      <p>object is sending messages.</p>
-
-      <p>
-        Each remote method call on a client object is represented as a
-        horizontal line
-      </p>
-
-      <p>
-        between the lifeline of the worker making the call and the remote
-        system.
+        worker and function's default worker). The diagram also has a lifeline
+        for each client object parameter or variable in the initialization
+        section, representing the remote system to which the client object is
+        sending messages. Each remote method call on a client object is
+        represented as a horizontal line between the lifeline of the worker
+        making the call and the remote system.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -103,7 +81,7 @@ export default function SequenceDiagrams() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f6d780a61d4264c644c0b50861e648b1&file=sequence_diagrams.bal",
+                "https://play.ballerina.io/?gist=f0218a27092413ba28498a4f03ec163b&file=sequence_diagrams.bal",
                 "_blank"
               );
             }}
@@ -248,7 +226,7 @@ export default function SequenceDiagrams() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run sequence_diagrams.bal`}</span>
+              <span>{`\$ bal run sequence_diagrams.bal`}</span>
               <span>{`Hello World`}</span>
             </code>
           </pre>
@@ -291,7 +269,7 @@ export default function SequenceDiagrams() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Wait for workers"
+            title="Waiting for workers"
             href="/learn/by-example/waiting-for-workers"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -302,7 +280,7 @@ export default function SequenceDiagrams() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Wait for workers
+                  Waiting for workers
                 </span>
               </div>
               <svg

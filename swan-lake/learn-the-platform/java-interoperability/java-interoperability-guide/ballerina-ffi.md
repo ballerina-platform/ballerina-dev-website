@@ -15,7 +15,7 @@ redirect_from:
   - /learn/cli-documentation/ballerina-ffi
 ---
 
-Let's look at the list of language features that enable Ballerina developers to call foreign code written in other programming languages. E.g., while the jBallerina compiler allows you to call any `Java` code, the nBallerina compiler will allow you to call any `C` Code.
+Let's look at the list of language features that enable Ballerina developers to call foreign code written in other programming languages. E.g., while the jBallerina compiler allows you to call any `Java` code, the nBallerina compiler allows you to call any `C` Code.
 
 ## The external function body
 Usually, the body or the implementation of a function is specified in the same source file. The part, which is enclosed by curly braces is called the function body.
@@ -388,7 +388,7 @@ function appendStringBuffer(handle sbObj, handle sb) returns handle = @java:Meth
 ```
 
 ## Java exceptions as Ballerina errors
-A function call in Ballerina may complete abruptly by returning an error or by raising a panic. Panics are rare in Ballerina. The best practice is to handle errors in your normal control flow. Raising a panic is similar to throwing a Java exception. The `trap` action will stop a panic and give you the control back in Ballerina and the `try-catch` statement does the same in Java.
+A function call in Ballerina may complete abruptly by returning an error or by raising a panic. Panics are rare in Ballerina. The best practice is to handle errors in your normal control flow. Raising a panic is similar to throwing a Java exception. The `trap` action stops a panic and give you the control back in Ballerina and the `try-catch` statement does the same in Java.
 
 Errors in Ballerina belong to the built-in type `error`. The error type can be considered as a distinct type from all other types. The `error` type does not belong to the `any` type, which is the supertype of all other Ballerina types. Therefore, errors are explicit in Ballerina programs and it is almost impossible to ignore them. For more details, see [Ballerina By Example](https://ballerina.io/learn/by-example/).
 
@@ -397,9 +397,9 @@ A Java function call may complete abruptly by throwing either a checked exceptio
 Java interoperability layer in Ballerina handles checked exceptions differently from unchecked exceptions as explained below.
 
 ### Java unchecked exceptions
-If the linked Java method throws an unchecked exception, then the corresponding Ballerina function will complete abruptly by raising a panic.
+If the linked Java method throws an unchecked exception, then the corresponding Ballerina function completes abruptly by raising a panic.
 
-The following example tries to pop an element out of an empty queue. The `pop` method in the `ArrayDeque` class throws an unchecked  `java.util.NoSuchElementException` exception in such cases. This exception will cause the Ballerina `pop` function to raise a panic.
+The following example tries to pop an element out of an empty queue. The `pop` method in the `ArrayDeque` class throws an unchecked  `java.util.NoSuchElementException` exception in such cases. This exception causes the Ballerina `pop` function to raise a panic.
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -512,7 +512,7 @@ public function main() {
 }
 ```
 
-Since the queue is empty in this case, `peek` should return null i.e., `element` should refer to Java null.  The output of this program will be as follows.
+Since the queue is empty in this case, `peek` should return null i.e., `element` should refer to Java null.  The output of this program is as follows.
 
 ```ballerina
  error: java.lang.NoSuchFieldError {"message":"JAVA_NULL_REFERENCE_ERROR"}

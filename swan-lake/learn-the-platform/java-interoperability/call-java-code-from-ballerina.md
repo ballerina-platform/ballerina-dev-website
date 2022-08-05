@@ -29,7 +29,7 @@ redirect_from:
 ---
 
 ## Write Ballerina bindings
-The `bindgen` is a CLI tool, which eases the process of generating Ballerina bindings for given Java APIs. This guide shows you how to use it. For more details on how the `bindgen` tool works, see the [Bindgen Tool](/learn/java-interoperability-guide/the-bindgen-tool/).
+The `bindgen` is a CLI tool that eases the process of generating Ballerina bindings for given Java APIs. This guide shows you how to use it. For more details on how the `bindgen` tool works, see [Bindgen Tool](/learn/java-interoperability-guide/the-bindgen-tool/).
 
 The [Package layout](/learn/package-references/#package-layout) explains how to package Java libraries (JAR files) with Ballerina programs to produce self-contained executable programs. When you generate bindings for a Java library using the `bindgen` tool, this part is already handled.
 
@@ -42,7 +42,7 @@ You will develop a Ballerina program that parses the given YAML file and writes 
 
 Let's get started.
 
-### Step 1 - write the Java code
+### Step 1 - Write the Java code
 It is recommended to always start by writing the Java code. It gives you an idea of the set of Java classes required to implement your logic. Then, you can use the `bindgen` tool to generate Ballerina bindings for those classes.
 
 The Java code below uses the SnakeYAML API to parse the given YAML file. 
@@ -71,7 +71,7 @@ public class SnakeYamlSample {
 }
 ```
 
-Here, you have used four Java classes.
+Here, you have used four Java classes:
 - `org.yaml.snakeyaml.Yaml`
 - `java.io.FileInputStream`
 - `java.io.InputStream`
@@ -83,7 +83,7 @@ You can see them in the imported class list.
 
 Now, you will create an environment for your Ballerina program.
 
-### Step 2 - set up the Ballerina package
+### Step 2 - Set up the Ballerina package
 
 >**Info:** This section assumes that you have already read [Package layout](/learn/package-references/#package-layout).
 
@@ -142,8 +142,8 @@ comments: >
    Billsmer @ 338-4338.\
 ```
 
-### Step 3 - generate the Ballerina bindings 
-In this step, you will use the `bindgen` tool to generate Ballerina bindings for the four classes that were listed in [Step 1](/learn/call-java-code-from-ballerina/#step-1---write-the-java-code). If you want more information about the tool, see the [Bindgen Tool](/learn/java-interoperability-guide/the-bindgen-tool/).
+### Step 3 - Generate the Ballerina bindings 
+In this step, you will use the `bindgen` tool to generate Ballerina bindings for the four classes that were listed in [Step 1](/learn/call-java-code-from-ballerina/#step-1---write-the-java-code). If you want more information about the tool, see [Bindgen Tool](/learn/java-interoperability-guide/the-bindgen-tool/).
 
 ```sh
 > bal bindgen -mvn org.yaml:snakeyaml:1.25 org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
@@ -176,8 +176,8 @@ Generating dependency bindings for:
 - The argument list specifies the Java class names. 
 
 The `bindgen` tool generates bindings for:
-- the specified Java classes
-- the Java classes exposed in the public APIs of all the specified classes
+- The specified Java classes
+- The Java classes exposed in the public APIs of all the specified classes
 
 
 Before you move on to the next step, verify the generated code.
@@ -193,8 +193,8 @@ Generating executable
 Hello World!
 ```
 
-### Step 4 - write the Ballerina code
-Now, you’ll use the generated bindings and write the Ballerina code, which uses the SnakeYAML library. You can develop the Ballerina code corresponding to the Java code below step by step.
+### Step 4 - Write the Ballerina code
+Now, you will use the generated bindings and write the Ballerina code, which uses the SnakeYAML library. You can develop the Ballerina code corresponding to the Java code below step by step.
 ```java
 public class SnakeYamlSample {
 
@@ -221,7 +221,7 @@ javaio:FileInputStream | javaio:FileNotFoundException fileInputStream = javaio:n
 Here, `FileInputStream` is the Ballerina class generated for the `java.io.FileInputStream` class.
 - Ballerina bindings for each Java package are mapped onto a separate Ballerina module by default. Therefore, you need to import them when using them inside other modules. Here, the `java.io` Ballerina module (mapping the corresponding Java package) is imported as `javaio`. However, if you wish to generate all the bindings inside a single directory, you can do so by using the `[(-o|--output) <output-path>]` command option.
 - You can find functions that start with `newFileInputStream` in the generated code. Each such function creates a new `java.io.FileInputStream` instance. Ballerina does not support function overloading. Therefore, the `bindgen` tool generates a separate Ballerina function for each overloaded method or constructor. Function names of the generated bindings will be improved in a future release.
-- All the public instance methods in the `java.io.FileInputStream` class are mapped to methods in the generated Ballerina class. You can refer the [Bindgen Tool](/learn/java-interoperability-guide/the-bindgen-tool/) for more details on how other Java class members are mapped into Ballerina bindings.
+- All the public instance methods in the `java.io.FileInputStream` class are mapped to methods in the generated Ballerina class. For more details on how other Java class members are mapped into Ballerina bindings, see [Bindgen Tool](/learn/java-interoperability-guide/the-bindgen-tool/).
 
 Next, you’ll handle the `error` using a type guard.
 ```ballerina
@@ -293,6 +293,6 @@ Suite #292
 Suite #292
 , city=Royal Oak, state=MI, postal=48046}}, product=[{sku=BL394D, quantity=4, description=Basketball, price=450.0}, {sku=BL4438H, quantity=null, description=Super Hoop, price=2392.0}], tax=251.42, total=4443.52, comments=Late afternoon is best. Backup contact is Nancy Billsmer @ 338-4338.\}
 ```
-In this section, how to use the `bindgen` tool to generate Ballerina bindings for Java classes and how to use them was explained.
+The above sections explain how to use the `bindgen` tool to generate Ballerina bindings for Java classes and how to use them.
 
 For more information on various aspects related to Java interoperability in Ballerina, see [Java interoperability](/learn/java-interoperability-guide/java-interoperability/).

@@ -417,7 +417,7 @@ export default function NatsStreamingStartPosition() {
 
       <p>When you start the subscriber after publishing several messages,</p>
 
-      <p>You'll notice that,</p>
+      <p>You will notice that,</p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>

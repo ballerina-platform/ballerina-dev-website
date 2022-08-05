@@ -294,8 +294,9 @@ service /employees on new http:Listener(8080) {
 Invoke the defined resource function by sending a `POST` request to `http://localhost:8080/employees` with the 
 required data as a JSON payload.
 
->**Info:** The following cURL command only works with Unix operating systems.
+
 ```shell
+# Using a Unix terminal
 curl --location --request POST 'http://localhost:8080/employees/' \
     --header 'Content-Type: application/json' \
     --data-raw '{
@@ -312,6 +313,27 @@ curl --location --request POST 'http://localhost:8080/employees/' \
         "manager_id": 1,
         "job_title": "Sales Manager"
     }'
+    
+    
+# Using a Windows Powershell terminal
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Content-Type", "application/json")
+$body = "{
+    `"employee_id`": 6,
+    `"first_name`": `"test`",
+    `"last_name`": `"test`",
+    `"email`": `"test@test.com`",
+    `"phone`": `"882 771 110`",
+    `"hire_date`": {
+        `"year`": 2021,
+        `"month`": 12,
+        `"day`": 16
+    },
+    `"manager_id`": 1,
+    `"job_title`": `"Sales Manager`"
+}"
+$response = Invoke-RestMethod 'http://localhost:8080/employees' -Method 'POST' -Headers $headers -Body $body
+$response | ConvertTo-Json
 ```
 
 

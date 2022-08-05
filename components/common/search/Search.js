@@ -21,8 +21,8 @@ export default function Search() {
             docsearch({
                 container: '.algolia-search-cont',
                 appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-                apiKey: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
-                indexName: 'ballerina', // it does not change
+                apiKey: 'bb7db1982548a3e7d094cde7e8dd7100',
+                indexName: 'ballerina_pre', // it does not change
             });
         }
         fetchData();

@@ -1,20 +1,12 @@
 name: Generate Proposal MD
 
 on:
-  workflow_dispatch: #periodic
-    inputs:
-      logLevel:
-        description: "Log lev"
-        required: true
-        default: "warning"
+  workflow_dispatch: 
   schedule:
     - cron: "0 0 * * *"
 
 jobs:
-  generateHTML:
-    env:
-      JBAL_VERSION: "2201.0.3"
-      GITHUB_TOKEN: ${{secrets.BALLERINA_BOT_TOKEN}}
+  generateMD:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -37,10 +29,9 @@ jobs:
           else
               DIFF_VAR=true
               UUID_VAL=$(uuidgen)
-              echo $UUID_VAL
               git checkout automate-proposals-$UUID_VAL 2>/dev/null || git checkout -b automate-proposals-$UUID_VAL
-              git config --local user.email "bgpbimsara@gmail.com"
-              git config --local user.name "bimsarapathiraja"
+              git config --local user.email ${{ secrets.BALLERINA_BOT_USERNAME }}
+              git config --local user.name ${{ secrets.BALLERINA_BOT_EMAIL }}
               git add community/proposals/active-proposals.md
               if [-z "$(git status --porcelain)"]; then
                 echo "::set-output name=push::false"

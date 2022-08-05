@@ -43,7 +43,7 @@ To use exported modules of any package, add an import statement in the Ballerina
 
 The import declaration syntax is as follows.
 
-```ballerina
+```bash
 import [org-name/] module-name [as import-prefix];
 ```
 

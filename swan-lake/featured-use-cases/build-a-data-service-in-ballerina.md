@@ -269,7 +269,7 @@ import ballerina/http;
 
 ### Create a service
 Now, you can create a service as shown below. This creates an `/employees` endpoint on port `8080` which can 
-be accessed by visiting `http://localhost:8080/employees` after executing the command `bal run`.
+be accessed by visiting `http://localhost:8080/employees` after executing the `bal run` command.
 
 ```ballerina
 service /employees on new http:Listener(8080) {

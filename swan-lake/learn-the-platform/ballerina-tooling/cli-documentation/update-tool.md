@@ -190,7 +190,7 @@ Dependency 'jdk-11.0.8+10-jre' is already available locally
 Successfully set the latest patch distribution 'slalpha5' as the active distribution
 ```
 
->**Note:** If the active distribution in your environment is `slp4`, it will bump to the next Swan Lake Preview version, which is `slp5`, and will update to it.
+>**Note:** If the active distribution in your environment is `slp4`, it bumps to the next Swan Lake Preview version, which is `slp5`, and updates to it.
 
 ### Pull a specific distribution
 

@@ -23,7 +23,7 @@ redirect_from:
   - /learn/ballerina-openapi-support/
 --- 
 
-Ballerina OpenAPI tool will make it easy for you to start the development of a service documented in an OpenAPI contract in Ballerina by generating a Ballerina service and client skeletons. It enables you to take the code-first API design approach by generating an OpenAPI contract for the given service implementation.
+Ballerina OpenAPI tool makes it easy for you to start the development of a service documented in an OpenAPI contract in Ballerina by generating a Ballerina service and client skeletons. It enables you to take the code-first API design approach by generating an OpenAPI contract for the given service implementation.
 
 The Ballerina OpenAPI tool support provides the following capabilities.
 
@@ -32,7 +32,7 @@ The Ballerina OpenAPI tool support provides the following capabilities.
  1. Generate Ballerina service/client stubs from a given OpenAPI contract file using the CLI tool.
  2. Export the OpenAPI definition from a given Ballerina service implementation using the CLI tool.
  3. Validate the service implementation compliance with a provided OpenAPI contract using the OpenAPI annotation.
-- The OpenAPI compiler plugin will allow you to validate a service implementation against an OpenAPI contract during the compile time. This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract. 
+- The OpenAPI compiler plugin allows you to validate a service implementation against an OpenAPI contract during the compile time. This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract. 
 
 ## Generate Ballerina services from OpenAPI Contracts 
 
@@ -50,7 +50,7 @@ For example,
 $ bal openapi -i hello.yaml --mode service
 ```
 
-This will generate a Ballerina service in a file named `hello_service.bal` and relevant schemas in a file named `types.bal` for the `hello.yaml` OpenAPI contract as depicted below. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
+This generates a Ballerina service in a file named `hello_service.bal` and relevant schemas in a file named `types.bal` for the `hello.yaml` OpenAPI contract as depicted below. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
 
 ```bash
 The service generation process is complete. The following files were created.
@@ -72,7 +72,7 @@ For example,
 $ bal openapi -i hello.yaml --tags "pets", "list"
 ```
 
-Once you execute the command, only the operations related to the given tags will be included in the generated service file.
+Once you execute the command, only the operations related to the given tags get included in the generated service file.
 
 >**Info:** For more information on the command options, see [OpenAPI to Ballerina](/learn/cli-documentation/openapi/#openapi-to-ballerina).
 
@@ -112,13 +112,13 @@ For example,
 $ bal openapi -i helloService.bal
 ```
 
-This will generate the OpenAPI contracts for the Ballerina services in the `hello_service.bal` Ballerina file.
+This generates the OpenAPI contracts for the Ballerina services in the `hello_service.bal` Ballerina file.
 
 ```bash
 $ bal openapi -i helloService.bal -s "/hello"
 ```
 
-This will generate the OpenAPI contracts for the Ballerina service in the `hello_service.bal` Ballerina file
+This generates the OpenAPI contracts for the Ballerina service in the `hello_service.bal` Ballerina file
 of which the `absolute-resource-path` is `/hello`. 
 ### Export with a given title and version
 
@@ -137,7 +137,7 @@ You can use the `@openapi:ServiceInfo` annotation for specifying the title and v
 
 | Attribute           | Description                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Contract: string?` | This is an optional attribute. A path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`. This is an optional attribute. When you use the Ballerina to OpenAPI tool, it will provide an attached OpenAPI contract as the output for a given service. If this attribute is not provided, then the tool generates an OpenAPI Specification(OAS) contract for the given Ballerina file content. |
+| `Contract: string?` | This is an optional attribute. A path to the OpenAPI contract as a string and the OpenAPI file can either be `.yaml` or `.json`. This is an optional attribute. When you use the Ballerina to OpenAPI tool, it provides an attached OpenAPI contract as the output for a given service. If this attribute is not provided, then the tool generates an OpenAPI Specification(OAS) contract for the given Ballerina file content. |
 | `Title: string?`    | This is an optional attribute. You can use this to add the title of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool takes the absolute base path as the title to the OAS contract.                                                                                                                                                                                           |
 | `Version: string?`  | This is an optional attribute. You can use this to add the version of the `info` section in the generated OpenAPI contract. If this attribute is not provided, then the tool picks the Ballerina package version as the OAS version.                                                                                                                                                                                                |
 
@@ -205,7 +205,7 @@ For example,
 ```bash
 $ bal openapi -i hello.yaml --mode client
 ```
-This will generate a Ballerina client stub (`client.bal`), a util file (`utils.bal`) for the relevant utils methods related to the client stub, and a schemas file (`types.bal`) for the `hello.yaml` OpenAPI contract. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
+This generates a Ballerina client stub (`client.bal`), a util file (`utils.bal`) for the relevant utils methods related to the client stub, and a schemas file (`types.bal`) for the `hello.yaml` OpenAPI contract. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
 
 ```bash
 Client generated successfully. The following files were created. 
@@ -225,13 +225,13 @@ For example,
 ```bash
 $ bal openapi -i hello.yaml --mode client --with-tests
 ```
-In addition to the above-mentioned generated file, this will generate a `test.bal` file in the default client generation.
+In addition to the above-mentioned generated file, this generates a `test.bal` file in the default client generation.
 
 ### Generate with nillable types
 
 >**Info:** This is an optional flag in the OpenAPI to Ballerina command.
 
-If your OpenAPI specification includes JSON schema properties that are not marked as **nullable:true**, they may be returned as null in some responses which will result in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning this flag on.
+If your OpenAPI specification includes JSON schema properties that are not marked as **nullable:true**, they may be returned as null in some responses which results in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning this flag on.
 
 ```bash
 $ bal openapi -i <openapi-contract> [-n |--nullable]
@@ -294,8 +294,8 @@ The attributes of the annotation are optional and can be used for each particula
 | Attribute                      | Description                                                                                                                                                                                                                                                                                                                         |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `Contract: string?`            | Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be a `.yaml` or `.json`.                                                                                                                                                                                                           |
-| `Tags: string[]?`              | The compiler will only validate resources against operations, which are tagged with a tag specified in the list. If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract.                                                                                                 |
-| `Operations: string[]?`        | This should contain a list of operation names that need to be validated against the resources in the service. If not specified, the compiler will validate resources against all the operations defined in the OpenAPI contract.  If both tags and operations are defined, it will validate against the union set of the resources. |
+| `Tags: string[]?`              | The compiler only validates resources against operations, which are tagged with a tag specified in the list. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.                                                                                                 |
+| `Operations: string[]?`        | This should contain a list of operation names that need to be validated against the resources in the service. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.  If both tags and operations are defined, it validates against the union set of the resources. |
 | `ExcludeTags: string[]?`       | This stores the tags that do not need to be validated. The annotation can not have both the `excludeTags` and `Tags` attributes at the same time.                                                                                                                                                                                   |
 | `ExcludeOperations: string[]?` | This specifies the operations that do not need to be validated.                                                                                                                                                                                                                                                                     |
 | `FailOnErrors: boolean?`       | To turn off the validation, add this to the annotation with the value as `false`.                                                                                                                                                                                                                                                   |

@@ -12,12 +12,15 @@ redirect_from:
   - /learn/ballerina-shell
 ---
 
-It allows you to evaluate snippets of code without having to write complete programs. 
+The Ballerina shell allows you to evaluate code snippets, eliminating the need to write complete programs.
 
-This will particularly be useful if you are looking to try out the language and its new features, and also for debugging purposes.
+This tool is particularly useful if you want to try out the language and its new features. It is also useful also for debugging purposes.
 
->**Note:** Ballerina Shell currently supports a subset of the language features. Ballerina Shell doesn't support 
-> services and isolation features. Also, Ballerina Shell provides limited feature support for worker-related implementations.
+**Notes**
+
+- Ballerina Shell currently supports a subset of the language features. 
+- Ballerina Shell does not support services and isolation features. 
+- Also, Ballerina Shell provides limited feature support for worker-related implementations.
 
 ## Set up the prerequisites
 
@@ -95,14 +98,14 @@ Any valid Ballerina statement can be evaluated in the Shell. The example below e
 
 ### Evaluate expressions
 
-An expression always produces a value when evaluated. You can use the Shell to evaluate any arbitrary expression. It will output the result of the evaluation.
+An expression always produces a value when evaluated. You can use the Shell to evaluate any arbitrary expression. It outputs the result of the evaluation.
 
 ```bash
 =$ 10 + 20 * 5
 110
 ```
 
-A reference to a variable is also an expression. Thus, evaluating the name of the previously-defined variable will return its value.
+A reference to a variable is also an expression. Thus, evaluating the name of the previously-defined variable returns its value.
 
 ```bash
 =$ name
@@ -111,7 +114,7 @@ A reference to a variable is also an expression. Thus, evaluating the name of th
 
 ### Define variables
 
-Variables defined in the Shell prompt will be treated as module-level variables. Once defined, these can be used in any subsequent evaluation.
+Variables defined in the Shell prompt are treated as module-level variables. Once defined, these can be used in any subsequent evaluation.
 
 ```bash
 =$ int a = 10  
@@ -206,7 +209,7 @@ Now, `sum()` is a function accepting float parameters and returning a float valu
 
 If you have any definitions in source files, you can load these definitions to the Shell through the `/file <FILE_PATH>` command. 
 
-If the source file contains the main function, the Shell will disregard it.
+If the source file contains the main function, the Shell disregards it.
 
 For example, see the sample `test.bal` file below.
 

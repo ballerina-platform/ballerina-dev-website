@@ -111,16 +111,24 @@ The MySQL driver JAR is necessary to connect to and interact with a MySQL server
    artifactId = "mysql-connector-java"
    version = "8.0.26"
    ```
-   
-3. Download the driver JAR manually and update the path in the `Ballerina.toml` file
+   >**Info:** This guide was tested using MySQL driver version 8.0.26. However, any MySQL driver versions after 8.0.26
+   >should also work the same.
+
+3. [Download](https://dev.mysql.com/downloads/connector/j/) the driver JAR manually and update the path in the
+   `Ballerina.toml` file
    ```toml
+   # In Unix operating systems
    [[platform.java11.dependency]]
-   path = "/path/to/mysql/driver.jar”
-   ```
+   path = "path/to/mysql/driver.jar”
    
+   # In Windows operating systems
+   [[platform.java11.dependency]]
+   path = "path\to\mysql\driver.jar”
+   ```
+      
 ### Define configurations
 
-In the package directory, create a new file named `Config.toml` and specify the configurations necessary to connect to the MySQL database.
+In the `data_service` directory (you created above using the `bal new` command), create a new file named `Config.toml`, and specify the configurations below to connect to the MySQL database.
 
 ```toml
 USER="root"
@@ -149,7 +157,6 @@ and [`SQL`](https://lib.ballerina.io/ballerina/sql/latest) packages must be impo
 
 ```ballerina
 import ballerinax/mysql;
-import ballerina/sql;
 ```
 
 The `mysql:Client` can be used to connect to the database. Include the following code in your `main.bal` file and
@@ -179,6 +186,9 @@ The `mysql:Client` provides two primary remote methods for performing queries.
 Use `query()`, `queryRow()` and `execute()` methods to define methods that can perform basic CRUD operations against the MySQL database.
 
 ```ballerina
+import ballerina/sql;
+import ballerinax/mysql;
+
 isolated function addEmployee(Employee emp) returns int|error {
     sql:ExecutionResult result = check dbClient->execute(`
         INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
@@ -259,7 +269,7 @@ import ballerina/http;
 
 ### Create a service
 Now, you can create a service as shown below. This creates an `/employees` endpoint on port `8080` which can 
-be accessed via a browser by visiting `http://locahost:8080/employees` after executing the command `bal run`.
+be accessed by visiting `http://localhost:8080/employees` after executing the command `bal run`.
 
 ```ballerina
 service /employees on new http:Listener(8080) {
@@ -284,9 +294,10 @@ service /employees on new http:Listener(8080) {
 Invoke the defined resource function by sending a `POST` request to `http://localhost:8080/employees` with the 
 required data as a JSON payload.
 
+>**Info:** The following cURL command only works with Unix operating systems.
 ```shell
 curl --location --request POST 'http://localhost:8080/employees/' \
-    --header 'Content-Type: text/plain' \
+    --header 'Content-Type: application/json' \
     --data-raw '{
         "employee_id": 6,
         "first_name": "test",

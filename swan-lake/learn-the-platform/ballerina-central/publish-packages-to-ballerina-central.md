@@ -1,11 +1,11 @@
 ---
 layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: Publish packages to Ballerina Central
-description: The sections below include information about working with library packages.
+description: A package uses Ballerina library packages as dependencies. The sections below include information about working with library packages.
 keywords: ballerina, programming language, ballerina packages, libraries, publishing packages
 permalink: /learn/publish-packages-to-ballerina-central/
 active: publish-packages-to-ballerina-central
-intro: The sections below include information about working with library packages.
+intro: A package uses Ballerina library packages as dependencies. The sections below include information about working with library packages.
 redirect_from:
  - /learn/user-guide/ballerina-packages/sharing-a-library-package
  - /learn/user-guide/ballerina-packages/sharing-a-library-package/
@@ -18,18 +18,15 @@ redirect_from:
  - /learn/guides/publishing-packages-to-ballerina-central
 ---
 
-A package uses Ballerina library packages as dependencies. Use the `bal new` command to create a library package.
-
 ## Create a library package
 
-Execute the `bal new -t lib` command to create a new library package.
+Execute the command below to create a new library package named `hello`.
 
 ```bash
 bal new --template lib hello
 ```
 
-This will create the `Ballerina.toml` file, the `hello.bal` source file, the `Package.md`, the `resources/`, `tests/` directories, and `Module.md`.
- For more information on these files, see [Package layout](/learn/package-references/#package-layout).
+This creates the files below.
 
 ```bash
 > cd hello
@@ -52,20 +49,14 @@ This will create the `Ballerina.toml` file, the `hello.bal` source file, the `Pa
  
 For more information on these files, see [Package layout](/learn/package-references/#package-layout).
 
-```toml
-[package]
-org = "user"
-name = "hello"
-version = "0.1.0"
+To generate the Ballerina archive, execute the command below.
 
-[build-options]
-observabilityIncluded = true
 ```
-
-Execute the `bal pack` command to generate the Ballerina archive.
-
-```bash
 bal pack
+```
+You view the output below.
+
+```
 Compiling source
 	user/hello:0.1.0
 
@@ -98,9 +89,9 @@ username = ""
 password = ""
 ```
 
-### Organizations
+### Define the organization
 
-When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/package-references/#the-ballerinatoml-file) file. Therefore, when you have more than one organization in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package.If you don't have any organizations created, you can visit the [organizations page](https://central.ballerina.io/dashboard?tab=organizations) to create one.
+When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/package-references/#the-ballerinatoml-file) file. Therefore, when you have more than one organization in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package. If you do not have any organizations created, you can visit the [organizations page](https://central.ballerina.io/dashboard?tab=organizations) to create one.
 
 Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 

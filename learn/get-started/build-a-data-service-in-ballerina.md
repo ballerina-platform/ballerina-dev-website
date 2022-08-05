@@ -124,16 +124,24 @@ The MySQL driver JAR is necessary to connect to and interact with a MySQL server
    artifactId = "mysql-connector-java"
    version = "8.0.26"
    ```
+   >**Info:** This guide was tested using MySQL driver version 8.0.26. However, any MySQL driver versions after 8.0.26
+   >should also work the same.
    
-3. Download the driver JAR manually and update the path in the `Ballerina.toml` file
+3. [Download](https://dev.mysql.com/downloads/connector/j/) the driver JAR manually and update the path in the 
+   `Ballerina.toml` file
    ```toml
+   # In Unix operating systems
    [[platform.java11.dependency]]
-   path = "/path/to/mysql/driver.jar”
+   path = "path/to/mysql/driver.jar”
+   
+   # In Windows operating systems
+   [[platform.java11.dependency]]
+   path = "path\to\mysql\driver.jar”
    ```
    
 ### Define MySQL configurations
 
-In the package directory, create a new file named `Config.toml` and specify the configurations below to connect to the MySQL database.
+In the newly created directory `"data_service"` (using the `bal new` command), create a new file named `Config.toml` and specify the configurations below to connect to the MySQL database.
 
 ```toml
 USER="root"
@@ -166,7 +174,6 @@ and [`sql`](https://lib.ballerina.io/ballerina/sql/latest) packages for creating
 
 ```ballerina
 import ballerinax/mysql;
-import ballerina/sql;
 ```
 
 #### Create the MySQL client
@@ -205,6 +212,9 @@ The `mysql:Client` provides two primary remote methods for performing queries.
 To use the `query()`, `queryRow()`, and `execute()` methods, which can perform basic CRUD operations against the MySQL database, add the code below to the `main.bal` file. 
 
 ```ballerina
+import ballerina/sql;
+import ballerinax/mysql;
+
 isolated function addEmployee(Employee emp) returns int|error {
     sql:ExecutionResult result = check dbClient->execute(`
         INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
@@ -274,7 +284,7 @@ isolated function removeEmployee(int id) returns int|error {
 }
 ```
 
-## The  `main.bal` file complete code
+## The `main.bal` file complete code
 
 ```ballerina
 import ballerina/time;
@@ -471,7 +481,7 @@ bal run
 You view the output below.
 
 >**Info:** This creates an `/employees` endpoint on port `8080`, which can 
-be accessed via a browser by visiting `http://locahost:8080/employees`.
+be accessed via a browser by visiting `http://localhost:8080/employees`.
 
 ## Try the service
 
@@ -479,7 +489,7 @@ Invoke the defined resource function by sending the `POST` request below to `htt
 
 ```bash
 curl --location --request POST 'http://localhost:8080/employees/' \
-    --header 'Content-Type: text/plain' \
+    --header 'Content-Type: application/json' \
     --data-raw '{
         "employee_id": 6,
         "first_name": "test",

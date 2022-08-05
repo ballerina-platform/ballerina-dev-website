@@ -44,11 +44,11 @@ To use exported modules of any package, add an import statement in the Ballerina
 The import declaration syntax is as follows.
 
 ```ballerina
-import [org_name/] module_name [as import_prefix];
+import [org-name/] module-name [as import-prefix];
 ```
 
-* The `import_prefix` has to be a valid Ballerina identifier, and it is used to refer to public symbols in the declared module.
-* The `import_prefix` is optional. You can use the last part of the module name if an `import_prefix` is unavailable.
+* The `import-prefix` has to be a valid Ballerina identifier, and it is used to refer to public symbols in the declared module.
+* The `import-prefix` is optional. You can use the last part of the module name if an `import-prefix` is unavailable.
 
 You can import a module by providing the organization name, and the module name. The module name consists of the package name, and the name of the module root directory.
 The module name of the default module is always the package name. 
@@ -122,18 +122,18 @@ The local repository is useful to test a package in the development phase or to 
 
 1. Generate the Ballerina archive after editing the package source files as required.
 
-   ```
+   ```bash
    bal pack
    ```
 
 2. Publish to the local repository.
-   ```
+   ```bash
    bal push --repository local
    ```
 
    If you already have the path of Ballerina archive, then you can simply execute the following command.
 
-    ```
+    ```bash
     bal push --repository local <path-to-bala-archive>
     ```
 
@@ -163,7 +163,7 @@ By default, the compiler always looks up the latest compatible versions of the d
 Using the `--sticky` flag with `bal build` will force the compiler to stick to the exact versions locked in the `Dependencies.toml`. 
 In other words, the CLI disables the automatic-update feature when you provide the `--sticky` flag.
    
-```
+```bash
 bal build --sticky
 ```
 
@@ -194,7 +194,7 @@ When building the dependency graph, if there is more than one version for a spec
 
 For example, assume one dependency in your package depends on the `1.0.0` version of the `ballerina/observe` package, and another dependency depends on `0.9.0` of the same. The build fails with the following error message.
 
-```
+```bash
 error: compilation failed: Two incompatible versions exist in the dependency graph:
 ballerina/observe versions: 0.9.0, 1.0.0
 ```

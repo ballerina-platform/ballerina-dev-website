@@ -15,6 +15,7 @@ jobs:
     
     env:
       NEXT_PUBLIC_BASE_PATH: ''
+      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
 
     strategy:
       matrix:
@@ -42,7 +43,20 @@ jobs:
          ./utils/rearrangeFiles.sh
       shell: bash
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@v4.3.3
-      with:
-        branch: gh-pages
-        folder: out
+      run: |
+        cd ./out
+        git init
+        git checkout deploy-website-$GITHUB_SHA 2>/dev/null || git checkout -b deploy-website-$GITHUB_SHA
+        git config --global user.email "saranimendisb@gmail.com"
+        git config --global user.name "sm1990"
+        git add .
+        git commit --allow-empty -m 'Deploy website'
+        git push --set-upstream origin deploy-website-$GITHUB_SHA
+        echo 'Successfully pushed to deploy-website-$GITHUB_SHA branch'
+    - name: Create pull request for new site
+      shell: bash
+      run: |
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub pull-request -b gh-pages -m '[Automated] Deploy website'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

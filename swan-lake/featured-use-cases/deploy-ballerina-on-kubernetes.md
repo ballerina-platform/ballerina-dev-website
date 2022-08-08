@@ -16,7 +16,7 @@ redirect_from:
 
 In this section, you will be writing a simple Ballerina service and then, you will dockerize the application and deploy it in Kubernetes.
 
-## Setting up the prerequisites
+## Set up the prerequisites
 
 To complete this tutorial, you need:
 
@@ -32,7 +32,7 @@ To complete this tutorial, you need:
 
 Code to Cloud is a compiler extension, which is packed with Ballerina, which makes it easier to generate artifacts required for the cloud from your Ballerina code. Currently, you could generate Docker and Kubernetes artifacts from the Ballerina code. This process encourages you to write cloud-ready code from day one without any additional effort. 
 
-## Writing the Ballerina service
+## Write the Ballerina service
 
 Let’s write a Ballerina program that returns a `Hello, World!` string upon invoking the resource. Execute the `bal new` command to create a new Ballerina package. 
 

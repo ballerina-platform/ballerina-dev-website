@@ -33,6 +33,15 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Checkout gh-pages
+        run: |
+          mkdir gh-pages
+          cd gh-pages
+          git init
+          git remote add origin https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-dev-website.git
+          git fetch origin
+          git checkout -b deploy-website-$GITHUB_SHA origin/gh-pages
+
       - name: Export static files
         run: npm run export
 
@@ -47,19 +56,19 @@ jobs:
 
       - name: Deploy
         run: |
-          cd ./out
-          git init
-          git checkout deploy-website-$GITHUB_SHA 2>/dev/null || git checkout -b deploy-website-$GITHUB_SHA
-          git config --global user.email ${{ secrets.EMAIL }}
-          git config --global user.name ${{ secrets.NAME }}
+          cp -r out/. gh-pages
+          cd gh-pages
+          git config --global user.email "ballerina-bot@ballerina.org"
+          git config --global user.name "ballerina-bot"
           git add .
           git commit --allow-empty -m 'Deploy website'
-          git push --set-upstream origin deploy-website-$GITHUB_SHA
+          git push origin deploy-website-$GITHUB_SHA
           echo 'Successfully pushed to deploy-website-$GITHUB_SHA branch'
 
       - name: Create pull request for new site
         shell: bash
         run: |
+          cd gh-pages
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
           bin/hub pull-request -b gh-pages -m '[Automated] Deploy website'
         env:

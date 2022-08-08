@@ -690,7 +690,7 @@ In the above code example, the type **``R``** is a record. **``t``** is a ``type
 .
 The ``typeof`` operator gets the dynamic type of a value. Dynamic types for mutable structures are inherent types.
 
-## **``ensureType``** function
+## ``ensureType`` function
 
 The **``ensureType()``** function is a lang library function that is similar to a cast. It takes a ``typedesc`` value as an argument. With the usual cast operation, you get a panic if the cast is not possible, and this is something that you may not want when dealing with situations such as handling user inputs. With ``ensureType()`` an error is returned.
 

@@ -132,8 +132,10 @@ export default function Toc(props) {
         .replace(/<code>/g, "")
         .replace(/<\/code>/g, "")
         .replace(/[&\/\\#,+()!$~%.'’":*?<>{}]/g, "")
+        .replace(/x26;/g, "")
         .toLowerCase()
-        .replace(/ /g, "-");
+        .replace(/ /g, "-")
+        .replace(/x3c;/g, "");
 
       const headingCount = getArrayCount(uniqueHeadingList, sectionId);
       uniqueHeadingList.push(sectionId);
@@ -169,7 +171,7 @@ export default function Toc(props) {
     let titleCount = 0,
       codeBlockFound = false;
     let newArray = myArray.map((value) => {
-      if (value.match(/^```/)) {
+      if (value.match(/^\s*```/)) {
         codeBlockFound = !codeBlockFound;
       }
       if (value.match(/^#/) && !codeBlockFound) {

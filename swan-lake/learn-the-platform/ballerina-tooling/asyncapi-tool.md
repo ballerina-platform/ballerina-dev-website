@@ -12,7 +12,7 @@ redirect_from:
   - /learn/asyncapi-tool
 ---
 
-The Ballerina AsyncAPI tool will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating a Ballerina service and listener skeletons.
+The Ballerina AsyncAPI tool makes it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating a Ballerina service and listener skeletons.
 
 ## Set up the prerequisites
 
@@ -93,7 +93,7 @@ channels:
              - workspace
 ```
 
-There are custom tags in this YAML starting with `x-ballerina`. It is very important that these tags must be added to the AsyncAPI contract before using the tool. The usage of those tags will be as follows.
+There are custom tags in this YAML starting with `x-ballerina`. It is very important that these tags must be added to the AsyncAPI contract before using the tool. The usage of those tags are as follows.
 
 1\. `x-ballerina-event-identifier` - When the listener receives an event from the event source (Slack is the event source in this scenario), there should be a way to identify the event type. This includes two parts, `type`, and `path`.
 
@@ -129,15 +129,15 @@ This generates a Ballerina source (i.e., the four Ballerina files below) from th
 3. `listener.bal` - contains the HTTP listener, which listens to the relevant third-party service
 4. `dispacther_service.bal` - contains the event dispatching logic
 
-The generated Ballerina sources will be written into the same directory from which the command is run. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package. If you want to generate Ballerina sources to a specific provided output location, you can modify the above command as below.
+The generated Ballerina sources are written into the same directory from which the command is run. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package. If you want to generate Ballerina sources to a specific provided output location, you can modify the above command as below.
 
 ```bash
 bal asyncapi -i hello.yaml -o ./output_path
 ```
 
-Then, the generated files can be modified according to the custom requirements. When modifying the generated code segments, it will be easier to consider the below facts.
+Then, the generated files can be modified according to the custom requirements. When modifying the generated code segments, it is easier to consider the below facts.
 
-- All the incoming requests will receive to the resource function in the `dispatcher_service.bal` file. Hence, if there is a necessity to add an authentication logic for the incoming calls, that logic can be included there before processing the incoming HTTP request.
+- All the incoming requests are received by the resource function in the `dispatcher_service.bal` file. Hence, if there is a necessity to add an authentication logic for the incoming calls, that logic can be included there before processing the incoming HTTP request.
 - If more information is needed when initializing the listener such as secrets, endpoint URLs, tokens, refresh tokens, etc., update the `init` function in the `listener.bal` file.
 
 ## Execute the generated sources
@@ -148,7 +148,7 @@ Follow the steps below to execute the generated Ballerina sources.
 
 2\. Execute the `bal init` command.
 
-> **Info:** This will generate a `Ballerina.toml` file.
+> **Info:** This generates a `Ballerina.toml` file.
 
 3\. Create a new Ballerina file inside the directory (e.g., `slack_service.bal` ) and copy the code below to it.
 

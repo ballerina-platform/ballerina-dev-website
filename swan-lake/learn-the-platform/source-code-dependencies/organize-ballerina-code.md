@@ -140,17 +140,18 @@ The package structure after adding a non-default module will have the directory 
 ## Import a module from the same package 
 
 You can access any public symbol from another module of the package by importing the particular module using an import declaration. 
+
 The import declaration syntax is as follows.
 
 ```ballerina
-import module-name [as import-prefix];
+import module_name [as import_prefix];
 ```
 
-* The `import-prefix` has to be a valid Ballerina identifier and the `import-prefix` is used to refer to public symbols in the declared module.
-* The `import-prefix` is optional. If it is not available, the last part of the module name can be used.
+In the above syntax:
+* the `import_prefix` has to be a valid Ballerina identifier and the `import_prefix` is used to refer to public symbols in the declared module.
+* the `import_prefix` is optional. If it is not available, the last part of the module name can be used.
 
-In a package, which has the default module containing the `main.bal` file and a non-default module named `hello-world.util`, 
-you can add a public function in the `hello_world.util` module and use this function in the `main.bal` file in the default module.
+In a package, which has the default module containing the `main.bal` file and a non-default module named `hello-world.util`, you can add a public function in the `hello_world.util` module and use this function in the `main.bal` file in the default module.
 
 ```ballerina
 import hello_world.util;

@@ -2,7 +2,7 @@
 layout: ballerina-inner-page 
 title: Active proposals 
 description: This is a collection of active proposals for Ballerina by the Ballerina community. 
-intro: The active proposal list for the Ballerina GitHub repositories. 
+intro: The active proposals list for the Ballerina GitHub repositories. 
 keywords: ballerina, community, ballerina community 
 permalink: /community/active-proposals 
 --- 
@@ -11,9 +11,12 @@ permalink: /community/active-proposals
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
 |[Support for `group by` clause](https://github.com/ballerina-platform/ballerina-lang/issues/36810)|[KavinduZoysa](https://github.com/KavinduZoysa)|10|2022-07-01|N/A|
-|[Implement new service typing proposal](https://github.com/ballerina-platform/ballerina-lang/issues/26064)|[rdhananjaya](https://github.com/rdhananjaya)|0|2020-09-24|N/A|
-|[Suggestion: Ability to attach @resources to a service](https://github.com/ballerina-platform/ballerina-lang/issues/19523)|[ramith](https://github.com/ramith)|0|2019-10-22|N/A|
-|[[Proposal] Add support for MacPorts package manager](https://github.com/ballerina-platform/ballerina-lang/issues/9675)|[conradwt](https://github.com/conradwt)|9|2018-07-18|N/A|
+
+## [ballerina-distribution](https://github.com/ballerina-platform/ballerina-distribution)
+
+|Proposal|Author|Comments|Created date|Status| 
+|---|----|----|----|---| 
+|[[Proposal] Add support for MacPorts package manager](https://github.com/ballerina-platform/ballerina-distribution/issues/3053)|[conradwt](https://github.com/conradwt)|9|2018-07-18|N/A|
 
 ## [ballerina-spec](https://github.com/ballerina-platform/ballerina-spec)
 

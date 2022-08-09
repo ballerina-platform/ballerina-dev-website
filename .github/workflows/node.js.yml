@@ -46,18 +46,18 @@ jobs:
         run: npm run export
 
       - name: Add .nojekyll file
-        run: touch ./out/.nojekyll
+        run: touch out/.nojekyll
 
       - name: Rearrange files to match the urls
         run: |
-          chmod +x ./utils/rearrangeFiles.sh
-          ./utils/rearrangeFiles.sh
+          chmod +x utils/rearrangeFiles.sh
+          utils/rearrangeFiles.sh
         shell: bash
 
       - name: Deploy
         run: |
-          cp -r out/. gh-pages
-          cd gh-pages
+          cp -r .github CNAME robots.txt gh-pages/.git out
+          cd out
           git config --global user.email "ballerina-bot@ballerina.org"
           git config --global user.name "ballerina-bot"
           git add .
@@ -68,7 +68,7 @@ jobs:
       - name: Create pull request for new site
         shell: bash
         run: |
-          cd gh-pages
+          cd out
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
           bin/hub pull-request -b gh-pages -m '[Automated] Deploy website'
         env:

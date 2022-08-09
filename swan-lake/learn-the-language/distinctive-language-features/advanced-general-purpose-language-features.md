@@ -202,7 +202,7 @@ Conceptually, a distinct type including another distinct type results in multipl
 One scenario where you would want to use a distinct object type is when you are inter-operating with another program in a different programming language, where you want to have distinct types corresponding to the type structures in the other language. For example, if you are interoperating with Java, you want each of the Ballerina classes to correspond to the Java class to capture the Java semantics correctly. Similarly, while interacting with the external world through API interfaces like GraphQL, you may want to leverage nominal typing via this distinct typing feature of Ballerina.
 
 
-## Readonly objects and classes
+## Read-only objects and classes
 
 You can also define read-only objects and classes. An object is ``readonly`` if all of its fields are ``final`` and are of types that are subtypes of the ``readonly`` type. You can use **``readonly & T``** to declare an object ``T`` as ``readonly``.
 

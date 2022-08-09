@@ -48,7 +48,7 @@ The second endpoint is about getting data filtered from the service. The data is
 
 Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
-> **Info:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organize-ballerina-code/).
+> **Info:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
 ```bash
 $ bal new covid19 -t service
@@ -65,8 +65,8 @@ This creates a directory named `covid19` with the default module along with a sa
 ```bash
 .
 ├── covid19
-│   ├── Ballerina.toml
-│   └── service.bal
+│   ├── Ballerina.toml
+│   └── service.bal
 ```
 
 - `Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. However, this will not be used in this guide. 
@@ -392,5 +392,5 @@ You view the output below.
 ## Learn more
 
 To learn more about RESTful services in Ballerina, see the following:
-- [`http` library documentation](https://lib.ballerina.io/ballerina/http/latest)
-- [Service path and resource path](/learn/by-example/http-absolute-path-and-path)
+- [`http` module documentation](https://lib.ballerina.io/ballerina/http/latest)
+- [Service path and resource path](/learn/by-example/http-absolute-path-and-path.html)

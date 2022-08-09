@@ -50,27 +50,28 @@ To create a simple service definition in Protocol Buffers, follow these steps:
 4. Copy the service definition below to the `helloworld.proto` file.
   > **Info:** This sample service definition is taken from the [Quick start](https://grpc.io/docs/languages/go/quickstart/) guide on the gRPC official site.
 
-  ```proto
-  syntax = "proto3";
 
-  package helloworld;
+    ```proto
+    syntax = "proto3";
 
-  // The greeting service definition.
-  service Greeter {
-    // Sends a greeting.
-    rpc sayHello(HelloRequest) returns (HelloReply);
-  }
+    package helloworld;
 
-  // The request message with the user's name.
-  message HelloRequest {
-    string name = 1;
-  }
+    // The greeting service definition.
+    service Greeter {
+      // Sends a greeting.
+      rpc sayHello(HelloRequest) returns (HelloReply);
+    }
 
-  // The response message with the greetings.
-  message HelloReply {
-    string message = 1;
-  }
-  ```
+    // The request message with the user's name.
+    message HelloRequest {
+      string name = 1;
+    }
+
+    // The response message with the greetings.
+    message HelloReply {
+      string message = 1;
+    }
+    ```
 
 Now, let’s implement the gRPC service and client in the Ballerina language.
 
@@ -99,8 +100,8 @@ This creates a directory named `greeter_service` with the files below.
 ```bash
 .
 ├── greeter_service
-│   ├── Ballerina.toml
-│   └── main.bal
+│   ├── Ballerina.toml
+│   └── main.bal
 ```
 
 >**Tip:** Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
@@ -125,8 +126,8 @@ This creates the two files below inside the `greeter_service` directory.
 ```bash
 .
 ├── greeter_service
-│   ├── greeter_service.bal
-│   └── helloworld_pb.bal
+│   ├── greeter_service.bal
+│   └── helloworld_pb.bal
 ```
 
 - The `helloworld_pb.bal` file is the stub file, which contains classes that the client/service uses to talk to each other and the Ballerina types corresponding to the request and response messages.
@@ -206,8 +207,8 @@ This creates a directory named `greeter_client` with the files below.
 ```bash
 .
 ├── greeter_client
-│   ├── Ballerina.toml
-│   └── main.bal
+│   ├── Ballerina.toml
+│   └── main.bal
 ```
 
 >**Tip:** Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
@@ -232,8 +233,8 @@ This creates the two files below inside the `greeter_client` directory.
 ```bash
 .
 ├── greeter_client
-│   ├── greeter_client.bal
-│   └── helloworld_pb.bal
+│   ├── greeter_client.bal
+│   └── helloworld_pb.bal
 ```
 
 - The `helloworld_pb.bal` file is the stub file, which contains the classes that the client/service uses to talk to each
@@ -281,6 +282,6 @@ Response : Hello Ballerina
 ## Learn more
 
 To learn more about gRPC support in Ballerina, see the following:
-- [`grpc` library documentation](https://lib.ballerina.io/ballerina/grpc/latest)
+- [`grpc` module documentation](https://lib.ballerina.io/ballerina/grpc/latest)
 - [gRPC CLI tooling guide](/learn/cli-documentation/grpc/)
-- [Simple RPC](/learn/by-example/grpc-simple)
+- [Simple RPC](/learn/by-example/grpc-simple.html)

@@ -1,5 +1,6 @@
 .eventRows {
     margin-bottom: 40px;
+    font-weight: 400;
 }
 
 .eventRows p {
@@ -21,7 +22,7 @@
 }
 
 .eventDateNum {
-    font-size: 20px !important;
+    font-size: 16px !important;
     font-weight: 450 !important;
 }
 
@@ -31,7 +32,8 @@
 
 .eventRows h5 {
     margin-bottom: 18px;
-    font-size: 20px;
+    /* font-size: 20px; */
+    font-size: 16px;
     scroll-margin-top: 40px;
     color: #57595d !important;
     line-height: 21px;

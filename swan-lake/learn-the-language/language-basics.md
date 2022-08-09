@@ -1,11 +1,11 @@
 ---
 layout: ballerina-language-basics-left-nav-pages-swanlake
 title: Language basics
-description: This page provides an introduction to the Ballerina language to help you get started with the basics that are common to all C-Family programming languages. 
+description: This guide introduces the Ballerina language to help you get started with basics that are common to all C-Family programming languages.
 keywords: ballerina, programming language, ballerina packages,language-guide
 permalink: /learn/language-basics/
 active: language-basics
-intro: This page provides an introduction to the Ballerina language to help you get started with the basics that are common to all C-Family programming languages. 
+intro: This guide introduces the Ballerina language to help you get started with basics that are common to all C-Family programming languages.
 redirect_from:
 - /learn/language-basics
 - /learn/getting-started/language-basics/

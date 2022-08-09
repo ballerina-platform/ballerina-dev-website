@@ -89,7 +89,6 @@ export default function PostPage({
   third,
   slug,
 }) {
-  // const MarkdownNavbar = dynamic(() => import('react-markdown-navbar'), { ssr: false });
 
   // Update values in markdown files
   const engine = new Liquid();
@@ -429,22 +428,19 @@ export default function PostPage({
                   );
                 },
                 code({ node, inline, className, children, ...props }) {
-                  const match = /language-(\w+)/.exec(className || "");
-                  return !inline && match ? (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: HighlightSyntax(
-                          String(children).replace(/\n$/, ""),
-                          match[1].toLowerCase()
-                        ),
-                      }}
-                    />
-                  ) : (
+                  const match = /language-(\w+)/.exec(className || '')
+                  return inline ?
                     <code className={className} {...props}>
                       {children}
                     </code>
-                  );
-                },
+                    : match ?
+                      <div dangerouslySetInnerHTML={{ __html: HighlightSyntax(String(children).replace(/\n$/, ''), match[1].toLowerCase()) }} />
+                      : <pre className='default'>
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      </pre>
+                }
               }}
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}

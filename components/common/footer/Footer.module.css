@@ -27,8 +27,26 @@
     float: left;
 }
 
-.smIcons, .subscribe {
+.subscription {
+    /* margin-top: 7px; */
+    /* text-align: center; */
+}
+
+/* .smIcons, .subscribe {
     display: inline-block;
+} */
+
+.smIcons {
+    display: inline-block;
+}
+
+.subscribe {
+    display: block;
+}
+
+.subscribe + .subscribe {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .socialMedia ul li {
@@ -45,9 +63,23 @@
     color: #fff;
     padding: 10px 20px;
     display: inline-block;
-    width: 100%;
+    /* width: 100%; */
     text-align: center;
     text-decoration: none;
+}
+
+.subRss {
+    /* padding: 10px 20px 10px 50px !important; */
+    padding: 10px 52px 10px 54px !important;
+    /* margin-bottom: 2px;*/
+    display: inline-block; 
+    background-image: url(/img/rss.svg);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 20px;
+    background-color: #20b6b0;
+    color: #fff !important;
+    /* font-weight: 500; */
 }
 
 .subscribeBtn:hover, .subscribe a:hover {
@@ -86,11 +118,22 @@
     line-height: 16px !important;
 }
 
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
     .inspire {
         padding-left: 40px;
     }
-}
+} */
+
+/* @media (min-width: 576px) {
+    .subscribe {
+        display: inline-block;
+    }
+
+    .subscribe + .subscribe {
+        margin-left: 10px;
+    }
+} */
+
 
 .policyLinks {
     border-top: 1px solid #c7c7c7;

@@ -27,13 +27,13 @@ a:focus {
   margin-right: -15px !important;
 }
 
-h2 {
+/* h2 {
   font-size: 30px;
   line-height: 35px;
   font-weight: 200;
   margin: 21px 0 25px;
   letter-spacing: 0;
-}
+} */
 
 a.cDownload {
   display: block;

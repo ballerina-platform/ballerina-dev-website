@@ -3,7 +3,6 @@ import matter from "gray-matter";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
-import MarkdownNavbar from "markdown-navbar";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import Image from "next-image-export-optimizer";
@@ -431,22 +430,19 @@ export default function PostPage({ frontmatter, content, id }) {
                   );
                 },
                 code({ node, inline, className, children, ...props }) {
-                  const match = /language-(\w+)/.exec(className || "");
-                  return !inline && match ? (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: HighlightSyntax(
-                          String(children).replace(/\n$/, ""),
-                          match[1].toLowerCase()
-                        ),
-                      }}
-                    />
-                  ) : (
+                  const match = /language-(\w+)/.exec(className || '')
+                  return inline ?
                     <code className={className} {...props}>
                       {children}
                     </code>
-                  );
-                },
+                    : match ?
+                      <div dangerouslySetInnerHTML={{ __html: HighlightSyntax(String(children).replace(/\n$/, ''), match[1].toLowerCase()) }} />
+                      : <pre className='default'>
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      </pre>
+                }
               }}
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}

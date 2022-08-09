@@ -3,7 +3,6 @@ import matter from "gray-matter";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
-import MarkdownNavbar from "markdown-navbar";
 import remarkGfm from "remark-gfm";
 import Image from "next-image-export-optimizer";
 import rehypeRaw from "rehype-raw";

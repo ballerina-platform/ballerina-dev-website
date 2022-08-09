@@ -78,7 +78,7 @@ function add(int x, int y) returns int {
 
 In the above code example, you see the definition for the **``add``** function. It accepts two parameters of type ``int``, **``x``**, and **``y``**. It also returns a value of type `int`. The ``returns`` keyword specifies the type of return value.
 
-The function performs a simple addition operation and stores the result in another variable **``sum``** of type ``int``. The value assigned to **``sum``** is returned using the ``return`` statement.
+The function performs a simple addition operation and stores the result in another variable **``sum``** of type ``int``. The ``return`` statement returns the value assigned to **``sum``**.
 
 ## Syntax
 
@@ -97,7 +97,7 @@ function พิมพ์ชื่อ(string ชื่อ) {
 string 'string = "xyz";
 ```
 
-The overall syntax is pretty-much C-like. Comments start with ``//`` and end at the end of the line. Module definitions/declarations and statements use braces or terminate with a semicolon.   
+The overall syntax is more or less C-like. Comments start with ``//`` and end at the end of the line. Module definitions/declarations and statements use braces or terminate with a semicolon.   
 
 You can also use Unicode characters in identifiers. Unicode literals can be defined using the `\u{H}` syntax to represent Unicode code points in the hex format.
 
@@ -142,13 +142,13 @@ boolean flag = true;
 
 Ballerina supports the logical operators, ``!``, ``||``, and ``&&`` with boolean values. The ``||`` and ``&&`` operators support the same short-circuit behavior as in C. Implicit conversion between boolean and integer is not supported.
 
-Booleans are also used in conditional expressions like:
+Booleans are also used in conditional expressions:
 
 ```ballerina
 int n = flag ? 1 : 2;
 ```
 
-As usual, booleans can be used in if-else statements like:
+As usual, booleans can be used in if-else statements:
 
 ```ballerina
 function foo() {
@@ -160,7 +160,7 @@ function foo() {
 }
 ```
 
-Curly braces are required in if-else statements and all compound statements in Ballerina. However, the parenthesis before the curly braces are optional.
+If-else statements and all compound statements in Ballerina require curly braces. However, the parenthesis before the curly braces are optional.
 
 ## Nil
 
@@ -185,7 +185,7 @@ int n = v ?: 0;
 ```
 
 Leaving off the return type of a function is the same as defining nil as the return type. Moreover, falling off the end of a function or `return`
-by itself is equivalent to `return ()`. Therefore, a function can be written as:
+by itself is equivalent to `return ()`. Therefore, you can write a function as follows:
 
 ```ballerina
 function foo() returns () {
@@ -227,7 +227,7 @@ int n = s.length();
 
 The ``substring()`` and ``length()`` functions are ``string`` lang library functions called using the convenient method call syntax. However, the functions are called on variables/values of the ``string`` type rather than objects.
 
-Ballerina imports the lang library for **``ballerina/lang.T``** where **``T``** represents a built-in type. Therefore, in the case of the above code example, the length of the string value can also be found by importing the **``ballerina/lang.string``** module and calling the **``length()``** function using the function call syntax.
+Ballerina imports the lang library for **``ballerina/lang.T``** where **``T``** represents a built-in type. Therefore, in the case of the above code example, you can also find the length of the string value by importing the **``ballerina/lang.string``** module and calling the **``length()``** function using the function call syntax.
 
 ```ballerina
 int n = string:length(s);
@@ -249,7 +249,7 @@ You can index the individual elements of this array using the ``v[i]`` notation.
 int n = v[1];
 ```
 
-Arrays are mutable. Ordering is supported based on a lexicographical ordering of members. 
+Arrays are mutable. Ballerina supports ordering based on a lexicographical ordering of members.
 
 The ``==`` and ``!=`` comparison operators perform a deep comparison of two arrays based on the members and their order instead of the memory location.
 
@@ -275,7 +275,7 @@ function sum(float[] v) returns float {
 
 In this code example, the **``x``** variable of the ``float`` type is bound to each element of the **``v``**  array. Similarly, it also works with the ``string`` type by iterating over each character in the string.
 
-The foreach statement can also be constructed using a range expression such as ``..<``.
+You can also construct the ``foreach`` statement using a range expression such as `..<`.
 
 ```ballerina
 function sum(float[ ] v) returns float {
@@ -287,7 +287,7 @@ function sum(float[ ] v) returns float {
 }
 ```
 
-Here the **``i``** variable of the ``int`` type is set to a sequence of linearly incrementing numbers that ranges from zero to the length of the array **``v``**. Therefore, the ``foreach`` statement iterates over the length of the array and increments **``i``** during each iteration.
+The above statement sets the **``i``** variable of the ``int`` type to a sequence of linearly incrementing numbers that range from zero to the length of the array **``v``**. Therefore, the ``foreach`` statement iterates over the length of the array and increments **``i``** during each iteration.
 
 ## ``while`` Statement
 
@@ -356,7 +356,7 @@ int? v = m["x"];
   
 When used in a ``foreach`` loop, it will iterate over all the values of the map. You can also use lang library functions such as *``get(k)``* to get the value mapped to the string key *``k``*, or *``keys( )``* to return an array containing all the key strings of the map.
 
-The use of comparison operators ``==`` and ``!=`` on a map will perform a deep comparison. Two maps are equal if they have the same set of keys and the values for each key are equal.
+You can perform a deep comparison by using the ``==`` and ``!=`` comparison operators on a map. Two maps are equal if they have the same set of keys and the values for each key are equal.
 
 ## Type definitions
 
@@ -411,7 +411,7 @@ Records are mutable. *``c.x``* is an ``lvalue``. Rules for record comparison are
 
 In Ballerina, the data types are defined in terms of a set of values. A type is a label for a set of values. These values can be part of a finite set or an infinite set.
 
-For example, the ``int`` type has a finite set consisting of values within the range of 64-bit signed numbers. The ``string`` type is an infinite set that contains sequences of any number or order of characters. In this way, the universe of all values is partitioned into the basic types supported by Ballerina such as nil, boolean, integer, floating point, and string. Values of these basic types are immutable, and each value belongs to exactly one basic type.
+For example, the ``int`` type has a finite set consisting of values within the range of 64-bit signed numbers. The ``string`` type is an infinite set that contains sequences of any number or order of characters. In this way, Ballerina partitions the universe of all values into the basic types it supports such as nil, boolean, integer, floating point, and string. Values of these basic types are immutable, and each value belongs to exactly one basic type.
 
 There is also a concept of semantic subtyping, which means a subset of the values of the basic types. For example, the ``byte`` type is a subset of integer as it allows only a subset of values that are a part of the integer value set.
 
@@ -421,7 +421,7 @@ Additionally, Ballerina allows you to define your own types, such as arrays, map
 
 Ballerina's type system allows you to define custom types based on the combination of two or more types. A union is, therefore, a superset of that combination.
  
-You have already seen this with the ``T?`` notation where a variable of type ``T?`` can hold a value of type `T` or nil.   
+A variable of type ``T?`` can hold a value of type ``T`` or nil as explained in the section on the [Nil](#nil) type.
 
 Similarly, you can define a variable that holds an integer or a string.
 
@@ -433,7 +433,7 @@ flexType a = 1;
 flexType b = "Hello";
 ```
 
-Using the ``|`` symbol in the type definition, you can create a union of multiple types. Therefore, in the above example, **``flexType``** can hold an integer value as well as a string value, and the Ballerina compiler won't complain.
+You can create a union of multiple types using the ``|`` symbol in the type definition. Therefore, in the above example, **``flexType``** can hold an integer value as well as a string value, and the Ballerina compiler won't complain.
 
 You can also apply the concept of unions to structured data types like records. So it is possible to have a union of a record type containing fields of the ``string`` type and the basic ``string`` type.
 
@@ -463,9 +463,9 @@ In this way, the ``is`` operator in a condition causes the declared type to be n
 
 ## Error reporting
 
-Ballerina does not support the notion of exceptions. Instead, errors are handled as part of the normal control flow. Errors are first-class citizens in Ballerina. There are a few mechanisms for handling errors, which are centered around an ``error`` type. The ``error`` type is a basic type in Ballerina, and error values can be passed around just like values of any other type.
+Ballerina does not support the notion of exceptions. Instead, errors are handled as part of the normal control flow. Errors are first-class citizens in Ballerina. Ballerina supports a few mechanisms that are centered around an ``error`` type to handle errors. The ``error`` type is a basic type. Ballerina programs can pass around error values similar to values of any other type.
 
-Errors are reported by functions returning error values.
+Functions report errors by returning error values.
 
 ```ballerina
 function parse(string s) returns int|error {
@@ -511,9 +511,9 @@ In the above code example, the function defines a local variable **``ret``** to 
 
 ## ``check`` expression
 
-Instead of using the ``is`` operator within the regular conditional flow to check for errors, Ballerina has a shorthand method available. Using the ``check`` keyword, error handling and return statements are much more concise.
+Instead of using the ``is`` operator within the regular conditional flow to check for errors, Ballerina supports the ``check`` keyword as a shorthand method. Error handling and return statements become much more concise when using the ``check`` keyword.
 
-So the **``intFromBytes()``** function defined in the previous section can now be written as: 
+For example, you can write the **``intFromBytes()``** function defined in the [Error handling](#error-handling) section as follows:
 
 ```ballerina
 function intFromBytes(byte[] bytes) returns int|error {
@@ -524,7 +524,7 @@ function intFromBytes(byte[] bytes) returns int|error {
 }
 ```
   
-In this case, the expression following the ``check`` keyword is evaluated and the **``intFromBytes``** function returns immediately if the **``string:fromBytes()``** function returns an error.
+In this case, the expression following the ``check`` keyword (``string:fromBytes(bytes)``) is evaluated and the **``intFromBytes``** function returns immediately if the **``string:fromBytes()``** function returns an error.
 
 ## Error subtyping
 

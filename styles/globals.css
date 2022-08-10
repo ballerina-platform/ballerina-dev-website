@@ -1133,13 +1133,33 @@ table.cTopControlsContainer tbody {
   scroll-margin-top: 70px;
 }
 
+.bbeTable ul:hover {
+  background-color: #ebe8e8;
+}
+
 .bbeTable li {
   border-bottom: 1px solid #cecfd0;
   cursor: pointer;
 }
 
+.bbeTable li > div {
+  color: #20b6b0 !important;
+}
+
+.bbeTable li:hover > div {
+  color: #57595d !important;
+}
+
 .bbeTable a {
   color: #57595d !important;
+}
+
+.categoryButton {
+  visibility: hidden;
+}
+
+.bbeTable li:hover > .categoryButton {
+  visibility: visible;
 }
 
 /* CSS for hard coded html content in mds. */

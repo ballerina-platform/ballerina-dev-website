@@ -11,6 +11,10 @@
     border: 2px solid #1eb5ae !important
 }
 
+.videoLink {
+    position: relative;
+}
+
 .videoPlayButton {
     position: relative;
     z-index: 8;

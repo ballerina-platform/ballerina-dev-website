@@ -45,7 +45,7 @@ export default function Videos() {
         <Row>
           <Col sm={12} md={6} className={styles.videoImage}>
             <h3>Why should you start programming with Ballerina?</h3><br />
-            <a onClick={() => handleShow('https://www.youtube.com/embed/NYrKeElltg8')} id="cMainVideoFrame" className={styles.videoLink} data-toggle="modal" data-src="https://www.youtube.com/embed/NYrKeElltg8" data-target="#iBallerinaVideo">
+            <a onClick={() => handleShow('https://www.youtube.com/embed/NYrKeElltg8')} id="cMainVideoFrame1" className={styles.videoLink} data-toggle="modal" data-src="https://www.youtube.com/embed/NYrKeElltg8" data-target="#iBallerinaVideo">
               <Image src={`${prefix}/images/why-should-start-programming-with-ballerina-video-thumbnail-v2.png`} alt="Ballerina Language Concepts" width={553} height={308} />
               <a id="cplayvideo" className={styles.videoPlayButton} data-toggle="modal" data-src="https://www.youtube.com/embed/NYrKeElltg8" data-target="#iBallerinaVideo">
                 <span></span>
@@ -54,7 +54,7 @@ export default function Videos() {
           </Col>
           <Col sm={12} md={6} className={styles.videoImage}>
             <h3>Tutorial: Creating a service in Ballerina</h3><br />
-            <a id="cMainVideoFrame" onClick={() => handleShow('https://www.youtube.com/embed/NxyIKoHl3Dw')} className={styles.videoLink} data-toggle="modal" data-src="https://www.youtube.com/embed/NxyIKoHl3Dw" data-target="#iBallerinaVideo">
+            <a id="cMainVideoFrame2" onClick={() => handleShow('https://www.youtube.com/embed/NxyIKoHl3Dw')} className={styles.videoLink} data-toggle="modal" data-src="https://www.youtube.com/embed/NxyIKoHl3Dw" data-target="#iBallerinaVideo">
               <Image src={`${prefix}/images/tutorial-creating-a-service-in-ballerinathumbnail-v2.png`} alt="Tutorial: Creating a Service in Ballerina" width={551} height={307} />
               <a id="cplayvideo" className={styles.videoPlayButton} data-toggle="modal" data-src="https://www.youtube.com/embed/NxyIKoHl3Dw" data-target="#iBallerinaVideo">
                 <span></span>

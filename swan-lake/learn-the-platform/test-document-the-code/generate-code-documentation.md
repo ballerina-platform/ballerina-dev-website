@@ -29,7 +29,7 @@ redirect_from:
 
 ## Generate documentation for modules
 
-Developers can write the documentation in line with the Ballerina source code using the lightweight [markdown](https://daringfireball.net/projects/markdown/syntax) markup language.
+Developers can write the documentation in line with the Ballerina source code using the lightweight <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">markdown</a> markup language.
 They can document special constructs such as parameters, return values, fields, etc., within the code using documentation attributes.
 Once the code is documented, developers can generate a basic HTML version of their Ballerina modules using the `bal doc` command. Developers are encouraged to have their custom themes and styles, to have a standard presentation of their Ballerina documentation.
 
@@ -38,7 +38,7 @@ Ballerina documentation design and usage is aligned with the package and module 
 * Ballerina programmers can place the documentation in line with the source code using the documentation syntax.
 * Ballerina type definitions, global variables, annotations, listeners, etc., can be documented using the documentation syntax.
 * Fields, parameters, return values, etc., can be marked using documentation attributes.
-* Ballerina uses a React app to render the documentation, and the data required is stored as a JSON in the `api-docs.js` file. The React app source code can be found in the [ballerina-dev-tools](https://github.com/ballerina-platform/ballerina-dev-tools/tree/main/docerina-ui) GitHub repo. Developers are welcome to customize and try out themes and styles in the React app.
+* Ballerina uses a React app to render the documentation, and the data required is stored as a JSON in the `api-docs.js` file. The React app source code can be found in the <a href="https://github.com/ballerina-platform/ballerina-dev-tools/tree/main/docerina-ui" target="_blank">`ballerina-dev-tools`</a> GitHub repo. Developers are welcome to customize and try out themes and styles in the React app.
 
 ## Write Ballerina documentation
 
@@ -146,8 +146,7 @@ A typical package structure of a Ballerina package is like this:
 
 The `bal doc` command will read the `Package.md` and `Module.md` files and prepend them to the generated HTML file.
 
-Check [`http` module API Documentation](https://lib.ballerina.io/ballerina/http/latest) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
-
+Check the <a href="https://lib.ballerina.io/ballerina/http/latest" target="_blank">`http` module API Documentation</a> for sample HTML that has `Module.md` content at the top followed by the other module constructs.
 
 ## Generate Ballerina documentation
 

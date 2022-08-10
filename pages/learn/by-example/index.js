@@ -24,6 +24,7 @@ import Link from "next/link";
 import Layout from "../../../layouts/LayoutDocs";
 import { load } from "js-yaml";
 import LeftNavYaml from "../../../components/common/left-nav/LeftNavYaml";
+import { useRouter } from "next/router";
 
 function toKebabCase(str) {
   return str.replace(/\s/g, "-").toLowerCase();
@@ -46,6 +47,8 @@ export async function getStaticProps() {
 }
 
 export default function BBEPage({ navContent, bbesJson }) {
+  const router = useRouter();
+
   function ListBBEs() {
     let currentCategory = "",
       currentColumn = 0,
@@ -74,19 +77,32 @@ export default function BBEPage({ navContent, bbesJson }) {
       for (let bbe of category.samples) {
         sampleData.push(
           <Link href={`/learn/by-example/${bbe.url}`} passHref>
-            <li className="ps-3 my-1 fw-light">{bbe.name}</li>
+            <li className="ps-4 my-1 fw-light">{bbe.name}</li>
           </Link>
         );
       }
 
       colData.push(
         <ul className="p-0 my-1" id={toKebabCase(category.title)}>
-          <Link
-            href={`/learn/by-example#${toKebabCase(category.title)}`}
-            passHref
-          >
-            <li className="fw-bold">{category.title}</li>
-          </Link>
+          <li className="d-flex align-items-center">
+            <Link
+              href={`/learn/by-example#${toKebabCase(category.title)}`}
+              passHref
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                fill="currentColor"
+                className="bi bi-link-45deg categoryButton"
+                viewBox="0 0 16 16"
+              >
+                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+              </svg>
+            </Link>
+            <div className="ps-2 fw-bold">{category.title}</div>
+          </li>
           {sampleData}
         </ul>
       );

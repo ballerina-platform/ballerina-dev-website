@@ -2,9 +2,6 @@ name: Deploy Nextjs app to gh-pages
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - "website-revamp"
 
 jobs:
   build:

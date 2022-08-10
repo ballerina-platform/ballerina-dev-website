@@ -38,7 +38,7 @@ Consider the following step-by-step guide to configuring a Ballerina package tha
 
 1. Create a Ballerina package using the following command.
 
-    ```bash
+    ```
     bal new greetings
     ```
 
@@ -83,7 +83,7 @@ Consider the following step-by-step guide to configuring a Ballerina package tha
    ```
 
 4. Execute the following command to build and execute the program.
-   ```bash
+   ```
    bal run
    ```
 
@@ -99,7 +99,7 @@ Consider the following step-by-step guide to configuring a Ballerina package tha
 
 
 6. To verify the configuration, execute the following command.
-   ```bash
+   ```
    curl http://localhost:8080/greeting -X POST
    ```
    The response will be similar to the following.

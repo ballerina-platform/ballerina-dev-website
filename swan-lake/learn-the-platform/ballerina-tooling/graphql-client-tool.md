@@ -91,7 +91,7 @@ You can validate and execute the GraphQL queries using the [GraphQL Foundation V
 
 If you want to generate the Ballerina client for a given GraphQL document, use the command below.
 
-```bash
+```
 bal graphql -i graphql.config.yaml
 ```
 
@@ -125,7 +125,7 @@ public isolated client class QuerycountryClient {
 
 In general you can use the command format given below.
 
-```bash
+```
 bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <output-location> 
 ```
 
@@ -176,13 +176,13 @@ Follow the steps below to generate multiple Ballerina clients from a GraphQL con
 
 If you want to generate multiple Ballerina clients for a given set of GraphQL documents, use the command below.
 
-```bash
+```
 bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <output-location> 
 ```
 
 This generates a separate Ballerina client for each GraphQL document with remote operations corresponding to each GraphQL query/mutation in the GraphQL document (`.graphql document`). The generated sources are written into the same directory from which the command is executed (i.e., the Ballerina package root directory). For example,
 
-```bash
+```
 bal graphql -i graphql.config.yaml
 ```
 
@@ -228,13 +228,13 @@ Follow the steps below to generate multiple Ballerina modules from a GraphQL con
 
 If you want to generate multiple Ballerina modules for a given set of GraphQL projects, use the command below.
 
-```bash
+```
 bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <output-location> 
 ```
 
 This generates a separate Ballerina module for each GraphQL project. The generated sources are written into individual modules in the Ballerina package. For example,
 
-```bash
+```
 bal graphql -i graphql.config.yaml
 ```
 

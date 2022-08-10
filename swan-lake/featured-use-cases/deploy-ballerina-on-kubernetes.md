@@ -34,20 +34,20 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
 
 > **Info:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
-```bash
+```
 $ bal new greeter
 ```
 
 You view the output below.
 
 
-```bash
+```
 Created new package 'greeter' at greeter.
 ```
 
 This creates a directory named `covid19` with the default module along with a sample code for the service as shown below. 
 
-```bash
+```
 .
 greeter/
 ├── Ballerina.toml
@@ -95,13 +95,13 @@ tag="latest"
 
 Execute the code below to build the Ballerina package.
 
-```ballerina
+```
 $ bal build
 ```
 
 You view the output below.
 
-```bash
+```
 Compiling source
         example/greeter:0.1.0
 
@@ -129,13 +129,13 @@ Execute the command below to push the created Docker image into Docker Hub.
 
 **Info:** Replace `wso2inc` with your repository name.
 
-```bash
+```
 $ docker push wso2inc/greeter:latest
 ```
 
 You view the output below.
 
-```bash
+```
 The push refers to repository [docker.io/wso2inc/greeter]
 latest: digest: sha256:c1acf5165848d70c347a970d6b5c32f63669cdbb0d4c1daca2c91cfbe32f61b2 size: 13718
 ```
@@ -144,7 +144,7 @@ latest: digest: sha256:c1acf5165848d70c347a970d6b5c32f63669cdbb0d4c1daca2c91cfbe
 
 Execute the command below to deploy the Ballerina application into the Kubernetes cluster.
 
-```bash
+```
 $ kubectl apply -f /home/example/greeter/target/kubernetes/greeter
 ```
 You view the output below.

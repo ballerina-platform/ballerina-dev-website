@@ -199,7 +199,7 @@ function testAssertStringAndInt() {
 
 ***Output:***
 
-```bash
+```
 [fail] testAssertStringAndInt:
 
     Assertion Failed!
@@ -227,7 +227,7 @@ function testAssertString() {
 
 ***Output:***
 
-```bash
+```
 [fail] testAssertString:
     Assertion Failed!
 
@@ -284,7 +284,7 @@ function testAssertJson() {
 
 ***Output:***
 
-```bash
+```
 [fail] testAssertJson:
 
 Assertion Failed!
@@ -330,7 +330,7 @@ function testAssertTuples() {
 
 ***Output:***
 
-```bash
+```
 [fail] testAssertTuples:
     Assertion Failed!
 

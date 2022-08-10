@@ -472,19 +472,19 @@ Follow the steps below to try out the above language integrated query example.
 
 3. Execute the command below to start the HTTP service, which accepts product order requests.
 
-```bash
+```
 bal run order_service.bal
 ```
 
 4. Execute the command below to invoke the HTTP service by sending the product order details in the payload. 
 
-```bash
+```
 curl -v http://localhost:9090/emart/orderProduct -d '[{ "Name": "Flour", "Id": 2345, "Quantity": 2, "ShoppingCardId": "AXYN34523", "Category": "Grocery"}, { "Name": "Carrot", "Id": 3234, "Quantity": 1, "ShoppingCardId": "AXYN34523", "Category": "Vegetable"}]' -H "Content-Type:application/json"
 ```
 
 You will receive a response like below that gives the total grocery bill amount.
 
-```bash
+```
 Order is accepted; total grocery bill amount is + 240.0
 ```
 

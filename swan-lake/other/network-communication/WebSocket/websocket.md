@@ -104,7 +104,7 @@ The example below implements an HTTP service resource to broadcast a message to 
 
 2. Execute the `bal run ws_connection_creation.bal` command to run the above service. You view the output below.
 
-   ```bash
+   ```
    Compiling source
          ws_connection_creation.bal
    Running executables
@@ -124,7 +124,7 @@ The example below implements an HTTP service resource to broadcast a message to 
 
 5. Send an HTTP request to the `broadcaster` service you deployed to send messages to the WebSocket clients that were stored in your application.
 
-   ```bash
+   ```
    $ curl -d "Hello!" http://localhost:8081/broadcaster/broadcast
    ```
 
@@ -187,7 +187,7 @@ The example below shows the usage of this by updating the [`/ws` service](#conne
 
    >**Info:** The service has negotiated to use the `json` protocol since the client’s highest priority, which is `xml` is not supported. 
 
-   ```bash
+   ```
    Compiling source
          ws_sub_protocol_handling.bal
    Running executables
@@ -240,7 +240,7 @@ The example below demonstrates the data message functionality via a simple WebSo
 
 2. Execute the `bal run ws_data_message.bal` command to run the above service. You view the output below.
 
-   ```bash
+   ```
    Compiling source
          ws_data_message.bal
    Running executables
@@ -262,7 +262,7 @@ The example below demonstrates the data message functionality via a simple WebSo
 
    The execution of this command results in the message below printed in the console. This is the response returned from the WebSocket service. 
 
-   ```bash
+   ```
    Echo: Hello!
    ```
 

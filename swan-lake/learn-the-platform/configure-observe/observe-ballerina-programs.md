@@ -125,7 +125,7 @@ tracingProvider="jaeger"
 The created configuration file can be passed to the Ballerina program with the `BAL_CONFIG_FILES` environment variable along with
 the path of the configuration file. This is not necessary if the `Config.toml` file is present in the current working directory.
 
-```bash
+```
 $ BAL_CONFIG_FILES=<path-to-conf>/Config.toml bal run --observability-included hello_world_service.bal
 
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
@@ -141,7 +141,7 @@ pushed to [Elastic Stack](#distributed-logging) to perform the log analysis.
 
 Therefore, redirect the standard output to a file if you want to monitor logs.
 
-```bash
+```
 $ BAL_CONFIG_FILES=<path-to-conf>/Config.toml nohup bal run --observability-included hello_world_service.bal > ballerina.log &
 ```
 
@@ -151,7 +151,7 @@ Send requests to <http://localhost:9090/hello/sayHello>.
 
 Example cURL command:
 
-```bash
+```
 $ curl http://localhost:9090/hello/sayHello
 ```
 
@@ -241,7 +241,7 @@ Prometheus.
 
 3.  Start the Prometheus server in a Docker container with the command below.
 
-    ```bash
+    ```
     $ docker run -p 19090:9090 -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
     ```
     
@@ -254,7 +254,7 @@ Prometheus as a data source. Follow the steps below to configure Grafana.
 
 1. Start Grafana as a Docker container with the command below.
 
-    ```bash
+    ```
     $ docker run -d --name=grafana -p 3000:3000 grafana/grafana
     ```
     For more information, go to [Grafana in Docker Hub](https://hub.docker.com/r/grafana/grafana/).
@@ -357,7 +357,7 @@ There are many possible ways to deploy Jaeger. For more information, see [Jaeger
 
 1. Install Jaeger via Docker and start the Docker container by executing the command below.
 
-    ```bash
+    ```
     $ docker run -d -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opentelemetry-all-in-one
     ```
 
@@ -372,13 +372,13 @@ In Ballerina, distributed logging and analysis are supported by the Elastic Stac
 
 This can be done by running the Ballerina service as below.
 
-```bash
+```
 $ nohup bal run hello_world_service.bal > ballerina.log &
 ```
 
 You can view the logs with the command below.
 
-```bash
+```
 $ tail -f ~/wso2-ballerina/workspace/ballerina.log
 ```
 
@@ -397,7 +397,7 @@ Alternatively, Docker containers can be used to set up Elasticsearch and Kibana 
 
 1. Download the Docker images using the following commands.
 
-    ```bash
+    ```
     # Elasticsearch Image
     $ docker pull docker.elastic.co/elasticsearch/elasticsearch:6.5.1
     # Kibana Image
@@ -410,7 +410,7 @@ Alternatively, Docker containers can be used to set up Elasticsearch and Kibana 
 
 2. Start Elasticsearch and Kibana containers by executing the following commands.
 
-    ```bash
+    ```
     $ docker run -p 9200:9200 -p 9300:9300 -it -h elasticsearch --name elasticsearch docker.elastic.co/elasticsearch/elasticsearch:6.5.1
     $ docker run -p 5601:5601 -h kibana --name kibana --link elasticsearch:elasticsearch docker.elastic.co/kibana/kibana:6.5.1
     ```
@@ -418,7 +418,7 @@ Alternatively, Docker containers can be used to set up Elasticsearch and Kibana 
     If you are using Linux, you may have to increase the `vm.max_map_count` for the Elasticsearch container to start. 
     Execute the following command to do that.
     
-    ```bash
+    ```
     $ sudo sysctl -w vm.max_map_count=262144
     ```
 
@@ -450,7 +450,7 @@ Alternatively, Docker containers can be used to set up Elasticsearch and Kibana 
 
 4. Start the Logstash container by executing the following command.
 
-    ```bash
+    ```
     $ docker run -h logstash --name logstash --link elasticsearch:elasticsearch -it --rm -v /tmp/pipeline:/usr/share/logstash/pipeline/ -p 5044:5044 docker.elastic.co/logstash/logstash:6.5.1
     ```
 
@@ -467,7 +467,7 @@ Alternatively, Docker containers can be used to set up Elasticsearch and Kibana 
     
 6. Start the Filebeat container with the following command.
 
-    ```bash
+    ```
     $ docker run -v /tmp/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /<path-to-ballerina.log>/ballerina.log:/usr/share/filebeat/ballerina.log --link logstash:logstash docker.elastic.co/beats/filebeat:6.5.1
     ```
     

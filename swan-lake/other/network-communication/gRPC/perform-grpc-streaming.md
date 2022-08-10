@@ -49,26 +49,26 @@ Follow the steps below to create separate service and client packages, and gener
 
 1. Execute the `bal new service` command in a new base directory to create the service. You view the output below.
 
-    ```bash
+    ```
     Created new Ballerina package 'service' at service.
     ```
 
 2. Execute the `bal new client` command to create the client. You view the output below.
 
-    ```bash
+    ```
     Created new Ballerina package 'client' at client.
     ```
 
 3. Execute the `bal grpc --mode service --input streaming_calc.proto --output service/` to extract the library files of the service. You view the output below.
 
-    ```bash
+    ```
     Successfully extracted library files.
     Successfully generated ballerina file.
     ```
 
 4. Execute the `bal grpc --mode client --input streaming_calc.proto --output client/` to extract the library files of the client. You view the output below.
 
-    ```bash
+    ```
     Successfully extracted library files.
     Successfully generated ballerina file.
     ```
@@ -140,7 +140,7 @@ Follow the steps below to perform a sample run of the above implementation.
 
 1. Execute the `bal run service/` command to run the service. You view the output below.
 
-    ```bash
+    ```
     Compiling source
         laf/service:0.1.0
 
@@ -154,7 +154,7 @@ Follow the steps below to perform a sample run of the above implementation.
 
 2. Execute the `bal run client` command to run the client. You view the output below.
 
-    ```bash
+    ```
     Value: 55
     ```
 
@@ -194,7 +194,7 @@ Follow the steps below to perform a sample run of the above implementation.
 
 4. Execute the `bal run client` command to run the client. You view the output below.
 
-    ```bash
+    ```
     Value: 1
     Value: 3
     Value: 6

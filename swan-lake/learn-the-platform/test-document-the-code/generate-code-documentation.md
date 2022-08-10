@@ -155,7 +155,7 @@ Ballerina provides a `doc` command, which can be executed against a given Baller
 
 First, let's create a new Ballerina package:
 
-```bash
+```
 $ bal new math
 Created new Ballerina package 'math' at math
 $ tree
@@ -183,12 +183,12 @@ public isolated function pow(float a, float b) returns float {
 ```
 
 Now, navigate to the `math` directory, and run the `bal doc` command to generate the documentation of the package.
-```bash
+```
 $ cd math
 $ bal doc
 ```
 Output:
-```bash
+```
 Compiling source
 	user/math:0.1.0
 Generating API Documentation
@@ -196,7 +196,7 @@ Saved to: apidocs
 ```
 
 `target/apidocs/user/math/0.1.0` folder would contain the following;
-```bash
+```
 $ ls target/apidocs/user/math/0.1.0/
 bundle.js  index.html  ...
 ```

@@ -16,7 +16,7 @@ redirect_from:
 
 ## Package layout
 
-```bash
+```
 .
 ├── Ballerina.toml
 ├── Dependencies.toml
@@ -197,7 +197,7 @@ This directory contains the other modules. The layout of this directory is expla
 
 ## Module layout
 
-```bash
+```
 .
 ├── app.bal
 ├── utils.bal
@@ -216,13 +216,13 @@ The root directory of the default module is the root of the package directory. T
 
 Module names can only contain alphanumerics, underscores, and periods and the maximum length is 256 characters. For the modules belonging to the same package, the value of the first identifier is the package name.
 
-```bash
+```
 <package-name>[.<module-directory-name>]
 ```
 
 You can add other modules using the `bal add` command.
 
-```bash
+```
 bal add util
 ```
 

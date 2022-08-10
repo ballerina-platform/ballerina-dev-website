@@ -22,13 +22,13 @@ redirect_from:
 
 Execute the command below to create a new library package named `hello`.
 
-```bash
+```
 bal new --template lib hello
 ```
 
 This creates the files below.
 
-```bash
+```
 > cd hello
 > tree .
     .
@@ -99,7 +99,7 @@ Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerin
 
 Now, that you are ready to publish, execute the command below to publish the package to Ballerina Central.
 
-```bash
+```
 bal push
 ```
 

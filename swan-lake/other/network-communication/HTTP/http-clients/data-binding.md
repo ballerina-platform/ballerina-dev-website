@@ -46,11 +46,13 @@ public function main() returns @tainted error? {
 
 Execute the `bal run data_binding_example_one.bal` command and the output will be as follows.
 
-```bash
-JSON Payload:
+JSON payload:
+```json
 {"ip":"45.30.94.9","country_code":"US","country_name":"United States","region_code":"CA","region_name":"California","city":"San Jose","zip_code":"95134","time_zone":"America/Los_Angeles","latitude":37.4073,"longitude":-121.939,"metro_code":807}
+```
 
-XML Payload:
+XML payload:
+```xml
 <Response>
     	<IP>45.30.94.9</IP>
     	<CountryCode>US</CountryCode>
@@ -101,7 +103,7 @@ public function main() returns @tainted error? {
 
 Execute the `bal run data_binding_example_two.bal` command and the output will be as follows.
 
-```bash
+```
 Compiling source
     	data_binding_example_two.bal
 

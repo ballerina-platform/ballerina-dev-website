@@ -768,6 +768,13 @@ ul.eventsTabs {
   letter-spacing: 0.2px;
 }
 
+@media (max-width: 750px){
+  .DocSearch-Modal {
+    margin: 60px auto auto;
+  }
+}
+
+
 .home .highlight {
   font-size: 12px !important;
 }

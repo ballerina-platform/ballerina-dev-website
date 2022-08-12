@@ -24,8 +24,7 @@ import Footer from '../components/common/footer/Footer';
 
 export default function Layout({ children }) {
   const TopNav = dynamic(() => import('../components/common/top-nav/TopNav'), { ssr: false });
-
-
+  const Meta = dynamic(() => import('../components/common/meta/Meta'), { ssr: false });
 
   return (
     <>
@@ -58,6 +57,7 @@ export default function Layout({ children }) {
 
 
       </Head>
+      <Meta/>
       <Stack gap={0} className='main-wrapper home'>
         <TopNav launcher='home' />
         <div className='wrap-page-content'>

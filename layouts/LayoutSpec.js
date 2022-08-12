@@ -17,7 +17,8 @@
  */
 
 import Head from 'next/head';
-import { Container, Row, Stack, Col} from 'react-bootstrap';
+import { Container, Row, Stack } from 'react-bootstrap';
+import dynamic from 'next/dynamic';
 
 export default function Layout({ children }) {
   const Meta = dynamic(() => import('../components/common/meta/Meta'), { ssr: false });

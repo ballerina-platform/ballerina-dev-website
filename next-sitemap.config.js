@@ -1,6 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
+
 const config = {
-    siteUrl: 'https://dev.ballerina.io/',
+    siteUrl: 'https://ballerina.io/',
     generateRobotsTxt: false, // (optional)
     sitemapSize: 5000,
     generateIndexSitemap: false,

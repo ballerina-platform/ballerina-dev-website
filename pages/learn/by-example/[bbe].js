@@ -25,6 +25,7 @@ import Head from "next/head";
 import Layout from "../../../layouts/LayoutDocs";
 import LeftNavYaml from "../../../components/common/left-nav/LeftNavYaml";
 import Link from "next/link";
+import { Button, Offcanvas } from "react-bootstrap";
 
 export async function getStaticPaths() {
   const bbes = fs.readdirSync("swan-lake/by-example");
@@ -137,7 +138,22 @@ export default function BBEPage({ frontmatter, navContent, bbe }) {
           <LeftNavYaml navContent={navContent} bbe={bbe} />
         </Col>
         <Col xs={12} className="d-block d-sm-none">
-          Mobile Left Nav
+          <Button className="learnMob" onClick={handleShow}>
+            Learn
+          </Button>
+          <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas.Header closeButton></Offcanvas.Header>
+            <Offcanvas.Body>
+              <LeftNav
+                launcher="learn"
+                id={id}
+                mainDir="featured-use-cases"
+                sub={sub}
+                third={third}
+                Toc={LearnToc}
+              />
+            </Offcanvas.Body>
+          </Offcanvas>
         </Col>
         <Col xs={12} sm={9} xxl={10} className="mdContent">
           <Container className="h-100">

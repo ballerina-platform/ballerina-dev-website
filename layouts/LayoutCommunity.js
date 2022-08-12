@@ -24,6 +24,7 @@ import Footer from '../components/common/footer/Footer';
 
 export default function Layout({ children }) {
   const TopNav = dynamic(() => import('../components/common/top-nav/TopNav'), { ssr: false });
+  const Meta = dynamic(() => import('../components/common/meta/Meta'), { ssr: false });
 
   return (
     <>
@@ -33,8 +34,9 @@ export default function Layout({ children }) {
         <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PSL2TX4"/>
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"/>
 
-        <script type="text/javascript" crossorigin src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"/>
+        <script type="text/javascript" crossOrigin src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"/>
       </Head>
+      <Meta/>
       <Stack gap={0} className='main-wrapper community'>
         <TopNav launcher='community'/>
         <div className='wrap-page-content'>

@@ -50,19 +50,19 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
 
 > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
-```bash
+```
 $ bal new covid19 -t service
 ```
 
 You view the output below.
 
-```bash
+```
 Created new package 'covid19' at covid19.
 ```
 
 This creates a directory named `covid19` with the default module along with a sample code for the service as shown below. 
 
-```bash
+```
 .
 ├── covid19
 │   ├── Ballerina.toml
@@ -330,13 +330,13 @@ In the terminal, navigate to the `covid19` directory, and execute the command be
 > **Info**: The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
 
-```bash
+```
 $ bal run
 ```
 
 You view the output below.
 
-```bash
+```
 Compiling source
 	example/covid19:0.1.0
 
@@ -351,13 +351,13 @@ In another terminal, execute the cURL commands below one by one to try out the s
 
 Execute the cURL command below.
 
-```bash
+```
 $ curl http://localhost:9000/covid/status/countries
 ```
 
 You view the output below.
 
-```bash
+```
 [{"iso_code":"AFG", "country":"Afghanistan", "cases":159303, "deaths":7386, "recovered":146084, "active":5833}, {"iso_code":"SL", "country":"Sri Lanka", "cases":598536, "deaths":15243, "recovered":568637, "active":14656}, {"iso_code":"US", "country":"USA", "cases":69808350, "deaths":880976, "recovered":43892277, "active":25035097}]
 ```
 
@@ -365,13 +365,13 @@ You view the output below.
 
 Execute the cURL command below.
 
-```bash
+```
 $ curl http://localhost:9000/covid/status/countries -d '[{"iso_code":"DEU", "country":"Germany", "cases":159333, "deaths":7390, "recovered":126084, "active":6833}]'
 ```
 
 You view the output below.
 
-```bash
+```
 [{"iso_code":"DEU", "country":"Germany", "cases":159333.0, "deaths":7390.0, "recovered":126084.0, "active":6833.0}]
 ```
 
@@ -379,13 +379,13 @@ You view the output below.
 
 Execute the cURL command below.
 
-```bash
+```
 $ curl http://localhost:9000/covid/status/countries/AFG
 ```
 
 You view the output below.
 
-```bash
+```
 {"iso_code":"AFG", "country":"Afghanistan", "cases":159303, "deaths":7386, "recovered":146084, "active":5833}
 ```
 

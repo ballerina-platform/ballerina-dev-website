@@ -65,7 +65,7 @@ To execute groups of tests, the `--groups` flag is used during test execution.
 
 The above results in an output of :
 
-```bash
+```
 
 Compiling source
         user/Testing:0.1.0
@@ -86,11 +86,13 @@ I'm a test belonging to groups g1 and g2!
 
 The `groups` flag supports executing multiple groups by using comma-separated arguments.
 
-```$bal test --groups g1,g2```
+```
+$bal test --groups g1,g2
+```
 
 The above results in an output of :
 
-```bash
+```
 
 Compiling source
         user/Testing:0.1.0
@@ -119,7 +121,7 @@ To skip the execution of certain groups of tests, the `--disable-groups` flag is
 
 The above results in an output of :
 
-```bash
+```
 Compiling source
         user/Testing:0.1.0
 

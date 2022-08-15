@@ -43,7 +43,7 @@ service / on new http:Listener(8080) {
 
 The execution of the service and its invocation is shown below.
 
-```bash
+```
 $ bal run demo.bal
  
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080

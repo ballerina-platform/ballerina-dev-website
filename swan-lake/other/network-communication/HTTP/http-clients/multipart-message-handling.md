@@ -46,7 +46,7 @@ public function main() returns @tainted error? {
 
 Execute the `bal run multipart_example_one.bal` command and the output will be as follows.
 
-```bash
+```
 {
   "args": {},
   "data": "Hello!",
@@ -132,7 +132,7 @@ public function main() returns @tainted error? {
 
 Execute the `bal run multipart_example_three.bal` command and the output will be as follows.
 
-```bash
+```
 Content Type: image/jpeg
 Content Length: 35588
 ```

@@ -35,13 +35,13 @@ To get started, let's set up the Ballerina package to run tests.
 
 1. Create a Ballerina package with the `bal new` command as follows.
 
-   ```bash
+   ```
    bal new hello_world
    ```
 
 2. Create a directory in the root directory of the package named `tests` in which the test files will be stored.
 
-    ```bash
+    ```
     hello_world/
         Ballerina.toml
         main.bal
@@ -70,12 +70,12 @@ To get started, let's set up the Ballerina package to run tests.
 
 5. Execute the tests using the following command.
 
-   ```bash
+   ```
    $ bal test
    ```
    Then you can see the output as follows.
 
-   ```bash
+   ```
    Compiling source
         user/hello_world:0.1.0
 

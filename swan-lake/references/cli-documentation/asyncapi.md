@@ -14,7 +14,7 @@ redirect_from:
 
 The AsyncAPI to Ballerina command supports several usages in the Ballerina AsyncAPI tool as follows.
 
-```bash
+```
 bal openapi [-i | --input] <asyncapi-contract-file-path> [-o | --output] <output-location>
 ```
 

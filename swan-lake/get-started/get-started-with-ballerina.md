@@ -32,7 +32,7 @@ To complete this tutorial, you need:
 
 Open your terminal, and run the following commands to make sure everything is ready.
 
-```bash
+```
 $ bal
 $ bal version
 ```
@@ -43,13 +43,13 @@ Let's write a Ballerina program, which prints `Hello, World!`. Use the `bal new`
 
 >**Info:** For more information on packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
-```bash
+```
 $ bal new greeter
 ```
 
 This command creates a new directory called `greeter` with the content below.
 
-```bash
+```
 greeter/
 ├── Ballerina.toml
 └── main.bal
@@ -82,7 +82,7 @@ In this code:
 
 Run `bal run` in your terminal to run this package.
 
-```bash
+```
 $ bal run
 Compiling source
 	example/greeter:0.1.0
@@ -94,7 +94,7 @@ Hello, World!
 
 Alternatively, you can generate an executable program with `bal build`,
 
-```bash
+```
 $ bal build
 Compiling source
 	example/greeter:0.1.0
@@ -105,7 +105,7 @@ Generating executable
 
 and then, use `bal run` as follows.
 
-```bash
+```
 $ bal run target/bin/greeter.jar
 Hello, World!
 ```
@@ -147,7 +147,7 @@ Let's take a moment to digest the new constructs in this code:
 
 Let's run this package in your terminal:
 
-```bash
+```
 $ bal run
 Compiling source
 	example/greeter:0.1.0
@@ -157,7 +157,7 @@ Running executable
 
 Also, run the commands below in another terminal window to invoke the REST API.
 
-```bash
+```
 $ curl localhost:8080/greeting
 Hello, World!
 

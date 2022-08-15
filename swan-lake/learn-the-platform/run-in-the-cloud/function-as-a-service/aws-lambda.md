@@ -48,7 +48,7 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 The following Ballerina code gives an example of how to expose a simple echo function in AWS Lambda. 
 
 Create a Ballerina package.
-```bash
+```
 $ bal new aws_lambda_deployment
 ```
 Replace the contents of the generated `.bal` file with the following content.
@@ -74,7 +74,7 @@ The AWS Lambda functionality is implemented as a compiler extension. Thus, artif
 
 Execute the command below to build the above code. 
 
-```bash
+```
 $ bal build
 Compiling source
 	wso2/aws_lambda_deployment:0.1.0
@@ -100,7 +100,7 @@ Execute the command below to deploy the echo function as an AWS Lambda as shown 
 
 >**Info:**  For the supported parameters, go to the [`create-function` documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html). You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed. 
 
-```bash
+```
 $ aws lambda create-function --function-name echo --zip-file fileb://<package_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
 
 {
@@ -135,7 +135,7 @@ Execute the command below to test the deployed AWS Lambda function by invoking i
 
 >**Info:** The payload should be a valid JSON object.
 
-```bash
+```
 $ echo '{"MESSAGE":"HELLO"}' > input.json
 $ aws lambda invoke --function-name echo --payload fileb://input.json echo-response.txt
 {
@@ -146,7 +146,7 @@ $ aws lambda invoke --function-name echo --payload fileb://input.json echo-respo
 
 Execute the command below to view the response in the `echo-response.txt` file.
 
-```bash
+```
 $ cat echo-response.txt
 
 {"MESSAGE":"HELLO"}

@@ -138,25 +138,25 @@ Follow the steps below to start a remote debug session.
 
     - Debugging a Ballerina package or a single file: 
 
-    ```bash
+    ```
     bal run --debug <DEBUGGEE_PORT> <BAL_FILE_PATH/PACKAGE_PATH>
     ```
 
    - Debugging Ballerina executable JAR:  
 
-    ```bash 
+    ``` 
     bal run --debug <DEBUGGEE_PORT> <EXECUTABLE_JAR_FILE_PATH>
     ```
 
     - Debugging Ballerina tests: 
 
-    ```bash
+    ```
     bal test --debug <DEBUGGEE_PORT> <PACKAGE_PATH>
     ```
     
     The terminal will show the following log:
 
-    ```bash
+    ```
     Listening for transport dt_socket at address: 5005
     ```
 
@@ -210,13 +210,13 @@ The following attributes are supported for all Ballerina `launch` configurations
 - `commandOptions` - If required, you can configure command options for the Ballerina program to be launched as a list of strings. You can see the list of all the available command options by executing the following CLI commands in your terminal.
     - For the `Ballerina Debug` configuration:
 
-    ```bash
+    ```
     bal run --help
     ```
 
     - For the `Ballerina Test` configuration:
 
-    ```bash
+    ```
     bal test --help
     ```
 

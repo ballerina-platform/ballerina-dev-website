@@ -30,7 +30,7 @@ Ballerina Shell is a part of the Ballerina distribution. Therefore, if you have 
 
 Execute the command below to start Ballerina Shell.
 
-```bash
+```
 $ bal shell
 Welcome to Ballerina Shell REPL.
 Type /exit to exit and /help to list available commands.
@@ -42,7 +42,7 @@ Type /exit to exit and /help to list available commands.
 
 Execute the `/help` command to view the available commands.
 
-```bash
+```
 =$ /help                 
 | Ballerina Shell Help
 | 
@@ -76,13 +76,13 @@ The types of code snippets below are supported in the Shell.
 
 A module can be imported as follows. Once a module is imported, it can be used in any subsequent snippet run in that particular Shell session. This is true for other module-level declarations as well.
 
-```bash
+```
 =$ import ballerina/io
 ```
 
 Execute the `/imports` command to view the list of the imported modules.
 
-```bash
+```
 =$ /imports
 | (io) import ballerina/io;
 ```
@@ -91,7 +91,7 @@ Execute the `/imports` command to view the list of the imported modules.
 
 Any valid Ballerina statement can be evaluated in the Shell. The example below evaluates a variable declaration statement.
 
-```bash
+```
 =$ string name = "Ballerina Shell"
 ```
 
@@ -100,14 +100,14 @@ Any valid Ballerina statement can be evaluated in the Shell. The example below e
 
 An expression always produces a value when evaluated. You can use the Shell to evaluate any arbitrary expression. It outputs the result of the evaluation.
 
-```bash
+```
 =$ 10 + 20 * 5
 110
 ```
 
 A reference to a variable is also an expression. Thus, evaluating the name of the previously-defined variable returns its value.
 
-```bash
+```
 =$ name
 "Ballerina Shell"
 ```
@@ -116,13 +116,13 @@ A reference to a variable is also an expression. Thus, evaluating the name of th
 
 Variables defined in the Shell prompt are treated as module-level variables. Once defined, these can be used in any subsequent evaluation.
 
-```bash
+```
 =$ int a = 10  
 ```
 
 Execute the `/vars` command as shown below to view the declared variables.
 
-```bash
+```
 =$ /vars
 | (a) int a = 10
 ```
@@ -131,13 +131,13 @@ Execute the `/vars` command as shown below to view the declared variables.
 
 The `/remove` command can be used to remove declarations.
 
-```bash
+```
 =$ /remove a
 ```
 
 Execute the `/vars` command as shown below to view the declared variables.
 
-```bash
+```
 =$ /vars
 |
 ```
@@ -146,7 +146,7 @@ Execute the `/vars` command as shown below to view the declared variables.
 
 Functions can be written just as you write them in a source file. The Shell supports multi-line snippets.
 
-```bash
+```
 =$ function sum(int a, int b) returns int {
  > int sum = a + b;
  > return sum;
@@ -155,13 +155,13 @@ Functions can be written just as you write them in a source file. The Shell supp
 
 Execute the `/dclns` command to view the module-level declarations.
 
-```bash
+```
 =$ /dclns
 | (sum) function sum(int a, int b) returns int {int sum = a + b;return sum;}
 ```
 The defined function can be called and assigned to a variable.
 
-```bash
+```
 =$ var total = sum(10, 20)
 
 =$ total
@@ -172,7 +172,7 @@ The defined function can be called and assigned to a variable.
 
 Type definitions can be written the same as a function.
 
-```bash
+```
 =$ type Person record {
  > string name;
  > int age;
@@ -181,7 +181,7 @@ Type definitions can be written the same as a function.
 
 Now, the list of declarations includes the `Person` record as well.
 
-```bash
+```
 =$ /dclns
 | (sum) function sum(int a, int b) returns int {int sum = a + b;return sum;}
 | (Person) type Person record {string name;int age;};
@@ -193,7 +193,7 @@ A definition can be modified by providing a new definition with the same name. T
 
 The example below modifies the `sum()` function.
 
-```bash
+```
 =$ function sum(float a, float b) returns float => a + b
                                                                                                                                                             
 =$ /dclns
@@ -238,7 +238,7 @@ public function main() {
 }    
 ```
 
-```bash
+```
 =$ /file test.bal                                                                                      
 
 =$ /dclns
@@ -251,7 +251,7 @@ public function main() {
 
 The `/reset` command can be used to clear the current definitions in the memory of the Shell.
 
-```bash
+```
 =$ /dclns
 | (subtract) function subtract(int a, int b) returns...                        return a - b ;}
 | (add) function add(int a, int b) returns int ...                         return a + b;}
@@ -268,7 +268,7 @@ The `/reset` command can be used to clear the current definitions in the memory 
 
 Execute the `/exit` command to exit the Shell.
 
-```bash
+```
 =$ /exit
 | Bye!!!                                          
 ```
@@ -285,7 +285,7 @@ Execute the `/help <TOPIC>` command to view details related to the mentioned top
 
 For example, see below.
 
-```bash
+```
 =$ /help strings
 | 
 | Topic description :

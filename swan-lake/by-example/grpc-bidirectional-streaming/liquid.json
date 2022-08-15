@@ -1,0 +1,17 @@
+{
+  "title": "Bidirectional streaming RPC",
+  "description": "This Ballerina by Example has a gRPC streaming service and a streaming client. Both the client and the server sends a stream of messages to each other.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "bidirectional streaming"
+  ],
+  "permalink": "/learn/by-example/grpc-bidirectional-streaming",
+  "active": "grpc-bidirectional-streaming",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-bidirectional-streaming",
+    "/swan-lake/learn/by-example/grpc-bidirectional-streaming.html"
+  ]
+}

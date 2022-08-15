@@ -76,7 +76,7 @@ You can use the update tool to update to Ballerina Swan Lake Alpha1 as follows.
 
 ##### For existing users
 
-If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
+If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](/learn/cli-documentation/update-tool/). To do this, first, execute the command below to get the update tool updated to its latest version. 
                         
 > `ballerina update`
 
@@ -841,7 +841,7 @@ A Ballerina HTTP listener can be configured to authenticate and authorize the in
 - JWT authentication
 - OAuth2 authentication
 
-For more information, see [HTTP Listener Authentication and Authorization](/swan-lake/learn/security/authentication-and-authorization/#http-listener-authentication-and-authorization).
+For more information, see [HTTP Listener Authentication and Authorization](https://lib.ballerina.io/ballerina/http/latest).
 
 ###### HTTP client authentication
 

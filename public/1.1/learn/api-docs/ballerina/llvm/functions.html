@@ -1,0 +1,4297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+        .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+
+
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+ <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.1.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+    
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Functions</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="#llvmAddFunction">llvmAddFunction</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmAppendBasicBlock">llvmAppendBasicBlock</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildAdd">llvmBuildAdd</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildAlloca">llvmBuildAlloca</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildBr">llvmBuildBr</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildCall">llvmBuildCall</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildCondBr">llvmBuildCondBr</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildGlobalStringPtr">llvmBuildGlobalStringPtr</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildICmp">llvmBuildICmp</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildLoad">llvmBuildLoad</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildMul">llvmBuildMul</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildRet">llvmBuildRet</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildRetVoid">llvmBuildRetVoid</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildSDiv">llvmBuildSDiv</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildStore">llvmBuildStore</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmBuildSub">llvmBuildSub</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmConstInt">llvmConstInt</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmCreateBuilder">llvmCreateBuilder</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmCreatePassManager">llvmCreatePassManager</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmCreateTargetMachine">llvmCreateTargetMachine</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmDisposeBuilder">llvmDisposeBuilder</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmDisposePassManager">llvmDisposePassManager</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmDisposeTargetMachine">llvmDisposeTargetMachine</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmDumpModule">llvmDumpModule</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmFunctionType1">llvmFunctionType1</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmGetDefaultTargetTriple">llvmGetDefaultTargetTriple</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmGetFirstTarget">llvmGetFirstTarget</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmGetParam">llvmGetParam</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmInitializeAllAsmParsers">llvmInitializeAllAsmParsers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmInitializeAllAsmPrinters">llvmInitializeAllAsmPrinters</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmInitializeAllTargetInfos">llvmInitializeAllTargetInfos</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmInitializeAllTargetMCs">llvmInitializeAllTargetMCs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmInitializeAllTargets">llvmInitializeAllTargets</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmInt1Type">llvmInt1Type</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmInt1TypeInContext">llvmInt1TypeInContext</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmInt32Type">llvmInt32Type</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmInt64Type">llvmInt64Type</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmInt8Type">llvmInt8Type</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmModuleCreateWithName">llvmModuleCreateWithName</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmPassManagerBuilderCreate">llvmPassManagerBuilderCreate</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmPassManagerBuilderDispose">llvmPassManagerBuilderDispose</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmPassManagerBuilderPopulateFunctionPassManager">llvmPassManagerBuilderPopulateFunctionPassManager</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmPassManagerBuilderPopulateModulePassManager">llvmPassManagerBuilderPopulateModulePassManager</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmPassManagerBuilderSetOptLevel">llvmPassManagerBuilderSetOptLevel</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmPointerType">llvmPointerType</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmPositionBuilderAtEnd">llvmPositionBuilderAtEnd</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmRunPassManager">llvmRunPassManager</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmTargetMachineEmitToFile">llvmTargetMachineEmitToFile</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#llvmVoidType">llvmVoidType</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#print">print</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../llvm/index.html">
+            <h3>llvm</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../llvm/index.html#records">Records</a>
+        </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../llvm/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../llvm/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Functions</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="#llvmAddFunction">llvmAddFunction</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmAppendBasicBlock">llvmAppendBasicBlock</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildAdd">llvmBuildAdd</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildAlloca">llvmBuildAlloca</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildBr">llvmBuildBr</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildCall">llvmBuildCall</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildCondBr">llvmBuildCondBr</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildGlobalStringPtr">llvmBuildGlobalStringPtr</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildICmp">llvmBuildICmp</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildLoad">llvmBuildLoad</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildMul">llvmBuildMul</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildRet">llvmBuildRet</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildRetVoid">llvmBuildRetVoid</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildSDiv">llvmBuildSDiv</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildStore">llvmBuildStore</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmBuildSub">llvmBuildSub</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmConstInt">llvmConstInt</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmCreateBuilder">llvmCreateBuilder</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmCreatePassManager">llvmCreatePassManager</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmCreateTargetMachine">llvmCreateTargetMachine</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmDisposeBuilder">llvmDisposeBuilder</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmDisposePassManager">llvmDisposePassManager</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmDisposeTargetMachine">llvmDisposeTargetMachine</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmDumpModule">llvmDumpModule</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmFunctionType1">llvmFunctionType1</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmGetDefaultTargetTriple">llvmGetDefaultTargetTriple</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmGetFirstTarget">llvmGetFirstTarget</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmGetParam">llvmGetParam</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmInitializeAllAsmParsers">llvmInitializeAllAsmParsers</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmInitializeAllAsmPrinters">llvmInitializeAllAsmPrinters</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmInitializeAllTargetInfos">llvmInitializeAllTargetInfos</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmInitializeAllTargetMCs">llvmInitializeAllTargetMCs</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmInitializeAllTargets">llvmInitializeAllTargets</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmInt1Type">llvmInt1Type</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmInt1TypeInContext">llvmInt1TypeInContext</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmInt32Type">llvmInt32Type</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmInt64Type">llvmInt64Type</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmInt8Type">llvmInt8Type</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmModuleCreateWithName">llvmModuleCreateWithName</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmPassManagerBuilderCreate">llvmPassManagerBuilderCreate</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmPassManagerBuilderDispose">llvmPassManagerBuilderDispose</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmPassManagerBuilderPopulateFunctionPassManager">llvmPassManagerBuilderPopulateFunctionPassManager</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmPassManagerBuilderPopulateModulePassManager">llvmPassManagerBuilderPopulateModulePassManager</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmPassManagerBuilderSetOptLevel">llvmPassManagerBuilderSetOptLevel</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmPointerType">llvmPointerType</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmPositionBuilderAtEnd">llvmPositionBuilderAtEnd</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmRunPassManager">llvmRunPassManager</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmTargetMachineEmitToFile">llvmTargetMachineEmitToFile</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#llvmVoidType">llvmVoidType</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#print">print</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../llvm/index.html">
+            <h3>llvm</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../llvm/index.html#records">Records</a>
+        </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../llvm/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../llvm/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Functions - </span>
+                
+                    <a href="../llvm/index.html">llvm</a>
+                
+            </h1>
+            <div class="constants">
+                <table class="ui table details-table">
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmAddFunction">llvmAddFunction</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmAppendBasicBlock">llvmAppendBasicBlock</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildAdd">llvmBuildAdd</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildAlloca">llvmBuildAlloca</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildBr">llvmBuildBr</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildCall">llvmBuildCall</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildCondBr">llvmBuildCondBr</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildGlobalStringPtr">llvmBuildGlobalStringPtr</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildICmp">llvmBuildICmp</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildLoad">llvmBuildLoad</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildMul">llvmBuildMul</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildRet">llvmBuildRet</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildRetVoid">llvmBuildRetVoid</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildSDiv">llvmBuildSDiv</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildStore">llvmBuildStore</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmBuildSub">llvmBuildSub</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmConstInt">llvmConstInt</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmCreateBuilder">llvmCreateBuilder</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmCreatePassManager">llvmCreatePassManager</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmCreateTargetMachine">llvmCreateTargetMachine</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmDisposeBuilder">llvmDisposeBuilder</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmDisposePassManager">llvmDisposePassManager</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmDisposeTargetMachine">llvmDisposeTargetMachine</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmDumpModule">llvmDumpModule</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmFunctionType1">llvmFunctionType1</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmGetDefaultTargetTriple">llvmGetDefaultTargetTriple</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmGetFirstTarget">llvmGetFirstTarget</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmGetParam">llvmGetParam</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmInitializeAllAsmParsers">llvmInitializeAllAsmParsers</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmInitializeAllAsmPrinters">llvmInitializeAllAsmPrinters</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmInitializeAllTargetInfos">llvmInitializeAllTargetInfos</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmInitializeAllTargetMCs">llvmInitializeAllTargetMCs</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmInitializeAllTargets">llvmInitializeAllTargets</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmInt1Type">llvmInt1Type</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmInt1TypeInContext">llvmInt1TypeInContext</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmInt32Type">llvmInt32Type</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmInt64Type">llvmInt64Type</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmInt8Type">llvmInt8Type</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmModuleCreateWithName">llvmModuleCreateWithName</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmPassManagerBuilderCreate">llvmPassManagerBuilderCreate</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmPassManagerBuilderDispose">llvmPassManagerBuilderDispose</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmPassManagerBuilderPopulateFunctionPassManager">llvmPassManagerBuilderPopulateFunctionPassManager</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmPassManagerBuilderPopulateModulePassManager">llvmPassManagerBuilderPopulateModulePassManager</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmPassManagerBuilderSetOptLevel">llvmPassManagerBuilderSetOptLevel</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmPointerType">llvmPointerType</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmPositionBuilderAtEnd">llvmPositionBuilderAtEnd</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmRunPassManager">llvmRunPassManager</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmTargetMachineEmitToFile">llvmTargetMachineEmitToFile</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#llvmVoidType">llvmVoidType</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#print">print</a></td>
+                                <td width="70%"></td>
+                            </tr>
+                        </tbody>
+                    
+                </table>
+                <div>
+                    
+                        <div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmAddFunction" title="llvmAddFunction">
+             <a class="url-link" href="#llvmAddFunction">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmAddFunction </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMModuleRef.html">LLVMModuleRef</a> m, <span class="builtin-type">string</span> name, <a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> functionTy)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        m<span class="type">  <a href="../llvm/records/LLVMModuleRef.html">LLVMModuleRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        functionTy<span class="type">  <a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmAppendBasicBlock" title="llvmAppendBasicBlock">
+             <a class="url-link" href="#llvmAppendBasicBlock">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmAppendBasicBlock </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> fn, <span class="builtin-type">string</span> name)</p>
+            <b> returns </b><a href="../llvm/records/LLVMBasicBlockRef.html">LLVMBasicBlockRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        fn<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMBasicBlockRef.html">LLVMBasicBlockRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildAdd" title="llvmBuildAdd">
+             <a class="url-link" href="#llvmBuildAdd">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildAdd </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> lhs, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> rhs, <span class="builtin-type">string</span> name)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        lhs<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        rhs<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildAlloca" title="llvmBuildAlloca">
+             <a class="url-link" href="#llvmBuildAlloca">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildAlloca </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> ty, <span class="builtin-type">string</span> name)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        ty<span class="type">  <a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildBr" title="llvmBuildBr">
+             <a class="url-link" href="#llvmBuildBr">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildBr </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <a href="../llvm/records/LLVMBasicBlockRef.html">LLVMBasicBlockRef</a> dest)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        dest<span class="type">  <a href="../llvm/records/LLVMBasicBlockRef.html">LLVMBasicBlockRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildCall" title="llvmBuildCall">
+             <a class="url-link" href="#llvmBuildCall">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildCall </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> fn, <span class="array-type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a>[]</span> args, <span class="builtin-type">int</span> numArgs, <span class="builtin-type">string</span> name)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        fn<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        args<span class="type">  <span class="array-type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        numArgs<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildCondBr" title="llvmBuildCondBr">
+             <a class="url-link" href="#llvmBuildCondBr">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildCondBr </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> ifValue, <a href="../llvm/records/LLVMBasicBlockRef.html">LLVMBasicBlockRef</a> then, <a href="../llvm/records/LLVMBasicBlockRef.html">LLVMBasicBlockRef</a> elseValue)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        ifValue<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        then<span class="type">  <a href="../llvm/records/LLVMBasicBlockRef.html">LLVMBasicBlockRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        elseValue<span class="type">  <a href="../llvm/records/LLVMBasicBlockRef.html">LLVMBasicBlockRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildGlobalStringPtr" title="llvmBuildGlobalStringPtr">
+             <a class="url-link" href="#llvmBuildGlobalStringPtr">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildGlobalStringPtr </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> b, <span class="builtin-type">string</span> str, <span class="builtin-type">string</span> name)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        b<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        str<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildICmp" title="llvmBuildICmp">
+             <a class="url-link" href="#llvmBuildICmp">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildICmp </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <span class="builtin-type">int</span> op, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> lhs, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> rhs, <span class="builtin-type">string</span> name)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        op<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        lhs<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        rhs<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildLoad" title="llvmBuildLoad">
+             <a class="url-link" href="#llvmBuildLoad">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildLoad </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> pointerVal, <span class="builtin-type">string</span> name)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        pointerVal<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildMul" title="llvmBuildMul">
+             <a class="url-link" href="#llvmBuildMul">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildMul </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> lhs, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> rhs, <span class="builtin-type">string</span> name)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        lhs<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        rhs<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildRet" title="llvmBuildRet">
+             <a class="url-link" href="#llvmBuildRet">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildRet </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> v)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        v<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildRetVoid" title="llvmBuildRetVoid">
+             <a class="url-link" href="#llvmBuildRetVoid">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildRetVoid </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildSDiv" title="llvmBuildSDiv">
+             <a class="url-link" href="#llvmBuildSDiv">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildSDiv </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> lhs, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> rhs, <span class="builtin-type">string</span> name)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        lhs<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        rhs<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildStore" title="llvmBuildStore">
+             <a class="url-link" href="#llvmBuildStore">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildStore </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> val, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> ptr)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        val<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        ptr<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmBuildSub" title="llvmBuildSub">
+             <a class="url-link" href="#llvmBuildSub">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmBuildSub </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> arg0, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> lhs, <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> rhs, <span class="builtin-type">string</span> name)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        arg0<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        lhs<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        rhs<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmConstInt" title="llvmConstInt">
+             <a class="url-link" href="#llvmConstInt">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmConstInt </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> intTy, <span class="builtin-type">int</span> n, <span class="builtin-type">int</span> signExtend)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        intTy<span class="type">  <a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        n<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        signExtend<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmCreateBuilder" title="llvmCreateBuilder">
+             <a class="url-link" href="#llvmCreateBuilder">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmCreateBuilder </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmCreatePassManager" title="llvmCreatePassManager">
+             <a class="url-link" href="#llvmCreatePassManager">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmCreatePassManager </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../llvm/records/LLVMPassManagerRef.html">LLVMPassManagerRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMPassManagerRef.html">LLVMPassManagerRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmCreateTargetMachine" title="llvmCreateTargetMachine">
+             <a class="url-link" href="#llvmCreateTargetMachine">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmCreateTargetMachine </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMTargetRef.html">LLVMTargetRef</a> t, <a href="../llvm/records/BytePointer.html">BytePointer</a> triple, <a href="../llvm/records/BytePointer.html">BytePointer</a> cpu, <a href="../llvm/records/BytePointer.html">BytePointer</a> features, <span class="builtin-type">int</span> level, <span class="builtin-type">int</span> reloc, <span class="builtin-type">int</span> codeModel)</p>
+            <b> returns </b><a href="../llvm/records/LLVMTargetMachineRef.html">LLVMTargetMachineRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        t<span class="type">  <a href="../llvm/records/LLVMTargetRef.html">LLVMTargetRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        triple<span class="type">  <a href="../llvm/records/BytePointer.html">BytePointer</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        cpu<span class="type">  <a href="../llvm/records/BytePointer.html">BytePointer</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        features<span class="type">  <a href="../llvm/records/BytePointer.html">BytePointer</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        level<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        reloc<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        codeModel<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMTargetMachineRef.html">LLVMTargetMachineRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmDisposeBuilder" title="llvmDisposeBuilder">
+             <a class="url-link" href="#llvmDisposeBuilder">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmDisposeBuilder </h2>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        builder<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmDisposePassManager" title="llvmDisposePassManager">
+             <a class="url-link" href="#llvmDisposePassManager">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmDisposePassManager </h2>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        pm<span class="type">  <a href="../llvm/records/LLVMPassManagerRef.html">LLVMPassManagerRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmDisposeTargetMachine" title="llvmDisposeTargetMachine">
+             <a class="url-link" href="#llvmDisposeTargetMachine">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmDisposeTargetMachine </h2>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        t<span class="type">  <a href="../llvm/records/LLVMTargetMachineRef.html">LLVMTargetMachineRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmDumpModule" title="llvmDumpModule">
+             <a class="url-link" href="#llvmDumpModule">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmDumpModule </h2>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        m<span class="type">  <a href="../llvm/records/LLVMModuleRef.html">LLVMModuleRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmFunctionType1" title="llvmFunctionType1">
+             <a class="url-link" href="#llvmFunctionType1">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmFunctionType1 </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> returnType, <span class="array-type"><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a>[]</span> paramTypes, <span class="builtin-type">int</span> paramCount, <span class="builtin-type">int</span> isVarArg)</p>
+            <b> returns </b><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        returnType<span class="type">  <a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        paramTypes<span class="type">  <span class="array-type"><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        paramCount<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        isVarArg<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmGetDefaultTargetTriple" title="llvmGetDefaultTargetTriple">
+             <a class="url-link" href="#llvmGetDefaultTargetTriple">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmGetDefaultTargetTriple </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../llvm/records/BytePointer.html">BytePointer</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/BytePointer.html">BytePointer</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmGetFirstTarget" title="llvmGetFirstTarget">
+             <a class="url-link" href="#llvmGetFirstTarget">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmGetFirstTarget </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../llvm/records/LLVMTargetRef.html">LLVMTargetRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMTargetRef.html">LLVMTargetRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmGetParam" title="llvmGetParam">
+             <a class="url-link" href="#llvmGetParam">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmGetParam </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> fn, <span class="builtin-type">int</span> index)</p>
+            <b> returns </b><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        fn<span class="type">  <a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        index<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMValueRef.html">LLVMValueRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmInitializeAllAsmParsers" title="llvmInitializeAllAsmParsers">
+             <a class="url-link" href="#llvmInitializeAllAsmParsers">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmInitializeAllAsmParsers </h2>
+        
+    </div>
+    <p></p>
+     
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmInitializeAllAsmPrinters" title="llvmInitializeAllAsmPrinters">
+             <a class="url-link" href="#llvmInitializeAllAsmPrinters">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmInitializeAllAsmPrinters </h2>
+        
+    </div>
+    <p></p>
+     
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmInitializeAllTargetInfos" title="llvmInitializeAllTargetInfos">
+             <a class="url-link" href="#llvmInitializeAllTargetInfos">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmInitializeAllTargetInfos </h2>
+        
+    </div>
+    <p></p>
+     
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmInitializeAllTargetMCs" title="llvmInitializeAllTargetMCs">
+             <a class="url-link" href="#llvmInitializeAllTargetMCs">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmInitializeAllTargetMCs </h2>
+        
+    </div>
+    <p></p>
+     
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmInitializeAllTargets" title="llvmInitializeAllTargets">
+             <a class="url-link" href="#llvmInitializeAllTargets">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmInitializeAllTargets </h2>
+        
+    </div>
+    <p></p>
+     
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmInt1Type" title="llvmInt1Type">
+             <a class="url-link" href="#llvmInt1Type">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmInt1Type </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmInt1TypeInContext" title="llvmInt1TypeInContext">
+             <a class="url-link" href="#llvmInt1TypeInContext">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmInt1TypeInContext </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMContextRef.html">LLVMContextRef</a> c)</p>
+            <b> returns </b><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        c<span class="type">  <a href="../llvm/records/LLVMContextRef.html">LLVMContextRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmInt32Type" title="llvmInt32Type">
+             <a class="url-link" href="#llvmInt32Type">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmInt32Type </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmInt64Type" title="llvmInt64Type">
+             <a class="url-link" href="#llvmInt64Type">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmInt64Type </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmInt8Type" title="llvmInt8Type">
+             <a class="url-link" href="#llvmInt8Type">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmInt8Type </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmModuleCreateWithName" title="llvmModuleCreateWithName">
+             <a class="url-link" href="#llvmModuleCreateWithName">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmModuleCreateWithName </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> moduleID)</p>
+            <b> returns </b><a href="../llvm/records/LLVMModuleRef.html">LLVMModuleRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        moduleID<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMModuleRef.html">LLVMModuleRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmPassManagerBuilderCreate" title="llvmPassManagerBuilderCreate">
+             <a class="url-link" href="#llvmPassManagerBuilderCreate">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmPassManagerBuilderCreate </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../llvm/records/LLVMPassManagerBuilderRef.html">LLVMPassManagerBuilderRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMPassManagerBuilderRef.html">LLVMPassManagerBuilderRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmPassManagerBuilderDispose" title="llvmPassManagerBuilderDispose">
+             <a class="url-link" href="#llvmPassManagerBuilderDispose">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmPassManagerBuilderDispose </h2>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        pmb<span class="type">  <a href="../llvm/records/LLVMPassManagerBuilderRef.html">LLVMPassManagerBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmPassManagerBuilderPopulateFunctionPassManager" title="llvmPassManagerBuilderPopulateFunctionPassManager">
+             <a class="url-link" href="#llvmPassManagerBuilderPopulateFunctionPassManager">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmPassManagerBuilderPopulateFunctionPassManager </h2>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        pmb<span class="type">  <a href="../llvm/records/LLVMPassManagerBuilderRef.html">LLVMPassManagerBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        pm<span class="type">  <a href="../llvm/records/LLVMPassManagerRef.html">LLVMPassManagerRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmPassManagerBuilderPopulateModulePassManager" title="llvmPassManagerBuilderPopulateModulePassManager">
+             <a class="url-link" href="#llvmPassManagerBuilderPopulateModulePassManager">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmPassManagerBuilderPopulateModulePassManager </h2>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        pmb<span class="type">  <a href="../llvm/records/LLVMPassManagerBuilderRef.html">LLVMPassManagerBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        pm<span class="type">  <a href="../llvm/records/LLVMPassManagerRef.html">LLVMPassManagerRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmPassManagerBuilderSetOptLevel" title="llvmPassManagerBuilderSetOptLevel">
+             <a class="url-link" href="#llvmPassManagerBuilderSetOptLevel">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmPassManagerBuilderSetOptLevel </h2>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        pmb<span class="type">  <a href="../llvm/records/LLVMPassManagerBuilderRef.html">LLVMPassManagerBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        optLevel<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmPointerType" title="llvmPointerType">
+             <a class="url-link" href="#llvmPointerType">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmPointerType </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> elementType, <span class="builtin-type">int</span> addressSpace)</p>
+            <b> returns </b><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        elementType<span class="type">  <a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        addressSpace<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmPositionBuilderAtEnd" title="llvmPositionBuilderAtEnd">
+             <a class="url-link" href="#llvmPositionBuilderAtEnd">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmPositionBuilderAtEnd </h2>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        builder<span class="type">  <a href="../llvm/records/LLVMBuilderRef.html">LLVMBuilderRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        block<span class="type">  <a href="../llvm/records/LLVMBasicBlockRef.html">LLVMBasicBlockRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmRunPassManager" title="llvmRunPassManager">
+             <a class="url-link" href="#llvmRunPassManager">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmRunPassManager </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMPassManagerRef.html">LLVMPassManagerRef</a> pm, <a href="../llvm/records/LLVMModuleRef.html">LLVMModuleRef</a> m)</p>
+            <b> returns </b><span class="builtin-type">int</span> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        pm<span class="type">  <a href="../llvm/records/LLVMPassManagerRef.html">LLVMPassManagerRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        m<span class="type">  <a href="../llvm/records/LLVMModuleRef.html">LLVMModuleRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmTargetMachineEmitToFile" title="llvmTargetMachineEmitToFile">
+             <a class="url-link" href="#llvmTargetMachineEmitToFile">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmTargetMachineEmitToFile </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../llvm/records/LLVMTargetMachineRef.html">LLVMTargetMachineRef</a> t, <a href="../llvm/records/LLVMModuleRef.html">LLVMModuleRef</a> m, <span class="array-type"><span class="builtin-type">byte</span>[]</span> filename, <span class="builtin-type">int</span> codegen, <span class="array-type"><span class="builtin-type">byte</span>[]</span> errorMessage)</p>
+            <b> returns </b><span class="builtin-type">int</span> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        t<span class="type">  <a href="../llvm/records/LLVMTargetMachineRef.html">LLVMTargetMachineRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        m<span class="type">  <a href="../llvm/records/LLVMModuleRef.html">LLVMModuleRef</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        filename<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        codegen<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        errorMessage<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="llvmVoidType" title="llvmVoidType">
+             <a class="url-link" href="#llvmVoidType">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> llvmVoidType </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../llvm/records/LLVMTypeRef.html">LLVMTypeRef</a></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="print" title="print">
+             <a class="url-link" href="#print">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> print </h2>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        value<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack-2022.svg" style="width:17px; height:17px;"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/prism.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-core.min.js"></script> -->
+<script src="/js/prism-ballerina.js"></script>
+<!-- 
+<script>
+    (function () {
+
+if (typeof self === 'undefined' || !self.Prism || !self.document) {
+    return;
+}
+
+/**
+ * Plugin name which is used as a class name for <pre> which is activating the plugin
+ * @type {String}
+ */
+var PLUGIN_NAME = 'line-numbers';
+
+/**
+ * Regular expression used for determining line breaks
+ * @type {RegExp}
+ */
+var NEW_LINE_EXP = /\n(?!$)/g;
+
+/**
+ * Resizes line numbers spans according to height of line of code
+ * @param {Element} element <pre> element
+ */
+var _resizeElement = function (element) {
+    var codeStyles = getStyles(element);
+    var whiteSpace = codeStyles['white-space'];
+
+    if (whiteSpace === 'pre-wrap' || whiteSpace === 'pre-line') {
+        var codeElement = element.querySelector('code');
+        var lineNumbersWrapper = element.querySelector('.line-numbers-rows');
+        if (!codeElement || !lineNumbersWrapper) {
+            return;
+        }
+        var lineNumberSizer = element.querySelector('.line-numbers-sizer');
+        var codeLines = codeElement.textContent.split(NEW_LINE_EXP);
+
+        if (!lineNumberSizer) {
+            lineNumberSizer = document.createElement('span');
+            lineNumberSizer.className = 'line-numbers-sizer';
+
+            codeElement.appendChild(lineNumberSizer);
+        }
+
+        lineNumberSizer.style.display = 'block';
+
+        codeLines.forEach(function (line, lineNumber) {
+            lineNumberSizer.textContent = line || '\n';
+            var lineSize = lineNumberSizer.getBoundingClientRect().height;
+            lineNumbersWrapper.children[lineNumber].style.height = lineSize + 'px';
+        });
+
+        lineNumberSizer.textContent = '';
+        lineNumberSizer.style.display = 'none';
+    }
+};
+
+/**
+ * Returns style declarations for the element
+ * @param {Element} element
+ */
+var getStyles = function (element) {
+    if (!element) {
+        return null;
+    }
+
+    return window.getComputedStyle ? getComputedStyle(element) : (element.currentStyle || null);
+};
+
+window.addEventListener('resize', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('pre.' + PLUGIN_NAME), _resizeElement);
+});
+
+Prism.hooks.add('complete', function (env) {
+    if (!env.code) {
+        return;
+    }
+
+    var code = env.element;
+    var pre = code.parentNode;
+
+    // works only for <code> wrapped inside <pre> (not inline)
+    if (!pre || !/pre/i.test(pre.nodeName)) {
+        return;
+    }
+
+    // Abort if line numbers already exists
+    if (code.querySelector('.line-numbers-rows')) {
+        return;
+    }
+
+    var addLineNumbers = false;
+    var lineNumbersRegex = /(?:^|\s)line-numbers(?:\s|$)/;
+
+    for (var element = code; element; element = element.parentNode) {
+        if (lineNumbersRegex.test(element.className)) {
+            addLineNumbers = true;
+            break;
+        }
+    }
+
+    // only add line numbers if <code> or one of its ancestors has the `line-numbers` class
+    if (!addLineNumbers) {
+        return;
+    }
+
+    // Remove the class 'line-numbers' from the <code>
+    code.className = code.className.replace(lineNumbersRegex, ' ');
+    // Add the class 'line-numbers' to the <pre>
+    if (!lineNumbersRegex.test(pre.className)) {
+        pre.className += ' line-numbers';
+    }
+
+    var match = env.code.match(NEW_LINE_EXP);
+    var linesNum = match ? match.length + 1 : 1;
+    var lineNumbersWrapper;
+
+    var lines = new Array(linesNum + 1).join('<span></span>');
+
+    lineNumbersWrapper = document.createElement('span');
+    lineNumbersWrapper.setAttribute('aria-hidden', 'true');
+    lineNumbersWrapper.className = 'line-numbers-rows';
+    lineNumbersWrapper.innerHTML = lines;
+
+    if (pre.hasAttribute('data-start')) {
+        pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+    }
+
+    env.element.appendChild(lineNumbersWrapper);
+
+    _resizeElement(pre);
+
+    Prism.hooks.run('line-numbers', env);
+});
+
+Prism.hooks.add('line-numbers', function (env) {
+    env.plugins = env.plugins || {};
+    env.plugins.lineNumbers = true;
+});
+
+/**
+ * Global exports
+ */
+Prism.plugins.lineNumbers = {
+    /**
+     * Returns the node of the given line number in the given element.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @param {Number} number
+     * @returns {Element | undefined}
+     */
+    getLine: function (element, number) {
+        if (element.tagName !== 'PRE' || !element.classList.contains(PLUGIN_NAME)) {
+            return;
+        }
+
+        var lineNumberRows = element.querySelector('.line-numbers-rows');
+        var lineNumberStart = parseInt(element.getAttribute('data-start'), 10) || 1;
+        var lineNumberEnd = lineNumberStart + (lineNumberRows.children.length - 1);
+
+        if (number < lineNumberStart) {
+            number = lineNumberStart;
+        }
+        if (number > lineNumberEnd) {
+            number = lineNumberEnd;
+        }
+
+        var lineIndex = number - lineNumberStart;
+
+        return lineNumberRows.children[lineIndex];
+    },
+    /**
+     * Resizes the line numbers of the given element.
+     *
+     * This function will not add line numbers. It will only resize existing ones.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @returns {void}
+     */
+    resize: function (element) {
+        _resizeElement(element);
+    }
+};
+
+}());
+</script> -->
+
+<!-- 
+<style>
+    pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style> -->
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+</body>
+</html>

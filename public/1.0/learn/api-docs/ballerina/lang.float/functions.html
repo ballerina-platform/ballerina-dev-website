@@ -1,0 +1,2913 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+      .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+       .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+     <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.0.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>     
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+    
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            <div class="primary-list">
+                <h3>Functions</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="#abs">abs</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#acos">acos</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#asin">asin</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#atan">atan</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#atan2">atan2</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#cbrt">cbrt</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#ceiling">ceiling</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#cos">cos</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#cosh">cosh</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#exp">exp</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#floor">floor</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#fromBitsInt">fromBitsInt</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#fromHexString">fromHexString</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#fromString">fromString</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#isFinite">isFinite</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#isInfinite">isInfinite</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#isNaN">isNaN</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#log">log</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#log10">log10</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#max">max</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#min">min</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#pow">pow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#round">round</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#sin">sin</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#sinh">sinh</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#sqrt">sqrt</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#sum">sum</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#tan">tan</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#tanh">tanh</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#toBitsInt">toBitsInt</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#toHexString">toHexString</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../lang.float/index.html">
+            <h3>lang.float</h3>
+        </a>
+    
+    <ul>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../lang.float/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../lang.float/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+                <div class="primary-list">
+                    <h3>Functions</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="#abs">abs</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#acos">acos</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#asin">asin</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#atan">atan</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#atan2">atan2</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#cbrt">cbrt</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#ceiling">ceiling</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#cos">cos</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#cosh">cosh</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#exp">exp</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#floor">floor</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#fromBitsInt">fromBitsInt</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#fromHexString">fromHexString</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#fromString">fromString</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#isFinite">isFinite</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#isInfinite">isInfinite</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#isNaN">isNaN</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#log">log</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#log10">log10</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#max">max</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#min">min</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#pow">pow</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#round">round</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#sin">sin</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#sinh">sinh</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#sqrt">sqrt</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#sum">sum</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#tan">tan</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#tanh">tanh</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#toBitsInt">toBitsInt</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#toHexString">toHexString</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../lang.float/index.html">
+            <h3>lang.float</h3>
+        </a>
+    
+    <ul>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../lang.float/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../lang.float/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Functions - </span>
+                
+                    <a href="../lang.float/index.html">lang.float</a>
+                
+            </h1>
+            <div class="constants">
+                <table class="ui table details-table">
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#abs">abs</a></td>
+                                <td width="70%"><p>IEEE abs operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#acos">acos</a></td>
+                                <td width="70%"><p>Returns the arccosine of a float value.
+Corresponds to IEEE acos operation</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#asin">asin</a></td>
+                                <td width="70%"><p>Returns the arcsine of a float value.
+Corresponds to IEEE asin operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#atan">atan</a></td>
+                                <td width="70%"><p>Returns the arctangent of a float value.
+Corresponds to IEEE atan operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#atan2">atan2</a></td>
+                                <td width="70%"><p>Performs the 2-argument arctangent operation.
+Corresponds IEEE atan2(y, x) operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#cbrt">cbrt</a></td>
+                                <td width="70%"><p>Returns the cube root of a float value.
+Corresponds to IEEE rootn(x, 3) operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#ceiling">ceiling</a></td>
+                                <td width="70%"><p>Rounds a float up to the closest integral value.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#cos">cos</a></td>
+                                <td width="70%"><p>Returns the cosine of a float value.
+Corresponds to IEEE cos operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#cosh">cosh</a></td>
+                                <td width="70%"><p>Returns the hyperbolic cosine of a float value.
+Corresponds to IEEE cosh operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#exp">exp</a></td>
+                                <td width="70%"><p>Raises Euler's number to a power.
+Corresponds to IEEE exp operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#floor">floor</a></td>
+                                <td width="70%"><p>Rounds a float down to the closest integral value.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#fromBitsInt">fromBitsInt</a></td>
+                                <td width="70%"><p>Returns the float that is represented in IEEE 64-bit floating point by <code>x</code>.
+All bit patterns that IEEE defines to be NaNs will all be mapped to the single float NaN value.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#fromHexString">fromHexString</a></td>
+                                <td width="70%"><p>Return the float value represented by <code>s</code>.
+<code>s</code> must follow the syntax of HexFloatingPointLiteral as defined by the Ballerina specification
+with the following modifications</p>
+<ul>
+<li>the HexFloatingPointLiteral may have a leading <code>+</code> or <code>-</code> sign</li>
+<li><code>NaN</code> is allowed</li>
+<li><code>Infinity</code> is allowed with an optional leading <code>+</code> or <code>-</code> sign</li>
+</ul>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#fromString">fromString</a></td>
+                                <td width="70%"><p>Return the float value represented by <code>s</code>.
+<code>s</code> must follow the syntax of DecimalFloatingPointNumber as defined by the Ballerina specification
+with the following modifications</p>
+<ul>
+<li>the DecimalFloatingPointNumber may have a leading <code>+</code> or <code>-</code> sign</li>
+<li><code>NaN</code> is allowed</li>
+<li><code>Infinity</code> is allowed with an optional leading <code>+</code> or <code>-</code> sign</li>
+<li>a FloatingPointTypeSuffix is not allowed
+This is the inverse of <code>value:toString</code> applied to an <code>float</code>.</li>
+</ul>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#isFinite">isFinite</a></td>
+                                <td width="70%"><p>Tests whether a float is finite.
+Exactly one of isFinite, isInfinite and IsNaN will be true for any float value</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#isInfinite">isInfinite</a></td>
+                                <td width="70%"><p>Tests whether a float is infinite.
+Exactly one of isFinite, isInfinite and IsNaN will be true for any float value</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#isNaN">isNaN</a></td>
+                                <td width="70%"><p>Tests whether a float is NaN.
+Exactly one of isFinite, isInfinite and IsNaN will be true for any float value.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#log">log</a></td>
+                                <td width="70%"><p>Returns the natural logarithm of a float value
+Corresponds to IEEE log operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#log10">log10</a></td>
+                                <td width="70%"><p>Returns the base 10 logarithm of a float value.
+Corresponds to IEEE log10 operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#max">max</a></td>
+                                <td width="70%"><p>Maximum of zero or more float values.
+Result is -∞ if no args
+NaN if any arg is NaN</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#min">min</a></td>
+                                <td width="70%"><p>Minimum of zero or more float values.
+Result is +∞ if no args
+Result is NaN if any arg is NaN</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#pow">pow</a></td>
+                                <td width="70%"><p>Raises one float value to the power of another float values.
+Corresponds to IEEE pow(x, y) operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#round">round</a></td>
+                                <td width="70%"><p>Round a float value to the closest integral value.
+Returns the float value that is a mathematical integer and closest to <code>x</code>.
+If there are two such values, choose the one that is even
+(this is the round-to-nearest rounding mode, which is the default for IEEE and for Ballerina).
+Same as Java Math.rint method
+Same as .NET Math.Round method
+IEEE roundToIntegralTiesToEven operation
+Note that <code>&lt;int&gt;x</code> is the same as <code>&lt;int&gt;x.round()</code></p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#sin">sin</a></td>
+                                <td width="70%"><p>Returns the sine of a float value.
+Corresponds to IEEE sin operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#sinh">sinh</a></td>
+                                <td width="70%"><p>Returns the hyperbolic sine of a float value.
+Corresponds to IEEE sinh operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#sqrt">sqrt</a></td>
+                                <td width="70%"><p>Returns the square root of a float value.
+Corresponds to IEEE squareRoot operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#sum">sum</a></td>
+                                <td width="70%"><p>Sum of zero or more float values.
+Result is NaN if any arg is NaN</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#tan">tan</a></td>
+                                <td width="70%"><p>Returns the tangent of a float value.
+Corresponds to IEEE tan operation</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#tanh">tanh</a></td>
+                                <td width="70%"><p>Returns the hyperbolic tangent of a float value.
+Corresponds to IEEE tanh operation.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#toBitsInt">toBitsInt</a></td>
+                                <td width="70%"><p>Returns IEEE 64-bit binary floating point format representation of <code>x</code> as an int.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#toHexString">toHexString</a></td>
+                                <td width="70%"><p>Returns a string that represents <code>x</code> as a hexadecimal floating point number.
+The returned string will comply to the grammar of HexFloatingPointLiteral
+in the Ballerina spec with the following modifications:</p>
+<ul>
+<li>it will have a leading <code>-</code> sign if negative</li>
+<li>positive infinity will be represented by <code>Infinity</code></li>
+<li>negative infinity will be represented by <code>-Infinity</code></li>
+<li>NaN will be represented by <code>NaN</code>
+The representation includes <code>0x</code> for finite numbers.</li>
+</ul>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                </table>
+                <div>
+                    
+                        <div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="abs" title="abs">
+             <a class="url-link" href="#abs">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> abs </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>IEEE abs operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>absolute value of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="acos" title="acos">
+             <a class="url-link" href="#acos">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> acos </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the arccosine of a float value.
+Corresponds to IEEE acos operation</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>the arccosine of <code>x</code> in radians</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="asin" title="asin">
+             <a class="url-link" href="#asin">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> asin </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the arcsine of a float value.
+Corresponds to IEEE asin operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>the arcsine of <code>x</code> in radians</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="atan" title="atan">
+             <a class="url-link" href="#atan">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> atan </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the arctangent of a float value.
+Corresponds to IEEE atan operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>the arctangent of <code>x</code> in radians</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="atan2" title="atan2">
+             <a class="url-link" href="#atan2">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> atan2 </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> y, <span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Performs the 2-argument arctangent operation.
+Corresponds IEEE atan2(y, x) operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        y<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the y-coordinate</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the x-coordinate</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>the angle in radians from the positive x-axis to the point
+whose Cartesian coordinates are <code>(x, y)</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="cbrt" title="cbrt">
+             <a class="url-link" href="#cbrt">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> cbrt </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the cube root of a float value.
+Corresponds to IEEE rootn(x, 3) operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>cube root of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="ceiling" title="ceiling">
+             <a class="url-link" href="#ceiling">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> ceiling </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Rounds a float up to the closest integral value.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>smallest (closest to -∞) decimal value not less than <code>x</code> that is a mathematical integer</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="cos" title="cos">
+             <a class="url-link" href="#cos">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> cos </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the cosine of a float value.
+Corresponds to IEEE cos operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value, specifying an angle in radians</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>the cosine of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="cosh" title="cosh">
+             <a class="url-link" href="#cosh">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> cosh </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the hyperbolic cosine of a float value.
+Corresponds to IEEE cosh operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>hyperbolic cosine of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="exp" title="exp">
+             <a class="url-link" href="#exp">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> exp </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Raises Euler's number to a power.
+Corresponds to IEEE exp operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>Euler's number raised to the power <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="floor" title="floor">
+             <a class="url-link" href="#floor">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> floor </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Rounds a float down to the closest integral value.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>largest (closest to +∞) float value not greater than <code>x</code> that is a mathematical integer.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="fromBitsInt" title="fromBitsInt">
+             <a class="url-link" href="#fromBitsInt">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> fromBitsInt </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">int</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the float that is represented in IEEE 64-bit floating point by <code>x</code>.
+All bit patterns that IEEE defines to be NaNs will all be mapped to the single float NaN value.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>int value</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p><code>x</code> bit pattern as a float</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="fromHexString" title="fromHexString">
+             <a class="url-link" href="#fromHexString">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> fromHexString </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> s)</p>
+            <b> returns </b><span class="builtin-type">float</span> | <span class="builtin-type">error</span> 
+        </span>
+        
+    </div>
+    <p><p>Return the float value represented by <code>s</code>.
+<code>s</code> must follow the syntax of HexFloatingPointLiteral as defined by the Ballerina specification
+with the following modifications</p>
+<ul>
+<li>the HexFloatingPointLiteral may have a leading <code>+</code> or <code>-</code> sign</li>
+<li><code>NaN</code> is allowed</li>
+<li><code>Infinity</code> is allowed with an optional leading <code>+</code> or <code>-</code> sign</li>
+</ul>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        s<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>hexadecimal floating point hex string representation</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>float value or error</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="fromString" title="fromString">
+             <a class="url-link" href="#fromString">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> fromString </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> s)</p>
+            <b> returns </b><span class="builtin-type">float</span> | <span class="builtin-type">error</span> 
+        </span>
+        
+    </div>
+    <p><p>Return the float value represented by <code>s</code>.
+<code>s</code> must follow the syntax of DecimalFloatingPointNumber as defined by the Ballerina specification
+with the following modifications</p>
+<ul>
+<li>the DecimalFloatingPointNumber may have a leading <code>+</code> or <code>-</code> sign</li>
+<li><code>NaN</code> is allowed</li>
+<li><code>Infinity</code> is allowed with an optional leading <code>+</code> or <code>-</code> sign</li>
+<li>a FloatingPointTypeSuffix is not allowed
+This is the inverse of <code>value:toString</code> applied to an <code>float</code>.</li>
+</ul>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        s<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>string representation of a float</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>float value or error</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="isFinite" title="isFinite">
+             <a class="url-link" href="#isFinite">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> isFinite </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">boolean</span> 
+        </span>
+        
+    </div>
+    <p><p>Tests whether a float is finite.
+Exactly one of isFinite, isInfinite and IsNaN will be true for any float value</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the float to be tested</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>true if <code>x</code> is finite, i.e. neither NaN nor +∞ nor -∞</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="isInfinite" title="isInfinite">
+             <a class="url-link" href="#isInfinite">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> isInfinite </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">boolean</span> 
+        </span>
+        
+    </div>
+    <p><p>Tests whether a float is infinite.
+Exactly one of isFinite, isInfinite and IsNaN will be true for any float value</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the float to be tested</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>true if <code>x</code> is either +∞ or -∞</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="isNaN" title="isNaN">
+             <a class="url-link" href="#isNaN">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> isNaN </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">boolean</span> 
+        </span>
+        
+    </div>
+    <p><p>Tests whether a float is NaN.
+Exactly one of isFinite, isInfinite and IsNaN will be true for any float value.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the float to be tested</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>true if <code>x</code> is NaN</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="log" title="log">
+             <a class="url-link" href="#log">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> log </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the natural logarithm of a float value
+Corresponds to IEEE log operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>natural logarithm of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="log10" title="log10">
+             <a class="url-link" href="#log10">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> log10 </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the base 10 logarithm of a float value.
+Corresponds to IEEE log10 operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>base 10 logarithm of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="max" title="max">
+             <a class="url-link" href="#max">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> max </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> xs)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Maximum of zero or more float values.
+Result is -∞ if no args
+NaN if any arg is NaN</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        xs<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float values to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>maximum value of all the <code>xs</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="min" title="min">
+             <a class="url-link" href="#min">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> min </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> xs)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Minimum of zero or more float values.
+Result is +∞ if no args
+Result is NaN if any arg is NaN</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        xs<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float values to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>minimum value of all the <code>xs</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="pow" title="pow">
+             <a class="url-link" href="#pow">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> pow </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x, <span class="builtin-type">float</span> y)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Raises one float value to the power of another float values.
+Corresponds to IEEE pow(x, y) operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>base value</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        y<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the exponent</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p><code>x</code> raised to the power of <code>y</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="round" title="round">
+             <a class="url-link" href="#round">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> round </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Round a float value to the closest integral value.
+Returns the float value that is a mathematical integer and closest to <code>x</code>.
+If there are two such values, choose the one that is even
+(this is the round-to-nearest rounding mode, which is the default for IEEE and for Ballerina).
+Same as Java Math.rint method
+Same as .NET Math.Round method
+IEEE roundToIntegralTiesToEven operation
+Note that <code>&lt;int&gt;x</code> is the same as <code>&lt;int&gt;x.round()</code></p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>closest float value to <code>x</code> that is a mathematical integer</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="sin" title="sin">
+             <a class="url-link" href="#sin">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> sin </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the sine of a float value.
+Corresponds to IEEE sin operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value, specifying an angle in radians</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>the sine of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="sinh" title="sinh">
+             <a class="url-link" href="#sinh">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> sinh </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the hyperbolic sine of a float value.
+Corresponds to IEEE sinh operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>hyperbolic sine of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="sqrt" title="sqrt">
+             <a class="url-link" href="#sqrt">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> sqrt </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the square root of a float value.
+Corresponds to IEEE squareRoot operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>square root of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="sum" title="sum">
+             <a class="url-link" href="#sum">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> sum </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> xs)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Sum of zero or more float values.
+Result is NaN if any arg is NaN</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        xs<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float values to sum</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>sum of all the <code>xs</code>, +0.0 if <code>xs</code> is empty</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="tan" title="tan">
+             <a class="url-link" href="#tan">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> tan </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the tangent of a float value.
+Corresponds to IEEE tan operation</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value, specifying an angle in radians</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>the tangent of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="tanh" title="tanh">
+             <a class="url-link" href="#tanh">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> tanh </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">float</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the hyperbolic tangent of a float value.
+Corresponds to IEEE tanh operation.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value to operate on</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
+                <li><p>hyperbolic tangent of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="toBitsInt" title="toBitsInt">
+             <a class="url-link" href="#toBitsInt">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> toBitsInt </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">int</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns IEEE 64-bit binary floating point format representation of <code>x</code> as an int.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
+                <li><p><code>x</code> bit pattern as an int</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="toHexString" title="toHexString">
+             <a class="url-link" href="#toHexString">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> toHexString </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">float</span> x)</p>
+            <b> returns </b><span class="builtin-type">string</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns a string that represents <code>x</code> as a hexadecimal floating point number.
+The returned string will comply to the grammar of HexFloatingPointLiteral
+in the Ballerina spec with the following modifications:</p>
+<ul>
+<li>it will have a leading <code>-</code> sign if negative</li>
+<li>positive infinity will be represented by <code>Infinity</code></li>
+<li>negative infinity will be represented by <code>-Infinity</code></li>
+<li>NaN will be represented by <code>NaN</code>
+The representation includes <code>0x</code> for finite numbers.</li>
+</ul>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <span class="builtin-type">float</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>float value</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>hexadecimal floating point hex string representation</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+.viewAll {
+    color: #20b6b0;
+    text-decoration: none;
+    text-align: right;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.viewAll:hover {
+    text-decoration: none !important;
+    color: #464646 !important;
+}
+
+.linkWrap {
+    text-align: right;
+}
+
+.iframe {
+    width: 100%;
+    border: 0;
+    height: 160px;
+    z-index: 7;
+    position: sticky;
+}

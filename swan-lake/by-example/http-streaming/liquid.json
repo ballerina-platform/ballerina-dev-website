@@ -1,0 +1,11 @@
+{
+  "title": "Streaming",
+  "description": "This BBE demonstrates the input and the output streaming capability in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "http", "streaming"],
+  "permalink": "/learn/by-example/http-streaming",
+  "active": "http-streaming",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-streaming",
+    "/swan-lake/learn/by-example/http-streaming.html"
+  ]
+}

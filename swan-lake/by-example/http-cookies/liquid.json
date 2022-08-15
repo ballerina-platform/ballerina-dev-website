@@ -1,0 +1,11 @@
+{
+  "title": "Cookies",
+  "description": "BBE on how to handle HTTP cookies in a Ballerina service and a client.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "http", "cookies"],
+  "permalink": "/learn/by-example/http-cookies",
+  "active": "http-cookies",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-cookies",
+    "/swan-lake/learn/by-example/http-cookies.html"
+  ]
+}

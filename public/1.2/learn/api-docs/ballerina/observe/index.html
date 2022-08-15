@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides apis for observing Ballerina services.
+Ballerina supports Observability out of the box. This module provides user api's to make Ballerina Observability more flexible for the user.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,observe">
+
+    <title>API Docs - ballerina/observe</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../observe/index.html" onclick="menuLinkClick()">
+            <h3>observe</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../observe/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../observe/index.html#objects" onclick="menuLinkClick()">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../observe/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">observe</span>
+                    
+                </h1>
+                    <h2>Module Overview</h2>
+<p>This module provides apis for observing Ballerina services.
+Ballerina supports Observability out of the box. This module provides user api's to make Ballerina Observability more flexible for the user.</p>
+<p>To observe Ballerina code, the '--b7a.observability.enabled=true' property should be given when starting the service.
+i.e. `ballerina run hello_world.bal --b7a.observability.enabled=true'
+For more information on Ballerina Observability visit <a href="/1.2/learn/how-to-observe-ballerina-code/">How to Observe Ballerina Services</a>.</p>
+<h2>Tracing</h2>
+<h3>Samples</h3>
+<h4>Start a root span &amp; attach a child span</h4>
+<p>The following code snippet show an example of how start a root span with no parent and start another span as a child of the first span.
+Note: Make sure that all started spans are closed properly to ensure that all spans are reported properly.</p>
+<pre><code class="language-ballerina">int spanId = observe:startRootSpan(&quot;Parent Span&quot;);
+
+// Do Something.
+
+int spanId2 = checkpanic observe:startSpan(&quot;Child Span&quot;, parentSpanId = spanId);
+
+// Do Something.
+
+var ret1 = observe:finishSpan(spanId2);
+
+// Do Something.
+
+var ret2 = observe:finishSpan(spanId);
+</code></pre>
+<h4>Start a span attached to a system trace</h4>
+<p>When no parentSpanId is given or a parentSpanId of -1 is given, a span is started as a child span to the current active span in the ootb system trace.</p>
+<pre><code class="language-ballerina">int spanId = checkpanic observe:startSpan(&quot;Child Span&quot;);
+
+// Do Something.
+
+var ret = observe:finishSpan(spanId);
+</code></pre>
+<h4>Attach a tag to a span</h4>
+<p>It is possible to add tags to span by using the <code>observe:addTagToSpan()</code> api by providing the span id and relevant tag key and tag value.</p>
+<pre><code class="language-ballerina">_ = observe:addTagToSpan(spanId = spanId, &quot;Tag Key&quot;, &quot;Tag Value&quot;);
+</code></pre>
+<h4>Attach a tag to a span in the system trace</h4>
+<p>When no spanId is provided or -1 is given, the defined tags are added to the current active span in the ootb system trace.</p>
+<pre><code class="language-ballerina">var ret = observe:addTagToSpan(&quot;Tag Key&quot;, &quot;Tag Value&quot;);
+</code></pre>
+<h2>Metrics</h2>
+<p>There are mainly two kind of metrics instances supported; Counter and Gauge. A counter is a cumulative metric that
+represents a single monotonically increasing counter whose value can only increase or be reset to zero on restart.
+For example, you can use a counter to represent the number of requests served, tasks completed, or errors.
+The Gauge metric instance represents a single numerical value that can arbitrarily go up and down, and also based on the
+statistics configurations provided to the Gauge, it can also report the statistics such as max, min, mean, percentiles, etc.</p>
+<h3>Counter Samples</h3>
+<h4>Create</h4>
+<p>The following code snippets provides the information on how Counter instances can be created. Instantiating the counter
+will simply create an instance based on the params passed.</p>
+<pre><code class="language-ballerina">// Create counter with simply by name.
+observe:Counter simpleCounter = new(&quot;SimpleCounter&quot;); 
+
+// Create counter with description.
+observe:Counter counterWithDesc = new(&quot;CounterWithDesc&quot;, desc = &quot;This is a sample counter description&quot;);
+
+// Create counter with tags.
+map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
+</code></pre>
+<h4>Register</h4>
+<p>The counter can registered with the global metrics registry, therefore it can be looked up later without having the
+reference of the counter that was created. Also, only the registered counters will be reported to the Metrics reporter
+such as Prometheus. In case, if there is already another non counter metric registered,
+then there will be an error returned. But if it's another counter instance, then the registered counter instance will
+be returned.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
+var anyError = counterWithTags.register();
+if anyError is error {
+    log:printError(&quot;Cannot register the counter&quot;, err = anyError);
+}
+</code></pre>
+<h4>Unregister</h4>
+<p>The counter can unregistered with the global metrics registry if it is already registered. If a metrics is unregistered,
+then further it'll not be included in metrics reporting.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
+var anyError = counterWithTags.register();
+if anyError is error {
+    log:printError(&quot;Cannot register the counter&quot;, err = anyError);
+}
+counterWithTags.unregister();
+    
+</code></pre>
+<h4>Increment</h4>
+<p>The counter can be incremented without passing any params (defaulted to 1), or by a specific amount.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
+// Increment by 1.
+counterWithTags.increment(); 
+// Increment by amount 10.
+counterWithTags.increment(amount = 10);
+</code></pre>
+<h4>Reset</h4>
+<p>The counter can be resetted to default amount = 0.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
+counterWithTags.reset();
+</code></pre>
+<h4>Get Value</h4>
+<p>The current value can be retrieved by this operation.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; counterTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Counter counterWithTags = new(&quot;CounterWithTags&quot;, desc = &quot;Some description&quot;, tags = counterTags);
+int currentValue = counterWithTags.getValue();
+</code></pre>
+<h3>Gauge Samples</h3>
+<h4>Create</h4>
+<p>The following code snippets provides the information on how Gauge instances can be created. Instantiating the gauge
+will simply create an instance based on the params passed.</p>
+<pre><code class="language-ballerina">// Create gauge with simply by name. 
+// Uses the default statistics configuration. 
+observe:Gauge simpleGauge = new(&quot;SimpleGauge&quot;); 
+
+// Create gauge with description.
+// Uses the default statistics configuration. 
+observe:Gauge gaugeWithDesc = new(&quot;GaugeWithDesc&quot;, desc = &quot;This is a sample gauge description&quot;);
+
+// Create gauge with tags.
+// Uses the default statistics configuration. 
+map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Counter gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
+
+// Create gauge with disabled statistics. 
+observe:StatisticConfig[] statsConfigs = [];
+observe:Gauge gaugeWithNoStats = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, 
+                                    tags = gaugeTags, statisticConfig = statsConfigs);
+
+// Create gauge with statistics config. 
+observe:StatisticConfig config = { timeWindow: 30000, percentiles: [0.33, 0.5, 0.9, 0.99], buckets: 3 };
+statsConfigs[0]=config; 
+
+observe:Gauge gaugeWithStats = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, 
+                                   tags = gaugeTags, statisticConfig = statsConfigs);
+</code></pre>
+<h4>Register</h4>
+<p>The gauge can registered with the global metrics registry, therefore it can be looked up later without having the
+reference of the gauge that was created. Also, only the registered counters will be reported to the Metrics reporter
+such as Prometheus. In case, if there is already another non gauge metric registered,
+then there will be an error returned. But if it's another gauge instance, then the registered gauge instance will
+be returned.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
+var anyError = gaugeWithTags.register();
+if anyError is error {
+    log:printError(&quot;Cannot register the gauge&quot;, err = anyError);
+}
+</code></pre>
+<h4>Unregister</h4>
+<p>The gauge can unregistered with the global metrics registry if it is already registered. If a metrics is unregistered,
+then further it'll not be included in metrics reporting.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
+var anyError = gaugeWithTags.register();
+if anyError is error {
+    log:printError(&quot;Cannot register the gauge&quot;, err = anyError);
+}
+gaugeWithTags.unregister();
+</code></pre>
+<h4>Increment</h4>
+<p>The gauge can be incremented without passing any params (defaulted to 1.0), or by a specific amount.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
+// Increment by 1.
+gaugeWithTags.increment(); 
+// Increment by amount 10.
+gaugeWithTags.increment(amount = 10.0);  
+</code></pre>
+<h4>Decrement</h4>
+<p>The gauge can be decremented without passing any params (defaulted to 1.0), or by a specific amount.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
+// Increment by 1.
+gaugeWithTags.decrement(); 
+// Increment by amount 10.
+gaugeWithTags.decrement(amount = 10.0);
+</code></pre>
+<h4>Set Value</h4>
+<p>This method sets the gauge's value with specific amount.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
+gaugeWithTags.setValue(100.0);
+</code></pre>
+<h4>Get Value.</h4>
+<p>The current value can be retrieved by this operation.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
+float currentValue = gaugeWithTags.getValue(); 
+</code></pre>
+<h4>Get Snapshot.</h4>
+<p>This method retrieves current snapshot of the statistics calculation based on the configurations passed to the gauge.
+If the statistics are disabled, then it'll be returning nil ().</p>
+<pre><code class="language-ballerina">map&lt;string&gt; gaugeTags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Gauge gaugeWithTags = new(&quot;GaugeWithTags&quot;, desc = &quot;Some description&quot;, tags = gaugeTags);
+gaugeWithTags.setValue(1.0);
+gaugeWithTags.setValue(2.0);
+gaugeWithTags.setValue(3.0);
+
+observe:Snapshot[]? summarySnapshot = gaugeWithTags.getSnapshot();
+if summarySnapshot is observe:Snapshot[] {
+    io:println(summarySnapshot);
+} else {
+    io:println(&quot;No statistics available!&quot;);
+}
+</code></pre>
+<h3>Global Metrics Samples</h3>
+<h4>Get All Metrics</h4>
+<p>This method returns all the metrics that are registered in the global metrics registry. This method is mainly useful for
+metric reporters, where they can fetch all metrics, format those, and report.</p>
+<pre><code class="language-ballerina">observe:Metric[] metrics = observe:getAllMetrics();
+foreach var metric in metrics {
+    // Do something.
+}
+</code></pre>
+<h4>Lookup Metric</h4>
+<p>This method will lookup for the metric from the global metric registry and return it.</p>
+<pre><code class="language-ballerina">map&lt;string&gt; tags = { &quot;method&quot;: &quot;GET&quot; };
+observe:Counter|observe:Gauge|() metric = observe:lookupMetric(&quot;MetricName&quot;, tags = tags);
+if metric is observe:Counter {
+    metric.increment(amount = 10);
+} else if metric is observe:Gauge {
+    metric.increment(amount = 10.0);
+} else {
+    io:println(&quot;No Metric Found!&quot;);
+}
+</code></pre>
+
+
+            
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Metric" title="Metric">
+                                <a class="records " href="records/Metric.html">Metric</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>This represents the generic metric record that can represent both counter and gauge.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="PercentileValue" title="PercentileValue">
+                                <a class="records " href="records/PercentileValue.html">PercentileValue</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>This represents the percentile value record.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Snapshot" title="Snapshot">
+                                <a class="records " href="records/Snapshot.html">Snapshot</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>This represents the snapshot of the statistics calculation of the gauge.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="StatisticConfig" title="StatisticConfig">
+                                <a class="records " href="records/StatisticConfig.html">StatisticConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>This represents the statistic configuration that can be used to instatiate gauge metric.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Counter" title="Counter">
+                                <a class="objects " href="objects/Counter.html">Counter</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>This represents the metric type - counter, that can be only increased by an integer number.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Gauge" title="Gauge">
+                                <a class="objects " href="objects/Gauge.html">Gauge</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
+during the usage.
+                            </td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="addTagToSpan" title="addTagToSpan">
+                                <a class="functions " href="functions.html#addTagToSpan">addTagToSpan</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Add a key value pair as a tag to the span.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="finishSpan" title="finishSpan">
+                                <a class="functions " href="functions.html#finishSpan">finishSpan</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Finish the current span.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getAllMetrics" title="getAllMetrics">
+                                <a class="functions " href="functions.html#getAllMetrics">getAllMetrics</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="lookupMetric" title="lookupMetric">
+                                <a class="functions " href="functions.html#lookupMetric">lookupMetric</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Retrieves the specific metric that is described by the given name and tags.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="startRootSpan" title="startRootSpan">
+                                <a class="functions " href="functions.html#startRootSpan">startRootSpan</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Start a span with no parent span.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="startSpan" title="startSpan">
+                                <a class="functions " href="functions.html#startSpan">startSpan</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Start a span and create child relationship to current active span or user specified span.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+
+            
+
+            
+
+            
+        </div>
+    </div>
+
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

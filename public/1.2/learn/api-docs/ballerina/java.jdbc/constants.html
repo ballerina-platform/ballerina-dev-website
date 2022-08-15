@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides the functionality required to access and manipulate data stored in any type of relational database
+that is accessible via Java Database Connectivity (JDBC).
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,java.jdbc">
+
+    <title>API Docs - Constants : java.jdbc</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../java.jdbc/index.html" onclick="menuLinkClick()">
+            <h3>java.jdbc</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../java.jdbc/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
+        
+        
+            <li>
+                <a data="clients" href="../java.jdbc/index.html#clients" onclick="menuLinkClick()">Clients</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="constants" href="../java.jdbc/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../java.jdbc/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../java.jdbc/index.html#errors" onclick="menuLinkClick()">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Constants - </span> 
+                <a href="../java.jdbc/index.html">java.jdbc</a> 
+            </h1>
+            <div class="constants">
+                <div class="data-wrapper">
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="DATABASE_ERROR_REASON">
+                                    <b >DATABASE_ERROR_REASON</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> {ballerinax/java.jdbc}DatabaseError
+                                </li>
+                                <li>
+                                    
+                                    <p>Identifies the issues related to database accessibility, erroneous queries, constraint violations,
+database resource clean-up, and other similar scenarios.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="APPLICATION_ERROR_REASON">
+                                    <b >APPLICATION_ERROR_REASON</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> {ballerinax/java.jdbc}ApplicationError
+                                </li>
+                                <li>
+                                    
+                                    <p>Identifies the errors originating from application-level causes.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_VARCHAR">
+                                    <b >TYPE_VARCHAR</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> VARCHAR
+                                </li>
+                                <li>
+                                    
+                                    <p>Small variable-length character string</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_CHAR">
+                                    <b >TYPE_CHAR</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> CHAR
+                                </li>
+                                <li>
+                                    
+                                    <p>Small fixed-length character string</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_LONGVARCHAR">
+                                    <b >TYPE_LONGVARCHAR</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> LONGVARCHAR
+                                </li>
+                                <li>
+                                    
+                                    <p>Large variable-length character string</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_NCHAR">
+                                    <b >TYPE_NCHAR</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> NCHAR
+                                </li>
+                                <li>
+                                    
+                                    <p>Small fixed-length character string with Unicode support</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_LONGNVARCHAR">
+                                    <b >TYPE_LONGNVARCHAR</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> LONGNVARCHAR
+                                </li>
+                                <li>
+                                    
+                                    <p>Large variable-length character string with Unicode support</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_NVARCHAR">
+                                    <b >TYPE_NVARCHAR</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> NVARCHAR
+                                </li>
+                                <li>
+                                    
+                                    <p>Large variable-length character string with Unicode support</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_BIT">
+                                    <b >TYPE_BIT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> BIT
+                                </li>
+                                <li>
+                                    
+                                    <p>Single bit value, which can be zero, one, or nil</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_BOOLEAN">
+                                    <b >TYPE_BOOLEAN</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> BOOLEAN
+                                </li>
+                                <li>
+                                    
+                                    <p>Boolean value being either True or false</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_TINYINT">
+                                    <b >TYPE_TINYINT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> TINYINT
+                                </li>
+                                <li>
+                                    
+                                    <p>8-bit integer value, which may be unsigned or signed</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_SMALLINT">
+                                    <b >TYPE_SMALLINT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> SMALLINT
+                                </li>
+                                <li>
+                                    
+                                    <p>16-bit signed integer value, which may be unsigned or signed</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_INTEGER">
+                                    <b >TYPE_INTEGER</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> INTEGER
+                                </li>
+                                <li>
+                                    
+                                    <p>32-bit signed integer value, which may be unsigned or signed</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_BIGINT">
+                                    <b >TYPE_BIGINT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> BIGINT
+                                </li>
+                                <li>
+                                    
+                                    <p>64-bit signed integer value, which may be unsigned or signed</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_NUMERIC">
+                                    <b >TYPE_NUMERIC</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> NUMERIC
+                                </li>
+                                <li>
+                                    
+                                    <p>Fixed-precision and scaled decimal values</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_DECIMAL">
+                                    <b >TYPE_DECIMAL</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> DECIMAL
+                                </li>
+                                <li>
+                                    
+                                    <p>Fixed-precision and scaled decimal values</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_REAL">
+                                    <b >TYPE_REAL</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> REAL
+                                </li>
+                                <li>
+                                    
+                                    <p>Single precision floating point number</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_FLOAT">
+                                    <b >TYPE_FLOAT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> FLOAT
+                                </li>
+                                <li>
+                                    
+                                    <p>Double precision floating point number</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_DOUBLE">
+                                    <b >TYPE_DOUBLE</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> DOUBLE
+                                </li>
+                                <li>
+                                    
+                                    <p>Double precision floating point number</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_BINARY">
+                                    <b >TYPE_BINARY</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> BINARY
+                                </li>
+                                <li>
+                                    
+                                    <p>Small fixed-length binary value</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_BLOB">
+                                    <b >TYPE_BLOB</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> BLOB
+                                </li>
+                                <li>
+                                    
+                                    <p>Large Binary object</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_LONGVARBINARY">
+                                    <b >TYPE_LONGVARBINARY</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> LONGVARBINARY
+                                </li>
+                                <li>
+                                    
+                                    <p>Large variable-length binary value</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_VARBINARY">
+                                    <b >TYPE_VARBINARY</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> VARBINARY
+                                </li>
+                                <li>
+                                    
+                                    <p>Small variable-length binary value</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_CLOB">
+                                    <b >TYPE_CLOB</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> CLOB
+                                </li>
+                                <li>
+                                    
+                                    <p>Large Character object</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_NCLOB">
+                                    <b >TYPE_NCLOB</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> NCLOB
+                                </li>
+                                <li>
+                                    
+                                    <p>Large Character objects in a multibyte national character set</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_DATE">
+                                    <b >TYPE_DATE</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> DATE
+                                </li>
+                                <li>
+                                    
+                                    <p>Both DATE and TIME with an additional nanosecond field</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_TIME">
+                                    <b >TYPE_TIME</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> TIME
+                                </li>
+                                <li>
+                                    
+                                    <p>Both DATE and TIME with an additional nanosecond field</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_DATETIME">
+                                    <b >TYPE_DATETIME</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> DATETIME
+                                </li>
+                                <li>
+                                    
+                                    <p>Both DATE and TIME with an additional nanosecond field</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_TIMESTAMP">
+                                    <b >TYPE_TIMESTAMP</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> TIMESTAMP
+                                </li>
+                                <li>
+                                    
+                                    <p>Both DATE and TIME with an additional nanosecond field</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_ARRAY">
+                                    <b >TYPE_ARRAY</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> ARRAY
+                                </li>
+                                <li>
+                                    
+                                    <p>Composite data value, which consists of zero or more elements of a specified data type</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_STRUCT">
+                                    <b >TYPE_STRUCT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> STRUCT
+                                </li>
+                                <li>
+                                    
+                                    <p>User-defined structured type, which consists of one or more attributes</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TYPE_REFCURSOR">
+                                    <b >TYPE_REFCURSOR</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> REFCURSOR
+                                </li>
+                                <li>
+                                    
+                                    <p>Cursor value</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="DIRECTION_IN">
+                                    <b >DIRECTION_IN</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> IN
+                                </li>
+                                <li>
+                                    
+                                    <p><code>IN</code> parameters are used to send values to stored procedures</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="DIRECTION_OUT">
+                                    <b >DIRECTION_OUT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> OUT
+                                </li>
+                                <li>
+                                    
+                                    <p><code>OUT</code> parameters are used to get values from stored procedures</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="DIRECTION_INOUT">
+                                    <b >DIRECTION_INOUT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> INOUT
+                                </li>
+                                <li>
+                                    
+                                    <p><code>INOUT</code> parameters are used to both send and get values to/from stored procedures</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

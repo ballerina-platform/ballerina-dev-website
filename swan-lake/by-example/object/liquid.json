@@ -1,0 +1,11 @@
+{
+  "title": "Object",
+  "description": "This BBE demonstrates objects in Ballerina",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "object", "class"],
+  "permalink": "/learn/by-example/object",
+  "active": "object",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/object",
+    "/swan-lake/learn/by-example/object.html"
+  ]
+}

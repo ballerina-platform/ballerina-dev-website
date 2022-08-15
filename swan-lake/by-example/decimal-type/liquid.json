@@ -1,0 +1,17 @@
+{
+  "title": "Decimal type",
+  "description": "This BBE demonstrates decimal type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "decimal type",
+    "decimal"
+  ],
+  "permalink": "/learn/by-example/decimal-type",
+  "active": "decimal-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/decimal-type",
+    "/swan-lake/learn/by-example/decimal-type.html"
+  ]
+}

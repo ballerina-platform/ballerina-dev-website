@@ -1,0 +1,47 @@
+.getStartLinks {
+    color: #20b6b0 !important;
+    text-decoration: none !important;
+    font-weight: 400;
+}
+
+.getStartLinks:hover {
+    text-decoration: none !important;
+    color: #464646 !important;
+    font-weight: 400;
+}
+
+/* .card {
+    border: none;
+    margin: 10px 20px 15px 0px;
+    max-width: 350px;
+} */
+
+.card h4 {
+    height: 45px;
+    font-size: 22px;
+    color: #57595d !important;
+    margin-top: 20px
+}
+
+.customModal {
+    border-radius: 0;
+}
+
+/* .customModalBody {
+    height: 400px;
+} */
+
+/* .customModalBody::-webkit-scrollbar {
+    width: 7px;
+    background-color: #ffffff;
+}
+  
+.formEmbedded::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5); 
+} */
+
+.formEmbedded {
+    width: 100%;
+    height: 350px;
+    /* overflow: auto; */
+}

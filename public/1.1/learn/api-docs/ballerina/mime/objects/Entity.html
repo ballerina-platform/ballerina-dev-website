@@ -1,0 +1,2661 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+        .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+
+
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+ <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.1.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Objects</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="ContentDisposition.html">ContentDisposition</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="Entity.html">Entity</a>
+                        </li>
+                    
+                        <li >
+                            <a href="MediaType.html">MediaType</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../../mime/index.html">
+            <h3>mime</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../mime/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../mime/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../../mime/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../../mime/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../../mime/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../mime/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Objects</h3>
+                    <ul>
+                        
+                            <li ></li>>
+                                <a href="ContentDisposition.html">ContentDisposition</a>
+                            </li>
+                        
+                            <li class="active"></li>>
+                                <a href="Entity.html">Entity</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="MediaType.html">MediaType</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../../mime/index.html">
+            <h3>mime</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../mime/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../mime/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../../mime/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../../mime/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../../mime/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../mime/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Object - </span>
+                
+                    <a href="../../mime/index.html">mime</a>
+                 :
+                <span class="objects">Entity</span>
+            </h1>
+            <p><p>Represents the headers and body of a message. This can be used to represent both the entity of a top level message
+and an entity(body part) inside of a multipart entity.</p>
+</p>
+
+            <div class="constants">
+                <div class="method-sum">
+                    
+
+                
+                    
+                        <h2>Methods</h2>
+                        <div class="method-list">
+                            
+                                
+<a href="#setContentType">
+    <div class="param-sum">
+        <div class="param-name">
+        setContentType 
+        </div>
+        <div class="param-details"> <p>Sets the content-type to entity.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getContentType">
+    <div class="param-sum">
+        <div class="param-name">
+        getContentType 
+        </div>
+        <div class="param-details"> <p>Gets the content type of entity.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setContentId">
+    <div class="param-sum">
+        <div class="param-name">
+        setContentId 
+        </div>
+        <div class="param-details"> <p>Sets the content ID of the entity.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getContentId">
+    <div class="param-sum">
+        <div class="param-name">
+        getContentId 
+        </div>
+        <div class="param-details"> <p>Gets the content ID of entity.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setContentLength">
+    <div class="param-sum">
+        <div class="param-name">
+        setContentLength 
+        </div>
+        <div class="param-details"> <p>Sets the content length of the entity.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getContentLength">
+    <div class="param-sum">
+        <div class="param-name">
+        getContentLength 
+        </div>
+        <div class="param-details"> <p>Gets the content length of entity.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setContentDisposition">
+    <div class="param-sum">
+        <div class="param-name">
+        setContentDisposition 
+        </div>
+        <div class="param-details"> <p>Sets the content disposition of the entity.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getContentDisposition">
+    <div class="param-sum">
+        <div class="param-name">
+        getContentDisposition 
+        </div>
+        <div class="param-details"> <p>Gets the content disposition of entity.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setBody">
+    <div class="param-sum">
+        <div class="param-name">
+        setBody 
+        </div>
+        <div class="param-details"> <p>Sets the body of the entity with the given content. Note that any string value is set as <code>text/plain</code>. To send a
+JSON-compatible string, set the content-type header to <code>application/json</code> or use the <code>setJsonPayload</code> method instead.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setFileAsEntityBody">
+    <div class="param-sum">
+        <div class="param-name">
+        setFileAsEntityBody 
+        </div>
+        <div class="param-details"> <p>Sets the entity body with a given file. This method overrides any existing <code>content-type</code> headers
+with the default content-type <code>application/octet-stream</code>. The default value <code>application/octet-stream</code>
+can be overridden by passing the content type as an optional parameter.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setJson">
+    <div class="param-sum">
+        <div class="param-name">
+        setJson 
+        </div>
+        <div class="param-details"> <p>Sets the entity body with the given <code>json</code> content. This method overrides any existing <code>content-type</code> headers
+with the default content-type <code>application/json</code>. The default value <code>application/json</code> can be overridden
+by passing the content type as an optional parameter.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getJson">
+    <div class="param-sum">
+        <div class="param-name">
+        getJson 
+        </div>
+        <div class="param-details"> <p>Extracts JSON body from the entity. If the entity body is not a JSON, an error is returned.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setXml">
+    <div class="param-sum">
+        <div class="param-name">
+        setXml 
+        </div>
+        <div class="param-details"> <p>Sets the entity body with the given XML content. This method overrides any existing content-type headers
+with the default content-type <code>application/xml</code>. The default value <code>application/xml</code> can be overridden
+by passing the content-type as an optional parameter.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getXml">
+    <div class="param-sum">
+        <div class="param-name">
+        getXml 
+        </div>
+        <div class="param-details"> <p>Extracts <code>xml</code> body from the entity. If the entity body is not an XML, an error is returned.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setText">
+    <div class="param-sum">
+        <div class="param-name">
+        setText 
+        </div>
+        <div class="param-details"> <p>Sets the entity body with the given text content. This method overrides any existing content-type headers
+with the default content-type <code>text/plain</code>. The default value <code>text/plain</code> can be overridden
+by passing the content type as an optional parameter.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getText">
+    <div class="param-sum">
+        <div class="param-name">
+        getText 
+        </div>
+        <div class="param-details"> <p>Extracts text body from the entity. If the entity body is not text compatible an error is returned.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setByteArray">
+    <div class="param-sum">
+        <div class="param-name">
+        setByteArray 
+        </div>
+        <div class="param-details"> <p>Sets the entity body with the given byte[] content. This method overrides any existing <code>content-type</code> headers
+with the default content-type <code>application/octet-stream</code>. The default value <code>application/octet-stream</code>
+can be overridden by passing the content type as an optional parameter.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getByteArray">
+    <div class="param-sum">
+        <div class="param-name">
+        getByteArray 
+        </div>
+        <div class="param-details"> <p>Given an entity, gets the entity body as a <code>byte[]</code>. If the entity size is considerably large consider
+using getByteChannel() method instead.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setByteChannel">
+    <div class="param-sum">
+        <div class="param-name">
+        setByteChannel 
+        </div>
+        <div class="param-details"> <p>Sets the entity body with the given byte channel content. This method overrides any existing content-type headers
+with the default content-type <code>application/octet-stream</code>. The default value <code>application/octet-stream</code>
+can be overridden by passing the content-type as an optional parameter.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getByteChannel">
+    <div class="param-sum">
+        <div class="param-name">
+        getByteChannel 
+        </div>
+        <div class="param-details"> <p>Given an entity, gets the entity body as a byte channel.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getBodyParts">
+    <div class="param-sum">
+        <div class="param-name">
+        getBodyParts 
+        </div>
+        <div class="param-details"> <p>Given an entity, gets its body parts. If the entity body is not a set of body parts an error will be returned.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getBodyPartsAsChannel">
+    <div class="param-sum">
+        <div class="param-name">
+        getBodyPartsAsChannel 
+        </div>
+        <div class="param-details"> <p>Given an entity, gets the body parts as a byte channel.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setBodyParts">
+    <div class="param-sum">
+        <div class="param-name">
+        setBodyParts 
+        </div>
+        <div class="param-details"> <p>Sets body parts to entity. This method overrides any existing <code>content-type</code> headers
+with the default content-type <code>multipart/form-data</code>. The default value <code>multipart/form-data</code> can be overridden
+by passing the content type as an optional parameter.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getHeader">
+    <div class="param-sum">
+        <div class="param-name">
+        getHeader 
+        </div>
+        <div class="param-details"> <p>Gets the header value associated with the given header name.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getHeaders">
+    <div class="param-sum">
+        <div class="param-name">
+        getHeaders 
+        </div>
+        <div class="param-details"> <p>Gets all the header values associated with the given header name.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getHeaderNames">
+    <div class="param-sum">
+        <div class="param-name">
+        getHeaderNames 
+        </div>
+        <div class="param-details"> <p>Gets all header names.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#addHeader">
+    <div class="param-sum">
+        <div class="param-name">
+        addHeader 
+        </div>
+        <div class="param-details"> <p>Adds the given header value against the given header.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setHeader">
+    <div class="param-sum">
+        <div class="param-name">
+        setHeader 
+        </div>
+        <div class="param-details"> <p>Sets the given header value against the existing header. If a header already exists, its value is replaced
+with the given header value.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#removeHeader">
+    <div class="param-sum">
+        <div class="param-name">
+        removeHeader 
+        </div>
+        <div class="param-details"> <p>Removes the given header from the entity.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#removeAllHeaders">
+    <div class="param-sum">
+        <div class="param-name">
+        removeAllHeaders 
+        </div>
+        <div class="param-details"> <p>Removes all headers associated with the entity.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#hasHeader">
+    <div class="param-sum">
+        <div class="param-name">
+        hasHeader 
+        </div>
+        <div class="param-details"> <p>Checks whether the requested header key exists in the header map.</p>
+ </div>
+    </div>
+</a>
+                            
+                        </div>
+                    
+
+                    
+                </div>
+
+                
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setContentType" title="setContentType">
+             <a class="url-link" href="#setContentType">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setContentType </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> mediaType)</p>
+            <b> returns </b><a href="../../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a>? 
+        </span>
+        
+    </div>
+    <p><p>Sets the content-type to entity.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        mediaType<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Content type that needs to be set to the entity</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a>?</span>)</li>
+                <li><p>Nil if successful, error in case of invalid media-type</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getContentType" title="getContentType">
+             <a class="url-link" href="#getContentType">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getContentType </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">string</span> 
+        </span>
+        
+    </div>
+    <p><p>Gets the content type of entity.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>Content type as a <code>string</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setContentId" title="setContentId">
+             <a class="url-link" href="#setContentId">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setContentId </h2>
+        
+    </div>
+    <p><p>Sets the content ID of the entity.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        contentId<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Content ID that needs to be set to entity</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getContentId" title="getContentId">
+             <a class="url-link" href="#getContentId">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getContentId </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">string</span> 
+        </span>
+        
+    </div>
+    <p><p>Gets the content ID of entity.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>Content ID as a <code>string</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setContentLength" title="setContentLength">
+             <a class="url-link" href="#setContentLength">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setContentLength </h2>
+        
+    </div>
+    <p><p>Sets the content length of the entity.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        contentLength<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Content length that needs to be set to entity</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getContentLength" title="getContentLength">
+             <a class="url-link" href="#getContentLength">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getContentLength </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">int</span> | <span class="builtin-type">error</span> 
+        </span>
+        
+    </div>
+    <p><p>Gets the content length of entity.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>Content length as an <code>int</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setContentDisposition" title="setContentDisposition">
+             <a class="url-link" href="#setContentDisposition">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setContentDisposition </h2>
+        
+    </div>
+    <p><p>Sets the content disposition of the entity.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        contentDisposition<span class="type">  <a href="../../mime/objects/ContentDisposition.html">ContentDisposition</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Content disposition that needs to be set to entity</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getContentDisposition" title="getContentDisposition">
+             <a class="url-link" href="#getContentDisposition">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getContentDisposition </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../../mime/objects/ContentDisposition.html">ContentDisposition</a> 
+        </span>
+        
+    </div>
+    <p><p>Gets the content disposition of entity.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../mime/objects/ContentDisposition.html">ContentDisposition</a></span>)</li>
+                <li><p>A <code>ContentDisposition</code> object</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setBody" title="setBody">
+             <a class="url-link" href="#setBody">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setBody </h2>
+        
+    </div>
+    <p><p>Sets the body of the entity with the given content. Note that any string value is set as <code>text/plain</code>. To send a
+JSON-compatible string, set the content-type header to <code>application/json</code> or use the <code>setJsonPayload</code> method instead.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        entityBody<span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../../mime/objects/Entity.html">Entity</a>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Entity body can be of the type <code>string</code>,<code>xml</code>,<code>json</code>,<code>byte[]</code>,<code>io:ReadableByteChannel</code>, or <code>Entity[]</code>.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setFileAsEntityBody" title="setFileAsEntityBody">
+             <a class="url-link" href="#setFileAsEntityBody">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setFileAsEntityBody </h2>
+        
+    </div>
+    <p><p>Sets the entity body with a given file. This method overrides any existing <code>content-type</code> headers
+with the default content-type <code>application/octet-stream</code>. The default value <code>application/octet-stream</code>
+can be overridden by passing the content type as an optional parameter.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        filePath<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Represents the path to the file</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default application/octet-stream)</span>
+                    </li>
+                    <li>
+                        <p><p>Content type to be used with the payload. This is an optional parameter.
+<code>application/octet-stream</code> is used as the default value.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setJson" title="setJson">
+             <a class="url-link" href="#setJson">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setJson </h2>
+        
+    </div>
+    <p><p>Sets the entity body with the given <code>json</code> content. This method overrides any existing <code>content-type</code> headers
+with the default content-type <code>application/json</code>. The default value <code>application/json</code> can be overridden
+by passing the content type as an optional parameter.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        jsonContent<span class="type">  <span class="builtin-type">json</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>JSON content that needs to be set to entity</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default application/json)</span>
+                    </li>
+                    <li>
+                        <p><p>Content type to be used with the payload. This is an optional parameter. <code>application/json</code>
+is used as the default value.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getJson" title="getJson">
+             <a class="url-link" href="#getJson">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getJson </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">json</span> | <a href="../../mime/errors.html#ParserError">ParserError</a> 
+        </span>
+        
+    </div>
+    <p><p>Extracts JSON body from the entity. If the entity body is not a JSON, an error is returned.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">json</span> | <a href="../../mime/errors.html#ParserError">ParserError</a></span>)</li>
+                <li><p><code>json</code> data extracted from the the entity body. An <code>ParserError</code> record is returned in case of
+errors.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setXml" title="setXml">
+             <a class="url-link" href="#setXml">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setXml </h2>
+        
+    </div>
+    <p><p>Sets the entity body with the given XML content. This method overrides any existing content-type headers
+with the default content-type <code>application/xml</code>. The default value <code>application/xml</code> can be overridden
+by passing the content-type as an optional parameter.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        xmlContent<span class="type">  <span class="builtin-type">xml</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>XML content that needs to be set to entity</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default application/xml)</span>
+                    </li>
+                    <li>
+                        <p><p>Content type to be used with the payload. This is an optional parameter. <code>application/xml</code>
+is used as the default value.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getXml" title="getXml">
+             <a class="url-link" href="#getXml">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getXml </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">xml</span> | <a href="../../mime/errors.html#ParserError">ParserError</a> 
+        </span>
+        
+    </div>
+    <p><p>Extracts <code>xml</code> body from the entity. If the entity body is not an XML, an error is returned.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span> | <a href="../../mime/errors.html#ParserError">ParserError</a></span>)</li>
+                <li><p><code>xml</code> data extracted from the the entity body. An <code>ParserError</code> record is returned in case of
+errors.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setText" title="setText">
+             <a class="url-link" href="#setText">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setText </h2>
+        
+    </div>
+    <p><p>Sets the entity body with the given text content. This method overrides any existing content-type headers
+with the default content-type <code>text/plain</code>. The default value <code>text/plain</code> can be overridden
+by passing the content type as an optional parameter.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        textContent<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Text content that needs to be set to entity</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default text/plain)</span>
+                    </li>
+                    <li>
+                        <p><p>Content type to be used with the payload. This is an optional parameter. <code>text/plain</code>
+is used as the default value.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getText" title="getText">
+             <a class="url-link" href="#getText">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getText </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">string</span> | <a href="../../mime/errors.html#ParserError">ParserError</a> 
+        </span>
+        
+    </div>
+    <p><p>Extracts text body from the entity. If the entity body is not text compatible an error is returned.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../mime/errors.html#ParserError">ParserError</a></span>)</li>
+                <li><p><code>string</code> data extracted from the the entity body or <code>ParserError</code> in case of errors.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setByteArray" title="setByteArray">
+             <a class="url-link" href="#setByteArray">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setByteArray </h2>
+        
+    </div>
+    <p><p>Sets the entity body with the given byte[] content. This method overrides any existing <code>content-type</code> headers
+with the default content-type <code>application/octet-stream</code>. The default value <code>application/octet-stream</code>
+can be overridden by passing the content type as an optional parameter.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        blobContent<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>byte[] content that needs to be set to entity</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default application/octet-stream)</span>
+                    </li>
+                    <li>
+                        <p><p>Content type to be used with the payload. This is an optional parameter.
+<code>application/octet-stream</code> is used as the default value.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getByteArray" title="getByteArray">
+             <a class="url-link" href="#getByteArray">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getByteArray </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../mime/errors.html#ParserError">ParserError</a> 
+        </span>
+        
+    </div>
+    <p><p>Given an entity, gets the entity body as a <code>byte[]</code>. If the entity size is considerably large consider
+using getByteChannel() method instead.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../mime/errors.html#ParserError">ParserError</a></span>)</li>
+                <li><p><code>byte[]</code> data extracted from the the entity body. An <code>ParserError</code> record is returned in case of
+errors.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setByteChannel" title="setByteChannel">
+             <a class="url-link" href="#setByteChannel">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setByteChannel </h2>
+        
+    </div>
+    <p><p>Sets the entity body with the given byte channel content. This method overrides any existing content-type headers
+with the default content-type <code>application/octet-stream</code>. The default value <code>application/octet-stream</code>
+can be overridden by passing the content-type as an optional parameter.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        byteChannel<span class="type">  <a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Byte channel that needs to be set to entity</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default application/octet-stream)</span>
+                    </li>
+                    <li>
+                        <p><p>Content-type to be used with the payload. This is an optional parameter.
+<code>application/octet-stream</code> is used as the default value.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getByteChannel" title="getByteChannel">
+             <a class="url-link" href="#getByteChannel">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getByteChannel </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a> 
+        </span>
+        
+    </div>
+    <p><p>Given an entity, gets the entity body as a byte channel.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a></span>)</li>
+                <li><p>An <code>io:ReadableByteChannel</code>. An <code>ParserError</code> record will be returned in case of errors</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getBodyParts" title="getBodyParts">
+             <a class="url-link" href="#getBodyParts">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getBodyParts </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="array-type"><a href="../../mime/objects/Entity.html">Entity</a>[]</span> | <a href="../../mime/errors.html#ParserError">ParserError</a> 
+        </span>
+        
+    </div>
+    <p><p>Given an entity, gets its body parts. If the entity body is not a set of body parts an error will be returned.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../../mime/objects/Entity.html">Entity</a>[]</span> | <a href="../../mime/errors.html#ParserError">ParserError</a></span>)</li>
+                <li><p>An array of body parts(<code>Entity[]</code>) extracted from the entity body. An <code>ParserError</code> record will be
+returned in case of errors.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getBodyPartsAsChannel" title="getBodyPartsAsChannel">
+             <a class="url-link" href="#getBodyPartsAsChannel">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getBodyPartsAsChannel </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a> 
+        </span>
+        
+    </div>
+    <p><p>Given an entity, gets the body parts as a byte channel.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../mime/errors.html#ParserError">ParserError</a></span>)</li>
+                <li><p>Body parts as a byte channel</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setBodyParts" title="setBodyParts">
+             <a class="url-link" href="#setBodyParts">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setBodyParts </h2>
+        
+    </div>
+    <p><p>Sets body parts to entity. This method overrides any existing <code>content-type</code> headers
+with the default content-type <code>multipart/form-data</code>. The default value <code>multipart/form-data</code> can be overridden
+by passing the content type as an optional parameter.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        bodyParts<span class="type">  <span class="array-type"><a href="../../mime/objects/Entity.html">Entity</a>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Represents the body parts that needs to be set to the entity</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default multipart/form-data)</span>
+                    </li>
+                    <li>
+                        <p><p>Content-type to be used with the payload. This is an optional parameter.
+<code>multipart/form-data</code> is used as the default value.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getHeader" title="getHeader">
+             <a class="url-link" href="#getHeader">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getHeader </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> headerName)</p>
+            <b> returns </b><span class="builtin-type">string</span> 
+        </span>
+        
+    </div>
+    <p><p>Gets the header value associated with the given header name.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Represents header name</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>Header value associated with the given header name as a <code>string</code>. If multiple header values are
+present, then the first value is returned. An exception is thrown if no header is found. Use
+<code>Entity.hasHeader()</code> beforehand to check the existence of header.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getHeaders" title="getHeaders">
+             <a class="url-link" href="#getHeaders">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getHeaders </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> headerName)</p>
+            <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> 
+        </span>
+        
+    </div>
+    <p><p>Gets all the header values associated with the given header name.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>The header name</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
+                <li><p>All the header values associated with the given header name as a <code>string[]</code>. An exception is thrown
+if no header is found. Use <code>Entity.hasHeader()</code> beforehand to check the existence of header.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getHeaderNames" title="getHeaderNames">
+             <a class="url-link" href="#getHeaderNames">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getHeaderNames </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> 
+        </span>
+        
+    </div>
+    <p><p>Gets all header names.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
+                <li><p>All header names as a <code>string[]</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="addHeader" title="addHeader">
+             <a class="url-link" href="#addHeader">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> addHeader </h2>
+        
+    </div>
+    <p><p>Adds the given header value against the given header.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>The header name</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        headerValue<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Represents the header value to be added</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setHeader" title="setHeader">
+             <a class="url-link" href="#setHeader">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setHeader </h2>
+        
+    </div>
+    <p><p>Sets the given header value against the existing header. If a header already exists, its value is replaced
+with the given header value.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>The header name</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        headerValue<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Represents the header value</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="removeHeader" title="removeHeader">
+             <a class="url-link" href="#removeHeader">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> removeHeader </h2>
+        
+    </div>
+    <p><p>Removes the given header from the entity.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Represents the header name</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="removeAllHeaders" title="removeAllHeaders">
+             <a class="url-link" href="#removeAllHeaders">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> removeAllHeaders </h2>
+        
+    </div>
+    <p><p>Removes all headers associated with the entity.</p>
+</p>
+     
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="hasHeader" title="hasHeader">
+             <a class="url-link" href="#hasHeader">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> hasHeader </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> headerName)</p>
+            <b> returns </b><span class="builtin-type">boolean</span> 
+        </span>
+        
+    </div>
+    <p><p>Checks whether the requested header key exists in the header map.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>The header name</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>True if the specified header key exists</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                
+            </div>
+        </div>
+    </div>
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack-2022.svg" style="width:17px; height:17px;"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/prism.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-core.min.js"></script> -->
+<script src="/js/prism-ballerina.js"></script>
+<!-- 
+<script>
+    (function () {
+
+if (typeof self === 'undefined' || !self.Prism || !self.document) {
+    return;
+}
+
+/**
+ * Plugin name which is used as a class name for <pre> which is activating the plugin
+ * @type {String}
+ */
+var PLUGIN_NAME = 'line-numbers';
+
+/**
+ * Regular expression used for determining line breaks
+ * @type {RegExp}
+ */
+var NEW_LINE_EXP = /\n(?!$)/g;
+
+/**
+ * Resizes line numbers spans according to height of line of code
+ * @param {Element} element <pre> element
+ */
+var _resizeElement = function (element) {
+    var codeStyles = getStyles(element);
+    var whiteSpace = codeStyles['white-space'];
+
+    if (whiteSpace === 'pre-wrap' || whiteSpace === 'pre-line') {
+        var codeElement = element.querySelector('code');
+        var lineNumbersWrapper = element.querySelector('.line-numbers-rows');
+        if (!codeElement || !lineNumbersWrapper) {
+            return;
+        }
+        var lineNumberSizer = element.querySelector('.line-numbers-sizer');
+        var codeLines = codeElement.textContent.split(NEW_LINE_EXP);
+
+        if (!lineNumberSizer) {
+            lineNumberSizer = document.createElement('span');
+            lineNumberSizer.className = 'line-numbers-sizer';
+
+            codeElement.appendChild(lineNumberSizer);
+        }
+
+        lineNumberSizer.style.display = 'block';
+
+        codeLines.forEach(function (line, lineNumber) {
+            lineNumberSizer.textContent = line || '\n';
+            var lineSize = lineNumberSizer.getBoundingClientRect().height;
+            lineNumbersWrapper.children[lineNumber].style.height = lineSize + 'px';
+        });
+
+        lineNumberSizer.textContent = '';
+        lineNumberSizer.style.display = 'none';
+    }
+};
+
+/**
+ * Returns style declarations for the element
+ * @param {Element} element
+ */
+var getStyles = function (element) {
+    if (!element) {
+        return null;
+    }
+
+    return window.getComputedStyle ? getComputedStyle(element) : (element.currentStyle || null);
+};
+
+window.addEventListener('resize', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('pre.' + PLUGIN_NAME), _resizeElement);
+});
+
+Prism.hooks.add('complete', function (env) {
+    if (!env.code) {
+        return;
+    }
+
+    var code = env.element;
+    var pre = code.parentNode;
+
+    // works only for <code> wrapped inside <pre> (not inline)
+    if (!pre || !/pre/i.test(pre.nodeName)) {
+        return;
+    }
+
+    // Abort if line numbers already exists
+    if (code.querySelector('.line-numbers-rows')) {
+        return;
+    }
+
+    var addLineNumbers = false;
+    var lineNumbersRegex = /(?:^|\s)line-numbers(?:\s|$)/;
+
+    for (var element = code; element; element = element.parentNode) {
+        if (lineNumbersRegex.test(element.className)) {
+            addLineNumbers = true;
+            break;
+        }
+    }
+
+    // only add line numbers if <code> or one of its ancestors has the `line-numbers` class
+    if (!addLineNumbers) {
+        return;
+    }
+
+    // Remove the class 'line-numbers' from the <code>
+    code.className = code.className.replace(lineNumbersRegex, ' ');
+    // Add the class 'line-numbers' to the <pre>
+    if (!lineNumbersRegex.test(pre.className)) {
+        pre.className += ' line-numbers';
+    }
+
+    var match = env.code.match(NEW_LINE_EXP);
+    var linesNum = match ? match.length + 1 : 1;
+    var lineNumbersWrapper;
+
+    var lines = new Array(linesNum + 1).join('<span></span>');
+
+    lineNumbersWrapper = document.createElement('span');
+    lineNumbersWrapper.setAttribute('aria-hidden', 'true');
+    lineNumbersWrapper.className = 'line-numbers-rows';
+    lineNumbersWrapper.innerHTML = lines;
+
+    if (pre.hasAttribute('data-start')) {
+        pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+    }
+
+    env.element.appendChild(lineNumbersWrapper);
+
+    _resizeElement(pre);
+
+    Prism.hooks.run('line-numbers', env);
+});
+
+Prism.hooks.add('line-numbers', function (env) {
+    env.plugins = env.plugins || {};
+    env.plugins.lineNumbers = true;
+});
+
+/**
+ * Global exports
+ */
+Prism.plugins.lineNumbers = {
+    /**
+     * Returns the node of the given line number in the given element.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @param {Number} number
+     * @returns {Element | undefined}
+     */
+    getLine: function (element, number) {
+        if (element.tagName !== 'PRE' || !element.classList.contains(PLUGIN_NAME)) {
+            return;
+        }
+
+        var lineNumberRows = element.querySelector('.line-numbers-rows');
+        var lineNumberStart = parseInt(element.getAttribute('data-start'), 10) || 1;
+        var lineNumberEnd = lineNumberStart + (lineNumberRows.children.length - 1);
+
+        if (number < lineNumberStart) {
+            number = lineNumberStart;
+        }
+        if (number > lineNumberEnd) {
+            number = lineNumberEnd;
+        }
+
+        var lineIndex = number - lineNumberStart;
+
+        return lineNumberRows.children[lineIndex];
+    },
+    /**
+     * Resizes the line numbers of the given element.
+     *
+     * This function will not add line numbers. It will only resize existing ones.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @returns {void}
+     */
+    resize: function (element) {
+        _resizeElement(element);
+    }
+};
+
+}());
+</script> -->
+
+<!-- 
+<style>
+    pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style> -->
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+</body>
+</html>

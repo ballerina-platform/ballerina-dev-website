@@ -1,0 +1,17 @@
+{
+  "title": "Query parameter",
+  "description": "BBE on how to use the `query parameters` in an HTTP service.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http service",
+    "query parameter"
+  ],
+  "permalink": "/learn/by-example/http-query-parameter",
+  "active": "http-query-parameter",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-query-parameter",
+    "/swan-lake/learn/by-example/http-query-parameter.html"
+  ]
+}

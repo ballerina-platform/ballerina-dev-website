@@ -76,9 +76,11 @@ export default function BBEPage({ navContent, bbesJson }) {
 
       for (let bbe of category.samples) {
         sampleData.push(
-          <Link href={`/learn/by-example/${bbe.url}`} passHref>
-            <li className="ps-4 my-1 fw-light">{bbe.name}</li>
-          </Link>
+          <li className="ps-4 my-1 fw-light">
+            <Link href={`/learn/by-example/${bbe.url}`} passHref>
+              {bbe.name}
+            </Link>
+          </li>
         );
       }
 

@@ -1,6 +1,6 @@
 [
     {
-        "title": "Hello World",
+        "title": "Hello world",
         "column": 0,
         "category": "Language concepts",
         "samples": [
@@ -1425,24 +1425,24 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "Interceptors",
-                "url": "http-interceptors",
+                "name": "Request interceptor at listener level",
+                "url": "http-request-interceptor-at-listener",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Error handling",
-                "url": "http-error-handling",
+                "name": "Request interceptor at service level",
+                "url": "http-request-interceptor-at-service",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Interceptor error handling",
-                "url": "http-interceptor-error-handling",
+                "name": "Request error interceptor",
+                "url": "http-request-error-interceptor",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
@@ -1542,14 +1542,6 @@
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
                 "isLearnByExample": false
-            },
-            {
-                "name": "Documentation",
-                "url": "graphql-documentation",
-                "verifyBuild": true,
-                "verifyOutput": false,
-                "disablePlayground": true,
-                "isLearnByExample": false
             }
         ]
     },
@@ -1611,18 +1603,26 @@
     {
         "title": "WebSockets",
         "column": 1,
-        "category": "Working over the network",
+        "category": "Working Over the network",
         "samples": [
             {
-                "name": "Client",
-                "url": "websocket-client",
+                "name": "Handle text messages with client",
+                "url": "websocket-text-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
                 "disablePlayground": true,
                 "isLearnByExample": false
             },
             {
-                "name": "Client - retry",
+                "name": "Handle binary messages with client",
+                "url": "websocket-binary-client",
+                "verifyBuild": true,
+                "verifyOutput": false,
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Retry",
                 "url": "websocket-retry-client",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1630,7 +1630,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service",
+                "name": "Listener functionalities",
                 "url": "websocket-basic-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1643,7 +1643,7 @@
     {
         "title": "WebSocket security",
         "column": 1,
-        "category": "Working over the Network",
+        "category": "Working over the network",
         "samples": [
             {
                 "name": "Service - SSL/TLS",
@@ -1662,7 +1662,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Service - Basic Auth File user store",
+                "name": "Service - Basic Auth file user store",
                 "url": "websocket-service-basic-auth-file-user-store",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -1773,7 +1773,7 @@
         "category": "Working over the network",
         "samples": [
             {
-                "name": "WebSub subscriber service",
+                "name": "Websub subscriber service",
                 "url": "websub-webhook-sample",
                 "verifyBuild": true,
                 "verifyOutput": false,
@@ -2142,17 +2142,8 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Consumer client - poll payload",
-                "url": "kafka-consumer-client-poll-payload",
-                "verifyBuild": false,
-                "verifyOutput": false,
-                "disableVerificationReason": "Includes ballerinax components",
-                "disablePlayground": true,
-                "isLearnByExample": false
-            },
-            {
-                "name": "Consumer client - poll consumer record",
-                "url": "kafka-consumer-client-poll-consumer-record",
+                "name": "Consumer client",
+                "url": "kafka-consumer-client",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2162,6 +2153,15 @@
             {
                 "name": "Transactional producer",
                 "url": "kafka-producer-transactional",
+                "verifyBuild": false,
+                "verifyOutput": false,
+                "disableVerificationReason": "Includes ballerinax components",
+                "disablePlayground": true,
+                "isLearnByExample": false
+            },
+            {
+                "name": "Consumer groups",
+                "url": "kafka-consumer-group-service",
                 "verifyBuild": false,
                 "verifyOutput": false,
                 "disableVerificationReason": "Includes ballerinax components",
@@ -2761,7 +2761,7 @@
                 "isLearnByExample": false
             },
             {
-                "name": "Manage sheduled jobs",
+                "name": "Manage scheduled jobs",
                 "url": "manage-scheduled-jobs",
                 "verifyBuild": true,
                 "verifyOutput": true,
@@ -2913,7 +2913,7 @@
             {
                 "name": "Azure Functions",
                 "url": "azure-functions-deployment",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,
@@ -2922,7 +2922,7 @@
             {
                 "name": "AWS Lambda",
                 "url": "aws-lambda-deployment",
-                "verifyBuild": false,
+                "verifyBuild": true,
                 "verifyOutput": false,
                 "disableVerificationReason": "Needs prerequisite condition",
                 "disablePlayground": true,

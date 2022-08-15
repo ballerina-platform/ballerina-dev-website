@@ -52,7 +52,7 @@ documents:
    - <File path to the GraphQL document with the GraphQL queries & mutations>
 ```
 
-The [GraphQL Foundation VSCode plugin](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) requires a GraphQL config file at the root level or in a parent-level directory. The Ballerina GraphQL client tool supports only the standard `graphql.config.yaml` format as input. For more information, see the [GraphQL config](https://www.graphql-config.com/docs/user/user-usage).
+The [GraphQL Foundation VSCode plugin](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) requires a GraphQL config file at the root level or in a parent-level directory. The Ballerina GraphQL client tool supports only the standard `graphql.config.yaml` format as input. For more information, see the [GraphQL config](https://www.graphql-config.com).
 
 >**Note:** If the GraphQL API is secured, add the extensions section in the GraphQL config file with the relevant tokens and headers. In this scenario, it is mandatory to configure the schema section with the web URL of the GraphQL schema as shown below.
 

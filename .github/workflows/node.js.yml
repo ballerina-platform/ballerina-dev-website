@@ -35,7 +35,7 @@ jobs:
           mkdir gh-pages
           cd gh-pages
           git init
-          git remote add origin https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-dev-website.git
+          git remote add origin https://ballerina-bot:$GITHUB_TOKEN@github.com/sm1990/ballerina-dev-website.git
           git fetch origin
           git checkout -b deploy-website-$GITHUB_SHA origin/gh-pages
 
@@ -55,8 +55,8 @@ jobs:
         run: |
           cp -r .github CNAME robots.txt gh-pages/.git out
           cd out
-          git config --global user.email "ballerina-bot@ballerina.org"
-          git config --global user.name "ballerina-bot"
+          git config --global user.email "saranimendisb@gmail.com"
+          git config --global user.name "sm1990"
           git add .
           git commit --allow-empty -m 'Deploy website'
           git push origin deploy-website-$GITHUB_SHA

@@ -379,69 +379,24 @@ md.use(container, "out", {
   },
 });
 
-// generate nav template
-const generateNavContent = (bbeName, jsonContent) => {
-  let prevCategory = "";
-  let chapterNav = "";
-  let categoryNav = "";
-  let mainNav = "";
-  let bbeTitle = "";
-
-  let prevBBE = {};
-  let nextBBE = {};
-
-  let bbeFound = false;
-  let expand = false;
+// find previous/next bbes
+const findPrevNextBBEs = (bbeName, jsonContent) => {
+  let bbeTitle = "",
+    prevBBE = {},
+    nextBBE = {},
+    bbeFound = false,
+    expand = false;
 
   // iterating through the chapters
   jsonContent.forEach((chapter) => {
-    let categoryName = chapter.category;
-
-    // if category names change
-    if (prevCategory.toLowerCase() !== categoryName.toLowerCase()) {
-      if (chapterNav !== "") {
-        mainNav += `${categoryNav}
-<ol>
-  ${chapterNav}
-</ol>`;
-
-        chapterNav = "";
-      }
-
-      categoryNav = `<li class="part-title">
-  <div>${categoryName}</div>
-  <a class="toggle-category"><div>❱</div></a>
-</li>`;
-
-      prevCategory = categoryName;
-    }
-
-    // details of the chapter
-    let title = chapter.title;
     let bbeSamples = chapter.samples;
-    let bbeNav = "";
 
     // iterating through bbes
     bbeSamples.forEach((bbe) => {
-      let name = bbe["name"];
-      let url = bbe["url"];
+      let name = bbe["name"],
+        url = bbe["url"];
 
       if (url === bbeName) {
-        bbeNav +=
-          "\n" +
-          `
-<li class="chapter-item bal-nav-item expanded">
-  <a
-    href="/learn/by-example/${url}.html"
-    class="active bal-active"
-  >${name}</a>
-</li>`.trim();
-
-        categoryNav = `<li class="part-title expanded">
-<div>${categoryName}</div>
-<a class="toggle-category"><div>❱</div></a>
-</li>`;
-
         bbeFound = true;
         expand = true;
         bbeTitle = name;
@@ -449,65 +404,11 @@ const generateNavContent = (bbeName, jsonContent) => {
         if (!bbeFound) prevBBE = { url, name };
         else if (bbeFound && Object.keys(nextBBE).length == 0)
           nextBBE = { url, name };
-
-        bbeNav +=
-          "\n" +
-          `
-<li class="chapter-item bal-nav-item">
-  <a
-    href="/learn/by-example/${url}.html"
-  >${name}</a>
-</li>`.trim();
       }
     });
-
-    if (expand) {
-      chapterNav +=
-        "\n" +
-        `
-<li class="chapter-item bal-nav-item expanded">
-  <div>${title}</div>
-  <a class="toggle"><div>❱</div></a>
-</li>
-<li>
-  <ol class="section">
-    ${bbeNav}
-  </ol>
-</li>`.trim();
-
-      expand = false;
-    } else {
-      chapterNav +=
-        "\n" +
-        `
-<li class="chapter-item bal-nav-item">
-  <div>${title}</div>
-  <a class="toggle"><div>❱</div></a>
-</li>
-<li>
-  <ol class="section">
-    ${bbeNav}
-  </ol>
-</li>`.trim();
-    }
   });
 
-  mainNav += `${categoryNav}
-<ol>
-  ${chapterNav}
-</ol>`;
-
-  let navContent = `
-  <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-    <div class="sidebar-scrollbox">
-      <ol class="chapter">
-        <li class="chapter-item bal-nav-item affix"></li>
-        ${mainNav}
-      </ol>
-    </div>
-  </nav>`.trim();
-
-  return { bbeTitle, navContent, prevBBE, nextBBE };
+  return { bbeTitle, prevBBE, nextBBE };
 };
 
 // update the jsx file content
@@ -523,15 +424,12 @@ const generateContent = (
   outputDir
 ) => {
   // navigation
-  const { bbeTitle, navContent, prevBBE, nextBBE } = generateNavContent(
-    bbeName,
-    jsonContent
-  );
+  const { bbeTitle, prevBBE, nextBBE } = findPrevNextBBEs(bbeName, jsonContent);
 
   // liquid
   const liquid = {
     title: bbeTitle,
-    description: description == null ? "" : description,
+    description,
     keywords:
       keywords == null
         ? []
@@ -700,7 +598,6 @@ export default function ${kebabCaseToPascalCase(bbeName)}() {
     `${outputDir}/${bbeName}/liquid.json`,
     JSON.stringify(liquid)
   );
-  fs.writeFileSync(`${outputDir}/${bbeName}/nav.html`, navContent);
   fs.writeFileSync(`${outputDir}/${bbeName}/content.jsx`, output);
 };
 
@@ -761,6 +658,8 @@ const generate = async (examplesDir, outputDir) => {
         indexArray.push(url);
 
         let files = fs.readdirSync(relPath),
+          metatagsReg = /.metatags$/,
+          metatagsFound = files.some((file) => metatagsReg.test(file)),
           description,
           keywords,
           codeSection,
@@ -784,7 +683,7 @@ const generate = async (examplesDir, outputDir) => {
 
           if (fs.statSync(fileRelPath).isFile()) {
             // metatags file
-            if (file.includes("metatags")) {
+            if (metatagsFound && file.includes("metatags")) {
               const match = metaReg.exec(
                 fs.readFileSync(fileRelPath, "utf-8").trim()
               );
@@ -805,6 +704,9 @@ const generate = async (examplesDir, outputDir) => {
 
               for (const line of contentArray) {
                 let convertedLine;
+                if (description === undefined && !metatagsFound) {
+                  if (/^\w/.test(line)) description = line;
+                }
 
                 if (!codeSnippetFound) {
                   // ballerina content

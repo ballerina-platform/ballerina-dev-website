@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page-old
-title: Client - retry
+title: Retry
 description: BBE on how transient failures can be handled using the WebSocket client. When it comes to WebSocket, the key attribute is maintaining a live connection. This BBE shows how the WebSocket client can be made resilient with its reconnect feature.
 keywords: ballerina, ballerina by example, bbe, websocket, ws, retry
 permalink: /learn/by-example/websocket-retry-client
@@ -22,12 +22,12 @@ redirect_from:
         <span class="nx">retryConfig</span><span class="p">:</span> <span class="p">{</span> <span class="nx">maxCount</span><span class="p">:</span> <span class="mi">20</span> <span class="p">}</span>
     <span class="p">});</span>
     <span class="c1">// Read the message sent from the server upon upgrading to a WebSocket connection.</span>
-    <span class="kt">string</span> <span class="nx">text</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readMessage</span><span class="p">();</span>
+    <span class="kt">string</span> <span class="nx">text</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Please shutdown the server now.&quot;</span> <span class="o">+</span>
                         <span class="s">&quot;And restart at least within 15 seconds&quot;</span><span class="p">);</span>
     <span class="c1">// Client will retry 20 times(20 seconds in time) until the server gets started.</span>
-    <span class="kt">string</span> <span class="nx">retryMsg</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readMessage</span><span class="p">();</span>
+    <span class="kt">string</span> <span class="nx">retryMsg</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">wsClient</span><span class="o">-&gt;</span><span class="nx">readTextMessage</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">retryMsg</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -38,7 +38,7 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Client - retry</h2>
+                            <h2>Retry</h2>
                             <p><p>If the WebSocket client lost the connection due to some transient failure, it automatically tries to
  reconnect to the given backend. If the maximum reconnect attempt is reached it gives up on the connection. <br/><br/>
  For more information on the underlying module,
@@ -50,16 +50,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="websocket-client.html">
+                                    <a class="prev" href="websocket-binary-client.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Client</p>
+                                        <p>Handle binary messages with client</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="websocket-basic-sample.html">
                                         <span>NEXT ></span>
-                                        <p>Service</p>
+                                        <p>Listener functionalities</p>
                                     </a>
                                 </div>
                                 
@@ -79,7 +79,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.0/examples/websocket-retry-client/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/websocket-retry-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                         
                                     </ul>
@@ -143,7 +143,7 @@ import ballerina/websocket;
                             <div class="cTR hover-enable">
 
                                 <div class="code leading">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string text = check wsClient-&gt;readMessage();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string text = check wsClient-&gt;readTextMessage();
     io:println(text);
     io:println(&quot;Please shutdown the server now.&quot; +
                         &quot;And restart at least within 15 seconds&quot;);
@@ -165,7 +165,7 @@ import ballerina/websocket;
                             <div class="cTR hover-enable">
 
                                 <div class="code">
-                                    <div class="highlight"><pre><code class=language-ballerina>    string retryMsg = check wsClient-&gt;readMessage();
+                                    <div class="highlight"><pre><code class=language-ballerina>    string retryMsg = check wsClient-&gt;readTextMessage();
     io:println(retryMsg);
 }
 </code></pre></div>

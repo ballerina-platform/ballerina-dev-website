@@ -67,7 +67,7 @@ The first parameter with the [Context](https://lib.ballerina.io/ballerinax/azure
 
 The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation.
 
-This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find an example in the [HTTP Trigger -> Queue Output](/learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) output example.
+This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find an example in the [HTTP Trigger -> Queue Output](#http-trigger---queue-output) output example.
 
 ### Build the function
 
@@ -215,6 +215,6 @@ Once the function is deployed, You need to add an item to the collection.
 
 **Info:** Additionally, for debugging purposes, view the logs under the **Logs stream** in the function app.
 
->**Note:** For a full sample with all the supported Azure Functions triggers and bindings in Ballerina, see the [Azure Functions deployment example](/learn/by-example/azure-functions-deployment.html).
+>**Note:** For a full sample with all the supported Azure Functions triggers and bindings in Ballerina, see the [Azure Functions deployment example](/learn/by-example/azure-functions-deployment).
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

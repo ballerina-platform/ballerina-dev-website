@@ -77,6 +77,9 @@ export default function RedirectMessage(props) {
   } else if (global.location.pathname.indexOf('downloads') > 0) {
     redirectLink = <Link href='/downloads'>Downloads</Link>
     pageBody = <PageContent redirectLink = {redirectLink}/>
+  } else if (global.location.pathname.indexOf('spec') > 0) {
+    redirectLink = <Link href='/learn/ballerina-specifications'>Ballerina specifications</Link>
+    pageBody = <PageContent redirectLink = {redirectLink}/>
   } else {
     pageBody = <PageContent/>
   }

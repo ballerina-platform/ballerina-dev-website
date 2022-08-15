@@ -38,6 +38,7 @@ export default function Slack() {
   const [variant, setVariant] = React.useState('');
 
   const inviteSlackUser = (event) => {
+    let input = {};
     let email = emailRef.current.value;
     let terms = termsRef.current.checked;
 

@@ -93,7 +93,7 @@ For previous draft language specifications of a Ballerina release, see the <a ta
 
 ## Proposals for improvements/enhancements
 
-For the proposals for improving Ballerina, see the <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/README.md">work in progress proposals</a>.
+For the proposals for improving Ballerina, see the <a target="_blank" href="/community/active-proposals/">work in progress proposals</a>.
 
 <style> 
 table {

@@ -1,0 +1,18 @@
+{
+  "title": "Service path and resource path",
+  "description": "BBE on how to use the `absolute-resource-path`, `resource-name`, and `accessor-name` (HTTP verb) in Ballerina to dispatch and constrain the service in a RESTful manner.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http service",
+    "path",
+    "verb"
+  ],
+  "permalink": "/learn/by-example/http-absolute-path-and-path",
+  "active": "http-absolute-path-and-path",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-absolute-path-and-path",
+    "/swan-lake/learn/by-example/http-absolute-path-and-path.html"
+  ]
+}

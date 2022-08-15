@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="See how the Ballerina deployment in Docker works" />
+
+<meta name="author" content="WSO2, Inc.">
+
+<meta name="keywords" content="ballerina, programming language, services, cloud, docker" />
+
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title>Docker</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Ballerina - Docker" />
+
+<meta property="og:description" content="See how the Ballerina deployment in Docker works" />
+
+ 
+<meta property="og:image" itemprop="image" content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png" />
+
+
+<!-- <meta name="twitter:image:width" content="610"> -->
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png
+"/>
+<meta property='og:description' itemprop="image" content="See how the Ballerina deployment in Docker works"/>
+
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina"> 
+<meta name="twitter:card" content="summary_large_image"> 
+
+<meta property="twitter:description" content="See how the Ballerina deployment in Docker works" />
+
+<meta name="twitter:image" content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png
+ ">
+
+<meta property="twitter:text:description" content="See how the Ballerina deployment in Docker works" />
+
+<meta property='twitter:image' content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"/>
+
+
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="/js/latest-jquery.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+
+<!-- 
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css"> -->
+
+
+
+
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<!-- <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" /> -->
+<!-- <link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" /> -->
+<!-- <script type="text/javascript" src="/js/highlight.pack.js"></script> -->
+
+<link rel="stylesheet" href="/css/prism.css">
+
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars/4.7.6/handlebars.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var base_download_url = 'https://dist.ballerina.io/downloads';
+   
+   var base_releasenote_url = ''.concat('/downloads/1.2.x-release-notes');
+   var base_swanlake_releasenote_url = ''.concat('/downloads/swan-lake-release-notes');
+</script>
+
+<link href="/css/prism.css" rel="stylesheet" />
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+      <link rel="stylesheet" href="/css/ballerina-io-learn-v2.css">
+   
+      
+   
+      
+
+      <link href="/css/abixTreeList.css" rel="stylesheet">
+
+   </head>
+   <body class="cBallerina-io" id="top">
+      <style>
+    .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+    .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+    .cBallerina-io-Gray-row {
+       padding-top: 70px !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .cBallerina-io-Gray-row {
+       padding-top: 140px !important;
+    }
+
+    #noscript-warning{
+        position: relative;
+    text-align: center;
+    padding: 7px 15px;
+    background-color: #57595d;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    }
+</style>
+<noscript>
+    <div id="noscript-warning">Ballerina works best with JavaScript enabled.</div>
+</noscript>
+     <div class="cVersionChangeBanner">
+        This documentation is for Ballerina 1.2.0. <a href="https://ballerina.io/learn/" class="cInfoBannerLink">View documentation for the latest release</a>.
+    </div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina" /></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="/downloads/">Download</a>
+                            </li>
+                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="https://play.ballerina.io/"
+                                    target="_blank">Playground</a>
+                            </li>
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <!--<li class="active toctree-l1" id="eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>-->
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                    target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink"
+                                    href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu">
+                               
+                                <!-- at the end of the HEAD -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<style>
+  .algolia-search-cont {
+    margin-top: -10px;
+  }
+  .algolia-search-wrap {
+    display: flex;
+    align-items: center;
+  }
+  .algolia-search-cont .search-icon {
+    margin-right: 10px;
+  }
+  .algolia-search-cont .algolia-search-box {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+  }
+</style>
+<div class="algolia-search-cont">
+  <div class="algolia-search-wrap form-control">
+    <span
+      class="glyphicon glyphicon-search search-icon"
+      aria-hidden="true"
+    ></span>
+    <input
+      autocapitalize="off"
+      autocomplete="off"
+      autocorrect="off"
+      placeholder="Search..."
+      role="textbox"
+      spellcheck="false"
+      type="text"
+      value=""
+      class="algolia-search-box"
+      id="algolia-search-box"
+    />
+  </div>
+</div>
+
+<!-- at the end of the BODY -->
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"
+></script>
+<script type="text/javascript">
+  docsearch({
+    apiKey: "024f45d96c2949b32403db36d4016c23",
+    indexName: "ballerina",
+    inputSelector: "#algolia-search-box",
+    debug: false, // Set debug to true if you want to inspect the dropdown
+  });
+</script>
+
+                                <!-- <form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field"
+                                        type="search" placeholder="Search" aria-label="Search"><a id="searchBtn"
+                                        href="#" class="cSearchButton"><img src="/img/search.svg" /></a></form> -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-Home-Middle-col">
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Then we build the nav bar. -->
+<nav class="cLeftNavContainer">
+   <ul class="cMainLeftNav">
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Setting up Ballerina</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/installing-ballerina/">- Installing Ballerina</a></li> -->
+            <li><a href="/1.2/learn/installing-ballerina/">Installing Ballerina</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/setting-up-visual-studio-code/">- Setting up Visual Studio Code</a></li> -->
+            <li><a href="/1.2/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/setting-up-intellij-idea/">- Setting up IntelliJ IDEA</a></li> -->
+            <li><a href="/1.2/learn/setting-up-intellij-idea/">Setting up IntelliJ IDEA</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Ballerina CLI Tools</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/using-the-cli-tools/">- Using the CLI Tools</a></li> -->
+            <li><a href="/1.2/learn/using-the-cli-tools/">Using the CLI Tools</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/keeping-ballerina-up-to-date">- Keeping Ballerina Up To Date</a></li> -->
+            <li><a href="/1.2/learn/keeping-ballerina-up-to-date">Keeping Ballerina Up To Date</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/using-the-openapi-tools/">- Using the OpenAPI Tools</a></li> -->
+            <li><a href="/1.2/learn/using-the-openapi-tools/">Using the OpenAPI Tools</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/generating-ballerina-code-for-protocol-buffer-definitions">- Generating Ballerina Code for Protocol Buffer Definitions</a></li> -->
+            <li><a href="/1.2/learn/generating-ballerina-code-for-protocol-buffer-definitions">Generating Ballerina Code for Protocol Buffer Definitions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Code Organization</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/structuring-ballerina-code/">- Structuring Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/structuring-ballerina-code/">Structuring Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/documenting-ballerina-code/">- Documenting Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/documenting-ballerina-code/">Documenting Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/coding-conventions/">- Coding Conventions</a></li> -->
+            <li><a href="/1.2/learn/coding-conventions/">Coding Conventions</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/running-ballerina-code/">- Running Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/running-ballerina-code/">Running Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/publishing-modules-to-ballerina-central">- Publishing Modules to Ballerina Central</a></li> -->
+            <li><a href="/1.2/learn/publishing-modules-to-ballerina-central">Publishing Modules to Ballerina Central</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Deployment</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/docker/">- Docker</a></li> -->
+            <li class="current-sub"><a href="/1.2/learn/deployment/docker/">Docker</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/kubernetes/">- Kubernetes</a></li> -->
+            <li><a href="/1.2/learn/deployment/kubernetes/">Kubernetes</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/aws-lambda/">- AWS Lambda</a></li> -->
+            <li><a href="/1.2/learn/deployment/aws-lambda/">AWS Lambda</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/azure-functions/">- Azure Functions</a></li> -->
+            <li><a href="/1.2/learn/deployment/azure-functions/">Azure Functions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Observability</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/observing-ballerina-code">- Observing Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/observing-ballerina-code">Observing Ballerina Code</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Interoperability</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/calling-java-code-from-ballerina/">- Calling Java Code from Ballerina</a></li> -->
+            <li><a href="/1.2/learn/calling-java-code-from-ballerina/">Calling Java Code from Ballerina</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Security</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/writing-secure-ballerina-code">- Writing Secure Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/writing-secure-ballerina-code">Writing Secure Ballerina Code</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Testing Ballerina Code</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/testing-quick-start">- Quick Start</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/testing-quick-start">Quick Start</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/writing-tests">- Writing Tests</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/writing-tests">Writing Tests</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/mocking">- Mocking</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/mocking">Mocking</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/executing-tests">- Executing Tests</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/executing-tests">Executing Tests</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Extending Ballerina</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/extending-with-compiler-extensions">- Extending with Compiler Extensions</a></li> -->
+            <li><a href="/1.2/learn/extending-with-compiler-extensions">Extending with Compiler Extensions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+   </ul>
+</nav>
+
+               </div>
+               <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-12 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down"
+  >
+  <ul id="breadcrumb-list" class=" cBalleinaBreadcrumbs list-unstyled  wy-breadcrumbs" vocab="http://schema.org/"
+    typeof="BreadcrumbList">
+
+
+    
+    <li><a href="/">Home</a></li>
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/">1.2</a>
+    </li>
+    
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/learn/">Learn</a>
+    </li>
+    
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/learn/deployment/">Deployment</a>
+    </li>
+    
+    
+    
+    <li>/</li> Docker
+    
+    
+
+  </ul>
+</nav>
+<style type="text/css">
+  .cBalleinaBreadcrumbs li {
+    margin-right: 10px;
+  }
+</style>
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <!-- <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs cGitLink">
+                        
+                     </div> -->
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container cPositionRelative">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+
+
+                                 <div class="col-xs-11 col-md-11 col-lg-11 cNoPadding">
+                                    <h1>Docker</h1>
+                                 </div>
+                                 <!-- <div class="col-xs-1 col-md-1 col-lg-1 cNoPadding cGithubContainer">
+                                    <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-dev-website/blob/master/1.2/learn/deployment/docker.md"></a>
+                                 </div> -->
+                                 <div class="col-xs-12 col-md-12 col-lg-12 cNoPadding">
+                                    <p>Docker helps to package applications and their dependencies in a binary image, which can run in various locations whether on-premise, in a public cloud, or in a private cloud.</p>
+                                    <div class="cBallerinaTocContainer" id="table-of-content">
+                                       <ul id="tree">
+  <li><a href="#enabling-docker-support">Enabling Docker Support</a></li>
+  <li><a href="#use-cases">Use Cases</a>
+    <ul>
+      <li><a href="#running-a-ballerina-service-in-a-docker-container">Running a Ballerina Service in a Docker Container</a>
+        <ul>
+          <li><a href="#setting-up-the-prerequisites">Setting Up the Prerequisites</a></li>
+          <li><a href="#sample-source-code">Sample Source Code</a></li>
+          <li><a href="#steps-to-run">Steps to Run</a></li>
+        </ul>
+      </li>
+      <li><a href="#creating-a-custom-ballerina-docker-image-and-pushing-it-automatically-to-the-docker-registry">Creating a Custom Ballerina Docker Image and Pushing it Automatically to the Docker Registry</a>
+        <ul>
+          <li><a href="#setting-up-the-prerequisites-1">Setting Up the Prerequisites</a></li>
+          <li><a href="#sample-source-code-1">Sample Source Code</a></li>
+          <li><a href="#steps-to-run-1">Steps to Run</a></li>
+        </ul>
+      </li>
+      <li><a href="#running-a-ballerina-https-service-in-a-docker-container">Running a Ballerina HTTPS Service in a Docker Container</a>
+        <ul>
+          <li><a href="#setting-up-the-prerequisites-2">Setting Up the Prerequisites</a></li>
+          <li><a href="#sample-source-code-2">Sample Source Code</a></li>
+          <li><a href="#steps-to-run-2">Steps to Run</a></li>
+        </ul>
+      </li>
+      <li><a href="#copying-additional-files-to-the-ballerina-docker-image">Copying Additional Files to the Ballerina Docker Image</a>
+        <ul>
+          <li><a href="#setting-up-the-prerequisites-3">Setting Up the Prerequisites</a></li>
+          <li><a href="#sample-source-code-3">Sample Source Code</a></li>
+          <li><a href="#steps-to-run-3">Steps to Run</a></li>
+        </ul>
+      </li>
+      <li><a href="#using-a-custom-base-image-to-build-ballerina-docker-images">Using a Custom Base Image to Build Ballerina Docker Images</a>
+        <ul>
+          <li><a href="#setting-up-the-prerequisites-4">Setting Up the Prerequisites</a></li>
+          <li><a href="#sample-source-code-4">Sample Source Code</a></li>
+          <li><a href="#steps-to-run-4">Steps to Run</a></li>
+        </ul>
+      </li>
+      <li><a href="#overriding-the-cmd-of-the-generated-ballerina-dockerfile">Overriding the CMD of the Generated Ballerina Dockerfile</a></li>
+      <li><a href="#setting-up-the-prerequisites-5">Setting Up the Prerequisites</a>
+        <ul>
+          <li><a href="#sample-source-code-5">Sample Source Code</a></li>
+        </ul>
+      </li>
+      <li><a href="#steps-to-run-5">Steps to Run</a></li>
+      <li><a href="#creating-multiple-docker-images-corresponding-to-modules-of-a-ballerina-project">Creating Multiple Docker Images Corresponding to Modules of a Ballerina Project</a></li>
+      <li><a href="#setting-up-the-prerequisites-6">Setting Up the Prerequisites</a>
+        <ul>
+          <li><a href="#sample-source-code-6">Sample Source Code</a></li>
+          <li><a href="#steps-to-run-6">Steps to Run</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+
+                                    </div>
+                                    <p>To create a Docker image, you have to create a Dockerfile by choosing a suitable base image, bundling all dependencies, copying the application binary, and setting the execution command with proper permissions. To create optimized images, youhave to follow a set of <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">best practices</a>. Otherwise, the image that is built will be large in size, less secure, and have many other shortcomings.</p>
+
+<p>The Ballerina compiler is capable of creating optimized Docker images out of the application source code. This guide includes step-by-step instructions on different use cases and executing the corresponding sample source code.</p>
+
+<h2 id="enabling-docker-support">Enabling Docker Support</h2>
+
+<p>Docker support is inbuilt and comes by default in any Ballerina distribution. You can enable Docker artifact generation by adding annotations to your Ballerina code. Follow the steps below to enable Docker support.</p>
+
+<ol>
+  <li>
+    <p>Import the Docker extension module in your Ballerina code (e.g., <code class="language-plaintext highlighter-rouge">import ballerina/docker;</code>).</p>
+  </li>
+  <li>
+    <p>Add the relevant annotations within the code (e.g., <code class="language-plaintext highlighter-rouge">@docker:Config {}</code>).</p>
+  </li>
+  <li>
+    <p>Build the Ballerina source file/project (e.g., <code class="language-plaintext highlighter-rouge">ballerina build source.bal</code>).</p>
+  </li>
+</ol>
+
+<h2 id="use-cases">Use Cases</h2>
+
+<h3 id="running-a-ballerina-service-in-a-docker-container">Running a Ballerina Service in a Docker Container</h3>
+
+<p>This use case shows how to run a Ballerina service in a Docker container. The sample below demonstrates running a simple Ballerina hello world service in a Docker container.</p>
+
+<h4 id="setting-up-the-prerequisites">Setting Up the Prerequisites</h4>
+
+<p>You need a machine with <a href="https://docs.docker.com/get-docker/">Docker</a> installed.</p>
+
+<h4 id="sample-source-code">Sample Source Code</h4>
+
+<p><code class="language-plaintext highlighter-rouge">hello_world_docker.bal</code></p>
+<pre><code class="language-ballerina">
+import ballerina/http;
+import ballerina/docker;
+ 
+@docker:Config {}
+service hello on new http:Listener(9090){
+ 
+  resource function sayHello(http:Caller caller,http:Request request) returns error? {
+      check caller-&gt;respond("Hello World!");
+  }
+}
+
+</code></pre>
+
+<h4 id="steps-to-run">Steps to Run</h4>
+
+<ol>
+  <li>
+    <p>Compile the <code class="language-plaintext highlighter-rouge">hello_world_docker.bal</code> file.</p>
+
+    <pre><code class="language-ballerina"> &gt; ballerina build hello_world_docker.bal 
+ Compiling source
+   hello_world_docker.bal
+
+ Generating executables
+   hello_world_docker.jar
+
+ Generating docker artifacts...
+   @docker 		 - complete 2/2 
+
+   Run the following command to start a Docker container:
+   docker run -d -p 9090:9090 hello_world_docker:latest
+</code></pre>
+
+    <p>The artifacts files below will be generated with the build process.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> tree
+ <span class="nb">.</span>
+ ├── docker
+ │   └── Dockerfile
+ ├── hello_world_docker.bal
+ └── hello_world_docker.jar
+
+ 1 directory, 3 files
+
+</code></pre></div>    </div>
+
+    <p>The build process automatically generates a Dockerfile with the following content:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Auto Generated Dockerfile
+ FROM ballerina/jre8:v1
+
+ LABEL maintainer="dev@ballerina.io"
+
+ RUN addgroup troupe \
+     &amp;&amp; adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+     &amp;&amp; apk add --update --no-cache bash \
+     &amp;&amp; chown -R ballerina:troupe /usr/bin/java \
+     &amp;&amp; rm -rf /var/cache/apk/*
+
+ WORKDIR /home/ballerina
+
+ COPY hello_world_docker.jar /home/ballerina
+
+ USER ballerina
+
+ CMD java -jar hello_world_docker.jar
+
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify that the Docker image is created.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker images
+ REPOSITORY          TAG         IMAGE ID            CREATED             SIZE
+ hello_world_docker  latest      e48123737a65        7 minutes ago       134MB
+
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p>Since the annotation is not configured to have a custom Docker image name and tag, the build process will create a Docker image with the default values: the file name of the generated .jar file with the <code class="language-plaintext highlighter-rouge">latest</code> tag (e.g., <code class="language-plaintext highlighter-rouge">hello_world_docker:latest</code>).</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Run the Docker image as a container (use the below command printed in step 1).</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker run <span class="nt">-d</span> <span class="nt">-p</span> 9090:9090 hello_world_docker:latest
+ 32461676d3c22848088390483a414e5b1d11a7a73c2296eccb18e6c9f27c41c0
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify that the Docker container is running.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker ps
+ CONTAINER ID  IMAGE    		 COMMAND    	      CREATED              STATUS            PORTS     NAMES
+ 32461676d3c2  hello_world_docker:latest  <span class="s2">"/bin/sh -c 'java -j…"</span>   About a minute ago   Up About a minute 0.0.0.0:9090-&gt;9090/tcp    lucid_turing
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Access the hello world service with the cURL command.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> curl http://localhost:9090/hello/sayHello           
+ Hello World!
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Clean up the used artifacts.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Stop / <span class="nb">kill </span>running docker container
+ <span class="o">&gt;</span> docker <span class="nb">kill </span>32461676d3c2
+ 32461676d3c2
+
+ Remove docker container files
+ <span class="o">&gt;</span> docker em 32461676d3c2
+
+ Remove docker image
+ <span class="o">&gt;</span> docker rmi e48123737a65
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="creating-a-custom-ballerina-docker-image-and-pushing-it-automatically-to-the-docker-registry">Creating a Custom Ballerina Docker Image and Pushing it Automatically to the Docker Registry</h3>
+
+<p>This use case shows how to run a simple Ballerina hello world service in a Docker container with annotation configurations, which can be used to create a Docker image with a custom image-name and tag, and then automatically push the created image to the Docker registry.</p>
+
+<h4 id="setting-up-the-prerequisites-1">Setting Up the Prerequisites</h4>
+
+<ul>
+  <li>A machine with <a href="https://docs.docker.com/get-docker/">Docker</a> installed</li>
+  <li>A <a href="https://hub.docker.com/">Docker Hub</a> account</li>
+</ul>
+
+<h4 id="sample-source-code-1">Sample Source Code</h4>
+
+<p><code class="language-plaintext highlighter-rouge">custom_docker_name.bal</code></p>
+
+<pre><code class="language-ballerina">import ballerina/http;
+import ballerina/docker;
+ 
+@docker:Config {
+   push: true,
+   registry: "index.docker.io/$env{DOCKER_USERNAME}",
+   name: "helloworld",
+   tag: "v1.0.0",
+   username: "$env{DOCKER_USERNAME}",
+   password: "$env{DOCKER_PASSWORD}"
+}
+service hello on new http:Listener(9090){
+ 
+  resource function sayHello(http:Caller caller,http:Request request) returns error? {
+      check caller-&gt;respond("Hello World!");
+  }
+}
+</code></pre>
+
+<p>In this sample, the following properties are set in the <code class="language-plaintext highlighter-rouge">@docker:Config</code> annotation.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">push</code>		  : enable pushing the Docker image to the registry</li>
+  <li><code class="language-plaintext highlighter-rouge">registry</code>	: Docker registry URL</li>
+  <li><code class="language-plaintext highlighter-rouge">name</code>		  : name of the Docker image</li>
+  <li><code class="language-plaintext highlighter-rouge">tag</code>		    : Docker image tag (version)</li>
+  <li><code class="language-plaintext highlighter-rouge">username</code>	: username of the Docker registry</li>
+  <li><code class="language-plaintext highlighter-rouge">password</code>	: password of the Docker registry</li>
+</ul>
+
+<blockquote>
+  <p>The <code class="language-plaintext highlighter-rouge">$env</code> variable is used to read the environment variable values from the system.</p>
+</blockquote>
+
+<h4 id="steps-to-run-1">Steps to Run</h4>
+
+<ol>
+  <li>
+    <p>Export the username and password of Docker (registry).</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">export </span><span class="nv">DOCKER_USERNAME</span><span class="o">=</span>&lt;username&gt;
+ <span class="nb">export </span><span class="nv">DOCKER_PASSWORD</span><span class="o">=</span>&lt;password&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Compile the <code class="language-plaintext highlighter-rouge">custom_docker_name.bal</code> file.</p>
+
+    <pre><code class="language-ballerina">
+ &gt; ballerina build custom_docker_name.bal
+ Compiling source
+   custom_docker_name.bal
+
+ Generating executables
+   custom_docker_name.jar
+
+ Generating docker artifacts...
+   @docker 		 - complete 3/3 
+
+   Run the following command to start a Docker container:
+   docker run -d -p 9090:9090 index.docker.io/lakwarus/helloworld:v1.0.0
+
+</code></pre>
+  </li>
+  <li>
+    <p>Verify that the Docker image is created.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> REPOSITORY          TAG      IMAGE ID            CREATED             SIZE
+ lakwarus/helloworld v1.0.0   7e76efdd33e4        20 minutes ago      134MB
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Log into <a href="https://hub.docker.com/">Docker Hub</a> and verify that the image is pushed.</p>
+
+    <p><img src="/1.2/learn/images/docker-hub.png" alt="Docker Hub" /></p>
+  </li>
+</ol>
+
+<h3 id="running-a-ballerina-https-service-in-a-docker-container">Running a Ballerina HTTPS Service in a Docker Container</h3>
+
+<p>An HTTP endpoint can be configured to communicate through HTTPS as well. To secure an endpoint using HTTPS, it needs to be configured with a keystore, a certificate, and a private key for the endpoint. When running this HTTPS service as a Docker container, it is required to copy the keystore with the custom certificate that is used to configure the HTTPS endpoint.</p>
+
+<h4 id="setting-up-the-prerequisites-2">Setting Up the Prerequisites</h4>
+
+<p>You need a machine with <a href="https://docs.docker.com/get-docker/">Docker</a> installed.</p>
+
+<h4 id="sample-source-code-2">Sample Source Code</h4>
+
+<p>The sample below uses a separate listener endpoint and it is configured with a custom keystore. In addition to the <code class="language-plaintext highlighter-rouge">@docker:Config</code> annotation, the <code class="language-plaintext highlighter-rouge">@docker:Expose</code> annotation is used with the listener endpoint object, which helps to expose the correct service ports when creating the Docker container.</p>
+
+<p><code class="language-plaintext highlighter-rouge">https_service_in_docker.bal</code></p>
+
+<pre><code class="language-ballerina">
+import ballerina/http;
+import ballerina/docker;
+ 
+@docker:Expose {}
+listener http:Listener helloWorldEP = new(9095, {
+   secureSocket: {
+       keyStore: {
+           path: "./ballerinaKeystore.p12",
+           password: "ballerina"
+       }
+   }
+});
+ 
+@docker:Config {
+   name: "https-helloworld"
+}
+service hello on helloWorldEP {
+ 
+  resource function sayHello(http:Caller caller,http:Request request) returns error? {
+      check caller-&gt;respond("Hello World!");
+  }
+}
+</code></pre>
+
+<h4 id="steps-to-run-2">Steps to Run</h4>
+
+<ol>
+  <li>
+    <p>Compile the <code class="language-plaintext highlighter-rouge">https_service_in_docker.bal</code> file.</p>
+
+    <pre><code class="language-ballerina"> &gt; ballerina build https_service_in_docker.bal 
+ Compiling source
+   https_service_in_docker.bal
+
+ Generating executables
+   https_service_in_docker.jar
+
+ Generating docker artifacts...
+   @docker 		 - complete 2/2 
+
+   Run the following command to start a Docker container:
+   docker run -d -p 9095:9095 https-helloworld:latest
+
+</code></pre>
+    <p>The artifact files below will be generated with the build process.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> tree
+ <span class="nb">.</span>
+ ├── ballerinaKeystore.p12
+ ├── docker
+ │   ├── Dockerfile
+ │   └── ballerinaKeystore.p12
+ ├── https_service_in_docker.bal
+ └── https_service_in_docker.jar
+
+ 1 directory, 5 files
+
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p><strong>Note:</strong> It has copied the correct keystore used in the source code into the Docker folder and generated the Dockerfile with the content below.</p>
+    </blockquote>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Auto Generated Dockerfile
+ FROM ballerina/jre8:v1
+
+ LABEL maintainer="dev@ballerina.io"
+
+ RUN addgroup troupe \
+     &amp;&amp; adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+     &amp;&amp; apk add --update --no-cache bash \
+     &amp;&amp; chown -R ballerina:troupe /usr/bin/java \
+     &amp;&amp; rm -rf /var/cache/apk/*
+
+ WORKDIR /home/ballerina
+
+ COPY https_service_in_docker.jar /home/ballerina
+ COPY ballerinaKeystore.p12 ./ballerinaKeystore.p12
+
+ EXPOSE  9095
+ USER ballerina
+
+ CMD java -jar https_service_in_docker.jar
+
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p>The Ballerina compiler automatically adds a line to the Dockerfile to copy the required keystore into the Docker image.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Verify that the Docker image is created.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker images
+ REPOSITORY          TAG        IMAGE ID            CREATED             SIZE
+ https-helloworld    latest     ed9bff9fabd7        15 minutes ago      134MB
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the Docker image as a container (use the command below printed in step 1).</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker run <span class="nt">-d</span> <span class="nt">-p</span> 9095:9095 https-helloworld:latest
+ 25dfb84f1c9f3459baf7a4791f9de3cae260d9963e580802253621919d0bd2fb
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify that the Docker container is running.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker ps
+ CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                    NAMES
+ 25dfb84f1c9f        https-helloworld:latest   <span class="s2">"/bin/sh -c 'java -j…"</span>   45 seconds ago      Up 45 seconds       0.0.0.0:9095-&gt;9095/tcp   charming_visvesvaraya
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Access the hello world service with the cURL command.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl <span class="nt">-k</span> https://localhost:9095/hello/sayHello
+ Hello World!
+</code></pre></div>    </div>
+    <blockquote>
+      <p><strong>Note:</strong> The cURL command is used with the -k option because self-signed certificates are used in the keystore.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Clean up the used artifacts.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker <span class="nb">kill </span>25dfb84f1c9f
+ 25dfb84f1c9f
+
+ <span class="o">&gt;</span> docker <span class="nb">rm </span>25dfb84f1c9f
+ 25dfb84f1c9f
+
+ <span class="o">&gt;</span> docker rmi ed9bff9fabd7
+ Untagged: https-helloworld:latest
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="copying-additional-files-to-the-ballerina-docker-image">Copying Additional Files to the Ballerina Docker Image</h3>
+
+<p>In some use cases, you need to process files in your applications. When these applications are run in a Docker container, you might need to copy these additional files into the image or mount them as external volume. This use case shows how to copy additional files into the Docker image while compiling the Ballerina source code.</p>
+
+<h4 id="setting-up-the-prerequisites-3">Setting Up the Prerequisites</h4>
+
+<p>You need a machine with <a href="https://docs.docker.com/get-docker/">Docker</a> installed.</p>
+
+<h4 id="sample-source-code-3">Sample Source Code</h4>
+
+<p><code class="language-plaintext highlighter-rouge">copy_file.bal</code></p>
+
+<pre><code class="language-ballerina">import ballerina/http;
+import ballerina/io;
+import ballerina/docker;
+ 
+@docker:Expose {}
+listener http:Listener helloEP = new(9090);
+ 
+@docker:Config {}
+@docker:CopyFiles {
+   files: [
+       { sourceFile: "./name.txt", target: "/home/ballerina/name.txt" }
+   ]
+}
+service hello on helloEP {
+ 
+   resource function greet(http:Caller caller, http:Request request) returns error? {
+       http:Response response = new;
+       string payload = readFile("./name.txt");
+       response.setTextPayload("Hello " + &lt;@untainted&gt; payload + "\n");
+       check caller-&gt;respond(response);
+   }
+}
+ 
+function readFile(string filePath) returns  string {
+   io:ReadableByteChannel bchannel = checkpanic io:openReadableFile(filePath);
+   io:ReadableCharacterChannel cChannel = new io:ReadableCharacterChannel(bchannel, "UTF-8");
+ 
+   var readOutput = cChannel.read(50);
+   if (readOutput is string) {
+       return &lt;@untainted&gt; readOutput;
+   } else {
+       return "Error: Unable to read file";
+   }
+}
+</code></pre>
+
+<p>This sample sends a greeting to the caller by getting the name from a text file. When this is run in a container, you need to copy the <code class="language-plaintext highlighter-rouge">name.txt</code> file into the Docker image. The <code class="language-plaintext highlighter-rouge">@docker:CopyFiles</code> annotation is used for this and you can give multiple files by following the syntax below.</p>
+
+<p><code class="language-plaintext highlighter-rouge">name.txt</code></p>
+
+<pre><code class="language-ballerina">@docker:CopyFiles {
+   files: [
+       { sourceFile: "./name.txt", target: "/home/ballerina/name.txt" },
+	{ sourceFile: "./abc.txt", target: "/home/ballerina/abc.txt" }
+   ]
+}
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> In addition to the above, if you want to copy driver files such as JDBC, you can create a Ballerina project, add following entires to its <code class="language-plaintext highlighter-rouge">Ballerina.toml</code> file, and change the path to the JDBC driver appropriately.</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">Ballerina.toml</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[project]
+org-name= "sample"
+version= "0.1.0"
+
+[platform]
+target = "java8"
+
+    [[platform.libraries]]
+    artafactId = "mysql-connector-java"
+    version = "8.0.17"
+    path = "/path/to/mysql-connector-java-8.0.17.jar"
+</code></pre></div></div>
+
+<h4 id="steps-to-run-3">Steps to Run</h4>
+
+<ol>
+  <li>
+    <p>Create a <code class="language-plaintext highlighter-rouge">name.txt</code> file in the same directory in which the <code class="language-plaintext highlighter-rouge">copy_file.bal</code> file resides.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> <span class="nb">echo </span>Ballerina <span class="o">&gt;</span> ./name.txt
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Compile the <code class="language-plaintext highlighter-rouge">copy_file.bal</code> file.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> ballerina build copy_file.bal 
+ Compiling <span class="nb">source
+   </span>copy_file.bal
+
+ Generating executables
+   copy_file.jar
+
+ Generating docker artifacts...
+   @docker 		 - <span class="nb">complete </span>2/2 
+
+   Run the following <span class="nb">command </span>to start a Docker container:
+   docker run <span class="nt">-d</span> <span class="nt">-p</span> 9090:9090 copy_file:latest
+</code></pre></div>    </div>
+
+    <p>The artifacts files below will be generated with the build process.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> tree
+ <span class="nb">.</span>
+ ├── copy_file.bal
+ ├── copy_file.jar
+ ├── docker
+ │   ├── Dockerfile
+ │   └── name.txt
+ └── name.txt
+
+ 1 directory, 5 files
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p><strong>Note:</strong> The generated Dockerfile includes the COPY command to copy files that are defined by the <code class="language-plaintext highlighter-rouge">@docker:CopyFiles</code> annotation.</p>
+    </blockquote>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Auto Generated Dockerfile
+ FROM ballerina/jre8:v1
+
+ LABEL maintainer="dev@ballerina.io"
+
+ RUN addgroup troupe \
+     &amp;&amp; adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+     &amp;&amp; apk add --update --no-cache bash \
+     &amp;&amp; chown -R ballerina:troupe /usr/bin/java \
+     &amp;&amp; rm -rf /var/cache/apk/*
+
+ WORKDIR /home/ballerina
+
+ COPY copy_file.jar /home/ballerina
+ COPY name.txt /home/ballerina/name.txt
+
+ EXPOSE  9090
+ USER ballerina
+
+ CMD java -jar copy_file.jar
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify that the Docker image is created.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker images
+ REPOSITORY          TAG        IMAGE ID            CREATED             SIZE
+ copy_file           latest     cc198c0af86e        6 minutes ago       134MB
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the Docker image as a container (use the command below printed in step 1).</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker run <span class="nt">-d</span> <span class="nt">-p</span> 9090:9090 copy_file:latest
+ d9f72d8ef6b2f27df099cc3e57676aeb3110c330004b5539e557ec49cf50878a
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify that the Docker container is running.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker ps 
+ CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+ d9f72d8ef6b2        copy_file:latest    <span class="s2">"/bin/sh -c 'java -j…"</span>   15 seconds ago      Up 15 seconds       0.0.0.0:9090-&gt;9090/tcp   inspiring_joliot
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Access the hello world service with the cURL command below.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> curl http://localhost:9090/hello/greet
+ Hello Ballerina
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Clean up the used artifacts.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker <span class="nb">kill </span>d9f72d8ef6b2
+ d9f72d8ef6b2
+
+ <span class="o">&gt;</span> docker <span class="nb">rm </span>d9f72d8ef6b2
+ d9f72d8ef6b2
+
+ <span class="o">&gt;</span> docker rmi cc198c0af86e
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="using-a-custom-base-image-to-build-ballerina-docker-images">Using a Custom Base Image to Build Ballerina Docker Images</h3>
+
+<p>Ballerina ships a base image (e.g., <code class="language-plaintext highlighter-rouge">ballerina/jre8:v1</code>) with some security hardening. It is used to build Docker images with the user’s application code. However, sometimes, you might need to use your own Docker base image depending on your company policies or any additional requirements. This use case shows how to use a custom Docker base image to build Ballerina Docker images with the application code.</p>
+
+<h4 id="setting-up-the-prerequisites-4">Setting Up the Prerequisites</h4>
+
+<p>You need a machine with <a href="https://docs.docker.com/get-docker/">Docker</a> installed.</p>
+
+<h4 id="sample-source-code-4">Sample Source Code</h4>
+
+<p><code class="language-plaintext highlighter-rouge">base_image.bal</code></p>
+
+<pre><code class="language-ballerina">import ballerina/http;
+import ballerina/docker;
+ 
+@docker:Config {
+   name: "helloworld_custom_baseimage",
+   baseImage: "openjdk:8-jre-alpine"
+}
+service hello on new http:Listener(9090){
+ 
+  resource function sayHello(http:Caller caller,http:Request request) returns error? {
+      check caller-&gt;respond("Hello World!");
+  }
+}
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> This sample uses <code class="language-plaintext highlighter-rouge">openjdk:8-jre-alpine</code> as the custom Docker image by using the <code class="language-plaintext highlighter-rouge">baseImage</code> property in the <code class="language-plaintext highlighter-rouge">@docker:Config</code> annotation.</p>
+</blockquote>
+
+<h4 id="steps-to-run-4">Steps to Run</h4>
+
+<ol>
+  <li>
+    <p>Compile the <code class="language-plaintext highlighter-rouge">base_image.bal</code> file.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ballerina build base_image.bal 
+Compiling <span class="nb">source
+  </span>base_image.bal
+
+Generating executables
+  base_image.jar
+
+Generating docker artifacts...
+  @docker 		 - <span class="nb">complete </span>2/2 
+
+  Run the following <span class="nb">command </span>to start a Docker container:
+  docker run <span class="nt">-d</span> <span class="nt">-p</span> 9090:9090 helloworld_custom_baseimage:latest
+</code></pre></div>    </div>
+
+    <p>The artifact files below will be generated with the build process.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tree
+<span class="nb">.</span>
+├── base_image.bal
+├── base_image.jar
+└── docker
+    └── Dockerfile
+
+1 directory, 3 files
+</code></pre></div>    </div>
+
+    <p>The Dockerfile will be generated as follows.</p>
+
+    <blockquote>
+      <p><strong>Note:</strong>  The FROM section of the Dockerfile has the base image, which is defined by the <code class="language-plaintext highlighter-rouge">@docker:Config</code> annotation.</p>
+    </blockquote>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Auto Generated Dockerfile
+FROM openjdk:8-jre-alpine
+
+LABEL maintainer="dev@ballerina.io"
+
+WORKDIR /home/ballerina
+
+COPY base_image.jar /home/ballerina
+
+EXPOSE  9090
+CMD java -jar base_image.jar
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify that the Docker image is created.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker images
+ REPOSITORY     			TAG  		IMAGE ID            CREATED             SIZE
+ helloworld_custom_baseimage      latest    	4468889e4ed0        11 minutes ago      109MB
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the Docker image as a container (use the command below printed in step 1).</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker run <span class="nt">-d</span> <span class="nt">-p</span> 9090:9090 helloworld_custom_baseimage:latest
+ 0c31cfaf483493988ee9ace73f6bcf9188a80d33ac3640052265c316058ec55a
+
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify that the Docker container is running.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker ps
+ CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS                    NAMES
+ 0c31cfaf4834        helloworld_custom_baseimage:latest   <span class="s2">"/bin/sh -c 'java -j…"</span>   17 seconds ago      Up 16 seconds       0.0.0.0:9090-&gt;9090/tcp   charming_hypatia
+
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Access the hello world service with the cURL command below.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> curl http://localhost:9090/hello/sayHello
+ Hello World!
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Clean up the used artifacts.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker <span class="nb">kill </span>0c31cfaf4834
+ 0c31cfaf4834
+
+ <span class="o">&gt;</span> docker <span class="nb">rm </span>0c31cfaf4834
+ 0c31cfaf4834
+
+ <span class="o">&gt;</span> docker rmi 4468889e4ed0
+ Untagged: helloworld_custom_baseimage:latest
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="overriding-the-cmd-of-the-generated-ballerina-dockerfile">Overriding the CMD of the Generated Ballerina Dockerfile</h3>
+
+<p>The Ballerina Docker image builder uses the generic CMD command to execute the created JAR file. However, sometimes, you might need to override the default CMD command. This use case shows how to override the default CMD command.</p>
+
+<h3 id="setting-up-the-prerequisites-5">Setting Up the Prerequisites</h3>
+
+<p>You need a machine with <a href="https://docs.docker.com/get-docker/">Docker</a> installed.</p>
+
+<h4 id="sample-source-code-5">Sample Source Code</h4>
+
+<p><code class="language-plaintext highlighter-rouge">docker_cmd.bal</code></p>
+
+<pre><code class="language-ballerina">
+import ballerina/http;
+import ballerina/docker;
+ 
+@docker:Config {
+   name: "custome_cmd",
+   cmd: "CMD java -jar ${APP} --b7a.http.accesslog.console=true"
+}
+service hello on new http:Listener(9090){
+ 
+  resource function sayHello(http:Caller caller,http:Request request) returns error? {
+      check caller-&gt;respond("Hello World!");
+  }
+}
+</code></pre>
+
+<p>This sample enables HTTP trace logs by overriding the CMD value of the generated Dockerfile. The cmd field will be as <code class="language-plaintext highlighter-rouge">CMD java -jar ${APP} --b7a.http.accesslog.console=true</code> in the <code class="language-plaintext highlighter-rouge">@docker:Config{}</code> annotation.</p>
+
+<h3 id="steps-to-run-5">Steps to Run</h3>
+
+<ol>
+  <li>
+    <p>Compile the <code class="language-plaintext highlighter-rouge">base_image.bal</code> file.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> ballerina build docker_cmd.bal
+ Compiling <span class="nb">source
+   </span>docker_cmd.bal
+
+ Generating executables
+   docker_cmd.jar
+
+ Generating docker artifacts...
+   @docker 		 - <span class="nb">complete </span>2/2 
+
+   Run the following <span class="nb">command </span>to start a Docker container:
+   docker run <span class="nt">-d</span> <span class="nt">-p</span> 9090:9090 custome_cmd:latest
+</code></pre></div>    </div>
+
+    <p>The artifact files below will be generated with the build process.</p>
+
+    <blockquote>
+      <p><strong>Note:</strong> The CMD line will be updated with the custom command defined in the annotation.</p>
+    </blockquote>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> tree
+ <span class="nb">.</span>
+ ├── docker
+ │   └── Dockerfile
+ ├── docker_cmd.bal
+ └── docker_cmd.jar
+
+ 1 directory, 3 files
+</code></pre></div>    </div>
+
+    <p>The Dockerfile will be generated as follows.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Auto Generated Dockerfile
+ FROM ballerina/jre8:v1
+
+ LABEL maintainer="dev@ballerina.io"
+
+ RUN addgroup troupe \
+     &amp;&amp; adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
+     &amp;&amp; apk add --update --no-cache bash \
+     &amp;&amp; chown -R ballerina:troupe /usr/bin/java \
+     &amp;&amp; rm -rf /var/cache/apk/*
+
+ WORKDIR /home/ballerina
+
+ COPY docker_cmd.jar /home/ballerina
+
+ EXPOSE  9090
+ USER ballerina
+
+ CMD java -jar docker_cmd.jar --b7a.http.accesslog.console=true
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify that the Docker image is created.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker images
+ REPOSITORY          TAG        IMAGE ID            CREATED             SIZE
+ custome_cmd         latest     08611185ed10        10 minutes ago      134MB
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the Docker image as a container (use the command below printed in step 1).</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker run <span class="nt">-d</span> <span class="nt">-p</span> 9090:9090 custome_cmd:latest
+ 0f66739200dc07d667229f49b66beaf8135e0f9bb000feea23aaa5f9a7cc1d18
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify that the Docker container is running.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> docker ps
+CONTAINER ID        IMAGE                COMMAND                  CREATED             STATUS              PORTS                    NAMES
+0f66739200dc        custome_cmd:latest   <span class="s2">"/bin/sh -c 'java -j…"</span>   55 seconds ago      Up 55 seconds       0.0.0.0:9090-&gt;9090/tcp   pensive_jackson
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Access the hello world service with the cURL command below.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> curl http://localhost:9090/hello/sayHello
+ Hello World!
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>View the HTTP access logs.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker logs 0f66739200dc
+ ballerina: HTTP access log enabled
+ <span class="o">[</span>ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+ 172.17.0.1 - - <span class="o">[</span>14/Jun/2020:04:38:22 +0000] <span class="s2">"GET /hello/sayHello HTTP/1.1"</span> 200 12 <span class="s2">"-"</span> <span class="s2">"curl/7.64.1"</span> 
+ 172.17.0.1 - - <span class="o">[</span>14/Jun/2020:04:38:23 +0000] <span class="s2">"GET /hello/sayHello HTTP/1.1"</span> 200 12 <span class="s2">"-"</span> <span class="s2">"curl/7.64.1"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Clean up the created artifacts.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker <span class="nb">kill </span>0f66739200dc
+ 0f66739200dc
+
+ <span class="o">&gt;</span> docker <span class="nb">rm </span>0f66739200dc
+ 0f66739200dc
+
+ <span class="o">&gt;</span> docker rmi 08611185ed10
+ Untagged: custome_cmd:latest
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="creating-multiple-docker-images-corresponding-to-modules-of-a-ballerina-project">Creating Multiple Docker Images Corresponding to Modules of a Ballerina Project</h3>
+
+<p>This use case shows how to add the Docker annotation to a Ballerina project to create the corresponding Docker images.</p>
+
+<h3 id="setting-up-the-prerequisites-6">Setting Up the Prerequisites</h3>
+
+<p>You need a machine with <a href="https://docs.docker.com/get-docker/">Docker</a> installed.</p>
+
+<h4 id="sample-source-code-6">Sample Source Code</h4>
+
+<ol>
+  <li>
+    <p>Ballerina project to call the restaurant:</p>
+
+    <pre><code class="language-ballerina"> &gt; ballerina new restaurant
+ Created new Ballerina project at restaurant
+
+ Next:
+     Move into the project directory and use `ballerina add &lt;module-name&gt;` to
+     add a new Ballerina module.
+</code></pre>
+  </li>
+  <li>
+    <p>The two modules to call and order pizzas and burgers:</p>
+
+    <pre><code class="language-ballerina"> &gt; ballerina add pizza
+ Added new ballerina module at 'src/pizza'
+
+ &gt; ballerina add burger 
+ Added new ballerina module at 'src/burger'
+</code></pre>
+  </li>
+  <li>
+    <p>Source code of <code class="language-plaintext highlighter-rouge">src/pizza</code> for the order:</p>
+
+    <p><code class="language-plaintext highlighter-rouge">pizza_menu.bal</code></p>
+
+    <pre><code class="language-ballerina"> import ballerina/http;
+ import ballerina/docker;
+    
+ @docker:Config {
+   name: "pizza"
+ }
+ service pizza on new http:Listener(9090){
+    
+   resource function menu(http:Caller caller,http:Request request) returns error? {
+       check result = caller-&gt;respond("Pizza Menu");
+   }
+ }
+</code></pre>
+  </li>
+  <li>
+    <p>Source code of <code class="language-plaintext highlighter-rouge">src/burger</code> for the order:</p>
+
+    <p><code class="language-plaintext highlighter-rouge">burger_menu.bal</code></p>
+
+    <pre><code class="language-ballerina"> import ballerina/http;
+ import ballerina/docker;
+    
+ @docker:Config {
+   name: "burger"
+ }
+ service burger on new http:Listener(8080){
+    
+   resource function menu(http:Caller caller,http:Request request) returns error? {
+       check result = caller-&gt;respond("Burger Menu");
+   }
+ }
+</code></pre>
+  </li>
+</ol>
+
+<h4 id="steps-to-run-6">Steps to Run</h4>
+
+<ol>
+  <li>
+    <p>Compile the Ballerina project.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> ballerina build <span class="nt">-a</span>
+ Compiling <span class="nb">source
+   </span>lakmal/burger:0.1.0
+   lakmal/pizza:0.1.0
+
+ Creating balos
+   target/balo/burger-2020r1-any-0.1.0.balo
+   target/balo/pizza-2020r1-any-0.1.0.balo
+
+ Running Tests
+   lakmal/burger:0.1.0
+ <span class="o">[</span>ballerina/http] started HTTP/WS listener 0.0.0.0:8080
+ I<span class="s1">'m the before suite function!
+ I'</span>m the before <span class="k">function</span><span class="o">!</span>
+ I<span class="s1">'m in test function!
+ I'</span>m the after <span class="k">function</span><span class="o">!</span>
+ I<span class="s1">'m the after suite function!
+ [ballerina/http] stopped HTTP/WS listener 0.0.0.0:8080
+
+   [pass] testFunction
+
+   1 passing
+   0 failing
+   0 skipped
+
+   lakmal/pizza:0.1.0
+ [ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+ I'</span>m the before suite <span class="k">function</span><span class="o">!</span>
+ I<span class="s1">'m the before function!
+ I'</span>m <span class="k">in </span><span class="nb">test </span><span class="k">function</span><span class="o">!</span>
+ I<span class="s1">'m the after function!
+ I'</span>m the after suite <span class="k">function</span><span class="o">!</span>
+ <span class="o">[</span>ballerina/http] stopped HTTP/WS listener 0.0.0.0:9090
+
+   <span class="o">[</span>pass] testFunction
+
+   1 passing
+   0 failing
+   0 skipped
+
+
+ Generating executables
+   target/bin/burger.jar
+   target/bin/pizza.jar
+
+ Generating docker artifacts...
+   @docker 		 - <span class="nb">complete </span>2/2 
+
+   Run the following <span class="nb">command </span>to start a Docker container:
+   docker run <span class="nt">-d</span> <span class="nt">-p</span> 8080:8080 burger:latest
+
+
+ Generating docker artifacts...
+   @docker 		 - <span class="nb">complete </span>2/2 
+
+   Run the following <span class="nb">command </span>to start a Docker container:
+   docker run <span class="nt">-d</span> <span class="nt">-p</span> 9090:9090 pizza:latest
+</code></pre></div>    </div>
+
+    <p>The artifact files below will be generated with the build process.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> tree
+ <span class="nb">.</span>
+ ├── Ballerina.lock
+ ├── Ballerina.toml
+ ├── src
+ │   ├── burger
+ │   │   ├── Module.md
+ │   │   ├── burger_menu.bal
+ │   │   ├── main.bal
+ │   │   ├── resources
+ │   │   └── tests
+ │   │       ├── main_test.bal
+ │   │       └── resources
+ │   └── pizza
+ │       ├── Module.md
+ │       ├── main.bal
+ │       ├── pizza_menu.bal
+ │       ├── resources
+ │       └── tests
+ │           ├── main_test.bal
+ │           └── resources
+ └── target
+     ├── balo
+     │   ├── burger-2020r1-any-0.1.0.balo
+     │   └── pizza-2020r1-any-0.1.0.balo
+     ├── bin
+     │   ├── burger.jar
+     │   └── pizza.jar
+     ├── caches
+     │   ├── bir_cache
+     │   │   └── lakmal
+     │   │       ├── burger
+     │   │       │   └── 0.1.0
+     │   │       │       └── burger.bir
+     │   │       └── pizza
+     │   │           └── 0.1.0
+     │   │               └── pizza.bir
+     │   ├── jar_cache
+     │   │   └── lakmal
+     │   │       ├── burger
+     │   │       │   └── 0.1.0
+     │   │       │       ├── lakmal-burger-0.1.0-testable.jar
+     │   │       │       └── lakmal-burger-0.1.0.jar
+     │   │       └── pizza
+     │   │           └── 0.1.0
+     │   │               ├── lakmal-pizza-0.1.0-testable.jar
+     │   │               └── lakmal-pizza-0.1.0.jar
+     │   └── json_cache
+     │       └── lakmal
+     │           ├── burger
+     │           │   └── 0.1.0
+     │           │       └── test_suit.json
+     │           └── pizza
+     │               └── 0.1.0
+     │                   └── test_suit.json
+     └── docker
+         ├── burger
+         │   └── Dockerfile
+         └── pizza
+             └── Dockerfile
+
+ 34 directories, 24 files
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify that the Docker image is created.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker images
+ REPOSITORY       TAG           IMAGE ID            CREATED             SIZE
+ pizza            latest        72d12aa57bc1        2 minutes ago       134MB
+ burger           latest        d3facfd62996        2 minutes ago       134MB
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the Docker image as a container (use the command below printed in step 1).</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker run <span class="nt">-d</span> <span class="nt">-p</span> 8080:8080 burger:latest
+ 1d3b98286a45c2feeae607719c1a58d1c6b9daa57889cff37894cb42490d15de
+
+ <span class="o">&gt;</span> docker run <span class="nt">-d</span> <span class="nt">-p</span> 9090:9090 pizza:latest
+ c6bfd238515265fb2909d74c3d862830712019c0681f75e7400e7a90833ce84a
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Verify that the Docker container is running.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker ps
+ CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+ c6bfd2385152        pizza:latest        <span class="s2">"/bin/sh -c 'java -j…"</span>   15 seconds ago      Up 14 seconds       0.0.0.0:9090-&gt;9090/tcp   romantic_lovelace
+ 1d3b98286a45        burger:latest       <span class="s2">"/bin/sh -c 'java -j…"</span>   47 seconds ago      Up 46 seconds       0.0.0.0:8080-&gt;8080/tcp   priceless_rhodes
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Access the pizza service and burger service with the cURL command below.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> curl http://localhost:9090/pizza/menu
+ Pizza Menu
+
+ <span class="o">&gt;</span> curl http://localhost:8080/burger/menu
+ Burger Menu
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Clean up the created artifacts.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&gt;</span> docker <span class="nb">kill </span>c6bfd2385152
+ C6bfd2385152
+ <span class="o">&gt;</span> docker <span class="nb">kill </span>1d3b98286a45
+ 1d3b98286a45
+
+ <span class="o">&gt;</span> docker <span class="nb">rm </span>c6bfd2385152
+ C6bfd2385152
+ <span class="o">&gt;</span> docker <span class="nb">rm </span>1d3b98286a45
+ 1d3b98286a45
+
+
+ <span class="o">&gt;</span> docker rmi 72d12aa57bc1
+ Untagged: pizza:latest
+ <span class="o">&gt;</span> docker rmi d3facfd62996
+ Untagged: burger:latest
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>Mini-kube users should configure the annotations below in every sample with valid values.</p>
+
+<pre><code class="language-ballerina">@docker:Config {
+   		dockerHost: "tcp://192.168.99.100:2376",
+   		dockerCertPath: "/Users/lakwarus/.minikube/certs"
+}
+</code></pre>
+
+   
+                                 </div>
+
+                                
+
+
+                         
+
+
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <a class="cTopLink" href="#top">Back to Top &#x2934;</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">DOWNLOAD</a></li>
+            <!--<li><a class="cBioFooterLink" href="/community/#report-issues">REPORT ISSUES</a></li>-->
+            <li data-toggle="modal" data-target="#reportissues" data-whatever="@mdo"><a href="/community/#report-issues">REPORT ISSUES</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">CODE LICENSE</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">SITE LICENSE</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            <li><a class="cBioFooterLink" href="/trademark-usage-policy/">TRADEMARK USAGE POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack-2022.svg" style="width:17px; height:17px;"/></a></li>
+                <li><a class="cBioFooterLink" href="https://www.youtube.com/c/Ballerinalang"><img style="width: 15px;" src="/img/youtube-icon.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+
+
+           <a class="cNLButton" href="/community/#subscribe-to-the-newsletter">Subscribe to the newsletter</a> 
+
+           <div class="modal fade" id="reportissues" tabindex="-1" role="dialog" aria-labelledby="reportissueslabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" style="padding:15px;border-radius:0px;">
+                <div class="modal-header">
+                  <h3 class="modal-title" style="color: #20b6b0;">Report Issues</h3>
+                  <p style="padding: 10px 0px ;">Report issues in the GitHub repositories of the areas and components listed below.
+                  </p>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" style="background-color: #fff; font-size: 20; color: #465867;font-size: 20px;">
+                  <ul class="b">
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank"> Compiler, runtime, or tooling</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank"> Standard Library</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">  Language specification</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">  Website</a></li>
+                    <li><a class="linkText" href="mailto:security@ballerina.io" target="_blank">Security</a> <span style="font-size: 16px;">(For details, see the</span> <a class="linkText" href="/security" target="_blank">security policy</a>.)</li>
+                  </ul>  
+                
+                </div>
+                <div class="modal-footer">
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<div class="cCookie-Policy">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <!-- <div class="closebuttoon"><img src="/img/close-w.svg"/></div> -->
+<h4>Cookie policy</h4>
+<p>This website uses cookies so that we can provide you with the best user experience. Read our <a href="https://ballerina.io/cookie-policy/">Cookie policy</a></a> to find out more.</p>
+<p>If you wish to disable cookies you can do so from your browser. </p>
+  
+<!-- <a href="https://ballerina.io/cookie-policy/"></a> -->
+<a class="cIUnderstand ">I understand </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/prism.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-core.min.js"></script> -->
+<script src="/js/prism-ballerina.js"></script>
+
+
+
+<script>
+
+$(".cIUnderstand ").click(function() {
+    $(".cCookie-Policy").addClass('cHide-Policy');
+   
+    
+});
+
+
+
+</script>
+
+
+<!-- 
+<script>
+    (function () {
+
+if (typeof self === 'undefined' || !self.Prism || !self.document) {
+    return;
+}
+
+/**
+ * Plugin name which is used as a class name for <pre> which is activating the plugin
+ * @type {String}
+ */
+var PLUGIN_NAME = 'line-numbers';
+
+/**
+ * Regular expression used for determining line breaks
+ * @type {RegExp}
+ */
+var NEW_LINE_EXP = /\n(?!$)/g;
+
+/**
+ * Resizes line numbers spans according to height of line of code
+ * @param {Element} element <pre> element
+ */
+var _resizeElement = function (element) {
+    var codeStyles = getStyles(element);
+    var whiteSpace = codeStyles['white-space'];
+
+    if (whiteSpace === 'pre-wrap' || whiteSpace === 'pre-line') {
+        var codeElement = element.querySelector('code');
+        var lineNumbersWrapper = element.querySelector('.line-numbers-rows');
+        if (!codeElement || !lineNumbersWrapper) {
+            return;
+        }
+        var lineNumberSizer = element.querySelector('.line-numbers-sizer');
+        var codeLines = codeElement.textContent.split(NEW_LINE_EXP);
+
+        if (!lineNumberSizer) {
+            lineNumberSizer = document.createElement('span');
+            lineNumberSizer.className = 'line-numbers-sizer';
+
+            codeElement.appendChild(lineNumberSizer);
+        }
+
+        lineNumberSizer.style.display = 'block';
+
+        codeLines.forEach(function (line, lineNumber) {
+            lineNumberSizer.textContent = line || '\n';
+            var lineSize = lineNumberSizer.getBoundingClientRect().height;
+            lineNumbersWrapper.children[lineNumber].style.height = lineSize + 'px';
+        });
+
+        lineNumberSizer.textContent = '';
+        lineNumberSizer.style.display = 'none';
+    }
+};
+
+/**
+ * Returns style declarations for the element
+ * @param {Element} element
+ */
+var getStyles = function (element) {
+    if (!element) {
+        return null;
+    }
+
+    return window.getComputedStyle ? getComputedStyle(element) : (element.currentStyle || null);
+};
+
+window.addEventListener('resize', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('pre.' + PLUGIN_NAME), _resizeElement);
+});
+
+Prism.hooks.add('complete', function (env) {
+    if (!env.code) {
+        return;
+    }
+
+    var code = env.element;
+    var pre = code.parentNode;
+
+    // works only for <code> wrapped inside <pre> (not inline)
+    if (!pre || !/pre/i.test(pre.nodeName)) {
+        return;
+    }
+
+    // Abort if line numbers already exists
+    if (code.querySelector('.line-numbers-rows')) {
+        return;
+    }
+
+    var addLineNumbers = false;
+    var lineNumbersRegex = /(?:^|\s)line-numbers(?:\s|$)/;
+
+    for (var element = code; element; element = element.parentNode) {
+        if (lineNumbersRegex.test(element.className)) {
+            addLineNumbers = true;
+            break;
+        }
+    }
+
+    // only add line numbers if <code> or one of its ancestors has the `line-numbers` class
+    if (!addLineNumbers) {
+        return;
+    }
+
+    // Remove the class 'line-numbers' from the <code>
+    code.className = code.className.replace(lineNumbersRegex, ' ');
+    // Add the class 'line-numbers' to the <pre>
+    if (!lineNumbersRegex.test(pre.className)) {
+        pre.className += ' line-numbers';
+    }
+
+    var match = env.code.match(NEW_LINE_EXP);
+    var linesNum = match ? match.length + 1 : 1;
+    var lineNumbersWrapper;
+
+    var lines = new Array(linesNum + 1).join('<span></span>');
+
+    lineNumbersWrapper = document.createElement('span');
+    lineNumbersWrapper.setAttribute('aria-hidden', 'true');
+    lineNumbersWrapper.className = 'line-numbers-rows';
+    lineNumbersWrapper.innerHTML = lines;
+
+    if (pre.hasAttribute('data-start')) {
+        pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+    }
+
+    env.element.appendChild(lineNumbersWrapper);
+
+    _resizeElement(pre);
+
+    Prism.hooks.run('line-numbers', env);
+});
+
+Prism.hooks.add('line-numbers', function (env) {
+    env.plugins = env.plugins || {};
+    env.plugins.lineNumbers = true;
+});
+
+/**
+ * Global exports
+ */
+Prism.plugins.lineNumbers = {
+    /**
+     * Returns the node of the given line number in the given element.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @param {Number} number
+     * @returns {Element | undefined}
+     */
+    getLine: function (element, number) {
+        if (element.tagName !== 'PRE' || !element.classList.contains(PLUGIN_NAME)) {
+            return;
+        }
+
+        var lineNumberRows = element.querySelector('.line-numbers-rows');
+        var lineNumberStart = parseInt(element.getAttribute('data-start'), 10) || 1;
+        var lineNumberEnd = lineNumberStart + (lineNumberRows.children.length - 1);
+
+        if (number < lineNumberStart) {
+            number = lineNumberStart;
+        }
+        if (number > lineNumberEnd) {
+            number = lineNumberEnd;
+        }
+
+        var lineIndex = number - lineNumberStart;
+
+        return lineNumberRows.children[lineIndex];
+    },
+    /**
+     * Resizes the line numbers of the given element.
+     *
+     * This function will not add line numbers. It will only resize existing ones.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @returns {void}
+     */
+    resize: function (element) {
+        _resizeElement(element);
+    }
+};
+
+}());
+</script> -->
+
+<!-- 
+<style>
+    pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style> -->
+
+      <script src="/js/theme.js"></script>
+      <script>
+         $(document).ready(function () {
+            var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
+            $('[data-button="iGitStarText"]').replaceWith(gitstar);
+         
+            var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
+            $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+         
+         });
+         
+     </script>
+     <script src="/js/ballerina-leftnav.js"></script>
+
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script src="/js/abixTreeList.min.js"></script>
+     <script>
+         $(document).ready(function() {
+             $('#tree').abixTreeList();
+         });
+
+
+
+
+
+         $(window).scroll(function () {
+        var bodyclass = document.body;
+
+        if ($(this).scrollTop() > 200) {
+            $('.cTopLink').removeClass('dispalaynone');
+          
+        } else {
+            $('.cTopLink').addClass('dispalaynone');
+          
+        }
+
+   
+
+
+    });
+
+     </script>
+
+
+
+
+   </body>
+</html>
+

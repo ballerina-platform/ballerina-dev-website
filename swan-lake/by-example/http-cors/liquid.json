@@ -1,0 +1,11 @@
+{
+  "title": "CORS",
+  "description": "BBE demonstrates the HTTP service-level and the resource-level CORS configuration.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "http", "cors"],
+  "permalink": "/learn/by-example/http-cors",
+  "active": "http-cors",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-cors",
+    "/swan-lake/learn/by-example/http-cors.html"
+  ]
+}

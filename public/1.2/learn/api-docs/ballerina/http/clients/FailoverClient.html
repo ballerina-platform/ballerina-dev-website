@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides an implementation for connecting and interacting with HTTP, HTTP2, and WebSocket endpoints. The module facilitates two types of network entry points as ‘Client’ and ‘Listener’.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,http">
+
+    <title>API Docs - Client : FailoverClient</title>
+    <script src="../../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Clients</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="Caller.html" onclick="menuLinkClick()">Caller</a>
+                        </li>
+                    
+                        <li >
+                            <a href="CircuitBreakerClient.html" onclick="menuLinkClick()">CircuitBreakerClient</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Client.html" onclick="menuLinkClick()">Client</a>
+                        </li>
+                    
+                        <li class="active active-item">
+                            <a href="FailoverClient.html" onclick="menuLinkClick()">FailoverClient</a>
+                        </li>
+                    
+                        <li >
+                            <a href="HttpCachingClient.html" onclick="menuLinkClick()">HttpCachingClient</a>
+                        </li>
+                    
+                        <li >
+                            <a href="HttpClient.html" onclick="menuLinkClick()">HttpClient</a>
+                        </li>
+                    
+                        <li >
+                            <a href="HttpSecureClient.html" onclick="menuLinkClick()">HttpSecureClient</a>
+                        </li>
+                    
+                        <li >
+                            <a href="LoadBalanceClient.html" onclick="menuLinkClick()">LoadBalanceClient</a>
+                        </li>
+                    
+                        <li >
+                            <a href="RedirectClient.html" onclick="menuLinkClick()">RedirectClient</a>
+                        </li>
+                    
+                        <li >
+                            <a href="RetryClient.html" onclick="menuLinkClick()">RetryClient</a>
+                        </li>
+                    
+                        <li >
+                            <a href="WebSocketCaller.html" onclick="menuLinkClick()">WebSocketCaller</a>
+                        </li>
+                    
+                        <li >
+                            <a href="WebSocketClient.html" onclick="menuLinkClick()">WebSocketClient</a>
+                        </li>
+                    
+                        <li >
+                            <a href="WebSocketFailoverClient.html" onclick="menuLinkClick()">WebSocketFailoverClient</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../../http/index.html" onclick="menuLinkClick()">
+            <h3>http</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../http/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../http/index.html#objects" onclick="menuLinkClick()">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../http/index.html#clients" onclick="menuLinkClick()">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../http/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../../http/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../../http/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../../http/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../../http/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../http/index.html#errors" onclick="menuLinkClick()">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Clients - </span>
+                
+                    <a href="../../http/index.html">http</a> :
+                
+                <span class="clients">FailoverClient</span>
+            </h1>
+            <p><p>An HTTP client endpoint which provides failover support over multiple HTTP clients.</p>
+</p>
+
+            <div class="constants">
+                <div class="method-sum">
+                    
+                        
+                            <h2>Constructor</h2>
+<h3 >__init</h3><p>(<a href="../../http/records/FailoverClientConfiguration.html">FailoverClientConfiguration</a> failoverClientConfig)</p>
+<div class="data-wrapper">
+    
+        <div class="params-listing">
+            <ul>
+                <li> <b>failoverClientConfig</b><span class="type">  <a href="../../http/records/FailoverClientConfiguration.html">FailoverClientConfiguration</a></span> </li>
+                <li>
+                    <p>The configurations of the client endpoint associated with this <code>Failover</code> instance.</p>
+
+                </li>
+            </ul>
+        </div>
+    
+</div>
+                        
+                    
+
+                    
+                        <h2>Remote Methods</h2>
+                        <table>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="post"><a
+                                            class="functions" href="#post">post</a></td>
+                                    <td class="module-desc"><p>The POST remote function implementation of the Failover Connector.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="head"><a
+                                            class="functions" href="#head">head</a></td>
+                                    <td class="module-desc"><p>The HEAD remote function implementation of the Failover Connector.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="patch"><a
+                                            class="functions" href="#patch">patch</a></td>
+                                    <td class="module-desc"><p>The PATCH remote function implementation of the Failover Connector.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="put"><a
+                                            class="functions" href="#put">put</a></td>
+                                    <td class="module-desc"><p>The PUT remote function  implementation of the Failover Connector.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="options"><a
+                                            class="functions" href="#options">options</a></td>
+                                    <td class="module-desc"><p>The OPTIONS remote function implementation of the Failover Connector.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="forward"><a
+                                            class="functions" href="#forward">forward</a></td>
+                                    <td class="module-desc"><p>Invokes an HTTP call using the incoming request's HTTP method.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="execute"><a
+                                            class="functions" href="#execute">execute</a></td>
+                                    <td class="module-desc"><p>Invokes an HTTP call with the specified HTTP method.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="delete"><a
+                                            class="functions" href="#delete">delete</a></td>
+                                    <td class="module-desc"><p>The DELETE remote function implementation of the Failover Connector.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="get"><a
+                                            class="functions" href="#get">get</a></td>
+                                    <td class="module-desc"><p>The GET remote function implementation of the Failover Connector.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="submit"><a
+                                            class="functions" href="#submit">submit</a></td>
+                                    <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="getResponse"><a
+                                            class="functions" href="#getResponse">getResponse</a></td>
+                                    <td class="module-desc"><p>Retrieves the <code>http:Response</code> for a previously-submitted request.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="hasPromise"><a
+                                            class="functions" href="#hasPromise">hasPromise</a></td>
+                                    <td class="module-desc"><p>Checks whether an <code>http:PushPromise</code> exists for a previously-submitted request.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="getNextPromise"><a
+                                            class="functions" href="#getNextPromise">getNextPromise</a></td>
+                                    <td class="module-desc"><p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="getPromisedResponse"><a
+                                            class="functions" href="#getPromisedResponse">getPromisedResponse</a></td>
+                                    <td class="module-desc"><p>Retrieves the promised server push <code>http:Response</code> message.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="rejectPromise"><a
+                                            class="functions" href="#rejectPromise">rejectPromise</a></td>
+                                    <td class="module-desc"><p>Rejects an <code>http:PushPromise</code>.</td>
+                                </tr>
+                            
+                        </table>
+                    
+
+                    
+                
+                    
+                        <h2>Fields</h2>
+                                
+                                <div class="data-wrapper">
+        
+    <div class="params-listing">
+        <ul>
+            <li> 
+                <span >failoverClientConfig</span>
+                <span class="type">  <a href="../../http/records/FailoverClientConfiguration.html">FailoverClientConfiguration</a></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The configurations for the failover client endpoint</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> 
+                <span >failoverInferredConfig</span>
+                <span class="type">  <a href="../../http/records/FailoverInferredConfig.html">FailoverInferredConfig</a></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Configurations derived from <code>FailoverConfig</code></p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> 
+                <span >succeededEndpointIndex</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Index of the <code>CallerActions[]</code> array which given a successful response</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+                            
+                    
+                </div>
+
+                
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="post" title="post">
+             <a class="url-link" href="#post">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > post </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            
+                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>The POST remote function implementation of the Failover Connector.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Resource path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >message</span>
+                        <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>HTTP request or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ReadableByteChannel</code>
+or <code>mime:Entity[]</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="head" title="head">
+             <a class="url-link" href="#head">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > head </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            
+                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>The HEAD remote function implementation of the Failover Connector.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Resource path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >message</span>
+                        <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>An optional HTTP request or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
+<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="patch" title="patch">
+             <a class="url-link" href="#patch">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > patch </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            
+                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>The PATCH remote function implementation of the Failover Connector.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Resource path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >message</span>
+                        <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>An HTTP request or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ReadableByteChannel</code>
+or <code>mime:Entity[]</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="put" title="put">
+             <a class="url-link" href="#put">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > put </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            
+                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>The PUT remote function  implementation of the Failover Connector.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Resource path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >message</span>
+                        <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>An HTTP request or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ReadableByteChannel</code>
+or <code>mime:Entity[]</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="options" title="options">
+             <a class="url-link" href="#options">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > options </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            
+                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>The OPTIONS remote function implementation of the Failover Connector.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Resource path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >message</span>
+                        <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>An optional HTTP request or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
+<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="forward" title="forward">
+             <a class="url-link" href="#forward">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > forward </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/objects/Request.html">Request</a> request)</p>
+            
+                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Invokes an HTTP call using the incoming request's HTTP method.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Resource path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >request</span>
+                        <span class="type">  <a href="../../http/objects/Request.html">Request</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>An HTTP request</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="execute" title="execute">
+             <a class="url-link" href="#execute">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > execute </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            
+                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Invokes an HTTP call with the specified HTTP method.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >httpVerb</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>HTTP method to be used for the request</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Resource path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >message</span>
+                        <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>An HTTP request or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ReadableByteChannel</code>
+or <code>mime:Entity[]</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="delete" title="delete">
+             <a class="url-link" href="#delete">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > delete </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            
+                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>The DELETE remote function implementation of the Failover Connector.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Resource path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >message</span>
+                        <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>An optional HTTP request or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ReadableByteChannel</code>
+or <code>mime:Entity[]</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="get" title="get">
+             <a class="url-link" href="#get">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > get </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            
+                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>The GET remote function implementation of the Failover Connector.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Resource path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >message</span>
+                        <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>An optional HTTP request or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
+<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>The response or an <code>http:ClientError</code> if failed to fulfill the request</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="submit" title="submit">
+             <a class="url-link" href="#submit">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > submit </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
+            
+                <b> returns </b><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Submits an HTTP request to a service with the specified HTTP verb. The <code>FailoverClient.submit()</code> function does not
+return an <code>http:Response</code> as the result. Rather it returns an <code>http:HttpFuture</code> which can be used for subsequent interactions
+with the HTTP endpoint.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >httpVerb</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The HTTP verb value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The resource path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >message</span>
+                        <span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>An HTTP outbound request message or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
+<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>An <code>http:HttpFuture</code> that represents an asynchronous service invocation or else an <code>http:ClientError</code> if the submission
+fails</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getResponse" title="getResponse">
+             <a class="url-link" href="#getResponse">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getResponse </h2>
+        <span class="method-types">
+            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            
+                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Retrieves the <code>http:Response</code> for a previously-submitted request.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >httpFuture</span>
+                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The <code>http:HttpFuture</code> related to a previous asynchronous invocation</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="hasPromise" title="hasPromise">
+             <a class="url-link" href="#hasPromise">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > hasPromise </h2>
+        <span class="method-types">
+            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Checks whether an <code>http:PushPromise</code> exists for a previously-submitted request.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >httpFuture</span>
+                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The <code>http:HttpFuture</code> related to a previous asynchronous invocation</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>A <code>boolean</code>, which represents whether an <code>http:PushPromise</code> exists</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getNextPromise" title="getNextPromise">
+             <a class="url-link" href="#getNextPromise">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getNextPromise </h2>
+        <span class="method-types">
+            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            
+                <b> returns </b><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >httpFuture</span>
+                        <span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The <code>http:HttpFuture</code> related to a previous asynchronous invocation</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>An <code>http:PushPromise</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getPromisedResponse" title="getPromisedResponse">
+             <a class="url-link" href="#getPromisedResponse">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getPromisedResponse </h2>
+        <span class="method-types">
+            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
+            
+                <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Retrieves the promised server push <code>http:Response</code> message.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >promise</span>
+                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The related <code>http:PushPromise</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
+                <li><p>A promised <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="rejectPromise" title="rejectPromise">
+             <a class="url-link" href="#rejectPromise">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > rejectPromise </h2>
+        <span class="method-types">
+            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Rejects an <code>http:PushPromise</code>. When an <code>http:PushPromise</code> is rejected, there is no chance of fetching a promised
+response using the rejected promise.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >promise</span>
+                        <span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The Push Promise to be rejected</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                
+
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

@@ -1,0 +1,20 @@
+{
+  "title": "Cache invalidation",
+  "description": "This BBE shows how to perform an in-memory caching invalidate operation with the \"Least Recently Used\" algorithm in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "BBE",
+    "cache",
+    "put",
+    "hasKey",
+    "invalidate",
+    "invalidateAll"
+  ],
+  "permalink": "/learn/by-example/cache-invalidation",
+  "active": "cache-invalidation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/cache-invalidation",
+    "/swan-lake/learn/by-example/cache-invalidation.html"
+  ]
+}

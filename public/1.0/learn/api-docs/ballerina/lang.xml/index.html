@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+      .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+       .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+     <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.0.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>     
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            <div class="primary-list module">
+    
+        <a href="../lang.xml/index.html">
+            <h3>lang.xml</h3>
+        </a>
+    
+    <ul>
+        
+        
+            <li>
+                <a  data="objects" href="../lang.xml/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../lang.xml/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../lang.xml/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../lang.xml/index.html#types">Types</a>
+            </li>
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+                
+                <div class="primary-list module">
+    
+        <a href="../lang.xml/index.html">
+            <h3>lang.xml</h3>
+        </a>
+    
+    <ul>
+        
+        
+            <li>
+                <a  data="objects" href="../lang.xml/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../lang.xml/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../lang.xml/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../lang.xml/index.html#types">Types</a>
+            </li>
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">lang.xml</span>
+                    
+                </h1>
+                    <h2>Module Overview</h2>
+<p>This module provides lang library operations on <code>xml</code> values defined by the language specification 2019R3.</p>
+
+
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="$anonType$9" title="$anonType$9">
+                                <a class="objects"
+                                   href="objects/$anonType$9.html">
+                                    $anonType$9
+                                </a>
+                            </td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                </table>
+             </section>  
+            
+
+            
+
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="appendChildren" title="appendChildren"><a
+                                    class="functions" href="functions.html#appendChildren">appendChildren</a></td>
+                            <td class="module-desc"><p>Append children to an XML if its an element type XML. Error otherwise.
+New children will be appended at the end of the existing children.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="concat" title="concat"><a
+                                    class="functions" href="functions.html#concat">concat</a></td>
+                            <td class="module-desc"><p>Concatenates xml and string values.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="copy" title="copy"><a
+                                    class="functions" href="functions.html#copy">copy</a></td>
+                            <td class="module-desc"><p>Make a deep copy of an XML.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="createComment" title="createComment"><a
+                                    class="functions" href="functions.html#createComment">createComment</a></td>
+                            <td class="module-desc"><p>Constructs an xml sequence consisting of only a comment item.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="createElement" title="createElement"><a
+                                    class="functions" href="functions.html#createElement">createElement</a></td>
+                            <td class="module-desc"><p>Constructs an xml sequence consisting of only a new element item.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="createProcessingInstruction" title="createProcessingInstruction"><a
+                                    class="functions" href="functions.html#createProcessingInstruction">createProcessingInstruction</a></td>
+                            <td class="module-desc"><p>Constructs an xml sequence consisting of only a processing instruction item.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="elements" title="elements"><a
+                                    class="functions" href="functions.html#elements">elements</a></td>
+                            <td class="module-desc"><p>Selects the elements from an xml value.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="filter" title="filter"><a
+                                    class="functions" href="functions.html#filter">filter</a></td>
+                            <td class="module-desc"><p>Selects the items from an xml sequence for which a function returns true.
+This represents each item in the same way as the <code>iterator</code> function.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="forEach" title="forEach"><a
+                                    class="functions" href="functions.html#forEach">forEach</a></td>
+                            <td class="module-desc"><p>Applies a function to each item in an xml sequence.
+This represents each item in the same way as the <code>iterator</code> function.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="fromString" title="fromString"><a
+                                    class="functions" href="functions.html#fromString">fromString</a></td>
+                            <td class="module-desc"><p>Constructs an xml value from a string.
+This parses the string using the <code>content</code> production of the
+XML 1.0 Recommendation.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getAttributes" title="getAttributes"><a
+                                    class="functions" href="functions.html#getAttributes">getAttributes</a></td>
+                            <td class="module-desc"><p>Returns the map representing the attributes of <code>elem</code>.
+This includes namespace attributes.
+The keys in the map are the expanded names of the attributes.
+Panics if <code>isElement(elem)</code> is not true.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getChildren" title="getChildren"><a
+                                    class="functions" href="functions.html#getChildren">getChildren</a></td>
+                            <td class="module-desc"><p>Returns the children of <code>elem</code>.
+Panics if <code>isElement(elem)</code> is not true.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getContent" title="getContent"><a
+                                    class="functions" href="functions.html#getContent">getContent</a></td>
+                            <td class="module-desc"><p>Returns the content of a text or processing instruction or comment item.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getElementName" title="getElementName"><a
+                                    class="functions" href="functions.html#getElementName">getElementName</a></td>
+                            <td class="module-desc"><p>Get the fully qualified name of the element as a string. Returns an empty string if the XML is not a singleton.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getItemType" title="getItemType"><a
+                                    class="functions" href="functions.html#getItemType">getItemType</a></td>
+                            <td class="module-desc"><p>Get the type of a XML as a string. If the XML is singleton, type can be one of 'element', 'text', 'comment' or 'pi'.
+Returns an empty string if the XML is not a singleton.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getName" title="getName"><a
+                                    class="functions" href="functions.html#getName">getName</a></td>
+                            <td class="module-desc"><p>Returns a string giving the expanded name of <code>elem</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getTarget" title="getTarget"><a
+                                    class="functions" href="functions.html#getTarget">getTarget</a></td>
+                            <td class="module-desc"><p>Returns the target part of the processing instruction.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getTextValue" title="getTextValue"><a
+                                    class="functions" href="functions.html#getTextValue">getTextValue</a></td>
+                            <td class="module-desc"><p>Get the text value of a XML. If the XML is a sequence, concatenation of the text values of the members of the
+sequence is returned. If the XML is an element, then the text value of the sequence of children is returned. If
+the XML is a text item, then the text is returned. Otherwise, an empty string is returned.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="isComment" title="isComment"><a
+                                    class="functions" href="functions.html#isComment">isComment</a></td>
+                            <td class="module-desc"><p>Tests whether an xml value is a singleton consisting of only a comment item.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="isElement" title="isElement"><a
+                                    class="functions" href="functions.html#isElement">isElement</a></td>
+                            <td class="module-desc"><p>Tests whether an xml value is a singleton consisting of only an element item.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="isEmpty" title="isEmpty"><a
+                                    class="functions" href="functions.html#isEmpty">isEmpty</a></td>
+                            <td class="module-desc"><p>Check whether the XML sequence is empty.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="isProcessingInstruction" title="isProcessingInstruction"><a
+                                    class="functions" href="functions.html#isProcessingInstruction">isProcessingInstruction</a></td>
+                            <td class="module-desc"><p>Tests whether an xml value is a singleton consisting of only a processing instruction item.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="isSingleton" title="isSingleton"><a
+                                    class="functions" href="functions.html#isSingleton">isSingleton</a></td>
+                            <td class="module-desc"><p>Check whether the XML sequence contains only a single element.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="isText" title="isText"><a
+                                    class="functions" href="functions.html#isText">isText</a></td>
+                            <td class="module-desc"><p>Tests whether an xml sequence consists of zero or more character items.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="iterator" title="iterator"><a
+                                    class="functions" href="functions.html#iterator">iterator</a></td>
+                            <td class="module-desc"><p>Returns an iterator over the xml items of <code>x</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="length" title="length"><a
+                                    class="functions" href="functions.html#length">length</a></td>
+                            <td class="module-desc"><p>Returns number of xml items in <code>x</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="map" title="map"><a
+                                    class="functions" href="functions.html#map">map</a></td>
+                            <td class="module-desc"><p>Applies a function to each item in an xml sequence, and returns an xml sequence of the results.
+This represents each item in the same way as the <code>iterator</code> function.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="removeAttribute" title="removeAttribute"><a
+                                    class="functions" href="functions.html#removeAttribute">removeAttribute</a></td>
+                            <td class="module-desc"><p>Remove an attribute from an XML.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="removeChildren" title="removeChildren"><a
+                                    class="functions" href="functions.html#removeChildren">removeChildren</a></td>
+                            <td class="module-desc"><p>Remove children matching the given name from an XML. This operation has no effect
+if the XML is not an element type XML.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="select" title="select"><a
+                                    class="functions" href="functions.html#select">select</a></td>
+                            <td class="module-desc"><p>Get all the items that are of element type, and matches the given qualified name, in an XML sequence.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="selectDescendants" title="selectDescendants"><a
+                                    class="functions" href="functions.html#selectDescendants">selectDescendants</a></td>
+                            <td class="module-desc"><p>Searches in children recursively for elements matching the qualified name and returns a sequence containing them
+all. Does not search within a matched result.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="setAttributes" title="setAttributes"><a
+                                    class="functions" href="functions.html#setAttributes">setAttributes</a></td>
+                            <td class="module-desc"><p>Sets the attributes to the provided attributes map.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="setChildren" title="setChildren"><a
+                                    class="functions" href="functions.html#setChildren">setChildren</a></td>
+                            <td class="module-desc"><p>Sets the children of <code>elem</code> to <code>children</code>.
+Panics if <code>isElement(elem)</code> is not true.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="setName" title="setName"><a
+                                    class="functions" href="functions.html#setName">setName</a></td>
+                            <td class="module-desc"><p>Change the name of element <code>elem</code> to <code>xName</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="slice" title="slice"><a
+                                    class="functions" href="functions.html#slice">slice</a></td>
+                            <td class="module-desc"><p>Returns a subsequence of an xml value.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="strip" title="strip"><a
+                                    class="functions" href="functions.html#strip">strip</a></td>
+                            <td class="module-desc"><p>Strips the insignificant parts of the an xml value.
+Comment items, processing instruction items are considered insignificant.
+After removal of comments and processing instructions, the text is grouped into
+the biggest possible chunks (i.e. only elements cause division into multiple chunks)
+and a chunk is considered insignificant if the entire chunk is whitespace.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="XML_ELEMENT" title="XML_ELEMENT"><a
+                                    class="constant" href="constants.html#XML_ELEMENT">XML_ELEMENT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="XML_SEQUENCE" title="XML_SEQUENCE"><a
+                                    class="constant" href="constants.html#XML_SEQUENCE">XML_SEQUENCE</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="XML_TEXT" title="XML_TEXT"><a
+                                    class="constant" href="constants.html#XML_TEXT">XML_TEXT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="XML_COMMENT" title="XML_COMMENT"><a
+                                    class="constant" href="constants.html#XML_COMMENT">XML_COMMENT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="XML_PI" title="XML_PI"><a
+                                    class="constant" href="constants.html#XML_PI">XML_PI</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="XMLType" title="XMLType">
+                                <a class="types" href="types.html#XMLType">XMLType</a>
+                            </td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+        </div>
+    </div>
+
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+</body>
+</html>

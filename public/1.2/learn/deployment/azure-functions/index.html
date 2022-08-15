@@ -1,0 +1,1169 @@
+---
+redirect_from:
+  - /1.2/learn/deployment/azure-functions/
+  - /1.2/learn/deployment/azure-functions
+---
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="See how the Ballerina deployment in Azure Functions works" />
+
+<meta name="author" content="WSO2, Inc.">
+
+<meta name="keywords" content="ballerina, programming language, serverless, cloud, Azure, Functions" />
+
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title>Azure Functions</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Ballerina - Azure Functions" />
+
+<meta property="og:description" content="See how the Ballerina deployment in Azure Functions works" />
+
+ 
+<meta property="og:image" itemprop="image" content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png" />
+
+
+<!-- <meta name="twitter:image:width" content="610"> -->
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png
+"/>
+<meta property='og:description' itemprop="image" content="See how the Ballerina deployment in Azure Functions works"/>
+
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina"> 
+<meta name="twitter:card" content="summary_large_image"> 
+
+<meta property="twitter:description" content="See how the Ballerina deployment in Azure Functions works" />
+
+<meta name="twitter:image" content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png
+ ">
+
+<meta property="twitter:text:description" content="See how the Ballerina deployment in Azure Functions works" />
+
+<meta property='twitter:image' content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"/>
+
+
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="/js/latest-jquery.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+
+<!-- 
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css"> -->
+
+
+
+
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<!-- <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" /> -->
+<!-- <link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" /> -->
+<!-- <script type="text/javascript" src="/js/highlight.pack.js"></script> -->
+
+<link rel="stylesheet" href="/css/prism.css">
+
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars/4.7.6/handlebars.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var base_download_url = 'https://dist.ballerina.io/downloads';
+   
+   var base_releasenote_url = ''.concat('/downloads/1.2.x-release-notes');
+   var base_swanlake_releasenote_url = ''.concat('/downloads/swan-lake-release-notes');
+</script>
+
+<link href="/css/prism.css" rel="stylesheet" />
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+      <link rel="stylesheet" href="/css/ballerina-io-learn-v2.css">
+   
+      
+   
+      
+
+      <link href="/css/abixTreeList.css" rel="stylesheet">
+
+   </head>
+   <body class="cBallerina-io" id="top">
+      <style>
+    .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+    .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+    .cBallerina-io-Gray-row {
+       padding-top: 70px !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .cBallerina-io-Gray-row {
+       padding-top: 140px !important;
+    }
+
+    #noscript-warning{
+        position: relative;
+    text-align: center;
+    padding: 7px 15px;
+    background-color: #57595d;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    }
+</style>
+<noscript>
+    <div id="noscript-warning">Ballerina works best with JavaScript enabled.</div>
+</noscript>
+     <div class="cVersionChangeBanner">
+        This documentation is for Ballerina 1.2.0. <a href="https://ballerina.io/learn/" class="cInfoBannerLink">View documentation for the latest release</a>.
+    </div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina" /></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="/downloads/">Download</a>
+                            </li>
+                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="https://play.ballerina.io/"
+                                    target="_blank">Playground</a>
+                            </li>
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <!--<li class="active toctree-l1" id="eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>-->
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                    target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink"
+                                    href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu">
+                               
+                                <!-- at the end of the HEAD -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<style>
+  .algolia-search-cont {
+    margin-top: -10px;
+  }
+  .algolia-search-wrap {
+    display: flex;
+    align-items: center;
+  }
+  .algolia-search-cont .search-icon {
+    margin-right: 10px;
+  }
+  .algolia-search-cont .algolia-search-box {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+  }
+</style>
+<div class="algolia-search-cont">
+  <div class="algolia-search-wrap form-control">
+    <span
+      class="glyphicon glyphicon-search search-icon"
+      aria-hidden="true"
+    ></span>
+    <input
+      autocapitalize="off"
+      autocomplete="off"
+      autocorrect="off"
+      placeholder="Search..."
+      role="textbox"
+      spellcheck="false"
+      type="text"
+      value=""
+      class="algolia-search-box"
+      id="algolia-search-box"
+    />
+  </div>
+</div>
+
+<!-- at the end of the BODY -->
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"
+></script>
+<script type="text/javascript">
+  docsearch({
+    apiKey: "024f45d96c2949b32403db36d4016c23",
+    indexName: "ballerina",
+    inputSelector: "#algolia-search-box",
+    debug: false, // Set debug to true if you want to inspect the dropdown
+  });
+</script>
+
+                                <!-- <form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field"
+                                        type="search" placeholder="Search" aria-label="Search"><a id="searchBtn"
+                                        href="#" class="cSearchButton"><img src="/img/search.svg" /></a></form> -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-Home-Middle-col">
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Then we build the nav bar. -->
+<nav class="cLeftNavContainer">
+   <ul class="cMainLeftNav">
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Setting up Ballerina</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/installing-ballerina/">- Installing Ballerina</a></li> -->
+            <li><a href="/1.2/learn/installing-ballerina/">Installing Ballerina</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/setting-up-visual-studio-code/">- Setting up Visual Studio Code</a></li> -->
+            <li><a href="/1.2/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/setting-up-intellij-idea/">- Setting up IntelliJ IDEA</a></li> -->
+            <li><a href="/1.2/learn/setting-up-intellij-idea/">Setting up IntelliJ IDEA</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Ballerina CLI Tools</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/using-the-cli-tools/">- Using the CLI Tools</a></li> -->
+            <li><a href="/1.2/learn/using-the-cli-tools/">Using the CLI Tools</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/keeping-ballerina-up-to-date">- Keeping Ballerina Up To Date</a></li> -->
+            <li><a href="/1.2/learn/keeping-ballerina-up-to-date">Keeping Ballerina Up To Date</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/using-the-openapi-tools/">- Using the OpenAPI Tools</a></li> -->
+            <li><a href="/1.2/learn/using-the-openapi-tools/">Using the OpenAPI Tools</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/generating-ballerina-code-for-protocol-buffer-definitions">- Generating Ballerina Code for Protocol Buffer Definitions</a></li> -->
+            <li><a href="/1.2/learn/generating-ballerina-code-for-protocol-buffer-definitions">Generating Ballerina Code for Protocol Buffer Definitions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Code Organization</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/structuring-ballerina-code/">- Structuring Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/structuring-ballerina-code/">Structuring Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/documenting-ballerina-code/">- Documenting Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/documenting-ballerina-code/">Documenting Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/coding-conventions/">- Coding Conventions</a></li> -->
+            <li><a href="/1.2/learn/coding-conventions/">Coding Conventions</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/running-ballerina-code/">- Running Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/running-ballerina-code/">Running Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/publishing-modules-to-ballerina-central">- Publishing Modules to Ballerina Central</a></li> -->
+            <li><a href="/1.2/learn/publishing-modules-to-ballerina-central">Publishing Modules to Ballerina Central</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Deployment</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/docker/">- Docker</a></li> -->
+            <li><a href="/1.2/learn/deployment/docker/">Docker</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/kubernetes/">- Kubernetes</a></li> -->
+            <li><a href="/1.2/learn/deployment/kubernetes/">Kubernetes</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/aws-lambda/">- AWS Lambda</a></li> -->
+            <li><a href="/1.2/learn/deployment/aws-lambda/">AWS Lambda</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/azure-functions/">- Azure Functions</a></li> -->
+            <li class="current-sub"><a href="/1.2/learn/deployment/azure-functions/">Azure Functions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Observability</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/observing-ballerina-code">- Observing Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/observing-ballerina-code">Observing Ballerina Code</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Interoperability</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/calling-java-code-from-ballerina/">- Calling Java Code from Ballerina</a></li> -->
+            <li><a href="/1.2/learn/calling-java-code-from-ballerina/">Calling Java Code from Ballerina</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Security</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/writing-secure-ballerina-code">- Writing Secure Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/writing-secure-ballerina-code">Writing Secure Ballerina Code</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Testing Ballerina Code</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/testing-quick-start">- Quick Start</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/testing-quick-start">Quick Start</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/writing-tests">- Writing Tests</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/writing-tests">Writing Tests</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/mocking">- Mocking</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/mocking">Mocking</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/executing-tests">- Executing Tests</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/executing-tests">Executing Tests</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Extending Ballerina</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/extending-with-compiler-extensions">- Extending with Compiler Extensions</a></li> -->
+            <li><a href="/1.2/learn/extending-with-compiler-extensions">Extending with Compiler Extensions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+   </ul>
+</nav>
+
+               </div>
+               <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-12 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down"
+  >
+  <ul id="breadcrumb-list" class=" cBalleinaBreadcrumbs list-unstyled  wy-breadcrumbs" vocab="http://schema.org/"
+    typeof="BreadcrumbList">
+
+
+    
+    <li><a href="/">Home</a></li>
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/">1.2</a>
+    </li>
+    
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/learn/">Learn</a>
+    </li>
+    
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/learn/deployment/">Deployment</a>
+    </li>
+    
+    
+    
+    <li>/</li> Azure Functions
+    
+    
+
+  </ul>
+</nav>
+<style type="text/css">
+  .cBalleinaBreadcrumbs li {
+    margin-right: 10px;
+  }
+</style>
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <!-- <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs cGitLink">
+                        
+                     </div> -->
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container cPositionRelative">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+
+
+                                 <div class="col-xs-11 col-md-11 col-lg-11 cNoPadding">
+                                    <h1>Azure Functions</h1>
+                                 </div>
+                                 <!-- <div class="col-xs-1 col-md-1 col-lg-1 cNoPadding cGithubContainer">
+                                    <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-dev-website/blob/master/1.2/learn/deployment/azure-functions.md"></a>
+                                 </div> -->
+                                 <div class="col-xs-12 col-md-12 col-lg-12 cNoPadding">
+                                    <p>The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.</p>
+                                    <div class="cBallerinaTocContainer" id="table-of-content">
+                                       <ul id="tree">
+  <li><a href="#triggers-and-bindings">Triggers and Bindings</a></li>
+  <li><a href="#writing-a-function">Writing a Function</a></li>
+  <li><a href="#building-the-function">Building the Function</a></li>
+  <li><a href="#deploying-the-function">Deploying the Function</a></li>
+  <li><a href="#invoking-the-function">Invoking the Function</a></li>
+  <li><a href="#whats-next">What’s Next?</a></li>
+</ul>
+
+                                    </div>
+                                    <p>This is done by importing the <code class="language-plaintext highlighter-rouge">ballerinax/azure.functions</code> module and simply annotating the Ballerina function with the <code class="language-plaintext highlighter-rouge">functions:Function</code> annotation.</p>
+
+<h2 id="triggers-and-bindings">Triggers and Bindings</h2>
+
+<p>An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are <em>input</em> and <em>output</em> bindings. An input binding is a source of data into the function. An output binding allows to output data from the function out to an external resource. For more information, go to <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings">Azure Functions triggers and bindings concepts</a>.</p>
+
+<p>The following Azure Functions triggers and bindings are currently supported in Ballerina:</p>
+<ul>
+  <li>HTTP trigger and output binding</li>
+  <li>Queue trigger and output binding</li>
+  <li>Blob trigger, input binding, and output binding</li>
+  <li>Twilio SMS output binding</li>
+  <li>CosmosDB trigger], input binding, and output binding</li>
+  <li>Timer trigger</li>
+</ul>
+
+<h2 id="writing-a-function">Writing a Function</h2>
+
+<p>The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond back to the caller with a message.</p>
+
+<pre><code class="language-ballerina">import ballerinax/azure.functions as af;
+
+@af:Function
+public function fromHttpToQueue(af:Context ctx, 
+                                @af:HTTPTrigger { authLevel: "anonymous" } af:HTTPRequest req, 
+                                @af:QueueOutput { queueName: "queue1" } af:StringOutputBinding msg) 
+                                returns @af:HTTPOutput af:HTTPBinding {
+    msg.value = req.body;
+    return { statusCode: 200, payload: "Request: " + req.toString() };
+}
+</code></pre>
+
+<p>The first parameter with the <code class="language-plaintext highlighter-rouge">context</code> object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the parameter list of the function. The second parameter with the <code class="language-plaintext highlighter-rouge">HTTPTrigger</code> annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given <code class="language-plaintext highlighter-rouge">HTTPRequest</code> value. Then, you also declare that you will be having a queue output binding by the usage of the <code class="language-plaintext highlighter-rouge">QueueOutput</code> annotation with a string result by defining a <code class="language-plaintext highlighter-rouge">StringOutputBinding</code> parameter. Also, you declare an HTTP output binding by annotating the <code class="language-plaintext highlighter-rouge">HTTPBinding</code> return type with the <code class="language-plaintext highlighter-rouge">HTTPOutput</code> annotation. This HTTP output binding can also be given by defining as a parameter as well with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function.</p>
+
+<h2 id="building-the-function">Building the Function</h2>
+
+<p>The Azure Functions functionality is implemented as a compiler extension. Thus, the artifact generation happens automatically when you build a Ballerina module. Let’s see how this works by building the above code.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ballerina build functions.bal 
+Compiling <span class="nb">source
+	</span>functions.bal
+
+Generating executables
+	functions.jar
+	@azure.functions:Function: fromHttpToQueue
+
+	Run the following <span class="nb">command </span>to deploy Ballerina Azure Functions:
+	az functionapp deployment <span class="nb">source </span>config-zip <span class="nt">-g</span> &lt;resource_group&gt; <span class="nt">-n</span> &lt;function_app_name&gt; <span class="nt">--src</span> azure-functions.zip
+</code></pre></div></div>
+
+<h2 id="deploying-the-function">Deploying the Function</h2>
+
+<p>In order to deploy a Ballerina function in Azure Functions, the following prerequisites must be met.</p>
+
+<ul>
+  <li>Create an Azure <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal">Function App</a> with the given resource group with the following requirements:
+    <ul>
+      <li>Runtime stack - <code class="language-plaintext highlighter-rouge">Java</code></li>
+      <li>Hosting operating system - <code class="language-plaintext highlighter-rouge">Windows</code> (default; Linux is not supported in Azure for custom handlers at the moment)</li>
+    </ul>
+  </li>
+  <li>Install the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest">Azure CLI</a></li>
+</ul>
+
+<p>The created resource group and the function app name should be provided to the placeholders shown in the above-generated usage instructions from the compiler.</p>
+
+<p>A custom <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json"><code class="language-plaintext highlighter-rouge">host.json</code></a> file for the Azure Functions deployment can be optionally provided by placing a <code class="language-plaintext highlighter-rouge">host.json</code> file in the current working directory in which the Ballerina build is done. The required <code class="language-plaintext highlighter-rouge">host.json</code> properties are provided/overridden by the values derived from the source code by the compiler extension.</p>
+
+<p>A sample execution to deploy the functions to Azure Functions is shown below.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>az functionapp deployment <span class="nb">source </span>config-zip <span class="nt">-g</span> functions1777 <span class="nt">-n</span> functions1777 <span class="nt">--src</span> azure-functions.zip 
+Getting scm site credentials <span class="k">for </span>zip deployment
+Starting zip deployment. This operation can take a <span class="k">while </span>to <span class="nb">complete</span> ...
+Deployment endpoint responded with status code 202
+<span class="o">{</span>
+  <span class="s2">"active"</span>: <span class="nb">false</span>,
+  <span class="s2">"author"</span>: <span class="s2">"N/A"</span>,
+  <span class="s2">"author_email"</span>: <span class="s2">"N/A"</span>,
+  <span class="s2">"complete"</span>: <span class="nb">true</span>,
+  <span class="s2">"deployer"</span>: <span class="s2">"ZipDeploy"</span>,
+  <span class="s2">"end_time"</span>: <span class="s2">"2020-07-15T07:32:35.5311903Z"</span>,
+  <span class="s2">"id"</span>: <span class="s2">"e56a20038b864c5c8432aa7d1c26bfbd"</span>,
+  <span class="s2">"is_readonly"</span>: <span class="nb">true</span>,
+  <span class="s2">"is_temp"</span>: <span class="nb">false</span>,
+  <span class="s2">"last_success_end_time"</span>: <span class="s2">"2020-07-15T07:32:35.5311903Z"</span>,
+  <span class="s2">"log_url"</span>: <span class="s2">"https://functions1777.scm.azurewebsites.net/api/deployments/latest/log"</span>,
+  <span class="s2">"message"</span>: <span class="s2">"Created via a push deployment"</span>,
+  <span class="s2">"progress"</span>: <span class="s2">""</span>,
+  <span class="s2">"provisioningState"</span>: null,
+  <span class="s2">"received_time"</span>: <span class="s2">"2020-07-15T07:32:21.9780071Z"</span>,
+  <span class="s2">"site_name"</span>: <span class="s2">"functions1777"</span>,
+  <span class="s2">"start_time"</span>: <span class="s2">"2020-07-15T07:32:23.2044517Z"</span>,
+  <span class="s2">"status"</span>: 4,
+  <span class="s2">"status_text"</span>: <span class="s2">""</span>,
+  <span class="s2">"url"</span>: <span class="s2">"https://functions1777.scm.azurewebsites.net/api/deployments/latest"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="invoking-the-function">Invoking the Function</h2>
+
+<p>The deployed Azure Function can be tested by invoking it using an HTTP client such as CURL:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-d</span> <span class="s2">"Hello!"</span> https://functions1777.azurewebsites.net/api/fromHttpToQueue 
+Request: <span class="nv">url</span><span class="o">=</span>https://functions1777.azurewebsites.net/api/fromHttpToQueue <span class="nv">method</span><span class="o">=</span>POST <span class="nv">query</span><span class="o">=</span> <span class="nv">headers</span><span class="o">=</span><span class="nv">Accept</span><span class="o">=</span><span class="k">*</span>/<span class="k">*</span> <span class="nv">Connection</span><span class="o">=</span>Keep-Alive Content-Length<span class="o">=</span>6 Content-Type<span class="o">=</span>application/x-www-form-urlencoded <span class="nv">Host</span><span class="o">=</span>functions1777.azurewebsites.net Max-Forwards<span class="o">=</span>9 User-Agent<span class="o">=</span>curl/7.64.0 X-WAWS-Unencoded-URL<span class="o">=</span>/api/fromHttpToQueue CLIENT-IP<span class="o">=</span>10.0.128.31:47794 X-ARR-LOG-ID<span class="o">=</span>c905b483-af19-4cf2-9ce0-0741e5998a98 X-SITE-DEPLOYMENT-ID<span class="o">=</span>functions1777 WAS-DEFAULT-HOSTNAME<span class="o">=</span>functions1777.azurewebsites.net X-Original-URL<span class="o">=</span>/api/fromHttpToQueue X-Forwarded-For<span class="o">=</span>45.30.94.9:47450 X-ARR-SSL<span class="o">=</span>2048|256|C<span class="o">=</span>US, <span class="nv">S</span><span class="o">=</span>Washington, <span class="nv">L</span><span class="o">=</span>Redmond, <span class="nv">O</span><span class="o">=</span>Microsoft Corporation, <span class="nv">OU</span><span class="o">=</span>Microsoft IT, <span class="nv">CN</span><span class="o">=</span>Microsoft IT TLS CA 5|CN<span class="o">=</span><span class="k">*</span>.azurewebsites.net X-Forwarded-Proto<span class="o">=</span>https X-AppService-Proto<span class="o">=</span>https X-Forwarded-TlsVersion<span class="o">=</span>1.2 DISGUISED-HOST<span class="o">=</span>functions1777.azurewebsites.net <span class="nv">params</span><span class="o">=</span> <span class="nv">identities</span><span class="o">=[{</span><span class="s2">"AuthenticationType"</span>:null,<span class="s2">"IsAuthenticated"</span>:false,<span class="s2">"Actor"</span>:null,<span class="s2">"BootstrapContext"</span>:null,<span class="s2">"Claims"</span>:[],<span class="s2">"Label"</span>:null,<span class="s2">"Name"</span>:null,<span class="s2">"NameClaimType"</span>:<span class="s2">"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"</span>,<span class="s2">"RoleClaimType"</span>:<span class="s2">"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"</span><span class="o">}]</span> <span class="nv">body</span><span class="o">=</span>Hello!
+</code></pre></div></div>
+
+<h2 id="whats-next">What’s Next?</h2>
+
+<p>For a full sample with all the supported Azure Functions triggers and bindings in Ballerina, see <a href="/1.2/learn/by-example/azure-functions-deployment.html">Azure Functions Deployment Example</a>.</p>
+
+   
+                                 </div>
+
+                                
+
+
+                         
+
+
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <a class="cTopLink" href="#top">Back to Top &#x2934;</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">DOWNLOAD</a></li>
+            <!--<li><a class="cBioFooterLink" href="/community/#report-issues">REPORT ISSUES</a></li>-->
+            <li data-toggle="modal" data-target="#reportissues" data-whatever="@mdo"><a href="/community/#report-issues">REPORT ISSUES</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">CODE LICENSE</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">SITE LICENSE</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            <li><a class="cBioFooterLink" href="/trademark-usage-policy/">TRADEMARK USAGE POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack-2022.svg" style="width:17px; height:17px;"/></a></li>
+                <li><a class="cBioFooterLink" href="https://www.youtube.com/c/Ballerinalang"><img style="width: 15px;" src="/img/youtube-icon.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+
+
+           <a class="cNLButton" href="/community/#subscribe-to-the-newsletter">Subscribe to the newsletter</a> 
+
+           <div class="modal fade" id="reportissues" tabindex="-1" role="dialog" aria-labelledby="reportissueslabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" style="padding:15px;border-radius:0px;">
+                <div class="modal-header">
+                  <h3 class="modal-title" style="color: #20b6b0;">Report Issues</h3>
+                  <p style="padding: 10px 0px ;">Report issues in the GitHub repositories of the areas and components listed below.
+                  </p>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" style="background-color: #fff; font-size: 20; color: #465867;font-size: 20px;">
+                  <ul class="b">
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank"> Compiler, runtime, or tooling</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank"> Standard Library</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">  Language specification</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">  Website</a></li>
+                    <li><a class="linkText" href="mailto:security@ballerina.io" target="_blank">Security</a> <span style="font-size: 16px;">(For details, see the</span> <a class="linkText" href="/security" target="_blank">security policy</a>.)</li>
+                  </ul>  
+                
+                </div>
+                <div class="modal-footer">
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<div class="cCookie-Policy">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <!-- <div class="closebuttoon"><img src="/img/close-w.svg"/></div> -->
+<h4>Cookie policy</h4>
+<p>This website uses cookies so that we can provide you with the best user experience. Read our <a href="https://ballerina.io/cookie-policy/">Cookie policy</a></a> to find out more.</p>
+<p>If you wish to disable cookies you can do so from your browser. </p>
+  
+<!-- <a href="https://ballerina.io/cookie-policy/"></a> -->
+<a class="cIUnderstand ">I understand </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/prism.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-core.min.js"></script> -->
+<script src="/js/prism-ballerina.js"></script>
+
+
+
+<script>
+
+$(".cIUnderstand ").click(function() {
+    $(".cCookie-Policy").addClass('cHide-Policy');
+   
+    
+});
+
+
+
+</script>
+
+
+<!-- 
+<script>
+    (function () {
+
+if (typeof self === 'undefined' || !self.Prism || !self.document) {
+    return;
+}
+
+/**
+ * Plugin name which is used as a class name for <pre> which is activating the plugin
+ * @type {String}
+ */
+var PLUGIN_NAME = 'line-numbers';
+
+/**
+ * Regular expression used for determining line breaks
+ * @type {RegExp}
+ */
+var NEW_LINE_EXP = /\n(?!$)/g;
+
+/**
+ * Resizes line numbers spans according to height of line of code
+ * @param {Element} element <pre> element
+ */
+var _resizeElement = function (element) {
+    var codeStyles = getStyles(element);
+    var whiteSpace = codeStyles['white-space'];
+
+    if (whiteSpace === 'pre-wrap' || whiteSpace === 'pre-line') {
+        var codeElement = element.querySelector('code');
+        var lineNumbersWrapper = element.querySelector('.line-numbers-rows');
+        if (!codeElement || !lineNumbersWrapper) {
+            return;
+        }
+        var lineNumberSizer = element.querySelector('.line-numbers-sizer');
+        var codeLines = codeElement.textContent.split(NEW_LINE_EXP);
+
+        if (!lineNumberSizer) {
+            lineNumberSizer = document.createElement('span');
+            lineNumberSizer.className = 'line-numbers-sizer';
+
+            codeElement.appendChild(lineNumberSizer);
+        }
+
+        lineNumberSizer.style.display = 'block';
+
+        codeLines.forEach(function (line, lineNumber) {
+            lineNumberSizer.textContent = line || '\n';
+            var lineSize = lineNumberSizer.getBoundingClientRect().height;
+            lineNumbersWrapper.children[lineNumber].style.height = lineSize + 'px';
+        });
+
+        lineNumberSizer.textContent = '';
+        lineNumberSizer.style.display = 'none';
+    }
+};
+
+/**
+ * Returns style declarations for the element
+ * @param {Element} element
+ */
+var getStyles = function (element) {
+    if (!element) {
+        return null;
+    }
+
+    return window.getComputedStyle ? getComputedStyle(element) : (element.currentStyle || null);
+};
+
+window.addEventListener('resize', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('pre.' + PLUGIN_NAME), _resizeElement);
+});
+
+Prism.hooks.add('complete', function (env) {
+    if (!env.code) {
+        return;
+    }
+
+    var code = env.element;
+    var pre = code.parentNode;
+
+    // works only for <code> wrapped inside <pre> (not inline)
+    if (!pre || !/pre/i.test(pre.nodeName)) {
+        return;
+    }
+
+    // Abort if line numbers already exists
+    if (code.querySelector('.line-numbers-rows')) {
+        return;
+    }
+
+    var addLineNumbers = false;
+    var lineNumbersRegex = /(?:^|\s)line-numbers(?:\s|$)/;
+
+    for (var element = code; element; element = element.parentNode) {
+        if (lineNumbersRegex.test(element.className)) {
+            addLineNumbers = true;
+            break;
+        }
+    }
+
+    // only add line numbers if <code> or one of its ancestors has the `line-numbers` class
+    if (!addLineNumbers) {
+        return;
+    }
+
+    // Remove the class 'line-numbers' from the <code>
+    code.className = code.className.replace(lineNumbersRegex, ' ');
+    // Add the class 'line-numbers' to the <pre>
+    if (!lineNumbersRegex.test(pre.className)) {
+        pre.className += ' line-numbers';
+    }
+
+    var match = env.code.match(NEW_LINE_EXP);
+    var linesNum = match ? match.length + 1 : 1;
+    var lineNumbersWrapper;
+
+    var lines = new Array(linesNum + 1).join('<span></span>');
+
+    lineNumbersWrapper = document.createElement('span');
+    lineNumbersWrapper.setAttribute('aria-hidden', 'true');
+    lineNumbersWrapper.className = 'line-numbers-rows';
+    lineNumbersWrapper.innerHTML = lines;
+
+    if (pre.hasAttribute('data-start')) {
+        pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+    }
+
+    env.element.appendChild(lineNumbersWrapper);
+
+    _resizeElement(pre);
+
+    Prism.hooks.run('line-numbers', env);
+});
+
+Prism.hooks.add('line-numbers', function (env) {
+    env.plugins = env.plugins || {};
+    env.plugins.lineNumbers = true;
+});
+
+/**
+ * Global exports
+ */
+Prism.plugins.lineNumbers = {
+    /**
+     * Returns the node of the given line number in the given element.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @param {Number} number
+     * @returns {Element | undefined}
+     */
+    getLine: function (element, number) {
+        if (element.tagName !== 'PRE' || !element.classList.contains(PLUGIN_NAME)) {
+            return;
+        }
+
+        var lineNumberRows = element.querySelector('.line-numbers-rows');
+        var lineNumberStart = parseInt(element.getAttribute('data-start'), 10) || 1;
+        var lineNumberEnd = lineNumberStart + (lineNumberRows.children.length - 1);
+
+        if (number < lineNumberStart) {
+            number = lineNumberStart;
+        }
+        if (number > lineNumberEnd) {
+            number = lineNumberEnd;
+        }
+
+        var lineIndex = number - lineNumberStart;
+
+        return lineNumberRows.children[lineIndex];
+    },
+    /**
+     * Resizes the line numbers of the given element.
+     *
+     * This function will not add line numbers. It will only resize existing ones.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @returns {void}
+     */
+    resize: function (element) {
+        _resizeElement(element);
+    }
+};
+
+}());
+</script> -->
+
+<!-- 
+<style>
+    pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style> -->
+
+      <script src="/js/theme.js"></script>
+      <script>
+         $(document).ready(function () {
+            var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
+            $('[data-button="iGitStarText"]').replaceWith(gitstar);
+         
+            var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
+            $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+         
+         });
+         
+     </script>
+     <script src="/js/ballerina-leftnav.js"></script>
+
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script src="/js/abixTreeList.min.js"></script>
+     <script>
+         $(document).ready(function() {
+             $('#tree').abixTreeList();
+         });
+
+
+
+
+
+         $(window).scroll(function () {
+        var bodyclass = document.body;
+
+        if ($(this).scrollTop() > 200) {
+            $('.cTopLink').removeClass('dispalaynone');
+          
+        } else {
+            $('.cTopLink').addClass('dispalaynone');
+          
+        }
+
+   
+
+
+    });
+
+     </script>
+
+
+
+
+   </body>
+</html>
+

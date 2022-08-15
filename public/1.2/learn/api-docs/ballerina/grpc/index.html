@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides support for the gRPC messaging protocol. gRPC is an inter-process communication technology that allows you to connect, invoke and operate distributed heterogeneous applications as easily as making a local function call. The gRPC protocol is layered over HTTP/2 and It uses Protocol Buffers for marshaling/unmarshaling messages. This makes gRPC, highly efficient on wire and a simple service definition framework.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,grpc">
+
+    <title>API Docs - ballerina/grpc</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../grpc/index.html" onclick="menuLinkClick()">
+            <h3>grpc</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../grpc/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../grpc/index.html#objects" onclick="menuLinkClick()">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../grpc/index.html#clients" onclick="menuLinkClick()">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../grpc/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../grpc/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../grpc/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../grpc/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../grpc/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../grpc/index.html#errors" onclick="menuLinkClick()">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">grpc</span>
+                    
+                </h1>
+                    <h2>Module Overview</h2>
+<p>This module provides support for the gRPC messaging protocol. gRPC is an inter-process communication technology that allows you to connect, invoke and operate distributed heterogeneous applications as easily as making a local function call. The gRPC protocol is layered over HTTP/2 and It uses Protocol Buffers for marshaling/unmarshaling messages. This makes gRPC, highly efficient on wire and a simple service definition framework.</p>
+<p>When you develop a gRPC application the first thing you do is define a service definition using Protocol Buffers.</p>
+<h3>Protocol buffers</h3>
+<p>This is a mechanism to serialize the structured data introduced by Google and used by the gRPC framework. Defining the service using Protocol Buffers includes defining remote methods in the service and defining message types that are sent across the network. A sample service definition is shown below.</p>
+<pre><code class="language-proto">syntax = &quot;proto3&quot;;
+
+service Helloworld {
+     rpc hello(HelloRequest) returns (HelloResponse);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloResponse {
+  string message = 1;
+}
+</code></pre>
+<p>gRPC allows client applications to directly call the server-side methods using the auto-generated stubs. Protocol Buffer compiler is used to generate the stubs for the specified language. In Ballerina, the stubs are generated using the built-in proto compiler.</p>
+<p>For the guide on how to generate Ballerina code for Protocol Buffers definition, see <a href="https://ballerina.io/1.2/learn/how-to-generate-code-for-protocol-buffers/">how to guide</a>.
+For examples on the usage of the operation, see the <a href="https://ballerina.io/1.2/learn/by-example/proto-to-ballerina.html">Proto to Ballerina Example</a>.</p>
+<h3>gRPC Communication Patterns</h3>
+<p>The common communication pattern between client and server is simple request-response style communication. However, with gRPC, you can leverage different inter-process communication patterns other than the simple request-response pattern.
+This module supports four fundamental communication patterns used in gRPC-based applications: simple RPC(unary RPC), server-side streaming, client-side streaming, and bidirectional streaming.</p>
+<h4>Simple RPC (Unary RPC)</h4>
+<p>In this pattern, the client invokes a remote function of a server and sends a single request to the server. The server sends a single response in return to the client along with status details.
+Users can invoke in both blocking and non-blocking manner.</p>
+<pre><code class="language-proto">rpc hello (google.protobuf.StringValue)
+      returns (google.protobuf.StringValue);
+</code></pre>
+<h5>Creating the server</h5>
+<p>The code snippet given below contains a service that sends a response to each request.</p>
+<pre><code class="language-ballerina">// The gRPC service is attached to the listener.
+service HelloWorld on new grpc:Listener(9090)  {
+   // A resource that accepts a string message.
+   resource function hello(grpc:Caller caller, string name) {
+       // Send the response to the client.
+       grpc:Error? err = caller-&gt;send(&quot;Hi &quot; + name + &quot;! Greetings from gRPC service!&quot;);
+
+       // After sending the response, call ‘complete()’ to indicate that the response was completely sent.
+       grpc:Error? result = caller-&gt;complete();
+   }
+}
+</code></pre>
+<h5>Creating the client</h5>
+<p>The code snippet given below calls the above service in a blocking manner using an auto-generated Ballerina stub.</p>
+<pre><code class="language-ballerina">// Use ‘BlockingClient’ to execute the call in the blocking mode.
+HelloWorldBlockingClient blockingClient = new(&quot;http://localhost:9090&quot;);
+
+// Create gRPC headers.
+grpc:Headers headers = new;
+headers.setEntry(&quot;id&quot;, &quot;newrequest1&quot;);
+
+// Call the method in the service using a client stub.
+[string, grpc:Headers]|grpc:Error responseFromServer = blockingClient-&gt;hello(&quot;Ballerina&quot;, headers);
+</code></pre>
+<p>For examples on the usage of the operation, see <a href="https://ballerina.io/1.2/learn/by-example/grpc-unary-blocking.html">Unary Ballerina Example</a> and <a href="https://ballerina.io/1.2/learn/by-example/grpc-unary-non-blocking.html">Unary Non-Ballerina Example</a></p>
+<h4>Server streaming RPC</h4>
+<p>In server-side streaming RPC, the sends back a sequence of responses after getting the client's request message. After sending all the server responses, the server marks the end of the stream by sending the server status details.
+Users can invoke in a non-blocking manner.</p>
+<pre><code class="language-proto">rpc lotsOfReplies (google.protobuf.StringValue)
+      returns (stream google.protobuf.StringValue);
+</code></pre>
+<h5>Creating the server</h5>
+<p>The code snippet given below contains a service that sends a sequence of responses to each request.</p>
+<pre><code class="language-ballerina">// The gRPC service is attached to the listener.
+service HelloWorld on new grpc:Listener(9090) {
+   // Set the Streaming Annotation to ‘true’. It specifies that the resource is capable of
+   // sending multiple responses per request.
+   @grpc:ResourceConfig { streaming: true }
+   resource function lotsOfReplies(grpc:Caller caller, string name) {
+       string[] greets = [&quot;Hi&quot;, &quot;Welcome&quot;];
+       // Send multiple responses to the client.
+       foreach string greet in greets {
+           grpc:Error? err = caller-&gt;send(greet + &quot; &quot; + name + &quot;! Greetings from Ballerina service&quot;);
+       }
+       // Once the messages are sent to the server, call ‘complete()’ to indicate that the request was completely sent.
+       grpc:Error? result = caller-&gt;complete();
+   }
+}
+</code></pre>
+<h5>Creating the client</h5>
+<p>The code snippet given below calls the above service using the auto-generated Ballerina client stub and listens to the multiple responses from the server.</p>
+<pre><code class="language-ballerina">   // Client endpoint configurations.
+    HelloWorldClient helloworldClient = new(&quot;http://localhost:9090&quot;);
+
+    // Execute the service streaming call by registering a message listener.
+    grpc:Error? result = helloworldClient-&gt;lotsOfReplies
+(&quot;Ballerina&quot;, HelloWorldMessageListener);
+
+// Define a listener service to receive the messages from the server.
+service HelloWorldMessageListener = service {
+
+   // This resource method is invoked when the service receives a message.
+   resource function onMessage(string message) {
+   }
+   
+   // This resource method is invoked if an error is returned.
+   resource function onError(error err) {
+   }
+
+   // Invoke this resource when the server sends all the responses to the request.
+    resource function onComplete() {
+   }
+}
+</code></pre>
+<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/1.2/learn/by-example/grpc-server-streaming.html">Server Streaming Example</a>.</p>
+<h4>Client streaming RPC</h4>
+<p>In client streaming RPC, the client sends multiple messages to the server instead of a single request. The server sends back a single response to the client.</p>
+<pre><code class="language-proto">rpc lotsOfGreetings (stream google.protobuf.StringValue)
+      returns (google.protobuf.StringValue);
+</code></pre>
+<h5>Creating the server</h5>
+<p>The code snippet given below contains a service that receives a sequence of requests from the client and a single response in return.</p>
+<pre><code class="language-ballerina">// The gRPC service is attached to the listener.
+@grpc:ServiceConfig {
+    name: &quot;HelloWorld&quot;,
+    clientStreaming: true
+}
+service HelloWorld on new grpc:Listener(9090) {
+//This `resource` is triggered when a new caller connection is initialized.
+resource function onOpen(grpc:Caller caller) {
+}
+
+//This `resource` is triggered when the caller sends a request message to the service.
+resource function onMessage(grpc:Caller caller, string name) {
+}
+
+//This `resource` is triggered when the server receives an error message from the caller.
+resource function onError(grpc:Caller caller, error err) {
+}
+
+//This `resource` is triggered when the caller sends a notification to the server to indicate that it has finished sending messages.
+resource function onComplete(grpc:Caller caller) {
+    grpc:Error? err = caller-&gt;send(&quot;Ack&quot;);
+}
+}
+</code></pre>
+<h5>Creating the client</h5>
+<p>The code snippet given below calls the above service using the auto-generated Ballerina client stub and sends multiple request messages from the server.</p>
+<pre><code class="language-ballerina">   // Client endpoint configurations.
+    HelloWorldClient helloworldClient = new(&quot;http://localhost:9090&quot;);
+
+    // Execute the service streaming call by registering a message listener.
+    grpc:StreamingClient|grpc:Error ep = helloworldClient-&gt;lotsOfGreetings(HelloWorldMessageListener);
+
+// Send multiple messages to the server.
+string[] greets = [&quot;Hi&quot;, &quot;Hey&quot;, &quot;GM&quot;];
+foreach string greet in greets {
+    grpc:Error? connErr = ep-&gt;send(greet + &quot; &quot; + &quot;Ballerina&quot;);
+}
+
+// Once all the messages are sent, the server notifies the caller with a `complete` message.
+grpc:Error? result = ep-&gt;complete();
+...
+
+// Define a listener service to receive the messages from the server.
+service HelloWorldMessageListener = service {
+
+   // This resource method is invoked when the service receives a message.
+   resource function onMessage(string message) {
+   }
+   
+   // This resource method is invoked if an error is returned.
+   resource function onError(error err) {
+   }
+
+   // Invoke this resource when the server sends all the responses to the request.
+    resource function onComplete() {
+   }
+}
+</code></pre>
+<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/1.2/learn/by-example/grpc-client-streaming.html">Client Streaming Example</a>.</p>
+<h4>Bidirectional Streaming RPC</h4>
+<p>In bidirectional streaming RPC, the client is sending a request to the server as a stream of messages. The server also responds with a stream of messages.</p>
+<pre><code class="language-proto">rpc chat (stream ChatMessage)
+      returns (stream google.protobuf.StringValue);
+</code></pre>
+<h5>Creating the server</h5>
+<p>The code snippet given below includes a service that handles bidirectional streaming.</p>
+<pre><code class="language-ballerina">// Set the ‘clientStreaming’ and ‘serverStreaming’ to true. It specifies that the service supports bidirectional streaming.
+@grpc:ServiceConfig {
+    name: &quot;Chat&quot;,
+    clientStreaming: true,
+    serverStreaming: true
+}
+service Chat on new grpc:Listener(9090) {
+
+    //This `resource` is triggered when a new caller connection is initialized.
+    resource function onOpen(grpc:Caller caller) {
+    }
+
+    //This `resource` is triggered when the caller sends a request message to the `service`.
+    resource function onMessage(grpc:Caller caller, ChatMessage chatMsg) {
+            grpc:Error? err = caller-&gt;send(string `${chatMsg.name}: ${chatMsg.message}`);
+    }
+
+    //This `resource` is triggered when the server receives an error message from the caller.
+    resource function onError(grpc:Caller caller, error err) {
+    }
+
+    //This `resource` is triggered when the caller sends a notification to the server to indicate that it has finished sending messages.
+    resource function onComplete(grpc:Caller caller) {
+    }
+}
+</code></pre>
+<h5>Creating the client</h5>
+<p>The code snippet given below calls the above service using the auto-generated Ballerina client stub and sends multiple request messages to the server and receives multiple responses from the server.</p>
+<pre><code class="language-ballerina">   // Client endpoint configurations.
+    ChatClient chatClient = new(&quot;http://localhost:9090&quot;);
+
+    // Execute the service streaming call by registering a message listener.
+    grpc:StreamingClient|grpc:Error ep = chatClient-&gt;chat(ChatMessageListener);
+
+// Send multiple messages to the server.
+string[] greets = [&quot;Hi&quot;, &quot;Hey&quot;, &quot;GM&quot;];
+foreach string greet in greets {
+    ChatMessage mes = {name: &quot;Ballerina&quot;, message: greet};
+    grpc:Error? connErr = ep-&gt;send(mes);
+}
+
+// Once all the messages are sent, the server notifies the caller with a `complete` message.
+grpc:Error? result = ep-&gt;complete();
+...
+
+// Define a listener service to receive the messages from the server.
+service ChatMessageListener = service {
+
+   // This resource method is invoked when the service receives a message.
+   resource function onMessage(string message) {
+   }
+   
+   // This resource method is invoked if an error is returned.
+   resource function onError(error err) {
+   }
+
+   // Invoke this resource when the server sends all the responses to the request.
+    resource function onComplete() {
+   }
+}
+</code></pre>
+<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/1.2/learn/by-example/grpc-bidirectional-streaming.html">Bidirectional Streaming Example</a>.</p>
+<h3>Advanced Use cases</h3>
+<h4>Using the TLS protocol</h4>
+<p>The Ballerina gRPC module allows the use TLS in communication. This setting expects a secure socket to be
+set in the connection configuration as shown below.</p>
+<h5>Configuring TLS in server side</h5>
+<pre><code class="language-ballerina">// Server endpoint configuration with the SSL configurations.
+listener grpc:Listener ep = new (9090, {
+    host: &quot;localhost&quot;,
+    secureSocket: {
+        keyStore: {
+            path: config:getAsString(&quot;b7a.home&quot;) + &quot;bre/security/ballerinaKeystore.p12&quot;,
+            password: &quot;ballerina&quot;
+        }
+    }
+});
+
+service HelloWorld on ep {
+    
+}
+</code></pre>
+<h5>Configuring TLS in client side</h5>
+<pre><code class="language-ballerina">    // Client endpoint configuration with SSL configurations.
+    HelloWorldBlockingClient helloWorldClient = new (&quot;https://localhost:9090&quot;, {
+            secureSocket: {
+                trustStore: {
+                    path: config:getAsString(&quot;b7a.home&quot;) + &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                    password: &quot;ballerina&quot;
+                }
+            }
+    });
+</code></pre>
+<p>For examples on the usage of the operation, see the <a href="https://ballerina.io/1.2/learn/by-example/grpc-secured-unary.html">Secured Unary Example</a>.</p>
+
+
+            
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ClientConfiguration" title="ClientConfiguration">
+                                <a class="records " href="records/ClientConfiguration.html">ClientConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents client endpoint configuration.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The details of a gRPC error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="GrpcResourceConfig" title="GrpcResourceConfig">
+                                <a class="records " href="records/GrpcResourceConfig.html">GrpcResourceConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Service resource configuration.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="GrpcServiceConfig" title="GrpcServiceConfig">
+                                <a class="records " href="records/GrpcServiceConfig.html">GrpcServiceConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Service configuration.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ListenerConfiguration" title="ListenerConfiguration">
+                                <a class="records " href="records/ListenerConfiguration.html">ListenerConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the gRPC server endpoint configuration.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ListenerOcspStapling" title="ListenerOcspStapling">
+                                <a class="records " href="records/ListenerOcspStapling.html">ListenerOcspStapling</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>OcspStapling record represents options related to check whether a certificate is revoked or not.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ListenerSecureSocket" title="ListenerSecureSocket">
+                                <a class="records " href="records/ListenerSecureSocket.html">ListenerSecureSocket</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Configures the SSL/TLS options to be used for HTTP service.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Local" title="Local">
+                                <a class="records " href="records/Local.html">Local</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Presents a read-only view of the local address.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="PoolConfiguration" title="PoolConfiguration">
+                                <a class="records " href="records/PoolConfiguration.html">PoolConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Configurations for managing the gRPC client connection pool.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Protocols" title="Protocols">
+                                <a class="records " href="records/Protocols.html">Protocols</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Protocols record represents SSL/TLS protocol related options to be used for HTTP client/service invocation.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Remote" title="Remote">
+                                <a class="records " href="records/Remote.html">Remote</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Presents a read-only view of the remote address.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="RetryConfiguration" title="RetryConfiguration">
+                                <a class="records " href="records/RetryConfiguration.html">RetryConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents grpc client retry functionality configurations.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SecureSocket" title="SecureSocket">
+                                <a class="records " href="records/SecureSocket.html">SecureSocket</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Provides the configurations for facilitating secure communication with a remote HTTP endpoint.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ServiceDescriptorData" title="ServiceDescriptorData">
+                                <a class="records " href="records/ServiceDescriptorData.html">ServiceDescriptorData</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Service descriptor data generated at the compile time.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ValidateCert" title="ValidateCert">
+                                <a class="records " href="records/ValidateCert.html">ValidateCert</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>ValidateCert record represents options related to check whether a certificate is revoked or not.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="AbstractClientEndpoint" title="AbstractClientEndpoint">
+                                <a class="objects " href="objects/AbstractClientEndpoint.html">AbstractClientEndpoint</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the abstract gRPC client endpoint.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Headers" title="Headers">
+                                <a class="objects " href="objects/Headers.html">Headers</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Provides the actions to read/write header values in a gRPC request/response message.
+                            </td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+             <section class="method-content" id="clients">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#clients">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Clients </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="Caller" title="Caller">
+                                <a class="clients " href="clients/Caller.html">Caller</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Provides the gRPC remote functions for interacting with caller.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="Client" title="Client">
+                                <a class="clients " href="clients/Client.html">Client</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC client endpoint provides the capability for initiating contact with a remote gRPC service.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="StreamingClient" title="StreamingClient">
+                                <a class="clients " href="clients/StreamingClient.html">StreamingClient</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Provides the gRPC streaming client actions for interacting with the gRPC server.
+                            </td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+             <section class="method-content" id="listeners">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#listeners">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Listeners </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate listeners" id="Listener" title="Listener">
+                                <a class="listeners " href="listeners/Listener.html">Listener</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents server listener where one or more services can be registered.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="prepareError" title="prepareError">
+                                <a class="functions " href="functions.html#prepareError">prepareError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Prepare the <code>error</code> as a gRPC-specific <code>Error</code>.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="OK" title="OK">
+                                <a class="constant " href="constants.html#OK">OK</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 0 OK.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CANCELED" title="CANCELED">
+                                <a class="constant " href="constants.html#CANCELED">CANCELED</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 1 Canceled.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="UNKNOWN" title="UNKNOWN">
+                                <a class="constant " href="constants.html#UNKNOWN">UNKNOWN</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 2 Unknown.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INVALID_ARGUMENT" title="INVALID_ARGUMENT">
+                                <a class="constant " href="constants.html#INVALID_ARGUMENT">INVALID_ARGUMENT</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 3 Invalid Argument.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DEADLINE_EXCEEDED" title="DEADLINE_EXCEEDED">
+                                <a class="constant " href="constants.html#DEADLINE_EXCEEDED">DEADLINE_EXCEEDED</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 4 Deadline Exceeded.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="NOT_FOUND" title="NOT_FOUND">
+                                <a class="constant " href="constants.html#NOT_FOUND">NOT_FOUND</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 5 Not Found.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="ALREADY_EXISTS" title="ALREADY_EXISTS">
+                                <a class="constant " href="constants.html#ALREADY_EXISTS">ALREADY_EXISTS</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 6 Already Exists.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PERMISSION_DENIED" title="PERMISSION_DENIED">
+                                <a class="constant " href="constants.html#PERMISSION_DENIED">PERMISSION_DENIED</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 7 Permission Denied.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="RESOURCE_EXHAUSTED" title="RESOURCE_EXHAUSTED">
+                                <a class="constant " href="constants.html#RESOURCE_EXHAUSTED">RESOURCE_EXHAUSTED</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 8 Resource Exhausted.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="FAILED_PRECONDITION" title="FAILED_PRECONDITION">
+                                <a class="constant " href="constants.html#FAILED_PRECONDITION">FAILED_PRECONDITION</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 9 Failed Precondition.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="ABORTED" title="ABORTED">
+                                <a class="constant " href="constants.html#ABORTED">ABORTED</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 10 Aborted.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="OUT_OF_RANGE" title="OUT_OF_RANGE">
+                                <a class="constant " href="constants.html#OUT_OF_RANGE">OUT_OF_RANGE</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 11 Out of Range.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="UNIMPLEMENTED" title="UNIMPLEMENTED">
+                                <a class="constant " href="constants.html#UNIMPLEMENTED">UNIMPLEMENTED</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 12 Unimplemented.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INTERNAL" title="INTERNAL">
+                                <a class="constant " href="constants.html#INTERNAL">INTERNAL</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 13 Internal.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="UNAVAILABLE" title="UNAVAILABLE">
+                                <a class="constant " href="constants.html#UNAVAILABLE">UNAVAILABLE</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 14 Unavailable.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DATA_LOSS" title="DATA_LOSS">
+                                <a class="constant " href="constants.html#DATA_LOSS">DATA_LOSS</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 15 Data Loss.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="UNAUTHENTICATED" title="UNAUTHENTICATED">
+                                <a class="constant " href="constants.html#UNAUTHENTICATED">UNAUTHENTICATED</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The gRPC error status code: 16 Unauthenticated.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="COMPRESSION_AUTO" title="COMPRESSION_AUTO">
+                                <a class="constant " href="constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the
+outbound request/response accept-encoding/content-encoding option.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="COMPRESSION_ALWAYS" title="COMPRESSION_ALWAYS">
+                                <a class="constant " href="constants.html#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Always set accept-encoding/content-encoding in outbound request/response.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="COMPRESSION_NEVER" title="COMPRESSION_NEVER">
+                                <a class="constant " href="constants.html#COMPRESSION_NEVER">COMPRESSION_NEVER</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Never set accept-encoding/content-encoding header in outbound request/response.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CANCELLED_ERROR" title="CANCELLED_ERROR">
+                                <a class="constant " href="constants.html#CANCELLED_ERROR">CANCELLED_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the cancelled error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="UNKNOWN_ERROR" title="UNKNOWN_ERROR">
+                                <a class="constant " href="constants.html#UNKNOWN_ERROR">UNKNOWN_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the unknown error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INVALID_ARGUMENT_ERROR" title="INVALID_ARGUMENT_ERROR">
+                                <a class="constant " href="constants.html#INVALID_ARGUMENT_ERROR">INVALID_ARGUMENT_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the invalid argument error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DEADLINE_EXCEEDED_ERROR" title="DEADLINE_EXCEEDED_ERROR">
+                                <a class="constant " href="constants.html#DEADLINE_EXCEEDED_ERROR">DEADLINE_EXCEEDED_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the deadline exceeded error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="NOT_FOUND_ERROR" title="NOT_FOUND_ERROR">
+                                <a class="constant " href="constants.html#NOT_FOUND_ERROR">NOT_FOUND_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the not found error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="ALREADY_EXISTS_ERROR" title="ALREADY_EXISTS_ERROR">
+                                <a class="constant " href="constants.html#ALREADY_EXISTS_ERROR">ALREADY_EXISTS_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the already exists error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PERMISSION_DENIED_ERROR" title="PERMISSION_DENIED_ERROR">
+                                <a class="constant " href="constants.html#PERMISSION_DENIED_ERROR">PERMISSION_DENIED_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the permission denied error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="UNAUTHENTICATED_ERROR" title="UNAUTHENTICATED_ERROR">
+                                <a class="constant " href="constants.html#UNAUTHENTICATED_ERROR">UNAUTHENTICATED_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the unauthenticated error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="RESOURCE_EXHAUSTED_ERROR" title="RESOURCE_EXHAUSTED_ERROR">
+                                <a class="constant " href="constants.html#RESOURCE_EXHAUSTED_ERROR">RESOURCE_EXHAUSTED_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the resource exhausted error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="FAILED_PRECONDITION_ERROR" title="FAILED_PRECONDITION_ERROR">
+                                <a class="constant " href="constants.html#FAILED_PRECONDITION_ERROR">FAILED_PRECONDITION_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the failed precondition error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="ABORTED_ERROR" title="ABORTED_ERROR">
+                                <a class="constant " href="constants.html#ABORTED_ERROR">ABORTED_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the aborted error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="OUT_OF_RANGE_ERROR" title="OUT_OF_RANGE_ERROR">
+                                <a class="constant " href="constants.html#OUT_OF_RANGE_ERROR">OUT_OF_RANGE_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the out of range error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="UNIMPLEMENTED_ERROR" title="UNIMPLEMENTED_ERROR">
+                                <a class="constant " href="constants.html#UNIMPLEMENTED_ERROR">UNIMPLEMENTED_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the unimplemented error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INTERNAL_ERROR" title="INTERNAL_ERROR">
+                                <a class="constant " href="constants.html#INTERNAL_ERROR">INTERNAL_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the internal error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="UNAVAILABLE_ERROR" title="UNAVAILABLE_ERROR">
+                                <a class="constant " href="constants.html#UNAVAILABLE_ERROR">UNAVAILABLE_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the unavailable error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DATA_LOSS_ERROR" title="DATA_LOSS_ERROR">
+                                <a class="constant " href="constants.html#DATA_LOSS_ERROR">DATA_LOSS_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of the data loss error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="ALL_RETRY_ATTEMPTS_FAILED" title="ALL_RETRY_ATTEMPTS_FAILED">
+                                <a class="constant " href="constants.html#ALL_RETRY_ATTEMPTS_FAILED">ALL_RETRY_ATTEMPTS_FAILED</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of all the retry attempts failed scenario.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="annotations">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#annotations">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Annotations </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="ResourceConfig" title="ResourceConfig">
+                                <a class="annotations " href="annotations.html#ResourceConfig">ResourceConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Service resource configuration annotation.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="ServiceConfig" title="ServiceConfig">
+                                <a class="annotations " href="annotations.html#ServiceConfig">ServiceConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Service configuration annotation.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="ServiceDescriptor" title="ServiceDescriptor">
+                                <a class="annotations " href="annotations.html#ServiceDescriptor">ServiceDescriptor</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Service descriptor annotation.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Compression" title="Compression">
+                                <a class="types " href="types.html#Compression">Compression</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Options to compress using gzip or deflate.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Error" title="Error">
+                                <a class="types " href="types.html#Error">Error</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents gRPC related errors.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="ErrorType" title="ErrorType">
+                                <a class="types " href="types.html#ErrorType">ErrorType</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents gRPC related error types.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="ResiliencyError" title="ResiliencyError">
+                                <a class="types " href="types.html#ResiliencyError">ResiliencyError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents all the resiliency-related errors.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="ResiliencyErrorType" title="ResiliencyErrorType">
+                                <a class="types " href="types.html#ResiliencyErrorType">ResiliencyErrorType</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason of all the resiliency-related error.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="AbortedError" title="AbortedError">
+                                <a class="errors " href="errors.html#AbortedError">AbortedError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents error occur when operation is aborted.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="AleadyExistsError" title="AleadyExistsError">
+                                <a class="errors " href="errors.html#AleadyExistsError">AleadyExistsError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents error occur when attempt to create an entity which already exists.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="AllRetryAttemptsFailed" title="AllRetryAttemptsFailed">
+                                <a class="errors " href="errors.html#AllRetryAttemptsFailed">AllRetryAttemptsFailed</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents error scenario where the maximum retry attempts are done and still received an error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="CancelledError" title="CancelledError">
+                                <a class="errors " href="errors.html#CancelledError">CancelledError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the operation canceled(typically by the caller) error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="DataLossError" title="DataLossError">
+                                <a class="errors " href="errors.html#DataLossError">DataLossError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents unrecoverable data loss or corruption erros.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="DeadlineExceededError" title="DeadlineExceededError">
+                                <a class="errors " href="errors.html#DeadlineExceededError">DeadlineExceededError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents operation expired before completion error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="FailedPreconditionError" title="FailedPreconditionError">
+                                <a class="errors " href="errors.html#FailedPreconditionError">FailedPreconditionError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents error occur when operation is rejected because the system is not in a state required for the operation's execution.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="InternalError" title="InternalError">
+                                <a class="errors " href="errors.html#InternalError">InternalError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents internal error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="InvalidArgumentError" title="InvalidArgumentError">
+                                <a class="errors " href="errors.html#InvalidArgumentError">InvalidArgumentError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents client specified an invalid argument error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="NotFoundError" title="NotFoundError">
+                                <a class="errors " href="errors.html#NotFoundError">NotFoundError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents requested entity (e.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="OutOfRangeError" title="OutOfRangeError">
+                                <a class="errors " href="errors.html#OutOfRangeError">OutOfRangeError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents error occur when specified value is out of range.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="PermissionDeniedError" title="PermissionDeniedError">
+                                <a class="errors " href="errors.html#PermissionDeniedError">PermissionDeniedError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents error occur when the caller does not have permission to execute the specified operation.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="ResourceExhaustedError" title="ResourceExhaustedError">
+                                <a class="errors " href="errors.html#ResourceExhaustedError">ResourceExhaustedError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents error occur when the resource is exhausted.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="UnKnownError" title="UnKnownError">
+                                <a class="errors " href="errors.html#UnKnownError">UnKnownError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents unknown error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="UnauthenticatedError" title="UnauthenticatedError">
+                                <a class="errors " href="errors.html#UnauthenticatedError">UnauthenticatedError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents error occur when the request does not have valid authentication credentials for the operation.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="UnavailableError" title="UnavailableError">
+                                <a class="errors " href="errors.html#UnavailableError">UnavailableError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents error occur when the service is currently unavailable.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="UnimplementedError" title="UnimplementedError">
+                                <a class="errors " href="errors.html#UnimplementedError">UnimplementedError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents error occur when operation is not implemented or not supported/enabled in this service.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

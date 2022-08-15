@@ -1,0 +1,17 @@
+{
+  "title": "Strands",
+  "description": "This BBE demonstrates Ballerina strands",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "strands",
+    "concurrency"
+  ],
+  "permalink": "/learn/by-example/strands",
+  "active": "strands",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/strands",
+    "/swan-lake/learn/by-example/strands.html"
+  ]
+}

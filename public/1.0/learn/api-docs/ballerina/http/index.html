@@ -1,0 +1,3388 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+      .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+       .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+     <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.0.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>     
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            <div class="primary-list module">
+    
+        <a href="../http/index.html">
+            <h3>http</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../http/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../http/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../http/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../http/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../http/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../http/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../http/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../http/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../http/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+                
+                <div class="primary-list module">
+    
+        <a href="../http/index.html">
+            <h3>http</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../http/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../http/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../http/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../http/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../http/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../http/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../http/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../http/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../http/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">http</span>
+                    
+                </h1>
+                    <h2>Module overview</h2>
+<p>This module provides an implementation for connecting and interacting with HTTP, HTTP2, and WebSocket endpoints. The module facilitates two types of endpoints as ‘Client’ and ‘Listener’.</p>
+<h2>Client endpoints</h2>
+<p><code>Client</code> endpoints are used to connect to and interact with HTTP endpoints. They support connection pooling and can be configured to have a maximum number of active connections that can be made with the remote endpoint. <code>Client</code> endpoints activate connection eviction after a given idle period and also support follow-redirects so that the users do not have to manually handle 3xx HTTP status codes.</p>
+<p><code>Client</code> endpoints handle resilience in multiple ways such as load balancing, circuit breaking, endpoint timeouts, and a retry mechanism.</p>
+<p>Load balancing is used in the round robin or failover manner.</p>
+<p>When a failure occurs in the remote service, the client connections might wait for some time before a timeout occurs. Awaiting requests consume resources in the system. Circuit Breakers are used to trip after a certain number of failed requests to the remote service. Once a circuit breaker trips, it does not allow the client to send requests to the remote service for a period of time.</p>
+<p>The Ballerina circuit breaker supports tripping on HTTP error status codes and I/O errors. Failure thresholds can be configured based on a sliding window (e.g., 5 failures within 10 seconds). <code>Client</code> endpoints also support a retry mechanism that allows a client to resend failed requests periodically for a given number of times.</p>
+<p><code>Client</code> endpoints support Server Name Indication (SNI), Certificate Revocation List (CRL), Online Certificate Status Protocol (OCSP), and OCSP Stapling for SSL/TLS connections. They also support HTTP2, keep-alive, chunking, HTTP caching, data compression/decompression, and authentication/authorization.</p>
+<p>A <code>Client</code> endpoint can be defined using the URL of the remote service that the client needs to connect with, as shown below:</p>
+<pre><code class="language-ballerina">http:Client clientEndpoint = new(&quot;https://my-simple-backend.com&quot;);
+</code></pre>
+<p>The defined <code>Client</code> endpoint can be used to call a remote service as follows:</p>
+<pre><code class="language-ballerina">// Send a GET request to the specified endpoint.
+var response = clientEndpoint-&gt;get(&quot;/get?id=123&quot;);
+</code></pre>
+<p>For more information, see <a href="https://ballerina.io/learn/by-example/http-client-endpoint.html">Client Endpoint Example</a>, <a href="https://ballerina.io/learn/by-example/http-circuit-breaker.html">Circuit Breaker Example</a>, <a href="https://ballerina.io/learn/by-example/http-redirects.html">HTTP Redirects Example</a>.</p>
+<h2>Listener endpoints</h2>
+<p>A <code>Service</code> represents a collection of network-accessible entry points and can be exposed via a <code>Listener</code> endpoint. A resource represents one such entry point and can have its own path, HTTP methods, body format, 'consumes' and 'produces' content types, CORS headers, etc. In resources, <code>http:caller</code> and <code>http:Request</code> are mandatory parameters while <code>path</code> and <code>body</code> are optional.</p>
+<p>When a <code>Service</code> receives a request, it is dispatched to the best-matched resource.</p>
+<p>A <code>Listener</code> endpoint can be defined as follows:</p>
+<pre><code class="language-ballerina">// Attributes associated with the `Listener` endpoint are defined here.
+listener http:Listener helloWorldEP = new(9090);
+</code></pre>
+<p>Then a <code>Service</code> can be defined and attached to the above <code>Listener</code> endpoint as shown below:</p>
+<pre><code class="language-ballerina">// By default, Ballerina assumes that the service is to be exposed via HTTP/1.1.
+@http:ServiceConfig { basePath: &quot;/helloWorld&quot; }
+service helloWorld on helloWorldEP {
+
+   // All resource functions are invoked with arguments of server connector and request.
+   @http:ResourceConfig {
+       methods: [&quot;POST&quot;],
+       path: &quot;/{name}&quot;,
+       body: &quot;message&quot;
+   }
+   resource function sayHello(http:Caller caller, http:Request req, string name, string message) {
+       http:Response res = new;
+       // A util method that can be used to set string payload.
+       res.setPayload(&quot;Hello, World! I’m &quot; + &lt;@untainted&gt; name + &quot;. &quot; + &lt;@untainted&gt; message);
+       // Sends the response back to the client.
+       var result = caller-&gt;respond(res);
+       if (result is http:ListenerError) {
+            error err = result;
+            log:printError(&quot;Error sending response&quot;, err = err);
+       }
+   }
+}
+</code></pre>
+<p>See <a href="https://ballerina.io/learn/by-example/http-data-binding.html">Listener Endpoint Example</a>, <a href="https://ballerina.io/learn/by-example/http-cors.html">HTTP CORS Example</a>, <a href="https://ballerina.io/learn/by-example/http-failover.html">HTTP Failover Example</a>, <a href="https://ballerina.io/learn/by-example/http-load-balancer.html">HTTP Load Balancer Example</a></p>
+<p><code>Listener</code> endpoints can be exposed via SSL. They support Mutual SSL, Hostname Verification, and Application Layer Protocol Negotiation (ALPN) for HTTP2. <code>Listener</code> endpoints also support Certificate Revocation List (CRL), Online Certificate Status Protocol (OCSP), OCSP Stapling, HTTP2, keep-alive, chunking, HTTP caching, data compression/decompression, and authentication/authorization.</p>
+<p>For more information, see <a href="https://ballerina.io/learn/by-example/mutual-ssl.html">Mutual SSL Example</a>.</p>
+<p>For more information, see <a href="https://ballerina.io/learn/by-example/cache.html">Caching Example</a>, <a href="https://ballerina.io/learn/by-example/http-disable-chunking.html">HTTP Disable Chunking Example</a>.</p>
+<h2>WebSocket</h2>
+<p>This module also provides support for WebSockets. There are two types of WebSocket endpoints: <code>WebSocketClient</code> and <code>WebSocketListener</code>. Both endpoints support all WebSocket frames. The <code>WebSocketClient</code> has a callback service.</p>
+<p>There are two types of services for WebSockets. The service of the server has the <code>WebSockerCaller</code> as the resource parameter and the callback service of the client has <code>WebSocketClient</code> as the resource parameter. The WebSocket services have a fixed set of resources that do not have a resource config. The incoming messages are passed to these resources.</p>
+<p><strong>WebSocket upgrade</strong>: During a WebSocket upgrade, the initial message received is an HTTP request. To intercept this request and perform the upgrade explicitly with custom headers, the user must create an HTTP resource with WebSocket-specific configurations as follows:</p>
+<pre><code class="language-ballerina">@http:ResourceConfig {
+    webSocketUpgrade: {
+        upgradePath: &quot;/{name}&quot;,
+        upgradeService: chatApp
+    }
+}
+resource function upgrader(http:Caller caller, http:Request req, string name) {
+}
+</code></pre>
+<p>The <code>upgradeService</code> is a server callback service.</p>
+<p><strong>onOpen resource</strong>: As soon as the WebSocket handshake is completed and the connection is established, the <code>onOpen</code> resource is dispatched. This resource is only available in the service of the server.</p>
+<p><strong>onText resource</strong>: The received text messages are dispatched to this resource.</p>
+<p><strong>onBinary resource</strong>: The received binary messages are dispatched to this resource.</p>
+<p><strong>onPing and onPong resources</strong>: The received ping and pong messages are dispatched to these resources respectively.</p>
+<p><strong>onIdleTimeout</strong>: This resource is dispatched when the idle timeout is reached. The <code>idleTimeout</code> has to be configured either in the WebSocket service or the client configuration.</p>
+<p><strong>onClose</strong>: This resource is dispatched when a close frame with a statusCode and a reason is received.</p>
+<p><strong>onError</strong>: This resource is dispatched when an error occurs in the WebSocket connection. This will always be preceded by a connection closure with an appropriate close frame.</p>
+<p>For more information, see <a href="https://ballerina.io/learn/by-example/websocket-basic-sample.html">WebSocket Basic Example</a>, <a href="https://ballerina.io/learn/by-example/http-to-websocket-upgrade.html">HTTP to WebSocket Upgrade Example</a>, <a href="https://ballerina.io/learn/by-example/websocket-chat-application.html">WebSocket Chat Application</a>, <a href="https://ballerina.io/learn/by-example/websocket-proxy-server.html">WebSocket Proxy Server</a>.</p>
+<h2>Logging</h2>
+<p>This module supports two types of logs:</p>
+<ul>
+<li>HTTP access logs: These are standard HTTP access logs that are formatted using the combined log format and logged at the <code>INFO</code> level. Logs can be published to the console or a file using the following configurations:
+<ul>
+<li><code>b7a.http.accesslog.console=true</code></li>
+<li><code>b7a.http.accesslog.path=&lt;path_to_log_file&gt;</code></li>
+</ul>
+</li>
+<li>HTTP trace logs: These are detailed logs of requests coming to/going out of and responses coming to/going out of service endpoints or a client endpoints. Trace logs can be published to the console, to a file or to a network socket using the following set of configurations:
+<ul>
+<li><code>b7a.http.tracelog.console=true</code></li>
+<li><code>b7a.http.tracelog.path=&lt;path_to_log_file&gt;</code></li>
+<li><code>b7a.http.tracelog.host=&lt;host_name&gt;</code></li>
+<li><code>b7a.http.tracelog.port=&lt;port&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p>To publish logs to a socket, both the host and port configurations must be provided.</p>
+<p>See <a href="https://ballerina.io/learn/by-example/http-access-logs.html">HTTP Access Logs Example</a>, <a href="https://ballerina.io/learn/by-example/http-trace-logs.html">HTTP Trace Logs Example</a></p>
+
+
+            
+
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="AuthzCacheConfig" title="AuthzCacheConfig">
+                                <a class="records"
+                                   href="records/AuthzCacheConfig.html">AuthzCacheConfig</a></td>
+                            <td class="module-desc">Provides a set of configurations for controlling the authorization caching behaviour of the endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Bucket" title="Bucket">
+                                <a class="records"
+                                   href="records/Bucket.html">Bucket</a></td>
+                            <td class="module-desc">Represents a discrete sub-part of the time window (Bucket).
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="CacheConfig" title="CacheConfig">
+                                <a class="records"
+                                   href="records/CacheConfig.html">CacheConfig</a></td>
+                            <td class="module-desc">Provides a set of configurations for controlling the caching behaviour of the endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="CircuitBreakerConfig" title="CircuitBreakerConfig">
+                                <a class="records"
+                                   href="records/CircuitBreakerConfig.html">CircuitBreakerConfig</a></td>
+                            <td class="module-desc">Provides a set of configurations for controlling the behaviour of the Circuit Breaker.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="CircuitBreakerInferredConfig" title="CircuitBreakerInferredConfig">
+                                <a class="records"
+                                   href="records/CircuitBreakerInferredConfig.html">CircuitBreakerInferredConfig</a></td>
+                            <td class="module-desc">Derived set of configurations from the `CircuitBreakerConfig`.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="CircuitHealth" title="CircuitHealth">
+                                <a class="records"
+                                   href="records/CircuitHealth.html">CircuitHealth</a></td>
+                            <td class="module-desc">Maintains the health of the Circuit Breaker.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ClientConfiguration" title="ClientConfiguration">
+                                <a class="records"
+                                   href="records/ClientConfiguration.html">ClientConfiguration</a></td>
+                            <td class="module-desc">Provides a set of configurations for controlling the behaviours when communicating with a remote HTTP endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ClientHttp1Settings" title="ClientHttp1Settings">
+                                <a class="records"
+                                   href="records/ClientHttp1Settings.html">ClientHttp1Settings</a></td>
+                            <td class="module-desc">Provides settings related to HTTP/1.x protocol.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ClientHttp2Settings" title="ClientHttp2Settings">
+                                <a class="records"
+                                   href="records/ClientHttp2Settings.html">ClientHttp2Settings</a></td>
+                            <td class="module-desc">Provides settings related to HTTP/2 protocol.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ClientSecureSocket" title="ClientSecureSocket">
+                                <a class="records"
+                                   href="records/ClientSecureSocket.html">ClientSecureSocket</a></td>
+                            <td class="module-desc">Provides configurations for facilitating secure communication with a remote HTTP endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="CompressionConfig" title="CompressionConfig">
+                                <a class="records"
+                                   href="records/CompressionConfig.html">CompressionConfig</a></td>
+                            <td class="module-desc">A record for providing configurations for content compression.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="CorsConfig" title="CorsConfig">
+                                <a class="records"
+                                   href="records/CorsConfig.html">CorsConfig</a></td>
+                            <td class="module-desc">Configurations for CORS support.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records"
+                                   href="records/Detail.html">Detail</a></td>
+                            <td class="module-desc">Holds the details of an HTTP error
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="FailoverClientConfiguration" title="FailoverClientConfiguration">
+                                <a class="records"
+                                   href="records/FailoverClientConfiguration.html">FailoverClientConfiguration</a></td>
+                            <td class="module-desc">Provides a set of HTTP related configurations and failover related configurations.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="FailoverConfig" title="FailoverConfig">
+                                <a class="records"
+                                   href="records/FailoverConfig.html">FailoverConfig</a></td>
+                            <td class="module-desc">Provides a set of configurations for controlling the failover behaviour of the endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="FailoverInferredConfig" title="FailoverInferredConfig">
+                                <a class="records"
+                                   href="records/FailoverInferredConfig.html">FailoverInferredConfig</a></td>
+                            <td class="module-desc">Inferred failover configurations passed into the failover client.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="FollowRedirects" title="FollowRedirects">
+                                <a class="records"
+                                   href="records/FollowRedirects.html">FollowRedirects</a></td>
+                            <td class="module-desc">Provides configurations for controlling the endpoint's behaviour in response to HTTP redirect related responses.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="HttpResourceConfig" title="HttpResourceConfig">
+                                <a class="records"
+                                   href="records/HttpResourceConfig.html">HttpResourceConfig</a></td>
+                            <td class="module-desc">Configuration for an HTTP resource.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="HttpServiceConfig" title="HttpServiceConfig">
+                                <a class="records"
+                                   href="records/HttpServiceConfig.html">HttpServiceConfig</a></td>
+                            <td class="module-desc">Contains the configurations for an HTTP service.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="HttpTimeoutError" title="HttpTimeoutError">
+                                <a class="records"
+                                   href="records/HttpTimeoutError.html">HttpTimeoutError</a></td>
+                            <td class="module-desc">Defines a timeout error occurred during service invocation.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ListenerAuth" title="ListenerAuth">
+                                <a class="records"
+                                   href="records/ListenerAuth.html">ListenerAuth</a></td>
+                            <td class="module-desc">Authentication configurations for the listener.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ListenerConfiguration" title="ListenerConfiguration">
+                                <a class="records"
+                                   href="records/ListenerConfiguration.html">ListenerConfiguration</a></td>
+                            <td class="module-desc">Provides a set of configurations for HTTP service endpoints.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ListenerHttp1Settings" title="ListenerHttp1Settings">
+                                <a class="records"
+                                   href="records/ListenerHttp1Settings.html">ListenerHttp1Settings</a></td>
+                            <td class="module-desc">Provides settings related to HTTP/1.x protocol.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ListenerOcspStapling" title="ListenerOcspStapling">
+                                <a class="records"
+                                   href="records/ListenerOcspStapling.html">ListenerOcspStapling</a></td>
+                            <td class="module-desc">A record for providing configurations for certificate revocation status checks.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ListenerSecureSocket" title="ListenerSecureSocket">
+                                <a class="records"
+                                   href="records/ListenerSecureSocket.html">ListenerSecureSocket</a></td>
+                            <td class="module-desc">Configures the SSL/TLS options to be used for HTTP service.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LoadBalanceActionErrorData" title="LoadBalanceActionErrorData">
+                                <a class="records"
+                                   href="records/LoadBalanceActionErrorData.html">LoadBalanceActionErrorData</a></td>
+                            <td class="module-desc">Represents an error occurred in an remote function of the Load Balance connector.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LoadBalanceClientConfiguration" title="LoadBalanceClientConfiguration">
+                                <a class="records"
+                                   href="records/LoadBalanceClientConfiguration.html">LoadBalanceClientConfiguration</a></td>
+                            <td class="module-desc">The configurations related to the load balance client endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Local" title="Local">
+                                <a class="records"
+                                   href="records/Local.html">Local</a></td>
+                            <td class="module-desc">Presents a read-only view of the local address.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="MutualSslHandshake" title="MutualSslHandshake">
+                                <a class="records"
+                                   href="records/MutualSslHandshake.html">MutualSslHandshake</a></td>
+                            <td class="module-desc">A record for providing mutual ssl handshake results.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="OutboundAuthConfig" title="OutboundAuthConfig">
+                                <a class="records"
+                                   href="records/OutboundAuthConfig.html">OutboundAuthConfig</a></td>
+                            <td class="module-desc">The `OutboundAuthConfig` record can be used to configure the authentication mechanism used by the HTTP endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="PoolConfiguration" title="PoolConfiguration">
+                                <a class="records"
+                                   href="records/PoolConfiguration.html">PoolConfiguration</a></td>
+                            <td class="module-desc">Configurations for managing HTTP client connection pool.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Protocols" title="Protocols">
+                                <a class="records"
+                                   href="records/Protocols.html">Protocols</a></td>
+                            <td class="module-desc">A record for configuring SSL/TLS protocol and version to be used.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ProxyConfig" title="ProxyConfig">
+                                <a class="records"
+                                   href="records/ProxyConfig.html">ProxyConfig</a></td>
+                            <td class="module-desc">Proxy server configurations to be used with the HTTP client endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Remote" title="Remote">
+                                <a class="records"
+                                   href="records/Remote.html">Remote</a></td>
+                            <td class="module-desc">Presents a read-only view of the remote address.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="RetryConfig" title="RetryConfig">
+                                <a class="records"
+                                   href="records/RetryConfig.html">RetryConfig</a></td>
+                            <td class="module-desc">Provides configurations for controlling the retrying behavior in failure scenarios.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="RetryInferredConfig" title="RetryInferredConfig">
+                                <a class="records"
+                                   href="records/RetryInferredConfig.html">RetryInferredConfig</a></td>
+                            <td class="module-desc">Derived set of configurations from the `RetryConfig`.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="RollingWindow" title="RollingWindow">
+                                <a class="records"
+                                   href="records/RollingWindow.html">RollingWindow</a></td>
+                            <td class="module-desc">Represents a rolling window in the Circuit Breaker.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ServiceResourceAuth" title="ServiceResourceAuth">
+                                <a class="records"
+                                   href="records/ServiceResourceAuth.html">ServiceResourceAuth</a></td>
+                            <td class="module-desc">Configures the authentication scheme for a service or a resource.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="TargetService" title="TargetService">
+                                <a class="records"
+                                   href="records/TargetService.html">TargetService</a></td>
+                            <td class="module-desc">Represents a single service and its related configurations.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ValidateCert" title="ValidateCert">
+                                <a class="records"
+                                   href="records/ValidateCert.html">ValidateCert</a></td>
+                            <td class="module-desc">A record for providing configurations for certificate revocation status checks.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Versioning" title="Versioning">
+                                <a class="records"
+                                   href="records/Versioning.html">Versioning</a></td>
+                            <td class="module-desc">Configurations for service versioning.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="WSServiceConfig" title="WSServiceConfig">
+                                <a class="records"
+                                   href="records/WSServiceConfig.html">WSServiceConfig</a></td>
+                            <td class="module-desc">Configurations for a WebSocket service.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="WebSocketClientConfiguration" title="WebSocketClientConfiguration">
+                                <a class="records"
+                                   href="records/WebSocketClientConfiguration.html">WebSocketClientConfiguration</a></td>
+                            <td class="module-desc">Configuration for the WebSocket client endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="WebSocketUpgradeConfig" title="WebSocketUpgradeConfig">
+                                <a class="records"
+                                   href="records/WebSocketUpgradeConfig.html">WebSocketUpgradeConfig</a></td>
+                            <td class="module-desc">Resource configuration to upgrade from HTTP to WebSocket.
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="AuthnFilter" title="AuthnFilter">
+                                <a class="objects"
+                                   href="objects/AuthnFilter.html">
+                                    AuthnFilter
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Representation of the Authentication filter.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="AuthzFilter" title="AuthzFilter">
+                                <a class="objects"
+                                   href="objects/AuthzFilter.html">
+                                    AuthzFilter
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Representation of the Authorization filter.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="AuthzHandler" title="AuthzHandler">
+                                <a class="objects"
+                                   href="objects/AuthzHandler.html">
+                                    AuthzHandler
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Representation of Authorization Handler for HTTP.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="BasicAuthHandler" title="BasicAuthHandler">
+                                <a class="objects"
+                                   href="objects/BasicAuthHandler.html">
+                                    BasicAuthHandler
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Defines the Basic Auth header handler for inbound and outbound HTTP traffic.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="BearerAuthHandler" title="BearerAuthHandler">
+                                <a class="objects"
+                                   href="objects/BearerAuthHandler.html">
+                                    BearerAuthHandler
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Representation of the Bearer Auth header handler for both inbound and outbound HTTP traffic.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="FilterContext" title="FilterContext">
+                                <a class="objects"
+                                   href="objects/FilterContext.html">
+                                    FilterContext
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Representation of request filter Context.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="HttpCache" title="HttpCache">
+                                <a class="objects"
+                                   href="objects/HttpCache.html">
+                                    HttpCache
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Implements a cache for storing HTTP responses. This cache complies with the caching policy set when configuring
+HTTP caching in the HTTP client endpoint.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="HttpFuture" title="HttpFuture">
+                                <a class="objects"
+                                   href="objects/HttpFuture.html">
+                                    HttpFuture
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a 'future' that returns as a result of an asynchronous HTTP request submission.
+This can be used as a reference to fetch the results of the submission.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="InboundAuthHandler" title="InboundAuthHandler">
+                                <a class="objects"
+                                   href="objects/InboundAuthHandler.html">
+                                    InboundAuthHandler
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>The representation of an inbound authentication handler for HTTP traffic.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="LoadBalancerRoundRobinRule" title="LoadBalancerRoundRobinRule">
+                                <a class="objects"
+                                   href="objects/LoadBalancerRoundRobinRule.html">
+                                    LoadBalancerRoundRobinRule
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Implementation of round robin load balancing strategy.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="LoadBalancerRule" title="LoadBalancerRule">
+                                <a class="objects"
+                                   href="objects/LoadBalancerRule.html">
+                                    LoadBalancerRule
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>LoadBalancerRule provides a required interfaces to implement different algorithms.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="OutboundAuthHandler" title="OutboundAuthHandler">
+                                <a class="objects"
+                                   href="objects/OutboundAuthHandler.html">
+                                    OutboundAuthHandler
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>The representation of an outbound authentication handler for HTTP traffic.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="PushPromise" title="PushPromise">
+                                <a class="objects"
+                                   href="objects/PushPromise.html">
+                                    PushPromise
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents an HTTP/2 <code>PUSH_PROMISE</code> frame.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Request" title="Request">
+                                <a class="objects"
+                                   href="objects/Request.html">
+                                    Request
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents an HTTP request.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="RequestCacheControl" title="RequestCacheControl">
+                                <a class="objects"
+                                   href="objects/RequestCacheControl.html">
+                                    RequestCacheControl
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Configures cache control directives for a <code>Request</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="RequestFilter" title="RequestFilter">
+                                <a class="objects"
+                                   href="objects/RequestFilter.html">
+                                    RequestFilter
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Abstract Representation of a HTTP Request Filter.
+This filter will be applied before the request is dispatched to the relevant resource.
+Any RequestFilter implementation should be structurally similar to or implement the RequestFilter object.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Response" title="Response">
+                                <a class="objects"
+                                   href="objects/Response.html">
+                                    Response
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents an HTTP response.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="ResponseCacheControl" title="ResponseCacheControl">
+                                <a class="objects"
+                                   href="objects/ResponseCacheControl.html">
+                                    ResponseCacheControl
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Configures cache control directives for a <code>Response</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="ResponseFilter" title="ResponseFilter">
+                                <a class="objects"
+                                   href="objects/ResponseFilter.html">
+                                    ResponseFilter
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Abstract Representation of a HTTP Response Filter.
+This filter will be applied in the response path.
+Any ResponseFilter implementation should be structurally similar to or implement the ResponseFilter object.</p>
+</td>
+                        </tr>
+                    
+                </table>
+             </section>  
+            
+
+            
+             <section class="method-content" id="clients">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#clients">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Clients </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="Caller" title="Caller">
+                                <a class="clients"
+                                   href="clients/Caller.html">Caller</a></td>
+                            <td class="module-desc"><p>The caller actions for responding to client requests.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="CircuitBreakerClient" title="CircuitBreakerClient">
+                                <a class="clients"
+                                   href="clients/CircuitBreakerClient.html">CircuitBreakerClient</a></td>
+                            <td class="module-desc"><p>A Circuit Breaker implementation which can be used to gracefully handle network failures.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="Client" title="Client">
+                                <a class="clients"
+                                   href="clients/Client.html">Client</a></td>
+                            <td class="module-desc"><p>The HTTP client provides the capability for initiating contact with a remote HTTP service. The API it
+provides includes functions for the standard HTTP methods, forwarding a received request and sending requests
+using custom HTTP verbs.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="FailoverClient" title="FailoverClient">
+                                <a class="clients"
+                                   href="clients/FailoverClient.html">FailoverClient</a></td>
+                            <td class="module-desc"><p>An HTTP client endpoint which provides failover support over multiple HTTP clients.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="HttpCachingClient" title="HttpCachingClient">
+                                <a class="clients"
+                                   href="clients/HttpCachingClient.html">HttpCachingClient</a></td>
+                            <td class="module-desc"><p>An HTTP caching client implementation which takes an <code>HttpActions</code> instance and wraps it with an HTTP caching layer.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="HttpClient" title="HttpClient">
+                                <a class="clients"
+                                   href="clients/HttpClient.html">HttpClient</a></td>
+                            <td class="module-desc"><p>Provides the HTTP actions for interacting with an HTTP server. Apart from the standard HTTP methods, <code>forward()</code>
+and <code>execute()</code> functions are provided. More complex and specific endpoint types can be created by wrapping this
+generic HTTP actions implementation.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="HttpSecureClient" title="HttpSecureClient">
+                                <a class="clients"
+                                   href="clients/HttpSecureClient.html">HttpSecureClient</a></td>
+                            <td class="module-desc"><p>Provides secure HTTP remote functions for interacting with HTTP endpoints. This will make use of the authentication
+schemes configured in the HTTP client endpoint to secure the HTTP requests.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="LoadBalanceClient" title="LoadBalanceClient">
+                                <a class="clients"
+                                   href="clients/LoadBalanceClient.html">LoadBalanceClient</a></td>
+                            <td class="module-desc"><p>LoadBalanceClient endpoint provides load balancing functionality over multiple HTTP clients.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="RedirectClient" title="RedirectClient">
+                                <a class="clients"
+                                   href="clients/RedirectClient.html">RedirectClient</a></td>
+                            <td class="module-desc"><p>Provides redirect functionality for HTTP client remote functions.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="RetryClient" title="RetryClient">
+                                <a class="clients"
+                                   href="clients/RetryClient.html">RetryClient</a></td>
+                            <td class="module-desc"><p>Provides the HTTP remote functions for interacting with an HTTP endpoint. This is created by wrapping the HTTP client
+to provide retrying over HTTP requests.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="WebSocketCaller" title="WebSocketCaller">
+                                <a class="clients"
+                                   href="clients/WebSocketCaller.html">WebSocketCaller</a></td>
+                            <td class="module-desc"><p>Represents a WebSocket caller.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="WebSocketClient" title="WebSocketClient">
+                                <a class="clients"
+                                   href="clients/WebSocketClient.html">WebSocketClient</a></td>
+                            <td class="module-desc"><p>Represents a WebSocket client endpoint.</p>
+</td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+             <section class="method-content" id="listeners">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#listeners">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Listeners </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate listeners" id="Listener" title="Listener">
+                                <a class="listeners"
+                                   href="listeners/Listener.html">Listener</a></td>
+                            <td class="module-desc"><p>This is used for creating HTTP server endpoints. An HTTP server endpoint is capable of responding to
+remote callers. The <code>Listener</code> is responsible for initializing the endpoint using the provided configurations.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate listeners" id="MockListener" title="MockListener">
+                                <a class="listeners"
+                                   href="listeners/MockListener.html">MockListener</a></td>
+                            <td class="module-desc"><p>Mock server endpoint which does not open a listening port.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="createHttpCachingClient" title="createHttpCachingClient"><a
+                                    class="functions" href="functions.html#createHttpCachingClient">createHttpCachingClient</a></td>
+                            <td class="module-desc"><p>Creates an HTTP client capable of caching HTTP responses.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="createHttpSecureClient" title="createHttpSecureClient"><a
+                                    class="functions" href="functions.html#createHttpSecureClient">createHttpSecureClient</a></td>
+                            <td class="module-desc"><p>Creates an HTTP client capable of securing HTTP requests with authentication.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="extractAuthorizationHeaderValue" title="extractAuthorizationHeaderValue"><a
+                                    class="functions" href="functions.html#extractAuthorizationHeaderValue">extractAuthorizationHeaderValue</a></td>
+                            <td class="module-desc"><p>Extracts the Authorization header value from the request.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="invokeEndpoint" title="invokeEndpoint"><a
+                                    class="functions" href="functions.html#invokeEndpoint">invokeEndpoint</a></td>
+                            <td class="module-desc"><p>The HEAD remote function implementation of the Circuit Breaker. This wraps the <code>head()</code> function of the underlying
+HTTP remote function provider.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="parseHeader" title="parseHeader"><a
+                                    class="functions" href="functions.html#parseHeader">parseHeader</a></td>
+                            <td class="module-desc"><p>Parses the given header value to extract its value and parameter map.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="AUTH_HEADER" title="AUTH_HEADER"><a
+                                    class="constant" href="constants.html#AUTH_HEADER">AUTH_HEADER</a></td>
+                            <td class="module-desc"><p>Represents the Authorization header name.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="AUTH_HEADER_BEARER" title="AUTH_HEADER_BEARER"><a
+                                    class="constant" href="constants.html#AUTH_HEADER_BEARER">AUTH_HEADER_BEARER</a></td>
+                            <td class="module-desc"><p>Indicates that the authentication credentials should be sent via the Authentication header.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="POST_BODY_BEARER" title="POST_BODY_BEARER"><a
+                                    class="constant" href="constants.html#POST_BODY_BEARER">POST_BODY_BEARER</a></td>
+                            <td class="module-desc"><p>Indicates that the Authentication credentials should be sent via the body of the POST request.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="NO_BEARER" title="NO_BEARER"><a
+                                    class="constant" href="constants.html#NO_BEARER">NO_BEARER</a></td>
+                            <td class="module-desc"><p>Indicates that the authentication credentials should not be sent.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_CODE" title="STATUS_CODE"><a
+                                    class="constant" href="constants.html#STATUS_CODE">STATUS_CODE</a></td>
+                            <td class="module-desc"><p>Indicates the status code.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="NO_CACHE" title="NO_CACHE"><a
+                                    class="constant" href="constants.html#NO_CACHE">NO_CACHE</a></td>
+                            <td class="module-desc"><p>Forces the cache to validate a cached response with the origin server before serving.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="NO_STORE" title="NO_STORE"><a
+                                    class="constant" href="constants.html#NO_STORE">NO_STORE</a></td>
+                            <td class="module-desc"><p>Instructs the cache to not store a response in non-volatile storage.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="NO_TRANSFORM" title="NO_TRANSFORM"><a
+                                    class="constant" href="constants.html#NO_TRANSFORM">NO_TRANSFORM</a></td>
+                            <td class="module-desc"><p>Instructs intermediaries not to transform the payload.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MAX_AGE" title="MAX_AGE"><a
+                                    class="constant" href="constants.html#MAX_AGE">MAX_AGE</a></td>
+                            <td class="module-desc"><p>When used in requests, <code>max-age</code> implies that clients are not willing to accept responses whose age is greater
+than <code>max-age</code>. When used in responses, the response is to be considered stale after the specified
+number of seconds.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MAX_STALE" title="MAX_STALE"><a
+                                    class="constant" href="constants.html#MAX_STALE">MAX_STALE</a></td>
+                            <td class="module-desc"><p>Indicates that the client is willing to accept responses which have exceeded their freshness lifetime by no more
+than the specified number of seconds.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MIN_FRESH" title="MIN_FRESH"><a
+                                    class="constant" href="constants.html#MIN_FRESH">MIN_FRESH</a></td>
+                            <td class="module-desc"><p>Indicates that the client is only accepting responses whose freshness lifetime &gt;= current age + min-fresh.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="ONLY_IF_CACHED" title="ONLY_IF_CACHED"><a
+                                    class="constant" href="constants.html#ONLY_IF_CACHED">ONLY_IF_CACHED</a></td>
+                            <td class="module-desc"><p>Indicates that the client is only willing to accept a cached response. A cached response is served subject to
+other constraints posed by the request.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MUST_REVALIDATE" title="MUST_REVALIDATE"><a
+                                    class="constant" href="constants.html#MUST_REVALIDATE">MUST_REVALIDATE</a></td>
+                            <td class="module-desc"><p>Indicates that once the response has become stale, it should not be reused for subsequent requests without
+validating with the origin server.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PUBLIC" title="PUBLIC"><a
+                                    class="constant" href="constants.html#PUBLIC">PUBLIC</a></td>
+                            <td class="module-desc"><p>Indicates that any cache may store the response.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PRIVATE" title="PRIVATE"><a
+                                    class="constant" href="constants.html#PRIVATE">PRIVATE</a></td>
+                            <td class="module-desc"><p>Indicates that the response is intended for a single user and should not be stored by shared caches.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PROXY_REVALIDATE" title="PROXY_REVALIDATE"><a
+                                    class="constant" href="constants.html#PROXY_REVALIDATE">PROXY_REVALIDATE</a></td>
+                            <td class="module-desc"><p>Has the same semantics as <code>must-revalidate</code>, except that this does not apply to private caches.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="S_MAX_AGE" title="S_MAX_AGE"><a
+                                    class="constant" href="constants.html#S_MAX_AGE">S_MAX_AGE</a></td>
+                            <td class="module-desc"><p>In shared caches, <code>s-maxage</code> overrides the <code>max-age</code> or <code>expires</code> header field.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MAX_STALE_ANY_AGE" title="MAX_STALE_ANY_AGE"><a
+                                    class="constant" href="constants.html#MAX_STALE_ANY_AGE">MAX_STALE_ANY_AGE</a></td>
+                            <td class="module-desc"><p>Setting this as the <code>max-stale</code> directives indicates that the <code>max-stale</code> directive does not specify a limit.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CACHE_CONTROL_AND_VALIDATORS" title="CACHE_CONTROL_AND_VALIDATORS"><a
+                                    class="constant" href="constants.html#CACHE_CONTROL_AND_VALIDATORS">CACHE_CONTROL_AND_VALIDATORS</a></td>
+                            <td class="module-desc"><p>This is a more restricted mode of RFC 7234. Setting this as the caching policy restricts caching to instances
+where the <code>cache-control</code> header and either the <code>etag</code> or <code>last-modified</code> header are present.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="RFC_7234" title="RFC_7234"><a
+                                    class="constant" href="constants.html#RFC_7234">RFC_7234</a></td>
+                            <td class="module-desc"><p>Caching behaviour is as specified by the RFC 7234 specification.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP_ERROR_CODE" title="HTTP_ERROR_CODE"><a
+                                    class="constant" href="constants.html#HTTP_ERROR_CODE">HTTP_ERROR_CODE</a></td>
+                            <td class="module-desc"><p>Constant for the http error code</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MULTIPART_AS_PRIMARY_TYPE" title="MULTIPART_AS_PRIMARY_TYPE"><a
+                                    class="constant" href="constants.html#MULTIPART_AS_PRIMARY_TYPE">MULTIPART_AS_PRIMARY_TYPE</a></td>
+                            <td class="module-desc"><p>Represents multipart primary type</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP_FORWARD" title="HTTP_FORWARD"><a
+                                    class="constant" href="constants.html#HTTP_FORWARD">HTTP_FORWARD</a></td>
+                            <td class="module-desc"><p>Constant for the HTTP FORWARD method</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP_GET" title="HTTP_GET"><a
+                                    class="constant" href="constants.html#HTTP_GET">HTTP_GET</a></td>
+                            <td class="module-desc"><p>Constant for the HTTP GET method</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP_POST" title="HTTP_POST"><a
+                                    class="constant" href="constants.html#HTTP_POST">HTTP_POST</a></td>
+                            <td class="module-desc"><p>Constant for the HTTP POST method</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP_DELETE" title="HTTP_DELETE"><a
+                                    class="constant" href="constants.html#HTTP_DELETE">HTTP_DELETE</a></td>
+                            <td class="module-desc"><p>Constant for the HTTP DELETE method</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP_OPTIONS" title="HTTP_OPTIONS"><a
+                                    class="constant" href="constants.html#HTTP_OPTIONS">HTTP_OPTIONS</a></td>
+                            <td class="module-desc"><p>Constant for the HTTP OPTIONS method</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP_PUT" title="HTTP_PUT"><a
+                                    class="constant" href="constants.html#HTTP_PUT">HTTP_PUT</a></td>
+                            <td class="module-desc"><p>Constant for the HTTP PUT method</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP_PATCH" title="HTTP_PATCH"><a
+                                    class="constant" href="constants.html#HTTP_PATCH">HTTP_PATCH</a></td>
+                            <td class="module-desc"><p>Constant for the HTTP PATCH method</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP_HEAD" title="HTTP_HEAD"><a
+                                    class="constant" href="constants.html#HTTP_HEAD">HTTP_HEAD</a></td>
+                            <td class="module-desc"><p>Constant for the HTTP HEAD method</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP_SUBMIT" title="HTTP_SUBMIT"><a
+                                    class="constant" href="constants.html#HTTP_SUBMIT">HTTP_SUBMIT</a></td>
+                            <td class="module-desc"><p>constant for the HTTP SUBMIT method</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP_NONE" title="HTTP_NONE"><a
+                                    class="constant" href="constants.html#HTTP_NONE">HTTP_NONE</a></td>
+                            <td class="module-desc"><p>Constant for the identify not an HTTP Operation</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CHUNKING_AUTO" title="CHUNKING_AUTO"><a
+                                    class="constant" href="constants.html#CHUNKING_AUTO">CHUNKING_AUTO</a></td>
+                            <td class="module-desc"><p>If the payload is less than 8KB, content-length header is set in the outbound request/response,
+otherwise chunking header is set in the outbound request/response.}</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CHUNKING_ALWAYS" title="CHUNKING_ALWAYS"><a
+                                    class="constant" href="constants.html#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a></td>
+                            <td class="module-desc"><p>Always set chunking header in the response.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CHUNKING_NEVER" title="CHUNKING_NEVER"><a
+                                    class="constant" href="constants.html#CHUNKING_NEVER">CHUNKING_NEVER</a></td>
+                            <td class="module-desc"><p>Never set the chunking header even if the payload is larger than 8KB in the outbound request/response.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="COMPRESSION_AUTO" title="COMPRESSION_AUTO"><a
+                                    class="constant" href="constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a></td>
+                            <td class="module-desc"><p>When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the
+outbound request/response accept-encoding/content-encoding option.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="COMPRESSION_ALWAYS" title="COMPRESSION_ALWAYS"><a
+                                    class="constant" href="constants.html#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a></td>
+                            <td class="module-desc"><p>Always set accept-encoding/content-encoding in outbound request/response.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="COMPRESSION_NEVER" title="COMPRESSION_NEVER"><a
+                                    class="constant" href="constants.html#COMPRESSION_NEVER">COMPRESSION_NEVER</a></td>
+                            <td class="module-desc"><p>Never set accept-encoding/content-encoding header in outbound request/response.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="REDIRECT_MULTIPLE_CHOICES_300" title="REDIRECT_MULTIPLE_CHOICES_300"><a
+                                    class="constant" href="constants.html#REDIRECT_MULTIPLE_CHOICES_300">REDIRECT_MULTIPLE_CHOICES_300</a></td>
+                            <td class="module-desc"><p>Represents the HTTP redirect status code <code>300 - Multiple Choices</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="REDIRECT_MOVED_PERMANENTLY_301" title="REDIRECT_MOVED_PERMANENTLY_301"><a
+                                    class="constant" href="constants.html#REDIRECT_MOVED_PERMANENTLY_301">REDIRECT_MOVED_PERMANENTLY_301</a></td>
+                            <td class="module-desc"><p>Represents the HTTP redirect status code <code>301 - Moved Permanently</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="REDIRECT_FOUND_302" title="REDIRECT_FOUND_302"><a
+                                    class="constant" href="constants.html#REDIRECT_FOUND_302">REDIRECT_FOUND_302</a></td>
+                            <td class="module-desc"><p>Represents the HTTP redirect status code <code>302 - Found</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="REDIRECT_SEE_OTHER_303" title="REDIRECT_SEE_OTHER_303"><a
+                                    class="constant" href="constants.html#REDIRECT_SEE_OTHER_303">REDIRECT_SEE_OTHER_303</a></td>
+                            <td class="module-desc"><p>Represents the HTTP redirect status code <code>303 - See Other</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="REDIRECT_NOT_MODIFIED_304" title="REDIRECT_NOT_MODIFIED_304"><a
+                                    class="constant" href="constants.html#REDIRECT_NOT_MODIFIED_304">REDIRECT_NOT_MODIFIED_304</a></td>
+                            <td class="module-desc"><p>Represents the HTTP redirect status code <code>304 - Not Modified</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="REDIRECT_USE_PROXY_305" title="REDIRECT_USE_PROXY_305"><a
+                                    class="constant" href="constants.html#REDIRECT_USE_PROXY_305">REDIRECT_USE_PROXY_305</a></td>
+                            <td class="module-desc"><p>Represents the HTTP redirect status code <code>305 - Use Proxy</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="REDIRECT_TEMPORARY_REDIRECT_307" title="REDIRECT_TEMPORARY_REDIRECT_307"><a
+                                    class="constant" href="constants.html#REDIRECT_TEMPORARY_REDIRECT_307">REDIRECT_TEMPORARY_REDIRECT_307</a></td>
+                            <td class="module-desc"><p>Represents the HTTP redirect status code <code>307 - Temporary Redirect</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="REDIRECT_PERMANENT_REDIRECT_308" title="REDIRECT_PERMANENT_REDIRECT_308"><a
+                                    class="constant" href="constants.html#REDIRECT_PERMANENT_REDIRECT_308">REDIRECT_PERMANENT_REDIRECT_308</a></td>
+                            <td class="module-desc"><p>Represents the HTTP redirect status code <code>308 - Permanent Redirect</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="FAILOVER_ALL_ENDPOINTS_FAILED" title="FAILOVER_ALL_ENDPOINTS_FAILED"><a
+                                    class="constant" href="constants.html#FAILOVER_ALL_ENDPOINTS_FAILED">FAILOVER_ALL_ENDPOINTS_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:FailoverAllEndpointsFailedError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="FAILOVER_ENDPOINT_ACTION_FAILED" title="FAILOVER_ENDPOINT_ACTION_FAILED"><a
+                                    class="constant" href="constants.html#FAILOVER_ENDPOINT_ACTION_FAILED">FAILOVER_ENDPOINT_ACTION_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:FailoverActionFailedError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="UPSTREAM_SERVICE_UNAVAILABLE" title="UPSTREAM_SERVICE_UNAVAILABLE"><a
+                                    class="constant" href="constants.html#UPSTREAM_SERVICE_UNAVAILABLE">UPSTREAM_SERVICE_UNAVAILABLE</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:UpstreamServiceUnavailableError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="ALL_LOAD_BALANCE_ENDPOINTS_FAILED" title="ALL_LOAD_BALANCE_ENDPOINTS_FAILED"><a
+                                    class="constant" href="constants.html#ALL_LOAD_BALANCE_ENDPOINTS_FAILED">ALL_LOAD_BALANCE_ENDPOINTS_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:AllLoadBalanceEndpointsFailedError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="ALL_RETRY_ATTEMPTS_FAILED" title="ALL_RETRY_ATTEMPTS_FAILED"><a
+                                    class="constant" href="constants.html#ALL_RETRY_ATTEMPTS_FAILED">ALL_RETRY_ATTEMPTS_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:AllRetryAttemptsFailed</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="IDLE_TIMEOUT_TRIGGERED" title="IDLE_TIMEOUT_TRIGGERED"><a
+                                    class="constant" href="constants.html#IDLE_TIMEOUT_TRIGGERED">IDLE_TIMEOUT_TRIGGERED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:IdleTimeoutError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="AUTHN_FAILED" title="AUTHN_FAILED"><a
+                                    class="constant" href="constants.html#AUTHN_FAILED">AUTHN_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:AuthenticationError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="AUTHZ_FAILED" title="AUTHZ_FAILED"><a
+                                    class="constant" href="constants.html#AUTHZ_FAILED">AUTHZ_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:AuthorizationError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INIT_OUTBOUND_REQUEST_FAILED" title="INIT_OUTBOUND_REQUEST_FAILED"><a
+                                    class="constant" href="constants.html#INIT_OUTBOUND_REQUEST_FAILED">INIT_OUTBOUND_REQUEST_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:InitializingOutboundRequestError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="WRITING_OUTBOUND_REQUEST_HEADERS_FAILED" title="WRITING_OUTBOUND_REQUEST_HEADERS_FAILED"><a
+                                    class="constant" href="constants.html#WRITING_OUTBOUND_REQUEST_HEADERS_FAILED">WRITING_OUTBOUND_REQUEST_HEADERS_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:WritingOutboundRequestHeadersError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="WRITING_OUTBOUND_REQUEST_BODY_FAILED" title="WRITING_OUTBOUND_REQUEST_BODY_FAILED"><a
+                                    class="constant" href="constants.html#WRITING_OUTBOUND_REQUEST_BODY_FAILED">WRITING_OUTBOUND_REQUEST_BODY_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:WritingOutboundRequestBodyError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INIT_INBOUND_RESPONSE_FAILED" title="INIT_INBOUND_RESPONSE_FAILED"><a
+                                    class="constant" href="constants.html#INIT_INBOUND_RESPONSE_FAILED">INIT_INBOUND_RESPONSE_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:InitializingInboundResponseError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="READING_INBOUND_RESPONSE_HEADERS_FAILED" title="READING_INBOUND_RESPONSE_HEADERS_FAILED"><a
+                                    class="constant" href="constants.html#READING_INBOUND_RESPONSE_HEADERS_FAILED">READING_INBOUND_RESPONSE_HEADERS_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:ReadingInboundResponseBodyError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="READING_INBOUND_RESPONSE_BODY_FAILED" title="READING_INBOUND_RESPONSE_BODY_FAILED"><a
+                                    class="constant" href="constants.html#READING_INBOUND_RESPONSE_BODY_FAILED">READING_INBOUND_RESPONSE_BODY_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:ReadingInboundResponseBodyError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INIT_INBOUND_REQUEST_FAILED" title="INIT_INBOUND_REQUEST_FAILED"><a
+                                    class="constant" href="constants.html#INIT_INBOUND_REQUEST_FAILED">INIT_INBOUND_REQUEST_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:InitialingInboundRequestError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="READING_INBOUND_REQUEST_HEADERS_FAILED" title="READING_INBOUND_REQUEST_HEADERS_FAILED"><a
+                                    class="constant" href="constants.html#READING_INBOUND_REQUEST_HEADERS_FAILED">READING_INBOUND_REQUEST_HEADERS_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:ReadingInboundRequestHeadersError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="READING_INBOUND_REQUEST_BODY_FAILED" title="READING_INBOUND_REQUEST_BODY_FAILED"><a
+                                    class="constant" href="constants.html#READING_INBOUND_REQUEST_BODY_FAILED">READING_INBOUND_REQUEST_BODY_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:ReadingInboundRequestBodyError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INIT_OUTBOUND_RESPONSE_FAILED" title="INIT_OUTBOUND_RESPONSE_FAILED"><a
+                                    class="constant" href="constants.html#INIT_OUTBOUND_RESPONSE_FAILED">INIT_OUTBOUND_RESPONSE_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:InitializingOutboundResponseError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="WRITING_OUTBOUND_RESPONSE_HEADERS_FAILED" title="WRITING_OUTBOUND_RESPONSE_HEADERS_FAILED"><a
+                                    class="constant" href="constants.html#WRITING_OUTBOUND_RESPONSE_HEADERS_FAILED">WRITING_OUTBOUND_RESPONSE_HEADERS_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:WritingOutboundResponseHeadersError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="WRITING_OUTBOUND_RESPONSE_BODY_FAILED" title="WRITING_OUTBOUND_RESPONSE_BODY_FAILED"><a
+                                    class="constant" href="constants.html#WRITING_OUTBOUND_RESPONSE_BODY_FAILED">WRITING_OUTBOUND_RESPONSE_BODY_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:WritingOutboundResponseBodyError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INITIATING_100_CONTINUE_RESPONSE_FAILED" title="INITIATING_100_CONTINUE_RESPONSE_FAILED"><a
+                                    class="constant" href="constants.html#INITIATING_100_CONTINUE_RESPONSE_FAILED">INITIATING_100_CONTINUE_RESPONSE_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:Initiating100ContinueResponseError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="WRITING_100_CONTINUE_RESPONSE_FAILED" title="WRITING_100_CONTINUE_RESPONSE_FAILED"><a
+                                    class="constant" href="constants.html#WRITING_100_CONTINUE_RESPONSE_FAILED">WRITING_100_CONTINUE_RESPONSE_FAILED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:Writing100ContinueResponseError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="GENERIC_CLIENT_ERROR" title="GENERIC_CLIENT_ERROR"><a
+                                    class="constant" href="constants.html#GENERIC_CLIENT_ERROR">GENERIC_CLIENT_ERROR</a></td>
+                            <td class="module-desc"><p>Error reason for generic client error</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="GENERIC_LISTENER_ERROR" title="GENERIC_LISTENER_ERROR"><a
+                                    class="constant" href="constants.html#GENERIC_LISTENER_ERROR">GENERIC_LISTENER_ERROR</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:GenericListenerError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="UNSUPPORTED_ACTION" title="UNSUPPORTED_ACTION"><a
+                                    class="constant" href="constants.html#UNSUPPORTED_ACTION">UNSUPPORTED_ACTION</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:UnsupportedActionError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HTTP2_CLIENT_ERROR" title="HTTP2_CLIENT_ERROR"><a
+                                    class="constant" href="constants.html#HTTP2_CLIENT_ERROR">HTTP2_CLIENT_ERROR</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:Http2ClientError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MAXIMUM_WAIT_TIME_EXCEEDED" title="MAXIMUM_WAIT_TIME_EXCEEDED"><a
+                                    class="constant" href="constants.html#MAXIMUM_WAIT_TIME_EXCEEDED">MAXIMUM_WAIT_TIME_EXCEEDED</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:MaximumWaitTimeExceededError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="SSL_ERROR" title="SSL_ERROR"><a
+                                    class="constant" href="constants.html#SSL_ERROR">SSL_ERROR</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:SslError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="AGE" title="AGE"><a
+                                    class="constant" href="constants.html#AGE">AGE</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>age</code>. Gives the current age of a cached HTTP response.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="AUTHORIZATION" title="AUTHORIZATION"><a
+                                    class="constant" href="constants.html#AUTHORIZATION">AUTHORIZATION</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>authorization</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CACHE_CONTROL" title="CACHE_CONTROL"><a
+                                    class="constant" href="constants.html#CACHE_CONTROL">CACHE_CONTROL</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>cache-control</code>. Specifies the cache control directives required for the function of HTTP caches.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CONTENT_LENGTH" title="CONTENT_LENGTH"><a
+                                    class="constant" href="constants.html#CONTENT_LENGTH">CONTENT_LENGTH</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>content-length</code>. Specifies the size of the response body in bytes.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CONTENT_TYPE" title="CONTENT_TYPE"><a
+                                    class="constant" href="constants.html#CONTENT_TYPE">CONTENT_TYPE</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>content-type</code>. Specifies the type of the message payload.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DATE" title="DATE"><a
+                                    class="constant" href="constants.html#DATE">DATE</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>date</code>. The timestamp at the time the response was generated/received.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="ETAG" title="ETAG"><a
+                                    class="constant" href="constants.html#ETAG">ETAG</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>etag</code>. A finger print for a resource which is used by HTTP caches to identify whether a
+resource representation has changed.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="EXPECT" title="EXPECT"><a
+                                    class="constant" href="constants.html#EXPECT">EXPECT</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>expect</code>. Specifies expectations to be fulfilled by the server.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="EXPIRES" title="EXPIRES"><a
+                                    class="constant" href="constants.html#EXPIRES">EXPIRES</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>expires</code>. Specifies the time at which the response becomes stale.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="IF_MATCH" title="IF_MATCH"><a
+                                    class="constant" href="constants.html#IF_MATCH">IF_MATCH</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>if-match</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="IF_MODIFIED_SINCE" title="IF_MODIFIED_SINCE"><a
+                                    class="constant" href="constants.html#IF_MODIFIED_SINCE">IF_MODIFIED_SINCE</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>if-modified-since</code>. Used when validating (with the origin server) whether a cached response
+is still valid. If the representation of the resource has modified since the timestamp in this field, a
+304 response is returned.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="IF_NONE_MATCH" title="IF_NONE_MATCH"><a
+                                    class="constant" href="constants.html#IF_NONE_MATCH">IF_NONE_MATCH</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>if-none-match</code>. Used when validating (with the origin server) whether a cached response is
+still valid. If the ETag provided in this field matches the representation of the requested resource, a
+304 response is returned.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="IF_RANGE" title="IF_RANGE"><a
+                                    class="constant" href="constants.html#IF_RANGE">IF_RANGE</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>if-range</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="IF_UNMODIFIED_SINCE" title="IF_UNMODIFIED_SINCE"><a
+                                    class="constant" href="constants.html#IF_UNMODIFIED_SINCE">IF_UNMODIFIED_SINCE</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>if-unmodified-since</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LAST_MODIFIED" title="LAST_MODIFIED"><a
+                                    class="constant" href="constants.html#LAST_MODIFIED">LAST_MODIFIED</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>last-modified</code>. The time at which the resource was last modified.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LOCATION" title="LOCATION"><a
+                                    class="constant" href="constants.html#LOCATION">LOCATION</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>location</code>. Indicates the URL to redirect a request to.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PRAGMA" title="PRAGMA"><a
+                                    class="constant" href="constants.html#PRAGMA">PRAGMA</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>pragma</code>. Used in dealing with HTTP 1.0 caches which do not understand the <code>cache-control</code> header.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="SERVER" title="SERVER"><a
+                                    class="constant" href="constants.html#SERVER">SERVER</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>server</code>. Specifies the details of the origin server.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="WARNING" title="WARNING"><a
+                                    class="constant" href="constants.html#WARNING">WARNING</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>warning</code>. Specifies warnings generated when serving stale responses from HTTP caches.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TRANSFER_ENCODING" title="TRANSFER_ENCODING"><a
+                                    class="constant" href="constants.html#TRANSFER_ENCODING">TRANSFER_ENCODING</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>transfer-encoding</code>. Specifies what type of transformation has been applied to entity body.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CONNECTION" title="CONNECTION"><a
+                                    class="constant" href="constants.html#CONNECTION">CONNECTION</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>connection</code>. Allows the sender to specify options that are desired for that particular connection.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="UPGRADE" title="UPGRADE"><a
+                                    class="constant" href="constants.html#UPGRADE">UPGRADE</a></td>
+                            <td class="module-desc"><p>HTTP header key <code>upgrade</code>. Allows the client to specify what additional communication protocols it supports and
+would like to use, if the server finds it appropriate to switch protocols.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PASSED" title="PASSED"><a
+                                    class="constant" href="constants.html#PASSED">PASSED</a></td>
+                            <td class="module-desc"><p>Mutual SSL handshake is successful.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="FAILED" title="FAILED"><a
+                                    class="constant" href="constants.html#FAILED">FAILED</a></td>
+                            <td class="module-desc"><p>Mutual SSL handshake has failed.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="NONE" title="NONE"><a
+                                    class="constant" href="constants.html#NONE">NONE</a></td>
+                            <td class="module-desc"><p>Not a mutual ssl connection.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CB_OPEN_STATE" title="CB_OPEN_STATE"><a
+                                    class="constant" href="constants.html#CB_OPEN_STATE">CB_OPEN_STATE</a></td>
+                            <td class="module-desc"><p>Represents the open state of the circuit. When the Circuit Breaker is in <code>OPEN</code> state, requests will fail
+immediately.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CB_HALF_OPEN_STATE" title="CB_HALF_OPEN_STATE"><a
+                                    class="constant" href="constants.html#CB_HALF_OPEN_STATE">CB_HALF_OPEN_STATE</a></td>
+                            <td class="module-desc"><p>Represents the half-open state of the circuit. When the Circuit Breaker is in <code>HALF_OPEN</code> state, a trial request
+will be sent to the upstream service. If it fails, the circuit will trip again and move to the <code>OPEN</code> state. If not,
+it will move to the <code>CLOSED</code> state.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CB_CLOSED_STATE" title="CB_CLOSED_STATE"><a
+                                    class="constant" href="constants.html#CB_CLOSED_STATE">CB_CLOSED_STATE</a></td>
+                            <td class="module-desc"><p>Represents the closed state of the circuit. When the Circuit Breaker is in <code>CLOSED</code> state, all requests will be
+allowed to go through to the upstream service. If the failures exceed the configured threhold values, the circuit
+will trip and move to the <code>OPEN</code> state.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_CONTINUE" title="STATUS_CONTINUE"><a
+                                    class="constant" href="constants.html#STATUS_CONTINUE">STATUS_CONTINUE</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 100 Continue</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_SWITCHING_PROTOCOLS" title="STATUS_SWITCHING_PROTOCOLS"><a
+                                    class="constant" href="constants.html#STATUS_SWITCHING_PROTOCOLS">STATUS_SWITCHING_PROTOCOLS</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 101 Switching Protocols</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_OK" title="STATUS_OK"><a
+                                    class="constant" href="constants.html#STATUS_OK">STATUS_OK</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 200 OK</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_CREATED" title="STATUS_CREATED"><a
+                                    class="constant" href="constants.html#STATUS_CREATED">STATUS_CREATED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 201 Created</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_ACCEPTED" title="STATUS_ACCEPTED"><a
+                                    class="constant" href="constants.html#STATUS_ACCEPTED">STATUS_ACCEPTED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 202 Accepted</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_NON_AUTHORITATIVE_INFORMATION" title="STATUS_NON_AUTHORITATIVE_INFORMATION"><a
+                                    class="constant" href="constants.html#STATUS_NON_AUTHORITATIVE_INFORMATION">STATUS_NON_AUTHORITATIVE_INFORMATION</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 203 Non Authoritative Information</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_NO_CONTENT" title="STATUS_NO_CONTENT"><a
+                                    class="constant" href="constants.html#STATUS_NO_CONTENT">STATUS_NO_CONTENT</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 204 No Content</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_RESET_CONTENT" title="STATUS_RESET_CONTENT"><a
+                                    class="constant" href="constants.html#STATUS_RESET_CONTENT">STATUS_RESET_CONTENT</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 205 Reset Content</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_PARTIAL_CONTENT" title="STATUS_PARTIAL_CONTENT"><a
+                                    class="constant" href="constants.html#STATUS_PARTIAL_CONTENT">STATUS_PARTIAL_CONTENT</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 206 Partial Content</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_MULTIPLE_CHOICES" title="STATUS_MULTIPLE_CHOICES"><a
+                                    class="constant" href="constants.html#STATUS_MULTIPLE_CHOICES">STATUS_MULTIPLE_CHOICES</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 300 Multiple Choices</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_MOVED_PERMANENTLY" title="STATUS_MOVED_PERMANENTLY"><a
+                                    class="constant" href="constants.html#STATUS_MOVED_PERMANENTLY">STATUS_MOVED_PERMANENTLY</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 301 Moved Permanently</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_FOUND" title="STATUS_FOUND"><a
+                                    class="constant" href="constants.html#STATUS_FOUND">STATUS_FOUND</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 302 Found</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_SEE_OTHER" title="STATUS_SEE_OTHER"><a
+                                    class="constant" href="constants.html#STATUS_SEE_OTHER">STATUS_SEE_OTHER</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 303 See Other</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_NOT_MODIFIED" title="STATUS_NOT_MODIFIED"><a
+                                    class="constant" href="constants.html#STATUS_NOT_MODIFIED">STATUS_NOT_MODIFIED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 304 Not Modified</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_USE_PROXY" title="STATUS_USE_PROXY"><a
+                                    class="constant" href="constants.html#STATUS_USE_PROXY">STATUS_USE_PROXY</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 305 Use Proxy</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_TEMPORARY_REDIRECT" title="STATUS_TEMPORARY_REDIRECT"><a
+                                    class="constant" href="constants.html#STATUS_TEMPORARY_REDIRECT">STATUS_TEMPORARY_REDIRECT</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 307 Temporary Redirect</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_PERMANENT_REDIRECT" title="STATUS_PERMANENT_REDIRECT"><a
+                                    class="constant" href="constants.html#STATUS_PERMANENT_REDIRECT">STATUS_PERMANENT_REDIRECT</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 308 Permanent Redirect</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_BAD_REQUEST" title="STATUS_BAD_REQUEST"><a
+                                    class="constant" href="constants.html#STATUS_BAD_REQUEST">STATUS_BAD_REQUEST</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 400 Bad Request</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_UNAUTHORIZED" title="STATUS_UNAUTHORIZED"><a
+                                    class="constant" href="constants.html#STATUS_UNAUTHORIZED">STATUS_UNAUTHORIZED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 401 Unauthorized</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_PAYMENT_REQUIRED" title="STATUS_PAYMENT_REQUIRED"><a
+                                    class="constant" href="constants.html#STATUS_PAYMENT_REQUIRED">STATUS_PAYMENT_REQUIRED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 402 Payment Required</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_FORBIDDEN" title="STATUS_FORBIDDEN"><a
+                                    class="constant" href="constants.html#STATUS_FORBIDDEN">STATUS_FORBIDDEN</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 403 Forbidden</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_NOT_FOUND" title="STATUS_NOT_FOUND"><a
+                                    class="constant" href="constants.html#STATUS_NOT_FOUND">STATUS_NOT_FOUND</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 404 Not Found</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_METHOD_NOT_ALLOWED" title="STATUS_METHOD_NOT_ALLOWED"><a
+                                    class="constant" href="constants.html#STATUS_METHOD_NOT_ALLOWED">STATUS_METHOD_NOT_ALLOWED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 405 Method Not Allowed</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_NOT_ACCEPTABLE" title="STATUS_NOT_ACCEPTABLE"><a
+                                    class="constant" href="constants.html#STATUS_NOT_ACCEPTABLE">STATUS_NOT_ACCEPTABLE</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 406 Not Acceptable</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_PROXY_AUTHENTICATION_REQUIRED" title="STATUS_PROXY_AUTHENTICATION_REQUIRED"><a
+                                    class="constant" href="constants.html#STATUS_PROXY_AUTHENTICATION_REQUIRED">STATUS_PROXY_AUTHENTICATION_REQUIRED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 407 Proxy Authentication Required</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_REQUEST_TIMEOUT" title="STATUS_REQUEST_TIMEOUT"><a
+                                    class="constant" href="constants.html#STATUS_REQUEST_TIMEOUT">STATUS_REQUEST_TIMEOUT</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 408 Request Timeout</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_CONFLICT" title="STATUS_CONFLICT"><a
+                                    class="constant" href="constants.html#STATUS_CONFLICT">STATUS_CONFLICT</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 409 Conflict</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_GONE" title="STATUS_GONE"><a
+                                    class="constant" href="constants.html#STATUS_GONE">STATUS_GONE</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 410 Gone</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_LENGTH_REQUIRED" title="STATUS_LENGTH_REQUIRED"><a
+                                    class="constant" href="constants.html#STATUS_LENGTH_REQUIRED">STATUS_LENGTH_REQUIRED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 411 Length Required</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_PRECONDITION_FAILED" title="STATUS_PRECONDITION_FAILED"><a
+                                    class="constant" href="constants.html#STATUS_PRECONDITION_FAILED">STATUS_PRECONDITION_FAILED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 412 Precondition Failed</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_PAYLOAD_TOO_LARGE" title="STATUS_PAYLOAD_TOO_LARGE"><a
+                                    class="constant" href="constants.html#STATUS_PAYLOAD_TOO_LARGE">STATUS_PAYLOAD_TOO_LARGE</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 413 Payload Too Large</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_URI_TOO_LONG" title="STATUS_URI_TOO_LONG"><a
+                                    class="constant" href="constants.html#STATUS_URI_TOO_LONG">STATUS_URI_TOO_LONG</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 414 URI Too Long</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_UNSUPPORTED_MEDIA_TYPE" title="STATUS_UNSUPPORTED_MEDIA_TYPE"><a
+                                    class="constant" href="constants.html#STATUS_UNSUPPORTED_MEDIA_TYPE">STATUS_UNSUPPORTED_MEDIA_TYPE</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 415 Unsupported Media Type</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_RANGE_NOT_SATISFIABLE" title="STATUS_RANGE_NOT_SATISFIABLE"><a
+                                    class="constant" href="constants.html#STATUS_RANGE_NOT_SATISFIABLE">STATUS_RANGE_NOT_SATISFIABLE</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 416 Range Not Satisfiable</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_EXPECTATION_FAILED" title="STATUS_EXPECTATION_FAILED"><a
+                                    class="constant" href="constants.html#STATUS_EXPECTATION_FAILED">STATUS_EXPECTATION_FAILED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 417 Expectation Failed</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_UPGRADE_REQUIRED" title="STATUS_UPGRADE_REQUIRED"><a
+                                    class="constant" href="constants.html#STATUS_UPGRADE_REQUIRED">STATUS_UPGRADE_REQUIRED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 426 Upgrade Required</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_INTERNAL_SERVER_ERROR" title="STATUS_INTERNAL_SERVER_ERROR"><a
+                                    class="constant" href="constants.html#STATUS_INTERNAL_SERVER_ERROR">STATUS_INTERNAL_SERVER_ERROR</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 500 Internal Server Error</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_NOT_IMPLEMENTED" title="STATUS_NOT_IMPLEMENTED"><a
+                                    class="constant" href="constants.html#STATUS_NOT_IMPLEMENTED">STATUS_NOT_IMPLEMENTED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 501 Not Implemented</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_BAD_GATEWAY" title="STATUS_BAD_GATEWAY"><a
+                                    class="constant" href="constants.html#STATUS_BAD_GATEWAY">STATUS_BAD_GATEWAY</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 502 Bad Gateway</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_SERVICE_UNAVAILABLE" title="STATUS_SERVICE_UNAVAILABLE"><a
+                                    class="constant" href="constants.html#STATUS_SERVICE_UNAVAILABLE">STATUS_SERVICE_UNAVAILABLE</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 503 Service Unavailable</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_GATEWAY_TIMEOUT" title="STATUS_GATEWAY_TIMEOUT"><a
+                                    class="constant" href="constants.html#STATUS_GATEWAY_TIMEOUT">STATUS_GATEWAY_TIMEOUT</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 504 Gateway Timeout</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="STATUS_HTTP_VERSION_NOT_SUPPORTED" title="STATUS_HTTP_VERSION_NOT_SUPPORTED"><a
+                                    class="constant" href="constants.html#STATUS_HTTP_VERSION_NOT_SUPPORTED">STATUS_HTTP_VERSION_NOT_SUPPORTED</a></td>
+                            <td class="module-desc"><p>The HTTP response status code: 505 HTTP Version Not Supported</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="KEEPALIVE_AUTO" title="KEEPALIVE_AUTO"><a
+                                    class="constant" href="constants.html#KEEPALIVE_AUTO">KEEPALIVE_AUTO</a></td>
+                            <td class="module-desc"><p>Decides to keep the connection alive or not based on the <code>connection</code> header of the client request }</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="KEEPALIVE_ALWAYS" title="KEEPALIVE_ALWAYS"><a
+                                    class="constant" href="constants.html#KEEPALIVE_ALWAYS">KEEPALIVE_ALWAYS</a></td>
+                            <td class="module-desc"><p>Keeps the connection alive irrespective of the <code>connection</code> header value }</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="KEEPALIVE_NEVER" title="KEEPALIVE_NEVER"><a
+                                    class="constant" href="constants.html#KEEPALIVE_NEVER">KEEPALIVE_NEVER</a></td>
+                            <td class="module-desc"><p>Closes the connection irrespective of the <code>connection</code> header value }</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="SERVICE_NAME" title="SERVICE_NAME"><a
+                                    class="constant" href="constants.html#SERVICE_NAME">SERVICE_NAME</a></td>
+                            <td class="module-desc"><p>Constant for the service name reference.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="RESOURCE_NAME" title="RESOURCE_NAME"><a
+                                    class="constant" href="constants.html#RESOURCE_NAME">RESOURCE_NAME</a></td>
+                            <td class="module-desc"><p>Constant for the resource name reference.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="REQUEST_METHOD" title="REQUEST_METHOD"><a
+                                    class="constant" href="constants.html#REQUEST_METHOD">REQUEST_METHOD</a></td>
+                            <td class="module-desc"><p>Constant for the request method reference.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CONNECTION_CLOSURE_ERROR" title="CONNECTION_CLOSURE_ERROR"><a
+                                    class="constant" href="constants.html#CONNECTION_CLOSURE_ERROR">CONNECTION_CLOSURE_ERROR</a></td>
+                            <td class="module-desc"><p>Error reason for failures during connection closure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INVALID_HANDSHAKE_ERROR" title="INVALID_HANDSHAKE_ERROR"><a
+                                    class="constant" href="constants.html#INVALID_HANDSHAKE_ERROR">INVALID_HANDSHAKE_ERROR</a></td>
+                            <td class="module-desc"><p>Error reason for WebSocket handshake failures</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PAYLOAD_TOO_BIG_ERROR" title="PAYLOAD_TOO_BIG_ERROR"><a
+                                    class="constant" href="constants.html#PAYLOAD_TOO_BIG_ERROR">PAYLOAD_TOO_BIG_ERROR</a></td>
+                            <td class="module-desc"><p>Error reason for exceeding maximum frame size</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PROTOCOL_ERROR" title="PROTOCOL_ERROR"><a
+                                    class="constant" href="constants.html#PROTOCOL_ERROR">PROTOCOL_ERROR</a></td>
+                            <td class="module-desc"><p>Error reason for other side breaking the protocol</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CONNECTION_ERROR" title="CONNECTION_ERROR"><a
+                                    class="constant" href="constants.html#CONNECTION_ERROR">CONNECTION_ERROR</a></td>
+                            <td class="module-desc"><p>Error reason for connection failures</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INVALID_CONTINUATION_FRAME_ERROR" title="INVALID_CONTINUATION_FRAME_ERROR"><a
+                                    class="constant" href="constants.html#INVALID_CONTINUATION_FRAME_ERROR">INVALID_CONTINUATION_FRAME_ERROR</a></td>
+                            <td class="module-desc"><p>Error reason for invalid continuation frame</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="GENERIC_ERROR" title="GENERIC_ERROR"><a
+                                    class="constant" href="constants.html#GENERIC_ERROR">GENERIC_ERROR</a></td>
+                            <td class="module-desc"><p>Error reason for errors not captured by the specific errors</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="annotations">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#annotations">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Annotations </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="ResourceConfig" title="ResourceConfig"><a
+                                    class="annotations" href="annotations.html#ResourceConfig">ResourceConfig</a></td>
+                            <td class="module-desc"><p>The annotation which is used to configure an HTTP resource.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="ServiceConfig" title="ServiceConfig"><a
+                                    class="annotations" href="annotations.html#ServiceConfig">ServiceConfig</a></td>
+                            <td class="module-desc"><p>The annotation which is used to configure an HTTP service.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="WebSocketServiceConfig" title="WebSocketServiceConfig"><a
+                                    class="annotations" href="annotations.html#WebSocketServiceConfig">WebSocketServiceConfig</a></td>
+                            <td class="module-desc"><p>The annotation which is used to configure a WebSocket service.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="CachingPolicy" title="CachingPolicy">
+                                <a class="types" href="types.html#CachingPolicy">CachingPolicy</a>
+                            </td>
+                            <td class="module-desc"><p>Used for configuring the caching behaviour. Setting the <code>policy</code> field in the <code>CacheConfig</code> record allows
+the user to control the caching behaviour.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Chunking" title="Chunking">
+                                <a class="types" href="types.html#Chunking">Chunking</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the possible values for the chunking configuration in HTTP services and clients.</p>
+<p><code>AUTO</code>: If the payload is less than 8KB, content-length header is set in the outbound request/response,
+otherwise chunking header is set in the outbound request/response
+<code>ALWAYS</code>: Always set chunking header in the response
+<code>NEVER</code>: Never set the chunking header even if the payload is larger than 8KB in the outbound request/response</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="CircuitState" title="CircuitState">
+                                <a class="types" href="types.html#CircuitState">CircuitState</a>
+                            </td>
+                            <td class="module-desc"><p>A finite type for modeling the states of the Circuit Breaker. The Circuit Breaker starts in the <code>CLOSED</code> state.
+If any failure thresholds are exceeded during execution, the circuit trips and goes to the <code>OPEN</code> state. After
+the specified timeout period expires, the circuit goes to the <code>HALF_OPEN</code> state. If the trial request sent while
+in the <code>HALF_OPEN</code> state succeeds, the circuit goes back to the <code>CLOSED</code> state.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="ClientAuthError" title="ClientAuthError">
+                                <a class="types" href="types.html#ClientAuthError">ClientAuthError</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the Auth error types that returned from client</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="ClientError" title="ClientError">
+                                <a class="types" href="types.html#ClientError">ClientError</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the possible client error types</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Compression" title="Compression">
+                                <a class="types" href="types.html#Compression">Compression</a>
+                            </td>
+                            <td class="module-desc"><p>Options to compress using gzip or deflate.</p>
+<p><code>AUTO</code>: When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the
+outbound request/response accept-encoding/content-encoding option
+<code>ALWAYS</code>: Always set accept-encoding/content-encoding in outbound request/response
+<code>NEVER</code>: Never set accept-encoding/content-encoding header in outbound request/response</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="CredentialBearer" title="CredentialBearer">
+                                <a class="types" href="types.html#CredentialBearer">CredentialBearer</a>
+                            </td>
+                            <td class="module-desc"><p>Specifies how to send the authentication credentials when exchanging tokens.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="HttpOperation" title="HttpOperation">
+                                <a class="types" href="types.html#HttpOperation">HttpOperation</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the HTTP operations related to circuit breaker, failover and load balancer.</p>
+<p><code>FORWARD</code>: Forward the specified payload
+<code>GET</code>: Request a resource
+<code>POST</code>: Create a new resource
+<code>DELETE</code>: Deletes the specified resource
+<code>OPTIONS</code>: Request communication options available
+<code>PUT</code>: Replace the target resource
+<code>PATCH</code>: Apply partial modification to the resource
+<code>HEAD</code>: Identical to <code>GET</code> but no resource body should be returned
+<code>SUBMIT</code>: Submits a http request and returns an HttpFuture object
+<code>NONE</code>: No operation should be performed</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="HttpVersion" title="HttpVersion">
+                                <a class="types" href="types.html#HttpVersion">HttpVersion</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the supported HTTP protocols.</p>
+<p><code>HTTP_1_0</code>: HTTP/1.0 protocol
+<code>HTTP_1_1</code>: HTTP/1.1 protocol
+<code>HTTP_2_0</code>: HTTP/2.0 protocol</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="InboundRequestError" title="InboundRequestError">
+                                <a class="types" href="types.html#InboundRequestError">InboundRequestError</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the listener error types that returned while receiving inbound request</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="InboundResponseError" title="InboundResponseError">
+                                <a class="types" href="types.html#InboundResponseError">InboundResponseError</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the client error types that returned while receiving inbound response</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="KeepAlive" title="KeepAlive">
+                                <a class="types" href="types.html#KeepAlive">KeepAlive</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the possible values for the keep-alive configuration in service and client endpoints.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="ListenerError" title="ListenerError">
+                                <a class="types" href="types.html#ListenerError">ListenerError</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the possible listener error types</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="MutualSslStatus" title="MutualSslStatus">
+                                <a class="types" href="types.html#MutualSslStatus">MutualSslStatus</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the possible values for the mutual ssl status.</p>
+<p><code>passed</code>: Mutual SSL handshake is successful.
+<code>failed</code>: Mutual SSL handshake has failed.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="OutboundRequestError" title="OutboundRequestError">
+                                <a class="types" href="types.html#OutboundRequestError">OutboundRequestError</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the client error types that returned while sending outbound request</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="OutboundResponseError" title="OutboundResponseError">
+                                <a class="types" href="types.html#OutboundResponseError">OutboundResponseError</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the listener error types that returned while sending outbound response</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="RedirectCode" title="RedirectCode">
+                                <a class="types" href="types.html#RedirectCode">RedirectCode</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the HTTP redirect codes as a type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="RequestMessage" title="RequestMessage">
+                                <a class="types" href="types.html#RequestMessage">RequestMessage</a>
+                            </td>
+                            <td class="module-desc"><p>The types of messages that are accepted by HTTP <code>client</code> when sending out the outbound request.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="ResiliencyError" title="ResiliencyError">
+                                <a class="types" href="types.html#ResiliencyError">ResiliencyError</a>
+                            </td>
+                            <td class="module-desc"><p>Defines the resiliency error types that returned from client</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="ResponseMessage" title="ResponseMessage">
+                                <a class="types" href="types.html#ResponseMessage">ResponseMessage</a>
+                            </td>
+                            <td class="module-desc"><p>The types of messages that are accepted by HTTP <code>listener</code> when sending out the outbound response.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="WebSocketError" title="WebSocketError">
+                                <a class="types" href="types.html#WebSocketError">WebSocketError</a>
+                            </td>
+                            <td class="module-desc"><p>The union of all the WebSocket related errors</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="AllLoadBalanceEndpointsFailedError" title="AllLoadBalanceEndpointsFailedError">
+                                <a class="errors" href="errors.html#AllLoadBalanceEndpointsFailedError">AllLoadBalanceEndpointsFailedError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred due to all the load balance endpoint failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="AllRetryAttemptsFailed" title="AllRetryAttemptsFailed">
+                                <a class="errors" href="errors.html#AllRetryAttemptsFailed">AllRetryAttemptsFailed</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred due to all the the retry attempts failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="AuthenticationError" title="AuthenticationError">
+                                <a class="errors" href="errors.html#AuthenticationError">AuthenticationError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a listener error that occurred due to inbound request authentication failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="AuthorizationError" title="AuthorizationError">
+                                <a class="errors" href="errors.html#AuthorizationError">AuthorizationError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a listener error that occurred due to inbound request authorization failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="FailoverActionFailedError" title="FailoverActionFailedError">
+                                <a class="errors" href="errors.html#FailoverActionFailedError">FailoverActionFailedError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred due to failover action failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="FailoverAllEndpointsFailedError" title="FailoverAllEndpointsFailedError">
+                                <a class="errors" href="errors.html#FailoverAllEndpointsFailedError">FailoverAllEndpointsFailedError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred due to all the failover endpoint failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="GenericClientError" title="GenericClientError">
+                                <a class="errors" href="errors.html#GenericClientError">GenericClientError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a generic client error</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="GenericListenerError" title="GenericListenerError">
+                                <a class="errors" href="errors.html#GenericListenerError">GenericListenerError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a generic listener error</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="Http2ClientError" title="Http2ClientError">
+                                <a class="errors" href="errors.html#Http2ClientError">Http2ClientError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents an HTTP/2 client generic error</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="IdleTimeoutError" title="IdleTimeoutError">
+                                <a class="errors" href="errors.html#IdleTimeoutError">IdleTimeoutError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents the error that triggered upon a request/response idle timeout</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="InitializingInboundRequestError" title="InitializingInboundRequestError">
+                                <a class="errors" href="errors.html#InitializingInboundRequestError">InitializingInboundRequestError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a listener error that occurred due to inbound request initialization failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="InitializingInboundResponseError" title="InitializingInboundResponseError">
+                                <a class="errors" href="errors.html#InitializingInboundResponseError">InitializingInboundResponseError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred due to inbound response initialization failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="InitializingOutboundRequestError" title="InitializingOutboundRequestError">
+                                <a class="errors" href="errors.html#InitializingOutboundRequestError">InitializingOutboundRequestError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred due to outbound request initialization failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="InitializingOutboundResponseError" title="InitializingOutboundResponseError">
+                                <a class="errors" href="errors.html#InitializingOutboundResponseError">InitializingOutboundResponseError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a listener error that occurred due to outbound response initialization failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="Initiating100ContinueResponseError" title="Initiating100ContinueResponseError">
+                                <a class="errors" href="errors.html#Initiating100ContinueResponseError">Initiating100ContinueResponseError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents an error that occurred due to 100 continue response initialization failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="LoadBalanceActionError" title="LoadBalanceActionError">
+                                <a class="errors" href="errors.html#LoadBalanceActionError">LoadBalanceActionError</a>
+                            </td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="MaximumWaitTimeExceededError" title="MaximumWaitTimeExceededError">
+                                <a class="errors" href="errors.html#MaximumWaitTimeExceededError">MaximumWaitTimeExceededError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred exceeding maximum wait time</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="ReadingInboundRequestBodyError" title="ReadingInboundRequestBodyError">
+                                <a class="errors" href="errors.html#ReadingInboundRequestBodyError">ReadingInboundRequestBodyError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a listener error that occurred while writing the inbound request entity body</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="ReadingInboundRequestHeadersError" title="ReadingInboundRequestHeadersError">
+                                <a class="errors" href="errors.html#ReadingInboundRequestHeadersError">ReadingInboundRequestHeadersError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a listener error that occurred while reading inbound request headers</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="ReadingInboundResponseBodyError" title="ReadingInboundResponseBodyError">
+                                <a class="errors" href="errors.html#ReadingInboundResponseBodyError">ReadingInboundResponseBodyError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred while reading inbound response entity body</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="ReadingInboundResponseHeadersError" title="ReadingInboundResponseHeadersError">
+                                <a class="errors" href="errors.html#ReadingInboundResponseHeadersError">ReadingInboundResponseHeadersError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred while reading inbound response headers</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="SslError" title="SslError">
+                                <a class="errors" href="errors.html#SslError">SslError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred due to SSL failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="UnsupportedActionError" title="UnsupportedActionError">
+                                <a class="errors" href="errors.html#UnsupportedActionError">UnsupportedActionError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred due to unsupported action invocation</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="UpstreamServiceUnavailableError" title="UpstreamServiceUnavailableError">
+                                <a class="errors" href="errors.html#UpstreamServiceUnavailableError">UpstreamServiceUnavailableError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred due to upstream service unavailability</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="Writing100ContinueResponseError" title="Writing100ContinueResponseError">
+                                <a class="errors" href="errors.html#Writing100ContinueResponseError">Writing100ContinueResponseError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents an error that occurred while writing 100 continue response</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="WritingOutboundRequestBodyError" title="WritingOutboundRequestBodyError">
+                                <a class="errors" href="errors.html#WritingOutboundRequestBodyError">WritingOutboundRequestBodyError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred while writing outbound request entity body</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="WritingOutboundRequestHeadersError" title="WritingOutboundRequestHeadersError">
+                                <a class="errors" href="errors.html#WritingOutboundRequestHeadersError">WritingOutboundRequestHeadersError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a client error that occurred while writing outbound request headers</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="WritingOutboundResponseBodyError" title="WritingOutboundResponseBodyError">
+                                <a class="errors" href="errors.html#WritingOutboundResponseBodyError">WritingOutboundResponseBodyError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a listener error that occurred while writing outbound response entity body</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="WritingOutboundResponseHeadersError" title="WritingOutboundResponseHeadersError">
+                                <a class="errors" href="errors.html#WritingOutboundResponseHeadersError">WritingOutboundResponseHeadersError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a listener error that occurred while writing outbound response headers</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="WsConnectionClosureError" title="WsConnectionClosureError">
+                                <a class="errors" href="errors.html#WsConnectionClosureError">WsConnectionClosureError</a>
+                            </td>
+                            <td class="module-desc"><p>Raised during failures in connection closure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="WsConnectionError" title="WsConnectionError">
+                                <a class="errors" href="errors.html#WsConnectionError">WsConnectionError</a>
+                            </td>
+                            <td class="module-desc"><p>Raised during connection failures</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="WsGenericError" title="WsGenericError">
+                                <a class="errors" href="errors.html#WsGenericError">WsGenericError</a>
+                            </td>
+                            <td class="module-desc"><p>Raised for errors not captured by the specific errors</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="WsInvalidContinuationFrameError" title="WsInvalidContinuationFrameError">
+                                <a class="errors" href="errors.html#WsInvalidContinuationFrameError">WsInvalidContinuationFrameError</a>
+                            </td>
+                            <td class="module-desc"><p>Raised when an out of order/invalid continuation frame is received</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="WsInvalidHandshakeError" title="WsInvalidHandshakeError">
+                                <a class="errors" href="errors.html#WsInvalidHandshakeError">WsInvalidHandshakeError</a>
+                            </td>
+                            <td class="module-desc"><p>Raised during the handshake when the WebSocket upgrade fails</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="WsPayloadTooBigError" title="WsPayloadTooBigError">
+                                <a class="errors" href="errors.html#WsPayloadTooBigError">WsPayloadTooBigError</a>
+                            </td>
+                            <td class="module-desc"><p>Raised when receiving a frame with a payload exceeding the maximum size</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="WsProtocolError" title="WsProtocolError">
+                                <a class="errors" href="errors.html#WsProtocolError">WsProtocolError</a>
+                            </td>
+                            <td class="module-desc"><p>Raised when the other side breaks the protocol</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+</body>
+</html>

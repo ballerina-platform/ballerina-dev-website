@@ -1,0 +1,21 @@
+.sendEmail {
+    padding: 10px 20px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background-color: #20b6b0;
+    color: #fff;
+    margin: 5px 0px;
+    border: none;
+}
+
+.sendEmail:hover {
+    background-color: #464646;
+    color: #fff !important;
+}
+
+@media (min-width: 992px) {
+    .sendEmail {
+        width: 50%;
+    }
+}

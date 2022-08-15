@@ -1,0 +1,17 @@
+{
+  "title": "Sequence diagrams",
+  "description": "This BBE demonstrates Ballerina's sequence diagrams",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "sequence diagram",
+    "diagram"
+  ],
+  "permalink": "/learn/by-example/sequence-diagrams",
+  "active": "sequence-diagrams",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/sequence-diagrams",
+    "/swan-lake/learn/by-example/sequence-diagrams.html"
+  ]
+}

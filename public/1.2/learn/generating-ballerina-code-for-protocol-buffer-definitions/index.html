@@ -1,0 +1,1126 @@
+---
+redirect_from:
+  - /1.2/learn/cli-documentation/grpc/
+  - /1.2/learn/cli-documentation/grpc
+---
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for Protocol Buffer definitions." />
+
+<meta name="author" content="WSO2, Inc.">
+
+<meta name="keywords" content="ballerina, protocol buffers, programming language" />
+
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title>Generating Ballerina Code for Protocol Buffer Definitions</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Ballerina - Generating Ballerina Code for Protocol Buffer Definitions" />
+
+<meta property="og:description" content="The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for Protocol Buffer definitions." />
+
+ 
+<meta property="og:image" itemprop="image" content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png" />
+
+
+<!-- <meta name="twitter:image:width" content="610"> -->
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png
+"/>
+<meta property='og:description' itemprop="image" content="The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for Protocol Buffer definitions."/>
+
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina"> 
+<meta name="twitter:card" content="summary_large_image"> 
+
+<meta property="twitter:description" content="The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for Protocol Buffer definitions." />
+
+<meta name="twitter:image" content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png
+ ">
+
+<meta property="twitter:text:description" content="The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for Protocol Buffer definitions." />
+
+<meta property='twitter:image' content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"/>
+
+
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="/js/latest-jquery.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+
+<!-- 
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css"> -->
+
+
+
+
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<!-- <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" /> -->
+<!-- <link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" /> -->
+<!-- <script type="text/javascript" src="/js/highlight.pack.js"></script> -->
+
+<link rel="stylesheet" href="/css/prism.css">
+
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars/4.7.6/handlebars.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var base_download_url = 'https://dist.ballerina.io/downloads';
+   
+   var base_releasenote_url = ''.concat('/downloads/1.2.x-release-notes');
+   var base_swanlake_releasenote_url = ''.concat('/downloads/swan-lake-release-notes');
+</script>
+
+<link href="/css/prism.css" rel="stylesheet" />
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+      <link rel="stylesheet" href="/css/ballerina-io-learn-v2.css">
+   
+      
+   
+      
+
+      <link href="/css/abixTreeList.css" rel="stylesheet">
+
+   </head>
+   <body class="cBallerina-io" id="top">
+      <style>
+    .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+    .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+    .cBallerina-io-Gray-row {
+       padding-top: 70px !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .cBallerina-io-Gray-row {
+       padding-top: 140px !important;
+    }
+
+    #noscript-warning{
+        position: relative;
+    text-align: center;
+    padding: 7px 15px;
+    background-color: #57595d;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    }
+</style>
+<noscript>
+    <div id="noscript-warning">Ballerina works best with JavaScript enabled.</div>
+</noscript>
+     <div class="cVersionChangeBanner">
+        This documentation is for Ballerina 1.2.0. <a href="https://ballerina.io/learn/" class="cInfoBannerLink">View documentation for the latest release</a>.
+    </div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina" /></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="/downloads/">Download</a>
+                            </li>
+                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="https://play.ballerina.io/"
+                                    target="_blank">Playground</a>
+                            </li>
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <!--<li class="active toctree-l1" id="eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>-->
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                    target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink"
+                                    href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu">
+                               
+                                <!-- at the end of the HEAD -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<style>
+  .algolia-search-cont {
+    margin-top: -10px;
+  }
+  .algolia-search-wrap {
+    display: flex;
+    align-items: center;
+  }
+  .algolia-search-cont .search-icon {
+    margin-right: 10px;
+  }
+  .algolia-search-cont .algolia-search-box {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+  }
+</style>
+<div class="algolia-search-cont">
+  <div class="algolia-search-wrap form-control">
+    <span
+      class="glyphicon glyphicon-search search-icon"
+      aria-hidden="true"
+    ></span>
+    <input
+      autocapitalize="off"
+      autocomplete="off"
+      autocorrect="off"
+      placeholder="Search..."
+      role="textbox"
+      spellcheck="false"
+      type="text"
+      value=""
+      class="algolia-search-box"
+      id="algolia-search-box"
+    />
+  </div>
+</div>
+
+<!-- at the end of the BODY -->
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"
+></script>
+<script type="text/javascript">
+  docsearch({
+    apiKey: "024f45d96c2949b32403db36d4016c23",
+    indexName: "ballerina",
+    inputSelector: "#algolia-search-box",
+    debug: false, // Set debug to true if you want to inspect the dropdown
+  });
+</script>
+
+                                <!-- <form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field"
+                                        type="search" placeholder="Search" aria-label="Search"><a id="searchBtn"
+                                        href="#" class="cSearchButton"><img src="/img/search.svg" /></a></form> -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-Home-Middle-col">
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Then we build the nav bar. -->
+<nav class="cLeftNavContainer">
+   <ul class="cMainLeftNav">
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Setting up Ballerina</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/installing-ballerina/">- Installing Ballerina</a></li> -->
+            <li><a href="/1.2/learn/installing-ballerina/">Installing Ballerina</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/setting-up-visual-studio-code/">- Setting up Visual Studio Code</a></li> -->
+            <li><a href="/1.2/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/setting-up-intellij-idea/">- Setting up IntelliJ IDEA</a></li> -->
+            <li><a href="/1.2/learn/setting-up-intellij-idea/">Setting up IntelliJ IDEA</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Ballerina CLI Tools</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/using-the-cli-tools/">- Using the CLI Tools</a></li> -->
+            <li><a href="/1.2/learn/using-the-cli-tools/">Using the CLI Tools</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/keeping-ballerina-up-to-date">- Keeping Ballerina Up To Date</a></li> -->
+            <li><a href="/1.2/learn/keeping-ballerina-up-to-date">Keeping Ballerina Up To Date</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/using-the-openapi-tools/">- Using the OpenAPI Tools</a></li> -->
+            <li><a href="/1.2/learn/using-the-openapi-tools/">Using the OpenAPI Tools</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/generating-ballerina-code-for-protocol-buffer-definitions">- Generating Ballerina Code for Protocol Buffer Definitions</a></li> -->
+            <li class="current-sub"><a href="/1.2/learn/generating-ballerina-code-for-protocol-buffer-definitions">Generating Ballerina Code for Protocol Buffer Definitions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Code Organization</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/structuring-ballerina-code/">- Structuring Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/structuring-ballerina-code/">Structuring Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/documenting-ballerina-code/">- Documenting Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/documenting-ballerina-code/">Documenting Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/coding-conventions/">- Coding Conventions</a></li> -->
+            <li><a href="/1.2/learn/coding-conventions/">Coding Conventions</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/running-ballerina-code/">- Running Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/running-ballerina-code/">Running Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/publishing-modules-to-ballerina-central">- Publishing Modules to Ballerina Central</a></li> -->
+            <li><a href="/1.2/learn/publishing-modules-to-ballerina-central">Publishing Modules to Ballerina Central</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Deployment</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/docker/">- Docker</a></li> -->
+            <li><a href="/1.2/learn/deployment/docker/">Docker</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/kubernetes/">- Kubernetes</a></li> -->
+            <li><a href="/1.2/learn/deployment/kubernetes/">Kubernetes</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/aws-lambda/">- AWS Lambda</a></li> -->
+            <li><a href="/1.2/learn/deployment/aws-lambda/">AWS Lambda</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/azure-functions/">- Azure Functions</a></li> -->
+            <li><a href="/1.2/learn/deployment/azure-functions/">Azure Functions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Observability</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/observing-ballerina-code">- Observing Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/observing-ballerina-code">Observing Ballerina Code</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Interoperability</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/calling-java-code-from-ballerina/">- Calling Java Code from Ballerina</a></li> -->
+            <li><a href="/1.2/learn/calling-java-code-from-ballerina/">Calling Java Code from Ballerina</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Security</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/writing-secure-ballerina-code">- Writing Secure Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/writing-secure-ballerina-code">Writing Secure Ballerina Code</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Testing Ballerina Code</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/testing-quick-start">- Quick Start</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/testing-quick-start">Quick Start</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/writing-tests">- Writing Tests</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/writing-tests">Writing Tests</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/mocking">- Mocking</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/mocking">Mocking</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/executing-tests">- Executing Tests</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/executing-tests">Executing Tests</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Extending Ballerina</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/extending-with-compiler-extensions">- Extending with Compiler Extensions</a></li> -->
+            <li><a href="/1.2/learn/extending-with-compiler-extensions">Extending with Compiler Extensions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+   </ul>
+</nav>
+
+               </div>
+               <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-12 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down"
+  >
+  <ul id="breadcrumb-list" class=" cBalleinaBreadcrumbs list-unstyled  wy-breadcrumbs" vocab="http://schema.org/"
+    typeof="BreadcrumbList">
+
+
+    
+    <li><a href="/">Home</a></li>
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/">1.2</a>
+    </li>
+    
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/learn/">Learn</a>
+    </li>
+    
+    
+    
+    <li>/</li> Generating Ballerina Code for Protocol Buffer Definitions
+    
+    
+
+  </ul>
+</nav>
+<style type="text/css">
+  .cBalleinaBreadcrumbs li {
+    margin-right: 10px;
+  }
+</style>
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <!-- <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs cGitLink">
+                        
+                     </div> -->
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container cPositionRelative">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+
+
+                                 <div class="col-xs-11 col-md-11 col-lg-11 cNoPadding">
+                                    <h1>Generating Ballerina Code for Protocol Buffer Definitions</h1>
+                                 </div>
+                                 <!-- <div class="col-xs-1 col-md-1 col-lg-1 cNoPadding cGithubContainer">
+                                    <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-dev-website/blob/master/1.2/learn/generating-ballerina-code-for-protocol-buffer-definitions.md"></a>
+                                 </div> -->
+                                 <div class="col-xs-12 col-md-12 col-lg-12 cNoPadding">
+                                    <p>The 'Protocol Buffers to Ballerina' tool provides capabilities to generate Ballerina source code for Protocol Buffer definitions.</p>
+                                    <div class="cBallerinaTocContainer" id="table-of-content">
+                                       <ul id="tree">
+  <li><a href="#usage-of-the-tool">Usage of the Tool</a></li>
+  <li><a href="#cli-command">CLI Command</a>
+    <ul>
+      <li><a href="#cli-command-options">CLI Command Options</a></li>
+    </ul>
+  </li>
+  <li><a href="#sample">Sample</a>
+    <ul>
+      <li><a href="#executing-the-sample">Executing the Sample</a></li>
+    </ul>
+  </li>
+</ul>
+
+                                    </div>
+                                    <h2 id="usage-of-the-tool">Usage of the Tool</h2>
+
+<p>The code generation tool can produce <code class="language-plaintext highlighter-rouge">ballerina stub</code> and <code class="language-plaintext highlighter-rouge">ballerina service/client template</code> files.</p>
+
+<blockquote>
+  <p>In Ballerina, Protocol Buffers serialization is only supported in the gRPC module. Therefore, you can only use this tool to generate Ballerina source code for gRPC service definitions.</p>
+</blockquote>
+
+<h2 id="cli-command">CLI Command</h2>
+
+<p>You can generate Ballerina source code using the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./ballerina grpc --input &lt;proto-file-path&gt; [--output &lt;path&gt;] [--mode client | service]
+</code></pre></div></div>
+
+<h3 id="cli-command-options">CLI Command Options</h3>
+
+<p><code class="language-plaintext highlighter-rouge">--input</code>  - Path of the input .proto file. This is a mandatory field. You need to provide the path of the definition
+ file.</p>
+
+<p><code class="language-plaintext highlighter-rouge">--output</code> - Location of the generated Ballerina source files. This is an optional field. 
+If the output path is not specified, the output will be written to a directory corresponding to the package in the Protocol
+ Buffers definition. 
+If the package is not specified, the output will be written to a ‘temp’ directory in the current location.</p>
+
+<p><code class="language-plaintext highlighter-rouge">--mode</code>   - Set the mode (client or service) to generate code samples. If not specified, only the stub file is
+ generated.</p>
+
+<h2 id="sample">Sample</h2>
+
+<p>The below example shows how you can generate Ballerina source code from the following Protocol Buffers definition (in the <code class="language-plaintext highlighter-rouge">helloworld_service.proto</code> file).</p>
+
+<div class="language-proto highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">syntax</span> <span class="o">=</span> <span class="s">"proto3"</span><span class="p">;</span>
+
+<span class="kd">service</span> <span class="n">helloWorld</span> <span class="p">{</span>
+    <span class="k">rpc</span> <span class="n">sayHello</span><span class="p">(</span><span class="n">HelloRequest</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">HelloResponse</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">HelloRequest</span> <span class="p">{</span>
+	<span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">message</span> <span class="nc">HelloResponse</span> <span class="p">{</span>
+	<span class="kt">string</span> <span class="kd">message</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="executing-the-sample">Executing the Sample</h3>
+
+<ul>
+  <li>Execute the below command to generate the service template file.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ballerina grpc --input helloworld_service.proto --mode service --output service
+</code></pre></div>    </div>
+    <p>Once you execute the command, the service template file (<code class="language-plaintext highlighter-rouge">helloWorld_sample_service.bal</code>) is generated inside the service directory.</p>
+    <blockquote>
+      <p><strong>Note:</strong> If you have multiple services in a Protocol Buffers definition, this command will generate a stub file with common message types and a service template file for each service definition. This is to avoid duplicating message types in all the service files.</p>
+    </blockquote>
+  </li>
+  <li>Execute the below command to generate the client/service stub and client template.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ballerina grpc --input helloworld_service.proto --mode client --output client
+</code></pre></div>    </div>
+    <p>Once you execute the command, the stub file(<code class="language-plaintext highlighter-rouge">helloworld_service_pb.bal</code>) and the service template file (<code class="language-plaintext highlighter-rouge">helloWorld_sample_client.bal</code>) are generated inside the client directory.</p>
+  </li>
+  <li>Execute the below command to generate only the client/service stub.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ballerina grpc --input helloworld_service.proto --output stubs
+</code></pre></div>    </div>
+    <p>Once you execute the command, only the stub file (<code class="language-plaintext highlighter-rouge">helloworld_service_pb.bal</code>) is generated inside the <code class="language-plaintext highlighter-rouge">stubs</code> directory.</p>
+  </li>
+</ul>
+
+   
+                                 </div>
+
+                                
+
+
+                         
+
+
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <a class="cTopLink" href="#top">Back to Top &#x2934;</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">DOWNLOAD</a></li>
+            <!--<li><a class="cBioFooterLink" href="/community/#report-issues">REPORT ISSUES</a></li>-->
+            <li data-toggle="modal" data-target="#reportissues" data-whatever="@mdo"><a href="/community/#report-issues">REPORT ISSUES</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">CODE LICENSE</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">SITE LICENSE</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            <li><a class="cBioFooterLink" href="/trademark-usage-policy/">TRADEMARK USAGE POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack-2022.svg" style="width:17px; height:17px;"/></a></li>
+                <li><a class="cBioFooterLink" href="https://www.youtube.com/c/Ballerinalang"><img style="width: 15px;" src="/img/youtube-icon.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+
+
+           <a class="cNLButton" href="/community/#subscribe-to-the-newsletter">Subscribe to the newsletter</a> 
+
+           <div class="modal fade" id="reportissues" tabindex="-1" role="dialog" aria-labelledby="reportissueslabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" style="padding:15px;border-radius:0px;">
+                <div class="modal-header">
+                  <h3 class="modal-title" style="color: #20b6b0;">Report Issues</h3>
+                  <p style="padding: 10px 0px ;">Report issues in the GitHub repositories of the areas and components listed below.
+                  </p>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" style="background-color: #fff; font-size: 20; color: #465867;font-size: 20px;">
+                  <ul class="b">
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank"> Compiler, runtime, or tooling</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank"> Standard Library</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">  Language specification</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">  Website</a></li>
+                    <li><a class="linkText" href="mailto:security@ballerina.io" target="_blank">Security</a> <span style="font-size: 16px;">(For details, see the</span> <a class="linkText" href="/security" target="_blank">security policy</a>.)</li>
+                  </ul>  
+                
+                </div>
+                <div class="modal-footer">
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<div class="cCookie-Policy">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <!-- <div class="closebuttoon"><img src="/img/close-w.svg"/></div> -->
+<h4>Cookie policy</h4>
+<p>This website uses cookies so that we can provide you with the best user experience. Read our <a href="https://ballerina.io/cookie-policy/">Cookie policy</a></a> to find out more.</p>
+<p>If you wish to disable cookies you can do so from your browser. </p>
+  
+<!-- <a href="https://ballerina.io/cookie-policy/"></a> -->
+<a class="cIUnderstand ">I understand </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/prism.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-core.min.js"></script> -->
+<script src="/js/prism-ballerina.js"></script>
+
+
+
+<script>
+
+$(".cIUnderstand ").click(function() {
+    $(".cCookie-Policy").addClass('cHide-Policy');
+   
+    
+});
+
+
+
+</script>
+
+
+<!-- 
+<script>
+    (function () {
+
+if (typeof self === 'undefined' || !self.Prism || !self.document) {
+    return;
+}
+
+/**
+ * Plugin name which is used as a class name for <pre> which is activating the plugin
+ * @type {String}
+ */
+var PLUGIN_NAME = 'line-numbers';
+
+/**
+ * Regular expression used for determining line breaks
+ * @type {RegExp}
+ */
+var NEW_LINE_EXP = /\n(?!$)/g;
+
+/**
+ * Resizes line numbers spans according to height of line of code
+ * @param {Element} element <pre> element
+ */
+var _resizeElement = function (element) {
+    var codeStyles = getStyles(element);
+    var whiteSpace = codeStyles['white-space'];
+
+    if (whiteSpace === 'pre-wrap' || whiteSpace === 'pre-line') {
+        var codeElement = element.querySelector('code');
+        var lineNumbersWrapper = element.querySelector('.line-numbers-rows');
+        if (!codeElement || !lineNumbersWrapper) {
+            return;
+        }
+        var lineNumberSizer = element.querySelector('.line-numbers-sizer');
+        var codeLines = codeElement.textContent.split(NEW_LINE_EXP);
+
+        if (!lineNumberSizer) {
+            lineNumberSizer = document.createElement('span');
+            lineNumberSizer.className = 'line-numbers-sizer';
+
+            codeElement.appendChild(lineNumberSizer);
+        }
+
+        lineNumberSizer.style.display = 'block';
+
+        codeLines.forEach(function (line, lineNumber) {
+            lineNumberSizer.textContent = line || '\n';
+            var lineSize = lineNumberSizer.getBoundingClientRect().height;
+            lineNumbersWrapper.children[lineNumber].style.height = lineSize + 'px';
+        });
+
+        lineNumberSizer.textContent = '';
+        lineNumberSizer.style.display = 'none';
+    }
+};
+
+/**
+ * Returns style declarations for the element
+ * @param {Element} element
+ */
+var getStyles = function (element) {
+    if (!element) {
+        return null;
+    }
+
+    return window.getComputedStyle ? getComputedStyle(element) : (element.currentStyle || null);
+};
+
+window.addEventListener('resize', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('pre.' + PLUGIN_NAME), _resizeElement);
+});
+
+Prism.hooks.add('complete', function (env) {
+    if (!env.code) {
+        return;
+    }
+
+    var code = env.element;
+    var pre = code.parentNode;
+
+    // works only for <code> wrapped inside <pre> (not inline)
+    if (!pre || !/pre/i.test(pre.nodeName)) {
+        return;
+    }
+
+    // Abort if line numbers already exists
+    if (code.querySelector('.line-numbers-rows')) {
+        return;
+    }
+
+    var addLineNumbers = false;
+    var lineNumbersRegex = /(?:^|\s)line-numbers(?:\s|$)/;
+
+    for (var element = code; element; element = element.parentNode) {
+        if (lineNumbersRegex.test(element.className)) {
+            addLineNumbers = true;
+            break;
+        }
+    }
+
+    // only add line numbers if <code> or one of its ancestors has the `line-numbers` class
+    if (!addLineNumbers) {
+        return;
+    }
+
+    // Remove the class 'line-numbers' from the <code>
+    code.className = code.className.replace(lineNumbersRegex, ' ');
+    // Add the class 'line-numbers' to the <pre>
+    if (!lineNumbersRegex.test(pre.className)) {
+        pre.className += ' line-numbers';
+    }
+
+    var match = env.code.match(NEW_LINE_EXP);
+    var linesNum = match ? match.length + 1 : 1;
+    var lineNumbersWrapper;
+
+    var lines = new Array(linesNum + 1).join('<span></span>');
+
+    lineNumbersWrapper = document.createElement('span');
+    lineNumbersWrapper.setAttribute('aria-hidden', 'true');
+    lineNumbersWrapper.className = 'line-numbers-rows';
+    lineNumbersWrapper.innerHTML = lines;
+
+    if (pre.hasAttribute('data-start')) {
+        pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+    }
+
+    env.element.appendChild(lineNumbersWrapper);
+
+    _resizeElement(pre);
+
+    Prism.hooks.run('line-numbers', env);
+});
+
+Prism.hooks.add('line-numbers', function (env) {
+    env.plugins = env.plugins || {};
+    env.plugins.lineNumbers = true;
+});
+
+/**
+ * Global exports
+ */
+Prism.plugins.lineNumbers = {
+    /**
+     * Returns the node of the given line number in the given element.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @param {Number} number
+     * @returns {Element | undefined}
+     */
+    getLine: function (element, number) {
+        if (element.tagName !== 'PRE' || !element.classList.contains(PLUGIN_NAME)) {
+            return;
+        }
+
+        var lineNumberRows = element.querySelector('.line-numbers-rows');
+        var lineNumberStart = parseInt(element.getAttribute('data-start'), 10) || 1;
+        var lineNumberEnd = lineNumberStart + (lineNumberRows.children.length - 1);
+
+        if (number < lineNumberStart) {
+            number = lineNumberStart;
+        }
+        if (number > lineNumberEnd) {
+            number = lineNumberEnd;
+        }
+
+        var lineIndex = number - lineNumberStart;
+
+        return lineNumberRows.children[lineIndex];
+    },
+    /**
+     * Resizes the line numbers of the given element.
+     *
+     * This function will not add line numbers. It will only resize existing ones.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @returns {void}
+     */
+    resize: function (element) {
+        _resizeElement(element);
+    }
+};
+
+}());
+</script> -->
+
+<!-- 
+<style>
+    pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style> -->
+
+      <script src="/js/theme.js"></script>
+      <script>
+         $(document).ready(function () {
+            var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
+            $('[data-button="iGitStarText"]').replaceWith(gitstar);
+         
+            var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
+            $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+         
+         });
+         
+     </script>
+     <script src="/js/ballerina-leftnav.js"></script>
+
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script src="/js/abixTreeList.min.js"></script>
+     <script>
+         $(document).ready(function() {
+             $('#tree').abixTreeList();
+         });
+
+
+
+
+
+         $(window).scroll(function () {
+        var bodyclass = document.body;
+
+        if ($(this).scrollTop() > 200) {
+            $('.cTopLink').removeClass('dispalaynone');
+          
+        } else {
+            $('.cTopLink').addClass('dispalaynone');
+          
+        }
+
+   
+
+
+    });
+
+     </script>
+
+
+
+
+   </body>
+</html>
+

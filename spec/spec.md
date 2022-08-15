@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 ---
 layout: ballerina-platform-specifications-left-nav-pages-swanlake
 title: Ballerina specifications
@@ -106,4 +104,3 @@ td {
 }
 li.cVersionItem  {display: none !important;}
 </style>
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f

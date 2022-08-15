@@ -33,7 +33,7 @@ The test report contains the total passed, failed, and skipped tests of the enti
 
 ***Example:***
 
-```bash
+```
 $ bal test --test-report
 ```
 
@@ -59,7 +59,7 @@ The code coverage only includes the Ballerina source files being tested and not 
 
 ***Example:***
 
-```bash
+```
 $ bal test --test-report --code-coverage
 ```
 

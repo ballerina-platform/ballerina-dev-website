@@ -41,7 +41,7 @@ public function main() returns error? {
 
 Execute the `bal run https_client_demo.bal` command and the output will be as follows:
 
-```bash
+```
 Payload: {
     "args": {},
     "headers": {
@@ -76,7 +76,7 @@ public function main() returns error? {
 
 Execute the `bal run https_client_cert_demo.bal` command and the output will be as follows.
 
-```bash
+```
 Payload: {
     "args": {},
     "headers": {
@@ -114,7 +114,7 @@ public function main() returns error? {
 
 Execute the `bal run https_client_truststore_demo.bal` command and the output will be as follows.
 
-```bash
+```
 Payload: {
     "args": {},
     "headers": {

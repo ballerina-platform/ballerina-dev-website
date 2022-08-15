@@ -48,7 +48,7 @@ The following Azure Functions triggers and bindings are currently supported in B
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and an HTTP output binding to respond to the caller with a message. 
 
 Create a Ballerina package.
-```bash
+```
 $ bal new azure_functions_deployment
 ```
 Replace the contents of the generated BAL file with the following content.
@@ -73,7 +73,7 @@ This HTTP output binding can also be defined as a parameter with the same annota
 
 The Azure Functions functionality is implemented as a compiler extension. Thus, artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
 
-```bash
+```
 $ bal build
 Compiling source
 	wso2/azure_functions_deployment:0.1.0
@@ -94,7 +94,7 @@ The created resource group and the function app name should be provided to the p
 
 A sample execution to deploy the functions to Azure Functions is shown below. 
 
-```bash
+```
 $ az functionapp deployment source config-zip -g <function_app_name> -n <function_app_name> --src <package_dir>/target/bin/azure-functions.zip
 Getting scm site credentials for zip deployment
 Starting zip deployment. This operation can take a while to complete ...
@@ -127,7 +127,7 @@ Deployment endpoint responded with status code 202
 
 The deployed Azure Function can be tested by invoking it using an HTTP client such as cURL:
 
-```bash
+```
 $ curl -d "Hello!" https://<function_app_name>.azurewebsites.net/api/hello 
 Hello, Hello!%
 ```
@@ -159,7 +159,7 @@ Build the package by executing the `bal build` command on the package directory,
 
 Now, the deployed Azure Function can be tested by invoking it using an HTTP client such as cURL. 
 
-```bash
+```
 $ curl -d "Hello!" https://<function_app_name>.azurewebsites.net/api/fromHttpToQueue 
 Request: url=https://<function_app_name>.azurewebsites.net/api/fromHttpToQueue method=POST query= headers=Accept=*/* Connection=Keep-Alive Content-Length=6 Content-Type=application/x-www-form-urlencoded Host=<function_app_name>.azurewebsites.net Max-Forwards=9 User-Agent=curl/7.64.0 X-WAWS-Unencoded-URL=/api/fromHttpToQueue CLIENT-IP=10.0.128.31:47794 X-ARR-LOG-ID=c905b483-af19-4cf2-9ce0-0741e5998a98 X-SITE-DEPLOYMENT-ID=<function_app_name> WAS-DEFAULT-HOSTNAME=<function_app_name>.azurewebsites.net X-Original-URL=/api/fromHttpToQueue X-Forwarded-For=45.30.94.9:47450 X-ARR-SSL=2048|256|C=US, S=Washington, L=Redmond, O=Microsoft Corporation, OU=Microsoft IT, CN=Microsoft IT TLS CA 5|CN=*.azurewebsites.net X-Forwarded-Proto=https X-AppService-Proto=https X-Forwarded-TlsVersion=1.2 DISGUISED-HOST=<function_app_name>.azurewebsites.net params= identities=[{"AuthenticationType":null,"IsAuthenticated":false,"Actor":null,"BootstrapContext":null,"Claims":[],"Label":null,"Name":null,"NameClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","RoleClaimType":"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"}] body=Hello!
 ```

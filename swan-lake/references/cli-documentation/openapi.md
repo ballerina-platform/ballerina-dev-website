@@ -14,7 +14,7 @@ redirect_from:
 
 The OpenAPI to Ballerina command supports several usages in the Ballerina OpenAPI tool as follows.
 
-```bash
+```
 bal openapi [-i | --input] <openapi-contract-file-path> 
             [-o | --output] <output-location>
             [--mode] <mode-type>
@@ -43,7 +43,7 @@ The command-line arguments below can be used with the command for each particula
 
 The Ballerina to OpenAPI command supports several usages in the Ballerina OpenAPI tool as follows.
 
-```bash
+```
 bal openapi [-i | --input] <ballerina-service-file-path> [--json]
             [-s | --service] <current-service-name>
             [-o | --output] <output-location>

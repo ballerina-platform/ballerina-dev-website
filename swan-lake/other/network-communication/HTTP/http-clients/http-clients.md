@@ -67,7 +67,7 @@ public function main() returns @tainted error? {
 
 Execute the `bal run client_demo_get.bal` command and the output will be as follows.
 
-```bash
+```
 Payload: {"args":{},"headers":{"Host":"httpbin.org","User-Agent":"ballerina","X-Amzn-Trace-Id":"Root=1-5fd3b719-0d5a1625098ad73b53c0c094"},"origin":"45.30.94.9","url":"http://httpbin.org/get"}
 ```
 
@@ -93,7 +93,7 @@ public function main() returns @tainted error? {
 
 Execute the `bal run client_demo_get.bal` command and the output will be as follows.
 
-```bash
+```
 Payload: {"args":{},"data":"Hello!","files":{},"form":{},"headers":{"Content-Length":"6","Content-Type":"text/plain","Host":"httpbin.org","User-Agent":"ballerina","X-Amzn-Trace-Id":"Root=1-5fd3b957-4110242263315d0a3fa66dcc","X-User":"Jack"},"json":null,"origin":"45.30.94.9","url":"http://httpbin.org/post"}
 ```
 

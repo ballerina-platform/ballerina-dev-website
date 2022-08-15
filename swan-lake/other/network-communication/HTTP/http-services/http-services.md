@@ -55,7 +55,7 @@ service / on new http:Listener(8080) {
 
 The execution of the service and its invocation is shown below. 
 
-```bash
+```
 $ bal run demo.bal
 Compiling source
     	demo.bal
@@ -86,7 +86,7 @@ service /base on new http:Listener(8080) {
 
 The execution of the service and its invocation is shown below. 
 
-```bash
+```
 $ bal run demo.bal
 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
@@ -113,7 +113,7 @@ service / on new http:Listener(8080) {
 
 The execution of the service and its invocation is shown below. 
 
-```bash
+```
 $ bal run demo.bal
  
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
@@ -142,7 +142,7 @@ service / on new http:Listener(8080) {
 
 The execution of the service and its invocation is shown below. 
 
-```bash
+```
 $ bal run demo.bal
  
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
@@ -168,7 +168,7 @@ service / on new http:Listener(8080) {
 
 The execution of the service and its invocation is shown below.
 
-```bash
+```
 $ bal run demo.bal
  
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
@@ -203,7 +203,7 @@ service / on new http:Listener(8080) {
 
 The execution of the service and its invocation is shown below.
 
-```bash
+```
 $ bal run demo.bal
  
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080

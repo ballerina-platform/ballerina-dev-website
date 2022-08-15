@@ -14,7 +14,7 @@ redirect_from:
 
 The GraphQL to Ballerina command supports several usages in the Ballerina GraphQL tool as follows.
 
-```bash
+```
 bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <output-location> 
 ```
 

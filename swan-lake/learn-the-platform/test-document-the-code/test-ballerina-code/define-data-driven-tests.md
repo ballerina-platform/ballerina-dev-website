@@ -57,7 +57,7 @@ function dataGen() returns map<[int, int, string]>|error {
 
 ***Output:***
 
-```bash
+```
 Compiling source
         ballerina_tests/dataproviders:0.1.0
 
@@ -99,7 +99,7 @@ function dataGen() returns (string[][]) {
 
 ***Output:***
 
-```bash
+```
 Compiling source
         ballerina_tests/dataproviders:0.1.0
 
@@ -126,7 +126,7 @@ You can make use of wild cards(`*`) to capture multiple cases as well.
 The following is an example to execute map data sets.
 >**Note:** Include the key within double-quotes.
 
-```bash
+```
 $ bal test --tests fruitsDataProviderTest#"'banana'"
 
 Compiling source
@@ -147,7 +147,7 @@ Running Tests
 
 The following is an example to execute array data sets.
 
-```bash
+```
 $ bal test --tests stringDataProviderTest#1
 
 Compiling source

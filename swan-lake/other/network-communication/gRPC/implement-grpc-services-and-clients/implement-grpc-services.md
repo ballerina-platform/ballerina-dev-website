@@ -21,13 +21,13 @@ redirect_to:
 
 Execute the `bal new service` command to create a Ballerina package to implement the service. You view the output below.
 
-```bash
+```
 Created new Ballerina package 'service' at service.
 ```
 
 Execute the `bal grpc --mode service --input admin.proto --output service/` command to create the gRPC service skeleton. You view the output below.
 
-```bash
+```
 Successfully extracted library files.
 Successfully generated ballerina file.
 ```

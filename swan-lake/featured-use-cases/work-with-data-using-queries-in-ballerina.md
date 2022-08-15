@@ -33,18 +33,18 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
 
 > **Info:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
-```bash
+```
 $ bal new query_expressions
 ```
 You view the output below.
 
-```bash
+```
 Created new package 'query_expressions' at query_expressions.
 ```
 
 This creates a directory named `query_expressions` with the default module along with a sample code for the service as shown below. 
 
-```bash
+```
 .
 ├── Ballerina.toml
 └── main.bal
@@ -133,7 +133,7 @@ public function main() {
 
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
-```bash
+```
 bal run
 ```
 
@@ -141,7 +141,7 @@ bal run
 
 You view the output below.
 
-```bash
+```
 Compiling source
         .../query_expressions:0.1.0
 
@@ -214,13 +214,13 @@ public function main() {
 
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
-```bash
+```
 bal run
 ```
 
 You view the output below.
 
-```bash
+```
 Compiling source
         .../query_expressions:0.1.0
 
@@ -306,13 +306,13 @@ public function main() {
 
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
-```bash
+```
 bal run
 ```
 
 You view the output below.
 
-```bash
+```
 Compiling source
         .../query_expressions:0.1.0
 
@@ -417,13 +417,13 @@ public function main() {
 
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
-```bash
+```
 bal run
 ```
 
 You view the output below.
 
-```bash
+```
 Compiling source
         .../query_expressions:0.1.0
 

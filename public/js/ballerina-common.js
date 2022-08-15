@@ -836,8 +836,8 @@ $(function() {
 //Remove frontmatter from dom
 $(document).ready(function(e) {
     var str=$('.cBallerina-io').html();
-    if (str.match(/---([\s\S]*?)---/gmi)) {
-        str = str.replace(/---([\s\S]*?)---/gmi, "");
+    if (str.match(/---\nredirect_from:([\s\S]*?)---/gmi)) {
+        str = str.replace(/---\nredirect_from:([\s\S]*?)---/gmi, "");
         $('.cBallerina-io').html(str);
     }   
 });

@@ -251,11 +251,11 @@ isolated remote function close() returns Error? = @java:Method {}
 
 Ballerina provides inbuilt support for securing TCP connections with SSL/TLS protocol.
 
-#### 5.1 [Using the TLS protocol](#51-using-the-tls-protocol)
+### 5.1 [Using the TLS protocol](#51-using-the-tls-protocol)
 
 This expects a secure socket to be set in the connection configuration as shown below.
 
-##### 5.1.1 [Configuring TLS in server side](511-configuring-tls-in-server-side)
+#### 5.1.1 [Configuring TLS in server side](511-configuring-tls-in-server-side)
 
 ```ballerina
 tcp:ListenerSecureSocket listenerSecureSocket = {
@@ -272,7 +272,7 @@ service on new tcp:Listener(9002, secureSocket = listenerSecureSocket) {
 }
 ```
 
-##### 5.1.2 [Configuring TLS in client side](512-configuring-tls-in-client-side)
+#### 5.1.2 [Configuring TLS in client side](512-configuring-tls-in-client-side)
 
 ```ballerina
 tcp:Client socketClient = check new ("localhost", 9002, secureSocket = {

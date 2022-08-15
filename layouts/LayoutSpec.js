@@ -17,9 +17,11 @@
  */
 
 import Head from 'next/head';
-import { Container, Row, Stack, Col} from 'react-bootstrap';
+import { Container, Row, Stack } from 'react-bootstrap';
+import dynamic from 'next/dynamic';
 
 export default function Layout({ children }) {
+  const Meta = dynamic(() => import('../components/common/meta/Meta'), { ssr: false });
 
   return (
     <>
@@ -32,6 +34,7 @@ export default function Layout({ children }) {
         <script type="text/javascript" crossOrigin src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"/>
         
       </Head>
+      <Meta/>
       <Stack gap={0} className='main-wrapper spec'>
         <Container className='wrap-page-content'>
           <Row >

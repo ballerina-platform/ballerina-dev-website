@@ -213,7 +213,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">format</td>
-<td class="cDescription">Format Ballerina source files as per the <a href="/learn/coding-conventions">Coding Conventions</a>.</td>
+<td class="cDescription">Format Ballerina source files as per the <a href="/learn/style-guide/coding-conventions/">Coding Conventions</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">grpc</td>
@@ -225,11 +225,11 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">openapi</td>
-<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/learn/ballerina-openapi-support/">Ballerina OpenAPI support</a>.</td>
+<td class="cDescription">This is the OpenAPI (Swagger) stub/skeleton generation tool. For more information, see <a href="/learn/openapi-tool">Ballerina OpenAPI support</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">asyncapi</td>
-<td class="cDescription">Tool to generate Ballerina sources for a given AsyncAPI definition. For more information, see <a href="/learn/ballerina-asyncapi-support/">Ballerina AsyncAPI support</a>.</td>
+<td class="cDescription">Tool to generate Ballerina sources for a given AsyncAPI definition. For more information, see <a href="/learn/asyncapi-tool">Ballerina AsyncAPI support</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>

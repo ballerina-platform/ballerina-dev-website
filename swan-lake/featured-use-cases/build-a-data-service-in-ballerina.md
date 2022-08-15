@@ -502,4 +502,4 @@ curl --location --request POST 'http://localhost:8080/employees/' \
 To learn more about MySQL and HTTP support in Ballerina, see the following:
 - [`mysql` module documentation](https://lib.ballerina.io/ballerinax/mysql/latest)
 - [`http` module documentation](https://lib.ballerina.io/ballerina/http/latest)
-- [MySQL examples](/learn/by-example/mysql-query-operation.html)
+- [MySQL examples](/learn/by-example/mysql-query-operation)

@@ -1,29 +1,37 @@
 $(document).ready(function () {
 
-    var logo = '<a class="cLogo" href="/">' +
-        ' <img src="https://ballerina.io/img/ballerina-logo.png" alt="Ballerina">' +
-        '</a>' ;
-        
-       
+    if ($('.cLogo').length == 0) {
+        var logo = '<a class="cLogo" href="/">' +
+            ' <img src="https://ballerina.io/img/ballerina-logo.png" alt="Ballerina">' +
+            '</a>';
+
+
+
+        var str = $('body').html();
+        if (str.match(/---\npermalink:([\s\S]*?)---/gmi)) {
+            str = str.replace(/---\npermalink:([\s\S]*?)---/gmi, "");
+            $('body').html(str);
+        }
+
+
         $('body').prepend(logo);
 
         var footer = '<div class="cFooter">' +
-       
-        '</div>' ;
+
+            '</div>';
 
         $('body').append(footer);
+    }
+
+});
 
 
-       });
 
-
-        
- //Remove frontmatter from dom in spec/lang htmls
-$(document).ready(function(e) {
-    var str=$('body').html();
-    if (str.match(/---([\s\S]*?)---/gmi)) {
-        str = str.replace(/---([\s\S]*?)---/gmi, "");
+// Remove frontmatter from dom in spec/lang htmls
+$(document).ready(function () {
+    var str = $('body').html();
+    if (str.match(/---\npermalink:([\s\S]*?)---/gmi)) {
+        str = str.replace(/---\npermalink:([\s\S]*?)---/gmi, "");
         $('body').html(str);
-    }   
-});         
-    
+    }
+});

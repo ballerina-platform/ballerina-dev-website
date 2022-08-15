@@ -64,3 +64,13 @@
     height: 300px;
     width: -webkit-fill-available;
 }
+
+@media not all and (min-resolution:.001dpcm) { @supports (-webkit-appearance:none) and (display:flow-root) { 
+    .videoPlayButton { top:-54%; } 
+    .videoLink {
+        position: relative;
+        height:316px;
+        display: inline-block;
+    }
+} 
+}

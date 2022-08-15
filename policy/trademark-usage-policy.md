@@ -47,71 +47,59 @@ As a rule, the Pantone colors represent the most exact matches of the brand colo
 
 COLORS VARY BETWEEN PLATFORMS AND MATCHING SYSTEMS. AS A RULE, THE PANTONE COATED CHIP SHOULD BE USED AS A MASTER.
 
-
-<div class="row cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
-  <div class="col-sm-12 col-md-1 cBoxContainer cCommunityIconsContainer">
-      <div class="cBallerina-Box">
-      <img style="width:100px" src="/img/logo-images/greyd.svg">
-      </div>
-   </div>
-   <div class="col-sm-12 col-md-2 cBoxContainer cCommunityIconsContainer">
-      <div class="cBallerina-Box">
-        <P style= "text-align: left;font-size:13.5px">Dark Gray<br>
+<div class="row">
+  <div class="col-sm-12 col-md-1 colorBlock">
+    <img style="width:100px;" src="/img/logo-images/greyd.svg">
+  </div>
+  <div class="col-sm-12 col-md-2 colorDesc">
+    <p style= "text-align: left;font-size:13.5px">Dark Gray<br>
           Pantone® 431 C<br>
           Pantone® 432 U <br>
           CMYK 0/0/0/80<br>
           RGB 88/90/94<br>
           Web #585A5E
-      </p>
-      </div>
-   </div>
-      <div class="col-sm-12 col-md-1 cBoxContainer cCommunityIconsContainer">
-      <div class="cBallerina-Box">
-      <img style="width:100px" src="/img/logo-images/blue.svg">
-      </div>
-   </div>
-    <div class="col-sm-12 col-md-2 cBoxContainer cCommunityIconsContainer">
-      <div class="cBallerina-Box">
-      <p  style= "text-align: left;font-size:13.5px">Teal<br>
+    </p>
+  </div>
+
+  <div class="col-sm-12 col-md-1 colorBlock">
+    <img style="width:100px;" src="/img/logo-images/blue.svg">
+  </div>
+  <div class="col-sm-12 col-md-2 colorDesc">
+    <p  style= "text-align: left;font-size:13.5px">Teal<br>
 Pantone® 325 C<br>
 Pantone® 325 U<br>
 CMYK 60/0/25/0<br>
 RGB 88/209/202<br>
 Web #52C3C2
       </p>
-      </div>
-   </div>
-   <div class="col-sm-12 col-md-1 cBoxContainer cCommunityIconsContainer">
-      <div class="cBallerina-Box">
-      <img style="width:100px" src="/img/logo-images/greyl.svg">
-      </div>
-   </div>
-    <div class="col-sm-12 col-md-2 cBoxContainer cCommunityIconsContainer">
-      <div class="cBallerina-Box">
-      <P  style= "text-align: left;font-size:13.5px">Lt Gray<br>
+  </div>
+
+  <div class="col-sm-12 col-md-1 colorBlock">
+    <img style="width:100px;" src="/img/logo-images/greyl.svg">
+  </div>
+  <div class="col-sm-12 col-md-2 colorDesc">
+    <p  style= "text-align: left;font-size:13.5px">Lt Gray<br>
 Pantone® 325 C<br>
 Pantone® 325 U<br>
 CMYK 0/0/0/16<br>
 RGB 230/234/235<br>
 Web #E6EAEB
       </p>
-      </div>
-   </div>
- <div class="col-sm-12 col-md-1 cBoxContainer cCommunityIconsContainer">
-      <div class="cBallerina-Box">
-      <img style="width:100px" src="/img/logo-images/white.svg">
-      </div>
-   </div>
-    <div class="col-sm-12 col-md-2 cBoxContainer cCommunityIconsContainer">
-      <div class="cBallerina-Box">
-     <P  style= "text-align: left;font-size:13.5px">White<br>
+  </div>
+
+  <div class="col-sm-12 col-md-1 colorBlock">
+    <img style="width:100px;" src="/img/logo-images/white.svg">
+  </div>
+  <div class="col-sm-12 col-md-2 colorDesc">
+    <p  style= "text-align: left;font-size:13.5px">White<br>
 CMYK 0/0/0/0<br>
 RGB 0/0/0<br>
 Web #ffffff
       </p>
-      </div>
-   </div>
+  </div>
 </div>
+
+
 
 ## General guidelines
 
@@ -137,17 +125,16 @@ If your usage of the logo is within the permitted scenarios listed above, then y
 
 <div class="row">
 <p style="Color:#494949;font-size:24px">1. Use ample clear space. </p>
-  <div class="column" style="float: left;width: 50%;padding: 10px;">
-    <!-- <p style="Color:#494949;font-size:24px">1. Use ample clear space. </p> -->
-    <p>
+<div class="col-sm-12 col-md-6">
+  <p>
        To ensure that the Ballerina logo is the most highly visible whenever used, it’s important to have plenty of clear space surrounding the logo. This specifically refers to graphics, type, and other elements that could clutter and distract from the identity of the logo.
     </p>
     <p>
     All sides of the logo must have adequate clear space, which are equal to the height of the letter "B" denoted by the "X" as shown in the diagram. The clear space around the logo will need to scale proportionally to the size of the logo.  
     </p>
-  </div>
-  <div class="column" style="float: right;width: 50%;padding: 10px;">
-    <img src="/img/logo-images/specific-2.svg" style="width:400px; margin-top:10px;">
+</div>
+<div class="col-sm-12 col-md-6">
+    <img src="/img/logo-images/specific-2.svg" style="margin-top:10px;">
   </div>
 </div>
 
@@ -155,46 +142,49 @@ ________________________________________________________________________________
 
 
 <div class="row">
-<p style="Color:#494949;font-size:24px"> 2. Use a size above the minimum. </p>
-  <div class="column" style="float: left;width: 50%;padding: 10px;">
-    <!-- <p style="Color:#494949;font-size:24px">2. Use a size above the minimum. </p> -->
-    <p>
-       Care must be taken in the reproduction of the Ballerina logo. At small sizes, the artwork loses integrity which reflects badly on the brand.
-    </p>
-    <p>
-    The minimum length should be no less than 50px (0.7 inch) and usage below 50px is not allowed. But the ideal minimum length is 75px (1.0 inch).
-    </p>
-    <img src="/img/logo-images/ballerina_logo_measurement_area.png" style="width:200px">
+  <p style="Color:#494949;font-size:24px"> 2. Use a size above the minimum. </p>
+  <div class="col-sm-12 col-md-6">
+      <p>
+        Care must be taken in the reproduction of the Ballerina logo. At small sizes, the artwork loses integrity which reflects badly on the brand.
+      </p>
+      <p>
+      The minimum length should be no less than 50px (0.7 inch) and usage below 50px is not allowed. But the ideal minimum length is 75px (1.0 inch).
+      </p>
+      <img src="/img/logo-images/ballerina_logo_measurement_area.png" style="width:200px">
   </div>
-  <div class="column" style="float: right;width: 50%;">
-        <div class="row">
-         <div class="column" style="float: left;width: 50%;padding: 10px;">
-            <p style="Color:#494949;font-size:16px">Ideal Small Sizes Print</p>
-         </div>
-         <div class="column" style="float: right;width: 50%;padding: 10px;">
-         <img style="float: center" src="/img/logo-images/BBlack.svg" style="width:75px">
+
+  <div class="col-sm-12 col-md-6">
+    <div class="row">
+      <div class="col-sm-6">
+        <p style="Color:#494949;font-size:16px">Ideal Small Sizes Print</p>
+      </div>
+      <div class="col-sm-6">
+        <img style="float: center;width:75px;" src="/img/logo-images/BBlack.svg">
           <p style="font-size:16px;float: center"> 75px (1.0 inch) length</p>
-         </div>
-       </div>
-       <div class="row">
-         <div class="column" style="float: left;width: 50%;padding: 10px;">
-            <p style="Color:#494949;font-size:16px">Minimum Approved Sizes Print</p>
-         </div>
-         <div class="column" style="float: right;width: 50%;padding: 10px;">
-         <img style="float: center" src="/img/logo-images/BBlack.svg" style="width:50px">
-         <p style="font-size:16px;float: center"> 50px (0.7 inch) length</p>
-         </div>
-       </div>
-        <div class="row">
-         <div class="column" style="float: left;width: 50%;padding: 10px;">
-            <p style="Color:#F9003B;font-size:16px">Too Small for Print Reproduction</p>
-         </div>
-         <div class="column" style="float: right;width: 50%;padding: 10px;">
-         <img style="float: center" src="/img/logo-images/ballerina_logo_too_small_cross.svg" style="width:40px">
+      </div>
+    </div>
+<div class="row">
+      <div class="col-sm-6">
+        <p style="Color:#494949;font-size:16px">Minimum Approved Sizes Print</p>
+      </div>
+      <div class="col-sm-6">
+        <img style="float: center;width:50px;" src="/img/logo-images/BBlack.svg">
+          <p style="font-size:16px;float: center"> 50px (1.0 inch) length</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <p style="Color:#494949;font-size:16px">Too Small for Print Reproduction</p>
+      </div>
+      <div class="col-sm-6">
+        <img style="float: center;width:40px;" src="/img/logo-images/ballerina_logo_too_small_cross.svg">
           <p style="font-size:16px;float: center"> Below 50px (0.7 inch) length</p>
-         </div>
-       </div>
+      </div>
+    </div>
+
+
   </div>
+  
 </div>
 
 _____________________________________________________________________________________________________________________________________________
@@ -202,41 +192,31 @@ ________________________________________________________________________________
 
 <div class="row">
 <p style="Color:#494949;font-size:24px">3. Use colors based on the background.</p>
-  <div class="column" style="float: left;width: 50%;padding: 10px;">
-    <!-- <p style="Color:#494949;font-size:24px">3. Use colors based on the background.</p> -->
-    <p>     
+<div class="col-sm-12 col-md-6">
+<p>     
     Use the normal logo for lighter backgrounds. If the background color is darker, use the inverted logo to make it clearly visible. 
     </p>
-  </div>
-  <div class="column" style="float: right;width: 50%;">
-  <div class="row cBallerinaLearnWrapper cGrayWrapper cCommunityLinks" style="margin-top: 25px;padding: 0px;">
-  <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
-  <div class="cBallerina-Box">
-      <img style="width:222px" src="/img/logo-images/ballerina_logo_lightbg_black.svg">
-      
-  </div>
-  </div>
-    <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
-  <div class="cBallerina-Box">
-      <img style="width:222px" src="/img/logo-images/ballerina_logo_lightbg_b.svg">
-  </div>
-  </div>
-  
 </div>
-<div class="row cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
-  <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
-  <div class="cBallerina-Box">
-      <img style="width:222px" src="/img/logo-images/ballerina_logo_darkbg_w.svg">
+<div class="col-sm-12 col-md-6">
+  <div class="row">
+    <div class="col-sm-6">
+      <img src="/img/logo-images/ballerina_logo_lightbg_black.svg">
+    </div>
+    <div class="col-sm-6">
+      <img src="/img/logo-images/ballerina_logo_lightbg_b.svg">
+    </div>
   </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <img src="/img/logo-images/ballerina_logo_darkbg_w.svg">
+    </div>
+    <div class="col-sm-6">
+      <img src="/img/logo-images/ballerina_logo_darkbg_blue.svg">
+    </div>
   </div>
-  
-  <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
-  <div class="cBallerina-Box">
-      <img style="width:222px" src="/img/logo-images/ballerina_logo_darkbg_blue.svg">
-  </div>
-  </div>
-</div>   
 </div>
+
+  
 </div>
 
 ## Improper uses
@@ -277,13 +257,13 @@ The Ballerina logo should always be seen clearly and consistently. Altering or r
   <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
   <p> 5. Do not stretch or distort the logo to fit any specific space.</p>
       <div class="cBallerina-Box">
-      <img style="width:477px" src="/img/logo-images/ballerina_logo_i_use_5.svg">
+      <img src="/img/logo-images/ballerina_logo_i_use_5.svg">
       </div>
    </div>
     <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
     <p> 6. Do not position the logo vertically, upside down, in reverse, or slanted.</p>
       <div class="cBallerina-Box">
-      <img style="width:477px" src="/img/logo-images/ballerina_logo_i_use_6.svg">
+      <img src="/img/logo-images/ballerina_logo_i_use_6.svg">
       </div>
    </div>
 </div>
@@ -292,7 +272,7 @@ The Ballerina logo should always be seen clearly and consistently. Altering or r
   <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">
   <p> 7. Do not add effects (i.e., borders, drop shadows, gradients, and glows, etc.) to the logos.</p>
       <div class="cBallerina-Box">
-      <img style="width:477px" src="/img/logo-images/ballerina_logo_i_use_7.svg">
+      <img src="/img/logo-images/ballerina_logo_i_use_7.svg">
       </div>
    </div>
     <div class="col-sm-12 col-md-6 cBoxContainer cCommunityIconsContainer">

@@ -36,6 +36,7 @@ jobs:
           cd gh-pages
           git init
           git remote add origin https://ballerina-bot:$GITHUB_TOKEN@github.com/sm1990/ballerina-dev-website.git
+          git fetch --all
           git fetch origin
           git checkout -b deploy-website-$GITHUB_SHA origin/gh-pages
 

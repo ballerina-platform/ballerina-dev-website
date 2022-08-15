@@ -24,7 +24,7 @@ To complete this tutorial, you need:
 
 1. [Ballerina 2202.0.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor
-  >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
+  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
 
 ## Meet `bal`
 
@@ -72,7 +72,7 @@ public function main() {
 
 In this code:
 
-- The first line is an import statement, which makes the functionality in the [`ballerina/io`](https://lib.ballerina.io/ballerina/io/latest) module available to your program. This module contains functions to write to the console, read from the console, and perform read/write operations on the files.
+- The first line is an import statement, which makes the functionality in the <a href="https://lib.ballerina.io/ballerina/io/latest" target="_blank">`ballerina/io`</a> module available to your program. This module contains functions to write to the console, read from the console, and perform read/write operations on the files.
 - The `main` function is your program's entry point, and you can execute it by running the program. 
 - This function contains a statement, which prints `Hello, World!` to the console. This statement calls the `println` function in the `io` module with `"Hello, World!"` as an argument.
 
@@ -134,7 +134,7 @@ service / on httpListener {
 
 Let's take a moment to digest the new constructs in this code:
 
-- The [`http`](https://lib.ballerina.io/ballerina/http/latest) module provides high-level abstractions to work with the HTTP protocol. 
+- The <a href="https://lib.ballerina.io/ballerina/http/latest" target="_blank">`http`</a> module provides high-level abstractions to work with the HTTP protocol. 
 - The listener declaration creates a new HTTP listener with the port `8080`. The `listener` is the entity, which receives the network input and then routes it to the attached service(s).
 - The service declaration specifies the listener to which the service gets attached and a collection of remotely accessible methods. There are two kinds of methods as `resource` and `remote`.
 - Services use `remote` methods to expose services in a procedural style and they are named by verbs whereas `resource` methods are used for data-oriented protocols and they are named by nouns.

@@ -23,9 +23,9 @@ redirect_from:
 
 ## Prerequisites
 * Install the latest Ballerina distribution.
-* Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Install the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>.
 * Login to the Azure CLI by executing the `az login` command.
-* Create an [Azure Function app](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal) with the given resource group with following requirements.
+* Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with following requirements.
 
 >**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
    - Runtime stack - `Java 11`
@@ -33,15 +33,15 @@ redirect_from:
 
 ## Triggers and bindings
 
-An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows outputting data from the function to an external resource. For more information, go to [Azure Functions triggers and bindings concepts](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings).
+An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows outputting data from the function to an external resource. For more information, go to <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings" target="_blank">Azure Functions triggers and bindings concepts</a>.
 
 The following Azure Functions triggers and bindings are currently supported in Ballerina:
-- HTTP [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HTTPTrigger) and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HTTPOutput) binding
-- Queue [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#QueueTrigger) and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#QueueOutput) binding
-- Blob [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobOutput) binding
-- Twilio SMS [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#TwilioSmsOutput) binding
-- CosmosDB [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBTrigger), [input](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBInput) binding, and [output](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBOutput) binding
-- Timer [trigger](https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#TimerTrigger)
+- HTTP <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HTTPTrigger" target="_blank">trigger</a> and <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HTTPOutput" target="_blank">output</a>binding
+- Queue <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#QueueTrigger" target="_blank">trigger</a> and <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#QueueOutput" target="_blank">output</a>binding
+- Blob <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobTrigger" target="_blank">trigger</a>, <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobInput" target="_blank">input</a> binding, and <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobOutput" target="_blank">output </a>binding
+- Twilio SMS <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#TwilioSmsOutput" target="_blank">output </a>binding
+- CosmosDB <a href="(https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBTrigger" target="_blank">trigger </a>, <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBInput" target="_blank">input </a> binding, and <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#CosmosDBOutput" target="_blank">output </a>binding
+- Timer <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#TimerTrigger" target="_blank">trigger </a>
 
 ## Write the function
 
@@ -63,7 +63,7 @@ public function hello(@af:HTTPTrigger { authLevel: "anonymous" }
     return "Hello, " + payload + "!";
 }
 ```
-The first parameter with the [Context](https://lib.ballerina.io/ballerinax/azure_functions/latest/classes/Context) object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list.
+The first parameter with the <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest/classes/Context" target="_blank">context </a>object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list.
 
 The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation.
 
@@ -85,7 +85,7 @@ Generating executables
 	az functionapp deployment source config-zip -g <resource_group> -n <function_app_name> --src <package_dir>/target/bin/azure-functions.zip
 ```
 
->**Note:** A custom [`host.json`](https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json) file for the Azure Functions deployment can be provided optionally by placing a `host.json` file in the current working directory in which the Ballerina build is done. The required `host.json` properties are provided/overridden by the values derived from the source code by the compiler extension. 
+>**Note:** A custom <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json" target="_blank"> `host.json`</a> file for the Azure Functions deployment can be provided optionally by placing a `host.json` file in the current working directory in which the Ballerina build is done. The required `host.json` properties are provided/overridden by the values derived from the source code by the compiler extension. 
 
 
 ### Deploy the function
@@ -171,8 +171,8 @@ Refresh the queue page in the portal and view the added entry.
 The following Ballerina code gives an example of using a Cosmos DB trigger to invoke the function and a queue output binding to write an entry to a queue.
 
 Before writing and deploying the code, create a Cosmos DB and a queue to make use of those services later.
-1. You can reuse the queue you created in the above [HTTP trigger -> Queue output](/learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output) sample.
-2. Create an [Azure Cosmos DB account](https://portal.azure.com/#create/Microsoft.DocumentDB) and select Cosmos DB Core.
+1. You can reuse the queue you created in the above <a href="/learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/#http-trigger---queue-output" target="_blank">`HTTP trigger` -> `Queue output`</a> sample.
+2. Create an <a href="https://portal.azure.com/#create/Microsoft.DocumentDB" target="_blank">Azure Cosmos DB account</a> and select Cosmos DB Core.
 3. Once the database is created, go to the **Data Explorer**, and select **Create Container**.
 4. Enter `db1` as Database ID and `c1` as the collection ID, and click **Ok**.
 

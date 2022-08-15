@@ -101,7 +101,7 @@ update tool 1.3.8
 
 ## Build from source
 
-For instructions, see [Build Ballerina from source](https://github.com/ballerina-platform/ballerina-distribution/blob/master/docs/build-ballerina-from-source.md).
+For instructions, see <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/docs/build-ballerina-from-source.md" target="_blank">Build Ballerina from source</a>.
 
 ## Update Ballerina
 

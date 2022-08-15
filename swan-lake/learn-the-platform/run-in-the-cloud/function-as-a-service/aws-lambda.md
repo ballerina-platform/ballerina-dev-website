@@ -100,11 +100,7 @@ Execute the command below to deploy the echo function as an AWS Lambda as shown 
 
 >**Info:**  For the supported parameters, go to the [`create-function` documentation](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html). You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed. 
 
-<<<<<<< HEAD:learn/guides/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda.md
-```bash
-=======
 ```
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f:swan-lake/learn-the-platform/run-in-the-cloud/function-as-a-service/aws-lambda.md
 $ aws lambda create-function --function-name echo --zip-file fileb://<package_dir>/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916138:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6
 
 {

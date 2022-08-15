@@ -43,16 +43,6 @@ The first endpoint is about getting data from the service as well as adding data
 The second endpoint is about getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second endpoint accepts the ISO code as part of the URL and responds with the `200 OK` status code. In the event of an error, the relevant error is sent back to the client.
 
 >**Info:** For the complete source code of this implementation, see [The complete code](/learn/write-a-restful-api-with-ballerina/#the-complete-code).
-<<<<<<< HEAD:learn/get-started/write-a-restful-api-with-ballerina.md
-
-## Create the service package 
-
-Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. In the terminal, execute the command below to create the Ballerina package for the API implementation.
-
-> **Info:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
-
-```bash
-=======
 
 ## Create the service package 
 
@@ -61,7 +51,6 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
 > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
 ```
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f:swan-lake/featured-use-cases/write-a-restful-api-with-ballerina.md
 $ bal new covid19 -t service
 ```
 
@@ -404,8 +393,4 @@ You view the output below.
 
 To learn more about RESTful services in Ballerina, see the following:
 - [`http` module documentation](https://lib.ballerina.io/ballerina/http/latest)
-<<<<<<< HEAD:learn/get-started/write-a-restful-api-with-ballerina.md
-- [Service path and resource path](/learn/by-example/http-absolute-path-and-path.html)
-=======
 - [Service path and resource path](/learn/by-example/http-absolute-path-and-path)
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f:swan-lake/featured-use-cases/write-a-restful-api-with-ballerina.md

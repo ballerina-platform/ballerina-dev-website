@@ -94,11 +94,7 @@ The created resource group and the function app name should be provided to the p
 
 A sample execution to deploy the functions to Azure Functions is shown below. 
 
-<<<<<<< HEAD:learn/guides/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions.md
-```bash
-=======
 ```
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f:swan-lake/learn-the-platform/run-in-the-cloud/function-as-a-service/azure-functions.md
 $ az functionapp deployment source config-zip -g <function_app_name> -n <function_app_name> --src <package_dir>/target/bin/azure-functions.zip
 Getting scm site credentials for zip deployment
 Starting zip deployment. This operation can take a while to complete ...

@@ -127,21 +127,13 @@ The local repository is useful to test a package in the development phase or to 
    ```
 
 2. Publish to the local repository.
-<<<<<<< HEAD:learn/guides/manage-dependencies.md
-   ```bash
-=======
    ```
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f:swan-lake/learn-the-platform/source-code-dependencies/manage-dependencies.md
    bal push --repository local
    ```
 
    If you already have the path of Ballerina archive, then you can simply execute the following command.
 
-<<<<<<< HEAD:learn/guides/manage-dependencies.md
-    ```bash
-=======
     ```
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f:swan-lake/learn-the-platform/source-code-dependencies/manage-dependencies.md
     bal push --repository local <path-to-bala-archive>
     ```
 

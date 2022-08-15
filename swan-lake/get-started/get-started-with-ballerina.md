@@ -38,15 +38,9 @@ $ bal version
 ```
 
 ## Create a new package
-<<<<<<< HEAD:learn/get-started/get-started-with-ballerina.md
 
 Let's write a Ballerina program, which prints `Hello, World!`. Use the `bal new` command to create a new Ballerina package. 
 
-=======
-
-Let's write a Ballerina program, which prints `Hello, World!`. Use the `bal new` command to create a new Ballerina package. 
-
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f:swan-lake/get-started/get-started-with-ballerina.md
 >**Info:** For more information on packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
 ```

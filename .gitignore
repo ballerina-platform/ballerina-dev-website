@@ -35,10 +35,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-<<<<<<< HEAD
-# macOS
-.DS_Store
-=======
 #folders
 .github/scripts/bal_proposals_bot/target/
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f

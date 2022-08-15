@@ -4,21 +4,12 @@
     - title: Set up the prerequisites
       url: /learn/work-with-data-using-queries-in-ballerina/#set-up-the-prerequisites
       active: set-up-the-prerequisites
-<<<<<<< HEAD
-    - title: Create the Ballerina package
-      url: /learn/work-with-data-using-queries-in-ballerina/#create-the-ballerina-package
-      active: create-the-ballerina-package
-    - title: Create the dataset
-      url: /learn/work-with-data-using-queries-in-ballerina/#create-the-dataset
-      active: create-the-dataset
-=======
     - title: Create a new Ballerina package
       url: /learn/work-with-data-using-queries-in-ballerina/#create-a-new-ballerina-package
       active: create-a-new-ballerina-package
     - title: Define the dataset to be processed
       url: /learn/work-with-data-using-queries-in-ballerina/#define-the-dataset-to-be-processed
       active: define-the-dataset-to-be-processed
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f
     - title: Filter the data
       url: /learn/work-with-data-using-queries-in-ballerina/#filter-the-data
       active: filter-the-data
@@ -31,27 +22,9 @@
     - title: Sort countries by COVID-19 deaths
       url: /learn/work-with-data-using-queries-in-ballerina/#sort-countries-by-covid-19-deaths
       active: sort-countries-by-covid-19-deaths
-<<<<<<< HEAD
-    - title: The complete code with the sorting function
-      url: /learn/work-with-data-using-queries-in-ballerina/#the-complete-code-with-the-sorting-function
-      active: the-complete-code-with-the-sorting-function
-    - title: Run the package for sorting
-      url: /learn/work-with-data-using-queries-in-ballerina/#run-the-package-for-sorting
-      active: run-the-package-for-sorting
-    - title: Join with another data source
-      url: /learn/work-with-data-using-queries-in-ballerina/#join-with-another-data-source
-      active: join-with-another-data-source
-    - title: The complete code with the joining function
-      url: /learn/work-with-data-using-queries-in-ballerina/#the-complete-code-with-the-joining-function
-      active: the-complete-code-with-the-joining-function
-    - title: Run the package for joining
-      url: /learn/work-with-data-using-queries-in-ballerina/#run-the-package-for-joining
-      active: run-the-package-for-joining
-=======
     - title: Join with another datasource
       url: /learn/work-with-data-using-queries-in-ballerina/#join-with-another-datasource
       active: join-with-another-datasource
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f
     - title: Find discrepancies in the dataset
       url: /learn/work-with-data-using-queries-in-ballerina/#find-discrepancies-in-the-dataset
       active: find-discrepancies-in-the-dataset

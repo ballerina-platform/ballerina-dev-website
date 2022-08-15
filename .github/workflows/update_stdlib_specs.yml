@@ -12,37 +12,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-<<<<<<< HEAD
-        with:
-          ref: website-revamp
-
-      - name: Set env variables
-        run: |
-          echo "Module Name: ${{ github.event.client_payload.module_name }}"
-          echo "Short Name: ${{ github.event.client_payload.short_name }}"
-          echo "File Directory Path: ${{ github.event.client_payload.file_dir }}"
-
-          echo MODULE_NAME=${{ github.event.client_payload.module_name }} >> $GITHUB_ENV
-          echo SHORT_NAME=${{ github.event.client_payload.short_name }} >> $GITHUB_ENV
-          echo FILE_DIR=${{ github.event.client_payload.file_dir }} >> $GITHUB_ENV
-
-      - name: Clone standard library repository
-        run: git clone https://github.com/ballerina-platform/$MODULE_NAME.git
-
-      - name: Update specifications
-        run: |
-          rm -rf spec/$SHORT_NAME
-          rm -rf public/spec/$SHORT_NAME
-
-          cp -r $FILE_DIR spec/$SHORT_NAME
-          cp -r $FILE_DIR public/spec/$SHORT_NAME
-
-          rm -rf $MODULE_NAME
-
-      - name: Push changes for new specifications
-        run: |
-          git checkout automate-specs-$SHORT_NAME-$GITHUB_SHA 2>/dev/null || git checkout -b automate-specs-$SHORT_NAME-$GITHUB_SHA
-=======
 
       - name: Install pandoc
         run: sudo apt-get install pandoc -y
@@ -63,33 +32,20 @@ jobs:
       - name: Push changes for new specifications
         run: |
           git checkout automate-specs-$GITHUB_SHA 2>/website-revamp/null || git checkout -b automate-specs-$GITHUB_SHA
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f
 
           git config --global user.email "ballerina-bot@ballerina.org"
           git config --global user.name "ballerina-bot"
 
-<<<<<<< HEAD
-          git add spec
-          git add public/spec
-          git commit --allow-empty -m "Update ballerina standard library specifications"
-
-          git push --set-upstream origin automate-specs-$SHORT_NAME-$GITHUB_SHA
-=======
           git add spec/standard-library/*
           git commit --allow-empty -m 'Update ballerina standard library specifications'
 
           git push --set-upstream origin automate-specs-$GITHUB_SHA
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f
           echo 'Successfully pushed to automate-specs-$GITHUB_SHA branch'
 
       - name: Create pull request for new specifications
         shell: bash
         run: |
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-<<<<<<< HEAD
-          bin/hub pull-request -b website-revamp -m "[AUTOMATE] Update Ballerina Standard Library ($SHORT_NAME) Specifications"
-=======
           bin/hub pull-request -b website-revamp -m '[AUTOMATE] Update Ballerina Standard Library Specifications'
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

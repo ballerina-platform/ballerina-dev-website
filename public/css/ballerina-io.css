@@ -2040,9 +2040,6 @@ ul li.line-numbers pre code span.line-numbers-rows span:before {
         padding-left: 10px;
         padding-right: 10px;
     }
-<<<<<<< HEAD:css/ballerina-io.css
-}
-=======
 }
 
 
@@ -2050,4 +2047,3 @@ ul li.line-numbers pre code span.line-numbers-rows span:before {
 .wy-breadcrumbs-aside .icon-github {
     display: none;
 }
->>>>>>> dee13351cdbbcbe7af2b450b80f31a99716cfd8f:public/css/ballerina-io.css

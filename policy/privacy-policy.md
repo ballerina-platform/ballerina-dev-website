@@ -6,14 +6,7 @@ permalink: /privacy-policy/
 ---
 
 
-<<<<<<< HEAD:privacy-policy.md
-}
-</style>-->
-
-At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at [https://ballerina.io](https://ballerina.io/) and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share and secure the personal information you provide. “You” or “Your” means the person visiting the above mentioned Ballerina sites (the “Sites”) or using any services on it. “We” “us” and “our” means WSO2 LLC.
-=======
 At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at <a target="_blank" href="https://ballerina.io/">https://ballerina.io/</a> and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share and secure the personal information you provide. “You” or “Your” means the person visiting the above mentioned Ballerina sites (the “Sites”) or using any services on it. “We” “us” and “our” means WSO2 Inc.
->>>>>>> ccf9ef67dcc94aed5708a4fd98796ec1b042b21e:policy/privacy-policy.md
 
 ## What information do we collect?
 

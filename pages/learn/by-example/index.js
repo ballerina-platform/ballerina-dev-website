@@ -25,6 +25,7 @@ import Layout from "../../../layouts/LayoutDocs";
 import { load } from "js-yaml";
 import LeftNavYaml from "../../../components/common/left-nav/LeftNavYaml";
 import { useRouter } from "next/router";
+import { prefix } from "../../../utils/prefix";
 
 function toKebabCase(str) {
   return str.replace(/\s/g, "-").toLowerCase();
@@ -77,7 +78,7 @@ export default function BBEPage({ navContent, bbesJson }) {
       for (let bbe of category.samples) {
         sampleData.push(
           <li className="ps-4 my-1 fw-light">
-            <Link href={`/learn/by-example/${bbe.url}`} passHref>
+            <Link href={`${prefix}/learn/by-example/${bbe.url}`} passHref>
               {bbe.name}
             </Link>
           </li>
@@ -88,7 +89,7 @@ export default function BBEPage({ navContent, bbesJson }) {
         <ul className="p-0 my-1" id={toKebabCase(category.title)}>
           <li className="d-flex align-items-center">
             <Link
-              href={`/learn/by-example#${toKebabCase(category.title)}`}
+              href={`${prefix}/learn/by-example#${toKebabCase(category.title)}`}
               passHref
             >
               <svg

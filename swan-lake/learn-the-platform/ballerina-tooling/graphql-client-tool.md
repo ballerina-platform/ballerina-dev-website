@@ -20,7 +20,7 @@ Also, you can generate multiple clients using multiple GraphQL documents or gene
 
 ## Generate a client from a GraphQL config
 
-> **Prerequisites:** Install the <a href="https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql" target="_blank">GraphQL Foundation VSCode plugin</a> and the latest <a href="https://ballerina.io/downloads/" target="_blank">Ballerina Swan Lake distribution</a>.
+> **Prerequisites:** Install the <a href="https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql" target="_blank">GraphQL Foundation VSCode plugin</a> and the latest <a href="https://ballerina.io/downloads/" target="_blank">Ballerina Swan Lake distribution</a>.
 
 Follow the steps below to generate a Ballerina client from a GraphQL config file using the `graphql` CLI tool.
 
@@ -52,7 +52,7 @@ documents:
    - <File path to the GraphQL document with the GraphQL queries & mutations>
 ```
 
-The <a href="https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql" target="_blank">GraphQL Foundation VSCode plugin</a> requires a GraphQL config file at the root level or in a parent-level directory. The Ballerina GraphQL client tool supports only the standard `graphql.config.yaml` format as input. For more information, see the <a href="https://www.graphql-config.com" target="_blank">GraphQL config</a>.
+The GraphQL Foundation VSCode plugin requires a GraphQL config file at the root level or in a parent-level directory. The Ballerina GraphQL client tool supports only the standard `graphql.config.yaml` format as input. For more information, see the <a href="https://www.graphql-config.com" target="_blank">GraphQL config</a>.
 
 >**Note:** If the GraphQL API is secured, add the extensions section in the GraphQL config file with the relevant tokens and headers. In this scenario, it is mandatory to configure the schema section with the web URL of the GraphQL schema as shown below.
 
@@ -83,7 +83,7 @@ query countryByCode($code: ID!) {
 }
 ```
 
-You can validate and execute the GraphQL queries using the <a href="https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql" target="_blank">GraphQL Foundation VSCode plugin</a>.
+You can validate and execute the GraphQL queries using the >GraphQL Foundation VSCode plugin.
 
 >**Note:** You are required to give a query name for each query. This name is used as the corresponding remote operation name in the generated client. 
 

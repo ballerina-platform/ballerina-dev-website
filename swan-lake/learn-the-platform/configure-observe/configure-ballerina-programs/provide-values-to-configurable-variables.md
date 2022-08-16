@@ -25,7 +25,7 @@ given through multiple ways when retrieving configurable values:
     value provided through a command line argument is expected to be the `toString()` representation of the intended 
     value.
 
-- **Configuration files:** The values can be configured through the configuration files in the <a href="https://toml.io/en/v0.4.0" target="_blank">TOML(v0.4) format</a>. 
+- **Configuration files:** The values can be configured through the configuration files in the <a href="https://toml.io/en/v0.4.0" target="_blank">TOML(v0.4) format</a>. 
     The file location can be specified through an environment variable with the name `BAL_CONFIG_FILES`. Ballerina supports
     specifying multiple configuration files using this environment variable with the OS-specific separator. The file
     precedence order will be as specified in the environment variable. If an environment variable is not specified, the file
@@ -33,7 +33,7 @@ given through multiple ways when retrieving configurable values:
  values for testing can be provided in a file named `Config.toml` located in the `tests` directory. For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
 
 - **Environment variables:** Users can provide the configuration values through an environment variable with the name `BAL_CONFIG_DATA` in which the
-content is expected to be in the <a href="https://toml.io/en/v0.4.0" target="_blank">TOML(v0.4) format</a>.
+content is expected to be in the <a href="https://toml.io/en/v0.4.0" target="_blank">TOML(v0.4) format</a>.
 >**Note:** Providing multiple configuration values through separate environment variables is not supported.
 
 ### Provide via command line arguments

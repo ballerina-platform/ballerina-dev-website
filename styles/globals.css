@@ -242,21 +242,21 @@ a {
   border-left: 5px solid #eee;
 }
 
-.mdContent table td,
-.mdContent table th {
+.mdContent table td, .policyContent table td,
+.mdContent table th, .policyContent table th {
   border: 1px solid #e1e4e5 !important;
 }
 
-.mdContent table td {
+.mdContent table td, .policyContent table td {
   font-weight: 400;
 }
 
-.mdContent table th,
-.mdContent table td {
+.mdContent table th, .policyContent table th,
+.mdContent table td, .policyContent table td {
   padding: 10px;
 }
 
-.mdContent table thead tr,
+.mdContent table thead tr, .policyContent table thead tr,
 .cCodeTable tr th {
   background-color: #464646;
   /* font-weight: 400; */

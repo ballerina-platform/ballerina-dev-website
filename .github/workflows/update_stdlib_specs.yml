@@ -12,11 +12,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-<<<<<<< HEAD
         with:
           ref: website-revamp
-=======
->>>>>>> ccf9ef67dcc94aed5708a4fd98796ec1b042b21e
 
       - name: Install pandoc
         run: sudo apt-get install pandoc -y

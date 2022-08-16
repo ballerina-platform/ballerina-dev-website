@@ -769,12 +769,6 @@ const generate = async (examplesDir, outputDir) => {
                 </ul>`;
                   } else {
                     convertedLine = escapeParagraphCharacters(md.render(line));
-
-                    // // add closing tags if not present
-                    // if (tagReg.test(convertedLine))
-                    //   convertedLine =
-                    //     convertedLine.slice(0, convertedLine.length - 6) +
-                    //     " /></p>\n";
                   }
                 } else {
                   if (line.includes("```")) {

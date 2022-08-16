@@ -1,6 +1,6 @@
 {
   "title": "Data driven tests",
-  "description": "",
+  "description": "The Ballerina test framework provides in-built support for data-driven tests.",
   "keywords": [],
   "permalink": "/learn/by-example/testerina-data-driven-tests",
   "active": "testerina-data-driven-tests",

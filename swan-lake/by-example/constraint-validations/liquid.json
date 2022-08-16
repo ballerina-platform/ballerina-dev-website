@@ -1,0 +1,17 @@
+{
+  "title": "Constraint validations",
+  "description": "This BBE shows how to apply and validate constraints in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "constraint",
+    "validation"
+  ],
+  "permalink": "/learn/by-example/constraint-validations",
+  "active": "constraint-validations",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/constraint-validations",
+    "/swan-lake/learn/by-example/constraint-validations.html"
+  ]
+}

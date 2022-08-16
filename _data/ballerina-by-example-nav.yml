@@ -586,14 +586,17 @@ sublinks:
       - title: REST API interceptors
         id: 5
         sublinks:
-          - title: Interceptors
+          - title: Request Interceptors
             id: 1
-            url: http-interceptors
-          - title: Error Handling
+            url: http-request-interceptors
+          - title: Response Interceptors
             id: 2
+            url: http-response-interceptors
+          - title: Error Handling
+            id: 3
             url: http-error-handling
           - title: Interceptor Error Handling
-            id: 3
+            id: 4
             url: http-interceptor-error-handling
       - title: HTTP2
         id: 6
@@ -625,17 +628,20 @@ sublinks:
           - title: Mutations
             id: 6
             url: graphql-mutations
-          - title: Context
+          - title: Subscriptions
             id: 7
+            url: graphql-subscriptions
+          - title: Context
+            id: 8
             url: graphql-context
           - title: File upload
-            id: 8
+            id: 9
             url: graphql-file-upload
           - title: Documentation
-            id: 9
+            id: 10
             url: graphql-documentation
           - title: Interceptors
-            id: 10
+            id: 11
             url: graphql-interceptors
       - title: GraphQL security
         id: 8
@@ -1138,6 +1144,12 @@ sublinks:
           - title: Record to XML conversion
             id: 4
             url: xml-from-record-conversion
+      - title: Constraint
+        id: 15
+        sublinks:
+          - title: Constraint validations
+            id: 1
+            url: constraint-validations
   - title: Observability
     id: 4
     sublinks:

@@ -345,7 +345,10 @@ export default function HttpErrorHandling() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Interceptors" href="/learn/by-example/http-interceptors">
+          <Link
+            title="Response Interceptors"
+            href="/learn/by-example/http-response-interceptors"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -371,7 +374,7 @@ export default function HttpErrorHandling() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interceptors
+                  Response Interceptors
                 </span>
               </div>
             </div>

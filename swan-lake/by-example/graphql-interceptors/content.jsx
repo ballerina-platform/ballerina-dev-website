@@ -109,9 +109,8 @@ export default function GraphqlInterceptors() {
         will be the execution order of the interceptors.
       </p>
 
-      <p>For more information on the underlying package, see the</p>
-
       <p>
+        For more information on the underlying package, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
           <code>graphql</code> package
         </a>

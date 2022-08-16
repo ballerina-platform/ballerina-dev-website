@@ -55,5 +55,54 @@ We use session cookies. A session cookie is a cookie that is erased when the use
 
 Most browsers allow you to control cookies through their settings preferences. However, if you limit the ability of websites to set cookies, you may worsen your overall user experience since it will no longer be personalized to you. It may also stop you from saving customized settings like login information.
 
-**Effective March 23, 2022**
+## Cookie list
+
+### Strictly necessary cookies
+
+These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you, which amount to a request for services such as setting your privacy preferences, logging in, or filling in forms. You can set your browser to block or alert you about these cookies but some parts of the site will not then work. These cookies do not store any personally identifiable information.
+
+| Cookie subgroup      	| Cookies            	| Cookies used 	| Lifespan  	|
+|----------------------	|--------------------	|--------------	|-----------	|
+| central.ballerina.io 	| USER_EMAIL         	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| USER_ID            	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| USER_LOGGED        	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| admin_org_names    	| First party  	| Session   	|
+| central.ballerina.io 	| is_first_time      	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| ACCESS_TOKEN       	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| USER_PROFILE_IMAGE 	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| token_expired      	| First party  	| Session   	|
+| central.ballerina.io 	| access_token       	| First party  	| 7.5 hours 	|
+
+### Performance cookies
+
+These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. All information these cookies collect is aggregated and therefore anonymous. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+
+| Cookie subgroup   	| Cookies                      	| Cookies used 	| Lifespan (Days) 	|
+|-------------------	|------------------------------	|--------------	|-----------------	|
+| ballerina.io      	| _hjIncludedInPageviewSample  	| First party  	| 0               	|
+| ballerina.io      	| _gid                         	| First party  	| 0               	|
+| ballerina.io      	| _hjAbsoluteSessionInProgress 	| First party  	| 0               	|
+| ballerina.io      	| _hjSessionUser_865786        	| First party  	| 364             	|
+| ballerina.io      	| _hjFirstSeen                 	| First party  	| 0               	|
+| ballerina.io      	| _hjSession_865786            	| First party  	| 0               	|
+| ballerina.io      	| _ga                          	| First party  	| 729             	|
+| ballerina.io      	| _hjIncludedInSessionSample   	| First party  	| 0               	|
+| script.hotjar.com 	| _hjIncludedInSessionSample   	| Third party  	| 0               	|
+| script.hotjar.com 	| _hjIncludedInPageviewSample  	| Third party  	| 0               	|
+
+### Targeting cookies
+
+These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. All information these cookies collect is aggregated and therefore anonymous. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
+
+| Cookie subgroup    	| Cookies                               	| Cookies used 	| Lifespan (Days) 	|
+|--------------------	|---------------------------------------	|--------------	|-----------------	|
+| ballerina.io       	| _gat_gtag_xxxxxxxxxxxxxxxxxxxxxxxxxxx 	| First party  	| 0               	|
+| resources.wso2.com 	| visitor_id142131-hash                 	| Third party  	| 3649            	|
+| resources.wso2.com 	| pardot                                	| Third party  	| 0               	|
+| resources.wso2.com 	| visitor_id#####                       	| Third party  	| 3649            	|
+| pardot.com         	| visitor_id#####                       	| Third party  	| 3649            	|
+| pi.pardot.com      	| pardot                                	| Third party  	| 0               	|
+| pardot.com         	| visitor_id142131-hash                 	| Third party  	| 3649            	|
+
+**Effective August 20, 2022**
 

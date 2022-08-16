@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides lang library operations on xml values defined by the language specification 2020R1.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,lang.xml">
+
+    <title>API Docs - Functions : lang.xml</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Functions</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="#concat" onclick="menuLinkClick()">concat</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#createComment" onclick="menuLinkClick()">createComment</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#createElement" onclick="menuLinkClick()">createElement</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#createProcessingInstruction" onclick="menuLinkClick()">createProcessingInstruction</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#elements" onclick="menuLinkClick()">elements</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#filter" onclick="menuLinkClick()">filter</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#forEach" onclick="menuLinkClick()">forEach</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#fromString" onclick="menuLinkClick()">fromString</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#get" onclick="menuLinkClick()">get</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getAttributes" onclick="menuLinkClick()">getAttributes</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getChildren" onclick="menuLinkClick()">getChildren</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getContent" onclick="menuLinkClick()">getContent</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getName" onclick="menuLinkClick()">getName</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getTarget" onclick="menuLinkClick()">getTarget</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#iterator" onclick="menuLinkClick()">iterator</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#length" onclick="menuLinkClick()">length</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#map" onclick="menuLinkClick()">map</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#setChildren" onclick="menuLinkClick()">setChildren</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#setName" onclick="menuLinkClick()">setName</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#slice" onclick="menuLinkClick()">slice</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#strip" onclick="menuLinkClick()">strip</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../lang.xml/index.html" onclick="menuLinkClick()">
+            <h3>lang.xml</h3>
+        </a>
+    
+    <ul>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../lang.xml/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../lang.xml/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Functions - </span>
+                
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                
+            </h1>
+            <div class="constants">
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#concat">concat</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Concatenates xml and string values.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#createComment">createComment</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Constructs an xml sequence consisting of only a comment item.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#createElement">createElement</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Constructs an xml sequence consisting of only a new element item.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#createProcessingInstruction">createProcessingInstruction</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Constructs an xml sequence consisting of only a processing instruction item.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#elements">elements</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Selects the elements from an xml value.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#filter">filter</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Selects the items from an xml sequence for which a function returns true.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#forEach">forEach</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Applies a function to each item in an xml sequence.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#fromString">fromString</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Constructs an xml value from a string.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#get">get</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns the item of <code>x</code> with index <code>i</code>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#getAttributes">getAttributes</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns the map representing the attributes of <code>elem</code>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#getChildren">getChildren</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns the children of <code>elem</code>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#getContent">getContent</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns the content of a text or processing instruction or comment item.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#getName">getName</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns a string giving the expanded name of <code>elem</code>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#getTarget">getTarget</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns the target part of the processing instruction.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#iterator">iterator</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns an iterator over the xml items of <code>x</code></p>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#length">length</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns number of xml items in <code>x</code>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#map">map</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Applies a function to each item in an xml sequence, and returns an xml sequence of the results.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#setChildren">setChildren</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Sets the children of <code>elem</code> to <code>children</code>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#setName">setName</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Change the name of element <code>elem</code> to <code>xName</code>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#slice">slice</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns a subsequence of an xml value.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#strip">strip</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Strips the insignificant parts of the an xml value.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+                <div>
+                    
+                        <div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="concat" title="concat">
+             <a class="url-link" href="#concat">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > concat </h2>
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">xml</span> | <span class="builtin-type">string</span>...</span> xs)</p>
+            
+                <b> returns </b><span class="builtin-type">xml</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Concatenates xml and string values.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >xs</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">xml</span> | <span class="builtin-type">string</span>...</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml or string items to concatenate</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
+                <li><p>an xml sequence that is the concatenation of all the <code>xs</code>;
+an empty xml sequence if the <code>xs</code> are empty</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="createComment" title="createComment">
+             <a class="url-link" href="#createComment">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > createComment </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> content)</p>
+            
+                <b> returns </b><span class="builtin-type">Comment</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Constructs an xml sequence consisting of only a comment item.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >content</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the content of the comment to be constructed.</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Comment</span></span>)</li>
+                <li><p>an xml sequence consisting of a comment with content <code>content</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="createElement" title="createElement">
+             <a class="url-link" href="#createElement">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > createElement </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> name, <span class="builtin-type">xml</span> children)</p>
+            
+                <b> returns </b><span class="builtin-type">Element</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Constructs an xml sequence consisting of only a new element item.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >name</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the name of the new element</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >children</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span class="default"> (default concat())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the children of the new element</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Element</span></span>)</li>
+                <li><p>an xml sequence consisting of only a new xml element with name <code>name</code>,
+no attributes, and children <code>children</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="createProcessingInstruction" title="createProcessingInstruction">
+             <a class="url-link" href="#createProcessingInstruction">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > createProcessingInstruction </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> target, <span class="builtin-type">string</span> content)</p>
+            
+                <b> returns </b><span class="builtin-type">ProcessingInstruction</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Constructs an xml sequence consisting of only a processing instruction item.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >target</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the target part of the processing instruction to be constructed</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >content</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the content part of the processing instruction to be constructed</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">ProcessingInstruction</span></span>)</li>
+                <li><p>an xml sequence consisting of a processing instruction with target <code>target</code>
+and content <code>content</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="elements" title="elements">
+             <a class="url-link" href="#elements">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > elements </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">xml</span> x)</p>
+            
+                <b> returns </b><span class="builtin-type">xml</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Selects the elements from an xml value.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the xml value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
+                <li><p>an xml sequence consisting of all the element items in <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="filter" title="filter">
+             <a class="url-link" href="#filter">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > filter </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">xml</span> x, <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
+            
+                <b> returns </b><span class="builtin-type">xml</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Selects the items from an xml sequence for which a function returns true.
+Each item is represented as a singleton value.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >func</span>
+                        <span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>a predicate to apply to each item to test whether it should be selected</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
+                <li><p>new xml sequence containing items in <code>x</code> for which <code>func</code> evaluates to true</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="forEach" title="forEach">
+             <a class="url-link" href="#forEach">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > forEach </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">xml</span> x, <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> func)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Applies a function to each item in an xml sequence.
+Each item is represented as a singleton value.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the xml value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >func</span>
+                        <span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>a function to apply to each item in <code>x</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="fromString" title="fromString">
+             <a class="url-link" href="#fromString">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > fromString </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> s)</p>
+            
+                <b> returns </b><span class="builtin-type">xml</span> | <span class="builtin-type">error</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Constructs an xml value from a string.
+This parses the string using the <code>content</code> production of the
+XML 1.0 Recommendation.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >s</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>a string in XML format</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>xml value resulting from parsing <code>s</code>, or an error</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="get" title="get">
+             <a class="url-link" href="#get">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > get </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">xml</span> x, <span class="builtin-type">int</span> i)</p>
+            
+                <b> returns </b><span class="builtin-type">xml</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the item of <code>x</code> with index <code>i</code>.
+This differs from <code>x[i]</code> in that it panics if
+<code>x</code> does not have an item with index <code>i</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the xml sequence</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >i</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the index</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
+                <li><p>the item with index <code>i</code> in <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getAttributes" title="getAttributes">
+             <a class="url-link" href="#getAttributes">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getAttributes </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">Element</span> x)</p>
+            
+                <b> returns </b><span class="builtin-type">map</span><<span class="builtin-type">string</span>> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the map representing the attributes of <code>elem</code>.
+This includes namespace attributes.
+The keys in the map are the expanded names of the attributes.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">Element</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml element</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">map</span><<span class="builtin-type">string</span>></span>)</li>
+                <li><p>attributes of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getChildren" title="getChildren">
+             <a class="url-link" href="#getChildren">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getChildren </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">Element</span> elem)</p>
+            
+                <b> returns </b><span class="builtin-type">xml</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the children of <code>elem</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >elem</span>
+                        <span class="type">  <span class="builtin-type">Element</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml element</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
+                <li><p>children of <code>elem</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getContent" title="getContent">
+             <a class="url-link" href="#getContent">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getContent </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">Text</span> | <span class="builtin-type">ProcessingInstruction</span> | <span class="builtin-type">Comment</span> x)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the content of a text or processing instruction or comment item.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">Text</span> | <span class="builtin-type">ProcessingInstruction</span> | <span class="builtin-type">Comment</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml item</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>the content of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getName" title="getName">
+             <a class="url-link" href="#getName">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getName </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">Element</span> elem)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns a string giving the expanded name of <code>elem</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >elem</span>
+                        <span class="type">  <span class="builtin-type">Element</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml element</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>element name</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getTarget" title="getTarget">
+             <a class="url-link" href="#getTarget">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getTarget </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">ProcessingInstruction</span> x)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the target part of the processing instruction.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">ProcessingInstruction</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml processing instruction item</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>target part of <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="iterator" title="iterator">
+             <a class="url-link" href="#iterator">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > iterator </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">xml</span> x)</p>
+            
+                <b> returns </b><span class="builtin-type">object { public function next () returns (record {| (xml|string) value; |}?); }</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns an iterator over the xml items of <code>x</code></p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml sequence to iterate over</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">object { public function next () returns (record {| (xml|string) value; |}?); }</span></span>)</li>
+                <li><p>iterator object
+Each item is represented by an xml singleton.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="length" title="length">
+             <a class="url-link" href="#length">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > length </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">xml</span> x)</p>
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns number of xml items in <code>x</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml item</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
+                <li><p>number of XML items in <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="map" title="map">
+             <a class="url-link" href="#map">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > map </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">xml</span> x, <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">XmlType</span><span>)</span> </code> func)</p>
+            
+                <b> returns </b><span class="builtin-type">xml</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Applies a function to each item in an xml sequence, and returns an xml sequence of the results.
+Each item is represented as a singleton value.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the xml value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >func</span>
+                        <span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">XmlType</span><span>)</span> </code> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>a function to apply to each child or <code>item</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
+                <li><p>new xml value containing result of applying <code>func</code> to each child or <code>item</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="setChildren" title="setChildren">
+             <a class="url-link" href="#setChildren">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > setChildren </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">Element</span> elem, <span class="builtin-type">xml</span> | <span class="builtin-type">string</span> children)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Sets the children of <code>elem</code> to <code>children</code>.
+This panics if it would result in the element structure
+becoming cyclic.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >elem</span>
+                        <span class="type">  <span class="builtin-type">Element</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml element</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >children</span>
+                        <span class="type">  <span class="builtin-type">xml</span> | <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml or string to set as children</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="setName" title="setName">
+             <a class="url-link" href="#setName">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > setName </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">Element</span> elem, <span class="builtin-type">string</span> xName)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Change the name of element <code>elem</code> to <code>xName</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >elem</span>
+                        <span class="type">  <span class="builtin-type">Element</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>xml element</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >xName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>new expanded name</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="slice" title="slice">
+             <a class="url-link" href="#slice">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > slice </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">xml</span> x, <span class="builtin-type">int</span> startIndex, <span class="builtin-type">int</span> endIndex)</p>
+            
+                <b> returns </b><span class="builtin-type">xml</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns a subsequence of an xml value.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the xml value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >startIndex</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>start index, inclusive</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >endIndex</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        <span class="default"> (default x.length(x))</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>end index, exclusive</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
+                <li><p>a subsequence of <code>x</code> consisting of items with index &gt;= startIndex and &lt; endIndex</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="strip" title="strip">
+             <a class="url-link" href="#strip">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > strip </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">xml</span> x)</p>
+            
+                <b> returns </b><span class="builtin-type">xml</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Strips the insignificant parts of the an xml value.
+Comment items, processing instruction items are considered insignificant.
+After removal of comments and processing instructions, the text is grouped into
+the biggest possible chunks (i.e. only elements cause division into multiple chunks)
+and a chunk is considered insignificant if the entire chunk is whitespace.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the xml value</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
+                <li><p><code>x</code> with insignificant parts removed</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

@@ -1,0 +1,17 @@
+{
+  "title": "Documentation",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql documentation"
+  ],
+  "permalink": "/learn/by-example/graphql-documentation",
+  "active": "graphql-documentation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-documentation",
+    "/swan-lake/learn/by-example/graphql-documentation.html"
+  ]
+}

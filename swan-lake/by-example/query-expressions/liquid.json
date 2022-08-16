@@ -1,0 +1,18 @@
+{
+  "title": "Query expressions",
+  "description": "This BBE demonstrates query expressions in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "query",
+    "query expression",
+    "iterable"
+  ],
+  "permalink": "/learn/by-example/query-expressions",
+  "active": "query-expressions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/query-expressions",
+    "/swan-lake/learn/by-example/query-expressions.html"
+  ]
+}

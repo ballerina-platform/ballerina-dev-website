@@ -1,0 +1,18 @@
+{
+  "title": "Let clause",
+  "description": "This BBE demonstrates let clause in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "let clause",
+    "query",
+    "query expression"
+  ],
+  "permalink": "/learn/by-example/let-clause",
+  "active": "let-clause",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/let-clause",
+    "/swan-lake/learn/by-example/let-clause.html"
+  ]
+}

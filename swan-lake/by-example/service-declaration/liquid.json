@@ -1,0 +1,19 @@
+{
+  "title": "Service declaration",
+  "description": "This BBE demonstrates how to write a service in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "service",
+    "UDP",
+    "service declaration",
+    "providing services"
+  ],
+  "permalink": "/learn/by-example/service-declaration",
+  "active": "service-declaration",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/service-declaration",
+    "/swan-lake/learn/by-example/service-declaration.html"
+  ]
+}

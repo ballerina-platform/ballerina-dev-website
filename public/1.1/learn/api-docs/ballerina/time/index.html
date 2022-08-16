@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+        .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+
+
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+ <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.1.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../time/index.html">
+            <h3>time</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../time/index.html#records">Records</a>
+        </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../time/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../time/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../time/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../time/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                
+                
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../time/index.html">
+            <h3>time</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../time/index.html#records">Records</a>
+        </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../time/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../time/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../time/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../time/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">time</span>
+                    
+                </h1>
+                    <h2>Module overview</h2>
+<p>This module provides implementations related to time, date, time zones, and durations.</p>
+<p>The module has two main types as <a href="records/Time.html">Time</a> and <a href="records/TimeZone.html">TimeZone</a>. The type <code>Time</code> represents a time associated with a given time zone. It has <code>time</code> and <code>zone</code> as attributes. The type <code>TimeZone</code> represents the time zone associated with a given time. It has <code>id</code> and <code>offset</code> as attributes. An <code>id</code> can be one of the following:</p>
+<ul>
+<li>If <code>id</code> equals 'Z', the result is UTC.</li>
+<li>If <code>id</code> equals 'GMT', 'UTC' or 'UT', it is equivalent to UTC.</li>
+<li>If <code>id</code> starts with '+' or '-', the ID is parsed as an offset. Offset can be specified in one of the following ways. +h, +hh, +hh:mm, -hh:mm, +hhmm, -hhmm, +hh:mm:ss, -hh:mm:ss, +hhmmss, -hhmmss</li>
+<li>Also <code>id</code> can be a region-based zone ID. The format is '{area}/{city}' eg: &quot;America/Panama&quot;. The zones are based on IANA Time Zone Database (TZDB) supplied data.</li>
+</ul>
+<h1>Samples</h1>
+<h2>Getting the current time/date</h2>
+<pre><code class="language-ballerina">import ballerina/io;
+import ballerina/time;
+
+public function main() {
+    time:Time time = time:currentTime();    // Create a record of type ‘Time’.
+    io:println(time);
+
+    int timeValue = time.time;    // Time in milliseconds since January 1, 1970, 00:00:00 GMT. E.g., 1523513039.
+    io:println(timeValue);
+    int nanoTime = time:nanoTime();    // Time in nanoseconds since an arbitrary origin. Therefore, it should be used only to calculate durations. E.g., 2426115697486340.
+    io:println(nanoTime);
+    string zoneId = time.zone.id;    // Time zone as an identifier. E.g., “America/Panama”.
+    io:println(zoneId);
+    int zoneoffset = time.zone.offset;    // Time zone as an offset. E.g., -05:00.
+    io:println(zoneoffset);
+
+    // Get the current date and time upto milliseconds.
+    int year = time:getYear(time);    // E.g., 2018
+    io:println(year);
+    int month = time:getMonth(time);    // E.g., 3
+    io:println(month);
+    int day = time:getDay(time);    // E.g., 1
+    io:println(day);
+    int hour = time:getHour(time);    // E.g., 18
+    io:println(hour);
+    int minute = time:getMinute(time);    // E.g., 56
+    io:println(minute);
+    int second = time:getSecond(time);    // E.g., 23
+    io:println(second);
+    int milliSecond = time:getMilliSecond(time);    // E.g., 555
+    io:println(milliSecond);
+    string weekday = time:getWeekday(time);// Day of the week. E.g., “TUESDAY”.
+    io:println(weekday);
+}
+</code></pre>
+<h2>Creating a time/date record</h2>
+<pre><code class="language-ballerina">import ballerina/io;
+import ballerina/time;
+
+public function main() {
+    // Create a record of type ‘Time’ with time zone.
+    time:TimeZone zoneIdValue = {id: &quot;America/Panama&quot;};
+    time:Time time1 = {time: 1498488382000, zone: zoneIdValue};
+    io:println(time1);
+
+    // Create a record of type ‘Time’ with the time zone offset.
+    time:TimeZone zoneOffsetValue = {id: &quot;-05:00&quot;};
+    time:Time time2 = {time: 1498488382000, zone: zoneOffsetValue};
+    io:println(time2);
+
+    // Create a record of type ‘Time’ without the time zone.
+    time:TimeZone noZoneValue = {id: &quot;&quot;};
+    time:Time time3 = {time: 1498488382000, zone: noZoneValue};
+    io:println(time3);
+
+    // Create a record of type ‘Time’ with time and date. E.g., 2018-03-28T23:42:45.554-05:00
+    time:Time | error dateTime = time:createTime(2018, 3, 28, 23, 42, 45, 554, &quot;America/Panama&quot;);
+    if (dateTime is time:Time) {
+        io:println(dateTime);
+    } else {
+        io:println(&quot;An error occurred: &quot;, dateTime);
+    }
+}
+</code></pre>
+<h2>Formatting a time/date to a string</h2>
+<pre><code class="language-ballerina">import ballerina/io;
+import ballerina/time;
+
+public function main() returns error? {
+    time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
+    time:Time time = {time: 1498488382444, zone: zoneValue};
+
+    //Format a time to a string of a given pattern.
+    string | error time1 = check time:format(time, &quot;yyyy-MM-dd'T'HH:mm:ss.SSSZ&quot;);    //E.g., “2017-06-26T09:46:22.444-0500”.
+    io:println(time1);
+
+    //Format a time to a string of the RFC-1123 format.
+    string | error time2 = time:format(time, time:TIME_FORMAT_RFC_1123);    // E.g., &quot;Mon, 26 Jun 2017 09:46:22 -0500”
+    io:println(time2);
+
+    // Convert a time record to a string value.
+    string time3 = time:toString(time);//”2017-06-26T09:46:22.444-05:00”
+    io:println(time3);
+}
+</code></pre>
+<h2>Parsing a string to time/date</h2>
+<pre><code class="language-ballerina">import ballerina/io;
+import ballerina/time;
+
+public function main() returns error? {
+    // Parse a time string of a given format.
+    time:Time | error time1 = time:parse(&quot;2017-06-26T09:46:22.444-0500&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSSZ&quot;);    // The ‘Z’ stands for the time zone.
+    io:println(time1);
+
+    // Parse a time string of the RFC-1123 format.
+    time:Time | error time2 = time:parse(&quot;Wed, 28 Mar 2018 11:56:23 +0530&quot;, time:TIME_FORMAT_RFC_1123);
+    io:println(time2);
+}
+</code></pre>
+<h2>Setting time durations</h2>
+<pre><code class="language-ballerina">import ballerina/time;
+
+public function main() {
+    // Add a duration to a given time.
+    time:Time | error time1 = time:parse(&quot;2017-06-26T09:46:22.444-0500&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSSZ&quot;);
+    if (time1 is time:Time) {
+        time1 = time:addDuration(time1, 1, 1, 1, 1, 1, 1, 1);
+    // Adds 1 year, 1 month, 1 day, 1 hour, 1 minute, 1 second, and 1 millisecond.
+    }
+
+    // Subtract a duration from a given time.
+    time:Time | error time2 = time:parse(&quot;2016-03-01T09:46:22.444-0500&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSSZ&quot;);
+    if (time2 is time:Time) {
+        time2 = time:subtractDuration(time2, 1, 1, 1, 1, 1, 1, 1);
+    // Subtracts 1 year, 1 month, 1 day, 1 hour, 1 minute, 1 second, and 1 millisecond.
+    }
+
+    // Get the duration between two times.
+    time:Time time3 = time:currentTime();
+    time:Time time4 = time:currentTime();
+    int diffInMillis = time3.time - time4.time;
+}
+</code></pre>
+<h1>Patterns for formatting and parsing</h1>
+<p>The below patterns can be used to generate the formatter string when using the <code>format()</code> and <code>parse()</code> functions.</p>
+<table>
+<thead>
+<tr><th align="center"><strong>Symbol</strong></th><th align="center"><strong>Meaning</strong></th><th align="center"><strong>Presentation</strong></th><th align="center"><strong>Examples</strong></th></tr>
+</thead>
+<tbody>
+<tr><td align="center">G</td><td align="center">era</td><td align="center">text</td><td align="center">AD; Anno Domini; A</td></tr>
+<tr><td align="center">u</td><td align="center">year</td><td align="center">year</td><td align="center">2004; 04</td></tr>
+<tr><td align="center">y</td><td align="center">year-of-era</td><td align="center">year</td><td align="center">2004; 04</td></tr>
+<tr><td align="center">D</td><td align="center">day-of-year</td><td align="center">number</td><td align="center">189</td></tr>
+<tr><td align="center">M/L</td><td align="center">month-of-year</td><td align="center">number/text</td><td align="center">7; 07; Jul; July; J</td></tr>
+<tr><td align="center">d</td><td align="center">day-of-month</td><td align="center">number</td><td align="center">10</td></tr>
+<tr><td align="center">Q/q</td><td align="center">quarter-of-year</td><td align="center">number/text</td><td align="center">3; 03; Q3; 3rd quarter</td></tr>
+<tr><td align="center">Y</td><td align="center">week-based-year</td><td align="center">year</td><td align="center">1996; 96</td></tr>
+<tr><td align="center">w</td><td align="center">week-of-week-based-year</td><td align="center">number</td><td align="center">27</td></tr>
+<tr><td align="center">W</td><td align="center">week-of-month</td><td align="center">number</td><td align="center">4</td></tr>
+<tr><td align="center">E</td><td align="center">day-of-week</td><td align="center">text</td><td align="center">Tue; Tuesday; T</td></tr>
+<tr><td align="center">e/c</td><td align="center">localized day-of-week</td><td align="center">number/text</td><td align="center">2; 02; Tue; Tuesday; T</td></tr>
+<tr><td align="center">F</td><td align="center">week-of-month</td><td align="center">number</td><td align="center">3</td></tr>
+<tr><td align="center">a</td><td align="center">cam-pm-of-day</td><td align="center">text</td><td align="center">PM</td></tr>
+<tr><td align="center">h</td><td align="center">clock-hour-of-am-pm (1-12)</td><td align="center">number</td><td align="center">12</td></tr>
+<tr><td align="center">K</td><td align="center">hour-of-am-pm (0-11)</td><td align="center">number</td><td align="center">0</td></tr>
+<tr><td align="center">k</td><td align="center">clock-hour-of-am-pm (1-24)</td><td align="center">number</td><td align="center">0</td></tr>
+<tr><td align="center">H</td><td align="center">hour-of-day (0-23)</td><td align="center">number</td><td align="center">0</td></tr>
+<tr><td align="center">m</td><td align="center">minute-of-hour</td><td align="center">number</td><td align="center">30</td></tr>
+<tr><td align="center">s</td><td align="center">second-of-minute</td><td align="center">number</td><td align="center">55</td></tr>
+<tr><td align="center">S</td><td align="center">fraction-of-second</td><td align="center">fraction</td><td align="center">978</td></tr>
+<tr><td align="center">A</td><td align="center">milli-of-day</td><td align="center">number</td><td align="center">1234</td></tr>
+<tr><td align="center">n</td><td align="center">nano-of-second</td><td align="center">number</td><td align="center">987654321</td></tr>
+<tr><td align="center">N</td><td align="center">nano-of-day</td><td align="center">number</td><td align="center">1234000000</td></tr>
+<tr><td align="center">V</td><td align="center">ime-zone ID</td><td align="center">zone-id</td><td align="center">America/Los_Angeles; Z; -08:30</td></tr>
+<tr><td align="center">z</td><td align="center">time-zone name</td><td align="center">zone-name</td><td align="center">Pacific Standard Time; PST</td></tr>
+<tr><td align="center">O</td><td align="center">localized zone-offset</td><td align="center">offset-O</td><td align="center">GMT+8; GMT+08:00; UTC-08:00</td></tr>
+<tr><td align="center">X</td><td align="center">zone-offset 'Z' for zero</td><td align="center">offset-X</td><td align="center">Z; -08; -0830; -08:30; -083015; -08:30:15</td></tr>
+<tr><td align="center">x</td><td align="center">zone-offset</td><td align="center">offset-x</td><td align="center">+0000; -08; -0830; -08:30; -083015; -08:30:15</td></tr>
+<tr><td align="center">Z</td><td align="center">zone-offset</td><td align="center">offset-Z</td><td align="center">+0000; -0800; -08:00</td></tr>
+<tr><td align="center">p</td><td align="center">pad next</td><td align="center">pad modifier</td><td align="center">1</td></tr>
+<tr><td align="center">'</td><td align="center">escape for text</td><td align="center">delimiter</td><td align="center"></td></tr>
+<tr><td align="center">''</td><td align="center">single quote</td><td align="center">literal</td><td align="center">'</td></tr>
+<tr><td align="center">[</td><td align="center">optional section start</td><td align="center"></td><td align="center"></td></tr>
+<tr><td align="center">]</td><td align="center">optional section end</td><td align="center"></td><td align="center"></td></tr>
+</tbody>
+</table>
+
+
+            
+
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records"
+                                   href="records/Detail.html">Detail</a></td>
+                            <td class="module-desc">Record type to hold the details of an error.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Time" title="Time">
+                                <a class="records"
+                                   href="records/Time.html">Time</a></td>
+                            <td class="module-desc">Ballerina Time represents a particular time with its associated time-zone.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="TimeZone" title="TimeZone">
+                                <a class="records"
+                                   href="records/TimeZone.html">TimeZone</a></td>
+                            <td class="module-desc">Ballerina TimeZone represents the time-zone information associated with a particular time.
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+
+            
+
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="addDuration" title="addDuration"><a
+                                    class="functions" href="functions.html#addDuration">addDuration</a></td>
+                            <td class="module-desc"><p>Add specified durations to the given time value.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="createTime" title="createTime"><a
+                                    class="functions" href="functions.html#createTime">createTime</a></td>
+                            <td class="module-desc"><p>Returns the Time object correspoding to the given time components and time-zone.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="currentTime" title="currentTime"><a
+                                    class="functions" href="functions.html#currentTime">currentTime</a></td>
+                            <td class="module-desc"><p>Returns the current time value with the system default time-zone.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="format" title="format"><a
+                                    class="functions" href="functions.html#format">format</a></td>
+                            <td class="module-desc"><p>Returns formatted string representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getDate" title="getDate"><a
+                                    class="functions" href="functions.html#getDate">getDate</a></td>
+                            <td class="module-desc"><p>Returns the date representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getDay" title="getDay"><a
+                                    class="functions" href="functions.html#getDay">getDay</a></td>
+                            <td class="module-desc"><p>Returns the date representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getHour" title="getHour"><a
+                                    class="functions" href="functions.html#getHour">getHour</a></td>
+                            <td class="module-desc"><p>Returns the hour representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getMilliSecond" title="getMilliSecond"><a
+                                    class="functions" href="functions.html#getMilliSecond">getMilliSecond</a></td>
+                            <td class="module-desc"><p>Returns the millisecond representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getMinute" title="getMinute"><a
+                                    class="functions" href="functions.html#getMinute">getMinute</a></td>
+                            <td class="module-desc"><p>Returns the minute representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getMonth" title="getMonth"><a
+                                    class="functions" href="functions.html#getMonth">getMonth</a></td>
+                            <td class="module-desc"><p>Returns the month representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getSecond" title="getSecond"><a
+                                    class="functions" href="functions.html#getSecond">getSecond</a></td>
+                            <td class="module-desc"><p>Returns the second representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getTime" title="getTime"><a
+                                    class="functions" href="functions.html#getTime">getTime</a></td>
+                            <td class="module-desc"><p>Returns the time representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getWeekday" title="getWeekday"><a
+                                    class="functions" href="functions.html#getWeekday">getWeekday</a></td>
+                            <td class="module-desc"><p>Returns the weekday representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getYear" title="getYear"><a
+                                    class="functions" href="functions.html#getYear">getYear</a></td>
+                            <td class="module-desc"><p>Returns the year representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="nanoTime" title="nanoTime"><a
+                                    class="functions" href="functions.html#nanoTime">nanoTime</a></td>
+                            <td class="module-desc"><p>Returns the current system time in nano seconds.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="parse" title="parse"><a
+                                    class="functions" href="functions.html#parse">parse</a></td>
+                            <td class="module-desc"><p>Returns the time for the given string representation based on the given format string.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="subtractDuration" title="subtractDuration"><a
+                                    class="functions" href="functions.html#subtractDuration">subtractDuration</a></td>
+                            <td class="module-desc"><p>Subtract specified durations from the given time value.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="toString" title="toString"><a
+                                    class="functions" href="functions.html#toString">toString</a></td>
+                            <td class="module-desc"><p>Returns ISO 8601 string representation of the given time.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="toTimeZone" title="toTimeZone"><a
+                                    class="functions" href="functions.html#toTimeZone">toTimeZone</a></td>
+                            <td class="module-desc"><p>Change the time-zone of the given time.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TIME_ERROR_REASON" title="TIME_ERROR_REASON"><a
+                                    class="constant" href="constants.html#TIME_ERROR_REASON">TIME_ERROR_REASON</a></td>
+                            <td class="module-desc"><p>Error reason to specify the time error that occurs in the module</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TIME_FORMAT_RFC_1123" title="TIME_FORMAT_RFC_1123"><a
+                                    class="constant" href="constants.html#TIME_FORMAT_RFC_1123">TIME_FORMAT_RFC_1123</a></td>
+                            <td class="module-desc"><p>Specifies the time format defined by the RFC-1123</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="TimeFormat" title="TimeFormat">
+                                <a class="types" href="types.html#TimeFormat">TimeFormat</a>
+                            </td>
+                            <td class="module-desc"><p>The time format defined by the RFC-1123.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="Error" title="Error">
+                                <a class="errors" href="errors.html#Error">Error</a>
+                            </td>
+                            <td class="module-desc"><p>Represents Time module related error</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack-2022.svg" style="width:17px; height:17px;"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/prism.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-core.min.js"></script> -->
+<script src="/js/prism-ballerina.js"></script>
+<!-- 
+<script>
+    (function () {
+
+if (typeof self === 'undefined' || !self.Prism || !self.document) {
+    return;
+}
+
+/**
+ * Plugin name which is used as a class name for <pre> which is activating the plugin
+ * @type {String}
+ */
+var PLUGIN_NAME = 'line-numbers';
+
+/**
+ * Regular expression used for determining line breaks
+ * @type {RegExp}
+ */
+var NEW_LINE_EXP = /\n(?!$)/g;
+
+/**
+ * Resizes line numbers spans according to height of line of code
+ * @param {Element} element <pre> element
+ */
+var _resizeElement = function (element) {
+    var codeStyles = getStyles(element);
+    var whiteSpace = codeStyles['white-space'];
+
+    if (whiteSpace === 'pre-wrap' || whiteSpace === 'pre-line') {
+        var codeElement = element.querySelector('code');
+        var lineNumbersWrapper = element.querySelector('.line-numbers-rows');
+        if (!codeElement || !lineNumbersWrapper) {
+            return;
+        }
+        var lineNumberSizer = element.querySelector('.line-numbers-sizer');
+        var codeLines = codeElement.textContent.split(NEW_LINE_EXP);
+
+        if (!lineNumberSizer) {
+            lineNumberSizer = document.createElement('span');
+            lineNumberSizer.className = 'line-numbers-sizer';
+
+            codeElement.appendChild(lineNumberSizer);
+        }
+
+        lineNumberSizer.style.display = 'block';
+
+        codeLines.forEach(function (line, lineNumber) {
+            lineNumberSizer.textContent = line || '\n';
+            var lineSize = lineNumberSizer.getBoundingClientRect().height;
+            lineNumbersWrapper.children[lineNumber].style.height = lineSize + 'px';
+        });
+
+        lineNumberSizer.textContent = '';
+        lineNumberSizer.style.display = 'none';
+    }
+};
+
+/**
+ * Returns style declarations for the element
+ * @param {Element} element
+ */
+var getStyles = function (element) {
+    if (!element) {
+        return null;
+    }
+
+    return window.getComputedStyle ? getComputedStyle(element) : (element.currentStyle || null);
+};
+
+window.addEventListener('resize', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('pre.' + PLUGIN_NAME), _resizeElement);
+});
+
+Prism.hooks.add('complete', function (env) {
+    if (!env.code) {
+        return;
+    }
+
+    var code = env.element;
+    var pre = code.parentNode;
+
+    // works only for <code> wrapped inside <pre> (not inline)
+    if (!pre || !/pre/i.test(pre.nodeName)) {
+        return;
+    }
+
+    // Abort if line numbers already exists
+    if (code.querySelector('.line-numbers-rows')) {
+        return;
+    }
+
+    var addLineNumbers = false;
+    var lineNumbersRegex = /(?:^|\s)line-numbers(?:\s|$)/;
+
+    for (var element = code; element; element = element.parentNode) {
+        if (lineNumbersRegex.test(element.className)) {
+            addLineNumbers = true;
+            break;
+        }
+    }
+
+    // only add line numbers if <code> or one of its ancestors has the `line-numbers` class
+    if (!addLineNumbers) {
+        return;
+    }
+
+    // Remove the class 'line-numbers' from the <code>
+    code.className = code.className.replace(lineNumbersRegex, ' ');
+    // Add the class 'line-numbers' to the <pre>
+    if (!lineNumbersRegex.test(pre.className)) {
+        pre.className += ' line-numbers';
+    }
+
+    var match = env.code.match(NEW_LINE_EXP);
+    var linesNum = match ? match.length + 1 : 1;
+    var lineNumbersWrapper;
+
+    var lines = new Array(linesNum + 1).join('<span></span>');
+
+    lineNumbersWrapper = document.createElement('span');
+    lineNumbersWrapper.setAttribute('aria-hidden', 'true');
+    lineNumbersWrapper.className = 'line-numbers-rows';
+    lineNumbersWrapper.innerHTML = lines;
+
+    if (pre.hasAttribute('data-start')) {
+        pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+    }
+
+    env.element.appendChild(lineNumbersWrapper);
+
+    _resizeElement(pre);
+
+    Prism.hooks.run('line-numbers', env);
+});
+
+Prism.hooks.add('line-numbers', function (env) {
+    env.plugins = env.plugins || {};
+    env.plugins.lineNumbers = true;
+});
+
+/**
+ * Global exports
+ */
+Prism.plugins.lineNumbers = {
+    /**
+     * Returns the node of the given line number in the given element.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @param {Number} number
+     * @returns {Element | undefined}
+     */
+    getLine: function (element, number) {
+        if (element.tagName !== 'PRE' || !element.classList.contains(PLUGIN_NAME)) {
+            return;
+        }
+
+        var lineNumberRows = element.querySelector('.line-numbers-rows');
+        var lineNumberStart = parseInt(element.getAttribute('data-start'), 10) || 1;
+        var lineNumberEnd = lineNumberStart + (lineNumberRows.children.length - 1);
+
+        if (number < lineNumberStart) {
+            number = lineNumberStart;
+        }
+        if (number > lineNumberEnd) {
+            number = lineNumberEnd;
+        }
+
+        var lineIndex = number - lineNumberStart;
+
+        return lineNumberRows.children[lineIndex];
+    },
+    /**
+     * Resizes the line numbers of the given element.
+     *
+     * This function will not add line numbers. It will only resize existing ones.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @returns {void}
+     */
+    resize: function (element) {
+        _resizeElement(element);
+    }
+};
+
+}());
+</script> -->
+
+<!-- 
+<style>
+    pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style> -->
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+</body>
+</html>

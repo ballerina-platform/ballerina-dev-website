@@ -1,0 +1,17 @@
+{
+  "title": "XML templates",
+  "description": "This BBE demonstrates XML templates in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xml",
+    "xml template"
+  ],
+  "permalink": "/learn/by-example/xml-templates",
+  "active": "xml-templates",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-templates",
+    "/swan-lake/learn/by-example/xml-templates.html"
+  ]
+}

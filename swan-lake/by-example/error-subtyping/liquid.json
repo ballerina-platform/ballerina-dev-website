@@ -1,0 +1,17 @@
+{
+  "title": "Error subtyping",
+  "description": "This BBE demonstrates how subtypes of errors are defined in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "error",
+    "error subtypes"
+  ],
+  "permalink": "/learn/by-example/error-subtyping",
+  "active": "error-subtyping",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/error-subtyping",
+    "/swan-lake/learn/by-example/error-subtyping.html"
+  ]
+}

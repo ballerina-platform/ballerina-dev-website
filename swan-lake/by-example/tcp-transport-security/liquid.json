@@ -1,0 +1,19 @@
+{
+  "title": "Transport security",
+  "description": "BBE on how to secure TCP listener and client with SSL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "ssl",
+    "tls",
+    "tcp client",
+    "tcp listener"
+  ],
+  "permalink": "/learn/by-example/tcp-transport-security",
+  "active": "tcp-transport-security",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/tcp-transport-security",
+    "/swan-lake/learn/by-example/tcp-transport-security.html"
+  ]
+}

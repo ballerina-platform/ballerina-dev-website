@@ -1,0 +1,11 @@
+{
+  "title": "While statement",
+  "description": "This BBE demonstrates while statement in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "while", "loops"],
+  "permalink": "/learn/by-example/while-statement",
+  "active": "while-statement",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/while-statement",
+    "/swan-lake/learn/by-example/while-statement.html"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Raw templates",
+  "description": "This BBE demonstrates raw templates in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "raw templates"],
+  "permalink": "/learn/by-example/raw-templates",
+  "active": "raw-templates",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/raw-templates",
+    "/swan-lake/learn/by-example/raw-templates.html"
+  ]
+}

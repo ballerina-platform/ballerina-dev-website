@@ -41,7 +41,7 @@ This Alpha2 release includes the language features planned for the Ballerina Swa
 
 ### Updating Ballerina
 
-You can use the [update tool](/learn/keeping-ballerina-up-to-date/) to update to Ballerina Swan Lake Alpha2 as follows.
+You can use the [update tool](/learn/cli-documentation/update-tool/) to update to Ballerina Swan Lake Alpha2 as follows.
 
 #### For existing users
 

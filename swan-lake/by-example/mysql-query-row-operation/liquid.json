@@ -1,0 +1,19 @@
+{
+  "title": "Query with one result",
+  "description": "This BBE demonstrates how to use the MySQL client select query row operations.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "MySQL",
+    "query",
+    "select",
+    "data"
+  ],
+  "permalink": "/learn/by-example/mysql-query-row-operation",
+  "active": "mysql-query-row-operation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mysql-query-row-operation",
+    "/swan-lake/learn/by-example/mysql-query-row-operation.html"
+  ]
+}

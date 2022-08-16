@@ -1,0 +1,17 @@
+{
+  "title": "Configurable variables",
+  "description": "This BBE demonstrates configurable variables in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "configurable",
+    "variable"
+  ],
+  "permalink": "/learn/by-example/configurable-variables",
+  "active": "configurable-variables",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/configurable-variables",
+    "/swan-lake/learn/by-example/configurable-variables.html"
+  ]
+}

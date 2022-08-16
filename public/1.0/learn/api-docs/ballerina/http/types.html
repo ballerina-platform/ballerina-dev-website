@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+      .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+       .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+     <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.0.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>     
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            <div class="primary-list">
+                <h3>Types</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="#CachingPolicy">CachingPolicy</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#Chunking">Chunking</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#CircuitState">CircuitState</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#ClientAuthError">ClientAuthError</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#ClientError">ClientError</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#Compression">Compression</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#CredentialBearer">CredentialBearer</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#HttpOperation">HttpOperation</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#HttpVersion">HttpVersion</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#InboundRequestError">InboundRequestError</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#InboundResponseError">InboundResponseError</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#KeepAlive">KeepAlive</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#ListenerError">ListenerError</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#MutualSslStatus">MutualSslStatus</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#OutboundRequestError">OutboundRequestError</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#OutboundResponseError">OutboundResponseError</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#RedirectCode">RedirectCode</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#RequestMessage">RequestMessage</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#ResiliencyError">ResiliencyError</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#ResponseMessage">ResponseMessage</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#WebSocketError">WebSocketError</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../http/index.html">
+            <h3>http</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../http/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../http/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../http/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../http/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../http/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../http/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../http/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../http/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../http/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+                <div class="primary-list">
+                    <h3>Types</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="#CachingPolicy">CachingPolicy</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#Chunking">Chunking</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#CircuitState">CircuitState</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#ClientAuthError">ClientAuthError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#ClientError">ClientError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#Compression">Compression</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#CredentialBearer">CredentialBearer</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#HttpOperation">HttpOperation</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#HttpVersion">HttpVersion</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#InboundRequestError">InboundRequestError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#InboundResponseError">InboundResponseError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#KeepAlive">KeepAlive</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#ListenerError">ListenerError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#MutualSslStatus">MutualSslStatus</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#OutboundRequestError">OutboundRequestError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#OutboundResponseError">OutboundResponseError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#RedirectCode">RedirectCode</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#RequestMessage">RequestMessage</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#ResiliencyError">ResiliencyError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#ResponseMessage">ResponseMessage</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#WebSocketError">WebSocketError</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../http/index.html">
+            <h3>http</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../http/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../http/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../http/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../http/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../http/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../http/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../http/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../http/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../http/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+             <h1>
+                 <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                 <span class="title-type">Types - </span>
+                 
+                     <a href="../http/index.html">http</a>
+                 
+            </h1>
+            <div class="types">
+                <div class="data-wrapper">
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="CachingPolicy"><b>CachingPolicy</b><span class="type">  <a href="../http/constants.html#CACHE_CONTROL_AND_VALIDATORS">CACHE_CONTROL_AND_VALIDATORS</a> | <a href="../http/constants.html#RFC_7234">RFC_7234</a></span></li>
+                                <li>
+                                    <p>Used for configuring the caching behaviour. Setting the <code>policy</code> field in the <code>CacheConfig</code> record allows
+the user to control the caching behaviour.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="Chunking"><b>Chunking</b><span class="type">  <a href="../http/constants.html#CHUNKING_AUTO">CHUNKING_AUTO</a> | <a href="../http/constants.html#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a> | <a href="../http/constants.html#CHUNKING_NEVER">CHUNKING_NEVER</a></span></li>
+                                <li>
+                                    <p>Defines the possible values for the chunking configuration in HTTP services and clients.</p>
+<p><code>AUTO</code>: If the payload is less than 8KB, content-length header is set in the outbound request/response,
+otherwise chunking header is set in the outbound request/response
+<code>ALWAYS</code>: Always set chunking header in the response
+<code>NEVER</code>: Never set the chunking header even if the payload is larger than 8KB in the outbound request/response</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="CircuitState"><b>CircuitState</b><span class="type">  <a href="../http/constants.html#CB_OPEN_STATE">CB_OPEN_STATE</a> | <a href="../http/constants.html#CB_HALF_OPEN_STATE">CB_HALF_OPEN_STATE</a> | <a href="../http/constants.html#CB_CLOSED_STATE">CB_CLOSED_STATE</a></span></li>
+                                <li>
+                                    <p>A finite type for modeling the states of the Circuit Breaker. The Circuit Breaker starts in the <code>CLOSED</code> state.
+If any failure thresholds are exceeded during execution, the circuit trips and goes to the <code>OPEN</code> state. After
+the specified timeout period expires, the circuit goes to the <code>HALF_OPEN</code> state. If the trial request sent while
+in the <code>HALF_OPEN</code> state succeeds, the circuit goes back to the <code>CLOSED</code> state.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="ClientAuthError"><b>ClientAuthError</b><span class="type">  <a href="../http/errors.html#AuthenticationError">AuthenticationError</a> | <a href="../http/errors.html#AuthorizationError">AuthorizationError</a></span></li>
+                                <li>
+                                    <p>Defines the Auth error types that returned from client</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="ClientError"><b>ClientError</b><span class="type">  <a href="../http/types.html#ResiliencyError">ResiliencyError</a> | <a href="../http/types.html#ClientAuthError">ClientAuthError</a> | <a href="../http/types.html#OutboundRequestError">OutboundRequestError</a> | <a href="../http/types.html#InboundResponseError">InboundResponseError</a> | <a href="../http/errors.html#UnsupportedActionError">UnsupportedActionError</a> | <a href="../http/errors.html#Http2ClientError">Http2ClientError</a> | <a href="../http/errors.html#MaximumWaitTimeExceededError">MaximumWaitTimeExceededError</a> | <a href="../http/errors.html#SslError">SslError</a> | <a href="../http/errors.html#GenericClientError">GenericClientError</a></span></li>
+                                <li>
+                                    <p>Defines the possible client error types</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="Compression"><b>Compression</b><span class="type">  <a href="../http/constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a> | <a href="../http/constants.html#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a> | <a href="../http/constants.html#COMPRESSION_NEVER">COMPRESSION_NEVER</a></span></li>
+                                <li>
+                                    <p>Options to compress using gzip or deflate.</p>
+<p><code>AUTO</code>: When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the
+outbound request/response accept-encoding/content-encoding option
+<code>ALWAYS</code>: Always set accept-encoding/content-encoding in outbound request/response
+<code>NEVER</code>: Never set accept-encoding/content-encoding header in outbound request/response</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="CredentialBearer"><b>CredentialBearer</b><span class="type">  <a href="../http/constants.html#AUTH_HEADER_BEARER">AUTH_HEADER_BEARER</a> | <a href="../http/constants.html#POST_BODY_BEARER">POST_BODY_BEARER</a> | <a href="../http/constants.html#NO_BEARER">NO_BEARER</a></span></li>
+                                <li>
+                                    <p>Specifies how to send the authentication credentials when exchanging tokens.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="HttpOperation"><b>HttpOperation</b><span class="type">  <a href="../http/constants.html#HTTP_FORWARD">HTTP_FORWARD</a> | <a href="../http/constants.html#HTTP_GET">HTTP_GET</a> | <a href="../http/constants.html#HTTP_POST">HTTP_POST</a> | <a href="../http/constants.html#HTTP_DELETE">HTTP_DELETE</a> | <a href="../http/constants.html#HTTP_OPTIONS">HTTP_OPTIONS</a> | <a href="../http/constants.html#HTTP_PUT">HTTP_PUT</a> | <a href="../http/constants.html#HTTP_PATCH">HTTP_PATCH</a> | <a href="../http/constants.html#HTTP_HEAD">HTTP_HEAD</a> | <a href="../http/constants.html#HTTP_SUBMIT">HTTP_SUBMIT</a> | <a href="../http/constants.html#HTTP_NONE">HTTP_NONE</a></span></li>
+                                <li>
+                                    <p>Defines the HTTP operations related to circuit breaker, failover and load balancer.</p>
+<p><code>FORWARD</code>: Forward the specified payload
+<code>GET</code>: Request a resource
+<code>POST</code>: Create a new resource
+<code>DELETE</code>: Deletes the specified resource
+<code>OPTIONS</code>: Request communication options available
+<code>PUT</code>: Replace the target resource
+<code>PATCH</code>: Apply partial modification to the resource
+<code>HEAD</code>: Identical to <code>GET</code> but no resource body should be returned
+<code>SUBMIT</code>: Submits a http request and returns an HttpFuture object
+<code>NONE</code>: No operation should be performed</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="HttpVersion"><b>HttpVersion</b><span class="type">  <a href="../http/constants.html#HTTP_1_0">HTTP_1_0</a> | <a href="../http/constants.html#HTTP_1_1">HTTP_1_1</a> | <a href="../http/constants.html#HTTP_2_0">HTTP_2_0</a></span></li>
+                                <li>
+                                    <p>Defines the supported HTTP protocols.</p>
+<p><code>HTTP_1_0</code>: HTTP/1.0 protocol
+<code>HTTP_1_1</code>: HTTP/1.1 protocol
+<code>HTTP_2_0</code>: HTTP/2.0 protocol</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="InboundRequestError"><b>InboundRequestError</b><span class="type">  <a href="../http/errors.html#InitializingInboundRequestError">InitializingInboundRequestError</a> | <a href="../http/errors.html#ReadingInboundRequestHeadersError">ReadingInboundRequestHeadersError</a> | <a href="../http/errors.html#ReadingInboundRequestBodyError">ReadingInboundRequestBodyError</a></span></li>
+                                <li>
+                                    <p>Defines the listener error types that returned while receiving inbound request</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="InboundResponseError"><b>InboundResponseError</b><span class="type">  <a href="../http/errors.html#InitializingInboundResponseError">InitializingInboundResponseError</a> | <a href="../http/errors.html#ReadingInboundResponseHeadersError">ReadingInboundResponseHeadersError</a> | <a href="../http/errors.html#ReadingInboundResponseBodyError">ReadingInboundResponseBodyError</a></span></li>
+                                <li>
+                                    <p>Defines the client error types that returned while receiving inbound response</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="KeepAlive"><b>KeepAlive</b><span class="type">  <a href="../http/constants.html#KEEPALIVE_AUTO">KEEPALIVE_AUTO</a> | <a href="../http/constants.html#KEEPALIVE_ALWAYS">KEEPALIVE_ALWAYS</a> | <a href="../http/constants.html#KEEPALIVE_NEVER">KEEPALIVE_NEVER</a></span></li>
+                                <li>
+                                    <p>Defines the possible values for the keep-alive configuration in service and client endpoints.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="ListenerError"><b>ListenerError</b><span class="type">  <a href="../http/errors.html#GenericListenerError">GenericListenerError</a> | <a href="../http/types.html#InboundRequestError">InboundRequestError</a> | <a href="../http/types.html#OutboundResponseError">OutboundResponseError</a></span></li>
+                                <li>
+                                    <p>Defines the possible listener error types</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="MutualSslStatus"><b>MutualSslStatus</b><span class="type">  <a href="../http/constants.html#PASSED">PASSED</a> | <a href="../http/constants.html#FAILED">FAILED</a> | <span class="builtin-type">()</span></span></li>
+                                <li>
+                                    <p>Defines the possible values for the mutual ssl status.</p>
+<p><code>passed</code>: Mutual SSL handshake is successful.
+<code>failed</code>: Mutual SSL handshake has failed.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="OutboundRequestError"><b>OutboundRequestError</b><span class="type">  <a href="../http/errors.html#InitializingOutboundRequestError">InitializingOutboundRequestError</a> | <a href="../http/errors.html#WritingOutboundRequestHeadersError">WritingOutboundRequestHeadersError</a> | <a href="../http/errors.html#WritingOutboundRequestBodyError">WritingOutboundRequestBodyError</a></span></li>
+                                <li>
+                                    <p>Defines the client error types that returned while sending outbound request</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="OutboundResponseError"><b>OutboundResponseError</b><span class="type">  <a href="../http/errors.html#InitializingOutboundResponseError">InitializingOutboundResponseError</a> | <a href="../http/errors.html#WritingOutboundResponseHeadersError">WritingOutboundResponseHeadersError</a> | <a href="../http/errors.html#WritingOutboundResponseBodyError">WritingOutboundResponseBodyError</a> | <a href="../http/errors.html#Initiating100ContinueResponseError">Initiating100ContinueResponseError</a> | <a href="../http/errors.html#Writing100ContinueResponseError">Writing100ContinueResponseError</a></span></li>
+                                <li>
+                                    <p>Defines the listener error types that returned while sending outbound response</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="RedirectCode"><b>RedirectCode</b><span class="type">  <a href="../http/constants.html#REDIRECT_MULTIPLE_CHOICES_300">REDIRECT_MULTIPLE_CHOICES_300</a> | <a href="../http/constants.html#REDIRECT_MOVED_PERMANENTLY_301">REDIRECT_MOVED_PERMANENTLY_301</a> | <a href="../http/constants.html#REDIRECT_FOUND_302">REDIRECT_FOUND_302</a> | <a href="../http/constants.html#REDIRECT_SEE_OTHER_303">REDIRECT_SEE_OTHER_303</a> | <a href="../http/constants.html#REDIRECT_NOT_MODIFIED_304">REDIRECT_NOT_MODIFIED_304</a> | <a href="../http/constants.html#REDIRECT_USE_PROXY_305">REDIRECT_USE_PROXY_305</a> | <a href="../http/constants.html#REDIRECT_TEMPORARY_REDIRECT_307">REDIRECT_TEMPORARY_REDIRECT_307</a> | <a href="../http/constants.html#REDIRECT_PERMANENT_REDIRECT_308">REDIRECT_PERMANENT_REDIRECT_308</a></span></li>
+                                <li>
+                                    <p>Defines the HTTP redirect codes as a type.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="RequestMessage"><b>RequestMessage</b><span class="type">  <a href="../http/objects/Request.html">Request</a> | <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="builtin-type">byte</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/objects/Entity.html">Entity</a>[] | <span class="builtin-type">()</span></span></li>
+                                <li>
+                                    <p>The types of messages that are accepted by HTTP <code>client</code> when sending out the outbound request.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="ResiliencyError"><b>ResiliencyError</b><span class="type">  <a href="../http/errors.html#FailoverAllEndpointsFailedError">FailoverAllEndpointsFailedError</a> | <a href="../http/errors.html#FailoverActionFailedError">FailoverActionFailedError</a> | <a href="../http/errors.html#UpstreamServiceUnavailableError">UpstreamServiceUnavailableError</a> | <a href="../http/errors.html#AllLoadBalanceEndpointsFailedError">AllLoadBalanceEndpointsFailedError</a> | <a href="../http/errors.html#AllRetryAttemptsFailed">AllRetryAttemptsFailed</a> | <a href="../http/errors.html#IdleTimeoutError">IdleTimeoutError</a></span></li>
+                                <li>
+                                    <p>Defines the resiliency error types that returned from client</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="ResponseMessage"><b>ResponseMessage</b><span class="type">  <a href="../http/objects/Response.html">Response</a> | <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="builtin-type">byte</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/objects/Entity.html">Entity</a>[] | <span class="builtin-type">()</span></span></li>
+                                <li>
+                                    <p>The types of messages that are accepted by HTTP <code>listener</code> when sending out the outbound response.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="WebSocketError"><b>WebSocketError</b><span class="type">  <a href="../http/errors.html#WsConnectionClosureError">WsConnectionClosureError</a> | <a href="../http/errors.html#WsInvalidHandshakeError">WsInvalidHandshakeError</a> | <a href="../http/errors.html#WsPayloadTooBigError">WsPayloadTooBigError</a> | <a href="../http/errors.html#WsProtocolError">WsProtocolError</a> | <a href="../http/errors.html#WsConnectionError">WsConnectionError</a> | <a href="../http/errors.html#WsInvalidContinuationFrameError">WsInvalidContinuationFrameError</a> | <a href="../http/errors.html#WsGenericError">WsGenericError</a></span></li>
+                                <li>
+                                    <p>The union of all the WebSocket related errors</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+</body>
+</html>

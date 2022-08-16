@@ -1,0 +1,19 @@
+{
+  "title": "Langlib functions",
+  "description": "This BBE introduces Langlib modules in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "langlib",
+    "module",
+    "Language",
+    "Library"
+  ],
+  "permalink": "/learn/by-example/langlib-functions",
+  "active": "langlib-functions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/langlib-functions",
+    "/swan-lake/learn/by-example/langlib-functions.html"
+  ]
+}

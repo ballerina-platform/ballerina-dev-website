@@ -25,6 +25,24 @@ export default function PastEvents() {
 
   return (
     <>
+       <Row className={styles.eventRows}>
+        <Col sm={12} md={2} className={styles.eventDateContainer}>
+          <p className={`${styles.eventDate} ${styles.eventDateNum}`}>Aug 11, 2022</p>	
+          <p className={styles.eventDate}>Thursday</p>	
+          <p className="eventLocation">Microsoft HQ</p>
+        </Col>
+        <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
+          <a target="_blank" href="https://vslive.com/Events/Redmond-2022/Sessions/Thursday/VH19-Busy-Developers-Guide-to-Ballerina.aspx" rel="noreferrer">	
+            <p className="eventName">Visual Studio LIVE!</p>	
+          </a>
+          <h5>VH19 Busy Developer's Guide to Ballerina</h5>		
+          <a target="_blank" rel="noreferrer" href="https://twitter.com/tedneward">Ted Neward</a>, Co-founder, Solidify
+        </Col>
+        <Col sm={12} md={3} className={styles.eventURL}>
+          <a className={styles.eventRegistration} href="https://vslive.com/Events/Redmond-2022/Sessions/Thursday/VH19-Busy-Developers-Guide-to-Ballerina.aspx" target="_blank" rel="noreferrer">More info</a>
+        </Col>
+      </Row>
+    
       <Row className={styles.eventRows}>
         <Col sm={12} md={2} className={styles.eventDateContainer}>
           <p className={`${styles.eventDate} ${styles.eventDateNum}`}>June 8, 2022</p>	

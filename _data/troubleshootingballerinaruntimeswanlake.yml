@@ -9,4 +9,10 @@
           active: getting-strand-dump
         - title: Format and available details
           url: /learn/troubleshoot-ballerina-runtime/#format-and-available-details
-          active: format-and-available-details
+          sublinks:
+            - title: Strand group states
+              url: /learn/troubleshoot-ballerina-runtime/#strand-group-states
+              active: strand-group-states
+            - title: Strand states
+              url: /learn/troubleshoot-ballerina-runtime/#strand-states
+              active: strand-states

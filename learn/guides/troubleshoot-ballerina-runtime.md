@@ -15,15 +15,8 @@ redirect_from:
 ---
 
 Ballerina runtime can have unexpected behaviors due to user code errors, bugs or issues with the running environment. 
-These will result in memory leaks, cpu spinning, runtime hangs, performance degradation or crashes with 
-various exceptions. These will be critical when they happen in a production environment. The Ballerina compiler 
-provides support in detecting syntax and semantic issues. However, it is very difficult for a compiler 
-to detect runtime errors like logical errors because they occur during the program execution after a 
-successful compilation. This is where the dedicated runtime troubleshooting support becomes important to find out 
-the root causes for fixing or avoiding those unexpected behaviors in the future.
-
-Currently, we provide the ability to get the status of strands during the execution of a Ballerina program 
-via a strand dump.
+These will result in memory leaks, CPU spinning, runtime hangs, performance degradation or crashes with various errors. 
+Ballerina provides a tool to dump the status of currently running strands.
 
 ## Strand dump
 
@@ -36,13 +29,14 @@ a Ballerina program. This can be used to:
 
 - inspect strand and strand group status.
 
-Currently, this ability is only available in the operating systems where the TRAP POSIX signal is supported.
+Currently, this ability is only available in the operating systems where the `SIGTRAP` POSIX signal is supported 
+(`SIGTRAP` is not available on Windows).
 
 ### Getting strand dump
 
-To get the strand dump when a Ballerina program is running, you need to know the PID of the Ballerina program. 
-For that you can use the jps tool. Then you need to send the SIGTRAP signal to that process. The strand dump will 
-be outputted to the standard out stream in the text format.
+To get the strand dump when a Ballerina program is running, you need to know the process ID (PID) of the Ballerina 
+program. For that you can use the `jps` tool. Then you need to send the `SIGTRAP` signal to the process. The strand 
+dump will be produced to the standard output stream in the text format.
 
 As an example, consider the following Ballerina program.
 
@@ -74,7 +68,7 @@ function addnum(int num1, int num2) returns int {
 ```
 
 Run this Ballerina package using
-```bash
+```
 $ bal run
 Compiling source
 	demo/strandDump:0.1.0
@@ -83,19 +77,19 @@ Running executable
 ```
 
 While the program is running, obtain its PID.
-```bash
+```
 $ jps
 3408 Main
 28851 Jps
 28845 $_init
 ```
-Here for this program we get the PID as 28845. To get the strand dump, send the SIGTRAP signal to that process. 
-You can use the CLI command
-```bash
+Here for this program we get the PID as 28845, because `$_init` is the entry `class` filename of the Ballerina program. 
+To get the strand dump, send the `SIGTRAP` signal to that process. You can use the CLI command
+```
 $ kill -SIGTRAP 28845
 ```
 or
-```bash
+```
 $ kill -5 28845
 ```
 
@@ -128,39 +122,40 @@ group 5 [QUEUED]: [3]
 
 ### Format and available details
 
-The strand dump would contain the date and time the strand dump was obtained, and the current no. of strand groups 
-and strands available. The details will be given in the following format.
+The strand dump contains the information of the date and the time when the strand dump was obtained, and the current 
+no. of strand groups and strands available. The details will be given in the following format.
 
 ![Strand dump output format](/learn/images/strand-dump-format.png "Strand dump output format")
 
-- strand group ID - a unique ID given to a particular strand group. A strand group comprises a set of strands which run on the same thread.
-  
-- strand group state - current state of the strand group. Available states are,
+Label | Description
+-- | --
+Strand group ID | A unique ID given to a particular strand group. A strand group comprises a set of strands which run on the same thread.
+Strand group state | Current state of the strand group. [See available states.](/learn/troubleshoot-ballerina-runtime/#strand-group-states)
+Current no. of strands in the strand group | A strand group consists of one or more strands. Only one of them runs on a thread at a time.
+Strand ID | A unique ID given to a particular strand.
+Strand name | Name of the strand associated with the strand ID. This is optional and omitted if not available.
+Strand initiated module | Name of the module which created the strand.
+Strand initiated function | Name of the function which created the strand.
+Parent strand ID | ID of the parent strand. Omitted if there is no parent strand.
+Strand state | Current state of the strand. [See available states.](/learn/troubleshoot-ballerina-runtime/#strand-states)
+Strand yielded location stack trace | The stack trace which points to the location where the strand is blocked (yielded). This is omitted if the state is RUNNABLE or DONE. A line in the stack trace is given by the format: `module name:function name(filename:line number)`
 
-    1. [RUNNABLE] - strand group is ready to run or currently running
-    2. [QUEUED] - new set of strands which are not yet scheduled to run, or the strand group execution is blocked or completed
+#### Strand group states
 
-- current no. of strands in the strand group
+State | Description
+-- | --
+RUNNABLE | Strand group is ready to run or currently running.
+QUEUED | Strand group execution is blocked or completed or it comprises a new set of strands which are not yet scheduled to run.
 
-- strand id - a unique ID given to a particular strand.
+#### Strand states
 
-- strand name - name of the strand associated with the strand ID. This is optional and omitted if not available.
-
-- strand initiated module - name of the module which created the strand
-
-- strand initiated function - name of the function which created the strand
-
-- parent strand ID - ID of the parent strand. Omitted if there is no parent strand.
-
-- strand state - current state of the strand. Available states are,
-
-    1.   [WAITING FOR LOCK] - strand is waiting to acquire lock
-    2.   [BLOCKED ON WORKER MESSAGE SEND] - strand is blocked due to sync send action
-    3.   [BLOCKED ON WORKER MESSAGE RECEIVE] - strand is blocked due to receive action
-    4.   [BLOCKED ON WORKER MESSAGE FLUSH] - strand is blocked due to flush action
-    5.   [WAITING] - strand is blocked due to wait action
-    6.   [BLOCKED] - strand is blocked due to any other reason than the above. eg: function call
-    7.   [RUNNABLE] - strand is ready to run or currently running
-    8.   [DONE] - strand execution is completed
-
-- strand yielded location stacktrace - this is omitted if the state is RUNNABLE/DONE. If the strand is blocked (yielded), this gives the stack trace which points to the location where it was blocked. A line in the stacktrace is given by the format: module name:function name(filename:line number)
+State | Description
+-- | --
+WAITING FOR LOCK | Strand is waiting to acquire a lock.
+BLOCKED ON WORKER MESSAGE SEND | Strand is blocked due to `sync send` action.
+BLOCKED ON WORKER MESSAGE RECEIVE | Strand is blocked due to `receive` action.
+BLOCKED ON WORKER MESSAGE FLUSH | Strand is blocked due to `flush` action.
+WAITING | Strand is blocked due to `wait` action.
+BLOCKED | Strand is blocked due to any other reason than the above. E.g. sleep, external function call, etc.
+RUNNABLE | Strand is ready to run or currently running.
+DONE | Strand execution is completed.

@@ -17,7 +17,7 @@
  */
 
 // imports
-const md = require("markdown-it")();
+const md = require("markdown-it")({ xhtmlOut: true });
 const container = require("markdown-it-container");
 const fs = require("fs");
 const axios = require("axios");

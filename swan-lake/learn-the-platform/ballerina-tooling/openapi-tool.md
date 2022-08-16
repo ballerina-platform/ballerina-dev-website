@@ -194,7 +194,7 @@ service /greet on new http:Listener(9090) {
 
 The client generated from an OpenAPI definition can be used in your applications to call the service defined in the OpenAPI file. If you want to generate only the Ballerina client, you can set the `mode` as the `client` when running the OpenAPI tool. 
 
->**Note:** Before generating your client using the command-line tool, please check if a pre-generated client for your API already exists in the <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>. (If so, you can refer to the client's API documentation for more information on how to use the pre-generated client in your code.)
+>**Note:** Before generating your client using the command-line tool, please check if a pre-generated client for your API already exists in the <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>. (If so, you can refer to the client's API documentation for more information on how to use the pre-generated client in your code.)
 
 ```
 $ bal openapi -i <openapi-contract> --mode client
@@ -243,7 +243,7 @@ $ bal openapi -i <openapi-contract> [-n |--nullable]
 
 To see your new client in Ballerina central in the future, follow the steps below to send a GitHub Pull Request to the WSO2 `openapi-connectors` repository to publish it.
 
-1. Fork and clone the <a href="https://github.com/ballerina-platform/openapi-connectors" target="_blank">`openapi-connectors`</a>repository. Connectors generated from the Ballerina OpenAPI tool are managed in this repository.
+1. Fork and clone the <a href="https://github.com/ballerina-platform/openapi-connectors" target="_blank">`openapi-connectors`</a> repository. Connectors generated from the Ballerina OpenAPI tool are managed in this repository.
 
 2. Open the cloned repository and navigate to the `/openapi` directory.
 
@@ -257,11 +257,11 @@ To see your new client in Ballerina central in the future, follow the steps belo
 
 7. Add the license header at the top of each `.bal` file. 
 
-8. Add the <a href="https://github.com/ballerina-platform/ballerina-extended-library/discussions/77" target="_blank">`Package.md`</a>and <a href="https://github.com/ballerina-platform/ballerina-extended-library/discussions/78" target="_blank">`Module.md`</a>files.
+8. Add the <a href="https://github.com/ballerina-platform/ballerina-extended-library/discussions/77" target="_blank">`Package.md`</a> and <a href="https://github.com/ballerina-platform/ballerina-extended-library/discussions/78" target="_blank">`Module.md`</a> files.
 
 9. Add a connector icon to the root of the connector. The icon needs to be a `.png` of 200x200 px size named as `icon.png`. 
 
-10. Update the <a href="https://github.com/ballerina-platform/ballerina-extended-library/discussions/72" target="_blank">`Ballerina.toml` file</a>.
+10. Update the <a href="https://github.com/ballerina-platform/ballerina-extended-library/discussions/72" target="_blank">`Ballerina.toml` file</a>.
 
 11. Run the `./gradlew build` command. 
 

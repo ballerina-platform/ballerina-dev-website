@@ -20,13 +20,14 @@ To run this tutorial, you need the following prerequisites:
 
 1. [Ballerina 2202.1.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor
-   > **Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
+  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
+  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
 
 ## Prepare the AsyncAPI contract
 
 Before using the tool, there are some modifications that should be made by adding some custom tags to the contract.
 
-This guide uses only a part of the <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/slack/asyncapi.yml" target="_blank">AsyncAPI specification of Slack</a> for the purpose of simplicity.
+This guide uses only a part of the <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/slack/asyncapi.yml" target="_blank">AsyncAPI specification of Slack</a> for the purpose of simplicity.
 
 ```yaml
 asyncapi: 2.1.0

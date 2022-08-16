@@ -53,7 +53,7 @@ jobs:
 
       - name: Deploy
         run: |
-          cp -r .github CNAME robots.txt gh-pages/.git out
+          cp -r .github CNAME robots.txt gh-pages/.git utils out
           cd out
           git config --global user.email "ballerina-bot@ballerina.org"
           git config --global user.name "ballerina-bot"

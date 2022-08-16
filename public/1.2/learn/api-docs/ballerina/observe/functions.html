@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides apis for observing Ballerina services.
+Ballerina supports Observability out of the box. This module provides user api's to make Ballerina Observability more flexible for the user.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,observe">
+
+    <title>API Docs - Functions : observe</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Functions</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="#addTagToSpan" onclick="menuLinkClick()">addTagToSpan</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#finishSpan" onclick="menuLinkClick()">finishSpan</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getAllMetrics" onclick="menuLinkClick()">getAllMetrics</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#lookupMetric" onclick="menuLinkClick()">lookupMetric</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#startRootSpan" onclick="menuLinkClick()">startRootSpan</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#startSpan" onclick="menuLinkClick()">startSpan</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../observe/index.html" onclick="menuLinkClick()">
+            <h3>observe</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../observe/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../observe/index.html#objects" onclick="menuLinkClick()">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../observe/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Functions - </span>
+                
+                    <a href="../observe/index.html">observe</a>
+                
+            </h1>
+            <div class="constants">
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#addTagToSpan">addTagToSpan</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Add a key value pair as a tag to the span.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#finishSpan">finishSpan</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Finish the current span.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#getAllMetrics">getAllMetrics</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#lookupMetric">lookupMetric</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Retrieves the specific metric that is described by the given name and tags.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#startRootSpan">startRootSpan</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Start a span with no parent span.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#startSpan">startSpan</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Start a span and create child relationship to current active span or user specified span.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+                <div>
+                    
+                        <div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="addTagToSpan" title="addTagToSpan">
+             <a class="url-link" href="#addTagToSpan">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > addTagToSpan </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> tagKey, <span class="builtin-type">string</span> tagValue, <span class="builtin-type">int</span> spanId)</p>
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Add a key value pair as a tag to the span.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >tagKey</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Key of the tag</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >tagValue</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Value of the tag</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >spanId</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        <span class="default"> (default -1)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Id of span to which the tags should be added or -1 to add tags to the current active span</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
+                <li><p>An error if an error occurred while attaching tag to the span</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="finishSpan" title="finishSpan">
+             <a class="url-link" href="#finishSpan">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > finishSpan </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">int</span> spanId)</p>
+            
+                <b> returns </b><span class="builtin-type">error?</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Finish the current span.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >spanId</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Id of span to finish</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
+                <li><p>An error if an error occurred while finishing the span</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getAllMetrics" title="getAllMetrics">
+             <a class="url-link" href="#getAllMetrics">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getAllMetrics </h2>
+        <span class="method-types">
+            <p>()</p>
+            
+                <b> returns </b><span class="array-type"><a href="../observe/records/Metric.html">Metric</a>[]</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.</p>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../observe/records/Metric.html">Metric</a>[]</span></span>)</li>
+                <li><p>Array of all registered metrics.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="lookupMetric" title="lookupMetric">
+             <a class="url-link" href="#lookupMetric">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > lookupMetric </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> name, <span class="builtin-type">map</span><<span class="builtin-type">string</span>> tags)</p>
+            
+                <b> returns </b><a href="../observe/objects/Counter.html">Counter</a> | <a href="../observe/objects/Gauge.html">Gauge</a> | <span class="builtin-type">()</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Retrieves the specific metric that is described by the given name and tags.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >name</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Name of the metric to lookup.</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >tags</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">string</span>> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The key/value pair tags that associated with the metric that should be looked up.</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../observe/objects/Counter.html">Counter</a> | <a href="../observe/objects/Gauge.html">Gauge</a> | <span class="builtin-type">()</span></span>)</li>
+                <li><p>The metric instance.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="startRootSpan" title="startRootSpan">
+             <a class="url-link" href="#startRootSpan">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > startRootSpan </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> spanName, <span class="builtin-type">map</span><<span class="builtin-type">string</span>> tags)</p>
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Start a span with no parent span.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >spanName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Name of the span</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >tags</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">string</span>> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Tags to be associated to the span</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
+                <li><p>SpanId of the started span</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="startSpan" title="startSpan">
+             <a class="url-link" href="#startSpan">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > startSpan </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> spanName, <span class="builtin-type">map</span><<span class="builtin-type">string</span>> tags, <span class="builtin-type">int</span> parentSpanId)</p>
+            
+                <b> returns </b><span class="builtin-type">int</span> | <span class="builtin-type">error</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Start a span and create child relationship to current active span or user specified span.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >spanName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Name of the span</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >tags</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">string</span>> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Tags to be associated to the span</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >parentSpanId</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        <span class="default"> (default -1)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Id of the parent span or -1 if parent span should be taken from system trace</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <span class="builtin-type">error</span></span>)</li>
+                <li><p>SpanId of the started span</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

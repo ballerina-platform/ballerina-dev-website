@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="RabbitMQ is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,rabbitmq">
+
+    <title>API Docs - Client : Channel</title>
+    <script src="../../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Clients</h3>
+                <ul>
+                    
+                        <li class="active active-item">
+                            <a href="Channel.html" onclick="menuLinkClick()">Channel</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Message.html" onclick="menuLinkClick()">Message</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../../rabbitmq/index.html" onclick="menuLinkClick()">
+            <h3>rabbitmq</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../rabbitmq/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../rabbitmq/index.html#objects" onclick="menuLinkClick()">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../rabbitmq/index.html#clients" onclick="menuLinkClick()">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../rabbitmq/index.html#listeners" onclick="menuLinkClick()">Listeners</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="constants" href="../../rabbitmq/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../../rabbitmq/index.html#annotations" onclick="menuLinkClick()">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../../rabbitmq/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../rabbitmq/index.html#errors" onclick="menuLinkClick()">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Clients - </span>
+                
+                    <a href="../../rabbitmq/index.html">rabbitmq</a> :
+                
+                <span class="clients">Channel</span>
+            </h1>
+            <p><p>The Ballerina interface to provide AMQP Channel related functionality.</p>
+</p>
+
+            <div class="constants">
+                <div class="method-sum">
+                    
+                        
+                            <h2>Constructor</h2>
+<h3 >__init</h3><p>(<a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> | <a href="../../rabbitmq/objects/Connection.html">Connection</a> connectionOrConnectionConfig)</p>
+<div class="data-wrapper">
+    
+        <div class="params-listing">
+            <ul>
+                <li> <b>connectionOrConnectionConfig</b><span class="type">  <a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> | <a href="../../rabbitmq/objects/Connection.html">Connection</a></span> </li>
+                <li>
+                    <p>A <code>rabbitmq:Connection</code> object or a connection configuration</p>
+
+                </li>
+            </ul>
+        </div>
+    
+</div>
+                        
+                    
+
+                    
+                        <h2>Remote Methods</h2>
+                        <table>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="queueDeclare"><a
+                                            class="functions" href="#queueDeclare">queueDeclare</a></td>
+                                    <td class="module-desc"><p>Declares a non-exclusive, auto-delete, or non-durable queue with the given configurations.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="exchangeDeclare"><a
+                                            class="functions" href="#exchangeDeclare">exchangeDeclare</a></td>
+                                    <td class="module-desc"><p>Declares a non-auto-delete, non-durable exchange with no extra arguments.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="queueBind"><a
+                                            class="functions" href="#queueBind">queueBind</a></td>
+                                    <td class="module-desc"><p>Binds a queue to an exchange with the given binding key.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="basicPublish"><a
+                                            class="functions" href="#basicPublish">basicPublish</a></td>
+                                    <td class="module-desc"><p>Publishes a message.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="queueDelete"><a
+                                            class="functions" href="#queueDelete">queueDelete</a></td>
+                                    <td class="module-desc"><p>Deletes the queue with the given name although it is in use or has messages in it.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="exchangeDelete"><a
+                                            class="functions" href="#exchangeDelete">exchangeDelete</a></td>
+                                    <td class="module-desc"><p>Deletes the exchange with the given name.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="queuePurge"><a
+                                            class="functions" href="#queuePurge">queuePurge</a></td>
+                                    <td class="module-desc"><p>Purges the content of the given queue.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="basicGet"><a
+                                            class="functions" href="#basicGet">basicGet</a></td>
+                                    <td class="module-desc"><p>Retrieves a message synchronously from the given queue providing direct access to the messages in the queue.</td>
+                                </tr>
+                            
+                        </table>
+                    
+
+                    
+                        <h2>Methods</h2>
+                        <div class="method-list">
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="getConnection">
+        <a href="#getConnection">getConnection </a>
+    </div>
+    <div class="param-details"> 
+            
+        <p>Retrieves the connection, which carries this channel.
+    </div>
+</div>
+
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
+    </div>
+    <div class="param-details"> 
+            
+        <p>Closes the <code>rabbitmq:Channel</code>.
+    </div>
+</div>
+
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="abortChannel">
+        <a href="#abortChannel">abortChannel </a>
+    </div>
+    <div class="param-details"> 
+            
+        <p>Aborts the RabbitMQ <code>rabbitmq:Channel</code>.
+    </div>
+</div>
+
+                            
+                        </div>
+                    
+                
+                    
+                </div>
+
+                
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="queueDeclare" title="queueDeclare">
+             <a class="url-link" href="#queueDeclare">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > queueDeclare </h2>
+        <span class="method-types">
+            <p>(<a href="../../rabbitmq/records/QueueConfiguration.html">QueueConfiguration</a>? queueConfig)</p>
+            
+                <b> returns </b><span class="builtin-type">string</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> | <span class="builtin-type">()</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Declares a non-exclusive, auto-delete, or non-durable queue with the given configurations.</p>
+<pre><code class="language-ballerina"> string|rabbitmq:Error? queueResult = newChannel-&gt;queueDeclare();
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >queueConfig</span>
+                        <span class="type">  <a href="../../rabbitmq/records/QueueConfiguration.html">QueueConfiguration</a>? </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Configurations required to declare a queue</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> | <span class="builtin-type">()</span></span>)</li>
+                <li><p>The name of the queue if autogenerated, <code>()</code> if the queue was successfully
+generated with the given parameters, or else a <code>rabbitmq:Error</code> if an I/O error is encountered</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="exchangeDeclare" title="exchangeDeclare">
+             <a class="url-link" href="#exchangeDeclare">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > exchangeDeclare </h2>
+        <span class="method-types">
+            <p>(<a href="../../rabbitmq/records/ExchangeConfiguration.html">ExchangeConfiguration</a> exchangeConfig)</p>
+            
+                <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Declares a non-auto-delete, non-durable exchange with no extra arguments.
+If the arguments are specified, then the exchange is declared accordingly.</p>
+<pre><code class="language-ballerina"> rabbitmq:Error? exchangeResult = newChannel-&gt;exchangeDeclare({
+                                               exchangeName: &quot;MyExchange&quot;,
+                                               exchangeType: rabbitmq:DIRECT_EXCHANGE,
+                                               durable: true,
+                                               autoDelete: true });
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >exchangeConfig</span>
+                        <span class="type">  <a href="../../rabbitmq/records/ExchangeConfiguration.html">ExchangeConfiguration</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Configurations required to declare an exchange</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="queueBind" title="queueBind">
+             <a class="url-link" href="#queueBind">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > queueBind </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> queueName, <span class="builtin-type">string</span> exchangeName, <span class="builtin-type">string</span> bindingKey)</p>
+            
+                <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Binds a queue to an exchange with the given binding key.</p>
+<pre><code class="language-ballerina"> rabbitmq:Error? bindResult = newChannel.queueBind(&quot;MyQueue&quot;, &quot;MyExchange&quot;, &quot;routing-key&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >queueName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Name of the queue</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >exchangeName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Name of the exchange</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >bindingKey</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Binding key used to bind the queue to the exchange</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="basicPublish" title="basicPublish">
+             <a class="url-link" href="#basicPublish">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > basicPublish </h2>
+        <span class="method-types">
+            <p>(<a href="../../rabbitmq/types.html#MessageContent">MessageContent</a> messageContent, <span class="builtin-type">string</span> routingKey, <span class="builtin-type">string</span> exchangeName, <a href="../../rabbitmq/records/BasicProperties.html">BasicProperties</a>? properties)</p>
+            
+                <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Publishes a message. Publishing to a non-existent exchange will result in a channel-level
+protocol error, which closes the channel.</p>
+<pre><code class="language-ballerina"> rabbitmq:Error? sendResult = newChannel-&gt;basicPublish(&quot;Hello from Ballerina&quot;, &quot;MyQueue&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >messageContent</span>
+                        <span class="type">  <a href="../../rabbitmq/types.html#MessageContent">MessageContent</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The message body</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >routingKey</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The routing key</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >exchangeName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The name of the exchange to which the message is published</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >properties</span>
+                        <span class="type">  <a href="../../rabbitmq/records/BasicProperties.html">BasicProperties</a>? </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Other properties for the message (routing headers, etc.)</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="queueDelete" title="queueDelete">
+             <a class="url-link" href="#queueDelete">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > queueDelete </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> queueName, <span class="builtin-type">boolean</span> ifUnused, <span class="builtin-type">boolean</span> ifEmpty)</p>
+            
+                <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Deletes the queue with the given name although it is in use or has messages in it.
+If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the queue is checked before deleting.</p>
+<pre><code class="language-ballerina"> rabbitmq:Error? deleteResult = newChannel-&gt;queueDelete(&quot;MyQueue&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >queueName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Name of the queue to be deleted</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >ifUnused</span>
+                        <span class="type">  <span class="builtin-type">boolean</span> </span>
+                        <span class="default"> (default false)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>True if the queue should be deleted only if it's not in use</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >ifEmpty</span>
+                        <span class="type">  <span class="builtin-type">boolean</span> </span>
+                        <span class="default"> (default false)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>True if the queue should be deleted only if it's empty</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="exchangeDelete" title="exchangeDelete">
+             <a class="url-link" href="#exchangeDelete">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > exchangeDelete </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> exchangeName)</p>
+            
+                <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Deletes the exchange with the given name.</p>
+<pre><code class="language-ballerina"> rabbitmq:Error? deleteResult = newChannel-&gt;exchangeDelete(&quot;MyExchange&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >exchangeName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The name of the exchange</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="queuePurge" title="queuePurge">
+             <a class="url-link" href="#queuePurge">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > queuePurge </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> queueName)</p>
+            
+                <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Purges the content of the given queue.</p>
+<pre><code class="language-ballerina"> rabbitmq:Error? purgeResult = newChannel-&gt;queuePurge(&quot;MyQueue&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >queueName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The name of the queue</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="basicGet" title="basicGet">
+             <a class="url-link" href="#basicGet">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > basicGet </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> queueName, <a href="../../rabbitmq/types.html#AcknowledgementMode">AcknowledgementMode</a> ackMode)</p>
+            
+                <b> returns </b><a href="../../rabbitmq/clients/Message.html">Message</a> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Retrieves a message synchronously from the given queue providing direct access to the messages in the queue.</p>
+<pre><code class="language-ballerina"> rabbitmq:Message|rabbitmq:Error getResult = newChannel-&gt;basicGet(&quot;MyQueue&quot;, rabbitmq:AUTO_ACK);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >queueName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The name of the queue</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >ackMode</span>
+                        <span class="type">  <a href="../../rabbitmq/types.html#AcknowledgementMode">AcknowledgementMode</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Type of the acknowledgement mode</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/clients/Message.html">Message</a> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
+                <li><p>A <code>rabbitmq:Message</code> object containing the retrieved message data or else a<code>rabbitmq:Error</code> if an
+I/O error is encountered</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                
+
+                
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getConnection" title="getConnection">
+             <a class="url-link" href="#getConnection">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getConnection </h2>
+        <span class="method-types">
+            <p>()</p>
+            
+                <b> returns </b><a href="../../rabbitmq/objects/Connection.html">Connection</a> | <a href="../../rabbitmq/errors.html#Error">Error</a> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Retrieves the connection, which carries this channel.</p>
+<pre><code class="language-ballerina"> rabbitmq:Connection|rabbitmq:Error connResult = newChannel.getConnection();
+</code></pre>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/objects/Connection.html">Connection</a> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
+                <li><p>A <code>rabbitmq:Connection</code> object or else a <code>rabbitmq:Error</code> if an I/O error is encountered</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="close" title="close">
+             <a class="url-link" href="#close">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > close </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">int?</span> closeCode, <span class="builtin-type">string?</span> closeMessage)</p>
+            
+                <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Closes the <code>rabbitmq:Channel</code>.</p>
+<pre><code class="language-ballerina"> rabbitmq:Error? closeResult = newChannel.close();
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >closeCode</span>
+                        <span class="type">  <span class="builtin-type">int?</span> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The close code (for information, go to the &quot;Reply Codes&quot; section in the
+[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf))</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >closeMessage</span>
+                        <span class="type">  <span class="builtin-type">string?</span> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>A message indicating the reason for closing the channel</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="abortChannel" title="abortChannel">
+             <a class="url-link" href="#abortChannel">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > abortChannel </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">int?</span> closeCode, <span class="builtin-type">string?</span> closeMessage)</p>
+            
+                <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Aborts the RabbitMQ <code>rabbitmq:Channel</code>. Forces the <code>rabbitmq:Channel</code> to close and waits for all the close operations
+to complete. Any encountered exceptions in the close operations are discarded silently.</p>
+<pre><code class="language-ballerina"> rabbitmq:Error? abortResult = newChannel.abortChannel(320, &quot;Channel Aborted&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >closeCode</span>
+                        <span class="type">  <span class="builtin-type">int?</span> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The close code (for information, go to the &quot;Reply Codes&quot; section in the
+[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf))</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >closeMessage</span>
+                        <span class="type">  <span class="builtin-type">string?</span> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>A message indicating the reason for closing the channel</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

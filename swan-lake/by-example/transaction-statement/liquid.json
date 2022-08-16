@@ -1,0 +1,18 @@
+{
+  "title": "Transaction statement",
+  "description": "This BBE introduces transaction statement in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "transactions",
+    "transaction",
+    "commit"
+  ],
+  "permalink": "/learn/by-example/transaction-statement",
+  "active": "transaction-statement",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/transaction-statement",
+    "/swan-lake/learn/by-example/transaction-statement.html"
+  ]
+}

@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides lang library map operations defined by the language specification 2020R1.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,lang.map">
+
+    <title>API Docs - Functions : lang.map</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Functions</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="#entries" onclick="menuLinkClick()">entries</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#filter" onclick="menuLinkClick()">filter</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#forEach" onclick="menuLinkClick()">forEach</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#get" onclick="menuLinkClick()">get</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#hasKey" onclick="menuLinkClick()">hasKey</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#iterator" onclick="menuLinkClick()">iterator</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#keys" onclick="menuLinkClick()">keys</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#length" onclick="menuLinkClick()">length</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#map" onclick="menuLinkClick()">map</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#reduce" onclick="menuLinkClick()">reduce</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#remove" onclick="menuLinkClick()">remove</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#removeAll" onclick="menuLinkClick()">removeAll</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#removeIfHasKey" onclick="menuLinkClick()">removeIfHasKey</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#toArray" onclick="menuLinkClick()">toArray</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../lang.map/index.html" onclick="menuLinkClick()">
+            <h3>lang.map</h3>
+        </a>
+    
+    <ul>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../lang.map/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Functions - </span>
+                
+                    <a href="../lang.map/index.html">lang.map</a>
+                
+            </h1>
+            <div class="constants">
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#entries">entries</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns a map containing [key, member] pair as the value for each key.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#filter">filter</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Selects the members from a map for which a function returns true.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#forEach">forEach</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Applies a function to each member of a map.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#get">get</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns the member of map <code>m</code> with key <code>k</code>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#hasKey">hasKey</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Tests whether m has a member with key <code>k</code>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#iterator">iterator</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns an iterator over a map.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#keys">keys</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns a list of all the keys of map <code>m</code>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#length">length</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns number of members of a map.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#map">map</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Applies a function each member of a map and returns a map of the result.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#reduce">reduce</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Combines the members of a map using a combining function.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#remove">remove</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Removes a member of a map.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#removeAll">removeAll</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Removes all members of a map.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#removeIfHasKey">removeIfHasKey</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Removes a member of a map with a given key, if the map has member with the key.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#toArray">toArray</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns a list of all the members of a map.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+                <div>
+                    
+                        <div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="entries" title="entries">
+             <a class="url-link" href="#entries">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > entries </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">Type</span>> m)</p>
+            
+                <b> returns </b><span class="builtin-type">map</span><<span>[</span><span class="builtin-type">string</span>, <span class="builtin-type">Type</span><span>]</span>> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns a map containing [key, member] pair as the value for each key.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">Type</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">map</span><<span>[</span><span class="builtin-type">string</span>, <span class="builtin-type">Type</span><span>]</span>></span>)</li>
+                <li><p>a new map of [key, member] pairs</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="filter" title="filter">
+             <a class="url-link" href="#filter">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > filter </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">Type</span>> m, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
+            
+                <b> returns </b><span class="builtin-type">map</span><<span class="builtin-type">Type</span>> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Selects the members from a map for which a function returns true.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">Type</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >func</span>
+                        <span class="type">  <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>a predicate to apply to each element to test whether it should be included</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">map</span><<span class="builtin-type">Type</span>></span>)</li>
+                <li><p>new map containing members for which <code>func</code> evaluates to true</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="forEach" title="forEach">
+             <a class="url-link" href="#forEach">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > forEach </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">Type</span>> m, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> func)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Applies a function to each member of a map.
+The parameter <code>func</code> is applied to each member of <code>m</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">Type</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >func</span>
+                        <span class="type">  <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>a function to apply to each member</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="get" title="get">
+             <a class="url-link" href="#get">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > get </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">Type</span>> m, <span class="builtin-type">string</span> k)</p>
+            
+                <b> returns </b><span class="builtin-type">Type</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the member of map <code>m</code> with key <code>k</code>.
+This for use in a case where it is known that the map has a specific key,
+and accordingly panics if <code>m</code> does not have a member with key <code>k</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">Type</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >k</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the key</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Type</span></span>)</li>
+                <li><p>member with key <code>k</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="hasKey" title="hasKey">
+             <a class="url-link" href="#hasKey">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > hasKey </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">Type</span>> m, <span class="builtin-type">string</span> k)</p>
+            
+                <b> returns </b><span class="builtin-type">boolean</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Tests whether m has a member with key <code>k</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">Type</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >k</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the key</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>true if m has a member with key <code>k</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="iterator" title="iterator">
+             <a class="url-link" href="#iterator">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > iterator </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">Type</span>> m)</p>
+            
+                <b> returns </b><span class="builtin-type">object { public function next () returns (record {| (any|error) value; |}?); }</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns an iterator over a map.
+The iterator will iterate over the members of the map not the keys.
+The <code>entries</code> function can be used to iterate over the keys and members together.
+The <code>keys</code> function can be used to iterator over just the keys.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">Type</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">object { public function next () returns (record {| (any|error) value; |}?); }</span></span>)</li>
+                <li><p>a new iterator object that will iterate over the members of <code>m</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="keys" title="keys">
+             <a class="url-link" href="#keys">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > keys </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">any</span> | <span class="builtin-type">error</span>> m)</p>
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns a list of all the keys of map <code>m</code>.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">any</span> | <span class="builtin-type">error</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
+                <li><p>a new list of all keys</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="length" title="length">
+             <a class="url-link" href="#length">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > length </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">any</span> | <span class="builtin-type">error</span>> m)</p>
+            
+                <b> returns </b><span class="builtin-type">int</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns number of members of a map.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">any</span> | <span class="builtin-type">error</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
+                <li><p>number of members in <code>m</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="map" title="map">
+             <a class="url-link" href="#map">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > map </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">Type</span>> m, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func)</p>
+            
+                <b> returns </b><span class="builtin-type">map</span><<span class="builtin-type">Type1</span>> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Applies a function each member of a map and returns a map of the result.
+The resulting map will have the same keys as the argument map.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">Type</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >func</span>
+                        <span class="type">  <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>a function to apply to each member</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">map</span><<span class="builtin-type">Type1</span>></span>)</li>
+                <li><p>new map containing result of applying parameter <code>func</code> to each member</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="reduce" title="reduce">
+             <a class="url-link" href="#reduce">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > reduce </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">Type</span>> m, <code> <span>function(</span><span class="builtin-type">Type1</span>, <span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func, <span class="builtin-type">Type1</span> initial)</p>
+            
+                <b> returns </b><span class="builtin-type">Type1</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Combines the members of a map using a combining function.
+The combining function takes the combined value so far and a member of the map,
+and returns a new combined value.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">Type</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >func</span>
+                        <span class="type">  <code> <span>function(</span><span class="builtin-type">Type1</span>, <span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>combining function</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >initial</span>
+                        <span class="type">  <span class="builtin-type">Type1</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>initial value for the first argument of combining parameter <code>func</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Type1</span></span>)</li>
+                <li><p>result of combining the members of <code>m</code> using <code>func</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="remove" title="remove">
+             <a class="url-link" href="#remove">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > remove </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">Type</span>> m, <span class="builtin-type">string</span> k)</p>
+            
+                <b> returns </b><span class="builtin-type">Type</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Removes a member of a map.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">Type</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >k</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the key</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Type</span></span>)</li>
+                <li><p>the member of <code>m</code> that had key <code>k</code>
+This removed the member of <code>m</code> with key <code>k</code> and returns it.
+It panics if there is no such member.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="removeAll" title="removeAll">
+             <a class="url-link" href="#removeAll">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > removeAll </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">any</span> | <span class="builtin-type">error</span>> m)</p>
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Removes all members of a map.
+This panics if any member cannot be removed.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">any</span> | <span class="builtin-type">error</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="removeIfHasKey" title="removeIfHasKey">
+             <a class="url-link" href="#removeIfHasKey">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > removeIfHasKey </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">Type</span>> m, <span class="builtin-type">string</span> k)</p>
+            
+                <b> returns </b><span class="builtin-type">Type?</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Removes a member of a map with a given key, if the map has member with the key.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">Type</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >k</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the key</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Type?</span></span>)</li>
+                <li><p>the member of <code>m</code> that had key <code>k</code>, or <code>()</code> if <code>m</code> does not have a key <code>k</code>
+If <code>m</code> has a member with key <code>k</code>, it removes and returns it;
+otherwise it returns <code>()</code>.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="toArray" title="toArray">
+             <a class="url-link" href="#toArray">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > toArray </h2>
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span><<span class="builtin-type">Type</span>> m)</p>
+            
+                <b> returns </b><span class="array-type"><span class="builtin-type">Type</span>[]</span> 
+            
+        </span>
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns a list of all the members of a map.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >m</span>
+                        <span class="type">  <span class="builtin-type">map</span><<span class="builtin-type">Type</span>> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>the map</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">Type</span>[]</span></span>)</li>
+                <li><p>an array whose members are the members of <code>m</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

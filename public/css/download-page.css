@@ -1,0 +1,329 @@
+a,
+a:visited,
+a:hover,
+a:focus {
+  /*    color: #20b6b0 !important;*/
+}
+
+.cDownloadsHeader h1 {
+  font-size: 45px;
+  color: #585a5e;
+  font-weight: 200;
+  margin-bottom: 30px;
+}
+
+.cDownloadsHeader p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.cDownloadsHeader a {
+  font-size: 16px;
+  color: #20b6b0;
+}
+
+.cDownloads {
+  margin-left: -15px !important;
+  margin-right: -15px !important;
+}
+
+/* h2 {
+  font-size: 30px;
+  line-height: 35px;
+  font-weight: 200;
+  margin: 21px 0 25px;
+  letter-spacing: 0;
+} */
+
+a.cDownload {
+  display: block;
+  margin: 0 15px;
+  transition: none !important;
+  font-size: 25px;
+  font-weight: 200;
+  background-color: #57595d;
+  color: #ffffff !important;
+  padding: 20px 10px 20px 60px;
+  background-image: url("../img/download-bg.svg");
+  background-repeat: no-repeat;
+  background-position: left 20px top 20px;
+  text-decoration: none;
+  min-height: 60px;
+  line-height: 35px;
+}
+a.cDownload.smallMargin {
+  margin: 0 0.5px;
+}
+a.cDownload .cSize {
+  font-family: monaco, Consolas, "Lucida Console", monospace;
+  font-size: 14px;
+  color: #d9dadb;
+  margin-top: -4px;
+}
+
+.cArchived a,
+.cArchived a:hover,
+.cArchived a:focus {
+  font-size: 16px;
+  font-weight: 300;
+  background-color: #57595d;
+  color: #ffffff;
+  /* font-family: "CalibreWeb-Semibold", "pragmatica", sans-serif; */
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cArchived a:hover {
+  background-color: #20b6b0;
+}
+
+.cReleaseNotes a {
+  font-size: 16px;
+  color: #20b6b0;
+  /* font-family: "CalibreWeb-Semibold", "pragmatica", sans-serif; */
+  display: inline-block;
+  letter-spacing: 1px;
+  line-height: 24px;
+}
+
+.cStandaloneInstallers {
+  margin: 15px 0 0;
+  border-top: solid 1px #a7a8ab;
+}
+
+.cStandaloneInstallers h2 {
+  margin: 25px 0;
+}
+
+.cStandaloneInstallers .cInstallers,
+.cPlugins .cInstallers {
+  background-color: #ffffff;
+  padding: 32px 0px;
+}
+
+.cInstallers {
+  margin-bottom: 25px;
+}
+
+.cInstallers h3.release-version {
+  font-size: 22px;
+
+  color: #555;
+
+  letter-spacing: 0.5px;
+
+  text-transform: none;
+
+  /* font-family: "pragmatica", sans-serif; */
+
+  line-height: 28px;
+
+  font-weight: 400;
+
+  padding: 0;
+
+  margin: 20px 0 15px 0;
+
+  border: none;
+}
+
+.cInstallers table {
+  width: 100%;
+  border-top: solid 0.5px #a7a8ab;
+  margin: 0;
+}
+
+.cInstallers table tr td {
+  padding: 3px 7px 3px 7px !important;
+  font-size: 13px;
+  font-weight: 400;
+  color: #585a5e;
+  border: none !important;
+  vertical-align: top;
+  border-bottom: solid 0.5px #a7a8ab !important;
+}
+
+.cInstallers table tr td a {
+  color: #20b6b0;
+}
+
+.cInstallers table tr td a.cDownloadLinkIcon img {
+  width: 13px;
+  height: auto;
+  display: inline-block;
+}
+
+a.cDownload:hover {
+  background-image: url("/img/download-bg-white.svg");
+  background-color: #20b6b0;
+  background-image: url("/img/download-bg-white.svg");
+}
+
+ul.cDiwnloadSubLinks {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 15px;
+  margin: 0;
+  text-align: right;
+}
+
+ul.cDiwnloadSubLinks li {
+  list-style: none;
+  float: right;
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 13px;
+}
+
+ul.cDiwnloadSubLinks li:first-child {
+  margin-right: 0;
+}
+
+ul.cDiwnloadSubLinks li a {
+  color: #20b6b0;
+}
+
+.cReleseNotesContainer {
+  padding: 30px;
+  background: #ffffff;
+}
+
+.cReleseNotesContainer h3 {
+  font-size: 20px;
+}
+
+.cReleseNotePannel {
+  height: 0px;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.2s ease 0s;
+}
+
+.cReleseNotePannel.cShowPlannel {
+  opacity: 1;
+  height: auto;
+  transition: all 0.2s ease 0s;
+}
+
+.cArchivedReleaseNotes {
+  margin: 0 0 0 21px;
+}
+
+a.cArchivedReleaseNotesLink {
+  font-size: 16px;
+  color: #20b6b0;
+  /* font-family: "CalibreWeb-Semibold", "pragmatica", sans-serif; */
+  display: inline-block;
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+#iReleseNotes.cShowPlannel {
+  background-color: #ffffff;
+  padding: 20px;
+  transition: all 0.2s ease 0s;
+}
+
+.releases-row {
+  display: inline-block;
+  width: 100%;
+}
+
+.wy-breadcrumbs li,
+.wy-breadcrumbs li a {
+  color: #20b6b0 !important;
+  font-size: 16px;
+}
+
+.wy-breadcrumbs li a {
+  padding-right: 0;
+}
+
+.cBallerina-archived-breadcrumbs {
+  padding: 15px 35px 5px 15px;
+}
+
+.wy-breadcrumbs li,
+.wy-breadcrumbs li a {
+  display: inline-block;
+}
+
+ul.wy-breadcrumbs {
+  padding: 0;
+}
+
+#iBanner {
+  display: none;
+}
+
+#iMainNavigation.cShowBanner {
+  margin-top: 0;
+}
+
+pre {
+  margin: 20px 0;
+}
+
+pre code {
+  white-space: pre;
+  word-wrap: normal;
+  display: block;
+}
+
+.cWindows,
+.cLinux,
+.cMac {
+  display: flex;
+  align-items: center;
+  margin-top: 40px !important;
+  margin-bottom: 8px !important;
+  color: #585a5e !important;
+  font-size: 1.3rem !important;
+  scroll-margin-top: 60px !important;
+  font-weight: 500 !important;
+}
+
+.cWindows,
+.cLinux,
+.cMac,
+.cVSCode {
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  line-height: 32px;
+  background-size: 30px;
+}
+p.cWindows,
+p.cLinux,
+p.cMac,
+p.cVSCode {
+  line-height: 32px;
+}
+.cWindows {
+  background-image: url("/img/downloads/windows.svg");
+}
+
+.cLinux {
+  background-image: url("/img/downloads/linux.svg");
+}
+.cMac {
+  background-image: url("/img/downloads/mac.svg");
+}
+.cVSCode {
+  background-image: url("/img/downloads/vs-code.svg");
+}
+
+@media screen and (max-width: 991px) {
+  .cInstallers .cLeftTable {
+    padding-right: 15px;
+  }
+  .cInstallers .cRightTable {
+    padding-left: 15px;
+  }
+  .cInstallers .cRightTable table {
+    border-top: 0;
+  }
+}

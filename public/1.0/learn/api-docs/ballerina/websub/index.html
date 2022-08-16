@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+      .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+       .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+     <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.0.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>     
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            <div class="primary-list module">
+    
+        <a href="../websub/index.html">
+            <h3>websub</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../websub/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../websub/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../websub/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../websub/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../websub/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../websub/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../websub/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../websub/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../websub/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+                
+                <div class="primary-list module">
+    
+        <a href="../websub/index.html">
+            <h3>websub</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../websub/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../websub/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../websub/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../websub/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../websub/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../websub/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../websub/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../websub/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../websub/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">websub</span>
+                    
+                </h1>
+                    <h2>Module overview</h2>
+<p>This module contains an implementation of the W3C <a href="https://www.w3.org/TR/websub/"><strong>WebSub</strong></a> recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.</p>
+<p>This implementation supports introducing all WebSub components: subscribers, publishers, and hubs.</p>
+<ul>
+<li>Subscriber - A party interested in receiving update notifications for particular topics.</li>
+<li>Publisher - A party that advertises topics to which interested parties subscribe in order to receive notifications
+on occurrence of events.</li>
+<li>Hub - A party that accepts subscription requests from subscribers and delivers content to the subscribers when the topic
+is updated by the topic's publisher.</li>
+</ul>
+<h2>Basic flow with WebSub</h2>
+<ol>
+<li>
+<p>The subscriber discovers from the publisher, the topic it needs to subscribe to and the hub(s) that deliver notifications on updates of the topic.</p>
+</li>
+<li>
+<p>The subscriber sends a subscription request to one or more discovered hub(s) specifying the discovered topic along
+with other subscription parameters such as:</p>
+<ul>
+<li>The callback URL to which content is expected to be delivered.</li>
+<li>(Optional) The lease period (in seconds) the subscriber wants the subscription to stay active.</li>
+<li>(Optional) A secret to use for <a href="https://www.w3.org/TR/websub/#signing-content">authenticated content distribution</a>.</li>
+</ul>
+</li>
+<li>
+<p>The hub sends an intent verification request to the specified callback URL. If the response indicates
+verification
+(by echoing a challenge specified in the request) by the subscriber, the subscription is added for the topic at the
+hub.</p>
+</li>
+<li>
+<p>The publisher notifies the hub of updates to the topic and the content to deliver is identified.</p>
+</li>
+<li>
+<p>The hub delivers the identified content to the subscribers of the topic.</p>
+</li>
+</ol>
+<h2>Features</h2>
+<h3>Subscriber</h3>
+<p>This module allows introducing a WebSub Subscriber Service with <code>onIntentVerification</code>, which accepts HTTP GET requests for intent verification, and <code>onNotification</code>, which accepts HTTP POST requests for notifications. The WebSub Subscriber Service provides the following capabilities:</p>
+<ul>
+<li>When the service is started a subscription request is sent for a hub/topic combination, either specified as annotations or discovered based on the resource URL specified as an annotation.</li>
+<li>If <code>onIntentVerification</code> is not specified, intent verification will be done automatically against the topic specified as an annotation or discovered based on the resource URL specified as an annotation.</li>
+<li>If a secret is specified for the subscription, signature validation will be done for authenticated content distribution.</li>
+</ul>
+<h3>Hub</h3>
+<p>A WebSub compliant hub based on the Ballerina Message Broker is also available. This can be used as a remote hub or to be used by publishers who want to have their own internal hub. Ballerina's WebSub hub honors specified lease periods and supports authenticated content distribution.</p>
+<h4>Enabling Basic Auth support for the hub</h4>
+<p>The Ballerina WebSub Hub can be secured by enforcing authentication (Basic Authentication) and (optionally) authorization.
+The <code>AuthProvider</code> and <code>authConfig</code> need to be specified for the hub listener and service respectively. If the
+<code>authStoreProvider</code> of the <code>AuthProvider</code> is set as &quot;http:CONFIG_AUTH_STORE&quot;, usernames and passwords for authentication and scopes for authorization would be read from a config TOML file.
+A user can specify <code>AuthProvider</code> as follows and set it to the <code>hubListenerConfig</code> record, which is passed when starting the hub.</p>
+<pre><code class="language-ballerina">http:BasicAuthHandler basicAuthHandler = new(new auth:InboundBasicAuthProvider());
+
+http:ServiceEndpointConfiguration hubListenerConfig = {
+    auth: {
+        authHandlers: [basicAuthHandler]
+    },
+    secureSocket: {
+        keyStore: {
+            path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
+            password: &quot;ballerina&quot;
+        }
+    }
+};
+
+var val = websub:startHub(new http:Listener(9191, hubListenerConfig));
+</code></pre>
+<p>In addition to the <code>BasicAuthHandler</code> for the listener, a user also has to specify the <code>authConfig</code> properties at the service or resource levels.</p>
+<p>They can be set by passing arguments for the <code>serviceAuth</code>, <code>subscriptionResourceAuth</code> or <code>publisherResourceAuth</code> parameters when starting up the hub.</p>
+<p>Recognized users can be specified in a <code>.toml</code> file, which can be passed as a configuration file when running the program.</p>
+<pre><code>[b7a.users]
+
+[b7a.users.tom]
+password=&quot;1234&quot;
+scopes=&quot;scope1&quot;
+</code></pre>
+<p>Once the hub is secured using basic auth, a subscriber should provide the relevant <code>auth</code> config in the
+<code>hubClientConfig</code> field of the subscriber service annotation.</p>
+<pre><code class="language-ballerina">auth:OutboundBasicAuthProvider basicAuthProvider = new({
+    username: &quot;tom&quot;,
+    password: &quot;1234&quot;
+});
+
+http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
+
+@websub:SubscriberServiceConfig {
+    path: &quot;/ordereventsubscriber&quot;,
+    hubClientConfig: {
+        auth: {
+            authHandler: basicAuthHandler
+        }
+    }
+}
+</code></pre>
+<h4>Enabling data persistence for the hub</h4>
+<p>The Ballerina WebSub Hub supports persistence of topic and subscription data that needs to be restored when the hub is
+restarted.</p>
+<p>Users can introduce their own persistence implementation, by introducing an object type that is structurally
+equivalent to the <code>websub:HubPersistenceStore</code> abstract object.</p>
+<p>Persistence can be enabled by setting a suitable <code>websub:HubPersistenceStore</code> value for the <code>hubPersistenceStore</code> field
+in the <code>HubConfiguration</code> record, which is passed to the <code>websub:startHub()</code> function.</p>
+<p>Any subscriptions added at the hub will be available even after the hub is restarted.</p>
+<h3>Publisher</h3>
+<p>Ballerina WebSub publishers can use utility functions to add WebSub link headers indicating the hub and topic
+URLs, which facilitates WebSub discovery.</p>
+<p>A hub client endpoint is also made available to publishers and subscribers to perform the following:</p>
+<ul>
+<li>Publishers
+<ul>
+<li>Register a topic at the Hub</li>
+<li>Publish to the hub indicating an update of the topic</li>
+</ul>
+</li>
+<li>Subscribers
+<ul>
+<li>Subscribe/Unsubscribe to/from topics at a hub</li>
+</ul>
+</li>
+</ul>
+<h1>Samples</h1>
+<p>This sample demonstrates a Subscriber Service with <code>subscribeOnStartUp</code> set to true. This will result in a
+subscription request being sent to the specified hub for the specified topic, with the specified lease seconds value
+and the specified secret for authenticated content distribution.
+Since an <code>onIntentVerification</code> resource function is not included, intent verification for subscription and unsubscription
+requests would happen automatically, if the topic specified in the request matches that specified as an annotation or
+that discovered for the annotated resource URL.</p>
+<pre><code class="language-ballerina">import ballerina/log;
+import ballerina/websub;
+
+listener websub:Listener websubEP = new(8181);
+
+@websub:SubscriberServiceConfig {
+    path: &quot;/websub&quot;,
+    subscribeOnStartUp: true,
+    target: [&quot;&lt;HUB_URL&gt;&quot;, &quot;&lt;TOPIC_URL&gt;&quot;],
+    leaseSeconds: 3600,
+    secret: &quot;&lt;SECRET&gt;&quot;
+}
+service websubSubscriber on websubEP {
+
+    resource function onNotification(websub:Notification notification) {
+        var payload = notification.getTextPayload();
+        if (payload is string) {
+            log:printInfo(&quot;WebSub Notification Received: &quot; + payload);
+        } else {
+            log:printError(&quot;Error retrieving payload as string&quot;, payload);
+        }
+    }
+}
+</code></pre>
+<p>Explicit intent verification can be done by introducing an <code>onIntentVerification</code> resource function.</p>
+<pre><code class="language-ballerina">import ballerina/http;
+import ballerina/log;
+import ballerina/websub;
+
+listener websub:Listener websubEP = new(8181);
+
+@websub:SubscriberServiceConfig {
+    path: &quot;/websub&quot;,
+    subscribeOnStartUp: true,
+    target: [&quot;&lt;HUB_URL&gt;&quot;, &quot;&lt;TOPIC_URL&gt;&quot;],
+    leaseSeconds: 3600,
+    secret: &quot;&lt;SECRET&gt;&quot;
+}
+service websubSubscriber on websubEP {
+
+    resource function onIntentVerification(websub:Caller caller, websub:IntentVerificationRequest request) {
+        http:Response response = new;
+        // Insert logic to build subscription/unsubscription intent verification response.
+        var result = caller-&gt;respond(response);
+        if (result is error) { 
+            log:printError(&quot;Error responding to intent verification request&quot;, result);
+        }
+    }
+
+    resource function onNotification(websub:Notification notification) {
+        var payload = notification.getTextPayload();
+        if (payload is string) {
+            log:printInfo(&quot;WebSub Notification Received: &quot; + payload);
+        } else {
+            log:printError(&quot;Error retrieving payload as string&quot;, payload);
+        }
+    }
+}
+</code></pre>
+<p>Functions are made available on the <code>websub:IntentVerificationRequest</code> to build a subscription or unsubscription
+verification response, specifying the topic to verify intent against:</p>
+<pre><code class="language-ballerina">http:Response response = request.buildSubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
+</code></pre>
+<pre><code class="language-ballerina">http:Response response = request.buildUnsubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
+</code></pre>
+<p>Ballerina publishers can start up and publish directly to the Ballerina WebSub hub.</p>
+<pre><code class="language-ballerina">import ballerina/log;
+import ballerina/http;
+import ballerina/runtime;
+import ballerina/websub;
+
+public function main() {
+
+    log:printInfo(&quot;Starting up the Ballerina Hub Service&quot;);
+    var result = websub:startHub(new http:Listener(9191));
+    websub:Hub webSubHub = result is websub:Hub ? result : result.startedUpHub;
+
+    var registrationResponse = webSubHub.registerTopic(&quot;&lt;TOPIC_URL&gt;&quot;);
+    if (registrationResponse is error) {
+        log:printError(&quot;Error occurred registering topic: &quot; + &lt;string&gt;registrationResponse.detail()?.message);
+    } else {
+        log:printInfo(&quot;Topic registration successful!&quot;);
+    }
+
+    // Make the publisher wait until the subscriber subscribes at the hub.
+    runtime:sleep(20000);
+
+    log:printInfo(&quot;Publishing update to internal Hub&quot;);
+    var publishResponse = webSubHub.publishUpdate(&quot;&lt;TOPIC_URL&gt;&quot;, {&quot;action&quot;: &quot;publish&quot;, &quot;mode&quot;: &quot;internal-hub&quot;});
+    if (publishResponse is error) {
+        log:printError(&quot;Error notifying hub: &quot; + &lt;string&gt;publishResponse.detail()?.message);
+    } else {
+        log:printInfo(&quot;Update notification successful!&quot;);
+    }
+
+    // Make sure the service is running until the subscriber receives the update notification.
+    runtime:sleep(5000);
+}
+</code></pre>
+<p>Ballerina publishers can also use the <code>websub:PublisherClient</code> to register topics at Ballerina WebSub hubs
+and publish/notify updates to the remote hubs.</p>
+<pre><code class="language-ballerina">import ballerina/log;
+import ballerina/runtime;
+import ballerina/websub;
+
+websub:PublisherClient websubHubClientEP = new (&quot;https://localhost:9191/websub/hub&quot;);
+
+public function main() {
+
+    var registrationResponse = websubHubClientEP-&gt;registerTopic(&quot;&lt;TOPIC_URL&gt;&quot;);
+    if (registrationResponse is error) {
+        log:printError(&quot;Error occurred registering topic: &quot; + &lt;string&gt;registrationResponse.detail()?.message);
+    } else {
+        log:printInfo(&quot;Topic registration successful!&quot;);
+    }
+
+    // Make the publisher wait until the subscriber subscribes at the hub.
+    runtime:sleep(10000);
+
+    log:printInfo(&quot;Publishing update to remote Hub&quot;);
+    var publishResponse = websubHubClientEP-&gt;publishUpdate(&quot;&lt;TOPIC_URL&gt;&quot;, { &quot;action&quot;: &quot;publish&quot;, &quot;mode&quot;: &quot;remote-hub&quot; });
+    if (publishResponse is error) {
+        log:printError(&quot;Error notifying hub: &quot; + &lt;string&gt;publishResponse.detail()?.message);
+    } else {
+        log:printInfo(&quot;Update notification successful!&quot;);
+    }
+
+}
+</code></pre>
+<p>The <code>websub:SubscriptionClient</code> can be used by subscribers to send subscription and unsubscription requests explicitly.</p>
+<pre><code class="language-ballerina">import ballerina/log;
+import ballerina/websub;
+
+websub:SubscriptionClient websubHubClientEP = new(&quot;&lt;HUB_URL&gt;&quot;);
+
+public function main() {
+
+    // Send subscription request for a subscriber service.
+    websub:SubscriptionChangeRequest subscriptionRequest = {
+        topic: &quot;&lt;TOPIC_URL&gt;&quot;, 
+        callback: &quot;&lt;CALLBACK_URL&gt;&quot;,
+        secret: &quot;&lt;SECRET&gt;&quot;
+    };
+
+    var subscriptionChangeResponse = websubHubClientEP-&gt;subscribe(subscriptionRequest);
+    if (subscriptionChangeResponse is websub:SubscriptionChangeResponse) {
+        log:printInfo(&quot;Subscription Request successful at Hub [&quot; + subscriptionChangeResponse.hub 
+                        + &quot;] for Topic [&quot; + subscriptionChangeResponse.topic + &quot;]&quot;);
+    } else {
+        log:printError(&quot;Error occurred with Subscription Request&quot;, err = subscriptionChangeResponse);
+    }
+
+    // Send unsubscription request for the subscriber service.
+    websub:SubscriptionChangeRequest unsubscriptionRequest = {
+        topic: &quot;&lt;TOPIC_URL&gt;&quot;,
+        callback: &quot;&lt;CALLBACK_URL&gt;&quot;
+    };
+
+    subscriptionChangeResponse = websubHubClientEP-&gt;unsubscribe(unsubscriptionRequest);
+    if (subscriptionChangeResponse is websub:SubscriptionChangeResponse) {
+        log:printInfo(&quot;Unsubscription Request successful at Hub [&quot; + subscriptionChangeResponse.hub
+                + &quot;] for Topic [&quot; + subscriptionChangeResponse.topic + &quot;]&quot;);
+    } else {
+        log:printError(&quot;Error occurred with Unsubscription Request&quot;, err = subscriptionChangeResponse);
+    }
+}
+</code></pre>
+<h1>Introducing Specific Subscriber Services (Webhook Callback Services)</h1>
+<p>Ballerina's WebSub subscriber service listener can be extended to introduce specific Webhooks.</p>
+<p>Instead of the single <code>onNotification</code> resource, you can introduce multiple resources to accept content delivery requests using specific subscriber services. These resources will correspond to the content delivery requests that will
+be delivered with respect to a particular topic.</p>
+<p>For example, assume a scenario in which you receive notifications either when an issue is opened or when an issue is closed by subscribing to a particular topic in an issue tracking system. With a custom subscriber service listener, which extends the
+generic WebSub subscriber service listener, you can allow two resources to accept content delivery requests (e.g., <code>onIssueOpened</code> and <code>onIssueClosed</code>) instead of the <code>onNotification</code> resource.</p>
+<p>These resources will accept two parameters:</p>
+<ol>
+<li>The generic <code>websub:Notification</code> record as the first parameter</li>
+<li>A custom record corresponding to the expected (JSON) payload of the notification (e.g., <code>IssueCreatedEvent</code>,
+<code>IssueClosedEvent</code>)</li>
+</ol>
+<p>You can introduce a specific service as such by extending the generic subscriber service listener, specifying a
+mapping between the expected notifications and the resources that requests need to be dispatched to.</p>
+<p>The mapping can be based on one of the following indicators of a notification request.
+(Requests will then be dispatched based on the value of the indicator in the request and a pre-defined mapping.)</p>
+<ul>
+<li>A request header</li>
+<li>The payload: the value of a particular key in the JSON payload</li>
+<li>A request header and the payload (combination of the above two)</li>
+</ul>
+<h3>Samples for Resource Mapping</h3>
+<p><strong>Based on a request header</strong></p>
+<p>Dispatching will be based on the value of the request header specified as <code>topicHeader</code>.</p>
+<pre><code class="language-ballerina">websub:ExtensionConfig extensionConfig = {
+    topicIdentifier: websub:TOPIC_ID_HEADER,
+    topicHeader: &quot;&lt;HEADER_TO_CONSIDER&gt;&quot;,
+    headerResourceMap: {
+        &quot;issueOpened&quot;: [&quot;onIssueOpened&quot;, IssueOpenedEvent],
+        &quot;issueClosed&quot;: [&quot;onIssueClosed&quot;, IssueClosedEvent]
+    }
+};
+</code></pre>
+<p>The <code>&quot;issueOpened&quot;: [&quot;onIssueOpened&quot;, IssueOpenedEvent]</code> entry indicates that when the value of the
+<code>&lt;HEADER_TO_CONSIDER&gt;</code> header is <code>issueOpened</code>, dispatching should happen to a resource named <code>onIssueOpened</code>.</p>
+<p>The first parameter of this resource will be the generic <code>websub:Notification</code> record, and the second parameter will
+be a custom <code>IssueOpenedEvent</code> record mapping the JSON payload received when an issue is created.</p>
+<p><strong>Based on the payload</strong></p>
+<p>Dispatching will be based on the value in the request payload of one of the map keys specified in the
+<code>payloadKeyResourceMap</code> map.</p>
+<pre><code class="language-ballerina">websub:ExtensionConfig extensionConfig = {
+    topicIdentifier: websub:TOPIC_ID_PAYLOAD_KEY,
+    payloadKeyResourceMap: {
+        &quot;&lt;PAYLOAD_KEY_TO_CONSIDER&gt;&quot;: {
+            &quot;issueOpened&quot;: [&quot;onIssueOpened&quot;, IssueOpenedEvent],
+            &quot;issueClosed&quot;: [&quot;onIssueClosed&quot;, IssueClosedEvent]
+        }
+    }
+};
+</code></pre>
+<p>The <code>&quot;issueOpened&quot;: [&quot;onIssueOpened&quot;, IssueOpenedEvent]</code> entry indicates that when the value for the JSON payload
+key <code>&lt;PAYLOAD_KEY_TO_CONSIDER&gt;</code> is <code>issueOpened</code>, dispatching should happen to a resource named <code>onIssueOpened</code>.</p>
+<p>The first parameter of this resource will be the generic <code>websub:Notification</code> record, and the second parameter will
+be a custom <code>IssueOpenedEvent</code> record, mapping the JSON payload received when an issue is created.</p>
+<p><strong>Based on a request header and the payload</strong></p>
+<p>Dispatching will be based on both a request header and the payload as specified in the <code>headerAndPayloadKeyResourceMap</code>.
+Also, you can introduce a <code>headerResourceMap</code> and/or a <code>payloadKeyResourceMap</code> as additional mappings.</p>
+<pre><code class="language-ballerina">websub:ExtensionConfig extensionConfig = {
+    topicIdentifier: websub:TOPIC_ID_HEADER_AND_PAYLOAD,
+    topicHeader: &quot;&lt;HEADER_TO_CONSIDER&gt;&quot;,
+    headerAndPayloadKeyResourceMap: {
+        &quot;issue&quot; : {
+            &quot;&lt;PAYLOAD_KEY_TO_CONSIDER&gt;&quot; : {
+                &quot;opened&quot;: [&quot;onIssueOpened&quot;, IssueOpenedEvent],
+                &quot;closed&quot;: [&quot;onIssueClosed&quot;, IssueClosedEvent]
+            }
+        }
+    }
+};
+</code></pre>
+<p>The <code>&quot;opened&quot;: [&quot;onIssueOpened&quot;, IssueOpenedEvent]</code> entry indicates that when the value of the
+<code>&lt;HEADER_TO_CONSIDER&gt;</code> header is <code>issue</code> and the value of the <code>&lt;PAYLOAD_KEY_TO_CONSIDER&gt;</code> JSON payload key is <code>opened</code>,
+dispatching should happen to a resource named <code>onIssueOpened</code>.</p>
+<p>The first parameter of this resource will be the generic <code>websub:Notification</code> record and the second parameter will
+be a custom <code>IssueOpenedEvent</code> record, mapping the JSON payload received when an issue is created.</p>
+<h3>Sample Specific Subscriber Service</h3>
+<p>In order to introduce a specific subscriber service, a new Ballerina <code>listener</code> needs to be introduced. This <code>listener</code> should wrap the generic <code>ballerina/websub:Listener</code> and include the extension configuration described above.</p>
+<p>The following example is for a service provider that</p>
+<ul>
+<li>allows registering webhooks to receive notifications when an issue is opened or assigned</li>
+<li>includes a header named &quot;Event-Header&quot; in each content delivery request indicating what event the notification is
+for (e.g., &quot;onIssueOpened&quot; when an issue is opened and &quot;onIssueAssigned&quot; when an issue is assigned)</li>
+</ul>
+<pre><code class="language-ballerina">import ballerina/lang.'object as objects;
+import ballerina/websub;
+
+// Introduce a record mapping the JSON payload received when an issue is opened.
+public type IssueOpenedEvent record {
+    int id;
+    string title;
+    string openedBy;
+}; 
+
+// Introduce a record mapping the JSON payload received when an issue is assigned.
+public type IssueAssignedEvent record {
+    int id;
+    string assignedTo;
+}; 
+
+// Introduce a new `listener` wrapping the generic `ballerina/websub:Listener` 
+public type WebhookListener object {
+
+    *objects:Listener;
+
+    private websub:Listener websubListener;
+
+    public function __init(int port) {
+        // Introduce the extension config, based on the mapping details.
+        websub:ExtensionConfig extensionConfig = {
+            topicIdentifier: websub:TOPIC_ID_HEADER,
+            topicHeader: &quot;Event-Header&quot;,
+            headerResourceMap: {
+                &quot;issueOpened&quot;: [&quot;onIssueOpened&quot;, IssueOpenedEvent],
+                &quot;issueAssigned&quot;: [&quot;onIssueAssigned&quot;, IssueAssignedEvent]
+            }
+        };
+        
+        // Set the extension config in the generic `websub:Listener` config.
+        websub:SubscriberListenerConfiguration sseConfig = {
+            extensionConfig: extensionConfig
+        };
+            
+        // Initialize the wrapped generic listener.
+        self.websubListener = new(port, sseConfig);
+    }
+
+    public function __attach(service s, string? name = ()) returns error?  {
+        return self.websubListener.__attach(s, name);
+    }
+
+    public function __start() returns error? {
+        return self.websubListener.__start();
+    }
+    
+    public function __detach(service s) returns error? {
+        return self.websubListener.__detach(s);
+    }
+    
+    public function __immediateStop() returns error? {
+        return self.websubListener.__immediateStop();
+    }
+
+    public function __gracefulStop() returns error? {
+        return self.websubListener.__gracefulStop();
+    }
+};    
+</code></pre>
+<p>A service can now be introduced for the above service provider as follows.</p>
+<pre><code class="language-ballerina">import ballerina/io;
+import ballerina/log;
+import ballerina/websub;
+
+@websub:SubscriberServiceConfig {
+    path: &quot;/subscriber&quot;,
+    subscribeOnStartUp: false
+}
+service specificSubscriber on new WebhookListener(8080) {
+    resource function onIssueOpened(websub:Notification notification, IssueOpenedEvent issueOpened) {
+        log:printInfo(io:sprintf(&quot;Issue opened: ID: %s, Title: %s&quot;, issueOpened.id, issueOpened.title));
+    }
+    
+    resource function onIssueAssigned(websub:Notification notification, IssueAssignedEvent issueAssigned) {
+        log:printInfo(io:sprintf(&quot;Issue ID %s assigned to %s&quot;, issueAssigned.id, issueAssigned.assignedTo));
+    }
+}
+</code></pre>
+<p>For a step-by-step guide on introducing custom subscriber services, see the <a href="https://ballerina.io/learn/how-to-extend-ballerina/#create-webhook-callback-services">&quot;Create Webhook Callback Services&quot;</a> section of &quot;How to Extend Ballerina&quot;.</p>
+
+
+            
+
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records"
+                                   href="records/Detail.html">Detail</a></td>
+                            <td class="module-desc">Holds the details of a WebSub error.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ExtensionConfig" title="ExtensionConfig">
+                                <a class="records"
+                                   href="records/ExtensionConfig.html">ExtensionConfig</a></td>
+                            <td class="module-desc">The extension configuration to introduce custom subscriber services.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="HubConfiguration" title="HubConfiguration">
+                                <a class="records"
+                                   href="records/HubConfiguration.html">HubConfiguration</a></td>
+                            <td class="module-desc">Record representing hub specific configurations.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="HubStartedUpError" title="HubStartedUpError">
+                                <a class="records"
+                                   href="records/HubStartedUpError.html">HubStartedUpError</a></td>
+                            <td class="module-desc">Error to represent that a WebSubHub is already started up, encapsulating the started up Hub.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="RemotePublishConfig" title="RemotePublishConfig">
+                                <a class="records"
+                                   href="records/RemotePublishConfig.html">RemotePublishConfig</a></td>
+                            <td class="module-desc">Record representing remote publishing allowance.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SubscriberDetails" title="SubscriberDetails">
+                                <a class="records"
+                                   href="records/SubscriberDetails.html">SubscriberDetails</a></td>
+                            <td class="module-desc">Record to represent Subscriber Details.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SubscriberListenerConfiguration" title="SubscriberListenerConfiguration">
+                                <a class="records"
+                                   href="records/SubscriberListenerConfiguration.html">SubscriberListenerConfiguration</a></td>
+                            <td class="module-desc">Object representing the configuration for the WebSub Subscriber Service Endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SubscriberServiceConfiguration" title="SubscriberServiceConfiguration">
+                                <a class="records"
+                                   href="records/SubscriberServiceConfiguration.html">SubscriberServiceConfiguration</a></td>
+                            <td class="module-desc">Configuration for a WebSubSubscriber service.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SubscriptionChangeRequest" title="SubscriptionChangeRequest">
+                                <a class="records"
+                                   href="records/SubscriptionChangeRequest.html">SubscriptionChangeRequest</a></td>
+                            <td class="module-desc">Record representing a WebSub subscription change request.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SubscriptionChangeResponse" title="SubscriptionChangeResponse">
+                                <a class="records"
+                                   href="records/SubscriptionChangeResponse.html">SubscriptionChangeResponse</a></td>
+                            <td class="module-desc">Record representing subscription/unsubscription details if a subscription/unsubscription request is successful.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SubscriptionDetails" title="SubscriptionDetails">
+                                <a class="records"
+                                   href="records/SubscriptionDetails.html">SubscriptionDetails</a></td>
+                            <td class="module-desc">Record to represent persisted Subscription Details retrieved.
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Hub" title="Hub">
+                                <a class="objects"
+                                   href="objects/Hub.html">
+                                    Hub
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Object representing a Ballerina WebSub Hub.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="HubPersistenceStore" title="HubPersistenceStore">
+                                <a class="objects"
+                                   href="objects/HubPersistenceStore.html">
+                                    HubPersistenceStore
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents the hub persistence configuration and functions.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="IntentVerificationRequest" title="IntentVerificationRequest">
+                                <a class="objects"
+                                   href="objects/IntentVerificationRequest.html">
+                                    IntentVerificationRequest
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Object representing an intent verification request received.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Notification" title="Notification">
+                                <a class="objects"
+                                   href="objects/Notification.html">
+                                    Notification
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Object representing the WebSub Content Delivery Request received.</p>
+</td>
+                        </tr>
+                    
+                </table>
+             </section>  
+            
+
+            
+             <section class="method-content" id="clients">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#clients">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Clients </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="Caller" title="Caller">
+                                <a class="clients"
+                                   href="clients/Caller.html">Caller</a></td>
+                            <td class="module-desc"><p>The caller remote functions to respond to client requests.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="PublisherClient" title="PublisherClient">
+                                <a class="clients"
+                                   href="clients/PublisherClient.html">PublisherClient</a></td>
+                            <td class="module-desc"><p>The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="SubscriptionClient" title="SubscriptionClient">
+                                <a class="clients"
+                                   href="clients/SubscriptionClient.html">SubscriptionClient</a></td>
+                            <td class="module-desc"><p>The HTTP based client for WebSub subscription and unsubscription.</p>
+</td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+             <section class="method-content" id="listeners">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#listeners">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Listeners </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate listeners" id="Listener" title="Listener">
+                                <a class="listeners"
+                                   href="listeners/Listener.html">Listener</a></td>
+                            <td class="module-desc"><p>Object representing the WebSubSubscriber Service Endpoint.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="addWebSubLinkHeader" title="addWebSubLinkHeader"><a
+                                    class="functions" href="functions.html#addWebSubLinkHeader">addWebSubLinkHeader</a></td>
+                            <td class="module-desc"><p>Function to add link headers to a response to allow WebSub discovery.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="extractTopicAndHubUrls" title="extractTopicAndHubUrls"><a
+                                    class="functions" href="functions.html#extractTopicAndHubUrls">extractTopicAndHubUrls</a></td>
+                            <td class="module-desc"><p>Function to retrieve hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="startHub" title="startHub"><a
+                                    class="functions" href="functions.html#startHub">startHub</a></td>
+                            <td class="module-desc"><p>Starts up the Ballerina Hub.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="WEBSUB_ERROR_CODE" title="WEBSUB_ERROR_CODE"><a
+                                    class="constant" href="constants.html#WEBSUB_ERROR_CODE">WEBSUB_ERROR_CODE</a></td>
+                            <td class="module-desc"><p>The constant used to represent error code of WebSub module.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PUBLISH_MODE_DIRECT" title="PUBLISH_MODE_DIRECT"><a
+                                    class="constant" href="constants.html#PUBLISH_MODE_DIRECT">PUBLISH_MODE_DIRECT</a></td>
+                            <td class="module-desc"><p><code>RemotePublishMode</code> indicating direct update content notification (fat-ping). The payload of the update
+notification request from the publisher to the hub would include be the update content.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PUBLISH_MODE_FETCH" title="PUBLISH_MODE_FETCH"><a
+                                    class="constant" href="constants.html#PUBLISH_MODE_FETCH">PUBLISH_MODE_FETCH</a></td>
+                            <td class="module-desc"><p><code>RemotePublishMode</code> indicating that once the publisher notifies the hub that an update is available, the hub
+needs to fetch the topic URL to identify the update content.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="SHA1" title="SHA1"><a
+                                    class="constant" href="constants.html#SHA1">SHA1</a></td>
+                            <td class="module-desc"><p>The constant used to represent SHA-1 cryptographic hash algorithm</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="SHA256" title="SHA256"><a
+                                    class="constant" href="constants.html#SHA256">SHA256</a></td>
+                            <td class="module-desc"><p>The constant used to represent SHA-256 cryptographic hash algorithm</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TOPIC_ID_HEADER" title="TOPIC_ID_HEADER"><a
+                                    class="constant" href="constants.html#TOPIC_ID_HEADER">TOPIC_ID_HEADER</a></td>
+                            <td class="module-desc"><p><code>TopicIdentifier</code> indicating dispatching based solely on a header of the request.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TOPIC_ID_PAYLOAD_KEY" title="TOPIC_ID_PAYLOAD_KEY"><a
+                                    class="constant" href="constants.html#TOPIC_ID_PAYLOAD_KEY">TOPIC_ID_PAYLOAD_KEY</a></td>
+                            <td class="module-desc"><p><code>TopicIdentifier</code> indicating dispatching based solely on a value for a key in the JSON payload of the request.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TOPIC_ID_HEADER_AND_PAYLOAD" title="TOPIC_ID_HEADER_AND_PAYLOAD"><a
+                                    class="constant" href="constants.html#TOPIC_ID_HEADER_AND_PAYLOAD">TOPIC_ID_HEADER_AND_PAYLOAD</a></td>
+                            <td class="module-desc"><p><code>TopicIdentifier</code> indicating dispatching based on a combination of header and values specified for a key/key(s) in
+the JSON payload of the request.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LISTENER_STARTUP_ERROR" title="LISTENER_STARTUP_ERROR"><a
+                                    class="constant" href="constants.html#LISTENER_STARTUP_ERROR">LISTENER_STARTUP_ERROR</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>websub:ListenerStartupError</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HUB_STARTUP_ERROR_REASON" title="HUB_STARTUP_ERROR_REASON"><a
+                                    class="constant" href="constants.html#HUB_STARTUP_ERROR_REASON">HUB_STARTUP_ERROR_REASON</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>websub:HubStartupError</code>.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="annotations">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#annotations">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Annotations </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="SpecificSubscriber" title="SpecificSubscriber"><a
+                                    class="annotations" href="annotations.html#SpecificSubscriber">SpecificSubscriber</a></td>
+                            <td class="module-desc"><p>Annotation to declare that the service represents a specific webhook.
+Generic WebSub Subscriber service validation is not done for
+service variables annotated as <code>@websub:SpecificSubscriber</code>.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="SubscriberServiceConfig" title="SubscriberServiceConfig"><a
+                                    class="annotations" href="annotations.html#SubscriberServiceConfig">SubscriberServiceConfig</a></td>
+                            <td class="module-desc"><p>WebSub Subscriber Configuration for the service, indicating subscription related parameters.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="RemotePublishMode" title="RemotePublishMode">
+                                <a class="types" href="types.html#RemotePublishMode">RemotePublishMode</a>
+                            </td>
+                            <td class="module-desc"><p>The identifier to be used to identify the mode in which update content should be identified.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="SignatureMethod" title="SignatureMethod">
+                                <a class="types" href="types.html#SignatureMethod">SignatureMethod</a>
+                            </td>
+                            <td class="module-desc"><p>The identifier to be used to identify the cryptographic hash algorithm.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="TopicIdentifier" title="TopicIdentifier">
+                                <a class="types" href="types.html#TopicIdentifier">TopicIdentifier</a>
+                            </td>
+                            <td class="module-desc"><p>The identifier to be used to identify the topic for dispatching with custom subscriber services.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="HubStartupError" title="HubStartupError">
+                                <a class="errors" href="errors.html#HubStartupError">HubStartupError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a hub startup error.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="ListenerStartupError" title="ListenerStartupError">
+                                <a class="errors" href="errors.html#ListenerStartupError">ListenerStartupError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a listener startup error.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+</body>
+</html>

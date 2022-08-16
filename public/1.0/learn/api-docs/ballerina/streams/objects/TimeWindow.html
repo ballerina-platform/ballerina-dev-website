@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+      .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+       .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+     <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.0.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>     
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            <div class="primary-list">
+                <h3>Objects</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="AbstractOperatorProcessor.html">AbstractOperatorProcessor</a>
+                        </li>
+                    
+                        <li >
+                            <a href="AbstractPatternProcessor.html">AbstractPatternProcessor</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Aggregator.html">Aggregator</a>
+                        </li>
+                    
+                        <li >
+                            <a href="AndOperatorProcessor.html">AndOperatorProcessor</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Average.html">Average</a>
+                        </li>
+                    
+                        <li >
+                            <a href="CompoundPatternProcessor.html">CompoundPatternProcessor</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Count.html">Count</a>
+                        </li>
+                    
+                        <li >
+                            <a href="DelayWindow.html">DelayWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="DistinctCount.html">DistinctCount</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ExternalTimeBatchWindow.html">ExternalTimeBatchWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ExternalTimeWindow.html">ExternalTimeWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Filter.html">Filter</a>
+                        </li>
+                    
+                        <li >
+                            <a href="FollowedByProcessor.html">FollowedByProcessor</a>
+                        </li>
+                    
+                        <li >
+                            <a href="HoppingWindow.html">HoppingWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="IntSort.html">IntSort</a>
+                        </li>
+                    
+                        <li >
+                            <a href="LengthBatchWindow.html">LengthBatchWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="LengthWindow.html">LengthWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="LinkedList.html">LinkedList</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Max.html">Max</a>
+                        </li>
+                    
+                        <li >
+                            <a href="MaxForever.html">MaxForever</a>
+                        </li>
+                    
+                        <li >
+                            <a href="MergeSort.html">MergeSort</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Min.html">Min</a>
+                        </li>
+                    
+                        <li >
+                            <a href="MinForever.html">MinForever</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Node.html">Node</a>
+                        </li>
+                    
+                        <li >
+                            <a href="NotOperatorProcessor.html">NotOperatorProcessor</a>
+                        </li>
+                    
+                        <li >
+                            <a href="OperandProcessor.html">OperandProcessor</a>
+                        </li>
+                    
+                        <li >
+                            <a href="OrOperatorProcessor.html">OrOperatorProcessor</a>
+                        </li>
+                    
+                        <li >
+                            <a href="OrderBy.html">OrderBy</a>
+                        </li>
+                    
+                        <li >
+                            <a href="OutputProcess.html">OutputProcess</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Scheduler.html">Scheduler</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Select.html">Select</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Snapshotable.html">Snapshotable</a>
+                        </li>
+                    
+                        <li >
+                            <a href="SortWindow.html">SortWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="StateMachine.html">StateMachine</a>
+                        </li>
+                    
+                        <li >
+                            <a href="StdDev.html">StdDev</a>
+                        </li>
+                    
+                        <li >
+                            <a href="StreamEvent.html">StreamEvent</a>
+                        </li>
+                    
+                        <li >
+                            <a href="StreamJoinProcessor.html">StreamJoinProcessor</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Sum.html">Sum</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TableJoinProcessor.html">TableJoinProcessor</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TimeAccumulatingWindow.html">TimeAccumulatingWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TimeBatchWindow.html">TimeBatchWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TimeLengthWindow.html">TimeLengthWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TimeOrderWindow.html">TimeOrderWindow</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="TimeWindow.html">TimeWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="UniqueLengthWindow.html">UniqueLengthWindow</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Window.html">Window</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../../streams/index.html">
+            <h3>streams</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../streams/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../streams/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../../streams/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../../streams/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+                <div class="primary-list">
+                    <h3>Objects</h3>
+                    <ul>
+                        
+                            <li ></li>>
+                                <a href="AbstractOperatorProcessor.html">AbstractOperatorProcessor</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="AbstractPatternProcessor.html">AbstractPatternProcessor</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Aggregator.html">Aggregator</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="AndOperatorProcessor.html">AndOperatorProcessor</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Average.html">Average</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="CompoundPatternProcessor.html">CompoundPatternProcessor</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Count.html">Count</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="DelayWindow.html">DelayWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="DistinctCount.html">DistinctCount</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="ExternalTimeBatchWindow.html">ExternalTimeBatchWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="ExternalTimeWindow.html">ExternalTimeWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Filter.html">Filter</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="FollowedByProcessor.html">FollowedByProcessor</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="HoppingWindow.html">HoppingWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="IntSort.html">IntSort</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="LengthBatchWindow.html">LengthBatchWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="LengthWindow.html">LengthWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="LinkedList.html">LinkedList</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Max.html">Max</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="MaxForever.html">MaxForever</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="MergeSort.html">MergeSort</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Min.html">Min</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="MinForever.html">MinForever</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Node.html">Node</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="NotOperatorProcessor.html">NotOperatorProcessor</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="OperandProcessor.html">OperandProcessor</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="OrOperatorProcessor.html">OrOperatorProcessor</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="OrderBy.html">OrderBy</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="OutputProcess.html">OutputProcess</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Scheduler.html">Scheduler</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Select.html">Select</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Snapshotable.html">Snapshotable</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="SortWindow.html">SortWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="StateMachine.html">StateMachine</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="StdDev.html">StdDev</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="StreamEvent.html">StreamEvent</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="StreamJoinProcessor.html">StreamJoinProcessor</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Sum.html">Sum</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="TableJoinProcessor.html">TableJoinProcessor</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="TimeAccumulatingWindow.html">TimeAccumulatingWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="TimeBatchWindow.html">TimeBatchWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="TimeLengthWindow.html">TimeLengthWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="TimeOrderWindow.html">TimeOrderWindow</a>
+                            </li>
+                        
+                            <li class="active"></li>>
+                                <a href="TimeWindow.html">TimeWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="UniqueLengthWindow.html">UniqueLengthWindow</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Window.html">Window</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../../streams/index.html">
+            <h3>streams</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../streams/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../streams/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../../streams/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../../streams/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Object - </span>
+                
+                    <a href="../../streams/index.html">streams</a>
+                 :
+                <span class="objects">TimeWindow</span>
+            </h1>
+            <p><p>The <code>TimeWindow</code> is a sliding time window, that holds events for that arrived during last windowTime period, and
+gets updated on every event arrival and expiry.
+E.g.
+from inputStream window <code>time(5000)</code>
+select inputStream.name, inputStream.age, sum(inputStream.age) as sumAge, count() as count
+group by inputStream.name =&gt; (TeacherOutput [] teachers) {
+foreach var t in teachers {
+outputStream.publish(t);
+}
+}
+The <code>time</code> window should only have one parameter (<int> windowTime)</p>
+</p>
+
+            <div class="constants">
+                <div class="method-sum">
+                    
+                        
+                        <h2>Constructor</h2>
+<h3 >__init</h3><p>(<code> <span>function(</span><a href="../../streams/objects/StreamEvent.html">StreamEvent</a>[]<span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> nextProcessPointer, <span class="builtin-type">any</span> windowParameters)</p>
+<div class="data-wrapper">
+    
+        <div class="params-listing">
+            <ul>
+                <li> <b>nextProcessPointer</b><span class="type">  <code> <span>function(</span><a href="../../streams/objects/StreamEvent.html">StreamEvent</a>[]<span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code></span> </li>
+                <li>
+                    
+                </li>
+            </ul>
+        </div>
+    
+        <div class="params-listing">
+            <ul>
+                <li> <b>windowParameters</b><span class="type">  <span class="builtin-type">any</span></span> </li>
+                <li>
+                    
+                </li>
+            </ul>
+        </div>
+    
+</div>
+                        
+                    
+
+                
+                    
+                        <h2>Methods</h2>
+                        <div class="method-list">
+                            
+                                
+<a href="#initParameters">
+    <div class="param-sum">
+        <div class="param-name">
+        initParameters 
+        </div>
+        <div class="param-details">  </div>
+    </div>
+</a>
+                            
+                                
+<a href="#process">
+    <div class="param-sum">
+        <div class="param-name">
+        process 
+        </div>
+        <div class="param-details"> <p>The <code>process</code> function process the incoming events to the events and update the current state of the window.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getCandidateEvents">
+    <div class="param-sum">
+        <div class="param-name">
+        getCandidateEvents 
+        </div>
+        <div class="param-details"> <p>Returns the events(State) which match with the where condition in the join clause for a given event.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#saveState">
+    <div class="param-sum">
+        <div class="param-name">
+        saveState 
+        </div>
+        <div class="param-details"> <p>Return current state to be saved as a map of <code>any</code> typed values.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#restoreState">
+    <div class="param-sum">
+        <div class="param-name">
+        restoreState 
+        </div>
+        <div class="param-details"> <p>Restores the saved state which is passed as a map of <code>any</code> typed values.</p>
+ </div>
+    </div>
+</a>
+                            
+                        </div>
+                    
+
+                    
+                        
+                            <h2>Fields</h2>
+                                <div class="data-wrapper">
+        
+    <div class="params-listing">
+        <ul>
+            <li> timeInMillis<span class="type">  <span class="builtin-type">int</span></span> </li>
+            <li>
+                <p><p>description</p>
+</p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> windowParameters<span class="type">  <span class="builtin-type">any</span></span> </li>
+            <li>
+                <p><p>description</p>
+</p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> expiredEventQueue<span class="type">  <a href="../../streams/objects/LinkedList.html">LinkedList</a></span> </li>
+            <li>
+                <p><p>description</p>
+</p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> nextProcessPointer<span class="type">  <code> <span>function(</span><a href="../../streams/objects/StreamEvent.html">StreamEvent</a>[]<span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code></span> </li>
+            <li>
+                <p><p>description</p>
+</p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> lastTimestamp<span class="type">  <span class="builtin-type">int</span></span> -9223372036854775808</li>
+            <li>
+                <p><p>description</p>
+</p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> scheduler<span class="type">  <a href="../../streams/objects/Scheduler.html">Scheduler</a></span> </li>
+            <li>
+                <p><p>description</p>
+</p>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+                        
+                    
+                </div>
+
+                
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="initParameters" title="initParameters">
+             <a class="url-link" href="#initParameters">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> initParameters </h2>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        parameters<span class="type">  <span class="builtin-type">any</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="process" title="process">
+             <a class="url-link" href="#process">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> process </h2>
+        
+    </div>
+    <p><p>The <code>process</code> function process the incoming events to the events and update the current state of the window.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        streamEvents<span class="type">  <a href="../../streams/objects/StreamEvent.html">StreamEvent</a>[] </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>The array of stream events to be processed.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getCandidateEvents" title="getCandidateEvents">
+             <a class="url-link" href="#getCandidateEvents">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getCandidateEvents </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../../streams/objects/StreamEvent.html">StreamEvent</a> originEvent, <code> <span>function(</span><span class="builtin-type">map</span>, <span class="builtin-type">map</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> conditionFunc, <span class="builtin-type">boolean</span> isLHSTrigger)</p>
+            <b> returns </b><span>[</span><a href="../../streams/objects/StreamEvent.html">StreamEvent</a>?, <a href="../../streams/objects/StreamEvent.html">StreamEvent</a>?<span>]</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the events(State) which match with the where condition in the join clause for a given event.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        originEvent<span class="type">  <a href="../../streams/objects/StreamEvent.html">StreamEvent</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>The event against which the state or the events being held by the window is matched.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        conditionFunc<span class="type">  <code> <span>function(</span><span class="builtin-type">map</span>, <span class="builtin-type">map</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>The function pointer to the lambda function which contain the condition logic in where clause.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        isLHSTrigger<span class="type">  <span class="builtin-type">boolean</span> </span>
+                        <span class="default"> (default true)</span>
+                    </li>
+                    <li>
+                        <p><p>Specify if the join is triggered when the lhs stream received the events, if so it should be
+true. Most of the time it is true. In rare cases, where the join is triggered when the rhs
+stream receives events this should be false.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span>[</span><a href="../../streams/objects/StreamEvent.html">StreamEvent</a>?, <a href="../../streams/objects/StreamEvent.html">StreamEvent</a>?<span>]</span></span>)</li>
+                <li><p>Returns an array of 2 element tuples of events. A tuple contains the matching events one from lhs
+stream and one from rhs stream.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="saveState" title="saveState">
+             <a class="url-link" href="#saveState">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> saveState </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">map</span> 
+        </span>
+        
+    </div>
+    <p><p>Return current state to be saved as a map of <code>any</code> typed values.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">map</span></span>)</li>
+                <li><p>A map of <code>any</code> typed values.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="restoreState" title="restoreState">
+             <a class="url-link" href="#restoreState">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> restoreState </h2>
+        
+    </div>
+    <p><p>Restores the saved state which is passed as a map of <code>any</code> typed values.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        state<span class="type">  <span class="builtin-type">map</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>A map of typed <code>any</code> values. This map contains the values to be restored from the persisted data.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                
+            </div>
+        </div>
+    </div>
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+</body>
+</html>

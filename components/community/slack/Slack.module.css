@@ -1,0 +1,119 @@
+.viewAll {
+    color: #20b6b0;
+    text-decoration: none;
+    text-align: right;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.viewAll:hover, .checkboxLabel a:hover, .member a:hover {
+    text-decoration: none !important;
+    color: #464646 !important;
+}
+
+.linkWrap {
+    text-align: right;
+}
+
+.slackCount {
+    text-align: center;
+}
+
+.slackNum {
+    font-size: 60px !important;
+    font-weight: 600 !important;
+    float: center;
+}
+
+.slackFoot {
+    font-size: 23px !important;
+    font-weight: 400 !important;
+    padding: 0 !important;
+    float: center;
+    margin-top: 0px !important;
+}
+
+@media (min-width: 576px) {
+    .slackNum {
+        float: right;
+    }
+    
+    .slackFoot {
+        float: right;
+    }
+    .slackCount {
+        text-align: left;
+    }
+}
+
+
+.formControl {
+    display: block;
+    width: 100%;
+    height: 34px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #585A5E;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 0;
+    border: #20b6b0 solid 1px;
+    padding: 20px 20px;
+    margin: 5px 0px;
+}
+
+.checkboxWrapper {
+    white-space: nowrap;
+    text-align: left;
+}
+
+/* .checkbox {
+    vertical-align: top;
+    display: inline-block;
+    margin: 5px 0 0 !important;
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border: 1px solid#c7c7c7;
+    border-radius: 0px;
+} */
+
+.checkboxLabel {
+    white-space: normal;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    color: #57595d;
+    padding-left: 8px;
+}
+
+.checkboxLabel a, .member a {
+    color: #20b6b0;
+    text-decoration: none;
+}
+
+.member {
+    padding-bottom: 40px; 
+    font-weight: 400 !important;
+}
+
+/* .checkboxLabel a:hover {
+    color: #464646;
+    text-decoration: none;
+} */
+
+.submitButton {
+    padding: 10px 20px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background-color: #20b6b0;
+    color: #fff;
+    margin: 5px 0px;
+    border: none;
+}
+
+.submitButton:hover {
+    background-color: #464646;
+    color: #fff !important;
+}

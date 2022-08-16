@@ -1,0 +1,2445 @@
+---
+redirect_from:
+  - /1.2/learn/calling-java-code-from-ballerina-and-vice-versa/
+  - /1.2/learn/calling-java-code-from-ballerina-and-vice-versa
+---
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="See how Ballerina offers a straightforward way to call existing Java code from Ballerina and a Java API to call Ballerina code from Java." />
+
+<meta name="author" content="WSO2, Inc.">
+
+<meta name="keywords" content="ballerina, programming language, java api, interoperability" />
+
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title>Calling Java Code from Ballerina</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Ballerina - Calling Java Code from Ballerina" />
+
+<meta property="og:description" content="See how Ballerina offers a straightforward way to call existing Java code from Ballerina and a Java API to call Ballerina code from Java." />
+
+ 
+<meta property="og:image" itemprop="image" content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png" />
+
+
+<!-- <meta name="twitter:image:width" content="610"> -->
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png
+"/>
+<meta property='og:description' itemprop="image" content="See how Ballerina offers a straightforward way to call existing Java code from Ballerina and a Java API to call Ballerina code from Java."/>
+
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina"> 
+<meta name="twitter:card" content="summary_large_image"> 
+
+<meta property="twitter:description" content="See how Ballerina offers a straightforward way to call existing Java code from Ballerina and a Java API to call Ballerina code from Java." />
+
+<meta name="twitter:image" content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png
+ ">
+
+<meta property="twitter:text:description" content="See how Ballerina offers a straightforward way to call existing Java code from Ballerina and a Java API to call Ballerina code from Java." />
+
+<meta property='twitter:image' content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"/>
+
+
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="/js/latest-jquery.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+
+<!-- 
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css"> -->
+
+
+
+
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<!-- <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" /> -->
+<!-- <link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" /> -->
+<!-- <script type="text/javascript" src="/js/highlight.pack.js"></script> -->
+
+<link rel="stylesheet" href="/css/prism.css">
+
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars/4.7.6/handlebars.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var base_download_url = 'https://dist.ballerina.io/downloads';
+   
+   var base_releasenote_url = ''.concat('/downloads/1.2.x-release-notes');
+   var base_swanlake_releasenote_url = ''.concat('/downloads/swan-lake-release-notes');
+</script>
+
+<link href="/css/prism.css" rel="stylesheet" />
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+      <link rel="stylesheet" href="/css/ballerina-io-learn-v2.css">
+   
+      
+   
+      
+
+      <link href="/css/abixTreeList.css" rel="stylesheet">
+
+   </head>
+   <body class="cBallerina-io" id="top">
+      <style>
+    .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+    .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+    
+
+    #noscript-warning{
+        position: relative;
+    text-align: center;
+    padding: 7px 15px;
+    background-color: #57595d;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    }
+</style>
+<noscript>
+    <div id="noscript-warning">Ballerina works best with JavaScript enabled.</div>
+</noscript>
+     <div class="cVersionChangeBanner">
+        This documentation is for Ballerina 1.2.0. <a href="https://ballerina.io/learn/" class="cInfoBannerLink">View documentation for the latest release</a>.
+    </div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina" /></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="/downloads/">Download</a>
+                            </li>
+                            <li class="toctree-l1" id="playli"><a class="cBioTopLink" href="https://play.ballerina.io/"
+                                    target="_blank">Playground</a>
+                            </li>
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <!--<li class="active toctree-l1" id="eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>-->
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                    target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink"
+                                    href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu">
+                               
+                                <!-- at the end of the HEAD -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+/>
+<style>
+  .algolia-search-cont {
+    margin-top: -10px;
+  }
+  .algolia-search-wrap {
+    display: flex;
+    align-items: center;
+  }
+  .algolia-search-cont .search-icon {
+    margin-right: 10px;
+  }
+  .algolia-search-cont .algolia-search-box {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+  }
+</style>
+<div class="algolia-search-cont">
+  <div class="algolia-search-wrap form-control">
+    <span
+      class="glyphicon glyphicon-search search-icon"
+      aria-hidden="true"
+    ></span>
+    <input
+      autocapitalize="off"
+      autocomplete="off"
+      autocorrect="off"
+      placeholder="Search..."
+      role="textbox"
+      spellcheck="false"
+      type="text"
+      value=""
+      class="algolia-search-box"
+      id="algolia-search-box"
+    />
+  </div>
+</div>
+
+<!-- at the end of the BODY -->
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"
+></script>
+<script type="text/javascript">
+  docsearch({
+    apiKey: "024f45d96c2949b32403db36d4016c23",
+    indexName: "ballerina",
+    inputSelector: "#algolia-search-box",
+    debug: false, // Set debug to true if you want to inspect the dropdown
+  });
+</script>
+
+                                <!-- <form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field"
+                                        type="search" placeholder="Search" aria-label="Search"><a id="searchBtn"
+                                        href="#" class="cSearchButton"><img src="/img/search.svg" /></a></form> -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-Home-Middle-col">
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Then we build the nav bar. -->
+<nav class="cLeftNavContainer">
+   <ul class="cMainLeftNav">
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Setting up Ballerina</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/installing-ballerina/">- Installing Ballerina</a></li> -->
+            <li><a href="/1.2/learn/installing-ballerina/">Installing Ballerina</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/setting-up-visual-studio-code/">- Setting up Visual Studio Code</a></li> -->
+            <li><a href="/1.2/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/setting-up-intellij-idea/">- Setting up IntelliJ IDEA</a></li> -->
+            <li><a href="/1.2/learn/setting-up-intellij-idea/">Setting up IntelliJ IDEA</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Ballerina CLI Tools</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/using-the-cli-tools/">- Using the CLI Tools</a></li> -->
+            <li><a href="/1.2/learn/using-the-cli-tools/">Using the CLI Tools</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/keeping-ballerina-up-to-date">- Keeping Ballerina Up To Date</a></li> -->
+            <li><a href="/1.2/learn/keeping-ballerina-up-to-date">Keeping Ballerina Up To Date</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/using-the-openapi-tools/">- Using the OpenAPI Tools</a></li> -->
+            <li><a href="/1.2/learn/using-the-openapi-tools/">Using the OpenAPI Tools</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/generating-ballerina-code-for-protocol-buffer-definitions">- Generating Ballerina Code for Protocol Buffer Definitions</a></li> -->
+            <li><a href="/1.2/learn/generating-ballerina-code-for-protocol-buffer-definitions">Generating Ballerina Code for Protocol Buffer Definitions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Code Organization</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/structuring-ballerina-code/">- Structuring Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/structuring-ballerina-code/">Structuring Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/documenting-ballerina-code/">- Documenting Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/documenting-ballerina-code/">Documenting Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/coding-conventions/">- Coding Conventions</a></li> -->
+            <li><a href="/1.2/learn/coding-conventions/">Coding Conventions</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/running-ballerina-code/">- Running Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/running-ballerina-code/">Running Ballerina Code</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/publishing-modules-to-ballerina-central">- Publishing Modules to Ballerina Central</a></li> -->
+            <li><a href="/1.2/learn/publishing-modules-to-ballerina-central">Publishing Modules to Ballerina Central</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Deployment</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/docker/">- Docker</a></li> -->
+            <li><a href="/1.2/learn/deployment/docker/">Docker</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/kubernetes/">- Kubernetes</a></li> -->
+            <li><a href="/1.2/learn/deployment/kubernetes/">Kubernetes</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/aws-lambda/">- AWS Lambda</a></li> -->
+            <li><a href="/1.2/learn/deployment/aws-lambda/">AWS Lambda</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/deployment/azure-functions/">- Azure Functions</a></li> -->
+            <li><a href="/1.2/learn/deployment/azure-functions/">Azure Functions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Observability</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/observing-ballerina-code">- Observing Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/observing-ballerina-code">Observing Ballerina Code</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Interoperability</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/calling-java-code-from-ballerina/">- Calling Java Code from Ballerina</a></li> -->
+            <li class="current-sub"><a href="/1.2/learn/calling-java-code-from-ballerina/">Calling Java Code from Ballerina</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Security</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/writing-secure-ballerina-code">- Writing Secure Ballerina Code</a></li> -->
+            <li><a href="/1.2/learn/writing-secure-ballerina-code">Writing Secure Ballerina Code</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Testing Ballerina Code</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/testing-quick-start">- Quick Start</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/testing-quick-start">Quick Start</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/writing-tests">- Writing Tests</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/writing-tests">Writing Tests</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/mocking">- Mocking</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/mocking">Mocking</a></li>
+            
+            <!-- <li  ><a href="/1.2/learn/testing-ballerina-code/executing-tests">- Executing Tests</a></li> -->
+            <li><a href="/1.2/learn/testing-ballerina-code/executing-tests">Executing Tests</a></li>
+            
+         </ul>
+      </li>
+      
+      
+      
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!--  -->
+      
+      
+      
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">Extending Ballerina</div>
+         <ul class="sub-ul">
+            
+            <!--  -->
+            
+            
+            
+            <!-- <li  ><a href="/1.2/learn/extending-with-compiler-extensions">- Extending with Compiler Extensions</a></li> -->
+            <li><a href="/1.2/learn/extending-with-compiler-extensions">Extending with Compiler Extensions</a></li>
+            
+         </ul>
+      </li>
+      
+      
+   </ul>
+</nav>
+
+               </div>
+               <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-12 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down"
+  >
+  <ul id="breadcrumb-list" class=" cBalleinaBreadcrumbs list-unstyled  wy-breadcrumbs" vocab="http://schema.org/"
+    typeof="BreadcrumbList">
+
+
+    
+    <li><a href="/">Home</a></li>
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/">1.2</a>
+    </li>
+    
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.2/learn/">Learn</a>
+    </li>
+    
+    
+    
+    <li>/</li> Calling Java Code from Ballerina
+    
+    
+
+  </ul>
+</nav>
+<style type="text/css">
+  .cBalleinaBreadcrumbs li {
+    margin-right: 10px;
+  }
+</style>
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <!-- <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs cGitLink">
+                        
+                     </div> -->
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container cPositionRelative">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+
+
+                                 <div class="col-xs-11 col-md-11 col-lg-11 cNoPadding">
+                                    <h1>Calling Java Code from Ballerina</h1>
+                                 </div>
+                                 <!-- <div class="col-xs-1 col-md-1 col-lg-1 cNoPadding cGithubContainer">
+                                    <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-dev-website/blob/master/1.2/learn/calling-java-code-from-ballerina.md"></a>
+                                 </div> -->
+                                 <div class="col-xs-12 col-md-12 col-lg-12 cNoPadding">
+                                    <p>Ballerina offers a straightforward way to call the existing Java code from Ballerina and also provides a Java API to call Ballerina code from Java.  Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics.</p>
+                                    <div class="cBallerinaTocContainer" id="table-of-content">
+                                       <ul id="tree">
+  <li><a href="#ballerina-bindings-to-java-code">Ballerina Bindings to Java code</a></li>
+  <li><a href="#the-need-to-call-java-from-ballerina">The Need to Call Java from Ballerina</a></li>
+  <li><a href="#writing-ballerina-bindings">Writing Ballerina Bindings</a></li>
+  <li><a href="#using-the-snakeyaml-java-library-in-ballerina">Using the SnakeYAML Java Library in Ballerina</a>
+    <ul>
+      <li><a href="#step-1---writing-the-java-code">Step 1 - Writing the Java Code</a></li>
+      <li><a href="#step-2---setting-up-the-ballerina-project">Step 2 - Setting Up the Ballerina Project</a>
+        <ul>
+          <li><a href="#creating-a-ballerina-project">Creating a Ballerina Project</a></li>
+          <li><a href="#adding-a-ballerina-module-to-your-project">Adding a Ballerina Module to Your Project</a></li>
+          <li><a href="#adding-a-sample-yaml-file">Adding a Sample YAML File</a></li>
+          <li><a href="#verifying-the-project">Verifying the Project</a></li>
+        </ul>
+      </li>
+      <li><a href="#step-3---generating-the-ballerina-bindings">Step 3 - Generating the Ballerina Bindings</a></li>
+      <li><a href="#step-4---writing-the-ballerina-code">Step 4 - Writing the Ballerina Code</a>
+        <ul>
+          <li><a href="#creating-the-fileinputstream">Creating the ‘FileInputStream’</a></li>
+          <li><a href="#creating-the-snakeyaml-entry-point">Creating the SnakeYAML Entry Point</a></li>
+          <li><a href="#loading-the-yaml-document">Loading the YAML Document</a></li>
+          <li><a href="#printing-the-returned-map-instance">Printing the Returned Map Instance</a></li>
+          <li><a href="#completing-the-code">Completing the Code</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#the-bindgen-tool">The ‘bindgen’ Tool</a>
+    <ul>
+      <li><a href="#the-bindgen-command">The ‘bindgen’ Command</a></li>
+      <li><a href="#generated-bridge-code">Generated Bridge Code</a></li>
+      <li><a href="#java-to-ballerina-mapping">Java to Ballerina Mapping</a>
+        <ul>
+          <li><a href="#java-classes">Java Classes</a></li>
+          <li><a href="#constructors">Constructors</a></li>
+          <li><a href="#methods">Methods</a></li>
+          <li><a href="#fields">Fields</a></li>
+          <li><a href="#external-interop-functions">External Interop Functions</a></li>
+          <li><a href="#dependency-objects">Dependency Objects</a></li>
+          <li><a href="#ballerina-jobject">Ballerina JObject</a></li>
+        </ul>
+      </li>
+      <li><a href="#java-to-ballerina-type-mappings">Java to Ballerina Type Mappings</a></li>
+      <li><a href="#support-for-java-subtyping">Support for Java Subtyping</a></li>
+      <li><a href="#support-for-java-casting">Support for Java Casting</a></li>
+      <li><a href="#java-exceptions-to-ballerina-errors">Java Exceptions to Ballerina Errors</a></li>
+    </ul>
+  </li>
+  <li><a href="#packaging-java-libraries-with-ballerina-programs">Packaging Java Libraries with Ballerina Programs</a></li>
+  <li><a href="#ballerina-ffi">Ballerina FFI</a>
+    <ul>
+      <li><a href="#the-external-function-body">The External Function Body</a></li>
+      <li><a href="#the-handle-type">The Handle Type</a></li>
+    </ul>
+  </li>
+  <li><a href="#calling-java-programs-from-ballerina">Calling Java Programs from Ballerina</a>
+    <ul>
+      <li><a href="#instantiating-java-classes">Instantiating Java Classes</a>
+        <ul>
+          <li><a href="#dealing-with-overloaded-constructors">Dealing with Overloaded Constructors</a>
+            <ul>
+              <li><a href="#the-paramtypes-field">The ‘paramTypes’ Field</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#calling-java-methods">Calling Java Methods</a>
+        <ul>
+          <li><a href="#calling-static-methods">Calling Static Methods</a></li>
+          <li><a href="#calling-instance-methods">Calling Instance Methods</a></li>
+          <li><a href="#calling-methods-asynchronously">Calling Methods Asynchronously</a></li>
+          <li><a href="#mapping-java-classes-into-ballerina-objects">Mapping Java Classes into Ballerina Objects</a></li>
+          <li><a href="#calling-overloaded-java-methods">Calling Overloaded Java Methods</a></li>
+        </ul>
+      </li>
+      <li><a href="#java-exceptions-as-ballerina-errors">Java Exceptions as Ballerina Errors</a>
+        <ul>
+          <li><a href="#java-checked-exceptions">Java Checked Exceptions</a></li>
+          <li><a href="#mapping-a-java-exception-to-a-ballerina-error-value">Mapping a Java Exception to a Ballerina Error Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#null-safety">Null Safety</a></li>
+      <li><a href="#mapping-java-types-to-ballerina-types-and-vice-versa">Mapping Java Types to Ballerina Types and Vice Versa</a>
+        <ul>
+          <li><a href="#mapping-java-types-to-ballerina-types">Mapping Java Types to Ballerina Types</a></li>
+          <li><a href="#mapping-ballerina-types-to-java-types">Mapping Ballerina Types to Java Types</a></li>
+        </ul>
+      </li>
+      <li><a href="#access-or-mutate-java-fields">Access or Mutate Java Fields</a></li>
+    </ul>
+  </li>
+</ul>
+
+                                    </div>
+                                    <h2 id="ballerina-bindings-to-java-code">Ballerina Bindings to Java code</h2>
+<p>Your task is to write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the below diagram.</p>
+
+<p><img src="/1.2/learn/images/interoperability-diagram.png" alt="Ballerina bindings to Java code" width="300" height="350" /></p>
+
+<p>This guide teaches you how to write those bindings manually as well as how to generate those bindings automatically but first, let’s look at why you want to call Java from Ballerina.</p>
+
+<h2 id="the-need-to-call-java-from-ballerina">The Need to Call Java from Ballerina</h2>
+<ul>
+  <li>Ballerina is a relatively new language. Therefore, you may experience a shortage of libraries in <a href="https://central.ballerina.io/">Ballerina Central</a>. In such situations, as a workaround, you can use an existing Java library.</li>
+  <li>You are already familiar with a stable Java API that you would like to use in your Ballerina project.</li>
+  <li>You want to take advantage of the strengths of Ballerina but you don’t want to reinvest in the libraries that you or your company have written already.</li>
+</ul>
+
+<p>There may be other reasons but these are great motivations to use Ballerina bindings.</p>
+
+<h2 id="writing-ballerina-bindings">Writing Ballerina Bindings</h2>
+<p>Writing Ballerina bindings manually is a tedious task. You’ll soon see why. Therefore, we’ve developed a tool called <code class="language-plaintext highlighter-rouge">bindgen</code> that can generate Ballerina bindings for given Java APIs. The <a href="#using-the-snakeyaml-java-library-in-ballerina">first section</a> of this guide shows you how to use it. The <a href="#the-bindgen-tool">second section</a> is a reference guide to the tool.</p>
+
+<p>The <a href="#packaging-java-libraries-with-ballerina-programs">third section</a> explains how to package Java libraries (JAR files) with Ballerina programs. This section is useful because whenever you generate bindings for a Java library, you need to package this Java library and its transitive dependencies to produce a self-contained executable program.</p>
+
+<p>The <a href="#ballerina-ffi">fourth</a> and <a href="#calling-java-code-from-ballerina">fifth</a> sections explain how to write these bindings manually. It is also a useful section for those who want to understand the inner workings of calling Java from Ballerina and for those who want to customize the bindings generated by the <code class="language-plaintext highlighter-rouge">bindgen</code> tool.</p>
+
+<h2 id="using-the-snakeyaml-java-library-in-ballerina">Using the SnakeYAML Java Library in Ballerina</h2>
+<p>SnakeYAML is a YAML parser for Java. In this section, we’ll learn how to use this library to parse a YAML document using Ballerina.</p>
+
+<p>We’ll develop a Ballerina program that parses the given YAML file and writes the content to the standard out.</p>
+
+<p>Let’s get started.</p>
+
+<h3 id="step-1---writing-the-java-code">Step 1 - Writing the Java Code</h3>
+<p>We recommend you to always start by writing the Java code. It gives you an idea of the set of Java classes required to implement your logic. Then, we can use the <code class="language-plaintext highlighter-rouge">bindgen</code> tool to generate Ballerina bindings for those classes.</p>
+
+<p>The following Java code uses the SnakeYAML API to parse the given YAML file. Note that this is not the most idiomatic way of writing the Java code for this scenario.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.yaml.snakeyaml.Yaml</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SnakeYamlSample</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">...</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+	<span class="nc">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+	<span class="k">try</span> <span class="o">(</span><span class="nc">InputStream</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="n">filename</span><span class="o">))</span> <span class="o">{</span>
+		<span class="nc">Yaml</span> <span class="n">yaml</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Yaml</span><span class="o">();</span> 
+		<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="na">load</span><span class="o">(</span><span class="n">inputStream</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">obj</span><span class="o">);</span>
+	<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The file '"</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span> <span class="s">"' cannot be loaded. Reason: "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());;</span>
+	<span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Here, we’ve used four Java classes.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">org.yaml.snakeyaml.Yaml</code></li>
+  <li><code class="language-plaintext highlighter-rouge">java.io.FileInputStream</code></li>
+  <li><code class="language-plaintext highlighter-rouge">java.io.InputStream</code></li>
+  <li><code class="language-plaintext highlighter-rouge">java.util.Map</code></li>
+</ul>
+
+<p>You can see them in the imported class list. We encourage you to generate Ballerina bindings for these four classes as a start.</p>
+
+<p>Now, we’ll create an environment for our Ballerina program.</p>
+
+<h3 id="step-2---setting-up-the-ballerina-project">Step 2 - Setting Up the Ballerina Project</h3>
+<p>This section assumes that you have already read <a href="/1.2/learn/structuring-ballerina-code/">Structuring Ballerina Code</a>.</p>
+
+<h4 id="creating-a-ballerina-project">Creating a Ballerina Project</h4>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ballerina new yaml-project
+Created new Ballerina project at yaml-project
+
+Next:
+    Move into the project directory and use <span class="sb">`</span>ballerina add &lt;module-name&gt;<span class="sb">`</span> to
+    add a new Ballerina module.
+</code></pre></div></div>
+<h4 id="adding-a-ballerina-module-to-your-project">Adding a Ballerina Module to Your Project</h4>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ballerina add yamlparser
+Added new ballerina module at <span class="s1">'src/yamlparser’
+</span></code></pre></div></div>
+<h4 id="adding-a-sample-yaml-file">Adding a Sample YAML File</h4>
+<p>Copy the below content to a file named invoice.yml in the project root directory.</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">invoice</span><span class="pi">:</span> <span class="m">34843</span>
+<span class="na">date   </span><span class="pi">:</span> <span class="s">2001-01-23</span>
+<span class="na">bill-to</span><span class="pi">:</span> <span class="nl">&amp;id001</span>
+   <span class="na">given  </span><span class="pi">:</span> <span class="s">Chris</span>
+   <span class="na">family </span><span class="pi">:</span> <span class="s">Dumars</span>
+   <span class="na">address</span><span class="pi">:</span>
+       <span class="na">lines</span><span class="pi">:</span> <span class="pi">|</span>
+           <span class="s">458 Walkman Dr.</span>
+           <span class="s">Suite #292</span>
+       <span class="na">city    </span><span class="pi">:</span> <span class="s">Royal Oak</span>
+       <span class="na">state   </span><span class="pi">:</span> <span class="s">MI</span>
+       <span class="na">postal  </span><span class="pi">:</span> <span class="m">48046</span>
+<span class="na">ship-to</span><span class="pi">:</span> <span class="nv">*id001</span>
+<span class="na">product</span><span class="pi">:</span>
+   <span class="pi">-</span> <span class="na">sku         </span><span class="pi">:</span> <span class="s">BL394D</span>
+     <span class="na">quantity    </span><span class="pi">:</span> <span class="m">4</span>
+     <span class="na">description </span><span class="pi">:</span> <span class="s">Basketball</span>
+     <span class="na">price       </span><span class="pi">:</span> <span class="m">450.00</span>
+   <span class="pi">-</span> <span class="na">sku         </span><span class="pi">:</span> <span class="s">BL4438H</span>
+     <span class="na">quantity    </span><span class="pi">:</span>
+     <span class="na">description </span><span class="pi">:</span> <span class="s">Super Hoop</span>
+     <span class="na">price       </span><span class="pi">:</span> <span class="m">2392.00</span>
+<span class="na">tax  </span><span class="pi">:</span> <span class="m">251.42</span>
+<span class="na">total</span><span class="pi">:</span> <span class="m">4443.52</span>
+<span class="na">comments</span><span class="pi">:</span> <span class="pi">&gt;</span>
+   <span class="s">Late afternoon is best.</span>
+   <span class="s">Backup contact is Nancy</span>
+   <span class="s">Billsmer @ 338-4338.\</span>
+</code></pre></div></div>
+
+<h4 id="verifying-the-project">Verifying the Project</h4>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ballerina build yamlparser 
+Compiling <span class="nb">source
+	</span>sameera/yamlparser:0.1.0
+
+Creating balos
+	target/balo/yamlparser-2020r1-any-0.1.0.balo
+... 
+...
+
+Generating executables
+	target/bin/yamlparser.jar
+</code></pre></div></div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ballerina run target/bin/yamlparser.jar
+Hello World!
+</code></pre></div></div>
+<p>Great! You are all set for the next step.</p>
+
+<h3 id="step-3---generating-the-ballerina-bindings">Step 3 - Generating the Ballerina Bindings</h3>
+<p>In this step, we’ll use the <code class="language-plaintext highlighter-rouge">bindgen</code> tool to generate Ballerina bindings for those four classes that we talked about in Step 1. If you want more information about the tool, you can refer <a href="#the-bindgen-tool">The <code class="language-plaintext highlighter-rouge">bindgen</code> tool</a>.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ballerina bindgen <span class="nt">-mvn</span> org.yaml:snakeyaml:1.25 <span class="nt">-o</span> src/yamlparser org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
+
+Ballerina project detected at: /Users/sameera/yaml-project
+
+Resolving maven dependencies...
+snakeyaml-1.25.pom 100% <span class="o">[=================================================]</span> 37/37 KB <span class="o">(</span>0:00:00 / 0:00:00<span class="o">)</span>
+snakeyaml-1.25.jar 100% <span class="o">[===============================================]</span> 297/297 KB <span class="o">(</span>0:00:01 / 0:00:00<span class="o">)</span>
+
+Updated the <span class="sb">`</span>Ballerina.toml<span class="sb">`</span> file with the new platform libraries.
+
+The following JARs were added to the classpath:
+	snakeyaml-1.25.jar
+
+Generating bindings <span class="k">for</span>:
+	java.util.Map
+	java.io.FileInputStream
+	org.yaml.snakeyaml.Yaml
+	java.io.InputStream
+
+Generating dependency bindings <span class="k">for</span>:
+	org.yaml.snakeyaml.introspector.BeanAccess
+	java.util.function.BiFunction
+	org.yaml.snakeyaml.DumperOptions<span class="nv">$FlowStyle</span>
+	...
+	...
+</code></pre></div></div>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">-mvn</code> option specifies the Maven dependency of the Java library required to generate bindings.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">-o</code> option specifies the output directory in which the generated bindings are stored. In this case, the tool is instructed to store bindings inside the <code class="language-plaintext highlighter-rouge">yamlparser</code> module.</li>
+  <li>The argument list specifies the Java class names.</li>
+</ul>
+
+<p>The <code class="language-plaintext highlighter-rouge">bindgen</code> tool generates bindings for:</p>
+<ul>
+  <li>the specified Java classes</li>
+  <li>the Java classes exposed in the public APIs of all the specified classes</li>
+</ul>
+
+<p>Before we move onto the next step, let’s verify the generated code.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ballerina build yamlparser 
+... 
+...
+
+Generating executables
+	target/bin/yamlparser.jar
+
+<span class="o">&gt;</span> ballerina run target/bin/yamlparser.jar
+Hello World!
+</code></pre></div></div>
+
+<h3 id="step-4---writing-the-ballerina-code">Step 4 - Writing the Ballerina Code</h3>
+
+<blockquote>
+  <p><strong>Note:</strong> The <code class="language-plaintext highlighter-rouge">bindgen</code> tool is still experimental. We are in the process of improving the generated code.</p>
+</blockquote>
+
+<p>Now, we’ll use the generated bindings and write the Ballerina code, which uses the SnakeYAML library. Here is the Java code. Let’s develop the corresponding Ballerina code step by step.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SnakeYamlSample</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">...</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+	<span class="nc">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+	<span class="k">try</span> <span class="o">(</span><span class="nc">InputStream</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="n">filename</span><span class="o">))</span> <span class="o">{</span>
+		<span class="nc">Yaml</span> <span class="n">yaml</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Yaml</span><span class="o">();</span> 
+		<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="na">load</span><span class="o">(</span><span class="n">inputStream</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">obj</span><span class="o">);</span>
+	<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The file '"</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span> <span class="s">"' cannot be loaded. Reason: "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());;</span>
+	<span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="creating-the-fileinputstream">Creating the ‘FileInputStream’</h4>
+<p>Our goal here is to create a new <code class="language-plaintext highlighter-rouge">java.io.FileInputStream</code> instance from the filename. In step 3, we generated bindings for the required Java classes. The following is the code snippet that does the job.</p>
+
+<pre><code class="language-ballerina">FileInputStream | FileNotFoundException fileInputStream = newFileInputStream3(filename);
+</code></pre>
+
+<p>Here, <code class="language-plaintext highlighter-rouge">FileInputStream</code> is the Ballerina object generated for the <code class="language-plaintext highlighter-rouge">java.io.FileInputStream</code> class.</p>
+<ul>
+  <li>You can find functions that start with <code class="language-plaintext highlighter-rouge">newFileInputStream</code> in the generated code. Each such function creates a new <code class="language-plaintext highlighter-rouge">java.io.FileInputStream</code> instance. Ballerina does not support function overloading. Therefore, the bindgen tool generates a separate Ballerina function for each overloaded method or constructor. We will improve the function names of the generated bindings in a future release.</li>
+  <li>All the public methods in the <code class="language-plaintext highlighter-rouge">java.io.FileInputStream</code> class are mapped to methods in the generated Ballerina object.</li>
+</ul>
+
+<p>Next, we’ll handle the error using a type guard.</p>
+<pre><code class="language-ballerina">if fileInputStream is FileNotFoundException {
+	// The type of fileInputStream is FileNotFoundException within this block
+       io:println("The file '" + filename + "' cannot be loaded. Reason: ", fileInputStream.reason());
+} else {
+	// The type of fileInputStream is FileInputStream within this block
+}
+</code></pre>
+<h4 id="creating-the-snakeyaml-entry-point">Creating the SnakeYAML Entry Point</h4>
+<p>The <code class="language-plaintext highlighter-rouge">org.yaml.snakeyaml.Yaml</code> class is the entry point to the SnakeYAML API.  The generated corresponding Ballerina object is <code class="language-plaintext highlighter-rouge">Yaml</code>. The <code class="language-plaintext highlighter-rouge">newYaml1()</code> function is mapped to the default constructor of the Java class.</p>
+<pre><code class="language-ballerina">Yaml yaml = newYaml1();
+</code></pre>
+<h4 id="loading-the-yaml-document">Loading the YAML Document</h4>
+<p>We’ll be using the <code class="language-plaintext highlighter-rouge">org.yaml.snakeyaml.Yaml.load(InputStream is)</code> method to get a Java Map instance from the given <code class="language-plaintext highlighter-rouge">InputStream</code>.</p>
+<pre><code class="language-ballerina">Object mapObj = yaml.load(inputStream);
+</code></pre>
+
+<p>The <code class="language-plaintext highlighter-rouge">org.yaml.snakeyaml.Yaml.load(InputStream is)</code> is a generic method. The bindgen tool does not support Java generics at the moment. That is why the corresponding Ballerina method returns an Object.</p>
+
+<h4 id="printing-the-returned-map-instance">Printing the Returned Map Instance</h4>
+<p>You can print the content of the Map instance in the standard out as follows.</p>
+<pre><code class="language-ballerina">io:println(mapObj);
+</code></pre>
+<h4 id="completing-the-code">Completing the Code</h4>
+<p>Here, is the complete code. You can replace the contents in <code class="language-plaintext highlighter-rouge">src/yamlparser/main.bal</code> with the following code.</p>
+<pre><code class="language-ballerina">import ballerina/io;
+ 
+public function main(string... args) returns error? {
+   string filename = args[0];
+   FileInputStream | FileNotFoundException fileInputStream = newFileInputStream3(filename);
+   if fileInputStream is FileNotFoundException {
+       io:println("The file '" + filename + "' cannot be loaded. Reason: ", fileInputStream.reason());
+   } else {
+       Yaml yaml = newYaml1();
+       Object mapObj = yaml.load(fileInputStream);
+       io:println(mapObj);
+   }
+}
+</code></pre>
+
+<p>Let’s build and run this code.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ballerina build yamlparser 
+Compiling <span class="nb">source
+	</span>sameera/yamlparser:0.1.0
+
+Creating balos
+	target/balo/yamlparser-2020r1-any-0.1.0.balo
+... 
+...
+
+Generating executables
+	target/bin/yamlparser.jar
+</code></pre></div></div>
+
+<p>Now, we need to pass the YAML file name as the first argument.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ballerina run target/bin/yamlparser.jar invoice.yml
+<span class="o">{</span><span class="nv">invoice</span><span class="o">=</span>34843, <span class="nb">date</span><span class="o">=</span>Mon Jan 22 16:00:00 PST 2001, bill-to<span class="o">={</span><span class="nv">given</span><span class="o">=</span>Chris, <span class="nv">family</span><span class="o">=</span>Dumars, <span class="nv">address</span><span class="o">={</span><span class="nv">lines</span><span class="o">=</span>458 Walkman Dr.
+Suite <span class="c">#292</span>
+, <span class="nv">city</span><span class="o">=</span>Royal Oak, <span class="nv">state</span><span class="o">=</span>MI, <span class="nv">postal</span><span class="o">=</span>48046<span class="o">}}</span>, ship-to<span class="o">={</span><span class="nv">given</span><span class="o">=</span>Chris, <span class="nv">family</span><span class="o">=</span>Dumars, <span class="nv">address</span><span class="o">={</span><span class="nv">lines</span><span class="o">=</span>458 Walkman Dr.
+Suite <span class="c">#292</span>
+, <span class="nv">city</span><span class="o">=</span>Royal Oak, <span class="nv">state</span><span class="o">=</span>MI, <span class="nv">postal</span><span class="o">=</span>48046<span class="o">}}</span>, <span class="nv">product</span><span class="o">=[{</span><span class="nv">sku</span><span class="o">=</span>BL394D, <span class="nv">quantity</span><span class="o">=</span>4, <span class="nv">description</span><span class="o">=</span>Basketball, <span class="nv">price</span><span class="o">=</span>450.0<span class="o">}</span>, <span class="o">{</span><span class="nv">sku</span><span class="o">=</span>BL4438H, <span class="nv">quantity</span><span class="o">=</span>null, <span class="nv">description</span><span class="o">=</span>Super Hoop, <span class="nv">price</span><span class="o">=</span>2392.0<span class="o">}]</span>, <span class="nv">tax</span><span class="o">=</span>251.42, <span class="nv">total</span><span class="o">=</span>4443.52, <span class="nv">comments</span><span class="o">=</span>Late afternoon is best. Backup contact is Nancy Billsmer @ 338-4338.<span class="se">\}</span>
+</code></pre></div></div>
+<p>In this section, we explained how to use the <code class="language-plaintext highlighter-rouge">bindgen</code> tool to generate Ballerina bindings for Java classes and how to use those generated ones.</p>
+
+<p>The next sections provide more details on various aspects related to Java interoperability in Ballerina.</p>
+
+<h2 id="the-bindgen-tool">The ‘bindgen’ Tool</h2>
+
+<p>The following subsections explain how the <code class="language-plaintext highlighter-rouge">bindgen</code> tool works.</p>
+
+<ul>
+  <li><a href="#the-bindgen-command">The <code class="language-plaintext highlighter-rouge">bindgen</code> Command</a>
+    <ul>
+      <li><a href="#generated-bridge-code">Generated Bridge Code</a></li>
+      <li><a href="#java-to-ballerina-mapping">Java to Ballerina Mapping</a>
+        <ul>
+          <li><a href="#java-classes">Java Classes</a></li>
+          <li><a href="#constructors">Constructors</a></li>
+          <li><a href="#methods">Methods</a></li>
+          <li><a href="#fields">Fields</a></li>
+          <li><a href="#external-interop-functions">External Interop Functions</a></li>
+          <li><a href="#dependency-objects">Dependency Objects</a></li>
+          <li><a href="#ballerina-jobject">Ballerina JObject</a></li>
+        </ul>
+      </li>
+      <li><a href="#java-to-ballerina-type-mappings">Java to Ballerina Type Mappings</a></li>
+      <li><a href="#support-for-java-subtyping">Support for Java Subtyping</a></li>
+      <li><a href="#support-for-java-casting">Support for Java Casting</a></li>
+      <li><a href="#java-exceptions-to-ballerina-errors">Java Exceptions to Ballerina Errors</a></li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Note:</strong> The <code class="language-plaintext highlighter-rouge">bindgen</code> tool is still experimental and the generated code is being improved currently.</p>
+</blockquote>
+
+<p>The <code class="language-plaintext highlighter-rouge">bindgen</code> is a CLI tool, which generates Ballerina bindings for Java classes.</p>
+
+<h3 id="the-bindgen-command">The ‘bindgen’ Command</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ballerina bindgen <span class="o">[(</span><span class="nt">-cp</span>|--classpath<span class="o">)</span> &lt;classpath&gt;...]
+                  <span class="o">[(</span><span class="nt">-mvn</span>|--maven<span class="o">)</span> &lt;groupId&gt;:&lt;artifactId&gt;:&lt;version&gt;]
+                  <span class="o">[(</span><span class="nt">-o</span>|--output<span class="o">)</span> &lt;output&gt;]
+                  <span class="o">[</span><span class="nt">--public</span><span class="o">]</span>
+                  <span class="o">(</span>&lt;class-name&gt;...<span class="o">)</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">(-cp|--classpath) &lt;classpath&gt;...</code>
+This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the required Java libraries needed by the bindgen tool execution. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library, from a library available inside the Ballerina SDK, or from a platform library specified in the <code class="language-plaintext highlighter-rouge">Ballerina.toml</code>, then you need not specify the classpath explicitly.</p>
+
+<p><code class="language-plaintext highlighter-rouge">(-mvn|--maven) &lt;groupId&gt;:&lt;artifactId&gt;:&lt;version&gt;</code>
+This optional parameter could be used to specify a Maven dependency required for the generation of the Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into the <code class="language-plaintext highlighter-rouge">target/platform-libs</code> directory of the project. If the tool is not executed inside a project or if the output path does not point to a project, the <code class="language-plaintext highlighter-rouge">target/platform-libs</code> directory structure will be created in the output path to store the Maven dependencies. The tool will also update the <code class="language-plaintext highlighter-rouge">Ballerina.toml</code> file with the platform libraries if the command is executed inside a Ballerina project.</p>
+
+<p><code class="language-plaintext highlighter-rouge">(-o|--output) &lt;output&gt;</code>
+This optional parameter could be used to specify the directory path to which the Ballerina bindings should be inserted. If this path is not specified, the output will be written to the same directory from which the command is run. You can point to the path of a Ballerina module to generate the code inside a Ballerina module.</p>
+
+<p><code class="language-plaintext highlighter-rouge">--public</code>
+Set the visibility modifier of the generated binding objects to public. By default, the generated bindings will be module private.</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;class-name&gt;...</code>
+One or more space-separated fully-qualified Java class names for which the Ballerina bridge code is to be generated. Please note that these class names should be provided at the end of the command.</p>
+
+<h3 id="generated-bridge-code">Generated Bridge Code</h3>
+
+<p>When the tool is run, a <code class="language-plaintext highlighter-rouge">.bal</code> file will be created to represent each Java class. This would contain the respective Ballerina binding object along with the required Java interoperability mappings. These <code class="language-plaintext highlighter-rouge">.bal</code> files would reside inside sub directories representing the package structure.</p>
+
+<p>Apart from creating bindings for the specified Java classes, the command will also generate empty Ballerina binding objects for the dependent Java classes. A Java class would be considered dependent if it is used inside one of the generated Ballerina binding objects.</p>
+
+<p>A set of additional utility files will also be generated in order to support the auto-generated Ballerina bindings. This includes a <code class="language-plaintext highlighter-rouge">Constants.bal</code> file to store constants used for proper functioning of the Ballerina binding objects and <code class="language-plaintext highlighter-rouge">.bal</code> files to store the error types used within the Ballerina binding objects.</p>
+
+<p>The folder structure of the generated bindings will be as follows.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ballerina_bindings&gt;
+    ├── &lt;bindings&gt;
+        ├── &lt;package-name&gt;
+            ├── &lt;class-name&gt;.bal
+            └── ...
+        └── ...
+    ├── &lt;dependencies&gt;
+        ├── &lt;package-name&gt;
+            ├── &lt;class-name&gt;.bal
+            └── ...
+        └── ...
+    └── &lt;utils&gt;
+        ├── Constants.bal
+        └── &lt;error_types&gt;
+            ├── &lt;class-name&gt;.bal
+            └── ...
+</code></pre></div></div>
+
+<h3 id="java-to-ballerina-mapping">Java to Ballerina Mapping</h3>
+
+<h4 id="java-classes">Java Classes</h4>
+<p>A Java class will be mapped onto a Ballerina object. This Ballerina object will have the same name as that of the Java class.</p>
+
+<p>E.g., Generated Ballerina object of the <code class="language-plaintext highlighter-rouge">java.util.ArrayDeque</code> class will be as follows.</p>
+<pre><code class="language-ballerina">@java:Binding {
+    'class: "java.util.ArrayDeque"
+}
+type ArrayDeque object {
+
+    *java:JObject;
+
+    function init(handle obj) {
+        self.jObj = obj;
+    }
+
+    ...
+};
+</code></pre>
+<p>If there are multiple classes with the same simple name, they need to be generated using a single execution. The tool will then apply a numerical identifier at the end of duplicated object names. This could be manually changed into something meaningful if required.</p>
+
+<p>The format for specifying inner classes using the command is <code class="language-plaintext highlighter-rouge">&lt;package-name&gt;.ClassName$InnerClassName</code>. The dollar sign might have to be escaped using the blackslash key.</p>
+
+<p>E.g., The command to generate bindings for <code class="language-plaintext highlighter-rouge">java.lang.Character.Subset</code> class will be as follows.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ballerina bindgen java.lang.Character<span class="se">\$</span>Subset
+</code></pre></div></div>
+
+<p>When referring a Java code to figure out the imported classes, you should be cautious about the Java classes from the <code class="language-plaintext highlighter-rouge">java.lang</code> package since these will not be visible as imports in the Java code. However, you need not generate bindings for the <code class="language-plaintext highlighter-rouge">java.lang.String</code> class since it is mapped into the Ballerina <code class="language-plaintext highlighter-rouge">string</code> type from within the Ballerina bindings generated.</p>
+
+<h4 id="constructors">Constructors</h4>
+<p>Constructors of Java classes will be mapped onto public functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the <code class="language-plaintext highlighter-rouge">new</code> keyword. If there are multiple constructors, they will be suffixed with an auto increment number.</p>
+
+<p>E.g., Generated constructors of the <code class="language-plaintext highlighter-rouge">java.util.ArrayDeque</code> class will be as follows.</p>
+<pre><code class="language-ballerina">function newArrayDeque1() returns ArrayDeque {
+   ...
+}
+
+function newArrayDeque2(int arg0) returns ArrayDeque {
+   ...
+}
+
+function newArrayDeque3(Collection arg0) returns ArrayDeque {
+   ...
+}
+</code></pre>
+
+<h4 id="methods">Methods</h4>
+<p>All public methods will be exposed through Ballerina bindings. Instance methods will reside inside the Ballerina object and these would take the name of the Java method. However, if there are overloaded methods, a numeric suffix will be appended at the end of the name.</p>
+
+<p>E.g., Some of the generated instance methods of the <code class="language-plaintext highlighter-rouge">java.util.ArrayDeque</code> class will be as follows.</p>
+<pre><code class="language-ballerina">type ArrayDeque object {
+   ...
+ 
+   function add(Object arg0) returns boolean {
+       ...
+   }
+
+   function isEmpty() returns boolean {
+       ...
+   }
+};
+</code></pre>
+<p>Static methods would reside outside the Ballerina object as public functions, which take the name of the Java method with the Java class name appended at the beginning as a prefix.</p>
+
+<p>E.g., A generated static method <code class="language-plaintext highlighter-rouge">randomUUID()</code> of the <code class="language-plaintext highlighter-rouge">java.util.UUID</code> class will be as follows. Here, the Ballerina equivalent of calling <code class="language-plaintext highlighter-rouge">UUID.randomUUID()</code> in Java will be <code class="language-plaintext highlighter-rouge">UUID_randomUUID()</code>.</p>
+<pre><code class="language-ballerina">function UUID_randomUUID() returns UUID {
+   ...
+}
+</code></pre>
+
+<h4 id="fields">Fields</h4>
+<p>All public fields of a Java class will be exposed through Ballerina bindings in the form of getters and setters. Instance fields will have the respective getter and setter functions inside the Ballerina object, whereas the static fields will have getter and setter functions outside the Ballerina object.</p>
+
+<p>The getter and setter functions of an instance field will take the name of the field prefixed with a <code class="language-plaintext highlighter-rouge">get</code> or <code class="language-plaintext highlighter-rouge">set</code> at the beginning.</p>
+
+<p>E.g., <code class="language-plaintext highlighter-rouge">get&lt;FIELD_NAME&gt;()</code> and <code class="language-plaintext highlighter-rouge">set&lt;FIELD_NAME&gt;(&lt;type&gt; arg)</code></p>
+
+<p>For a static field, the getter and setter (if the field is not final) functions will take the name of the field with a <code class="language-plaintext highlighter-rouge">get</code> or <code class="language-plaintext highlighter-rouge">set</code> prefix along with the Java simple class name appended at the beginning.</p>
+
+<p>E.g., <code class="language-plaintext highlighter-rouge">&lt;Class_Name&gt;_get&lt;FIELD_NAME&gt;()</code> and <code class="language-plaintext highlighter-rouge">&lt;Class_Name&gt;_set&lt;FIELD_NAME&gt;(&lt;type&gt; arg)</code></p>
+
+<h4 id="external-interop-functions">External Interop Functions</h4>
+<p>These external interop functions are module private and they take the fully-qualified Java method name as the function it is calling. However, if overloaded methods exist, a numeric suffix will be appended at the end.</p>
+
+<p>E.g., Generated external interop function for <code class="language-plaintext highlighter-rouge">close()</code> method of <code class="language-plaintext highlighter-rouge">java.io.FileInputStream</code> will be as follows.</p>
+<pre><code class="language-ballerina">function java_io_FileInputStream_close(handle receiver) returns error? = @java:Method {
+    name: "close",
+    'class: "java.io.FileInputStream",
+    paramTypes: []
+} external;
+</code></pre>
+
+<h4 id="dependency-objects">Dependency Objects</h4>
+<p>When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the bindgen tool generates an empty Ballerina binding object to represent each one of these classes. This will represent a Java class mapping without the constructors, methods, or field bindings. If one of these classes is required later, the bindgen tool could be re-run to generate the Ballerina bindings.</p>
+
+<p>E.g., The generated dependency object representing <code class="language-plaintext highlighter-rouge">java.util.List</code> will be as follows.</p>
+<pre><code class="language-ballerina">public type List object {
+ 
+   *JObject;
+  
+   public function __init(handle obj) {
+       self.jObj = obj;
+   }
+
+   public function toString() returns string {
+       return java:jObjToString(self.jObj);
+   }
+};
+</code></pre>
+
+<h4 id="ballerina-jobject">Ballerina JObject</h4>
+<p>A Ballerina binding object representing a Java class will always be implemented using the abstract class <code class="language-plaintext highlighter-rouge">JObject</code>. This is present inside the <code class="language-plaintext highlighter-rouge">ballerina/java</code> module of the Ballerina standard library and could be accessed as <code class="language-plaintext highlighter-rouge">java:JObject</code> if the java module is imported into a project.</p>
+
+<p>To explain the implementation further, this Ballerina object will always store the handle reference of the Java object in it’s <code class="language-plaintext highlighter-rouge">jObj</code> field.</p>
+
+<pre><code class="language-ballerina">public type JObject abstract object {
+ 
+   public handle jObj;
+};
+</code></pre>
+
+<h3 id="java-to-ballerina-type-mappings">Java to Ballerina Type Mappings</h3>
+<p>Generated Ballerina bindings will support the following type mappings between Java and Ballerina.</p>
+<ul>
+  <li>Ballerina primitive - Java primitive</li>
+  <li>Ballerina string type - Java String object</li>
+  <li>Ballerina binding objects - Java objects</li>
+</ul>
+
+<p>The Ballerina binding objects will store a handle reference of the Java object using its <code class="language-plaintext highlighter-rouge">jObj</code> field. More details on the type mappings could be found in the <a href="#how-java-types-are-mapped-to-ballerina-types-and-vice-versa">How Java types are mapped to Ballerina types and vice versa</a> section of this guide.</p>
+
+<h3 id="support-for-java-subtyping">Support for Java Subtyping</h3>
+<p>Ballerina bindings provide support for Java subtyping with the aid of structural typing in the language.</p>
+
+<p>E.g., A Ballerina binding object mapping the <code class="language-plaintext highlighter-rouge">java.io.FileInputStream</code> Java class could be assigned to a Ballerina binding object mapping the <code class="language-plaintext highlighter-rouge">java.io.InputStream</code> as follows.</p>
+<pre><code class="language-ballerina">InputStream inputStream = check newFileInputStream3("sample.txt");
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> For Java Subtyping to work, the Ballerina binding objects need to be fully implemented, it will not work with empty dependency objects.</p>
+</blockquote>
+
+<h3 id="support-for-java-casting">Support for Java Casting</h3>
+<p>The <code class="language-plaintext highlighter-rouge">ballerina/java</code> module of the Ballerina standard library provides the <code class="language-plaintext highlighter-rouge">cast</code> function to support Java casting. This could be used to cast Ballerina binding objects into their subtypes based on assignability.</p>
+
+<p>E.g., A Ballerina binding object instance mapping the <code class="language-plaintext highlighter-rouge">java.io.InputStream</code> Java class <code class="language-plaintext highlighter-rouge">inputStream</code> could be casted onto a Ballerina binding object mapping the <code class="language-plaintext highlighter-rouge">java.io.FileInputStream</code> Java class as follows.</p>
+<pre><code class="language-ballerina">FileInputStream fileInputStream = &lt;FileInputStream&gt;check java:cast(inputStream, typedesc&lt;FileInputStream&gt;);
+</code></pre>
+
+<h3 id="java-exceptions-to-ballerina-errors">Java Exceptions to Ballerina Errors</h3>
+<p>When generating Ballerina bindings, Java exceptions will be mapped onto Ballerina errors. They will have identical names as that of the corresponding Java exceptions and these will be generated inside the <code class="language-plaintext highlighter-rouge">ballerina_bindings/utils/error_types</code> directory. Instead of returning a generic error from the Java side, the bindings will return a more meaningful error representing the exact Java exception.</p>
+
+<p>E.g., The following <code class="language-plaintext highlighter-rouge">IOException</code> will be returned from the <code class="language-plaintext highlighter-rouge">read()</code> function in the <code class="language-plaintext highlighter-rouge">java.io.FileInputStream</code> Ballerina binding object.</p>
+
+<pre><code class="language-ballerina">function read() returns int|IOException {
+    int|error externalObj = java_io_FileInputStream_read(self.jObj);
+    if (externalObj is error) {
+        IOException e = IOException(message = externalObj.reason(), cause = externalObj);
+        return e;
+    } else {
+        return externalObj;
+    }
+}
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> If a Java exception class is generated as a Ballerina binding object, it would follow the naming convention <code class="language-plaintext highlighter-rouge">JException</code> or <code class="language-plaintext highlighter-rouge">JError</code>. For instance, the binding object’s name for <code class="language-plaintext highlighter-rouge">java.io.FileNotFoundException</code> would be as <code class="language-plaintext highlighter-rouge">JFileNotFoundException</code>.</p>
+</blockquote>
+
+<h2 id="packaging-java-libraries-with-ballerina-programs">Packaging Java Libraries with Ballerina Programs</h2>
+
+<blockquote>
+  <p><strong>Tip:</strong> As a prerequisite for this section, see <a href="/1.2/learn/structuring-ballerina-code/">Structuring Ballerina Code</a>. 
+When you compile a Ballerina program with <code class="language-plaintext highlighter-rouge">ballerina build &lt;root-module&gt;</code>, the compiler creates an executable JAR file and when you compile a Ballerina module with <code class="language-plaintext highlighter-rouge">ballerina build -c &lt;module&gt;</code>, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.</p>
+</blockquote>
+
+<p>There are two kinds of Ballerina projects:</p>
+<ol>
+  <li>Produces executable programs
+    <ul>
+      <li>Contains one or more Ballerina modules and at least one of them has to be a root module.</li>
+      <li>A root module has a <code class="language-plaintext highlighter-rouge">main</code> method and/or one or more services.</li>
+      <li>Build the project with <code class="language-plaintext highlighter-rouge">ballerina build &lt;root-module&gt;</code> or use <code class="language-plaintext highlighter-rouge">ballerina build -a</code> if there is more than one root module.</li>
+      <li>The best practice is to maintain a single root module in a Ballerina project.</li>
+    </ul>
+  </li>
+  <li>Produces Ballerina library modules
+    <ul>
+      <li>Contains one or more Ballerina library modules.</li>
+      <li>Build the modules with <code class="language-plaintext highlighter-rouge">ballerina build -c &lt;module&gt;</code> or <code class="language-plaintext highlighter-rouge">ballerina build -c -a</code> to build all modules.</li>
+      <li>Usually, the compiled library modules are pushed to Ballerina central.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>How you package JAR files with compiled archives is the same in both kinds of projects. Therefore, a sample Ballerina project, which produces an executable is used here.</p>
+
+<p>Here, is a Ballerina project layout of a microservice called “order management”. The module <code class="language-plaintext highlighter-rouge">ordermgt</code> - the root module - contains a RESTFul service, which exposes resource functions to create, retrieve, update, and cancel orders. The <code class="language-plaintext highlighter-rouge">dbutils</code> module offers utility functions, which use a MySQL database to store orders.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ordermgt_service/
+├── Ballerina.toml
+└── javalibs/
+    └── mysql-connector-java-&lt;version&gt;.jar
+└── src/
+    └── ordermgt/
+    └── dbutils/
+</code></pre></div></div>
+
+<p>The Java MySQL connector is placed inside the <code class="language-plaintext highlighter-rouge">javalibs</code> directory. You are free to store the JAR files anywhere in your file system. This example places those JAR files inside the project directory. As a best practice, maintain Java libraries inside the project.
+The <code class="language-plaintext highlighter-rouge">Ballerina.toml</code> file, which marks a directory as a Ballerina project lives at the root of the project. It is also a manifest file that contains project information, dependent Ballerina module information, and platform-specific library information. Java libraries are considered as platform-specific libraries. 
+Here, is how you can specify a JAR file dependency in the<code class="language-plaintext highlighter-rouge">Ballerina.toml</code>.</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[platform]</span> 
+<span class="py">target</span> <span class="p">=</span> <span class="s">"java8"</span> 
+
+<span class="nn">[[platform.libraries]]</span> 
+<span class="c"># Absolute or relative path to the JAR file</span>
+<span class="py">path</span> <span class="p">=</span> <span class="s">"&lt;path-to-jar-file-1&gt;"</span> 
+<span class="c"># A comma-separated list of Ballerina module names, which depends on this JAR</span>
+<span class="py">modules</span> <span class="p">=</span> <span class="nn">["&lt;ballerina-module-1&gt;"]</span>
+
+<span class="nn">[[platform.libraries]]</span> 
+<span class="py">path</span> <span class="p">=</span> <span class="s">"&lt;path-to-jar-file-2&gt;"</span> 
+<span class="err">modules</span> <span class="err">=</span> <span class="nn">["&lt;ballerina-module-1&gt;","&lt;ballerina-module-2&gt;"]</span>
+</code></pre></div></div>
+
+<p>Alternatively, you can also specify Maven dependencies as platform-specific libraries. These dependencies specified would then get resolved into the <code class="language-plaintext highlighter-rouge">target/platform-libs</code> directory when building the project. You can specify a Maven dependency in the <code class="language-plaintext highlighter-rouge">Ballerina.toml</code> file as shown below.</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[platform]</span>
+<span class="py">target</span> <span class="p">=</span> <span class="s">"java8"</span>
+
+<span class="nn">[[platform.libraries]]</span>
+<span class="c"># A comma-separated list of Ballerina module names, which depends on this JAR</span>
+<span class="py">modules</span> <span class="p">=</span> <span class="nn">["&lt;ballerina-module-1&gt;"]</span>
+<span class="c"># Group ID of the Maven dependency</span>
+<span class="py">groupId</span> <span class="p">=</span> <span class="s">"&lt;group-id&gt;"</span>
+<span class="c"># Artifact ID of the Maven dependency</span>
+<span class="py">artifactId</span> <span class="p">=</span> <span class="s">"&lt;artifact-id&gt;"</span>
+<span class="c"># Version of the Maven dependency</span>
+<span class="py">version</span> <span class="p">=</span> <span class="s">"&lt;version&gt;"</span>
+
+<span class="nn">[[platform.libraries]]</span>
+<span class="py">modules</span> <span class="p">=</span> <span class="nn">["&lt;ballerina-module-1&gt;","&lt;ballerina-module-2&gt;"]</span>
+<span class="py">groupId</span> <span class="p">=</span> <span class="s">"&lt;group-id&gt;"</span>
+<span class="py">artifactId</span> <span class="p">=</span> <span class="s">"&lt;artifact-id&gt;"</span>
+<span class="py">version</span> <span class="p">=</span> <span class="s">"&lt;version&gt;"</span>
+</code></pre></div></div>
+
+<p>Now, let’s look at the contents of the <code class="language-plaintext highlighter-rouge">Ballerina.toml</code> file in this project.</p>
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[platform]</span> 
+<span class="py">target</span> <span class="p">=</span> <span class="s">"java8"</span> 
+
+	<span class="nn">[[platform.libraries]]</span> 
+	<span class="err">path</span> <span class="err">=</span> <span class="s">"./javalibs/mysql-connector-java-&lt;version&gt;.jar"</span> 
+	<span class="err">modules</span> <span class="err">=</span> <span class="nn">["ordermgt"]</span>
+</code></pre></div></div>
+
+<p>Or, if you are adding it as a Maven dependency, it would take the following form.</p>
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[platform]</span>
+<span class="py">target</span> <span class="p">=</span> <span class="s">"java8"</span>
+
+	<span class="nn">[[platform.libraries]]</span>
+	<span class="py">modules</span> <span class="p">=</span> <span class="nn">["ordermgt"]</span>
+	<span class="py">groupId</span> <span class="p">=</span> <span class="s">"mysql"</span>
+	<span class="py">artifactId</span> <span class="p">=</span> <span class="s">"mysql-connector-java"</span>
+	<span class="py">version</span> <span class="p">=</span> <span class="s">"&lt;version&gt;"</span>
+</code></pre></div></div>
+
+<p>If your project has only one root module, then you can attach all the JAR file dependencies to your root module as the best practice.</p>
+
+<p>If your project is a Ballerina library module project, then you should specify the JAR file dependencies in each Ballerina module if that module depends on the JAR file.</p>
+
+<p>Now, use <code class="language-plaintext highlighter-rouge">ballerina build ordermgt</code> to build an executable JAR. This command packages all JARs specified in your <code class="language-plaintext highlighter-rouge">Ballerina.toml</code> with the executable JAR file.</p>
+
+<h2 id="ballerina-ffi">Ballerina FFI</h2>
+<p>Let’s look at the list of language features that enable Ballerina developers to call foreign code written in other programming languages. E.g., while the jBallerina compiler allows you to call any <code class="language-plaintext highlighter-rouge">Java</code> code, the nBallerina compiler will allow you to call any <code class="language-plaintext highlighter-rouge">C</code> Code.</p>
+
+<h3 id="the-external-function-body">The External Function Body</h3>
+<p>Usually, the body or the implementation of a function is specified in the same source file. The part, which is enclosed by curly braces is called the function body.</p>
+
+<pre><code class="language-ballerina">function doSomething(int i) returns string {
+	...
+}
+</code></pre>
+
+<p>Ballerina also allows you to define a function without a function body and marks it with the <code class="language-plaintext highlighter-rouge">external</code> keyword to express that the implementation is not provided by the Ballerina source file.</p>
+
+<pre><code class="language-ballerina">function doSomething(int i) returns string = external;
+</code></pre>
+
+<p>Now, let’s see how you can link this function with a foreign function.</p>
+
+<pre><code class="language-ballerina">import ballerina/java;
+
+function doSomething(int i) returns string = @java:Method {
+	name: "doSomethingInJava"
+	'class: "a.b.c.Foo"
+} external;
+</code></pre>
+
+<p>The <code class="language-plaintext highlighter-rouge">@java:Method</code> annotation instructs the jBallerina compiler to link with the <code class="language-plaintext highlighter-rouge">doSomethingInJava</code> static method in the Java class <code class="language-plaintext highlighter-rouge">a.b.c.Foo</code>. There are a set of annotations and other utilities available in the <code class="language-plaintext highlighter-rouge">ballerina/java</code> module to make Java interoperability work.  This guide covers most of them.</p>
+
+<h3 id="the-handle-type">The Handle Type</h3>
+<p>The handle type describes a reference to an externally-managed storage. These values can only be created by a Ballerina function with an external function body. Within the context of jBallerina, a <code class="language-plaintext highlighter-rouge">handle</code> type variable can refer to any Java reference type value: a Java object, an array, or the null value.</p>
+
+<p>Consider the <code class="language-plaintext highlighter-rouge">randomUUID</code> method in the Java UUID class, which gives you a UUID object. This is the Java method signature.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="no">UUID</span> <span class="nf">randomUUID</span><span class="o">()</span>
+</code></pre></div></div>
+
+<p>Here, is the corresponding Ballerina function that returns a value of the handle type.</p>
+
+<pre><code class="language-ballerina">import ballerina/java;
+
+function randomUUID() returns handle = @java:Method {
+    name: "randomUUID",
+    'class: "java.util.UUID"
+} external;
+</code></pre>
+
+<p>In Java, you can assign the <code class="language-plaintext highlighter-rouge">null</code> value to any variable of a reference type. Therefore, a <code class="language-plaintext highlighter-rouge">handle</code> type variable may also refer to the Java <code class="language-plaintext highlighter-rouge">null</code>.</p>
+
+<p>The following section describes various aspects of Java interoperability in Ballerina. You can copy and paste the following examples into a <code class="language-plaintext highlighter-rouge">.bal</code> file and run it using the <code class="language-plaintext highlighter-rouge">ballerina run &lt;file_name.bal&gt;</code> command.</p>
+
+<h2 id="calling-java-programs-from-ballerina">Calling Java Programs from Ballerina</h2>
+<p>The following subsections explain how to call Java code from Ballerina.</p>
+
+<ul>
+  <li><a href="#instantiating-java-classes">Instantiating Java Classes</a>
+    <ul>
+      <li><a href="#dealing-with-overloaded-constructors">Dealing with Overloaded Constructors</a></li>
+      <li><a href="#the-paramtypes-field">The <code class="language-plaintext highlighter-rouge">paramTypes</code> Field</a></li>
+    </ul>
+  </li>
+  <li><a href="#calling-java-methods">Calling Java Methods</a>
+    <ul>
+      <li><a href="#calling-static-methods">Calling Static Methods</a></li>
+      <li><a href="#calling-instance-methods">Calling Instance Methods</a></li>
+      <li><a href="#calling-methods-asynchronously">Calling Methods Asynchronously</a></li>
+      <li><a href="#mapping-java-classes-into-ballerina-objects">Mapping Java Classes into Ballerina Objects</a></li>
+      <li><a href="#calling-overloaded-java-methods">Calling Overloaded Java Methods</a></li>
+    </ul>
+  </li>
+  <li><a href="#java-exceptions-as-ballerina-errors">Java Exceptions as Ballerina Errors</a>
+    <ul>
+      <li><a href="#java-checked-exceptions">Java Checked Exceptions</a></li>
+      <li><a href="#mapping-a-java-exception-to-a-ballerina-error-value">Mapping a Java Exception to a Ballerina Error Value</a></li>
+    </ul>
+  </li>
+  <li><a href="#null-safety">Null Safety</a></li>
+  <li><a href="#mapping-java-types-to-ballerina-types-and-vice-versa">Mapping Java Types to Ballerina Types and Vice Versa</a>
+    <ul>
+      <li><a href="#mapping-java-types-to-ballerina-types">Mapping Java Types to Ballerina Types</a></li>
+      <li><a href="#mapping-ballerina-types-to-java-types">Mapping Ballerina Types to Java Types</a></li>
+      <li><a href="#access-or-mutate-java-fields">Access or Mutate Java Fields</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="instantiating-java-classes">Instantiating Java Classes</h3>
+<p>Let’s look at how you can create Java objects in a Ballerina program. The <code class="language-plaintext highlighter-rouge">@java:Constructor</code> annotation instructs the compiler to link a Ballerina function with a Java constructor.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">ArrayDeque</code> class in the <code class="language-plaintext highlighter-rouge">java.util</code> package has a default constructor. The following Ballerina code creates a new <code class="language-plaintext highlighter-rouge">ArrayDeque</code> object. As you can see, the <code class="language-plaintext highlighter-rouge">newArrayDeque</code> function is linked with the default constructor. This function returns a handle value and it refers the constructed <code class="language-plaintext highlighter-rouge">ArrayDeque</code> instance.</p>
+
+<pre><code class="language-ballerina">import ballerina/java;
+
+public function main() {
+    handle arrayDeque = newArrayDeque(); 
+}
+
+function newArrayDeque() returns handle = @java:Constructor {
+    'class: "java.util.ArrayDeque"
+} external;
+</code></pre>
+
+<p>You can also create a wrapper Ballerina object for Java classes as follows.</p>
+
+<pre><code class="language-ballerina">import ballerina/java;
+
+public function main() {
+    ArrayDeque ad = new; 
+}
+
+type ArrayDeque object {
+    private handle jObj;
+
+    function __init(){
+        self.jObj = newArrayDeque();          
+    }
+};
+
+function newArrayDeque() returns handle = @java:Constructor {
+    'class: "java.util.ArrayDeque"
+} external;
+
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> that these <code class="language-plaintext highlighter-rouge">@java:*</code> annotations cannot be attached to Ballerina object methods at the moment.</p>
+</blockquote>
+
+<h4 id="dealing-with-overloaded-constructors">Dealing with Overloaded Constructors</h4>
+<p>When there are two constructors with the same number of arguments available, you need to specify the exact constructor that you want to link with the Ballerina function. The <code class="language-plaintext highlighter-rouge">ArrayDeque</code> class contains three constructors and the last two are overloaded ones.</p>
+
+<pre><code class="language-ballerina">public ArrayDeque();
+public ArrayDeque(int numElements);
+public ArrayDeque(Collection&lt;? extends E&gt; c);
+</code></pre>
+
+<p>Here, is the updated Ballerina code.</p>
+
+<pre><code class="language-ballerina">import ballerina/java;
+
+function newArrayDeque() returns handle = @java:Constructor {
+    'class: "java.util.ArrayDeque"
+} external;
+
+function newArrayDequeWithSize(int numElements) returns handle = @java:Constructor {
+    'class: "java.util.ArrayDeque",
+    paramTypes: ["int"]
+} external;
+
+function newArrayDequeWithCollection(handle c) returns handle = @java:Constructor {
+    'class: "java.util.ArrayDeque",
+    paramTypes: ["java.util.Collection"]
+} external;
+</code></pre>
+
+<h5 id="the-paramtypes-field">The ‘paramTypes’ Field</h5>
+<p>You can use the <code class="language-plaintext highlighter-rouge">paramTypes</code> field to resolve the exact overloaded method. This field is defined as follows.</p>
+
+<pre><code class="language-ballerina"># The `Class` type represents a fully-qualified Java class name.
+public type Class string;
+
+# The `ArrayType` represents a Java array type. It is used to specify parameter
+# types in the `Constructor` and `Method` annotations.
+#
+# + class - Element class of the array type
+# + dimensions - Dimensions of the array type
+public type ArrayType record {|
+    Class class;
+    byte dimensions;
+|};
+
+(Class | ArrayType)[] paramTypes?;
+</code></pre>
+
+<p>As per the above definition, <code class="language-plaintext highlighter-rouge">paramTypes</code> field takes an array of Java classes or array types. The following table contains more details.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Java Type</th>
+      <th>Description</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Primitive</td>
+      <td>The Java class name of a primitive type is the same as the name of the primitive type.</td>
+      <td>The <code class="language-plaintext highlighter-rouge">boolean.class.getName()</code> expression evaluates to “boolean”. Similarly, the <code class="language-plaintext highlighter-rouge">int.class.getName()</code> expression evaluates to “int”.</td>
+    </tr>
+    <tr>
+      <td>Class</td>
+      <td>Fully-qualified class name</td>
+      <td>“java.lang.String”</td>
+    </tr>
+    <tr>
+      <td>Array</td>
+      <td>Use the <code class="language-plaintext highlighter-rouge">ArrayType</code> record defined above to specify Java array types in overloaded methods.</td>
+      <td>Method signature: <code class="language-plaintext highlighter-rouge">void append(boolean[] states, long l, String[][] args);</code> The corresponding value of the <code class="language-plaintext highlighter-rouge">paramField</code>: <code class="language-plaintext highlighter-rouge">paramField: [{class:”boolean”, dimensions: 1}, “long” {class:”java.lang.String”, dimensions: 2}]</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For more details, look at the following example.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">Builder</span><span class="o">(</span><span class="nc">Person</span><span class="o">[][]</span> <span class="n">list</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">);</span>
+<span class="kd">public</span> <span class="nf">Builder</span><span class="o">(</span><span class="nc">Student</span><span class="o">[][]</span> <span class="n">list</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Here, is the corresponding Ballerina code.</p>
+
+<pre><code class="language-ballerina">import ballerina/java;
+
+function builderWithPersonList(handle list, int index) returns handle = @java:Constructor {
+    'class: "a.b.c.Builder",
+    paramTypes: [{class: "a.b.c.Person", dimensions:2}, "int"]
+} external;
+
+function builderWithStudentList(handle list, int index) returns handle = @java:Constructor {
+    'class: "a.b.c.Builder",
+    paramTypes: [{class: "a.b.c.Student", dimensions:2}, "int"]
+} external;
+</code></pre>
+
+<h3 id="calling-java-methods">Calling Java Methods</h3>
+<p>You can use the <code class="language-plaintext highlighter-rouge">java:@Method</code> annotation to link Ballerina functions with Java static and instance methods. There is a small but important difference in calling Java static methods vs calling instance methods.</p>
+
+<h4 id="calling-static-methods">Calling Static Methods</h4>
+<p>Let’s first look at how to call a static method. The “java.util.UUID” class  has a static method with the <code class="language-plaintext highlighter-rouge">static UUID randomString()</code> signature.</p>
+
+<pre><code class="language-ballerina">import ballerina/java;
+import ballerina/io;
+
+function randomUUID() returns handle = @java:Method {
+   name: "randomUUID",
+   'class: "java.util.UUID"
+} external;
+
+public function main() {
+   handle uuid = randomUUID();
+   io:println(uuid);
+}
+</code></pre>
+
+<p>The <code class="language-plaintext highlighter-rouge">name</code> field is optional here. If the Ballerina function name is the same as the Java method name, you don’t have to specify the <code class="language-plaintext highlighter-rouge">name</code> field.</p>
+
+<pre><code class="language-ballerina">function randomUUID() returns handle = @java:Method {
+   'class: "java.util.UUID"
+} external;
+</code></pre>
+
+<h4 id="calling-instance-methods">Calling Instance Methods</h4>
+<p>Now, let’s look at how to call Java instance methods using the same <code class="language-plaintext highlighter-rouge">ArrayDeque</code> class in the <code class="language-plaintext highlighter-rouge">java.util</code> package. It can be used as a stack with its <code class="language-plaintext highlighter-rouge">pop</code> and <code class="language-plaintext highlighter-rouge">push</code> instance methods with the following method signatures.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">E</span> <span class="nf">pop</span><span class="o">();</span>
+<span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="no">E</span> <span class="n">e</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Here, are the corresponding Ballerina functions that are linked to these methods.</p>
+
+<pre><code class="language-ballerina">function pop(handle arrayDequeObj) returns handle = @java:Method {
+   'class: "java.util.ArrayDeque"
+} external;
+
+function push(handle arrayDequeObj, handle e) = @java:Method {
+   'class: "java.util.ArrayDeque"
+} external; 
+</code></pre>
+
+<p>If you compare these functions with the Java method signatures, you would notice the additional <code class="language-plaintext highlighter-rouge">handle arrayDequeObj</code> parameter in Ballerina functions. Let’s look at a sample usage to understand the reason.</p>
+
+<pre><code class="language-ballerina">public function main() {
+   // Create a new instance of `ArrayDeque`.
+   handle arrayDequeObj = newArrayDeque();
+
+   // Convert a Ballerina string to a Java string.
+   string str = “Ballerina”
+   handle handleStr = java:fromString(str);
+
+   push(arrayDequeObj, handleStr);
+   handle e = pop(arrayDequeObj);
+}
+</code></pre>
+
+<p>As you can see, you need to first construct an instance of the <code class="language-plaintext highlighter-rouge">ArrayDeque</code> class. The <code class="language-plaintext highlighter-rouge">arrayDequeObj</code> variable refers to an <code class="language-plaintext highlighter-rouge">ArrayDeque</code> object. Then, you need to pass this variable to both the <code class="language-plaintext highlighter-rouge">pop</code> and <code class="language-plaintext highlighter-rouge">push</code> functions because the corresponding Java methods are instance methods of the<code class="language-plaintext highlighter-rouge">ArrayDeque</code> class. Therefore, you need an instance of the <code class="language-plaintext highlighter-rouge">ArrayDeque</code> class in order to invoke its instance methods. You can think of the <code class="language-plaintext highlighter-rouge">arrayDequeObj</code> variable as the method receiver.</p>
+
+<h4 id="calling-methods-asynchronously">Calling Methods Asynchronously</h4>
+
+<p>Ballerina internally uses a fixed number of threads. Therefore, when calling a Java method, it should return in a reasonable time frame in order to avoid starvation in the Ballerina code execution.</p>
+
+<p>If the given Java method executes a time consuming (i.e., blocking) task such as an IO operation, better to do that in a separate thread while yielding the original thread to continue the Ballerina code execution.
+In this case, Ballerina Scheduler needs to be informed that the work is being completed asynchronously by invoking the <code class="language-plaintext highlighter-rouge">markAsync</code> method in the <code class="language-plaintext highlighter-rouge">BalEnv</code> object. When the work is completed, the <code class="language-plaintext highlighter-rouge">complete</code> method has to be called with the return value.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> The original return value is ignored.</p>
+  <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">getFileCountRecursively</span><span class="o">(</span><span class="nc">BalEnv</span> <span class="n">env</span><span class="o">,</span> <span class="nc">BString</span> <span class="n">path</span><span class="o">)</span> <span class="o">{</span>
+ <span class="err"> </span> <span class="err"> </span> <span class="nc">BalFuture</span> <span class="n">balFuture</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="na">markAsync</span><span class="o">();</span>
+ <span class="err"> </span> <span class="err"> </span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+ <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="kt">long</span> <span class="n">result</span> <span class="o">=</span> <span class="c1">// slow operation ;</span>
+ <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">balFuture</span><span class="o">.</span><span class="na">complete</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+ <span class="err"> </span> <span class="err"> </span> <span class="o">}).</span><span class="na">start</span><span class="o">();</span> <span class="c1">// in a production system this can be a thread pool/nio pool</span>
+ <span class="err"> </span> <span class="err"> </span> <span class="k">return</span> <span class="o">-</span><span class="mi">38263</span><span class="o">;</span> <span class="c1">// this value is ignored</span>
+ <span class="o">}</span>
+</code></pre></div>  </div>
+</blockquote>
+
+<pre><code class="language-ballerina">public function getFileCountRecursively(string path) returns int = @java:Method {
+    'class:"my/test/DirOperations"
+} external;
+</code></pre>
+
+<h4 id="mapping-java-classes-into-ballerina-objects">Mapping Java Classes into Ballerina Objects</h4>
+<p>The following pattern is useful if you want to present a clearer Ballerina API, which calls to the underneath Java code. This pattern creates wrapper Ballerina objects for each Java class that you want to expose via your API.</p>
+
+<p>Imagine that you want to design an API to manipulate a stack of string values by using the Java <code class="language-plaintext highlighter-rouge">ArrayDeque</code> utility. You can create a Ballerina object type as follows.</p>
+
+<pre><code class="language-ballerina">public type StringStack object {
+   private handle jObj;
+
+   public function __init() {
+       self.jObj = newArrayDeque();
+   }
+
+   public function push(string element) {
+       push(self.jObj, java:fromString(element));
+   }
+
+   public function pop() returns string {
+       handle handleEle = pop(self.jObj);
+       // Let's talk about error handling and null satefy later in this guide
+       // This example uses an empty string for now.
+       return java:toString(handleEle) ?: "";
+
+   }
+};
+
+function newArrayDeque() returns handle = @java:Constructor {
+   'class: "java.util.ArrayDeque"
+} external;
+
+function pop(handle receiver) returns handle = @java:Method {
+   'class: "java.util.ArrayDeque"
+} external;
+
+function push(handle receiver, handle element) = @java:Method {
+   'class: "java.util.ArrayDeque"
+} external;
+</code></pre>
+
+<p>This object presents a much clearer API compared to the previous API. Here, is a sample usage of this object.</p>
+
+<pre><code class="language-ballerina">public function main() {
+   StringStack stack = new();
+   stack.push("Ballerina");   
+   string element = stack.pop();
+}
+</code></pre>
+
+<h4 id="calling-overloaded-java-methods">Calling Overloaded Java Methods</h4>
+<p>The “Instantiate Java classes” section presents how to deal with overloaded constructors in the. You need to use the same approach to deal with overloaded Java methods. Let’s try to call the overloaded <code class="language-plaintext highlighter-rouge">append</code> methods in the `java.lang.StringBuffer class. Here, is a subset of those methods.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">StringBuffer</span> <span class="nf">append</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">b</span><span class="o">);</span>
+<span class="nc">StringBuffer</span> <span class="nf">append</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">);</span>
+<span class="nc">StringBuffer</span> <span class="nf">append</span><span class="o">(</span><span class="nc">String</span> <span class="n">str</span><span class="o">);</span>
+<span class="nc">StringBuffer</span> <span class="nf">append</span><span class="o">(</span><span class="nc">StringBuffer</span> <span class="n">sb</span><span class="o">);</span>
+<span class="nc">StringBuffer</span> <span class="nf">append</span><span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">str</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Here, is the set of Ballerina functions that are linked with the above Java methods. Notice the usage of the <code class="language-plaintext highlighter-rouge">paramTypes</code> annotation field. You can find more details of this field in the “Instantiate Java classes” section.</p>
+
+<pre><code class="language-ballerina">function appendBool(handle sbObj, boolean b) returns handle = @java:Method {
+   name: "append",
+   paramTypes: ["boolean"],
+   'class: "java.lang.StringBuffer"
+} external;
+
+function appendInt(handle sbObj, int i) returns handle = @java:Method {
+   name: "append",
+   paramTypes: ["int"],
+   'class: "java.lang.StringBuffer"
+} external;
+
+function appendCharArray(handle sbObj, handle str) returns handle = @java:Method {
+   name: "append",
+   paramTypes: [{class: "char", dimensions: 1}],
+   'class: "java.lang.StringBuffer"
+} external;
+
+function appendString(handle sbObj, handle str) returns handle = @java:Method {
+   name: "append",
+   paramTypes: ["java.lang.String"],
+   'class: "java.lang.StringBuffer"
+} external;
+
+function appendStringBuffer(handle sbObj, handle sb) returns handle = @java:Method {
+   name: "append",
+   paramTypes: ["java.lang.StringBuffer"],
+   'class: "java.lang.StringBuffer"
+} external;
+</code></pre>
+
+<h3 id="java-exceptions-as-ballerina-errors">Java Exceptions as Ballerina Errors</h3>
+<p>A function call in Ballerina may complete abruptly by returning an error or by raising a panic. Panics are rare in Ballerina. The best practice is to handle errors in your normal control flow. Raising a panic is similar to throwing a Java exception. The <code class="language-plaintext highlighter-rouge">trap</code> action will stop a panic and give you the control back in Ballerina and the <code class="language-plaintext highlighter-rouge">try-catch</code> statement does the same in Java.</p>
+
+<p>Errors in Ballerina belong to the built-int type <code class="language-plaintext highlighter-rouge">error</code>. The error type can be considered as a distinct type from all other types: The <code class="language-plaintext highlighter-rouge">error</code> type does not belong to the <code class="language-plaintext highlighter-rouge">any</code> type, which is the supertype of all other Ballerina types. Therefore, errors are explicit in Ballerina programs and it is almost impossible to ignore them. For more details, see BBEs.</p>
+
+<p>How do Java exceptions are mapped to Ballerina errors? 
+A Java function call may complete abruptly by throwing either a checked exception or an unchecked exception. Unchecked exceptions are usually not part of the Java method signature unlike the checked exceptions.</p>
+
+<p>Java interoperability layer in Ballerina handles checked exceptions differently from unchecked exceptions as explained below.
+Java unchecked exceptions
+If the linked Java method throws an unchecked exception, then the corresponding Ballerina function will complete abruptly by raising a panic.</p>
+
+<p>The following example tries to pop an element out of an empty queue. The <code class="language-plaintext highlighter-rouge">pop</code> method in the <code class="language-plaintext highlighter-rouge">ArrayDeque</code> class throws an unchecked  <code class="language-plaintext highlighter-rouge">java.util.NoSuchElementException</code> exception in such cases. This exception will cause the Ballerina <code class="language-plaintext highlighter-rouge">pop</code> function to raise a panic.</p>
+
+<pre><code class="language-ballerina">import ballerina/java;
+
+function newArrayDeque() returns handle = @java:Constructor {
+   'class: "java.util.ArrayDeque"
+} external;
+
+function pop(handle receiver) returns handle = @java:Method {
+   'class: "java.util.ArrayDeque"
+} external;
+
+public function main() {
+   handle arrayDeque = newArrayDeque();
+   handle element = pop(arrayDeque);
+}
+</code></pre>
+
+<p>Here, is the output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error: java.util.NoSuchElementException 
+	at array_deque:pop(array_deque.bal:65535)
+	   array_deque:main(array_deque.bal:13)
+</code></pre></div></div>
+
+<p>You can use the <code class="language-plaintext highlighter-rouge">trap</code> action to stop the propagation of the panic and to get an <code class="language-plaintext highlighter-rouge">error</code> value.</p>
+
+<pre><code class="language-ballerina">public function main() {
+   handle arrayDeque = newArrayDeque();
+   handle | error element = trap pop(arrayDeque);
+   if element is error {
+       io:println(element.reason());
+       io:println(element.detail());
+       io:println(element.stackTrace().callStack);
+   } else {
+       // .....
+   }
+} 
+</code></pre>
+<h4 id="java-checked-exceptions">Java Checked Exceptions</h4>
+<p>Let’s see how you can call a Java method that throws a checked exception. As illustrated in the following example, the corresponding Ballerina function should have the <code class="language-plaintext highlighter-rouge">error</code> type as part of its return type.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">java.util.zip.ZipFile</code> class is used to read entries in a ZIP file. There are many constructors in this class. Here, the constructor that takes the file name as an argument is used.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">ZipFile</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span>
+</code></pre></div></div>
+
+<p>Since this Java constructor throws a checked exception,  the <code class="language-plaintext highlighter-rouge">newZipfile</code> Ballerina function returns <code class="language-plaintext highlighter-rouge">ZipFile</code> instances or an error.</p>
+
+<pre><code class="language-ballerina">import ballerina/java;
+
+function newZipFile(handle filename) returns handle | error = @java:Constructor {
+   'class: "java.util.zip.ZipFile",
+   paramTypes: ["java.lang.String"]
+} external;
+
+public function main() {
+   handle|error zipFile = newZipFile(java:fromString("some_file.zip"));
+}
+</code></pre>
+
+<h4 id="mapping-a-java-exception-to-a-ballerina-error-value">Mapping a Java Exception to a Ballerina Error Value</h4>
+<p>Now, let’s briefly look at how a Java exception is converted to a Ballerina error value at runtime. A Ballerina error value contains three components: a reason, a detail, and stack trace.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">reason</code>:</p>
+<ul>
+  <li>This is a string identifier for the error category.</li>
+  <li>In this case, the reason value is set to the fully-qualified Java class name of the exception.
+    <ul>
+      <li><strong>Unchecked:</strong> Class name of of the thrown unchecked exception</li>
+      <li><strong>Checked:</strong> Class name of the exception that is declared in the method signature</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The <code class="language-plaintext highlighter-rouge">detail</code>:</p>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">message</code> field is set to <code class="language-plaintext highlighter-rouge">e.getMessage()</code>.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">cause</code> field is set to the Ballerina error that represents this Java exception’s cause.</li>
+</ul>
+
+<h3 id="null-safety">Null Safety</h3>
+<p>Ballerina provides strict null safety compared to Java with optional types.  The Java null reference can be assigned to any reference type. However, in Ballerina, you cannot assign the nil value to a variable unless the variable’s type is an optional type.</p>
+
+<p>As explained above, Ballerina handle values cannot be created in Ballerina code. They are created and returned by foreign functions and a variable of the handle type refers to a Java reference value. Since Java null is also a valid reference value, this variable can refer to a Java null value.</p>
+
+<p>Let’s look at an example, which deals with Java null. The following code uses the <code class="language-plaintext highlighter-rouge">peek</code> method in the <code class="language-plaintext highlighter-rouge">ArrayDeque</code> class. <code class="language-plaintext highlighter-rouge">Peek</code> retrieves but does not remove the head of the queue or returns null if the queue is empty.</p>
+
+<pre><code class="language-ballerina">import ballerina/java;
+
+function newArrayDeque() returns handle = @java:Constructor {
+   'class: "java.util.ArrayDeque"
+} external;
+
+function peek(handle receiver) returns handle = @java:Method {
+   'class: "java.util.ArrayDeque"
+} external;
+
+// Linked with the `java.lang.Object.toString()` method in Java.
+function toString(handle objInstance) returns handle = @java:Method {
+   'class: "java.lang.Object"
+} external;
+
+public function main() {
+   handle arrayDeque = newArrayDeque();
+   handle element = peek(arrayDeque);
+   Handle str = toString(element);
+}
+</code></pre>
+
+<p>Since the queue is empty in this case, <code class="language-plaintext highlighter-rouge">peek</code> should return null i.e., <code class="language-plaintext highlighter-rouge">element</code> should refer to Java null.  The output of this program will be as follows.</p>
+
+<pre><code class="language-ballerina"> error: org.ballerinalang.jvm.values.ErrorValue message={ballerina}JavaNullReferenceError
+	at array_deque:toString(array_deque.bal:19)
+	    array_deque:main(array_deque.bal:27)
+</code></pre>
+
+<p>This is equivalent to a Java NPE. In such situations, you should check for null using the <code class="language-plaintext highlighter-rouge">java:isNull()</code> function. Here, is the modified example.</p>
+
+<pre><code class="language-ballerina">public function main() {
+   handle arrayDeque = newArrayDeque();
+   handle element = peek(arrayDeque);   
+  
+   if java:isNull(element) {
+       // handle this case
+   } else {
+       handle str = toString(element);
+   }
+}
+</code></pre>
+
+<p>There are situations in which you need to pass a Java null to a method or store it in a data structure. In such situations, you can create a handle value that refers to a Java null as follows.</p>
+
+<pre><code class="language-ballerina">handle nullValue = java:createNull();
+</code></pre>
+
+<h3 id="mapping-java-types-to-ballerina-types-and-vice-versa">Mapping Java Types to Ballerina Types and Vice Versa</h3>
+<h4 id="mapping-java-types-to-ballerina-types">Mapping Java Types to Ballerina Types</h4>
+<p>The following table summarizes how Java types are mapped to corresponding Ballerina types. This is applicable when mapping a return type of a Java method to a Ballerina type.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Java type</th>
+      <th>Ballerina type</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Any reference type including “null type”</td>
+      <td>handle</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>boolean</td>
+      <td>boolean</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>byte</td>
+      <td>byte, int, float</td>
+      <td>widening conversion when byte -&gt; int and byte -&gt; float</td>
+    </tr>
+    <tr>
+      <td>short</td>
+      <td>int, float</td>
+      <td>widening conversion</td>
+    </tr>
+    <tr>
+      <td>char</td>
+      <td>int, float</td>
+      <td>widening conversion</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>int, float</td>
+      <td>widening conversion</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>int, float</td>
+      <td>widening conversion when long -&gt; float</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td>float</td>
+      <td>widening conversion</td>
+    </tr>
+    <tr>
+      <td>double</td>
+      <td>float</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="mapping-ballerina-types-to-java-types">Mapping Ballerina Types to Java Types</h4>
+<p>The following table summarizes how Ballerina types are mapped to corresponding Java types. These rules are applicable when mapping a Ballerina function argument to a Java method/constructor parameter.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ballerina type</th>
+      <th>Java type</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>handle</td>
+      <td>Any reference type</td>
+      <td>As specified by the Java method/constructor signature</td>
+    </tr>
+    <tr>
+      <td>boolean</td>
+      <td>boolean</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>byte</td>
+      <td>byte, short, char, int, long, float, double</td>
+      <td>Widening conversion from byte -&gt; short, char, int, long, float, double</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>byte, char, short, int, long</td>
+      <td>Narrowing conversion when int -&gt; byte, char, short, and int</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td>byte, char, short, int, long, float, double</td>
+      <td>Narrowing conversion when float -&gt; byte, char, short, int, long, float</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="access-or-mutate-java-fields">Access or Mutate Java Fields</h3>
+<p>The <code class="language-plaintext highlighter-rouge">@java:FieldGet</code> and <code class="language-plaintext highlighter-rouge">@java:FieldSet</code> annotations allow you to read and update the value of a Java static or instance field respectively. The most common use case is to read a value of a Java static constant.</p>
+
+<pre><code class="language-ballerina">import ballerina/java;
+
+public function pi() returns float = @java:FieldGet {
+   name:"PI",
+   'class:"java/lang/Math"
+} external;
+
+public function main() {
+   float r = 4;
+   float l = 2 * pi() * r;
+}
+</code></pre>
+
+<p>In this example, the <code class="language-plaintext highlighter-rouge">pi()</code> function returns the value of the <code class="language-plaintext highlighter-rouge">java.lang.Math.PI</code> static field. This uses the annotation field <code class="language-plaintext highlighter-rouge">name</code> to specify the name of the field. Likewise, if you want to access an instance field, you need to pass the relevant object instance as discussed in the instance methods section.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">@java:FieldSet</code> annotation has the same structure as the above.</p>
+
+   
+                                 </div>
+
+                                
+
+
+                         
+
+
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <a class="cTopLink" href="#top">Back to Top &#x2934;</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">DOWNLOAD</a></li>
+            <!--<li><a class="cBioFooterLink" href="/community/#report-issues">REPORT ISSUES</a></li>-->
+            <li data-toggle="modal" data-target="#reportissues" data-whatever="@mdo"><a href="/community/#report-issues">REPORT ISSUES</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">CODE LICENSE</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">SITE LICENSE</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            <li><a class="cBioFooterLink" href="/trademark-usage-policy/">TRADEMARK USAGE POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack-2022.svg" style="width:17px; height:17px;"/></a></li>
+                <li><a class="cBioFooterLink" href="https://www.youtube.com/c/Ballerinalang"><img style="width: 15px;" src="/img/youtube-icon.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+
+
+           <a class="cNLButton" href="/community/#subscribe-to-the-newsletter">Subscribe to the newsletter</a> 
+
+           <div class="modal fade" id="reportissues" tabindex="-1" role="dialog" aria-labelledby="reportissueslabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" style="padding:15px;border-radius:0px;">
+                <div class="modal-header">
+                  <h3 class="modal-title" style="color: #20b6b0;">Report Issues</h3>
+                  <p style="padding: 10px 0px ;">Report issues in the GitHub repositories of the areas and components listed below.
+                  </p>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" style="background-color: #fff; font-size: 20; color: #465867;font-size: 20px;">
+                  <ul class="b">
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank"> Compiler, runtime, or tooling</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues" target="_blank"> Standard Library</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank">  Language specification</a></li>
+                    <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">  Website</a></li>
+                    <li><a class="linkText" href="mailto:security@ballerina.io" target="_blank">Security</a> <span style="font-size: 16px;">(For details, see the</span> <a class="linkText" href="/security" target="_blank">security policy</a>.)</li>
+                  </ul>  
+                
+                </div>
+                <div class="modal-footer">
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<div class="cCookie-Policy">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <!-- <div class="closebuttoon"><img src="/img/close-w.svg"/></div> -->
+<h4>Cookie policy</h4>
+<p>This website uses cookies so that we can provide you with the best user experience. Read our <a href="https://ballerina.io/cookie-policy/">Cookie policy</a></a> to find out more.</p>
+<p>If you wish to disable cookies you can do so from your browser. </p>
+  
+<!-- <a href="https://ballerina.io/cookie-policy/"></a> -->
+<a class="cIUnderstand ">I understand </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/prism.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-core.min.js"></script> -->
+<script src="/js/prism-ballerina.js"></script>
+
+
+
+<script>
+
+$(".cIUnderstand ").click(function() {
+    $(".cCookie-Policy").addClass('cHide-Policy');
+   
+    
+});
+
+
+
+</script>
+
+
+<!-- 
+<script>
+    (function () {
+
+if (typeof self === 'undefined' || !self.Prism || !self.document) {
+    return;
+}
+
+/**
+ * Plugin name which is used as a class name for <pre> which is activating the plugin
+ * @type {String}
+ */
+var PLUGIN_NAME = 'line-numbers';
+
+/**
+ * Regular expression used for determining line breaks
+ * @type {RegExp}
+ */
+var NEW_LINE_EXP = /\n(?!$)/g;
+
+/**
+ * Resizes line numbers spans according to height of line of code
+ * @param {Element} element <pre> element
+ */
+var _resizeElement = function (element) {
+    var codeStyles = getStyles(element);
+    var whiteSpace = codeStyles['white-space'];
+
+    if (whiteSpace === 'pre-wrap' || whiteSpace === 'pre-line') {
+        var codeElement = element.querySelector('code');
+        var lineNumbersWrapper = element.querySelector('.line-numbers-rows');
+        if (!codeElement || !lineNumbersWrapper) {
+            return;
+        }
+        var lineNumberSizer = element.querySelector('.line-numbers-sizer');
+        var codeLines = codeElement.textContent.split(NEW_LINE_EXP);
+
+        if (!lineNumberSizer) {
+            lineNumberSizer = document.createElement('span');
+            lineNumberSizer.className = 'line-numbers-sizer';
+
+            codeElement.appendChild(lineNumberSizer);
+        }
+
+        lineNumberSizer.style.display = 'block';
+
+        codeLines.forEach(function (line, lineNumber) {
+            lineNumberSizer.textContent = line || '\n';
+            var lineSize = lineNumberSizer.getBoundingClientRect().height;
+            lineNumbersWrapper.children[lineNumber].style.height = lineSize + 'px';
+        });
+
+        lineNumberSizer.textContent = '';
+        lineNumberSizer.style.display = 'none';
+    }
+};
+
+/**
+ * Returns style declarations for the element
+ * @param {Element} element
+ */
+var getStyles = function (element) {
+    if (!element) {
+        return null;
+    }
+
+    return window.getComputedStyle ? getComputedStyle(element) : (element.currentStyle || null);
+};
+
+window.addEventListener('resize', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('pre.' + PLUGIN_NAME), _resizeElement);
+});
+
+Prism.hooks.add('complete', function (env) {
+    if (!env.code) {
+        return;
+    }
+
+    var code = env.element;
+    var pre = code.parentNode;
+
+    // works only for <code> wrapped inside <pre> (not inline)
+    if (!pre || !/pre/i.test(pre.nodeName)) {
+        return;
+    }
+
+    // Abort if line numbers already exists
+    if (code.querySelector('.line-numbers-rows')) {
+        return;
+    }
+
+    var addLineNumbers = false;
+    var lineNumbersRegex = /(?:^|\s)line-numbers(?:\s|$)/;
+
+    for (var element = code; element; element = element.parentNode) {
+        if (lineNumbersRegex.test(element.className)) {
+            addLineNumbers = true;
+            break;
+        }
+    }
+
+    // only add line numbers if <code> or one of its ancestors has the `line-numbers` class
+    if (!addLineNumbers) {
+        return;
+    }
+
+    // Remove the class 'line-numbers' from the <code>
+    code.className = code.className.replace(lineNumbersRegex, ' ');
+    // Add the class 'line-numbers' to the <pre>
+    if (!lineNumbersRegex.test(pre.className)) {
+        pre.className += ' line-numbers';
+    }
+
+    var match = env.code.match(NEW_LINE_EXP);
+    var linesNum = match ? match.length + 1 : 1;
+    var lineNumbersWrapper;
+
+    var lines = new Array(linesNum + 1).join('<span></span>');
+
+    lineNumbersWrapper = document.createElement('span');
+    lineNumbersWrapper.setAttribute('aria-hidden', 'true');
+    lineNumbersWrapper.className = 'line-numbers-rows';
+    lineNumbersWrapper.innerHTML = lines;
+
+    if (pre.hasAttribute('data-start')) {
+        pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+    }
+
+    env.element.appendChild(lineNumbersWrapper);
+
+    _resizeElement(pre);
+
+    Prism.hooks.run('line-numbers', env);
+});
+
+Prism.hooks.add('line-numbers', function (env) {
+    env.plugins = env.plugins || {};
+    env.plugins.lineNumbers = true;
+});
+
+/**
+ * Global exports
+ */
+Prism.plugins.lineNumbers = {
+    /**
+     * Returns the node of the given line number in the given element.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @param {Number} number
+     * @returns {Element | undefined}
+     */
+    getLine: function (element, number) {
+        if (element.tagName !== 'PRE' || !element.classList.contains(PLUGIN_NAME)) {
+            return;
+        }
+
+        var lineNumberRows = element.querySelector('.line-numbers-rows');
+        var lineNumberStart = parseInt(element.getAttribute('data-start'), 10) || 1;
+        var lineNumberEnd = lineNumberStart + (lineNumberRows.children.length - 1);
+
+        if (number < lineNumberStart) {
+            number = lineNumberStart;
+        }
+        if (number > lineNumberEnd) {
+            number = lineNumberEnd;
+        }
+
+        var lineIndex = number - lineNumberStart;
+
+        return lineNumberRows.children[lineIndex];
+    },
+    /**
+     * Resizes the line numbers of the given element.
+     *
+     * This function will not add line numbers. It will only resize existing ones.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @returns {void}
+     */
+    resize: function (element) {
+        _resizeElement(element);
+    }
+};
+
+}());
+</script> -->
+
+<!-- 
+<style>
+    pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style> -->
+
+      <script src="/js/theme.js"></script>
+      <script>
+         $(document).ready(function () {
+            var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
+            $('[data-button="iGitStarText"]').replaceWith(gitstar);
+         
+            var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
+            $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+         
+         });
+         
+     </script>
+     <script src="/js/ballerina-leftnav.js"></script>
+
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script src="/js/abixTreeList.min.js"></script>
+     <script>
+         $(document).ready(function() {
+             $('#tree').abixTreeList();
+         });
+
+
+
+
+
+         $(window).scroll(function () {
+        var bodyclass = document.body;
+
+        if ($(this).scrollTop() > 200) {
+            $('.cTopLink').removeClass('dispalaynone');
+          
+        } else {
+            $('.cTopLink').addClass('dispalaynone');
+          
+        }
+
+   
+
+
+    });
+
+     </script>
+
+
+
+
+   </body>
+</html>

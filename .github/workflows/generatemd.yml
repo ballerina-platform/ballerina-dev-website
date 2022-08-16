@@ -45,7 +45,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
         shell: bash
-      - name: Create pull request for new proposal
+      - name: Create pull request for new proposals
         shell: bash
         run: |
           if [ ${{ steps.commit.outputs.difference }} == true ]

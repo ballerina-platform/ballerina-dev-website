@@ -9,7 +9,7 @@ on:
       dev_branch:
         description: ballerina-dev-website repo branch
         required: false
-        default: website-revamp
+        default: master
 
 jobs:
   bbe-sw-gen:

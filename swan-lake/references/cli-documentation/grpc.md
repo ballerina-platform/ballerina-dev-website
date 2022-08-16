@@ -92,7 +92,7 @@ Once you execute the command, the stub file (`helloworld_pb.bal`) and the servic
 
 
 * Execute the following command to generate the client/service stub and client template files.
-```bash
+```
 $ bal grpc --input helloworld.proto --mode client --output client
 ```
 Once you execute the command, the stub file (`helloworld_pb.bal`) and the client template file (`greeter_client.bal`) are generated inside the client directory.

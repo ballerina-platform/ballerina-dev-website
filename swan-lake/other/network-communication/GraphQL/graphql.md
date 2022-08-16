@@ -129,7 +129,7 @@ You can send the GraphQL query below to look up the exposed `name` field in the 
 
 Execute the command below to run the Ballerina GraphQL service above.
 
-```bash
+```
 bal run demo.bal
 ```
 
@@ -146,7 +146,7 @@ Running executable
 
 A GraphQL request can be executed by sending an HTTP request similar to the following.
 
-```bash
+```
 curl -X POST -H "Content-type: application/json" -d '{"query":"{name}"}' http://localhost:8080/query
 {"data":{"name":"Jack"}}
 ```

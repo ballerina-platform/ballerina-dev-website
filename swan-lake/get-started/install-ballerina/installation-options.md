@@ -59,18 +59,18 @@ The installer sets the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\bin` di
 > **Info:** Alternatively, you can use either of the commands below to install Ballerina using the downloaded DEB or RPM file. Replace the `ballerina-<BALLERINA-VERSION>-linux-x64.deb` or `ballerina-<BALLERINA-VERSION>-linux-x64.rpm` with the actual file path. 
 
 For example, for the DEB file:
-```bash
+```
 dpkg -i ballerina-<VERSION>-swan-lake-linux-x64.deb 
 ```
 
 For example, for the RPM file:
-```bash
+```
 rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm 
 ```
 
 ## Install via the Ballerina language ZIP file
 
-> **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the [AdoptOpenJRE](https://adoptopenjdk.net/) version 11 or above.
+> **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the <a href="https://adoptopenjdk.net/" target="_blank">AdoptOpenJRE</a> version 11 or above.
 
 1. <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.other-artefacts | first }}" class="cGTMDownload cDownload" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.zip-installer }}"> Download the Ballerina language ZIP file </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}-swan-lake.zip.md5">(md5, </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}-swan-lake.zip.sha1">SHA-1, </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}-swan-lake.zip.asc">asc)</a> and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named `ballerina-<VERSION>` in your system.
 
@@ -87,13 +87,13 @@ After installing Ballerina, run the following test to verify if Ballerina has be
 
 Execute the command below from the command shell of the operating system.
 
-```bash
+```
 bal version
 ```
 
 Make certain the command output shows the version that you downloaded as shown below.
 
-```bash
+```
 Ballerina <VERSION> (Swan Lake)
 Language specification 2022R1
 update tool 1.3.8
@@ -101,7 +101,7 @@ update tool 1.3.8
 
 ## Build from source
 
-For instructions, see [Build Ballerina from source](https://github.com/ballerina-platform/ballerina-distribution/blob/master/docs/build-ballerina-from-source.md).
+For instructions, see <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/docs/build-ballerina-from-source.md" target="_blank">Build Ballerina from source</a>.
 
 ## Update Ballerina
 
@@ -117,7 +117,6 @@ If you already have a Ballerina version above 1.1.0 installed, you can use the u
 
 For more information, see [Update Tool](/learn/cli-documentation/update-tool/).
 
-
 ## Uninstall Ballerina
 
 Usually, the installation location is `/Library/Ballerina/` in macOS, `/usr/lib/ballerina/` for DEB and `/usr/lib64/ballerina/` for RPM in Linux, and `C:\Program Files\Ballerina\` in Windows.
@@ -131,12 +130,12 @@ To remove:
 > **Info:** Alternatively, you can uninstall Ballerina using the commands below by replacing the actual package name in Linux and from the control panel in Windows.
 
 For example, for the DEB file:
-```bash
+```
 apt-get remove ballerina-<VERSION>-swan-lake
 ```
 
 For example, for the RPM file:
-```bash
+```
 rpm -e ballerina-<VERSION>-swan-lake
 ```
 

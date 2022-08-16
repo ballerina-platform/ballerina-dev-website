@@ -21,7 +21,8 @@ To complete this tutorial, you need:
 
 1. [Ballerina 2202.0.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor
-  >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
+  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
+  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
 3. A command terminal
 
 ## Understand the implementation
@@ -69,13 +70,13 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
 
 > **Info:** For more information on Ballerina packages, see [Organizing Ballerina code](/learn/organizing-ballerina-code/).
 
-```shell
+```
 bal new data_service
 ``` 
 
 This creates a directory named `data_service` with the files below.
 
-```bash
+```
 .
 ├── data_service
 │   ├── Ballerina.toml
@@ -183,7 +184,7 @@ final mysql:Client dbClient = check new(
 
 Execute the command below to run the client.
 
-```bash
+```
 bal run
 ```
 
@@ -464,7 +465,7 @@ service /employees on new http:Listener(8080) {
 
 Execute the command below to run the service.
 
-```bash
+```
 bal run
 ```
 
@@ -477,7 +478,7 @@ be accessed via a browser by visiting `http://locahost:8080/employees`.
 
 Invoke the defined resource function by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
 
-```bash
+```
 curl --location --request POST 'http://localhost:8080/employees/' \
     --header 'Content-Type: text/plain' \
     --data-raw '{

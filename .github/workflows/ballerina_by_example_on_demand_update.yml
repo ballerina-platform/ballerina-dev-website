@@ -50,7 +50,7 @@ jobs:
           cp examples/index.json swan-lake/by-example/all-bbes.json
 
       - name: Generate BBEs
-        run: node .github/scripts/bbe/markdownConverter.js "examples" "swan-lake/by-example"
+        run: node .github/scripts/bbe/convertMarkdown.js "examples" "swan-lake/by-example"
 
       - name: Generate BBE navigation
         run: node .github/scripts/bbe/generateNav.js "examples" "_data"

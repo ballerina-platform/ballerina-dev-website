@@ -13,6 +13,12 @@
     - title: Filter the data
       url: /learn/work-with-data-using-queries-in-ballerina/#filter-the-data
       active: filter-the-data
+    - title: The complete code of the filtering function
+      url: /learn/work-with-data-using-queries-in-ballerina/#the-complete-code-of-the-filtering-function
+      active: the-complete-code-of-the-filtering-function
+    - title: Run the package for filtering
+      url: /learn/work-with-data-using-queries-in-ballerina/#run-the-package-for-filtering
+      active: run-the-package-for-filtering
     - title: Sort countries by COVID-19 deaths
       url: /learn/work-with-data-using-queries-in-ballerina/#sort-countries-by-covid-19-deaths
       active: sort-countries-by-covid-19-deaths
@@ -22,6 +28,15 @@
     - title: Find discrepancies in the dataset
       url: /learn/work-with-data-using-queries-in-ballerina/#find-discrepancies-in-the-dataset
       active: find-discrepancies-in-the-dataset
+    - title: The complete code 
+      url: /learn/work-with-data-using-queries-in-ballerina/#the-complete-code
+      active: the-complete-code
+    - title: Run the package
+      url: /learn/work-with-data-using-queries-in-ballerina/#run-the-package
+      active: run-the-package
+
+
+
 
 
 

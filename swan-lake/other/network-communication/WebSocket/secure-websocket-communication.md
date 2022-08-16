@@ -59,13 +59,13 @@ var ws = new WebSocket("wss://localhost:8443/ws");
 
 2. Execute the commands below to run the above service. 
 
-   ```bash
+   ```
    $ ballerina run wss_service.bal
    ```
 
     You view the output below.
 
-    ```bash
+    ```
     Compiling source
          wss_service.bal
     Running executables
@@ -98,13 +98,13 @@ var ws = new WebSocket("wss://localhost:8443/ws");
 
 4. Execute the commands below to run the above client. 
 
-    ```bash
+    ```
     $ bal run wss_client.bal
     ```
 
     You view the output below.
 
-    ```bash
+    ```
     Compiling source
          wss_client.bal
     

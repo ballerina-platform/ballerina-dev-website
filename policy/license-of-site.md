@@ -17,33 +17,28 @@ In some cases, a page may include content consisting of images, audio or video m
 
 
 ## Attribution
-Proper attribution is required when you reuse or create modified versions of content that appears on a page made available under the terms of the Creative Commons Attribution license. The complete requirements for attribution can be found in section 4 of the [Creative Commons legal code](http://creativecommons.org/licenses/by/3.0/legalcode).
+Proper attribution is required when you reuse or create modified versions of content that appears on a page made available under the terms of the Creative Commons Attribution license. The complete requirements for attribution can be found in section 4 of the <a target="_blank" href="http://creativecommons.org/licenses/by/3.0/legalcode">Creative Commons legal code</a>.
 
 In practice we ask that you provide attribution to Ballerina to the best of the ability of the medium in which you are producing the work.
 
 There are several typical ways in which this might apply:
 
-### Exact Reproductions
+### Exact reproductions
 If your online work exactly reproduces text or images from this site, in whole or in part, please include a paragraph at the bottom of your page that reads:
 
 Portions of this page are reproduced from work created and shared by Ballerine and used according to terms described in the Creative Commons 3.0 Attribution License.
 
 Also, please link back to the original source page so that readers can refer to it for more information.
 
-### Modified Versions
+### Modified versions
 If your online work shows modified text or images based on the content from this site, please include a paragraph at the bottom of your page that reads:
 
 Portions of this page are modifications based on work created and shared by Ballerina and used according to terms described in the Creative Commons 3.0 Attribution License.
 
 Again, please link back to the original source page so that readers can refer to it for more information. This is even more important when the content has been modified.
 
-### Other Media
+### Other media
 If you produce non-hypertext works, such as books, audio, or video, we ask that you make a best effort to include a spoken or written attribution in the spirit of the messages above.
 
-### Ballerina Website Attributions
-In the creation of this website, we used the following Creative Commons Attribution license: 
-
-* [Ballerina by Example](https://ballerina.io/learn/by-example/) sample pages are generated using a [tool](https://github.com/mmcgrana/gobyexample/) developed by [mmcgrana](https://github.com/mmcgrana), licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) and modified from the original.
-
 ## Contact
-If you have any comments regarding Ballerina.io license policies, please send feedback to [legal@wso2.com](mailto:legal@wso2.com).
+If you have any comments regarding Ballerina.io license policies, please send feedback to <a target="_blank" href="mailto:legal@wso2.com">legal@wso2.com</a>. 

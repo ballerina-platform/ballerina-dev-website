@@ -113,7 +113,7 @@ a {
 
 .policyContent {
   padding-top: 35px;
-  padding-right: 3% !important;
+  /* padding-right: 3% !important; */
 }
 
 .topRow {
@@ -1174,6 +1174,12 @@ table.cTopControlsContainer tbody {
   table-layout: fixed;
 }
 
-.cBallerina-Box p {
-  margin-left: 20px;
+.cBallerina-Box p, .colorDesc {
+  /* margin-left: 20px; */
+  padding-left: 25px !important;
+}
+
+.colorBlock {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }

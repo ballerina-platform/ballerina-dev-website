@@ -251,19 +251,19 @@ Follow the steps below to do a test run using the full Ballerina service impleme
 
    >**Tip:** This example uses a MySQL database to provide the data.
 
-   ```bash
+   ```
    $ mysql -u root -p < db.sql
    ```
 
 2. Execute the command below to run the default module of your Ballerina package.
 
-   ```bash
+   ```
    $ bal run .
    ```
 
    You view the output below.
 
-   ```bash
+   ```
    Compiling source
          laf/ordersvc:0.1.0
 
@@ -279,7 +279,7 @@ Follow the steps below to do a test run using the full Ballerina service impleme
 
 3. Execute the commands below to send a few GraphQL requests to the service. 
 
-   ```bash
+   ```
    curl -X POST -H "Content-type: application/json" -d '{ "query": "{ order(id: 2) { notes, date, customer { name, address }, shipper { name, phone } } }" }' 'http://localhost:8080/query'
 
    {
@@ -300,7 +300,7 @@ Follow the steps below to do a test run using the full Ballerina service impleme
    }
    ```
 
-   ```bash
+   ```
    curl -X POST -H "Content-type: application/json" -d '{ "query": "{ order(id: 1) { notes, customer { name, address } } }" }' 'http://localhost:8080/query'
 
    {
@@ -318,7 +318,7 @@ Follow the steps below to do a test run using the full Ballerina service impleme
 
 >**Info:** Ballerina GraphQL services also support GraphQL introspection. For example, you can execute the query below to look up the types available in the service. 
 
-```bash
+```
 curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __schema { types { name } } }" }' 'http://localhost:8080/query'
 {
     "data": {

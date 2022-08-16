@@ -1,0 +1,1152 @@
+---
+layout: ballerina-layer-page-wo-breadcrumbs
+title: Community
+description: 
+permalink: /community/
+intro: 
+redirect_from:
+- /community/slack/
+
+---
+<script src="/community/event-date.js"></script>
+<style>
+
+ h2 {
+  scroll-margin-top: 150px !important;
+} 
+.eventBanner{
+        background-color: #f5f5f5;
+        padding: 30px;
+        font-size: 18px;
+        margin-top: 15px;
+        font-weight: 400;
+        text-align: center;
+    }
+.stuck {
+  position: fixed;
+  top:0px;
+  width: 100%;
+  z-index:999;
+  display: block !important;
+}
+.nonVisible{
+    display:none;
+}
+.disabled {
+        pointer-events: none;
+        cursor: default;
+        background-color: #57595d !important;
+}
+    .text-feild{
+        padding: 20px 20px;
+        margin: 5px 0px;
+        width: 100%;
+        display: inline-block;      
+    }
+     
+    .getStartLinks{ color: #20b6b0 !important; font-weight: 400;}
+    .getStartLinks:hover{ color: #464646 !important;}
+
+    .submit-button{
+        padding: 10px 20px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        background-color: #20b6b0;
+        color: #fff;
+        margin: 5px 0px;
+        border: none;
+    }
+
+    .event-card{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .cBoxCard{
+  
+  border:#E6EAEB solid 0.1px ;
+  text-align: left;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: 0;
+  margin-bottom: 15px;
+  margin-top:15px;
+  box-shadow:none;
+    }
+    .cBoxCard-1{
+  
+  
+  text-align: left;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: 0;
+  margin-bottom: 15px;
+  margin-top:15px;
+  box-shadow:none;
+    }
+.form-check-label{
+    display: inline-block;
+max-width: 100%;
+margin-bottom: 5px;
+font-weight: 400;
+font-size: 10px;
+}
+.gTitle1{color:#57595d !important} 
+.checkbox-wrapper {
+  white-space: nowrap
+}
+.checkbox {
+  vertical-align: top;
+  display:inline-block;
+  margin: 5px 0 0 !important;
+  width: 14px;
+  height: 14px;
+  background:#ffffff;
+  border: 1px solid#c7c7c7 ;
+  border-radius: 0px;
+}
+
+.checkbox input:checked {
+        background:#20b6b0;
+        color:#FFFFFF;
+        border-color:#2CA4BF;
+}
+.checkbox-label {
+  white-space: normal;
+  display:inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  color: #57595d;
+  padding-left: 8px;
+}
+
+.card p{
+    margin-top:15px !important;
+    margin-bottom:0px !important;
+}
+
+.card{
+    border: none;
+    margin: 10px 40px 15px 0px;
+    padding: 0px 0px;
+    max-width: 350px;
+}
+
+.bookMarkOnPage {
+    margin-top:-130px;
+    padding-bottom:130px; 
+    display:block;
+    scroll-margin-top: 100px !important;
+    z-index: -999;
+    position: absolute;
+}
+.card-title{color:#20b6b0;margin-top:0px;line-height: 30px;}
+.card-title:hover{color:#464646 !important}
+
+h4.card-title{height: 90px;}
+.card h4{
+    color: #20b6b0;
+    height: 45px;
+}
+
+.alertBanner{background-color:#F8F8F8!important; padding:20px 40px!important;color: #585A5E !important;border-radius: 0px !important;}
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #585A5E;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 0px;
+  transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #585A5E;
+  border-radius: 0px;
+  -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  outline: 0;
+}
+
+.btn-form-submit{
+    padding: 10px 20px;
+        display: inline-block;
+        text-align: center;
+        background-color: #20b6b0;
+        color: #fff;
+        border: none;
+        border-radius: 0px;
+        margin-bottom:5px;
+}
+
+.btn-form-close{
+    padding: 10px 20px;
+        display: inline-block;
+        text-align: center;
+        background-color: #E6EAEB;
+        color: #464646;
+        margin: 5px 0px;
+        border: none;
+        border-radius: 0px;
+}
+.col-form-label{
+    font-size: 16px;
+    font-weight: 400;
+}
+.fixedNav-Top{top: 9.400705052878966vh;} 
+.gTitle:hover{
+    color: #464646 !important;
+}
+.form-control{
+    border: 1px #20b6b0 solid;
+}
+
+.btn-form-submit:hover{
+    background-color: #464646;
+    color: #fff !important;
+}
+
+.submit-button:hover{
+    background-color: #464646;
+    color: #fff !important;
+}
+
+.leftLink:hover{
+    color: #464646;
+    background: url("/img/toc-bg-hover.svg") no-repeat scroll right center ;
+}
+
+.leftLink{
+        background: url("/img/toc-bg.svg") no-repeat scroll right center ;
+        padding-right:25px ;
+    }
+
+.btn-form-close:hover{
+    background-color: #464646;
+    color: #fff !important;
+}
+
+.exampleModalLabel{
+    color: #464646;
+}
+.contectUs{
+    float:none;
+}
+#wrapper{
+    padding-left: 15px;
+}
+input::placeholder {
+    font-size: 14px;
+    color:#e6eaeb5d;
+    padding-left:0px;
+    }
+.cEventDateNum{
+    font-size: 20px !important;
+    font-weight: 450 !important;
+}
+.second-nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50.5px;
+    padding-top: 16px;
+    padding-right: 15px;
+}
+
+.secondary-nav > li > a{
+    font-weight: 400;
+}
+
+td.cEventDateContainer1 span.cEventDate1{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    display: inline-block;
+    color: #57595d;
+    margin-bottom: 5px;
+    border: none;
+    text-align: right;
+}
+/* td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+  border: none !important;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid #c7c7c7 !important;
+    padding: 30px 35px !important;
+} */
+
+.cEventName{
+    margin-top: -2px;
+    font-size: 20px;
+}
+td.cEventDateContainer{
+  width: 20%;
+}
+.linkText{
+  color:#20b6b0 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  font-weight: 400 !important;
+}
+
+.linkText:hover{
+  color:#57595d !important;
+}
+.wy-nav-content {
+    font-size: 38px;
+    color: #585a5e;
+    font-weight: 200 !important;
+    margin-bottom: 30px;
+    /* margin-top:20px !important; */
+}
+@media only screen and (max-width: 768px) {
+    body {
+        margin-bottom: 50px;
+    }
+    /* .second-nav {
+        position: fixed;
+        top: unset;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        
+    } */
+    .second-nav {display: none;}
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .subscribeNews{
+        float: none !important;
+    }
+    .externalLink{
+        width: 100% !important;
+    }
+    .subscribeSlack{
+        float: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* .slackTitle {
+        float: none !important;
+        padding: 0 96px !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    } */
+    .slackCount img{
+        width: 157px !important;
+        padding-left: 0px !important;
+        padding-bottom: 30px ;
+    }
+    .slackCount{margin-left: auto !important; margin-right: auto !important; display: block; width: 60% !important;}
+    /* .slackImage img{
+        position: relative;
+        left: 30%;
+        padding-bottom: 40px;
+    } */
+    .subscribeTechTalk{
+        float: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    #bio-tech-talk-sub-email{
+        padding-left: 10 !important;
+    }
+
+   
+    .contectusButton{
+        width: 100% !important;
+    }
+    .secNavSticky{display: none;}
+
+    .container {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto;
+    margin-left: auto;
+    }
+    body.cBallerina-io .container {
+    padding: 0 15px !important;
+    } 
+    .mobileViewAdjustment{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 15px;
+    border-top: 1px #565656 solid;
+    }
+    .mobileViewAdjustment1{
+    padding-left: 0px;
+    padding-right: 0px;
+    border: none !important;
+    }
+    .mobileViewAdjustment p{
+    float:none !important;
+    line-height: 20px;
+    }
+    .mobileViewAdjustment1 h4{
+    line-height: 0.8 !important;
+   margin-top:15px !important;
+    margin-bottom: 15px !important;
+    }
+    .dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+    }
+} 
+
+
+</style>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.32.min.js"></script>
+<link rel="stylesheet" href="/css/events-page.css">
+<div class="container-fluid secNavSticky" style="background-color: #F8F8F8; margin-bottom: 30px;height: 70px; padding-top: 10px; ">
+    <section id="secondary-nav-bar" >
+       <div class="container">
+       <nav class="navbar navbar-white second-nav" style="position: sticky;"> 
+       <!-- <a class="navbar-brand" href="/community" style="font-size: 28.5px; padding-left: 15px; font-weight: 500; color: #464646;height:0px;">The Ballerina Community</a> -->
+             <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+               </button>
+             </div>
+             <div class="collapse navbar-collapse" id="myNavbar">
+               <ul class="nav navbar-nav secondary-nav" >
+                 <li class="active"><a href="#subscribe-to-our-newsletter" style="padding-left: 0;">Newsletter</a></li>
+                 <li><a href="#events">Events</a></li>
+                 <li><a href="#resources">Resources</a></li>
+                 <li><a href="#ballerina-slack-community">Slack</a></li>
+                 <li><a href="#monthly-tech-talk">Tech Talk</a></li>
+                 <li><a href="#get-involved">Get involved</a></li>
+                 <li><a href="#contact-us">Contact us</a></li>
+               </ul>
+               
+             </div>
+         </nav> 
+       </div>
+   </section> 
+   </div>
+<div class="container" id="wrapper">
+  
+<div class="intro-section" style="padding-bottom: 30px;">
+    <h1 id="the-ballerina-community" class="wy-nav-content" >The Ballerina community </h1>
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
+            <p>
+                Welcome to the Ballerina community! Use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource.
+            </p>
+           
+          </div>
+
+    </div>
+</div>
+
+<section  style="padding-bottom:30px;">
+<span class="bookMarkOnPage" id="subscribe-to-our-newsletter"></span>
+<h2 style="padding-right: 15px;">Subscribe to our newsletter</h2>
+
+
+<div class="row" >
+  
+    <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
+      <p>
+        Want to get hand-picked content and the latest news on Ballerina delivered directly to your inbox? Then subscribe to our monthly newsletter today!
+      </p>
+      <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x14k" width="100%" type="text/html" frameborder="0" allowTransparency="true" style="width: 100%;border: 0;height: 160px;z-index: 7;position: sticky;" class="mobileViewNewsletter"></iframe>
+      <!-- <p>Click <a class="getStartLinks" target="_blank" href="/community/ballerina-newsletter" >here</a> to read the latest and all past Ballerina newsletter issues.</p> -->
+    
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6 " style="float: right;"> 
+        <p class="leftLink" style="text-align: right; ">
+            <a href="/community/ballerina-newsletter" target="_blank" style="color: #20b6b0; text-decoration: none; text-align: right;font-weight: 400;font-size: 18px; ">View all newsletters </a>
+        </p>
+        <!-- <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x14k" width="100%" type="text/html" frameborder="0" allowTransparency="true" style=" width: 100%;border: 0;height: 140px;" class="mobileViewNewsletter"></iframe> -->
+    </div> 
+</div>
+</section>
+</div>
+
+<!-- <div class="container-fluid secNavSticky" style="background-color: #F8F8F8; margin-bottom: 30px; box-shadow: 0px 22px 24px 3px rgba(184,188,197,0.31);display:none;">
+ <section id="secondary-nav-bar" >
+    <div class="container">
+    <nav class="navbar navbar-white second-nav" style="position: sticky;"> 
+        
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav secondary-nav" style="float: left;">
+              <li class="active"><a href="#subscribe-to-newsletter" style="padding-left: 0;">Subscribe to our newsletter</a></li>
+              <li><a href="#events">Events</a></li>
+              <li><a href="#resources">Resources</a></li>
+              <li><a href="#ballerina-slack-community">Ballerina Slack Community</a></li>
+              <li><a href="#monthly-tech-talk">Monthly Tech Talk</a></li>
+              <li><a href="#get-involved">Get involved</a></li>
+              <li><a href="#contact-us">Contact us</a></li>
+            </ul>
+            
+          </div>
+      </nav> 
+    </div>
+</section> 
+</div> -->
+<div class="container" id="wrapper">
+
+<section   style="padding-bottom: 30px;">
+    <span class="bookMarkOnPage" id="events"></span>
+    <h2 class="tabViewFix" style="padding-right: 15px;margin-top: 20px;">Events</h2>
+    <div class="row" >
+      
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
+          <p>
+            Join us at our upcoming events and be a part of the conversation from anywhere in the world. We host or take part in events where we talk about language features and updates, present demos, and explore Ballerina use cases.
+          </p>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 externalLink" style="float: right;">
+        <p class="leftLink" style="text-align: right;">
+            <a href="/community/events/" target="_blank" style="color: #20b6b0; text-decoration: none; text-align: right;font-weight: 400;font-size: 18px;">View all events </a>
+        </p>
+      
+        </div>
+    </div> 
+    <h3 style="padding-right: 15px;padding-bottom: 20px;">Upcoming events</h2>
+    <div class="row">
+      
+        <!-- <div class="col-sm-12 col-md-6 col-lg-6 " style="float: left;width: 50%; ">
+            <div class="col-sm-12 col-md-3 col-lg-3" style="" >
+                <p style="color: #585A5E; font-size:17px;float: right;">Jan 25, 2022</p>
+                <p style="float: right;">Tuesday</p>
+                <p style="float: right;">Online Event</p>
+
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9" style="border-left: 2px #585A5E solid;">
+                <p>
+                    Ballerina Tech Talk
+                </p>
+                <h4 style="color: #20b6b0;margin-bottom: 24px;" class="gTitle">OpenAPI</h4>
+                <p>
+                    Presented by <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/"> Dinushan Meeriyagalla</a>
+                </p>
+
+            </div>   
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 " style="float: left;width: 50%; ">
+            <div class="col-sm-12 col-md-3 col-lg-3" style="" >
+                <p style="color: #585A5E; font-size:17px;float: right;">Jan 25, 2022</p>
+                <p style="float: right;">Tuesday</p>
+                <p style="float: right;">Online Event</p>
+
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9" style="border-left: 2px #585A5E solid;">
+                <p>
+                    Ballerina Tech Talk
+                </p>
+                <h4 style="color: #20b6b0;margin-bottom: 24px;" class="gTitle">Topic name comes here</h4>
+                <p>
+                    Presented by <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/"> Dinushan Meeriyagalla</a>
+                </p>
+
+            </div>   
+        </div> -->
+        <!-- <table class="cEventTable cConferencesList" style="width:100% !important;">
+            <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <span class="cEventDate1 cEventDateNum" style="margin-bottom: 20px;">January 5, 2021</span>	
+                   <span class="cEventDate1">Tuesday</span>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail">	
+                   <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Lunch & Learn</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Ballerina: OS Cloud-native Programming Language</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;" href="https://www.linkedin.com/in/dinushanm/">Anjana Fernando </a>, Senior Director - Solutions Architecture, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925" target="_blank">Register Now</a></td>	
+            </tr>
+        </table> -->
+
+        <table class="cEventTable cConferencesList" style="width:100% !important;">
+            <tr class="bEvent1" style="display: none;" >	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Aug 11, 2022</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Thurs., 3.00 p.m. PDT</p>	
+                   <p class="cEventLocation" style="text-align: right;">Seattle, USA</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://vslive.com/events/redmond-2022/home.aspx">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Visual Studio LIVE!</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">VH19 Busy Developer's Guide to Ballerina</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="https://twitter.com/tedneward">Ted Neward</a>, Co-founder of Solidify
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://vslive.com/Events/Redmond-2022/Sessions/Thursday/VH19-Busy-Developers-Guide-to-Ballerina.aspx" target="_blank" style="text-align: center;">More info</a></td>	
+            </tr>
+                <tr class="bEvent2"  style="display: none;">	
+            <td class="cEventDateContainer cEventDateContainer1" style="border-bottom: 0 !important;">	
+               <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">Sep 7, 2022</p>	
+               <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Wed., 4.00 p.m. CDT</p>	
+               <p class="cEventLocation" style="text-align: right;">Austin, TX</p>	
+            </td>	
+            <td class="cEventDetail" id="eventDetails" style="border-bottom: 0 !important;">	
+               <a target="_blank" href="https://www.developerweek.com/global/conference/cloud/">	
+                  <p class="cEventName" style="margin-top: -1px;font-size: 18px;">DeveloperWeek Cloud 2022</p>	
+               </a>
+               <h5 style="margin-bottom: 18px;">Ballerina: Programming Language Designed for Cloud-Native Applications</h5>		
+               <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/sameerajayasoma">Sameera Jayasoma</a>, Senior Director, WSO2
+            </td>	
+            <td class="cEventURL" style="border-bottom: 0 !important;"><a class="cEventRegistration" href="https://www.developerweek.com/global/conference/cloud/schedule/" target="_blank" style="text-align: center;">More info</a></td>	
+        </tr>
+            <!-- <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">March 24, 2022</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Thur., 7.00 p.m. IST</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://www.eventbrite.it/e/biglietti-lunch-learn-ballerina-os-cloud-native-programming-language-134412004925">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Tech Talk</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">OpenAPI</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" href="">Speaker TBC</a>
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" target="_blank" href="/community/tech-talk" target="_blank" style="text-align: center;">Notify Me</a></td>	
+            </tr> 
+             <tr class="event-expiry"  data-expiry="February 5, 2021 12:00:00">	
+                <td class="cEventDateContainer cEventDateContainer1">	
+                   <p class="cEventDate1 cEventDateNum dateDisplay" style="margin-bottom: 15px;">March 10, 2022</p>	
+                   <p class="cEventDate1 dateDisplay" style="margin-bottom: 15px">Thur., 7.00 p.m. IST</p>	
+                   <p class="cEventLocation" style="text-align: right;">Online</p>	
+                </td>	
+                <td class="cEventDetail" id="eventDetails" >	
+                   <a target="_blank" href="https://sliitfoss.org/events/ballerina">	
+                      <p class="cEventName" style="margin-top: -1px;font-size: 18px;">Virtual event</p>	
+                   </a>	
+                   <h5 style="margin-bottom: 18px;">Introduction to Compiler Construction: Ballerina as a Case Study</h5>		
+                   <a style="color: #20b6b0 ;font-weight:400;font-size: 16px;" target="_blank" href="https://twitter.com/manurangaperera">Manuranga Perera</a>, Senior Technical Lead, WSO2
+                </td>	
+                <td class="cEventURL"><a class="cEventRegistration" href="https://sliitfoss.org/events/ballerina" target="_blank" style="text-align: center;">More info</a></td>	
+            </tr>  -->
+           
+        </table>
+
+<!-- <div class="col-sm-12 col-md-12 cColCOntent">
+         <div class="col-lg-12 col-md-12 col-sm-12 eventBanner">
+            No upcoming events for this month. 
+         </div>
+      </div> -->
+</section>
+
+<section  style="padding-bottom: 45px;">
+    <span class="bookMarkOnPage" id="resources" style="z-index: -1;position: absolute;"></span>
+    <h2 style="padding-right: 15px;">Resources</h2>
+    <div class="row">
+      
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: left;padding-left: 0px;">
+          <p>
+            We have curated a list of articles, blogs, and videos that were created by the members of the Ballerina community. These resources cover aspects of the Ballerina language, platform, tools, and use cases with implementation details.
+          </p>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 externalLink" style="float: right;width: 50%;">
+            <p class="leftLink" style="text-align: right;">
+                <a href="/community/resources" target="_blank" style="color: #20b6b0; text-decoration: none; text-align: right;font-weight: 400;font-size: 18px;">View all resources </a>
+            </p>
+       
+      
+        </div>
+    </div> 
+    <div class="row" style="padding-bottom: 20px;">
+        <div class="col-sm-12 col-md-4 col-lg-4" style="padding-left: 0px;">
+            <div class="cBoxCard"  >
+
+                <div class="card-body text-primary" style="padding: 18px;">
+                  <p class="card-text " style="margin-top: 0;font-weight: 500;" > Articles  </p>
+                  <a target="_blank" href="https://dzone.com/articles/how-to-use-ballerina-local-repository"><h4 class="card-title" >How to use Ballerina Local Repository</h4></a>
+                  <p class="card-text " style="margin-bottom: 0;" > By Pramodya Mendis </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4" style="padding-left: 0px;">
+            <div class="cBoxCard"  >
+                <div class="card-body text-primary" style="padding: 18px;">
+                    <p class="card-text " style="margin-top: 0;font-weight: 500;"> Blog posts  </p>
+                    <a target="_blank" href="https://medium.com/ballerina-techblog/practical-guide-for-the-language-server-protocol-3091a122b750"><h4 class="card-title" >A Practical Guide for Language Server Protocol</h4></a>
+                  <p class="card-text " style="margin-bottom: 0;"> By Malintha Ranasinghe </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4" style="padding-left: 0px;">
+            <div class="cBoxCard"  >
+                <div class="card-body text-primary" style="padding: 18px;">
+                    <p class="card-text " style="margin-top: 0;font-weight: 500;"> Videos & podcasts </p>
+                    <a target="_blank" href="https://www.infoq.com/podcasts/james-clark-ballerina-language-network-data-concurrency/?utm_source=twitter&utm_medium=link&utm_campaign=calendar"><h4 class="card-title">How Ballerina Handles Network Interaction, Data, and Concurrency </h4></a>
+                  <p class="card-text " style="margin-bottom: 0;"> By James Clark and Charles Humble </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<section  style="padding-bottom: 30px;">
+    <div class="container-fluid" style="background-color: #E6EAEB;">
+        <div class="container" style="padding-top: 15px;padding-bottom:15px;padding-left: 15px;">
+            <span class="bookMarkOnPage" id="ballerina-slack-community"></span>
+            <h2 style="padding-right: 15px;">Ballerina Slack community</h2>
+
+                <div class="row">
+  
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
+                        <p style="padding-bottom: 20px;">
+                            Our 1000+ Slack community includes experienced Ballerina engineers and experts from some of the world’s top companies. Use this space to find answers to your questions, get support or learn how others are using Ballerina.
+                        </p>
+                        <form id="bio-slack-subscribeForm">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-8 col-lg-8 subscribeSlack" style="float: left;padding-left: 0px;">
+                                    <input type="email" required-field="1" class="form-control text-feild" id="slackEmail" aria-describedby="emailHelp" placeholder="Enter your email address *" style="border-radius: 0;border: #20b6b0 solid 1px;">
+                                    <!--Alert Box Thank you-->
+                                    <div class="alert  alert-dismissible alertBanner" role="alert" id="slackSuccessAlert" style="background-color: #E6EAEB;color: #20b6b0;display:none !important;">
+                                    <strong>Thank you.</strong>Your invitation has been sent to {your email address}.
+                                    </div>
+                                    <!--Alert Box Thank you-->
+                                    <!--Alert Box Wrong-->
+                                    <div class="alert  alertBanner alert-dismissible" role="alert" id="slackFailAlert" style="background-color: #E6EAEB;color: #454646;display:none !important;">
+                                    <strong>Enter a valid email address.</strong>
+                                    </div>
+                                    <!--Alert Box Wrong-->
+                                    <div class="text-left checkbox-wrapper">
+                                        <input type="checkbox" id="terms" class="checkbox">
+                                        <label class="checkbox-label" for="terms">I agree to the <a href="/privacy-policy" target="_blank" class="getStartLinks">Ballerina data privacy policy</a>.</label>
+                                    </div>
+                                
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4 subscribeSlack" style="float: right;">
+                                    <button type="button" class="submit-button" id="slackSubscribeButton" >Join us</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <p style="padding-bottom: 40px; font-weight: 400;">
+                            Are you already a member?  <a href="https://ballerina-platform.slack.com/" style="color: #20b6b0; " target="_blank">Go to Slack</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;">
+                        <div class="row slackCount">
+                            <div class="col-sm-12 col-md-6 col-lg-6 slackTitle" style="float: left;padding-top: 15px;">
+                                <p class="slack-num" style="font-size: 60px;font-weight: 600;float: right;">1000+</p>  
+                                <p class="slack-foot" style="font-size: 23px;font-weight: 400;padding: 0;float: right; margin-top:0px" >Slack members</p>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6 slackImage" style="float: right;">
+                                <img src="/img/slack-community.svg" style="width:137px; float: left;">
+                            </div>
+                        </div>
+
+        
+                    </div>
+                </div>
+        </div>
+    </div>
+</section >
+<div class="container"  id="wrapper">
+<section  style="padding-bottom: 30px;">
+    <span class="bookMarkOnPage" id="monthly-tech-talk"></span>
+    <h2 style="padding-right: 15px;">Ballerina Tech Talk</h2>
+    <div class="row">
+      
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: left; padding-left: 0px;">
+          <p >
+            We host a public tech talk, where our engineers discuss different technical topics, show you how Ballerina can be leveraged to implement related use cases, present upcoming features, and answer all your questions live.
+          </p>
+
+        <p >
+            If you would like to suggest a topic for our next talk or give feedback on tech talks, please fill this <a id="techTalkFormButton" class="getStartLinks">form</a>.
+         </p>
+
+        <!-- <p style="margin-top: 10px;">
+            Want to register for any upcoming tech talks? Sign up to get notified.
+
+        </p>
+                 <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x79m" width="100%" type="text/html" frameborder="0" allowTransparency="true" style="border: 0;height: 140px;" class="mobileViewTechTalk"></iframe> -->
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;">
+        
+            <p class="leftLink" style="text-align: right; ">
+                <a href="/community/ballerina-tech-talk/" target="_blank" style="color: #20b6b0; text-decoration: none; text-align: right;font-weight: 400;font-size: 18px; ">View all Tech Talks </a>
+            </p>
+        
+        <!-- <div class="row " style="float: left; background-color: #e6eaeb5d;padding: 25px 20px;margin: 25px 0;">
+
+            <h5 style="padding-left:15px;margin:0 0 20px 0;color: #464646;"> Upcoming Monthly Tech Talk</h5>
+            <div class="col-sm-12 col-md-12 col-lg-12 " style="float: left; ">
+                <div class="col-sm-4 col-md-4 col-lg-4 mobileViewAdjustment" style="padding-left: 0px;" >
+                    <p class="dateDisplay" style="color: #585A5E; font-size:18px;float: right; font-weight: 500;">Mar 29, 2022</p>
+                    <p class="dateDisplay" style="color: #585A5E; font-size:18px;float: right; font-weight: 500;">March 29, 2022</p>
+                    <p  class="dateDisplay" style="float: right;">Tue., 6:30 p.m. PST</p>
+                    <p style="float: right;">Online Event</p>
+    
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8 mobileViewAdjustment1" style="border-left: 2px #585A5E solid;">
+                    <p style="font-weight: 400;">
+                        Monthly Tech Talk
+                    </p>
+                    <h4 style="color: #20b6b0;margin-bottom: 24px;" class="gTitle1">Await more details!</h4>
+                    <p>
+                    <a target="_blank" style="color: #20b6b0 ;font-weight:400;" href=""></a>,<br>
+                    <h4 style="color: #20b6b0;margin-bottom: 24px;" class="gTitle1">Kafka, NATS and RabbitMQ in Ballerina</h4>
+                    <p>
+                    <a target="_blank" style="color: #20b6b0 ;font-weight:400;" href="https://twitter.com/dil_Reaper">Dilan Sachintha</a>, Software Engineer, WSO2<br>
+                    <a target="_blank" style="color: #20b6b0 ;font-weight:400;" href="https://twitter.com/ar__shika">Arshika Mohottige</a>, Senior Software Engineer, WSO2<br>
+                    </p>
+    
+                </div>   
+            </div>
+        </div> -->
+
+      
+        </div>
+    </div> 
+</section>
+<section  style="padding-bottom: 30px;">
+    <span class="bookMarkOnPage" id="get-involved"></span>
+    <h2 id="jumptarget" style="padding-right: 15px;">Get involved</h2>
+   
+    <div class="row" style="padding-bottom: 20px;">
+     
+
+        <div class="col-lg-4 col-md-6 col-sm-12 card">
+            <span class="bookMarkOnPage" id="contribute-to-the-source-code"></span>
+                     <h4 id="contribute-to-the-source-code-title" class="gTitle1">Contribute to the source code
+           </h4>
+                <p>Make Ballerina better by contributing to its source code. Read the <a class="getStartLinks" target="_blank" href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md" >contribution guide</a> and  get started. Happy contributing!</p>
+           
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 card">
+            <span class="bookMarkOnPage" id="contribute-to-ballerina-central"></span>
+                     <h4 id="contribute-to-ballerina-central-title" class="gTitle1">Contribute to Ballerina Central
+           </h4>
+                <p>Let the whole community benefit from your work by <a class="getStartLinks" target="_blank" href="https://ballerina.io/learn/publishing-packages-to-ballerina-central/" >creating and publishing</a> your own module to <a class="getStartLinks" target="_blank" href="https://central.ballerina.io/" >Ballerina Central</a>. </p>
+           
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 card" style="margin-right:0px !important;">
+            <span class="bookMarkOnPage" id="report-issues"></span>
+                     <h4 id="report-issues-title" class="gTitle1">Report issues
+           </h4>
+                <p><a id="reportissues" class="getStartLinks">Report issues</a> in the respective GitHub repositories of the areas and components.</p>
+        </div>
+       
+    </div>
+    <div class="row" >
+        <div class="col-lg-4 col-md-6 col-sm-12 card">
+            <span class="bookMarkOnPage" id="submit-a-use-case"></span>
+            
+                     <h4 id="submit-a-use-case-title" class="gTitle1">Submit a use case 
+           </h4>
+                <p><a id="submitUseCase" class="getStartLinks">Tell us</a> how you're using Ballerina in your project and be a part of our community stories. </p>
+           
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 card">
+            <span class="bookMarkOnPage" id="host-a-ballerina-event"></span>
+          
+            <h4 id="host-a-ballerina-event-title" class="gTitle1">Host a Ballerina event</h4>
+       <p>Want to talk about Ballerina at your local tech meetup? Reach us at <a class="getStartLinks" href="mailto:contact@ballerina.io">contact@ballerina.io</a>, and we will help you with any presentation content.</p>
+           
+        </div>
+    </div>
+
+</section>
+
+
+
+<section id="contact-us" style="padding-bottom: 70px;">
+    <h2 style="padding-right: 15px;">Contact us</h2>
+    <div class="row" >
+      
+        <div class="col-sm-12 col-md-6 col-lg-6 contectUs" style="float: left; padding-left: 0px;">
+          <p >
+            Got any questions? Want to get involved but not sure how? Need help with your first use case? Our team is here to support you. Email us today, and we will be in touch soon. 
+          </p>
+          <a href="mailto:contact@ballerina.io"><button type="button" class="submit-button Sendemail" style="width:50%">Email contact@ballerina.io</button></a>
+    
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6" style="float: right;">
+        &nbsp;
+      
+        </div>
+    </div> 
+
+</section>
+     <!--Modal Start for Submit Content-->
+    <div class="modal fade" id="submitresources" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content subModelMobile" style="padding: 20px; width: 100%;">
+              <div class="modal-header" style="padding-left:0px ;">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Submit content </h5>
+              </div>
+              
+                  <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x6qw" frameborder="0" style="height: 600px; width: 100%;overflow:auto;" class="subCMobile"></iframe>
+            </div>
+        </div>
+    </div>
+    <!--Modal Finish for Submit Content-->
+
+
+    <!--Modal Start for SubmitUsecase-->
+    <div class="modal fade" id="submitUseCaseForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content cUseCaseModel" style="padding: 20px; width: 100%;">
+            <div class="modal-header" style="padding-left:0px ;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h5 class="modal-title" id="exampleModalLabel">Submit a use case</h5>
+            </div>
+            
+                <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x743" frameborder="0" class="formEmbed" style="height: 655px; width: 100%;overflow:auto;" ></iframe>
+          </div>
+        </div>
+    </div>
+    <!--Modal Finish for Submit Usecase-->
+    
+    <!--Modal Start for Report Issues-->
+    <div class="modal fade" id="reportissuesModal" tabindex="-1" role="dialog" aria-labelledby="reportissueslabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="padding:15px;border-radius:0px;">
+            <div class="modal-header" style="border-bottom:none; padding-bottom:0px;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h5 class="modal-title" id="exampleModalLabel">Report issues</h5>
+              <p class="modelDescription" style="padding: 15px 0px 0px 0px;font-size: 16px;color: #57595d;font-weight: 300;margin-bottom: 0;line-height: 27px !important;letter-spacing: 0.4px;">Report issues in the GitHub repositories of the areas and components listed below.
+              </p>
+            </div>
+            <div class="modal-body" style="background-color: #fff; font-size: 20; color: #465867;font-size: 20px;">
+              <ul class="b" style="list-style-type: square; padding-left:20px">
+                <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose" target="_blank"> Compiler, runtime, and CLI tooling</a></li>
+                <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-standard-library/issues/new/choose" target="_blank"> Standard Library</a></li>
+                <li><a class="linkText" href="https://github.com/wso2/ballerina-plugin-vscode/issues/new/choose" target="_blank"> Ballerina Visual Studio Code extension</a></li>
+                <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-spec/issues/new/choose" target="_blank">  Platform specifications</a></li>
+                <li><a class="linkText" href="https://github.com/ballerina-platform/ballerina-dev-website/issues/new/choose" target="_blank">  Website, Ballerina Central, API Docs</a></li>
+                <li><a class="linkText" href="mailto:security@ballerina.io" target="_blank">Security</a> <span style="font-size: 16px;">(For details, see the</span> <a class="linkText" href="/security" target="_blank">security policy</a>.)</li>
+              </ul>  
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--Modal Finish for Report Issues-->
+
+    <!--Modal Start for Submit Tech Talk Content-->
+    <div class="modal fade" id="sumbitTechTalkForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content subModelMobile" style="padding: 20px; width: 100%;">
+              <div class="modal-header" style="padding-left:0px ;">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Suggest topics or give feedback</h5>
+              </div>
+              
+                  <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x767" frameborder="0" style="height: 600px; width: 100%;overflow:auto;" class="subCMobile"></iframe>
+            </div>
+        </div>
+    </div>
+         <!--Modal Finish for Submit Content-->
+
+
+</div>
+
+<script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){
+        $("#submitresources").modal();
+      });
+    });
+
+    $(document).ready(function(){
+      $("#submitUseCase").click(function(){
+        $("#submitUseCaseForm").modal();
+      });
+    });
+
+    $(document).ready(function(){
+      $("#reportissues").click(function(){
+        $("#reportissuesModal").modal();
+      });
+    });
+
+    $(document).ready(function(){
+      $("#techTalkFormButton").click(function(){
+        $("#sumbitTechTalkForm").modal();
+      });
+    });
+
+
+  
+
+var secondary = document.querySelector(".secNavSticky");
+var mainNav = document.querySelector(".cBallerina-io-Nav");
+
+var fromTop = secondary.offsetTop;
+
+document.onscroll = function() {
+  if (!secondary.classList.contains("stuck") && window.pageYOffset >= 70) {
+    secondary.classList.add("stuck");
+    mainNav.classList.add("nonVisible");
+  }
+  else if (secondary.classList.contains("stuck") && window.pageYOffset < 70){
+    secondary.classList.remove("stuck");
+    mainNav.classList.remove("nonVisible");
+  }
+};
+
+</script>
+
+<style>
+    #slackSuccessAlert{background-color:#e6eaeb5d; padding:20px 40px}
+    .navbar-nav > li.cActive > a {
+    color: rgb(87, 89, 93) !important;
+    }
+    .navbar-nav > li#Eventsli a  {
+    color: #20b6b0 !important;
+    }
+    .nav > li.cVersionItem {
+    display: none !important;
+    }
+    .cGitButtonContainer {
+    padding-left: 40px;
+    }
+    .cBallerinaTocContainer {
+       display:none;
+    }
+    .cEventDate1{margin: 0 0 15px 0 !important;text-align: right}
+    td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+  border: none !important;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-bottom: 1px solid #c7c7c7 !important;
+    padding: 30px 30px !important;
+   }
+
+   td.cEventURL{
+    padding: 30px 0px 30px 35px !important;
+   }
+   .icon-github{
+        display: none;
+    }
+
+    .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } 
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+   /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+    td.cEventDetail{
+        padding-left: 0px !important;
+    }
+    
+    .formEmbed{
+        height: 76vh;
+    }
+    
+    }
+
+    @media only screen and (max-width: 600px) {
+        td.cEventDateContainer, td.cEventDetail, td.cEventURL {
+    padding: 30px 10px !important;
+   }
+   .formEmbed{
+        height: 85vh;
+    }
+   .Sendemail {
+       width: 100% !important;
+   }
+   .subCMobile{
+       height: 75vh !important;
+   }
+   .subModelMobile{
+    height: 750px !important;
+   }
+   .cUsecaseMobile{
+       height: 76vh;
+   }
+   .cUseCaseModel{
+    height: 800px !important;
+   }
+   #cballerina-intro-desktop{display: none;}
+    }
+    
+    
+    
+     /* Large devices (laptops/desktops, 992px and up) */
+   @media only screen and (max-width: 992px) {
+      td.cEventDateContainer, td.cEventDetail, td.cEventURL{
+         padding: 30px 35px !important;
+         display: inherit;
+
+      }
+      .intro-section{margin-top: 100px;}
+      h1{margin-top: 60px !important;}
+      .table-striped > tbody > tr:nth-of-type(2n+1) {
+        background-color: transparent !important;
+       }
+      a.cEventRegistration{
+         margin: 0px;
+         margin-top: 15px;
+      }
+      td.cEventDateContainer1 span.cEventDate1{text-align: left !important}
+      .cEventLocation{text-align: left !important;}
+      table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {padding: 0px 15px 10px 15px !important;}
+      .dateDisplay {
+        display:inline-block;
+        padding-right: 10px;
+        margin-bottom: 0px !important;
+    }
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils tr.cLastTableRow td.cEventDateContainer {
+    border:none !important;
+    }
+    table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail, table.cEventTable.docutils td.cEventURL {
+     border-bottom: none!important;}
+    .mobileViewNewsletter{height: 268px !important;}
+    .mobileViewTechTalk{height: 190px !important;}
+    h4.card-title {height: unset;}
+    .card{max-width: none;}
+    .slackCount{margin-left: auto !important; margin-right: auto !important; display: block; width: 30%;}
+    .slackCount img{width: 157px !important; float: left; padding-left: 30px;}
+    .subscribeSlack{padding-left: 0px;}
+    }
+    @media only screen and (max-width: 810px) {
+        .secNavSticky{display: none !important;}
+        .tabViewFix{margin-top: -20px !important;}
+        #cballerina-intro-desktop{display: none;}
+    }
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+      #eventDetails{padding-left: 0px !important;}
+      tr:last-child >td{border-bottom: 0 !important;}
+      /* #cballerina-intro-mob{display: none;} */
+    }
+ </style>
+
+ 

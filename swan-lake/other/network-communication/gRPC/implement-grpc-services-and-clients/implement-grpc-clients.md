@@ -21,13 +21,13 @@ After completing the [gRPC service implementation](/learn/user-guide/network-com
 
 Execute the `bal new client` command to create a Ballerina package to implement the client. You view the output below.
 
-```bash
+```
 Created new Ballerina package 'client' at client.
 ```
 
 Execute the `bal grpc --mode client --input admin.proto --output client/` command to create the service stub/client. You view the output below.
 
-```bash
+```
 Successfully extracted library files.
 Successfully generated ballerina file.
 ```
@@ -72,7 +72,7 @@ After completing the full code for both the client and the service, you can exec
 
 1. Execute the `bal run service` command to start the gRPC service. You view the output below.
 
-   ```bash
+   ```
    Compiling source
       laf/service:0.1.0
 
@@ -88,7 +88,7 @@ After completing the full code for both the client and the service, you can exec
 
 2. Execute the `bal run client` command to run the client module, which will try to contact the active service. You view the output below.
 
-   ```bash
+   ```
    Compiling source
       laf/client:0.1.0
 

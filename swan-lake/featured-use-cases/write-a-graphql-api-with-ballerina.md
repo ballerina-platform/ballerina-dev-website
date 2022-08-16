@@ -22,7 +22,7 @@ To complete this tutorial, you need:
 
 1. [Ballerina 2202.0.0 (Swan Lake) ](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor
-    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
+    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
 3. A command terminal
 
 ## Design the GraphQL endpoint
@@ -48,19 +48,19 @@ Ballerina uses packages to group code. You need to create a Ballerina package, g
 
 In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
-```bash
+```
 $ bal new covid19 -t service
 ```
 
 You view the output below.
 
-```bash
+```
 Created new package 'covid19' at covid19.
 ```
 
 This creates a directory named `covid19` with the default module along with a sample code for the service as shown below.
 
-```bash
+```
 .
 ├── covid19
 │   ├── Ballerina.toml
@@ -360,7 +360,7 @@ service /covid19 on new graphql:Listener(9000) {
 
  Execute the command below to run this service to serve a GraphQL API to the data source.
 
-```shell
+```
 bal run
 ```
 
@@ -368,7 +368,7 @@ You view the output below.
 
 >**Info:** The console has warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
-```bash
+```
 Compiling source
 	user/graphql:0.1.0
 WARNING [service.bal:(25:5,25:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
@@ -425,7 +425,7 @@ type Mutation {
 
 Execute the cURL command below to retrieve all the data from the endpoint.
 
-```shell
+```
 curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "query { all { country cases active}  }" }' 'http://localhost:9000/covid19'
 ```
 

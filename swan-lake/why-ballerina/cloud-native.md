@@ -28,7 +28,7 @@ redirect_from:
   - /why-ballerina/the-network-in-the-language
 ---
 
-In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the [fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) in their application logic. For decades, programming languages have treated networks simply as I/O sources. The sections below demonstrate a few of Ballerina's inherent capabilities to develop distributed services effectively and the cloud-native deployment process that is provided as part of the programming experience. 
+In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing" target="_blank">fallacies of distributed computing</a> in their application logic. For decades, programming languages have treated networks simply as I/O sources. The sections below demonstrate a few of Ballerina's inherent capabilities to develop distributed services effectively and the cloud-native deployment process that is provided as part of the programming experience. 
 
 ## Network-friendly type system
 
@@ -74,12 +74,12 @@ public function main() returns error? {
 
 The Ballerina source file is compiled and executed in the following manner.
 
-```bash
+```
 bal run xml_json_sample.bal
 ```
 
 Output:
-```bash
+```
 Compiling source
         xml_json_sample.bal
 
@@ -117,13 +117,13 @@ service on new http:Listener(9090) {
 
 The Ballerina source file is compiled and executed in the following manner.
 
-```bash
+```
 bal run hello.bal
 ```
 
 You view the output below.
 
-```bash
+```
 Compiling source
         hello.bal
 
@@ -260,7 +260,8 @@ public function hello(@azure_functions:HTTPTrigger {authLevel: "anonymous"} stri
 
 In a microservice architecture, continuous integration and continuous delivery (CI/CD) is critical in creating an agile environment to incorporate incremental changes to your system. Different technologies provide this CI/CD functionality, and very recently, GitHub has introduced GitHub Actions, which is now available for general usage. GitHub Actions is a convenient mechanism for implementing CI/CD pipelines using their workflow concept right from your GitHub repositories.
 
-With the [Ballerina GitHub Action](https://github.com/marketplace/actions/ballerina-action), it is straightforward to create a Ballerina development environment with built-in CI/CD. 
+With the <a href="https://github.com/marketplace/actions/ballerina-action" target="_blank">Ballerina GitHub Action</a>
+, it is straightforward to create a Ballerina development environment with built-in CI/CD. 
 
 <style>
 .nav > li.cVersionItem {

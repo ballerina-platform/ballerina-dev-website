@@ -245,7 +245,7 @@ public function main() {
 }
 ```
 
-```bash
+```
 $ bal run sample.bal 
 P1's credit score: N/A
 P2's credit score: GOOD
@@ -273,7 +273,7 @@ service / on new http:Listener(8080) {
 }
 ```
 
-```bash
+```
 $ bal run sample.bal
 ```
 

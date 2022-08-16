@@ -24,7 +24,7 @@ To complete this tutorial, you need:
 
 1. [Ballerina 2202.0.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
-  >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
+  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
 3. A command terminal
 
 ## Understand the implementation
@@ -85,19 +85,19 @@ In the terminal, navigate to the `grpc_sample` directory, and execute the comman
 
 > **Note:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
-```bash
+```
 $ bal new greeter_service
 ```
 
 You view the output below.
 
-```bash
+```
 Created new package 'greeter_service' at greeter_service.
 ```
 
 This creates a directory named `greeter_service` with the files below.
 
-```bash
+```
 .
 ├── greeter_service
 │   ├── Ballerina.toml
@@ -110,20 +110,20 @@ This creates a directory named `greeter_service` with the files below.
 
 In the terminal, from inside the same `grpc_sample` directory, execute the command below to generate the source code related to the service definition.
 
-```bash
+```
 $ bal grpc --mode service --input helloworld.proto --output greeter_service/
 ```
 
 Once successfully executed, you will see the output below.
 
-```bash
+```
 Successfully extracted the library files.
 Successfully generated the Ballerina file.
 ```
 
 This creates the two files below inside the `greeter_service` directory.
 
-```bash
+```
 .
 ├── greeter_service
 │   ├── greeter_service.bal
@@ -167,13 +167,13 @@ To add the business logic to the remote method (in this case, you only need to u
 
 In the terminal, navigate to the `greeter_service` directory, and execute the command below to run the service package
 
-```bash
+```
 $ bal run
 ```
 
 You view the output below.
 
-```bash
+```
 Compiling source
 	example/greeter_service:0.1.0
 
@@ -192,19 +192,19 @@ In a new tab of the terminal, navigate to the `grpc_sample` directory, and execu
 
 > **Note:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
-```bash
+```
 $ bal new greeter_client
 ```
 
 You view the output below.
 
-```bash
+```
 Created new package 'greeter_client' at greeter_service.
 ```
 
 This creates a directory named `greeter_client` with the files below.
 
-```bash
+```
 .
 ├── greeter_client
 │   ├── Ballerina.toml
@@ -217,20 +217,20 @@ This creates a directory named `greeter_client` with the files below.
 
 In the terminal, from inside the same `grpc_sample` directory, execute the command below to generate the source code related to the client definition.
 
-```bash
+```
 $ bal grpc --mode client --input helloworld.proto --output greeter_client/
 ```
 
 Once successfully executed, you will see the output below.
 
-```bash
+```
 Successfully extracted the library files.
 Successfully generated the Ballerina file.
 ```
 
 This creates the two files below inside the `greeter_client` directory.
 
-```bash
+```
 .
 ├── greeter_client
 │   ├── greeter_client.bal
@@ -264,7 +264,7 @@ In this code:
 
 In the terminal, navigate to the `greeter_client` directory, and execute the command below to run the service package
 
-```bash
+```
 $ bal run
 ```
 
@@ -272,7 +272,7 @@ You view the output below printed on the console.
 
 >**Info:** Since the server is up and running, once the client application is successfully executed, the client application invokes the `sayHello` function with the  `HelloRequest` message and receives the `HelloReply` as the response.
 
-```bash
+```
 Compiling source
 	example/greeter_client:0.1.0
 Running executable

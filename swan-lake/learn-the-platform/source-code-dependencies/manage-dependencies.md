@@ -178,7 +178,7 @@ Using the `--offline` flag along with the `--sticky` flag will ensure a predicta
 
 ## Version compatibility
 
-Abiding by the specifications of [Semantic Versioning](https://semver.org/), Ballerina considers two versions to be **compatible if the major versions are equal and not zero**.
+Abiding by the specifications of <a href="https://semver.org/" target="_blank">Semantic Versioning</a>, Ballerina considers two versions to be **compatible if the major versions are equal and not zero**.
 
 A few examples would be as follows:
 

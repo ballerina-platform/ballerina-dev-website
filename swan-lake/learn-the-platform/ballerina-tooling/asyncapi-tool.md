@@ -20,13 +20,13 @@ To run this tutorial, you need the following prerequisites:
 
 1. [Ballerina 2202.1.0 (Swan Lake)](https://ballerina.io/learn/installing-ballerina/setting-up-ballerina/) or greater
 2. A text editor
-   > **Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) installed.
+   > **Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
 
 ## Prepare the AsyncAPI contract
 
 Before using the tool, there are some modifications that should be made by adding some custom tags to the contract.
 
-This guide uses only a part of the [AsyncAPI specification of Slack](https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/slack/asyncapi.yml) for the purpose of simplicity.
+This guide uses only a part of the <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/slack/asyncapi.yml" target="_blank">AsyncAPI specification of Slack</a> for the purpose of simplicity.
 
 ```yaml
 asyncapi: 2.1.0
@@ -111,14 +111,14 @@ There are custom tags in this YAML starting with `x-ballerina`. It is very impor
 
 After modifying the AsyncAPI contract, the Ballerina sources can be generated using the commands below.
 
-```bash
+```
 bal asyncapi [-i | --input] <asyncapi-contract-file-path> [-o | --output] <output-location>
 ```
 
 The generated service can be used as a code template to start the service implementation.
 For example,
 
-```bash
+```
 bal asyncapi -i hello.yaml
 ```
 
@@ -131,7 +131,7 @@ This generates a Ballerina source (i.e., the four Ballerina files below) from th
 
 The generated Ballerina sources are written into the same directory from which the command is run. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package. If you want to generate Ballerina sources to a specific provided output location, you can modify the above command as below.
 
-```bash
+```
 bal asyncapi -i hello.yaml -o ./output_path
 ```
 
@@ -168,5 +168,5 @@ Below are some example libraries generated using the tool.
 
 | Module     | AsyncAPI specification                                                                                                                | Generated and modified code                                                                                                | Published module                                                                                 |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| **Slack**  | <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/slack/asyncapi.yml">`asyncapi.yml` of Slack</a>   | <a href="https://github.com/ballerina-platform/asyncapi-triggers/tree/main/asyncapi/slack">`asyncapi-triggers/slack`</a>   | <a href="https://central.ballerina.io/ballerinax/trigger.slack">`ballerinax/trigger.slack`</a>   |
-| **Twilio** | <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/twilio/asyncapi.yml">`asyncapi.yml` of Twilio</a> | <a href="https://github.com/ballerina-platform/asyncapi-triggers/tree/main/asyncapi/twilio">`asyncapi-triggers/twilio`</a> | <a href="https://central.ballerina.io/ballerinax/trigger.twilio">`ballerinax/trigger.twilio`</a> |
+| **Slack**  | <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/slack/asyncapi.yml" target="_blank">`asyncapi.yml` of Slack</a>   | <a href="https://github.com/ballerina-platform/asyncapi-triggers/tree/main/asyncapi/slack" target="_blank">`asyncapi-triggers/slack`</a>   | <a href="https://central.ballerina.io/ballerinax/trigger.slack" target="_blank">`ballerinax/trigger.slack`</a>   |
+| **Twilio** | <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/twilio/asyncapi.yml" target="_blank">`asyncapi.yml` of Twilio</a> | <a href="https://github.com/ballerina-platform/asyncapi-triggers/tree/main/asyncapi/twilio" target="_blank">`asyncapi-triggers/twilio`</a> | <a href="https://central.ballerina.io/ballerinax/trigger.twilio" target="_blank">`ballerinax/trigger.twilio`</a> |

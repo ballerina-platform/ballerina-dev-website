@@ -35,7 +35,7 @@ export default function PastEvents() {
           <a target="_blank" href="https://vslive.com/Events/Redmond-2022/Sessions/Thursday/VH19-Busy-Developers-Guide-to-Ballerina.aspx" rel="noreferrer">	
             <p className="eventName">Visual Studio LIVE!</p>	
           </a>
-          <h5>VH19 Busy Developer's Guide to Ballerina</h5>		
+          <h5>VH19 Busy Developer&apos;s Guide to Ballerina</h5>		
           <a target="_blank" rel="noreferrer" href="https://twitter.com/tedneward">Ted Neward</a>, Co-founder, Solidify
         </Col>
         <Col sm={12} md={3} className={styles.eventURL}>

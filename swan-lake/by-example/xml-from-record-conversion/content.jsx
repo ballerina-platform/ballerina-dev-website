@@ -98,7 +98,7 @@ export default function XmlFromRecordConversion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=09d677f003bf13093a9d1d32b5d77190&file=xml_from_record_conversion.bal",
+                "https://play.ballerina.io/?gist=d3a804b9cd05a1ba62c7e410db182805&file=xml_from_record_conversion.bal",
                 "_blank"
               );
             }}
@@ -292,7 +292,10 @@ export default function XmlFromRecordConversion() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Distributed tracing" href="/learn/by-example/tracing">
+          <Link
+            title="Constraint validations"
+            href="/learn/by-example/constraint-validations"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -301,7 +304,7 @@ export default function XmlFromRecordConversion() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Distributed tracing
+                  Constraint validations
                 </span>
               </div>
               <svg

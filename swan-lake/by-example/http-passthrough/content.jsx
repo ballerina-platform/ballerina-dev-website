@@ -306,7 +306,10 @@ export default function HttpPassthrough() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Interceptors" href="/learn/by-example/http-interceptors">
+          <Link
+            title="Request Interceptors"
+            href="/learn/by-example/http-request-interceptors"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -315,7 +318,7 @@ export default function HttpPassthrough() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interceptors
+                  Request Interceptors
                 </span>
               </div>
               <svg

@@ -1,6 +1,6 @@
 {
   "title": "AWS Lambda",
-  "description": "",
+  "description": "AWS Lambda is an event driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with `@awslambda:Function`.",
   "keywords": [],
   "permalink": "/learn/by-example/aws-lambda-deployment",
   "active": "aws-lambda-deployment",

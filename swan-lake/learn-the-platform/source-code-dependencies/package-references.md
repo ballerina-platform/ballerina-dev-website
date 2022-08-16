@@ -60,7 +60,7 @@ Organization names can only contain alphanumerics, underscore, and the maximum l
 
 When you run the `bal new` command, the organization name by default will be set to the user name of your machine. You can choose to update the `Ballerina.toml` file to amend the organization name appropriately.
 
-As described in [Organizations](/learn/publish-packages-to-ballerina-central/#organizations), the restrictions for the organization name of a package when publishing to <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a> should also be considered before choosing an organization name.
+As described in [Organizations](/learn/publish-packages-to-ballerina-central/#organizations), the restrictions for the organization name of a package when publishing to <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a> should also be considered before choosing an organization name.
 
 
 ### The `name` field
@@ -89,7 +89,7 @@ For example, if you created and published to Ballerina Central, the `1.0.0` vers
 
 ### The `version` field
 
-Ballerina strictly follows the rules of <a href="https://semver.org/" target="_blank">Semantic Versioning</a>. Therefore, in general, you should follow the SemVer best practices when versioning a package.
+Ballerina strictly follows the rules of <a href="https://semver.org/" target="_blank">Semantic Versioning</a>. Therefore, in general, you should follow the SemVer best practices when versioning a package.
 
 *   If the package is in the initial stages of development, label the package with the zero major version (0.x.y). This will give the user a hint that API changes are frequent and that the package is far from being production-ready.
 
@@ -180,7 +180,7 @@ This file is auto-generated and managed by the Ballerina CLI. It does not need u
 ## The `Package.md` file
 
 The `Package.md` file provides a human-readable description of a package. This file is required for publishing a package to a repository. 
-It is the first page you will see when you navigate to the package in <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>.
+It is the first page you will see when you navigate to the package in <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>.
 This file is in markdown format. It will be auto-generated when you create a library package. For steps to create a library package, see [Create a Library Package](/learn/publish-packages-to-ballerina-central/#create-a-library-package)
 
 ## The `target/` directory

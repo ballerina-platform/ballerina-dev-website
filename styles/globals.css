@@ -910,6 +910,14 @@ ul.eventsTabs {
   height: 350px !important;
 }
 
+.specDrafts a {
+  font-weight: 400 !important;
+}
+
+.langDraft {
+  height: 100vh;;
+}
+
 /*------------------- Old Versions ------------------*/
 
 ul.cLearnLandingLinks {

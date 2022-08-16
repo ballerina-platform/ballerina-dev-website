@@ -1,1 +1,0 @@
-bal build --local

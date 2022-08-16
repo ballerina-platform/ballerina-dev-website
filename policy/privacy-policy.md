@@ -6,7 +6,7 @@ permalink: /privacy-policy/
 ---
 
 
-At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at [https://ballerina.io](https://ballerina.io/) and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share and secure the personal information you provide. “You” or “Your” means the person visiting the above mentioned Ballerina sites (the “Sites”) or using any services on it. “We” “us” and “our” means WSO2 Inc.
+At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at <a target="_blank" href="https://ballerina.io/">https://ballerina.io/</a> and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share and secure the personal information you provide. “You” or “Your” means the person visiting the above mentioned Ballerina sites (the “Sites”) or using any services on it. “We” “us” and “our” means WSO2 Inc.
 
 ## What information do we collect?
 
@@ -45,7 +45,7 @@ We may also release your information when we believe release is appropriate to c
 
 We will only collect and process personal data about you where we have lawful bases. Lawful bases include consent (where you have given consent), contract (where processing is necessary for the performance of a contract with you), and legitimate interests (such as to protect you, us, or others from security threats, comply with laws that apply to us and to enable or administer our business through consolidated reporting, customer service etc.).
 
-Where we rely on your consent to process personal data, you have the right to withdraw or decline your consent at any time and where we rely on legitimate interests, you have the right to object. If you have any questions about the lawful bases upon which we collect and use your personal data or wish to withdraw consent or object, please contact our Data Protection Officer at [dpo@wso2.com](mailto:dpo@wso2.com).
+Where we rely on your consent to process personal data, you have the right to withdraw or decline your consent at any time and where we rely on legitimate interests, you have the right to object. If you have any questions about the lawful bases upon which we collect and use your personal data or wish to withdraw consent or object, please contact our Data Protection Officer at <a target="_blank" href="mailto:dpo@wso2.com">dpo@wso2.com</a>.
 
 ## Security of your data
 

@@ -66,17 +66,16 @@ Creating bala
 
 ## Publish a library package to Ballerina Central
 
-You can publish a Ballerina archive to the [Ballerina Central](https://central.ballerina.io/).
-Before you publish, ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, you cannot overwrite the version or remove the package. However, the number of package versions you can push to Ballerina Central is not restricted.
+You can publish a Ballerina archive to the <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>. Before you publish, ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, you cannot overwrite the version or remove the package. However, the number of package versions you can push to Ballerina Central is not restricted.
 
 >**Tip:** As a precaution, use the [local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository) first to test out the functionality of the library package before publishing it to Ballerina Central.
 
 
 ### Prepare for publishing
 
-1. Create an account on Ballerina Central. To register, [visit the home page](https://central.ballerina.io) and log in via a Google or GitHub account.
+1. Create an account on Ballerina Central. To register, <a href="https://central.ballerina.io/" target="_blank">visit the home page</a> and log in via a Google or GitHub account.
 
-2. Navigate to the [Dashboard](https://central.ballerina.io/dashboard?tab=token) and acquire an access token.
+2. Navigate to the <a href="https://central.ballerina.io/dashboard?tab=token" target="_blank">Dashboard</a> and acquire an access token.
 
 3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. 
    If you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.
@@ -91,7 +90,7 @@ password = ""
 
 ### Define the organization
 
-When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/package-references/#the-ballerinatoml-file) file. Therefore, when you have more than one organization in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package. If you do not have any organizations created, you can visit the [organizations page](https://central.ballerina.io/dashboard?tab=organizations) to create one.
+When you push a package to Ballerina Central, the organizations are validated against the value of the `org` field defined in the [Ballerina.toml](/learn/package-references/#the-ballerinatoml-file) file. Therefore, when you have more than one organization in Ballerina Central, pick the organization name that you intend to push the package into, set that as the `org` in the `Ballerina.toml` file inside the package directory, and rebuild the package. If you do not have any organizations created, you can visit the <a href="https://central.ballerina.io/dashboard?tab=organizations" target="_blank">organizations page</a> to create one.
 
 Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 

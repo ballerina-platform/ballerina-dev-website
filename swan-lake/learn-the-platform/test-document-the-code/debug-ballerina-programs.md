@@ -42,7 +42,7 @@ However, it is very difficult for a compiler to detect runtime errors like logic
 program execution after a successful compilation. This is where the dedicated debugging tooling support becomes important.
 
 Currently, we provide a feature-rich debugging experience for troubleshooting Ballerina applications
-via the [Ballerina Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=WSO2.Ballerina).
+via the <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.Ballerina" target="_blank">Ballerina Visual Studio Code extension</a>.
 
 ## Start a debug session
 
@@ -291,5 +291,4 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 
 <br/>
 
->**Info:** For more information on VSCode debugging features, go to [VSCode documentation](https://code.visualstudio.com/docs/editor/debugging).
-
+>**Info:** For more information on VSCode debugging features, go to <a href="https://code.visualstudio.com/docs/editor/debugging" target="_blank">VS Code documentation</a>.

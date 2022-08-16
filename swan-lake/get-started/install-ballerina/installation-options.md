@@ -70,7 +70,7 @@ rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm
 
 ## Install via the Ballerina language ZIP file
 
-> **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the [AdoptOpenJRE](https://adoptopenjdk.net/) version 11 or above.
+> **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the <a href="https://adoptopenjdk.net/" target="_blank">AdoptOpenJRE</a> version 11 or above.
 
 1. <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.other-artefacts | first }}" class="cGTMDownload cDownload" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.zip-installer }}"> Download the Ballerina language ZIP file </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}-swan-lake.zip.md5">(md5, </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}-swan-lake.zip.sha1">SHA-1, </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}-swan-lake.zip.asc">asc)</a> and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named `ballerina-<VERSION>` in your system.
 
@@ -101,7 +101,7 @@ update tool 1.3.8
 
 ## Build from source
 
-For instructions, see [Build Ballerina from source](https://github.com/ballerina-platform/ballerina-distribution/blob/master/docs/build-ballerina-from-source.md).
+For instructions, see <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/docs/build-ballerina-from-source.md" target="_blank">Build Ballerina from source</a>.
 
 ## Update Ballerina
 

@@ -60,7 +60,7 @@ Organization names can only contain alphanumerics, underscore, and the maximum l
 
 When you run the `bal new` command, the organization name by default will be set to the user name of your machine. You can choose to update the `Ballerina.toml` file to amend the organization name appropriately.
 
-As described in [Organizations](/learn/publish-packages-to-ballerina-central/#organizations), the restrictions for the organization name of a package when publishing to [Ballerina Central](https://central.ballerina.io/) should also be considered before choosing an organization name.
+As described in [Organizations](/learn/publish-packages-to-ballerina-central/#organizations), the restrictions for the organization name of a package when publishing to <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a> should also be considered before choosing an organization name.
 
 
 ### The `name` field
@@ -81,7 +81,7 @@ For example, if you need to provide a set of APIs to communicate with AWS, you c
 
 A `split module condition` occurs when the latest versions of two different packages contain the same module, resulting in a build failure. When using hierarchical package names, ensure that the package repository does not hold another package containing a module with the same name in its latest version.
 
-For example, if you created and published to [Ballerina Central](https://central.ballerina.io/), the `1.0.0` version of `aws.rds` package containing `aws.rds.mysql` module
+For example, if you created and published to Ballerina Central, the `1.0.0` version of `aws.rds` package containing `aws.rds.mysql` module
  and decide to move the `aws.rds.mysql` module to a separate package later, you need to follow the below steps.
 
 1. Push a new version(`1.0.1`) of the `aws.rds` package that does not contain the `aws.rds.mysql` module
@@ -89,11 +89,11 @@ For example, if you created and published to [Ballerina Central](https://central
 
 ### The `version` field
 
-Ballerina strictly follows the rules of [Semantic Versioning](https://semver.org/). Therefore, in general, you should follow the SemVer best practices when versioning a package.
+Ballerina strictly follows the rules of <a href="https://semver.org/" target="_blank">Semantic Versioning</a>. Therefore, in general, you should follow the SemVer best practices when versioning a package.
 
 *   If the package is in the initial stages of development, label the package with the zero major version (0.x.y). This will give the user a hint that API changes are frequent and that the package is far from being production-ready.
 
-*   Use versions as three numeric parts `MAJOR.MINOR.PATCH` (E.g. 1.0.0).
+*   Use versions as three numeric parts `MAJOR.MINOR.PATCH` (E.g., 1.0.0).
     *   Increment the patch version when only backward compatible bug fixes are introduced.
     *   Increment the minor version when new backward compatible functionality is introduced to the public API.
     *   Increment the major version when any backward incompatible changes are introduced to the public API.
@@ -180,7 +180,7 @@ This file is auto-generated and managed by the Ballerina CLI. It does not need u
 ## The `Package.md` file
 
 The `Package.md` file provides a human-readable description of a package. This file is required for publishing a package to a repository. 
-It is the first page you will see when you navigate to the package in [Ballerina Central](https://central.ballerina.io/).
+It is the first page you will see when you navigate to the package in <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>.
 This file is in markdown format. It will be auto-generated when you create a library package. For steps to create a library package, see [Create a Library Package](/learn/publish-packages-to-ballerina-central/#create-a-library-package)
 
 ## The `target/` directory
@@ -233,7 +233,7 @@ The package sources are the `.bal` files in the `root` directory, and `tests/` d
 
 ### The `Module.md` file
 
-The `Module.md` file provides a human-readable description of a module. When you visit a package in [Ballerina Central](https://central.ballerina.io/), you should see all the exported modules of that package. It is the first page you will see when you navigate to an exported module of a package.
+The `Module.md` file provides a human-readable description of a module. When you visit a package in Ballerina Central, you should see all the exported modules of that package. It is the first page you will see when you navigate to an exported module of a package.
 
 ### The `resources/` directory
 

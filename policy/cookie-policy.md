@@ -7,7 +7,7 @@ redirect_from:
 
 ---
 
-Below is information about how the [Ballerina site](https://ballerina.io/) (the “Site”) uses cookies.
+Below is information about how the <a target="_blank" href="https://ballerina.io/">Ballerina site</a> (the “Site”) uses cookies.
 
 The Site stores and retrieves information on your browser using cookies. This information is used to make the Site work as you expect it to. It is not personally identifiable to you, but it can be used to give you a more personalized web experience.
 
@@ -45,7 +45,7 @@ For example, we can use these cookies to learn more about which features are the
 
 Our website will set several types of third-party cookies and we do not control the operation of any of them. The third-party cookies, which may be set include:
 
-- Google Analytics - we use Google Analytics to collect data about website usage. This data does not include personally identifiable information. For more information, view the [Google Privacy Policy](https://policies.google.com/privacy).
+- Google Analytics - we use Google Analytics to collect data about website usage. This data does not include personally identifiable information. For more information, view the <a target="_blank" href="https://policies.google.com/privacy">Google Privacy Policy</a>.
 
 ## What type of cookies do we use?
 

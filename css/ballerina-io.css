@@ -1878,18 +1878,6 @@ ul.wy-breadcrumbs {
     text-decoration: underline !important;
 }
 
-.cIUnderstand {
-    background-color: #57595d;
-    color: #fff;
-    padding: 10px 20px;
-    display: inline-block;
-    font-size: 16px;
-}
-.cIUnderstand:hover{
-    background-color: #eeeeee;
-    color: #57595d ;
-}
-
 .cBlallerina-io-docs-content-container ul li {
     list-style: square;
 }

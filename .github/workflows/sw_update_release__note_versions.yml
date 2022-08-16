@@ -3,7 +3,7 @@ name: Push changes of new Swan Lake Release-notes/Archive pages
 on:
   push:
     branches:
-      - dev
+      - master
     paths:
       - '_data/swanlake-latest/**'
 

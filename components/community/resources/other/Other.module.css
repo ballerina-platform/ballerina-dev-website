@@ -1,0 +1,37 @@
+.other {
+    padding: 30px;
+}
+
+.other h2 {
+    font-size: 1.5rem,
+}
+
+.other h4 {
+    font-size: 1.25rem;
+}
+
+/* .otherWrapper {
+    height:528px; 
+    overflow-y: scroll;
+} */
+
+.otherInfo {
+    padding: 10px 0 10px 0;
+    margin: 0px 0px 10px 0;
+    border-bottom: 1px solid rgba(161, 161, 161, 0.5);
+}
+
+.otherInfo a {
+    color: #20b6b0;
+    text-decoration: none;
+}
+
+.otherInfo a:hover {
+    color: #57595d;
+    text-decoration: none;
+}
+
+.last {
+    border: none !important;
+}
+

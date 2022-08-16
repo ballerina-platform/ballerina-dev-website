@@ -1,0 +1,63 @@
+.whyBallerinaBox {
+  display: inline-block;
+  min-height: 400px;
+  text-align: center;
+}
+
+.whyBallerinaRow p {
+  font-size: 16px;
+  color: #57595d;
+  line-height: 24px;
+  font-weight: 300;
+  margin-bottom: 0;
+  line-height: 27px;
+  letter-spacing: 0.4px;
+  height: 100px;
+  text-align: left;
+}
+
+.whyBallerinaRow li {
+  text-align: left;
+}
+
+.whyBallerinaRow > .col-md-4:last-child > .whyBallerinaBox {
+  padding-right: 0;
+}
+
+.whyBallerinaBox img {
+  height: 100px;
+}
+
+ul.inlineLinkList {
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+
+ul.inlineLinkList li {
+  list-style: none !important;
+  padding-left: 40px;
+  margin: 0 0 10px 0;
+  margin-left: 0 !important;
+  width: 100%;
+  display: block;
+  float: none;
+}
+
+.greenLinkArrow a {
+  color: #20b6b0 !important;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.greenLinkArrow a:hover {
+  color: #000 !important;
+}
+
+
+
+
+
+
+.whyBallerinaBox h3 {
+  margin-bottom: 30px;
+}

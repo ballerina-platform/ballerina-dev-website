@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+      .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+       .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+     <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.0.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>     
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            <div class="primary-list module">
+    
+        <a href="../nats/index.html">
+            <h3>nats</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../nats/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../nats/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../nats/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../nats/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="constants" href="../nats/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../nats/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../nats/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../nats/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+                
+                <div class="primary-list module">
+    
+        <a href="../nats/index.html">
+            <h3>nats</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../nats/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../nats/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../nats/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../nats/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="constants" href="../nats/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../nats/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../nats/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../nats/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">nats</span>
+                    
+                </h1>
+                    <h2>Module overview</h2>
+<p>This module provides the capability to connect with NATS and NATS Streaming servers and performs the
+following functionality.</p>
+<ul>
+<li>Point to point communication (Queues)</li>
+<li>Pub/Sub (Topics)</li>
+<li>Request/Reply</li>
+</ul>
+<h1>Basic Usage</h1>
+<h2>Setting up the connection</h2>
+<p>First step is setting up the connection with the NATS Basic/Streaming server. The following ways can be used to connect to a
+NATS Basic/Streaming server.</p>
+<ol>
+<li>Connect to a server using the URL</li>
+</ol>
+<pre><code class="language-ballerina">nats:Connection connection = new(&quot;nats://localhost:4222&quot;);
+</code></pre>
+<ol start="2">
+<li>Connect to one or more servers with a custom configuration</li>
+</ol>
+<pre><code class="language-ballerina">nats:Connection connection = new(&quot;nats://serverone:4222, nats://servertwo:4222&quot;,  config);
+</code></pre>
+<h2>Publishing messages</h2>
+<p>Publishing messages is handled differently in the NATS Basic server and Streaming server. The 'ballerina/nats' module provides different
+APIs to publish messages to each server.</p>
+<h3>Publishing messages to the NATS basic server</h3>
+<p>Once connected, publishing is accomplished via one of the below two methods.</p>
+<ol>
+<li>Publish with the subject and the message content.</li>
+</ol>
+<pre><code class="language-ballerina">nats:Producer producer = new(connection);
+nats:Error? result = producer-&gt;publish(subject, &quot;hello world&quot;);
+</code></pre>
+<ol start="2">
+<li>Publish as a request that expects a reply.</li>
+</ol>
+<pre><code class="language-ballerina">nats:Producer producer = new(connection);
+nats:Message|nats:Error reqReply = producer-&gt;request(subject, &quot;hello world&quot;, 5000);
+</code></pre>
+<ol start="3">
+<li>Publish messages with a replyTo subject</li>
+</ol>
+<pre><code class="language-ballerina">nats:Producer producer = new(connection);
+nats:Error? result = producer-&gt;publish(subject, &lt;@untainted&gt;message, 
+                         replyToSubject);
+</code></pre>
+<ol start="4">
+<li>Publish messages with a replyTo callback service</li>
+</ol>
+<pre><code class="language-ballerina">nats:Producer producer = new(connection);
+nats:Error? result = producer-&gt;publish(subject, &lt;@untainted&gt;message, 
+                         replyToService);
+</code></pre>
+<pre><code class="language-ballerina">service replyToService =
+@nats:SubscriptionConfig {
+    subject: &quot;replySubject&quot;
+}
+service {
+
+    resource function onMessage(nats:Message msg, string data) {
+        // Prints the incoming message in the console.
+        log:printInfo(&quot;Received reply message : &quot; + data);
+    }
+
+    resource function onError(nats:Message msg, nats:Error err) {
+        log:printError(&quot;Error occurred in data binding&quot;, err);
+    }
+};
+</code></pre>
+<h3>Publishing messages to a NATS streaming server</h3>
+<p>Once connected to a streaming server, publishing messages is accomplished using the following method.</p>
+<pre><code class="language-ballerina">nats:StreamingProducer producer = new(connection);
+string|error result = producer-&gt;publish(subject, &quot;hello world&quot;);
+if (result is error) {
+   io:println(&quot;Error occurred while publishing the message.&quot;);
+} else {
+   io:println(&quot;GUID &quot;+result+&quot; received for the produced message.&quot;);
+}
+</code></pre>
+<blockquote>
+<p>Publish api supports the <code>byte[], boolean, string, int, float, decimal, xml, json, record {}</code> message types.</p>
+</blockquote>
+<h2>Listening to incoming messages</h2>
+<p>The Ballerina NATS module provides the following mechanisms to listen to messages. Similar to message publishing, listening to messages
+is also handled differently in NATS basic and streaming servers.</p>
+<h3>Listening to messages from a NATS server</h3>
+<pre><code class="language-ballerina">import ballerina/io;
+import ballerina/nats;
+
+// Initializes the NATS listener.
+listener nats:Listener subscription = new(connection);
+
+// Binds the consumer to listen to the messages published to the 'demo' subject.
+@nats:SubscriptionConfig {
+    subject: &quot;demo&quot;
+}
+service demo on subscription {
+
+    resource function onMessage(nats:Message msg, string data) {
+        // Prints the incoming message in the console.
+        io:println(&quot;Subject : &quot; + msg.getSubject());
+        io:println(&quot;Message content : &quot; + data));
+    }
+
+    resource function onError(nats:Message msg, nats:Error err) {
+        io:println(err);
+    }
+
+}
+</code></pre>
+<h3>Listening to messages from a Streaming server</h3>
+<pre><code class="language-ballerina">import ballerina/io;
+import ballerina/nats;
+
+// Initializes the NATS Streaming listener.
+listener nats:StreamingListener subscription = new(conn, &quot;test-cluster&quot;, &quot;c1&quot;);
+
+// Binds the consumer to listen to the messages published to the 'demo' subject.
+@nats:StreamingSubscriptionConfig {
+    subject: &quot;demo&quot;
+}
+service demo on subscription {
+
+    resource function onMessage(nats:StreamingMessage msg, string data) {
+        // Prints the incoming message in the console.
+        io:println(&quot;Subject : &quot; + msg.getSubject());
+        io:println(&quot;Message content : &quot; + data));
+    }
+
+    resource function onError(nats:StreamingMessage msg, nats:Error err) {
+        io:println(err);
+    }
+
+}
+</code></pre>
+<h1>Advanced Usage</h1>
+<h2>Using the TLS protocol</h2>
+<p>The Ballerina NATS module allows the use of the tls:// protocol in its URLs. This setting expects a secure socket to be
+set in the connection configuration as shown below.</p>
+<pre><code class="language-ballerina">nats:ConnectionConfig config = {
+    secureSocket : {
+        trustStore : {
+            path: &quot;nats-basic/keyStore.p12&quot;,
+            password: &quot;xxxxx&quot;
+        }
+    }
+};
+
+// Initializes a connection.
+nats:Connection connection = new(&quot;tls://localhost:4222&quot;, config = config);
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> The default thread pool size used in Ballerina is number of processors available * 2. You can configure the thread pool size by using the <code>BALLERINA_MAX_POOL_SIZE</code> environment variable.</p>
+</blockquote>
+
+
+            
+
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ConnectionConfig" title="ConnectionConfig">
+                                <a class="records"
+                                   href="records/ConnectionConfig.html">ConnectionConfig</a></td>
+                            <td class="module-desc">The parameters used to create a NATS streaming subscription.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records"
+                                   href="records/Detail.html">Detail</a></td>
+                            <td class="module-desc">Record type to hold the details of an error.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="PendingLimits" title="PendingLimits">
+                                <a class="records"
+                                   href="records/PendingLimits.html">PendingLimits</a></td>
+                            <td class="module-desc">Parameters to set limits on the maximum number of messages, or maximum size of messages this consumer will
+hold before it starts to drop new messages waiting for the resource functions to drain the queue.
+Setting a value to anything less than or equal to 0 will disable this check.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SecureSocket" title="SecureSocket">
+                                <a class="records"
+                                   href="records/SecureSocket.html">SecureSocket</a></td>
+                            <td class="module-desc">Provides configurations for facilitating secure communication with a remote HTTP endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="StreamingConfig" title="StreamingConfig">
+                                <a class="records"
+                                   href="records/StreamingConfig.html">StreamingConfig</a></td>
+                            <td class="module-desc">Configuration related to establishing a streaming connection.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="StreamingSubscriptionConfigData" title="StreamingSubscriptionConfigData">
+                                <a class="records"
+                                   href="records/StreamingSubscriptionConfigData.html">StreamingSubscriptionConfigData</a></td>
+                            <td class="module-desc">The parameters used to create a NATS streaming subscription.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SubscriptionConfigData" title="SubscriptionConfigData">
+                                <a class="records"
+                                   href="records/SubscriptionConfigData.html">SubscriptionConfigData</a></td>
+                            <td class="module-desc">NATS basic subscription parameters.
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Connection" title="Connection">
+                                <a class="objects"
+                                   href="objects/Connection.html">
+                                    Connection
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a single network connection to the NATS server.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Message" title="Message">
+                                <a class="objects"
+                                   href="objects/Message.html">
+                                    Message
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a message, which will be pushed from the NATS server to the consumer.</p>
+</td>
+                        </tr>
+                    
+                </table>
+             </section>  
+            
+
+            
+             <section class="method-content" id="clients">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#clients">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Clients </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="Producer" title="Producer">
+                                <a class="clients"
+                                   href="clients/Producer.html">Producer</a></td>
+                            <td class="module-desc"><p>NATS <code>Producer</code> would act as a basic client allowing to publish messages to the NATS server.
+Producer needs the NATS <code>Connection</code> to be initialized.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="StreamingMessage" title="StreamingMessage">
+                                <a class="clients"
+                                   href="clients/StreamingMessage.html">StreamingMessage</a></td>
+                            <td class="module-desc"><p>Represents the message a NATS Streaming Server sends to a subscription service.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate clients" id="StreamingProducer" title="StreamingProducer">
+                                <a class="clients"
+                                   href="clients/StreamingProducer.html">StreamingProducer</a></td>
+                            <td class="module-desc"><p>NATS <code>StreamingProducer</code> would act as a client allowing to publish messages to the
+NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Connection</code> to be initialized.</p>
+</td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+             <section class="method-content" id="listeners">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#listeners">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Listeners </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate listeners" id="Listener" title="Listener">
+                                <a class="listeners"
+                                   href="listeners/Listener.html">Listener</a></td>
+                            <td class="module-desc"><p>Represents a connection which will be used for subscription.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate listeners" id="StreamingListener" title="StreamingListener">
+                                <a class="listeners"
+                                   href="listeners/StreamingListener.html">StreamingListener</a></td>
+                            <td class="module-desc"><p>Represents the NATS Streaming Server connection, to which a subscription service should be bound to in order to receive messages
+of the corresponding subscription.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+           
+
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="NATS_ERROR" title="NATS_ERROR"><a
+                                    class="constant" href="constants.html#NATS_ERROR">NATS_ERROR</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="NEW_ONLY" title="NEW_ONLY"><a
+                                    class="constant" href="constants.html#NEW_ONLY">NEW_ONLY</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LAST_RECEIVED" title="LAST_RECEIVED"><a
+                                    class="constant" href="constants.html#LAST_RECEIVED">LAST_RECEIVED</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="FIRST" title="FIRST"><a
+                                    class="constant" href="constants.html#FIRST">FIRST</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TIME_DELTA_START" title="TIME_DELTA_START"><a
+                                    class="constant" href="constants.html#TIME_DELTA_START">TIME_DELTA_START</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="SEQUENCE_NUMBER" title="SEQUENCE_NUMBER"><a
+                                    class="constant" href="constants.html#SEQUENCE_NUMBER">SEQUENCE_NUMBER</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="annotations">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#annotations">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Annotations </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="StreamingSubscriptionConfig" title="StreamingSubscriptionConfig"><a
+                                    class="annotations" href="annotations.html#StreamingSubscriptionConfig">StreamingSubscriptionConfig</a></td>
+                            <td class="module-desc"><p>Streaming subscription configuration annotation.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate annotations" id="SubscriptionConfig" title="SubscriptionConfig"><a
+                                    class="annotations" href="annotations.html#SubscriptionConfig">SubscriptionConfig</a></td>
+                            <td class="module-desc"><p>Basic Subscription config annotation.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Content" title="Content">
+                                <a class="types" href="types.html#Content">Content</a>
+                            </td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="StartPosition" title="StartPosition">
+                                <a class="types" href="types.html#StartPosition">StartPosition</a>
+                            </td>
+                            <td class="module-desc"><p>The position to start receiving messages.
+NEW_ONLY - Specifies that message delivery should start with the messages, which are published after the subscription
+is created.
+LAST_RECEIVED - Specifies that message delivery should start with the last (most recent) message stored for
+this subject.
+TimeDeltaStart - Specifies that message delivery should start with a given historical time delta (from now).
+SequenceNumber - Specifies that message delivery should start at the given sequence number.
+FIRST - Specifies that message delivery should begin at the oldest available message for this subject.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="Error" title="Error">
+                                <a class="errors" href="errors.html#Error">Error</a>
+                            </td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+</body>
+</html>

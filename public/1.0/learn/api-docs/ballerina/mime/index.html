@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+      .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+       .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+     <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.0.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>     
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            <div class="primary-list module">
+    
+        <a href="../mime/index.html">
+            <h3>mime</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../mime/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../mime/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../mime/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../mime/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../mime/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../mime/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+                
+                <div class="primary-list module">
+    
+        <a href="../mime/index.html">
+            <h3>mime</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../mime/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../mime/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../mime/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../mime/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../mime/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../mime/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">mime</span>
+                    
+                </h1>
+                    <h2>Module Overview</h2>
+<p>This module provides functions to encapsulate multiple body parts, such as attachments in a single message. The
+communication of such messages follow the MIME (Multipurpose Internet Mail Extensions) specification as specified in
+the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
+<blockquote>
+<p>Entity refers to the header fields and the content of a message, or a part of the body in a multipart entity.</p>
+</blockquote>
+<h2>Modify and retrieve the data in an entity</h2>
+<p>The module provides functions to set and get an entity body from different kinds of message types, such as XML, text, JSON, blob, and body parts. Headers can be modified through functions such as <code>addHeader()</code>, <code>setHeader()</code>, <code>removeHeader()</code>, etc.</p>
+<h1>Samples</h1>
+<h2>Handle multipart request</h2>
+<p>The sample service given below handles a multipart request. It extracts the body content from each part, converts it to a <code>string</code>, and sends a response.</p>
+<pre><code class="language-ballerina">import ballerina/http;
+import ballerina/log;
+import ballerina/mime;
+
+@http:ServiceConfig {
+    basePath: &quot;/test&quot;
+}
+service test on new http:Listener(9090) {
+
+    @http:ResourceConfig {
+        methods: [&quot;POST&quot;],
+        path: &quot;/multipleparts&quot;
+    }
+    // The resource that handles multipart requests.
+    resource function multipartResource(http:Caller caller, http:Request request) {
+        http:Response response = new;
+
+        // Get the body parts from the request.
+        var bodyParts = request.getBodyParts();
+        if (bodyParts is mime:Entity[]) {
+            string content = &quot;&quot;;
+            // Iterate through each body part and handle the content.
+            foreach var part in bodyParts {
+                content = content + &quot; -- &quot; + handleContent(part);
+            }
+            response.setPayload(&lt;@untainted&gt; content);
+        } else {
+            // If there is an error while getting the body parts, set the 
+            // response code as 500 and set the error message as the 
+            // response message.
+            response.statusCode = 500;
+            response.setPayload(&lt;@untainted&gt; bodyParts.reason());
+        }
+
+        var result = caller-&gt;respond(response);
+        if (result is error) {
+            log:printError(&quot;Error in responding&quot;, err = result);
+        }
+    }
+}
+
+// The function that handles the content based on the body part type.
+function handleContent(mime:Entity bodyPart) returns @tainted string {
+    var mediaType = mime:getMediaType(bodyPart.getContentType());
+    if (mediaType is mime:MediaType) {
+        // Get the base type of the specific body part.
+        string baseType = mediaType.getBaseType();
+        // If the base type is ‘application/xml’ or ‘text/xml’, get the XML 
+        // content from body part.
+        if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
+            var payload = bodyPart.getXml();
+            if (payload is xml) {
+                return payload.getTextValue();
+            } else {
+                return &quot;Error in parsing xml payload&quot;;
+            }
+        } else if (mime:APPLICATION_JSON == baseType) {
+            // If the base type is ‘application/json’, get the JSON content 
+            // from body part.
+            var payload = bodyPart.getJson();
+            if (payload is json) {
+                return payload.toJsonString();
+            } else {
+                return &quot;Error in parsing json payload&quot;;
+            }
+        }
+    } else {
+        return mediaType.reason();
+    }
+    return &quot;&quot;;
+}
+</code></pre>
+<p>The sample request that is sent to the above service is shown below.</p>
+<pre><code>curl -v -F &quot;request={\&quot;param1\&quot;: \&quot;value1\&quot;};type=application/json&quot; -F &quot;language=ballerina;type=text/plain&quot; -F &quot;upload=@/home/path-to-file/encode.txt;type=application/octet-stream&quot;  http://localhost:9090/test/multipleparts -H &quot;Expect:&quot;
+</code></pre>
+<h2>Create a multipart request</h2>
+<p>Following code snippet creates a multipart request. It includes two body parts with <code>application/json</code> and <code>application/xml</code> content type.</p>
+<pre><code class="language-ballerina">// Create a JSON body part.
+mime:Entity bodyPart1 = new;
+// Set the JSON content.
+bodyPart1.setJson({&quot;bodyPart&quot;: &quot;jsonPart&quot;});
+
+// Create another body part using an XML file.
+mime:Entity bodyPart2 = new;
+bodyPart2.setFileAsEntityBody(&quot;ballerina/mime/file.xml&quot;, contentType = mime:APPLICATION_XML);
+
+//Create an array to hold all the body parts.
+mime:Entity[] bodyParts = [bodyPart1, bodyPart2];
+
+// Set the body parts to the outbound response.
+http:Request outRequest = new;
+// Set the content type as ‘multipart/mixed’ and set the body parts.
+outRequest.setBodyParts(bodyParts, contentType = mime:MULTIPART_MIXED);
+</code></pre>
+
+
+            
+
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records"
+                                   href="records/Detail.html">Detail</a></td>
+                            <td class="module-desc">Holds the details of entity header and body related errors.
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="ContentDisposition" title="ContentDisposition">
+                                <a class="objects"
+                                   href="objects/ContentDisposition.html">
+                                    ContentDisposition
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents values in <code>Content-Disposition</code> header.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Entity" title="Entity">
+                                <a class="objects"
+                                   href="objects/Entity.html">
+                                    Entity
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents the headers and body of a message. This can be used to represent both the entity of a top level message
+and an entity(body part) inside of a multipart entity.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="MediaType" title="MediaType">
+                                <a class="objects"
+                                   href="objects/MediaType.html">
+                                    MediaType
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Describes the nature of the data in the body of a MIME entity.</p>
+</td>
+                        </tr>
+                    
+                </table>
+             </section>  
+            
+
+            
+
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="base64Decode" title="base64Decode"><a
+                                    class="functions" href="functions.html#base64Decode">base64Decode</a></td>
+                            <td class="module-desc"><p><strong>Deprecated API</strong>. Decodes a given input with MIME specific Base64 encoding scheme.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="base64DecodeBlob" title="base64DecodeBlob"><a
+                                    class="functions" href="functions.html#base64DecodeBlob">base64DecodeBlob</a></td>
+                            <td class="module-desc"><p><strong>Deprecated API</strong>. Decodes a given byte[] with Base64 encoding scheme.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="base64Encode" title="base64Encode"><a
+                                    class="functions" href="functions.html#base64Encode">base64Encode</a></td>
+                            <td class="module-desc"><p><strong>Deprecated API</strong>. Encodes a given input with MIME specific Base64 encoding scheme.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="base64EncodeBlob" title="base64EncodeBlob"><a
+                                    class="functions" href="functions.html#base64EncodeBlob">base64EncodeBlob</a></td>
+                            <td class="module-desc"><p><strong>Deprecated API</strong>. Encodes a given byte[] with Base64 encoding scheme.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getContentDispositionObject" title="getContentDispositionObject"><a
+                                    class="functions" href="functions.html#getContentDispositionObject">getContentDispositionObject</a></td>
+                            <td class="module-desc"><p>Given the Content-Disposition as a string, gets the ContentDisposition object with it.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getMediaType" title="getMediaType"><a
+                                    class="functions" href="functions.html#getMediaType">getMediaType</a></td>
+                            <td class="module-desc"><p>Given the Content-Type in string, gets the MediaType object populated with it.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="prepareDecodingErrorWithDetail" title="prepareDecodingErrorWithDetail"><a
+                                    class="functions" href="functions.html#prepareDecodingErrorWithDetail">prepareDecodingErrorWithDetail</a></td>
+                            <td class="module-desc"><p>Constructs a <code>DecodeError</code> with the given details.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="prepareEncodingErrorWithDetail" title="prepareEncodingErrorWithDetail"><a
+                                    class="functions" href="functions.html#prepareEncodingErrorWithDetail">prepareEncodingErrorWithDetail</a></td>
+                            <td class="module-desc"><p>Constructs an <code>EncodeError</code> with the given details.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="APPLICATION_OCTET_STREAM" title="APPLICATION_OCTET_STREAM"><a
+                                    class="constant" href="constants.html#APPLICATION_OCTET_STREAM">APPLICATION_OCTET_STREAM</a></td>
+                            <td class="module-desc"><p>Represent <code>application/octet-stream</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="APPLICATION_JSON" title="APPLICATION_JSON"><a
+                                    class="constant" href="constants.html#APPLICATION_JSON">APPLICATION_JSON</a></td>
+                            <td class="module-desc"><p>Represent <code>application/json</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="APPLICATION_XML" title="APPLICATION_XML"><a
+                                    class="constant" href="constants.html#APPLICATION_XML">APPLICATION_XML</a></td>
+                            <td class="module-desc"><p>Represent <code>application/xml</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="APPLICATION_SVG_XML" title="APPLICATION_SVG_XML"><a
+                                    class="constant" href="constants.html#APPLICATION_SVG_XML">APPLICATION_SVG_XML</a></td>
+                            <td class="module-desc"><p>Represent <code>application/svg+xml</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="APPLICATION_XHTML_XML" title="APPLICATION_XHTML_XML"><a
+                                    class="constant" href="constants.html#APPLICATION_XHTML_XML">APPLICATION_XHTML_XML</a></td>
+                            <td class="module-desc"><p>Represent <code>application/xhtml+xml</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="APPLICATION_SOAP_XML" title="APPLICATION_SOAP_XML"><a
+                                    class="constant" href="constants.html#APPLICATION_SOAP_XML">APPLICATION_SOAP_XML</a></td>
+                            <td class="module-desc"><p>Represent <code>application/soap+xml</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="APPLICATION_FORM_URLENCODED" title="APPLICATION_FORM_URLENCODED"><a
+                                    class="constant" href="constants.html#APPLICATION_FORM_URLENCODED">APPLICATION_FORM_URLENCODED</a></td>
+                            <td class="module-desc"><p>Represent <code>application/x-www-form-urlencoded</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="APPLICATION_PDF" title="APPLICATION_PDF"><a
+                                    class="constant" href="constants.html#APPLICATION_PDF">APPLICATION_PDF</a></td>
+                            <td class="module-desc"><p>Represent <code>application/pdf</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="IMAGE_JPEG" title="IMAGE_JPEG"><a
+                                    class="constant" href="constants.html#IMAGE_JPEG">IMAGE_JPEG</a></td>
+                            <td class="module-desc"><p>Represent <code>image/jpeg</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="IMAGE_GIF" title="IMAGE_GIF"><a
+                                    class="constant" href="constants.html#IMAGE_GIF">IMAGE_GIF</a></td>
+                            <td class="module-desc"><p>Represent <code>image/gif</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="IMAGE_PNG" title="IMAGE_PNG"><a
+                                    class="constant" href="constants.html#IMAGE_PNG">IMAGE_PNG</a></td>
+                            <td class="module-desc"><p>Represent <code>image/png</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MULTIPART_FORM_DATA" title="MULTIPART_FORM_DATA"><a
+                                    class="constant" href="constants.html#MULTIPART_FORM_DATA">MULTIPART_FORM_DATA</a></td>
+                            <td class="module-desc"><p>Represent <code>multipart/form-data</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MULTIPART_MIXED" title="MULTIPART_MIXED"><a
+                                    class="constant" href="constants.html#MULTIPART_MIXED">MULTIPART_MIXED</a></td>
+                            <td class="module-desc"><p>Represent <code>multipart/mixed</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MULTIPART_ALTERNATIVE" title="MULTIPART_ALTERNATIVE"><a
+                                    class="constant" href="constants.html#MULTIPART_ALTERNATIVE">MULTIPART_ALTERNATIVE</a></td>
+                            <td class="module-desc"><p>Represent <code>multipart/alternative</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MULTIPART_RELATED" title="MULTIPART_RELATED"><a
+                                    class="constant" href="constants.html#MULTIPART_RELATED">MULTIPART_RELATED</a></td>
+                            <td class="module-desc"><p>Represent <code>multipart/related</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MULTIPART_PARALLEL" title="MULTIPART_PARALLEL"><a
+                                    class="constant" href="constants.html#MULTIPART_PARALLEL">MULTIPART_PARALLEL</a></td>
+                            <td class="module-desc"><p>Represent <code>multipart/parallel</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TEXT_PLAIN" title="TEXT_PLAIN"><a
+                                    class="constant" href="constants.html#TEXT_PLAIN">TEXT_PLAIN</a></td>
+                            <td class="module-desc"><p>Represent <code>text/plain</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TEXT_HTML" title="TEXT_HTML"><a
+                                    class="constant" href="constants.html#TEXT_HTML">TEXT_HTML</a></td>
+                            <td class="module-desc"><p>Represent <code>text/html</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TEXT_XML" title="TEXT_XML"><a
+                                    class="constant" href="constants.html#TEXT_XML">TEXT_XML</a></td>
+                            <td class="module-desc"><p>Represent <code>text/xml</code> media type.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="ENCODE_ERROR" title="ENCODE_ERROR"><a
+                                    class="constant" href="constants.html#ENCODE_ERROR">ENCODE_ERROR</a></td>
+                            <td class="module-desc"><p>Identifies encoding errors.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DECODE_ERROR" title="DECODE_ERROR"><a
+                                    class="constant" href="constants.html#DECODE_ERROR">DECODE_ERROR</a></td>
+                            <td class="module-desc"><p>Identifies decoding errors.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="GENERIC_MIME_ERROR" title="GENERIC_MIME_ERROR"><a
+                                    class="constant" href="constants.html#GENERIC_MIME_ERROR">GENERIC_MIME_ERROR</a></td>
+                            <td class="module-desc"><p>Identifies generic errors related to MIME.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="SET_HEADER_FAILED" title="SET_HEADER_FAILED"><a
+                                    class="constant" href="constants.html#SET_HEADER_FAILED">SET_HEADER_FAILED</a></td>
+                            <td class="module-desc"><p>Identifies set header failures.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="READING_HEADER_FAILED" title="READING_HEADER_FAILED"><a
+                                    class="constant" href="constants.html#READING_HEADER_FAILED">READING_HEADER_FAILED</a></td>
+                            <td class="module-desc"><p>Identifies header parsing errors.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PARSER_ERROR" title="PARSER_ERROR"><a
+                                    class="constant" href="constants.html#PARSER_ERROR">PARSER_ERROR</a></td>
+                            <td class="module-desc"><p>Identifies entity body parsing errors.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INVALID_CONTENT_TYPE" title="INVALID_CONTENT_TYPE"><a
+                                    class="constant" href="constants.html#INVALID_CONTENT_TYPE">INVALID_CONTENT_TYPE</a></td>
+                            <td class="module-desc"><p>Identifies errors related to content-type header.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="HEADER_UNAVAILABLE" title="HEADER_UNAVAILABLE"><a
+                                    class="constant" href="constants.html#HEADER_UNAVAILABLE">HEADER_UNAVAILABLE</a></td>
+                            <td class="module-desc"><p>Identifies errors related to header unavailability.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="IDLE_TIMEOUT_TRIGGERED" title="IDLE_TIMEOUT_TRIGGERED"><a
+                                    class="constant" href="constants.html#IDLE_TIMEOUT_TRIGGERED">IDLE_TIMEOUT_TRIGGERED</a></td>
+                            <td class="module-desc"><p>Identifies errors related to read/write timeouts.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="NO_CONTENT_ERROR_CODE" title="NO_CONTENT_ERROR_CODE"><a
+                                    class="constant" href="constants.html#NO_CONTENT_ERROR_CODE">NO_CONTENT_ERROR_CODE</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="BOUNDARY" title="BOUNDARY"><a
+                                    class="constant" href="constants.html#BOUNDARY">BOUNDARY</a></td>
+                            <td class="module-desc"><p>Key name for <code>boundary</code> parameter in MediaType. This is needed for composite type media types.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="START" title="START"><a
+                                    class="constant" href="constants.html#START">START</a></td>
+                            <td class="module-desc"><p>Key name for <code>start</code> parameter in MediaType. This determines which part in the multipart message contains the
+payload.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TYPE" title="TYPE"><a
+                                    class="constant" href="constants.html#TYPE">TYPE</a></td>
+                            <td class="module-desc"><p>Key name for <code>type</code> parameter in MediaType. This indicates the MIME media type of the <code>root</code> body part.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CHARSET" title="CHARSET"><a
+                                    class="constant" href="constants.html#CHARSET">CHARSET</a></td>
+                            <td class="module-desc"><p>Key name for <code>charset</code> parameter in MediaType. This indicates the character set of the body text.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DEFAULT_CHARSET" title="DEFAULT_CHARSET"><a
+                                    class="constant" href="constants.html#DEFAULT_CHARSET">DEFAULT_CHARSET</a></td>
+                            <td class="module-desc"><p>Default charset to be used with MIME encoding and decoding.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CONTENT_ID" title="CONTENT_ID"><a
+                                    class="constant" href="constants.html#CONTENT_ID">CONTENT_ID</a></td>
+                            <td class="module-desc"><p>Represents <code>content-id</code> header name.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CONTENT_LENGTH" title="CONTENT_LENGTH"><a
+                                    class="constant" href="constants.html#CONTENT_LENGTH">CONTENT_LENGTH</a></td>
+                            <td class="module-desc"><p>Represents <code>content-length</code> header name.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CONTENT_TYPE" title="CONTENT_TYPE"><a
+                                    class="constant" href="constants.html#CONTENT_TYPE">CONTENT_TYPE</a></td>
+                            <td class="module-desc"><p>Represents <code>content-type</code> header name.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CONTENT_DISPOSITION" title="CONTENT_DISPOSITION"><a
+                                    class="constant" href="constants.html#CONTENT_DISPOSITION">CONTENT_DISPOSITION</a></td>
+                            <td class="module-desc"><p>Represents <code>content-disposition</code> header name.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Error" title="Error">
+                                <a class="types" href="types.html#Error">Error</a>
+                            </td>
+                            <td class="module-desc"><p>Represents MIME related errors.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="DecodeError" title="DecodeError">
+                                <a class="errors" href="errors.html#DecodeError">DecodeError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a <code>DecodeError</code> with a detailed message.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="EncodeError" title="EncodeError">
+                                <a class="errors" href="errors.html#EncodeError">EncodeError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents an <code>EncodeError</code> with a detailed message.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="GenericMimeError" title="GenericMimeError">
+                                <a class="errors" href="errors.html#GenericMimeError">GenericMimeError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a <code>GenericMimeError</code> with a detailed message.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="HeaderUnavailableError" title="HeaderUnavailableError">
+                                <a class="errors" href="errors.html#HeaderUnavailableError">HeaderUnavailableError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a <code>HeaderUnavailableError</code> with a detailed message.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="IdleTimeoutTriggeredError" title="IdleTimeoutTriggeredError">
+                                <a class="errors" href="errors.html#IdleTimeoutTriggeredError">IdleTimeoutTriggeredError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a <code>IdleTimeoutTriggeredError</code> with a detailed message.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="InvalidContentTypeError" title="InvalidContentTypeError">
+                                <a class="errors" href="errors.html#InvalidContentTypeError">InvalidContentTypeError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents an <code>InvalidContentTypeError</code> with a detailed message.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="NoContentError" title="NoContentError">
+                                <a class="errors" href="errors.html#NoContentError">NoContentError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a <code>NoContentError</code> with a detailed message.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="ParserError" title="ParserError">
+                                <a class="errors" href="errors.html#ParserError">ParserError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a <code>ParserError</code> with a detailed message.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="ReadingHeaderFailed" title="ReadingHeaderFailed">
+                                <a class="errors" href="errors.html#ReadingHeaderFailed">ReadingHeaderFailed</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a <code>ReadingHeaderFailed</code> error with a detailed message.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="SetHeaderError" title="SetHeaderError">
+                                <a class="errors" href="errors.html#SetHeaderError">SetHeaderError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a <code>SetHeaderError</code> with a detailed message.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+</body>
+</html>

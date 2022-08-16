@@ -1,0 +1,16 @@
+{
+  "title": "XMLNS declarations",
+  "description": "This BBE demonstrates xmlns declarations in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xmlns declarations"
+  ],
+  "permalink": "/learn/by-example/xmlns-declarations",
+  "active": "xmlns-declarations",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xmlns-declarations",
+    "/swan-lake/learn/by-example/xmlns-declarations.html"
+  ]
+}

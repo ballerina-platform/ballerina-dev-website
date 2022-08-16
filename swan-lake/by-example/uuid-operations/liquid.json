@@ -1,0 +1,21 @@
+{
+  "title": "UUID operations",
+  "description": "BBE on how to to perform operations on UUIDs.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "uuid",
+    "version",
+    "validation",
+    "string",
+    "record",
+    "bytes"
+  ],
+  "permalink": "/learn/by-example/uuid-operations",
+  "active": "uuid-operations",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/uuid-operations",
+    "/swan-lake/learn/by-example/uuid-operations.html"
+  ]
+}

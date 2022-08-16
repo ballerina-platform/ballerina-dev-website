@@ -27,7 +27,7 @@ redirect_from:
 
 2. Run `bal dist update` ( or `bal dist pull 2201.1.1`) to update your Ballerina version to 2201.1.1.
 
-However, if you are using a version below 2201.0.0 (Swan Lake) and if you already ran `bal dist update` (or `bal dist pull 2201.1.1`) before `bal update`, see [Troubleshooting](/downloads/swan-lake-release-notes/2201-0-0-swan-lake/#troubleshooting) to recover your installation.
+However, if you are using a version below 2201.0.0 (Swan Lake) and if you already ran `bal dist update` (or `bal dist pull 2201.1.1`) before `bal update`, see [Troubleshooting](/downloads/swan-lake-release-notes/swan-lake-2201.0.0/#troubleshooting) to recover your installation.
 
 ## Install Ballerina
 

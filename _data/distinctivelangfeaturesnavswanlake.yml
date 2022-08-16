@@ -160,9 +160,9 @@
           - title: Distinct object types
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#distinct-object-types
             active: distinct-object-types
-          - title: Readonly objects and classes
-            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#readonly-objects-and-classes
-            active: readonly-objects-and-classes
+          - title: Read-only objects and classes
+            url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#read-only-objects-and-classes
+            active: read-only-objects-and-classes
           - title: Error detail
             url: /learn/distinctive-language-features/advanced-general-purpose-language-features/#error-detail
             active: error-detail

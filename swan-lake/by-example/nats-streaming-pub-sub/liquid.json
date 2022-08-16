@@ -1,0 +1,20 @@
+{
+  "title": "Publish/subscribe",
+  "description": "BBE on producing and consuming a message from a subject in NATS streaming server using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "nats",
+    "streaming",
+    "server",
+    "subscriber",
+    "publisher"
+  ],
+  "permalink": "/learn/by-example/nats-streaming-pub-sub",
+  "active": "nats-streaming-pub-sub",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/nats-streaming-pub-sub",
+    "/swan-lake/learn/by-example/nats-streaming-pub-sub.html"
+  ]
+}

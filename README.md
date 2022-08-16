@@ -1,43 +1,32 @@
-# ballerina-platform.github.io
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-ballerina-platform.github.io - Github pages based ballerina.io website
+## Run website locally
 
-## Run website locally with docker
+First, execute the following command to install necessary packages
 
-Execute following command to build the docker image
-
-```shell
-docker build -t ballerina-web . 
+```bash
+npm install
 ```
 
-Execute following command to run the container.
+Execute the following command to run the development server:
 
-```shell
-docker run -p 4000:4000 ballerina-web
+```bash
+npm run dev
 ```
 
-Access website using <http://localhost:4000/>
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Run website locally with Jekyll and bundler gems
 
-Execute following command to install Jekyll
+## Learn More
 
-```shell
-gem install jekyll bundler
-```
+To learn more about Next.js, take a look at the following resources:
 
-Execute following command to install required gems
-
-Run `bundle install` within project directory to install required gems.
-
-Build the site and make it available on a local server
-
-```shell
-bundle exec jekyll serve
-```
-
+<<<<<<< HEAD
 **Troubleshooting Tips:** 
 1. For more information on the installation instructions, see the [Jekyll Installation Documentation](https://jekyllrb.com/docs/installation/).
 2. If you get the `cannot load such file -- webrick` error, execute the `bundle add webrick` command.
 3. If you get the `Could not locate Gemfile` error, you may not be inside the `ballerina-dev-website` repo directory. Navigate to it in the terminal, and then, execute the required command.
 4. If you get the `An error occurred while installing eventmachine (1.2.7), and Bundler cannot continue.` error, execute the `bundle config build.eventmachine --with-cppflags=-I/usr/local/opt/openssl/include` command, and then execute the `bundle install` command.
+=======
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+>>>>>>> ccf9ef67dcc94aed5708a4fd98796ec1b042b21e

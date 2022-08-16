@@ -1,7 +1,6 @@
 name: Push changes of prod-sync to prod-site
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - prod-sync
@@ -18,4 +17,19 @@ jobs:
     - name: Sync production repo with prod-sync branch
       run: |
         cd ballerina-platform.github.io
-        ll
+        git pull origin master
+
+        git config --global user.email "ballerina-bot@ballerina.org"
+        git config --global user.name "ballerina-bot"
+
+        git remote add dev https://github.com/ballerina-platform/ballerina-dev-website.git
+        git pull dev prod-sync -X theirs --no-edit --no-rebase
+        
+    - name: Push changes to prod website
+      shell: bash
+      run: |
+        cd ballerina-platform.github.io
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub push
+      env:
+        GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}

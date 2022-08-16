@@ -6,7 +6,7 @@ jobs:
   linkChecker:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       # - name: Build the site
       #   uses: shafreenAnfar/jekyll-build-action@v5
       # - name: Lychee link checker action

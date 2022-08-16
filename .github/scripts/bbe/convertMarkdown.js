@@ -17,7 +17,7 @@
  */
 
 // imports
-const md = require("markdown-it")();
+const md = require("markdown-it")({ xhtmlOut: true });
 const container = require("markdown-it-container");
 const fs = require("fs");
 const axios = require("axios");
@@ -769,6 +769,12 @@ const generate = async (examplesDir, outputDir) => {
                 </ul>`;
                   } else {
                     convertedLine = escapeParagraphCharacters(md.render(line));
+
+                    // // add closing tags if not present
+                    // if (tagReg.test(convertedLine))
+                    //   convertedLine =
+                    //     convertedLine.slice(0, convertedLine.length - 6) +
+                    //     " /></p>\n";
                   }
                 } else {
                   if (line.includes("```")) {

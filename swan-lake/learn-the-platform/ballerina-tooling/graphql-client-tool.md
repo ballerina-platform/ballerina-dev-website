@@ -5,7 +5,7 @@ description: Check out how the Ballerina GraphQL client tool makes it easy for y
 keywords: ballerina, programming language, graphql, sdl, schema definition language
 permalink: /learn/graphql-client-tool/
 active: graphql-client-tool
-intro: The Ballerina GraphQL client tool will make it easy for you to generate a client in Ballerina using a given GraphQL schema (SDL) and GraphQL queries. 
+intro: The Ballerina GraphQL client tool makes it easy for you to generate a client in Ballerina using a given GraphQL schema (SDL) and GraphQL queries. 
 redirect_from:
   - /learn/ballerina-graphql-support
   - /learn/ballerina-graphql-support/
@@ -14,13 +14,13 @@ redirect_from:
   - /learn/graphql-client-tool
 --- 
 
-When generating the client, this tool validates the given GraphQL queries against the given GraphQL schema. A remote operation and the corresponding record types will be generated for each given GraphQL query. The generated Ballerina client can be used to execute queries (i.e., that belong to one of the operation types, `query` or `mutation`) on the relevant GraphQL API through the generated remote operations.
+When generating the client, this tool validates the given GraphQL queries against the given GraphQL schema. A remote operation and the corresponding record types are generated for each given GraphQL query. The generated Ballerina client can be used to execute queries (i.e., that belong to one of the operation types, `query` or `mutation`) on the relevant GraphQL API through the generated remote operations.
 
 Also, you can generate multiple clients using multiple GraphQL documents or generate multiple Ballerina modules per GraphQL API endpoint. For information, see [Advanced use cases](/learn/graphql-client-tool/#advanced-use-cases).
 
 ## Generate a client from a GraphQL config
 
-> **Prerequisites:** Install the [GraphQL Foundation VSCode plugin](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) and the latest [Ballerina Swan Lake distribution](https://ballerina.io/downloads/).
+> **Prerequisites:** Install the <a href="https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql" target="_blank">GraphQL Foundation VSCode plugin</a> and the latest <a href="https://ballerina.io/downloads/" target="_blank">Ballerina Swan Lake distribution</a>.
 
 Follow the steps below to generate a Ballerina client from a GraphQL config file using the `graphql` CLI tool.
 
@@ -52,7 +52,7 @@ documents:
    - <File path to the GraphQL document with the GraphQL queries & mutations>
 ```
 
-The [GraphQL Foundation VSCode plugin](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) requires a GraphQL config file at the root level or in a parent-level directory. The Ballerina GraphQL client tool supports only the standard `graphql.config.yaml` format as input. For more information, see the [GraphQL config](https://www.graphql-config.com/docs/user/user-usage).
+The GraphQL Foundation VSCode plugin requires a GraphQL config file at the root level or in a parent-level directory. The Ballerina GraphQL client tool supports only the standard `graphql.config.yaml` format as input. For more information, see the <a href="https://www.graphql-config.com" target="_blank">GraphQL config</a>.
 
 >**Note:** If the GraphQL API is secured, add the extensions section in the GraphQL config file with the relevant tokens and headers. In this scenario, it is mandatory to configure the schema section with the web URL of the GraphQL schema as shown below.
 
@@ -71,7 +71,7 @@ extensions:
 
 Add the GraphQL queries to the GraphQL document file (i.e., `query-country.graphql`). 
 
-For example, the `query-country.graphql` file will have the content below.
+For example, the `query-country.graphql` file have the content below.
 
 ```graphql
 ## Add the queries and mutations here.
@@ -83,7 +83,7 @@ query countryByCode($code: ID!) {
 }
 ```
 
-You can validate and execute the GraphQL queries using the [GraphQL Foundation VSCode plugin](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql).
+You can validate and execute the GraphQL queries using the >GraphQL Foundation VSCode plugin.
 
 >**Note:** You are required to give a query name for each query. This name is used as the corresponding remote operation name in the generated client. 
 
@@ -91,7 +91,7 @@ You can validate and execute the GraphQL queries using the [GraphQL Foundation V
 
 If you want to generate the Ballerina client for a given GraphQL document, use the command below.
 
-```bash
+```
 bal graphql -i graphql.config.yaml
 ```
 
@@ -101,7 +101,7 @@ This generates the Ballerina sources (i.e., the three Ballerina files below) fro
 2. `utils.bal` - contains all the utility methods related to the client stub
 3. `types.bal`- contains all the Ballerina data types extracted from the GraphQL schema (SDL)
 
-The example above will generate the client file below.
+The example above generates the client file below.
 
 ```ballerina
 import ballerina/http;
@@ -125,7 +125,7 @@ public isolated client class QuerycountryClient {
 
 In general you can use the command format given below.
 
-```bash
+```
 bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <output-location> 
 ```
 
@@ -159,7 +159,7 @@ You can also use the `graphql` CLI tool to generate a Ballerina module. For more
 
 ### Generate multiple clients from a GraphQL config
 
-Follow the steps below to generate multiple Ballerina clients from a GraphQL config file configured with a GraphQL schema (SDL) and multiple GraphQL documents using the `graphql` CLI tool. Each document will generate a separate Ballerina client.
+Follow the steps below to generate multiple Ballerina clients from a GraphQL config file configured with a GraphQL schema (SDL) and multiple GraphQL documents using the `graphql` CLI tool. Each document generates a separate Ballerina client.
 
 1. Create a Ballerina package. For more information, see [Package commands](/learn/cli-documentation/cli-commands/#package-commands).
 
@@ -176,19 +176,19 @@ Follow the steps below to generate multiple Ballerina clients from a GraphQL con
 
 If you want to generate multiple Ballerina clients for a given set of GraphQL documents, use the command below.
 
-```bash
+```
 bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <output-location> 
 ```
 
-This generates a separate Ballerina client for each GraphQL document with remote operations corresponding to each GraphQL query/mutation in the GraphQL document (`.graphql document`). The generated sources will be written into the same directory from which the command is executed (i.e., the Ballerina package root directory). For example,
+This generates a separate Ballerina client for each GraphQL document with remote operations corresponding to each GraphQL query/mutation in the GraphQL document (`.graphql document`). The generated sources are written into the same directory from which the command is executed (i.e., the Ballerina package root directory). For example,
 
-```bash
+```
 bal graphql -i graphql.config.yaml
 ```
 
 This generates the Ballerina sources (i.e., the Ballerina files below) from the given GraphQL config.
 
-1. `<document_name>_client.bal` - contains the Ballerina client corresponding to each GraphQL document (each GraphQL document will generate a separate Ballerina client file.)
+1. `<document_name>_client.bal` - contains the Ballerina client corresponding to each GraphQL document (each GraphQL document generates a separate Ballerina client file.)
 2. `utils.bal` - contains all the utility methods related to the client stub
 3. `types.bal`- contains all the Ballerina data types extracted from the GraphQL schema (SDL)
 
@@ -198,7 +198,7 @@ You can also use the `graphql` CLI command to generate a Ballerina module. For m
 
 ### Generate multiple modules from a GraphQL config
 
-Follow the steps below to generate multiple Ballerina modules from a GraphQL config file configured with multiple GraphQL projects using the `graphql` CLI tool. Each project will generate a separate Ballerina module. This enables you to work with multiple GraphQL APIs by configuring each GraphQL API endpoint under a separate project.
+Follow the steps below to generate multiple Ballerina modules from a GraphQL config file configured with multiple GraphQL projects using the `graphql` CLI tool. Each project generates a separate Ballerina module. This enables you to work with multiple GraphQL APIs by configuring each GraphQL API endpoint under a separate project.
 
 1. Create a Ballerina package. For more information, see [Package commands](/learn/cli-documentation/cli-commands/#package-commands).
 
@@ -228,19 +228,19 @@ Follow the steps below to generate multiple Ballerina modules from a GraphQL con
 
 If you want to generate multiple Ballerina modules for a given set of GraphQL projects, use the command below.
 
-```bash
+```
 bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <output-location> 
 ```
 
-This generates a separate Ballerina module for each GraphQL project. The generated sources will be written into individual modules in the Ballerina package. For example,
+This generates a separate Ballerina module for each GraphQL project. The generated sources are written into individual modules in the Ballerina package. For example,
 
-```bash
+```
 bal graphql -i graphql.config.yaml
 ```
 
 This generates a separate Ballerina module (with the project name configured) for each GraphQL project in the GraphQL config. This also generates the Ballerina sources (i.e., the Ballerina files below) inside each module.
 
-1. `<document_name>_client.bal` - contains the Ballerina client corresponding to each GraphQL document (each GraphQL document will generate a separate Ballerina client file.)
+1. `<document_name>_client.bal` - contains the Ballerina client corresponding to each GraphQL document (each GraphQL document generates a separate Ballerina client file.)
 2. `utils.bal` - contains all the utility methods related to the client stub
 3. `types.bal`- contains all the Ballerina data types extracted from the GraphQL schema (SDL)
 

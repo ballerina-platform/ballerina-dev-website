@@ -24,7 +24,7 @@ The Ballerina Swan Lake Alpha3 release includes the language features planned fo
 
 ### Updating Ballerina
 
-If you are already using Ballerina, you can directly update your distribution to Ballerina Swan Lake Alpha3 using the [Ballerina update tool](/learn/tooling-guide/cli-tools/update-tool/). To do this, first, execute the command below to get the update tool updated to its latest version. 
+If you are already using Ballerina, you can directly update your distribution to Ballerina Swan Lake Alpha3 using the [Ballerina update tool](/learn/cli-documentation/update-tool/). To do this, first, execute the command below to get the update tool updated to its latest version. 
 
 > `bal update`
 

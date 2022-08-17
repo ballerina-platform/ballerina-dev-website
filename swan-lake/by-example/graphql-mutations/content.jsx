@@ -364,7 +364,10 @@ export default function GraphqlMutations() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Context" href="/learn/by-example/graphql-context">
+          <Link
+            title="Subscriptions"
+            href="/learn/by-example/graphql-subscriptions"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -373,7 +376,7 @@ export default function GraphqlMutations() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Context
+                  Subscriptions
                 </span>
               </div>
               <svg

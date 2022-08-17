@@ -1424,8 +1424,16 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Interceptors",
-        "url": "http-interceptors",
+        "name": "Request Interceptors",
+        "url": "http-request-interceptors",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Response Interceptors",
+        "url": "http-response-interceptors",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1520,6 +1528,14 @@
       {
         "name": "Mutations",
         "url": "graphql-mutations",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Subscriptions",
+        "url": "graphql-subscriptions",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2888,6 +2904,20 @@
       {
         "name": "Record to XML conversion",
         "url": "xml-from-record-conversion",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Constraint",
+    "column": 3,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Constraint validations",
+        "url": "constraint-validations",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false

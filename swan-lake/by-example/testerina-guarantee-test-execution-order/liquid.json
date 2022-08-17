@@ -1,6 +1,6 @@
 {
   "title": "Guarantee test execution order",
-  "description": "",
+  "description": "The `dependsOn` attribute can be used to define a list of functions that the test ",
   "keywords": [],
   "permalink": "/learn/by-example/testerina-guarantee-test-execution-order",
   "active": "testerina-guarantee-test-execution-order",

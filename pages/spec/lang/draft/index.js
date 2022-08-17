@@ -22,6 +22,7 @@ import { Container, Col, Row } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 import Link from 'next/link';
 import timestamp from 'time-stamp';
+import Head from 'next/head';
 
 
 import Layout from '../../../../layouts/LayoutSpec';
@@ -33,7 +34,9 @@ export default function PostPage() {
 
   return (
     <>
-
+      <Head>
+        <title>Ballerina spec - draft build</title>
+      </Head>
       <Layout>
         <Col xs={12} className='mdContent langDraft'>
           <Container>

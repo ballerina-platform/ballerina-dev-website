@@ -58,7 +58,7 @@ export default function RedirectMessage(props) {
 
   if (global.location.pathname.indexOf('by-example') > 0) {
     pageBody = <>
-      <meta charset="utf-8" />
+      <meta charSet="utf-8" />
       <title>Redirecting&hellip;</title>
       <link rel="canonical" href="/learn/by-example/" />
       <script>location=&quot;/learn/by-example/&quot;</script>

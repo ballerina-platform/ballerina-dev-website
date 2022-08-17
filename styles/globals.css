@@ -774,6 +774,9 @@ ul.eventsTabs {
   }
 }
 
+.DocSearch-Container {
+  z-index: 1021 !important;
+}
 
 .home .highlight {
   font-size: 12px !important;

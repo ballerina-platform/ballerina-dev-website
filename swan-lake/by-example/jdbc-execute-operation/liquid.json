@@ -1,0 +1,19 @@
+{
+  "title": "DML and DDL operation",
+  "description": "This BBE on the use of the JDBC client with the DDL and DML operations in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "jdbc",
+    "insert",
+    "update",
+    "delete"
+  ],
+  "permalink": "/learn/by-example/jdbc-execute-operation",
+  "active": "jdbc-execute-operation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/jdbc-execute-operation",
+    "/swan-lake/learn/by-example/jdbc-execute-operation.html"
+  ]
+}

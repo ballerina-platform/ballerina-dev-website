@@ -1,0 +1,17 @@
+{
+  "title": "Function values",
+  "description": "This BBE demonstrates function values, type, and syntax for writing function values. ",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "functions",
+    "lambda"
+  ],
+  "permalink": "/learn/by-example/function-values",
+  "active": "function-values",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/function-values",
+    "/swan-lake/learn/by-example/function-values.html"
+  ]
+}

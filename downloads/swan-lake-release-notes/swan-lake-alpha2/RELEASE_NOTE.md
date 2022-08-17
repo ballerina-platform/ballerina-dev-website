@@ -41,11 +41,11 @@ This Alpha2 release includes the language features planned for the Ballerina Swa
 
 ### Updating Ballerina
 
-You can use the [update tool](/learn/keeping-ballerina-up-to-date/) to update to Ballerina Swan Lake Alpha2 as follows.
+You can use the [update tool](/learn/cli-documentation/update-tool/) to update to Ballerina Swan Lake Alpha2 as follows.
 
 #### For existing users
 
-If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
+If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](/learn/cli-documentation/update-tool/). To do this, first, execute the command below to get the update tool updated to its latest version. 
 
 > `bal update`
 

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+      .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+       .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+     <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.0.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>     
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="html-template-resources/styles/css/font.css">
+    <script src="html-template-resources/semantic.min.js"></script>
+    <script src="syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+    <div class="navi-wrapper" > 
+      <div class="navi-wrapper-content">
+          <a href="index.html">
+    <img class="logo" src="html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+      </div>
+    </div>
+     <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="index.html">
+    <img class="logo" src="html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="html-template-resources/images/menu.svg">
+    </a>
+</div>
+      <div class="main-wrapper">
+        <h1> <a class="breadcrumb-home" href="index.html">
+    <img class="breadcrumb-home-icon" src="html-template-resources/images/home.svg">
+</a> Modules</h1>
+        <div>
+          <table class="ui table">
+             
+            <tbody>
+             
+              <tr>
+                <td class="module-title modules"><a href="auth/index.html">auth</a></td>
+                <td class="module-desc"><p>This module provides default authentication provider configurations that can be extended to create new authentication providers.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="cache/index.html">cache</a></td>
+                <td class="module-desc"><p>This module offers a cache that supports time-based eviction, and size-based eviction.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="config/index.html">config</a></td>
+                <td class="module-desc"><p>This module provides the Config API to read configurations from environment variables, TOML files, and command-line parameters and build a consolidated set of configurations.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="crypto/index.html">crypto</a></td>
+                <td class="module-desc"><p>This module provides the necessary utilities that are required to hash content using different hashing mechanisms and algorithms.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="docker/index.html">docker</a></td>
+                <td class="module-desc"><p>This module offers an annotation based docker extension implementation for ballerina.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="encoding/index.html">encoding</a></td>
+                <td class="module-desc"><p>This module provides the necessary utilities that are required to encode and decode content using different encoding mechanisms and algorithms.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="file/index.html">file</a></td>
+                <td class="module-desc"><p>This module contains functions to perform file system based operations such as create, delete, rename the
+file/directory and retrieve metadata of the file.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="filepath/index.html">filepath</a></td>
+                <td class="module-desc"><p>This module provides the utility functions for manipulating the file path in a way that is compatible with
+the target operating system.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="grpc/index.html">grpc</a></td>
+                <td class="module-desc"><p>This module contains functions to support gRPC protocol based communication. gRPC is a framework developed by Google
+to support the RPC (Remote Procedure Call) protocol. The gRPC protocol is layered over HTTP/2. This protocol only supports client-initiated communication.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="http/index.html">http</a></td>
+                <td class="module-desc"><p>This module provides an implementation for connecting and interacting with HTTP, HTTP2, and WebSocket endpoints. The module facilitates two types of endpoints as ‘Client’ and ‘Listener’.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="io/index.html">io</a></td>
+                <td class="module-desc"><p>This module is designed to support input and output operations via channels in a canonical way, either in a blocking,
+or non-blocking manner.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="istio/index.html">istio</a></td>
+                <td class="module-desc"><p>This module offers an annotation based Istio extension implementation for ballerina.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="java/index.html">java</a></td>
+                <td class="module-desc"><p>This module provides the API for Java interoperability in Ballerina. It includes a set of Ballerina annotations with which Java constructors, methods and fields can provide implementations to Ballerina functions with external function bodies.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="java.arrays/index.html">java.arrays</a></td>
+                <td class="module-desc"><p>This module provides APIs to create new Java array instances, get elements from arrays, set elements, etc.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="java.jdbc/index.html">java.jdbc</a></td>
+                <td class="module-desc"><p>This module provides the functionality required to access and manipulate data stored in any type of relational database
+that is accessible via Java Database Connectivity (JDBC).</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="jsonutils/index.html">jsonutils</a></td>
+                <td class="module-desc"><p>This module provides utility functions to manipulate built-in <code>json</code> data type.
+It provides APIs to convert an <code>xml</code> to a <code>json</code>, or convert a <code>table</code> to a <code>json</code>.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="jwt/index.html">jwt</a></td>
+                <td class="module-desc"><p>This module provides a inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="kafka/index.html">kafka</a></td>
+                <td class="module-desc"><p>This module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.
+This module supports kafka 1.x.x and 2.0.0 versions.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="kubernetes/index.html">kubernetes</a></td>
+                <td class="module-desc"><p>This module offers an annotation based Kubernetes extension implementation for ballerina.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.array/index.html">lang.array</a></td>
+                <td class="module-desc"><p>This module provides lang library list operations defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.decimal/index.html">lang.decimal</a></td>
+                <td class="module-desc"><p>This module provides lang library operations on <code>decimal</code> values defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.error/index.html">lang.error</a></td>
+                <td class="module-desc"><p>This module provides lang library operations on <code>error</code> values defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.float/index.html">lang.float</a></td>
+                <td class="module-desc"><p>This module provides lang library operations on <code>float</code> values defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.future/index.html">lang.future</a></td>
+                <td class="module-desc"><p>This module provides lang library operations on <code>future</code> values defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.int/index.html">lang.int</a></td>
+                <td class="module-desc"><p>This module provides lang library operations on <code>int</code> values defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.map/index.html">lang.map</a></td>
+                <td class="module-desc"><p>This module provides lang library map operations defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.object/index.html">lang.object</a></td>
+                <td class="module-desc"><p>This module defines the shape expected from all listeners as defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.stream/index.html">lang.stream</a></td>
+                <td class="module-desc"><p>This module provides lang library operations on <code>stream</code> values defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.string/index.html">lang.string</a></td>
+                <td class="module-desc"><p>This module provides lang library string operations defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.table/index.html">lang.table</a></td>
+                <td class="module-desc"><p>This module provides lang library operations on <code>table</code> values defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.typedesc/index.html">lang.typedesc</a></td>
+                <td class="module-desc"><p>This module provides lang library operations on <code>typedesc</code> values defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.value/index.html">lang.value</a></td>
+                <td class="module-desc"><p>This module provides lang library operations common to all values defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="lang.xml/index.html">lang.xml</a></td>
+                <td class="module-desc"><p>This module provides lang library operations on <code>xml</code> values defined by the language specification 2019R3.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="log/index.html">log</a></td>
+                <td class="module-desc"><p>This module provides a basic API for logging.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="math/index.html">math</a></td>
+                <td class="module-desc"><p>This module provides functions to perform fixed-precision integer arithmetic and fixed-precision decimal arithmetic. It includes functions to get the absolute, cosine, sine, root, tangent, and more for a given value.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="mime/index.html">mime</a></td>
+                <td class="module-desc"><p>This module provides functions to encapsulate multiple body parts, such as attachments in a single message. The
+communication of such messages follow the MIME (Multipurpose Internet Mail Extensions) specification as specified in
+the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="nats/index.html">nats</a></td>
+                <td class="module-desc"><p>This module provides the capability to connect with NATS and NATS Streaming servers and performs the
+following functionality.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="oauth2/index.html">oauth2</a></td>
+                <td class="module-desc"><p>This module provides an inbound and outbound OAuth2 authentication provider, which can be used to authenticate the provided credentials against an introspection endpoint and authenticate with an external endpoint.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="observe/index.html">observe</a></td>
+                <td class="module-desc"><p>This module provides apis for observing Ballerina services.
+Ballerina supports Observability out of the box. This module provides user api's to make Ballerina Observability more flexible for the user.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="openapi/index.html">openapi</a></td>
+                <td class="module-desc"><p>This module provides the following code generation capabilities.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="openshift/index.html">openshift</a></td>
+                <td class="module-desc"><p>This module offers an annotation based OpenShift extension implementation for ballerina.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="rabbitmq/index.html">rabbitmq</a></td>
+                <td class="module-desc"><p>This module contains functionality to support messaging with RabbitMQ broker (AMQP 0-9-1).
+<a href="https://www.rabbitmq.com/">RabbitMQ</a> is one of the most popular open-source enterprise messaging systems,
+modeled on the Advanced Message Queuing Protocol (AMQP) standard.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="reflect/index.html">reflect</a></td>
+                <td class="module-desc"><p>This module provides utility methods for obtaining reflective information about the Ballerina runtime.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="runtime/index.html">runtime</a></td>
+                <td class="module-desc"><p>This module provides functions to interact with the runtime, the invocation context and to manage errors.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="socket/index.html">socket</a></td>
+                <td class="module-desc"><p>This module provides an implementation for connecting to a remote socket server or acts as a server for an incoming socket request. The module facilitates two types of endpoints called <code>Client</code> and <code>Listener</code>.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="streams/index.html">streams</a></td>
+                <td class="module-desc"><p>The Streams module provides the stream processing capabilities to Ballerina:</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="stringutils/index.html">stringutils</a></td>
+                <td class="module-desc"><p>This module provides utility functions to manipulate built-in <code>string</code> data type.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="system/index.html">system</a></td>
+                <td class="module-desc"><p>This module provides functions to retrieve information about the system and the current users of the system.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="task/index.html">task</a></td>
+                <td class="module-desc"><p>This module provides the functionality to configure and manage Task Listeners and Task Schedulers.
+Task Listeners and Task Schedulers can be used to perform tasks periodically.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="test/index.html">test</a></td>
+                <td class="module-desc"><p>This module allow developers to write testable code.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="time/index.html">time</a></td>
+                <td class="module-desc"><p>This module provides implementations related to time, date, time zones, and durations.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="transactions/index.html">transactions</a></td>
+                <td class="module-desc"><p>This module provides Ballerina transaction manager implementation.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="websub/index.html">websub</a></td>
+                <td class="module-desc"><p>This module contains an implementation of the W3C <a href="https://www.w3.org/TR/websub/"><strong>WebSub</strong></a> recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="xmlutils/index.html">xmlutils</a></td>
+                <td class="module-desc"><p>This module provides utility functions to manipulate built-in <code>xml</code> data type.
+It provides APIs to convert a <code>json</code> to an <code>xml</code>, or convert a <code>table</code> to an <code>xml</code>.</p>
+</td>
+              </tr>
+              
+              <tr>
+                <td class="module-title modules"><a href="xslt/index.html">xslt</a></td>
+                <td class="module-desc"><p>This module provides a function to transform the XML content to another XML/HTML/plain text using XSL transformations.</p>
+</td>
+              </tr>
+              
+            </tbody>
+            
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+</body>
+</html>

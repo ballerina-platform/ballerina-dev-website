@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides the Config API to read configurations from environment variables, TOML files, and command-line parameters and build a consolidated set of configurations.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,config">
+
+    <title>API Docs - ballerina/config</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../config/index.html" onclick="menuLinkClick()">
+            <h3>config</h3>
+        </a>
+    
+    <ul>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../config/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">config</span>
+                    
+                </h1>
+                    <h2>Module Overview</h2>
+<p>This module provides the Config API to read configurations from environment variables, TOML files, and command-line parameters and build a consolidated set of configurations.</p>
+<p>The precedence order for configuration lookup is as follows:</p>
+<ol>
+<li>CLI arguments (used with the --)</li>
+<li>Environment variables</li>
+<li>Configuration files in the TOML format</li>
+</ol>
+<p>This configuration resolution happens at the start of the program execution. Configurations can be set programmatically as well.</p>
+<p>The Config API provides the capability to feed sensitive data (e.g., passwords) to Ballerina programs securely by encrypting them.</p>
+<h3>Setting configurations</h3>
+<p>To specify a configuration file explicitly, the <code>--b7a.config.file=&lt;path to configuration file&gt;</code> property can be used. If
+this property is not set when
+running a project, Ballerina looks for a <code>ballerina.conf</code> file in the project root. When running a single file or a
+<code>.jar</code>, it's picked from the same directory in which the <code>.jar</code> or source resides. The path to the configuration
+file can either be an absolute or a relative path.</p>
+<pre><code class="language-sh">ballerina run my-program.bal --b7a.config.file=/path/to/conf/file/custom-config-file-name.conf 
+</code></pre>
+<p>A configuration file should conform to the TOML format. Ballerina only supports the following features of TOML: value types (string, int, float and boolean), tables, and nested tables.
+Given below is a sample:</p>
+<pre><code class="language-toml">[b7a.http.tracelog]
+console=true
+path=&quot;./trace.log&quot;
+
+[b7a.http.accesslog]
+console=true
+path=&quot;./access.log&quot;
+</code></pre>
+<p>A key given inside a bracket forms a namespace. Any configuration that is specified between two such keys belongs to the namespace of the first of these keys. To access a configuration in a namespace, the fully qualified key should be given (e.g., <code>b7a.http.tracelog.path</code>).</p>
+<p>The following types can be given through a configuration file: <code>string</code>, <code>int</code>, <code>float</code>, and <code>boolean</code>. If the configuration value is not an <code>int</code>, <code>float</code>, or a <code>boolean</code>, it is considered a <code>string</code> and should always be quoted.</p>
+<p>The same configs can be set using CLI parameters as follows.</p>
+<pre><code class="language-bash">ballerina run my-program.bal --b7a.http.tracelog.console=true --b7a.http.tracelog.path=./trace.log
+  --b7a.http.accesslog.console=true --b7a.http.accesslog.path=./access.log
+</code></pre>
+<p>Configurations in a file can be overridden by environment variables. To override a particular configuration, an environment variable that matches the configuration key must be set. As periods are not allowed in environment variables, periods in a configuration key should be replaced by underscores.</p>
+<pre><code class="language-bash">// In Linux and Mac.
+$ export b7a_http_tracelog_path=”./trace.log”
+$ export b7a_http_accesslog_path=”./access.log”
+
+// In Windows.
+$ set(x) b7a_http_tracelog_path=”./trace.log”
+$ set(x) b7a_http_accesslog_path=”./access.log”
+</code></pre>
+<p>If the configurations need to be shared during runtime, they can be set using the <code>setConfig()</code> function.</p>
+<pre><code class="language-ballerina">config:setConfig(&quot;john.country&quot;, &quot;USA&quot;);
+</code></pre>
+<h3>Reading configurations</h3>
+<p>The API provides functions to read configurations in their original type. Check function descriptors for example usages.</p>
+<p>A set of configurations belonging to a particular namespace can be retrieved as a <code>map</code> using the <code>getAsMap()</code> function. Here is an example:</p>
+<pre><code class="language-toml">[b7a.http.tracelog]
+console=true
+path=&quot;./trace.log&quot;
+host=&quot;localhost&quot;
+port=5757
+
+[b7a.http.accesslog]
+console=true
+path=&quot;./access.log&quot;
+</code></pre>
+<p>The configurations for HTTP trace logs can be retrieved as a <code>map</code> as follows:</p>
+<pre><code class="language-ballerina">// Reads a configuration section as a map.
+// Here, the map’s key-value pairs represent config key-value pairs.
+map&lt;anydata&gt; serverAlphaMap  = config:getAsMap(&quot;b7a.http.tracelog&quot;);
+</code></pre>
+<h3>Securing configuration values</h3>
+<p>Sensitive values can be encrypted using the <code>encrypt</code> command as follows:</p>
+<pre><code class="language-sh">$ ballerina encrypt
+Enter value: 
+
+Enter secret: 
+
+Re-enter secret to verify: 
+
+Add the following to the runtime config:
+@encrypted:{JqlfWNWKM6gYiaGnS0Hse1J9F/v48gUR0Kxfa5gwjcM=}
+
+Or add the following to the runtime command-line:
+-e&lt;param&gt;=@encrypted:{JqlfWNWKM6gYiaGnS0Hse1J9F/v48gUR0Kxfa5gwjcM=}
+</code></pre>
+<p>This encrypted value can then be placed in a configuration file or provided as a CLI parameter.</p>
+<pre><code class="language-bash">[admin]
+password=”@encrypted:{JqlfWNWKM6gYiaGnS0Hse1J9F/v48gUR0Kxfa5gwjcM=}”
+</code></pre>
+<h3>Reading config files with encrypted values</h3>
+<p>When trying to run a Ballerina program with a configuration file or CLI parameters that contain encrypted values, Ballerina will first check to see if the <code>b7a.config.secret</code> configuration is set. This configuration is used to set the path to a file containing the secret required to decrypt the configurations. If it is set, the secret is read, and the secret file is deleted.</p>
+<p>If a secret file is not provided, the user is prompted to enter the secret. Values are decrypted only on demand when an encrypted value is looked up using the <code>getAsString()</code> function.</p>
+<pre><code class="language-bash">$ ballerina run program.bal 
+ballerina: enter secret for config value decryption:
+</code></pre>
+<p><strong>Note</strong>: <em>The same config file cannot contain values that are encrypted using different secrets.</em></p>
+
+
+            
+
+            
+
+            
+
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="contains" title="contains">
+                                <a class="functions " href="functions.html#contains">contains</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Checks whether the given key is in the configuration registry.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getAsArray" title="getAsArray">
+                                <a class="functions " href="functions.html#getAsArray">getAsArray</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Retrieves the specified configuration value as an array.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getAsBoolean" title="getAsBoolean">
+                                <a class="functions " href="functions.html#getAsBoolean">getAsBoolean</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Retrieves the specified configuration value as a boolean.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getAsFloat" title="getAsFloat">
+                                <a class="functions " href="functions.html#getAsFloat">getAsFloat</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Retrieves the specified configuration value as a float.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getAsInt" title="getAsInt">
+                                <a class="functions " href="functions.html#getAsInt">getAsInt</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Retrieves the specified configuration value as an int.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getAsMap" title="getAsMap">
+                                <a class="functions " href="functions.html#getAsMap">getAsMap</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Retrieves the specified configuration value as a map.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getAsString" title="getAsString">
+                                <a class="functions " href="functions.html#getAsString">getAsString</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Retrieves the specified configuration value as a string.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="setConfig" title="setConfig">
+                                <a class="functions " href="functions.html#setConfig">setConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Sets the specified key/value pair as a configuration.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+
+            
+
+            
+
+            
+        </div>
+    </div>
+
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

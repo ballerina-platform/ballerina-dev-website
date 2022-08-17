@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides APIs for handle caching in Ballerina. It consists of a default implementation based on the map data structure. It also provides a default cache eviction policy object, which is based on the LRU eviction algorithm.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,cache">
+
+    <title>API Docs - ballerina/cache</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../cache/index.html" onclick="menuLinkClick()">
+            <h3>cache</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../cache/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../cache/index.html#objects" onclick="menuLinkClick()">Objects</a>
+            </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="constants" href="../cache/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="errors" href="../cache/index.html#errors" onclick="menuLinkClick()">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">cache</span>
+                    
+                </h1>
+                    <h2>Module Overview</h2>
+<p>This module provides APIs for handle caching in Ballerina. It consists of a default implementation based on the map data structure. It also provides a default cache eviction policy object, which is based on the LRU eviction algorithm.</p>
+<p>The <code>cache:AbstractCache</code> object has the common APIs for the caching functionalities. Custom implementations of the cache can be done with different data storages like file, database, etc. with the structural equivalency to the <code>cache:AbstractCacheObject</code> object.</p>
+<pre><code class="language-ballerina">public type AbstractCache abstract object {
+    public function put(string key, any value, int maxAgeInSeconds) returns Error?;
+    public function get(string key) returns any|Error;
+    public function invalidate(string key) returns Error?;
+    public function invalidateAll() returns Error?;
+    public function hasKey(string key) returns boolean;
+    public function keys() returns string[];
+    public function size() returns int;
+    public function capacity() returns int;
+};
+</code></pre>
+<p>The <code>cache:AbstractEvictionPolicy</code> object has the common APIs for the cache eviction functionalities. Custom implementations of the eviction policy can be done by maintaining the <code>cache:LinkedList</code> data structure according to the eviction algorithm.</p>
+<pre><code class="language-ballerina">public type AbstractEvictionPolicy abstract object {
+    public function get(Node node);
+    public function put(Node node);
+    public function remove(Node node);
+    public function replace(Node newNode, Node oldNode);
+    public function clear();
+    public function evict() returns Node?;
+};
+</code></pre>
+<p>The Ballerina Cache module provides the <code>cache:Cache</code> object, which is a <code>map</code> data structure based implementation of the <code>cache:AbstractCache</code> object. It is not recommended to insert <code>()</code> as the value of the cache since it doesn't make sense to cache a nil. Also, it provides the <code>cache:LruEvictionPolicy</code> object, which is based on the LRU eviction algorithm.</p>
+<p>While initializing the <code>cache:Cache</code>, you need to pass the following parameters as the cache configurations.</p>
+<ul>
+<li><code>capacity</code> - Maximum number of entries allowed for the cache</li>
+<li><code>evictionPolicy</code> - The policy to define the cache eviction algorithm</li>
+<li><code>evictionFactor</code> - The factor by which the entries will be evicted once the cache is full</li>
+<li><code>defaultMaxAgeInSeconds</code> - Freshness time of all the cache entries in seconds. This value can be overwritten by the
+<code>maxAgeInSeconds</code> property when inserting an entry to the cache. '-1' means the entries are valid forever.</li>
+<li><code>cleanupIntervalInSeconds</code> - The interval time of the timer task, which cleans the cache entries
+This is an optional parameter.</li>
+</ul>
+<p>For a better user experience, the above-mentioned configuration is initialized with the below default values:</p>
+<pre><code class="language-ballerina">public type CacheConfig record {|
+    int capacity = 100;
+    AbstractEvictionPolicy evictionPolicy = new LruEvictionPolicy();
+    float evictionFactor = 0.25;
+    int defaultMaxAgeInSeconds = -1;
+    int cleanupIntervalInSeconds?;
+|};
+</code></pre>
+<p>There are 2 mandatory scenarios and 1 optional scenario in which a cache entry gets removed from the cache and maintains the freshness of the cache entries. The 2 independent factors (i.e., eviction policy and freshness time of the cache entry) governs the 3 scenarios.</p>
+<ol>
+<li>When using the <code>get</code> API, if the returning cache entry has expired, it gets removed.</li>
+<li>When using the <code>put</code> API, if the cache size has reached its capacity, the number of entries get removed based on the 'eviction policy' and the 'eviction factor'.</li>
+<li>If <code>cleanupIntervalInSeconds</code> (optional property) is configured, the timer task will remove the expired cache entries based on the configured interval.</li>
+</ol>
+<p>The main benefit of using the <code>cleanupIntervalInSeconds</code> (optional) property is that the developer can optimize the memory usage while adding some additional CPU costs and vice versa. The default behaviour is the CPU-optimized method.</p>
+<p>The concept of the default <code>cache:Cache</code> object is based on the Ballerina <code>map</code> data structure and the <code>cache:LinkedList</code> data structure. The key of the map entry would be a string and the value of the map entry would be a node of the linked list.</p>
+<pre><code class="language-ballerina">public type Node record {|
+    any value;
+    Node? prev = ();
+    Node? next = ();
+|};
+</code></pre>
+<p>While using the cache, a <code>cache:CacheEntry</code> record will be created and added as the value of the <code>cache:Node</code> record. The <code>cache:Node</code> record will be inserted into the map data structure with the provided string key.</p>
+<pre><code class="language-ballerina">type CacheEntry record {|
+    string key;
+    any data;
+    int expTime;
+|};
+</code></pre>
+<p>A linked list is used for the eviction of the cache. According to the user-configured eviction policy, when inserting / updating / retrieving cache entries, the linked list will be updated. Therefore, when an eviction happens, cache entries can be removed efficiently without iterating the complete map data structure.</p>
+<p><strong>Example:</strong> If the eviction policy is LRU, the MRU item will always be the head of the linked list. When an eviction happens, nodes from the tail will be deleted without iterating the map.</p>
+<p>Furthermore, you can implement custom caching implementations based on different cache storage mechanisms (file, database. etc.) and different eviction policies (MRU, FIFO, etc.). Ballerina provides a &quot;map-based cache&quot; as the default cache implementation.</p>
+<p>For information on the operations, which you can perform with the cache module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see <a href="https://ballerina.io/1.2/learn/by-example/cache.html">Cache Example</a></p>
+
+
+            
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="CacheConfig" title="CacheConfig">
+                                <a class="records " href="records/CacheConfig.html">CacheConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents configurations for the <code>cache:Cache</code> object.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Record type to hold the details of an error.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Node" title="Node">
+                                <a class="records " href="records/Node.html">Node</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents a structure to keep data and references to the adjacent nodes of the linked list.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="AbstractCache" title="AbstractCache">
+                                <a class="objects " href="objects/AbstractCache.html">AbstractCache</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The <code>cache:AbstractCache</code> object is used for custom implementations of the Ballerina cache.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="AbstractEvictionPolicy" title="AbstractEvictionPolicy">
+                                <a class="objects " href="objects/AbstractEvictionPolicy.html">AbstractEvictionPolicy</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The <code>cache:AbstractEvictionPolicy</code> Ballerina  object is used for custom implementations of the eviction policy for a
+Ballerina cache object.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Cache" title="Cache">
+                                <a class="objects " href="objects/Cache.html">Cache</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The <code>cache:Cache</code> object, which is used for all the cache-related operations.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="LinkedList" title="LinkedList">
+                                <a class="objects " href="objects/LinkedList.html">LinkedList</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The <code>cache:LinkedList</code> object consists operations of <code>LinkedList</code> data structure which are related
+to LRU eviction algorithm</p>
+
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="LruEvictionPolicy" title="LruEvictionPolicy">
+                                <a class="objects " href="objects/LruEvictionPolicy.html">LruEvictionPolicy</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>The <code>cache:LruEvictionPolicy</code> object consists of the LRU eviction algorithm related operations based on a linked
+list data structure.
+                            </td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+
+            
+           
+
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CACHE_ERROR" title="CACHE_ERROR">
+                                <a class="constant " href="constants.html#CACHE_ERROR">CACHE_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the reason for the <code>cache:Error</code>.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="Error" title="Error">
+                                <a class="errors " href="errors.html#Error">Error</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the Cache error type with details.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

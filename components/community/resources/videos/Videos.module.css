@@ -1,0 +1,42 @@
+.fVideos {
+    padding: 30px;
+}
+
+.videos {
+    background-color: #e6eaeb5d;
+    padding: 30px;
+}
+
+.fVideos h2, .videos h2 {
+    font-size: 1.5rem;
+}
+
+.fVideos h4, .videos h4 {
+    font-size: 1.25rem;
+}
+
+.videoWrapper {
+    height:528px; 
+    overflow-y: scroll;
+}
+
+.videoInfo {
+    padding: 10px 0 10px 0;
+    margin: 0px 0px 10px 0;
+    border-bottom: 1px solid rgba(161, 161, 161, 0.5);
+}
+
+.videoInfo a {
+    color: #20b6b0;
+    text-decoration: none;
+}
+
+.videoInfo a:hover {
+    color: #57595d;
+    text-decoration: none;
+}
+
+.last {
+    border: none !important;
+}
+

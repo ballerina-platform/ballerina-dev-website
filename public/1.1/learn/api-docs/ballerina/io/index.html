@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="/js/jquery.min.js"></script>
+    <!-- BIO THEME START -->
+    <link rel="stylesheet" href="/css/latest-bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/js/latest-bootstrap.js"></script>
+
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+<style>
+        .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+
+
+</style>
+
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+    <style>
+        .line-numbers-wrap {
+            display: none;
+        }
+    </style>
+    <!-- BIO THEME END -->
+</head>
+
+
+<body class="cBallerina-io pushable">
+ <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.1.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="swan-lake" data-value="latest">Swan Lake</option>
+                                        <option value="1.2">v1.2</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../io/index.html">
+            <h3>io</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../io/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../io/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../io/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../io/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../io/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../io/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                
+                
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../io/index.html">
+            <h3>io</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../io/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../io/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../io/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../io/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../io/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../io/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">io</span>
+                    
+                </h1>
+                    <h2>Module Overview</h2>
+<p>This module is designed to support input and output operations via channels in a canonical way, either in a blocking,
+or non-blocking manner.</p>
+<p><img src="resources/package-architecture.svg" alt="architecture" /></p>
+<h2>Channels</h2>
+<p>A channel represents an I/O source or sink of some bytes, characters, or records that are opened for reading, or
+writing, respectively.</p>
+<h2>Byte channels</h2>
+<p>The most primitive channel is the <code>ByteChannel</code> which reads and writes 8-bit bytes.</p>
+<pre><code class="language-ballerina">// Open a file in read mode.
+io:ReadableByteChannel | io:Error readableChannel = io:openReadableFile(&quot;file.txt&quot;);
+
+// Here is how 100 bytes are read from the channel.
+if (readableChannel is io:ReadableByteChannel) {
+    byte[] | io:Error result = readableChannel.read(100);
+}
+
+// Open a file in write mode.
+io:WritableByteChannel | io:Error writableByteChannel = io:openWritableFile(&quot;file.txt&quot;);
+
+// Write some content to the beginning of the file.
+if (writableByteChannel is io:WritableByteChannel) {
+    string someContent = &quot;some cont&quot;;
+    byte[] content = someContent.toBytes();
+    int | io:Error writeResult = writableByteChannel.write(content, 0);
+}
+
+</code></pre>
+<h2>Character channels</h2>
+<p>The <code>CharacterChannel</code> is used to read and write characters. The charset encoding is specified when creating the
+<code>CharacterChannel</code>.</p>
+<pre><code class="language-ballerina">// Create a `ReadableCharacterChannel` from the `ReadableByteChannel`.
+io:ReadableCharacterChannel | io:Error readableCharChannel = 
+       new io:ReadableCharacterChannel(readableChannel, &quot;UTF-8&quot;);
+</code></pre>
+<p>If a <code>ReadableCharacterChannel</code> points to a JSON or XML source, it can be read and then written, directly into a variable of
+the respective type.</p>
+<pre><code class="language-ballerina">// Reading a JSON.
+json | io:Error result = readableCharChannel.readJson();
+</code></pre>
+<pre><code class="language-ballerina">// Reading an XML.
+xml | io:Error result = readableCharChannel.readXml();
+</code></pre>
+<pre><code class="language-ballerina">// Create a `WritableCharacterChannel` from the `WritableByteChannel`.
+io:WritableCharacterChannel | io:Error writableCharChannel = 
+            new io:WritableCharacterChannel(writableByteChannel, &quot;UTF-8&quot;);
+</code></pre>
+<pre><code class="language-ballerina">// Writing a JSON.
+json content = {fname: &quot;Jhon&quot;, lname: &quot;Doe&quot;, age: 40};
+var writeResult = writableCharChannel.writeJson(content);
+if (writeResult is io:Error) {
+    return writeResult;
+} else {
+    io:println(&quot;JSON content written successfully.&quot;);
+}
+</code></pre>
+<h2>Record channels</h2>
+<p>Ballerina also supports I/O for delimited records.</p>
+<pre><code class="language-ballerina">// Create a `ReadableTextRecordChannel` from the `ReadableCharacterChannel`.
+// Records are separated using a new line.
+// Fields of a record are separated using a comma.
+var readableRecordsChannel = 
+        new io:ReadableTextRecordChannel(readableCharChannel, fs = &quot;,&quot;, rs = &quot;\n&quot;);
+
+// Read few records.
+while (readableRecordsChannel.hasNext()) {
+    var result = readableRecordsChannel.getNext();
+    if (result is string[]) {
+        io:println(result); // Retrieved a record.
+    } else {
+        return result; // An IO error occurred when reading the records.
+    }
+}
+</code></pre>
+<p>A <code>.CSV</code> file can be read and written directly into a <code>CSVChannel</code>, as shown in this code snippet.</p>
+<pre><code class="language-ballerina">// Create a `ReadableCSVChannel` from the `ReadableCharacterChannel`.
+var readableCSVChannel = new io:ReadableCSVChannel(readableCharChannel);
+</code></pre>
+<p>Records of the <code>.CSV</code> file can read directly into a table of a matching type.</p>
+<pre><code class="language-ballerina">// First let’s define a type that matches a record in the CSV file.
+type Employee record {
+   string id;
+   string name;
+   float salary;
+};
+
+// Now read the CSV file as a table of Employees and compute total salary.
+float total = 0.0;
+var tableResult = readableCSVChannel.getTable(Employee);
+if (tableResult is table&lt;Employee&gt;) {
+    foreach var x in tableResult {
+      total = total + x.salary;
+    }
+    return total;
+} else {
+    return tableResult; //Return the error back to the caller
+}
+</code></pre>
+<h2>Data Channels</h2>
+<p>Ballerina supports performing data i/o operations</p>
+<p>Person object could be serialized into a file or a network socket in the following manner.</p>
+<pre><code class="language-ballerina">public type Person record {|
+    string name;
+    int age;
+    float income;
+    boolean isMarried;
+|};
+
+// Serialize record into binary.
+function serialize(Person p, io:WritableByteChannel byteChannel) {
+    io:WritableDataChannel dc = new io:WritableDataChannel(byteChannel);
+    var length = p.name.toBytes().length();
+    var lengthResult = dc.writeInt32(length);
+    var nameResult = dc.writeString(p.name, &quot;UTF-8&quot;);
+    var ageResult = dc.writeInt16(p.age);
+    var incomeResult = dc.writeFloat64(p.income);
+    var maritalStatusResult = dc.writeBool(p.isMarried);
+    var closeResult = dc.close();
+}
+
+// Deserialize record into binary.
+function deserialize(io:ReadableByteChannel byteChannel) returns Person {
+    Person person = {name: &quot;&quot;, age: 0, income: 0.0, isMarried: false};
+    int nameLength = 0;
+    string nameValue;
+    io:ReadableDataChannel dc = new io:ReadableDataChannel(byteChannel);
+    // Read 32 bit signed integer.
+    var int32Result = dc.readInt32();
+    if (int32Result is int) {
+        nameLength = int32Result;
+    } else {
+        log:printError(&quot;Error occurred while reading name length&quot;, int32Result);
+    }
+    // Read UTF-8 encoded string represented through specified amount of bytes.
+    var strResult = dc.readString(nameLength, &quot;UTF-8&quot;);
+    if (strResult is string) {
+        person.name = strResult;
+    } else {
+        log:printError(&quot;Error occurred while reading name&quot;, strResult);
+    }
+    // Read 16 bit signed integer.
+    var int16Result = dc.readInt16();
+    if (int16Result is int) {
+        person.age = int16Result;
+    } else {
+        log:printError(&quot;Error occurred while reading age&quot;, int16Result);
+    }
+    // Read 64 bit signed float.
+    var float64Result = dc.readFloat64();
+    if (float64Result is float) {
+        person.income = float64Result;
+    } else {
+        log:printError(&quot;Error occurred while reading income&quot;, float64Result);
+    }
+    // Read boolean.
+    var boolResult = dc.readBool();
+    if (boolResult is boolean) {
+        person.isMarried = boolResult;
+    } else {
+        log:printError(&quot;Error occurred while reading marital status&quot;, boolResult);
+    }
+    // Finally close the data channel.
+    var closeResult = dc.close();
+    return person;
+}
+</code></pre>
+
+
+            
+
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records"
+                                   href="records/Detail.html">Detail</a></td>
+                            <td class="module-desc">Record type to hold the details of an error.
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="ReadableByteChannel" title="ReadableByteChannel">
+                                <a class="objects"
+                                   href="objects/ReadableByteChannel.html">
+                                    ReadableByteChannel
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>ReadableByteChannel represents an input resource (i.e file). which could be used to source bytes.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="ReadableCSVChannel" title="ReadableCSVChannel">
+                                <a class="objects"
+                                   href="objects/ReadableCSVChannel.html">
+                                    ReadableCSVChannel
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a ReadableCSVChannel which could be used to read records from CSV file.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="ReadableCharacterChannel" title="ReadableCharacterChannel">
+                                <a class="objects"
+                                   href="objects/ReadableCharacterChannel.html">
+                                    ReadableCharacterChannel
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a channel which could be used to read characters through a given ReadableByteChannel.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="ReadableDataChannel" title="ReadableDataChannel">
+                                <a class="objects"
+                                   href="objects/ReadableDataChannel.html">
+                                    ReadableDataChannel
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a data channel for reading data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="ReadableTextRecordChannel" title="ReadableTextRecordChannel">
+                                <a class="objects"
+                                   href="objects/ReadableTextRecordChannel.html">
+                                    ReadableTextRecordChannel
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a channel which will allow to read</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="StringReader" title="StringReader">
+                                <a class="objects"
+                                   href="objects/StringReader.html">
+                                    StringReader
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a reader which will wrap string content as a channel.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="WritableByteChannel" title="WritableByteChannel">
+                                <a class="objects"
+                                   href="objects/WritableByteChannel.html">
+                                    WritableByteChannel
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>WritableByteChannel represents an output resource (i.e file). which could be used to sink bytes.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="WritableCSVChannel" title="WritableCSVChannel">
+                                <a class="objects"
+                                   href="objects/WritableCSVChannel.html">
+                                    WritableCSVChannel
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a WritableCSVChannel which could be used to write records from CSV file.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="WritableCharacterChannel" title="WritableCharacterChannel">
+                                <a class="objects"
+                                   href="objects/WritableCharacterChannel.html">
+                                    WritableCharacterChannel
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a channel which could be used to write characters through a given WritableCharacterChannel.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="WritableDataChannel" title="WritableDataChannel">
+                                <a class="objects"
+                                   href="objects/WritableDataChannel.html">
+                                    WritableDataChannel
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a WritableDataChannel for writing data.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="WritableTextRecordChannel" title="WritableTextRecordChannel">
+                                <a class="objects"
+                                   href="objects/WritableTextRecordChannel.html">
+                                    WritableTextRecordChannel
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a channel which will allow to write records through a given WritableCharacterChannel.</p>
+</td>
+                        </tr>
+                    
+                </table>
+             </section>  
+            
+
+            
+
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="createReadableChannel" title="createReadableChannel"><a
+                                    class="functions" href="functions.html#createReadableChannel">createReadableChannel</a></td>
+                            <td class="module-desc"><p>Creates an in-memory channel which will reference stream of bytes.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="openReadableCsvFile" title="openReadableCsvFile"><a
+                                    class="functions" href="functions.html#openReadableCsvFile">openReadableCsvFile</a></td>
+                            <td class="module-desc"><p>Retrieves a readable CSV channel from a give file path.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="openReadableFile" title="openReadableFile"><a
+                                    class="functions" href="functions.html#openReadableFile">openReadableFile</a></td>
+                            <td class="module-desc"><p>Retrieves a ReadableByteChannel from a given file path.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="openWritableCsvFile" title="openWritableCsvFile"><a
+                                    class="functions" href="functions.html#openWritableCsvFile">openWritableCsvFile</a></td>
+                            <td class="module-desc"><p>Retrieves a writable CSV channel from a give file path.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="openWritableFile" title="openWritableFile"><a
+                                    class="functions" href="functions.html#openWritableFile">openWritableFile</a></td>
+                            <td class="module-desc"><p>Retrieves a WritableByteChannel from a given file path.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="print" title="print"><a
+                                    class="functions" href="functions.html#print">print</a></td>
+                            <td class="module-desc"><p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="println" title="println"><a
+                                    class="functions" href="functions.html#println">println</a></td>
+                            <td class="module-desc"><p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT followed by a new line.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="readln" title="readln"><a
+                                    class="functions" href="functions.html#readln">readln</a></td>
+                            <td class="module-desc"><p>Returns the input read from STDIN.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="sprintf" title="sprintf"><a
+                                    class="functions" href="functions.html#sprintf">sprintf</a></td>
+                            <td class="module-desc"><p>Returns a formatted string using the specified format string and arguments. Following format specifiers are allowed.</p>
+<p>b - boolean</p>
+<p>B - boolean (ALL_CAPS)</p>
+<p>d - int</p>
+<p>f - float</p>
+<p>x - hex</p>
+<p>X - HEX (ALL_CAPS)</p>
+<p>s - string (This specifier is applicable for any of the supported types in Ballerina.
+These values will be converted to their string representation.)</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="DEFAULT" title="DEFAULT"><a
+                                    class="constant" href="constants.html#DEFAULT">DEFAULT</a></td>
+                            <td class="module-desc"><p>Would default to the format specified by CSVChannel. Precedence will be given to field separator and record separator.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CSV" title="CSV"><a
+                                    class="constant" href="constants.html#CSV">CSV</a></td>
+                            <td class="module-desc"><p>Field separator would be &quot;,&quot; and the record separator would be new line.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TDF" title="TDF"><a
+                                    class="constant" href="constants.html#TDF">TDF</a></td>
+                            <td class="module-desc"><p>Field separator will be tab and record separator will be new line.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="COMMA" title="COMMA"><a
+                                    class="constant" href="constants.html#COMMA">COMMA</a></td>
+                            <td class="module-desc"><p>Comma (,) will be used as the field separator.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="TAB" title="TAB"><a
+                                    class="constant" href="constants.html#TAB">TAB</a></td>
+                            <td class="module-desc"><p>Tab (/t) will be use as the field separator.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="COLON" title="COLON"><a
+                                    class="constant" href="constants.html#COLON">COLON</a></td>
+                            <td class="module-desc"><p>Colon (:) will be use as the field separator.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CONNECTION_TIMED_OUT" title="CONNECTION_TIMED_OUT"><a
+                                    class="constant" href="constants.html#CONNECTION_TIMED_OUT">CONNECTION_TIMED_OUT</a></td>
+                            <td class="module-desc"><p>This will be used to construct a ConnectionTimedOutError.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="GENERIC_ERROR" title="GENERIC_ERROR"><a
+                                    class="constant" href="constants.html#GENERIC_ERROR">GENERIC_ERROR</a></td>
+                            <td class="module-desc"><p>This will be used to construct an IO GenericError.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="ACCESS_DENIED_ERROR" title="ACCESS_DENIED_ERROR"><a
+                                    class="constant" href="constants.html#ACCESS_DENIED_ERROR">ACCESS_DENIED_ERROR</a></td>
+                            <td class="module-desc"><p>This will be used to construct a AccessDeniedError.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="FILE_NOT_FOUND_ERROR" title="FILE_NOT_FOUND_ERROR"><a
+                                    class="constant" href="constants.html#FILE_NOT_FOUND_ERROR">FILE_NOT_FOUND_ERROR</a></td>
+                            <td class="module-desc"><p>This will be used to construct a FileNotFoundError.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="END_OF_FILE_ERROR" title="END_OF_FILE_ERROR"><a
+                                    class="constant" href="constants.html#END_OF_FILE_ERROR">END_OF_FILE_ERROR</a></td>
+                            <td class="module-desc"><p>This will be used to construct an EofError.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="CSV_RECORD_SEPARATOR" title="CSV_RECORD_SEPARATOR"><a
+                                    class="constant" href="constants.html#CSV_RECORD_SEPARATOR">CSV_RECORD_SEPARATOR</a></td>
+                            <td class="module-desc"><p>Represents record separator of the CSV file.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="FS_COLON" title="FS_COLON"><a
+                                    class="constant" href="constants.html#FS_COLON">FS_COLON</a></td>
+                            <td class="module-desc"><p>Represents colon separator which should be used to identify colon separated files.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="MINIMUM_HEADER_COUNT" title="MINIMUM_HEADER_COUNT"><a
+                                    class="constant" href="constants.html#MINIMUM_HEADER_COUNT">MINIMUM_HEADER_COUNT</a></td>
+                            <td class="module-desc"><p>Represents minimum number of headers which will be included in CSV.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="BIG_ENDIAN" title="BIG_ENDIAN"><a
+                                    class="constant" href="constants.html#BIG_ENDIAN">BIG_ENDIAN</a></td>
+                            <td class="module-desc"><p>Specifies the bytes to be in the order of most significant byte first.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LITTLE_ENDIAN" title="LITTLE_ENDIAN"><a
+                                    class="constant" href="constants.html#LITTLE_ENDIAN">LITTLE_ENDIAN</a></td>
+                            <td class="module-desc"><p>Specifies the byte order to be the least significant byte first.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Error" title="Error">
+                                <a class="types" href="types.html#Error">Error</a>
+                            </td>
+                            <td class="module-desc"><p>Represents IO module related errors.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Format" title="Format">
+                                <a class="types" href="types.html#Format">Format</a>
+                            </td>
+                            <td class="module-desc"><p>Format which will be used to represent the CSV.</p>
+<p>DEFAULT - Would default to the format specified by CSVChannel. Precedence will be given to field
+separator and record separator.</p>
+<p>CSV - Field separator would be &quot;,&quot; and the record separator would be new line.</p>
+<p>TDF - Field separator will be tab and record separator will be new line.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Separator" title="Separator">
+                                <a class="types" href="types.html#Separator">Separator</a>
+                            </td>
+                            <td class="module-desc"><p>Field separators which are supported by DelimitedTextRecordChannel.</p>
+<p>COMMA - Delimited text records would be separated using a comma.</p>
+<p>TAB - Delimited text records would be separated using a tab.</p>
+<p>COLON - Delimited text records would be separated using a colon(:).</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="AccessDeniedError" title="AccessDeniedError">
+                                <a class="errors" href="errors.html#AccessDeniedError">AccessDeniedError</a>
+                            </td>
+                            <td class="module-desc"><p>This will get returned due to file permission issues.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="ConnectionTimedOutError" title="ConnectionTimedOutError">
+                                <a class="errors" href="errors.html#ConnectionTimedOutError">ConnectionTimedOutError</a>
+                            </td>
+                            <td class="module-desc"><p>This will return when connection timed out happen when try to connect to a remote host.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="EofError" title="EofError">
+                                <a class="errors" href="errors.html#EofError">EofError</a>
+                            </td>
+                            <td class="module-desc"><p>This will get returned if read operations are performed on a channel after it closed.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="FileNotFoundError" title="FileNotFoundError">
+                                <a class="errors" href="errors.html#FileNotFoundError">FileNotFoundError</a>
+                            </td>
+                            <td class="module-desc"><p>This will get returned if the file is not available in the given file path.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="GenericError" title="GenericError">
+                                <a class="errors" href="errors.html#GenericError">GenericError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents generic IO error. The detail record contains the information related to the error.</p>
+</td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+
+
+<div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack-2022.svg" style="width:17px; height:17px;"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/prism.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-core.min.js"></script> -->
+<script src="/js/prism-ballerina.js"></script>
+<!-- 
+<script>
+    (function () {
+
+if (typeof self === 'undefined' || !self.Prism || !self.document) {
+    return;
+}
+
+/**
+ * Plugin name which is used as a class name for <pre> which is activating the plugin
+ * @type {String}
+ */
+var PLUGIN_NAME = 'line-numbers';
+
+/**
+ * Regular expression used for determining line breaks
+ * @type {RegExp}
+ */
+var NEW_LINE_EXP = /\n(?!$)/g;
+
+/**
+ * Resizes line numbers spans according to height of line of code
+ * @param {Element} element <pre> element
+ */
+var _resizeElement = function (element) {
+    var codeStyles = getStyles(element);
+    var whiteSpace = codeStyles['white-space'];
+
+    if (whiteSpace === 'pre-wrap' || whiteSpace === 'pre-line') {
+        var codeElement = element.querySelector('code');
+        var lineNumbersWrapper = element.querySelector('.line-numbers-rows');
+        if (!codeElement || !lineNumbersWrapper) {
+            return;
+        }
+        var lineNumberSizer = element.querySelector('.line-numbers-sizer');
+        var codeLines = codeElement.textContent.split(NEW_LINE_EXP);
+
+        if (!lineNumberSizer) {
+            lineNumberSizer = document.createElement('span');
+            lineNumberSizer.className = 'line-numbers-sizer';
+
+            codeElement.appendChild(lineNumberSizer);
+        }
+
+        lineNumberSizer.style.display = 'block';
+
+        codeLines.forEach(function (line, lineNumber) {
+            lineNumberSizer.textContent = line || '\n';
+            var lineSize = lineNumberSizer.getBoundingClientRect().height;
+            lineNumbersWrapper.children[lineNumber].style.height = lineSize + 'px';
+        });
+
+        lineNumberSizer.textContent = '';
+        lineNumberSizer.style.display = 'none';
+    }
+};
+
+/**
+ * Returns style declarations for the element
+ * @param {Element} element
+ */
+var getStyles = function (element) {
+    if (!element) {
+        return null;
+    }
+
+    return window.getComputedStyle ? getComputedStyle(element) : (element.currentStyle || null);
+};
+
+window.addEventListener('resize', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('pre.' + PLUGIN_NAME), _resizeElement);
+});
+
+Prism.hooks.add('complete', function (env) {
+    if (!env.code) {
+        return;
+    }
+
+    var code = env.element;
+    var pre = code.parentNode;
+
+    // works only for <code> wrapped inside <pre> (not inline)
+    if (!pre || !/pre/i.test(pre.nodeName)) {
+        return;
+    }
+
+    // Abort if line numbers already exists
+    if (code.querySelector('.line-numbers-rows')) {
+        return;
+    }
+
+    var addLineNumbers = false;
+    var lineNumbersRegex = /(?:^|\s)line-numbers(?:\s|$)/;
+
+    for (var element = code; element; element = element.parentNode) {
+        if (lineNumbersRegex.test(element.className)) {
+            addLineNumbers = true;
+            break;
+        }
+    }
+
+    // only add line numbers if <code> or one of its ancestors has the `line-numbers` class
+    if (!addLineNumbers) {
+        return;
+    }
+
+    // Remove the class 'line-numbers' from the <code>
+    code.className = code.className.replace(lineNumbersRegex, ' ');
+    // Add the class 'line-numbers' to the <pre>
+    if (!lineNumbersRegex.test(pre.className)) {
+        pre.className += ' line-numbers';
+    }
+
+    var match = env.code.match(NEW_LINE_EXP);
+    var linesNum = match ? match.length + 1 : 1;
+    var lineNumbersWrapper;
+
+    var lines = new Array(linesNum + 1).join('<span></span>');
+
+    lineNumbersWrapper = document.createElement('span');
+    lineNumbersWrapper.setAttribute('aria-hidden', 'true');
+    lineNumbersWrapper.className = 'line-numbers-rows';
+    lineNumbersWrapper.innerHTML = lines;
+
+    if (pre.hasAttribute('data-start')) {
+        pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+    }
+
+    env.element.appendChild(lineNumbersWrapper);
+
+    _resizeElement(pre);
+
+    Prism.hooks.run('line-numbers', env);
+});
+
+Prism.hooks.add('line-numbers', function (env) {
+    env.plugins = env.plugins || {};
+    env.plugins.lineNumbers = true;
+});
+
+/**
+ * Global exports
+ */
+Prism.plugins.lineNumbers = {
+    /**
+     * Returns the node of the given line number in the given element.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @param {Number} number
+     * @returns {Element | undefined}
+     */
+    getLine: function (element, number) {
+        if (element.tagName !== 'PRE' || !element.classList.contains(PLUGIN_NAME)) {
+            return;
+        }
+
+        var lineNumberRows = element.querySelector('.line-numbers-rows');
+        var lineNumberStart = parseInt(element.getAttribute('data-start'), 10) || 1;
+        var lineNumberEnd = lineNumberStart + (lineNumberRows.children.length - 1);
+
+        if (number < lineNumberStart) {
+            number = lineNumberStart;
+        }
+        if (number > lineNumberEnd) {
+            number = lineNumberEnd;
+        }
+
+        var lineIndex = number - lineNumberStart;
+
+        return lineNumberRows.children[lineIndex];
+    },
+    /**
+     * Resizes the line numbers of the given element.
+     *
+     * This function will not add line numbers. It will only resize existing ones.
+     * @param {Element} element A `<pre>` element with line numbers.
+     * @returns {void}
+     */
+    resize: function (element) {
+        _resizeElement(element);
+    }
+};
+
+}());
+</script> -->
+
+<!-- 
+<style>
+    pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style> -->
+
+<script>
+    $(document)
+        .ready(function() {
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+            ;
+
+        })
+    ;
+
+    let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+    let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", event => {
+        let fromTop = contentWrapper.scrollTop;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                link.classList.add("current");
+            } else {
+                link.classList.remove("current");
+            }
+        });
+    });
+
+</script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+</body>
+</html>

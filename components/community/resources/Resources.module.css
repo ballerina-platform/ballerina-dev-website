@@ -1,0 +1,70 @@
+.viewAll {
+    color: #20b6b0;
+    text-decoration: none;
+    text-align: right;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.viewAll:hover {
+    text-decoration: none !important;
+    color: #464646 !important;
+}
+
+.linkWrap {
+    text-align: right;
+}
+
+.resourceRow {
+    /* padding-bottom: 20px; */
+    margin-top: 10px;
+}
+
+.cardBox {
+    border: #E6EAEB solid 0.1px;
+    /* text-align: left;
+    padding: 10px;
+    background-color: #ffffff; */
+    border-radius: 0;
+    /* box-shadow: 0;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    box-shadow: none; */
+    margin-bottom: 10px;
+}
+
+.cardBox:hover {
+    border: #464646 solid 0.1px;;
+}
+
+.cardBody {
+    padding: 18px;
+}
+
+.cardTitle {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.cardText {
+    height: 100px;
+}
+
+.cardText a {
+    color: #20b6b0;
+    text-decoration: none;
+    /* text-align: right;
+    font-weight: 400;
+    font-size: 18px; */
+}
+
+.cardText h4 {
+    line-height: 30px;
+    font-size: 22px ;
+}
+
+.cardText a:hover {
+    text-decoration: none !important;
+    color: #464646 !important;
+    line-height: 30px;
+}

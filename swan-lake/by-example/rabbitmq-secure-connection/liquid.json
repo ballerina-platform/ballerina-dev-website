@@ -1,0 +1,19 @@
+{
+  "title": "Secured connection",
+  "description": "BBE on consuming messages using a secured connection.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "rabbitmq",
+    "ssl",
+    "tls",
+    "authentication",
+    "credentials"
+  ],
+  "permalink": "/learn/by-example/rabbitmq-secure-connection",
+  "active": "rabbitmq-secure-connection",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/rabbitmq-secure-connection",
+    "/swan-lake/learn/by-example/rabbitmq-secure-connection.html"
+  ]
+}

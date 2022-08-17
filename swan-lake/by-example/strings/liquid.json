@@ -1,0 +1,19 @@
+{
+  "title": "Strings",
+  "description": "This BBE introduces the string type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "string",
+    "unicode",
+    "utf-8",
+    "char"
+  ],
+  "permalink": "/learn/by-example/strings",
+  "active": "strings",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/strings",
+    "/swan-lake/learn/by-example/strings.html"
+  ]
+}

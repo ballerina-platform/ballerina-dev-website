@@ -92,7 +92,7 @@ export default function IoStrings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4d7f4c8fa043489980f6507b833eec82&file=io_strings.bal",
+                "https://play.ballerina.io/?gist=7897993d5c9109d15e964148c4c463bb&file=io_strings.bal",
                 "_blank"
               );
             }}

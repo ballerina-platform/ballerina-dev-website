@@ -350,8 +350,8 @@ export default function Tracing() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Record to XML conversion"
-            href="/learn/by-example/xml-from-record-conversion"
+            title="Constraint validations"
+            href="/learn/by-example/constraint-validations"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -378,7 +378,7 @@ export default function Tracing() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Record to XML conversion
+                  Constraint validations
                 </span>
               </div>
             </div>

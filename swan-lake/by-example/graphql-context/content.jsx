@@ -390,7 +390,10 @@ export default function GraphqlContext() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Mutations" href="/learn/by-example/graphql-mutations">
+          <Link
+            title="Subscriptions"
+            href="/learn/by-example/graphql-subscriptions"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -416,7 +419,7 @@ export default function GraphqlContext() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Mutations
+                  Subscriptions
                 </span>
               </div>
             </div>

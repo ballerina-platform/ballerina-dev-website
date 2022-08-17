@@ -86,7 +86,7 @@ export default function InterWorkerMessagePassing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3affd143a093f5a96399fcde5b6fbcfd&file=inter_worker_message_passing.bal",
+                "https://play.ballerina.io/?gist=f63e58f399775c57b21501dbfb18d7c3&file=inter_worker_message_passing.bal",
                 "_blank"
               );
             }}

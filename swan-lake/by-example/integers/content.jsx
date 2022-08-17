@@ -64,7 +64,7 @@ export default function Integers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dd26e5ef8bf1a8c07ac8b7f457e2f484&file=integers.bal",
+                "https://play.ballerina.io/?gist=7ccb5dbae5b89adafacc6bef7e64dbf8&file=integers.bal",
                 "_blank"
               );
             }}

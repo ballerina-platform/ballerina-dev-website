@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          ref: website-revamp
+          ref: master
 
       - name: Set env variables
         run: |
@@ -56,6 +56,6 @@ jobs:
         shell: bash
         run: |
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          bin/hub pull-request -b website-revamp -m "[AUTOMATE] Update Ballerina Standard Library ($SHORT_NAME) Specifications"
+          bin/hub pull-request -b master -m "[AUTOMATE] Update Ballerina Standard Library ($SHORT_NAME) Specifications"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

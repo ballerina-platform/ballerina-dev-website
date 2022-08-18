@@ -71,7 +71,7 @@ export default function XmlTemplatesAndQuery() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=816f8256e4e1db0aa70166bbfa348d82&file=xml_templates_and_query.bal",
+                "https://play.ballerina.io/?gist=8b9cd34d205377f0b1b1a83430e31e6a&file=xml_templates_and_query.bal",
                 "_blank"
               );
             }}

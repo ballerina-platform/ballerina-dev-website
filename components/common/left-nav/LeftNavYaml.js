@@ -41,6 +41,7 @@ export default function LeftNavYaml({ navContent, bbe }) {
   }, [navContent, bbe]);
 
   function MainDir({ navContent }) {
+
     return (
       <Accordion
         defaultActiveKey={activeTopLevel}
@@ -96,8 +97,8 @@ export default function LeftNavYaml({ navContent, bbe }) {
               className={bbe === directory.url ? styles.active : null}
               href={
                 `${prefix}`
-                  ? `${prefix}/${baseUrl}/${directory.url}`
-                  : `/${baseUrl}/${directory.url}`
+                  ? `${prefix}/learn/by-example/${directory.url}`
+                  : `/learn/by-example/${directory.url}`
               }
             >
               {directory.title}

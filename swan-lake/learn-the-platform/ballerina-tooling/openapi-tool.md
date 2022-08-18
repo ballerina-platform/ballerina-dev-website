@@ -237,6 +237,12 @@ If your OpenAPI specification includes JSON schema properties that are not marke
 $ bal openapi -i <openapi-contract> [-n |--nullable]
 ```
 
+### Generate with a given method type
+Use the `--client-methods <resource|remote>` option to select the client method type, which can be `resource` or `remote`. (The default option is `remote`).
+```bash
+$ bal openapi -i <openapi-contract> --mode client --client-methods <resource|remote>
+```
+
 >**Info:** For more command options, see [OpenAPI to Ballerina](/learn/cli-documentation/openapi/#openapi-to-ballerina).
 
 ## Publish your client

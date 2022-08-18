@@ -33,34 +33,23 @@ In the CLI, execute the `bal help` command to view all the actions you can perfo
 ```sh
 → bal help
 NAME
-       The Ballerina Tool
+       The build system and package manager of Ballerina
 
 SYNOPSIS
-       bal [-v | --version]
-       bal help
-       bal <command> [-h | --help]
-
-
-DESCRIPTION
-       Ballerina is a statically-typed, concurrent programming language focusing on network
-       interaction and structured data. It is intended to be the core of a language-centric
-       middleware platform. It not only has all the general-purpose functionality expected
-       from a modern programming language but also has several unusual aspects that make it
-       particularly suitable for its intended purpose.
-
-       Find more information at: https://ballerina.io
+       bal <command> [args]
+       bal [OPTIONS]
 
 
 OPTIONS
        -v, --version
-           Print the Ballerina version information.
+           Print version information.
 
        -h, --help
            Print the usage details of a command.
 
 
-BALLERINA COMMANDS
-        Below is a list of the available subcommands:
+COMMANDS
+        The available subcommands are:
 
    Core Commands:
         build           Compile the current package
@@ -76,23 +65,20 @@ BALLERINA COMMANDS
         pull            Pull a package from Ballerina Central
         push            Publish a package to Ballerina Central
         search          Search Ballerina Central for packages
+        semver          Show SemVer compatibility and local package changes against
+                        published packages in Ballerina Central
+        graph           Print the dependency graph in the console
 
    Other Commands:
         clean           Clean the artifacts generated during the build
         format          Format Ballerina source files
-        grpc            Generate the Ballerina sources for a given Protocol Buffer definition
-        graphql         Generate Ballerina client sources for a given GraphQL schema(SDL) 
-                        and GraphQL queries
-        openapi         Generate the Ballerina sources for a given OpenAPI definition and
-                        vice versa
-        asyncapi        Generate Ballerina sources for a given AsyncAPI definition
+        grpc            Generate the Ballerina sources for a given Protocol
+                        Buffer definition
+        openapi         Generate the Ballerina sources for a given OpenAPI
+                        definition and vice versa
         bindgen         Generate the Ballerina bindings for Java APIs
         shell           Run Ballerina interactive REPL
         version         Print the Ballerina version
-
-   Update Commands:
-        dist            Manage Ballerina distributions
-        update          Update the Ballerina tool
 
 ```
 
@@ -197,6 +183,16 @@ Ballerina packages are the way to organize real-world Ballerina development task
 <tr>
 <td class="cCommand">search</td>
 <td class="cDescription">Search Ballerina Central for packages.
+</td>
+</tr>
+<tr>
+<td class="cCommand">semver</td>
+<td class="cDescription">Validate <a href="https://semver.org/">SemVer</a> compatibility of the local package changes against any previously published version(s) in Ballerina Central.
+</td>
+</tr>
+<tr>
+<td class="cCommand">graph</td>
+<td class="cDescription">Print the dependency graph in the console.
 </td>
 </tr>
 </table>

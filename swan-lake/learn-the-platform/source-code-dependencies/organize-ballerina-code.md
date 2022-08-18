@@ -160,4 +160,4 @@ Since the `import-prefix` is not given, the module name `util` is used to refer 
 
 ## Package references
 
-For information on the structure of a package directory, see [Package references](/learn/organize-ballerina-code/package-references/).
+For information on the structure of a package directory, see [Package references](/learn/package-references/).

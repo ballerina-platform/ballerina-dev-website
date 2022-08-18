@@ -252,7 +252,7 @@ redirect_from:
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 card"  style="margin-right:0px !important;">
 <h3 id="troubleshoot-ballerina-runtime">
-    <a href="/learn/troubleshoot-ballerina-runtime/">Troubleshoot Ballerina Runtime</a>
+    <a href="/learn/troubleshoot-ballerina-runtime/">Troubleshoot Ballerina runtime</a>
 </h3>
 <p>Details of Ballerina strand dump tool.</p>
 </div>

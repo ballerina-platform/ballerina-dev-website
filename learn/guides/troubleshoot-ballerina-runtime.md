@@ -29,8 +29,7 @@ a Ballerina program. This can be used to:
 
 - inspect strand and strand group status.
 
-Currently, this ability is only available in the operating systems where the `SIGTRAP` POSIX signal is supported 
-(`SIGTRAP` is not available on Windows).
+>**Note:** Currently, this ability is only available in the operating systems where the `SIGTRAP` POSIX signal is supported (`SIGTRAP` is not available on Windows).
 
 ### Getting strand dump
 
@@ -83,8 +82,8 @@ $ jps
 28851 Jps
 28845 $_init
 ```
-Here for this program we get the PID as 28845, because `$_init` is the entry `class` filename of the Ballerina program. 
-To get the strand dump, send the `SIGTRAP` signal to that process. You can use the CLI command
+Here for this program we get the PID as 28845, because `$_init` is the main class of the Ballerina program. 
+To get the strand dump, send the `SIGTRAP` signal to that process. You can use the following CLI command.
 ```
 $ kill -SIGTRAP 28845
 ```
@@ -93,7 +92,7 @@ or
 $ kill -5 28845
 ```
 
-Then the strand dump at that moment will be emitted to the standard output stream of the Ballerina program. 
+Then the dump of the runtime strands will be emitted to the standard output stream of the Ballerina program. 
 You can see a sample below.
 ```text
 Ballerina Strand Dump [2022/07/26 14:34:31]
@@ -125,7 +124,7 @@ group 5 [QUEUED]: [3]
 The strand dump contains the information of the date and the time when the strand dump was obtained, and the current 
 no. of strand groups and strands available. The details will be given in the following format.
 
-![Strand dump output format](/learn/images/strand-dump-format.png "Strand dump output format")
+![Strand dump output format](/learn/images/strand-dump-format.svg "Strand dump output format")
 
 Label | Description
 -- | --

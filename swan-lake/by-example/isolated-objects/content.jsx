@@ -123,7 +123,7 @@ export default function IsolatedObjects() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a05730752a1db80759bf2f1500cef87c&file=isolated_objects.bal",
+                "https://play.ballerina.io/?gist=3dc35c946056a573d9f8b2758a91e908&file=isolated_objects.bal",
                 "_blank"
               );
             }}

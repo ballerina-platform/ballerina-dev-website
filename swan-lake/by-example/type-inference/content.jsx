@@ -80,7 +80,7 @@ export default function TypeInference() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=610122fe1b57e5ecfd4d71f2ec0b3c1e&file=type_inference.bal",
+                "https://play.ballerina.io/?gist=b0c3189c1b2811423e3867ad161138e3&file=type_inference.bal",
                 "_blank"
               );
             }}

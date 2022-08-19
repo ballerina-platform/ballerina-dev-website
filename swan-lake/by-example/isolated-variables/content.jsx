@@ -115,7 +115,7 @@ export default function IsolatedVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1c510a839648abf3f52dfcd78054ed6e&file=isolated_variables.bal",
+                "https://play.ballerina.io/?gist=3a90b05566d59dc242290970037dc304&file=isolated_variables.bal",
                 "_blank"
               );
             }}

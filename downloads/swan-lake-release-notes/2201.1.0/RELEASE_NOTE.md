@@ -7,7 +7,7 @@ title: Release Note
 
 ### Updating Ballerina
 
-You can use the [update tool](/learn/keeping-ballerina-up-to-date/) to update to jBallerina {{ site.data.stable-latest.metadata.version }} as follows.
+You can use the [update tool](/learn/cli-documentation/update-tool/) to update to jBallerina {{ site.data.stable-latest.metadata.version }} as follows.
 
 #### For existing users
 

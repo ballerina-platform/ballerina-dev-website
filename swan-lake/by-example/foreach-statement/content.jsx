@@ -83,7 +83,7 @@ export default function ForeachStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3088fcbeb77ee2c5beb3a18fdf58db1a&file=foreach_statement.bal",
+                "https://play.ballerina.io/?gist=a1c6fbba039f4ca7d61992438b4782e4&file=foreach_statement.bal",
                 "_blank"
               );
             }}

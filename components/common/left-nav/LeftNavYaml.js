@@ -21,27 +21,30 @@ import Accordion from "react-bootstrap/Accordion";
 import { prefix } from "../../../utils/prefix";
 import styles from "./LeftNav.module.css";
 
-export default function LeftNavYaml({ navContent, bbe }) {
+export default function LeftNavYaml({ navContent, bbe = null, viewer = null }) {
   const [baseUrl, setBaseUrl] = useState("");
   const [activeTopLevel, setActiveTopLevel] = useState(null);
   const [activeSubLevel, setActiveSubLevel] = useState(null);
 
   useEffect(() => {
-    for (let l1 of navContent.sublinks) {
-      for (let l2 of l1.sublinks) {
-        for (let bbeContent of l2.sublinks) {
-          if (bbeContent.url === bbe) {
-            setActiveTopLevel(l1.id);
-            setActiveSubLevel(l2.id);
+    if (viewer === null) {
+      for (let l1 of navContent.sublinks) {
+        for (let l2 of l1.sublinks) {
+          for (let bbeContent of l2.sublinks) {
+            if (bbeContent.url === bbe) {
+              setActiveTopLevel(l1.id);
+              setActiveSubLevel(l2.id);
+            }
           }
         }
       }
+    } else {
+      setActiveTopLevel(viewer);
     }
     setBaseUrl(navContent.url);
   }, [navContent, bbe]);
 
   function MainDir({ navContent }) {
-
     return (
       <Accordion
         defaultActiveKey={activeTopLevel}

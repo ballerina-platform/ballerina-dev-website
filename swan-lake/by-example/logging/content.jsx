@@ -78,7 +78,7 @@ export default function Logging() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d03cb335b362fb19a7059b13d7e14b3b&file=logging.bal",
+                "https://play.ballerina.io/?gist=ba6c1da781ec8edd4a4108dee9ea7c85&file=logging.bal",
                 "_blank"
               );
             }}

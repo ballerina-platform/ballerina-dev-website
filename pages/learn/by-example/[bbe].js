@@ -19,7 +19,7 @@
 import fs from "fs";
 import { load } from "js-yaml";
 import React, { useState, useEffect } from "react";
-import { Container, Col } from "react-bootstrap";
+import { Container, Col, Button, Offcanvas } from "react-bootstrap";
 import BBEs from "../../../swan-lake/by-example";
 import Head from "next/head";
 import Layout from "../../../layouts/LayoutDocs";
@@ -68,6 +68,11 @@ export async function getStaticProps({ params: { bbe } }) {
 
 export default function BBEPage({ frontmatter, navContent, bbe }) {
   const [bbeComponent, updateBBE] = useState(null);
+
+  // Show mobile left nav
+  const [show, setShow] = React.useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     if (bbe != undefined) {
@@ -137,7 +142,15 @@ export default function BBEPage({ frontmatter, navContent, bbe }) {
           <LeftNavYaml navContent={navContent} bbe={bbe} />
         </Col>
         <Col xs={12} className="d-block d-sm-none">
-          Mobile Left Nav
+          <Button className="learnMob" onClick={handleShow}>
+            Learn
+          </Button>
+          <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas.Header closeButton></Offcanvas.Header>
+            <Offcanvas.Body>
+              <LeftNavYaml navContent={navContent} bbe={bbe} />
+            </Offcanvas.Body>
+          </Offcanvas>
         </Col>
         <Col xs={12} sm={9} xxl={10} className="mdContent">
           <Container className="h-100">

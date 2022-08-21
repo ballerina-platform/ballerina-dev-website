@@ -299,7 +299,7 @@ You can say that this is very similar to exception handling, where exceptions ar
 
 ### Rollback
 
-There are four ways in which a transaction block can exit in Ballerina. Under normal cases, passing through an explicit ``commit`` or a ``rollback`` statement results in the transaction being terminated. The other two scenarios are failures, resulting from a failed exit (e.g., from ``check``) and panic exit.
+There are four ways in which a transaction block can exit in Ballerina. Under normal cases, passing through an explicit ``commit`` or a ``rollback`` statement results in the transaction being terminated. The other two scenarios are failures resulting from a failed exit (e.g., from ``check``) and a panic exit.
 
 ```ballerina
 function incrementSallary(int[] salaryList) returns error? {
@@ -316,7 +316,7 @@ function incrementSallary(int[] salaryList) returns error? {
     }
 }
 ```
-In the above code example, **``incrementSalary()``** function defines a transaction that increments salary for each employee by `100`. If the new total salary exceeds `1000`, then the rollback statement performs rollback on the transaction.
+In the above code example, the **``incrementSalary()``** function defines a transaction that increments the salary for each employee by `100`. If the new total salary exceeds `1000`, then, the rollback statement performs a rollback on the transaction.
 
 ```ballerina
 function transfer(Update[] updates) returns error? {
@@ -334,7 +334,7 @@ function doUpdate(Update u) returns error? {
 }
 ```
 
-In the above code example, the **``transfer()``** function defines a transaction that runs a ``foreach`` loop that calls another function **``doUpdate()``**. If the **``doUpdate()``** function returns an error, the ``check`` expression returns it. This is treated as a failure within the transaction block and results in a rollback of the transaction.  
+In the above code example, the **``transfer()``** function defines a transaction that runs a ``foreach`` loop which calls another **``doUpdate()``** function. If the **``doUpdate()``** function returns an error, the ``check`` expression returns it. This is treated as a failure within the transaction block and results in a rollback of the transaction.  
 
 The rollback operation does not automatically restore Ballerina variables to values before the transaction. Instead, it only tells the transaction manager to roll back the execution point.
 

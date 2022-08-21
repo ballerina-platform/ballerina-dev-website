@@ -63,8 +63,6 @@ function addnum(int num1, int num2) returns int {
 Run this Ballerina package using the `bal run` command.
 ```
 $ bal run
-```
-```
 Compiling source
 	demo/strandDump:0.1.0
 
@@ -74,8 +72,6 @@ Running executable
 Obtain its PID while the program is running.
 ```
 $ jps
-```
-```
 3408 Main
 28851 Jps
 28845 $_init

@@ -50,31 +50,33 @@ export default function ProvidingServices() {
         <li>
           <span>1.</span>
           <span>
-            <strong>Service objects</strong> are the counterpart of client
-            objects. Service objects also have remote methods and they are
-            remotely accessible to clients. Typically, the remote method of a
-            client object calls the remote method of a service object.
+            Service objects are the counterpart of client objects. Service
+            objects also have remote methods and they are remotely accessible to
+            clients. Remote method of a client object typically calls the remote
+            method of a service object.
           </span>
         </li>
       </ul>
+
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>2.</span>
           <span>
-            <strong>Listener</strong> is the entity, which receives the network
-            input and then, it makes calls to the remote methods of the attached
-            service objects. Listeners are registered with the module as
-            illustrated in the following example.
+            Listener is the entity that receives the network input and then it
+            makes calls to remote methods of attached service objects. Listeners
+            are registered with the module as illustrated in the following
+            example.
           </span>
         </li>
       </ul>
+
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>3.</span>
           <span>
-            <strong>Modules</strong> have a lifecycle and they are initialized
-            on program startup. Modules start up the registered listeners after
-            the initialization and shut them down during the program shutdown.
+            Modules have a lifecycle and they are initialized on program
+            startup. Modules start up the registered listeners after the
+            initialization and shut them down during the program shutdown.
           </span>
         </li>
       </ul>
@@ -216,7 +218,7 @@ export default function ProvidingServices() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Consuming services: client objects"
+            title="Consume services: client objects"
             href="/learn/by-example/consuming-services"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -244,7 +246,7 @@ export default function ProvidingServices() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consuming services: client objects
+                  Consume services: client objects
                 </span>
               </div>
             </div>

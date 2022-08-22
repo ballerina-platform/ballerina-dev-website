@@ -79,24 +79,16 @@ export default function NatsStreamingDurableSubscriptions() {
 
       <p>
         The <code>nats</code> streaming library allows creating durable
-        subscriptions.
+        subscriptions. Regular subscriptions remember their position while the
+        client is connected. If the client disconnects, the position is lost.
+        Durable subscriptions remember their position even if the client is
+        disconnected.
       </p>
 
       <p>
-        Regular subscriptions remember their position while the client is
-        connected. If the client
-      </p>
-
-      <p>disconnects, the position is lost. Durable subscriptions</p>
-
-      <p>remember their position even if the client is disconnected.</p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
-          <code>stan</code> module
+          STAN module
         </a>
         .
       </p>
@@ -313,9 +305,10 @@ export default function NatsStreamingDurableSubscriptions() {
         </Col>
       </Row>
 
-      <p>Stop the subscriber and publish some messages while it is stopped.</p>
-
-      <p>Run the subscriber again.</p>
+      <p>
+        Stop the subscriber and publish some messages while it is stopped. Run
+        the subscriber again.
+      </p>
 
       <p>
         All messages which had been published while the subscriber wasn't
@@ -375,7 +368,8 @@ export default function NatsStreamingDurableSubscriptions() {
             <code className="d-flex flex-column">
               <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-20T13:03:23.344+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-20T13:03:46.928+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>

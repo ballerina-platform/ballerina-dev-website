@@ -68,12 +68,9 @@ export default function ForeachStatement() {
       <h1>Foreach statement</h1>
 
       <p>
-        The <code>foreach</code> statement iterates over an iterable value by
-        binding a variable to each member of the iterable value.
-      </p>
-
-      <p>
-        <code>foreach</code> also works for strings and will iterate over each
+        The <code>foreach</code> statement iterates over an iterable value, by
+        binding a variable to each member of the iterable value in order.{" "}
+        <code>foreach</code> also works for strings, and will iterate over each
         character of the <code>string</code>.
       </p>
 
@@ -83,7 +80,7 @@ export default function ForeachStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d21024b9ab5179e5476022f230582d51&file=foreach_statement.bal",
+                "https://play.ballerina.io/?gist=6bf89cec9b4f4f8662b6d7003feeb4aa&file=foreach_statement.bal",
                 "_blank"
               );
             }}

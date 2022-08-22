@@ -74,21 +74,17 @@ export default function TransactionalQualifier() {
       <h1>Transactional qualifier</h1>
 
       <p>
-        At compile-time, regions of code are typed as being transactional
-        context; Ballerina guarantees that whenever that region is executed,
+        At compile-time, regions of code are typed as being a transactional
+        context. Ballerina guarantees that, whenever that region is executed,
         there will be a current transaction.
       </p>
 
       <p>
         A function with a <code>transactional</code> qualifier can only be
         called from a transactional context; function body will be a
-        transactional context.
-      </p>
-
-      <p>
-        <code>transactional</code> is also a boolean expression that tests at
-        runtime whether there is a current transaction: used in a condition
-        results in a transactional context.
+        transactional context. <code>transactional</code> is also a boolean
+        expression that tests at runtime whether there is a current transaction:
+        used in a condition results in a transactional context.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -97,7 +93,7 @@ export default function TransactionalQualifier() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bfeb27777945ee13c673f804d61de51c&file=transactional_qualifier.bal",
+                "https://play.ballerina.io/?gist=3c161ea99b34556f45188f4378d5f159&file=transactional_qualifier.bal",
                 "_blank"
               );
             }}

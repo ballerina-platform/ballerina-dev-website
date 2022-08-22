@@ -56,24 +56,12 @@ export default function Arrays() {
       <h1>Arrays</h1>
 
       <p>
-        When defining an array, <code>T[]</code> is an <code>array</code> of{" "}
-        <code>T</code>. Arrays are mutable. When comparing arrays,{" "}
-        <code>==</code> and <code>!=</code> operators on arrays are deep: two
+        <code>T[]</code> is an <code>array</code> of <code>T</code>. Arrays are
+        mutable. <code>==</code> and <code>!=</code> on arrays is deep: two
         arrays are equal if they have the same members in the same order.
         Ordering is lexicographical based on the ordering of the members.
-      </p>
-
-      <p>
-        Langlib{" "}
-        <a href="https://lib.ballerina.io/ballerina/lang.array/0.0.0/functions#length">
-          arr.length()
-        </a>{" "}
-        function can be used to get the array length. You can also set the array
-        length using{" "}
-        <a href="https://lib.ballerina.io/ballerina/lang.array/0.0.0/functions#setLength">
-          <code>arr.setLength(n)</code>
-        </a>
-        .
+        Langlib <code>arr.length()</code> function gets the length;{" "}
+        <code>arr.setLength(n)</code> sets the length.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -82,7 +70,7 @@ export default function Arrays() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=de5fef104426a45131ca186bd7d7751e&file=arrays.bal",
+                "https://play.ballerina.io/?gist=194a23003c6c008d88fe3e30c819b88e&file=arrays.bal",
                 "_blank"
               );
             }}

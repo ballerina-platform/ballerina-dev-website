@@ -70,12 +70,8 @@ export default function ReadonlyAndIsolated() {
       <p>
         <code>isolated</code> functions can access <code>final</code> variables
         with <code>readonly</code> type without locking. It relies on the fact
-        that
-      </p>
-
-      <p>
-        immutability is deep. <code>isolated</code> for functions complements{" "}
-        <code>readonly</code> for data.
+        that immutability is deep. <code>isolated</code> for functions
+        complements <code>readonly</code> for data.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -84,7 +80,7 @@ export default function ReadonlyAndIsolated() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a32fc2204e70aa805f9f9484893ba309&file=readonly_and_isolated.bal",
+                "https://play.ballerina.io/?gist=f7d92eaa86d8ccd6dd697e4e9d26abb5&file=readonly_and_isolated.bal",
                 "_blank"
               );
             }}

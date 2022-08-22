@@ -35,8 +35,8 @@ service /call on new http:Listener(9090) {
         return person;
     }
 
-    // When the data binding is expected to happen and if the \`post\` remote function gets 
-    // a 5XX response from the backend, the response will be returned as an [http:RemoteServerError](https://docs.central.ballerina.io/ballerina/http/latest/errors#RemoteServerError)
+    // When the data binding is expected to happen and if the \`post\` remote function gets a 5XX response from the
+    // backend, the response will be returned as an [http:RemoteServerError](https://lib.ballerina.io/ballerina/http/latest/errors#RemoteServerError)
     // including the error payload, headers, and status code.
     resource function get '5xx() returns json {
         json|error res = backendClient->post("/backend/5XX", "want 500");
@@ -48,8 +48,8 @@ service /call on new http:Listener(9090) {
         }
     }
 
-    // When the data binding is expected to happen and if the client remote function gets 
-    // a 4XX response from the backend, the response will be returned as an [http:ClientRequestError](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientRequestError)
+    // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
+    // backend, the response will be returned as an [http:ClientRequestError](https://lib.ballerina.io/ballerina/http/latest/errors#ClientRequestError)
     // including the error payload, headers, and status code.
     resource function get '4xx() returns json {
         json|error res = backendClient->post("/backend/err", "want 400");
@@ -109,8 +109,9 @@ export default function HttpClientDataBinding() {
         directly. The payload type is inferred from the contextually-expected
         type or from the <code>targetType</code> argument. An{" "}
         <code>anydata</code> type or <code>http:Response</code> is expected as
-        the return value type along with the error.
       </p>
+
+      <p>the return value type along with the error.</p>
 
       <p>
         When the user expects client data binding to happen, the HTTP error
@@ -121,8 +122,8 @@ export default function HttpClientDataBinding() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          HTTP module
         </a>
         .
       </p>
@@ -325,7 +326,8 @@ export default function HttpClientDataBinding() {
               </span>
               <span>{`\$ curl "http://localhost:9090/call/all"`}</span>
               <span>{`{"name":"Smith", "age":15}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# To invoke the `}
                 <code>{`/call/5xx`}</code>
@@ -333,7 +335,8 @@ export default function HttpClientDataBinding() {
               </span>
               <span>{`\$ curl "http://localhost:9090/call/5xx"`}</span>
               <span>{`{"code":501, "payload":"data-binding-failed-with-501"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# To invoke the `}
                 <code>{`/call/4xx`}</code>

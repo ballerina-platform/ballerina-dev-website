@@ -64,21 +64,17 @@ export default function KafkaProducerTransactional() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Transactional producer</h1>
 
-      <p>This shows how to do transactional message producing by sending</p>
-
       <p>
-        messages to Kafka brokers atomically using the{" "}
-        <code>kafka:Producer</code> client. For
+        This shows how to do transactional message producing by sending messages
+        to Kafka brokers atomically using the <code>kafka:Producer</code>{" "}
+        client. For this to work properly, an active Kafka broker should be
+        present.
       </p>
 
-      <p>this to work properly, an active Kafka broker should be present.</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          <code>kafka</code> module
+          Kafka module
         </a>
         .
       </p>

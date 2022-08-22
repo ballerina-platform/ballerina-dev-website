@@ -68,11 +68,10 @@ export default function DefiningClasses() {
 
       <p>
         A module can contain <code>class</code> definitions. <code>init</code>{" "}
-        method initializes the object and arguments to <code>new</code> are
-        directed as arguments to <code>init</code>. Methods use{" "}
-        <code>self</code> to access their object. The <code>private</code>{" "}
-        qualifier used in members means accessible only by the code within the{" "}
-        <code>class</code> definition.
+        method initializes the object. Arguments to <code>new</code> are passed
+        as arguments to <code>init</code>. Methods use <code>self</code> to
+        access their object. <code>private</code> means accessible only by code
+        within the <code>class</code> definition.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -81,7 +80,7 @@ export default function DefiningClasses() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7d3204104ddb256e3aecae750d41d72e&file=defining_classes.bal",
+                "https://play.ballerina.io/?gist=c88e01c30289a3f13dca2cb78cfd3763&file=defining_classes.bal",
                 "_blank"
               );
             }}

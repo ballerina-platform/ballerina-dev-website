@@ -60,12 +60,15 @@ export default function DecimalType() {
       <p>
         The <code>decimal</code> type is the third numeric type. It works like{" "}
         <code>int</code> and <code>float</code> types. It is a separate basic
-        type and belongs to the <code>anydata</code> type. There are no implicit
-        conversions between <code>decimal</code> and other numeric types. It can
-        represent <code>decimal</code> fractions exactly and it preserves
-        precision. The <code>decimal</code> type does not include infinity, NaN,
-        or negative zero. It supports floating-point precision to 34 decimal
-        digits.
+        type and belongs to the <code>anydata</code> type.
+      </p>
+
+      <p>
+        There is no implicit conversions between <code>decimal</code> and other
+        numeric types. It can represent <code>decimal</code> fractions exactly
+        and it preserves precision. The <code>decimal</code> type does not
+        include infinity, NaN, or negative zero. It supports floating-point
+        precision to 34 decimal digits.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -74,7 +77,7 @@ export default function DecimalType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d6c1f1b7a5928247bef8464090de75dc&file=decimal_type.bal",
+                "https://play.ballerina.io/?gist=313d6262d1c4604c7af0f995d57b9c80&file=decimal_type.bal",
                 "_blank"
               );
             }}

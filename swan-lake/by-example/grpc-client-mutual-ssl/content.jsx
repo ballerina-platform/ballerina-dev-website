@@ -25,9 +25,9 @@ service HelloWorld {
   `import ballerina/grpc;
 import ballerina/io;
 
-// A gRPC client can be configured to initiate new connections that are secured via mutual SSL.
-// The [\`grpc:ClientSecureSocket\`](https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket)
-// record provides the SSL-related configurations.
+// A gRPC client can be configured to initiate new connections that are
+// secured via mutual SSL.
+// The [\`grpc:ClientSecureSocket\`](https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket) record provides the SSL-related configurations.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     secureSocket = {
         key: {
@@ -78,17 +78,19 @@ export default function GrpcClientMutualSsl() {
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
-        authentication
+        authentication process in which two parties (the client and server)
+        authenticate each other by verifying the digital certificates. It
+        ensures that both parties are assured
       </p>
 
-      <p>
-        process in which two parties (the client and server) authenticate each
-        other by
-      </p>
+      <p>of each other's identity.</p>
 
       <p>
-        verifying the digital certificates. It ensures that both parties are
-        assured of each other's identity.
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
+          gRPC module
+        </a>
+        .
       </p>
 
       <blockquote>
@@ -266,9 +268,11 @@ export default function GrpcClientMutualSsl() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -442,7 +446,8 @@ export default function GrpcClientMutualSsl() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build client`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run client/target/bin/client.jar`}</span>
               <span>{`Hello, World!`}</span>
             </code>

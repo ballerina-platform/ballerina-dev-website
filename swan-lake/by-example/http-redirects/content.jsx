@@ -15,7 +15,7 @@ const codeSnippetData = [
   `import ballerina/http;
 
 // Creates an HTTP client to interact with a remote endpoint.
-// [followRedirects](https://docs.central.ballerina.io/ballerina/http/latest/records/FollowRedirects) record provides configurations associated with HTTP redirects.
+// [followRedirects](https://lib.ballerina.io/ballerina/http/latest/records/FollowRedirects) record provides configurations associated with HTTP redirects.
 http:Client clientEndpoint = check new ("http://localhost:9092", {
         followRedirects: {enabled: true, maxCount: 5}
     }
@@ -76,18 +76,14 @@ export default function HttpRedirects() {
       <h1>Redirects</h1>
 
       <p>
-        The HTTP client supports redirections. To follow redirects when calling
-        an external HTTP server using the Ballerina
-      </p>
-
-      <p>
-        HTTP client connector, set <code>followRedirect</code> to{" "}
-        <code>true</code>.
+        The HTTP client supports redirection. To follow redirects when calling
+        an external HTTP server using the Ballerina HTTP client connector, set{" "}
+        <code>followRedirect</code> to <code>true</code>.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .

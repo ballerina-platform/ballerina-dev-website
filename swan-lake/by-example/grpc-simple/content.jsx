@@ -78,11 +78,18 @@ export default function GrpcSimple() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Simple RPC</h1>
 
-      <p>The gRPC Server Connector exposes the gRPC service over HTTP2.</p>
+      <p>
+        The gRPC Server Connector exposes the gRPC service over HTTP2. In a
+        simple RPC call, a client sends a request to a remote service and waits
+        for the response.
+      </p>
 
       <p>
-        In a simple RPC call, a client sends a request to a remote service and
-        waits for the response.
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
+          GRPC module
+        </a>
+        .
       </p>
 
       <blockquote>
@@ -260,9 +267,11 @@ export default function GrpcSimple() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -435,7 +444,8 @@ export default function GrpcSimple() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build service`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>
@@ -612,7 +622,8 @@ export default function GrpcSimple() {
           <pre ref={ref3}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build client`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run client/target/bin/client.jar`}</span>
             </code>
           </pre>
@@ -621,10 +632,7 @@ export default function GrpcSimple() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Dynamic listener"
-            href="/learn/by-example/dynamic-listener"
-          >
+          <Link title="StopHandler" href="/learn/by-example/stop-handler">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -650,7 +658,7 @@ export default function GrpcSimple() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dynamic listener
+                  StopHandler
                 </span>
               </div>
             </div>

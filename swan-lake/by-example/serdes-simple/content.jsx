@@ -12,35 +12,42 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/cache;
-import ballerina/io;
+  `import ballerina/io;
+import ballerina/serdes;
+
+// Define a type, which is a subtype of anydata.
+type Student record {
+    int id;
+    string name;
+    decimal fees;
+};
 
 public function main() returns error? {
-    // This creates a new cache instance with the default configurations.
-    cache:Cache cache = new();
 
-    // Adds new entries to the cache.
-    check cache.put("key1", "value1");
-    check cache.put("key2", "value2");
+    // Assign the value to the variable.
+    Student studentValue = {
+        id: 7894,
+        name: "Liam",
+        fees: 24999.99
+    };
 
-    // Checks for the cached key availability.
-    if (cache.hasKey("key1")) {
-        // Fetches the cached value.
-        string value = <string> check cache.get("key1");
-        io:println("The value of the key1: " + value);
-    }
-    // Gets the keys of the cache entries.
-    string[] keys = cache.keys();
-    io:println("The existing keys in the cache: " + keys.toString());
+    // Create a serialization object by passing the typedesc.
+    // This creates an underlying protocol buffer schema for the typedesc.
+    serdes:Proto3Schema serdes = check new (Student);
 
-    // Gets the size of the cache.
-    int size = cache.size();
-    io:println("The cache size: ", size);
+    // Serialize the record value to bytes.
+    byte[] serializedValue = check serdes.serialize(studentValue);
+
+    // Deserialize the record value to bytes. 
+    Student deserializedValue = check serdes.deserialize(serializedValue);
+
+    // Print deserialized data.
+    io:println(deserializedValue);
 }
 `,
 ];
 
-export default function CacheBasics() {
+export default function SerdesSimple() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,29 +68,20 @@ export default function CacheBasics() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Cache basics</h1>
+      <h1>Serialization and Deserialization</h1>
 
       <p>
-        The <code>cache</code> library provides in-memory cache implementation
-        APIs and
-      </p>
-
-      <p>
-        uses the <code>Least Recently Used</code> algorithm-based eviction
-        policy.
+        The <code>serdes</code> module helps to serialize and deserialize
+        subtypes of Ballerina <code>anydata</code>. This sample demonstrates how
+        to serialize and deserialize a user defined record type.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/cache/latest/">
-          <code>cache</code> module
+        <a href="https://docs.central.ballerina.io/ballerina/serdes/latest">
+          <code>serdes</code> module
         </a>
         .
-      </p>
-
-      <p>
-        This example illustrates the basic operations provided by the{" "}
-        <code>cache</code> library.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -92,7 +90,7 @@ export default function CacheBasics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f85b0b9d9ea7b557b26515d8856e3414&file=cache_basics.bal",
+                "https://play.ballerina.io/?gist=0cc71b289967f1b250addf85fa5e8da7&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -115,7 +113,7 @@ export default function CacheBasics() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/cache-basics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/serdes-simple",
                 "_blank"
               );
             }}
@@ -186,10 +184,6 @@ export default function CacheBasics() {
         </Col>
       </Row>
 
-      <p>
-        To run this sample, use the <code>bal run</code> command.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -241,10 +235,8 @@ export default function CacheBasics() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run cache_basic.bal`}</span>
-              <span>{`The value of the key1: value1`}</span>
-              <span>{`The existing keys in the cache: ["key1","key2"]`}</span>
-              <span>{`The cache size: 2`}</span>
+              <span>{`bal run serdes_simple.bal`}</span>
+              <span>{`{"id":7894,"name":"Liam","fees":24999.99}`}</span>
             </code>
           </pre>
         </Col>
@@ -253,8 +245,8 @@ export default function CacheBasics() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Time formatting/parsing"
-            href="/learn/by-example/time-formatting-and-parsing"
+            title="Atomic batch execute"
+            href="/learn/by-example/jdbc-atomic-batch-execute-operation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -281,17 +273,14 @@ export default function CacheBasics() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Time formatting/parsing
+                  Atomic batch execute
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Cache invalidation"
-            href="/learn/by-example/cache-invalidation"
-          >
+          <Link title="Read/write bytes" href="/learn/by-example/io-bytes">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -300,7 +289,7 @@ export default function CacheBasics() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Cache invalidation
+                  Read/write bytes
                 </span>
               </div>
               <svg

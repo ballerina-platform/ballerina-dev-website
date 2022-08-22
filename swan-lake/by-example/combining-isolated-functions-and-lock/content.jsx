@@ -67,55 +67,48 @@ export default function CombiningIsolatedFunctionsAndLock() {
 
       <p>
         Combining <code>isolated</code> functions and <code>lock</code> allows{" "}
-        <code>isolated</code> functions to use
+        <code>isolated</code> functions to use <code>lock</code> to access
+        mutable module-level state. Key concept is <code>isolated</code> root. A
+        value <code>r</code> is an <code>isolated</code> root if mutable state
+        reachable from <code>r</code> cannot be reached from outside except
+        through <code>r</code>.
       </p>
 
       <p>
-        <code>lock</code> to access mutable module-level state.
+        An expression is an <code>isolated</code> expression if it follows rules
+        that guarantee that its value will be an <code>isolated</code> root.
+        E.g.,
       </p>
 
-      <p>
-        Key concept is <code>isolated</code> root. A value <code>r</code> is an{" "}
-        <code>isolated</code> root if mutable state reachable
-      </p>
-
-      <p>
-        from <code>r</code> cannot be reached from outside except through{" "}
-        <code>r</code>. An expression is an
-      </p>
-
-      <p>
-        <code>isolated</code> expression if it follows rules that guarantee that
-        its value will be an
-      </p>
-
-      <p>
-        <code>isolated</code> root. e.g.,
-      </p>
-
-      <p>&lt;ul&gt;</p>
-
-      <p>
-        &lt;li&gt;an expression with a type that is a subtype of{" "}
-        <code>readonly</code> is always <code>isolated</code>&lt;/li&gt;
-      </p>
-
-      <p>
-        &lt;li&gt;an expression <code>[E1, E2]</code> is isolated if{" "}
-        <code>E1</code> and <code>E2</code> are <code>isolated</code>&lt;/li&gt;
-      </p>
-
-      <p>
-        &lt;li&gt;an expression <code>f(E1, E2)</code> is <code>isolated</code>{" "}
-        if <code>E1</code> and <code>E1</code> are <code>isolated</code>, and
-      </p>
-
-      <p>
-        the type of <code>f</code> is an <code>isolated</code>{" "}
-        function.&lt;/li&gt;
-      </p>
-
-      <p>&lt;/ul&gt;</p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            an expression with a type that is a subtype of <code>readonly</code>{" "}
+            is always <code>isolated</code>&lt;/li&gt;
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            an expression <code>[E1, E2]</code> is isolated if <code>E1</code>{" "}
+            and <code>E2</code> are <code>isolated</code>&lt;/li&gt;
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            an expression <code>f(E1, E2)</code> is <code>isolated</code> if{" "}
+            <code>E1</code> and <code>E1</code> are <code>isolated</code>, and
+            the type of <code>f</code> is an <code>isolated</code>{" "}
+            function.&lt;/li&gt;
+          </span>
+        </li>
+      </ul>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -123,7 +116,7 @@ export default function CombiningIsolatedFunctionsAndLock() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ceffad2386ea0cb3c0a39cd2928587fe&file=combining_isolated_functions_and_lock.bal",
+                "https://play.ballerina.io/?gist=cc452c8d8fa1fa84f2ba6dd5a3513070&file=combining_isolated_functions_and_lock.bal",
                 "_blank"
               );
             }}

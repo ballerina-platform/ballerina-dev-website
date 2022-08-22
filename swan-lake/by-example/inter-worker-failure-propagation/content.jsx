@@ -78,9 +78,9 @@ export default function InterWorkerFailurePropagation() {
       <p>
         Workers may need to call functions that can return an <code>error</code>
         . Pairing up of sends and receives guarantees that each send will be
-        received and vice-versa provided that the worker has failed on both
-        sending and receiving. Sending or receiving of the failed worker will
-        propagate the failure.
+        received, and vice-versa, provided neither sending nor receiving worker
+        has failed. Send to or receive from failed worker will propagate the
+        failure.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -89,7 +89,7 @@ export default function InterWorkerFailurePropagation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=043828e636d6615f0fd61600d6950de5&file=inter_worker_failure_propagation.bal",
+                "https://play.ballerina.io/?gist=f6cc08de0a54ff0850178e50d428cd8a&file=inter_worker_failure_propagation.bal",
                 "_blank"
               );
             }}

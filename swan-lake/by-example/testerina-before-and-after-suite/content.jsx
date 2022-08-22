@@ -68,26 +68,34 @@ export default function TesterinaBeforeAndAfterSuite() {
 
       <p>
         The <code>BeforeSuite</code> annotation allows you to execute a function
-        before executing a test suite. Similarly, the <code>AfterSuite</code>{" "}
-        annotation can be used to execute a function after a test suite.
+        before executing a test suite.
       </p>
 
       <p>
-        A module is considered as a suite in the Test framework. These
-        annotations can be used to set up prerequisites and post actions for a
-        test suite.
+        Similarly, the <code>AfterSuite</code> annotation can be used to execute
+        a function after a test suite.
       </p>
+
+      <p>A module is considered as a suite in the test framework.</p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
-        </a>{" "}
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
+        </a>
+      </p>
+
+      <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
+      </p>
+
+      <p>
+        These annotations can be used to set up the prerequisites and post
+        actions for a test suite.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -219,24 +227,20 @@ export default function TesterinaBeforeAndAfterSuite() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test test_module`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
               <span>{`I'm the before suite function!`}</span>
               <span>{`I'm in test function 1!`}</span>
               <span>{`I'm in test function 2!`}</span>
               <span>{`I'm the after suite function!`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                [pass] testFunction1`}</span>
               <span>{`                [pass] testFunction2`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                2 passing`}</span>
               <span>{`                0 failing`}</span>
               <span>{`                0 skipped`}</span>

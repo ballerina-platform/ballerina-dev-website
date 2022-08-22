@@ -121,23 +121,27 @@ export default function JdbcAtomicBatchExecuteOperation() {
         achieve the atomic behaviour.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Note:</strong> The relevant database driver JAR should be
-          defined in the <code>Ballerina.toml</code> file as a dependency. This
-          sample is based on an H2 database and the H2 database driver JAR needs
-          to be added to the <code>Ballerina.toml</code> file. This sample is
-          written using H2 2.0.6 and it is recommended to use an H2 JAR file of
-          a version higher than 2.0.2.
-        </p>
-      </blockquote>
+      <p>
+        Note that the relevant database driver JAR should be defined in the{" "}
+        <code>Ballerina.toml</code> file as a dependency.
+      </p>
+
+      <p>
+        This sample is based on an H2 database and the H2 database driver JAR
+        needs to be added to the <code>Ballerina.toml</code> file.
+      </p>
 
       <p>
         For a sample configuration and more information on the underlying
         module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
-          JDBC module
+        <a href="https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/">
+          <code>jdbc</code> module
         </a>
+      </p>
+
+      <p>
+        This sample is written using H2 2.0.6 and it is recommended to use an H2
+        JAR file of a version higher than 2.0.2.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -276,8 +280,7 @@ export default function JdbcAtomicBatchExecuteOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`time = 2022-06-22T13:55:32.009+05:30 level = INFO module = "" message = "First query executed successfully."`}</span>
               <span>{`time = 2022-06-22T13:55:32.037+05:30 level = ERROR module = "" message = "Error while executing SQL query: INSERT INTO Customers (firstName, lastName, registrationID, creditLimit, country)\\n                                VALUES (\\'Peter\\', \\'Stuart\\', 4, 5000.75, \\'USA\\'). Unique index or primary key violation: \\"PUBLIC.CONSTRAINT_INDEX_6 ON PUBLIC.CUSTOMERS(REGISTRATIONID NULLS FIRST) VALUES ( /* 2 */ 4 )\\"; SQL statement:\\nINSERT INTO Customers (firstName, lastName, registrationID, creditLimit, country)\\n                                VALUES (\\'Peter\\', \\'Stuart\\', 4, 5000.75, \\'USA\\') [23505-206]."`}</span>
               <span>{`time = 2022-06-22T13:55:32.038+05:30 level = INFO module = "" message = "Second query failed. Rollback transaction."`}</span>
@@ -483,10 +486,7 @@ export default function JdbcAtomicBatchExecuteOperation() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Serialization and Deserialization"
-            href="/learn/by-example/serdes-simple"
-          >
+          <Link title="Read/write bytes" href="/learn/by-example/io-bytes">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -495,7 +495,7 @@ export default function JdbcAtomicBatchExecuteOperation() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Serialization and Deserialization
+                  Read/write bytes
                 </span>
               </div>
               <svg

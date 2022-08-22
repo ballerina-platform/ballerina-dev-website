@@ -74,14 +74,19 @@ export default function KafkaConsumerService() {
 
       <p>
         Here, a Kafka consumer is used as a listener to a service with manual
-        offset commits. For this to work properly, an active Kafka broker should
-        be present.
+        offset commits.
       </p>
 
       <p>
-        For more information on the underlying module, see the{" "}
+        For this to work properly, an active Kafka broker should be present.
+      </p>
+
+      <p>For more information on the underlying module,</p>
+
+      <p>
+        see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          Kafka module
+          <code>kafka</code> module
         </a>
         .
       </p>

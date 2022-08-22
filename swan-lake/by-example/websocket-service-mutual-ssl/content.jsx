@@ -17,7 +17,7 @@ import ballerina/websocket;
 
 // A WebSocket listener can be configured to accept new connections that are
 // secured via mutual SSL.
-// The [\`websocket:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
+// The [\`websocket:ListenerSecureSocket\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
 listener websocket:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -81,14 +81,19 @@ export default function WebsocketServiceMutualSsl() {
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
-        authentication process in which two parties (the client and server)
-        authenticate each other by verifying the digital certificates. It
-        ensures that both parties are assured of each other's identity.
+        authentication process in which two
       </p>
 
       <p>
+        parties (the client and server) authenticate each other by verifying the
+        digital certificates.
+      </p>
+
+      <p>It ensures that both parties are assured of each other's identity.</p>
+
+      <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
+        <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/">
           WebSocket module
         </a>
         .

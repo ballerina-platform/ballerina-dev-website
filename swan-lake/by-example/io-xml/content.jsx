@@ -12,46 +12,28 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/http;
-import ballerina/io;
-import ballerina/lang.runtime;
+  `import ballerina/io;
 
-string[] fruitBasket = ["Apple", "Orange"];
+public function main() returns error? {
+    // Initializes the XML file path and content.
+    string xmlFilePath = "./files/xmlFile.xml";
+    xml xmlContent = xml \`<book>The Lost World</book>\`;
 
-function init() {
-    io:println("initial items in fruit basket: " + fruitBasket.toString());
-
-    // Registers a function that will be called during the graceful shutdown.
-    runtime:onGracefulStop(clearBasket);
-}
-
-public function clearBasket() returns error? {
-    // Remove all elements from the array.
-    fruitBasket.removeAll();
-    io:println("after removing all fruit items: " + fruitBasket.toString());
-}
-
-service / on new http:Listener(9090) {
-    
-    resource function post addToBasket(@http:Payload string fruit) 
-            returns string[] {
-
-        // Add an element to the array.
-        fruitBasket.push(fruit);
-        io:println("after adding a fruit item: " + fruitBasket.toString());
-        return fruitBasket;
-    }
+    // Writes the given XML to a file.
+    check io:fileWriteXml(xmlFilePath, xmlContent);
+    // If the write operation was successful, then,
+    // performs a read operation to read the XML content.
+    xml readXml = check io:fileReadXml(xmlFilePath);
+    io:println(readXml);
 }
 `,
 ];
 
-export default function StopHandler() {
+export default function IoXml() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
-  const [outputClick2, updateOutputClick2] = useState(false);
-  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -68,18 +50,19 @@ export default function StopHandler() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>
-        <code>StopHandler</code>
-      </h1>
+      <h1>Read/write XML</h1>
 
       <p>
-        The <code>StopHandler</code> registers a function that will be called
-        during the graceful shutdown.
+        The Ballerina <code>io</code> library contains APIs to read/write XML
+        content from/to a file.
       </p>
 
       <p>
-        This example demonstrates how to register a function that will be
-        executed at the end of the program.
+        For more information on the underlying module, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/io/latest/">
+          <code>io</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -88,7 +71,30 @@ export default function StopHandler() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/stop-handler",
+                "https://play.ballerina.io/?gist=8b5e72d611f1fc30e15d9a4a3b145719&file=io_xml.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/io-xml",
                 "_blank"
               );
             }}
@@ -159,6 +165,10 @@ export default function StopHandler() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -210,77 +220,8 @@ export default function StopHandler() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Invoke the service using cURL to add a fruit item.`}</span>
-              <span>{`curl http://localhost:9090/addToBasket -d 'Guava'`}</span>
-              <span>{`["Apple", "Orange", "Guava"]`}</span>
-            </code>
-          </pre>
-        </Col>
-      </Row>
-
-      <Row
-        className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={12} className="d-flex align-items-start">
-          {outputClick2 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#00FF19"
-                className="output-btn bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              onClick={() => {
-                updateOutputClick2(true);
-                const extractedText = extractOutput(ref2.current.innerText);
-                copyToClipboard(extractedText);
-                setTimeout(() => {
-                  updateOutputClick2(false);
-                }, 3000);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#EEEEEE"
-                className="output-btn bi bi-clipboard"
-                viewBox="0 0 16 16"
-                aria-label="Copy to Clipboard"
-              >
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          <pre ref={ref2}>
-            <code className="d-flex flex-column">
-              <span>{`# Navigate to the directory that contains the`}</span>
-              <span>{`# 'stop_handler.bal' file, and run the 'bal run' command below.`}</span>
-              <span>{`
-`}</span>
-              <span>{`bal run stop_handler.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`# Send the interrupt signal SIGINT to terminate the current process.`}</span>
-              <span>{`Ctrl+c`}</span>
-              <span>{`initial items in fruit basket: ["Apple","Orange"]`}</span>
-              <span>{`after adding a fruit item: ["Apple","Orange","Guava"]`}</span>
-              <span>{`after removing all fruit items: []`}</span>
+              <span>{`\$ bal run io_xml.bal`}</span>
+              <span>{`<book>The Lost World</book>`}</span>
             </code>
           </pre>
         </Col>
@@ -288,10 +229,7 @@ export default function StopHandler() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Dynamic listener"
-            href="/learn/by-example/dynamic-listener"
-          >
+          <Link title="Read/write JSON" href="/learn/by-example/io-json">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -317,14 +255,17 @@ export default function StopHandler() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dynamic listener
+                  Read/write JSON
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-simple">
+          <Link
+            title="Cryptographic operations"
+            href="/learn/by-example/security-crypto"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -333,7 +274,7 @@ export default function StopHandler() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Simple RPC
+                  Cryptographic operations
                 </span>
               </div>
               <svg

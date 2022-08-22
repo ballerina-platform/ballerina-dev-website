@@ -94,7 +94,10 @@ export default function GraphqlServiceJwtAuth() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/jwt/latest/">JWT module</a>.
+        <a href="https://docs.central.ballerina.io/ballerina/jwt/latest/">
+          <code>jwt</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

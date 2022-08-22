@@ -75,9 +75,17 @@ export default function KafkaConsumerClientPollConsumerRecord() {
 
       <p>
         This shows how to use a <code>kafka:Consumer</code> as a simple record
-        consumer. The records from a subscribed topic can be retrieved using the{" "}
-        <code>poll()</code> function. This consumer uses the builtin byte array
-        deserializer for both the key and
+        consumer.
+      </p>
+
+      <p>
+        The records from a subscribed topic can be retrieved using the{" "}
+        <code>poll()</code> function.
+      </p>
+
+      <p>
+        This consumer uses the builtin byte array deserializer for both the key
+        and
       </p>
 
       <p>
@@ -87,14 +95,19 @@ export default function KafkaConsumerClientPollConsumerRecord() {
 
       <p>
         The received records are converted to the user defined type using
-        data-binding. For this to work properly, an active Kafka broker should
-        be present.
+        data-binding.
       </p>
 
       <p>
-        For more information on the underlying module, see the{" "}
+        For this to work properly, an active Kafka broker should be present.
+      </p>
+
+      <p>For more information on the underlying module,</p>
+
+      <p>
+        see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          Kafka module
+          <code>kafka</code> module
         </a>
         .
       </p>

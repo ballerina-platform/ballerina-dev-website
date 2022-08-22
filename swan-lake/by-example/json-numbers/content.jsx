@@ -78,16 +78,17 @@ export default function JsonNumbers() {
         <code>json</code> type allows <code>int|float|decimal</code>.{" "}
         <code>toJsonString()</code> will convert <code>int|float|decimal</code>{" "}
         into JSON numeric syntax. <code>fromJsonString()</code> converts JSON
-        numeric syntax into <code>int</code>, if possible, and otherwise{" "}
-        <code>decimal</code>.
-      </p>
-
-      <p>
-        <code>cloneWithType()</code> or <code>ensureType()</code> will convert
-        from <code>int</code> or <code>decimal</code> into user's chosen numeric
-        type. Net result is that you can use <code>json</code> to exchange full
-        range of all three Ballerina numeric types. <code>-0</code> is an edge
-        case: represented as <code>float</code>.
+        numeric syntax into <code>int if possible or otherwise to </code>decimal
+        <code>. </code>cloneWithType()<code>or</code>ensureType()
+        <code>will convert from</code>int<code>or</code>decimal
+        <code>
+          into your chosen numeric type. The net result is that you can use
+        </code>
+        json
+        <code>
+          to exchange the full range of all three Ballerina numeric types.
+        </code>
+        -0<code>is an edge case: represented as</code>float`.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -96,7 +97,7 @@ export default function JsonNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d5454d0643d3be972e18c88df23265ef&file=json_numbers.bal",
+                "https://play.ballerina.io/?gist=ecf1d67bdfc59299c7184a520e933945&file=json_numbers.bal",
                 "_blank"
               );
             }}

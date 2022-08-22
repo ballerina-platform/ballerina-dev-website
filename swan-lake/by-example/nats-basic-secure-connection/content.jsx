@@ -19,9 +19,8 @@ public function main() returns error? {
 
     // Initializes a NATS client with TLS/SSL and username/password authentication.
     nats:Client natsClient = check new(nats:DEFAULT_URL,
-
-        // To secure the client connections using username/password authentication, provide the credentials
-        // with the [\`nats:Credentials\`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
+        // To secure the client connections using username/password authentication,
+        // provide the credentials with the [\`nats:Credentials\`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
         auth = {
             username: "alice",
             password: "alice@123"
@@ -46,9 +45,8 @@ import ballerinax/nats;
 
 // Initializes a NATS listener with TLS/SSL and username/password authentication.
 listener nats:Listener securedEP = new(nats:DEFAULT_URL,
-
-    // To secure the client connections using username/password authentication, provide the credentials
-    // with the [\`nats:Credentials\`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
+    // To secure the client connections using username/password authentication,
+    // provide the credentials with the [\`nats:Credentials\`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
     auth = {
          username: "alice",
          password: "alice@123"
@@ -99,14 +97,16 @@ export default function NatsBasicSecureConnection() {
       <h1>Secured connection</h1>
 
       <p>
-        In this example, the underlying connections of the subscriber and the
-        publisher are secured with TLS/SSL and Basic Auth.
+        In this example, the underlying connections of the subscriber, and the
+        publisher are
       </p>
+
+      <p>secured with TLS/SSL and Basic Auth.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/nats/latest">
-          NATS module
+          <code>nats</code> module
         </a>
         .
       </p>

@@ -17,10 +17,9 @@ import ballerina/log;
 
 service / on new http:Listener(9090) {
 
-    resource function 'default hello(http:Caller caller, http:Request request)
-            returns error? {
-        // [Check if the client expects a 100-continue response](https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue).
-        if (request.expects100Continue()) {
+    resource function 'default hello(http:Caller caller, http:Request request) returns error? {
+        // [Check if the client expects a \`100-continue\` response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue).
+        if request.expects100Continue() {
             string mediaType = request.getContentType();
             if mediaType.toLowerAscii() == "text/plain" {
 
@@ -78,23 +77,18 @@ export default function Http100Continue() {
 
       <p>
         Convenience functions are provided in the HTTP library for ease of use
-        when handling 100-continue scenarios.
+        when handling <code>100-continue</code> scenarios.
       </p>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            00-continue indicates that the server has received the request
-            headers and the client can proceed with sending the request.
-          </span>
-        </li>
-      </ul>
+      <p>
+        <code>100-continue</code> indicates that the server has received the
+        request headers and the client can proceed with sending the request.
+      </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -315,8 +309,7 @@ export default function Http100Continue() {
               <span>{`<`}</span>
               <span>{`Hello World!`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# Use the following client to invoke the service using an unsupported media type. The service is supposed to ignore`}</span>
               <span>{`# the payload if the content type does not match.`}</span>
               <span>{`\$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: application/json'`}</span>

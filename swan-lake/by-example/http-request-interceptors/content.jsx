@@ -30,8 +30,8 @@ service class RequestInterceptor {
     // A \`RequestContext\` is used to share data between the interceptors.
     // An accessor and a path can also be specified. In that case, the interceptor will be
     // executed only for the requests, which match the accessor and path.
-    resource function 'default [string... path](http:RequestContext ctx, 
-                        http:Request req) returns http:NextService|error? {
+    resource function 'default [string... path](http:RequestContext ctx, http:Request req) 
+            returns http:NextService|error? {
         // Sets a header to the request inside the interceptor service.
         req.setHeader(interceptor_header, interceptor_header_value);
         // Returns the next interceptor or the target service in the pipeline. 
@@ -92,12 +92,27 @@ export default function HttpRequestInterceptors() {
 
       <p>
         Interceptors are used to execute some common logic such as logging,
-        header manipulation, state publishing, etc. for all the inbound requests
-        and outbound responses. A <code>RequestInterceptor</code> can be used to
-        intercept the request and execute some custom logic.{" "}
-        <code>RequestInterceptors</code> have a resource method, which will be
-        executed before dispatching the request to the actual resource in the
-        target service.
+        header manipulation,
+      </p>
+
+      <p>
+        state publishing, etc. for all the inbound requests and outbound
+        responses. A
+      </p>
+
+      <p>
+        <code>RequestInterceptor</code> can be used to intercept the request and
+        execute some custom
+      </p>
+
+      <p>
+        logic. <code>RequestInterceptors</code> have a resource method, which
+        will be executed
+      </p>
+
+      <p>
+        before dispatching the request to the actual resource in the target
+        service.
       </p>
 
       <p>

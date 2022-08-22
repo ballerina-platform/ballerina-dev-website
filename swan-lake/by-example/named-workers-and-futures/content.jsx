@@ -69,10 +69,9 @@ export default function NamedWorkersAndFutures() {
         Futures and workers are the same thing. A reference to a named worker
         can be implicitly converted into a <code>future</code>.{" "}
         <code>start</code> is sugar for calling a function with a named worker
-        and returning the named worker as a <code>future</code>.
+        and returning the named worker as a <code>future</code>. Cancellation of
+        futures only happens at yield points.
       </p>
-
-      <p>Cancellation of futures only happens at yield points.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -80,7 +79,7 @@ export default function NamedWorkersAndFutures() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c065b282f53204db5c9464a05c25f9ec&file=named_workers_and_futures.bal",
+                "https://play.ballerina.io/?gist=0b8c7246eb2d32f225887f947a9098a9&file=named_workers_and_futures.bal",
                 "_blank"
               );
             }}

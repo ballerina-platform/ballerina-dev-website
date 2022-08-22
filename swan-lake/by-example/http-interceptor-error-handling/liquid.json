@@ -1,5 +1,5 @@
 {
-  "title": "Interceptor error handling",
+  "title": "Interceptor Error Handling",
   "description": "This BBE demonstrates how HTTP interceptor error handling is done in Ballerina.",
   "keywords": [
     "ballerina",

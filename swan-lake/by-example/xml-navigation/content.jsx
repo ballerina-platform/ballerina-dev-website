@@ -89,8 +89,8 @@ export default function XmlNavigation() {
       <h1>XML navigation</h1>
 
       <p>
-        XML navigation expressions allow for convenient navigation of XML
-        element structure, in a similar way to XPath.
+        XML navigation expressions allow convenient navigation of XML element
+        structure in a similar way to XPath.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -99,7 +99,7 @@ export default function XmlNavigation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f7db04c96fc4cb8c898ac16727fb1789&file=xml_navigation.bal",
+                "https://play.ballerina.io/?gist=7f0fb4b752c5c929f6916d50b96b3f4f&file=xml_navigation.bal",
                 "_blank"
               );
             }}
@@ -258,8 +258,7 @@ export default function XmlNavigation() {
               <span>{`            </book>`}</span>
               <span>{`            <pen><kind>marker</kind><color>blue</color></pen>`}</span>
               <span>{`        </items>`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`            <!--Contents-->`}</span>
               <span>{`            <book>`}</span>
               <span>{`                <name>A Study in Scarlet</name>`}</span>

@@ -54,15 +54,12 @@ export default function LanglibFunctions() {
       <h1>Langlib functions</h1>
 
       <p>
-        Langlib is a small library defined by language providing fundamental
-        operations on built-in data types. Langlib functions can be called using
-        convenient method-call syntax, but these types are not objects!
-      </p>
-
-      <p>
-        There exists a <code>ballerina/lang.T</code> module for each built-in
-        type <code>T</code> and they are automatically imported using{" "}
-        <code>T</code> prefix.
+        Langlib is a small library defined by the Ballerina language providing
+        fundamental operations on the built-in data types. Langlib functions can
+        be called using a convenient method-call syntax but these types are not
+        objects. There exists a <code>ballerina/lang.T</code> module for each
+        built-in type <code>T</code> and they are imported automatically using
+        the <code>T</code> prefix.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -71,7 +68,7 @@ export default function LanglibFunctions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8d328c7f44fcbcc88d10b210a95e14f3&file=langlib_functions.bal",
+                "https://play.ballerina.io/?gist=54cfa1c24316dfd72d913d527401aa7a&file=langlib_functions.bal",
                 "_blank"
               );
             }}

@@ -77,8 +77,12 @@ export default function TesterinaDataDrivenTests() {
       <h1>Data driven tests</h1>
 
       <p>
-        The Ballerina Test framework provides in-built support for data-driven
-        tests. You can specify a function that returns a set of data values as a
+        The Ballerina test framework provides in-built support for data-driven
+        tests.
+      </p>
+
+      <p>
+        You can specify a function that returns a set of data values as a
         data-provider to a test function.
       </p>
 
@@ -89,12 +93,15 @@ export default function TesterinaDataDrivenTests() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
-        </a>{" "}
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
+        </a>
+      </p>
+
+      <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -230,8 +237,7 @@ export default function TesterinaDataDrivenTests() {
               <span>{`\$ bal test test_module`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
               <span>{`Input : [10,10,banana]`}</span>
@@ -239,15 +245,13 @@ export default function TesterinaDataDrivenTests() {
               <span>{`Input : [1,2,3]`}</span>
               <span>{`Input : [10,20,30]`}</span>
               <span>{`Input : [5,6,11]`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        [pass] mapDataProviderTest#banana`}</span>
               <span>{`        [pass] mapDataProviderTest#cherry`}</span>
               <span>{`        [pass] testAddingValues#0`}</span>
               <span>{`        [pass] testAddingValues#1`}</span>
               <span>{`        [pass] testAddingValues#2`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        5 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>

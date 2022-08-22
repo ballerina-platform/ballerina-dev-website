@@ -75,12 +75,9 @@ export default function Identity() {
       <p>
         <code>===</code> and <code>!==</code> operators test for identity.
         Values of mutable basic types are identical if and only if they are
-        stored in the same address.
-      </p>
-
-      <p>
-        <code>==</code> and <code>!=</code> are not defined for objects.{" "}
-        <code>-0.0</code> and <code>+0.0</code> are equal but not identical.
+        stored in the same address. <code>==</code> and <code>!=</code> are not
+        defined for objects. <code>-0.0</code> and <code>+0.0</code> are equal
+        but not identical.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -89,7 +86,7 @@ export default function Identity() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=eb693475bf94bf5e8cf4205209874c8d&file=identity.bal",
+                "https://play.ballerina.io/?gist=72905ed1ecf73cb34cf16186885f55ae&file=identity.bal",
                 "_blank"
               );
             }}
@@ -249,7 +246,7 @@ export default function Identity() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Ignore return values and errors"
+            title="Ignoring return values and errors"
             href="/learn/by-example/ignoring-return-values-and-errors"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -277,7 +274,7 @@ export default function Identity() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Ignore return values and errors
+                  Ignoring return values and errors
                 </span>
               </div>
             </div>

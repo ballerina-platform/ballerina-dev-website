@@ -64,23 +64,27 @@ export default function TesterinaBeforeAndAfterTest() {
 
       <p>
         The <code>before</code> attribute allows you to execute a function
-        before a test function. Similarly, the <code>after</code> attribute can
-        be used to execute a function after a test function.
+        before a test function.
       </p>
 
       <p>
-        These annotations can be used to set up the prerequisites and post
-        actions for a test case.
+        Similarly, the <code>after</code> attribute can be used to execute a
+        function after a test function. These annotations can be used
       </p>
+
+      <p>to set up the prerequisites and post actions for a test case.</p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
-        </a>{" "}
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
+        </a>
+      </p>
+
+      <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -214,22 +218,18 @@ export default function TesterinaBeforeAndAfterTest() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test test_module`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
               <span>{`    ballerinatest/test_module:0.1.0`}</span>
               <span>{`I'm the before function!`}</span>
               <span>{`I'm in test function!`}</span>
               <span>{`I'm the after function!`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        [pass] testFunction`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        1 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>

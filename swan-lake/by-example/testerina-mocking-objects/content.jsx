@@ -178,8 +178,12 @@ export default function TesterinaMockingObjects() {
 
       <p>
         Object mocking enables controlling the values of member variables and
-        the behavior of the member functions of an object. Mocking of objects
-        can be done in two ways.
+        the behavior of
+      </p>
+
+      <p>
+        the member functions of an object. Mocking of objects can be done in two
+        ways.
       </p>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -202,15 +206,11 @@ export default function TesterinaMockingObjects() {
       </ul>
       <p>and values of variables</p>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>3.</span>
-          <span>
-            Creating a test double is suitable when a single mock
-            function/object can be used
-          </span>
-        </li>
-      </ul>
+      <p>
+        Creating a test double is suitable when a single mock function/object
+        can be used
+      </p>
+
       <p>
         throughout all tests whereas stubbing is ideal when defining different
         behaviors for
@@ -220,12 +220,15 @@ export default function TesterinaMockingObjects() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
-        </a>{" "}
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
+        </a>
+      </p>
+
+      <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -438,11 +441,9 @@ export default function TesterinaMockingObjects() {
               <span>{`\$ bal test bbe_mocking`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/bbe_mocking:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running Tests`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        bbe_mocking`}</span>
               <span>{`Executing the 1st GET request`}</span>
               <span>{`Status code: 200`}</span>
@@ -456,16 +457,14 @@ export default function TesterinaMockingObjects() {
               <span>{`Status code: 404`}</span>
               <span>{`Executing the 1st GET request`}</span>
               <span>{`Status code: 500`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                [pass] testMemberVariable`}</span>
               <span>{`                [pass] testReturn`}</span>
               <span>{`                [pass] testReturnSequence`}</span>
               <span>{`                [pass] testReturnWithArgs`}</span>
               <span>{`                [pass] testSendNotification`}</span>
               <span>{`                [pass] testTestDouble`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                6 passing`}</span>
               <span>{`                0 failing`}</span>
               <span>{`                0 skipped`}</span>

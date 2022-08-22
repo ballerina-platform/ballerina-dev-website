@@ -60,19 +60,24 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
-        RabbitMQ message listener. The received messages are acknowledged
-        manually.
+        RabbitMQ message listener.
       </p>
+
+      <p>The received messages are acknowledged manually.</p>
 
       <p>
         By default, the ackMode is rabbitmq:AUTO_ACK, which will automatically
-        acknowledge all messages once consumed.
+        acknowledge
       </p>
 
+      <p>all messages once consumed.</p>
+
+      <p>For more information on the underlying module,</p>
+
       <p>
-        For more information on the underlying module, see the{" "}
+        see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          RabbitMQ module
+          <code>rabbitmq</code> module
         </a>
         .
       </p>

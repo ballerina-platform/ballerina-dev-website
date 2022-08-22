@@ -70,19 +70,16 @@ export default function IgnoringReturnValuesAndErrors() {
       <h1>Ignoring return values and errors</h1>
 
       <p>
-        Ballerina does not allow silently ignoring return values. To ignore a
-        return value, assign it to <code>_</code>; this is like
+        Ballerina does not allow ignoring return values. To ignore a return
+        value, assign it to <code>_</code>; this is like an implicitly declared
+        variable that cannot be referenced. When a return type includes an
+        error, you have to do something with the error. <code>_</code> is of
+        type any: you cannot use <code>_</code> to ignore an error.
       </p>
 
       <p>
-        an implicitly declared variable that cannot be referenced. When a return
-        type includes an error, you have to do something with the error.
-      </p>
-
-      <p>
-        <code>_</code> is of type any: you cannot use <code>_</code> to ignore
-        an error. <code>checkpanic</code> is like <code>check</code>, but panics
-        on error rather than returning.
+        <code>checkpanic</code> is like <code>check</code>but it panics on the
+        error rather than on returning.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -91,7 +88,7 @@ export default function IgnoringReturnValuesAndErrors() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a29133dc8a50676c949d8a2e3c5c1bd4&file=ignoring_return_values_and_errors.bal",
+                "https://play.ballerina.io/?gist=32fcb9a4821b1117b357af481cc077b3&file=ignoring_return_values_and_errors.bal",
                 "_blank"
               );
             }}

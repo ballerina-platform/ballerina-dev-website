@@ -68,20 +68,30 @@ export default function TesterinaBeforeAndAfterEach() {
 
       <p>
         The function specified with the <code>BeforeEach</code> annotation is
-        executed before every test and the function specified with the{" "}
-        <code>AfterEach</code> annotation is executed after every test within
-        the test suite. This can be used for repeatedly initializing and tearing
-        down test level aspects before every test function.
+        executed before every test and
+      </p>
+
+      <p>
+        the function specified with the <code>AfterEach</code> annotation is
+        executed after every test within the test suite.
+      </p>
+
+      <p>
+        This can be used for repeatedly initializing and tearing down test level
+        aspects before every test function.
       </p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
-        </a>{" "}
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
+        </a>
+      </p>
+
+      <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -215,12 +225,10 @@ export default function TesterinaBeforeAndAfterEach() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test test_module`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
               <span>{`I'm the before each function!`}</span>
@@ -229,12 +237,10 @@ export default function TesterinaBeforeAndAfterEach() {
               <span>{`I'm the before each function!`}</span>
               <span>{`I'm in test function 2!`}</span>
               <span>{`I'm the after each function!`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                [pass] testFunction1`}</span>
               <span>{`                [pass] testFunction2`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                2 passing`}</span>
               <span>{`                0 failing`}</span>
               <span>{`                0 skipped`}</span>

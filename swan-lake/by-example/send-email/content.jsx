@@ -74,15 +74,19 @@ export default function SendEmail() {
       <h1>Send emails</h1>
 
       <p>
-        The Email Connector is used to send (with SMTP) emails using the SSL or
-        STARTTLS protocols. This sample includes sending emails with default
-        configurations over SSL using the default ports.
+        The Email connector is used to send (with SMTP) emails using the SSL or
+        STARTTLS protocols.
+      </p>
+
+      <p>
+        This sample includes sending emails with default configurations over SSL
+        using the default ports.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/email/latest/">
-          Email module
+        <a href="https://docs.central.ballerina.io/ballerina/email/latest/">
+          <code>email</code> module
         </a>
         .
       </p>
@@ -218,8 +222,7 @@ export default function SendEmail() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run send_email.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# Check the inbox to view the sent emails.`}</span>
             </code>
           </pre>

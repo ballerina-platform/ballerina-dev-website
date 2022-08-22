@@ -64,29 +64,42 @@ export default function XmlDataModel() {
 
       <p>
         An <code>xml</code> value is a sequence representing the parsed content
-        of an XML element. An <code>xml</code> value has four kinds of items.
+        of an XML element. It consists of the four items below:
       </p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>
-            The element, processing instruction, and comment singletons
-            correspond directly to the items in the XML information set
-          </span>
+          <span>Element</span>
         </li>
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>
-            The text item corresponds to one or more character information items
-          </span>
+          <span>Processing Instruction</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Comment</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Text</span>
         </li>
       </ul>
 
       <p>
-        XML document is an <code>xml</code> sequence with only one{" "}
+        The element, processing instruction, and comment singletons correspond
+        directly to the items in the XML information set. The text item
+        corresponds to one or more character information items.
+      </p>
+
+      <p>
+        An XML document is an <code>xml</code> sequence with only one{" "}
         <code>element</code> and no <code>text</code>. An <code>element</code>{" "}
         item is mutable and consists of:
       </p>
@@ -95,7 +108,7 @@ export default function XmlDataModel() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            name: type <code>string</code>
+            <code>name</code>: type <code>string</code>
           </span>
         </li>
       </ul>
@@ -103,7 +116,7 @@ export default function XmlDataModel() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            attributes: type <code>map&lt;string&gt;</code>
+            <code>attributes</code>: type <code>map&lt;string&gt;</code>
           </span>
         </li>
       </ul>
@@ -111,20 +124,20 @@ export default function XmlDataModel() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            children: type <code>xml</code>
+            <code>children</code>: type <code>xml</code>
           </span>
         </li>
       </ul>
 
       <p>
-        A <code>text</code> item is immutable.
+        An XML <code>text</code> item is immutable.
       </p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            it has no identity: <code>==</code> is the same as <code>===</code>
+            It has no identity: <code>==</code> is the same as <code>===</code>
           </span>
         </li>
       </ul>
@@ -132,7 +145,7 @@ export default function XmlDataModel() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            consecutive <code>text</code> items never occur in an{" "}
+            Consecutive <code>text</code> items never occur in an{" "}
             <code>xml</code> value: they are always merged
           </span>
         </li>
@@ -144,7 +157,7 @@ export default function XmlDataModel() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0e483e47cb034d197a6b8b2f3615dd97&file=xml_data_model.bal",
+                "https://play.ballerina.io/?gist=5d384e4351d11a40cbc3daf3c34063df&file=xml_data_model.bal",
                 "_blank"
               );
             }}

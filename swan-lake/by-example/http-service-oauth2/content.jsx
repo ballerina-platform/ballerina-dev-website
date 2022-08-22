@@ -23,12 +23,10 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with OAuth2 and by enforcing authorization
-// optionally. It can be enabled by setting the
-// [\`http:OAuth2IntrospectionConfig\`](https://lib.ballerina.io/ballerina/http/latest/records/OAuth2IntrospectionConfig) configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type
-// configurations for \`scopes\` field.
+// The service can be secured with OAuth2 and by enforcing authorization optionally. 
+// It can be enabled by setting the [\`http:OAuth2IntrospectionConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/OAuth2IntrospectionConfig) configurations.
+// Authorization is based on scopes. A scope maps to one or more groups. Authorization can be 
+// enabled by setting the \`string|string[]\` type configurations for the \`scopes\` field.
 @http:ServiceConfig {
     auth: [
         {
@@ -85,29 +83,38 @@ export default function HttpServiceOauth2() {
       <p>
         An HTTP service/resource can be secured with OAuth2 and by enforcing
         authorization optionally. Then, it validates the OAuth2 token sent in
-        the <code>Authorization</code> header against the provided
-        configurations. This calls the configured introspection endpoint to
-        validate.
+        the
+      </p>
+
+      <p>
+        <code>Authorization</code> header against the provided configurations.
+        This calls the configured introspection endpoint to validate.
       </p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
         declared in a service can be bound to one/more scope(s). The scope can
-        be included in the introspection response using a custom claim
-        attribute. That custom claim attribute also can be configured as the{" "}
+        be included
+      </p>
+
+      <p>
+        in the introspection response using a custom claim attribute. That
+        custom claim attribute also can be configured as the{" "}
         <code>scopeKey</code>.
       </p>
 
       <p>
         In the authorization phase, the scopes of the service/resource are
         compared against the scope included in the introspection response for at
-        least one match between the two sets.
+        least one
       </p>
+
+      <p>match between the two sets.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          OAuth2 module
+        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
+          <code>oauth2</code> module
         </a>
         .
       </p>

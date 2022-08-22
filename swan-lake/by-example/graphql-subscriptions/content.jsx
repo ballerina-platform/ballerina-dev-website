@@ -24,15 +24,14 @@ service /graphql on new graphql:Listener(4000) {
         self.names = ["Walter White", "Jesse Pinkman", "Skyler White"];
     }
 
-    // The mandatory resource function with the \`get\` accessor
-    // represents a field in the root \`Query\` operation.
+    // The mandatory resource function with the \`get\` accessor represents a field in the root
+    // \`Query\` operation.
     resource function get names() returns string[] {
         return self.names;
     }
 
-    // A resource function with the \`subscribe\` accessor 
-    // represents a field in the root \`Subscription\` operation.
-    // It must always return a stream. 
+    // A resource function with the \`subscribe\` accessor represents a field in the root
+    // \`Subscription\` operation. It must always return a stream.
     // Each name will be returned in the \`string\` type as GraphQL responses.
     resource function subscribe names() returns stream<string, error?> {
         return self.names.toStream();
@@ -78,7 +77,7 @@ export default function GraphqlSubscriptions() {
       <p>
         Each resource function with the <code>subscribe</code> accessor in the
         service will be added as a field of the <code>Subscription</code> type.
-        The field name will be the resource function name, and the field type
+        The field name will be the resource function name and the field type
         will be the constraint type of the stream returned from the resource
         function.
       </p>
@@ -86,7 +85,7 @@ export default function GraphqlSubscriptions() {
       <p>
         For more information on the underlying package, see the{" "}
         <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+          <code>graphql</code> package
         </a>
         .
       </p>
@@ -168,6 +167,8 @@ export default function GraphqlSubscriptions() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -219,15 +220,13 @@ export default function GraphqlSubscriptions() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# To retrieve data, any tool that supports GraphQL Subscriptions via WebSockets can be used.`}</span>
-              <span>{`# The document: subscription { names }`}</span>
-              <span>{`{ "data": { "names": "Walter White" } }`}</span>
-              <span>{`{ "data": { "names": "Jesse Pinkman" } }`}</span>
-              <span>{`{ "data": { "names": "Skyler White" } }`}</span>
+              <span>{`\$ bal run graphql_subscriptions.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -280,7 +279,12 @@ export default function GraphqlSubscriptions() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run graphql_subscriptions.bal`}</span>
+              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
+              <span>{`# The query used: subscription { names }`}</span>
+              <span>{`curl 'http://localhost:4000/graphql' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: file://' --data-binary '{"query":"subscription { names }"}' --compressed`}</span>
+              <span>{`{ "data": { "names": "Walter White" } }`}</span>
+              <span>{`{ "data": { "names": "Jesse Pinkman" } }`}</span>
+              <span>{`{ "data": { "names": "Skyler White" } }`}</span>
             </code>
           </pre>
         </Col>

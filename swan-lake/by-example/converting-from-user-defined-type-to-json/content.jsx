@@ -65,18 +65,19 @@ export default function ConvertingFromUserDefinedTypeToJson() {
       <h1>Converting from user-defined type to JSON</h1>
 
       <p>
-        Conversion from <code>json</code> value to JSON format is
+        Conversion from a <code>json</code> value to JSON format is
         straightforward. Converting from application-specific, user-defined
         subtype of <code>anydata</code> to <code>json</code> is also possible.
+        In many cases, this is a <code>no-op: user-defined</code> type, which
+        will be a subtype of <code>json</code> as well as of{" "}
+        <code>anydata</code>. With tables, XML or records open to{" "}
+        <code>anydata</code>, use <code>toJson()</code> to convert{" "}
+        <code>anydata</code> to <code>json</code>.
       </p>
 
       <p>
-        In many cases, this is a no-op: user-defined type will be a subtype of{" "}
-        <code>json</code> as well as of <code>anydata</code>. With tables, XML
-        or records open to <code>anydata</code>, use <code>toJson()</code> to
-        convert <code>anydata</code> to <code>json</code>. APIs that generate
-        JSON typically accept <code>anydata</code> and automatically apply{" "}
-        <code>toJson()</code>.
+        APIs that generate JSON typically accept <code>anydata</code> and
+        automatically apply <code>toJson()</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -85,7 +86,7 @@ export default function ConvertingFromUserDefinedTypeToJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4e7147a42b6bf25a8031649b09f8b9be&file=converting_from_user_defined_type_to_json.bal",
+                "https://play.ballerina.io/?gist=8704101cc5779223c5d4c8607abdfa7a&file=converting_from_user_defined_type_to_json.bal",
                 "_blank"
               );
             }}
@@ -277,7 +278,7 @@ export default function ConvertingFromUserDefinedTypeToJson() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Convert from JSON to user-defined type"
+            title="Converting from JSON to user-defined type"
             href="/learn/by-example/converting-from-json-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -288,7 +289,7 @@ export default function ConvertingFromUserDefinedTypeToJson() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Convert from JSON to user-defined type
+                  Converting from JSON to user-defined type
                 </span>
               </div>
               <svg

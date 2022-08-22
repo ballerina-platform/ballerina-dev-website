@@ -57,21 +57,18 @@ export default function JsonType() {
       <h1>JSON type</h1>
 
       <p>
-        <code>json</code> type is a union:{" "}
+        The <code>json</code> type is a union:{" "}
         <code>()|boolean|int|float|decimal|string|json[]|map&lt;json&gt;</code>.
         A <code>json</code> value can be converted to and from the JSON format
         straightforwardly except for the choice of the Ballerina numeric type.
         Ballerina syntax is compatible with <code>JSON</code> and allows{" "}
-        <code>null</code> for <code>()</code> for JSON compatibility.
-      </p>
-
-      <p>
+        <code>null</code> for <code>()</code> for JSON compatibility.{" "}
         <code>json</code> is <code>anydata</code> without <code>table</code> and{" "}
-        <code>xml</code>. <code>toJson</code> recursively converts{" "}
+        <code>xml</code>. <code>toJson()</code> recursively converts{" "}
         <code>anydata</code> to <code>json</code>. <code>table</code> values are
         converted to <code>arrays</code>. <code>xml</code> values are converted
-        to <code>strings</code>.<code>json</code> and <code>xml</code> types are
-        not parallel.
+        to <code>strings</code>. <code>json</code> and <code>xml</code> types
+        are not parallel.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -80,7 +77,7 @@ export default function JsonType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=eb530d32378ce5220144b6a9ae0d0af7&file=json_type.bal",
+                "https://play.ballerina.io/?gist=f2e54e2262e1568544da93699e4dca99&file=json_type.bal",
                 "_blank"
               );
             }}
@@ -269,7 +266,7 @@ export default function JsonType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Work directly with JSON"
+            title="Working directly with JSON"
             href="/learn/by-example/working-directly-with-json"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -280,7 +277,7 @@ export default function JsonType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Work directly with JSON
+                  Working directly with JSON
                 </span>
               </div>
               <svg

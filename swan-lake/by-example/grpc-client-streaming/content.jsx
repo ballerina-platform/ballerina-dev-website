@@ -105,17 +105,12 @@ export default function GrpcClientStreaming() {
 
       <p>
         In a gRPC client streaming scenario, the client writes a sequence of
-        messages and sends them to the server. Once the client has finished
-        writing the messages, it waits for the server to read them and return a
-        response.
+        messages and sends them to the server.
       </p>
 
       <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-          GRPC module
-        </a>
-        .
+        Once the client has finished writing the messages, it waits for the
+        server to read them and return a response.
       </p>
 
       <blockquote>
@@ -293,11 +288,9 @@ export default function GrpcClientStreaming() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the{" "}
-          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
-            Proto To Ballerina
-          </a>{" "}
-          example.
+          Ballerina Protocol Buffers tool, see the &lt;a
+          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
+          To Ballerina&lt;/a&gt; example.
         </p>
       </blockquote>
 
@@ -471,8 +464,7 @@ export default function GrpcClientStreaming() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build service`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>
@@ -649,8 +641,7 @@ export default function GrpcClientStreaming() {
           <pre ref={ref3}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build client`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`\$ bal run client/target/bin/client.jar`}</span>
             </code>
           </pre>

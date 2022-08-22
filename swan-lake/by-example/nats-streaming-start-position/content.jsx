@@ -145,17 +145,21 @@ export default function NatsStreamingStartPosition() {
 
       <p>
         The <code>nats</code> streaming library provides the functionality of
-        historical message replay. New subscriptions may specify a starting
-        position in the stream of messages stored for the channel of the
-        subscribed subject.
+        historical
       </p>
+
+      <p>message replay.</p>
+
+      <p>New subscriptions may specify a starting position in the stream of</p>
+
+      <p>messages stored for the channel of the subscribed subject.</p>
 
       <p>Message delivery may begin at:</p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>1.</span>
-          <span>The earliest message stored for this subject</span>
+          <span>The earliest message stored for this subject.</span>
         </li>
       </ul>
       <ul style={{ marginLeft: "0px" }}>
@@ -169,22 +173,25 @@ export default function NatsStreamingStartPosition() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>3.</span>
-          <span>A historical offset from the current server date/time</span>
+          <span>
+            A historical offset from the current server date/time (e.g., the
+            last 30 seconds).
+          </span>
         </li>
       </ul>
-      <p>(e.g., the last 30 seconds).</p>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
-          <span>A specific message sequence number</span>
+          <span>A specific message sequence number.</span>
         </li>
       </ul>
 
+      <p>For more information on the underlying module,</p>
+
       <p>
-        For more information on the underlying module, see the{" "}
+        see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
-          STAN module
+          <code>stan</code> module
         </a>
         .
       </p>
@@ -408,57 +415,76 @@ export default function NatsStreamingStartPosition() {
         </Col>
       </Row>
 
-      <p>
-        When you start the subscriber after publishing several messages, You'll
-        notice that,
-      </p>
+      <p>When you start the subscriber after publishing several messages,</p>
+
+      <p>You'll notice that,</p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>1.</span>
           <span>
             <code>receiveSinceTimeDelta</code> service receives the messages if
-            the messages were sent within a historical offset of 5 seconds from
-            the current server date/time.
           </span>
         </li>
       </ul>
+      <pre>
+        <code>
+          the messages were sent within a historical offset of 5 seconds
+        </code>
+      </pre>
+
+      <pre>
+        <code>from the current server date/time.</code>
+      </pre>
+
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>2.</span>
           <span>
             <code>receiveFromGivenIndex</code> service receives services
-            messages starting from the third message published.
+            messages
           </span>
         </li>
       </ul>
+      <pre>
+        <code>starting from the third message published.</code>
+      </pre>
+
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>3.</span>
           <span>
             <code>receiveFromLastReceived</code> service receives messages
-            starting from the last published message.
+            starting
           </span>
         </li>
       </ul>
+      <pre>
+        <code>from the last published message.</code>
+      </pre>
+
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
           <span>
             <code>receiveFromBeginning</code> service receives all messages ever
-            published.
           </span>
         </li>
       </ul>
+      <pre>
+        <code>published.</code>
+      </pre>
+
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>5.</span>
           <span>
             <code>receiveNewOnly</code> service receives only the messages,
-            which are published after the subscriber starts.
+            which are
           </span>
         </li>
       </ul>
+      <p>published after the subscriber starts.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

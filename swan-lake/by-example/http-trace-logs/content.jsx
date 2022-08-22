@@ -16,8 +16,8 @@ const codeSnippetData = [
 
 service / on new http:Listener(9090) {
 
-    resource function get hello(http:Request req) returns http:Response|error {
-        http:Client clientEP = check new ("https://httpstat.us");
+    resource function get .(http:Request req) returns http:Response|error {
+        http:Client clientEP = check new ("http://httpstat.us");
         http:Response resp = check clientEP->forward("/200", req);
         return resp;
     }
@@ -52,32 +52,21 @@ export default function HttpTraceLogs() {
 
       <p>
         The HTTP trace logs can be used to monitor the HTTP traffic that goes in
-        and out of Ballerina.
-      </p>
-
-      <p>
-        To enable trace logs, the log level has to be set to <code>TRACE</code>{" "}
-        using the runtime argument:
-      </p>
-
-      <p>
-        &lt;br&gt; <code>-Cballerina.http.traceLogConsole=true</code>.
-        &lt;br&gt;
+        and out of Ballerina. To enable trace logs, the log level has to be set
+        to <code>TRACE</code> using the{" "}
+        <code>-Cballerina.http.traceLogConsole=true</code> runtime argument.
       </p>
 
       <p>
         The configurations can be set in the <code>Config.toml</code> file for
-        advanced use cases such as specifying the file path
-      </p>
-
-      <p>
-        to save the trace logs and by specifying the hostname and port of a
-        socket service to publish the trace logs.
+        advanced use cases such as specifying the file path to save the trace
+        logs and specifying the hostname and port of a socket service to publish
+        the trace logs.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .

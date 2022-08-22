@@ -77,15 +77,18 @@ export default function GrpcServiceSslTls() {
 
       <p>
         You can use the gRPC listener to connect to or interact with a gRPC
-        client secured with SSL/TLS.
+        client secured with SSL/TLS. Provide the{" "}
+        <code>grpc:ListenerSecureSocket</code> configurations to the server to
+        expose an HTTPS connection over HTTP/2.
       </p>
 
       <p>
-        Provide the <code>grpc:ListenerSecureSocket</code> configurations to the
-        server to
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
+          gRPC module
+        </a>
+        .
       </p>
-
-      <p>expose an HTTPS connection over HTTP/2.</p>
 
       <blockquote>
         <p>
@@ -263,9 +266,11 @@ export default function GrpcServiceSslTls() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 

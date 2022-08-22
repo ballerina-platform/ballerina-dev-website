@@ -55,39 +55,22 @@ export default function HttpHeaderParam() {
 
       <p>
         The <code>http</code> module provides support for accessing inbound
-        request headers as resource method arguments.
+        request headers as resource method arguments. The header key can be
+        specified as a variable name along with the <code>@http:Header</code>{" "}
+        annotation. Else, it can be specified in the <code>name</code> field of
+        the annotation. The supported types are <code>string</code>,{" "}
+        <code>string[]</code>, and optional. The <code>string[]</code> type
+        returns all the values for a given header key while <code>string</code>{" "}
+        returns the first value. Unless the type is optional, the request will
+        be responded with a 400 Bad request in the absence of the mentioned
+        header. However, more header manipulations can be done via the{" "}
+        <code>http:Headers</code> header object, which also can be accessed as a
+        resource method argument without using the annotation.
       </p>
-
-      <p>
-        The header key can be specified as a variable name along with the{" "}
-        <code>@http:Header</code> annotation. Else, it can be specified
-      </p>
-
-      <p>
-        in the <code>name</code> field of the annotation. The supported types
-        are <code>string</code>, <code>string[]</code>, and optional.
-      </p>
-
-      <p>
-        The <code>string[]</code> type returns all the values for a given header
-        key while <code>string</code> returns the first value. Unless the
-      </p>
-
-      <p>
-        type is optional, the request will be responded with a{" "}
-        <code>400 Bad request</code> in the absence of the mentioned header.
-      </p>
-
-      <p>
-        However, more header manipulations can be done via the{" "}
-        <code>http:Headers</code> header object, which also can be accessed as
-      </p>
-
-      <p>a resource method argument without using the annotation.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .

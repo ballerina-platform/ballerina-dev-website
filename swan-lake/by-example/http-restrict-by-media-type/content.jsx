@@ -15,7 +15,7 @@ const codeSnippetData = [
   `import ballerina/http;
 
 service on new http:Listener(9092) {
-    // The \`consumes\` and \`produces\` annotations of the [resource configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/HttpResourceConfig)
+    // The \`consumes\` and \`produces\` annotations of the [resource configuration](https://lib.ballerina.io/ballerina/http/latest/records/HttpResourceConfig)
     // contain MIME types as an array of strings. The resource can only consume/accept \`text/json\` and
     // \`application/json\` media types. Therefore, the \`Content-Type\` header
     // of the request must be in one of these two types. The resource can produce
@@ -63,20 +63,16 @@ export default function HttpRestrictByMediaType() {
       <h1>Restrict by media type</h1>
 
       <p>
-        You can configure the resources of the HTTP services to restrict the
-        types of media they consume and produce.
+        You can configure resources of HTTP services to restrict the types of
+        media they consume and produce. This is done through the{" "}
+        <code>consumes</code> and <code>produces</code> annotation attributes of
+        the <code>ResourceConfig</code> annotation, which is used with
+        resources.
       </p>
-
-      <p>
-        This is done through the <code>consumes</code> and <code>produces</code>{" "}
-        attributes of the <code>ResourceConfig</code> annotation,
-      </p>
-
-      <p>which is used with resources.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .

@@ -77,12 +77,8 @@ export default function TesterinaDataDrivenTests() {
       <h1>Data driven tests</h1>
 
       <p>
-        The Ballerina test framework provides in-built support for data-driven
-        tests.
-      </p>
-
-      <p>
-        You can specify a function that returns a set of data values as a
+        The Ballerina Test framework provides in-built support for data-driven
+        tests. You can specify a function that returns a set of data values as a
         data-provider to a test function.
       </p>
 
@@ -93,15 +89,12 @@ export default function TesterinaDataDrivenTests() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
-          <code>test</code> module
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
+          Test Module
         </a>
         .
       </p>

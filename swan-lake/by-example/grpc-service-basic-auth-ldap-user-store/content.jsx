@@ -107,16 +107,10 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
       <p>
         A gRPC service/resource can be secured with Basic Auth and by enforcing
         authorization optionally. Then, it validates the Basic Auth token sent
-        in
-      </p>
-
-      <p>
-        the <code>Authorization</code> metadata against the provided
+        in the <code>Authorization</code> metadata against the provided
         configurations. This reads data from the configured LDAP. This stores
-        usernames, passwords for
+        usernames, passwords for authentication, and scopes for authorization.
       </p>
-
-      <p>authentication, and scopes for authorization.</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
@@ -129,31 +123,15 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
         match between the two sets.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-            <code>auth</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+          Auth module
+        </a>
+        .
+      </p>
 
-      <h2>Generate the service definition</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            Create a new Protocol Buffers definition file named{" "}
-            <code>grpc_service.proto</code> and add the service definition to
-            it.
-          </span>
-        </li>
-      </ul>
-
-      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "24px" }}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -230,19 +208,9 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
         </Col>
       </Row>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>2.</span>
-          <span>
-            Run the command below in the Ballerina tools distribution for stub
-            generation.
-          </span>
-        </li>
-      </ul>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "24px" }}
+        style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
@@ -297,54 +265,7 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
         </Col>
       </Row>
 
-      <p>
-        Once you run the command, the <code>grpc_service_pb.bal</code> file is
-        generated inside the stubs directory.
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
-        </p>
-      </blockquote>
-
-      <h2>Implement and run the service</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>Create a Ballerina package.</span>
-        </li>
-      </ul>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>2.</span>
-          <span>
-            Copy the generated <code>grpc_secured_pb.bal</code> stub file to the
-            package. For example, if you create a package named{" "}
-            <code>service</code>, copy the stub file to the <code>service</code>{" "}
-            package.
-          </span>
-        </li>
-      </ul>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>3.</span>
-          <span>
-            Create a new{" "}
-            <code>grpc_service_basic_auth_ldap_user_store.bal</code> Ballerina
-            file inside the <code>service</code> package and add the service
-            implementation.
-          </span>
-        </li>
-      </ul>
-
-      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "24px" }}>
+      <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -421,18 +342,9 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
         </Col>
       </Row>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>4.</span>
-          <span>
-            Execute the commands below to build and run the 'service' package.
-          </span>
-        </li>
-      </ul>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
-        style={{ marginLeft: "24px" }}
+        style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick2 ? (
@@ -488,11 +400,6 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
           </pre>
         </Col>
       </Row>
-
-      <p>
-        You may need to change the certificate file path and private key file
-        path.
-      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

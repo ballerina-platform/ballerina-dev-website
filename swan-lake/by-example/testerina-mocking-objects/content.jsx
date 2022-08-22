@@ -178,12 +178,8 @@ export default function TesterinaMockingObjects() {
 
       <p>
         Object mocking enables controlling the values of member variables and
-        the behavior of
-      </p>
-
-      <p>
-        the member functions of an object. Mocking of objects can be done in two
-        ways.
+        the behavior of the member functions of an object. Mocking of objects
+        can be done in two ways.
       </p>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -206,11 +202,15 @@ export default function TesterinaMockingObjects() {
       </ul>
       <p>and values of variables</p>
 
-      <p>
-        Creating a test double is suitable when a single mock function/object
-        can be used
-      </p>
-
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
+          <span>
+            Creating a test double is suitable when a single mock
+            function/object can be used
+          </span>
+        </li>
+      </ul>
       <p>
         throughout all tests whereas stubbing is ideal when defining different
         behaviors for
@@ -220,15 +220,12 @@ export default function TesterinaMockingObjects() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
-          <code>test</code> module
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
+          Test Module
         </a>
         .
       </p>

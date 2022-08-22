@@ -13,23 +13,41 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/io;
+import ballerina/serdes;
+
+// Define a type, which is a subtype of anydata.
+type Student record {
+    int id;
+    string name;
+    decimal fees;
+};
 
 public function main() returns error? {
-    // Initializes the XML file path and content.
-    string xmlFilePath = "./files/xmlFile.xml";
-    xml xmlContent = xml \`<book>The Lost World</book>\`;
 
-    // Writes the given XML to a file.
-    check io:fileWriteXml(xmlFilePath, xmlContent);
-    // If the write operation was successful, then,
-    // performs a read operation to read the XML content.
-    xml readXml = check io:fileReadXml(xmlFilePath);
-    io:println(readXml);
+    // Assign the value to the variable.
+    Student studentValue = {
+        id: 7894,
+        name: "Liam",
+        fees: 24999.99
+    };
+
+    // Create a serialization object by passing the typedesc.
+    // This creates an underlying protocol buffer schema for the typedesc.
+    serdes:Proto3Schema serdes = check new (Student);
+
+    // Serialize the record value to bytes.
+    byte[] serializedValue = check serdes.serialize(studentValue);
+
+    // Deserialize the record value to bytes. 
+    Student deserializedValue = check serdes.deserialize(serializedValue);
+
+    // Print deserialized data.
+    io:println(deserializedValue);
 }
 `,
 ];
 
-export default function IoXml() {
+export default function SerdesSimple() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,17 +68,18 @@ export default function IoXml() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Read/write XML</h1>
+      <h1>Serialization and Deserialization</h1>
 
       <p>
-        The Ballerina <code>io</code> library contains APIs to read/write XML
-        content from/to a file.
+        The <code>serdes</code> module helps to serialize and deserialize
+        subtypes of Ballerina <code>anydata</code>. This sample demonstrates how
+        to serialize and deserialize a user defined record type.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/io/latest/">
-          <code>io</code> module
+        <a href="https://docs.central.ballerina.io/ballerina/serdes/latest">
+          <code>serdes</code> module
         </a>
         .
       </p>
@@ -71,7 +90,7 @@ export default function IoXml() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8b5e72d611f1fc30e15d9a4a3b145719&file=io_xml.bal",
+                "https://play.ballerina.io/?gist=d9f2c7f7b8c0255a6191893f5b152d85&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -94,7 +113,7 @@ export default function IoXml() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/io-xml",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/serdes-simple",
                 "_blank"
               );
             }}
@@ -165,10 +184,6 @@ export default function IoXml() {
         </Col>
       </Row>
 
-      <p>
-        To run this sample, use the <code>bal run</code> command.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -220,8 +235,8 @@ export default function IoXml() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run io_xml.bal`}</span>
-              <span>{`<book>The Lost World</book>`}</span>
+              <span>{`bal run serdes_simple.bal`}</span>
+              <span>{`{"id":7894,"name":"Liam","fees":24999.99}`}</span>
             </code>
           </pre>
         </Col>
@@ -229,7 +244,10 @@ export default function IoXml() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Read/write JSON" href="/learn/by-example/io-json">
+          <Link
+            title="Atomic batch execute"
+            href="/learn/by-example/jdbc-atomic-batch-execute-operation"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -255,17 +273,14 @@ export default function IoXml() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/write JSON
+                  Atomic batch execute
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Cryptographic operations"
-            href="/learn/by-example/security-crypto"
-          >
+          <Link title="Read/write bytes" href="/learn/by-example/io-bytes">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -274,7 +289,7 @@ export default function IoXml() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Cryptographic operations
+                  Read/write bytes
                 </span>
               </div>
               <svg

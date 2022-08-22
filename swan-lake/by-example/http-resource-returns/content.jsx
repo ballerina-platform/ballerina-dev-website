@@ -21,16 +21,17 @@ type PersonAccount record {
 
 service /bank on new http:Listener(9090) {
 
-    // The resource returns the \`json\` type values and the \`Content-type\` header is set according to the \`mediaType\`
-    // field of the [\`@http:Payload\`](https://docs.central.ballerina.io/ballerina/http/latest/records/HttpPayload)
+    // The resource returns the json type values and the \`Content-type\` header is set according to the \`mediaType\`
+    // field of [@http:Payload](https://lib.ballerina.io/ballerina/http/latest/records/HttpPayload)
     // annotation.
     resource function get branch() returns @http:Payload {mediaType:"application/json+id"} json {
         return { branch : ["Colombo, Srilanka"]};
     }
 
-    // The [\`StatusCodeResponse\`](https://docs.central.ballerina.io/ballerina/http/latest/types#StatusCodeResponse)
-    // can be stated as the return type to send responses with specific HTTP status codes.
-    resource function get [string 'type]() returns http:Ok|http:InternalServerError {
+    // The [StatusCodeResponse](https://lib.ballerina.io/ballerina/http/latest/types#StatusCodeResponse)
+    // can be state as return type to send responses with specific HTTP status codes.
+    resource function get [string 'type]()
+            returns http:Ok|http:InternalServerError {
         if 'type == "open" {
 
             // Create a response with the \`200\` status code and set the body as the response payload.
@@ -45,7 +46,7 @@ service /bank on new http:Listener(9090) {
     }
 
     // Inline response records are useful to return headers and body along with status code. In this instance the
-    // return type is a subtype of [http:Created](https://docs.central.ballerina.io/ballerina/http/latest/records/Created)
+    // return type is a subtype of [http:Created](https://lib.ballerina.io/ballerina/http/latest/records/Created)
     // record, hence 201 response will be sent.
     resource function put account(@http:Payload string name)
             returns record {|*http:Created; PersonAccount body;|} {
@@ -90,28 +91,17 @@ export default function HttpResourceReturns() {
       <p>
         The resource method can return <code>anydata</code> type, an{" "}
         <code>http:Response</code> object, <code>StatusCodeResponse</code>{" "}
-        records along with
-      </p>
-
-      <p>
-        <code>error?</code>. Instead of using an <code>http:Caller</code>, the
-        response can be sent similarly by returning from the method.
-      </p>
-
-      <p>
-        When returning <code>anydata</code>, the <code>@http:Payload</code>{" "}
-        annotation can be used to specify the <code>Content-type</code> of the
-        response
-      </p>
-
-      <p>
-        additionally. Otherwise, the default content type of the respective
-        return value type will be added.
+        records along with <code>error?</code>. Instead of using an{" "}
+        <code>http:Caller</code>, the response can be sent similarly by
+        returning from the method. When returning <code>anydata</code>, the{" "}
+        <code>@http:Payload</code> annotation can be used to specify the{" "}
+        <code>Content-type</code> of the response additionally. Otherwise, the
+        default content type of the respective return value type will be added.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .

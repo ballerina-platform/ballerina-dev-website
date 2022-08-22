@@ -61,8 +61,8 @@ export default function GraphqlInputTypes() {
 
       <p>
         For more information on the underlying package, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
-          <code>graphql</code> package
+        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
+          GraphQL package
         </a>
         .
       </p>
@@ -268,7 +268,7 @@ export default function GraphqlInputTypes() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Returning service objects"
+            title="Return service objects"
             href="/learn/by-example/graphql-returning-service-objects"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -296,7 +296,7 @@ export default function GraphqlInputTypes() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Returning service objects
+                  Return service objects
                 </span>
               </div>
             </div>

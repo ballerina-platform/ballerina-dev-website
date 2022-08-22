@@ -53,15 +53,14 @@ export default function HttpDefaultResource() {
       <h1>Default resource</h1>
 
       <p>
-        Ballerina provides rest params in the resource path and default resource
-        method to help in designing proxy services
+        Ballerina provides rest params in the resource path and the default
+        resource method to help designing proxy services and default resources.
+        It can be used to handle unmatched requests.\
       </p>
-
-      <p>and default resources. It can be used to handle unmatched requests.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .

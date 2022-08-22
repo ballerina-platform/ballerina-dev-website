@@ -25,7 +25,7 @@ listener websocket:Listener securedEP = new(9090,
 
 // The service can be secured with JWT Auth and can be authorized
 // optionally. JWT Auth can be enabled by setting the
-// [\`websocket:JwtValidatorConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/JwtValidatorConfig) configurations.
+// [\`websocket:JwtValidatorConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/JwtValidatorConfig) configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -83,43 +83,28 @@ export default function WebsocketServiceJwtAuth() {
       <h1>Service - JWT Auth</h1>
 
       <p>
-        A WebSocket service can be secured with JWT and by enforcing
-        authorization optionally.
-      </p>
-
-      <p>
-        Then, it validates the JWT sent in the<code>Authorization</code> header
-        against the provided configurations.
+        A WebSocket service can be secured with JWT and by
+        enforcingauthorization optionally. Then, it validates the JWT sent in
+        the <code>Authorization</code> header against the provided
+        configurations.
       </p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be
-      </p>
-
-      <p>
-        bound to one/more scope(s). The scope can be included in the JWT using a
-        custom claim attribute.
-      </p>
-
-      <p>
-        That custom claim attribute also can be configured as the{" "}
-        <code>scopeKey</code>.
+        declared in a service can be bound to one/more scope(s). The scope can
+        be included in the JWT using a custom claim attribute. That custom claim
+        attribute also can be configured as the <code>scopeKey</code>.
       </p>
 
       <p>
         In the authorization phase, the scopes of the service are compared
-        against the scope included in
+        against the scope included in the JWT for at least one match between the
+        two sets.
       </p>
-
-      <p>the JWT for at least one match between the two sets.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/jwt/latest/">
-          JWT module
-        </a>
-        .
+        <a href="https://lib.ballerina.io/ballerina/jwt/latest/">JWT module</a>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

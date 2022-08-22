@@ -17,7 +17,8 @@ import ballerina/websocket;
 
 // Defines the WebSocket client to call the secured APIs.
 // The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the [\`websocket:BearerTokenConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/BearerTokenConfig) for the \`auth\` configuration of the client.
+// passing the [\`websocket:BearerTokenConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/BearerTokenConfig) for the \`auth\` configuration of the
+// client.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
         token: "56ede317-4511-44b4-8579-a08f094ee8c5"
@@ -60,17 +61,12 @@ export default function WebsocketClientBearerTokenAuth() {
 
       <p>
         A client, which is secured with Bearer token auth can be used to connect
-        to
+        to a secured service.
       </p>
-
-      <p>a secured service.</p>
 
       <p>
         The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the
-      </p>
-
-      <p>
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:BearerTokenConfig</code> for the <code>auth</code>{" "}
         configuration of the client.
       </p>

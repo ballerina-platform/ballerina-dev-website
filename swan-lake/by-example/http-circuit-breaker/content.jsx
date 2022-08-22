@@ -110,16 +110,27 @@ export default function HttpCircuitBreaker() {
       <p>
         The Circuit Breaker is used to gracefully handle network related errors,
         which occur when using the HTTP Client. Behavior of this example is
-        something similar to as follows,
+        something similar to as follows.
       </p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>1.</span>
+          <span>First two requests works</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>Third request fails and the circuit breaker trips</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
           <span>
-            ) First two requests works, 2) Third request fails and the circuit
-            breaker trips, 3) As a result subsequent requests fails immediately
-            until the timeout period is reached,
+            As a result subsequent requests fails immediately until the timeout
+            period is reached
           </span>
         </li>
       </ul>
@@ -127,15 +138,15 @@ export default function HttpCircuitBreaker() {
         <li>
           <span>4.</span>
           <span>
-            ) Timeout is reached and the circuit breaker falls back to closed
-            state.
+            Timeout is reached and the circuit breaker falls back to closed
+            state
           </span>
         </li>
       </ul>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .

@@ -64,25 +64,17 @@ export default function HttpQueryParameter() {
       <h1>Query parameter</h1>
 
       <p>
-        The <code>http</code> module provides first-class support for reading
-        URL query parameters as the resource method argument.
+        HTTP module provides first class support for reading URL query
+        parameters as resource method argument. The supported types are string,
+        int, float, boolean, decimal, and the array types of the aforementioned
+        types. The query param type can be nilable (e.g., (string? bar)). The
+        request also provide certain method to retrieve query param at their
+        convenience.
       </p>
-
-      <p>
-        The supported types are string, int, float, boolean, decimal, and the
-        array types of the aforementioned types. The
-      </p>
-
-      <p>
-        query param type can be nilable (e.g., <code>(string? bar)</code>). The
-        request also provides a certain method to retrieve query
-      </p>
-
-      <p>param at their convenience.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .

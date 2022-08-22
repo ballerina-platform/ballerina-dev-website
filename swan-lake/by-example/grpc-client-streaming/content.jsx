@@ -105,12 +105,17 @@ export default function GrpcClientStreaming() {
 
       <p>
         In a gRPC client streaming scenario, the client writes a sequence of
-        messages and sends them to the server.
+        messages and sends them to the server. Once the client has finished
+        writing the messages, it waits for the server to read them and return a
+        response.
       </p>
 
       <p>
-        Once the client has finished writing the messages, it waits for the
-        server to read them and return a response.
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
+          GRPC module
+        </a>
+        .
       </p>
 
       <blockquote>
@@ -288,9 +293,11 @@ export default function GrpcClientStreaming() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 

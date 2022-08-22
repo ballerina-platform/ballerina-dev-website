@@ -68,30 +68,20 @@ export default function TesterinaBeforeAndAfterEach() {
 
       <p>
         The function specified with the <code>BeforeEach</code> annotation is
-        executed before every test and
-      </p>
-
-      <p>
-        the function specified with the <code>AfterEach</code> annotation is
-        executed after every test within the test suite.
-      </p>
-
-      <p>
-        This can be used for repeatedly initializing and tearing down test level
-        aspects before every test function.
+        executed before every test and the function specified with the{" "}
+        <code>AfterEach</code> annotation is executed after every test within
+        the test suite. This can be used for repeatedly initializing and tearing
+        down test level aspects before every test function.
       </p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
-          <code>test</code> module
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
+          Test Module
         </a>
         .
       </p>

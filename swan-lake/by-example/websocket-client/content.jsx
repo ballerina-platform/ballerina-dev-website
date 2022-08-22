@@ -60,8 +60,7 @@ export default function WebsocketClient() {
       <p>
         The WebSocket client can be used to connect to and interact with a
         WebSocket server in a synchronous manner. This example demonstrates how
-        to read and write messages using a Ballerina WebSocket
-        client.&lt;br/&gt;&lt;br/&gt;
+        to read and write messages using a Ballerina WebSocket client.
       </p>
 
       <p>

@@ -62,9 +62,12 @@ export default function ConvertingFromJsonToUserDefinedType() {
       <p>
         With mutable values, it would not be type-safe to allow a cast. Mutable
         structures have the <code>inherent</code> type that limits mutation.
+      </p>
+
+      <p>
         Cast to <code>T</code> will work on mutable structure <code>s</code>{" "}
         only if the <code>inherent</code> type of <code>s</code> is a subtype of{" "}
-        <code>T</code>. Casting immutable values will work, but it does not do
+        <code>T</code>. Casting immutable values will work but it does not do
         numeric conversions.
       </p>
 
@@ -74,7 +77,7 @@ export default function ConvertingFromJsonToUserDefinedType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2d9ebfd46db1cc33de8f67ba455e2901&file=converting_from_json_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=0d977ac0f002933d5f7934753eb0ee40&file=converting_from_json_to_user_defined_type.bal",
                 "_blank"
               );
             }}
@@ -230,7 +233,7 @@ export default function ConvertingFromJsonToUserDefinedType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Converting from user-defined type to JSON"
+            title="Convert from user-defined type to JSON"
             href="/learn/by-example/converting-from-user-defined-type-to-json"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -258,7 +261,7 @@ export default function ConvertingFromJsonToUserDefinedType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Converting from user-defined type to JSON
+                  Convert from user-defined type to JSON
                 </span>
               </div>
             </div>
@@ -266,7 +269,7 @@ export default function ConvertingFromJsonToUserDefinedType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Converting to user-defined type"
+            title="Convert to user-defined type"
             href="/learn/by-example/converting-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -277,7 +280,7 @@ export default function ConvertingFromJsonToUserDefinedType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Converting to user-defined type
+                  Convert to user-defined type
                 </span>
               </div>
               <svg

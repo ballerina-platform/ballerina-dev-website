@@ -73,8 +73,8 @@ export default function HttpClientEndpoint() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          HTTP module
         </a>
         .
       </p>
@@ -85,7 +85,7 @@ export default function HttpClientEndpoint() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=59765f7bfd92f1d82ed73abe8de347ef&file=http_client_endpoint.bal",
+                "https://play.ballerina.io/?gist=9e6b16c746bf97b846a67dac00dccfaa&file=http_client_endpoint.bal",
                 "_blank"
               );
             }}

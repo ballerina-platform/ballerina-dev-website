@@ -56,20 +56,12 @@ export default function LockStatement() {
 
       <p>
         The <code>lock</code> statement allows mutable state to be safely
-        accessed from multiple strands that are running on
+        accessed from multiple strands that are running on separate threads.
+        Semantics are like an atomic section. The execution of the outermost{" "}
+        <code>lock</code> block is not interleaved. Naive implementation uses
+        single, global, recursive lock. Efficient implementation can do
+        compile-time lock inference.
       </p>
-
-      <p>
-        separate threads. Semantics are like an atomic section. The execution of
-        the outermost <code>lock</code> block is not
-      </p>
-
-      <p>
-        interleaved. Naive implementation uses single, global, recursive lock.
-        Efficient implementation can do
-      </p>
-
-      <p>compile-time lock inference.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -77,7 +69,7 @@ export default function LockStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3f415f9634e466b1f5d68498818f05ab&file=lock_statement.bal",
+                "https://play.ballerina.io/?gist=8d33b851dc908c0d65ed853723e34778&file=lock_statement.bal",
                 "_blank"
               );
             }}

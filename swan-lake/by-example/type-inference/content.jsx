@@ -71,7 +71,7 @@ export default function TypeInference() {
 
       <p>
         Type inference is local and restricted to a single expression. Overuse
-        of the type inference can make the code harder to understand.
+        of type inference can make the code harder to understand.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -80,7 +80,7 @@ export default function TypeInference() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=610122fe1b57e5ecfd4d71f2ec0b3c1e&file=type_inference.bal",
+                "https://play.ballerina.io/?gist=82d03fed6c31e8d1fa4ad54e0dead22f&file=type_inference.bal",
                 "_blank"
               );
             }}

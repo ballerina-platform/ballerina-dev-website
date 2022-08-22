@@ -144,16 +144,16 @@ export default function GraphqlContext() {
         <code>http:RequestContext</code> and <code>http:Request</code> can be
         added as well as other values. These values are stored as key-value
         pairs. The key is a <code>string</code> and the value can be any{" "}
-        <code>readonly</code> value or an <code>isolated</code> object. If the{" "}
-        <code>init</code> function is not provided, an empty context object will
-        be created. The context can be accessed by defining it as the first
-        parameter of any resolver (resource/remote) function.
+        <code>readonly</code> value or an <code>isolated</code> object. If the
+        init function is not provided, an empty context object will be created.
+        The context can be accessed by defining it as the first parameter of any
+        resolver (resource/remote) function.
       </p>
 
       <p>
         For more information on the underlying package, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
-          <code>graphql</code> package
+        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
+          GraphQL package
         </a>
         .
       </p>

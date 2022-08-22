@@ -69,25 +69,17 @@ export default function CommitRollbackHandlers() {
 
       <p>
         Often code needs to get executed depending on whether a transaction is
-        committed.
-      </p>
-
-      <p>
-        Testing the result of the <code>commit</code> within the transaction
-        statement works. However, it is inconvenient from a modularity
-        perspective, particularly, when you want to undo changes on{" "}
+        committed. Testing the result of the <code>commit</code> within the
+        transaction statement works. However, it is inconvenient from a
+        modularity perspective, particularly, when you want to undo changes on{" "}
         <code>rollback</code>.
       </p>
 
       <p>
         This seems much worse in a distributed transaction when the transaction
-        statement is in another program.
-      </p>
-
-      <p>
-        Ballerina provides <code>commit</code>/<code>rollback</code> handlers,
-        which are functions that get executed when the decision whether to
-        commit is known.
+        statement is in another program. Ballerina provides <code>commit</code>/
+        <code>rollback</code> handlers, which are functions that get executed
+        when the decision whether to commit is known.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -96,7 +88,7 @@ export default function CommitRollbackHandlers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e97c2e4a471db1d71e6f35368cbe8a0f&file=commit_rollback_handlers.bal",
+                "https://play.ballerina.io/?gist=3a52f4a320530bb46d1a7c9297de5f4f&file=commit_rollback_handlers.bal",
                 "_blank"
               );
             }}

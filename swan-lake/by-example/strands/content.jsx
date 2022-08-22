@@ -23,7 +23,7 @@ function userSpeakerService(string userName) {
 
 public function main() {
     // By default, named workers are multitasked cooperatively, not preemptively.
-    // Each named worker has a \`strand\` (a logical thread of control) and 
+    // Each named worker has a \`strand\` (a logical thread of control) and
     // the execution switches between strands only at specific \`yield\` points.
     worker A {
         io:println("In worker A");
@@ -67,16 +67,16 @@ export default function Strands() {
 
       <p>
         By default, named workers are multitasked cooperatively, not
-        preemptively. Each named worker has a <code>strand</code> (a logical
-        thread of control) and execution switches between strands only at
-        specific <code>yield</code> points such as doing a wait or when a
-        library function invokes a system call that would block. This avoids the
-        need for you to lock variables that are accessed from multiple named
-        workers.
+        preemptively. Each named worker has a &quot;strand&quot; (logical thread
+        of control) and execution switches between strands only at specific
+        &quot;yield&quot; points such as doing a wait or when a library function
+        invokes a system call that would block.
       </p>
 
       <p>
-        An annotation can be used to make a strand run on a separate thread.
+        This avoids the need for users to lock variables that are accessed from
+        multiple named workers. An annotation can be used to make a strand run
+        on a separate thread.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -85,7 +85,7 @@ export default function Strands() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f15715977ee33a88cb72e0825e83b81f&file=strands.bal",
+                "https://play.ballerina.io/?gist=424fe64686f10c731e0bbd9ef0467f50&file=strands.bal",
                 "_blank"
               );
             }}
@@ -230,7 +230,7 @@ export default function Strands() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run strands.bal`}</span>
+              <span>{`bal run strands.bal`}</span>
               <span>{`In function worker`}</span>
               <span>{`In worker B`}</span>
               <span>{`Worker B end`}</span>
@@ -264,7 +264,7 @@ export default function Strands() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Waiting for workers"
+            title="Wait for workers"
             href="/learn/by-example/waiting-for-workers"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -292,7 +292,7 @@ export default function Strands() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Waiting for workers
+                  Wait for workers
                 </span>
               </div>
             </div>

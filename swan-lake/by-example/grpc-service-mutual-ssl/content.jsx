@@ -24,9 +24,10 @@ service HelloWorld {
 `,
   `import ballerina/grpc;
 
-// A gRPC listener can be configured to accept new connections that are secured via mutual SSL.
+// A gRPC listener can be configured to accept new connections that are
+// secured via mutual SSL.
 // The [\`grpc:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
-listener grpc:Listener securedEP = new (9090,
+listener grpc:Listener securedEP = new(9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -88,12 +89,18 @@ export default function GrpcServiceMutualSsl() {
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
         authentication process in which two parties (the client and server)
-        authenticate each other by
+        authenticate each other by verifying the digital certificates. It
+        ensures that both parties are assured
       </p>
 
+      <p>of each other's identity.</p>
+
       <p>
-        verifying the digital certificates. It ensures that both parties are
-        assured of each other's identity.
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
+          gRPC module
+        </a>
+        .
       </p>
 
       <blockquote>
@@ -272,9 +279,11 @@ export default function GrpcServiceMutualSsl() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 

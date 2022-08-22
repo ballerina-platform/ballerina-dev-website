@@ -68,10 +68,10 @@ export default function DestructuringRecords() {
       <p>
         Destructuring records is particularly useful with query expressions but
         works anywhere you can have <code>var</code>. <code>var</code> is
-        followed by a binding pattern. The semantics of the binding pattern is
-        open. <code>&#123;x&#125;</code> is short for{" "}
-        <code>&#123;x: x&#125;</code> in both binding patterns and record
-        constructors.
+        followed by a <code>binding pattern</code>. The semantics of{" "}
+        <code>binding pattern</code> is open. <code>&#123;x&#125;</code> is
+        short for <code>&#123;x: x&#125;</code> in both binding patterns and
+        record constructors.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -80,7 +80,7 @@ export default function DestructuringRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5ce54a2d8f466359234cc97633d52132&file=destructuring_records.bal",
+                "https://play.ballerina.io/?gist=d6e20997e9797b75669a003a5812a99d&file=destructuring_records.bal",
                 "_blank"
               );
             }}

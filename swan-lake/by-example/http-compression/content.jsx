@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// [COMPRESSION_ALWAYS](https://docs.central.ballerina.io/ballerina/http/latest/constants#COMPRESSION_ALWAYS)
+// [COMPRESSION_ALWAYS](https://lib.ballerina.io/ballerina/http/latest/constants#COMPRESSION_ALWAYS)
 // guarantees a compressed response entity body. Compression scheme is set to the
 // value indicated in Accept-Encoding request header. When a particular header is not present or the header
 // value is "identity", encoding is done using the "gzip" scheme.
@@ -64,29 +64,19 @@ export default function HttpCompression() {
 
       <p>
         The HTTP service can be configured to change the compression behaviour.
-        By default, the server
+        By default, the server compresses the response entity body with the
+        scheme(gzip, deflate) that is specified in the Accept-Encoding request
+        header. When the particular header is not present or the header value is
+        &quot;identity&quot;, the server does not perform any compression.
+        Compression is disabled when the option is set to{" "}
+        <code>COMPRESSION_NEVER</code> and always enabled when the option is set
+        to <code>COMPRESSION_ALWAYS</code>
       </p>
 
       <p>
-        compresses the response entity body with the scheme (gzip, deflate) that
-        is specified in the <code>Accept-Encoding</code> request header. When
-      </p>
-
-      <p>
-        the particular header is not present or the header value is{" "}
-        <code>identity</code>, the server does not perform any compression.
-        Compression
-      </p>
-
-      <p>
-        is disabled when the option is set to <code>COMPRESSION_NEVER</code> and
-        always enabled when the option is set to <code>COMPRESSION_ALWAYS</code>
-      </p>
-
-      <p>
-        In the same way, an <code>http:Client</code> can be configured as well.
-        For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        In the same way <code>http:Client</code> can be configured as well. For
+        more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .

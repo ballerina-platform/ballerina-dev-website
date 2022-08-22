@@ -121,27 +121,23 @@ export default function JdbcAtomicBatchExecuteOperation() {
         achieve the atomic behaviour.
       </p>
 
-      <p>
-        Note that the relevant database driver JAR should be defined in the{" "}
-        <code>Ballerina.toml</code> file as a dependency.
-      </p>
-
-      <p>
-        This sample is based on an H2 database and the H2 database driver JAR
-        needs to be added to the <code>Ballerina.toml</code> file.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> The relevant database driver JAR should be
+          defined in the <code>Ballerina.toml</code> file as a dependency. This
+          sample is based on an H2 database and the H2 database driver JAR needs
+          to be added to the <code>Ballerina.toml</code> file. This sample is
+          written using H2 2.0.6 and it is recommended to use an H2 JAR file of
+          a version higher than 2.0.2.
+        </p>
+      </blockquote>
 
       <p>
         For a sample configuration and more information on the underlying
         module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/">
-          <code>jdbc</code> module
+        <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
+          JDBC module
         </a>
-      </p>
-
-      <p>
-        This sample is written using H2 2.0.6 and it is recommended to use an H2
-        JAR file of a version higher than 2.0.2.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -486,7 +482,10 @@ export default function JdbcAtomicBatchExecuteOperation() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Read/write bytes" href="/learn/by-example/io-bytes">
+          <Link
+            title="Serialization and Deserialization"
+            href="/learn/by-example/serdes-simple"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -495,7 +494,7 @@ export default function JdbcAtomicBatchExecuteOperation() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/write bytes
+                  Serialization and Deserialization
                 </span>
               </div>
               <svg

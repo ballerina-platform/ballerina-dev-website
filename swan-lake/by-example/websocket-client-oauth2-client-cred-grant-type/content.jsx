@@ -17,7 +17,7 @@ import ballerina/websocket;
 
 // Defines the WebSocket client to call the OAuth2 secured APIs.
 // The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the [\`websocket:OAuth2ClientCredentialsGrantConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/OAuth2ClientCredentialsGrantConfig) for the \`auth\` configuration
+// passing the [\`websocket:OAuth2ClientCredentialsGrantConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2ClientCredentialsGrantConfig) for the \`auth\` configuration
 // of the client.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
@@ -68,25 +68,20 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
       <h1>Client - OAuth2 Client Credentials grant type</h1>
 
       <p>
-        A client, which is secured with OAuth2 client credentials grant type can
-        be used to connect to a
+        A client, which is secured with OAuth2 client credentials grant typecan
+        be used to connect to a secured service.
       </p>
-
-      <p>secured service.</p>
 
       <p>
         The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the
-      </p>
-
-      <p>
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:OAuth2ClientCredentialsGrantConfig</code> for the{" "}
         <code>auth</code> configuration of the client.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
+        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
           OAuth2 module
         </a>
         .

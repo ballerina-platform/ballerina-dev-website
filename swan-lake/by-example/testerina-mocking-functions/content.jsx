@@ -100,37 +100,24 @@ export default function TesterinaMockingFunctions() {
 
       <p>
         Mock functions allow you to hide the real function implementation and
-        engage your own definition when running tests.
-      </p>
-
-      <p>
-        This allows you to isolate your tests from the other modules and
-        functions.
+        engage your own definition when running tests. This allows you to
+        isolate your tests from the other modules and functions.
       </p>
 
       <p>
         Function mocks can be stubbed with return values or with another
-        user-defined function,
-      </p>
-
-      <p>which has the same signature as the original function.</p>
-
-      <p>
-        Function mocking is not supported for testing single <code>.bal</code>{" "}
-        files.
+        user-defined function, which has the same signature as the original
+        function.
       </p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
-          <code>test</code> module
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
+          Test Module
         </a>
         .
       </p>

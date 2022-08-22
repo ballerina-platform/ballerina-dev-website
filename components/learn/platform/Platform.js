@@ -225,6 +225,15 @@ export default function Platform() {
 
             <div className={styles.content}>
               <p className={styles.title}>
+                <a href={`${prefix}/learn/strand-dump-tool`} className={styles.titleLink}>
+                  Strand dump tool
+                </a>
+              </p>
+              <p className={styles.description}>Details of the Ballerina strand dump tool.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
                 <a href={`${prefix}/learn/cli-documentation/cli-commands`} className={styles.titleLink}>
                   CLI documentation
                 </a>

@@ -1,0 +1,18 @@
+{
+  "title": "Read/write CSV with data mapping",
+  "description": "BBE on how to read/write from/to a CSV file with data binding.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "csv",
+    "table",
+    "data binding"
+  ],
+  "permalink": "/learn/by-example/io-csv-datamapping",
+  "active": "io-csv-datamapping",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/io-csv-datamapping",
+    "/swan-lake/learn/by-example/io-csv-datamapping.html"
+  ]
+}

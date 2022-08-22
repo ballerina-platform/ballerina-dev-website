@@ -50,9 +50,9 @@ export default function HierarchicalResources() {
       <h1>Hierarchical resources</h1>
 
       <p>
-        Resource name is relative path, which can have multiple path segments.
-        Base path is absolute path. A listener can have multiple services each
-        with different base paths.
+        Resource name is a relative path, which can have multiple path segments.
+        Base path is an absolute path. A listener can have multiple services
+        each with different base paths.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

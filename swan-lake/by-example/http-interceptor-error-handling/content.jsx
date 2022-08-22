@@ -108,18 +108,34 @@ export default function HttpInterceptorErrorHandling() {
 
       <p>
         Errors that occurred in the request-response pipeline can be intercepted
-        and handled by <code>ResponseErrorInterceptors</code>. In addition, a{" "}
-        <code>RequestErrorInterceptor</code> can be used to handle the errors
-        that occurred in the request interceptor execution path. The{" "}
-        <code>RequestErrorInterceptor</code> can send a response message
-        according to the error just like a <code>ResponseErrorInterceptor</code>
-        . Moreover, it can modify the request and dipatch it to the target
-        service.
+        and handled
       </p>
 
       <p>
+        by <code>ResponseErrorInterceptors</code>. In addition, a{" "}
+        <code>RequestErrorInterceptor</code>
+      </p>
+
+      <p>
+        can be used to handle the errors that occurred in the request
+        interceptor execution
+      </p>
+
+      <p>
+        path. The <code>RequestErrorInterceptor</code> can send a response
+        message according to the
+      </p>
+
+      <p>
+        error just like a <code>ResponseErrorInterceptor</code>. Moreover, it
+        can modify the
+      </p>
+
+      <p>request and dispatch it to the target service.</p>
+
+      <p>
         For more information, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .

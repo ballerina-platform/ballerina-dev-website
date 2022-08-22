@@ -15,9 +15,8 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// An HTTP client can be configured to initiate new connections that are
-// secured via mutual SSL.
-// The [\`http:ClientSecureSocket\`](https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record provides the SSL-related configurations.
+// An HTTP client can be configured to initiate new connections that are secured via mutual SSL.
+// The [\`http:ClientSecureSocket\`](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientSecureSocket) record provides the SSL-related configurations.
 http:Client securedEP = check new("https://localhost:9090",
     secureSocket = {
         key: {
@@ -66,16 +65,18 @@ export default function HttpClientMutualSsl() {
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
         authentication process in which two parties (the client and server)
-        authenticate each other by verifying the digital certificates. It
-        ensures that both parties are assured
+        authenticate each other by
       </p>
 
-      <p>of each other's identity.</p>
+      <p>
+        verifying the digital certificates. It ensures that both parties are
+        assured of each other's identity.
+      </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>

@@ -62,7 +62,7 @@ export default function GraphqlHelloWorld() {
       <p>
         For more information on the underlying package, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+          <code>graphql</code> package
         </a>
         .
       </p>
@@ -309,7 +309,7 @@ export default function GraphqlHelloWorld() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Return record values"
+            title="Returning record values"
             href="/learn/by-example/graphql-returning-record-values"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -320,7 +320,7 @@ export default function GraphqlHelloWorld() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Return record values
+                  Returning record values
                 </span>
               </div>
               <svg

@@ -14,10 +14,9 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// A GraphQL listener can be configured to communicate through HTTPS as well.
-// To secure a listener using HTTPS, the listener needs to be configured with
-// a certificate file and a private key file for the listener.
-// The [\`graphql:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket) record
+// A GraphQL listener can be configured to communicate through HTTPS as well. To secure a listener
+// using HTTPS, the listener needs to be configured with a certificate file and a private key file
+// for the listener. The [\`graphql:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket) record
 // provides the SSL-related listener configurations of the listener.
 listener graphql:Listener securedEP = new(9090,
     secureSocket = {
@@ -67,8 +66,8 @@ export default function GraphqlServiceSslTls() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL module
+        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+          <code>graphql</code> module
         </a>
         .
       </p>

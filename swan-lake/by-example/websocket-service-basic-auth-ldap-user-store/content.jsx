@@ -25,7 +25,7 @@ listener websocket:Listener securedEP = new(9090,
 
 // The service can be secured with Basic Auth and can be authorized optionally.
 // Basic Auth using the LDAP user store can be enabled by setting the
-// [\`websocket:LdapUserStoreConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/LdapUserStoreConfig) configurations.
+// [\`websocket:LdapUserStoreConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/LdapUserStoreConfig) configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -97,23 +97,38 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
 
       <p>
         A WebSocket service can be secured with Basic Auth and by enforcing
-        authorization optionally. Then, it validates the Basic Auth token sent
-        in the <code>Authorization</code> header against the provided
-        configurations. This reads data from the configured LDAP. This stores
-        usernames, passwords for authentication, and scopes for authorization.
+        authorization optionally.
       </p>
+
+      <p>
+        Then, it validates the Basic Auth token sent in the{" "}
+        <code>Authorization</code> header against the provided
+      </p>
+
+      <p>
+        configurations. This reads data from the configured LDAP. This stores
+        usernames, passwords for
+      </p>
+
+      <p>authentication, and scopes for authorization.</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s). In the
-        authorization phase, the scopes of the service are compared against the
-        scope included in the user store for at least one match between the two
-        sets.
+        declared in a service can be
       </p>
+
+      <p>bound to one/more scope(s).</p>
+
+      <p>
+        In the authorization phase, the scopes of the service are compared
+        against the scope included
+      </p>
+
+      <p>in the user store for at least one match between the two sets.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
           Auth module
         </a>
         .

@@ -51,18 +51,18 @@ export default function BinaryData() {
       <p>
         Binary data is represented by arrays of <code>byte</code> values. It is
         a special syntax for <code>byte</code> arrays in <code>base 64</code>{" "}
-        and <code>base 16</code>. The relationship between <code>byte</code> and{" "}
-        <code>int</code> is not the same as what you are used to. A{" "}
-        <code>byte</code> is an <code>int</code> in the range <code>0</code> to{" "}
-        <code>0xFF</code>. <code>byte</code> is a subtype of int.
+        and <code>base 16</code>.
       </p>
 
       <p>
-        The <code>int</code> type supports normal bitwise operators:{" "}
-        <code>&amp;</code> <code>|</code> <code>^</code> <code>~</code>{" "}
-        <code>&lt;&lt;</code> <code>&gt;&gt;</code> <code>&gt;&gt;&gt;</code>.
-        Ballerina knows the obvious rules about when bitwise operations produce
-        a <code>byte</code>.
+        The relationship between <code>byte</code> and <code>int</code> is not
+        the same as what you are used to. A <code>byte</code> is an{" "}
+        <code>int</code> in the range <code>0</code> to <code>0xFF</code>.{" "}
+        <code>byte</code> is a subtype of int. The <code>int</code> type
+        supports normal bitwise operators: <code>&amp;</code> <code>|</code>{" "}
+        <code>^</code> <code>~</code> <code>&lt;&lt;</code>{" "}
+        <code>&gt;&gt;</code> <code>&gt;&gt;&gt;</code>. Ballerina knows the
+        obvious rules about when bitwise operations produce a <code>byte</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -71,7 +71,7 @@ export default function BinaryData() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=880088ee61ae2a305197f671692de375&file=binary_data.bal",
+                "https://play.ballerina.io/?gist=679d682770913764ec62fbfe2654f6dd&file=binary_data.bal",
                 "_blank"
               );
             }}

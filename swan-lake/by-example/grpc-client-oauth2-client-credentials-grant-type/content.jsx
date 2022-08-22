@@ -26,7 +26,7 @@ service HelloWorld {
 
 // Defines the gRPC client to call the OAuth2 secured APIs.
 // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-// header by passing the [\`grpc:OAuth2ClientCredentialsGrantConfig\`]((https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2ClientCredentialsGrantConfig) for the
+// header by passing the [\`grpc:OAuth2ClientCredentialsGrantConfig\`](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2ClientCredentialsGrantConfig) for the
 // \`auth\` configuration of the client.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     auth = {
@@ -81,21 +81,6 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
       <p>
         A client, which is secured with OAuth2 client credentials grant type can
         be used to connect to a secured service.
-      </p>
-
-      <p>
-        The client metadata is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>grpc:OAuth2ClientCredentialsGrantConfig</code> for the{" "}
-        <code>auth</code> configuration of the client.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          OAuth2 module
-        </a>
-        .
       </p>
 
       <p>
@@ -283,11 +268,9 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the{" "}
-          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
-            Proto To Ballerina
-          </a>{" "}
-          example.
+          Ballerina Protocol Buffers tool, see the &lt;a
+          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
+          To Ballerina&lt;/a&gt; example.
         </p>
       </blockquote>
 
@@ -462,8 +445,7 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build client`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`\$ bal run client/target/bin/client.jar`}</span>
               <span>{`Hello, World!`}</span>
             </code>

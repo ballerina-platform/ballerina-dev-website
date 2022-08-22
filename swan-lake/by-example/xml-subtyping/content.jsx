@@ -95,48 +95,34 @@ export default function XmlSubtyping() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>XML subtyping</h1>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            An <code>xml</code> value belongs to <code>xml:Element</code> if it
-            consists of just an element item. Similarly for{" "}
-            <code>xml:Comment</code> and <code>xml:ProcessingInstruction</code>.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            An <code>xml</code> value belongs to <code>xml:Text</code> if it
-            consists of a text item or is empty.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            An <code>xml</code> value belongs to the type{" "}
-            <code>xml&lt;T&gt;</code> if each of its members belong
-          </span>
-        </li>
-      </ul>
       <p>
-        to <code>T</code>.
+        An <code>xml</code> value belongs to <code>xml:Element</code> if it
+        consists of just an element item. Similarly, an <code>xml</code> value
+        belongs to <code>xml:Comment</code> or{" "}
+        <code>xml:ProcessingInstruction</code> if it consists of just a comment
+        item or a processing instruction item respectively.
       </p>
 
       <p>
-        Functions in <code>lang.xml</code> use this to provide safe and
-        convenient typing.
+        An <code>xml</code> value belongs to <code>xml:Text</code> if it
+        consists of only a text item or is empty.
       </p>
 
       <p>
-        For example, <code>x.elements()</code> returns element items in{" "}
-        <code>x</code> as type <code>xml&lt;xml:Element&gt;</code> and{" "}
-        <code>e.getName()</code> and <code>e.setName()</code> are defined when{" "}
-        <code>e</code> has type <code>xml:Element</code>.
+        An <code>xml</code> value belongs to the type <code>xml&lt;T&gt;</code>{" "}
+        if each of its members belongs to <code>T</code>.
+      </p>
+
+      <p>
+        Functions in the <code>lang.xml</code> module use this to provide safe
+        and convenient typing. For example, <code>x.elements()</code> returns
+        element items in <code>x</code> as type{" "}
+        <code>xml&lt;xml:Element&gt;</code>.
+      </p>
+
+      <p>
+        The <code>e.getName()</code> and <code>e.setName()</code> functions are
+        defined when <code>e</code> has the <code>xml:Element</code> type.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

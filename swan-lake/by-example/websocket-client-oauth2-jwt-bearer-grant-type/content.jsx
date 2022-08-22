@@ -16,9 +16,8 @@ const codeSnippetData = [
 import ballerina/websocket;
 
 // Defines the WebSocket client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the [\`websocket:OAuth2JwtBearerGrantConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2JwtBearerGrantConfig) for the \`auth\` configuration of the
-// client.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by passing the
+// [\`websocket:OAuth2JwtBearerGrantConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/OAuth2JwtBearerGrantConfig) for the \`auth\` configuration of the client.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
         tokenUrl: "https://localhost:9445/oauth2/token",
@@ -77,12 +76,14 @@ export default function WebsocketClientOauth2JwtBearerGrantType() {
         The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:OAuth2JwtBearerGrantConfig</code> to the{" "}
-        <code>auth</code> configuration of the client.
+        <code>auth</code>
       </p>
+
+      <p>configuration of the client.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
           OAuth2 module
         </a>
         .

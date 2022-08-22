@@ -119,19 +119,11 @@ export default function GrpcBidirectionalStreaming() {
       <h1>Bidirectional streaming RPC</h1>
 
       <p>
-        The gRPC Server Connector exposes the gRPC service over HTTP2. In a gRPC
+        The gRPC server connector exposes the gRPC service over HTTP2. In a gRPC
         bidirectional streaming scenario, the gRPC service and the client
         operate when each other sends a sequence of messages using a read-write
         stream. In such scenarios, the two streams operate independently.
         Therefore, clients and servers can read and write in any order.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-          GRPC module
-        </a>
-        .
       </p>
 
       <blockquote>
@@ -342,11 +334,9 @@ export default function GrpcBidirectionalStreaming() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the{" "}
-          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
-            Proto To Ballerina
-          </a>{" "}
-          example.
+          Ballerina Protocol Buffers tool, see the &lt;a
+          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
+          to Ballerina&lt;/a&gt; example.
         </p>
       </blockquote>
 

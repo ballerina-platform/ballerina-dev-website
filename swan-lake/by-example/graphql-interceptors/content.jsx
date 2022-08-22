@@ -15,52 +15,43 @@ const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/log;
 
-// Define an interceptor service class named \`LogInterceptor\`. It cannot have
-// any \`resource/remote\` methods except the \`execute()\` remote method.
+// Define an interceptor service class named \`LogInterceptor\`. It cannot have any \`resource/remote\`
+// methods except the \`execute()\` remote method.
 readonly service class LogInterceptor {
 
-    // Infers the \`graphql:Interceptors\` service object from the GraphQL
-    // package.
+    // Infers the \`graphql:Interceptors\` service object from the GraphQL package.
     *graphql:Interceptor;
 
-    // Implement the \`execute()\` remote function provided by the
-    // \`graphql:Interceptor\` object. Within the function, the \`graphql:Context\`
-    // and the \`graphql:Field\` object can be accessed to get the request and
-    // field related information.
-    isolated remote function execute(graphql:Context context,
-                                     graphql:Field 'field)
+    // Implement the \`execute()\` remote function provided by the \`graphql:Interceptor\` object.
+    // Within the function, the \`graphql:Context\` and the \`graphql:Field\` object can be accessed to
+    // get the request and field related information.
+    isolated remote function execute(graphql:Context context, graphql:Field 'field)
                                      returns anydata|error {
 
-        // Access the current execution field name using the \`graphql:Field\`
-        // object.
+        // Access the current execution field name using the \`graphql:Field\` object.
         string fieldName = 'field.getName();
 
-        // The log statement executes before the actual resolver
-        // execution.
+        // The log statement executes before the actual resolver execution.
         log:printInfo(string \`Field "\${fieldName}" execution started!\`);
 
-        // The \`context.resolve()\` function can be used to invoke the next
-        // interceptor. If all the interceptors were executed, it invokes
-        // the \`actual resolver\` function. The function returns an \`anydata\`
-        // type value that includes the execution result of the next
-        // interceptor or the actual resolver. To call the \`context.resolve()\`
-        // function, the \`graphql:Field\` value should be provided as the
-        // argument.
+        // The \`context.resolve()\` function can be used to invoke the next interceptor. If all the
+        // interceptors were executed, it invokes the \`actual resolver\` function. The function
+        // returns an \`anydata\` type value that includes the execution result of the next
+        // interceptor or the actual resolver. To call the \`context.resolve()\` function, the
+        // \`graphql:Field\` value should be provided as the argument.
         var data = context.resolve('field);
 
         // This log statement executes after the resolver execution.
         log:printInfo(string \`Field "\${fieldName}" execution completed!\`);
 
-        // Returns the execution result of the next interceptor or the actual
-        // resolver.
+        // Returns the execution result of the next interceptor or the actual resolver.
         return data;
-
     }
 }
 
 @graphql:ServiceConfig {
-    // Interceptor instances should be inserted to the \`interceptors\` array
-    // according to the execution order.
+    // Interceptor instances should be inserted to the \`interceptors\` array according to the
+    // execution order.
     interceptors: [new LogInterceptor()]
 
 }
@@ -105,17 +96,17 @@ export default function GraphqlInterceptors() {
         <code>graphql:Interceptor</code> service object. The interceptor service
         class should have the implementation of the{" "}
         <code>execute(graphql:Context context, graphql:Field 'field)</code>{" "}
-        remote method which is provided by the interceptor service object. The
+        remote method, which is provided by the interceptor service object. The
         custom logic can be included in this remote method. The interceptors
         should be provided using the <code>graphql:ServiceConfig</code>{" "}
-        parameter named <code>interceptors</code> which accepts an array of
+        parameter named <code>interceptors</code>, which accepts an array of
         interceptor instances.
       </p>
 
       <p>
         Interceptors follow the <code>onion principle</code> when executing.
         Also, the inserting order of the interceptor instances into the array
-        will be the execution order of the Interceptors.
+        will be the execution order of the interceptors.
       </p>
 
       <p>
@@ -203,6 +194,8 @@ export default function GraphqlInterceptors() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -254,14 +247,17 @@ export default function GraphqlInterceptors() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
-              <span>{`# The query used: { name }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ name }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"name":"GraphQL Interceptors"}}`}</span>
+              <span>{`\$ bal run graphql_interceptors.bal`}</span>
+              <span>{`# when executing the query, following statements are logged in the terminal.`}</span>
+              <span>{`time = 2022-07-28T19:54:52.729+05:30 level = INFO module = ballerina/log message = "Field \\"name\\" execution started!"`}</span>
+              <span>{`time = 2022-07-28T19:54:52.736+05:30 level = INFO module = ballerina/log message = "Executing the field \\"name\\""`}</span>
+              <span>{`time = 2022-07-28T19:54:52.743+05:30 level = INFO module = ballerina/log message = "Field \\"name\\" execution completed!"`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>Invoke the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -314,11 +310,10 @@ export default function GraphqlInterceptors() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`bal run graphql_interceptors.bal`}</span>
-              <span>{`# when executing the query, following statements are logged in the terminal.`}</span>
-              <span>{`time = 2022-07-28T19:54:52.729+05:30 level = INFO module = ballerina/log message = "Field \\"name\\" execution started!"`}</span>
-              <span>{`time = 2022-07-28T19:54:52.736+05:30 level = INFO module = ballerina/log message = "Executing the field \\"name\\""`}</span>
-              <span>{`time = 2022-07-28T19:54:52.743+05:30 level = INFO module = ballerina/log message = "Field \\"name\\" execution completed!"`}</span>
+              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
+              <span>{`# The query used: { name }`}</span>
+              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ name }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`{"data":{"name":"GraphQL Interceptors"}}`}</span>
             </code>
           </pre>
         </Col>

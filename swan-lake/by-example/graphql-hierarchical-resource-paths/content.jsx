@@ -78,7 +78,7 @@ export default function GraphqlHierarchicalResourcePaths() {
       <p>
         For more information on the underlying package, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+          <code>graphql</code> package
         </a>
         .
       </p>
@@ -291,7 +291,7 @@ export default function GraphqlHierarchicalResourcePaths() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Return record values"
+            title="Returning record values"
             href="/learn/by-example/graphql-returning-record-values"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -319,7 +319,7 @@ export default function GraphqlHierarchicalResourcePaths() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Return record values
+                  Returning record values
                 </span>
               </div>
             </div>
@@ -327,7 +327,7 @@ export default function GraphqlHierarchicalResourcePaths() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Return service objects"
+            title="Returning service objects"
             href="/learn/by-example/graphql-returning-service-objects"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -338,7 +338,7 @@ export default function GraphqlHierarchicalResourcePaths() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Return service objects
+                  Returning service objects
                 </span>
               </div>
               <svg

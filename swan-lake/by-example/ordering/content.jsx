@@ -70,16 +70,12 @@ export default function Ordering() {
       <h1>Ordering</h1>
 
       <p>
-        Ordering works consistently with <code>&lt;</code>, <code>&lt;=</code>,{" "}
-        <code>&gt;</code>, <code>&gt;=</code> operators. Some comparisons
-        involving <code>()</code> and <code>float NaN</code> are considered{" "}
-        <code>unordered</code>. <code>order by</code> clause allows{" "}
-        <code>expressions</code> not just <code>field access</code>.
-      </p>
-
-      <p>
-        A library module can enable Unicode-aware sorting by providing a{" "}
-        <code>unicode:sortKey(str, locale)</code> function.
+        Ordering works consistently with the <code>&lt;</code>,{" "}
+        <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code> operators.
+        Some comparisons involving <code>()</code> and <code>float:NaN</code>{" "}
+        are considered unordered. The <code>order by</code> clause allows
+        expressions. A library module can enable unicode-aware sorting by
+        providing a <code>unicode:sortKey(str, locale)</code> function.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -88,7 +84,7 @@ export default function Ordering() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e6213689d8f2f301b1037ce57bc3bd2e&file=ordering.bal",
+                "https://play.ballerina.io/?gist=7c280aa54623c16b81f8565ae3bf0276&file=ordering.bal",
                 "_blank"
               );
             }}

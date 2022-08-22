@@ -80,14 +80,20 @@ export default function FtpListener() {
 
       <p>
         The FTP listener is used to receive file/directory changes that occur in
-        a remote location using the FTP protocol. This sample includes receiving
-        file/directory related change events from a listener with default
-        configurations using the default port.
+        a remote
       </p>
 
+      <p>location using the FTP protocol. This sample includes receiving</p>
+
+      <p>file/directory related change events from a listener with default</p>
+
+      <p>configurations using the default port.</p>
+
+      <p>For more information on the underlying module,</p>
+
       <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">FTP module</a>.
+        see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/ftp/latest">FTP module</a>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -169,8 +175,9 @@ export default function FtpListener() {
 
       <p>
         Paths of the newly-added and newly-deleted files/directories during the
-        latest polling will be printed for each of the polled events.
       </p>
+
+      <p>latest polling will be printed for each of the polled events.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

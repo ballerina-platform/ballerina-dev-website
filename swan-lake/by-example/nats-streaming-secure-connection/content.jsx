@@ -22,9 +22,8 @@ public function main() returns error? {
     // Initializes the NATS Streaming client with TLS/SSL and username/password authentication.
     stan:Client stanClient = check new(stan:DEFAULT_URL,
         clusterId = "my_secure_cluster",
-
-        // To secure the client connections using username/password authentication, provide the credentials
-        // with the [\`stan:Credentials\`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
+        // To secure the client connections using username/password authentication,
+        // provide the credentials with the [\`stan:Credentials\`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
         auth = {
             username: "alice",
             password: "alice@123"
@@ -54,9 +53,8 @@ import ballerinax/stan;
 // Initializes the NATS Streaming listener with TLS/SSL and username/password authentication.
 listener stan:Listener securedEP = new(stan:DEFAULT_URL,
     clusterId = "my_secure_cluster",
-
-    // To secure the client connections using username/password authentication, provide the credentials
-    // with the [\`stan:Credentials\`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
+    // To secure the client connections using username/password authentication,
+    // provide the credentials with the [\`stan:Credentials\`](https://lib.ballerina.io/ballerinax/stan/latest/records/Credentials) record.
     auth = {
          username: "alice",
          password: "alice@123"
@@ -110,15 +108,16 @@ export default function NatsStreamingSecureConnection() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Secured connection</h1>
 
-      <p>
-        The underlying connections of the subscriber and the publisher are
-        secured with TLS/SSL and Basic Auth.
-      </p>
+      <p>The underlying connections of the subscriber and the publisher are</p>
+
+      <p>secured with TLS/SSL and Basic Auth.</p>
+
+      <p>For more information on the underlying module,</p>
 
       <p>
-        For more information on the underlying module, see the{" "}
+        see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
-          STAN module
+          <code>stan</code> module
         </a>
         .
       </p>

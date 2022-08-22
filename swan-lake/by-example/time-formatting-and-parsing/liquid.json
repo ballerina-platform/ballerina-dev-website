@@ -1,0 +1,19 @@
+{
+  "title": "Time formatting/parsing",
+  "description": "BBE on how to format and parse UTC and Civil values to different RFC formats.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "time",
+    "utc",
+    "rfc3339",
+    "rfc5322"
+  ],
+  "permalink": "/learn/by-example/time-formatting-and-parsing",
+  "active": "time-formatting-and-parsing",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/time-formatting-and-parsing",
+    "/swan-lake/learn/by-example/time-formatting-and-parsing.html"
+  ]
+}

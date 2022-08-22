@@ -77,18 +77,28 @@ export default function CheckSemantics() {
       <h1>Check semantics</h1>
 
       <p>
-        <code>check</code> semantics is not to simply return on an{" "}
-        <code>error</code> value. When <code>check</code> gets an{" "}
-        <code>error</code> value, it fails. The enclosing block decides how to
-        handle the failure. Most blocks pass the failure up to the enclosing
-        block.
+        <code>check</code> semantics does not simply return an{" "}
+        <code>error</code> value.
       </p>
 
       <p>
-        Function definition handles the failure by returning the error.{" "}
-        <code>on fail</code> can catch the error. <code>fail</code> statement is
-        like <code>check</code>, but it always fails. Differs from exceptions in
-        that control flow is explicit.
+        When <code>check</code> gets an <code>error</code> value, it fails. The
+        enclosing block decides how to handle the failure.
+      </p>
+
+      <p>
+        Most blocks pass the failure up to the enclosing block. The function
+        definition handles the failure by returning the error.
+      </p>
+
+      <p>
+        <code>on fail</code> can catch the error.
+      </p>
+
+      <p>
+        The <code>fail</code> statement is like <code>check</code>, but it
+        always fails. It differs from the exceptions in that the control flow,
+        which are explicit.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -97,7 +107,7 @@ export default function CheckSemantics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=450817d56c9c6be2e0a343bce26bf36d&file=check_semantics.bal",
+                "https://play.ballerina.io/?gist=a866f590cbd356123a05e3e89245f403&file=check_semantics.bal",
                 "_blank"
               );
             }}

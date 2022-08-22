@@ -67,14 +67,17 @@ export default function TesterinaGroupTests() {
 
       <p>
         You can tag your test cases with a single group name or multiple group
-        names (one or more). This allows you to control the execution of
-        selected tests.
+        names (one or more).
       </p>
+
+      <p>This allows you to control the execution of selected tests.</p>
 
       <p>
         In order to execute tests belonging to a selected test group, you can
-        name the test groups that are to be executed when you run the tests.
+        name the
       </p>
+
+      <p>test groups that are to be executed when you run the tests.</p>
 
       <p>
         Likewise, you can exclude executing the selected test groups as well.
@@ -82,12 +85,15 @@ export default function TesterinaGroupTests() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
-        </a>{" "}
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
+        </a>
+      </p>
+
+      <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -226,24 +232,19 @@ export default function TesterinaGroupTests() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test --groups g1,g2 testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`    testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`    testerina_group_tests.bal`}</span>
               <span>{`I'm in test belonging to group g1!`}</span>
               <span>{`I'm in test belonging to groups g1 and g2!`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        [pass] testFunction1`}</span>
               <span>{`        [pass] testFunction2`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        2 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>
@@ -308,24 +309,19 @@ export default function TesterinaGroupTests() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test --groups g1 testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`    testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`    testerina_group_tests.bal`}</span>
               <span>{`I'm in test belonging to group g1!`}</span>
               <span>{`I'm in test belonging to groups g1 and g2!`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        [pass] testFunction1`}</span>
               <span>{`        [pass] testFunction2`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        2 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>
@@ -391,24 +387,19 @@ export default function TesterinaGroupTests() {
           <pre ref={ref3}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test --disable-groups g2 testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`    testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`    testerina_group_tests.bal`}</span>
               <span>{`I'm in test belonging to group g1!`}</span>
               <span>{`I'm the ungrouped test`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        [pass] testFunction1`}</span>
               <span>{`        [pass] testFunction3`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        2 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>

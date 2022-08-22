@@ -295,7 +295,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Control openness",
+        "name": "Controlling openness",
         "url": "controlling-openness",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -316,7 +316,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Define classes",
+        "name": "Defining classes",
         "url": "defining-classes",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -367,12 +367,12 @@
     ]
   },
   {
-    "title": "Ignore return values and errors",
+    "title": "Ignoring return values and errors",
     "column": 1,
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Ignore return values and errors",
+        "name": "Ignoring return values and errors",
         "url": "ignoring-return-values-and-errors",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -429,7 +429,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Work directly with JSON",
+        "name": "Working directly with JSON",
         "url": "working-directly-with-json",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -443,21 +443,21 @@
         "isLearnByExample": true
       },
       {
-        "name": "Convert from user-defined type to JSON",
+        "name": "Converting from user-defined type to JSON",
         "url": "converting-from-user-defined-type-to-json",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Convert from JSON to user-defined type",
+        "name": "Converting from JSON to user-defined type",
         "url": "converting-from-json-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Convert to user-defined type",
+        "name": "Converting to user-defined type",
         "url": "converting-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -521,7 +521,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructure records",
+        "name": "Destructuring records",
         "url": "destructuring-records",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -556,7 +556,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Create tables with query",
+        "name": "Creating tables with query",
         "url": "creating-tables-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -699,7 +699,7 @@
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Consume services: client objects",
+        "name": "Consuming services: client objects",
         "url": "consuming-services",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -707,7 +707,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Provide services",
+        "name": "Providing services",
         "url": "providing-services",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -798,7 +798,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Wait for workers",
+        "name": "Waiting for workers",
         "url": "waiting-for-workers",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -1448,7 +1448,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Interceptor error handling",
+        "name": "Interceptor Error Handling",
         "url": "http-interceptor-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1494,7 +1494,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Return record values",
+        "name": "Returning record values",
         "url": "graphql-returning-record-values",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1510,7 +1510,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Return service objects",
+        "name": "Returning service objects",
         "url": "graphql-returning-service-objects",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1853,21 +1853,13 @@
     ]
   },
   {
-    "title": "Listeners and StopHandlers",
+    "title": "Listeners",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
         "name": "Dynamic listener",
         "url": "dynamic-listener",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "StopHandler",
-        "url": "stop-handler",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2564,21 +2556,6 @@
     ]
   },
   {
-    "title": "SerDes",
-    "column": 3,
-    "category": "Working over the network",
-    "samples": [
-      {
-        "name": "Serialization and Deserialization",
-        "url": "serdes-simple",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "disablePlayground": false,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
     "title": "IO",
     "column": 0,
     "category": "Common libraries",
@@ -2601,13 +2578,6 @@
       {
         "name": "Read/write CSV",
         "url": "io-csv",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Read/write CSV with data mapping",
-        "url": "io-csv-datamapping",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
@@ -3001,8 +2971,17 @@
     "category": "Deployment",
     "samples": [
       {
+        "name": "Docker",
+        "url": "c2c-docker-deployment",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Kubernetes",
-        "url": "c2c-deployment",
+        "url": "c2c-k8s-deployment",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",

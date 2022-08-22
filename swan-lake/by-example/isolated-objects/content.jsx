@@ -70,58 +70,51 @@ export default function IsolatedObjects() {
 
       <p>
         An object defined as <code>isolated</code> is similar to a module with{" "}
-        <code>isolated</code> module-level variables. Mutable fields of an{" "}
-        <code>isolated</code> object,
+        <code>isolated</code> module-level variables.
       </p>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            must be <code>private</code> and so can only be accessed using{" "}
-            <code>self</code>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            must be initialized with an <code>isolated</code> expression
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            must only be accessed within a <code>lock</code> statement
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <code>lock</code> statement must follow the same rules for{" "}
-            <code>self</code> as for an <code>isolated</code> variable
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            a field is mutable unless it is <code>final</code> and has a type
-            that is a subtype of <code>readonly</code>
-          </span>
-        </li>
-      </ul>
+      <p>
+        Mutable fields of an <code>isolated</code> object,
+      </p>
+
+      <p>&lt;ul&gt;</p>
 
       <p>
-        Isolated root concept treats <code>isolated</code> objects as opaque.
-        Isolated functions can access a <code>final</code> variable whose type
-        is an <code>isolated</code> object.
+        &lt;li&gt;must be <code>private</code> and so can only be accessed using{" "}
+        <code>self</code>&lt;/li&gt;
+      </p>
+
+      <p>
+        &lt;li&gt;must be initialized with an <code>isolated</code>{" "}
+        expression&lt;/li&gt;
+      </p>
+
+      <p>
+        &lt;li&gt;must only be accessed within a <code>lock</code>{" "}
+        statement&lt;/li&gt;
+      </p>
+
+      <p>
+        &lt;li&gt;<code>lock</code> statement must follow the same rules for{" "}
+        <code>self</code> as for an <code>isolated</code> variable&lt;/li&gt;
+      </p>
+
+      <p>
+        &lt;li&gt;a field is mutable unless it is <code>final</code> and has a
+        type that is a subtype of <code>readonly</code>&lt;/li&gt;
+      </p>
+
+      <p>&lt;/ul&gt;</p>
+
+      <p>&lt;br&gt;&lt;/br&gt;</p>
+
+      <p>
+        &lt;p&gt;Isolated root concept treats <code>isolated</code> objects as
+        opaque. Isolated functions can access a <code>final</code>
+      </p>
+
+      <p>
+        variable whose type is an <code>isolated</code> object.&lt;/p&gt;
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -130,7 +123,7 @@ export default function IsolatedObjects() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=721c2740ac5c81ed0102c0dc5db15868&file=isolated_objects.bal",
+                "https://play.ballerina.io/?gist=a05730752a1db80759bf2f1500cef87c&file=isolated_objects.bal",
                 "_blank"
               );
             }}

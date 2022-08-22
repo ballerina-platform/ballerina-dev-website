@@ -144,16 +144,16 @@ export default function GraphqlContext() {
         <code>http:RequestContext</code> and <code>http:Request</code> can be
         added as well as other values. These values are stored as key-value
         pairs. The key is a <code>string</code> and the value can be any{" "}
-        <code>readonly</code> value or an <code>isolated</code> object. If the
-        init function is not provided, an empty context object will be created.
-        The context can be accessed by defining it as the first parameter of any
-        resolver (resource/remote) function.
+        <code>readonly</code> value or an <code>isolated</code> object. If the{" "}
+        <code>init</code> function is not provided, an empty context object will
+        be created. The context can be accessed by defining it as the first
+        parameter of any resolver (resource/remote) function.
       </p>
 
       <p>
         For more information on the underlying package, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+          <code>graphql</code> package
         </a>
         .
       </p>
@@ -357,8 +357,7 @@ export default function GraphqlContext() {
               <span>{` # The query used: { profile { name salary } }`}</span>
               <span>{` curl -X POST -H "Content-type: application/json" -H "scope: admin" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{` {"data":{"profile":{"name":"Walter White", "salary":737000.0}}}`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>
                 {` # Now, send a query with the `}
                 <code>{`scope`}</code>
@@ -371,8 +370,7 @@ export default function GraphqlContext() {
               <span>{` # The query used: { profile { name salary } }`}</span>
               <span>{` curl -X POST -H "Content-type: application/json" -H "scope: user" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{` {"errors":[{"message":"Permission denied", "locations":[{"line":1, "column":18}], "path":["profile", "salary"]}], "data":null}`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>
                 {` # Now, send a query with the `}
                 <code>{`scope`}</code>

@@ -91,18 +91,39 @@ export default function HttpErrorHandling() {
 
       <p>
         Error handling is an integral part of any network program. Errors can be
-        returned by many components such as interceptors, dispatcher,
-        data-binder, security handlers, etc. These errors are often handled by a
-        default handler and sent back as error responses with an entity-body.
-        With the introduction of error interceptors, you can intercept these
-        errors and handle them as you wish. These error interceptors can be
-        placed anywhere in the interceptor pipeline. When there is an error, the
-        execution jumps to the closest error interceptor.
+        returned
       </p>
 
       <p>
+        by many components such as interceptors, dispatcher, data-binder,
+        security handlers, etc.
+      </p>
+
+      <p>
+        These errors are often handled by a default handler and sent back as
+        error responses
+      </p>
+
+      <p>
+        with an entity-body. With the introduction of error interceptors, you
+        can intercept
+      </p>
+
+      <p>
+        these errors and handle them as you wish. These error interceptors can
+        be placed
+      </p>
+
+      <p>
+        anywhere in the interceptor pipeline. When there is an error, the
+        execution jumps
+      </p>
+
+      <p>to the closest error interceptor.</p>
+
+      <p>
         For more information, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -361,7 +382,7 @@ export default function HttpErrorHandling() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Interceptor error handling"
+            title="Interceptor Error Handling"
             href="/learn/by-example/http-interceptor-error-handling"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -372,7 +393,7 @@ export default function HttpErrorHandling() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interceptor error handling
+                  Interceptor Error Handling
                 </span>
               </div>
               <svg

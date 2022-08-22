@@ -71,20 +71,20 @@ export default function ErrorReporting() {
 
       <p>
         Ballerina does not have exceptions. Errors are reported by functions
-        returning <code>error</code> values.
+        returning <code>error</code> values and are immutable.{" "}
+        <code>error</code> is its own basic type.
       </p>
 
       <p>
-        <code>error</code> is its own basic type. The return type of a function
-        that may return an <code>error</code> value will be a union with{" "}
-        <code>error</code>.
+        The return type <code>T</code> of a function that may return an{" "}
+        <code>error</code> value will be a union with <code>error</code>,{" "}
+        <code>T|error</code>.
       </p>
 
       <p>
-        An <code>error</code> value includes a <code>string</code> message. An{" "}
-        <code>error</code> value includes the stack trace from the point at
-        which the error is constructed (i.e., <code>error(msg)</code> is
-        called). Error values are immutable.
+        An <code>error</code> value includes a <code>string</code> message and
+        also the stack trace from the point at which the error is constructed
+        (i.e., <code>error(msg)</code> is called).
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -93,7 +93,7 @@ export default function ErrorReporting() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=41f99d55465b1c7c957a9442307c2c3c&file=error_reporting.bal",
+                "https://play.ballerina.io/?gist=b686a7bbb923d77599a6c74f79ac2089&file=error_reporting.bal",
                 "_blank"
               );
             }}

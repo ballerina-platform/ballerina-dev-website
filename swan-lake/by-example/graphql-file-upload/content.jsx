@@ -107,8 +107,8 @@ export default function GraphqlFileUpload() {
 
       <p>
         For more information on the underlying package, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
+        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+          <code>graphql</code> package
         </a>
         .
       </p>
@@ -322,8 +322,7 @@ export default function GraphqlFileUpload() {
                 <code>{`operations`}</code>
                 {`: { "query": "mutation(\$file: Upload!) { singleFileUpload(file: \$file) }", "variables": {"file": null} }`}
               </span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>
                 {`# The second part of the request is a `}
                 <code>{`map`}</code>
@@ -345,19 +344,16 @@ export default function GraphqlFileUpload() {
                 <code>{`map`}</code>
                 {`: { “0”: ["variables.file"] }`}
               </span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# A file can be added to the next part of the request with a unique, arbitrary field name.`}</span>
               <span>{`# 0=@file1.png`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{` curl localhost:4000/fileUpload \\`}</span>
               <span>{`  -F operations='{ "query": "mutation(\$file: Upload!) { singleFileUpload(file: \$file) }", "variables": { "file": null } }' \\`}</span>
               <span>{`  -F map='{ "0": ["variables.file"] }' \\`}</span>
               <span>{`  -F 0=@file1.png`}</span>
               <span>{` {"data":{"singleFileUpload":"Successfully Uploaded"}}`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# Now, send a request with multiple files.`}</span>
               <span>
                 {`# The variable value related to the files is an array of `}
@@ -369,8 +365,7 @@ export default function GraphqlFileUpload() {
                 <code>{`operations`}</code>
                 {`: { "query": "mutation(\$file: [Upload!]!) { multipleFileUpload(files: \$file) }", "variables": { "file": [null, null] } }`}
               </span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>
                 {`# Same as the single file upload, the `}
                 <code>{`map`}</code>
@@ -397,13 +392,11 @@ export default function GraphqlFileUpload() {
                 <code>{`map`}</code>
                 {`: { "0": ["variables.file.0"], "1": ["variables.file.1"]}`}
               </span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# Files can be added to the next fields of the request with a unique, arbitrary field name.`}</span>
               <span>{`# 0=@file1.png`}</span>
               <span>{`# 1=@file2.png`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{` curl localhost:4000/fileUpload \\`}</span>
               <span>{`  -F operations='{ "query": "mutation(\$file: [Upload!]!) { multipleFileUpload(files: \$file) }", "variables": { "file": [null, null] } }' \\`}</span>
               <span>{`  -F map='{ "0": ["variables.file.0"], "1": ["variables.file.1"]}' \\`}</span>

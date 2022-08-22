@@ -19,9 +19,8 @@ http:Client clientEP = check new ("http://postman-echo.com");
 service / on new http:Listener(9090) {
 
     // The passthrough resource allows all HTTP methods as the accessor is \`default\`.
-    resource function 'default passthrough(http:Request req)
-            returns http:Response|error? {
-        // When [forward()](https://lib.ballerina.io/ballerina/http/latest/clients/Client#forward) is called on the backend client endpoint, it forwards the request that the passthrough
+    resource function 'default passthrough(http:Request req) returns http:Response|error? {
+        // When [\`forward()\`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#forward) is called on the backend client endpoint, it forwards the request, which the passthrough
         // resource received to the backend. When forwarding, the request is made using the same HTTP method that was
         // used to invoke the passthrough resource. The \`forward()\` function returns the response from the backend if
         // there are no errors.
@@ -64,7 +63,7 @@ export default function HttpPassthrough() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .

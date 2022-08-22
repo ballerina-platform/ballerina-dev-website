@@ -73,12 +73,11 @@ export default function JoinClause() {
       <h1>Join clause</h1>
 
       <p>
-        <code>Query</code> can take advantage of <code>table</code> keys by
-        using a <code>join clause</code>. Performs an{" "}
-        <code>inner equijoin</code>. The result is similar to using nested{" "}
-        <code>from clause</code> and <code>where clause</code>. It is
-        implemented as a hash join: <code>table</code> keys allow you to avoid
-        building a hash table. The type to join on must be <code>anydata</code>.
+        A query expression can take advantage of keys of a table by using a{" "}
+        <code>join</code> clause. It performs an inner equijoin. The result is
+        similar to using nested <code>from</code> clauses and <code>where</code>{" "}
+        clause. It is implemented as a hash join. Table keys allow you to avoid
+        building a hash table. The type to join must be <code>anydata</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -87,7 +86,7 @@ export default function JoinClause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9494294c8ac7f8046d9ec3672a73cb7d&file=join_clause.bal",
+                "https://play.ballerina.io/?gist=3cabc5a3d818f0b8ed00836c83ce07ec&file=join_clause.bal",
                 "_blank"
               );
             }}
@@ -242,7 +241,7 @@ export default function JoinClause() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Create tables with query"
+            title="Creating tables with query"
             href="/learn/by-example/creating-tables-with-query"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -270,7 +269,7 @@ export default function JoinClause() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Create tables with query
+                  Creating tables with query
                 </span>
               </div>
             </div>

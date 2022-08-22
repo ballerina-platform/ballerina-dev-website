@@ -16,9 +16,8 @@ const codeSnippetData = [
 import ballerina/io;
 
 // Defines the HTTP client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the [\`http:OAuth2RefreshTokenGrantConfig\`](https://lib.ballerina.io/ballerina/http/latest/records/OAuth2RefreshTokenGrantConfig) for the \`auth\` configuration of the
-// client.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by passing 
+// the [\`http:OAuth2RefreshTokenGrantConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/OAuth2RefreshTokenGrantConfig) for the \`auth\` configuration of the client.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
         refreshUrl: "https://localhost:9445/oauth2/token",
@@ -81,8 +80,8 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          OAuth2 module
+        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
+          <code>oauth2</code> module
         </a>
         .
       </p>

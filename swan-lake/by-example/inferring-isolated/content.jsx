@@ -64,33 +64,46 @@ export default function InferringIsolated() {
 
       <p>
         <code>isolated</code> is a complex feature, which would be a lot for an
-        application developer to understand. A typical Ballerina application
-        consists of a single module that imports multiple library modules.
-        Within a single module, the compiler infers <code>isolated</code>{" "}
-        qualifiers. An object without mutable fields is inherently{" "}
-        <code>isolated</code>. It is the application developer's responsibility
-        to use <code>lock</code> statements where needed. E.g.,
+        application developer to understand.
       </p>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            accessing <code>self</code> in a <code>service</code> object with
-            mutable state
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>accessing mutable module-level variables</span>
-        </li>
-      </ul>
+      <p>
+        A typical Ballerina application consists of a single module that imports
+        multiple library modules.
+      </p>
 
       <p>
-        Compiler can inform developer where missing locks are preventing a{" "}
-        <code>service</code> object or method from being <code>isolated</code>.
+        Within a single module, the compiler infers <code>isolated</code>{" "}
+        qualifiers. An object without mutable fields is
+      </p>
+
+      <p>
+        inherently <code>isolated</code>. It is the application developer's
+        responsibility to use <code>lock</code> statements where
+      </p>
+
+      <p>needed. e.g.,</p>
+
+      <p>&lt;ul&gt;</p>
+
+      <p>
+        &lt;li&gt;accessing <code>self</code> in a <code>service</code> object
+        with mutable state&lt;/li&gt;
+      </p>
+
+      <p>&lt;li&gt;accessing mutable module-level variables&lt;/li&gt;</p>
+
+      <p>&lt;/ul&gt;</p>
+
+      <p>&lt;br&gt;&lt;/br&gt;</p>
+
+      <p>
+        &lt;p&gt;Compiler can inform developer where missing locks are
+        preventing a <code>service</code> object or method from
+      </p>
+
+      <p>
+        being <code>isolated</code>.&lt;/p&gt;
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -99,7 +112,7 @@ export default function InferringIsolated() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0b985ed1623903d1dcee1eb861c1ce8c&file=inferring_isolated.bal",
+                "https://play.ballerina.io/?gist=38f1f1c763ef3924ef88656cb51a0c0c&file=inferring_isolated.bal",
                 "_blank"
               );
             }}

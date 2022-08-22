@@ -124,27 +124,31 @@ export default function MysqlQueryOperation() {
 
       <p>
         This BBE demonstrates how to use the MySQL client select query
-        operations with the stream return type.
+        operations
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Note:</strong> The MySQL database driver JAR should be defined
-          in the <code>Ballerina.toml</code> file as a dependency. The MySQL
-          connector uses database properties from MySQL version 8.0.13 onwards.
-          Therefore, it is recommended to use a MySQL driver version greater
-          than 8.0.13.
-        </p>
-      </blockquote>
+      <p>with the stream return type.</p>
+
+      <p>
+        Note that the MySQL database driver JAR should be defined in the{" "}
+        <code>Ballerina.toml</code> file as a dependency.
+      </p>
 
       <p>
         For a sample configuration and more information on the underlying
         module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
-          MySQL module
+        <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">
+          <code>mysql</code> module
         </a>
         .
       </p>
+
+      <p>
+        The MySQL connector uses database properties from MySQL version 8.0.13
+        onwards. Therefore, it is
+      </p>
+
+      <p>recommended to use a MySQL driver version greater than 8.0.13.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -282,8 +286,7 @@ export default function MysqlQueryOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Customer details: {"customerId":1,"firstName":"Peter","lastName":"Stuart","registrationId":1,"creditLimit":5000.75,"country":"USA"}`}</span>
               <span>{`Customer details: {"customerId":2,"firstName":"Dan","lastName":"Brown","registrationId":2,"creditLimit":10000.0,"country":"UK"}`}</span>
             </code>

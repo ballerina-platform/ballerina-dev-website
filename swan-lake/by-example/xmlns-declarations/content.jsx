@@ -64,17 +64,19 @@ export default function XmlnsDeclarations() {
       <h1>XMLNS declarations</h1>
 
       <p>
-        The <code>xmlns</code> declarations are like import declarations, but
-        bind the prefix to a namespace URL rather than a module. The{" "}
-        <code>xmlns</code> declarations in the Ballerina module provide
-        namespace context for parsing <code>xml</code> templates.
+        <code>xmlns</code> declarations are like import declarations but they
+        bind the prefix to a namespace URL rather than a module.
       </p>
 
       <p>
-        The Qualified names in Ballerina modules are expanded into{" "}
-        <code>strings</code> using the <code>xmlns</code> declarations in the
-        module. The <code>xmlns</code> declarations are also allowed at block
-        level.
+        <code>xmlns</code> declarations in a Ballerina module provide namespace
+        contexts for parsing <code>xml</code> templates. Qualified names in
+        Ballerina modules are expanded into strings using the <code>xmlns</code>{" "}
+        declarations in the module.
+      </p>
+
+      <p>
+        <code>xmlns</code> declarations are also allowed at block level.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -83,7 +85,7 @@ export default function XmlnsDeclarations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=158788ffb62272fe50ae1e415973cf97&file=xmlns_declarations.bal",
+                "https://play.ballerina.io/?gist=89883bc0ccc54de4272ab805aedb9029&file=xmlns_declarations.bal",
                 "_blank"
               );
             }}

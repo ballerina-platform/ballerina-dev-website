@@ -53,13 +53,10 @@ export default function ConsumingServices() {
       <p>
         Ballerina has a language construct called client objects. They are a
         special kind of objects that contain <code>remote</code> methods in
-        addition to regular methods. <code>remote</code> methods are used to
-        interact with a remote service.
-      </p>
-
-      <p>
-        Applications typically do not need to write client classes, which are
-        either provided by library modules or generated from some flavor of IDL.
+        addition to the regular methods. <code>remote</code> methods are used to
+        interact with a remote service. Applications typically do not need to
+        write client classes, which are either provided by library modules or
+        generated from some flavor of IDL.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -68,7 +65,7 @@ export default function ConsumingServices() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=05f47735c4ee119b8003eaaa4b70f13c&file=consuming_services.bal",
+                "https://play.ballerina.io/?gist=6c7203df986bbbd04ed83d8f20e02129&file=consuming_services.bal",
                 "_blank"
               );
             }}
@@ -256,7 +253,7 @@ export default function ConsumingServices() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Provide services"
+            title="Providing services"
             href="/learn/by-example/providing-services"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -267,7 +264,7 @@ export default function ConsumingServices() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Provide services
+                  Providing services
                 </span>
               </div>
               <svg

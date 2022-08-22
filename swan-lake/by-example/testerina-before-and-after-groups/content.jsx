@@ -68,20 +68,27 @@ export default function TesterinaBeforeAndAfterGroups() {
 
       <p>
         The function specified with the <code>BeforeGroups</code> annotation is
-        executed once before all the tests belonging to the specified group is
-        executed and the function specified with the <code>AfterGroups</code>{" "}
-        annotation is executed once after all the tests belonging to the
-        specified group is executed.
+        executed once before all the tests belonging to the
       </p>
 
       <p>
+        specified group is executed and the function specified with the{" "}
+        <code>AfterGroups</code> annotation is executed once after all
+      </p>
+
+      <p>the tests belonging to the specified group is executed.</p>
+
+      <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
-          Testing Ballerina Code
-        </a>{" "}
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
+          Test ballerina code
+        </a>
+      </p>
+
+      <p>
         and the{" "}
-        <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+          <code>test</code> module
         </a>
         .
       </p>
@@ -215,24 +222,20 @@ export default function TesterinaBeforeAndAfterGroups() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test test_module`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
               <span>{`I'm the before groups function!`}</span>
               <span>{`I'm in test function 1!`}</span>
               <span>{`I'm the after groups function!`}</span>
               <span>{`I'm in test function 2!`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`	[pass] testFunction1`}</span>
               <span>{`	[pass] testFunction2`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`	2 passing`}</span>
               <span>{`	0 failing`}</span>
               <span>{`	0 skipped`}</span>

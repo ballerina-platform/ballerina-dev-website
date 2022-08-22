@@ -51,29 +51,17 @@ export default function ResourceMethods() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Resource methods</h1>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Service objects use <code>remote</code> methods to expose services
-            in procedural style: remote methods are named by verbs.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Service objects use <code>resource</code> methods to expose services
-            in an RESTful style: resources are named by nouns.
-          </span>
-        </li>
-      </ul>
+      <p>
+        Service objects use <code>remote</code> methods to expose services in a
+        procedural style. Remote methods are named by verbs.
+      </p>
 
       <p>
-        Resources are motivated by HTTP, but are general enough also to work for
-        GraphQL. <code>resource</code> methods are a network-oriented
-        generalization of OO getter/setter concept.
+        Service objects use <code>resource</code> methods to expose services in
+        a RESTful style. Resources are named by nouns. Resources are motivated
+        by HTTP but are general enough to work for GraphQL.{" "}
+        <code>resource</code> methods are a network-oriented generalization of
+        the OO <code>getter/setter</code> concept.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

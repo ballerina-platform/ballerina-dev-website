@@ -59,14 +59,21 @@ export default function UdpListener() {
 
       <p>
         The UDP Listener is used to expose a UDP service over the UDP protocol.
-        The UDP <code>Client</code>/<code>ConnectClient</code> is used to send
-        data to a remote UDP server. This sample demonstrates the UDP socket
-        listener.
       </p>
 
       <p>
+        The UDP <code>Client</code>/<code>ConnectClient</code> is used to send
+        data to a remote UDP server.
+      </p>
+
+      <p>This sample demonstrates the UDP socket listener.</p>
+
+      <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/udp/latest">UDP module</a>.
+        <a href="https://docs.central.ballerina.io/ballerina/udp/latest">
+          UDP module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -198,8 +205,7 @@ export default function UdpListener() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_listener.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# This will print the output below upon a successful read by the listener.`}</span>
               <span>{`Received by listener: Hello Ballerina echo`}</span>
             </code>

@@ -60,7 +60,7 @@ If you already ran the `bal dist update` (or `bal dist pull 2201.2.0`) before th
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
 ### Migrate from Swan Lake Beta releases
->**Info:** If you have been using Swan Lake Beta releases, delete the `Dependencies.toml` files in your Ballerina packages when migrating to Balelrina 2201.2.0 (Swan Lake). 
+>**Info:** If you have been using Swan Lake Beta releases, delete the `Dependencies.toml` files in your Ballerina packages when migrating to Ballerina 2201.2.0 (Swan Lake). 
 
 A few backward-incompatible changes have been introduced during the Swan Lake Beta program, and thereby, some of your existing packages may not compile with Ballerina 2201.2.0 (Swan Lake). Therefore, you need to delete the `Dependencies.toml` file to force the dependency resolver to use the latest versions of your dependencies. 
 
@@ -70,7 +70,7 @@ A few backward-incompatible changes have been introduced during the Swan Lake Be
 
 ##### Support for resource methods in client objects
 
-Client objects can now contain `resource` methods. These `resource` methods can only be accessed by client resource access actions. With this feature, `resource` methods are also allowed in object type descriptors.
+Client objects can now contain `resource` methods. These `resource` methods can only be accessed by client resource access actions. With this feature, `resource` methods are also allowed in object-type descriptors.
 
 ```ballerina
 import ballerina/io;
@@ -98,7 +98,7 @@ The `greeting/James` resource access path segments after `->/` specify the targe
 
 ##### Support for creating maps with query expressions
 
-Maps can now be constructed using query expressions. A query expression that constructs a map must start with the `map` keyword. Further, the type of the `select` expression must be a tuple `[string, T]`. Then the query expression will create a value of type `map<T>`. Duplicate keys will be handled similar to a query expression constructing a table.
+Maps can now be constructed using query expressions. A query expression that constructs a map must start with the `map` keyword. Further, the type of the `select` expression must be a tuple `[string, T]`. Then the query expression will create a value of type `map<T>`. Duplicate keys will be handled similarly to a query expression constructing a table.
 
 ```ballerina
 import ballerina/io;
@@ -121,7 +121,7 @@ public function main() {
 
 The `isolated` feature has been extended to identify cases where strands created by a `start` action or a named worker can be run safely on separate threads. 
 
-A `call-action-or-expr` is isolated, if the function or method it calls has a type that is isolated and the expression for every argument is an isolated expression. The object whose method is called by the `method-call-expr` or `client-remote-method-call-action` is treated as an argument. When a `start` action is used with a `call-action-or-expr` that is isolated, then the `start` action is allowed in an `isolated` function and the strand created by the `start` action will run in a separate thread from the current thread.
+A `call-action-or-expr` is isolated if the function or method it calls has an isolated type and the expression for every argument is an isolated expression. The object whose method is called by the `method-call-expr` or `client-remote-method-call-action` is treated as an argument. When a `start` action is used with a `call-action-or-expr` that is isolated, then the `start` action is allowed in an `isolated` function and the strand created by the `start` action will run in a separate thread from the current thread.
 
 ```ballerina
 import ballerina/io;
@@ -285,11 +285,11 @@ type Person record {|
 |};
 ```
 
-However, with improvements proposed to how typing works with mutable values this will not be possible, making it safe to narrow the type of `v` in the else block.
+However, with improvements proposed to how typing works with mutable values, this will not be possible, making it safe to narrow the type of `v` in the else block.
 
 ##### Make the variable declaration in the on-fail clause optional
 
-Previously, it was mandatory for a variable to be declared in the on-fail clause (e.g., `on fail error err`). It has now been made optional.
+Previously, a variable needed to be  declared in the on-fail clause (e.g., `on fail error err`). It has now been made optional.
 
 ```ballerina
 import ballerina/io;
@@ -389,7 +389,7 @@ function getSum(int a, int b, int c) returns int {
 
 #### Bug fixes
 
-- A bug that resulted in allowing access of non-public error intersection types outside the module has been fixed.
+- A bug that resulted in allowing access to non-public error intersection types outside the module has been fixed.
 
 ```ballerina
 public type E1 distinct error;
@@ -462,13 +462,13 @@ To view bug fixes, see the [GitHub milestone for 2201.2.0 (Swan Lake)](https://g
 
 Allows getting the status of strands and strand groups during the execution of a Ballerina program.
 
-This can be used to troubleshoot runtime errors. The Ballerina runtime will emit the strand dump to the standard output stream in the text format, if it receives a `SIGTRAP` signal (`SIGTRAP` is not available on Windows).
+This can be used to troubleshoot runtime errors. The Ballerina runtime will emit the strand dump to the standard output stream in the text format if it receives a `SIGTRAP` signal (`SIGTRAP` is not available on Windows).
 
 E.g., if the PID of the running Ballerina program is `$PID`, you can get the strand dump by executing either `kill -SIGTRAP $PID` or `kill -5 $PID` command.
 
 ##### `StopHandler` Object
 
-Allows registering a function that will be called during graceful shutdown.
+Allows registering a function that will be called during a graceful shutdown.
 
 A call to `onGracefulStop` will result in one call to the handler function that was passed as an argument; the handler functions will be called after calling `gracefulStop` on all registered listeners, in the reverse order of the corresponding calls to `onGracefulStop`.
 
@@ -553,7 +553,7 @@ To view bug fixes, see the [GitHub milestone for 2201.2.0 (Swan Lake)](https://g
 - Implemented the `immediateStop()` function for the HTTP listener
 - Added the initial support for HATEOAS
 - Added support for client resource methods in the HTTP client
-- Added IP address to both local and remote addresses
+- Added IP addresses to both local and remote addresses
 - Added proxy support for the HTTP2 client
 - Added constraint validation to HTTP payload binding
 
@@ -635,7 +635,7 @@ To view bug fixes, see the [GitHub milestone for 2201.2.0 (Swan Lake)](https://g
 - Added new code actions to extract anonymous records into records and to generate undefined record types
 - Introduced new source actions to generate getters and setters for class-level variables
 - Added a new code action to make annotation declarations with the `source` attach point(s) constant
-- Moved the `Optimize imports` code action to `Source action` and no longer appears under the code action bulb. Source actions are displayed under `Source action` in the context menu
+- Moved the `Optimize imports` code action to `Source action` and it no longer appears under the code action bulb. Source actions are displayed under `Source action` in the context menu
 
 ##### OpenAPI Tool
 Added support for generating client resource methods in the client generation command. The preferred client method type can be chosen using the `--client-methods=<remote(default)|resource>` option.
@@ -647,7 +647,7 @@ Introduced the `bal semver` CLI command, which attempts to validate <a href="htt
 - list down the source code differences (along with its compatibility impact) between the local and any published versions in Ballerina central
 - suggest the new package version based on the compatibility impact of source code changes
 
-Refer to the examples below which demonstrate few key functionalities of the semver CLI tool.
+Refer to the examples below which demonstrate a few key functionalities of the SemVer CLI tool.
 
 - version suggestions
 ```

@@ -1,7 +1,7 @@
 import os
 import sys
 
-from github import Github
+from github import Github, GithubException
 
 PULL_REQUEST_TITLE = '[Automated] Merge master branch with the dev branch'
 
@@ -34,6 +34,12 @@ def create_pull_request(repo, source_branch):
         print(log_message)
     except Exception as e:
         print("[Error] Error occurred while creating pull request ", e)
+        sys.exit(1)
+    except GithubException as e:
+        if e.status == 422:
+            print("No changes available to sync")
+        else:
+            print("[Error] Error occurred while creating pull request ", e)
         sys.exit(1)
 
 main()

@@ -72,15 +72,19 @@ export default function MatchStatement() {
       <h1>Match statement</h1>
 
       <p>
-        The <code>match</code> statement is similar to the <code>switch</code>{" "}
-        statement in <code>C</code> and <code>JavaScript</code>. It matches the
-        value (not the type). <code>==</code> is used to test whether the
-        left-hand side matches the value being matched. The left-hand side can
-        be a simple literal (<code>nil</code>, <code>boolean</code>,{" "}
-        <code>int</code>, <code>float</code>, <code>string</code>) identifier
-        referring to a constant. The left-hand side of <code>_</code> matches if
-        the value is of type <code>any</code>. You can use <code>|</code> to
-        match more than one value.
+        <code>match</code> statement is similar to <code>switch</code> statement
+        in <code>C</code> and <code>JavaScript</code>. It matches the value, not
+        the type. <code>==</code> is used to test whether left hand side matches
+        the value being matched. Left hand side can be a simple literal (
+        <code>nil</code>, <code>boolean</code>, <code>int</code>,{" "}
+        <code>float</code>, <code>string</code>) identifier referring to a
+        constant.
+      </p>
+
+      <p>
+        Left hand side of <code>_</code> matches if the value is of type{" "}
+        <code>any</code>. You can use <code>|</code> to match more than one
+        value.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -89,7 +93,7 @@ export default function MatchStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e4e53f033bf4af48ed5aee329851d263&file=match_statement.bal",
+                "https://play.ballerina.io/?gist=f1786ca07ecdff98caab76a11f953a9d&file=match_statement.bal",
                 "_blank"
               );
             }}

@@ -57,12 +57,8 @@ export default function WebsocketRetryClient() {
 
       <p>
         If the WebSocket client lost the connection due to some transient
-        failure, it automatically tries to
-      </p>
-
-      <p>
-        reconnect to the given backend. If the maximum reconnect attempt is
-        reached it gives up on the connection.
+        failure, it automatically tries to reconnect to the given backend. If
+        the maximum reconnect attempt is reached it gives up on the connection.
       </p>
 
       <p>

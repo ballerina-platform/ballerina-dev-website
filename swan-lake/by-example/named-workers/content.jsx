@@ -60,16 +60,16 @@ export default function NamedWorkers() {
       <h1>Named workers</h1>
 
       <p>
-        Normally, all of a function's code belong to the function's default
+        Normally, all of a function's code belongs to the function's default
         worker, which has a single logical thread of control. A function can
         also declare named workers, which run concurrently with the function's
         default worker and other named workers.
       </p>
 
       <p>
-        Code before any named workers are executed before named workers start.
+        Code before any named workers is executed before named workers start.
         Variables declared before all named workers and function parameters are
-        accessible by named workers.
+        accessible in named workers.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -78,7 +78,7 @@ export default function NamedWorkers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=28f134439acfbb21bd1742cb1dc85153&file=named_workers.bal",
+                "https://play.ballerina.io/?gist=33aae767a9242b3536b4a019841362fc&file=named_workers.bal",
                 "_blank"
               );
             }}

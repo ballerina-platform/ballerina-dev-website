@@ -27,7 +27,7 @@ type AnnotRecord record {|
     string value;
 |};
 
-// Declares an annotation tag on type.
+// Declares an annotation tag on the type.
 annotation AnnotRecord annot on type;
 
 // The \`@annot\` annotation applies to the \`T1\` record type.
@@ -40,6 +40,7 @@ type T1 record {
 
 public function main() {
     T1 a = {name: "John"};
+
     typedesc<any> t = typeof a;
     // Access annotation.
     AnnotRecord? ann = t.@annot;
@@ -73,9 +74,9 @@ export default function Annotations() {
       <h1>Annotations</h1>
 
       <p>
-        Annotations start with the <code>@tag</code> and they come before what
-        they apply to. Unprefixed tags refer to standard platform-defined
-        annotations and prefixed tags refer to annotations declared in modules.{" "}
+        Annotations start with <code>@tag</code> and they come before what they
+        apply to. Unprefixed tags refer to standard platform-defined annotations
+        and prefixed tags refer to annotations declared in modules. The{" "}
         <code>@tag</code> can be followed by a record constructor expression.
       </p>
 
@@ -85,7 +86,7 @@ export default function Annotations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ca32b09cfb01d0445c59520a86e5b66b&file=annotations.bal",
+                "https://play.ballerina.io/?gist=32f7e28361107ae86d9439f5003a8d01&file=annotations.bal",
                 "_blank"
               );
             }}
@@ -230,7 +231,7 @@ export default function Annotations() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run annotations.bal`}</span>
+              <span>{`bal run annotations.bal`}</span>
               <span>{`{"value":"T1"}`}</span>
             </code>
           </pre>
@@ -273,7 +274,7 @@ export default function Annotations() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Consuming services: client objects"
+            title="Consume services: client objects"
             href="/learn/by-example/consuming-services"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -284,7 +285,7 @@ export default function Annotations() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consuming services: client objects
+                  Consume services: client objects
                 </span>
               </div>
               <svg

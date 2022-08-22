@@ -50,23 +50,16 @@ export default function HttpAccessLogs() {
 
       <p>
         Ballerina supports HTTP access logs for HTTP services. The access log
-        format used is the combined log format.
-      </p>
-
-      <p>
-        To enable access logs, set <code>console=true</code> under the{" "}
+        format used is the combined log format. To enable access logs, set{" "}
+        <code>console=true</code> under the{" "}
         <code>ballerina.http.accessLogConfig</code> in the{" "}
-        <code>Config.toml</code> file.
-      </p>
-
-      <p>
-        Also, the <code>path</code> field can be used to specify the file path
-        to save the access logs.
+        <code>Config.toml</code> file. Also, the <code>path</code> field can be
+        used to specify the file path to save the access logs.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -208,18 +201,21 @@ export default function HttpAccessLogs() {
                 {` file as follows to have logs in the console.`}
               </span>
               <span>{`\$ echo '[ballerina.http.accessLogConfig] console = true' > Config.toml`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run http_access_logs.bal`}</span>
               <span>{`ballerina: HTTP access log enabled`}</span>
               <span>{`0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /hello HTTP/1.1" 200 10 "-" "curl/7.64.1"`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# Else, change the `}
                 <code>{`Config.toml`}</code>
                 {` file as follows to direct the log to the specified file.`}
               </span>
               <span>{`\$ echo '[ballerina.http.accessLogConfig] path = "testAccessLog.txt"' > Config.toml`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run http_access_logs.bal`}</span>
               <span>{`ballerina: HTTP access log enabled`}</span>
             </code>

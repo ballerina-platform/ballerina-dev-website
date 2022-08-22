@@ -60,16 +60,16 @@ export default function ErrorSubtyping() {
       <h1>Error subtyping</h1>
 
       <p>
-        The <code>distinct</code> expression creates a new subtype and can be
-        used to define subtypes of <code>error</code>. The name of the distinct{" "}
+        <code>distinct</code> creates a new subtype and can be used to define
+        subtypes of <code>error</code>. The name of the distinct{" "}
         <code>error</code> type can be used with the error constructor to create
-        an <code>error</code> value of that type. It works like a nominal type.
+        an <code>error</code> value of that type.
       </p>
 
       <p>
-        The <code>is</code> operator can be used to distinguish distinct
-        subtypes. Each occurrence of <code>distinct</code> has a unique
-        identifier that is used to tag instances of the type.
+        Works like a nominal type. The <code>is</code> operator can be used to
+        distinguish distinct subtypes. Each occurrence of <code>distinct</code>{" "}
+        has a unique identifier that is used to tag instances of the type.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -78,7 +78,7 @@ export default function ErrorSubtyping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=baf5308ac9772e0943bbe7a2a4cd77c0&file=error_subtyping.bal",
+                "https://play.ballerina.io/?gist=961e58df62de812088e35758796aab44&file=error_subtyping.bal",
                 "_blank"
               );
             }}

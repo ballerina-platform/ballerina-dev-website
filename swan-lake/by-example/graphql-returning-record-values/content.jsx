@@ -32,17 +32,16 @@ service /graphql on new graphql:Listener(4000) {
 }
 
 // Define the custom record types for the returning data.
-public type Person record {
+public type Person record {|
     string name;
     int age;
     Address address;
-};
-
-public type Address record {
+|};
+public type Address record {|
     string number;
     string street;
     string city;
-};
+|};
 `,
 ];
 
@@ -80,7 +79,7 @@ export default function GraphqlReturningRecordValues() {
       <p>
         For more information on the underlying package, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          <code>graphql</code> package
+          GraphQL package
         </a>
         .
       </p>

@@ -13,28 +13,41 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/io;
-import ballerina/xmldata;
+import ballerina/serdes;
+
+// Define a type, which is a subtype of anydata.
+type Student record {
+    int id;
+    string name;
+    decimal fees;
+};
 
 public function main() returns error? {
-    // Creates an XML value.
-    xml xmlValue = xml \`<Store id="AST">
-                          <name>Anne</name>
-                          <address>
-                              <street>Main</street>
-                              <city>94</city>
-                          </address>
-                          <codes>4</codes>
-                          <codes>8</codes>
-                        </Store>\`;
-    // Converts the XML to JSON value using a default \`attributePrefix\` (i.e., the \`@\` character)
-    // and the default \`preserveNamespaces\` (i.e., \`true\`).
-    json jsonValue = check xmldata:toJson(xmlValue);
-    io:println(jsonValue);
+
+    // Assign the value to the variable.
+    Student studentValue = {
+        id: 7894,
+        name: "Liam",
+        fees: 24999.99
+    };
+
+    // Create a serialization object by passing the typedesc.
+    // This creates an underlying protocol buffer schema for the typedesc.
+    serdes:Proto3Schema serdes = check new (Student);
+
+    // Serialize the record value to bytes.
+    byte[] serializedValue = check serdes.serialize(studentValue);
+
+    // Deserialize the record value to bytes. 
+    Student deserializedValue = check serdes.deserialize(serializedValue);
+
+    // Print deserialized data.
+    io:println(deserializedValue);
 }
 `,
 ];
 
-export default function XmlToJsonConversion() {
+export default function SerdesSimple() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -55,17 +68,18 @@ export default function XmlToJsonConversion() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>XML to JSON conversion</h1>
+      <h1>Serialization and Deserialization</h1>
 
       <p>
-        The <code>xmldata</code> library provides an API to perform conversions
-        from XML to JSON.
+        The <code>serdes</code> module helps to serialize and deserialize
+        subtypes of Ballerina <code>anydata</code>. This sample demonstrates how
+        to serialize and deserialize a user defined record type.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/xmldata/latest/">
-          <code>xmldata</code> module
+        <a href="https://docs.central.ballerina.io/ballerina/serdes/latest">
+          <code>serdes</code> module
         </a>
         .
       </p>
@@ -76,7 +90,7 @@ export default function XmlToJsonConversion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=085f611a46329db1efc069e7271ef175&file=xml_to_json_conversion.bal",
+                "https://play.ballerina.io/?gist=0cc71b289967f1b250addf85fa5e8da7&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -99,7 +113,7 @@ export default function XmlToJsonConversion() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/xml-to-json-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/serdes-simple",
                 "_blank"
               );
             }}
@@ -170,10 +184,6 @@ export default function XmlToJsonConversion() {
         </Col>
       </Row>
 
-      <p>
-        To run this sample, use the <code>bal run</code> command.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -225,8 +235,8 @@ export default function XmlToJsonConversion() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run xml_json_conversion.bal`}</span>
-              <span>{`{"Store":{"name":"Anne","address":{"street":"Main","city":"94"},"codes":["4","8"],"@id":"AST"}}`}</span>
+              <span>{`bal run serdes_simple.bal`}</span>
+              <span>{`{"id":7894,"name":"Liam","fees":24999.99}`}</span>
             </code>
           </pre>
         </Col>
@@ -235,8 +245,8 @@ export default function XmlToJsonConversion() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Environment variables"
-            href="/learn/by-example/environment-variables"
+            title="Atomic batch execute"
+            href="/learn/by-example/jdbc-atomic-batch-execute-operation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -263,17 +273,14 @@ export default function XmlToJsonConversion() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Environment variables
+                  Atomic batch execute
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="JSON to XML conversion "
-            href="/learn/by-example/xml-from-json-conversion"
-          >
+          <Link title="Read/write bytes" href="/learn/by-example/io-bytes">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -282,7 +289,7 @@ export default function XmlToJsonConversion() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  JSON to XML conversion
+                  Read/write bytes
                 </span>
               </div>
               <svg

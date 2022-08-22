@@ -73,11 +73,14 @@ export default function MatchStatementWithMaps() {
       <h1>Match statement with maps</h1>
 
       <p>
-        A <code>match</code> statement can be used to match maps. Patterns on
-        the left-hand side in a match statement can have variable parts that can
-        be captured. It is useful for working directly with <code>json</code>.
-        Match semantics are open (may have fields other than those specified in
-        the pattern).
+        Match statement can be used to match maps. Patterns on the left hand
+        side in a match statement can have variable
+      </p>
+
+      <p>
+        parts that can be captured. Useful for working directly with{" "}
+        <code>json</code>. Match semantics are open (may have fields other than
+        those specified in the pattern).
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -86,7 +89,7 @@ export default function MatchStatementWithMaps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4aab5b6b9e8fa106d47cd1514cf45757&file=match_statement_with_maps.bal",
+                "https://play.ballerina.io/?gist=9a26e9d9116ea8cd210819d918e34d41&file=match_statement_with_maps.bal",
                 "_blank"
               );
             }}
@@ -243,7 +246,7 @@ export default function MatchStatementWithMaps() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Working directly with JSON"
+            title="Work directly with JSON"
             href="/learn/by-example/working-directly-with-json"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -271,7 +274,7 @@ export default function MatchStatementWithMaps() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Working directly with JSON
+                  Work directly with JSON
                 </span>
               </div>
             </div>
@@ -279,7 +282,7 @@ export default function MatchStatementWithMaps() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Converting from user-defined type to JSON"
+            title="Convert from user-defined type to JSON"
             href="/learn/by-example/converting-from-user-defined-type-to-json"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -290,7 +293,7 @@ export default function MatchStatementWithMaps() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Converting from user-defined type to JSON
+                  Convert from user-defined type to JSON
                 </span>
               </div>
               <svg

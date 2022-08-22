@@ -62,15 +62,13 @@ export default function InitReturnType() {
       <h1>Init return type</h1>
 
       <p>
-        The <code>init</code> function has a return type, which must be a
-        subtype of <code>error?</code>. If <code>init</code> returns{" "}
-        <code>()</code>, then, the <code>new</code> expression returns the newly
-        constructed <code>object</code> to the caller. If <code>init</code>{" "}
-        returns an <code>error</code>, then, the <code>new</code> expression
-        also returns the same <code>error</code> to the caller. If{" "}
-        <code>init</code> does not specify a return type, then, the return type
-        defaults to <code>()</code> as usual meaning that <code>new</code> will
-        never return an <code>error</code>.
+        <code>init</code> function has a return type, which must be a subtype of{" "}
+        <code>error?</code>. If <code>init</code> returns <code>()</code>, then,{" "}
+        <code>new</code> returns the newly constructed <code>object</code>. If{" "}
+        <code>init</code> returns an <code>error</code>, then <code>new</code>{" "}
+        returns that <code>error</code>. If <code>init</code> does not specify a
+        return type, then the return type defaults to <code>()</code> as usual,
+        meaning that <code>new</code> will never return an <code>error</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -79,7 +77,7 @@ export default function InitReturnType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a3c98959500ea9de3b4e94b080553272&file=init_return_type.bal",
+                "https://play.ballerina.io/?gist=09e1b88d8c26be0af968d44fd726d5f8&file=init_return_type.bal",
                 "_blank"
               );
             }}
@@ -234,7 +232,7 @@ export default function InitReturnType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Defining classes"
+            title="Define classes"
             href="/learn/by-example/defining-classes"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -262,7 +260,7 @@ export default function InitReturnType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Defining classes
+                  Define classes
                 </span>
               </div>
             </div>

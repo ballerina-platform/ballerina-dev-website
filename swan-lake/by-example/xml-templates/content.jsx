@@ -55,10 +55,13 @@ export default function XmlTemplates() {
 
       <p>
         <code>xml</code> values can be constructed using an XML template
-        expression. In Phase 2 of the processing, the <code>xml</code> template
-        tag parses the strings using the XML 1.0 recommendation's grammar for
-        the content (what XML allows between a start-tag and an end-tag).
-        Interpolated expressions can be in the content (<code>xml</code> or{" "}
+        expression. Phase 2 processing for <code>xml</code> template tag parses
+        strings using the XML 1.0 Recommendation's grammar for content (what XML
+        allows between a start-tag and an end-tag).
+      </p>
+
+      <p>
+        Interpolated expressions can be in content (<code>xml</code> or{" "}
         <code>string</code> values) or in attribute values (<code>string</code>{" "}
         values).
       </p>
@@ -69,7 +72,7 @@ export default function XmlTemplates() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0dfd5b43fbb9b664be3513501dd80c42&file=xml_templates.bal",
+                "https://play.ballerina.io/?gist=5edbd8a8d46e6d39e0b8b09ba5d97bda&file=xml_templates.bal",
                 "_blank"
               );
             }}

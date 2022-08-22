@@ -59,13 +59,13 @@ export default function CheckExpression() {
       <p>
         <code>check E</code> is used with an expression <code>E</code> that
         might result in an <code>error</code> value. If <code>E</code> results
-        in an <code>error</code> value, then, <code>check</code> makes the
+        in an <code>error</code> value , then, <code>check</code> makes the
         function return that <code>error</code> value immediately.
       </p>
 
       <p>
-        Type of <code>check E</code> does not include <code>error</code>. The
-        control flow remains explicit.
+        The type of <code>check E</code> does not include <code>error</code>.
+        The control flow remains explicit.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -74,7 +74,7 @@ export default function CheckExpression() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=53abf92e90a2d18f4c463ef75cb4d7bc&file=check_expression.bal",
+                "https://play.ballerina.io/?gist=a86a45883748eabbcaf2bef6d53d603d&file=check_expression.bal",
                 "_blank"
               );
             }}

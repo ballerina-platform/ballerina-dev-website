@@ -75,19 +75,13 @@ export default function TcpListener() {
 
       <p>
         The TCP Listener is used to expose a TCP service over the TCP protocol.
-      </p>
-
-      <p>
         This sample demonstrates how the TCP socket listener service interacts
         with the TCP client.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/tcp/latest">
-          TCP module
-        </a>
-        .
+        <a href="https://lib.ballerina.io/ballerina/tcp/latest">TCP module</a>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

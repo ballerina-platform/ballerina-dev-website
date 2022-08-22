@@ -23,7 +23,7 @@ type Student record {
 
 service /hello on new http:Listener(9090) {
 
-    // The \`Student\` parameter in the [payload annotation](https://docs.central.ballerina.io/ballerina/http/latest/records/Payload)
+    // The \`Student\` parameter in [Payload annotation](https://lib.ballerina.io/ballerina/http/latest/records/Payload)
     // represents the entity body of the inbound request.
     resource function post student(@http:Payload Student student) returns json {
         string name = student.Name;
@@ -71,17 +71,13 @@ export default function HttpDataBinding() {
 
       <p>
         parameter should be declared with the <code>@Payload</code> annotation
-        and the parameter type can be <code>anydata</code>.
-      </p>
-
-      <p>
-        Binding failures will be responded to with a{" "}
-        <code>400[Bad Request]</code> response.
+        and the parameter type can be <code>anydata</code>. Binding failures
+        will be responded with 400[Bad Request] response
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -281,7 +277,8 @@ export default function HttpDataBinding() {
             <code className="d-flex flex-column">
               <span>{`\$ curl http://localhost:9090/hello/student -d '{ "Name": "John", "Grade": 12, "Marks": {"English" : "85", "IT" : "100"}}' -H "Content-Type:application/json"`}</span>
               <span>{`{"Name":"John"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# To invoke the `}
                 <code>{`store`}</code>

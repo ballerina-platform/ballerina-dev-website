@@ -53,7 +53,7 @@ export default function VariablesAndTypes() {
       <p>
         A variable has a type, which constrains what values the variable can
         hold. There is a built-in set of named types, including <code>int</code>
-        , <code>float</code>, <code>boolean</code>, and <code>string</code>.
+        , <code>float</code>, <code>boolean</code>, <code>string</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -62,7 +62,7 @@ export default function VariablesAndTypes() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f6232456978c956c46ea1021ab996c06&file=variables_and_types.bal",
+                "https://play.ballerina.io/?gist=7c7a8f05458ff1b51d5085f2852f7a4b&file=variables_and_types.bal",
                 "_blank"
               );
             }}

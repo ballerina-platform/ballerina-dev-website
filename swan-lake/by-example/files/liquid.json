@@ -1,0 +1,11 @@
+{
+  "title": "Files",
+  "description": "This BBE shows how to perform file-system operations in Ballerina.",
+  "keywords": ["ballerina", "ballerina by examples", "BBE", "file", "path"],
+  "permalink": "/learn/by-example/files",
+  "active": "files",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/files",
+    "/swan-lake/learn/by-example/files.html"
+  ]
+}

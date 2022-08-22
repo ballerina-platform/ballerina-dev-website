@@ -53,13 +53,16 @@ export default function Strings() {
       <h1>Strings</h1>
 
       <p>
-        The <code>string</code> type represents an immutable sequence of zero or
+        The <code>string</code> type represents immutable sequence of zero or
         more Unicode characters. There is no separate character type: a
-        character is represented by a <code>string</code> of length 1. Two{" "}
-        <code>string</code> values are <code>==</code> if both sequences have
-        the same characters. You can use <code>&lt;</code>, <code>&lt;=</code>,{" "}
-        <code>&gt;</code>, and <code>&gt;=</code> operators on{" "}
-        <code>string</code> values and they work by comparing code points.
+        character is represented by a <code>string</code> of length 1.
+      </p>
+
+      <p>
+        Two <code>string</code> values are <code>==</code> if both sequences
+        have the same characters. You can use <code>&lt;</code>,{" "}
+        <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code> operators
+        on <code>string</code> values and they work by comparing code points.
         Unpaired surrogates are not allowed.
       </p>
 
@@ -69,7 +72,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0483285b17a59e88bfdeca335b5e322c&file=strings.bal",
+                "https://play.ballerina.io/?gist=613c54c0ee1c68cdc96a8a31263f508e&file=strings.bal",
                 "_blank"
               );
             }}

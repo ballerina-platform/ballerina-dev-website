@@ -66,13 +66,17 @@ export default function Records() {
       <h1>Records</h1>
 
       <p>
-        A <code>record</code> type has specific named fields. These fields can
-        be accessed with <code>r.x</code>. Records are mutable. <code>r.x</code>{" "}
-        is an <code>lvalue</code>. Records can be constructed using a similar
-        syntax to a <code>map</code>. Typically, a <code>record</code> type is
-        combined with a type definition. The name of the type is not
-        significant. A <code>record</code> is just a collection of fields.
-        Record equality works the same as <code>map</code> equality.
+        A <code>record</code> type has specific named fields. Fields can be
+        accessed with <code>r.x</code>. Records are mutable. <code>r.x</code> is
+        an <code>lvalue</code>. Records can be constructed using a similar
+        syntax to a <code>map</code>.
+      </p>
+
+      <p>
+        Typically, a <code>record</code> type is combined with a type
+        definition. The name of the type is not significant. A{" "}
+        <code>record</code> is just a collection of fields. Record equality
+        works the same as <code>map</code> equality.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -81,7 +85,7 @@ export default function Records() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=27de6d689d5f860cdb380d84c77cf0c7&file=records.bal",
+                "https://play.ballerina.io/?gist=337bf04333ed8d06f1e6aad03b4f3eb4&file=records.bal",
                 "_blank"
               );
             }}

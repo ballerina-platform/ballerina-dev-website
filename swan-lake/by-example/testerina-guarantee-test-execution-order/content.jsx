@@ -65,12 +65,8 @@ export default function TesterinaGuaranteeTestExecutionOrder() {
 
       <p>
         The <code>dependsOn</code> attribute can be used to define a list of
-        functions that the test
-      </p>
-
-      <p>
-        function depends on. These functions will be executed before the
-        execution of that test.
+        functions that the test function depends on. These functions will be
+        executed before the execution of that test.
       </p>
 
       <p>
@@ -80,15 +76,12 @@ export default function TesterinaGuaranteeTestExecutionOrder() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
-          <code>test</code> module
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
+          Test Module
         </a>
         .
       </p>
@@ -222,20 +215,24 @@ export default function TesterinaGuaranteeTestExecutionOrder() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test test_module`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Running tests`}</span>
               <span>{`    ballerinatest/test_module:0.1.0`}</span>
               <span>{`I'm in test function 3!`}</span>
               <span>{`I'm in test function 1!`}</span>
               <span>{`I'm in test function 2!`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`                [pass] testFunction3`}</span>
               <span>{`                [pass] testFunction1`}</span>
               <span>{`                [pass] testFunction2`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`                3 passing`}</span>
               <span>{`                0 failing`}</span>
               <span>{`                0 skipped`}</span>

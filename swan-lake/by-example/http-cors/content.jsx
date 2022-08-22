@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// Service-level [CORS config](https://docs.central.ballerina.io/ballerina/http/latest/records/CorsConfig) applies
+// Service-level [CORS config](https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig) applies
 // globally to each \`resource\`.
 @http:ServiceConfig {
     cors: {
@@ -27,7 +27,7 @@ const codeSnippetData = [
 }
 service /crossOriginService on new http:Listener(9092) {
 
-    // Resource-level [CORS config](https://docs.central.ballerina.io/ballerina/http/latest/records/CorsConfig)
+    // Resource-level [CORS config](https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig)
     // overrides the service-level CORS headers.
     @http:ResourceConfig {
         cors: {
@@ -77,16 +77,13 @@ export default function HttpCors() {
       <p>
         The CORS headers can be applied in both the service-level and the
         resource-level. Service-level CORS headers apply to all the resources
-      </p>
-
-      <p>
         unless there are headers configured at the resource-level. Ballerina
         CORS supports both simple and pre-flight requests.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -301,7 +298,8 @@ export default function HttpCors() {
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact.`}</span>
               <span>{`{"type":"middleware"}* Closing connection 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# To send a CORS preflight request.`}</span>
               <span>{`\$ curl -v "http://localhost:9092/crossOriginService/lang" -X OPTIONS -H "Origin:http://www.m3.com" -H "Access-Control-Request-Method:POST"`}</span>
               <span>{`> OPTIONS /crossOriginService/lang HTTP/1.1`}</span>

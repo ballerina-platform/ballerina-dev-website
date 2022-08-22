@@ -54,8 +54,8 @@ export default function Integers() {
       <p>
         The <code>int</code> type is 64-bit signed integers (same as{" "}
         <code>long</code> in Java) and supports the usual arithmetic operators:{" "}
-        <code>+ - / %</code>. The operator precedence is the same as{" "}
-        <code>C</code>. Integer overflow is a runtime error in Ballerina.
+        <code>+ - / %</code>. The operator precedence is same as C. Integer
+        overflow is a runtime error in Ballerina.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -64,7 +64,7 @@ export default function Integers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e2aab6a591cd0e6d4a4d58f97f5c22a4&file=integers.bal",
+                "https://play.ballerina.io/?gist=d3345a26106279b8e6c524f07b87b54d&file=integers.bal",
                 "_blank"
               );
             }}

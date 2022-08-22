@@ -67,11 +67,16 @@ export default function NamedWorkerReturnValues() {
 
       <p>
         Named workers have a return type, which defaults to nil. A{" "}
-        <code>return</code> statement in a named worker terminates the worker,
-        not the function. Similarly, when <code>check</code> is used and the
-        expression evaluates to an <code>error</code>, the <code>error</code>{" "}
-        value is returned terminating the worker. Waiting on a named worker will
-        give its return value.
+        <code>return</code> statement in a named worker terminates
+      </p>
+
+      <p>the worker, not the function.</p>
+
+      <p>
+        Similarly, when <code>check</code> is used and the expression evaluates
+        to an <code>error</code>, the <code>error</code> value is returned
+        terminating the worker. Waiting on a named worker will give its return
+        value.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -80,7 +85,7 @@ export default function NamedWorkerReturnValues() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=55699f6c1a84ba30f3fbfb7d01770797&file=named_worker_return_values.bal",
+                "https://play.ballerina.io/?gist=588ab28bce65ae175bd827d1ffeff159&file=named_worker_return_values.bal",
                 "_blank"
               );
             }}

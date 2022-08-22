@@ -68,16 +68,16 @@ export default function InterWorkerMessagePassing() {
 
       <p>
         Use <code>-&gt; W</code> or <code>&lt;- W</code> to send a message to or
-        receive a message to/from the worker <code>W</code> (use{" "}
-        <code>function</code> to refer to the function's default worker). The
-        messages are copied using{" "}
-        <a href="https://lib.ballerina.io/ballerina/lang.value/0.0.0/functions#clone">
-          <code>clone()</code>
-        </a>
-        . It implies that immutable values are passed without a copy. Message
-        sends and receives are paired up at compile time. Each pair turns into a
-        horizontal line in the sequence diagram. They are easy to use and safe
-        but are limited in expressiveness.
+        receive a message from worker <code>W</code> (use <code>function</code>{" "}
+        to refer to the function's default worker). The messages are copied
+        using <code>clone()</code>. It implies immutable values are passed
+        without a copy.
+      </p>
+
+      <p>
+        Message sends and receives are paired up at compile-time. Each pair
+        turns into a horizontal line in the sequence diagram. Easy to use and
+        safe, but limited expressiveness.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -86,7 +86,7 @@ export default function InterWorkerMessagePassing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6a08cd2638b75f68d2935884c26c9bb4&file=inter_worker_message_passing.bal",
+                "https://play.ballerina.io/?gist=102d302e3af4d4bfafda75e6ead41b91&file=inter_worker_message_passing.bal",
                 "_blank"
               );
             }}

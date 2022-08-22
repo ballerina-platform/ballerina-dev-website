@@ -56,11 +56,11 @@ export default function Booleans() {
 
       <p>
         The <code>boolean</code> type has two values: <code>true</code>,{" "}
-        <code>false</code>. The <code>!</code> operator works only on booleans.{" "}
+        <code>false</code>. The <code>!</code> operator works on booleans only.{" "}
         <code>&amp;&amp;</code> and <code>||</code> operators short-circuit as
-        in C language. Usual comparison operators (<code>==</code>,{" "}
-        <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>,{" "}
-        <code>&lt;=</code>, and <code>&gt;=</code>) produce boolean values.
+        in C. Usual comparison operators (<code>==</code>, <code>!=</code>,{" "}
+        <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, and{" "}
+        <code>&gt;=</code>) produce boolean values.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -69,7 +69,7 @@ export default function Booleans() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c92cb0f4ca47ae489b84f3a4bb7f19e3&file=booleans.bal",
+                "https://play.ballerina.io/?gist=d7fcd994c83bb9b947fd40ab1fe5d091&file=booleans.bal",
                 "_blank"
               );
             }}

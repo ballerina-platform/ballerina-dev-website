@@ -55,18 +55,15 @@ export default function HttpPathParam() {
       <h1>Path parameter</h1>
 
       <p>
-        The <code>http</code> module provides first-class support for specifying{" "}
+        HTTP module provides first class support for specifying{" "}
         <code>Path parameters</code> in the resource path along with the type.
-      </p>
-
-      <p>
-        The supported types are string, int, float, boolean, and decimal (e.g.,{" "}
-        <code>path/[string foo]</code>).
+        The supported types are string, int, float, boolean, and decimal (e.g.,
+        path/[string foo]).
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           HTTP module
         </a>
         .
@@ -266,7 +263,8 @@ export default function HttpPathParam() {
             <code className="d-flex flex-column">
               <span>{`\$ curl "http://localhost:9090/company/empId/23"`}</span>
               <span>{`{"empId":23}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ curl "http://localhost:9090/company/empName/Adele/Ferguson"`}</span>
               <span>{`{"firstName":"Adele", "lastName":"Ferguson"}`}</span>
             </code>

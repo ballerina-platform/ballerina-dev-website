@@ -1,5 +1,5 @@
 {
-  "title": "Destructuring records",
+  "title": "Destructure records",
   "description": "This BBE demonstrates on how records can be destructured in Ballerina.",
   "keywords": [
     "ballerina",

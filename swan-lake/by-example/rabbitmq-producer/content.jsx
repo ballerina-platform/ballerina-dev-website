@@ -52,19 +52,15 @@ export default function RabbitmqProducer() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Producer</h1>
 
-      <p>The messages are sent to two different queues,</p>
-
       <p>
-        to one queue using the same channel and to the other using two different
-        channels.
+        The messages are sent to two different queues, to one queue using the
+        same channel and to the other using two different channels.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          <code>rabbitmq</code> module
+          RabbitMQ module
         </a>
         .
       </p>

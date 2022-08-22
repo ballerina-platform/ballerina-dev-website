@@ -24,7 +24,7 @@ service /multiparts on new http:Listener(9090) {
     resource function post decode(http:Request request)
             returns http:Response|http:InternalServerError {
         http:Response response = new;
-        // [Extracts bodyparts](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getBodyParts) from the request.
+        // [Extracts bodyparts](https://lib.ballerina.io/ballerina/http/latest/classes/Request#getBodyParts) from the request.
         var bodyParts = request.getBodyParts();
 
         if bodyParts is mime:Entity[] {
@@ -55,7 +55,7 @@ service /multiparts on new http:Listener(9090) {
         // Create an array to hold all the body parts.
         mime:Entity[] bodyParts = [jsonBodyPart, xmlFilePart];
         http:Request request = new;
-        // [Set the body parts](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setBodyParts) to the request.
+        // [Set the body parts](https://lib.ballerina.io/ballerina/http/latest/classes/Request#setBodyParts) to the request.
         // Here the content-type is set as multipart form data.
         // This also works with any other multipart media type.
         // E.g., \`multipart/mixed\`, \`multipart/related\` etc.
@@ -72,28 +72,28 @@ service /multiparts on new http:Listener(9090) {
 
 // The content logic that handles the body parts vary based on your requirement.
 function handleContent(mime:Entity bodyPart) {
-    // [Get the media type](https://docs.central.ballerina.io/ballerina/mime/latest/functions#getMediaType) from the body part retrieved from the request.
+    // [Get the media type](https://lib.ballerina.io/ballerina/mime/latest/functions#getMediaType) from the body part retrieved from the request.
     var mediaType = mime:getMediaType(bodyPart.getContentType());
     if mediaType is mime:MediaType {
         string baseType = mediaType.getBaseType();
-        if mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType {
-            //[Extracts \`xml\` data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getXml) from the body part.
+        if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
+            //[Extracts \`xml\` data](https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getXml) from the body part.
             var payload = bodyPart.getXml();
             if payload is xml {
                 log:printInfo(payload.toString());
             } else {
                 log:printError(payload.message());
             }
-        } else if mime:APPLICATION_JSON == baseType {
-            //[Extracts \`json\` data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getJson) from the body part.
+        } else if (mime:APPLICATION_JSON == baseType) {
+            //[Extracts \`json\` data](https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getJson) from the body part.
             var payload = bodyPart.getJson();
             if payload is json {
                 log:printInfo(payload.toJsonString());
             } else {
                 log:printError(payload.message());
             }
-        } else if mime:TEXT_PLAIN == baseType {
-            //[Extracts \`text\` data](https://docs.central.ballerina.io/ballerina/mime/latest/classes/Entity#getText) from the body part.
+        } else if (mime:TEXT_PLAIN == baseType) {
+            //[Extracts text data](https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getText) from the body part.
             var payload = bodyPart.getText();
             if payload is string {
                 log:printInfo(payload);
@@ -139,23 +139,16 @@ export default function HttpRequestWithMultiparts() {
       <h1>Request With multiparts</h1>
 
       <p>
-        Ballerina supports encoding and decoding multipart content in HTTP
-        requests along with nested parts.
-      </p>
-
-      <p>
-        When you request multiparts from the HTTP inbound request, you get an
-        array of body parts (an array of entities).
-      </p>
-
-      <p>
-        You can loop through this array and handle the received body parts
-        according to your requirement.
+        Ballerina supports encoding and decoding multipart content in http
+        requests along with nested parts. When you request multiparts from the
+        HTTP inbound request, you get an array of body parts (an array of
+        entities). You can loop through this array and handle the received body
+        parts according to your requirement.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/mime/latest/">
+        <a href="https://lib.ballerina.io/ballerina/mime/latest/">
           Mime module
         </a>
         .
@@ -383,10 +376,12 @@ export default function HttpRequestWithMultiparts() {
               <span>{`content-disposition: attachment;name="part1"`}</span>
               <span>{`content-type: application/json`}</span>
               <span>{`content-id: 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`{"name":"ballerina"}`}</span>
               <span>{`--f710b4a02896b88a--`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The cURL command, which you need to execute to encode the parts of the body and send a multipart request via the Ballerina service.`}</span>
               <span>{`\$ curl -v http://localhost:9090/multiparts/encode`}</span>
               <span>{`> GET /multiparts/encode HTTP/1.1`}</span>
@@ -404,13 +399,15 @@ export default function HttpRequestWithMultiparts() {
               <span>{`content-disposition: form-data;name="json part"`}</span>
               <span>{`content-type: application/json`}</span>
               <span>{`content-id: 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`{"name":"wso2"}`}</span>
               <span>{`--bd7547c98465dae2`}</span>
               <span>{`content-disposition: form-data;name="xml file part"`}</span>
               <span>{`content-type: application/xml`}</span>
               <span>{`content-id: 1`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`<ballerinalang>`}</span>
               <span>{`    <version>0.963</version>`}</span>
               <span>{`    <test>test xml file to be used as a file part</test>`}</span>

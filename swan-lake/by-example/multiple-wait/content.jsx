@@ -72,7 +72,7 @@ export default function MultipleWait() {
 
       <p>
         The <code>wait</code> action can be used to wait for multiple named
-        workers. <code>wait</code> works with futures also.
+        workers. Works with futures also.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -81,7 +81,7 @@ export default function MultipleWait() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=abda784c714d441627e63e2ba7458b14&file=multiple_wait.bal",
+                "https://play.ballerina.io/?gist=aa8b1fe1a84655f0b123f2afb4ed6850&file=multiple_wait.bal",
                 "_blank"
               );
             }}

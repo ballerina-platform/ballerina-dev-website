@@ -60,10 +60,8 @@ export default function XmlTemplatesAndQuery() {
 
       <p>
         XML templates can be combined with queries (e.g., you can have a
-        template containing a query expression, which
+        template containing a query expression, which also contains a template).
       </p>
-
-      <p>also contains a template).</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -71,7 +69,7 @@ export default function XmlTemplatesAndQuery() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8b9cd34d205377f0b1b1a83430e31e6a&file=xml_templates_and_query.bal",
+                "https://play.ballerina.io/?gist=e2fbbf711f2eac6f911334cf70425d52&file=xml_templates_and_query.bal",
                 "_blank"
               );
             }}

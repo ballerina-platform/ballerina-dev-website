@@ -69,14 +69,11 @@ export default function TableSyntax() {
 
       <p>
         A <code>table</code> is a collection of records. Each{" "}
-        <code>record</code> represents a row of the <code>table</code>.
-      </p>
-
-      <p>
-        A <code>table</code> is plain data if and only if its rows are plain
-        data. A <code>table</code> maintains an invariant that each row is
-        uniquely identified by a key. Each row’s key is stored in fields, which
-        must be immutable.
+        <code>record</code> represents a row of the <code>table</code>. A{" "}
+        <code>table</code> is plain data if and only if its rows are plain data.
+        A <code>table</code> maintains an invariant that each row is uniquely
+        identified by a key. Each row’s key is stored in fields, which must be
+        immutable.
       </p>
 
       <p>Compared to maps,</p>
@@ -84,7 +81,7 @@ export default function TableSyntax() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>A key is part of the value rather than being separate.</span>
+          <span>key is part of the value rather than being separate.</span>
         </li>
       </ul>
       <ul style={{ marginLeft: "0px" }}>
@@ -103,12 +100,13 @@ export default function TableSyntax() {
       </ul>
 
       <p>
-        A record field can be declared as <code>readonly</code>. A value cannot
-        be assigned to such a field after the record is created. The table type
-        gives the type of the row and the name of the key field. A table
-        constructor expression looks like an array constructor. The{" "}
-        <code>foreach</code> statement will iterate over a table's rows in their
-        order. Use <code>t[k]</code> to access a row using its key.
+        A <code>record</code> field can be declared as <code>readonly</code>. A
+        value cannot be assigned to such a field after the record is created.
+        The <code>table</code> type gives the type of the row and the name of
+        the key field. The <code>table constructor expression</code> looks like
+        an <code>array constructor</code>. The <code>foreach</code> statement
+        will iterate over a table's rows in their order. Use <code>t[k</code> to
+        access a row using its key.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -117,7 +115,7 @@ export default function TableSyntax() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f3750ef4da67778a5772126a1750faa5&file=table_syntax.bal",
+                "https://play.ballerina.io/?gist=9198c0536f8d093c58a8c02016065d19&file=table_syntax.bal",
                 "_blank"
               );
             }}

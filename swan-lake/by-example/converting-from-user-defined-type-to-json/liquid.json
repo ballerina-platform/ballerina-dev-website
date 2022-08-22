@@ -1,5 +1,5 @@
 {
-  "title": "Converting from user-defined type to JSON",
+  "title": "Convert from user-defined type to JSON",
   "description": "This BBE demonstrates converting a user-defined type to JSON.",
   "keywords": [
     "ballerina",

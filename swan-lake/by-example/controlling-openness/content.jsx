@@ -70,12 +70,8 @@ export default function ControllingOpenness() {
       <p>
         Use <code>record &#123;| ... |&#125;</code> to describe a{" "}
         <code>record</code> type that allows exclusively what is specified in
-        the body.
-      </p>
-
-      <p>
-        Use <code>T...</code> to allow other fields of type <code>T</code>.{" "}
-        <code>map&lt;T&gt;</code> is same as{" "}
+        the body. Use <code>T...</code> to allow other fields of type{" "}
+        <code>T</code>. <code>map&lt;T&gt;</code> is same as{" "}
         <code>record &#123;| T...; |&#125;</code>.
       </p>
 
@@ -85,7 +81,7 @@ export default function ControllingOpenness() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=654c3d1cbd88baafb81fbb2ad97974cf&file=controlling_openness.bal",
+                "https://play.ballerina.io/?gist=80619da8dafb5d3b3b266280425efb18&file=controlling_openness.bal",
                 "_blank"
               );
             }}

@@ -25,9 +25,10 @@ listener http:Listener securedEP = new(9090,
 
 // The service can be secured with Basic Auth and can be authorized  optionally.
 // Basic Auth using the LDAP user store can be enabled by setting the
-// [\`http:LdapUserStoreConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/LdapUserStoreConfig) configurations.
-// Authorization is based on scopes. A scope maps to one or more groups. Authorization can be 
-// enabled by setting the \`string|string[]\` type configurations for the \`scopes\` field.
+// [\`http:LdapUserStoreConfig\`](https://lib.ballerina.io/ballerina/http/latest/records/LdapUserStoreConfig) configurations.
+// Authorization is based on scopes. A scope maps to one or more groups.
+// Authorization can be enabled by setting the \`string|string[]\` type
+// configurations for \`scopes\` field.
 @http:ServiceConfig {
     auth: [
         {
@@ -94,16 +95,10 @@ export default function HttpServiceBasicAuthLdapUserStore() {
       <p>
         An HTTP service/resource can be secured with Basic Auth and by enforcing
         authorization optionally. Then, it validates the Basic Auth token sent
-        in
-      </p>
-
-      <p>
-        the <code>Authorization</code> header against the provided
+        in the <code>Authorization</code> header against the provided
         configurations. This reads data from the configured LDAP. This stores
-        usernames, passwords for
+        usernames, passwords for authentication, and scopes for authorization.
       </p>
-
-      <p>authentication, and scopes for authorization.</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
@@ -118,8 +113,8 @@ export default function HttpServiceBasicAuthLdapUserStore() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
-          <code>auth</code> module
+        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+          Auth module
         </a>
         .
       </p>

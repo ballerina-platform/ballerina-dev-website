@@ -61,12 +61,16 @@ export default function ConvertingToUserDefinedType() {
       <p>
         The <code>cloneWithType()</code> langlib function in the{" "}
         <code>lang.value</code> module can be used to convert a value to a
-        user-defined type. The result recursively uses the specified type as the
-        inherent type of the new value. It automatically performs numeric
-        conversions as necessary. Every part of the value is cloned including
-        immutable, structural values. The graph structure is not preserved. The{" "}
-        <code>fromJsonWithType()</code> variant also does the reverse of the
-        conversions done by <code>toJson()</code>.
+        user-defined type. Result recursively uses specified type as inherent
+        type of new value. Automatically performs numeric conversions as
+        necessary.
+      </p>
+
+      <p>
+        Every part of the value is cloned including immutable structural values.
+        Graph structure is not preserved. Variant{" "}
+        <code>fromJsonWithType()</code> also does reverse of conversions done by{" "}
+        <code>toJson</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -75,7 +79,7 @@ export default function ConvertingToUserDefinedType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dafc5f0dc0bf1d2374bd01ce775a0746&file=converting_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=56d998e84b0980110a50b8990860a21a&file=converting_to_user_defined_type.bal",
                 "_blank"
               );
             }}
@@ -231,7 +235,7 @@ export default function ConvertingToUserDefinedType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Converting from JSON to user-defined type"
+            title="Convert from JSON to user-defined type"
             href="/learn/by-example/converting-from-json-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -259,7 +263,7 @@ export default function ConvertingToUserDefinedType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Converting from JSON to user-defined type
+                  Convert from JSON to user-defined type
                 </span>
               </div>
             </div>

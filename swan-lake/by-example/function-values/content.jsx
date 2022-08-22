@@ -68,9 +68,9 @@ export default function FunctionValues() {
       <h1>Function values</h1>
 
       <p>
-        Functions are values, which work as closures. The function type is a
-        separate basic type. Anonymous functions and the type syntax look like a
-        function definition without the name.
+        Functions are values and work as closures. Function type is a separate
+        basic type. Anonymous function and type syntax look like function
+        definition without the name.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -79,7 +79,7 @@ export default function FunctionValues() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0fb1b9661f4ca806c3e714a3068f719b&file=function_values.bal",
+                "https://play.ballerina.io/?gist=87701d98c17cb19983b1bb9a8c5931e3&file=function_values.bal",
                 "_blank"
               );
             }}

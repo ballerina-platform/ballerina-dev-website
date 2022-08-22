@@ -130,7 +130,7 @@ sublinks:
           - title: Open records
             id: 2
             url: open-records
-          - title: Controlling openness
+          - title: Control openness
             id: 3
             url: controlling-openness
       - title: Objects
@@ -139,7 +139,7 @@ sublinks:
           - title: Object
             id: 1
             url: object
-          - title: Defining classes
+          - title: Define classes
             id: 2
             url: defining-classes
           - title: Init return type
@@ -160,10 +160,10 @@ sublinks:
           - title: Panics
             id: 4
             url: panics
-      - title: Ignoring return values and errors
+      - title: Ignore return values and errors
         id: 14
         sublinks:
-          - title: Ignoring return values and errors
+          - title: Ignore return values and errors
             id: 1
             url: ignoring-return-values-and-errors
       - title: Mutability and identity
@@ -187,19 +187,19 @@ sublinks:
           - title: JSON type
             id: 1
             url: json-type
-          - title: Working directly with JSON
+          - title: Work directly with JSON
             id: 2
             url: working-directly-with-json
           - title: Match statement with maps
             id: 3
             url: match-statement-with-maps
-          - title: Converting from user-defined type to JSON
+          - title: Convert from user-defined type to JSON
             id: 4
             url: converting-from-user-defined-type-to-json
-          - title: Converting from JSON to user-defined type
+          - title: Convert from JSON to user-defined type
             id: 5
             url: converting-from-json-to-user-defined-type
-          - title: Converting to user-defined type
+          - title: Convert to user-defined type
             id: 6
             url: converting-to-user-defined-type
           - title: Resource method typing
@@ -226,7 +226,7 @@ sublinks:
           - title: Query expressions
             id: 1
             url: query-expressions
-          - title: Destructuring records
+          - title: Destructure records
             id: 2
             url: destructuring-records
           - title: Let clause
@@ -241,7 +241,7 @@ sublinks:
           - title: Querying tables
             id: 6
             url: querying-tables
-          - title: Creating tables with query
+          - title: Create tables with query
             id: 7
             url: creating-tables-with-query
           - title: Join clause
@@ -301,10 +301,10 @@ sublinks:
       - title: Network interaction
         id: 22
         sublinks:
-          - title: 'Consuming services: client objects'
+          - title: 'Consume services: client objects'
             id: 1
             url: consuming-services
-          - title: Providing services
+          - title: Provide services
             id: 2
             url: providing-services
           - title: Module lifecycle
@@ -340,7 +340,7 @@ sublinks:
           - title: Sequence diagrams
             id: 3
             url: sequence-diagrams
-          - title: Waiting for workers
+          - title: Wait for workers
             id: 4
             url: waiting-for-workers
           - title: Strands
@@ -595,7 +595,7 @@ sublinks:
           - title: Error Handling
             id: 3
             url: http-error-handling
-          - title: Interceptor Error Handling
+          - title: Interceptor error handling
             id: 4
             url: http-interceptor-error-handling
       - title: HTTP2
@@ -613,13 +613,13 @@ sublinks:
           - title: Hello world
             id: 1
             url: graphql-hello-world
-          - title: Returning record values
+          - title: Return record values
             id: 2
             url: graphql-returning-record-values
           - title: Hierarchical resource paths
             id: 3
             url: graphql-hierarchical-resource-paths
-          - title: Returning service objects
+          - title: Return service objects
             id: 4
             url: graphql-returning-service-objects
           - title: Input types
@@ -748,12 +748,15 @@ sublinks:
           - title: Timeout
             id: 5
             url: http-timeout
-      - title: Listeners
+      - title: Listeners and StopHandlers
         id: 13
         sublinks:
           - title: Dynamic listener
             id: 1
             url: dynamic-listener
+          - title: StopHandler
+            id: 2
+            url: stop-handler
       - title: gRPC
         id: 14
         sublinks:
@@ -997,8 +1000,17 @@ sublinks:
           - title: Atomic batch execute
             id: 6
             url: jdbc-atomic-batch-execute-operation
-  - title: Common libraries
+  - title: Working over the network
     id: 3
+    sublinks:
+      - title: SerDes
+        id: 1
+        sublinks:
+          - title: Serialization and Deserialization
+            id: 1
+            url: serdes-simple
+  - title: Common libraries
+    id: 4
     sublinks:
       - title: IO
         id: 1
@@ -1012,11 +1024,14 @@ sublinks:
           - title: Read/write CSV
             id: 3
             url: io-csv
-          - title: Read/write JSON
+          - title: Read/write CSV with data mapping
             id: 4
+            url: io-csv-datamapping
+          - title: Read/write JSON
+            id: 5
             url: io-json
           - title: Read/write XML
-            id: 5
+            id: 6
             url: io-xml
       - title: Security
         id: 2
@@ -1151,7 +1166,7 @@ sublinks:
             id: 1
             url: constraint-validations
   - title: Observability
-    id: 4
+    id: 5
     sublinks:
       - title: Tracing
         id: 1
@@ -1169,17 +1184,14 @@ sublinks:
             id: 1
             url: gauge-metrics
   - title: Deployment
-    id: 5
+    id: 6
     sublinks:
       - title: Code to Cloud
         id: 1
         sublinks:
-          - title: Docker
-            id: 1
-            url: c2c-docker-deployment
           - title: Kubernetes
-            id: 2
-            url: c2c-k8s-deployment
+            id: 1
+            url: c2c-deployment
       - title: Function as a Service
         id: 2
         sublinks:

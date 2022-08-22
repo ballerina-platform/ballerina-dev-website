@@ -12,39 +12,46 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/cache;
+  `import ballerina/http;
 import ballerina/io;
+import ballerina/lang.runtime;
 
-public function main() returns error? {
-    // This creates a new cache instance with the default configurations.
-    cache:Cache cache = new();
+string[] fruitBasket = ["Apple", "Orange"];
 
-    // Adds new entries to the cache.
-    check cache.put("key1", "value1");
-    check cache.put("key2", "value2");
+function init() {
+    io:println("initial items in fruit basket: " + fruitBasket.toString());
 
-    // Checks for the cached key availability.
-    if (cache.hasKey("key1")) {
-        // Fetches the cached value.
-        string value = <string> check cache.get("key1");
-        io:println("The value of the key1: " + value);
+    // Registers a function that will be called during the graceful shutdown.
+    runtime:onGracefulStop(clearBasket);
+}
+
+public function clearBasket() returns error? {
+    // Remove all elements from the array.
+    fruitBasket.removeAll();
+    io:println("after removing all fruit items: " + fruitBasket.toString());
+}
+
+service / on new http:Listener(9090) {
+    
+    resource function post addToBasket(@http:Payload string fruit) 
+            returns string[] {
+
+        // Add an element to the array.
+        fruitBasket.push(fruit);
+        io:println("after adding a fruit item: " + fruitBasket.toString());
+        return fruitBasket;
     }
-    // Gets the keys of the cache entries.
-    string[] keys = cache.keys();
-    io:println("The existing keys in the cache: " + keys.toString());
-
-    // Gets the size of the cache.
-    int size = cache.size();
-    io:println("The cache size: ", size);
 }
 `,
 ];
 
-export default function CacheBasics() {
+export default function StopHandler() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -61,29 +68,18 @@ export default function CacheBasics() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Cache basics</h1>
+      <h1>
+        <code>StopHandler</code>
+      </h1>
 
       <p>
-        The <code>cache</code> library provides in-memory cache implementation
-        APIs and
+        The <code>StopHandler</code> registers a function that will be called
+        during the graceful shutdown.
       </p>
 
       <p>
-        uses the <code>Least Recently Used</code> algorithm-based eviction
-        policy.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/cache/latest/">
-          <code>cache</code> module
-        </a>
-        .
-      </p>
-
-      <p>
-        This example illustrates the basic operations provided by the{" "}
-        <code>cache</code> library.
+        This example demonstrates how to register a function that will be
+        executed at the end of the program.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -92,30 +88,7 @@ export default function CacheBasics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f85b0b9d9ea7b557b26515d8856e3414&file=cache_basics.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-          <button
-            className="bg-transparent border-0 m-0 p-2"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/cache-basics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/stop-handler",
                 "_blank"
               );
             }}
@@ -186,10 +159,6 @@ export default function CacheBasics() {
         </Col>
       </Row>
 
-      <p>
-        To run this sample, use the <code>bal run</code> command.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -241,10 +210,77 @@ export default function CacheBasics() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run cache_basic.bal`}</span>
-              <span>{`The value of the key1: value1`}</span>
-              <span>{`The existing keys in the cache: ["key1","key2"]`}</span>
-              <span>{`The cache size: 2`}</span>
+              <span>{`# Invoke the service using cURL to add a fruit item.`}</span>
+              <span>{`curl http://localhost:9090/addToBasket -d 'Guava'`}</span>
+              <span>{`["Apple", "Orange", "Guava"]`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded"
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#00FF19"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`# Navigate to the directory that contains the`}</span>
+              <span>{`# 'stop_handler.bal' file, and run the 'bal run' command below.`}</span>
+              <span>{`
+`}</span>
+              <span>{`bal run stop_handler.bal`}</span>
+              <span>{`
+`}</span>
+              <span>{`# Send the interrupt signal SIGINT to terminate the current process.`}</span>
+              <span>{`Ctrl+c`}</span>
+              <span>{`initial items in fruit basket: ["Apple","Orange"]`}</span>
+              <span>{`after adding a fruit item: ["Apple","Orange","Guava"]`}</span>
+              <span>{`after removing all fruit items: []`}</span>
             </code>
           </pre>
         </Col>
@@ -253,8 +289,8 @@ export default function CacheBasics() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Time formatting/parsing"
-            href="/learn/by-example/time-formatting-and-parsing"
+            title="Dynamic listener"
+            href="/learn/by-example/dynamic-listener"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -281,17 +317,14 @@ export default function CacheBasics() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Time formatting/parsing
+                  Dynamic listener
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Cache invalidation"
-            href="/learn/by-example/cache-invalidation"
-          >
+          <Link title="Simple RPC" href="/learn/by-example/grpc-simple">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -300,7 +333,7 @@ export default function CacheBasics() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Cache invalidation
+                  Simple RPC
                 </span>
               </div>
               <svg

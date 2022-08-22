@@ -15,9 +15,10 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
-listener rabbitmq:Listener securedEP = new (rabbitmq:DEFAULT_HOST, 5671,
-    // To secure the client connections using username/password authentication,
-    // provide the credentials with the [\`rabbitmq:Credentials\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
+listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
+
+    // To secure the client connections using username/password authentication, provide the credentials
+    // with the [\`rabbitmq:Credentials\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
     auth = {
         username: "alice",
         password: "alice@123"
@@ -47,8 +48,9 @@ service rabbitmq:Service on securedEP {
 public function main() returns error? {
     // Creates a ballerina RabbitMQ client with TLS/SSL and username/password authentication.
     rabbitmq:Client rabbitmqClient = check new(rabbitmq:DEFAULT_HOST, 5671,
-        // To secure the client connections using username/password authentication,
-        // provide the credentials with the [\`rabbitmq:Credentials\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
+
+        // To secure the client connections using username/password authentication, provide the credentials
+        // with the [\`rabbitmq:Credentials\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
         auth = {
              username: "alice",
              password: "alice@123"
@@ -98,16 +100,15 @@ export default function RabbitmqSecureConnection() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Secured connection</h1>
 
-      <p>The underlying connections of the consumer and the producer are</p>
-
-      <p>secured with TLS/SSL and Basic Auth.</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        The underlying connections of the consumer and the producer are secured
+        with TLS/SSL and Basic Auth.
+      </p>
 
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          <code>rabbitmq</code> module
+          RabbitMQ module
         </a>
         .
       </p>

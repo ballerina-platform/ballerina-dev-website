@@ -50,22 +50,24 @@ export default function ModuleLifecycle() {
       <h1>Module lifecycle</h1>
 
       <p>
-        All modules are initialized at the program startup. Module
-        initialization is ordered so that if <code>module A</code> imports{" "}
-        <code>module B</code>, then <code>module A</code> is initialized after{" "}
-        <code>module B</code>. The initialization phase ends by calling the{" "}
-        <code>main</code> function if there is one.
+        All modules are initialized at program startup. Module initialization is
+        ordered so that if module A imports module B,
       </p>
 
       <p>
-        A module's listeners are registered during the module initialization. If
-        there are registered listeners, then, the initialization phase is
+        then module A is initialized after module B. The initialization phase
+        ends by calling the <code>main</code> function if there is one.
+      </p>
+
+      <p>
+        A module's listeners are registered during module initialization. If
+        there are registered listeners, then the initialization phase is
         followed by the listening phase.
       </p>
 
       <p>
         The listening phase starts by calling the <code>start</code> method on
-        each registered listener. The listening phase is terminated by a signal
+        each registered listener. The listening phase is terminated by signal
         (e.g. <code>SIGINT</code>, <code>SIGTERM</code>).
       </p>
 
@@ -75,7 +77,7 @@ export default function ModuleLifecycle() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fff042732b5f97ad620c94ca36b848d9&file=module_lifecycle.bal",
+                "https://play.ballerina.io/?gist=0816cbf859434f43deb06a909f9b3bd1&file=module_lifecycle.bal",
                 "_blank"
               );
             }}
@@ -230,7 +232,7 @@ export default function ModuleLifecycle() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Providing services"
+            title="Provide services"
             href="/learn/by-example/providing-services"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -258,7 +260,7 @@ export default function ModuleLifecycle() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Providing services
+                  Provide services
                 </span>
               </div>
             </div>

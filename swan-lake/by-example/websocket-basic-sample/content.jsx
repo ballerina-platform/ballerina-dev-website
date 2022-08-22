@@ -63,8 +63,8 @@ export default function WebsocketBasicSample() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/">
-          <code>websocket</code> module
+        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
+          WebSocket module
         </a>
         .
       </p>

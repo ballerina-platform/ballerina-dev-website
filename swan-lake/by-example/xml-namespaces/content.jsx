@@ -48,19 +48,15 @@ export default function XmlNamespaces() {
       <h1>XML namespaces</h1>
 
       <p>
-        The <code>ns:x</code> qualified name in XML is expanded into{" "}
-        <code>&#123;url&#125;x</code> in which <code>url</code> is the namespace
-        name bound to <code>ns</code>. The XML namespace declarations are kept
-        as attributes using the standard binding of{" "}
-        <a href="http://www.w3.org/2000/xmlns/">
-          <code>xmlns</code>
-        </a>
-        .
+        The goal is to support namespaces without adding complexity if you don’t
+        use them. The <code>ns:x</code> qualified name in XML is expanded into{" "}
+        <code>&#123;url&#125;x</code> where <code>url</code> is the namespace
+        name bound to <code>ns</code>.
       </p>
 
       <p>
-        XML namespaces are supported in such a way that they do not add
-        complexity if you do not use them.
+        The XML namespace declarations are kept as attributes using the standard
+        binding of <a href="http://www.w3.org/2000/xmlns/">xmlns</a>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -69,7 +65,7 @@ export default function XmlNamespaces() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=730d1523d2dfe6b6ecf99b553a017f26&file=xml_namespaces.bal",
+                "https://play.ballerina.io/?gist=23c778108e5a617e1468ff48b5ba15e6&file=xml_namespaces.bal",
                 "_blank"
               );
             }}

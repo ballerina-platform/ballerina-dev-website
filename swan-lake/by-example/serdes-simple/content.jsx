@@ -13,51 +13,41 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/io;
-import ballerina/xmldata;
+import ballerina/serdes;
 
-// Defines a record type with annotations.
-@xmldata:Namespace {
-    prefix: "ns",
-    uri: "http://sdf.com"
-}
-type Invoice record {
+// Define a type, which is a subtype of anydata.
+type Student record {
     int id;
-    Item[] purchased_item;
-    @xmldata:Attribute
-    string 'xmlns?;
-    @xmldata:Attribute
-    string status?;
-};
-
-@xmldata:Namespace {
-    uri: "http://example2.com"
-}
-type Item record {
-    string itemCode;
-    int item_count;
+    string name;
+    decimal fees;
 };
 
 public function main() returns error? {
-    xml data = xml \`<ns:Invoice xmlns="example.com" xmlns:ns="http://sdf.com" status="paid">
-                        <id>1</id>
-                        <purchased_item>
-                            <itemCode>223345</itemCode>
-                            <item_count>1</item_count>
-                        </purchased_item>
-                        <purchased_item>
-                            <itemCode>223300</itemCode>
-                            <item_count>7</item_count>
-                        </purchased_item>
-                    </ns:Invoice>\`;
 
-    // Converts an XML representation to its \`record\` representation.
-    Invoice output = check xmldata:fromXml(data);
-    io:println(output);
+    // Assign the value to the variable.
+    Student studentValue = {
+        id: 7894,
+        name: "Liam",
+        fees: 24999.99
+    };
+
+    // Create a serialization object by passing the typedesc.
+    // This creates an underlying protocol buffer schema for the typedesc.
+    serdes:Proto3Schema serdes = check new (Student);
+
+    // Serialize the record value to bytes.
+    byte[] serializedValue = check serdes.serialize(studentValue);
+
+    // Deserialize the record value to bytes. 
+    Student deserializedValue = check serdes.deserialize(serializedValue);
+
+    // Print deserialized data.
+    io:println(deserializedValue);
 }
 `,
 ];
 
-export default function XmlToRecordConversion() {
+export default function SerdesSimple() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -78,17 +68,18 @@ export default function XmlToRecordConversion() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>XML to Record conversion</h1>
+      <h1>Serialization and Deserialization</h1>
 
       <p>
-        The <code>xmldata</code> library provides an API to perform the
-        conversion from XML to <code>Ballerina record/map&lt;anydata&gt;</code>.
+        The <code>serdes</code> module helps to serialize and deserialize
+        subtypes of Ballerina <code>anydata</code>. This sample demonstrates how
+        to serialize and deserialize a user defined record type.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/xmldata/latest/">
-          <code>xmldata</code> module
+        <a href="https://docs.central.ballerina.io/ballerina/serdes/latest">
+          <code>serdes</code> module
         </a>
         .
       </p>
@@ -99,7 +90,7 @@ export default function XmlToRecordConversion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=93a409e608952610393cda8b8edfb372&file=xml_to_record_conversion.bal",
+                "https://play.ballerina.io/?gist=6fa13a14f04e2aa9ee1f2ea029f25171&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -122,7 +113,7 @@ export default function XmlToRecordConversion() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/xml-to-record-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/serdes-simple",
                 "_blank"
               );
             }}
@@ -193,10 +184,6 @@ export default function XmlToRecordConversion() {
         </Col>
       </Row>
 
-      <p>
-        To run this sample, use the <code>bal run</code> command.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -248,8 +235,8 @@ export default function XmlToRecordConversion() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run xml_to_record_conversion.bal`}</span>
-              <span>{`{"id":1,"purchased_item":[{"itemCode":"223345","item_count":1},{"itemCode":"223300","item_count":7}],"xmlns":"example.com","status":"paid"}`}</span>
+              <span>{`bal run serdes_simple.bal`}</span>
+              <span>{`{"id":7894,"name":"Liam","fees":24999.99}`}</span>
             </code>
           </pre>
         </Col>
@@ -258,8 +245,8 @@ export default function XmlToRecordConversion() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="JSON to XML conversion "
-            href="/learn/by-example/xml-from-json-conversion"
+            title="Atomic batch execute"
+            href="/learn/by-example/jdbc-atomic-batch-execute-operation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -286,17 +273,14 @@ export default function XmlToRecordConversion() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  JSON to XML conversion
+                  Atomic batch execute
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Record to XML conversion"
-            href="/learn/by-example/xml-from-record-conversion"
-          >
+          <Link title="Read/write bytes" href="/learn/by-example/io-bytes">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -305,7 +289,7 @@ export default function XmlToRecordConversion() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Record to XML conversion
+                  Read/write bytes
                 </span>
               </div>
               <svg

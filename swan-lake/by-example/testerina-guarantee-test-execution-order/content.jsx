@@ -76,7 +76,7 @@ export default function TesterinaGuaranteeTestExecutionOrder() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-a-simple-function/">
           Testing Ballerina Code
         </a>{" "}
         and the{" "}

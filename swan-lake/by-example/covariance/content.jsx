@@ -67,7 +67,7 @@ export default function Covariance() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b86ce6c647065710dc8503df7b908072&file=covariance.bal",
+                "https://play.ballerina.io/?gist=967f5fee6892ac3a9869427ddfeb720f&file=covariance.bal",
                 "_blank"
               );
             }}

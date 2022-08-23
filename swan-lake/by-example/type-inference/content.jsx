@@ -80,7 +80,7 @@ export default function TypeInference() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9670e91a6b254cab7a2c7a71e1600c9c&file=type_inference.bal",
+                "https://play.ballerina.io/?gist=d1fb6fd831e88bf1b5c4d070abf2e706&file=type_inference.bal",
                 "_blank"
               );
             }}
@@ -268,7 +268,10 @@ export default function TypeInference() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Maps" href="/learn/by-example/maps">
+          <Link
+            title="ensureType function"
+            href="/learn/by-example/ensureType-function"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -277,7 +280,7 @@ export default function TypeInference() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Maps
+                  ensureType function
                 </span>
               </div>
               <svg

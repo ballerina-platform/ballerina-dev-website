@@ -137,6 +137,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Included record parameters",
+        "url": "included-record-parameters",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -251,6 +258,20 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "ensureType function",
+        "url": "ensureType-function",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Dependent types",
+        "url": "dependent-types",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -297,6 +318,20 @@
       {
         "name": "Control openness",
         "url": "controlling-openness",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Type inclusion for records",
+        "url": "type-inclusion-for-records",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Default values for record fields",
+        "url": "default-values-for-record-fields",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

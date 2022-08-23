@@ -101,21 +101,10 @@ export default function GrpcClientStreaming() {
 
       <p>
         The gRPC Server Connector is used to expose gRPC services over HTTP/2.
-      </p>
-
-      <p>
         In a gRPC client streaming scenario, the client writes a sequence of
         messages and sends them to the server. Once the client has finished
         writing the messages, it waits for the server to read them and return a
         response.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-          GRPC module
-        </a>
-        .
       </p>
 
       <blockquote>

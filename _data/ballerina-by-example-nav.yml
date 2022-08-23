@@ -64,6 +64,9 @@ sublinks:
           - title: Function values
             id: 2
             url: function-values
+          - title: Included record parameters
+            id: 3
+            url: included-record-parameters
       - title: Iteration
         id: 7
         sublinks:
@@ -112,6 +115,12 @@ sublinks:
           - title: 'Type inference '
             id: 10
             url: type-inference
+          - title: ensureType function
+            id: 11
+            url: ensureType-function
+          - title: Dependent types
+            id: 12
+            url: dependent-types
       - title: Mappings
         id: 10
         sublinks:
@@ -133,6 +142,12 @@ sublinks:
           - title: Control openness
             id: 3
             url: controlling-openness
+          - title: Type inclusion for records
+            id: 4
+            url: type-inclusion-for-records
+          - title: Default values for record fields
+            id: 5
+            url: default-values-for-record-fields
       - title: Objects
         id: 12
         sublinks:

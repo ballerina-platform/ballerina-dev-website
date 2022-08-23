@@ -242,51 +242,6 @@ public function main() {
 function isImmutable(any|error value) returns boolean => value is readonly;
 ```
 
-##### Improvements to type narrowing
-
-A change introduced to type narrowing may now result in the types of certain variables being narrowed in contexts where they were previously not narrowed.
-
-Consider the following example.
-
-```ballerina
-type Employee record {
-    int id;
-    string name;
-    string department;
-};
-
-type Student record {
-    string id;
-    string name;
-    int grade;
-};
-
-function fn(Employee|Student v) {
-    if v is Employee {
-        // `v` is narrowed to `Employee` here.
-        string dept = v.department;
-    } else {
-        // Previously, `v` continued to be `Employee|Student` here.
-        // It is now narrowed to `Student`, making the following 
-        // access possible.
-        int grade = v.grade;
-    }
-}
-```
-
-This was previously disallowed since it was expected to be able to call `fn` with a variable of the `Person` type defined below, even though jBallerina did not allow it.
-
-```ballerina
-type Person record {|
-    int|string id;
-    string name;
-    anydata grade;
-    anydata department;
-|};
-```
-
-However, with improvements proposed to how typing works with mutable values, this will not be possible, making it safe to narrow the type of `v` in the else block.
-
 ##### Make the variable declaration in the on-fail clause optional
 
 Previously, a variable needed to be  declared in the on-fail clause (e.g., `on fail error err`). It has now been made optional.

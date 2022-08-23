@@ -30,21 +30,21 @@ export default function Videos() {
                     <h2 className="removeTopMargin">Featured videos &amp; podcasts</h2>
 
                     <div className={styles.videoInfo}>
-                        <a target="_blank" rel="noreferrer" href="https://www.infoq.com/podcasts/james-clark-ballerina-language-network-data-concurrency/"><h4>How Ballerina Handles Network Interaction, Data, and Concurrency </h4></a>
-                        <p> By James Clark &amp; Charles Humble</p>
-                        <p> 11 Nov 2021</p>
+                        <a target="_blank" rel="noreferrer" href="https://youtu.be/Pal5QZJyloY"><h4>Simplifying Cloud Native Application Development with Ballerina </h4></a>
+                        <p> By Eric Newcomer and Darryl Taft</p>
+                        <p> 8 June 2022</p>
                     </div>
 
                     <div className={styles.videoInfo}>
-                        <a target="_blank" rel="noreferrer" href="https://youtu.be/NxyIKoHl3Dw"><h4>Creating a Service in Ballerina - Tutorial</h4></a>
-                        <p> By Manuranga Perera</p>
-                        <p> 1 June 2021</p>
+                        <a target="_blank" rel="noreferrer" href="https://youtu.be/8yRDvhMBj_E"><h4>Data-oriented Programming with Ballerina</h4></a>
+                        <p> James Clark Interviewed by Yehonathan Sharvit</p>
+                        <p> 27 April 2022</p>
                     </div>
 
                     <div className={`${styles.videoInfo} ${styles.last}`}>
-                        <a target="_blank" rel="noreferrer" href="https://youtu.be/My_uqtHvXV8"><h4>Familiar Subset - Ballerina Language, Swan Lake (Part 1)</h4></a>
-                        <p> By James Clark</p>
-                        <p> 31 May 2021</p>
+                        <a target="_blank" rel="noreferrer" href="https://youtu.be/My_uqtHvXV8"><h4>Why should you start programming with Ballerina?</h4></a>
+                        <p> By Sanjiva Weerawarana</p>
+                        <p> 2 March 2022</p>
                     </div>
                 </Col>
 

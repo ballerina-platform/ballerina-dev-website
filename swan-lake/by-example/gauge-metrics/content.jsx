@@ -460,7 +460,7 @@ export default function GaugeMetrics() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Kubernetes" href="/learn/by-example/c2c-deployment">
+          <Link title="Kubernetes" href="/learn/by-example/c2c-k8s-deployment">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

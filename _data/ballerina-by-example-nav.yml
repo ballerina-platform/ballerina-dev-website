@@ -1191,9 +1191,15 @@ sublinks:
         sublinks:
           - title: Kubernetes
             id: 1
-            url: c2c-deployment
-      - title: Function as a Service
+            url: c2c-k8s-deployment
+      - title: Code to Cloud
         id: 2
+        sublinks:
+          - title: Docker
+            id: 1
+            url: c2c-docker-deployment
+      - title: Function as a Service
+        id: 3
         sublinks:
           - title: Azure Functions
             id: 1

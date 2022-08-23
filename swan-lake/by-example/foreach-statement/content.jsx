@@ -80,7 +80,7 @@ export default function ForeachStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dec494102a51fdcafc9f6dbbf05c7c8b&file=foreach_statement.bal",
+                "https://play.ballerina.io/?gist=739ebdf9a2ca2a49103c5f97c2fe6379&file=foreach_statement.bal",
                 "_blank"
               );
             }}
@@ -235,8 +235,8 @@ export default function ForeachStatement() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Function values"
-            href="/learn/by-example/function-values"
+            title="Included record parameters"
+            href="/learn/by-example/included-record-parameters"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -263,7 +263,7 @@ export default function ForeachStatement() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Function values
+                  Included record parameters
                 </span>
               </div>
             </div>

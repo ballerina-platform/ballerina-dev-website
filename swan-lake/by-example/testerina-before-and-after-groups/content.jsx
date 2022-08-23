@@ -76,7 +76,7 @@ export default function TesterinaBeforeAndAfterGroups() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-code/testing-quick-start/">
+        <a href="https://ballerina.io/learn/test-ballerina-code/execute-tests/#understand-the-test-execution-behavior">
           Testing Ballerina Code
         </a>{" "}
         and the{" "}

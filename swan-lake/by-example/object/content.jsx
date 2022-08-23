@@ -83,7 +83,7 @@ export default function Object() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c926df5c2bfcc3e734e808318847167a&file=object.bal",
+                "https://play.ballerina.io/?gist=837343fc622c7753f7d249ff24e0f0fd&file=object.bal",
                 "_blank"
               );
             }}
@@ -238,8 +238,8 @@ export default function Object() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Control openness"
-            href="/learn/by-example/controlling-openness"
+            title="Default values for record fields"
+            href="/learn/by-example/default-values-for-record-fields"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -266,7 +266,7 @@ export default function Object() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Control openness
+                  Default values for record fields
                 </span>
               </div>
             </div>

@@ -82,14 +82,6 @@ export default function GrpcServiceSslTls() {
         expose an HTTPS connection over HTTP/2.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-          gRPC module
-        </a>
-        .
-      </p>
-
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on the underlying module,

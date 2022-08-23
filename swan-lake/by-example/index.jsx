@@ -12,6 +12,7 @@ import Booleans from "./booleans/content.jsx";
 import MatchStatement from "./match-statement/content.jsx";
 import Functions from "./functions/content.jsx";
 import FunctionValues from "./function-values/content.jsx";
+import IncludedRecordParameters from "./included-record-parameters/content.jsx";
 import ForeachStatement from "./foreach-statement/content.jsx";
 import WhileStatement from "./while-statement/content.jsx";
 import LanglibFunctions from "./langlib-functions/content.jsx";
@@ -25,11 +26,15 @@ import AnyType from "./any-type/content.jsx";
 import TypeDefinitions from "./type-definitions/content.jsx";
 import Covariance from "./covariance/content.jsx";
 import TypeInference from "./type-inference/content.jsx";
+import EnsureTypeFunction from "./ensureType-function/content.jsx";
+import DependentTypes from "./dependent-types/content.jsx";
 import Maps from "./maps/content.jsx";
 import Records from "./records/content.jsx";
 import OptionalFields from "./optional-fields/content.jsx";
 import OpenRecords from "./open-records/content.jsx";
 import ControllingOpenness from "./controlling-openness/content.jsx";
+import TypeInclusionForRecords from "./type-inclusion-for-records/content.jsx";
+import DefaultValuesForRecordFields from "./default-values-for-record-fields/content.jsx";
 import Object from "./object/content.jsx";
 import DefiningClasses from "./defining-classes/content.jsx";
 import InitReturnType from "./init-return-type/content.jsx";
@@ -336,6 +341,7 @@ const BBEs = {
   MatchStatement,
   Functions,
   FunctionValues,
+  IncludedRecordParameters,
   ForeachStatement,
   WhileStatement,
   LanglibFunctions,
@@ -349,11 +355,15 @@ const BBEs = {
   TypeDefinitions,
   Covariance,
   TypeInference,
+  EnsureTypeFunction,
+  DependentTypes,
   Maps,
   Records,
   OptionalFields,
   OpenRecords,
   ControllingOpenness,
+  TypeInclusionForRecords,
+  DefaultValuesForRecordFields,
   Object,
   DefiningClasses,
   InitReturnType,

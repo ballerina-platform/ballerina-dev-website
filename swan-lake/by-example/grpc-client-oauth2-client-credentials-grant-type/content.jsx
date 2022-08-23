@@ -90,24 +90,6 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
         <code>auth</code> configuration of the client.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          OAuth2 module
-        </a>
-        .
-      </p>
-
-      <p>
-        The client metadata is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>grpc:OAuth2ClientCredentialsGrantConfig</code> for the
-      </p>
-
-      <p>
-        <code>auth</code> configuration of the client.
-      </p>
-
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on the underlying module,

@@ -71,7 +71,7 @@ export default function MultipleKeyFields() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d5f523e4126c64ba8ff386e03e3afd28&file=multiple_key_fields.bal",
+                "https://play.ballerina.io/?gist=4eaa8c38707ecf2cc0d44c0ce0d7c4e6&file=multiple_key_fields.bal",
                 "_blank"
               );
             }}

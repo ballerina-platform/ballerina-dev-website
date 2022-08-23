@@ -115,7 +115,7 @@ export default function TesterinaAssertions() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/testing-ballerina-codetesting-quick-start/">
+        <a href="https://ballerina.io/learn/test-ballerina-code/write-tests/#use-assertions">
           Testing Ballerina Code
         </a>{" "}
         and the{" "}

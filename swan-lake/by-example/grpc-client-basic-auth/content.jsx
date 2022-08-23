@@ -83,21 +83,6 @@ export default function GrpcClientBasicAuth() {
         configuration of the client.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          Auth module
-        </a>
-        .
-      </p>
-
-      <p>
-        The client metadata is enriched with the{" "}
-        <code>Authorization: Basic &lt;token&gt;</code> header by passing the{" "}
-        <code>grpc:CredentialsConfig</code> for the <code>auth</code>{" "}
-        configuration of the client.
-      </p>
-
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on the underlying module,

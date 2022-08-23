@@ -97,14 +97,6 @@ export default function GrpcServerStreaming() {
         read.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-          GRPC module
-        </a>
-        .
-      </p>
-
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on the underlying module,

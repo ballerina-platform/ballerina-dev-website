@@ -70,20 +70,9 @@ export default function GrpcClientSslTls() {
 
       <p>
         You can use the gRPC client to connect or interact with a gRPC listener
-        secured with SSL/TLS.
-      </p>
-
-      <p>
-        Provide the <code>grpc:ClientSecureSocket</code> configurations to the
-        client to initiate an HTTPS connection over HTTP/2.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-          gRPC module
-        </a>
-        .
+        secured with SSL/TLS. Provide the <code>grpc:ClientSecureSocket</code>{" "}
+        configurations to the client to initiate an HTTPS connection over
+        HTTP/2.
       </p>
 
       <blockquote>

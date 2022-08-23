@@ -78,7 +78,7 @@ export default function Maps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=aa82f2d41aec5de43db65e922a501f5f&file=maps.bal",
+                "https://play.ballerina.io/?gist=3c4e53d2ec2ac09cb513044e4753e425&file=maps.bal",
                 "_blank"
               );
             }}
@@ -232,7 +232,10 @@ export default function Maps() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Type inference " href="/learn/by-example/type-inference">
+          <Link
+            title="Dependent types"
+            href="/learn/by-example/dependent-types"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +261,7 @@ export default function Maps() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Type inference
+                  Dependent types
                 </span>
               </div>
             </div>

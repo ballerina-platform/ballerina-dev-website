@@ -90,17 +90,7 @@ export default function GrpcServiceMutualSsl() {
         Ballerina supports mutual SSL, which is a certificate-based
         authentication process in which two parties (the client and server)
         authenticate each other by verifying the digital certificates. It
-        ensures that both parties are assured
-      </p>
-
-      <p>of each other's identity.</p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-          gRPC module
-        </a>
-        .
+        ensures that both parties are assured of each other's identity.
       </p>
 
       <blockquote>

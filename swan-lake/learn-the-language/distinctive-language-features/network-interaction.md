@@ -251,7 +251,7 @@ public function main() {
 
 In the above example, the `greeting/[string name]` resource in `clinetObj` is accessed with the `->/` call syntax. This notation signifies that it is a resource access action on a client object.
 
-The `greeting/James` resource access path segments after `->/` specify the target resource to access on the `clinetObj`. The default resource method name will be`get` if it is not specified in the client resource access action.
+The `greeting/James` resource access path segments after `->/` specify the target resource to access on the `clinetObj`. The default resource method name will be `get` if it is not specified in the client resource access action.
 
 The resource access action can specify the query parameters as arguments.
 

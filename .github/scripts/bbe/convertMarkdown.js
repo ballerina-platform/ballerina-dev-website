@@ -51,67 +51,71 @@ const escapeParagraphCharacters = (content) => {
 
 // escape quote characters
 const escapeCharacterAdder = (content, type) => {
-  let output = "",
-    codeContent = "",
-    tempContent = "",
-    open = false,
-    fencedCodeCount = 0;
+  if (content === "") {
+    return "\n";
+  } else {
+    let output = "",
+      codeContent = "",
+      tempContent = "",
+      open = false,
+      fencedCodeCount = 0;
 
-  for (let i = 0; i < content.length; i++) {
-    switch (content[i]) {
-      case "`":
-        if (
-          fencedCodeCount > 0 ||
-          (i < content.length - 2 &&
-            content[i + 1] === "`" &&
-            content[i + 2] === "`")
-        ) {
-          tempContent = "\\`";
-          fencedCodeCount += 1;
+    for (let i = 0; i < content.length; i++) {
+      switch (content[i]) {
+        case "`":
+          if (
+            fencedCodeCount > 0 ||
+            (i < content.length - 2 &&
+              content[i + 1] === "`" &&
+              content[i + 2] === "`")
+          ) {
+            tempContent = "\\`";
+            fencedCodeCount += 1;
 
-          if (fencedCodeCount === 3) {
-            fencedCodeCount = 0;
+            if (fencedCodeCount === 3) {
+              fencedCodeCount = 0;
+            }
+          } else {
+            switch (type) {
+              case "code":
+                tempContent = "\\`";
+                break;
+              case "out":
+                if (open) {
+                  open = false;
+                } else {
+                  open = true;
+                }
+                break;
+            }
           }
-        } else {
-          switch (type) {
-            case "code":
-              tempContent = "\\`";
-              break;
-            case "out":
-              if (open) {
-                open = false;
-              } else {
-                open = true;
-              }
-              break;
-          }
-        }
-        break;
-      case "$":
-        tempContent = "\\$";
-        break;
-      case "\\":
-        tempContent = "\\\\";
-        break;
-      default:
-        tempContent = content[i];
-        break;
+          break;
+        case "$":
+          tempContent = "\\$";
+          break;
+        case "\\":
+          tempContent = "\\\\";
+          break;
+        default:
+          tempContent = content[i];
+          break;
+      }
+
+      if (i === content.length - 1 && open) {
+        output += codeContent;
+      } else if (open) {
+        codeContent += tempContent;
+      } else if (codeContent !== "") {
+        output += `\`}<code>{\`${codeContent}\`}</code>{\``;
+        codeContent = "";
+      } else if (!open) {
+        output += tempContent;
+        tempContent = "";
+      }
     }
 
-    if (i === content.length - 1 && open) {
-      output += codeContent;
-    } else if (open) {
-      codeContent += tempContent;
-    } else if (codeContent !== "") {
-      output += `\`}<code>{\`${codeContent}\`}</code>{\``;
-      codeContent = "";
-    } else if (!open) {
-      output += tempContent;
-      tempContent = "";
-    }
+    return output;
   }
-
-  return output;
 };
 
 // extract code content

@@ -20,6 +20,10 @@ display:none;
 }
 </style>
 
+The resources below will walk you through the Ballerina language.
+
+## Watch the videos
+
 The video series below explores the language concepts of Ballerina Swan Lake. The series covers how Ballerina provides basic functionalities common to most programming languages and what makes Ballerina distinctive, and also deep-dives into the significant features of the language. 
 
 <br/>
@@ -29,6 +33,8 @@ The video series below explores the language concepts of Ballerina Swan Lake. Th
 <br/>
 
 <br/>
+
+## View the slides
 
 You can also find the [slide deck](/learn/slides/language-walkthrough/Ballerina_Language_Presentation-2021-03-08.pdf) used for these presentations below.
 

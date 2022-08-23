@@ -127,7 +127,8 @@ a {
 
 .mdContent h1,
 .policyContent h1,
-.archiveContent h1 {
+.archiveContent h1,
+.newsletter h1 {
   color: #464646;
   font-size: 2rem;
 }

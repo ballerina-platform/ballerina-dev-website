@@ -32,7 +32,7 @@ export default function Blogs() {
                     <div className={styles.blogInfo}>
                         <a target="_blank" rel="noreferrer" href="https://medium.com/ballerina-techblog/understanding-ballerina-websocket-service-4babb128f9a5"><h4>Ballerina WebSocket Service — The Anatomy </h4></a>
                         <p> By Bhashinee Nirmali</p>
-                        <p> 24 May 2022<</p>
+                        <p> 24 May 2022</p>
                     </div>
 
                     <div className={styles.blogInfo}>

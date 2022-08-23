@@ -57,7 +57,7 @@ export default function UpcomingEvents() {
           Over USD $10k worth of prizes to be won!
         </Col>
         <Col sm={12} md={3} className={styles.eventURL}>
-          <a className={styles.eventRegistration} href="hhttps://bit.ly/3wnbunh" target="_blank" rel="noreferrer">Register</a>
+          <a className={styles.eventRegistration} href="https://bit.ly/3wnbunh" target="_blank" rel="noreferrer">Register</a>
         </Col>
       </Row>
     </>

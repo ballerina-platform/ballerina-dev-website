@@ -30,21 +30,21 @@ export default function Blogs() {
                     <h2 className="removeTopMargin">Featured blog posts</h2>
 
                     <div className={styles.blogInfo}>
-                        <a target="_blank" rel="noreferrer" href="https://medium.com/@malintha1996/understanding-the-language-server-protocol-5c0ba3ac83d2"><h4>Understanding the Language Server Protocol </h4></a>
-                        <p> By Malintha Ranasinghe</p>
-                        <p> 22 Oct 2021</p>
+                        <a target="_blank" rel="noreferrer" href="https://medium.com/ballerina-techblog/understanding-ballerina-websocket-service-4babb128f9a5"><h4>Ballerina WebSocket Service — The Anatomy </h4></a>
+                        <p> By Bhashinee Nirmali</p>
+                        <p> 24 May 2022<</p>
                     </div>
 
                     <div className={styles.blogInfo}>
-                        <a target="_blank" rel="noreferrer" href="https://medium.com/ballerina-techblog/securing-microservices-with-jwt-a16b738b110f"><h4>Securing Microservices with JWT </h4></a>
-                        <p> By Chanaka Lakmal</p>
-                        <p> 21 Oct 2021</p>
+                        <a target="_blank" rel="noreferrer" href="https://betterprogramming.pub/intuitive-rest-apis-and-json-handling-with-ballerina-a-detailed-walkthrough-c5c7c48aa0de"><h4>Intuitive REST APIs and JSON Handling With Ballerina Programming Language</h4></a>
+                        <p> By Dakshitha Ratnayake</p>
+                        <p> 5 May 2022</p>
                     </div>
 
                     <div className={`${styles.blogInfo} ${styles.last}`}>
-                        <a target="_blank" rel="noreferrer" href="https://medium.com/geekculture/uncovering-interesting-2020-olympics-stats-with-ballerina-language-integrated-queries-7d5d0995b112"><h4>Uncovering Interesting 2020 Olympics Stats with Ballerina Language-integrated Queries </h4></a>
-                        <p> By Imesha Sudasingha</p>
-                        <p> 17 Sep 2021</p>
+                        <a target="_blank" rel="noreferrer" href="https://blog.jclark.com/2022/05/why-ballerina-is-language.html"><h4>Why Ballerina is a language </h4></a>
+                        <p> By James Clark</p>
+                        <p> 4 May 2022</p>
                     </div>
                 </Col>
 

@@ -42,7 +42,7 @@ export default function LeftNavYaml({ navContent, bbe = null, viewer = null }) {
       setActiveTopLevel(viewer);
     }
     setBaseUrl(navContent.url);
-  }, [navContent, bbe]);
+  }, [navContent, bbe, viewer]);
 
   function MainDir({ navContent }) {
     return (

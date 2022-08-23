@@ -54,7 +54,7 @@ export default function UpcomingEvents() {
             <p className="eventName">Hackathon</p>	
           </a>
           <h5>Ballerina Coding Challenge</h5>		
-          <a target="_blank" rel="noreferrer" href="">Over USD $10k worth of prizes to be won!
+          <a target="_blank" rel="noreferrer" href="">Over USD $10k worth of prizes to be won!</a>
         </Col>
         <Col sm={12} md={3} className={styles.eventURL}>
           <a className={styles.eventRegistration} href="hhttps://bit.ly/3wnbunh" target="_blank" rel="noreferrer">Register</a>

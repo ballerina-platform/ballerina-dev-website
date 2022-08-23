@@ -30,27 +30,27 @@ export default function Articles() {
           <h2 className="removeTopMargin">Featured articles</h2>
 
           <div className={styles.articleInfo}>
-            <a target="_blank" rel="noreferrer" href="https://dzone.com/articles/building-backend-easily-with-ballerina-language">
-              <h4>Building REST API Backend Easily with Ballerina Language </h4>
+            <a target="_blank" rel="noreferrer" href="https://www.infoq.com/articles/ballerina-data-functional-programming/">
+              <h4>Data Manipulation with Functional Programming and Queries in Ballerina</h4>
             </a>
-            <p> By Dhanushka Madushan </p>
-            <p> 18 Nov 2021</p>
+            <p> By Yehonathan Sharvit </p>
+            <p> 11 Aug 2022</p>
           </div>
 
           <div className={styles.articleInfo}>
-            <a target="_blank" rel="noreferrer" href="https://www.infoq.com/articles/ballerina-cloud-native-programming/?">
-              <h4>Ballerina Swan Lake: 10 Compelling Language Characteristics for Cloud Native Programming </h4>
+            <a target="_blank" rel="noreferrer" href="https://thenewstack.io/how-mosip-uses-ballerina-websubhub-for-event-driven-integration/">
+              <h4>How MOSIP Uses Ballerina WebSubHub for Event-Driven Integration</h4>
             </a>
             <p> By Dakshitha Ratnayake</p>
-            <p> 15 Sep 2021</p>
+            <p> 28 June 2022</p>
           </div>
 
           <div className={`${styles.articleInfo} ${styles.last}`}>
-            <a target="_blank" rel="noreferrer" href="https://thenewstack.io/grpc-a-deep-dive-into-the-communication-pattern/">
-              <h4>gRPC: A Deep Dive into the Communication Pattern </h4>
+            <a target="_blank" rel="noreferrer" href="https://www.infoq.com/articles/ballerina-fullstack-rest-api/">
+              <h4>Ballerina for Full-Stack Developers: a Guide to Creating Backend APIs</h4>
             </a>
-            <p> By Danesh Kuruppu</p>
-            <p> 31 Aug 2021</p>
+            <p> By Imesha Sudasingha</p>
+            <p> 14 March 2022</p>
           </div>
         </Col>
 

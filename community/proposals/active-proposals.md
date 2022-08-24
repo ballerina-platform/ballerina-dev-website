@@ -35,11 +35,8 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
-|[Proposal: Generate Ballerina client code using `bal persist generate` command](https://github.com/ballerina-platform/ballerina-standard-library/issues/3236)|[MadhukaHarith92](https://github.com/MadhukaHarith92)|3|2022-08-09|Active|
-|[Proposal:SerDes - Proto3 file generation](https://github.com/ballerina-platform/ballerina-standard-library/issues/3217)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2022-08-04|N/A|
+|[Proposal: Proto file generation for Protocol Buffers SerDes](https://github.com/ballerina-platform/ballerina-standard-library/issues/3217)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2022-08-04|N/A|
 |[Proposal: Introduce a new API to wait until a given scheduled job is completed ](https://github.com/ballerina-platform/ballerina-standard-library/issues/3018)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|0|2022-06-20|Active|
-|[Proposal: Ballerina SerDes module](https://github.com/ballerina-platform/ballerina-standard-library/issues/2964)|[MohamedSabthar](https://github.com/MohamedSabthar)|2|2022-06-01|Active|
-|[Proposal: gRPC Packaging Support](https://github.com/ballerina-platform/ballerina-standard-library/issues/2948)|[dilanSachi](https://github.com/dilanSachi)|6|2022-05-25|Implemented|
 |[Proposal: Ballerina Constraint Package](https://github.com/ballerina-platform/ballerina-standard-library/issues/2850)|[ldclakmal](https://github.com/ldclakmal)|21|2022-04-20|Accepted|
 |[Proposal: VSCode command to download OpenAPI specification](https://github.com/ballerina-platform/ballerina-standard-library/issues/2509)|[shafreenAnfar](https://github.com/shafreenAnfar)|0|2021-12-20|Active|
 |[Proposal: Ballerina VSCode try-out plugin for REST APIs](https://github.com/ballerina-platform/ballerina-standard-library/issues/2508)|[shafreenAnfar](https://github.com/shafreenAnfar)|0|2021-12-19|Active|

@@ -391,7 +391,8 @@ export default function GrpcServiceMutualSsl() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'service' package.
+            Execute the commands below to build and run the <code>service</code>{" "}
+            package.
           </span>
         </li>
       </ul>

@@ -380,8 +380,8 @@ export default function GrpcClientBasicAuth() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'client' package.
-            You may need to change the trusted certificate file path.
+            Execute the commands below to build and run the <code>client</code>{" "}
+            package. You may need to change the trusted certificate file path.
           </span>
         </li>
       </ul>

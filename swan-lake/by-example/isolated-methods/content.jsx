@@ -90,7 +90,7 @@ export default function IsolatedMethods() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=48265341b1c027c9b541aab86068c0ab&file=isolated_methods.bal",
+                "https://play.ballerina.io/?gist=0ea98e8ce7589059ba2c1ed020a41666&file=isolated_methods.bal",
                 "_blank"
               );
             }}

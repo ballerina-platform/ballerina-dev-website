@@ -38,37 +38,37 @@
                      <ul>
                        <li>
                          <a className={styles.footerLinkSM} href="https://github.com/ballerina-platform" target="_blank" rel="noreferrer" passHref>
-                           <Image src={`${prefix}/images/github.svg`} width={18} height={18} alt="GitHub" />
+                           <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
                          </a>
                        </li>
                        <li>
                          <a className={styles.footerLinkSM} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" passHref>
-                           <Image src={`${prefix}/images/twitter.svg`} width={19} height={15} alt="Twitter" />
+                           <Image src={`${prefix}/images/twitter-grey.svg`} width={19} height={15} alt="Twitter" />
                          </a>
                        </li>
                        <li>
                          <a className={styles.footerLinkSM} href="https://groups.google.com/g/ballerina-dev" target="_blank" rel="noreferrer" passHref>
-                           <Image src={`${prefix}/images/google-groups.svg`} width={17} height={17} alt="Google Groups" />
+                           <Image src={`${prefix}/images/google-group-grey.svg`} width={17} height={17} alt="Google Groups" />
                          </a>
                        </li>
                        <li>
-                         <a className={styles.footerLinkSM} href={`/community/#ballerina-slack-community`} target="_blank" rel="noreferrer" passHref>
-                           <Image src={`${prefix}/images/slack.svg`} width={17} height={17} alt="Slack" />
+                         <a className={styles.footerLinkSM} href="https://discord.gg/3W4X2KJ6uB" target="_blank" rel="noreferrer" passHref>
+                           <Image src={`${prefix}/images/discord-grey.svg`} width={17} height={17} alt="Slack" />
                          </a>
                        </li>
                        <li>
                          <a className={styles.footerLinkSM} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" passHref>
-                           <Image src={`${prefix}/images/stackoverflow.svg`} width={15} height={18} alt="Stackoverflow" />
+                           <Image src={`${prefix}/images/stackoverflow-grey.svg`} width={15} height={18} alt="Stackoverflow" />
                          </a>
                        </li>
                        <li>
                          <a className={styles.footerLinkSM} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" passHref>
-                           <Image src={`${prefix}/images/youtube-icon.svg`} width={15} height={18} alt="Youtube" />
+                           <Image src={`${prefix}/images/youtube-grey.svg`} width={15} height={18} alt="Youtube" />
                          </a>
                        </li>
                        <li>
                          <a className={styles.footerLinkSM} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" passHref>
-                           <Image src={`${prefix}/images/linkedin.svg`} width={16} height={16} alt="LinkedIn" />
+                           <Image src={`${prefix}/images/linkedin-grey.svg`} width={16} height={16} alt="LinkedIn" />
                          </a>
                        </li>
                      </ul>

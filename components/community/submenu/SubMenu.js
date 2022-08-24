@@ -31,7 +31,7 @@ export default function SubMenu() {
                  <li className="active"><a href="#subscribe-to-our-newsletter">Newsletter</a></li>
                  <li><a href="#events">Events</a></li>
                  <li><a href="#resources">Resources</a></li>
-                 <li><a href="#ballerina-slack-community">Slack</a></li>
+                 <li><a href="#ballerina-discord-community">Discord</a></li>
                  <li><a href="#monthly-tech-talk">Tech Talk</a></li>
                  <li><a href="#get-involved">Get involved</a></li>
                  <li><a href="#contact-us">Contact us</a></li>

@@ -53,7 +53,7 @@
                        </li>
                        <li>
                          <a className={styles.footerLinkSM} href="https://discord.gg/3W4X2KJ6uB" target="_blank" rel="noreferrer" passHref>
-                           <Image src={`${prefix}/images/discord-grey.svg`} width={17} height={17} alt="Slack" />
+                           <Image src={`${prefix}/images/discord-grey.svg`} width={17} height={17} alt="Discord" />
                          </a>
                        </li>
                        <li>

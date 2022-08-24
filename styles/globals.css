@@ -238,7 +238,7 @@ a {
 
 .mdContent blockquote,
 .policyContent blockquote {
-  padding: 10px 20px;
+  padding: 10px 20px !important;
   font-size: 17.5px;
   border-left: 5px solid #eee;
 }

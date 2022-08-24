@@ -18,8 +18,9 @@ import ballerina/tcp;
 // An TCP client can be configured to communicate through SSL/TLS as well.
 // To secure a client using SSL/TLS, the client needs to be configured with
 // a certificate file of the listener.
-// The [\`tcp:ClientSecureSocket\`](https://lib.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket) record
-// provides the SSL-related configurations of the client.
+// The \`tcp:ClientSecureSocket\` record provides the
+// SSL-related configurations of the client.
+// For details, see https://lib.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket.
 tcp:Client securedClientEP = check new("localhost", 3000,
     secureSocket = {
         cert: "../resource/path/to/public.crt"
@@ -39,8 +40,9 @@ import ballerina/tcp;
 // An HTTP listener can be configured to communicate through SSL/TLS as well.
 // To secure a listener using SSL/TLS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
-// The [\`tcp:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket) record
-// provides the SSL-related listener configurations of the listener.
+// The \`tcp:ListenerSecureSocket\` record provides the
+// SSL-related listener configurations of the listener.
+// For details, see https://lib.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket.
 listener tcp:Listener securedListnerEP = check new(3000,
     secureSocket = {
         key: {

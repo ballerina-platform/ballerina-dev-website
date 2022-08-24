@@ -14,8 +14,8 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// Service-level [CORS config](https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig) applies
-// globally to each \`resource\`.
+// The service-level CORS config applies globally to each \`resource\`.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig.
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["http://www.m3.com", "http://www.hello.com"],
@@ -27,8 +27,8 @@ const codeSnippetData = [
 }
 service /crossOriginService on new http:Listener(9092) {
 
-    // Resource-level [CORS config](https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig)
-    // overrides the service-level CORS headers.
+    // The resource-level CORS config overrides the service-level CORS headers.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig.
     @http:ResourceConfig {
         cors: {
             allowOrigins: ["http://www.bbc.com"],

@@ -17,8 +17,8 @@ import ballerina/websocket;
 
 // Defines the WebSocket client to call the Basic Auth secured APIs.
 // The client is enriched with the \`Authorization: Basic <token>\` header by
-// passing the [\`websocket:CredentialsConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/CredentialsConfig) for the \`auth\` configuration of the
-// client.
+// passing the \`websocket:CredentialsConfig\` for the \`auth\` configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/CredentialsConfig.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
         username: "ldclakmal",

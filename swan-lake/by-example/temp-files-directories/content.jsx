@@ -74,7 +74,7 @@ export default function TempFilesDirectories() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cb66be3af304271e3541035e824fd549&file=temp_files_directories.bal",
+                "https://play.ballerina.io/?gist=f3c5e7d524a9ecb9a340e6776726b54f&file=temp_files_directories.bal",
                 "_blank"
               );
             }}

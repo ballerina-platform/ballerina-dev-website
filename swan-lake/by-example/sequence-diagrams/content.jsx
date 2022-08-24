@@ -83,7 +83,7 @@ export default function SequenceDiagrams() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fac3f4e649c800553ea4bfb1fdbb9c5d&file=sequence_diagrams.bal",
+                "https://play.ballerina.io/?gist=c6133f2369e5bb60ad0db5b73bd89a06&file=sequence_diagrams.bal",
                 "_blank"
               );
             }}

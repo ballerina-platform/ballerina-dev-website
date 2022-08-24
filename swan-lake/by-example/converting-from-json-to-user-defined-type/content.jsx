@@ -77,7 +77,7 @@ export default function ConvertingFromJsonToUserDefinedType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3700726c4cf8af8eedd9ae0420a508b9&file=converting_from_json_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=8c41ecbc53a63b7a641c23cb55d22d3e&file=converting_from_json_to_user_defined_type.bal",
                 "_blank"
               );
             }}

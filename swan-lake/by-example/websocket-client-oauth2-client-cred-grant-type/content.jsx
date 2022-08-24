@@ -17,8 +17,8 @@ import ballerina/websocket;
 
 // Defines the WebSocket client to call the OAuth2 secured APIs.
 // The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the [\`websocket:OAuth2ClientCredentialsGrantConfig\`](https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2ClientCredentialsGrantConfig) for the \`auth\` configuration
-// of the client.
+// passing the \`websocket:OAuth2ClientCredentialsGrantConfig\` for the \`auth\` configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2ClientCredentialsGrantConfig.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
         tokenUrl: "https://localhost:9445/oauth2/token",

@@ -68,7 +68,7 @@ export default function ConsumingServices() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6ca947bafe34b862b18820ab469a9d8d&file=consuming_services.bal",
+                "https://play.ballerina.io/?gist=ae69627adb6f117be004d3ab57cafe93&file=consuming_services.bal",
                 "_blank"
               );
             }}

@@ -17,7 +17,8 @@ import ballerina/websocket;
 
 // A WebSocket listener can be configured to accept new connections that are
 // secured via mutual SSL.
-// The [\`websocket:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
+// The \`websocket:ListenerSecureSocket\` record provides the SSL-related listener configurations.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket.
 listener websocket:Listener securedEP = new(9090,
     secureSocket = {
         key: {

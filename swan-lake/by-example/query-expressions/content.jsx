@@ -70,7 +70,7 @@ export default function QueryExpressions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ad9fde6f4ccf62b1b575afc09d1745bb&file=query_expressions.bal",
+                "https://play.ballerina.io/?gist=c1085ffd511e0b0d5d7b20152f7ec443&file=query_expressions.bal",
                 "_blank"
               );
             }}

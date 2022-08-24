@@ -17,8 +17,9 @@ const codeSnippetData = [
 // A WebSocket listener can be configured to communicate through WSS as well.
 // To secure a listener using SSL/TLS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
-// The [\`websocket:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket) record
+// The \`websocket:ListenerSecureSocket\` record
 // provides the SSL-related listener configurations of the listener.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket.
 listener websocket:Listener securedEP = new(9090,
     secureSocket = {
         key: {

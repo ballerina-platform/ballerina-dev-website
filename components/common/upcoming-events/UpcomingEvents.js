@@ -46,7 +46,7 @@ export default function UpcomingEvents() {
       <Row className={styles.eventRows}>
         <Col sm={12} md={2} className={styles.eventDateContainer}>
           <p className={`${styles.eventDate} ${styles.eventDateNum}`}>Sep 22, 2022</p>	
-          <p className={styles.eventDate}>Thur., 12.00 a.m. GMT onwards</p>	
+          <p className={styles.eventDate}>Thur., 12.00 a.m. GMT</p>	
           <p className="eventLocation">Online</p>
         </Col>
         <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
@@ -54,7 +54,7 @@ export default function UpcomingEvents() {
             <p className="eventName">Hackathon</p>	
           </a>
           <h5>Ballerina Coding Challenge</h5>		
-          <a target="_blank" rel="noreferrer" href="">Over USD $10k worth of prizes to be won!</a>
+          Over USD $10k worth of prizes to be won!
         </Col>
         <Col sm={12} md={3} className={styles.eventURL}>
           <a className={styles.eventRegistration} href="https://bit.ly/3wnbunh" target="_blank" rel="noreferrer">Register</a>

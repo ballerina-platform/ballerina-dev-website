@@ -2,7 +2,16 @@
 
 User-Agent: *
 Allow: /
-User-Agent: web-site-map	
-Allow: /
+
 User-agent: Twitterbot
-Allow: *  
+Allow: * 
+
+User-agent: *
+Disallow: /1.0/
+Disallow: /1.1/
+Disallow: /1.2/
+
+User-agent: Algolia Crawler
+Allow: * 
+     
+Sitemap: https://ballerina.io/sitemap.xml

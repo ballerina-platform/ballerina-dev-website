@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R4 preview 2022-08-19</h1>
+<h1>Ballerina Language Specification, 2022R4 preview 2022-08-24</h1>
 <p>
 Primary contributors:
 </p>
@@ -12257,6 +12257,27 @@ public isolated function toHexString(int n) returns string = external;
 # + s - hexadecimal string representation of int value
 # + return - int value or error
 public isolated function fromHexString(string s) returns int|error = external;
+
+# Returns an iterable object that iterates over a range of integers.
+# The integers returned by the iterator belong to the set S,
+# where S is `{ rangeStart + step*i such that i &gt;= 0 }`.
+# When `step &gt; 0`, the members of S that are `&lt; rangeEnd` are returned in increasing order.
+# When `step &lt; 0`, the members of S that are `&gt; rangeEnd` are returned in decreasing order.
+# When `step = 0`, the function panics.
+# + rangeStart - the first integer to be returned by the iterator
+# + rangeEnd - the exclusive limit on the integers returned by the iterator
+# + step - the difference between successive integers returned by the iterator;
+#    a positive value gives an increasing sequence; a negative value gives
+#    a decreasing sequence
+# + return - an iterable object
+public isolated function range(int rangeStart, int rangeEnd, int step) returns object {
+    public isolated function iterable() returns object {
+        *object:Iterable;
+        public isolated function next() returns record {|
+            int value;
+       |}?;
+    };
+} = external;
 </pre>
 
 </section>
@@ -13592,6 +13613,8 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <li>A <code>byte-array-literal</code> can construct a read-only value.</li>
 <li>An optional semi-colon is now allowed after top-level definitions and
 method definitions that are currentlty terminated by <code>}</code>.</li>
+<li>An <code>int:range</code> langlib function allows convenient iteration 
+over integer sequences with steps other than 1.</li>
 </ol>
 </section>
 <section>

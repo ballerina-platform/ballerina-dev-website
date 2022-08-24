@@ -91,7 +91,7 @@ export default function BacktickTemplates() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=78fd00063a0156cbf9bf7e634bb4b059&file=backtick_templates.bal",
+                "https://play.ballerina.io/?gist=413f49131fbbdbfe34fe540cb5e35652&file=backtick_templates.bal",
                 "_blank"
               );
             }}

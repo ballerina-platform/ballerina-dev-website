@@ -14,13 +14,15 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// The HTTP client's chunking behavior can be configured as [CHUNKING_AUTO](https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO),
-// [CHUNKING_ALWAYS](https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_ALWAYS),
-// or [CHUNKING_NEVER](https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_NEVER).
+// The HTTP client's chunking behavior can be configured as \`CHUNKING_AUTO\`,
+// \`CHUNKING_ALWAYS\`, or \`CHUNKING_NEVER\`.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO,
+// https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_ALWAYS,  and
+// https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_NEVER. 
 // In this example, it is set to \`CHUNKING_NEVER\`, which means that chunking never happens irrespective of the request size. 
 // When chunking is set to \`CHUNKING_AUTO\`, chunking is done based on the request.
-// [http1Settings](https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings) annotation
-// provides the chunking-related configurations.
+// The \`http1Settings\` annotation provides the chunking-related configurations.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings.
 final http:Client clientEndpoint = check new ("http://localhost:9090",
                         {http1Settings: {chunking: http:CHUNKING_NEVER}});
 

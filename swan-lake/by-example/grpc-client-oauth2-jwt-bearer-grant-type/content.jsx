@@ -26,8 +26,9 @@ service HelloWorld {
 
 // Defines the gRPC client to call the OAuth2 secured APIs.
 // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-// header by passing the [\`grpc:OAuth2JwtBearerGrantConfig\`](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2JwtBearerGrantConfig) for the \`auth\`
+// header by passing the \`grpc:OAuth2JwtBearerGrantConfig\` for the \`auth\`
 // configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2JwtBearerGrantConfig.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     auth = {
         tokenUrl: "https://localhost:9445/oauth2/token",

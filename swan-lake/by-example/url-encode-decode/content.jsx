@@ -67,7 +67,7 @@ export default function UrlEncodeDecode() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=35f179ce46bacbe192ec8ffaed5e77cc&file=url_encode_decode.bal",
+                "https://play.ballerina.io/?gist=277831ddafa78117dfe5efead0dfde03&file=url_encode_decode.bal",
                 "_blank"
               );
             }}

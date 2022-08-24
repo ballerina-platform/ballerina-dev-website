@@ -17,105 +17,20 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Alert, Container } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 
 import styles from './Discord.module.css';
 import { prefix } from '../../../utils/prefix';
 
-
-function isEmail(email) {
-  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-  return regex.test(email);
-}
-
-export default function Slack() {
-
-  const emailRef = React.useRef();
-  const termsRef = React.useRef();
-  const [show, setShow] = React.useState(false);
-  const [msg, setMsg] = React.useState('');
-  const [variant, setVariant] = React.useState('');
-
-  // const inviteSlackUser = (event) => {
-  //   let input = {};
-  //   let email = emailRef.current.value;
-  //   let terms = termsRef.current.checked;
-
-  //   if (terms) {
-
-  //     if (email == "") {
-  //       setShow(true);
-  //       setMsg("Please enter your email.");
-  //       setVariant('danger');
-  //     } else if (!isEmail(email)) {
-  //       setShow(true);
-  //       setMsg("Please enter a valid email.");
-  //       setVariant('danger');
-  //     } else {
-  //       setShow(true);
-  //       setMsg("Processing...");
-  //       setVariant('secondary');
-
-  //       AWS.config.region = 'us-east-1';
-  //       AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-  //         IdentityPoolId: atob('dXMtZWFzdC0xOjhiMGViNzYzLTUwNWEtNGE0NS04ODA1LTNkY2ZlZGQwNDVhMA=='),
-  //       });
-  //       var lambda = new AWS.Lambda();
-  //       var result;
-
-  //       if (email == null || email == '') {
-  //         input = {};
-  //       } else {
-  //         input = {
-  //           email: email
-  //         };
-  //       }
-
-  //       lambda.invoke({
-  //         FunctionName: 'slackService',
-  //         Payload: JSON.stringify(input)
-  //       }, function (err, data) {
-  //         if (err) {
-  //           result = err;
-  //         } else {
-  //           result = JSON.parse(data.Payload);
-  //         }
-
-  //         if (result.body.ok) {
-  //           setShow(true);
-  //           setMsg("Thank you for your interest in joining the Ballerina Slack Community. Please check your inbox for an invitation to join Slack.");
-  //           setVariant('success');
-  //           emailRef.current.value = '';
-  //         } else if (result.body.error == "already_in_team") {
-  //           setShow(true);
-  //           setMsg("This email is already subscribed.");
-  //           setVariant('secondary');
-  //         } else if (result.body.error == "already_invited") {
-  //           setShow(true);
-  //           setMsg("This email is already invited.");
-  //           setVariant('secondary');
-  //         } else {
-  //           setShow(true);
-  //           setMsg("Something went wrong, please try again.");
-  //           setVariant('warning');
-  //         }
-  //       });
-  //     }
-  //   } else {
-  //     setShow(true);
-  //     setMsg("Please agree to the Ballerina data privacy policy");
-  //     setVariant('danger');
-  //   }
-
-  // }
+export default function Discord() {
 
   return (
     <Col xs={12}>
       <Container>
         <Row>
           <Col xs={12}>
-            <h2 id='ballerina-discord-community'>Ballerina Discord community</h2>
+            <h2 id='ballerina-discord-community' className={styles.discord}>Ballerina Discord community</h2>
           </Col>
         </Row>
 

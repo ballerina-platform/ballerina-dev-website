@@ -51,7 +51,6 @@ export default function Community() {
         {/* <!--TWITTER--> */}
         <meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
         <meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
-        <script async src="https://sdk.amazonaws.com/js/aws-sdk-2.2.32.min.js"></script>
       </Head>
       <Layout>
         <Col sm={12}>

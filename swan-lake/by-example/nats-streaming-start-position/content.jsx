@@ -155,29 +155,31 @@ export default function NatsStreamingStartPosition() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>1.</span>
-          <span>The earliest message stored for this subject</span>
+          <span>The earliest message stored for this subject.</span>
         </li>
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>2.</span>
-          <span>The most recently stored message for this subject</span>
+          <span>
+            The most recently stored message for this subject prior to the start
+            of the current subscription.
+          </span>
         </li>
       </ul>
-      <p>prior to the start of the current subscription.</p>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>3.</span>
-          <span>A historical offset from the current server date/time</span>
+          <span>
+            A historical offset from the current server date/time (e.g., the
+            last 30 seconds).
+          </span>
         </li>
       </ul>
-      <p>(e.g., the last 30 seconds).</p>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
-          <span>A specific message sequence number</span>
+          <span>A specific message sequence number.</span>
         </li>
       </ul>
 

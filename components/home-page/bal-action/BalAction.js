@@ -115,7 +115,7 @@ public function main() returns error? {
     json summary =
         from var {country, continent, population, cases, deaths} in countries
             where population >= 100000 && deaths >= 100
-            let decimal caseFatalityRatio = &lt;decimal&gt;deaths / &lt;decimal&gt;cases * 100
+            let decimal caseFatalityRatio = <decimal>deaths / <decimal>cases * 100
             order by caseFatalityRatio descending
             limit 10
             select {country, continent, population, caseFatalityRatio};
@@ -147,7 +147,7 @@ service / on new http:Listener(port) {
     resource function get albums/[string id]() returns Album|http:NotFound {
         Album? album = albums[id];
         if album is () {
-            return &lt;http:NotFound&gt;{};
+            return <http:NotFound>{};
         } else {
             return album;
         }
@@ -188,7 +188,7 @@ service "Albums" on new grpc:Listener(port) {
         return album;
     }
 
-    remote function listAlbums() returns stream&lt;Album, error?&gt;|error {
+    remote function listAlbums() returns stream<Album, error?>|error {
         return albums.toStream();
     }
 }`;
@@ -336,7 +336,7 @@ service / on new http:Listener(8080) {
     }
 
     resource function get albums() returns Album[]|error? {
-        stream&lt;Album, sql:Error?&gt; albumStream = self.db->query(\`SELECT * FROM Albums\`);
+        stream<Album, sql:Error?> albumStream = self.db->query(\`SELECT * FROM Albums\`);
         Album[]? albums = check from Album album in albumStream select album;
         check albumStream.close();
         return albums;
@@ -345,7 +345,7 @@ service / on new http:Listener(8080) {
     resource function get albums/[string id]() returns Album|http:NotFound|error {
         Album|sql:Error result = self.db->queryRow(\`SELECT * FROM Albums WHERE id = $\{id\}\`);
         if result is sql:NoRowsError {
-            return &lt;http:NotFound&gt;{};
+            return <http:NotFound>{};
         } else {
             return result;
         }

@@ -126,6 +126,7 @@ export default function PostPage({
         "rpm-installer-size": SwanLake["rpm-installer-size"],
         "macos-installer": SwanLake["macos-installer"],
         "macos-installer-size": SwanLake["macos-installer-size"],
+        "other-artefacts": SwanLake["other-artefacts"],
       })
       .then((md) => {
         setNewContent(md);

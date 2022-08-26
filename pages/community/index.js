@@ -24,7 +24,7 @@ import Layout from '../../layouts/LayoutCommunity';
 import Newsletter from '../../components/community/newsletter/Newsletter';
 import Events from '../../components/community/events/Events';
 import Resources from '../../components/community/resources/Resources';
-import Slack from '../../components/community/slack/Slack';
+import Discord from '../../components/community/discord/Discord';
 import TechTalk from '../../components/community/tech-talk/TechTalk';
 import GetInvolved from '../../components/community/get-involved/GetInvolved';
 import Contact from '../../components/community/contact/Contact';
@@ -51,7 +51,6 @@ export default function Community() {
         {/* <!--TWITTER--> */}
         <meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
         <meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
-        <script async src="https://sdk.amazonaws.com/js/aws-sdk-2.2.32.min.js"></script>
       </Head>
       <Layout>
         <Col sm={12}>
@@ -94,7 +93,7 @@ export default function Community() {
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
-            <Slack />
+            <Discord />
           </Row>
 
           <Row className="pageContentRow communityRow">

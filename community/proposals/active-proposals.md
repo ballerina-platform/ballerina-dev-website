@@ -35,6 +35,7 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
+|[Proposal: Write GraphQL Schema to a File](https://github.com/ballerina-platform/ballerina-standard-library/issues/3286)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|1|2022-08-26|Active|
 |[Proposal: Proto file generation for Protocol Buffers SerDes](https://github.com/ballerina-platform/ballerina-standard-library/issues/3217)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2022-08-04|N/A|
 |[Proposal: Introduce a new API to wait until a given scheduled job is completed ](https://github.com/ballerina-platform/ballerina-standard-library/issues/3018)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|0|2022-06-20|Active|
 |[Proposal: Ballerina Constraint Package](https://github.com/ballerina-platform/ballerina-standard-library/issues/2850)|[ldclakmal](https://github.com/ldclakmal)|21|2022-04-20|Accepted|

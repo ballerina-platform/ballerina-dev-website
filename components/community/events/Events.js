@@ -18,13 +18,14 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-
-import UpcomingEvents from '../../common/upcoming-events/UpcomingEvents';
+import dynamic from 'next/dynamic';
 
 import styles from './Events.module.css';
 import { prefix } from '../../../utils/prefix';
 
 export default function Events() {
+
+    const UpcomingEvents = dynamic(() => import('../../common/upcoming-events/UpcomingEvents'), { ssr: false });
 
     const [hoverBtn, setHoverBtn] = React.useState(false);
 

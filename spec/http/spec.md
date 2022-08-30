@@ -1758,8 +1758,8 @@ public type Link record {
 };
 ```
 
-This `Links` is generated from the `linkedTo` field in the `ResourceConfig` annotation, and added either to the 
-payload or as a `Link` header depends on the payload type. This `Links` will not be added when a `http:Response` is 
+This `Links` is generated from the `linkedTo` field in the `ResourceConfig` annotation and added either to the 
+payload or as a `Link` header depending on the payload type. This `Links` will not be added when an `http:Response` is 
 returned.
 
 #### 7.2.1 LinkedTo record
@@ -1829,9 +1829,9 @@ service on new http:Listener(port) {
 ```
 
 #### 7.2.2 Links in the response
-The static `Links` generated from the `linkedTo` field will be injected to the json payload when it is not 
+The static `Links` generated from the `linkedTo` field will be injected into the JSON payload when it is not 
 a closed record and not `readonly`. Suppose the user returns the below record type, the runtime will inject the `Links` 
-record as in the latter. So the response should be considered as a record with `Links` field.
+record as in the latter. Therefore, the response should be considered as a record with the `Links` field.
 
 ```ballerina
 public type 'Order record {

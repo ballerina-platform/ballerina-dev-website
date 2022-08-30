@@ -18,10 +18,11 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-
-import UpcomingEvents from '../../common/upcoming-events/UpcomingEvents';
+import dynamic from 'next/dynamic';
 
 export default function Events() {
+
+  const UpcomingEvents = dynamic(() => import('../../common/upcoming-events/UpcomingEvents'), { ssr: false });
 
   return (
     <Col sm={12}>

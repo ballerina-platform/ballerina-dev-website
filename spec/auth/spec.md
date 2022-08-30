@@ -212,7 +212,7 @@ public class ListenerFileUserStoreBasicAuthHandler {
     public function authenticate(Request|Headers|string data) returns auth:UserDetails|Unauthorized {
         // extract the credential from data
         auth:UserDetails|auth:Error details = self.provider.authenticate(credential);
-        if (details is auth:Error) {
+        if details is auth:Error {
             // return `Unauthorized`
         }
         return <auth:UserDetails>details;
@@ -253,7 +253,7 @@ public client class ListenerLdapUserStoreBasicAuthHandler {
     remote function authenticate(Request|Headers|string data) returns auth:UserDetails|Unauthorized {
         // extract the credential from data
         auth:UserDetails|auth:Error details = self.provider.authenticate(credential);
-        if (details is auth:Error) {
+        if details is auth:Error {
             // return `Unauthorized`
         }
         return <auth:UserDetails>details;
@@ -437,11 +437,11 @@ http:ListenerFileUserStoreBasicAuthHandler handler = new (config);
 service /foo on new http:Listener(9090) {
     resource function post bar(@http:Header string Authorization) returns string|http:Unauthorized|http:Forbidden {
         auth:UserDetails|http:Unauthorized authn = handler.authenticate(Authorization);
-        if (authn is http:Unauthorized) {
+        if authn is http:Unauthorized {
             return authn;
         }
         http:Forbidden? authz = handler.authorize(<auth:UserDetails>authn, "admin");
-        if (authz is http:Forbidden) {
+        if authz is http:Forbidden {
             return authz;
         }
         // business logic
@@ -481,11 +481,11 @@ http:ListenerLdapUserStoreBasicAuthHandler handler = new (config);
 service /foo on new http:Listener(9090) {
     resource function post bar(@http:Header string Authorization) returns string|http:Unauthorized|http:Forbidden {
         auth:UserDetails|http:Unauthorized authn = handler->authenticate(Authorization);
-        if (authn is http:Unauthorized) {
+        if authn is http:Unauthorized {
             return authn;
         }
         http:Forbidden? authz = handler->authorize(<auth:UserDetails>authn, "admin");
-        if (authz is http:Forbidden) {
+        if authz is http:Forbidden {
             return authz;
         }
         // business logic
@@ -508,7 +508,8 @@ http:Client c = check new ("https://localhost:9090",
 );
 
 public function main() returns error? {
-    json response = check c->get("/foo/bar");
+    http:Request req = new;
+    json response = check c->post("/foo/bar", req);
     // evaluate response
 }
 ```
@@ -529,7 +530,7 @@ http:Client c = check new ("https://localhost:9090");
 public function main() returns error? {
     http:Request req = new;
     req = check handler.enrich(req);
-    json response = check c->get("/foo/bar");
+    json response = check c->post("/foo/bar", req);
     // evaluate response
 }
 ```

@@ -25,8 +25,6 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta charSet="utf-8" />
-        <meta name="robots" content="noindex" />
-        <meta name="googlebot" content="noindex"></meta>
         <meta name="author" content="WSO2, Inc." />
         {/* <!--FB--> */}
         <meta property="og:image" content={`${prefix}/images/ballerina-swan-lake-sm-banner-general.png`} />

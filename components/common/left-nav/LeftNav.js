@@ -164,13 +164,13 @@ export default function LeftNav(props) {
     <>
 
       <Accordion defaultActiveKey={mainDir} flush className={styles.leftNavAccordian}>
-        {SortedDir.map((category) => (
+        {SortedDir.map((category, index) => (
 
           {
-            'learn': (category.position > 0) ? <MainDir category={category} /> : null,
-            'why-bal': (category.dirName === 'Why Ballerina') ? <MainDir category={category} /> : null,
-            'rn': (category.position > 0) ? <MainDir category={category} /> : null,
-            'archived': (category.position > 0) ? <MainDir category={category} /> : null,
+            'learn': (category.position > 0) ? <MainDir category={category} key={index}/> : null,
+            'why-bal': (category.dirName === 'Why Ballerina') ? <MainDir category={category} key={index}/> : null,
+            'rn': (category.position > 0) ? <MainDir category={category} key={index}/> : null,
+            'archived': (category.position > 0) ? <MainDir category={category} key={index}/> : null,
           }[launcher]
         ))}
       </Accordion>

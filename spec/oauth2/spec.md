@@ -429,7 +429,8 @@ http:Client c = check new ("https://localhost:9090",
 );
 
 public function main() returns error? {
-    json response = check c->get("/foo/bar");
+    http:Request req = new;
+    json response = check c->post("/foo/bar", req);
     // evaluate response
 }
 
@@ -449,7 +450,8 @@ http:OAuth2ClientCredentialsGrantConfig config = {
 http:Client c = check new ("https://localhost:9090", auth = config);
 
 public function main() returns error? {
-    json response = check c->get("/foo/bar");
+    http:Request req = new;
+    json response = check c->post("/foo/bar", req);
     // evaluate response
 }
 ```
@@ -471,7 +473,7 @@ http:Client c = check new ("https://localhost:9090");
 public function main() returns error? {
     http:Request req = new;
     req = check handler.enrich(req);
-    json response = check c->get("/foo/bar");
+    json response = check c->post("/foo/bar", req);
     // evaluate response
 }
 ```
@@ -493,7 +495,7 @@ http:Client c = check new ("https://localhost:9090");
 public function main() returns error? {
     http:Request req = new;
     req = check handler->enrich(req);
-    json response = check c->get("/foo/bar");
+    json response = check c->post("/foo/bar", req);
     // evaluate response
 }
 ```

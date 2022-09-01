@@ -94,7 +94,7 @@ redirect_from:
       <!-- </div> -->
    </div>
 
-For more download options, see [Downloads](/download).
+For more download options, see [Downloads](/downloads).
 
 ## Install Ballerina
 

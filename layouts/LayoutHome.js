@@ -29,7 +29,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Ballerina Home</title>
 
         <meta name="description" content="Ballerina is an open-source programming language for the cloud that makes it easier to use, combine and create network services."></meta>
@@ -39,7 +39,7 @@ export default function Layout({ children }) {
         <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PSL2TX4" />
         <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2" />
 
-        <script type="text/javascript" crossorigin src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha" />
+        <script type="text/javascript" crossOrigin="true" src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha" />
 
         <meta name="keywords" content="ballerina, ballerinalang, cloud native, microservices, integration, programming language" />
 
@@ -56,13 +56,13 @@ export default function Layout({ children }) {
         <meta name="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* CookiePro Cookies Consent Notice start for ballerina.io */}
-        <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="630ad396-5fd5-4745-92ae-2765dc8841ee" ></script>
+        <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js" type="text/javascript" charSet="UTF-8" data-domain-script="630ad396-5fd5-4745-92ae-2765dc8841ee" ></script>
         <script type="text/javascript">
-        function OptanonWrapper() { }
+          function OptanonWrapper() { }
         </script>
         {/* CookiePro Cookies Consent Notice end for ballerina.io */}
       </Head>
-      <Meta/>
+      <Meta />
       <Stack gap={0} className='main-wrapper home'>
         <TopNav launcher='home' />
         <div className='wrap-page-content'>

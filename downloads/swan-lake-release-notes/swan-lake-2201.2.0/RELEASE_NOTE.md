@@ -407,7 +407,7 @@ public function main() {
 }
 ```
 
-To view bug fixes, see the [GitHub milestone for 2201.2.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%22Ballerina+2201.2.0%22).
+To view bug fixes, see the [GitHub milestone for 2201.2.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%222201.2.0%22).
 
 ### Runtime updates
 
@@ -434,7 +434,7 @@ E.g., a `foo` function can be called during the graceful shutdown by registering
 #### Improvements
 
 
-#### Type-reference type support at runtime
+##### Type-reference type support at runtime
 
 When a type is defined referring to another type, it will now be passed to the runtime as a `BTypeReferenceType` instance.
 
@@ -658,8 +658,6 @@ digraph "org/package:0.1.0" {
 
 - Introduced a set of builders in the Types API, which are used to construct complex types that have varying components
 
-##### Ballerina Shell
-
 ##### Ballerina Update Tool
 
 #### Improvements
@@ -733,12 +731,6 @@ type NewRecord record {
 ##### Compiler API
 
 - Added semantic API support for the client resource access action
-
-##### Ballerina shell
-
-##### Ballerina update Tool
-
-#### Bug fixes
 
 ### Breaking changes
 

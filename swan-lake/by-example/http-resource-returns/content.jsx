@@ -323,7 +323,8 @@ export default function HttpResourceReturns() {
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`{"branch":["Colombo, Srilanka"]}* Closing connection 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ curl -v "http://localhost:9090/bank/open"`}</span>
               <span>{`> GET /bank/open HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
@@ -338,7 +339,8 @@ export default function HttpResourceReturns() {
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`Bank is open* Closing connection 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ curl -v "http://localhost:9090/bank/account" -d "bal" -X PUT`}</span>
               <span>{`> PUT /bank/account HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>

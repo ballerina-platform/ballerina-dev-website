@@ -86,7 +86,7 @@ export default function Identity() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c1f6cb9c69bae3817cfaa9303a77fcbe&file=identity.bal",
+                "https://play.ballerina.io/?gist=c117101f0877b84b7b3c58271189dc4d&file=identity.bal",
                 "_blank"
               );
             }}

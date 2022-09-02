@@ -69,23 +69,21 @@ export default function KafkaConsumerClientPollPayload() {
 
       <p>
         This shows how to use a <code>kafka:Consumer</code> as a simple payload
-      </p>
-
-      <p>
         consumer for the instances where the metadata related to the message is
         not needed.
       </p>
 
-      <p>This consumer uses the builtin byte array deserializer for</p>
-
-      <p>the value and converts the value to the user defined type. For</p>
-
-      <p>this to work properly, an active Kafka broker should be present.</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        This consumer uses the builtin byte array deserializer for the value and
+        converts the value to the user defined type.
+      </p>
 
       <p>
-        see the{" "}
+        For this to work properly, an active Kafka broker should be present.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
           <code>kafka</code> module
         </a>

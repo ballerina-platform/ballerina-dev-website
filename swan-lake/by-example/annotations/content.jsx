@@ -85,7 +85,7 @@ export default function Annotations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2d19d04df1731e1d193e738b8503da09&file=annotations.bal",
+                "https://play.ballerina.io/?gist=51b305656139613bf650c0f4c1dc36a9&file=annotations.bal",
                 "_blank"
               );
             }}

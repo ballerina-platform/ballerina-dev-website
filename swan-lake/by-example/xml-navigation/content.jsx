@@ -99,7 +99,7 @@ export default function XmlNavigation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=53132e9ed51ec81fdd06a7bbb6c653a6&file=xml_navigation.bal",
+                "https://play.ballerina.io/?gist=0b214dd0dd5c6a7ae6a21aaa5fd6f1fa&file=xml_navigation.bal",
                 "_blank"
               );
             }}
@@ -258,7 +258,8 @@ export default function XmlNavigation() {
               <span>{`            </book>`}</span>
               <span>{`            <pen><kind>marker</kind><color>blue</color></pen>`}</span>
               <span>{`        </items>`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`            <!--Contents-->`}</span>
               <span>{`            <book>`}</span>
               <span>{`                <name>A Study in Scarlet</name>`}</span>

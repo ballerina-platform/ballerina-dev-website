@@ -85,11 +85,7 @@ export default function KafkaConsumerClientPollConsumerRecord() {
 
       <p>
         This consumer uses the builtin byte array deserializer for both the key
-        and
-      </p>
-
-      <p>
-        the value, which is the default deserializer in the{" "}
+        and the value, which is the default deserializer in the{" "}
         <code>kafka:Consumer</code>.
       </p>
 
@@ -102,10 +98,8 @@ export default function KafkaConsumerClientPollConsumerRecord() {
         For this to work properly, an active Kafka broker should be present.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
           <code>kafka</code> module
         </a>

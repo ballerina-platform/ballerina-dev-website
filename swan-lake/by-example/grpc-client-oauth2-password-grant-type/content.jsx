@@ -279,9 +279,11 @@ export default function GrpcClientOauth2PasswordGrantType() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -455,7 +457,8 @@ export default function GrpcClientOauth2PasswordGrantType() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build client`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run client/target/bin/client.jar`}</span>
               <span>{`Hello, World!`}</span>
             </code>

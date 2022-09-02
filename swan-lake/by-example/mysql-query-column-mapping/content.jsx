@@ -279,7 +279,8 @@ export default function MysqlQueryColumnMapping() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Customer details: {"customerId":1,"firstName":"Peter","lastName":"Stuart"}`}</span>
               <span>{`Customer details: {"customerId":2,"firstName":"Dan","lastName":"Brown"}`}</span>
             </code>

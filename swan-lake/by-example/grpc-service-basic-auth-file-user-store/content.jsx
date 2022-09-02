@@ -305,9 +305,11 @@ export default function GrpcServiceBasicAuthFileUserStore() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -499,9 +501,11 @@ export default function GrpcServiceBasicAuthFileUserStore() {
               <span>{`username="bob"`}</span>
               <span>{`password="password2"`}</span>
               <span>{`scopes=["scope2", "scope3"]' > Config.toml`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal build service`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>

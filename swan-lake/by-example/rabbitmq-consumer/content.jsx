@@ -66,14 +66,13 @@ export default function RabbitmqConsumer() {
         multiple channels.
       </p>
 
-      <p>Multiple services consuming messages from the same queue or from</p>
-
-      <p>different queues can be attached to the same Listener.</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        Multiple services consuming messages from the same queue or from
+        different queues can be attached to the same Listener.
+      </p>
 
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
           <code>rabbitmq</code> module
         </a>

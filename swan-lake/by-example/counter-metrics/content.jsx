@@ -134,8 +134,8 @@ export default function CounterMetrics() {
 
       <p>
         For more information about configs and observing applications, see{" "}
-        <a href="https://ballerina.io/learn/observing-ballerina-code/">
-          Observing Ballerina Code
+        <a href="/learn/observe-ballerina-programs/">
+          Observe Ballerina programs
         </a>
         .
       </p>

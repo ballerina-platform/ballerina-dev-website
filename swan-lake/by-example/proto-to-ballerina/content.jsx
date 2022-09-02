@@ -58,73 +58,69 @@ export default function ProtoToBallerina() {
       <h1>Proto to Ballerina</h1>
 
       <p>
-        If you already have protocol buffer file for your service(s) you can use
-        that to autogenerate Ballerina source code.
+        If you already have a protocol buffer file for your service(s), you can
+        use that to generate the Ballerina source code. Currently, Ballerina
+        supports two types of code generation. <code>service</code> generation
+        generates a mock version
       </p>
 
       <p>
-        Currently, Ballerina supports two types of code generation.{" "}
-        <code>service</code> generation generates a mock version of the
+        of the Ballerina service for an input proto definition.{" "}
+        <code>client</code> generation generates a Ballerina client endpoint for
+        an input proto definition.
       </p>
 
-      <p>
-        Ballerina service for an input proto definition. <code>client</code>{" "}
-        generation generates a Ballerina client endpoint for an
-      </p>
+      <p>The Ballerina code generator supports the following parameters,</p>
 
-      <p>input proto definition.</p>
+      <ul>
+        <li>
+          <code>--input</code> - The path of the .proto file. This is a
+          mandatory parameter.
+        </li>
+      </ul>
 
-      <p>The Ballerina code generator supports the following parameters:</p>
-
-      <p>
-        <code>--input</code> The path of the .proto file. This is a mandatory
-        parameter.
-      </p>
-
-      <p>
-        <code>--output</code> The file location in which the Ballerina
-        client/service and the stub must be generated. This is an optional
-        parameter.
-      </p>
+      <ul>
+        <li>
+          <code>--output</code> - The file location in which the Ballerina
+          client/service and the stub must be generated. This is an optional
+          parameter.
+        </li>
+      </ul>
 
       <p>
         If no value is specified for this parameter and proto definition doesn't
-        contain package value,
+        contain package value, the Ballerina client/service and the stub files
       </p>
 
       <p>
-        the Ballerina client/service and the stub files are generated inside{" "}
-        <code>temp</code> directory in the current location.
+        are generated inside <code>temp</code> directory in the current
+        location. This path must be a project directory.
       </p>
 
-      <p>This path must be a project directory.</p>
+      <ul>
+        <li>
+          <code>--mode</code> - The mode (client or server) to generate code
+          samples. If no value is specified for this parameter, only the stub
+          file will be generated.
+        </li>
+      </ul>
 
       <p>
-        <code>--mode</code> The mode (client or server) to generate code
-        samples.
-      </p>
-
-      <p>
-        If no value is specified for this parameter, only the stub file will be
-        generated.&lt;br/&gt;&lt;br/&gt;
-      </p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/grpc/latest/">
-          GRPC module
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
+          <code>grpc</code> module
         </a>{" "}
         and
       </p>
 
       <p>
-        <a href="https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/">
+        <a href="https://ballerina.io/learn/cli-documentation/grpc/">
           How to generate Ballerina code for Protocol Buffer Definition
         </a>
         .
       </p>
+
+      <p>Following is a sample proto definition.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -203,6 +199,8 @@ export default function ProtoToBallerina() {
         </Col>
       </Row>
 
+      <p>Execute the below commands to generate the corresponding files.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -255,13 +253,15 @@ export default function ProtoToBallerina() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# Execute the command below in the Ballerina tools distribution to generate the mock service.`}</span>
-              <span>{`bal grpc --input proto_to_ballerina.proto --mode service --output service`}</span>
-              <span>{``}</span>
+              <span>{`\$ bal grpc --input proto_to_ballerina.proto --mode service --output service`}</span>
+              <span>{`
+`}</span>
               <span>{`# Execute the command below in the Ballerina tools distribution to generate the client endpoint and the stub file.`}</span>
-              <span>{`bal grpc --input proto_to_ballerina.proto --mode client --output client`}</span>
-              <span>{``}</span>
+              <span>{`\$ bal grpc --input proto_to_ballerina.proto --mode client --output client`}</span>
+              <span>{`
+`}</span>
               <span>{`# Execute the command below in the Ballerina tools distribution to generate the stub file.`}</span>
-              <span>{`bal grpc --input proto_to_ballerina.proto`}</span>
+              <span>{`\$ bal grpc --input proto_to_ballerina.proto`}</span>
             </code>
           </pre>
         </Col>

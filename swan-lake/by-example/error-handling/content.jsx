@@ -78,7 +78,7 @@ export default function ErrorHandling() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=834fa68e42d114cdcb98deb3408bf341&file=error_handling.bal",
+                "https://play.ballerina.io/?gist=f8258b8951eb9280290906d8e0cd2006&file=error_handling.bal",
                 "_blank"
               );
             }}

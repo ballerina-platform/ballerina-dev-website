@@ -74,7 +74,7 @@ export default function CheckExpression() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7a256594393765cf07591a8e17acc2b1&file=check_expression.bal",
+                "https://play.ballerina.io/?gist=631c84b35e2c05b8082854a6d255df78&file=check_expression.bal",
                 "_blank"
               );
             }}

@@ -227,7 +227,7 @@ int n = s.length();
 
 The ``substring()`` and ``length()`` functions are ``string`` lang library functions called using the convenient method call syntax. However, the functions are called on variables/values of the ``string`` type rather than objects.
 
-A lang library **``ballerina/lang.T``** is defined for each built-in type **``T``**. Ballerina automatically imports these lang libraries and pre-declares a prefix **``T``**, which can be used to access constructs of the module. Therefore, in the case of the above code example, you can also find the length of the string value referring to the **``length()``** function as **``string:length()``** and using the function call syntax.
+A lang library **``ballerina/lang.T``** is defined for each built-in type **``T``**. Ballerina automatically imports these lang libraries and pre-declares a prefix **``T``**, which you can use to access the constructs of the module. Therefore, in the case of the above code example, you can also find the length of the string value referring to the **``length()``** function as **``string:length()``** and using the function call syntax.
 
 ```ballerina
 string s = "abc".substring(1, 2);

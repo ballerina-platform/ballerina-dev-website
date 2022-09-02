@@ -30,35 +30,33 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {/* Google analytics */}
-        <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"/>
-        <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PSL2TX4"/>
-        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"/>
+        <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js" />
+        <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PSL2TX4" />
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2" />
 
-        <script type="text/javascript" crossorigin src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"/>
+        <script type="text/javascript" crossOrigin="true" src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha" />
 
         {/* CookiePro Cookies Consent Notice start for ballerina.io */}
-        <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="630ad396-5fd5-4745-92ae-2765dc8841ee" ></script>
-        <script type="text/javascript">
-        function OptanonWrapper() { }
-        </script>
+        <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js" type="text/javascript" charSet="UTF-8" data-domain-script="630ad396-5fd5-4745-92ae-2765dc8841ee" defer />
         {/* CookiePro Cookies Consent Notice end for ballerina.io */}
       </Head>
-      <Meta/>
+      <Meta />
       <Stack gap={0} className='main-wrapper other'>
-        <TopNav launcher='docs'/>
+        <TopNav launcher='docs' />
         <Container className='wrap-page-content'>
           <Row >
             {children}
           </Row>
         </Container>
 
-        <Footer/>
+        <Footer />
 
       </Stack>
 
 
-      
+
     </>
   );
 }

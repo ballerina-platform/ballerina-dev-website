@@ -36,7 +36,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ## Language updates
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.2](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.1.2%22+is%3Aclosed+label%3ATeam%2FCompilerFE).
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.2](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3ATeam%2FCompilerFE+milestone%3A2201.1.2).
 
 ## Standard library updates
 
@@ -46,7 +46,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.2](https://git
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.2 of the repositories below.
 
-- [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.1.2%22+label%3AArea%2FDebugger+is%3Aclosed)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/milestone/21)
 - [CLI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.1.2+label%3AArea%2FCLI+is%3Aclosed)
 - [ProjectAPI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.1.2+label%3AArea%2FProjectAPI+is%3Aclosed)

@@ -42,12 +42,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.2](https://git
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.1.2](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+is%3Aclosed+milestone%3A2201.1.2).
 
-### Developer tools updates
+## Developer tools updates
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.1.2 of the repositories below.
 
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.1.2%22+label%3AArea%2FDebugger+is%3Aclosed)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/milestone/17?closed=1)
+- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/milestone/21)
 - [CLI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.1.2+label%3AArea%2FCLI+is%3Aclosed)
 - [ProjectAPI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.1.2+label%3AArea%2FProjectAPI+is%3Aclosed)
 - [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/milestone/3?closed=1)

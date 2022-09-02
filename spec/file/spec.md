@@ -77,7 +77,7 @@ public isolated function getCurrentDir() returns string;
 ### 3.2. Create Directory
 This is used to create a new directory. An option can be passed to configure whether non-existent parent directories
 will be created or not during this process.
-```ballerins
+```ballerina
 public isolated function createDir(string dir, DirOption option);
 ```
 

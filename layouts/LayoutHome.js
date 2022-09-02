@@ -56,10 +56,7 @@ export default function Layout({ children }) {
         <meta name="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* CookiePro Cookies Consent Notice start for ballerina.io */}
-        <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js" type="text/javascript" charSet="UTF-8" data-domain-script="630ad396-5fd5-4745-92ae-2765dc8841ee" ></script>
-        <script type="text/javascript">
-          function OptanonWrapper() { }
-        </script>
+        <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js" type="text/javascript" charSet="UTF-8" data-domain-script="630ad396-5fd5-4745-92ae-2765dc8841ee" defer />
         {/* CookiePro Cookies Consent Notice end for ballerina.io */}
       </Head>
       <Meta />

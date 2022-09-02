@@ -15,8 +15,7 @@ const codeSnippetData = [
   `import ballerina/log;
 
 public function main() {
-    // The Ballerina log API provides functions to log at four levels, which are
-    // \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
+    // The Ballerina log API provides functions to log at four levels, which are \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
     log:printDebug("debug log");
     log:printError("error log");
     log:printInfo("info log");
@@ -49,16 +48,14 @@ export default function LoggingConfiguration() {
       <h1>Configure logging</h1>
 
       <p>
-        The Ballerina Log API contains the application log handling
-        functions.&lt;br/&gt;&lt;br/&gt;
+        The <code>log</code> library contains the application log handling
+        functions.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/log/latest/">
-          Log module
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/log/latest/">
+          <code>log</code> module
         </a>
         .
       </p>
@@ -140,6 +137,10 @@ export default function LoggingConfiguration() {
         </Col>
       </Row>
 
+      <p>
+        To run this sample use the <code>bal run</code> command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "0px" }}
@@ -200,7 +201,8 @@ export default function LoggingConfiguration() {
                 <code>{`INFO`}</code>
                 {` and higher level logs are logged by default.`}
               </span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The log level can be configured via a Ballerina configuration file.`}</span>
               <span>
                 {`# To set the global log level to `}
@@ -222,7 +224,8 @@ export default function LoggingConfiguration() {
                 <code>{`DEBUG`}</code>
                 {` and higher level logs are logged.`}
               </span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Each module can also be assigned its own log level. To assign a`}</span>
               <span>
                 {`# log level to a module, provide the following entry in the `}
@@ -235,7 +238,8 @@ export default function LoggingConfiguration() {
               <span>{`# name = "[ORG_NAME]/[MODULE_NAME]"`}</span>
               <span>{`# level = "[LOG_LEVEL]"`}</span>
               <span>{`# \`\`\``}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# By default, log messages are logged to the console in the LogFmt format.`}</span>
               <span>
                 {`# To set the output format to JSON, place the entry given below in the `}

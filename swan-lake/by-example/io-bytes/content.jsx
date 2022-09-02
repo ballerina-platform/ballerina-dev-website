@@ -68,7 +68,7 @@ export default function IoBytes() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/io/latest/">
+        <a href="https://lib.ballerina.io/ballerina/io/latest/">
           <code>io</code> module
         </a>
         .
@@ -233,8 +233,8 @@ export default function IoBytes() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Atomic batch execute"
-            href="/learn/by-example/jdbc-atomic-batch-execute-operation"
+            title="Serialization and Deserialization"
+            href="/learn/by-example/serdes-simple"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -261,7 +261,7 @@ export default function IoBytes() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Atomic batch execute
+                  Serialization and Deserialization
                 </span>
               </div>
             </div>

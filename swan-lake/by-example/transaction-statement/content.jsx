@@ -63,11 +63,15 @@ export default function TransactionStatement() {
 
       <p>
         Ballerina provides support for interacting with a transaction manager.
-        The compile-time guarantees that transactions are bracketed with begin
-        and <code>commit</code> or <code>rollback</code>. The region in the
-        middle is typed as being a transactional context. Ballerina does not
-        have a transactional memory and includes a transaction manager. The
-        current transaction is a part of the execution context of a strand.
+        Compile-time guarantees that transactions are bracketed with begin and{" "}
+        <code>commit</code> or <code>rollback</code>.
+      </p>
+
+      <p>
+        The region in the middle is typed as being a transactional context.
+        Ballerina does not have a transactional memory and includes a
+        transaction manager. The current transaction is a part of the execution
+        context of a strand.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -76,7 +80,7 @@ export default function TransactionStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0e28da60eff81a8c9bff0971c1a2a800&file=transaction_statement.bal",
+                "https://play.ballerina.io/?gist=3e924897a98d6a6fd39fc863cb5b43b3&file=transaction_statement.bal",
                 "_blank"
               );
             }}

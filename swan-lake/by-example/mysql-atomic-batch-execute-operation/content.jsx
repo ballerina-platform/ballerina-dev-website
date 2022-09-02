@@ -120,33 +120,28 @@ export default function MysqlAtomicBatchExecuteOperation() {
 
       <p>
         This BBE demonstrates how to use the MySQL client to execute a batch of
-        DDL/DML operations with the help of a
+        DDL/DML operations with the help of a <code>transaction</code> to
+        achieve the atomic behaviour.
       </p>
 
-      <p>
-        <code>transaction</code> to achieve the atomic behaviour.
-      </p>
-
-      <p>
-        Note that the MySQL database driver JAR should be defined in the{" "}
-        <code>Ballerina.toml</code> file as a dependency.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> The MySQL database driver JAR should be defined
+          in the <code>Ballerina.toml</code> file as a dependency. The MySQL
+          connector uses database properties from MySQL version 8.0.13 onwards.
+          Therefore, it is recommended to use a MySQL driver version greater
+          than 8.0.13.
+        </p>
+      </blockquote>
 
       <p>
         For a sample configuration and more information on the underlying
         module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">
+        <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
           <code>mysql</code> module
         </a>
         .
       </p>
-
-      <p>
-        The MySQL connector uses database properties from MySQL version 8.0.13
-        onwards. Therefore, it is
-      </p>
-
-      <p>recommended to use a MySQL driver version greater than 8.0.13.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -284,7 +279,8 @@ export default function MysqlAtomicBatchExecuteOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`time = 2022-06-22T13:48:36.222+05:30 level = INFO module = "" message = "First query executed successfully."`}</span>
               <span>{`time = 2022-06-22T13:48:36.244+05:30 level = ERROR module = "" message = "Error while executing SQL query: INSERT INTO Customers (firstName, lastName, registrationID,\\n                 creditLimit, country) VALUES (\\'Peter\\', \\'Stuart\\', 4, 5000.75,\\n                 \\'USA\\'). Duplicate entry \\'4\\' for key \\'customers.registrationID\\'."`}</span>
               <span>{`time = 2022-06-22T13:48:36.245+05:30 level = INFO module = "" message = "Second query failed. Rollback transaction."`}</span>

@@ -14,8 +14,10 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// An HTTP listener can be configured to accept new connections that are secured via mutual SSL.
-// The [\`http:ListenerSecureSocket\`](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
+// An HTTP listener can be configured to accept new connections that are
+// secured via mutual SSL.
+// The \`http:ListenerSecureSocket\` record provides the SSL-related listener configurations.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket.
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -74,17 +76,13 @@ export default function HttpServiceMutualSsl() {
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
         authentication process in which two parties (the client and server)
-        authenticate each other by
-      </p>
-
-      <p>
-        verifying the digital certificates. It ensures that both parties are
-        assured of each other's identity.
+        authenticate each other by verifying the digital certificates. It
+        ensures that both parties are assured of each other's identity.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
         </a>
         .

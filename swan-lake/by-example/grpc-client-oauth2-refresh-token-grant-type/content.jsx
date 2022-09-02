@@ -26,8 +26,9 @@ service HelloWorld {
 
 // Defines the gRPC client to call the OAuth2 secured APIs.
 // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-// header by passing the [\`grpc:OAuth2RefreshTokenGrantConfig\`](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2RefreshTokenGrantConfig) for the \`auth\`
+// header by passing the \`grpc:OAuth2RefreshTokenGrantConfig\` for the \`auth\`
 // configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2RefreshTokenGrantConfig.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     auth = {
         refreshUrl: "https://localhost:9445/oauth2/token",
@@ -81,22 +82,15 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
 
       <p>
         A client, which is secured with an OAuth2 refresh token grant type can
-        be
+        be used to connect to a secured service.
       </p>
-
-      <p>used to connect to a secured service.</p>
 
       <p>
         The client metadata is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code>
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
+        <code>grpc:OAuth2RefreshTokenGrantConfig</code> to the <code>auth</code>{" "}
+        configuration of the client.
       </p>
-
-      <p>
-        header by passing the <code>grpc:OAuth2RefreshTokenGrantConfig</code> to
-        the <code>auth</code>
-      </p>
-
-      <p>configuration of the client.</p>
 
       <blockquote>
         <p>
@@ -273,9 +267,11 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -396,6 +392,14 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
         </li>
       </ul>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite, start a sample service
+          secured with OAuth2. You may need to change the trusted certificate
+          file path.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "24px" }}
@@ -448,17 +452,14 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build client`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run client/target/bin/client.jar`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <p>As a prerequisite, start a sample service secured with OAuth2.</p>
-
-      <p>You may need to change the trusted certificate file path.</p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -69,30 +69,20 @@ export default function UdpConnectClient() {
 
       <p>
         The ConnectClient is configured so that it only receives data from, and
-        sends data to,
+        sends data to, the given remote peer address. Once connected, data may
+        not be received from or sent to any other address.
       </p>
-
-      <p>
-        the given remote peer address. Once connected, data may not be received
-        from or sent to
-      </p>
-
-      <p>any other address.</p>
 
       <p>
         The client remains connected until it is explicitly disconnected or
-        until it is closed.
-      </p>
-
-      <p>
-        This sample demonstrates how to send data to a connected server and
-        print the echoed response.
+        until it is closed. This sample demonstrates how to send data to a
+        connected server and print the echoed response.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/udp/latest">
-          UDP module
+        <a href="https://lib.ballerina.io/ballerina/udp/latest">
+          <code>udp</code> module
         </a>
         .
       </p>
@@ -226,7 +216,8 @@ export default function UdpConnectClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_connect_client.bal`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# This will print the output below upon a successful write.`}</span>
               <span>{`Data was sent to the remote host.`}</span>
               <span>{`# Print the response that is returned from the server as an echo.`}</span>

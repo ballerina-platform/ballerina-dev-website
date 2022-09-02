@@ -67,10 +67,13 @@ export default function WorkingDirectlyWithJson() {
         rules are less strict. For example, field access (<code>.</code>) and
         optional field access (<code>?.</code>), which are generally allowed on
         records and objects for fields that are defined in the type descriptors,
-        are also additionally allowed on lax types. For such operations, some of
-        the type checking is moved from compile time to runtime.{" "}
-        <code>json</code> is defined to be a lax type along with any{" "}
-        <code>map&lt;T&gt;</code> where <code>T</code> is a lax type.
+        are also additionally allowed on lax types.
+      </p>
+
+      <p>
+        For such operations, some of the type checking is moved from compile
+        time to runtime. <code>json</code> is defined to be a lax type along
+        with any <code>map&lt;T&gt;</code> where <code>T</code> is a lax type.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -79,7 +82,7 @@ export default function WorkingDirectlyWithJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a8c4aeb796a96356b6c94db800d11afd&file=working_directly_with_json.bal",
+                "https://play.ballerina.io/?gist=682267eabba1d91c32932eaeedceeaef&file=working_directly_with_json.bal",
                 "_blank"
               );
             }}

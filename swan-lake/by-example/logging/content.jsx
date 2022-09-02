@@ -15,8 +15,7 @@ const codeSnippetData = [
   `import ballerina/log;
 
 public function main() {
-    // The Ballerina log API provides functions to log at four levels, which are
-    // \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
+    // The Ballerina log API provides functions to log at four levels, which are \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
     log:printDebug("debug log");
     log:printError("error log");
     log:printInfo("info log");
@@ -58,16 +57,14 @@ export default function Logging() {
       <h1>Logging</h1>
 
       <p>
-        The Ballerina Log API contains the application log handling
-        functions.&lt;br/&gt;&lt;br/&gt;
+        The <code>log</code> library contains the application log handling
+        functions.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/log/latest/">
-          Log module
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/log/latest/">
+          <code>log</code> module
         </a>
         .
       </p>
@@ -78,7 +75,7 @@ export default function Logging() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ba6c1da781ec8edd4a4108dee9ea7c85&file=logging.bal",
+                "https://play.ballerina.io/?gist=4896927c78fde5d4ff07342bb6bdab34&file=logging.bal",
                 "_blank"
               );
             }}
@@ -171,6 +168,10 @@ export default function Logging() {
           )}
         </Col>
       </Row>
+
+      <p>
+        To run this sample use the <code>bal run</code> command.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

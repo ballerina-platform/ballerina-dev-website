@@ -35,9 +35,10 @@ service /call on new http:Listener(9090) {
         return person;
     }
 
-    // When the data binding is expected to happen and if the \`post\` remote function gets 
-    // a 5XX response from the backend, the response will be returned as an [http:RemoteServerError](https://docs.central.ballerina.io/ballerina/http/latest/errors#RemoteServerError)
+    // When the data binding is expected to happen and if the \`post\` remote function gets a 5XX response from the
+    // backend, the response will be returned as an \`http:RemoteServerError\`
     // including the error payload, headers, and status code.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/errors#RemoteServerError.
     resource function get '5xx() returns json {
         json|error res = backendClient->post("/backend/5XX", "want 500");
         if (res is http:RemoteServerError) {
@@ -48,9 +49,10 @@ service /call on new http:Listener(9090) {
         }
     }
 
-    // When the data binding is expected to happen and if the client remote function gets 
-    // a 4XX response from the backend, the response will be returned as an [http:ClientRequestError](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientRequestError)
+    // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
+    // backend, the response will be returned as an \`http:ClientRequestError\`
     // including the error payload, headers, and status code.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/errors#ClientRequestError.
     resource function get '4xx() returns json {
         json|error res = backendClient->post("/backend/err", "want 400");
         if (res is http:ClientRequestError) {
@@ -114,14 +116,14 @@ export default function HttpClientDataBinding() {
 
       <p>
         When the user expects client data binding to happen, the HTTP error
-        responses (4XX, 5XX) will be categorized as an <code>error</code> (
-        <code>http:ClientRequestError</code>,{" "}
+        responses (<code>4XX</code>, <code>5XX</code>) will be categorized as an{" "}
+        <code>error</code> (<code>http:ClientRequestError</code>,{" "}
         <code>http:RemoteServerError</code>) of the client remote operation.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
         </a>
         .
@@ -325,7 +327,8 @@ export default function HttpClientDataBinding() {
               </span>
               <span>{`\$ curl "http://localhost:9090/call/all"`}</span>
               <span>{`{"name":"Smith", "age":15}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# To invoke the `}
                 <code>{`/call/5xx`}</code>
@@ -333,7 +336,8 @@ export default function HttpClientDataBinding() {
               </span>
               <span>{`\$ curl "http://localhost:9090/call/5xx"`}</span>
               <span>{`{"code":501, "payload":"data-binding-failed-with-501"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# To invoke the `}
                 <code>{`/call/4xx`}</code>

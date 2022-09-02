@@ -72,18 +72,14 @@ export default function UdpClient() {
 
       <p>
         The UDP Client is used to send data to a specific remote host using the
-        UDP protocol.
-      </p>
-
-      <p>
-        This sample demonstrates how to send a datagram to a remote server and
-        print the echoed response.
+        UDP protocol. This sample demonstrates how to send a datagram to a
+        remote server and print the echoed response.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/udp/latest">
-          UDP module
+        <a href="https://lib.ballerina.io/ballerina/udp/latest">
+          <code>udp</code> module
         </a>
         .
       </p>
@@ -217,7 +213,8 @@ export default function UdpClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_client.bal`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# This will print the output below upon a successful write.`}</span>
               <span>{`Datagram was sent to the remote host.`}</span>
               <span>{`# Print the response that is returned from the server as an echo.`}</span>

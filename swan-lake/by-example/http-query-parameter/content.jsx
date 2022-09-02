@@ -64,26 +64,18 @@ export default function HttpQueryParameter() {
       <h1>Query parameter</h1>
 
       <p>
-        The <code>http</code> module provides first-class support for reading
-        URL query parameters as the resource method argument.
+        The <code>http</code> module provides first class support for reading
+        URL query parameters as resource method argument. The supported types
+        are string, int, float, boolean, decimal, and the array types of the
+        aforementioned types. The query param type can be nilable (e.g.,
+        (string? bar)). The request also provide certain method to retrieve
+        query param at their convenience.
       </p>
-
-      <p>
-        The supported types are string, int, float, boolean, decimal, and the
-        array types of the aforementioned types. The
-      </p>
-
-      <p>
-        query param type can be nilable (e.g., <code>(string? bar)</code>). The
-        request also provides a certain method to retrieve query
-      </p>
-
-      <p>param at their convenience.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -282,10 +274,12 @@ export default function HttpQueryParameter() {
             <code className="d-flex flex-column">
               <span>{`\$ curl "http://localhost:9090/product/count?a=315&b=585"`}</span>
               <span>{`{"count":900}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ curl "http://localhost:9090/product/name?id=432423"`}</span>
               <span>{`product_432423`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ curl "http://localhost:9090/product/detail?colour=red&colour=green"`}</span>
               <span>{`{"product_colour":["red", "green"]}`}</span>
             </code>

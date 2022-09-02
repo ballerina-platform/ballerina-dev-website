@@ -112,27 +112,15 @@ export default function NatsStreamingQueueGroup() {
 
       <p>
         The <code>nats</code> streaming library provides the built-in load
-        balancing
+        balancing feature called &quot;distributed queues&quot;. All subscribers
+        with the same queue name form the queue group. As messages on the
+        registered subject are published, one member of the group is chosen
+        randomly to receive the message. Although queue groups have multiple
+        subscribers, each message is consumed by only one.
       </p>
 
       <p>
-        feature called &quot;distributed queues&quot;. All subscribers with the
-      </p>
-
-      <p>same queue name form the queue group. As messages on the registered</p>
-
-      <p>subject are published, one member of the group is chosen randomly</p>
-
-      <p>
-        to receive the message. Although queue groups have multiple subscribers,
-      </p>
-
-      <p>each message is consumed by only one.</p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
           <code>stan</code> module
         </a>
@@ -357,13 +345,14 @@ export default function NatsStreamingQueueGroup() {
       </Row>
 
       <p>
-        <code>queue-group.bal</code> contains three services belonging to the
-        same queue group.
+        The <code>queue-group.bal</code> contains three services belonging to
+        the same queue group.
       </p>
 
-      <p>When several messages are published, it can be noticed that</p>
-
-      <p>each message is received by only one queue group member.</p>
+      <p>
+        When several messages are published, it can be noticed that each message
+        is received by only one queue group member.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

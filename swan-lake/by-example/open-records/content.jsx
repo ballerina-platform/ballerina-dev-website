@@ -73,9 +73,6 @@ export default function OpenRecords() {
       <p>
         Record types are open by default. They allow fields other than those
         specified. The type of unspecified fields is <code>anydata</code>.
-      </p>
-
-      <p>
         Records are <code>maps</code>. Open records belong to{" "}
         <code>map&lt;anydata&gt;</code>. Use quoted keys for fields not
         mentioned in the <code>record</code> type.
@@ -87,7 +84,7 @@ export default function OpenRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5c717c280d9ba61d656c942d48b1175e&file=open_records.bal",
+                "https://play.ballerina.io/?gist=0d7c89013628b25193cbb25ce50ddeca&file=open_records.bal",
                 "_blank"
               );
             }}
@@ -279,7 +276,7 @@ export default function OpenRecords() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Controlling openness"
+            title="Control openness"
             href="/learn/by-example/controlling-openness"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -290,7 +287,7 @@ export default function OpenRecords() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Controlling openness
+                  Control openness
                 </span>
               </div>
               <svg

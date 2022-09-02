@@ -303,16 +303,21 @@ export default function C2cDockerDeployment() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build --cloud="docker"`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        wso2/hello:0.1.0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Generating executable`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Generating artifacts...`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        @kubernetes:Docker                       - complete 2/2 `}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        Execute the below command to run the generated Docker image: `}</span>
               <span>{`        docker run -d -p 9090:9090 wso2inc/hello:v0.1.0`}</span>
             </code>
@@ -374,7 +379,8 @@ export default function C2cDockerDeployment() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ docker images`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE`}</span>
               <span>{`wso2inc/hello                 v0.1.0              60d95f0928b2        About a minute ago  228MB`}</span>
             </code>
@@ -504,10 +510,7 @@ export default function C2cDockerDeployment() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Gauge-based metrics"
-            href="/learn/by-example/gauge-metrics"
-          >
+          <Link title="Kubernetes" href="/learn/by-example/c2c-k8s-deployment">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -533,14 +536,17 @@ export default function C2cDockerDeployment() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Gauge-based metrics
+                  Kubernetes
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Kubernetes" href="/learn/by-example/c2c-k8s-deployment">
+          <Link
+            title="Azure Functions"
+            href="/learn/by-example/azure-functions-deployment"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -549,7 +555,7 @@ export default function C2cDockerDeployment() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Kubernetes
+                  Azure Functions
                 </span>
               </div>
               <svg

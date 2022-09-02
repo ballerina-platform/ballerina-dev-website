@@ -145,14 +145,10 @@ export default function NatsStreamingStartPosition() {
 
       <p>
         The <code>nats</code> streaming library provides the functionality of
-        historical
+        historical message replay. New subscriptions may specify a starting
+        position in the stream of messages stored for the channel of the
+        subscribed subject.
       </p>
-
-      <p>message replay.</p>
-
-      <p>New subscriptions may specify a starting position in the stream of</p>
-
-      <p>messages stored for the channel of the subscribed subject.</p>
 
       <p>Message delivery may begin at:</p>
 
@@ -165,11 +161,12 @@ export default function NatsStreamingStartPosition() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>2.</span>
-          <span>The most recently stored message for this subject</span>
+          <span>
+            The most recently stored message for this subject prior to the start
+            of the current subscription.
+          </span>
         </li>
       </ul>
-      <p>prior to the start of the current subscription.</p>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>3.</span>
@@ -186,10 +183,8 @@ export default function NatsStreamingStartPosition() {
         </li>
       </ul>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
           <code>stan</code> module
         </a>
@@ -415,76 +410,57 @@ export default function NatsStreamingStartPosition() {
         </Col>
       </Row>
 
-      <p>When you start the subscriber after publishing several messages,</p>
-
-      <p>You'll notice that,</p>
+      <p>
+        When you start the subscriber after publishing several messages, You'll
+        notice that,
+      </p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>1.</span>
           <span>
             <code>receiveSinceTimeDelta</code> service receives the messages if
+            the messages were sent within a historical offset of 5 seconds from
+            the current server date/time.
           </span>
         </li>
       </ul>
-      <pre>
-        <code>
-          the messages were sent within a historical offset of 5 seconds
-        </code>
-      </pre>
-
-      <pre>
-        <code>from the current server date/time.</code>
-      </pre>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>2.</span>
           <span>
             <code>receiveFromGivenIndex</code> service receives services
-            messages
+            messages starting from the third message published.
           </span>
         </li>
       </ul>
-      <pre>
-        <code>starting from the third message published.</code>
-      </pre>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>3.</span>
           <span>
             <code>receiveFromLastReceived</code> service receives messages
-            starting
+            starting from the last published message.
           </span>
         </li>
       </ul>
-      <pre>
-        <code>from the last published message.</code>
-      </pre>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
           <span>
             <code>receiveFromBeginning</code> service receives all messages ever
+            published.
           </span>
         </li>
       </ul>
-      <pre>
-        <code>published.</code>
-      </pre>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>5.</span>
           <span>
             <code>receiveNewOnly</code> service receives only the messages,
-            which are
+            which are published after the subscriber starts.
           </span>
         </li>
       </ul>
-      <p>published after the subscriber starts.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

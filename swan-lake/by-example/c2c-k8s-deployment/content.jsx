@@ -311,22 +311,28 @@ export default function C2cK8sDeployment() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build --cloud="k8s"`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        wso2/hello:0.1.0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Generating executable`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Generating artifacts...`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        @kubernetes:Service                      - complete 1/1`}</span>
               <span>{`        @kubernetes:Deployment                   - complete 1/1`}</span>
               <span>{`        @kubernetes:HPA                          - complete 1/1`}</span>
               <span>{`        @kubernetes:Docker                       - complete 2/2 `}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        Execute the below command to deploy the Kubernetes artifacts: `}</span>
               <span>{`        kubectl apply -f /home/anjana/bbe-make/k8s/target/kubernetes/hello`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        Execute the below command to access service via NodePort: `}</span>
               <span>{`        kubectl expose deployment hello-deployment --type=NodePort --name=hello-svc-local`}</span>
             </code>
@@ -765,7 +771,10 @@ export default function C2cK8sDeployment() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Docker" href="/learn/by-example/c2c-docker-deployment">
+          <Link
+            title="Gauge-based metrics"
+            href="/learn/by-example/gauge-metrics"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -791,17 +800,14 @@ export default function C2cK8sDeployment() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Docker
+                  Gauge-based metrics
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Azure Functions"
-            href="/learn/by-example/azure-functions-deployment"
-          >
+          <Link title="Docker" href="/learn/by-example/c2c-docker-deployment">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -810,7 +816,7 @@ export default function C2cK8sDeployment() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Azure Functions
+                  Docker
                 </span>
               </div>
               <svg

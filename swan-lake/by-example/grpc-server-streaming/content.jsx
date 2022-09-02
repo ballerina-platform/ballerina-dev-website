@@ -92,9 +92,6 @@ export default function GrpcServerStreaming() {
 
       <p>
         The gRPC Server Connector is used to expose gRPC services over HTTP/2.
-      </p>
-
-      <p>
         In a gRPC server streaming scenario, a client sends a request to the
         server and gets a stream to read the messages until all the messages are
         read.
@@ -275,9 +272,11 @@ export default function GrpcServerStreaming() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -394,7 +393,8 @@ export default function GrpcServerStreaming() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'service' package.
+            Execute the commands below to build and run the <code>service</code>{" "}
+            package.
           </span>
         </li>
       </ul>
@@ -451,7 +451,8 @@ export default function GrpcServerStreaming() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build service`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>
@@ -571,7 +572,8 @@ export default function GrpcServerStreaming() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'client' package.
+            Execute the commands below to build and run the <code>client</code>{" "}
+            package.
           </span>
         </li>
       </ul>
@@ -628,7 +630,8 @@ export default function GrpcServerStreaming() {
           <pre ref={ref3}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build client`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run client/target/bin/client.jar`}</span>
             </code>
           </pre>

@@ -15,11 +15,12 @@ const codeSnippetData = [
   `import ballerina/http;
 
 service on new http:Listener(9092) {
-    // The \`consumes\` and \`produces\` annotations of the [resource configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/HttpResourceConfig)
+    // The \`consumes\` and \`produces\` annotations of the resource configuration
     // contain MIME types as an array of strings. The resource can only consume/accept \`text/json\` and
     // \`application/json\` media types. Therefore, the \`Content-Type\` header
     // of the request must be in one of these two types. The resource can produce
     // \`application/xml\` payloads. Therefore, you need to set the \`Accept\` header accordingly.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/HttpResourceConfig.
     @http:ResourceConfig {
         consumes: ["text/json", "application/json"],
         produces: ["application/xml"]
@@ -63,21 +64,17 @@ export default function HttpRestrictByMediaType() {
       <h1>Restrict by media type</h1>
 
       <p>
-        You can configure the resources of the HTTP services to restrict the
-        types of media they consume and produce.
+        You can configure resources of HTTP services to restrict the types of
+        media they consume and produce. This is done through the{" "}
+        <code>consumes</code> and <code>produces</code> annotation attributes of
+        the <code>ResourceConfig</code> annotation, which is used with
+        resources.
       </p>
-
-      <p>
-        This is done through the <code>consumes</code> and <code>produces</code>{" "}
-        attributes of the <code>ResourceConfig</code> annotation,
-      </p>
-
-      <p>which is used with resources.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -291,7 +288,8 @@ export default function HttpRestrictByMediaType() {
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`<name>Ballerina</name>* Closing connection 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# To invoke the service using an unsupported media type, execute the following cURL request. The content type of the`}</span>
               <span>
                 {`# request is not listed under the `}
@@ -315,7 +313,8 @@ export default function HttpRestrictByMediaType() {
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`* Closing connection 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned`}</span>
               <span>
                 {`# in the `}

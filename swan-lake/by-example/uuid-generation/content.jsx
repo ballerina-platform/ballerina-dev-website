@@ -87,16 +87,14 @@ export default function UuidGeneration() {
       <h1>Generate UUID</h1>
 
       <p>
-        The <code>uuid</code> library provides functions related to
-        UUID(Universal Unique Identifier).&lt;br/&gt;&lt;br/&gt;
+        The <code>uuid</code> library provides functions related to UUIDs
+        (Universal Unique Identifiers).
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/uuid/latest/">
-          UUID module
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/uuid/latest/">
+          <code>uuid</code> module
         </a>
         .
       </p>
@@ -107,7 +105,7 @@ export default function UuidGeneration() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1d1450b36b899c68c07b4c893d290a21&file=uuid_generation.bal",
+                "https://play.ballerina.io/?gist=1e4686b67f95a2fd54d09b932d1c840c&file=uuid_generation.bal",
                 "_blank"
               );
             }}
@@ -200,6 +198,10 @@ export default function UuidGeneration() {
           )}
         </Col>
       </Row>
+
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

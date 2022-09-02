@@ -66,9 +66,9 @@ export default function LetClause() {
 
       <p>
         Query expressions can have <code>let</code> clauses. They can be
-        anywhere between the <code>from</code> and <code>select</code> clauses.
+        anywhere between <code>from</code> and <code>select</code> clauses.
         Multiple <code>where</code> clauses are also allowed. The semantics are
-        similar to the XQuery FLWOR expressions.
+        similar to <code>XQuery FLWOR</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -77,7 +77,7 @@ export default function LetClause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3265615b733078c4f7c249825656111c&file=let_clause.bal",
+                "https://play.ballerina.io/?gist=fd1733279ffbf979b8877abc92797bdc&file=let_clause.bal",
                 "_blank"
               );
             }}
@@ -232,7 +232,7 @@ export default function LetClause() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Destructuring records"
+            title="Destructure records"
             href="/learn/by-example/destructuring-records"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -260,7 +260,7 @@ export default function LetClause() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructuring records
+                  Destructure records
                 </span>
               </div>
             </div>

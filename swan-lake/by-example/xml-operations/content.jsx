@@ -99,16 +99,11 @@ export default function XmlOperations() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>XML operations</h1>
 
-      <p>
-        Numerous operations including those listed below can be performed on{" "}
-        <code>xml</code> values.
-      </p>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <code>+</code> does concatenation
+            <code>+</code> does concatenation.
           </span>
         </li>
       </ul>
@@ -116,7 +111,7 @@ export default function XmlOperations() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <code>==</code> does a deep equality check
+            <code>==</code> does deep equals.
           </span>
         </li>
       </ul>
@@ -124,7 +119,7 @@ export default function XmlOperations() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <code>foreach</code> iterates over each item
+            <code>foreach</code> iterates over each item.
           </span>
         </li>
       </ul>
@@ -132,8 +127,7 @@ export default function XmlOperations() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <code>x[i]</code> gives the <code>i-th</code> item (empty sequence
-            if none)
+            <code>x[i]</code> gives i-th item (empty sequence if none).
           </span>
         </li>
       </ul>
@@ -141,9 +135,9 @@ export default function XmlOperations() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <code>x.id</code> accesses a required attribute named{" "}
-            <code>id</code>. The result will be an error if there is no such
-            attribute or if <code>x</code> is not a singleton.
+            <code>x.id</code> accesses required attribute named <code>id</code>:
+            result is error if there is no such attribute or if x is not a
+            singleton.
           </span>
         </li>
       </ul>
@@ -151,9 +145,9 @@ export default function XmlOperations() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <code>x?.id</code> accesses an optional attribute named{" "}
-            <code>id</code>. The result will be <code>()</code> if there is no
-            such attribute.
+            <code>x?.id</code> accesses optional attribute named <code>id</code>
+            : result is <code>()</code> if there is no such attribute. Langlib{" "}
+            <code>lang.xml</code> provides other operations.
           </span>
         </li>
       </ul>
@@ -161,13 +155,7 @@ export default function XmlOperations() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            The{" "}
-            <a href="https://lib.ballerina.io/ballerina/lang.xml/0.0.0">
-              XML language library
-            </a>{" "}
-            provides many other ways to manipulate XML. For example, an XML
-            element can be mutated using the <code>e.setChildren(x)</code> lang
-            library function.
+            Mutate an element using <code>e.setChildren(x)</code>.
           </span>
         </li>
       </ul>
@@ -178,7 +166,7 @@ export default function XmlOperations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=beefa649350d9fe9e50b11d0c916d9d5&file=xml_operations.bal",
+                "https://play.ballerina.io/?gist=486bb19d97a42ac52529fc39f5c94e8f&file=xml_operations.bal",
                 "_blank"
               );
             }}

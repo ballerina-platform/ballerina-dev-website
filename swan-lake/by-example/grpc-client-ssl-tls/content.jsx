@@ -27,8 +27,8 @@ service HelloWorld {
 // A gRPC client can be configured to communicate through SSL/TLS as well.
 // To secure a client using SSL/TLS, the client needs to be configured with
 // a certificate file of the listener.
-// The [\`grpc:ClientSecureSocket\`](https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket) record
-// provides the SSL-related configurations of the client.
+// The \`grpc:ClientSecureSocket\` record provides the SSL-related configurations of the client.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     secureSocket = {
         cert: "../resource/path/to/public.crt"
@@ -70,15 +70,10 @@ export default function GrpcClientSslTls() {
 
       <p>
         You can use the gRPC client to connect or interact with a gRPC listener
-        secured with SSL/TLS.
+        secured with SSL/TLS. Provide the <code>grpc:ClientSecureSocket</code>{" "}
+        configurations to the client to initiate an HTTPS connection over
+        HTTP/2.
       </p>
-
-      <p>
-        Provide the <code>grpc:ClientSecureSocket</code> configurations to the
-        client to
-      </p>
-
-      <p>initiate an HTTPS connection over HTTP/2.</p>
 
       <blockquote>
         <p>
@@ -255,9 +250,11 @@ export default function GrpcClientSslTls() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -374,10 +371,18 @@ export default function GrpcClientSslTls() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'client' package.
+            Execute the commands below to build and run the <code>client</code>{" "}
+            package.
           </span>
         </li>
       </ul>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You may need to change the trusted certificate
+          file path. As a prerequisite, start a sample service secured with SSL.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -431,17 +436,14 @@ export default function GrpcClientSslTls() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build client`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run client/target/bin/client.jar`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <p>You may need to change the trusted certificate file path.</p>
-
-      <p>As a prerequisite, start a sample service secured with SSL.</p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

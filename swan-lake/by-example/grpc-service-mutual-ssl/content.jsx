@@ -24,9 +24,11 @@ service HelloWorld {
 `,
   `import ballerina/grpc;
 
-// A gRPC listener can be configured to accept new connections that are secured via mutual SSL.
-// The [\`grpc:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
-listener grpc:Listener securedEP = new (9090,
+// A gRPC listener can be configured to accept new connections that are
+// secured via mutual SSL.
+// The [\`grpc:ListenerSecureSocket\` record provides the SSL-related listener configurations.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket.
+listener grpc:Listener securedEP = new(9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -88,12 +90,8 @@ export default function GrpcServiceMutualSsl() {
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
         authentication process in which two parties (the client and server)
-        authenticate each other by
-      </p>
-
-      <p>
-        verifying the digital certificates. It ensures that both parties are
-        assured of each other's identity.
+        authenticate each other by verifying the digital certificates. It
+        ensures that both parties are assured of each other's identity.
       </p>
 
       <blockquote>
@@ -272,9 +270,11 @@ export default function GrpcServiceMutualSsl() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -391,10 +391,16 @@ export default function GrpcServiceMutualSsl() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'service' package.
+            Execute the commands below to build and run the <code>service</code>{" "}
+            package.
           </span>
         </li>
       </ul>
+
+      <p>
+        <strong>Info:</strong> You may need to change the certificate file path,
+        private key file path, and trusted certificate file path.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -448,17 +454,13 @@ export default function GrpcServiceMutualSsl() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build service`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <p>
-        You may need to change the certificate file path, private key file path,
-        and trusted certificate file path.
-      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

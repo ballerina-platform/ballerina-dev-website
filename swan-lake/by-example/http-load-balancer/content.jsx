@@ -84,15 +84,13 @@ export default function HttpLoadBalancer() {
 
       <p>
         An HTTP load balancing endpoint is used when the request load needs to
-        be load balanced across a given
+        be load balanced across a given set of target endpoints.
       </p>
-
-      <p>set of target endpoints.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -291,15 +289,18 @@ export default function HttpLoadBalancer() {
             <code className="d-flex flex-column">
               <span>{`\$ curl  http://localhost:9090/lb`}</span>
               <span>{`Mock1 resource was invoked.`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Repeat the same cURL command to invoke the service again and it will be load balanced to the second mock service.`}</span>
               <span>{`\$ curl http://localhost:9090/lb`}</span>
               <span>{`Mock2 resource was invoked.`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The following request will be load balanced to the third mock service.`}</span>
               <span>{`\$ curl http://localhost:9090/lb`}</span>
               <span>{`Mock3 resource was invoked.`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The following request will be load balanced to the first mock service again.`}</span>
               <span>{`\$ curl http://localhost:9090/lb`}</span>
               <span>{`Mock1 resource was invoked.`}</span>

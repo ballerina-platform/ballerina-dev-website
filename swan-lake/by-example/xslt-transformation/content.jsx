@@ -20,7 +20,8 @@ public function main() returns error? {
     xml sourceXml = getXml();
     // Gets an \`XSL\` style sheet represented in an XML value.
     xml xsl = getXsl();
-    // [Transforms](https://docs.central.ballerina.io/ballerina/xslt/latest/functions#transform) the \`XML\` content to another format.
+    // Transforms the \`XML\` content to another format.
+    // For details, see https://lib.ballerina.io/ballerina/xslt/latest/functions#transform.
     xml target = check xslt:transform(sourceXml, xsl);
     
     io:println("Transformed XML: ", target);
@@ -119,7 +120,7 @@ export default function XsltTransformation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3ce9a90a5903f2ec92afe3380a664d2c&file=xslt_transformation.bal",
+                "https://play.ballerina.io/?gist=d1fc235bc708e815e33a4c5202374ade&file=xslt_transformation.bal",
                 "_blank"
               );
             }}

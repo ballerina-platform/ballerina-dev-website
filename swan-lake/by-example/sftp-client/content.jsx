@@ -79,23 +79,16 @@ export default function SftpClient() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Client</h1>
 
-      <p>The SFTP client is used to perform CRUD operation on remote</p>
-
       <p>
+        The SFTP client is used to perform CRUD operation on remote
         files/directories using the SFTP protocol. This sample includes getting
-        and
+        and putting file content with default configurations using the default
+        port number.
       </p>
 
       <p>
-        putting file content with default configurations using the default port
-        number.
-      </p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ftp/latest">
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">
           <code>ftp</code> module
         </a>
         .

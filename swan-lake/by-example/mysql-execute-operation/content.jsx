@@ -111,30 +111,27 @@ export default function MysqlExecuteOperation() {
 
       <p>
         This BBE demonstrates how to use the MySQL client with the DDL and DML
+        operations.
       </p>
 
-      <p>operations.</p>
-
-      <p>
-        Note that the MySQL database driver JAR should be defined in the{" "}
-        <code>Ballerina.toml</code> file as a dependency.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> The MySQL database driver JAR should be defined
+          in the <code>Ballerina.toml</code> file as a dependency.The MySQL
+          connector uses database properties from MySQL version 8.0.13 onwards.
+          Therefore, it is recommended to use a MySQL driver version greater
+          than 8.0.13.
+        </p>
+      </blockquote>
 
       <p>
         For a sample configuration and more information on the underlying
         module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">
+        <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
           <code>mysql</code> module
         </a>
         .
       </p>
-
-      <p>
-        The MySQL connector uses database properties from MySQL version 8.0.13
-        onwards. Therefore, it is
-      </p>
-
-      <p>recommended to use a MySQL driver version greater than 8.0.13.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -272,7 +269,8 @@ export default function MysqlExecuteOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Updated Row count: 1`}</span>
             </code>
           </pre>

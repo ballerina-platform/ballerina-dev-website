@@ -35,7 +35,8 @@ listener grpc:Listener securedEP = new (9090,
 
 // The service can be secured with JWT Auth and can be authorized
 // optionally. JWT Auth can be enabled by setting the
-// [\`grpc:JwtValidatorConfig\`](https://lib.ballerina.io/ballerina/grpc/latest/records/JwtValidatorConfig) configurations.
+// \`grpc:JwtValidatorConfig\` configurations.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/JwtValidatorConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -93,22 +94,15 @@ export default function GrpcServiceJwtAuth() {
 
       <p>
         A gRPC service/resource can be secured with JWT and by enforcing
-        authorization optionally. Then, it validates the JWT sent in the
-      </p>
-
-      <p>
+        authorization optionally. Then, it validates the JWT sent in the{" "}
         <code>Authorization</code> metadata against the provided configurations.
       </p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
         declared in a service can be bound to one/more scope(s). The scope can
-        be included
-      </p>
-
-      <p>
-        in the JWT using a custom claim attribute. That custom claim attribute
-        also can be configured as the <code>scopeKey</code>.
+        be included in the JWT using a custom claim attribute. That custom claim
+        attribute also can be configured as the <code>scopeKey</code>.
       </p>
 
       <p>
@@ -293,9 +287,11 @@ export default function GrpcServiceJwtAuth() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -412,10 +408,18 @@ export default function GrpcServiceJwtAuth() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'service' package.
+            Execute the commands below to build and run the <code>service</code>{" "}
+            package.
           </span>
         </li>
       </ul>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You may need to change the certificate file
+          path and private key file path.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -469,17 +473,13 @@ export default function GrpcServiceJwtAuth() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build service`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <p>
-        You may need to change the certificate file path and private key file
-        path.
-      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

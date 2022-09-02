@@ -34,8 +34,8 @@ listener grpc:Listener securedEP = new (9090,
 );
 
 // The service can be secured with OAuth2 and by enforcing authorization
-// optionally. It can be enabled by setting the
-// [\`grpc:OAuth2IntrospectionConfig\`](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig) configurations.
+// optionally. It can be enabled by setting the \`grpc:OAuth2IntrospectionConfig\` configurations.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -94,50 +94,27 @@ export default function GrpcServiceOauth2() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Service - OAuth2</h1>
 
-      <p>A gRPC service/resource can be secured with OAuth2 and by enforcing</p>
-
       <p>
+        A gRPC service/resource can be secured with OAuth2 and by enforcing
         authorization optionally. Then, it validates the OAuth2 token sent in
-        the
+        the <code>Authorization</code> metadata against the provided
+        configurations. This calls the configured introspection endpoint to
+        validate.
       </p>
-
-      <p>
-        <code>Authorization</code> metadata against the provided configurations.
-        This calls the
-      </p>
-
-      <p>configured introspection endpoint to validate.</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared
-      </p>
-
-      <p>
-        in a service can be bound to one/more scope(s). The scope can be
-        included
-      </p>
-
-      <p>
-        in the introspection response using a custom claim attribute. That
-        custom
-      </p>
-
-      <p>
-        claim attribute also can be configured as the <code>scopeKey</code>.
+        declared in a service can be bound to one/more scope(s). The scope can
+        be included in the introspection response using a custom claim
+        attribute. That custom claim attribute also can be configured as the{" "}
+        <code>scopeKey</code>.
       </p>
 
       <p>
         In the authorization phase, the scopes of the service/resource are
-        compared
+        compared against the scope included in the introspection response for at
+        least one match between the two sets.
       </p>
-
-      <p>
-        against the scope included in the introspection response for at least
-        one
-      </p>
-
-      <p>match between the two sets.</p>
 
       <blockquote>
         <p>
@@ -315,9 +292,11 @@ export default function GrpcServiceOauth2() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          To Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -434,10 +413,18 @@ export default function GrpcServiceOauth2() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'service' package.
+            Execute the commands below to build and run the <code>service</code>{" "}
+            package.
           </span>
         </li>
       </ul>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You may need to change the certificate file
+          path and private key file path.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -491,17 +478,13 @@ export default function GrpcServiceOauth2() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build service`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <p>
-        You may need to change the certificate file path and private key file
-        path.
-      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

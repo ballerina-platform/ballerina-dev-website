@@ -334,9 +334,11 @@ export default function GrpcBidirectionalStreaming() {
       <blockquote>
         <p>
           <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the &lt;a
-          href=&quot;https://ballerina.io/learn/by-example/proto-to-ballerina.html&quot;&gt;Proto
-          to Ballerina&lt;/a&gt; example.
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -352,12 +354,12 @@ export default function GrpcBidirectionalStreaming() {
         </li>
       </ul>
 
-      <pre>
-        <code>
-          &gt;**Tip:** Delete the `main.bal` file created by default as it is
-          not required for this example.
-        </code>
-      </pre>
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Delete the <code>main.bal</code> file created by
+          default as it is not required for this example.
+        </p>
+      </blockquote>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>

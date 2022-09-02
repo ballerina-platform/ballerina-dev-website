@@ -74,7 +74,20 @@ export default function AwsLambdaDeployment() {
       <p>
         AWS Lambda is an event driven, serverless computing platform. Ballerina
         functions can be deployed in AWS Lambda by annotating a Ballerina
-        function with <code>@awslambda:Function</code>.
+        function with &quot;@awslambda:Function&quot;, which should have the
+        function signature{" "}
+        <code>
+          function (awslambda:Context, json|EventType) returns json|error
+        </code>
+        .
+      </p>
+
+      <p>
+        For more information, see the{" "}
+        <a href="https://ballerina.io/learn/deployment/aws-lambda/">
+          AWS Lambda Deployment Guide
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -272,13 +285,16 @@ export default function AwsLambdaDeployment() {
               <span>{`\$ bal build`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        wso2/aws_lambda_deployment:0.1.0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Generating executable`}</span>
               <span>{`        @awslambda:Function: echo, ctxinfo, notifyS3`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        Run the following command to deploy each Ballerina AWS Lambda function:`}</span>
               <span>{`        aws lambda create-function --function-name \$FUNCTION_NAME --zip-file fileb://<project-dir>/aws_lambda_deployment/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.\$FUNCTION_NAME --runtime provided --role \$LAMBDA_ROLE_ARN --layers arn:aws:lambda:\$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        Run the following command to re-deploy an updated Ballerina AWS Lambda function:`}</span>
               <span>{`        aws lambda update-function-code --function-name \$FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip`}</span>
             </code>
@@ -418,7 +434,8 @@ export default function AwsLambdaDeployment() {
               <span>{`}`}</span>
               <span>{`\$ cat echo-response.txt`}</span>
               <span>{`{"MESSAGE":"HELLO"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ aws lambda invoke --function-name ctxinfo ctxinfo-response.txt`}</span>
               <span>{`{`}</span>
               <span>{`"ExecutedVersion": "\$LATEST",`}</span>

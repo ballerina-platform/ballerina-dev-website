@@ -120,31 +120,28 @@ export default function JdbcQueryOperation() {
 
       <p>
         This BBE demonstrates how to use the JDBC client select query operations
-        with the stream return type.
+        with the stream return type. Note that the relevant database driver JAR
+        should be defined in the <code>Ballerina.toml</code> file as a
+        dependency.
       </p>
 
-      <p>
-        Note that the relevant database driver JAR should be defined in the{" "}
-        <code>Ballerina.toml</code> file as a dependency.
-      </p>
-
-      <p>
-        This sample is based on an H2 database and the H2 database driver JAR
-        needs to be added to the <code>Ballerina.toml</code> file.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> This sample is based on an H2 database and the
+          H2 database driver JAR needs to be added to the{" "}
+          <code>Ballerina.toml</code> file. This sample is written using H2
+          2.0.6 and it is recommended to use an H2 JAR file of a version higher
+          than 2.0.2.
+        </p>
+      </blockquote>
 
       <p>
         For a sample configuration and more information on the underlying
         module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/">
+        <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
           <code>jdbc</code> module
-        </a>
-        .
-      </p>
-
-      <p>
-        This sample is written using H2 2.0.6 and it is recommended to use an H2
-        JAR file of a version higher than 2.0.2.
+        </a>{" "}
+        .&lt;br&gt;&lt;br&gt;
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -283,7 +280,8 @@ export default function JdbcQueryOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Customer details: {"customerId":1,"firstName":"Peter","lastName":"Stuart","registrationId":1,"creditLimit":5000.75,"country":"USA"}`}</span>
               <span>{`Customer details: {"customerId":2,"firstName":"Dan","lastName":"Brown","registrationId":2,"creditLimit":10000.0,"country":"UK"}`}</span>
             </code>

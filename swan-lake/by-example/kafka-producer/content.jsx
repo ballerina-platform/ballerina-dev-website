@@ -72,17 +72,12 @@ export default function KafkaProducer() {
 
       <p>
         This shows how to send messages to a Kafka topic using a{" "}
-        <code>kafka:Producer</code> client.
+        <code>kafka:Producer</code> client. For this to work properly, an active
+        Kafka broker should be present.
       </p>
 
       <p>
-        For this to work properly, an active Kafka broker should be present.
-      </p>
-
-      <p>For more information on the underlying module,</p>
-
-      <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
           <code>kafka</code> module
         </a>

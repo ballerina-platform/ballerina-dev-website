@@ -16,8 +16,8 @@ const codeSnippetData = [
 
 service / on new http:Listener(9090) {
 
-    resource function get hello(http:Request req) returns http:Response|error {
-        http:Client clientEP = check new ("https://httpstat.us");
+    resource function get .(http:Request req) returns http:Response|error {
+        http:Client clientEP = check new ("http://httpstat.us");
         http:Response resp = check clientEP->forward("/200", req);
         return resp;
     }
@@ -52,33 +52,22 @@ export default function HttpTraceLogs() {
 
       <p>
         The HTTP trace logs can be used to monitor the HTTP traffic that goes in
-        and out of Ballerina.
-      </p>
-
-      <p>
-        To enable trace logs, the log level has to be set to <code>TRACE</code>{" "}
-        using the runtime argument:
-      </p>
-
-      <p>
-        &lt;br&gt; <code>-Cballerina.http.traceLogConsole=true</code>.
-        &lt;br&gt;
+        and out of Ballerina. To enable trace logs, the log level has to be set
+        to <code>TRACE</code> using the{" "}
+        <code>-Cballerina.http.traceLogConsole=true</code> runtime argument.
       </p>
 
       <p>
         The configurations can be set in the <code>Config.toml</code> file for
-        advanced use cases such as specifying the file path
-      </p>
-
-      <p>
-        to save the trace logs and by specifying the hostname and port of a
-        socket service to publish the trace logs.
+        advanced use cases such as specifying the file path to save the trace
+        logs and specifying the hostname and port of a socket service to publish
+        the trace logs.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -215,7 +204,8 @@ export default function HttpTraceLogs() {
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_trace_logs.bal -- -Cballerina.http.traceLogConsole=true`}</span>
               <span>{`ballerina: HTTP trace log enabled`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# In the logs, `}
                 <code>{`http.downstream`}</code>
@@ -226,7 +216,8 @@ export default function HttpTraceLogs() {
                 <code>{`http.upstream`}</code>
                 {` refers to the HTTP traffic that flows between Ballerina and the backend.`}
               </span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`[2021-10-06 18:18:11,118] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7] REGISTERED`}</span>
               <span>{`[2021-10-06 18:18:11,151] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] ACTIVE`}</span>
               <span>{`[2021-10-06 18:18:11,187] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>

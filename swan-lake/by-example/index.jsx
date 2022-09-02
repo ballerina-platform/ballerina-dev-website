@@ -12,6 +12,7 @@ import Booleans from "./booleans/content.jsx";
 import MatchStatement from "./match-statement/content.jsx";
 import Functions from "./functions/content.jsx";
 import FunctionValues from "./function-values/content.jsx";
+import IncludedRecordParameters from "./included-record-parameters/content.jsx";
 import ForeachStatement from "./foreach-statement/content.jsx";
 import WhileStatement from "./while-statement/content.jsx";
 import LanglibFunctions from "./langlib-functions/content.jsx";
@@ -25,11 +26,15 @@ import AnyType from "./any-type/content.jsx";
 import TypeDefinitions from "./type-definitions/content.jsx";
 import Covariance from "./covariance/content.jsx";
 import TypeInference from "./type-inference/content.jsx";
+import EnsureTypeFunction from "./ensureType-function/content.jsx";
+import DependentTypes from "./dependent-types/content.jsx";
 import Maps from "./maps/content.jsx";
 import Records from "./records/content.jsx";
 import OptionalFields from "./optional-fields/content.jsx";
 import OpenRecords from "./open-records/content.jsx";
 import ControllingOpenness from "./controlling-openness/content.jsx";
+import TypeInclusionForRecords from "./type-inclusion-for-records/content.jsx";
+import DefaultValuesForRecordFields from "./default-values-for-record-fields/content.jsx";
 import Object from "./object/content.jsx";
 import DefiningClasses from "./defining-classes/content.jsx";
 import InitReturnType from "./init-return-type/content.jsx";
@@ -207,6 +212,7 @@ import HttpFailover from "./http-failover/content.jsx";
 import HttpRetry from "./http-retry/content.jsx";
 import HttpTimeout from "./http-timeout/content.jsx";
 import DynamicListener from "./dynamic-listener/content.jsx";
+import StopHandler from "./stop-handler/content.jsx";
 import GrpcSimple from "./grpc-simple/content.jsx";
 import GrpcSimpleWithHeaders from "./grpc-simple-with-headers/content.jsx";
 import GrpcServerStreaming from "./grpc-server-streaming/content.jsx";
@@ -275,9 +281,11 @@ import JdbcQueryColumnMapping from "./jdbc-query-column-mapping/content.jsx";
 import JdbcExecuteOperation from "./jdbc-execute-operation/content.jsx";
 import JdbcBatchExecuteOperation from "./jdbc-batch-execute-operation/content.jsx";
 import JdbcAtomicBatchExecuteOperation from "./jdbc-atomic-batch-execute-operation/content.jsx";
+import SerdesSimple from "./serdes-simple/content.jsx";
 import IoBytes from "./io-bytes/content.jsx";
 import IoStrings from "./io-strings/content.jsx";
 import IoCsv from "./io-csv/content.jsx";
+import IoCsvDatamapping from "./io-csv-datamapping/content.jsx";
 import IoJson from "./io-json/content.jsx";
 import IoXml from "./io-xml/content.jsx";
 import SecurityCrypto from "./security-crypto/content.jsx";
@@ -313,8 +321,8 @@ import ConstraintValidations from "./constraint-validations/content.jsx";
 import Tracing from "./tracing/content.jsx";
 import CounterMetrics from "./counter-metrics/content.jsx";
 import GaugeMetrics from "./gauge-metrics/content.jsx";
-import C2cDockerDeployment from "./c2c-docker-deployment/content.jsx";
 import C2cK8sDeployment from "./c2c-k8s-deployment/content.jsx";
+import C2cDockerDeployment from "./c2c-docker-deployment/content.jsx";
 import AzureFunctionsDeployment from "./azure-functions-deployment/content.jsx";
 import AwsLambdaDeployment from "./aws-lambda-deployment/content.jsx";
 
@@ -333,6 +341,7 @@ const BBEs = {
   MatchStatement,
   Functions,
   FunctionValues,
+  IncludedRecordParameters,
   ForeachStatement,
   WhileStatement,
   LanglibFunctions,
@@ -346,11 +355,15 @@ const BBEs = {
   TypeDefinitions,
   Covariance,
   TypeInference,
+  EnsureTypeFunction,
+  DependentTypes,
   Maps,
   Records,
   OptionalFields,
   OpenRecords,
   ControllingOpenness,
+  TypeInclusionForRecords,
+  DefaultValuesForRecordFields,
   Object,
   DefiningClasses,
   InitReturnType,
@@ -528,6 +541,7 @@ const BBEs = {
   HttpRetry,
   HttpTimeout,
   DynamicListener,
+  StopHandler,
   GrpcSimple,
   GrpcSimpleWithHeaders,
   GrpcServerStreaming,
@@ -596,9 +610,11 @@ const BBEs = {
   JdbcExecuteOperation,
   JdbcBatchExecuteOperation,
   JdbcAtomicBatchExecuteOperation,
+  SerdesSimple,
   IoBytes,
   IoStrings,
   IoCsv,
+  IoCsvDatamapping,
   IoJson,
   IoXml,
   SecurityCrypto,
@@ -634,8 +650,8 @@ const BBEs = {
   Tracing,
   CounterMetrics,
   GaugeMetrics,
-  C2cDockerDeployment,
   C2cK8sDeployment,
+  C2cDockerDeployment,
   AzureFunctionsDeployment,
   AwsLambdaDeployment,
 };

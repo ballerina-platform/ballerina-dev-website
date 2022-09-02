@@ -220,16 +220,28 @@ Ballerina defines lang libraries to provide fundamental operations on built-in d
 For example, you can perform standard operations such as getting a substring or finding the length of the string on values of the ``string`` type.
 
 ```ballerina
-string s = "abc".substring(1,2);
+string s = "abc".substring(1, 2);
 
 int n = s.length();
 ```
 
 The ``substring()`` and ``length()`` functions are ``string`` lang library functions called using the convenient method call syntax. However, the functions are called on variables/values of the ``string`` type rather than objects.
 
-Ballerina imports the lang library for **``ballerina/lang.T``** where **``T``** represents a built-in type. Therefore, in the case of the above code example, you can also find the length of the string value by importing the **``ballerina/lang.string``** module (**``import ballerina/lang.'string``**) and calling the **``length()``** function using the function call syntax.
+A lang library **``ballerina/lang.T``** is defined for each built-in type **``T``**. Ballerina automatically imports these lang libraries and pre-declares a prefix **``T``**, which you can use to access the constructs of the module. Therefore, in the case of the above code example, you can also find the length of the string value referring to the **``length()``** function as **``string:length()``** and using the function call syntax.
 
 ```ballerina
+string s = "abc".substring(1, 2);
+
+int n = string:length(s);
+```
+
+The lang library can also be imported explicitly as **``import ballerina/lang.'string``**.
+
+```ballerina
+import ballerina/lang.'string;
+
+string s = "abc".substring(1, 2);
+
 int n = string:length(s);
 ```
 

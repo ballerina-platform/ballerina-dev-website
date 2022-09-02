@@ -55,6 +55,7 @@ For previous draft language specifications of a Ballerina release, see the <a ta
 | ------- | ------- | ---------------- | ----------- |
 | `auth` | Swan Lake | <a target="_blank" href="/spec/auth/">Snapshot</a> | Auth package of Ballerina language, which is used for authorization of listeners and clients (HTTP, gRPC, GraphQL, WebSocket, WebSub, etc.). |
 | `cache` | Swan Lake | <a target="_blank" href="/spec/cache/">Snapshot</a> | Cache package of Ballerina language, which provides a mechanism to manage frequently accessed data in-memory by using a semi-persistent mapping from key to value. |
+| `constraint` | Swan Lake | <a target="_blank" href="/spec/constraint/">Snapshot</a> | Constraint package of Ballerina language, which provides APIs to validate the values that have been assigned to Ballerina types. |
 | `email` | Swan Lake | <a target="_blank" href="/spec/email/">Snapshot</a> | Email package of Ballerina language, which provides functionalities related to sending/receiving emails via SMTP, POP3, and IMAP protocols. |
 | `file` | Swan Lake | <a target="_blank" href="/spec/file/">Snapshot</a> | File package of Ballerina language, which provides APIs to perform file, file path, and directory operations. |
 | `ftp` | Swan Lake | <a target="_blank" href="/spec/ftp/">Snapshot</a> | FTP package of Ballerina language, which provides FTP client/listener functionalities to send and receive files by connecting to FTP/SFTP server. |
@@ -70,6 +71,7 @@ For previous draft language specifications of a Ballerina release, see the <a ta
 | `protobuf` | Swan Lake | <a target="_blank" href="/spec/protobuf/">Snapshot</a> | Protobuf package of Ballerina language, which provides APIs to represent a set of pre-defined protobuf types. |
 | `random` | Swan Lake | <a target="_blank" href="/spec/random/">Snapshot</a> | Random package of Ballerina language, which provides APIs to generate pseudo-random numbers. |
 | `regex` | Swan Lake | <a target="_blank" href="/spec/regex/">Snapshot</a> | Regex package of Ballerina language, which provides functionalities such as matching, replacing and splitting strings based on regular expressions. |
+| `serdes` | Swan Lake | <a target="_blank" href="/spec/serdes/">Snapshot</a> | Serdes package of Ballerina language, which provides functinalities for serializing and deserializing subtypes of Ballerina anydata type. |
 | `sql` | Swan Lake | <a target="_blank" href="/spec/sql/">Snapshot</a> | SQL package of Ballerina language, which provides the generic interface and functionality to interact with a SQL database. |
 | `task` | Swan Lake | <a target="_blank" href="/spec/task/">Snapshot</a> | Task package of Ballerina language, which provides APIs to schedule a Ballerina job either once or periodically and manage the execution of those jobs. |
 | `tcp` | Swan Lake | <a target="_blank" href="/spec/tcp/">Snapshot</a> | TCP package of Ballerina language, which provides TCP client-server functionalities. |

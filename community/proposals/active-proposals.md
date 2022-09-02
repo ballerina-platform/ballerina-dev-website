@@ -35,6 +35,7 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
+|[Proposal: gRPC Reflection Support](https://github.com/ballerina-platform/ballerina-standard-library/issues/3306)|[dilanSachi](https://github.com/dilanSachi)|0|2022-09-01|Active|
 |[Proposal: Support advanced filter conditions for persist client](https://github.com/ballerina-platform/ballerina-standard-library/issues/3303)|[niveathika](https://github.com/niveathika)|0|2022-08-31|Active|
 |[Proposal: Write GraphQL Schema to a File](https://github.com/ballerina-platform/ballerina-standard-library/issues/3286)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|1|2022-08-26|Active|
 |[Proposal: Proto file generation for Protocol Buffers SerDes](https://github.com/ballerina-platform/ballerina-standard-library/issues/3217)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2022-08-04|Draft|

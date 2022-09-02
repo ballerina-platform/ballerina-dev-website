@@ -285,7 +285,8 @@ export default function MysqlCallStoredProcedures() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Age of the student with id '1' : 24`}</span>
               <span>{`Total student count: 1`}</span>
             </code>

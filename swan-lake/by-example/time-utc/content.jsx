@@ -72,7 +72,7 @@ export default function TimeUtc() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8549072ded6ff9208f4386907d00a669&file=time_utc.bal",
+                "https://play.ballerina.io/?gist=6526deca83ce993eeba5c5638fa4c89c&file=time_utc.bal",
                 "_blank"
               );
             }}

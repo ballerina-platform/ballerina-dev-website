@@ -85,7 +85,7 @@ export default function HttpClientEndpoint() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bbefacd13027341467a30bd68031ea03&file=http_client_endpoint.bal",
+                "https://play.ballerina.io/?gist=7ca1538b0d07f4382ba1c4414ed56e54&file=http_client_endpoint.bal",
                 "_blank"
               );
             }}
@@ -235,13 +235,16 @@ export default function HttpClientEndpoint() {
               <span>{`\$ bal run http_client_endpoint.bal`}</span>
               <span>{`GET request:`}</span>
               <span>{`{"args":{"test":"123"}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e3-2cec8477340e121571a5df88", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get?test=123"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`GET request with Headers:`}</span>
               <span>{`{"args":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e6-124af9746490533b1a560cca", "sample-name":"http-client-connector", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`POST request:`}</span>
               <span>{`{"args":{}, "data":"POST: Hello World", "files":{}, "form":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e6-60ad459c47889ca53a89df90", "content-length":"17", "content-type":"text/plain", "user-agent":"ballerina"}, "json":null, "url":"http://postman-echo.com/post"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Use custom HTTP verbs:`}</span>
               <span>{`Status code: 404`}</span>
             </code>

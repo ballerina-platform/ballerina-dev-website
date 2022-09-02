@@ -208,18 +208,21 @@ export default function HttpAccessLogs() {
                 {` file as follows to have logs in the console.`}
               </span>
               <span>{`\$ echo '[ballerina.http.accessLogConfig] console = true' > Config.toml`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run http_access_logs.bal`}</span>
               <span>{`ballerina: HTTP access log enabled`}</span>
               <span>{`0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /hello HTTP/1.1" 200 10 "-" "curl/7.64.1"`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# Else, change the `}
                 <code>{`Config.toml`}</code>
                 {` file as follows to direct the log to the specified file.`}
               </span>
               <span>{`\$ echo '[ballerina.http.accessLogConfig] path = "testAccessLog.txt"' > Config.toml`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run http_access_logs.bal`}</span>
               <span>{`ballerina: HTTP access log enabled`}</span>
             </code>

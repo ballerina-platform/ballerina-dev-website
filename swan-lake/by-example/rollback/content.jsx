@@ -108,7 +108,7 @@ export default function Rollback() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=22024fc2de0818ac7a3abe44d0a36a0f&file=rollback.bal",
+                "https://play.ballerina.io/?gist=64281d27df518374e7154067c701abb4&file=rollback.bal",
                 "_blank"
               );
             }}

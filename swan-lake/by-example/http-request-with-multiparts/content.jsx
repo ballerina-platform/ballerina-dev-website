@@ -383,10 +383,12 @@ export default function HttpRequestWithMultiparts() {
               <span>{`content-disposition: attachment;name="part1"`}</span>
               <span>{`content-type: application/json`}</span>
               <span>{`content-id: 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`{"name":"ballerina"}`}</span>
               <span>{`--f710b4a02896b88a--`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The cURL command, which you need to execute to encode the parts of the body and send a multipart request via the Ballerina service.`}</span>
               <span>{`\$ curl -v http://localhost:9090/multiparts/encode`}</span>
               <span>{`> GET /multiparts/encode HTTP/1.1`}</span>
@@ -404,13 +406,15 @@ export default function HttpRequestWithMultiparts() {
               <span>{`content-disposition: form-data;name="json part"`}</span>
               <span>{`content-type: application/json`}</span>
               <span>{`content-id: 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`{"name":"wso2"}`}</span>
               <span>{`--bd7547c98465dae2`}</span>
               <span>{`content-disposition: form-data;name="xml file part"`}</span>
               <span>{`content-type: application/xml`}</span>
               <span>{`content-id: 1`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`<ballerinalang>`}</span>
               <span>{`    <version>0.963</version>`}</span>
               <span>{`    <test>test xml file to be used as a file part</test>`}</span>

@@ -98,10 +98,8 @@ export default function NatsBasicSecureConnection() {
 
       <p>
         In this example, the underlying connections of the subscriber, and the
-        publisher are
+        publisher are secured with TLS/SSL and Basic Auth.
       </p>
-
-      <p>secured with TLS/SSL and Basic Auth.</p>
 
       <p>
         For more information on the underlying module, see the{" "}

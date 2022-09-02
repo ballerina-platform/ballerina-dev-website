@@ -98,14 +98,13 @@ export default function RabbitmqSecureConnection() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Secured connection</h1>
 
-      <p>The underlying connections of the consumer and the producer are</p>
-
-      <p>secured with TLS/SSL and Basic Auth.</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        The underlying connections of the consumer and the producer are secured
+        with TLS/SSL and Basic Auth.
+      </p>
 
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
           <code>rabbitmq</code> module
         </a>

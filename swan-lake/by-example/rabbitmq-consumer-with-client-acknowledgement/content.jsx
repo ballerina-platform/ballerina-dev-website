@@ -67,15 +67,11 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
 
       <p>
         By default, the ackMode is rabbitmq:AUTO_ACK, which will automatically
-        acknowledge
+        acknowledge all messages once consumed.
       </p>
 
-      <p>all messages once consumed.</p>
-
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
           <code>rabbitmq</code> module
         </a>

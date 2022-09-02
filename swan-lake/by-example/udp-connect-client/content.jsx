@@ -226,7 +226,8 @@ export default function UdpConnectClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_connect_client.bal`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# This will print the output below upon a successful write.`}</span>
               <span>{`Data was sent to the remote host.`}</span>
               <span>{`# Print the response that is returned from the server as an echo.`}</span>

@@ -267,7 +267,8 @@ export default function JdbcExecuteOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Updated Row count: 1`}</span>
             </code>
           </pre>

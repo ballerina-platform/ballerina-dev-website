@@ -68,25 +68,21 @@ export default function RabbitmqTransactionConsumer() {
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
-        RabbitMQ message listener
+        RabbitMQ message listener and Ballerina transactions.
       </p>
 
-      <p>and Ballerina transactions.</p>
-
-      <p>Upon successful execution of the transaction block,</p>
-
       <p>
-        the acknowledgement will commit or rollback in the case of any error.
+        Upon successful execution of the transaction block, the acknowledgement
+        will commit or rollback in the case of any error.
       </p>
 
-      <p>Messages will not be re-queued in the case of a rollback</p>
-
-      <p>automatically unless negatively acknowledged by the user.</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        Messages will not be re-queued in the case of a rollback automatically
+        unless negatively acknowledged by the user.
+      </p>
 
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
           <code>rabbitmq</code> module
         </a>

@@ -81,7 +81,7 @@ export default function MultipleWait() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=abda784c714d441627e63e2ba7458b14&file=multiple_wait.bal",
+                "https://play.ballerina.io/?gist=b7862785581601a059bff94f02d750ba&file=multiple_wait.bal",
                 "_blank"
               );
             }}

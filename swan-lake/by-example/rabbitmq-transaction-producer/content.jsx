@@ -53,18 +53,18 @@ export default function RabbitmqTransactionProducer() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Transactional producer</h1>
 
-      <p>A message is sent to an existing queue</p>
-
-      <p>using the Ballerina RabbitMQ channel and Ballerina transactions.</p>
-
-      <p>Upon successful execution of the transaction block,</p>
-
-      <p>the channel will commit and rollback in the case of any error.</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        A message is sent to an existing queue using the Ballerina RabbitMQ
+        channel and Ballerina transactions.
+      </p>
 
       <p>
-        see the{" "}
+        Upon successful execution of the transaction block, the channel will
+        commit and rollback in the case of any error.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
           <code>rabbitmq</code> module
         </a>

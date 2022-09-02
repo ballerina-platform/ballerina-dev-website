@@ -291,15 +291,18 @@ export default function HttpLoadBalancer() {
             <code className="d-flex flex-column">
               <span>{`\$ curl  http://localhost:9090/lb`}</span>
               <span>{`Mock1 resource was invoked.`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Repeat the same cURL command to invoke the service again and it will be load balanced to the second mock service.`}</span>
               <span>{`\$ curl http://localhost:9090/lb`}</span>
               <span>{`Mock2 resource was invoked.`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The following request will be load balanced to the third mock service.`}</span>
               <span>{`\$ curl http://localhost:9090/lb`}</span>
               <span>{`Mock3 resource was invoked.`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The following request will be load balanced to the first mock service again.`}</span>
               <span>{`\$ curl http://localhost:9090/lb`}</span>
               <span>{`Mock1 resource was invoked.`}</span>

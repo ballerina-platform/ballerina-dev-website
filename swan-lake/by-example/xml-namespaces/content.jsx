@@ -69,7 +69,7 @@ export default function XmlNamespaces() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=730d1523d2dfe6b6ecf99b553a017f26&file=xml_namespaces.bal",
+                "https://play.ballerina.io/?gist=a3480b2b8d2dc65927bbc27411075190&file=xml_namespaces.bal",
                 "_blank"
               );
             }}

@@ -441,9 +441,11 @@ export default function TesterinaMockingObjects() {
               <span>{`\$ bal test bbe_mocking`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/bbe_mocking:0.1.0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Running Tests`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        bbe_mocking`}</span>
               <span>{`Executing the 1st GET request`}</span>
               <span>{`Status code: 200`}</span>
@@ -457,14 +459,16 @@ export default function TesterinaMockingObjects() {
               <span>{`Status code: 404`}</span>
               <span>{`Executing the 1st GET request`}</span>
               <span>{`Status code: 500`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`                [pass] testMemberVariable`}</span>
               <span>{`                [pass] testReturn`}</span>
               <span>{`                [pass] testReturnSequence`}</span>
               <span>{`                [pass] testReturnWithArgs`}</span>
               <span>{`                [pass] testSendNotification`}</span>
               <span>{`                [pass] testTestDouble`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`                6 passing`}</span>
               <span>{`                0 failing`}</span>
               <span>{`                0 skipped`}</span>

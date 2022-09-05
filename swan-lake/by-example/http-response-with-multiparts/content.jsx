@@ -419,22 +419,27 @@ export default function HttpResponseWithMultiparts() {
               <span>{`\$ curl -X GET http://localhost:9092/multiparts/encode_out_response`}</span>
               <span>{`--5afd3d91ee639af3`}</span>
               <span>{`content-type: multipart/mixed;boundary=de5520ef3bc703d7`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`--de5520ef3bc703d7`}</span>
               <span>{`content-type: application/json`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`{"name":"wso2"}`}</span>
               <span>{`--de5520ef3bc703d7`}</span>
               <span>{`content-type: text/xml`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`<ballerinalang>`}</span>
               <span>{`    <version>0.963</version>`}</span>
               <span>{`    <test>test xml file to be used as a file part</test>`}</span>
               <span>{`</ballerinalang>`}</span>
               <span>{`--de5520ef3bc703d7--`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`--5afd3d91ee639af3--`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`#To decode the inbound response with multiparts.`}</span>
               <span>{`\$ curl -X GET http://localhost:9090/multiparts/decode_in_response`}</span>
               <span>{`Body Parts Received!`}</span>

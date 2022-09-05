@@ -77,17 +77,13 @@ export default function KafkaAuthenticationSaslPlainProducer() {
         <code>kafka:Producer</code>.
       </p>
 
-      <p>For this to work properly, an active Kafka server must be present,</p>
-
       <p>
-        and it should be configured to use the SASL/PLAIN authentication
-        mechanism.
+        For this to work properly, an active Kafka server must be present, and
+        it should be configured to use the SASL/PLAIN authentication mechanism.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
           <code>kafka</code> module
         </a>

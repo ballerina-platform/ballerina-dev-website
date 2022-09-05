@@ -289,7 +289,8 @@ export default function DynamicListener() {
             <code className="d-flex flex-column">
               <span>{`\$ curl http://localhost:9090/foo/bar/sayHello`}</span>
               <span>{`Hello, World!`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Invoke the shutdown resource to deregister the listener.`}</span>
               <span>{`\$ curl http://localhost:9090/foo/bar/shutDownServer`}</span>
               <span>{`Shutting down the server`}</span>

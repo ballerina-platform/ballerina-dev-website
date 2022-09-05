@@ -263,7 +263,8 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
               <span>{`username="bob"`}</span>
               <span>{`password="password2"`}</span>
               <span>{`scopes=["scope2", "scope3"]' > Config.toml`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# You may need to change the certificate file path and private key file path.`}</span>
               <span>{`\$ bal run websocket_service_basic_auth_file_user_store.bal`}</span>
             </code>

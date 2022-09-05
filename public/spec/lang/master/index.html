@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R4 preview 2022-08-24</h1>
+<h1>Ballerina Language Specification, 2022R4 preview 2022-09-02</h1>
 <p>
 Primary contributors:
 </p>
@@ -448,79 +448,81 @@ GitHub repository where this specification is maintained.
 </li>
 <li>7.13 <a href="#XML_namespace_declaration_statement">XML namespace declaration statement</a>
 </li>
-<li>7.14 <a href="#section_7.14">Assignment</a><ul>
-<li>7.14.1 <a href="#section_7.14.1">Lvalues</a>
+<li>7.14 <a href="#client_declaration_statement">Client declaration statement</a>
 </li>
-<li>7.14.2 <a href="#section_7.14.2">Assignment statement</a>
+<li>7.15 <a href="#section_7.15">Assignment</a><ul>
+<li>7.15.1 <a href="#section_7.15.1">Lvalues</a>
 </li>
-<li>7.14.3 <a href="#section_7.14.3">Compound assignment statement</a>
+<li>7.15.2 <a href="#section_7.15.2">Assignment statement</a>
 </li>
-<li>7.14.4 <a href="#section_7.14.4">Destructuring assignment statement</a>
+<li>7.15.3 <a href="#section_7.15.3">Compound assignment statement</a>
 </li>
-</ul>
-</li>
-<li>7.15 <a href="#section_7.15">Action statement</a>
-</li>
-<li>7.16 <a href="#section_7.16">Call statement</a>
-</li>
-<li>7.17 <a href="#section_7.17">Checking statement</a>
-</li>
-<li>7.18 <a href="#section_7.18">Conditional statement</a>
-</li>
-<li>7.19 <a href="#section_7.19">Do statement</a>
-</li>
-<li>7.20 <a href="#match_statement">Match statement</a><ul>
-<li>7.20.1 <a href="#section_7.20.1">Match patterns</a>
-</li>
-<li>7.20.2 <a href="#section_7.20.2">Match clause reachability and narrowing</a>
+<li>7.15.4 <a href="#section_7.15.4">Destructuring assignment statement</a>
 </li>
 </ul>
 </li>
-<li>7.21 <a href="#section_7.21">Loops</a><ul>
-<li>7.21.1 <a href="#section_7.21.1">Foreach statement</a>
+<li>7.16 <a href="#section_7.16">Action statement</a>
 </li>
-<li>7.21.2 <a href="#section_7.21.2">While statement</a>
+<li>7.17 <a href="#section_7.17">Call statement</a>
 </li>
-<li>7.21.3 <a href="#section_7.21.3">Continue statement</a>
+<li>7.18 <a href="#section_7.18">Checking statement</a>
 </li>
-<li>7.21.4 <a href="#section_7.21.4">Break statement</a>
+<li>7.19 <a href="#section_7.19">Conditional statement</a>
 </li>
-</ul>
+<li>7.20 <a href="#section_7.20">Do statement</a>
 </li>
-<li>7.22 <a href="#lock_statement">Lock statement</a>
+<li>7.21 <a href="#match_statement">Match statement</a><ul>
+<li>7.21.1 <a href="#section_7.21.1">Match patterns</a>
 </li>
-<li>7.23 <a href="#section_7.23">Fail and retry</a><ul>
-<li>7.23.1 <a href="#section_7.23.1">Fail statement</a>
-</li>
-<li>7.23.2 <a href="#section_7.23.2">On fail clause</a>
-</li>
-<li>7.23.3 <a href="#section_7.23.3">Retry statement</a>
+<li>7.21.2 <a href="#section_7.21.2">Match clause reachability and narrowing</a>
 </li>
 </ul>
 </li>
-<li>7.24 <a href="#transactions">Transactions</a><ul>
-<li>7.24.1 <a href="#section_7.24.1">Transaction manager</a><ul>
-<li>7.24.1.1 <a href="#section_7.24.1.1">Begin operation</a>
+<li>7.22 <a href="#section_7.22">Loops</a><ul>
+<li>7.22.1 <a href="#section_7.22.1">Foreach statement</a>
 </li>
-<li>7.24.1.2 <a href="#section_7.24.1.2">Commit operation</a>
+<li>7.22.2 <a href="#section_7.22.2">While statement</a>
 </li>
-<li>7.24.1.3 <a href="#section_7.24.1.3">Rollback operation</a>
+<li>7.22.3 <a href="#section_7.22.3">Continue statement</a>
 </li>
-</ul>
-</li>
-<li>7.24.2 <a href="#section_7.24.2">Transaction statement</a>
-</li>
-<li>7.24.3 <a href="#section_7.24.3">Retry transaction statement</a>
-</li>
-<li>7.24.4 <a href="#section_7.24.4">Commit action</a>
-</li>
-<li>7.24.5 <a href="#section_7.24.5">Rollback statement</a>
+<li>7.22.4 <a href="#section_7.22.4">Break statement</a>
 </li>
 </ul>
 </li>
-<li>7.25 <a href="#section_7.25">Panic statement</a>
+<li>7.23 <a href="#lock_statement">Lock statement</a>
 </li>
-<li>7.26 <a href="#section_7.26">Return statement</a>
+<li>7.24 <a href="#section_7.24">Fail and retry</a><ul>
+<li>7.24.1 <a href="#section_7.24.1">Fail statement</a>
+</li>
+<li>7.24.2 <a href="#section_7.24.2">On fail clause</a>
+</li>
+<li>7.24.3 <a href="#section_7.24.3">Retry statement</a>
+</li>
+</ul>
+</li>
+<li>7.25 <a href="#transactions">Transactions</a><ul>
+<li>7.25.1 <a href="#section_7.25.1">Transaction manager</a><ul>
+<li>7.25.1.1 <a href="#section_7.25.1.1">Begin operation</a>
+</li>
+<li>7.25.1.2 <a href="#section_7.25.1.2">Commit operation</a>
+</li>
+<li>7.25.1.3 <a href="#section_7.25.1.3">Rollback operation</a>
+</li>
+</ul>
+</li>
+<li>7.25.2 <a href="#section_7.25.2">Transaction statement</a>
+</li>
+<li>7.25.3 <a href="#section_7.25.3">Retry transaction statement</a>
+</li>
+<li>7.25.4 <a href="#section_7.25.4">Commit action</a>
+</li>
+<li>7.25.5 <a href="#section_7.25.5">Rollback statement</a>
+</li>
+</ul>
+</li>
+<li>7.26 <a href="#section_7.26">Panic statement</a>
+</li>
+<li>7.27 <a href="#section_7.27">Return statement</a>
 </li>
 </ul>
 </li>
@@ -551,6 +553,8 @@ GitHub repository where this specification is maintained.
 <li>8.9 <a href="#section_8.9">Module enumeration declaration</a>
 </li>
 <li>8.10 <a href="#section_8.10">Module XML namespace declaration</a>
+</li>
+<li>8.11 <a href="#section_8.11">Module client declaration</a>
 </li>
 </ul>
 </li>
@@ -8004,6 +8008,7 @@ is called concurrently on multiple strands.
    <a href="#action-stmt"><span class="ntref">action-stmt</span></a>
    | <a href="#local-var-decl-stmt"><span class="ntref">local-var-decl-stmt</span></a>
    | <a href="#xmlns-decl-stmt"><span class="ntref">xmlns-decl-stmt</span></a>
+   | <a href="#client-decl-stmt"><span class="ntref">client-decl-stmt</span></a>
    | <a href="#assignment-stmt"><span class="ntref">assignment-stmt</span></a>
    | <a href="#compound-assignment-stmt"><span class="ntref">compound-assignment-stmt</span></a>
    | <a href="#destructuring-assignment-stmt"><span class="ntref">destructuring-assignment-stmt</span></a>
@@ -8640,7 +8645,7 @@ expression, except that it is used for a client object method with the
 <span class="ntdfn" id="resource-access-rest-segment">resource-access-rest-segment</span> := <code>[</code> <code>...</code> <a href="#expression"><span class="ntref">expression</span></a> <code>]</code>
 </pre>
 <p>
-A <code>client-resource-access-action</code> performs a <a href="resources_defn">resource access operation</a> on a client object. An
+A <code>client-resource-access-action</code> performs a <a href="#resources_defn">resource access operation</a> on a client object. An
 omitted <code>resource-method-name</code> defaults to <code>get</code>; if the
 parentheses and the <code>arg-list</code> are omitted, then they default to
 <code>()</code>, with arguments being defaulted as usual.
@@ -8987,7 +8992,21 @@ string.
 </p>
 </section>
 <section>
-<h3 id="section_7.14">7.14 Assignment</h3>
+<h3 id="client_declaration_statement">7.14 Client declaration statement</h3>
+
+<pre class="grammar"><span class="ntdfn" id="client-decl-stmt">client-decl-stmt</span> := <a href="#client-decl"><span class="ntref">client-decl</span></a>
+<span class="ntdfn" id="client-decl">client-decl</span> := <code>client</code> <a href="#service-uri"><span class="ntref">service-uri</span></a> <code>as</code> <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <code>;</code>
+<span class="ntdfn" id="service-uri">service-uri</span> := <a href="#simple-const-expr"><span class="ntref">simple-const-expr</span></a>
+</pre>
+
+<p>
+The static type of the <code>simple-const-expr</code> must be a subtype of
+string.
+</p>
+
+</section>
+<section>
+<h3 id="section_7.15">7.15 Assignment</h3>
 
 <p>
 There are three kinds of assignment statement:
@@ -9004,7 +9023,7 @@ last one builds on the concept of a binding pattern.
 </p>
 
 <section>
-<h4 id="section_7.14.1">7.14.1 Lvalues</h4>
+<h4 id="section_7.15.1">7.15.1 Lvalues</h4>
 
 <p>
 An lvalue is what the left hand side of an assignment evaluates to. An lvalue
@@ -9210,7 +9229,7 @@ key type for T.
 
 </section>
 <section>
-<h4 id="section_7.14.2">7.14.2 Assignment statement</h4>
+<h4 id="section_7.15.2">7.15.2 Assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="assignment-stmt">assignment-stmt</span> := <a href="#lvexpr"><span class="ntref">lvexpr</span></a> <code>=</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
 </pre>
@@ -9231,7 +9250,7 @@ It is executed at as follows:
 
 </section>
 <section>
-<h4 id="section_7.14.3">7.14.3 Compound assignment statement</h4>
+<h4 id="section_7.15.3">7.15.3 Compound assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="compound-assignment-stmt">compound-assignment-stmt</span> := <a href="#lvexpr"><span class="ntref">lvexpr</span></a> <a href="#CompoundAssignmentOperator"><span class="ntref">CompoundAssignmentOperator</span></a> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
 <span class="ntdfn" id="CompoundAssignmentOperator">CompoundAssignmentOperator</span> := <a href="#BinaryOperator"><span class="ntref">BinaryOperator</span></a> <code>=</code>
@@ -9270,7 +9289,7 @@ and <var>v2</var>, resulting in a value <var>v3</var>
 
 </section>
 <section>
-<h4 id="section_7.14.4">7.14.4 Destructuring assignment statement</h4>
+<h4 id="section_7.15.4">7.15.4 Destructuring assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="destructuring-assignment-stmt">destructuring-assignment-stmt</span> :=
    <a href="#binding-pattern-not-variable-reference"><span class="ntref">binding-pattern-not-variable-reference</span></a> <code>=</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
@@ -9321,7 +9340,7 @@ addition to <code>X</code>, <code>Y</code> and <code>Z</code>, then
 </section>
 </section>
 <section>
-<h3 id="section_7.15">7.15 Action statement</h3>
+<h3 id="section_7.16">7.16 Action statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="action-stmt">action-stmt</span> := <a href="#action"><span class="ntref">action</span></a> <code>;</code>
 </pre>
@@ -9332,7 +9351,7 @@ the static type of an action in an action-stmt is not nil.
 </p>
 </section>
 <section>
-<h3 id="section_7.16">7.16 Call statement</h3>
+<h3 id="section_7.17">7.17 Call statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="call-stmt">call-stmt</span> := <a href="#call-expr"><span class="ntref">call-expr</span></a> <code>;</code>
 <span class="ntdfn" id="call-expr">call-expr</span> := <a href="#function-call-expr"><span class="ntref">function-call-expr</span></a> | <a href="#method-call-expr"><span class="ntref">method-call-expr</span></a>
@@ -9345,7 +9364,7 @@ call-stmt must be either <code>()</code> or <code>never</code>. If it is
 </p>
 </section>
 <section>
-<h3 id="section_7.17">7.17 Checking statement</h3>
+<h3 id="section_7.18">7.18 Checking statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="checking-stmt">checking-stmt</span> := <a href="#checking-action-or-expr"><span class="ntref">checking-action-or-expr</span></a> <code>;</code>
 </pre>
@@ -9356,7 +9375,7 @@ type of the checking-action-or-expr in a checking-stmt must be <code>()</code>.
 </p>
 </section>
 <section>
-<h3 id="section_7.18">7.18 Conditional statement</h3>
+<h3 id="section_7.19">7.19 Conditional statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="if-else-stmt">if-else-stmt</span> :=
    <code>if</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a> 
@@ -9374,7 +9393,7 @@ is present, the corresponding statement block is executed.
 </p>
 </section>
 <section>
-<h3 id="section_7.19">7.19 Do statement</h3>
+<h3 id="section_7.20">7.20 Do statement</h3>
 <pre class="grammar"><span class="ntdfn" id="do-stmt">do-stmt</span> := <code>do</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 <p>
@@ -9383,7 +9402,7 @@ A <code>do-stmt</code> is executed by executing its
 </p>
 </section>
 <section>
-<h3 id="match_statement">7.20 Match statement</h3>
+<h3 id="match_statement">7.21 Match statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="match-stmt">match-stmt</span> := <code>match</code> <a href="#match-target"><span class="ntref">match-target</span></a> <code>{</code> <a href="#match-clause"><span class="ntref">match-clause</span></a>+ <code>}</code>
 <span class="ntdfn" id="match-target">match-target</span> := <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
@@ -9440,7 +9459,7 @@ object whose method is being called must also be a subtype of
 </ul>
 
 <section>
-<h4 id="section_7.20.1">7.20.1 Match patterns</h4>
+<h4 id="section_7.21.1">7.21.1 Match patterns</h4>
 <pre class="grammar"><span class="ntdfn" id="match-pattern-list">match-pattern-list</span> := 
   <a href="#match-pattern"><span class="ntref">match-pattern</span></a> (<code>|</code> <a href="#match-pattern"><span class="ntref">match-pattern</span></a>)*
 </pre>
@@ -9542,7 +9561,7 @@ error value must belong to the referenced error type.
 </section>
 
 <section>
-<h4 id="section_7.20.2">7.20.2 Match clause reachability and narrowing</h4>
+<h4 id="section_7.21.2">7.21.2 Match clause reachability and narrowing</h4>
 <p>
 This section uses the <em>read-only intersection</em> between two types, which
 is defined analogously to the read-only difference used for conditional variable
@@ -9597,9 +9616,9 @@ only if at least one of its <code>statement-block</code>s can complete normally.
 </section>
 </section>
 <section>
-<h3 id="section_7.21">7.21 Loops</h3>
+<h3 id="section_7.22">7.22 Loops</h3>
 <section>
-<h4 id="section_7.21.1">7.21.1 Foreach statement</h4>
+<h4 id="section_7.22.1">7.22.1 Foreach statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="foreach-stmt">foreach-stmt</span> :=
    <code>foreach</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
@@ -9653,7 +9672,7 @@ typed-binding-pattern uses var, then the type will be inferred from the type of
 </p>
 </section>
 <section>
-<h4 id="section_7.21.2">7.21.2 While statement</h4>
+<h4 id="section_7.22.2">7.22.2 While statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="while-stmt">while-stmt</span> := <code>while</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
@@ -9683,7 +9702,7 @@ The static type of <code>expression</code> must be a subtype of boolean.
 </p>
 </section>
 <section>
-<h4 id="section_7.21.3">7.21.3 Continue statement</h4>
+<h4 id="section_7.22.3">7.22.3 Continue statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="continue-stmt">continue-stmt</span> := <code>continue</code> <code>;</code>
 </pre>
@@ -9695,7 +9714,7 @@ enclosing while-stmt or foreach-stmt to complete normally.
 </p>
 </section>
 <section>
-<h4 id="section_7.21.4">7.21.4 Break statement</h4>
+<h4 id="section_7.22.4">7.22.4 Break statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="break-stmt">break-stmt</span> := <code>break</code> <code>;</code>
 </pre>
@@ -9709,7 +9728,7 @@ complete normally.
 </section>
 
 <section>
-<h3 id="lock_statement">7.22 Lock statement</h3>
+<h3 id="lock_statement">7.23 Lock statement</h3>
 <pre class="grammar"><span class="ntdfn" id="lock-stmt">lock-stmt</span> := <code>lock</code> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
 
@@ -9778,7 +9797,7 @@ parameter.
 </section>
 
 <section>
-<h3 id="section_7.23">7.23 Fail and retry</h3>
+<h3 id="section_7.24">7.24 Fail and retry</h3>
 <p>
 The execution of a statement can fail either as the result of <code>check</code>
 expression or action, or from an explicit <code>fail</code> statement. When
@@ -9800,7 +9819,7 @@ of associated error value is not known at compile-time.
 </p>
 
 <section>
-<h4 id="section_7.23.1">7.23.1 Fail statement</h4>
+<h4 id="section_7.24.1">7.24.1 Fail statement</h4>
 <pre class="grammar"><span class="ntdfn" id="fail-stmt">fail-stmt</span> := <code>fail</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
 </pre>
 <p>
@@ -9816,7 +9835,7 @@ worker.
 
 </section>
 <section>
-<h4 id="section_7.23.2">7.23.2 On fail clause</h4>
+<h4 id="section_7.24.2">7.24.2 On fail clause</h4>
 <pre class="grammar"><span class="ntdfn" id="stmt-with-on-fail">stmt-with-on-fail</span> := <a href="#regular-compound-stmt"><span class="ntref">regular-compound-stmt</span></a> <a href="#on-fail-clause"><span class="ntref">on-fail-clause</span></a>
 <span class="ntdfn" id="on-fail-clause">on-fail-clause</span> := <code>on</code> <code>fail</code> [<a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a>] <a href="#statement-block"><span class="ntref">statement-block</span></a>
 </pre>
@@ -9840,7 +9859,7 @@ is guaranteed to succeed by the static type of the associated error value.
 </section>
 
 <section>
-<h4 id="section_7.23.3">7.23.3 Retry statement</h4>
+<h4 id="section_7.24.3">7.24.3 Retry statement</h4>
 <pre class="grammar"><span class="ntdfn" id="retry-stmt">retry-stmt</span> := <code>retry</code> <a href="#retry-spec"><span class="ntref">retry-spec</span></a> <a href="#statement-block"><span class="ntref">statement-block</span></a>
 <span class="ntdfn" id="retry-spec">retry-spec</span> := [<a href="#type-parameter"><span class="ntref">type-parameter</span></a>] [ <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code> ]
 </pre>
@@ -9875,7 +9894,7 @@ If the type-parameter is omitted, it defaults to
 </section>
 
 <section>
-<h3 id="transactions">7.24 Transactions</h3>
+<h3 id="transactions">7.25 Transactions</h3>
 
 <p>
 Ballerina provides language support for distributed transactions. A global
@@ -9951,7 +9970,7 @@ commit, and the preceding transactions all completed with a rollback.
 </p>
 
 <section>
-<h4 id="section_7.24.1">7.24.1 Transaction manager</h4>
+<h4 id="section_7.25.1">7.25.1 Transaction manager</h4>
 
 <p>
 The semantics of Ballerina's transactional language features are defined in
@@ -9964,7 +9983,7 @@ defined in the langlib transaction module.
 </p>
 
 <section>
-<h5 id="section_7.24.1.1">7.24.1.1 Begin operation</h5>
+<h5 id="section_7.25.1.1">7.25.1.1 Begin operation</h5>
 <p>
 The Begin operation starts a global transaction and pushes a transaction branch
 for the new global transaction onto the current strand's transaction stack. This
@@ -9978,7 +9997,7 @@ the previous transactions in a sequence of retries.
 </section>
 
 <section>
-<h5 id="section_7.24.1.2">7.24.1.2 Commit operation</h5>
+<h5 id="section_7.25.1.2">7.25.1.2 Commit operation</h5>
 <p>
 The Commit operation is only called in transaction mode, and when the current
 transaction branch is the initiating branch of a global transaction. The Commit
@@ -10024,7 +10043,7 @@ nil.
 </section>
 
 <section>
-<h5 id="section_7.24.1.3">7.24.1.3 Rollback operation</h5>
+<h5 id="section_7.25.1.3">7.25.1.3 Rollback operation</h5>
 <p>
 The Rollback operation is only called in transaction mode, and when the current
 transaction branch is the initiating branch of a global transaction. The
@@ -10048,7 +10067,7 @@ handlers.
 </section>
 
 <section>
-<h4 id="section_7.24.2">7.24.2 Transaction statement</h4>
+<h4 id="section_7.25.2">7.25.2 Transaction statement</h4>
 
 <p>
 A transaction is performed using a transaction statement. The semantics of the
@@ -10093,7 +10112,7 @@ completely independent of any existing transactions.
 
 
 <section>
-<h4 id="section_7.24.3">7.24.3 Retry transaction statement</h4>
+<h4 id="section_7.25.3">7.25.3 Retry transaction statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="retry-transaction-stmt">retry-transaction-stmt</span> := <code>retry</code> <a href="#retry-spec"><span class="ntref">retry-spec</span></a> <a href="#transaction-stmt"><span class="ntref">transaction-stmt</span></a>
 </pre>
@@ -10115,7 +10134,7 @@ to retry.</li>
 </section>
 
 <section>
-<h4 id="section_7.24.4">7.24.4 Commit action</h4>
+<h4 id="section_7.25.4">7.25.4 Commit action</h4>
 
 <pre class="grammar"><span class="ntdfn" id="commit-action">commit-action</span> := <code>commit</code>
 </pre>
@@ -10134,7 +10153,7 @@ flow of control.
 </section>
 
 <section>
-<h4 id="section_7.24.5">7.24.5 Rollback statement</h4>
+<h4 id="section_7.25.5">7.25.5 Rollback statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="rollback-stmt">rollback-stmt</span> := <code>rollback</code> [<a href="#expression"><span class="ntref">expression</span></a>] <code>;</code>
 </pre>
@@ -10153,7 +10172,7 @@ statement does not alter the flow of control.
 
 </section>
 <section>
-<h3 id="section_7.25">7.25 Panic statement</h3>
+<h3 id="section_7.26">7.26 Panic statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="panic-stmt">panic-stmt</span> := <code>panic</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
 </pre>
@@ -10167,7 +10186,7 @@ The static type of <code>expression</code> must be a subtype of error.
 </section>
 
 <section>
-<h3 id="section_7.26">7.26 Return statement</h3>
+<h3 id="section_7.27">7.27 Return statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="return-stmt">return-stmt</span> := <code>return</code> [ <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> ] <code>;</code>
 </pre>
@@ -10203,6 +10222,7 @@ not constrained.
    | <a href="#module-const-decl"><span class="ntref">module-const-decl</span></a>
    | <a href="#module-enum-decl"><span class="ntref">module-enum-decl</span></a>
    | <a href="#module-xmlns-decl"><span class="ntref">module-xmlns-decl</span></a>
+   | <a href="#module-client-decl"><span class="ntref">module-client-decl</span></a>
    | <a href="#annotation-decl"><span class="ntref">annotation-decl</span></a>
 </pre>
 <section>
@@ -10841,6 +10861,16 @@ The semantics of xmlns-decl are described in the <a href="#XML_namespace_declara
 statement</a> section.
 </p>
 
+</section>
+
+<section>
+<h3 id="section_8.11">8.11 Module client declaration</h3>
+<pre class="grammar"><span class="ntdfn" id="module-client-decl">module-client-decl</span> := <a href="#client-decl"><span class="ntref">client-decl</span></a>
+</pre>
+
+<p>
+The semantics of client-decl are described in the <a href="#client_declaration_statement">Client declaration statement</a> section.
+</p>
 </section>
 
 </section>

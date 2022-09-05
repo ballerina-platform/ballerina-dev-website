@@ -108,14 +108,13 @@ export default function NatsStreamingSecureConnection() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Secured connection</h1>
 
-      <p>The underlying connections of the subscriber and the publisher are</p>
-
-      <p>secured with TLS/SSL and Basic Auth.</p>
-
-      <p>For more information on the underlying module,</p>
+      <p>
+        The underlying connections of the subscriber and the publisher are
+        secured with TLS/SSL and Basic Auth.
+      </p>
 
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
           <code>stan</code> module
         </a>

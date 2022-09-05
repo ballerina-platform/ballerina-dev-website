@@ -282,10 +282,12 @@ export default function HttpQueryParameter() {
             <code className="d-flex flex-column">
               <span>{`\$ curl "http://localhost:9090/product/count?a=315&b=585"`}</span>
               <span>{`{"count":900}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ curl "http://localhost:9090/product/name?id=432423"`}</span>
               <span>{`product_432423`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ curl "http://localhost:9090/product/detail?colour=red&colour=green"`}</span>
               <span>{`{"product_colour":["red", "green"]}`}</span>
             </code>

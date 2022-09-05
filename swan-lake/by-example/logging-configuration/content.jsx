@@ -200,7 +200,8 @@ export default function LoggingConfiguration() {
                 <code>{`INFO`}</code>
                 {` and higher level logs are logged by default.`}
               </span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The log level can be configured via a Ballerina configuration file.`}</span>
               <span>
                 {`# To set the global log level to `}
@@ -222,7 +223,8 @@ export default function LoggingConfiguration() {
                 <code>{`DEBUG`}</code>
                 {` and higher level logs are logged.`}
               </span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Each module can also be assigned its own log level. To assign a`}</span>
               <span>
                 {`# log level to a module, provide the following entry in the `}
@@ -235,7 +237,8 @@ export default function LoggingConfiguration() {
               <span>{`# name = "[ORG_NAME]/[MODULE_NAME]"`}</span>
               <span>{`# level = "[LOG_LEVEL]"`}</span>
               <span>{`# \`\`\``}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# By default, log messages are logged to the console in the LogFmt format.`}</span>
               <span>
                 {`# To set the output format to JSON, place the entry given below in the `}

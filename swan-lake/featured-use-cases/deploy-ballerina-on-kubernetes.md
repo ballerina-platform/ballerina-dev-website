@@ -1,11 +1,11 @@
 ---
 layout: ballerina-deploying-ballerina-on-kubernetes-left-nav-pages-swanlake
 title: Deploy Ballerina on Kubernetes
-description: Let’s dockerize your Ballerina service and deploy it into Kubernetes.
+description: Let’s Dockerize your Ballerina service and deploy it on Kubernetes.
 keywords: ballerina, programming language, cloud, kubernetes, docker, cloud-native
 permalink: /learn/deploy-ballerina-on-kubernetes/
 active: deploy-ballerina-on-kubernetes
-intro: This guide walks you through the steps of writing a simple Ballerina service, dockerizing the application, and deploy it in Kubernetes.
+intro: This guide walks you through writing a simple Ballerina service, building it, and deploying it on Kubernetes.
 redirect_from:
     - /learn/deploying-ballerina-on-kubernetes
     - /learn/deploying-ballerina-on-kubernetes/
@@ -28,7 +28,7 @@ To complete this tutorial, you need:
 5. A [Docker Hub](https://hub.docker.com/) account
 6. [Kubectl](https://kubernetes.io/docs/tasks/tools/) installed and configured in a [Kubernetes cluster](https://minikube.sigs.k8s.io/docs/start/)
 
-## Create the Ballerina package
+## Create the service package
 
 Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
@@ -69,7 +69,9 @@ service / on httpListener {
 }
 ```
 
-## Update the `Ballerina.toml` file
+## Set the Code to Cloud configurations
+
+### Update the `Ballerina.toml` file
 
 To enable the code to cloud functionality in the Ballerina package, add the `cloud="k8s"` property below to the `build-options` in the `Ballerina.toml` file.
 
@@ -78,7 +80,9 @@ To enable the code to cloud functionality in the Ballerina package, add the `clo
 cloud = "k8s"
 ```
 
-## Create the `Cloud.toml` file
+>**Note:** If you want to deploy your Ballerina service only on Docker, add the `cloud="docker"` property to the `build-options` in the `Ballerina.toml` file.
+
+### Create the `Cloud.toml` file
 
 Create a file named `Cloud.toml` in the package directory and add the content below. 
 
@@ -123,9 +127,9 @@ Generating artifacts...
 
 >**Info:** This generates the cloud artifacts inside the `target/` directory.
 
-## Deploy the package on Docker
+## Push the Docker image
 
-Execute the command below to push the created Docker image into Docker Hub.
+Execute the command below to push the created Docker image into Docker Hub for the cluster to get access to the previously built container.
 
 **Info:** Replace `wso2inc` with your repository name.
 
@@ -140,7 +144,7 @@ The push refers to repository [docker.io/wso2inc/greeter]
 latest: digest: sha256:c1acf5165848d70c347a970d6b5c32f63669cdbb0d4c1daca2c91cfbe32f61b2 size: 13718
 ```
 
-## Deploy the package on Kubernetes
+## Deploy on Kubernetes
 
 Execute the command below to deploy the Ballerina application into the Kubernetes cluster.
 

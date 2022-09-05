@@ -1,11 +1,11 @@
 ---
 layout: ballerina-deploying-ballerina-on-kubernetes-left-nav-pages-swanlake
 title: Deploy Ballerina on Kubernetes
-description: Let’s dockerize your Ballerina service and deploy it into Kubernetes.
+description: Let’s Dockerize your Ballerina service and deploy it on Kubernetes.
 keywords: ballerina, programming language, cloud, kubernetes, docker, cloud-native
 permalink: /learn/deploy-ballerina-on-kubernetes/
 active: deploy-ballerina-on-kubernetes
-intro: This guide walks you through writing a simple Ballerina service, building it (to Dockerize), and deploying it.
+intro: This guide walks you through writing a simple Ballerina service, building it, and deploying it on Kubernetes.
 redirect_from:
     - /learn/deploying-ballerina-on-kubernetes
     - /learn/deploying-ballerina-on-kubernetes/
@@ -54,7 +54,7 @@ greeter/
 └── main.bal
 ```
 
-## Create the service
+## Create the Ballerina service
 
 To write a Ballerina program that returns a `Hello, World!` string upon invoking the resource, replace the `main.bal` content with the code below.
 
@@ -69,7 +69,7 @@ service / on httpListener {
 }
 ```
 
-## Set the code-to-cloud configurations
+## Set the Code to Cloud configurations
 
 ### Update the `Ballerina.toml` file
 
@@ -79,6 +79,8 @@ To enable the code to cloud functionality in the Ballerina package, add the `clo
 [build-options]
 cloud = "k8s"
 ```
+
+>**Note:** If you want to deploy your Ballerina service only on Docker, add the `cloud="docker"` property to the `build-options` in the `Ballerina.toml` file.
 
 ### Create the `Cloud.toml` file
 
@@ -125,11 +127,9 @@ Generating artifacts...
 
 >**Info:** This generates the cloud artifacts inside the `target/` directory.
 
-## Deploy the package
+## Push the Docker image
 
-### Deploy the package on Docker
-
-Execute the command below to push the created Docker image into Docker Hub.
+Execute the command below to push the created Docker image into Docker Hub for the cluster to get access to the previously built container.
 
 **Info:** Replace `wso2inc` with your repository name.
 
@@ -144,7 +144,7 @@ The push refers to repository [docker.io/wso2inc/greeter]
 latest: digest: sha256:c1acf5165848d70c347a970d6b5c32f63669cdbb0d4c1daca2c91cfbe32f61b2 size: 13718
 ```
 
-### Deploy the package on Kubernetes
+## Deploy on Kubernetes
 
 Execute the command below to deploy the Ballerina application into the Kubernetes cluster.
 

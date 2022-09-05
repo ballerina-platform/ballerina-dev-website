@@ -51,27 +51,27 @@ To create a simple service definition in Protocol Buffers, follow these steps:
   > **Info:** This sample service definition is taken from the [Quick start](https://grpc.io/docs/languages/go/quickstart/) guide on the gRPC official site.
 
 
-    ```proto
-    syntax = "proto3";
+  ```proto
+  syntax = "proto3";
 
-    package helloworld;
+  package helloworld;
 
-    // The greeting service definition.
-    service Greeter {
-      // Sends a greeting.
-      rpc sayHello(HelloRequest) returns (HelloReply);
-    }
+  // The greeting service definition.
+  service Greeter {
+    // Sends a greeting.
+    rpc sayHello(HelloRequest) returns (HelloReply);
+  }
 
-    // The request message with the user's name.
-    message HelloRequest {
-      string name = 1;
-    }
+  // The request message with the user's name.
+  message HelloRequest {
+    string name = 1;
+  }
 
-    // The response message with the greetings.
-    message HelloReply {
-      string message = 1;
-    }
-    ```
+  // The response message with the greetings.
+  message HelloReply {
+    string message = 1;
+  }
+  ```
 
 Now, let’s implement the gRPC service and client in the Ballerina language.
 

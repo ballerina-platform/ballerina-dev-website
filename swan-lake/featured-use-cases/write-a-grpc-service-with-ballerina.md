@@ -5,7 +5,7 @@ description: This guide will walk you through writing a simple Ballerina gRPC se
 keywords: ballerina, grpc, protocol buffers, protobuf, ballerina packages, language-guide, standard library
 permalink: /learn/write-a-grpc-service-with-ballerina/
 active: write-a-grpc-service-with-ballerina
-intro: This guide will walk you through writing a simple Ballerina gRPC service and invoking the service through a Ballerina gRPC client application.
+intro: This guide walks you through writing a simple Ballerina gRPC service and invoking the service through a Ballerina gRPC client application.
 redirect_from:
 - /learn/getting-started/writing-a-grpc-service-with-ballerina
 - /learn/getting-started/writing-a-grpc-service-with-ballerina/

@@ -5,7 +5,7 @@ description: Let’s dockerize your Ballerina service and deploy it into Kuberne
 keywords: ballerina, programming language, cloud, kubernetes, docker, cloud-native
 permalink: /learn/deploy-ballerina-on-kubernetes/
 active: deploy-ballerina-on-kubernetes
-intro: This guide walks you through the steps of writing a simple Ballerina service, dockerizing the application, and deploy it in Kubernetes.
+intro: This guide walks you through writing a simple Ballerina service, building it (to Dockerize), and deploying it.
 redirect_from:
     - /learn/deploying-ballerina-on-kubernetes
     - /learn/deploying-ballerina-on-kubernetes/
@@ -28,7 +28,7 @@ To complete this tutorial, you need:
 5. A [Docker Hub](https://hub.docker.com/) account
 6. [Kubectl](https://kubernetes.io/docs/tasks/tools/) installed and configured in a [Kubernetes cluster](https://minikube.sigs.k8s.io/docs/start/)
 
-## Create the Ballerina package
+## Create the service package
 
 Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
@@ -54,7 +54,7 @@ greeter/
 └── main.bal
 ```
 
-## Create the Ballerina service
+## Create the service
 
 To write a Ballerina program that returns a `Hello, World!` string upon invoking the resource, replace the `main.bal` content with the code below.
 
@@ -69,7 +69,9 @@ service / on httpListener {
 }
 ```
 
-## Update the `Ballerina.toml` file
+## Set the code-to-cloud configurations
+
+### Update the `Ballerina.toml` file
 
 To enable the code to cloud functionality in the Ballerina package, add the `cloud="k8s"` property below to the `build-options` in the `Ballerina.toml` file.
 
@@ -78,7 +80,7 @@ To enable the code to cloud functionality in the Ballerina package, add the `clo
 cloud = "k8s"
 ```
 
-## Create the `Cloud.toml` file
+### Create the `Cloud.toml` file
 
 Create a file named `Cloud.toml` in the package directory and add the content below. 
 
@@ -123,7 +125,9 @@ Generating artifacts...
 
 >**Info:** This generates the cloud artifacts inside the `target/` directory.
 
-## Deploy the package on Docker
+## Deploy the package
+
+### Deploy the package on Docker
 
 Execute the command below to push the created Docker image into Docker Hub.
 
@@ -140,7 +144,7 @@ The push refers to repository [docker.io/wso2inc/greeter]
 latest: digest: sha256:c1acf5165848d70c347a970d6b5c32f63669cdbb0d4c1daca2c91cfbe32f61b2 size: 13718
 ```
 
-## Deploy the package on Kubernetes
+### Deploy the package on Kubernetes
 
 Execute the command below to deploy the Ballerina application into the Kubernetes cluster.
 

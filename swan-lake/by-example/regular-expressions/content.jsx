@@ -88,7 +88,7 @@ export default function RegularExpressions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8972df531db54426f0cd22a101d6ab92&file=regular_expressions.bal",
+                "https://play.ballerina.io/?gist=9aea3db61cb8ebc9fc7a44ba9077ac94&file=regular_expressions.bal",
                 "_blank"
               );
             }}

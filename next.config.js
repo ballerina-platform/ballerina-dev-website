@@ -190,6 +190,30 @@ const nextConfig = {
         destination: `/${redirectBase}0.990/learn/api-docs/ballerina/index.html`,
       },
       {
+        source: `/cookie-policy`,
+        destination: `/${redirectBase}policies/cookie-policy`,
+      },
+      {
+        source: `/license-of-site`,
+        destination: `/${redirectBase}policies/license-of-site`,
+      },
+      {
+        source: `/terms-of-service`,
+        destination: `/${redirectBase}policies/terms-of-service`,
+      },
+      {
+        source: `/privacy-policy`,
+        destination: `/${redirectBase}policies/privacy-policy`,
+      },
+      {
+        source: `/security-policy`,
+        destination: `/${redirectBase}policies/security-policy`,
+      },
+      {
+        source: `/trademark-usage-policy`,
+        destination: `/${redirectBase}policies/trademark-usage-policy`,
+      },
+      {
         source: `/spec/lang/2022R2/`,
         destination: `/spec/lang/2022R2/index.html`,
       },

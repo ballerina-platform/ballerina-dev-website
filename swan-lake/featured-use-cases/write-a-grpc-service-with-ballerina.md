@@ -5,7 +5,7 @@ description: This guide will walk you through writing a simple Ballerina gRPC se
 keywords: ballerina, grpc, protocol buffers, protobuf, ballerina packages, language-guide, standard library
 permalink: /learn/write-a-grpc-service-with-ballerina/
 active: write-a-grpc-service-with-ballerina
-intro: This guide will walk you through writing a simple Ballerina gRPC service and invoking the service through a Ballerina gRPC client application.
+intro: This guide walks you through writing a simple Ballerina gRPC service and invoking the service through a Ballerina gRPC client application.
 redirect_from:
 - /learn/getting-started/writing-a-grpc-service-with-ballerina
 - /learn/getting-started/writing-a-grpc-service-with-ballerina/
@@ -51,27 +51,27 @@ To create a simple service definition in Protocol Buffers, follow these steps:
   > **Info:** This sample service definition is taken from the [Quick start](https://grpc.io/docs/languages/go/quickstart/) guide on the gRPC official site.
 
 
-    ```proto
-    syntax = "proto3";
+  ```proto
+  syntax = "proto3";
 
-    package helloworld;
+  package helloworld;
 
-    // The greeting service definition.
-    service Greeter {
-      // Sends a greeting.
-      rpc sayHello(HelloRequest) returns (HelloReply);
-    }
+  // The greeting service definition.
+  service Greeter {
+    // Sends a greeting.
+    rpc sayHello(HelloRequest) returns (HelloReply);
+  }
 
-    // The request message with the user's name.
-    message HelloRequest {
-      string name = 1;
-    }
+  // The request message with the user's name.
+  message HelloRequest {
+    string name = 1;
+  }
 
-    // The response message with the greetings.
-    message HelloReply {
-      string message = 1;
-    }
-    ```
+  // The response message with the greetings.
+  message HelloReply {
+    string message = 1;
+  }
+  ```
 
 Now, let’s implement the gRPC service and client in the Ballerina language.
 

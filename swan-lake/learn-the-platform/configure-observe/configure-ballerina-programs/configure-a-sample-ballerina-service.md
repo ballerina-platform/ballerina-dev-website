@@ -72,7 +72,7 @@ Consider the following step-by-step guide to configuring a Ballerina package tha
    the program will finish the execution abruptly with a runtime exception, if the value is not provided at the runtime.
 
 3. To provide the values for `port` and `greeting` through a configuration file, create a file named `Config.toml`
-   with the following content in the package root directory.
+   with the following content in the current working directory.
 
    ```toml
    port = 8080

@@ -79,11 +79,11 @@ export default function Resources() {
                             <Card.Body className={styles.cardBody}>
                                 <Card.Title className={styles.cardTitle}>Articles</Card.Title>
                                 <Card.Text className={styles.cardText}>
-                                    <a target="_blank" rel="noreferrer" href="https://dzone.com/articles/how-to-use-ballerina-local-repository">
-                                        <h4 className="card-title" >How to use Ballerina Local Repository</h4>
+                                    <a target="_blank" rel="noreferrer" href="https://thenewstack.io/how-mosip-uses-ballerina-websubhub-for-event-driven-integration/">
+                                        <h4 className="card-title" >How MOSIP Uses Ballerina WebSubHub for Event-Driven Integration</h4>
                                     </a>
                                 </Card.Text>
-                                <p className="card-text"> By Pramodya Mendis </p>
+                                <p className="card-text"> By Dakshitha Ratnayake </p>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -93,11 +93,11 @@ export default function Resources() {
                             <Card.Body className={styles.cardBody}>
                                 <Card.Title className={styles.cardTitle}>Blog posts</Card.Title>
                                 <Card.Text className={styles.cardText}>
-                                    <a target="_blank" rel="noreferrer" href="https://medium.com/ballerina-techblog/practical-guide-for-the-language-server-protocol-3091a122b750">
-                                        <h4 className="card-title" >A Practical Guide for Language Server Protocol</h4>
+                                    <a target="_blank" rel="noreferrer" href="https://blog.jclark.com/2022/05/why-ballerina-is-language.html">
+                                        <h4 className="card-title" >Why Ballerina is a language</h4>
                                     </a>
                                 </Card.Text>
-                                <p className="card-text"> By Malintha Ranasinghe </p>
+                                <p className="card-text"> By James Clark </p>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -107,11 +107,11 @@ export default function Resources() {
                             <Card.Body className={styles.cardBody}>
                                 <Card.Title className={styles.cardTitle}>Videos & podcasts</Card.Title>
                                 <Card.Text className={styles.cardText}>
-                                    <a target="_blank" rel="noreferrer" href="https://www.infoq.com/podcasts/james-clark-ballerina-language-network-data-concurrency/?utm_source=twitter&utm_medium=link&utm_campaign=calendar">
-                                        <h4>How Ballerina Handles Network Interaction, Data, and Concurrency </h4>
+                                    <a target="_blank" rel="noreferrer" href="https://youtu.be/Pal5QZJyloY">
+                                        <h4>Simplifying Cloud Native Application Development with Ballerina</h4>
                                     </a>
                                 </Card.Text>
-                                <p className="card-text"> By James Clark and Charles Humble </p>
+                                <p className="card-text"> By Eric Newcomer and Darryl Taft </p>
                             </Card.Body>
                         </Card>
                     </Col>

@@ -68,7 +68,10 @@ export default function IoBytes() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/io/latest/">IO module</a>.
+        <a href="https://lib.ballerina.io/ballerina/io/latest/">
+          <code>io</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

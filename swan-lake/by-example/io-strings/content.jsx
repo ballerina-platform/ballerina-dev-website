@@ -80,7 +80,10 @@ export default function IoStrings() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/io/latest/">IO module</a>.
+        <a href="https://lib.ballerina.io/ballerina/io/latest/">
+          <code>io</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -89,7 +92,7 @@ export default function IoStrings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=18eb754c6c92373e1f964a0ee8af1395&file=io_strings.bal",
+                "https://play.ballerina.io/?gist=bbccde5689e024d261bfa3f5c5d2820f&file=io_strings.bal",
                 "_blank"
               );
             }}

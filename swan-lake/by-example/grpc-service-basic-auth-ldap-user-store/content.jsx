@@ -428,6 +428,13 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
         </li>
       </ul>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You may need to change the certificate file
+          path and private key file path.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "24px" }}
@@ -486,11 +493,6 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
           </pre>
         </Col>
       </Row>
-
-      <p>
-        You may need to change the certificate file path and private key file
-        path.
-      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

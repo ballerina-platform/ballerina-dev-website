@@ -397,6 +397,11 @@ export default function GrpcServiceMutualSsl() {
         </li>
       </ul>
 
+      <p>
+        <strong>Info:</strong> You may need to change the certificate file path,
+        private key file path, and trusted certificate file path.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "24px" }}
@@ -455,11 +460,6 @@ export default function GrpcServiceMutualSsl() {
           </pre>
         </Col>
       </Row>
-
-      <p>
-        You may need to change the certificate file path, private key file path,
-        and trusted certificate file path.
-      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

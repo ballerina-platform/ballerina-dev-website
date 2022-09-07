@@ -54,7 +54,10 @@ export default function LoggingConfiguration() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/log/latest/">Log module</a>.
+        <a href="https://lib.ballerina.io/ballerina/log/latest/">
+          <code>log</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

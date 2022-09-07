@@ -119,13 +119,11 @@ export default function XmlSubtyping() {
           <span>&#8226;&nbsp;</span>
           <span>
             An <code>xml</code> value belongs to the type{" "}
-            <code>xml&lt;T&gt;</code> if each of its members belong
+            <code>xml&lt;T&gt;</code> if each of its members belong to{" "}
+            <code>T</code>.
           </span>
         </li>
       </ul>
-      <p>
-        to <code>T</code>.
-      </p>
 
       <p>
         Functions in <code>lang.xml</code> use this to provide safe and
@@ -135,7 +133,7 @@ export default function XmlSubtyping() {
       <p>
         For example, <code>x.elements()</code> returns element items in{" "}
         <code>x</code> as type <code>xml&lt;xml:Element&gt;</code> and{" "}
-        <code>e.getName()</code> and <code>e.setName()</code> are defined when{" "}
+        <code>e.getName()</code> and <code>e.setNam ()</code> are defined when{" "}
         <code>e</code> has type <code>xml:Element</code>.
       </p>
 

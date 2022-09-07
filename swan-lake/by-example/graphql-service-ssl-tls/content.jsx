@@ -69,7 +69,7 @@ export default function GraphqlServiceSslTls() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL module
+          <code>graphql</code> module
         </a>
         .
       </p>

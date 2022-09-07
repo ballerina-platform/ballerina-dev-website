@@ -93,7 +93,7 @@ export default function TransactionalQualifier() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cb92b754c4dacbb4a6b12e6727186ec3&file=transactional_qualifier.bal",
+                "https://play.ballerina.io/?gist=fc847a7bc9cb91098baa3ec1e55fddc3&file=transactional_qualifier.bal",
                 "_blank"
               );
             }}

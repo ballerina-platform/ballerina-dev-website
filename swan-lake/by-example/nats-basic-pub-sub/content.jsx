@@ -88,7 +88,7 @@ export default function NatsBasicPubSub() {
         This is a simple publish/subscribe messaging pattern example. For more
         information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/nats/latest">
-          NATS module
+          <code>nats</code> module
         </a>
         .
       </p>

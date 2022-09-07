@@ -129,17 +129,16 @@ export default function MysqlAtomicBatchExecuteOperation() {
           <strong>Note:</strong> The MySQL database driver JAR should be defined
           in the <code>Ballerina.toml</code> file as a dependency. The MySQL
           connector uses database properties from MySQL version 8.0.13 onwards.
-          Therefore, it is
+          Therefore, it is recommended to use a MySQL driver version greater
+          than 8.0.13.
         </p>
       </blockquote>
-
-      <p>recommended to use a MySQL driver version greater than 8.0.13.</p>
 
       <p>
         For a sample configuration and more information on the underlying
         module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
-          MySQL module
+          <code>mysql</code> module
         </a>
         .
       </p>

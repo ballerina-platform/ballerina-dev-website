@@ -85,7 +85,7 @@ export default function CombiningIsolatedFunctionsAndLock() {
           <span>&#8226;&nbsp;</span>
           <span>
             an expression with a type that is a subtype of <code>readonly</code>{" "}
-            is always <code>isolated</code>&lt;/li&gt;
+            is always <code>isolated</code>
           </span>
         </li>
       </ul>
@@ -94,7 +94,7 @@ export default function CombiningIsolatedFunctionsAndLock() {
           <span>&#8226;&nbsp;</span>
           <span>
             an expression <code>[E1, E2]</code> is isolated if <code>E1</code>{" "}
-            and <code>E2</code> are <code>isolated</code>&lt;/li&gt;
+            and <code>E2</code> are <code>isolated</code>
           </span>
         </li>
       </ul>
@@ -104,8 +104,7 @@ export default function CombiningIsolatedFunctionsAndLock() {
           <span>
             an expression <code>f(E1, E2)</code> is <code>isolated</code> if{" "}
             <code>E1</code> and <code>E1</code> are <code>isolated</code>, and
-            the type of <code>f</code> is an <code>isolated</code>{" "}
-            function.&lt;/li&gt;
+            the type of <code>f</code> is an <code>isolated</code> function.
           </span>
         </li>
       </ul>
@@ -116,7 +115,7 @@ export default function CombiningIsolatedFunctionsAndLock() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3f4b1860195813e36df56ae3352d9bf9&file=combining_isolated_functions_and_lock.bal",
+                "https://play.ballerina.io/?gist=5d250f4289f86b8e2f64e5355af9ab43&file=combining_isolated_functions_and_lock.bal",
                 "_blank"
               );
             }}

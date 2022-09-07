@@ -16,7 +16,7 @@ const codeSnippetData = [
 
 service / on new http:Listener(9090) {
 
-    resource function get .(http:Request req) returns http:Response|error {
+    resource function get hello(http:Request req) returns http:Response|error {
         http:Client clientEP = check new ("http://httpstat.us");
         http:Response resp = check clientEP->forward("/200", req);
         return resp;
@@ -67,7 +67,7 @@ export default function HttpTraceLogs() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+          <code>http</code> module
         </a>
         .
       </p>

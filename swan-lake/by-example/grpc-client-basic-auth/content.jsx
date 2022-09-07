@@ -386,6 +386,13 @@ export default function GrpcClientBasicAuth() {
         </li>
       </ul>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite, start a sample service
+          secured with Basic Auth.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "24px" }}
@@ -445,8 +452,6 @@ export default function GrpcClientBasicAuth() {
           </pre>
         </Col>
       </Row>
-
-      <p>As a prerequisite, start a sample service secured with Basic Auth.</p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

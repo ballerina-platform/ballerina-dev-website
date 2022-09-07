@@ -70,7 +70,10 @@ export default function IoCsv() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/io/latest/">IO module</a>.
+        <a href="https://lib.ballerina.io/ballerina/io/latest/">
+          <code>io</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -79,7 +82,7 @@ export default function IoCsv() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d4f9d8d99c6c9bf8b39c25db4d83ecbc&file=io_csv.bal",
+                "https://play.ballerina.io/?gist=0adc313d5c78563d2dc0f2c6d785ad98&file=io_csv.bal",
                 "_blank"
               );
             }}

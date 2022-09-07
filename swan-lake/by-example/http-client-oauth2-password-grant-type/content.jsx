@@ -92,7 +92,7 @@ export default function HttpClientOauth2PasswordGrantType() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          OAuth2 module
+          <code>oauth2</code> module
         </a>
         .
       </p>

@@ -61,7 +61,7 @@ export default function TimeUtc() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/time/latest/">
-          Time module
+          <code>time</code> module module
         </a>
         .
       </p>
@@ -72,7 +72,7 @@ export default function TimeUtc() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a241a0892ba6942f4276b1ad3dc62ff5&file=time_utc.bal",
+                "https://play.ballerina.io/?gist=dc46e96d20934b38da6a154865634afd&file=time_utc.bal",
                 "_blank"
               );
             }}

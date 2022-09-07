@@ -51,12 +51,9 @@ export default function ModuleLifecycle() {
 
       <p>
         All modules are initialized at program startup. Module initialization is
-        ordered so that if module A imports module B,
-      </p>
-
-      <p>
-        then module A is initialized after module B. The initialization phase
-        ends by calling the <code>main</code> function if there is one.
+        ordered so that if module A imports module B, then module A is
+        initialized after module B. The initialization phase ends by calling the{" "}
+        <code>main</code> function if there is one.
       </p>
 
       <p>
@@ -77,7 +74,7 @@ export default function ModuleLifecycle() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d164c2fafc5d4b0d8f68815c741ecd44&file=module_lifecycle.bal",
+                "https://play.ballerina.io/?gist=91f47b4877bea83a910ffadf12ddcf42&file=module_lifecycle.bal",
                 "_blank"
               );
             }}

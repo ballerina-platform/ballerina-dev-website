@@ -131,7 +131,7 @@ export default function JdbcQueryColumnMapping() {
         For a sample configuration and more information on the underlying
         module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
-          JDBC module
+          <code>jdbc</code> module
         </a>{" "}
         .&lt;br&gt;&lt;br&gt;
       </p>

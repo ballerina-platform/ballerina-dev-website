@@ -78,7 +78,10 @@ export default function UdpClient() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/udp/latest">UDP module</a>.
+        <a href="https://lib.ballerina.io/ballerina/udp/latest">
+          <code>udp</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

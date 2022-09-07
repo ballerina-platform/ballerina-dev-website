@@ -67,10 +67,9 @@ export default function NamedWorkerReturnValues() {
 
       <p>
         Named workers have a return type, which defaults to nil. A{" "}
-        <code>return</code> statement in a named worker terminates
+        <code>return</code> statement in a named worker terminates the worker,
+        not the function.
       </p>
-
-      <p>the worker, not the function.</p>
 
       <p>
         Similarly, when <code>check</code> is used and the expression evaluates
@@ -85,7 +84,7 @@ export default function NamedWorkerReturnValues() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ce413542767a8b3874d740d37db7cb16&file=named_worker_return_values.bal",
+                "https://play.ballerina.io/?gist=a60cf1231734477910fdf3ea1b32460c&file=named_worker_return_values.bal",
                 "_blank"
               );
             }}

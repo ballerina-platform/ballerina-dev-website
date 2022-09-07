@@ -116,15 +116,13 @@ export default function NatsStreamingQueueGroup() {
         with the same queue name form the queue group. As messages on the
         registered subject are published, one member of the group is chosen
         randomly to receive the message. Although queue groups have multiple
-        subscribers,
+        subscribers, each message is consumed by only one.
       </p>
-
-      <p>each message is consumed by only one.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
-          STAN module
+          <code>stan</code> module
         </a>
         .
       </p>
@@ -347,8 +345,8 @@ export default function NatsStreamingQueueGroup() {
       </Row>
 
       <p>
-        <code>queue-group.bal</code> contains three services belonging to the
-        same queue group.
+        The <code>queue-group.bal</code> contains three services belonging to
+        the same queue group.
       </p>
 
       <p>

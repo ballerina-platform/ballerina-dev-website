@@ -354,12 +354,12 @@ export default function GrpcBidirectionalStreaming() {
         </li>
       </ul>
 
-      <pre>
-        <code>
-          &gt;**Tip:** Delete the `main.bal` file created by default as it is
-          not required for this example.
-        </code>
-      </pre>
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Delete the <code>main.bal</code> file created by
+          default as it is not required for this example.
+        </p>
+      </blockquote>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>

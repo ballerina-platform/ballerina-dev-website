@@ -82,7 +82,7 @@ export default function KafkaAuthenticationSaslPlainProducer() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          Kafka module
+          <code>kafka</code> module
         </a>
         .
       </p>

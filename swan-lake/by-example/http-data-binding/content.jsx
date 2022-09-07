@@ -67,19 +67,16 @@ export default function HttpDataBinding() {
 
       <p>
         HTTP service data binding helps to access the request payload through a
-        resource signature parameter. The payload
-      </p>
-
-      <p>
-        parameter should be declared with the <code>@Payload</code> annotation
-        and the parameter type can be <code>anydata</code>. Binding failures
-        will be responded with 400[Bad Request] response
+        resource signature parameter. The payload parameter should be declared
+        with the <code>@Payload</code> annotation and the parameter type can be{" "}
+        <code>anydata</code>. Binding failures will be responded with{" "}
+        <code>400[Bad Request]</code> response.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+          <code>http</code> module
         </a>
         .
       </p>

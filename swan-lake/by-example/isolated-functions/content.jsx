@@ -83,22 +83,20 @@ export default function IsolatedFunctions() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>
-            has access to mutable state only through its parameters&lt;/li&gt;
-          </span>
+          <span>has access to mutable state only through its parameters</span>
         </li>
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>has unrestricted access to immutable state&lt;/li&gt;</span>
+          <span>has unrestricted access to immutable state</span>
         </li>
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            can only call functions that are <code>isolated</code>&lt;/li&gt;
+            can only call functions that are <code>isolated</code>
           </span>
         </li>
       </ul>
@@ -114,7 +112,7 @@ export default function IsolatedFunctions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=17abfd581bbc4045617bca79be2c8914&file=isolated_functions.bal",
+                "https://play.ballerina.io/?gist=f615f18c00ecd2bb7ffb0e6bb112a848&file=isolated_functions.bal",
                 "_blank"
               );
             }}

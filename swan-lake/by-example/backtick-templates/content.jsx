@@ -53,13 +53,9 @@ export default function BacktickTemplates() {
 
       <p>
         The backtick templates consist of a tag followed by characters
-        surrounded by backticks. They can contain
-      </p>
-
-      <p>
-        <code>expressions</code> in <code>$&#123;...&#125;</code> to be
-        interpolated. If no escapes are recognized: use an{" "}
-        <code>expression</code> to escape.
+        surrounded by backticks. They can contain <code>expressions</code> in{" "}
+        <code>$&#123;...&#125;</code> to be interpolated. If no escapes are
+        recognized: use an <code>expression</code> to escape.
       </p>
 
       <p>They can contain newlines and are processed in two phases.</p>
@@ -69,7 +65,7 @@ export default function BacktickTemplates() {
           <span>1.</span>
           <span>
             Phase 1 does tag-independent parse: result is a list of{" "}
-            <code>strings</code> and <code>expressions</code>&lt;/li&gt;
+            <code>strings</code> and <code>expressions</code>
           </span>
         </li>
       </ul>
@@ -91,7 +87,7 @@ export default function BacktickTemplates() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ece2f9200cc38563ab43286992e28d05&file=backtick_templates.bal",
+                "https://play.ballerina.io/?gist=4d98a1043a89d14b99bc575f0dc8c324&file=backtick_templates.bal",
                 "_blank"
               );
             }}

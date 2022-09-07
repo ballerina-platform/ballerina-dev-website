@@ -89,7 +89,7 @@ export default function GrpcClientMutualSsl() {
           <strong>Info:</strong> For more information on the underlying module,
           see the{" "}
           <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-            <code>gRPC</code> module
+            <code>grpc</code> module
           </a>
           .
         </p>
@@ -386,6 +386,14 @@ export default function GrpcClientMutualSsl() {
         </li>
       </ul>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You may need to change the certificate file
+          path, private key file path, and trusted certificate file path. As a
+          prerequisite, start a sample service secured with mutual SSL.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "24px" }}
@@ -445,13 +453,6 @@ export default function GrpcClientMutualSsl() {
           </pre>
         </Col>
       </Row>
-
-      <p>
-        You may need to change the certificate file path, private key file path,
-        and trusted certificate file path.
-      </p>
-
-      <p>As a prerequisite, start a sample service secured with mutual SSL.</p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

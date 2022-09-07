@@ -133,7 +133,7 @@ export default function MysqlQueryRowOperation() {
         For a sample configuration and more information on the underlying
         module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
-          MySQL module
+          <code>mysql</code> module
         </a>
         .
       </p>

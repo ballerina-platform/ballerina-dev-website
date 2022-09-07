@@ -61,7 +61,7 @@ export default function QueryExpressions() {
       <p>
         Query-like expressions start with a <code>from</code> clause and end
         with a <code>select</code> clause. It is a list comprehension, based on
-        mathematical &quot;set builder&quot; notation.
+        the mathematical <code>set builder</code> notation.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -70,7 +70,7 @@ export default function QueryExpressions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fb40d2e98e2e4e78ec355865fd7ea375&file=query_expressions.bal",
+                "https://play.ballerina.io/?gist=94818b17761774fd736ec3bd973f0e37&file=query_expressions.bal",
                 "_blank"
               );
             }}

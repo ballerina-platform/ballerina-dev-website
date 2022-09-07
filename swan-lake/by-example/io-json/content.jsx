@@ -67,7 +67,10 @@ export default function IoJson() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/io/latest/">IO module</a>.
+        <a href="https://lib.ballerina.io/ballerina/io/latest/">
+          <code>io</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -76,7 +79,7 @@ export default function IoJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1a34f14dc4160e28ab01f1d730ba7cab&file=io_json.bal",
+                "https://play.ballerina.io/?gist=0ab07e85d4667652b997068583bb410b&file=io_json.bal",
                 "_blank"
               );
             }}

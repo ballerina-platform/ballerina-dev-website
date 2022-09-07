@@ -28,8 +28,7 @@ given through multiple ways when retrieving configurable values:
 - **Configuration files:** The values can be configured through the configuration files in the <a href="https://toml.io/en/v0.4.0" target="_blank">TOML(v0.4) format</a>. 
     The file location can be specified through an environment variable with the name `BAL_CONFIG_FILES`. Ballerina supports
     specifying multiple configuration files using this environment variable with the OS-specific separator. The file
-    precedence order will be as specified in the environment variable. If an environment variable is not specified, the file
-    will be located in the current working directory with the file name `Config.toml` by default.<br/>Configuration 
+    precedence order will be as specified in the environment variable.  If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory.<br/>Configuration 
  values for testing can be provided in a file named `Config.toml` located in the `tests` directory. For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
 
 - **Environment variables:** Users can provide the configuration values through an environment variable with the name `BAL_CONFIG_DATA` in which the

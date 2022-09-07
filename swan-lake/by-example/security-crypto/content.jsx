@@ -259,7 +259,7 @@ export default function SecurityCrypto() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/crypto/latest/">
-          Crypto module
+          <code>crypto</code> module
         </a>
         .
       </p>

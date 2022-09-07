@@ -58,9 +58,11 @@ export default function SequenceDiagrams() {
       <p>A function can be viewed as a sequence diagram as shown below.</p>
 
       <p>
-        &lt;img src=&quot;/learn/by-example/images/sequence-diagram.png&quot;
-        alt=&quot;Sequence Diagrams&quot; width=&quot;600&quot;
-        height=&quot;500&quot;&gt;
+        <img
+          src="/learn/by-example/images/sequence-diagram.png"
+          alt="Sequence diagrams"
+          title="Sequence Diagram"
+        />
       </p>
 
       <p>
@@ -83,7 +85,7 @@ export default function SequenceDiagrams() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2082557379c3e4f2c4293f8e50c3955b&file=sequence_diagrams.bal",
+                "https://play.ballerina.io/?gist=e3f4a784d903d7492f76aaf17a75e4a6&file=sequence_diagrams.bal",
                 "_blank"
               );
             }}

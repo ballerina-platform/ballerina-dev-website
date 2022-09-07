@@ -72,20 +72,15 @@ export default function HttpDisableChunking() {
 
       <p>
         The HTTP client can be configured for chunking. By default, the HTTP
-        client sends messages with the <code>content-length</code>
+        client sends messages with the <code>content-length</code> header. If
+        the message size is larger than the buffer size (8K), messages are
+        chunked. Chunking can be disabled using the client options.
       </p>
-
-      <p>
-        header. If the message size is larger than the buffer size (8K),
-        messages are chunked. Chunking can be disabled using
-      </p>
-
-      <p>the client options.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+          <code>http</code> module
         </a>
         .
       </p>

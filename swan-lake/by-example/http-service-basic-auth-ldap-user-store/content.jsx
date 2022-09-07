@@ -114,7 +114,7 @@ export default function HttpServiceBasicAuthLdapUserStore() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          Auth module
+          `auth module
         </a>
         .
       </p>

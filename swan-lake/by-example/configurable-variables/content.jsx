@@ -55,8 +55,8 @@ export default function ConfigurableVariables() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/making-ballerina-programs-configurable/defining-configurable-variables/">
-          Making Ballerina Programs Configurable
+        <a href="/learn/configure-ballerina-programs/configure-a-sample-ballerina-service/">
+          Configure a sample Ballerina service
         </a>
         .
       </p>
@@ -67,7 +67,7 @@ export default function ConfigurableVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7206e84c32727545e20d4e37f738076a&file=configurable_variables.bal",
+                "https://play.ballerina.io/?gist=b6c4e3b675a91158daca5cf71b891163&file=configurable_variables.bal",
                 "_blank"
               );
             }}

@@ -85,7 +85,7 @@ export default function TesterinaBeforeAndAfterSuite() {
         </a>{" "}
         and the{" "}
         <a href="https://lib.ballerina.io/ballerina/test/latest/">
-          Test Module
+          <code>test</code> module
         </a>
         .
       </p>

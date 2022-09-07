@@ -110,7 +110,7 @@ export default function RabbitmqSecureConnection() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          RabbitMQ module
+          <code>rabbitmq</code> module
         </a>
         .
       </p>

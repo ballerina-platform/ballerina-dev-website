@@ -88,7 +88,7 @@ export default function NatsStreamingDurableSubscriptions() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
-          STAN module
+          <code>stan</code> module
         </a>
         .
       </p>

@@ -94,7 +94,7 @@ export default function UuidGeneration() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/uuid/latest/">
-          UUID module
+          <code>uuid</code> module
         </a>
         .
       </p>
@@ -105,7 +105,7 @@ export default function UuidGeneration() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ee040752a3d6bba3d7d8b2bcc6f8ac4e&file=uuid_generation.bal",
+                "https://play.ballerina.io/?gist=183a38113d1168307372c22574b9da8d&file=uuid_generation.bal",
                 "_blank"
               );
             }}

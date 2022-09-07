@@ -82,12 +82,8 @@ export default function CacheInvalidation() {
 
       <p>
         The <code>cache</code> library provides in-memory cache implementation
-        APIs and
-      </p>
-
-      <p>
-        uses the <code>Least Recently Used</code> algorithm-based eviction
-        policy.
+        APIs and uses the <code>Least Recently Used</code> algorithm-based
+        eviction policy.
       </p>
 
       <p>
@@ -104,7 +100,7 @@ export default function CacheInvalidation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=21d93eb75efc8e64b4781f3c83172cce&file=cache_invalidation.bal",
+                "https://play.ballerina.io/?gist=867043bc01e263cc028a037212250240&file=cache_invalidation.bal",
                 "_blank"
               );
             }}

@@ -122,7 +122,7 @@ export default function JdbcExecuteOperation() {
         For a sample configuration and more information on the underlying
         module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
-          JDBC module
+          <code>jdbc</code> module
         </a>{" "}
         .
       </p>

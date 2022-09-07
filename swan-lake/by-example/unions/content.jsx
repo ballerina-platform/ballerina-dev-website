@@ -88,7 +88,7 @@ export default function Unions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=140cfbaf8dca607a4c8d9d86e771951f&file=unions.bal",
+                "https://play.ballerina.io/?gist=41331748e9d3c4cde4170ff10a21af13&file=unions.bal",
                 "_blank"
               );
             }}

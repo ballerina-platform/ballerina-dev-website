@@ -55,7 +55,7 @@ export default function HttpPathParam() {
       <h1>Path parameter</h1>
 
       <p>
-        HTTP module provides first class support for specifying{" "}
+        The <code>http</code> module provides first class support for specifying{" "}
         <code>Path parameters</code> in the resource path along with the type.
         The supported types are string, int, float, boolean, and decimal (e.g.,
         path/[string foo]).
@@ -64,7 +64,7 @@ export default function HttpPathParam() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+          <code>http</code> module
         </a>
         .
       </p>

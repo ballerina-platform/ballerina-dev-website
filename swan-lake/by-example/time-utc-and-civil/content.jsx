@@ -75,7 +75,7 @@ export default function TimeUtcAndCivil() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/time/latest/">
-          Time module
+          <code>time</code> module module
         </a>
         .
       </p>
@@ -86,7 +86,7 @@ export default function TimeUtcAndCivil() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a5b1681634d57e46da6c071f65e9095b&file=time_utc_and_civil.bal",
+                "https://play.ballerina.io/?gist=3c83f79cb9a03c399f6f233dc96d1eb4&file=time_utc_and_civil.bal",
                 "_blank"
               );
             }}

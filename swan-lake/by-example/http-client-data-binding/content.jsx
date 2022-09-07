@@ -111,21 +111,20 @@ export default function HttpClientDataBinding() {
         directly. The payload type is inferred from the contextually-expected
         type or from the <code>targetType</code> argument. An{" "}
         <code>anydata</code> type or <code>http:Response</code> is expected as
+        the return value type along with the error.
       </p>
-
-      <p>the return value type along with the error.</p>
 
       <p>
         When the user expects client data binding to happen, the HTTP error
-        responses (4XX, 5XX) will be categorized as an <code>error</code> (
-        <code>http:ClientRequestError</code>,{" "}
+        responses (<code>4XX</code>, <code>5XX</code>) will be categorized as an{" "}
+        <code>error</code> (<code>http:ClientRequestError</code>,{" "}
         <code>http:RemoteServerError</code>) of the client remote operation.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          HTTP module
+          <code>http</code> module
         </a>
         .
       </p>

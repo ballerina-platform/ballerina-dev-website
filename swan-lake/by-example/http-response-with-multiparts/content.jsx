@@ -195,7 +195,7 @@ export default function HttpResponseWithMultiparts() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/mime/latest/">
-          Mime module
+          <code>mime</code> module
         </a>
         .
       </p>

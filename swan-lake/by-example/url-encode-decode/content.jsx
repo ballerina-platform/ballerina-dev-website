@@ -58,7 +58,10 @@ export default function UrlEncodeDecode() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/url/latest/">URL module</a>.
+        <a href="https://lib.ballerina.io/ballerina/url/latest/">
+          <code>url</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -67,7 +70,7 @@ export default function UrlEncodeDecode() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9aeef1b9d30e22cfae0945749ff5c58b&file=url_encode_decode.bal",
+                "https://play.ballerina.io/?gist=6f7bf4414087d37edeae618befcbc369&file=url_encode_decode.bal",
                 "_blank"
               );
             }}

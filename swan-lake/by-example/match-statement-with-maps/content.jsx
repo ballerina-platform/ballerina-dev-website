@@ -74,13 +74,9 @@ export default function MatchStatementWithMaps() {
 
       <p>
         Match statement can be used to match maps. Patterns on the left hand
-        side in a match statement can have variable
-      </p>
-
-      <p>
-        parts that can be captured. Useful for working directly with{" "}
-        <code>json</code>. Match semantics are open (may have fields other than
-        those specified in the pattern).
+        side in a match statement can have variable parts that can be captured.
+        Useful for working directly with <code>json</code>. Match semantics are
+        open (may have fields other than those specified in the pattern).
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -89,7 +85,7 @@ export default function MatchStatementWithMaps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=aaf85e1bfe6aca2748435374aac3a8ae&file=match_statement_with_maps.bal",
+                "https://play.ballerina.io/?gist=d0509dc99abdca8bacc92c315a08dc34&file=match_statement_with_maps.bal",
                 "_blank"
               );
             }}

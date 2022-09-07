@@ -82,7 +82,7 @@ export default function ReceiveEmailUsingListener() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/email/latest/">
-          Email module
+          <code>email</code> module
         </a>
         .
       </p>

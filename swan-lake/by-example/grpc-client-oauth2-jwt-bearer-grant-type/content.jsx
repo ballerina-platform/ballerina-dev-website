@@ -395,6 +395,14 @@ export default function GrpcClientOauth2JwtBearerGrantType() {
         </li>
       </ul>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You may need to change the trusted certificate
+          file path. As a prerequisite, start a sample service secured with
+          OAuth2.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "24px" }}
@@ -454,10 +462,6 @@ export default function GrpcClientOauth2JwtBearerGrantType() {
           </pre>
         </Col>
       </Row>
-
-      <p>You may need to change the trusted certificate file path.</p>
-
-      <p>As a prerequisite, start a sample service secured with OAuth2.</p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

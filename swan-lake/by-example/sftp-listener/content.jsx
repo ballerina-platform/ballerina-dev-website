@@ -91,7 +91,10 @@ export default function SftpListener() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">FTP module</a>.
+        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">
+          <code>ftp</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

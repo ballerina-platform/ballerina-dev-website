@@ -63,10 +63,8 @@ export default function ProtoToBallerina() {
         supports two types of code generation. <code>service</code> generation
         generates a mock version of the Ballerina service for an input proto
         definition. <code>client</code> generation generates a Ballerina client
-        endpoint for an
+        endpoint for an input proto definition.
       </p>
-
-      <p>input proto definition.</p>
 
       <p>The Ballerina code generator supports the following parameters:</p>
 
@@ -107,7 +105,7 @@ export default function ProtoToBallerina() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-          GRPC module
+          <code>grpc</code> module
         </a>{" "}
         and{" "}
         <a href="https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/">

@@ -70,7 +70,7 @@ export default function HttpClientBasicAuth() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          Auth module
+          <code>auth</code> module
         </a>
         .
       </p>

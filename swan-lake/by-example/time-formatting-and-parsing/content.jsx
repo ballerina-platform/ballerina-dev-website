@@ -89,7 +89,7 @@ export default function TimeFormattingAndParsing() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/time/latest/">
-          Time module
+          <code>time</code> module
         </a>
         .
       </p>
@@ -100,7 +100,7 @@ export default function TimeFormattingAndParsing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f3263332528bafd7fa8b06ab6c5d39fc&file=time_formatting_and_parsing.bal",
+                "https://play.ballerina.io/?gist=607f6324ad4a2f731f5b6b987c310e4d&file=time_formatting_and_parsing.bal",
                 "_blank"
               );
             }}

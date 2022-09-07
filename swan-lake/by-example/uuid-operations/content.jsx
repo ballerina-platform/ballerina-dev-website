@@ -95,7 +95,7 @@ export default function UuidOperations() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/uuid/latest/">
-          UUID module
+          <code>uuid</code> module
         </a>
         .
       </p>
@@ -106,7 +106,7 @@ export default function UuidOperations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5e14a98e053fa0c7ca68cfe57eb55890&file=uuid_operations.bal",
+                "https://play.ballerina.io/?gist=7ee9011c9e64a240a05f87d0489b6ab2&file=uuid_operations.bal",
                 "_blank"
               );
             }}

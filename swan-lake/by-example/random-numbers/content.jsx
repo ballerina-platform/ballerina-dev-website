@@ -58,7 +58,7 @@ export default function RandomNumbers() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/random/latest/">
-          Random module
+          <code>random</code> module
         </a>
         .
       </p>
@@ -69,7 +69,7 @@ export default function RandomNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7464b5c178d947391873109be4abe703&file=random_numbers.bal",
+                "https://play.ballerina.io/?gist=99a0314a977182fcfa765df418121945&file=random_numbers.bal",
                 "_blank"
               );
             }}

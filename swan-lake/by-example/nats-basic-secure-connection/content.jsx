@@ -108,7 +108,7 @@ export default function NatsBasicSecureConnection() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/nats/latest">
-          NATS module
+          <code>nats</code> module
         </a>
         .
       </p>

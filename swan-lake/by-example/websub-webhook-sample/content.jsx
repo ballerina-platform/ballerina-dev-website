@@ -95,7 +95,7 @@ export default function WebsubWebhookSample() {
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/websub/latest/">
-          WebSub module
+          <code>websub</code> module
         </a>
         .
       </p>

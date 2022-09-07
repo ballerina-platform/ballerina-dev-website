@@ -454,12 +454,8 @@ export default function AzureFunctionsDeployment() {
 
       <p>
         The <code>queuePopulationTimer</code> function is being triggered by the
-        Azure Function App from a timer. You can check the
-      </p>
-
-      <p>
-        queue storage to see the output. For more information on the
-        infrastructure, see{" "}
+        Azure Function App from a timer. You can check the queue storage to see
+        the output. For more information on the infrastructure, see{" "}
         <a href="/learn/deployment/azure-functions/">
           Azure Functions deployment
         </a>

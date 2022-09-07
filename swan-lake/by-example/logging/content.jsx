@@ -63,7 +63,10 @@ export default function Logging() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/log/latest/">Log module</a>.
+        <a href="https://lib.ballerina.io/ballerina/log/latest/">
+          <code>log</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -72,7 +75,7 @@ export default function Logging() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e4ebf95bfc7a427a9f630e2f26259a2d&file=logging.bal",
+                "https://play.ballerina.io/?gist=3c048ffdf88f6fa1bfbce39855acb212&file=logging.bal",
                 "_blank"
               );
             }}

@@ -61,7 +61,10 @@ export default function LoggingWithContext() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/log/latest/">Log module</a>.
+        <a href="https://lib.ballerina.io/ballerina/log/latest/">
+          <code>log</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -70,7 +73,7 @@ export default function LoggingWithContext() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a0d3292cd2b8171d8d0dc83f3317b205&file=logging_with_context.bal",
+                "https://play.ballerina.io/?gist=33d19bd607e4472d2db93af7a56b944a&file=logging_with_context.bal",
                 "_blank"
               );
             }}

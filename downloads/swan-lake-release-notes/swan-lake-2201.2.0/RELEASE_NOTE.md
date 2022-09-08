@@ -121,7 +121,7 @@ public function main() {
 
 The `isolated` feature has been extended to identify cases where strands created by a `start` action or a named worker can be run safely on separate threads. 
 
-The function or method call in a `start` action is isolated, if the function or method it calls has a type that is isolated and the expression for every argument is an isolated expression. The object whose method is called by the method call or remote method call is treated as an argument. When a `start` action is used with a function or method call that is isolated, then the `start` action is allowed in an `isolated` function and the strand created by the `start` action will run in a separate thread from the current thread.
+A `start` action is isolated if the function or method it calls has a type that is isolated and the expression for every argument is an isolated expression. The object whose method is called by the method call or remote method call is treated as an argument. An isolated `start` action is allowed in an `isolated` function and the strand created by the `start` action will run in a separate thread from the current thread.
 
 ```ballerina
 import ballerina/io;

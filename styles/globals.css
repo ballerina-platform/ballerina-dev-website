@@ -829,6 +829,10 @@ ul.eventsTabs {
   padding: 40px 30px;
 }
 
+.specContent ol li {
+  margin: 0 !important;
+}
+
 .stdLib a {
   font-weight: 300;
 }

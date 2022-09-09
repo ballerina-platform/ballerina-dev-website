@@ -1,11 +1,11 @@
 {
     "events": [
         {
-            "date": "Sep 7, 2022",
-            "day": "Wed.",
+            "date": "Sep 13, 2022",
+            "day": "Tue.",
             "time": "4.00 p.m. CDT",
             "expire": "2022-09-07T16:00:00.0000-05:00",
-            "location": "Austin, TX",
+            "location": "Virtual",
             "url": "https://www.developerweek.com/global/conference/cloud/",
             "eventType": "DeveloperWeek Cloud 2022",
             "eventName": "Ballerina: Programming Language Designed for Cloud Native Applications",
@@ -21,7 +21,7 @@
             "day": "Thur.",
             "time": "12.00 a.m. GMT",
             "expire": "2022-09-22T00:00:00.0000-00:00",
-            "location": "Online",
+            "location": "Virtual",
             "url": "https://bit.ly/3wnbunh",
             "eventType": "Hackathon",
             "eventName": "Ballerina Coding Challenge",

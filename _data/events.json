@@ -33,6 +33,22 @@
             "buttonText": "More info"
         },
         {
+            "date": "Sep 7, 2022",
+            "day": "Wed.",
+            "time": "4.00 p.m. CDT",
+            "expire": "2022-09-07T16:00:00.0000-05:00",
+            "location": "Austin, TX",
+            "url": "https://www.developerweek.com/global/conference/cloud/",
+            "eventType": "DeveloperWeek Cloud 2022",
+            "eventName": "Ballerina: Programming Language Designed for Cloud Native Applications",
+            "presenterTwitter": "https://twitter.com/sameerajayasoma",
+            "presenter": "Sameera Jayasoma",
+            "presenterDesignation": "Senior Director, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "Aug 23, 2022",
             "day": "Tue.",
             "time": "2.30 p.m. PDT",

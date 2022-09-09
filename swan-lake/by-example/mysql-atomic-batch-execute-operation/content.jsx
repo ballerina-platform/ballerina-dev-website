@@ -279,7 +279,8 @@ export default function MysqlAtomicBatchExecuteOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`time = 2022-06-22T13:48:36.222+05:30 level = INFO module = "" message = "First query executed successfully."`}</span>
               <span>{`time = 2022-06-22T13:48:36.244+05:30 level = ERROR module = "" message = "Error while executing SQL query: INSERT INTO Customers (firstName, lastName, registrationID,\\n                 creditLimit, country) VALUES (\\'Peter\\', \\'Stuart\\', 4, 5000.75,\\n                 \\'USA\\'). Duplicate entry \\'4\\' for key \\'customers.registrationID\\'."`}</span>
               <span>{`time = 2022-06-22T13:48:36.245+05:30 level = INFO module = "" message = "Second query failed. Rollback transaction."`}</span>

@@ -38,7 +38,7 @@ export default function LeftNavYaml({ navContent, bbe }) {
       }
     }
     setBaseUrl(navContent.url);
-  }, [navContent, bbe]);
+  }, [navContent, bbe, viewer]);
 
   function MainDir({ navContent }) {
 

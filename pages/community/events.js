@@ -22,10 +22,12 @@ import Head from 'next/head';
 
 
 import Layout from '../../layouts/LayoutCommunity';
-import UpcomingEvents from '../../components/common/upcoming-events/UpcomingEvents';
-import PastEvents from '../../components/community/events/past-events/PastEvents';
+import dynamic from 'next/dynamic';
 
 export default function Events() {
+
+  const UpcomingEvents = dynamic(() => import('../../components/common/upcoming-events/UpcomingEvents'), { ssr: false });
+  const PastEvents = dynamic(() => import('../../components/community/events/past-events/PastEvents'), { ssr: false });
 
   return (
     <>

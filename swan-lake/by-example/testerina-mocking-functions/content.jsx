@@ -328,17 +328,22 @@ export default function TesterinaMockingFunctions() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test bbe_mocking`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/bbe_mocking:0.1.0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Running Tests`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        bbe_mocking`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`                [pass] testCall`}</span>
               <span>{`                [pass] testReturn`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`                2 passing`}</span>
               <span>{`                0 failing`}</span>
               <span>{`                0 skipped`}</span>

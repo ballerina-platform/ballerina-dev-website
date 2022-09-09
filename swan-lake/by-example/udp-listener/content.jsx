@@ -201,7 +201,8 @@ export default function UdpListener() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_listener.bal`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# This will print the output below upon a successful read by the listener.`}</span>
               <span>{`Received by listener: Hello Ballerina echo`}</span>
             </code>

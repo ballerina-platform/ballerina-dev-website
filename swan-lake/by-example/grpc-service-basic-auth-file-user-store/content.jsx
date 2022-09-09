@@ -491,9 +491,11 @@ export default function GrpcServiceBasicAuthFileUserStore() {
               <span>{`username="bob"`}</span>
               <span>{`password="password2"`}</span>
               <span>{`scopes=["scope2", "scope3"]' > Config.toml`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal build service`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>

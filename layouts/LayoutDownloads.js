@@ -30,43 +30,81 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Ballerina downloads</title>
-        <meta name="description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too."/>
-        <meta name="keywords" content="ballerina, ballerina downloads, release notes, getting started, programming language"/>
+        <meta name="description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
+        <meta name="keywords" content="ballerina, ballerina downloads, release notes, getting started, programming language" />
 
         {/* <!--FB--> */}
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Ballerina - Ballerina downloads"/>
-        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Ballerina - Ballerina downloads" />
+        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Ballerina"/>
-        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/>
+        <meta property="og:title" content="Ballerina" />
+        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/>
-        <meta name="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/> 
+        <meta name="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta name="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
-        {/* Google analytics */}
-        <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"/>
-        <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PSL2TX4"/>
-        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"/>
+        {/* Google Tag Manager */}
+        <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js" />
+        <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PSL2TX4" />
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2" />
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag() {
+                    dataLayer.push(arguments);
+                  }
+                  gtag("js", new Date());
+                  gtag("config", "UA-92163714-2");
+                  `
+          }}
+        />
 
-        <script type="text/javascript" crossOrigin src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"/>
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+                  (function (w, d, s, l, i) {
+                    w[l] = w[l] || [];
+                    w[l].push({
+                      "gtm.start": new Date().getTime(),
+                      event: "gtm.js",
+                    });
+                    var f = d.getElementsByTagName(s)[0],
+                      j = d.createElement(s),
+                      dl = l != "dataLayer" ? "&l=" + l : "";
+                    j.async = true;
+                    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                    f.parentNode.insertBefore(j, f);
+                  })(window, document, "script", "dataLayer", "GTM-PSL2TX4");
+                  `
+          }}
+        />
+
+        <script type="text/javascript" crossOrigin="true" src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha" />
+        {/* CookiePro Cookies Consent Notice start for ballerina.io */}
+        <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js" type="text/javascript" charSet="UTF-8" data-domain-script="630ad396-5fd5-4745-92ae-2765dc8841ee" defer />
+        {/* CookiePro Cookies Consent Notice end for ballerina.io */}
       </Head>
-      <Meta/>
+      <Meta />
       <Stack gap={0} className='main-wrapper downloads'>
-        <TopNav launcher='downloads'/>
+        <TopNav launcher='downloads' />
         <Container className='wrap-page-content'>
           <Row>
             {children}
           </Row>
         </Container>
 
-        <Footer/>
+        <Footer />
 
       </Stack>
-      
+
     </>
   );
 }

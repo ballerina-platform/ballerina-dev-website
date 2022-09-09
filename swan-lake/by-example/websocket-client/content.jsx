@@ -204,7 +204,8 @@ export default function WebsocketClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run websocket_text_client.bal`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Hello World!`}</span>
             </code>
           </pre>

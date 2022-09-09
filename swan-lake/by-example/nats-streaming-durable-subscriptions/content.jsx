@@ -86,6 +86,21 @@ export default function NatsStreamingDurableSubscriptions() {
       </p>
 
       <p>
+<<<<<<< HEAD
+=======
+        Regular subscriptions remember their position while the client is
+        connected.
+      </p>
+
+      <p>If the client disconnects, the position is lost.</p>
+
+      <p>
+        Durable subscriptions remember their position even if the client is
+        disconnected.
+      </p>
+
+      <p>
+>>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
           <code>stan</code> module
@@ -368,7 +383,8 @@ export default function NatsStreamingDurableSubscriptions() {
             <code className="d-flex flex-column">
               <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-20T13:03:23.344+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-20T13:03:46.928+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>

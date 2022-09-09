@@ -231,7 +231,8 @@ export default function ReceiveEmailUsingClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run receive_email_using_client.bal`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Subject and the content body of the received emails would be printed.`}</span>
             </code>
           </pre>

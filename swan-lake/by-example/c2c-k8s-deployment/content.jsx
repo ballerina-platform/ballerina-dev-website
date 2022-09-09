@@ -311,22 +311,28 @@ export default function C2cK8sDeployment() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build --cloud="k8s"`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        wso2/hello:0.1.0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Generating executable`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Generating artifacts...`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        @kubernetes:Service                      - complete 1/1`}</span>
               <span>{`        @kubernetes:Deployment                   - complete 1/1`}</span>
               <span>{`        @kubernetes:HPA                          - complete 1/1`}</span>
               <span>{`        @kubernetes:Docker                       - complete 2/2 `}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        Execute the below command to deploy the Kubernetes artifacts: `}</span>
               <span>{`        kubectl apply -f /home/anjana/bbe-make/k8s/target/kubernetes/hello`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        Execute the below command to access service via NodePort: `}</span>
               <span>{`        kubectl expose deployment hello-deployment --type=NodePort --name=hello-svc-local`}</span>
             </code>

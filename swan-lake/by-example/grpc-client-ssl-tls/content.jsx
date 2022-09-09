@@ -436,7 +436,8 @@ export default function GrpcClientSslTls() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build client`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run client/target/bin/client.jar`}</span>
               <span>{`Hello, World!`}</span>
             </code>

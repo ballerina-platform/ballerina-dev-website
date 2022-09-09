@@ -25,8 +25,6 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta charSet="utf-8" />
-        <meta name="robots" content="noindex" />
-        <meta name="googlebot" content="noindex"></meta>
         <meta name="author" content="WSO2, Inc." />
         {/* <!--FB--> */}
         <meta property="og:image" content={`${prefix}/images/ballerina-swan-lake-sm-banner-general.png`} />
@@ -50,9 +48,7 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
 
-        {/* <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"/>
-        <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PSL2TX4"/>
-        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"/> */}
+        {/* Algolia */}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
         <link rel="stylesheet" href={`${prefix}/css/ballerina-search-button.css`} />
         <link rel="stylesheet" href={`${prefix}/css/ballerina-search-modal.css`} />

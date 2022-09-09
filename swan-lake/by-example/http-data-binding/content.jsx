@@ -275,7 +275,8 @@ export default function HttpDataBinding() {
             <code className="d-flex flex-column">
               <span>{`\$ curl http://localhost:9090/hello/student -d '{ "Name": "John", "Grade": 12, "Marks": {"English" : "85", "IT" : "100"}}' -H "Content-Type:application/json"`}</span>
               <span>{`{"Name":"John"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# To invoke the `}
                 <code>{`store`}</code>

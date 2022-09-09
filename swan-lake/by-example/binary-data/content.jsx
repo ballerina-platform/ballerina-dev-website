@@ -71,7 +71,11 @@ export default function BinaryData() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
+<<<<<<< HEAD
                 "https://play.ballerina.io/?gist=f56fa2e77bdfdfe77713d4f88ddf1c14&file=binary_data.bal",
+=======
+                "https://play.ballerina.io/?gist=58ceeed15a1fc13ef9e195fbb5715733&file=binary_data.bal",
+>>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
                 "_blank"
               );
             }}

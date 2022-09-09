@@ -75,6 +75,18 @@ export default function KafkaConsumerClientPollPayload() {
         work properly, an active Kafka broker should be present.
       </p>
 
+<<<<<<< HEAD
+=======
+      <p>
+        This consumer uses the builtin byte array deserializer for the value and
+        converts the value to the user defined type.
+      </p>
+
+      <p>
+        For this to work properly, an active Kafka broker should be present.
+      </p>
+
+>>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">

@@ -204,7 +204,8 @@ export default function HttpTraceLogs() {
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_trace_logs.bal -- -Cballerina.http.traceLogConsole=true`}</span>
               <span>{`ballerina: HTTP trace log enabled`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# In the logs, `}
                 <code>{`http.downstream`}</code>
@@ -215,7 +216,8 @@ export default function HttpTraceLogs() {
                 <code>{`http.upstream`}</code>
                 {` refers to the HTTP traffic that flows between Ballerina and the backend.`}
               </span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`[2021-10-06 18:18:11,118] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7] REGISTERED`}</span>
               <span>{`[2021-10-06 18:18:11,151] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] ACTIVE`}</span>
               <span>{`[2021-10-06 18:18:11,187] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>

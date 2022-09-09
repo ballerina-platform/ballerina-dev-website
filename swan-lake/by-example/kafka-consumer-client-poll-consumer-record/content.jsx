@@ -75,10 +75,25 @@ export default function KafkaConsumerClientPollConsumerRecord() {
 
       <p>
         This shows how to use a <code>kafka:Consumer</code> as a simple record
+<<<<<<< HEAD
         consumer. The records from a subscribed topic can be retrieved using the{" "}
         <code>poll()</code> function. This consumer uses the builtin byte array
         deserializer for both the key and the value, which is the default
         deserializer in the <code>kafka:Consumer</code>.
+=======
+        consumer.
+      </p>
+
+      <p>
+        The records from a subscribed topic can be retrieved using the{" "}
+        <code>poll()</code> function.
+      </p>
+
+      <p>
+        This consumer uses the builtin byte array deserializer for both the key
+        and the value, which is the default deserializer in the{" "}
+        <code>kafka:Consumer</code>.
+>>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
       </p>
 
       <p>

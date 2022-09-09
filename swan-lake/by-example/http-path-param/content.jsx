@@ -263,7 +263,8 @@ export default function HttpPathParam() {
             <code className="d-flex flex-column">
               <span>{`\$ curl "http://localhost:9090/company/empId/23"`}</span>
               <span>{`{"empId":23}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ curl "http://localhost:9090/company/empName/Adele/Ferguson"`}</span>
               <span>{`{"firstName":"Adele", "lastName":"Ferguson"}`}</span>
             </code>

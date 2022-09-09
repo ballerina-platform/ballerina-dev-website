@@ -20,46 +20,68 @@ import * as React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 import styles from './UpcomingEvents.module.css';
+import Events from '../../../_data/events.json';
+
+export function getUpcomingEvents(now) {
+  const events = Events.events;
+  let upcomingEvents = [];
+
+  events.map((item) => {
+    if (now < Date.parse(item.expire)) {
+      upcomingEvents.push(item)
+    }
+  })
+
+  return upcomingEvents;
+
+}
 
 export default function UpcomingEvents() {
 
+  const [now, setNow] = React.useState(new Date());
+
+  React.useEffect(() => {
+    setNow(new Date());
+  }, [])
+
+  const upcomingEvents = getUpcomingEvents(now)
+
   return (
     <>
-      <Row className={styles.eventRows}>
-        <Col sm={12} md={2} className={styles.eventDateContainer}>
-          <p className={`${styles.eventDate} ${styles.eventDateNum}`}>Aug 23, 2022</p>	
-          <p className={styles.eventDate}>Tue., 2.30 p.m. PDT</p>	
-          <p className="eventLocation">Online</p>
-        </Col>
-        <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
-          <a target="_blank" href="https://www.meetup.com/grpcio/events/287643293/" rel="noreferrer">	
-            <p className="eventName">Meetup</p>	
-          </a>
-          <h5>Building a gRPC Application in Ballerina</h5>		
-          <a target="_blank" rel="noreferrer" href="https://twitter.com/dknkuruppu">Danesh Kuruppu</a>, Technical Lead, WSO2
-        </Col>
-        <Col sm={12} md={3} className={styles.eventURL}>
-          <a className={styles.eventRegistration} href="https://www.meetup.com/grpcio/events/287643293/" target="_blank" rel="noreferrer">Register</a>
-        </Col>
-      </Row>
 
-      <Row className={styles.eventRows}>
-        <Col sm={12} md={2} className={styles.eventDateContainer}>
-          <p className={`${styles.eventDate} ${styles.eventDateNum}`}>Sep 7, 2022</p>	
-          <p className={styles.eventDate}>Wed., 4.00 p.m. CDT</p>	
-          <p className="eventLocation">Austin, TX</p>
-        </Col>
-        <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
-          <a target="_blank" href="https://www.developerweek.com/global/conference/cloud/" rel="noreferrer">	
-            <p className="eventName">DeveloperWeek Cloud 2022</p>	
-          </a>
-          <h5>Ballerina: Programming Language Designed for Cloud-Native Applications</h5>		
-          <a target="_blank" rel="noreferrer" href="https://twitter.com/sameerajayasoma">Sameera Jayasoma</a>, Senior Director, WSO2
-        </Col>
-        <Col sm={12} md={3} className={styles.eventURL}>
-          <a className={styles.eventRegistration} href="https://www.developerweek.com/global/conference/cloud/schedule/" target="_blank" rel="noreferrer">More info</a>
-        </Col>
-      </Row>
+      {
+        (upcomingEvents.length > 0) ?
+
+          upcomingEvents.map((item, index) => {
+
+            return (
+
+              <Row className={styles.eventRows} key={index}>
+                <Col sm={12} md={2} className={styles.eventDateContainer}>
+                  <p className={`${styles.eventDate} ${styles.eventDateNum}`}>{item.date}</p>
+                  <p className={styles.eventDate}>{item.day}, {item.time}</p>
+                  <p className="eventLocation">{item.location}</p>
+                </Col>
+                <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
+                  <a target="_blank" href={item.url} rel="noreferrer">
+                    <p className="eventName">{item.eventType}</p>
+                  </a>
+                  <h5>{item.eventName}</h5>
+                  {
+                    (item.presenter !== '') ?
+                      <><a target="_blank" rel="noreferrer" href={item.presenterTwitter}>{item.presenter}</a>, {item.presenterDesignation}</>
+                      : <>{item.otherInfo}</>
+                  }
+                </Col>
+                <Col sm={12} md={3} className={styles.eventURL}>
+                  <a className={styles.eventRegistration} href={item.url} target="_blank" rel="noreferrer">{item.buttonText}</a>
+                </Col>
+              </Row>
+            )
+          })
+          : <p>No upcoming events for this month.</p>
+      }
+
     </>
 
   );

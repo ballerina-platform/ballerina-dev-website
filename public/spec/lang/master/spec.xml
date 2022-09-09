@@ -13,7 +13,11 @@
   </style>
 </head>
 <body>
+<<<<<<< HEAD
 <h1>Ballerina Language Specification, 2022R3 preview 2022-07-25</h1>
+=======
+<h1>Ballerina Language Specification, 2022R4 preview 2022-09-02</h1>
+>>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
 <p>
 Primary contributors:
 </p>
@@ -7461,6 +7465,7 @@ class="grammar"><dfn>statement</dfn> :=
    <abbr>action-stmt</abbr>
    | <abbr>local-var-decl-stmt</abbr>
    | <abbr>xmlns-decl-stmt</abbr>
+   | <abbr>client-decl-stmt</abbr>
    | <abbr>assignment-stmt</abbr>
    | <abbr>compound-assignment-stmt</abbr>
    | <abbr>destructuring-assignment-stmt</abbr>
@@ -8115,7 +8120,7 @@ class="grammar"><dfn>client-resource-access-action</dfn> :=
 </pre>
 <p>
 A <code>client-resource-access-action</code> performs a <a
-href="resources_defn">resource access operation</a> on a client object. An
+href="#resources_defn">resource access operation</a> on a client object. An
 omitted <code>resource-method-name</code> defaults to <code>get</code>; if the
 parentheses and the <code>arg-list</code> are omitted, then they default to
 <code>()</code>, with arguments being defaulted as usual.
@@ -8449,6 +8454,21 @@ The prefix <code>xmlns</code> is predeclared as
 The static type of the <code>simple-const-expr</code> must be a subtype of
 string.
 </p>
+</section>
+<section>
+<h3 id="client_declaration_statement">Client declaration statement</h3>
+
+<pre
+class="grammar"><dfn>client-decl-stmt</dfn> := <abbr>client-decl</abbr>
+<dfn>client-decl</dfn> := <code>client</code> <abbr>service-uri</abbr> <code>as</code> <abbr>module-prefix</abbr> <code>;</code>
+<dfn>service-uri</dfn> := <abbr>simple-const-expr</abbr>
+</pre>
+
+<p>
+The static type of the <code>simple-const-expr</code> must be a subtype of
+string.
+</p>
+
 </section>
 <section>
 <h3>Assignment</h3>
@@ -9694,6 +9714,7 @@ class="grammar"><dfn>module-part</dfn> := <abbr>import-decl</abbr>* <abbr>other-
    | <abbr>module-const-decl</abbr>
    | <abbr>module-enum-decl</abbr>
    | <abbr>module-xmlns-decl</abbr>
+   | <abbr>module-client-decl</abbr>
    | <abbr>annotation-decl</abbr>
 </pre>
 <section>
@@ -10345,6 +10366,18 @@ href="#XML_namespace_declaration_statement">XML namespace declaration
 statement</a> section.
 </p>
 
+</section>
+
+<section>
+<h3>Module client declaration</h3>
+<pre
+class="grammar"><dfn>module-client-decl</dfn> := <abbr>client-decl</abbr>
+</pre>
+
+<p>
+The semantics of client-decl are described in the <a
+href="#client_declaration_statement">Client declaration statement</a> section.
+</p>
 </section>
 
 </section>
@@ -11764,6 +11797,27 @@ public isolated function toHexString(int n) returns string = external;
 # + s - hexadecimal string representation of int value
 # + return - int value or error
 public isolated function fromHexString(string s) returns int|error = external;
+
+# Returns an iterable object that iterates over a range of integers.
+# The integers returned by the iterator belong to the set S,
+# where S is `{ rangeStart + step*i such that i >= 0 }`.
+# When `step > 0`, the members of S that are `< rangeEnd` are returned in increasing order.
+# When `step < 0`, the members of S that are `> rangeEnd` are returned in decreasing order.
+# When `step = 0`, the function panics.
+# + rangeStart - the first integer to be returned by the iterator
+# + rangeEnd - the exclusive limit on the integers returned by the iterator
+# + step - the difference between successive integers returned by the iterator;
+#    a positive value gives an increasing sequence; a negative value gives
+#    a decreasing sequence
+# + return - an iterable object
+public isolated function range(int rangeStart, int rangeEnd, int step) returns object {
+    public isolated function iterable() returns object {
+        *object:Iterable;
+        public isolated function next() returns record {|
+            int value;
+       |}?;
+    };
+} = external;
 ]]></pre>
 
 </section>
@@ -13094,7 +13148,21 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
 <section>
+<<<<<<< HEAD
 <h3>Summary of changes from 2021R2 to 2022R3</h3>
+=======
+<h3>Summary of changes from 2022R3 to 2022R4</h3>
+<ol>
+<li>A <code>byte-array-literal</code> can construct a read-only value.</li>
+<li>An optional semi-colon is now allowed after top-level definitions and
+method definitions that are currentlty terminated by <code>}</code>.</li>
+<li>An <code>int:range</code> langlib function allows convenient iteration 
+over integer sequences with steps other than 1.</li>
+</ol>
+</section>
+<section>
+<h3>Summary of changes from 2022R2 to 2022R3</h3>
+>>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
 <ol>
 <li>Client objects can declare resource methods, which can be accessed using new
 <code>client-resource-access-action</code> syntax. Resource methods are now part

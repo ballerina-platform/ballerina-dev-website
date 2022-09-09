@@ -473,7 +473,8 @@ export default function GrpcServiceJwtAuth() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build service`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>

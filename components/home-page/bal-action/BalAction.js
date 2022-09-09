@@ -115,7 +115,7 @@ public function main() returns error? {
     json summary =
         from var {country, continent, population, cases, deaths} in countries
             where population >= 100000 && deaths >= 100
-            let decimal caseFatalityRatio = &lt;decimal&gt;deaths / &lt;decimal&gt;cases * 100
+            let decimal caseFatalityRatio = <decimal>deaths / <decimal>cases * 100
             order by caseFatalityRatio descending
             limit 10
             select {country, continent, population, caseFatalityRatio};
@@ -133,7 +133,7 @@ type Album readonly & record {|
     decimal price;
 |};
 
-table&lt;Album&gt; key(id) albums = table [
+table<Album> key(id) albums = table [
         {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
         {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
         {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
@@ -147,7 +147,7 @@ service / on new http:Listener(port) {
     resource function get albums/[string id]() returns Album|http:NotFound {
         Album? album = albums[id];
         if album is () {
-            return &lt;http:NotFound&gt;{};
+            return http:NOT_FOUND;
         } else {
             return album;
         }
@@ -166,7 +166,7 @@ configurable int port = 9090;
 Album[] albums = [
     {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
     {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
-    {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
+    {id: "3", title: "No Count Sarah", artist: "Sarah Vaughan", price: 39.99}
 ];
 
 @grpc:ServiceDescriptor {
@@ -188,7 +188,7 @@ service "Albums" on new grpc:Listener(port) {
         return album;
     }
 
-    remote function listAlbums() returns stream&lt;Album, error?&gt;|error {
+    remote function listAlbums() returns stream<Album, error?>|error {
         return albums.toStream();
     }
 }`;
@@ -262,8 +262,7 @@ service / on new graphql:Listener(9000) {
     }
 }`;
 
-  const kafkaConsumer = `import ballerina/lang.value;
-import ballerinax/kafka;
+  const kafkaConsumer = `import ballerinax/kafka;
 
 configurable string groupId = "order-consumers";
 configurable string orders = "orders";
@@ -271,13 +270,13 @@ configurable string paymentSuccessOrders = "payment-success-orders";
 configurable decimal pollingInterval = 1;
 configurable string kafkaEndpoint = kafka:DEFAULT_URL;
 
-type Order readonly & record {|
+public type Order readonly & record {|
     int id;
     string desc;
     PaymentStatus paymentStatus;
 |};
 
-enum PaymentStatus {
+public enum PaymentStatus {
     SUCCESS,
     FAIL
 }
@@ -286,7 +285,7 @@ final kafka:ConsumerConfiguration consumerConfigs = {
     groupId: groupId,
     topics: [orders],
     offsetReset: kafka:OFFSET_RESET_EARLIEST,
-    pollingInterval: pollingInterval
+    pollingInterval
 };
 
 service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
@@ -296,15 +295,13 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
         self.orderProducer = check new (kafkaEndpoint);
     }
 
-    remote function onConsumerRecord(kafka:ConsumerRecord[] records) returns error? {
-        check from kafka:ConsumerRecord {value} in records
-            let string orderString = check string:fromBytes(value)
-            let Order 'order = check value:fromJsonStringWithType(orderString)
+    remote function onConsumerRecord(Order[] orders) returns error? {
+        check from Order 'order in orders
             where 'order.paymentStatus == SUCCESS
             do {
                 check self.orderProducer->send({
                     topic: paymentSuccessOrders,
-                    value: 'order.toString().toBytes()
+                    value: 'order
                 });
             };
     }
@@ -336,7 +333,7 @@ service / on new http:Listener(8080) {
     }
 
     resource function get albums() returns Album[]|error? {
-        stream&lt;Album, sql:Error?&gt; albumStream = self.db->query(\`SELECT * FROM Albums\`);
+        stream<Album, sql:Error?> albumStream = self.db->query(\`SELECT * FROM Albums\`);
         Album[]? albums = check from Album album in albumStream select album;
         check albumStream.close();
         return albums;
@@ -345,7 +342,7 @@ service / on new http:Listener(8080) {
     resource function get albums/[string id]() returns Album|http:NotFound|error {
         Album|sql:Error result = self.db->queryRow(\`SELECT * FROM Albums WHERE id = $\{id\}\`);
         if result is sql:NoRowsError {
-            return &lt;http:NotFound&gt;{};
+            return http:NOT_FOUND;
         } else {
             return result;
         }

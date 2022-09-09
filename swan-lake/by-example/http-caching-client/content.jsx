@@ -247,14 +247,16 @@ export default function HttpCachingClient() {
               <span>{`# The two services have to be run separately to observe the following output.`}</span>
               <span>{`# For clarity, only the relevant parts of the HTTP trace logs have been included here.`}</span>
               <span>{`\$ bal run http_caching_client.bal -- -Cballerina.http.traceLogConsole=true`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The caching proxy receives a request from a client.`}</span>
               <span>{`[2021-11-26 09:52:32,588] TRACE {http.tracelog.downstream} - [id: 0x6c720951, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50902] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`GET /cache HTTP/1.1`}</span>
               <span>{`Host: localhost:9090`}</span>
               <span>{`User-Agent: curl/7.64.1`}</span>
               <span>{`Accept: */*`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The proxy in turn, makes a request to the backend service.`}</span>
               <span>{`[2021-11-26 09:52:32,780] TRACE {http.tracelog.upstream} - [id: 0x99c1790f, correlatedSource: 0x6c720951, host:/127.0.0.1:50903 - remote:localhost/127.0.0.1:8080] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`GET /hello HTTP/1.1`}</span>
@@ -262,7 +264,8 @@ export default function HttpCachingClient() {
               <span>{`host: localhost:8080`}</span>
               <span>{`user-agent: ballerina`}</span>
               <span>{`connection: keep-alive`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# The backend service responds with a 200 OK and it contains `}
                 <code>{`etag`}</code>
@@ -280,7 +283,8 @@ export default function HttpCachingClient() {
               <span>{`date: Fri, 26 Nov 2021 09:52:32 +0530`}</span>
               <span>{`content-length: 27`}</span>
               <span>{`{"message":"Hello, World!"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The response is sent back to the client.`}</span>
               <span>{`[2021-11-26 09:52:32,916] TRACE {http.tracelog.downstream} - [id: 0x6c720951, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50902] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))`}</span>
               <span>{`HTTP/1.1 200 OK`}</span>
@@ -292,14 +296,16 @@ export default function HttpCachingClient() {
               <span>{`server: ballerina`}</span>
               <span>{`content-length: 27, 27B`}</span>
               <span>{`{"message":"Hello, World!"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Subsequent requests to the proxy within the next 15 seconds are served from the proxy's cache. As seen here, the backend service is not contacted.`}</span>
               <span>{`[2021-11-26 09:52:40,143] TRACE {http.tracelog.downstream} - [id: 0xc79f9038, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50915] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`GET /cache HTTP/1.1`}</span>
               <span>{`Host: localhost:9090`}</span>
               <span>{`User-Agent: curl/7.64.1`}</span>
               <span>{`Accept: */*`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Cached response.`}</span>
               <span>{`[2021-11-26 09:52:40,181] TRACE {http.tracelog.downstream} - [id: 0xc79f9038, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50915] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))`}</span>
               <span>{`HTTP/1.1 200 OK`}</span>
@@ -312,14 +318,16 @@ export default function HttpCachingClient() {
               <span>{`server: ballerina`}</span>
               <span>{`content-length: 27, 27B`}</span>
               <span>{`{"message":"Hello, World!"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Another request is sent after remaining idle for a while.`}</span>
               <span>{`[2021-11-26 09:52:54,648] TRACE {http.tracelog.downstream} - [id: 0x083aeb7c, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50916] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`GET /cache HTTP/1.1`}</span>
               <span>{`Host: localhost:9090`}</span>
               <span>{`User-Agent: curl/7.64.1`}</span>
               <span>{`Accept: */*`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# This time, the request is not served from the cache. The backend service is contacted. The `}
                 <code>{`if-none-match`}</code>
@@ -334,8 +342,18 @@ export default function HttpCachingClient() {
               <span>{`host: localhost:8080`}</span>
               <span>{`connection: keep-alive`}</span>
               <span>{`content-length: 0`}</span>
+<<<<<<< HEAD
               <span>{``}</span>
               <span>{`# The response has not changed. Therefore, the backend services respond with a 304 Not Modified response. Based on this, the proxy will refresh the response so that it can continue serving the cached response.`}</span>
+=======
+              <span>{`
+`}</span>
+              <span>
+                {`# The response has not changed. Therefore the backend services respond with a `}
+                <code>{`304 Not Modified`}</code>
+                {` response. Based on this, the proxy will refresh the response, so that it can continue serving the cached response.`}
+              </span>
+>>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
               <span>{`[2021-11-26 09:52:54,673] TRACE {http.tracelog.upstream} - [id: 0x99c1790f, correlatedSource: 0x083aeb7c, host:/127.0.0.1:50903 - remote:localhost/127.0.0.1:8080] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`HTTP/1.1 304 Not Modified`}</span>
               <span>{`etag: 620328e8`}</span>
@@ -344,7 +362,8 @@ export default function HttpCachingClient() {
               <span>{`server: ballerina`}</span>
               <span>{`date: Fri, 26 Nov 2021 09:52:54 +0530`}</span>
               <span>{`content-length: 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The cached response is served yet again since the response has not changed.`}</span>
               <span>{`[2021-11-26 09:52:54,688] TRACE {http.tracelog.downstream} - [id: 0x083aeb7c, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50916] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))`}</span>
               <span>{`HTTP/1.1 200 OK`}</span>
@@ -357,10 +376,12 @@ export default function HttpCachingClient() {
               <span>{`server: ballerina`}</span>
               <span>{`content-length: 27, 27B`}</span>
               <span>{`{"message":"Hello, World!"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The output for the mock service.`}</span>
               <span>{`ball run  hello_service.bal -- -Cballerina.http.traceLogConsole=true`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# For the first request that the caching proxy receives, it sends a request to the hello service.`}</span>
               <span>{`[2021-11-26 09:52:32,797] TRACE {http.tracelog.downstream} - [id: 0x318ba81d, correlatedSource: n/a, host:/127.0.0.1:8080 - remote:/127.0.0.1:50903] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`GET /hello HTTP/1.1`}</span>
@@ -368,8 +389,18 @@ export default function HttpCachingClient() {
               <span>{`host: localhost:8080`}</span>
               <span>{`user-agent: ballerina`}</span>
               <span>{`connection: keep-alive`}</span>
+<<<<<<< HEAD
               <span>{``}</span>
               <span>{`# The service responds with a 200 OK with the relevant caching headers set.`}</span>
+=======
+              <span>{`
+`}</span>
+              <span>
+                {`# The service responds with a `}
+                <code>{`200 OK`}</code>
+                {` with the relevant caching headers set.`}
+              </span>
+>>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
               <span>{`[2021-11-26 09:52:32,890] TRACE {http.tracelog.downstream} - [id: 0x318ba81d, correlatedSource: n/a, host:localhost/127.0.0.1:8080 - remote:/127.0.0.1:50903] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))`}</span>
               <span>{`HTTP/1.1 200 OK`}</span>
               <span>{`etag: 620328e8`}</span>
@@ -380,7 +411,8 @@ export default function HttpCachingClient() {
               <span>{`server: ballerina`}</span>
               <span>{`date: Fri, 26 Nov 2021 09:52:32 +0530, 27B`}</span>
               <span>{`{"message":"Hello, World!"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# The backend service only gets another request when the cached response and the proxy have expired and it wants to validate it again.`}</span>
               <span>{`[2021-11-26 09:52:54,669] TRACE {http.tracelog.downstream} - [id: 0x318ba81d, correlatedSource: n/a, host:localhost/127.0.0.1:8080 - remote:/127.0.0.1:50903] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`GET /hello HTTP/1.1`}</span>
@@ -391,7 +423,8 @@ export default function HttpCachingClient() {
               <span>{`host: localhost:8080`}</span>
               <span>{`connection: keep-alive`}</span>
               <span>{`content-length: 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# After checking the `}
                 <code>{`if-none-match`}</code>
@@ -479,7 +512,8 @@ export default function HttpCachingClient() {
               <span>{`< content-length: 27`}</span>
               <span>{`<`}</span>
               <span>{`{"message":"Hello, World!"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ curl -v http://localhost:9090/cache`}</span>
               <span>{`> GET /cache HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
@@ -497,7 +531,8 @@ export default function HttpCachingClient() {
               <span>{`< content-length: 27`}</span>
               <span>{`<`}</span>
               <span>{`{"message":"Hello, World!"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ curl -v http://localhost:9090/cache`}</span>
               <span>{`> GET /cache HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>

@@ -284,14 +284,18 @@ export default function AzureFunctionsDeployment() {
               <span>{`\$ bal build`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        wso2/azure_functions_deployment:0.1.0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Generating executable`}</span>
               <span>{`        @azure_functions:Function: hello, httpTriggerBlobInput, queuePopulationTimer`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        Execute the below command to deploy Ballerina Azure Functions:`}</span>
               <span>{`        az functionapp deployment source config-zip -g <resource_group> -n <function_app_name> --src <project-dir>/azure_functions_deployment/target/bin/azure-functions.zip`}</span>
-              <span>{``}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
+              <span>{`
+`}</span>
               <span>{`        target/bin/azure_functions_deployment.jar`}</span>
             </code>
           </pre>
@@ -444,7 +448,8 @@ export default function AzureFunctionsDeployment() {
             <code className="d-flex flex-column">
               <span>{`\$ curl -d "Jack" https://functions1777.azurewebsites.net/api/hello`}</span>
               <span>{`Hello, Jack!`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`\$ curl "https://functions1777.azurewebsites.net/api/httpTriggerBlobInput?name=input.txt"`}</span>
               <span>{`Blob: input.txt Length: 6 Content: 65 66 67 68 69 10`}</span>
             </code>

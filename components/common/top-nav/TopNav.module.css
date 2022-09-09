@@ -129,19 +129,19 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     }
 }
 
-.oldBanner {
+.hackathonBanner {
     text-align: center;
-    color: #000000;
-    background-color: #fcdf4a !important;
-    padding: 10px 0 0 0;
-    font-weight: 500;
+    color: #fff;
+    background-color: #20b6b0 !important;
+    padding: 10px 0 10px 0;
+    font-weight: 400;
     font-size: 20px;
 }
 
-.oldBanner a {
-    color: #000000;
+.hackathonBanner a {
+    color: #fff;
 }
 
-.oldBanner a:hover{
+.hackathonBanner a:hover{
     color: #545454 !important;
 }

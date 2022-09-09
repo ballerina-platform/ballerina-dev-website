@@ -34,7 +34,7 @@ redirect_from:
 
 Follow the instructions below to install the latest Ballerina version using the installer. The installer will automatically set the latest version as the active distribution after the installation.
 
->**Info:** Ballerina installers support operating systems such as Windows, Ubuntu, Red Hat Enterprise Linux, macOS, and CentOS. If you are using an unsupported operating system, [install via the Ballerina language ZIP file](#installing-via-the-ballerina-language-zip-file).
+>**Info:** Ballerina installers support operating systems such as Windows, Ubuntu, Red Hat Enterprise Linux, macOS, and CentOS. If you are using an unsupported operating system, [install via the Ballerina language ZIP file](#install-via-the-ballerina-language-zip-file).
 
 ### Install on macOS
 
@@ -72,7 +72,7 @@ rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm
 
 > **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the <a href="https://adoptopenjdk.net" target="_blank">AdoptOpenJRE</a> version 11 or above.
 
-1. <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.other-artefacts | first }}" class="cGTMDownload cDownload" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.zip-installer }}"> Download the Ballerina language ZIP file </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}-swan-lake.zip.md5">(md5, </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}-swan-lake.zip.sha1">SHA-1, </a> <a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}-swan-lake.zip.asc">asc)</a> and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named `ballerina-<VERSION>` in your system.
+1. <a id="packWindows" href="{{ dist_server }}/downloads/{{ version }}/{{ other-artefacts | first }}" class="cGTMDownload cDownload" data-download="downloads" data-pack="{{ zip-installer }}"> Download the Ballerina language ZIP file </a> <a href="{{ dist_server }}/downloads/{{ version }}/ballerina-{{ version }}-swan-lake.zip.md5">(md5, </a> <a href="{{ dist_server }}/downloads/{{ version }}/ballerina-{{ version }}-swan-lake.zip.sha1">SHA-1, </a> <a href="{{ dist_server }}/downloads/{{ version }}/ballerina-{{ version }}-swan-lake.zip.asc">asc)</a> and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named `ballerina-<VERSION>` in your system.
 
 2. Follow either of the steps below depending on your operating system to configure your system environment to run Ballerina:
     - **For Linux or macOS:** set the PATH environment variable to point to the bin directory of the unzipped Ballerina distribution.

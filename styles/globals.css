@@ -127,7 +127,8 @@ a {
 
 .mdContent h1,
 .policyContent h1,
-.archiveContent h1 {
+.archiveContent h1,
+.newsletter h1 {
   color: #464646;
   font-size: 2rem;
 }
@@ -237,7 +238,7 @@ a {
 
 .mdContent blockquote,
 .policyContent blockquote {
-  padding: 10px 20px;
+  padding: 10px 20px !important;
   font-size: 17.5px;
   border-left: 5px solid #eee;
 }
@@ -779,7 +780,7 @@ ul.eventsTabs {
 }
 
 .home .highlight {
-  font-size: 12px !important;
+  font-size: 13px !important;
 }
 
 .home pre.shiki {
@@ -826,6 +827,10 @@ ul.eventsTabs {
 .spec .specContent {
   background-color: #ffffff;
   padding: 40px 30px;
+}
+
+.specContent ol li {
+  margin: 0 !important;
 }
 
 .stdLib a {
@@ -991,7 +996,7 @@ table.cTopControlsContainer tbody {
   --output-color-text: #3ad1ca;
   --code-color-output: #818181;
 
-  --button-color-text: #3ad1ca;
+  --button-color-text: #20b6b0;
   --button-hover-color-text: #a8dbd9;
 }
 
@@ -1006,6 +1011,7 @@ table.cTopControlsContainer tbody {
 
 .bbeBody li {
   margin: 0;
+  display: flex;
 }
 
 .bbeBody > pre:not(.bbeOutput pre) {

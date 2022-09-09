@@ -67,20 +67,9 @@ export default function KafkaProducerTransactional() {
       <p>
         This shows how to do transactional message producing by sending messages
         to Kafka brokers atomically using the <code>kafka:Producer</code>{" "}
-<<<<<<< HEAD
         client. For this to work properly, an active Kafka broker should be
         present.
       </p>
-
-=======
-        client.
-      </p>
-
-      <p>
-        For this to work properly, an active Kafka broker should be present.
-      </p>
-
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">

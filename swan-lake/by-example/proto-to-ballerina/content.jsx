@@ -58,7 +58,6 @@ export default function ProtoToBallerina() {
       <h1>Proto to Ballerina</h1>
 
       <p>
-<<<<<<< HEAD
         If you already have protocol buffer file for your service(s) you can use
         that to autogenerate Ballerina source code. Currently, Ballerina
         supports two types of code generation. <code>service</code> generation
@@ -100,52 +99,6 @@ export default function ProtoToBallerina() {
             samples. If no value is specified for this parameter, only the stub
             file will be generated.
           </span>
-=======
-        If you already have a protocol buffer file for your service(s), you can
-        use that to generate the Ballerina source code. Currently, Ballerina
-        supports two types of code generation. <code>service</code> generation
-        generates a mock version
-      </p>
-
-      <p>
-        of the Ballerina service for an input proto definition.{" "}
-        <code>client</code> generation generates a Ballerina client endpoint for
-        an input proto definition.
-      </p>
-
-      <p>The Ballerina code generator supports the following parameters,</p>
-
-      <ul>
-        <li>
-          <code>--input</code> - The path of the .proto file. This is a
-          mandatory parameter.
-        </li>
-      </ul>
-
-      <ul>
-        <li>
-          <code>--output</code> - The file location in which the Ballerina
-          client/service and the stub must be generated. This is an optional
-          parameter.
-        </li>
-      </ul>
-
-      <p>
-        If no value is specified for this parameter and proto definition doesn't
-        contain package value, the Ballerina client/service and the stub files
-      </p>
-
-      <p>
-        are generated inside <code>temp</code> directory in the current
-        location. This path must be a project directory.
-      </p>
-
-      <ul>
-        <li>
-          <code>--mode</code> - The mode (client or server) to generate code
-          samples. If no value is specified for this parameter, only the stub
-          file will be generated.
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
         </li>
       </ul>
 
@@ -154,16 +107,8 @@ export default function ProtoToBallerina() {
         <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
           <code>grpc</code> module
         </a>{" "}
-<<<<<<< HEAD
         and{" "}
         <a href="https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/">
-=======
-        and
-      </p>
-
-      <p>
-        <a href="https://ballerina.io/learn/cli-documentation/grpc/">
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
           How to generate Ballerina code for Protocol Buffer Definition
         </a>
         .
@@ -303,19 +248,10 @@ export default function ProtoToBallerina() {
             <code className="d-flex flex-column">
               <span>{`# Execute the command below in the Ballerina tools distribution to generate the mock service.`}</span>
               <span>{`\$ bal grpc --input proto_to_ballerina.proto --mode service --output service`}</span>
-<<<<<<< HEAD
               <span>{``}</span>
               <span>{`# Execute the command below in the Ballerina tools distribution to generate the client endpoint and the stub file.`}</span>
               <span>{`\$ bal grpc --input proto_to_ballerina.proto --mode client --output client`}</span>
               <span>{``}</span>
-=======
-              <span>{`
-`}</span>
-              <span>{`# Execute the command below in the Ballerina tools distribution to generate the client endpoint and the stub file.`}</span>
-              <span>{`\$ bal grpc --input proto_to_ballerina.proto --mode client --output client`}</span>
-              <span>{`
-`}</span>
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
               <span>{`# Execute the command below in the Ballerina tools distribution to generate the stub file.`}</span>
               <span>{`\$ bal grpc --input proto_to_ballerina.proto`}</span>
             </code>

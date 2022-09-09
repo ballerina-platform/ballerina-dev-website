@@ -101,11 +101,7 @@ export default function NatsBasicSecureConnection() {
       <h1>Secured connection</h1>
 
       <p>
-<<<<<<< HEAD
         In this example, the underlying connections of the subscriber and the
-=======
-        In this example, the underlying connections of the subscriber, and the
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
         publisher are secured with TLS/SSL and Basic Auth.
       </p>
 

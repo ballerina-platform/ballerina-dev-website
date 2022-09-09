@@ -145,22 +145,10 @@ export default function NatsStreamingStartPosition() {
 
       <p>
         The <code>nats</code> streaming library provides the functionality of
-<<<<<<< HEAD
         historical message replay. New subscriptions may specify a starting
         position in the stream of messages stored for the channel of the
         subscribed subject.
       </p>
-
-=======
-        historical message replay.
-      </p>
-
-      <p>
-        New subscriptions may specify a starting position in the stream of
-        messages stored for the channel of the subscribed subject.
-      </p>
-
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
       <p>Message delivery may begin at:</p>
 
       <ul style={{ marginLeft: "0px" }}>

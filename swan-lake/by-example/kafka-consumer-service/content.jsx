@@ -79,13 +79,6 @@ export default function KafkaConsumerService() {
       </p>
 
       <p>
-<<<<<<< HEAD
-=======
-        For this to work properly, an active Kafka broker should be present.
-      </p>
-
-      <p>
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
           <code>kafka</code> module

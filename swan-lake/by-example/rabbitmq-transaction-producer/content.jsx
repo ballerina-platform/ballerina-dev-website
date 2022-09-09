@@ -55,18 +55,9 @@ export default function RabbitmqTransactionProducer() {
 
       <p>
         A message is sent to an existing queue using the Ballerina RabbitMQ
-<<<<<<< HEAD
         channel and Ballerina transactions. Upon successful execution of the
         transaction block, the channel will commit and rollback in the case of
         any error.
-=======
-        channel and Ballerina transactions.
-      </p>
-
-      <p>
-        Upon successful execution of the transaction block, the channel will
-        commit and rollback in the case of any error.
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
       </p>
 
       <p>

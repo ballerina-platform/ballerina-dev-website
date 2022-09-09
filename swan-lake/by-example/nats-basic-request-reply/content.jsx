@@ -86,26 +86,12 @@ export default function NatsBasicRequestReply() {
       </p>
 
       <p>
-<<<<<<< HEAD
-=======
-        In order to execute this example, it is required that a NATS server is
-        up and running on its default host, port, and cluster.
-      </p>
-
-      <p>
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
         For instructions on installing the NATS server, go to{" "}
         <a href="https://docs.nats.io/nats-server/installation">
           NATS Server Installation
         </a>
         . This is a simple request/reply messaging pattern example.
       </p>
-
-<<<<<<< HEAD
-=======
-      <p>This is a simple request/reply messaging pattern example.</p>
-
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/nats/latest">

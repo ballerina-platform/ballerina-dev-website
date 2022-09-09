@@ -112,33 +112,16 @@ export default function NatsStreamingQueueGroup() {
 
       <p>
         The <code>nats</code> streaming library provides the built-in load
-<<<<<<< HEAD
         balancing feature called &quot;distributed queues&quot;. All subscribers
         with the same queue name form the queue group. As messages on the
         registered subject are published, one member of the group is chosen
         randomly to receive the message. Although queue groups have multiple
         subscribers, each message is consumed by only one.
-=======
-        balancing feature called &quot;distributed queues&quot;.
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
       </p>
 
       <p>All subscribers with the same queue name form the queue group.</p>
 
       <p>
-<<<<<<< HEAD
-=======
-        As messages on the registered subject are published, one member of the
-        group is chosen randomly to receive the message.
-      </p>
-
-      <p>
-        Although queue groups have multiple subscribers, each message is
-        consumed by only one.
-      </p>
-
-      <p>
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
           <code>stan</code> module

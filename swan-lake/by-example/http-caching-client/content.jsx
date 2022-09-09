@@ -379,18 +379,8 @@ export default function HttpCachingClient() {
               <span>{`host: localhost:8080`}</span>
               <span>{`user-agent: ballerina`}</span>
               <span>{`connection: keep-alive`}</span>
-<<<<<<< HEAD
               <span>{``}</span>
               <span>{`# The service responds with a 200 OK with the relevant caching headers set.`}</span>
-=======
-              <span>{`
-`}</span>
-              <span>
-                {`# The service responds with a `}
-                <code>{`200 OK`}</code>
-                {` with the relevant caching headers set.`}
-              </span>
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
               <span>{`[2021-11-26 09:52:32,890] TRACE {http.tracelog.downstream} - [id: 0x318ba81d, correlatedSource: n/a, host:localhost/127.0.0.1:8080 - remote:/127.0.0.1:50903] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))`}</span>
               <span>{`HTTP/1.1 200 OK`}</span>
               <span>{`etag: 620328e8`}</span>

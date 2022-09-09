@@ -342,18 +342,8 @@ export default function HttpCachingClient() {
               <span>{`host: localhost:8080`}</span>
               <span>{`connection: keep-alive`}</span>
               <span>{`content-length: 0`}</span>
-<<<<<<< HEAD
               <span>{``}</span>
               <span>{`# The response has not changed. Therefore, the backend services respond with a 304 Not Modified response. Based on this, the proxy will refresh the response so that it can continue serving the cached response.`}</span>
-=======
-              <span>{`
-`}</span>
-              <span>
-                {`# The response has not changed. Therefore the backend services respond with a `}
-                <code>{`304 Not Modified`}</code>
-                {` response. Based on this, the proxy will refresh the response, so that it can continue serving the cached response.`}
-              </span>
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
               <span>{`[2021-11-26 09:52:54,673] TRACE {http.tracelog.upstream} - [id: 0x99c1790f, correlatedSource: 0x083aeb7c, host:/127.0.0.1:50903 - remote:localhost/127.0.0.1:8080] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`HTTP/1.1 304 Not Modified`}</span>
               <span>{`etag: 620328e8`}</span>

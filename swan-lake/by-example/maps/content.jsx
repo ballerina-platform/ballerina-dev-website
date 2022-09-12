@@ -78,7 +78,7 @@ export default function Maps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c4f8f66490696eded8c2675a66d6c562&file=maps.bal",
+                "https://play.ballerina.io/?gist=9666f535a9c84fde7a9228619c985be7&file=maps.bal",
                 "_blank"
               );
             }}
@@ -101,7 +101,7 @@ export default function Maps() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/maps",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/maps",
                 "_blank"
               );
             }}

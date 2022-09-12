@@ -106,7 +106,7 @@ export default function ReceiveEmailUsingClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/receive-email-using-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/receive-email-using-client",
                 "_blank"
               );
             }}
@@ -231,8 +231,7 @@ export default function ReceiveEmailUsingClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run receive_email_using_client.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# Subject and the content body of the received emails would be printed.`}</span>
             </code>
           </pre>

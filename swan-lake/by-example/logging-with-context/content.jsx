@@ -73,7 +73,7 @@ export default function LoggingWithContext() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=33d19bd607e4472d2db93af7a56b944a&file=logging_with_context.bal",
+                "https://play.ballerina.io/?gist=1ef8076735fc15617910d97416bd5657&file=logging_with_context.bal",
                 "_blank"
               );
             }}
@@ -96,7 +96,7 @@ export default function LoggingWithContext() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/logging-with-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/logging-with-context",
                 "_blank"
               );
             }}

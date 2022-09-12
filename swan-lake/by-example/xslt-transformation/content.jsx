@@ -120,7 +120,7 @@ export default function XsltTransformation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4bc60d7f6b5692d37950c783d5e17d10&file=xslt_transformation.bal",
+                "https://play.ballerina.io/?gist=5a0c448cbd7e7995cf5b0d1e2f785eeb&file=xslt_transformation.bal",
                 "_blank"
               );
             }}
@@ -143,7 +143,7 @@ export default function XsltTransformation() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/xslt-transformation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/xslt-transformation",
                 "_blank"
               );
             }}

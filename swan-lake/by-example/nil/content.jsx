@@ -73,7 +73,7 @@ export default function Nil() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=53323f67d6f1c552a773371cad5be04a&file=nil.bal",
+                "https://play.ballerina.io/?gist=e7c5542b665fec8fe3e138195e11a038&file=nil.bal",
                 "_blank"
               );
             }}
@@ -96,7 +96,7 @@ export default function Nil() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nil",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nil",
                 "_blank"
               );
             }}

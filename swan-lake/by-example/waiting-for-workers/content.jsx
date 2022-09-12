@@ -70,7 +70,7 @@ export default function WaitingForWorkers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a6bff4383dde371f6b3b32f1143abc50&file=waiting_for_workers.bal",
+                "https://play.ballerina.io/?gist=f1f2cb7f5f876a83d053184b9df028be&file=waiting_for_workers.bal",
                 "_blank"
               );
             }}
@@ -93,7 +93,7 @@ export default function WaitingForWorkers() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/waiting-for-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/waiting-for-workers",
                 "_blank"
               );
             }}

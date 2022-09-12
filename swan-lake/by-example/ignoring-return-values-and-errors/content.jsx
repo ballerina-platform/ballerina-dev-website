@@ -88,7 +88,7 @@ export default function IgnoringReturnValuesAndErrors() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=35b1d60b14be82bf8ca2fb86fca5eed3&file=ignoring_return_values_and_errors.bal",
+                "https://play.ballerina.io/?gist=bfd00e727b2cf293aaa70e1fc333267a&file=ignoring_return_values_and_errors.bal",
                 "_blank"
               );
             }}
@@ -111,7 +111,7 @@ export default function IgnoringReturnValuesAndErrors() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/ignoring-return-values-and-errors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/ignoring-return-values-and-errors",
                 "_blank"
               );
             }}
@@ -248,7 +248,10 @@ export default function IgnoringReturnValuesAndErrors() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Panics" href="/learn/by-example/panics">
+          <Link
+            title="Type intersection for error types"
+            href="/learn/by-example/error-type-intersection"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -274,7 +277,7 @@ export default function IgnoringReturnValuesAndErrors() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Panics
+                  Type intersection for error types
                 </span>
               </div>
             </div>

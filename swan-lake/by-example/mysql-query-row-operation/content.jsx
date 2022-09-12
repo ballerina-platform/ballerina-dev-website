@@ -144,7 +144,7 @@ export default function MysqlQueryRowOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/mysql-query-row-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/mysql-query-row-operation",
                 "_blank"
               );
             }}
@@ -274,8 +274,7 @@ export default function MysqlQueryRowOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Customer (customerId = 1) : {"customerId":2,"firstName":"Dan","lastName":"Brown","registrationId":2,"creditLimit":10000.0,"country":"UK"}`}</span>
             </code>
           </pre>
@@ -293,7 +292,7 @@ export default function MysqlQueryRowOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/mysql-query-row-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/mysql-query-row-operation",
                 "_blank"
               );
             }}
@@ -370,7 +369,7 @@ export default function MysqlQueryRowOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/mysql-query-row-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/mysql-query-row-operation",
                 "_blank"
               );
             }}

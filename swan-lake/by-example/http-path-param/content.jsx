@@ -75,7 +75,7 @@ export default function HttpPathParam() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-path-param",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-path-param",
                 "_blank"
               );
             }}
@@ -263,8 +263,7 @@ export default function HttpPathParam() {
             <code className="d-flex flex-column">
               <span>{`\$ curl "http://localhost:9090/company/empId/23"`}</span>
               <span>{`{"empId":23}`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`\$ curl "http://localhost:9090/company/empName/Adele/Ferguson"`}</span>
               <span>{`{"firstName":"Adele", "lastName":"Ferguson"}`}</span>
             </code>

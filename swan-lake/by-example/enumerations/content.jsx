@@ -75,7 +75,7 @@ export default function Enumerations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e1b3a46dfa77a0d1df781888ca846d12&file=enumerations.bal",
+                "https://play.ballerina.io/?gist=b9259c39ffe2b6d358d81f84b3e41a63&file=enumerations.bal",
                 "_blank"
               );
             }}
@@ -98,7 +98,7 @@ export default function Enumerations() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/enumerations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/enumerations",
                 "_blank"
               );
             }}

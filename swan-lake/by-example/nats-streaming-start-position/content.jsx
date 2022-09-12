@@ -149,6 +149,7 @@ export default function NatsStreamingStartPosition() {
         position in the stream of messages stored for the channel of the
         subscribed subject.
       </p>
+
       <p>Message delivery may begin at:</p>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -196,7 +197,7 @@ export default function NatsStreamingStartPosition() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-streaming-start-position",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-streaming-start-position",
                 "_blank"
               );
             }}
@@ -338,7 +339,7 @@ export default function NatsStreamingStartPosition() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-streaming-start-position",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-streaming-start-position",
                 "_blank"
               );
             }}

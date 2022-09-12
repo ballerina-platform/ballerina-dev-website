@@ -70,7 +70,7 @@ export default function UrlEncodeDecode() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6f7bf4414087d37edeae618befcbc369&file=url_encode_decode.bal",
+                "https://play.ballerina.io/?gist=7c7825f84b4f77c7d124205781e51961&file=url_encode_decode.bal",
                 "_blank"
               );
             }}
@@ -93,7 +93,7 @@ export default function UrlEncodeDecode() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/url-encode-decode",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/url-encode-decode",
                 "_blank"
               );
             }}

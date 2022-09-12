@@ -93,7 +93,7 @@ export default function TaskOneTimeJobExecution() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=90f39bb75dbc2c18387929e73752324e&file=task_one_time_job_execution.bal",
+                "https://play.ballerina.io/?gist=9e59db88716a346201fc5e5b7caa8801&file=task_one_time_job_execution.bal",
                 "_blank"
               );
             }}
@@ -116,7 +116,7 @@ export default function TaskOneTimeJobExecution() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/task-one-time-job-execution",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/task-one-time-job-execution",
                 "_blank"
               );
             }}

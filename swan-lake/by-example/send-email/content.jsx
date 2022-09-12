@@ -93,7 +93,7 @@ export default function SendEmail() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/send-email",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/send-email",
                 "_blank"
               );
             }}
@@ -218,8 +218,7 @@ export default function SendEmail() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run send_email.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# Check the inbox to view the sent emails.`}</span>
             </code>
           </pre>

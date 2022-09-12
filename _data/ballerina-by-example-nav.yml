@@ -115,11 +115,17 @@ sublinks:
           - title: 'Type inference '
             id: 10
             url: type-inference
-          - title: ensureType function
+          - title: Built-in integer subtypes
             id: 11
+            url: built-in-integer-subtypes
+          - title: Built-in string subtype
+            id: 12
+            url: built-in-string-subtype
+          - title: ensureType function
+            id: 13
             url: ensureType-function
           - title: Dependent types
-            id: 12
+            id: 14
             url: dependent-types
       - title: Mappings
         id: 10
@@ -130,6 +136,9 @@ sublinks:
           - title: Records
             id: 2
             url: records
+          - title: Computed field key
+            id: 3
+            url: computed-field-key
       - title: Records
         id: 11
         sublinks:
@@ -175,6 +184,9 @@ sublinks:
           - title: Panics
             id: 4
             url: panics
+          - title: Type intersection for error types
+            id: 5
+            url: error-type-intersection
       - title: Ignore return values and errors
         id: 14
         sublinks:

@@ -68,7 +68,7 @@ export default function EnsureTypeFunction() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c92b47a1b8a66fc2a096df5fb970a850&file=ensureType_function.bal",
+                "https://play.ballerina.io/?gist=c1b99a5c01be3eda1d16356ca435e9b5&file=ensureType_function.bal",
                 "_blank"
               );
             }}
@@ -91,7 +91,7 @@ export default function EnsureTypeFunction() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/ensureType-function",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/ensureType-function",
                 "_blank"
               );
             }}
@@ -223,7 +223,10 @@ export default function EnsureTypeFunction() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Type inference " href="/learn/by-example/type-inference">
+          <Link
+            title="Built-in string subtype"
+            href="/learn/by-example/built-in-string-subtype"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -249,7 +252,7 @@ export default function EnsureTypeFunction() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Type inference
+                  Built-in string subtype
                 </span>
               </div>
             </div>

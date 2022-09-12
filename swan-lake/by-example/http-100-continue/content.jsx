@@ -98,7 +98,7 @@ export default function Http100Continue() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-100-continue",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-100-continue",
                 "_blank"
               );
             }}
@@ -308,8 +308,7 @@ export default function Http100Continue() {
               <span>{`<`}</span>
               <span>{`Hello World!`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# Use the following client to invoke the service using an unsupported media type. The service is supposed to ignore`}</span>
               <span>{`# the payload if the content type does not match.`}</span>
               <span>{`\$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: application/json'`}</span>

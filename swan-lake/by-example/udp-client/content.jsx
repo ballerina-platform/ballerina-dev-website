@@ -90,7 +90,7 @@ export default function UdpClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/udp-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/udp-client",
                 "_blank"
               );
             }}
@@ -213,8 +213,7 @@ export default function UdpClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_client.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# This will print the output below upon a successful write.`}</span>
               <span>{`Datagram was sent to the remote host.`}</span>
               <span>{`# Print the response that is returned from the server as an echo.`}</span>

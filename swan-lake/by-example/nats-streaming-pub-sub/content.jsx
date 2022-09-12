@@ -81,6 +81,7 @@ export default function NatsStreamingPubSub() {
         basic publish/subscribe. In order to run this sample, a NATS Streaming
         server should be running on the corresponding port used in the sample.
       </p>
+
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">
@@ -95,7 +96,7 @@ export default function NatsStreamingPubSub() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-streaming-pub-sub",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-streaming-pub-sub",
                 "_blank"
               );
             }}
@@ -230,7 +231,7 @@ export default function NatsStreamingPubSub() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-streaming-pub-sub",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-streaming-pub-sub",
                 "_blank"
               );
             }}

@@ -114,15 +114,13 @@ export default function ProtoToBallerina() {
         .
       </p>
 
-      <p>Following is a sample proto definition.</p>
-
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/proto-to-ballerina",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/proto-to-ballerina",
                 "_blank"
               );
             }}

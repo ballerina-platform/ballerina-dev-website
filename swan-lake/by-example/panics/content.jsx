@@ -85,7 +85,7 @@ export default function Panics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0e75aad20e30604e8556116fd77db534&file=panics.bal",
+                "https://play.ballerina.io/?gist=77c923270ddc3437cfa9244967b430e0&file=panics.bal",
                 "_blank"
               );
             }}
@@ -108,7 +108,7 @@ export default function Panics() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/panics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/panics",
                 "_blank"
               );
             }}
@@ -279,8 +279,8 @@ export default function Panics() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Ignore return values and errors"
-            href="/learn/by-example/ignoring-return-values-and-errors"
+            title="Type intersection for error types"
+            href="/learn/by-example/error-type-intersection"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -290,7 +290,7 @@ export default function Panics() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Ignore return values and errors
+                  Type intersection for error types
                 </span>
               </div>
               <svg

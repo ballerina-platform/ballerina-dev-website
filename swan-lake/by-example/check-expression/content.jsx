@@ -74,7 +74,7 @@ export default function CheckExpression() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=deeb8dd3667a5c5c29e37883d2304bb9&file=check_expression.bal",
+                "https://play.ballerina.io/?gist=aa22288f0955b64f8ea29acf177dbfd4&file=check_expression.bal",
                 "_blank"
               );
             }}
@@ -97,7 +97,7 @@ export default function CheckExpression() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/check-expression",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/check-expression",
                 "_blank"
               );
             }}

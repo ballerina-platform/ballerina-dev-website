@@ -85,7 +85,7 @@ export default function Records() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7884b7bfcf80fe0fc02c4575cede5a39&file=records.bal",
+                "https://play.ballerina.io/?gist=94527697eb3000476c4ccdebc0f6d322&file=records.bal",
                 "_blank"
               );
             }}
@@ -108,7 +108,7 @@ export default function Records() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/records",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/records",
                 "_blank"
               );
             }}
@@ -274,8 +274,8 @@ export default function Records() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Optional fields"
-            href="/learn/by-example/optional-fields"
+            title="Computed field key"
+            href="/learn/by-example/computed-field-key"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -285,7 +285,7 @@ export default function Records() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Optional fields
+                  Computed field key
                 </span>
               </div>
               <svg

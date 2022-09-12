@@ -128,7 +128,7 @@ export default function TesterinaMockingFunctions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-mocking-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-mocking-functions",
                 "_blank"
               );
             }}
@@ -205,7 +205,7 @@ export default function TesterinaMockingFunctions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-mocking-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-mocking-functions",
                 "_blank"
               );
             }}
@@ -328,22 +328,17 @@ export default function TesterinaMockingFunctions() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test bbe_mocking`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/bbe_mocking:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running Tests`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        bbe_mocking`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                [pass] testCall`}</span>
               <span>{`                [pass] testReturn`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                2 passing`}</span>
               <span>{`                0 failing`}</span>
               <span>{`                0 skipped`}</span>

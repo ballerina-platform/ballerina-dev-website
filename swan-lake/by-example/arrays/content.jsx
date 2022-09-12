@@ -70,7 +70,7 @@ export default function Arrays() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5460fd29c92f1a5d5159075fdcb30ff2&file=arrays.bal",
+                "https://play.ballerina.io/?gist=1c95df33102a62e4d86aa9626636a9f4&file=arrays.bal",
                 "_blank"
               );
             }}
@@ -93,7 +93,7 @@ export default function Arrays() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/arrays",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/arrays",
                 "_blank"
               );
             }}

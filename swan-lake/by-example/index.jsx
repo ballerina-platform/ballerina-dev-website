@@ -26,10 +26,13 @@ import AnyType from "./any-type/content.jsx";
 import TypeDefinitions from "./type-definitions/content.jsx";
 import Covariance from "./covariance/content.jsx";
 import TypeInference from "./type-inference/content.jsx";
+import BuiltInIntegerSubtypes from "./built-in-integer-subtypes/content.jsx";
+import BuiltInStringSubtype from "./built-in-string-subtype/content.jsx";
 import EnsureTypeFunction from "./ensureType-function/content.jsx";
 import DependentTypes from "./dependent-types/content.jsx";
 import Maps from "./maps/content.jsx";
 import Records from "./records/content.jsx";
+import ComputedFieldKey from "./computed-field-key/content.jsx";
 import OptionalFields from "./optional-fields/content.jsx";
 import OpenRecords from "./open-records/content.jsx";
 import ControllingOpenness from "./controlling-openness/content.jsx";
@@ -42,6 +45,7 @@ import ErrorHandling from "./error-handling/content.jsx";
 import CheckExpression from "./check-expression/content.jsx";
 import ErrorSubtyping from "./error-subtyping/content.jsx";
 import Panics from "./panics/content.jsx";
+import ErrorTypeIntersection from "./error-type-intersection/content.jsx";
 import IgnoringReturnValuesAndErrors from "./ignoring-return-values-and-errors/content.jsx";
 import Identity from "./identity/content.jsx";
 import ConstAndFinal from "./const-and-final/content.jsx";
@@ -355,10 +359,13 @@ const BBEs = {
   TypeDefinitions,
   Covariance,
   TypeInference,
+  BuiltInIntegerSubtypes,
+  BuiltInStringSubtype,
   EnsureTypeFunction,
   DependentTypes,
   Maps,
   Records,
+  ComputedFieldKey,
   OptionalFields,
   OpenRecords,
   ControllingOpenness,
@@ -371,6 +378,7 @@ const BBEs = {
   CheckExpression,
   ErrorSubtyping,
   Panics,
+  ErrorTypeIntersection,
   IgnoringReturnValuesAndErrors,
   Identity,
   ConstAndFinal,

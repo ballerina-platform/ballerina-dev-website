@@ -131,7 +131,7 @@ export default function TesterinaAssertions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-assertions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-assertions",
                 "_blank"
               );
             }}
@@ -254,16 +254,13 @@ export default function TesterinaAssertions() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test test_module`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
               <span>{`    ballerinatest/test_module:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                [pass] testAssertEquals`}</span>
               <span>{`                [pass] testAssertExactEquals`}</span>
               <span>{`                [pass] testAssertFail`}</span>
@@ -271,8 +268,7 @@ export default function TesterinaAssertions() {
               <span>{`                [pass] testAssertNotEquals`}</span>
               <span>{`                [pass] testAssertNotExactEquals`}</span>
               <span>{`                [pass] testAssertTrue`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                7 passing`}</span>
               <span>{`                0 failing`}</span>
               <span>{`                0 skipped`}</span>

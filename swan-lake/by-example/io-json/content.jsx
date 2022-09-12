@@ -79,7 +79,7 @@ export default function IoJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0ab07e85d4667652b997068583bb410b&file=io_json.bal",
+                "https://play.ballerina.io/?gist=fca36d2e3f1f04404dc252510560e2f9&file=io_json.bal",
                 "_blank"
               );
             }}
@@ -102,7 +102,7 @@ export default function IoJson() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/io-json",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/io-json",
                 "_blank"
               );
             }}

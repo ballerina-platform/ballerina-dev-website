@@ -81,7 +81,7 @@ export default function WebsocketClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/websocket-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-client",
                 "_blank"
               );
             }}
@@ -204,8 +204,7 @@ export default function WebsocketClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run websocket_text_client.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Hello World!`}</span>
             </code>
           </pre>

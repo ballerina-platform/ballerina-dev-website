@@ -113,7 +113,7 @@ export default function GrpcSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/grpc-simple",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-simple",
                 "_blank"
               );
             }}
@@ -304,7 +304,7 @@ export default function GrpcSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/grpc-simple",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-simple",
                 "_blank"
               );
             }}
@@ -437,8 +437,7 @@ export default function GrpcSimple() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build service`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>
@@ -483,7 +482,7 @@ export default function GrpcSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/grpc-simple",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-simple",
                 "_blank"
               );
             }}
@@ -616,8 +615,7 @@ export default function GrpcSimple() {
           <pre ref={ref3}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build client`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`\$ bal run client/target/bin/client.jar`}</span>
             </code>
           </pre>

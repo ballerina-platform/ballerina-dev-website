@@ -113,7 +113,7 @@ export default function HttpServiceBasicAuthFileUserStore() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-service-basic-auth-file-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-service-basic-auth-file-user-store",
                 "_blank"
               );
             }}
@@ -251,8 +251,7 @@ export default function HttpServiceBasicAuthFileUserStore() {
               <span>{`username="bob"`}</span>
               <span>{`password="password2"`}</span>
               <span>{`scopes=["scope2", "scope3"]' > Config.toml`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# You may need to change the certificate file path and private key file path.`}</span>
               <span>{`\$ bal run http_service_basic_auth_file_user_store.bal`}</span>
             </code>

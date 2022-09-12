@@ -69,7 +69,7 @@ export default function LockStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=eb362f362e7a66c68daaf9ae85f84f4f&file=lock_statement.bal",
+                "https://play.ballerina.io/?gist=9a75d6098f7b84b7a19787424ce5e2ef&file=lock_statement.bal",
                 "_blank"
               );
             }}
@@ -92,7 +92,7 @@ export default function LockStatement() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/lock-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/lock-statement",
                 "_blank"
               );
             }}

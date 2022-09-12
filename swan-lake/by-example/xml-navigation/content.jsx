@@ -99,7 +99,7 @@ export default function XmlNavigation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=76dd3878c43966039a0414828aa8fbf5&file=xml_navigation.bal",
+                "https://play.ballerina.io/?gist=f7deeeb603b179196a8b7527438cbce5&file=xml_navigation.bal",
                 "_blank"
               );
             }}
@@ -122,7 +122,7 @@ export default function XmlNavigation() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/xml-navigation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/xml-navigation",
                 "_blank"
               );
             }}
@@ -258,8 +258,7 @@ export default function XmlNavigation() {
               <span>{`            </book>`}</span>
               <span>{`            <pen><kind>marker</kind><color>blue</color></pen>`}</span>
               <span>{`        </items>`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`            <!--Contents-->`}</span>
               <span>{`            <book>`}</span>
               <span>{`                <name>A Study in Scarlet</name>`}</span>

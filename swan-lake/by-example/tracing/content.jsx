@@ -103,28 +103,18 @@ export default function Tracing() {
 
       <p>
         Ballerina supports Observability out of the box, and Tracing is one of
-        the three important aspects of
-      </p>
-
-      <p>
-        Observability. To observe Ballerina code, the build time flag{" "}
-        <code>--observability-included</code> should be given along with the
-      </p>
-
-      <p>
-        <code>Config.toml</code> file when starting the service. The{" "}
-        <code>Config.toml</code> file contains the required runtime
+        the three important aspects of Observability. To observe Ballerina code,
+        the build time flag <code>--observability-included</code> should be
+        given along with the <code>Config.toml</code> file when starting the
+        service. The <code>Config.toml</code> file contains the required runtime
         configurations related to observability.
       </p>
 
       <p>
         The developers can trace their code blocks and measure the time incurred
-        during the actual runtime execution.
-      </p>
-
-      <p>
-        They can choose to hook their measurement with the default trace created
-        or can create a completely new trace.&lt;br/&gt;&lt;br/&gt;
+        during the actual runtime execution. They can choose to hook their
+        measurement with the default trace created or can create a completely
+        new trace.
       </p>
 
       <p>

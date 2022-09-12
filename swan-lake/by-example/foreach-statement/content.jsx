@@ -68,12 +68,9 @@ export default function ForeachStatement() {
       <h1>Foreach statement</h1>
 
       <p>
-        The <code>foreach</code> statement iterates over an iterable value by
-        binding a variable to each member of the iterable value.
-      </p>
-
-      <p>
-        <code>foreach</code> also works for strings and will iterate over each
+        The <code>foreach</code> statement iterates over an iterable value, by
+        binding a variable to each member of the iterable value in order.{" "}
+        <code>foreach</code> also works for strings, and will iterate over each
         character of the <code>string</code>.
       </p>
 
@@ -83,7 +80,7 @@ export default function ForeachStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5139c35f9fd360542625cdcc9fd95d68&file=foreach_statement.bal",
+                "https://play.ballerina.io/?gist=f90c1a87c7164a42adfe711e4a078edd&file=foreach_statement.bal",
                 "_blank"
               );
             }}
@@ -238,8 +235,8 @@ export default function ForeachStatement() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Function values"
-            href="/learn/by-example/function-values"
+            title="Included record parameters"
+            href="/learn/by-example/included-record-parameters"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -266,7 +263,7 @@ export default function ForeachStatement() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Function values
+                  Included record parameters
                 </span>
               </div>
             </div>

@@ -53,8 +53,8 @@ export default function Functions() {
 
       <p>
         A function accepts zero or more arguments and returns a single value.
-        Function parameters are declared similar to the C language. You are not
-        allowed to assign values to parameters in Ballerina.
+        Function parameters are declared as in C. You are not allowed to assign
+        to parameters in Ballerina.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -63,7 +63,7 @@ export default function Functions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=54500d1ca629b0da7e556ceb0d6fc7a7&file=functions.bal",
+                "https://play.ballerina.io/?gist=95c3c6d7db52da49f7552c6f6a0b6dce&file=functions.bal",
                 "_blank"
               );
             }}

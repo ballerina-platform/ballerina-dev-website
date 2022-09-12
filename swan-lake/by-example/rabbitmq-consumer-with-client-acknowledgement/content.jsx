@@ -60,10 +60,9 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
-        RabbitMQ message listener.
+        RabbitMQ message listener. The received messages are acknowledged
+        manually.
       </p>
-
-      <p>The received messages are acknowledged manually.</p>
 
       <p>
         By default, the ackMode is rabbitmq:AUTO_ACK, which will automatically

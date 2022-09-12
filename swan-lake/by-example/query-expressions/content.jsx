@@ -60,8 +60,8 @@ export default function QueryExpressions() {
 
       <p>
         Query-like expressions start with a <code>from</code> clause and end
-        with a <code>select</code> clause. It is a list comprehension based on
-        the <code>set builder</code> mathematical notation.
+        with a <code>select</code> clause. It is a list comprehension, based on
+        the mathematical <code>set builder</code> notation.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -70,7 +70,7 @@ export default function QueryExpressions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5049efedbef753ef81e3a066e554fc65&file=query_expressions.bal",
+                "https://play.ballerina.io/?gist=94818b17761774fd736ec3bd973f0e37&file=query_expressions.bal",
                 "_blank"
               );
             }}
@@ -262,7 +262,7 @@ export default function QueryExpressions() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Destructuring records"
+            title="Destructure records"
             href="/learn/by-example/destructuring-records"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -273,7 +273,7 @@ export default function QueryExpressions() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructuring records
+                  Destructure records
                 </span>
               </div>
               <svg

@@ -70,7 +70,7 @@ export default function IoCsv() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/io/latest/">
+        <a href="https://lib.ballerina.io/ballerina/io/latest/">
           <code>io</code> module
         </a>
         .
@@ -82,7 +82,7 @@ export default function IoCsv() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b01b2ce9fdafede52e6c01c484b47228&file=io_csv.bal",
+                "https://play.ballerina.io/?gist=0adc313d5c78563d2dc0f2c6d785ad98&file=io_csv.bal",
                 "_blank"
               );
             }}
@@ -278,7 +278,10 @@ export default function IoCsv() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Read/write JSON" href="/learn/by-example/io-json">
+          <Link
+            title="Read/write CSV with data mapping"
+            href="/learn/by-example/io-csv-datamapping"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -287,7 +290,7 @@ export default function IoCsv() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/write JSON
+                  Read/write CSV with data mapping
                 </span>
               </div>
               <svg

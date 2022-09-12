@@ -58,12 +58,8 @@ export default function RabbitmqConsumer() {
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
-        RabbitMQ message listener.
-      </p>
-
-      <p>
-        The Ballerina RabbitMQ connection used here can be re-used to create
-        multiple channels.
+        RabbitMQ message listener. The Ballerina RabbitMQ connection used here
+        can be re-used to create multiple channels.
       </p>
 
       <p>

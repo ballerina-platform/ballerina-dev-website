@@ -17,10 +17,8 @@ import ballerina/random;
 import ballerina/time;
 
 public function main() {
-    // The Ballerina log API provides functions to log at four levels, which are
-    // \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
-    // You can pass key/value pairs where the values are function pointers.
-    // These functions can return values, which change dynamically.
+    // The Ballerina log API provides functions to log at four levels, which are \`DEBUG\`, \`ERROR\`, \`INFO\`, and \`WARN\`.
+    // You can pass key/value pairs of which the values are function pointers. These functions can return values, which change dynamically.
     // The following log prints the current UTC time as a key/value pair.
     log:printInfo("info log",
                   current_time = isolated function() returns string {
@@ -57,16 +55,14 @@ export default function LoggingWithContext() {
       <h1>Logging with context</h1>
 
       <p>
-        The Ballerina Log API contains the application log handling
-        functions.&lt;br/&gt;&lt;br/&gt;
+        The <code>log</code> library contains the application log handling
+        functions.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/log/latest/">
-          Log module
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/log/latest/">
+          <code>log</code> module
         </a>
         .
       </p>
@@ -77,7 +73,7 @@ export default function LoggingWithContext() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=de862fc789aaf5976a037eed381bada8&file=logging_with_context.bal",
+                "https://play.ballerina.io/?gist=33d19bd607e4472d2db93af7a56b944a&file=logging_with_context.bal",
                 "_blank"
               );
             }}
@@ -170,6 +166,10 @@ export default function LoggingWithContext() {
           )}
         </Col>
       </Row>
+
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

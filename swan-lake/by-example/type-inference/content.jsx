@@ -71,7 +71,7 @@ export default function TypeInference() {
 
       <p>
         Type inference is local and restricted to a single expression. Overuse
-        of the type inference can make the code harder to understand.
+        of type inference can make the code harder to understand.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -80,7 +80,7 @@ export default function TypeInference() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=306c66452081ef965e2949af425477c0&file=type_inference.bal",
+                "https://play.ballerina.io/?gist=b578f50f009c7c873d46531a9bec0c21&file=type_inference.bal",
                 "_blank"
               );
             }}
@@ -268,7 +268,10 @@ export default function TypeInference() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Maps" href="/learn/by-example/maps">
+          <Link
+            title="ensureType function"
+            href="/learn/by-example/ensureType-function"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -277,7 +280,7 @@ export default function TypeInference() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Maps
+                  ensureType function
                 </span>
               </div>
               <svg

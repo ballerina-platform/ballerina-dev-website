@@ -99,16 +99,11 @@ export default function GrpcSimpleWithHeaders() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Simple RPC with headers</h1>
 
-      <p>The gRPC Server Connector exposes the gRPC service over HTTP2.</p>
-
       <p>
-        In a simple RPC call, a client sends a request to a remote service and
-        waits for the response.
-      </p>
-
-      <p>
-        The headers can be passed using the context record that is generated for
-        each Protobuf message.
+        The gRPC Server Connector exposes the gRPC service over HTTP2. In a
+        simple RPC call, a client sends a request to a remote service and waits
+        for the response. The headers can be passed using the context record
+        that is generated for each Protobuf message.
       </p>
 
       <blockquote>
@@ -409,7 +404,8 @@ export default function GrpcSimpleWithHeaders() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'service' package.
+            Execute the commands below to build and run the <code>service</code>{" "}
+            package.
           </span>
         </li>
       </ul>
@@ -587,7 +583,8 @@ export default function GrpcSimpleWithHeaders() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'client' package.
+            Execute the commands below to build and run the <code>client</code>{" "}
+            package.
           </span>
         </li>
       </ul>

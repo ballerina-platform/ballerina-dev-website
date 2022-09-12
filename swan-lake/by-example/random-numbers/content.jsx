@@ -52,15 +52,13 @@ export default function RandomNumbers() {
 
       <p>
         The <code>random</code> library provides functions related to random
-        number generation.&lt;br/&gt;&lt;br/&gt;
+        number generation.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/random/latest/">
-          Random module
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/random/latest/">
+          <code>random</code> module
         </a>
         .
       </p>
@@ -71,7 +69,7 @@ export default function RandomNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2e8bffb41a2a6bf0bf4853bb4c8d135e&file=random_numbers.bal",
+                "https://play.ballerina.io/?gist=99a0314a977182fcfa765df418121945&file=random_numbers.bal",
                 "_blank"
               );
             }}
@@ -164,6 +162,10 @@ export default function RandomNumbers() {
           )}
         </Col>
       </Row>
+
+      <p>
+        To run this sample, use the <code>bal run</code> command.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

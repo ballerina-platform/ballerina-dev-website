@@ -109,24 +109,17 @@ export default function TesterinaAssertions() {
 
       <p>
         Testerina has in-built assertions that enable you to assert an outcome
-        against
-      </p>
-
-      <p>
-        an expected outcome. This example illustrates how to use different
-        assertions.
+        against an expected outcome. This example illustrates how to use
+        different assertions.
       </p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/test-ballerina-code/write-tests/#use-assertions">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
           <code>test</code> module
         </a>
         .

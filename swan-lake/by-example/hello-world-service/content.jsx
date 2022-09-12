@@ -49,11 +49,10 @@ export default function HelloWorldService() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Hello world service</h1>
 
-      <p>Let's write a simple HTTP service in Ballerina.</p>
-
       <p>
-        This example demonstrates the network primitives in the language that
-        make it simpler to develop services.
+        Let's write a simple HTTP service in Ballerina. This example
+        demonstrates the network primitives in the language that make it simpler
+        to develop services.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

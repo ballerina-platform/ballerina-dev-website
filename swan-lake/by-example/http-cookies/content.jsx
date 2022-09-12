@@ -27,15 +27,17 @@ service /cookieDemo on serverEP {
         // Check the password value.
         if password == "p@ssw0rd" {
 
-            // [Create a new cookie](https://docs.central.ballerina.io/ballerina/http/latest/classes/Cookie)
-            // by setting the \`name\` as the \`username\` and \`value\` as the name of the logged-in user. Set the cookies
-            // path as \`/\` to apply it to all the resources in the service.
-            http:Cookie cookie = new("username", name.toString(), path = "/");
+                    // Create a new cookie by setting \`name\` as the \`username\` and \`value\` as the logged-in user's name. 
+                    // Set the cookies path as \`/\` to apply it to all the resources in the service.
+                    // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Cookie.
+                    http:Cookie cookie = new("username", name.toString(),
+                                                path = "/");
 
             http:Response response = new;
 
-            // [Add the created cookie to the response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#addCookie).
-            response.addCookie(cookie);
+                    // Add the created cookie to the response.
+                    // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#addCookie.
+                    response.addCookie(cookie);
 
             // Set a message payload to inform that the login has
             // been succeeded.
@@ -46,7 +48,8 @@ service /cookieDemo on serverEP {
     }
 
     resource function get welcome(http:Request req) returns string {
-        // [Retrieve cookies from the request](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getCookies).
+        // Retrieve cookies from the request.
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getCookies.
         http:Cookie[] cookies = req.getCookies();
 
         // Get the cookie value of the \`username\`.
@@ -73,7 +76,8 @@ service /cookieDemo on serverEP {
   `import ballerina/http;
 import ballerina/log;
 
-// HTTP client configurations associated with [enabling cookies](https://docs.central.ballerina.io/ballerina/http/latest/records/CookieConfig).
+// HTTP client configurations associated with enabling cookies.
+// For detauils, see https://lib.ballerina.io/ballerina/http/latest/records/CookieConfig.
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
@@ -143,8 +147,8 @@ export default function HttpCookies() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>

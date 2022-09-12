@@ -17,7 +17,7 @@
  */
 
 import React from "react";
-import { Container, Row, Col, Button, Offcanvas } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import fs from "fs";
 import Head from "next/head";
 import Link from "next/link";
@@ -48,11 +48,6 @@ export async function getStaticProps() {
 }
 
 export default function BBEPage({ navContent, bbesJson }) {
-  // Show mobile left nav
-  const [show, setShow] = React.useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const router = useRouter();
 
   function ListBBEs() {
@@ -207,18 +202,10 @@ export default function BBEPage({ navContent, bbesJson }) {
 
       <Layout>
         <Col sm={3} xxl={2} className="leftNav d-none d-sm-block">
-          <LeftNavYaml navContent={navContent} viewer={1} />
+          <LeftNavYaml navContent={navContent} bbe={null} />
         </Col>
         <Col xs={12} className="d-block d-sm-none">
-          <Button className="learnMob" onClick={handleShow}>
-            Learn
-          </Button>
-          <Offcanvas show={show} onHide={handleClose}>
-            <Offcanvas.Header closeButton></Offcanvas.Header>
-            <Offcanvas.Body>
-              <LeftNavYaml navContent={navContent} />
-            </Offcanvas.Body>
-          </Offcanvas>
+          Mobile Left Nav
         </Col>
         <Col xs={12} sm={9} xxl={10} className="mdContent">
           <Container fluid="xl">

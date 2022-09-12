@@ -65,11 +65,14 @@ export default function Immutability() {
         <code>anydata</code> values can be made immutable. Simple and{" "}
         <code>string</code> values are inherently immutable. A structural value
         can be constructed as mutable or immutable. A value includes an
-        immutable flag. The immutable flag is fixed at the time of construction.
-        Attempting to mutate an immutable structure causes a panic at runtime.
-        Immutability is deep: an immutable structure can only have immutable
-        members. An immutable value is safe for concurrent access without
-        locking.
+        immutable flag.
+      </p>
+
+      <p>
+        The immutable flag is fixed at the time of construction. Attempting to
+        mutate an immutable structure causes a panic at runtime. Immutability is
+        deep: an immutable structure can only have immutable members. An
+        immutable value is safe for concurrent access without locking.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

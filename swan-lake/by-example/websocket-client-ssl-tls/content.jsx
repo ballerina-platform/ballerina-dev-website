@@ -18,8 +18,8 @@ import ballerina/io;
 // A WebSocket client can be configured to communicate through WSS as well.
 // To secure a client using TLS/SSL, the client needs to be configured with
 // a certificate file of the listener.
-// The [\`websocket:ClientSecureSocket\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket) record
-// provides the SSL-related configurations of the client.
+// The \`websocket:ClientSecureSocket\` record provides the SSL-related configurations of the client.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     secureSocket = {
         cert: "../resource/path/to/public.crt"
@@ -59,19 +59,14 @@ export default function WebsocketClientSslTls() {
 
       <p>
         You can use the WSS client to connect or interact with an WSS listener.
-      </p>
-
-      <p>
         Provide the <code>websocket:ClientSecureSocket</code> configurations to
-        the client to
+        the client to initiate an WSS connection.
       </p>
-
-      <p>initiate an WSS connection.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/">
-          WebSocket module
+        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
+          <code>websocket</code> module
         </a>
         .
       </p>

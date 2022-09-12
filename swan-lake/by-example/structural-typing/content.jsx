@@ -47,9 +47,9 @@ export default function StructuralTyping() {
       <h1>Structural typing</h1>
 
       <p>
-        Typing in Ballerina is structural: when a type describes a set of
-        values. Ballerina has semantic subtyping: subtype means subset. Universe
-        of values is partitioned into basic types. Each value belongs to exactly
+        Typing in Ballerina is structural: a type describes a set of values.
+        Ballerina has semantic subtyping: subtype means subset. Universe of
+        values is partitioned into basic types. Each value belongs to exactly
         one basic type. You can think of each value as being tagged with its
         basic type.
       </p>
@@ -58,16 +58,25 @@ export default function StructuralTyping() {
         There is a complexity in making structural typing work with mutation.
       </p>
 
-      <p>
-        Immutable basic types (so far): <code>nil</code>, <code>boolean</code>,{" "}
-        <code>int</code>, <code>float</code>, <code>decimal</code>,{" "}
-        <code>string</code>
-      </p>
-
-      <p>
-        Mutable basic types (so far): <code>array</code>, <code>tuple</code>,{" "}
-        <code>map</code> and <code>record</code>
-      </p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Immutable basic types (so far): <code>nil</code>,{" "}
+            <code>boolean</code>, <code>int</code>, <code>float</code>,{" "}
+            <code>string</code>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Mutable basic types (so far): <code>array</code>, <code>map</code>,
+            and <code>record</code>
+          </span>
+        </li>
+      </ul>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>

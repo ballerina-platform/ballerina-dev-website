@@ -78,14 +78,9 @@ export default function NatsStreamingPubSub() {
 
       <p>
         The <code>nats</code> streaming library provides the functionality of a
-        basic publish/subscribe.
+        basic publish/subscribe. In order to run this sample, a NATS Streaming
+        server should be running on the corresponding port used in the sample.
       </p>
-
-      <p>
-        In order to run this sample, a NATS Streaming server should be running
-        on the corresponding port used in the sample.
-      </p>
-
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/stan/latest">

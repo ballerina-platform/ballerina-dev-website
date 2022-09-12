@@ -179,7 +179,7 @@
                         {
                             "dirName": "CLI documentation",
                             "level": 3,
-                            "position": 5,
+                            "position": 6,
                             "isDir": true,
                             "url": "/learn/ballerina-tooling/cli-documentation",
                             "id": "cli-documentation",
@@ -249,6 +249,14 @@
                             "isDir": false,
                             "url": "/learn/asyncapi-tool",
                             "id": "asyncapi-tool"
+                        },
+                        {
+                            "dirName": "Strand dump tool",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/strand-dump-tool",
+                            "id": "strand-dump-tool"
                         }
                     ]
                 },

@@ -56,11 +56,14 @@ export default function AsynchronousFunctionCalls() {
       <p>
         <code>start</code> calls a function asynchronously and the function runs
         on a separate logical thread (<code>strand</code>). It is cooperatively
-        multitasked by default. The result will be of type{" "}
-        <code>future&lt;T&gt;</code> and <code>future</code> is a separate basic
-        type. Waiting for the same <code>future</code> more than once gives an{" "}
-        <code>error</code>. Use <code>f.cancel()</code> to terminate a{" "}
-        <code>future</code>.
+        multitasked by default.
+      </p>
+
+      <p>
+        The result will be of type <code>future&lt;T&gt;</code> and{" "}
+        <code>future</code> is a separate basic type. Waiting for the same{" "}
+        <code>future</code> more than once gives an <code>error</code>. Use{" "}
+        <code>f.cancel()</code> to terminate a <code>future</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -69,7 +72,7 @@ export default function AsynchronousFunctionCalls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=24b81ed4f29e25a8decde95d84784047&file=asynchronous_function_calls.bal",
+                "https://play.ballerina.io/?gist=92083e6d3ee69e02ae698ffb368ebc3f&file=asynchronous_function_calls.bal",
                 "_blank"
               );
             }}

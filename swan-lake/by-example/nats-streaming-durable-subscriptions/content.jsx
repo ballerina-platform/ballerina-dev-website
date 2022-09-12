@@ -79,17 +79,8 @@ export default function NatsStreamingDurableSubscriptions() {
 
       <p>
         The <code>nats</code> streaming library allows creating durable
-        subscriptions.
-      </p>
-
-      <p>
-        Regular subscriptions remember their position while the client is
-        connected.
-      </p>
-
-      <p>If the client disconnects, the position is lost.</p>
-
-      <p>
+        subscriptions. Regular subscriptions remember their position while the
+        client is connected. If the client disconnects, the position is lost.
         Durable subscriptions remember their position even if the client is
         disconnected.
       </p>

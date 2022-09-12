@@ -38,7 +38,7 @@ jobs:
         run: |
           git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-distribution.git
           cd ballerina-distribution
-          git checkout -b ${{ github.event.inputs.distribution_branch }} origin/${{ github.event.inputs.distribution_branch }} || git checkout ${{ github.event.inputs.distribution_branch }}
+          git checkout -b ${{ github.event.inputs.distribution_branch }} origin/${{ github.event.inputs.distribution_branch }}
           cd ..
 
       - name: Remove old BBE pages

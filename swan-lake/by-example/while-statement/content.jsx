@@ -65,7 +65,7 @@ export default function WhileStatement() {
 
       <p>
         The <code>while</code> statement is a more flexible iteration than{" "}
-        <code>foreach</code>. The <code>break</code> and <code>continue</code>{" "}
+        <code>foreach</code>. <code>break</code> and <code>continue</code>{" "}
         statements can be used within the loops to alter control flow.
       </p>
 

@@ -70,9 +70,13 @@ export default function SequenceDiagrams() {
         worker and function's default worker). The diagram also has a lifeline
         for each client object parameter or variable in the initialization
         section, representing the remote system to which the client object is
-        sending messages. Each remote method call on a client object is
-        represented as a horizontal line between the lifeline of the worker
-        making the call and the remote system.
+        sending messages.
+      </p>
+
+      <p>
+        Each remote method call on a client object is represented as a
+        horizontal line between the lifeline of the worker making the call and
+        the remote system.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -81,7 +85,7 @@ export default function SequenceDiagrams() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e49dedd461befaf48f4de91b9772d399&file=sequence_diagrams.bal",
+                "https://play.ballerina.io/?gist=e3f4a784d903d7492f76aaf17a75e4a6&file=sequence_diagrams.bal",
                 "_blank"
               );
             }}
@@ -269,7 +273,7 @@ export default function SequenceDiagrams() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Waiting for workers"
+            title="Wait for workers"
             href="/learn/by-example/waiting-for-workers"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -280,7 +284,7 @@ export default function SequenceDiagrams() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Waiting for workers
+                  Wait for workers
                 </span>
               </div>
               <svg

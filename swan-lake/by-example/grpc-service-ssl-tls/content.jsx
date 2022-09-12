@@ -27,8 +27,8 @@ service HelloWorld {
 // A gRPC listener can be configured to communicate through SSL/TLS as well.
 // To secure a listener using SSL/TLS, the listener needs to be configured
 // with a certificate file and a private key file for the listener.
-// The [\`grpc:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket) record
-// provides the SSL-related listener configurations of the listener.
+// The \`grpc:ListenerSecureSocket\` record provides the SSL-related listener configurations of the listener.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket.
 listener grpc:Listener securedEP = new (9090,
     secureSocket = {
         key: {
@@ -77,15 +77,10 @@ export default function GrpcServiceSslTls() {
 
       <p>
         You can use the gRPC listener to connect to or interact with a gRPC
-        client secured with SSL/TLS.
+        client secured with SSL/TLS. Provide the{" "}
+        <code>grpc:ListenerSecureSocket</code> configurations to the server to
+        expose an HTTPS connection over HTTP/2.
       </p>
-
-      <p>
-        Provide the <code>grpc:ListenerSecureSocket</code> configurations to the
-        server to
-      </p>
-
-      <p>expose an HTTPS connection over HTTP/2.</p>
 
       <blockquote>
         <p>
@@ -390,6 +385,13 @@ export default function GrpcServiceSslTls() {
         </li>
       </ul>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You may need to change the certificate file
+          path and private key file path.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded"
         style={{ marginLeft: "24px" }}
@@ -449,11 +451,6 @@ export default function GrpcServiceSslTls() {
           </pre>
         </Col>
       </Row>
-
-      <p>
-        You may need to change the certificate file path and private key file
-        path.
-      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

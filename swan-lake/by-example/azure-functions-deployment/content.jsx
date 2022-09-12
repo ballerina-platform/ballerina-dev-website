@@ -73,16 +73,18 @@ export default function AzureFunctionsDeployment() {
       <h1>Azure Functions</h1>
 
       <p>
-        Azure Functions is an event-driven, serverless computing platform.
+        Azure Functions is an event driven, serverless computing platform.
         Ballerina functions can be deployed in Azure Functions by annotating a
-        Ballerina function with the Azure functions annotation.
+        Ballerina function with Azure functions annotation&quot;. You can view
+        the code examples below.
       </p>
 
       <p>
-        The <code>Trigger</code>, <code>Input</code>, and <code>Output</code>{" "}
-        bindings parameter annotations were introduced as per the Azure
-        functions programming model. For more information, see{" "}
-        <a href="/learn/deployment/azure-functions/">Azure deployment</a>.
+        For more information, see the{" "}
+        <a href="https://ballerina.io/learn/deployment/azure-functions/">
+          Azure deployment guide
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -457,12 +459,8 @@ export default function AzureFunctionsDeployment() {
 
       <p>
         The <code>queuePopulationTimer</code> function is being triggered by the
-        Azure Function App from a timer. You can check the
-      </p>
-
-      <p>
-        queue storage to see the output. For more information on the
-        infrastructure, see{" "}
+        Azure Function App from a timer. You can check the queue storage to see
+        the output. For more information on the infrastructure, see{" "}
         <a href="/learn/deployment/azure-functions/">
           Azure Functions deployment
         </a>
@@ -471,7 +469,7 @@ export default function AzureFunctionsDeployment() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Kubernetes" href="/learn/by-example/c2c-k8s-deployment">
+          <Link title="Docker" href="/learn/by-example/c2c-docker-deployment">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -497,7 +495,7 @@ export default function AzureFunctionsDeployment() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Kubernetes
+                  Docker
                 </span>
               </div>
             </div>

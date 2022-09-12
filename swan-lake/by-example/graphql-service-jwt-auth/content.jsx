@@ -94,7 +94,7 @@ export default function GraphqlServiceJwtAuth() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/jwt/latest/">
+        <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
           <code>jwt</code> module
         </a>
         .

@@ -26,8 +26,9 @@ service HelloWorld {
 
 // Defines the gRPC client to call the OAuth2 secured APIs.
 // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-// header by passing the [\`grpc:OAuth2JwtBearerGrantConfig\`](https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2JwtBearerGrantConfig) for the \`auth\`
+// header by passing the \`grpc:OAuth2JwtBearerGrantConfig\` for the \`auth\`
 // configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2JwtBearerGrantConfig.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     auth = {
         tokenUrl: "https://localhost:9445/oauth2/token",
@@ -81,18 +82,14 @@ export default function GrpcClientOauth2JwtBearerGrantType() {
 
       <p>
         A client, which is secured with an OAuth2 JWT bearer grant type can be
+        used to connect to a secured service.
       </p>
-
-      <p>used to connect to a secured service.</p>
 
       <p>
         The client metadata is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code>
-      </p>
-
-      <p>
-        header by passing the <code>grpc:OAuth2JwtBearerGrantConfig</code> to
-        the <code>auth</code> configuration of the client.
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
+        <code>grpc:OAuth2JwtBearerGrantConfig</code> to the <code>auth</code>{" "}
+        configuration of the client.
       </p>
 
       <blockquote>
@@ -392,10 +389,19 @@ export default function GrpcClientOauth2JwtBearerGrantType() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'client' package.
+            Execute the commands below to build and run the <code>client</code>{" "}
+            package.
           </span>
         </li>
       </ul>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You may need to change the trusted certificate
+          file path. As a prerequisite, start a sample service secured with
+          OAuth2.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -457,10 +463,6 @@ export default function GrpcClientOauth2JwtBearerGrantType() {
           </pre>
         </Col>
       </Row>
-
-      <p>You may need to change the trusted certificate file path.</p>
-
-      <p>As a prerequisite, start a sample service secured with OAuth2.</p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

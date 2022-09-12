@@ -70,14 +70,13 @@ export default function Panics() {
       <p>
         Ballerina distinguishes normal errors from abnormal errors. Normal
         errors are handled by returning error values. Abnormal errors are
-        handled using the <code>panic</code> statement. Abnormal errors should
-        typically result in immediate program termination (e.g., a programming
-        bug or out-of-memory error). Panic has an associated error value.
+        handled using the panic statement. Abnormal errors should typically
+        result in immediate program termination.
       </p>
 
       <p>
-        The <code>trap</code> expression stops a panic and gives access to the
-        error value associated with the panic.
+        E.g., A programming bug or out of memory. A panic has an associated
+        error value.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -86,7 +85,7 @@ export default function Panics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0385b1c8a9179b6e204c07fca4fb0f83&file=panics.bal",
+                "https://play.ballerina.io/?gist=0e75aad20e30604e8556116fd77db534&file=panics.bal",
                 "_blank"
               );
             }}
@@ -280,7 +279,7 @@ export default function Panics() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Ignoring return values and errors"
+            title="Ignore return values and errors"
             href="/learn/by-example/ignoring-return-values-and-errors"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -291,7 +290,7 @@ export default function Panics() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Ignoring return values and errors
+                  Ignore return values and errors
                 </span>
               </div>
               <svg

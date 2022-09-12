@@ -74,11 +74,8 @@ export default function KafkaConsumerService() {
 
       <p>
         Here, a Kafka consumer is used as a listener to a service with manual
-        offset commits.
-      </p>
-
-      <p>
-        For this to work properly, an active Kafka broker should be present.
+        offset commits. For this to work properly, an active Kafka broker should
+        be present.
       </p>
 
       <p>

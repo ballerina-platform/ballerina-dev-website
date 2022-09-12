@@ -72,11 +72,8 @@ export default function KafkaProducer() {
 
       <p>
         This shows how to send messages to a Kafka topic using a{" "}
-        <code>kafka:Producer</code> client.
-      </p>
-
-      <p>
-        For this to work properly, an active Kafka broker should be present.
+        <code>kafka:Producer</code> client. For this to work properly, an active
+        Kafka broker should be present.
       </p>
 
       <p>

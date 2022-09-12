@@ -62,14 +62,14 @@ export default function Maps() {
       <p>
         The <code>map&lt;T&gt;</code> type is a mapping from strings to{" "}
         <code>T</code>. The map syntax is similar to JSON. Maps are mutable.{" "}
-        <code>m[k]</code> is an <code>lvalue</code>. <code>foreach</code> will
+        <code>m[k]</code> is an &quot;lvalue&quot;. <code>foreach</code> will
         iterate over the values of the <code>map</code>. <code>m[k]</code> gets
-        an entry for <code>k</code>; if <code>nil</code> is missing. Use{" "}
+        entry for <code>k</code>; <code>nil</code> if missing. Use{" "}
         <code>m.get(k)</code> when you know that there is an entry for{" "}
         <code>k</code>. <code>m.keys()</code> can be used to iterate over keys
         to get the keys as an <code>array</code> of strings. <code>==</code> and{" "}
         <code>!=</code> on maps is deep. Two maps are equal if they have the
-        same set of keys and the values of each key are equal.
+        same set of keys and the values for each key are equal.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -78,7 +78,7 @@ export default function Maps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=31fa9a91b5243b461e79d7cc76e58da5&file=maps.bal",
+                "https://play.ballerina.io/?gist=c4f8f66490696eded8c2675a66d6c562&file=maps.bal",
                 "_blank"
               );
             }}
@@ -232,7 +232,10 @@ export default function Maps() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Type inference " href="/learn/by-example/type-inference">
+          <Link
+            title="Dependent types"
+            href="/learn/by-example/dependent-types"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +261,7 @@ export default function Maps() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Type inference
+                  Dependent types
                 </span>
               </div>
             </div>

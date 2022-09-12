@@ -59,7 +59,7 @@ export default function IoXml() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/io/latest/">
+        <a href="https://lib.ballerina.io/ballerina/io/latest/">
           <code>io</code> module
         </a>
         .
@@ -71,7 +71,7 @@ export default function IoXml() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2053a7dc850c18e607d468a2624e4ed9&file=io_xml.bal",
+                "https://play.ballerina.io/?gist=9a5192eaca2774806c7677bcf51d5836&file=io_xml.bal",
                 "_blank"
               );
             }}

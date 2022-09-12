@@ -53,33 +53,33 @@ export default function BacktickTemplates() {
 
       <p>
         The backtick templates consist of a tag followed by characters
-        surrounded by backticks. They can contain expressions in{" "}
+        surrounded by backticks. They can contain <code>expressions</code> in{" "}
         <code>$&#123;...&#125;</code> to be interpolated. If no escapes are
-        recognized, use an expression to escape. They can contain new lines.
-        Backtick templates are processed in the two phases below.
+        recognized: use an <code>expression</code> to escape.
       </p>
+
+      <p>They can contain newlines and are processed in two phases.</p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>&#8226;&nbsp;</span>
+          <span>1.</span>
           <span>
-            Phase 1 does the tag-independent parse of which the result is a list
-            of strings and expressions
+            Phase 1 does tag-independent parse: result is a list of{" "}
+            <code>strings</code> and <code>expressions</code>
           </span>
         </li>
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>&#8226;&nbsp;</span>
-          <span>Phase 2 is tag-dependent</span>
+          <span>2.</span>
+          <span>
+            Phase 2 is tag-dependent: Phase 2 for <code>string...</code>{" "}
+            converts <code>expressions</code> to <code>strings</code> and
+            concatenates. <code>base16</code> and <code>base64</code> tags do
+            not allow <code>expressions</code>.
+          </span>
         </li>
       </ul>
-
-      <p>
-        Phase 2 for <code>string...</code> converts expressions to strings and
-        concatenates them. The <code>base16</code> and <code>base64</code> tags
-        do not allow expressions.
-      </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -87,7 +87,7 @@ export default function BacktickTemplates() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5d58f8361f568b8ad74b626da44851ff&file=backtick_templates.bal",
+                "https://play.ballerina.io/?gist=4d98a1043a89d14b99bc575f0dc8c324&file=backtick_templates.bal",
                 "_blank"
               );
             }}

@@ -74,7 +74,20 @@ export default function AwsLambdaDeployment() {
       <p>
         AWS Lambda is an event driven, serverless computing platform. Ballerina
         functions can be deployed in AWS Lambda by annotating a Ballerina
-        function with <code>@awslambda:Function</code>.
+        function with &quot;@awslambda:Function&quot;, which should have the
+        function signature{" "}
+        <code>
+          function (awslambda:Context, json|EventType) returns json|error
+        </code>
+        .
+      </p>
+
+      <p>
+        For more information, see the{" "}
+        <a href="https://ballerina.io/learn/deployment/aws-lambda/">
+          AWS Lambda Deployment Guide
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>

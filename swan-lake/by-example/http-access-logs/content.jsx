@@ -50,24 +50,17 @@ export default function HttpAccessLogs() {
 
       <p>
         Ballerina supports HTTP access logs for HTTP services. The access log
-        format used is the combined log format.
-      </p>
-
-      <p>
-        To enable access logs, set <code>console=true</code> under the{" "}
+        format used is the combined log format. To enable access logs, set{" "}
+        <code>console=true</code> under the{" "}
         <code>ballerina.http.accessLogConfig</code> in the{" "}
-        <code>Config.toml</code> file.
-      </p>
-
-      <p>
-        Also, the <code>path</code> field can be used to specify the file path
-        to save the access logs.
+        <code>Config.toml</code> file. Also, the <code>path</code> field can be
+        used to specify the file path to save the access logs.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>

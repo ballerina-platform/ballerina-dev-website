@@ -64,26 +64,22 @@ export default function TesterinaBeforeAndAfterTest() {
 
       <p>
         The <code>before</code> attribute allows you to execute a function
-        before a test function.
+        before a test function. Similarly, the <code>after</code> attribute can
+        be used to execute a function after a test function.
       </p>
 
       <p>
-        Similarly, the <code>after</code> attribute can be used to execute a
-        function after a test function. These annotations can be used
+        These annotations can be used to set up the prerequisites and post
+        actions for a test case.
       </p>
-
-      <p>to set up the prerequisites and post actions for a test case.</p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/test-ballerina-code/execute-tests/#understand-the-test-execution-behavior">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
           <code>test</code> module
         </a>
         .

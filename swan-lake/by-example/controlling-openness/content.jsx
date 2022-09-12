@@ -81,7 +81,7 @@ export default function ControllingOpenness() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c99d55b0e91b2ac96d1ef612444c4474&file=controlling_openness.bal",
+                "https://play.ballerina.io/?gist=5e83a09c472919cedb71872dc9d380e7&file=controlling_openness.bal",
                 "_blank"
               );
             }}
@@ -104,7 +104,7 @@ export default function ControllingOpenness() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/controlling-openness",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/controlling-openness",
                 "_blank"
               );
             }}

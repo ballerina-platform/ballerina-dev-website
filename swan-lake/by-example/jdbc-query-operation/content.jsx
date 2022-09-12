@@ -150,7 +150,7 @@ export default function JdbcQueryOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/jdbc-query-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/jdbc-query-operation",
                 "_blank"
               );
             }}
@@ -280,8 +280,7 @@ export default function JdbcQueryOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Customer details: {"customerId":1,"firstName":"Peter","lastName":"Stuart","registrationId":1,"creditLimit":5000.75,"country":"USA"}`}</span>
               <span>{`Customer details: {"customerId":2,"firstName":"Dan","lastName":"Brown","registrationId":2,"creditLimit":10000.0,"country":"UK"}`}</span>
             </code>
@@ -300,7 +299,7 @@ export default function JdbcQueryOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/jdbc-query-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/jdbc-query-operation",
                 "_blank"
               );
             }}
@@ -377,7 +376,7 @@ export default function JdbcQueryOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/jdbc-query-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/jdbc-query-operation",
                 "_blank"
               );
             }}

@@ -86,7 +86,7 @@ export default function InterWorkerMessagePassing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4e1a16aabb608d75c09409cef3fd4f65&file=inter_worker_message_passing.bal",
+                "https://play.ballerina.io/?gist=521eb97c180a86298d8eccc9df309378&file=inter_worker_message_passing.bal",
                 "_blank"
               );
             }}
@@ -109,7 +109,7 @@ export default function InterWorkerMessagePassing() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/inter-worker-message-passing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/inter-worker-message-passing",
                 "_blank"
               );
             }}

@@ -80,7 +80,7 @@ export default function TypeInference() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b578f50f009c7c873d46531a9bec0c21&file=type_inference.bal",
+                "https://play.ballerina.io/?gist=70dcb6737437f7f2c6a6c7be8d858c82&file=type_inference.bal",
                 "_blank"
               );
             }}
@@ -103,7 +103,7 @@ export default function TypeInference() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/type-inference",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/type-inference",
                 "_blank"
               );
             }}
@@ -269,8 +269,8 @@ export default function TypeInference() {
         </Col>
         <Col sm={6}>
           <Link
-            title="ensureType function"
-            href="/learn/by-example/ensureType-function"
+            title="Built-in integer subtypes"
+            href="/learn/by-example/built-in-integer-subtypes"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -280,7 +280,7 @@ export default function TypeInference() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  ensureType function
+                  Built-in integer subtypes
                 </span>
               </div>
               <svg

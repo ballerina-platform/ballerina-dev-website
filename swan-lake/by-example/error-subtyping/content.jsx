@@ -78,7 +78,7 @@ export default function ErrorSubtyping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e2ecae6a190b160313adb59ae728602c&file=error_subtyping.bal",
+                "https://play.ballerina.io/?gist=91e0ed44c3a8c7dd8187738641288c8d&file=error_subtyping.bal",
                 "_blank"
               );
             }}
@@ -101,7 +101,7 @@ export default function ErrorSubtyping() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/error-subtyping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/error-subtyping",
                 "_blank"
               );
             }}

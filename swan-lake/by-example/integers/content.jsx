@@ -64,7 +64,7 @@ export default function Integers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=691446c70910e0672537f12a6d960f21&file=integers.bal",
+                "https://play.ballerina.io/?gist=b3660e96bdd1a8d2b94239bd56fc84cf&file=integers.bal",
                 "_blank"
               );
             }}
@@ -87,7 +87,7 @@ export default function Integers() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/integers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/integers",
                 "_blank"
               );
             }}

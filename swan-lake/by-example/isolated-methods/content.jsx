@@ -90,7 +90,7 @@ export default function IsolatedMethods() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9e9d600cfe7b634afef8546a7893b935&file=isolated_methods.bal",
+                "https://play.ballerina.io/?gist=00cabecf5235e4ce67687e6ad00dc5dd&file=isolated_methods.bal",
                 "_blank"
               );
             }}
@@ -113,7 +113,7 @@ export default function IsolatedMethods() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/isolated-methods",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/isolated-methods",
                 "_blank"
               );
             }}

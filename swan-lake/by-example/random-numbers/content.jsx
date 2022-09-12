@@ -69,7 +69,7 @@ export default function RandomNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=99a0314a977182fcfa765df418121945&file=random_numbers.bal",
+                "https://play.ballerina.io/?gist=2c65279637a277426f499dc99908bcc6&file=random_numbers.bal",
                 "_blank"
               );
             }}
@@ -92,7 +92,7 @@ export default function RandomNumbers() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/random-numbers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/random-numbers",
                 "_blank"
               );
             }}

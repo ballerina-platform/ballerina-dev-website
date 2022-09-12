@@ -80,7 +80,7 @@ export default function ReadonlyAndIsolated() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=06b138a70716e05f74a0816fd03c8a11&file=readonly_and_isolated.bal",
+                "https://play.ballerina.io/?gist=83647d840e400446ff5df6ab8dc00ede&file=readonly_and_isolated.bal",
                 "_blank"
               );
             }}
@@ -103,7 +103,7 @@ export default function ReadonlyAndIsolated() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/readonly-and-isolated",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/readonly-and-isolated",
                 "_blank"
               );
             }}

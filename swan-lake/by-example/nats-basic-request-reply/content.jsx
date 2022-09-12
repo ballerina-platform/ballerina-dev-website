@@ -92,6 +92,7 @@ export default function NatsBasicRequestReply() {
         </a>
         . This is a simple request/reply messaging pattern example.
       </p>
+
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/nats/latest">
@@ -106,7 +107,7 @@ export default function NatsBasicRequestReply() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-basic-request-reply",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-basic-request-reply",
                 "_blank"
               );
             }}
@@ -241,7 +242,7 @@ export default function NatsBasicRequestReply() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-basic-request-reply",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-basic-request-reply",
                 "_blank"
               );
             }}

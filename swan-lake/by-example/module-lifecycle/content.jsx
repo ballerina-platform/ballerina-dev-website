@@ -74,7 +74,7 @@ export default function ModuleLifecycle() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=91f47b4877bea83a910ffadf12ddcf42&file=module_lifecycle.bal",
+                "https://play.ballerina.io/?gist=009ff88cf348df4ad581aed5952ea32d&file=module_lifecycle.bal",
                 "_blank"
               );
             }}
@@ -97,7 +97,7 @@ export default function ModuleLifecycle() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/module-lifecycle",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/module-lifecycle",
                 "_blank"
               );
             }}

@@ -146,7 +146,7 @@ export default function JdbcAtomicBatchExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/jdbc-atomic-batch-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/jdbc-atomic-batch-execute-operation",
                 "_blank"
               );
             }}
@@ -276,8 +276,7 @@ export default function JdbcAtomicBatchExecuteOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`time = 2022-06-22T13:55:32.009+05:30 level = INFO module = "" message = "First query executed successfully."`}</span>
               <span>{`time = 2022-06-22T13:55:32.037+05:30 level = ERROR module = "" message = "Error while executing SQL query: INSERT INTO Customers (firstName, lastName, registrationID, creditLimit, country)\\n                                VALUES (\\'Peter\\', \\'Stuart\\', 4, 5000.75, \\'USA\\'). Unique index or primary key violation: \\"PUBLIC.CONSTRAINT_INDEX_6 ON PUBLIC.CUSTOMERS(REGISTRATIONID NULLS FIRST) VALUES ( /* 2 */ 4 )\\"; SQL statement:\\nINSERT INTO Customers (firstName, lastName, registrationID, creditLimit, country)\\n                                VALUES (\\'Peter\\', \\'Stuart\\', 4, 5000.75, \\'USA\\') [23505-206]."`}</span>
               <span>{`time = 2022-06-22T13:55:32.038+05:30 level = INFO module = "" message = "Second query failed. Rollback transaction."`}</span>
@@ -297,7 +296,7 @@ export default function JdbcAtomicBatchExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/jdbc-atomic-batch-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/jdbc-atomic-batch-execute-operation",
                 "_blank"
               );
             }}
@@ -374,7 +373,7 @@ export default function JdbcAtomicBatchExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/jdbc-atomic-batch-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/jdbc-atomic-batch-execute-operation",
                 "_blank"
               );
             }}

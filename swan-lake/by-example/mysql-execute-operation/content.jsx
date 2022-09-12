@@ -139,7 +139,7 @@ export default function MysqlExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/mysql-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/mysql-execute-operation",
                 "_blank"
               );
             }}
@@ -269,8 +269,7 @@ export default function MysqlExecuteOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Updated Row count: 1`}</span>
             </code>
           </pre>
@@ -288,7 +287,7 @@ export default function MysqlExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/mysql-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/mysql-execute-operation",
                 "_blank"
               );
             }}
@@ -365,7 +364,7 @@ export default function MysqlExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/mysql-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/mysql-execute-operation",
                 "_blank"
               );
             }}

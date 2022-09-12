@@ -77,6 +77,7 @@ export default function RabbitmqTransactionConsumer() {
         Messages will not be re-queued in the case of a rollback automatically
         unless negatively acknowledged by the user.
       </p>
+
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
@@ -91,7 +92,7 @@ export default function RabbitmqTransactionConsumer() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/rabbitmq-transaction-consumer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/rabbitmq-transaction-consumer",
                 "_blank"
               );
             }}

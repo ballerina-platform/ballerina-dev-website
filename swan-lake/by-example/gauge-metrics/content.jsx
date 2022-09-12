@@ -157,12 +157,8 @@ export default function GaugeMetrics() {
         Ballerina supports Observability out of the box and Metrics is one of
         the three important aspects of the bservability. To observe Ballerina
         code, the build time flag <code>--observability-included</code> should
-        be given along with the
-      </p>
-
-      <p>
-        <code>Config.toml</code> file when starting the service. The{" "}
-        <code>Config.toml</code> file contains the required runtime
+        be given along with the <code>Config.toml</code> file when starting the
+        service. The <code>Config.toml</code> file contains the required runtime
         configurations related to observability.
       </p>
 
@@ -189,7 +185,7 @@ export default function GaugeMetrics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/gauge-metrics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/gauge-metrics",
                 "_blank"
               );
             }}

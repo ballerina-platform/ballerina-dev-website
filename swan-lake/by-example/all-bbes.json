@@ -260,6 +260,20 @@
         "isLearnByExample": true
       },
       {
+        "name": "Built-in integer subtypes",
+        "url": "built-in-integer-subtypes",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Built-in string subtype",
+        "url": "built-in-string-subtype",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "ensureType function",
         "url": "ensureType-function",
         "verifyBuild": true,
@@ -290,6 +304,13 @@
       {
         "name": "Records",
         "url": "records",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Computed field key",
+        "url": "computed-field-key",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -395,6 +416,13 @@
       {
         "name": "Panics",
         "url": "panics",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Type intersection for error types",
+        "url": "error-type-intersection",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

@@ -99,7 +99,7 @@ export default function NatsStreamingDurableSubscriptions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-streaming-durable-subscriptions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-streaming-durable-subscriptions",
                 "_blank"
               );
             }}
@@ -234,7 +234,7 @@ export default function NatsStreamingDurableSubscriptions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-streaming-durable-subscriptions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-streaming-durable-subscriptions",
                 "_blank"
               );
             }}
@@ -368,8 +368,7 @@ export default function NatsStreamingDurableSubscriptions() {
             <code className="d-flex flex-column">
               <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-20T13:03:23.344+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`\$ bal run subscriber.bal`}</span>
               <span>{`time = 2021-05-20T13:03:46.928+05:30 level = INFO module = "" message = "Received message: Hello from Ballerina"`}</span>
             </code>

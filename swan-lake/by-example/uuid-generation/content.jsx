@@ -105,7 +105,7 @@ export default function UuidGeneration() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=183a38113d1168307372c22574b9da8d&file=uuid_generation.bal",
+                "https://play.ballerina.io/?gist=64c6197f17ad949c86101e435f8935e0&file=uuid_generation.bal",
                 "_blank"
               );
             }}
@@ -128,7 +128,7 @@ export default function UuidGeneration() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/uuid-generation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/uuid-generation",
                 "_blank"
               );
             }}

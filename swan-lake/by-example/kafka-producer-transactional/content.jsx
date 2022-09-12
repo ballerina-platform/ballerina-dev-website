@@ -70,6 +70,7 @@ export default function KafkaProducerTransactional() {
         client. For this to work properly, an active Kafka broker should be
         present.
       </p>
+
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
@@ -84,7 +85,7 @@ export default function KafkaProducerTransactional() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/kafka-producer-transactional",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/kafka-producer-transactional",
                 "_blank"
               );
             }}

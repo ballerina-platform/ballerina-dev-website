@@ -71,7 +71,7 @@ export default function IoXml() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9a5192eaca2774806c7677bcf51d5836&file=io_xml.bal",
+                "https://play.ballerina.io/?gist=84dc059549c86882ff5778ad0e8bf9a6&file=io_xml.bal",
                 "_blank"
               );
             }}
@@ -94,7 +94,7 @@ export default function IoXml() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/io-xml",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/io-xml",
                 "_blank"
               );
             }}

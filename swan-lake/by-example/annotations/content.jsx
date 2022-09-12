@@ -86,7 +86,7 @@ export default function Annotations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=72be8a2238028f8ffe30037db9e495bb&file=annotations.bal",
+                "https://play.ballerina.io/?gist=86ef3a23a6a8a0d5ee8198a73c31b9c0&file=annotations.bal",
                 "_blank"
               );
             }}
@@ -109,7 +109,7 @@ export default function Annotations() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/annotations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/annotations",
                 "_blank"
               );
             }}

@@ -85,7 +85,7 @@ export default function HttpRestrictByMediaType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-restrict-by-media-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-restrict-by-media-type",
                 "_blank"
               );
             }}
@@ -288,8 +288,7 @@ export default function HttpRestrictByMediaType() {
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`<name>Ballerina</name>* Closing connection 0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# To invoke the service using an unsupported media type, execute the following cURL request. The content type of the`}</span>
               <span>
                 {`# request is not listed under the `}
@@ -313,8 +312,7 @@ export default function HttpRestrictByMediaType() {
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`* Closing connection 0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned`}</span>
               <span>
                 {`# in the `}

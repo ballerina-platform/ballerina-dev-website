@@ -142,7 +142,7 @@ export default function JdbcQueryColumnMapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/jdbc-query-column-mapping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/jdbc-query-column-mapping",
                 "_blank"
               );
             }}
@@ -272,8 +272,7 @@ export default function JdbcQueryColumnMapping() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Customer details: {"customerId":1,"firstName":"Peter","lastName":"Stuart"}`}</span>
               <span>{`Customer details: {"customerId":2,"firstName":"Dan","lastName":"Brown"}`}</span>
             </code>
@@ -292,7 +291,7 @@ export default function JdbcQueryColumnMapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/jdbc-query-column-mapping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/jdbc-query-column-mapping",
                 "_blank"
               );
             }}
@@ -369,7 +368,7 @@ export default function JdbcQueryColumnMapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/jdbc-query-column-mapping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/jdbc-query-column-mapping",
                 "_blank"
               );
             }}

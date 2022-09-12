@@ -96,7 +96,7 @@ export default function AwsLambdaDeployment() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/aws-lambda-deployment",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/aws-lambda-deployment",
                 "_blank"
               );
             }}
@@ -285,16 +285,13 @@ export default function AwsLambdaDeployment() {
               <span>{`\$ bal build`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        wso2/aws_lambda_deployment:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Generating executable`}</span>
               <span>{`        @awslambda:Function: echo, ctxinfo, notifyS3`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        Run the following command to deploy each Ballerina AWS Lambda function:`}</span>
               <span>{`        aws lambda create-function --function-name \$FUNCTION_NAME --zip-file fileb://<project-dir>/aws_lambda_deployment/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.\$FUNCTION_NAME --runtime provided --role \$LAMBDA_ROLE_ARN --layers arn:aws:lambda:\$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        Run the following command to re-deploy an updated Ballerina AWS Lambda function:`}</span>
               <span>{`        aws lambda update-function-code --function-name \$FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip`}</span>
             </code>
@@ -434,8 +431,7 @@ export default function AwsLambdaDeployment() {
               <span>{`}`}</span>
               <span>{`\$ cat echo-response.txt`}</span>
               <span>{`{"MESSAGE":"HELLO"}`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`\$ aws lambda invoke --function-name ctxinfo ctxinfo-response.txt`}</span>
               <span>{`{`}</span>
               <span>{`"ExecutedVersion": "\$LATEST",`}</span>

@@ -93,7 +93,7 @@ export default function ReceiveEmailUsingListener() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/receive-email-using-listener",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/receive-email-using-listener",
                 "_blank"
               );
             }}
@@ -218,8 +218,7 @@ export default function ReceiveEmailUsingListener() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run receive_email_using_listener.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`# Subject and the content body of the listened emails will be printed for each`}</span>
               <span>{`# of the polled emails.`}</span>
             </code>

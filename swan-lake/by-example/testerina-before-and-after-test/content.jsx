@@ -91,7 +91,7 @@ export default function TesterinaBeforeAndAfterTest() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-before-and-after-test",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-before-and-after-test",
                 "_blank"
               );
             }}
@@ -214,22 +214,18 @@ export default function TesterinaBeforeAndAfterTest() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test test_module`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
               <span>{`    ballerinatest/test_module:0.1.0`}</span>
               <span>{`I'm the before function!`}</span>
               <span>{`I'm in test function!`}</span>
               <span>{`I'm the after function!`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        [pass] testFunction`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        1 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>

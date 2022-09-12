@@ -135,7 +135,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-client-data-binding",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-client-data-binding",
                 "_blank"
               );
             }}
@@ -327,8 +327,7 @@ export default function HttpClientDataBinding() {
               </span>
               <span>{`\$ curl "http://localhost:9090/call/all"`}</span>
               <span>{`{"name":"Smith", "age":15}`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>
                 {`# To invoke the `}
                 <code>{`/call/5xx`}</code>
@@ -336,8 +335,7 @@ export default function HttpClientDataBinding() {
               </span>
               <span>{`\$ curl "http://localhost:9090/call/5xx"`}</span>
               <span>{`{"code":501, "payload":"data-binding-failed-with-501"}`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>
                 {`# To invoke the `}
                 <code>{`/call/4xx`}</code>

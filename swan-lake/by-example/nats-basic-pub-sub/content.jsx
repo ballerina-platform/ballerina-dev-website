@@ -83,6 +83,7 @@ export default function NatsBasicPubSub() {
         </a>
         .
       </p>
+
       <p>
         This is a simple publish/subscribe messaging pattern example. For more
         information on the underlying module, see the{" "}
@@ -98,7 +99,7 @@ export default function NatsBasicPubSub() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-basic-pub-sub",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-basic-pub-sub",
                 "_blank"
               );
             }}
@@ -232,7 +233,7 @@ export default function NatsBasicPubSub() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-basic-pub-sub",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-basic-pub-sub",
                 "_blank"
               );
             }}

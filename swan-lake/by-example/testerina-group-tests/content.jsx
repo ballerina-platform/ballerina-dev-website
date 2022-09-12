@@ -98,7 +98,7 @@ export default function TesterinaGroupTests() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-group-tests",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-group-tests",
                 "_blank"
               );
             }}
@@ -226,24 +226,19 @@ export default function TesterinaGroupTests() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test --groups g1,g2 testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`    testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`    testerina_group_tests.bal`}</span>
               <span>{`I'm in test belonging to group g1!`}</span>
               <span>{`I'm in test belonging to groups g1 and g2!`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        [pass] testFunction1`}</span>
               <span>{`        [pass] testFunction2`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        2 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>
@@ -308,24 +303,19 @@ export default function TesterinaGroupTests() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test --groups g1 testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`    testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`    testerina_group_tests.bal`}</span>
               <span>{`I'm in test belonging to group g1!`}</span>
               <span>{`I'm in test belonging to groups g1 and g2!`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        [pass] testFunction1`}</span>
               <span>{`        [pass] testFunction2`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        2 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>
@@ -391,24 +381,19 @@ export default function TesterinaGroupTests() {
           <pre ref={ref3}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test --disable-groups g2 testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`    testerina_group_tests.bal`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`    testerina_group_tests.bal`}</span>
               <span>{`I'm in test belonging to group g1!`}</span>
               <span>{`I'm the ungrouped test`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        [pass] testFunction1`}</span>
               <span>{`        [pass] testFunction3`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`        2 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>

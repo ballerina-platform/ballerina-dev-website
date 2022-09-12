@@ -106,7 +106,7 @@ export default function WebsubWebhookSample() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/websub-webhook-sample",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websub-webhook-sample",
                 "_blank"
               );
             }}

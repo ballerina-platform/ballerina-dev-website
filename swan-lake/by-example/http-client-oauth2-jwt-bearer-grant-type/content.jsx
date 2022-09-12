@@ -93,7 +93,7 @@ export default function HttpClientOauth2JwtBearerGrantType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-client-oauth2-jwt-bearer-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-client-oauth2-jwt-bearer-grant-type",
                 "_blank"
               );
             }}

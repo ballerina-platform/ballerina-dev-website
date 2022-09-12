@@ -96,7 +96,7 @@ export default function TesterinaBeforeAndAfterSuite() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-before-and-after-suite",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-before-and-after-suite",
                 "_blank"
               );
             }}
@@ -219,24 +219,20 @@ export default function TesterinaBeforeAndAfterSuite() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal test test_module`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`Running tests`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
               <span>{`I'm the before suite function!`}</span>
               <span>{`I'm in test function 1!`}</span>
               <span>{`I'm in test function 2!`}</span>
               <span>{`I'm the after suite function!`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                [pass] testFunction1`}</span>
               <span>{`                [pass] testFunction2`}</span>
-              <span>{`
-`}</span>
+              <span>{``}</span>
               <span>{`                2 passing`}</span>
               <span>{`                0 failing`}</span>
               <span>{`                0 skipped`}</span>

@@ -88,14 +88,14 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
       </p>
 
       <p>
-        The <code>Config.toml</code> file has defined three users - alice,
-        ldclakmal, and eve. Each user has a password and optionally assigned
-        scopes as an array.
+        <code>Config.toml</code> has defined three users - alice, ldclakmal and
+        eve. Each user has a password and optionally assigned scopes as an
+        array.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
+        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
           <code>auth</code> module
         </a>
         .

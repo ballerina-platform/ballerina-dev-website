@@ -61,25 +61,13 @@ export default function ReadonlyType() {
       <p>
         The <code>readonly</code> type consists of values that are immutable.
         For structural type <code>T</code>, <code>T &amp; readonly</code> means
-      </p>
-
-      <p>
         immutable <code>T</code>. <code>T &amp; readonly</code> is a subtype of{" "}
         <code>T</code> and a subtype of <code>readonly</code>. Guaranteed that
-        if declared
+        if declared type of a value is a subtype of <code>readonly</code>, then
+        at runtime the value can never be mutated. It is enforced by runtime
+        checks on the mutating structures. With <code>readonly</code> field,
+        both the field and its value are immutable.
       </p>
-
-      <p>
-        type of a value is a subtype of <code>readonly</code>, then at runtime
-        the value can never be mutated. It is enforced
-      </p>
-
-      <p>
-        by runtime checks on the mutating structures. With <code>readonly</code>{" "}
-        field, both the field and its value
-      </p>
-
-      <p>are immutable.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -87,7 +75,7 @@ export default function ReadonlyType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9b4211facc38fe24eb15a5d08402abe6&file=readonly_type.bal",
+                "https://play.ballerina.io/?gist=3a5712dd22d0966bb9d2706d808e327a&file=readonly_type.bal",
                 "_blank"
               );
             }}

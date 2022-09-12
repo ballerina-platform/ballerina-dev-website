@@ -112,8 +112,8 @@ export default function GraphqlMutations() {
 
       <p>
         For more information on the underlying package, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
-          <code>graphql</code> package
+        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
+          GraphQL package
         </a>
         .
       </p>

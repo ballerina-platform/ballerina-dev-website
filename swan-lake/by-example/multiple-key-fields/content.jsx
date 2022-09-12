@@ -59,10 +59,10 @@ export default function MultipleKeyFields() {
       <h1>Multiple key fields</h1>
 
       <p>
-        A table provides access to its members using a key that comes from the{" "}
-        <code>readonly</code> fields of the member. It is a key sequence, which
-        is used to provide keyed access to its members. The key sequence is an
-        ordered sequence of field names.
+        A <code>table</code> provides access to its members using a key that
+        comes from the <code>read-only</code> fields of the member. It is a key
+        sequence, which is used to provide keyed access to its members. The key
+        sequence is an ordered sequence of field names.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -71,7 +71,7 @@ export default function MultipleKeyFields() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1eca622a942536ee3f8713e682de2524&file=multiple_key_fields.bal",
+                "https://play.ballerina.io/?gist=b985dd1081b2c3e85803fbe2e619f66a&file=multiple_key_fields.bal",
                 "_blank"
               );
             }}

@@ -35,7 +35,8 @@ listener grpc:Listener securedEP = new(9090,
 
 // The service can be secured with Basic Auth and can be authorized optionally.
 // Basic Auth using the LDAP user store can be enabled by setting the
-// [\`grpc:LdapUserStoreConfig\`](https://lib.ballerina.io/ballerina/grpc/latest/records/LdapUserStoreConfig) configurations.
+// \`grpc:LdapUserStoreConfig\` configurations.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/LdapUserStoreConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type configurations
 // for \`scopes\` field.
@@ -107,16 +108,10 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
       <p>
         A gRPC service/resource can be secured with Basic Auth and by enforcing
         authorization optionally. Then, it validates the Basic Auth token sent
-        in
-      </p>
-
-      <p>
-        the <code>Authorization</code> metadata against the provided
+        in the <code>Authorization</code> metadata against the provided
         configurations. This reads data from the configured LDAP. This stores
-        usernames, passwords for
+        usernames, passwords for authentication, and scopes for authorization.
       </p>
-
-      <p>authentication, and scopes for authorization.</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
@@ -427,10 +422,18 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'service' package.
+            Execute the commands below to build and run the <code>service</code>{" "}
+            package.
           </span>
         </li>
       </ul>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You may need to change the certificate file
+          path and private key file path.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -491,11 +494,6 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
           </pre>
         </Col>
       </Row>
-
-      <p>
-        You may need to change the certificate file path and private key file
-        path.
-      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

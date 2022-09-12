@@ -72,14 +72,14 @@ export default function Unions() {
 
       <p>
         <code>T1|T2</code> is the union of the sets described by <code>T1</code>{" "}
-        and <code>T2</code>. <code>T?</code> is equivalent to <code>T|()</code>.
-        Unions are untagged.
+        and <code>T2</code>. <code>T?</code> is completely equivalent to{" "}
+        <code>T|()</code>. Unions are untagged. The <code>is</code> operator
+        tests whether a value belongs to a specific type.
       </p>
 
       <p>
-        The <code>is</code> operator tests whether a value belongs to a specific
-        type. The <code>is</code> operator in the condition causes the declared
-        type to be narrowed.
+        The <code>is</code> operator in the condition causes the declared type
+        to be narrowed.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -88,7 +88,7 @@ export default function Unions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6e35d73426ed84a7b1e8105e0cb20ed1&file=unions.bal",
+                "https://play.ballerina.io/?gist=32f4a4e82ae6ec58f371e6941ef708e2&file=unions.bal",
                 "_blank"
               );
             }}

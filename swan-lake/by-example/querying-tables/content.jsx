@@ -74,9 +74,10 @@ export default function QueryingTables() {
       <h1>Querying tables</h1>
 
       <p>
-        Tables can be combined with query expressions, unlike maps. The basic
-        type of the output of a query expression is determined by the
-        contextually expected type and the input type.
+        Tables can be nicely combined with <code>query expressions</code> unlike{" "}
+        <code>maps</code>. Basic type of the output of{" "}
+        <code>query expression</code> is determined by the contextually expected
+        type and the input type.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -85,7 +86,7 @@ export default function QueryingTables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e66b03c9872cc5fd1519328942794f29&file=querying_tables.bal",
+                "https://play.ballerina.io/?gist=a43b327e8f6be09164998832237fa1db&file=querying_tables.bal",
                 "_blank"
               );
             }}
@@ -276,7 +277,7 @@ export default function QueryingTables() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Creating tables with query"
+            title="Create tables with query"
             href="/learn/by-example/creating-tables-with-query"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -287,7 +288,7 @@ export default function QueryingTables() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Creating tables with query
+                  Create tables with query
                 </span>
               </div>
               <svg

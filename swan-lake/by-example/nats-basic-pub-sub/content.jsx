@@ -71,12 +71,9 @@ export default function NatsBasicPubSub() {
 
       <p>
         The NATS client is used either to produce a message to a subject or
-        consume a message from a subject.
-      </p>
-
-      <p>
-        In order to execute this example, it is required that a NATS server is
-        up and running on its default host, port, and cluster.
+        consume a message from a subject. In order to execute this example, it
+        is required that a NATS server is up and running on its default host,
+        port, and cluster.
       </p>
 
       <p>
@@ -87,10 +84,9 @@ export default function NatsBasicPubSub() {
         .
       </p>
 
-      <p>This is a simple publish/subscribe messaging pattern example.</p>
-
       <p>
-        For more information on the underlying module, see the{" "}
+        This is a simple publish/subscribe messaging pattern example. For more
+        information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/nats/latest">
           <code>nats</code> module
         </a>

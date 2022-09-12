@@ -81,7 +81,7 @@ export default function OptionalFields() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4fed908ec0dbf9f6570ec93a1239be06&file=optional_fields.bal",
+                "https://play.ballerina.io/?gist=b26e8244f502a5001cf69e0baca9e52e&file=optional_fields.bal",
                 "_blank"
               );
             }}
@@ -236,7 +236,10 @@ export default function OptionalFields() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Records" href="/learn/by-example/records">
+          <Link
+            title="Computed field key"
+            href="/learn/by-example/computed-field-key"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -262,7 +265,7 @@ export default function OptionalFields() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Records
+                  Computed field key
                 </span>
               </div>
             </div>

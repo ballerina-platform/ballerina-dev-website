@@ -64,30 +64,18 @@ export default function RetryTransactionStatement() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Retry transaction statement</h1>
 
-      <p>Transactional errors are often transient: retrying will fix them.</p>
-
       <p>
-        This works by creating a <code>RetryManager</code> object <code>r</code>{" "}
-        before executing the transaction.
-      </p>
-
-      <p>
-        If the block fails with an error <code>e</code>, it calls{" "}
+        Transactional errors are often transient: retrying will fix them. This
+        works by creating a RetryManager object <code>r</code>, before executing
+        the transaction. If the block fails with error <code>e</code>, it calls{" "}
         <code>r.shouldRetry(e)</code>. If that returns <code>true</code>, then
         it executes the block again.
       </p>
 
       <p>
-        The <code>retry</code> statement accepts an optional type parameter,
-        which is a class of the <code>RetryManager</code> and optional arguments
-        for the <code>init</code> method of the class.
-      </p>
-
-      <p>
-        <code>DefaultRetryManager</code> tries 3 times.
-      </p>
-
-      <p>
+        <code>retry</code> has an optional type parameter giving class of{" "}
+        <code>RetryManager</code> to create, and optional arguments to new{" "}
+        <code>DefaultRetryManager</code> tries <code>n</code> times.{" "}
         <code>retry</code> can be used without <code>transaction</code>.
       </p>
 
@@ -97,7 +85,7 @@ export default function RetryTransactionStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2765606415c64f01cc9addcff7c0d4a3&file=retry_transaction_statement.bal",
+                "https://play.ballerina.io/?gist=f472dcf9e2f6987b226131f8192916e3&file=retry_transaction_statement.bal",
                 "_blank"
               );
             }}

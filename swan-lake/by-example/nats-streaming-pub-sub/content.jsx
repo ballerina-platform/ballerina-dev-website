@@ -78,12 +78,8 @@ export default function NatsStreamingPubSub() {
 
       <p>
         The <code>nats</code> streaming library provides the functionality of a
-        basic publish/subscribe.
-      </p>
-
-      <p>
-        In order to run this sample, a NATS Streaming server should be running
-        on the corresponding port used in the sample.
+        basic publish/subscribe. In order to run this sample, a NATS Streaming
+        server should be running on the corresponding port used in the sample.
       </p>
 
       <p>

@@ -98,7 +98,7 @@ export default function XmlFromRecordConversion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=af52402b375d7b3d550f6aec394e5811&file=xml_from_record_conversion.bal",
+                "https://play.ballerina.io/?gist=fe7b87965efa73a4cd8c9004bee47519&file=xml_from_record_conversion.bal",
                 "_blank"
               );
             }}
@@ -247,7 +247,7 @@ export default function XmlFromRecordConversion() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run xml_from_record_conversion.bal`}</span>
+              <span>{`bal run xml_from_record_conversion.bal`}</span>
               <span>{`<ns:Invoice xmlns="example.com" xmlns:ns="http://sdf.com" status="paid"><id>1</id><items xmlns="http://example1.com"><itemCode>223345</itemCode><count>1</count></items><items xmlns="http://example1.com"><itemCode>223300</itemCode><count>7</count></items></ns:Invoice>`}</span>
             </code>
           </pre>

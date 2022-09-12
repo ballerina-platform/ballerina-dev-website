@@ -70,16 +70,16 @@ export default function IgnoringReturnValuesAndErrors() {
       <h1>Ignoring return values and errors</h1>
 
       <p>
-        Ballerina does not allow ignoring return values. To ignore a return
-        value, assign it to <code>_</code>; this is like an implicitly declared
-        variable that cannot be referenced. When a return type includes an
-        error, you have to do something with the error. <code>_</code> is of
-        type any: you cannot use <code>_</code> to ignore an error.
+        Ballerina does not allow silently ignoring return values. To ignore a
+        return value, assign it to <code>_</code>; this is like an implicitly
+        declared variable that cannot be referenced. When a return type includes
+        an error, you have to do something with the error.
       </p>
 
       <p>
-        <code>checkpanic</code> is like <code>check</code>but it panics on the
-        error rather than on returning.
+        <code>_</code> is of type any: you cannot use <code>_</code> to ignore
+        an error. <code>checkpanic</code> is like <code>check</code>, but panics
+        on error rather than returning.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -88,7 +88,7 @@ export default function IgnoringReturnValuesAndErrors() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3226963b0120a7c34e5fdad6735c726a&file=ignoring_return_values_and_errors.bal",
+                "https://play.ballerina.io/?gist=b04e95975fc77e096ca6dfec3116508f&file=ignoring_return_values_and_errors.bal",
                 "_blank"
               );
             }}
@@ -248,7 +248,10 @@ export default function IgnoringReturnValuesAndErrors() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Panics" href="/learn/by-example/panics">
+          <Link
+            title="Type intersection for error types"
+            href="/learn/by-example/error-type-intersection"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -274,7 +277,7 @@ export default function IgnoringReturnValuesAndErrors() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Panics
+                  Type intersection for error types
                 </span>
               </div>
             </div>

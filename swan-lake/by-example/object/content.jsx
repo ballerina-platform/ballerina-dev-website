@@ -66,16 +66,15 @@ export default function Object() {
 
       <p>
         The <code>object</code> type is a separate basic type. An{" "}
-        <code>object</code> value has named methods and fields, which are in the
-        same symbol space.
+        <code>object</code> value has named methods and fields. Methods and
+        fields are in the same symbol space.
       </p>
 
       <p>
         A <code>class</code> defines an <code>object</code> type and provides a
         way to construct an object. Apply the <code>new</code> operator with a{" "}
-        <code>class</code> to get an object. Obejct methods can be called using{" "}
-        <code>obj.foo(args)</code> and object fields can be accessed using{" "}
-        <code>obj.x</code>.
+        <code>class</code> to get an object. Call method using{" "}
+        <code>obj.foo(args)</code>. Access field using <code>obj.x</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -84,7 +83,7 @@ export default function Object() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d5746d96ec46163e2b6ddc4da86a01fb&file=object.bal",
+                "https://play.ballerina.io/?gist=629344761aaa5f61f268b23183fd5934&file=object.bal",
                 "_blank"
               );
             }}
@@ -239,8 +238,8 @@ export default function Object() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Controlling openness"
-            href="/learn/by-example/controlling-openness"
+            title="Default values for record fields"
+            href="/learn/by-example/default-values-for-record-fields"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -267,7 +266,7 @@ export default function Object() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Controlling openness
+                  Default values for record fields
                 </span>
               </div>
             </div>
@@ -275,7 +274,7 @@ export default function Object() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Defining classes"
+            title="Define classes"
             href="/learn/by-example/defining-classes"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -286,7 +285,7 @@ export default function Object() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Defining classes
+                  Define classes
                 </span>
               </div>
               <svg

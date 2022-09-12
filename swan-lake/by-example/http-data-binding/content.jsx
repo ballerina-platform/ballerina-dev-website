@@ -23,8 +23,9 @@ type Student record {
 
 service /hello on new http:Listener(9090) {
 
-    // The \`Student\` parameter in the [payload annotation](https://docs.central.ballerina.io/ballerina/http/latest/records/Payload)
+    // The \`Student\` parameter in the payload annotation.
     // represents the entity body of the inbound request.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/Payload.
     resource function post student(@http:Payload Student student) returns json {
         string name = student.Name;
         return {Name: name};
@@ -66,23 +67,16 @@ export default function HttpDataBinding() {
 
       <p>
         HTTP service data binding helps to access the request payload through a
-        resource signature parameter. The payload
-      </p>
-
-      <p>
-        parameter should be declared with the <code>@Payload</code> annotation
-        and the parameter type can be <code>anydata</code>.
-      </p>
-
-      <p>
-        Binding failures will be responded to with a{" "}
+        resource signature parameter. The payload parameter should be declared
+        with the <code>@Payload</code> annotation and the parameter type can be{" "}
+        <code>anydata</code>. Binding failures will be responded with{" "}
         <code>400[Bad Request]</code> response.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>

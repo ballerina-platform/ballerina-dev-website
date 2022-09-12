@@ -81,11 +81,10 @@ export default function ConstraintValidations() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Constraint validations</h1>
 
-      <p>Validating user input is a common requirement in most applications.</p>
-
       <p>
-        This can prevent user entry errors before the app attempts to process
-        the data.
+        Validating user input is a common requirement in most applications. This
+        can prevent user entry errors before the app attempts to process the
+        data.
       </p>
 
       <p>
@@ -94,10 +93,8 @@ export default function ConstraintValidations() {
         <code>decimal</code>, <code>string</code>, and <code>anydata[]</code>.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/constraint/latest/">
           <code>constraint</code> module
         </a>
@@ -110,7 +107,7 @@ export default function ConstraintValidations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a5224372a38c556a9a0359188afc3e0a&file=constraint_validations.bal",
+                "https://play.ballerina.io/?gist=7cd98b5f17a5e82be1fe6ebe4de8bd62&file=constraint_validations.bal",
                 "_blank"
               );
             }}

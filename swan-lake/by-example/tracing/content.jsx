@@ -124,7 +124,7 @@ export default function Tracing() {
 
       <p>
         They can choose to hook their measurement with the default trace created
-        or can create a completely new trace.&lt;br/&gt;&lt;br/&gt;
+        or can create a completely new trace.
       </p>
 
       <p>

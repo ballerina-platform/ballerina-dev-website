@@ -83,12 +83,12 @@ export default function TimeFormattingAndParsing() {
       <p>
         The Ballerina <code>time</code> library contains APIs to convert UTC and
         local time to different string representations (RFC 5322 and RFC 3339)
-        and vice versa.
+        vice versa.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/time/latest/">
+        <a href="https://lib.ballerina.io/ballerina/time/latest/">
           <code>time</code> module
         </a>
         .
@@ -100,7 +100,7 @@ export default function TimeFormattingAndParsing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=120ae4f54b7a9f8ff0f9a7c0439c8f18&file=time_formatting_and_parsing.bal",
+                "https://play.ballerina.io/?gist=440fddc0c460e997b156a2c73ba0d2cd&file=time_formatting_and_parsing.bal",
                 "_blank"
               );
             }}

@@ -65,49 +65,45 @@ export default function IsolatedVariables() {
 
       <p>
         When a variable is declared as <code>isolated</code>, the compiler
-        guarantees that it is an <code>isolated</code> root and
-      </p>
-
-      <p>
-        accessed only within a <code>lock</code> statement. An isolated variable
-        declaration must be a non-public
-      </p>
-
-      <p>
-        module-level variable declaration initialized with an{" "}
-        <code>isolated</code> expression. A <code>lock</code> statement
-      </p>
-
-      <p>
-        that accesses an <code>isolated</code> variable must maintain{" "}
+        guarantees that it is an <code>isolated</code> root and accessed only
+        within a <code>lock</code> statement. An isolated variable declaration
+        must be a non-public module-level variable declaration initialized with
+        an <code>isolated</code> expression. A <code>lock</code> statement that
+        accesses an <code>isolated</code> variable must maintain{" "}
         <code>isolated</code> root invariant:
       </p>
 
-      <p>&lt;ul&gt;</p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            access only one <code>isolated</code> variable
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            call only <code>isolated</code> functions
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            transfers of values in and out must use <code>isolated</code>{" "}
+            expressions
+          </span>
+        </li>
+      </ul>
 
       <p>
-        &lt;li&gt;access only one <code>isolated</code> variable&lt;/li&gt;
+        The <code>isolated</code> functions are allowed to access{" "}
+        <code>isolated</code> module-level variables, provided they follow the
+        above rules.
       </p>
-
-      <p>
-        &lt;li&gt;call only <code>isolated</code> functions&lt;/li&gt;
-      </p>
-
-      <p>
-        &lt;li&gt;transfers of values in and out must use <code>isolated</code>{" "}
-        expressions&lt;/li&gt;
-      </p>
-
-      <p>&lt;/ul&gt;</p>
-
-      <p>&lt;br&gt;&lt;/br&gt;</p>
-
-      <p>
-        &lt;p&gt;The <code>isolated</code> functions are allowed to access{" "}
-        <code>isolated</code> module-level variables,
-      </p>
-
-      <p>provided they follow the above rules.&lt;/p&gt;</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -115,7 +111,7 @@ export default function IsolatedVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=03b296dc48fd2fd913979e88951ecb6f&file=isolated_variables.bal",
+                "https://play.ballerina.io/?gist=10f54daad97241333b1a14558192d6ec&file=isolated_variables.bal",
                 "_blank"
               );
             }}

@@ -155,36 +155,21 @@ export default function GaugeMetrics() {
 
       <p>
         Ballerina supports Observability out of the box and Metrics is one of
-        the three important aspects of the
-      </p>
-
-      <p>
-        Observability. To observe Ballerina code, the build time flag{" "}
-        <code>--observability-included</code> should be given along with the
-      </p>
-
-      <p>
-        <code>Config.toml</code> file when starting the service. The{" "}
-        <code>Config.toml</code> file contains the required runtime
+        the three important aspects of the bservability. To observe Ballerina
+        code, the build time flag <code>--observability-included</code> should
+        be given along with the <code>Config.toml</code> file when starting the
+        service. The <code>Config.toml</code> file contains the required runtime
         configurations related to observability.
       </p>
 
       <p>
         The developers can define and use metrics to measure their own logic. A
-        gauge is one type of the metrics that is
+        gauge is one type of the metrics that is supported by default in
+        Ballerina, and it represents a single numerical value that can
+        arbitrarily go up and down, and also based on the statistics
+        configurations provided to the Gauge, it can also report the statistics
+        such as max, min, mean, percentiles, etc.
       </p>
-
-      <p>
-        supported by default in Ballerina, and it represents a single numerical
-        value that can arbitrarily go up and down,
-      </p>
-
-      <p>
-        and also based on the statistics configurations provided to the Gauge,
-        it can also report the statistics such as max,
-      </p>
-
-      <p>min, mean, percentiles, etc.&lt;br/&gt;&lt;br/&gt;</p>
 
       <p>
         For more information about configs and observing applications, see{" "}
@@ -471,7 +456,7 @@ export default function GaugeMetrics() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Docker" href="/learn/by-example/c2c-docker-deployment">
+          <Link title="Kubernetes" href="/learn/by-example/c2c-k8s-deployment">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -480,7 +465,7 @@ export default function GaugeMetrics() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Docker
+                  Kubernetes
                 </span>
               </div>
               <svg

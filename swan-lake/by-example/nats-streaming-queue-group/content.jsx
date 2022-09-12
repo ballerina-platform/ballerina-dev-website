@@ -112,19 +112,11 @@ export default function NatsStreamingQueueGroup() {
 
       <p>
         The <code>nats</code> streaming library provides the built-in load
-        balancing feature called &quot;distributed queues&quot;.
-      </p>
-
-      <p>All subscribers with the same queue name form the queue group.</p>
-
-      <p>
-        As messages on the registered subject are published, one member of the
-        group is chosen randomly to receive the message.
-      </p>
-
-      <p>
-        Although queue groups have multiple subscribers, each message is
-        consumed by only one.
+        balancing feature called &quot;distributed queues&quot;. All subscribers
+        with the same queue name form the queue group. As messages on the
+        registered subject are published, one member of the group is chosen
+        randomly to receive the message. Although queue groups have multiple
+        subscribers, each message is consumed by only one.
       </p>
 
       <p>
@@ -353,8 +345,8 @@ export default function NatsStreamingQueueGroup() {
       </Row>
 
       <p>
-        <code>queue-group.bal</code> contains three services belonging to the
-        same queue group.
+        The <code>queue-group.bal</code> contains three services belonging to
+        the same queue group.
       </p>
 
       <p>

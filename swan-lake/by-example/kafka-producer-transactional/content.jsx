@@ -67,11 +67,8 @@ export default function KafkaProducerTransactional() {
       <p>
         This shows how to do transactional message producing by sending messages
         to Kafka brokers atomically using the <code>kafka:Producer</code>{" "}
-        client.
-      </p>
-
-      <p>
-        For this to work properly, an active Kafka broker should be present.
+        client. For this to work properly, an active Kafka broker should be
+        present.
       </p>
 
       <p>

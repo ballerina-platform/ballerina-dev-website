@@ -70,16 +70,9 @@ export default function KafkaConsumerClientPollPayload() {
       <p>
         This shows how to use a <code>kafka:Consumer</code> as a simple payload
         consumer for the instances where the metadata related to the message is
-        not needed.
-      </p>
-
-      <p>
-        This consumer uses the builtin byte array deserializer for the value and
-        converts the value to the user defined type.
-      </p>
-
-      <p>
-        For this to work properly, an active Kafka broker should be present.
+        not needed. This consumer uses the builtin byte array deserializer for
+        the value and converts the value to the user defined type. For this to
+        work properly, an active Kafka broker should be present.
       </p>
 
       <p>

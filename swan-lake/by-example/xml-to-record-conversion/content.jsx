@@ -38,7 +38,8 @@ type Item record {
 };
 
 public function main() returns error? {
-    xml data = xml \`<ns:Invoice xmlns="example.com" xmlns:ns="http://sdf.com" status="paid">
+    xml data = xml \`<ns:Invoice xmlns="example.com"
+                        xmlns:ns="http://sdf.com" status="paid">
                         <id>1</id>
                         <purchased_item>
                             <itemCode>223345</itemCode>
@@ -99,7 +100,7 @@ export default function XmlToRecordConversion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=213c0ecd39cf9c5f99996eceddbc3959&file=xml_to_record_conversion.bal",
+                "https://play.ballerina.io/?gist=c52f321aa28b0e314ef7b5d9e428dd1e&file=xml_to_record_conversion.bal",
                 "_blank"
               );
             }}
@@ -248,7 +249,7 @@ export default function XmlToRecordConversion() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run xml_to_record_conversion.bal`}</span>
+              <span>{`bal run xml_to_record_conversion.bal`}</span>
               <span>{`{"id":1,"purchased_item":[{"itemCode":"223345","item_count":1},{"itemCode":"223300","item_count":7}],"xmlns":"example.com","status":"paid"}`}</span>
             </code>
           </pre>

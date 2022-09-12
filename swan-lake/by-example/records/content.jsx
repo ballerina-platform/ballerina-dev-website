@@ -66,13 +66,17 @@ export default function Records() {
       <h1>Records</h1>
 
       <p>
-        A <code>record</code> type has specific named fields. These fields can
-        be accessed with <code>r.x</code>. Records are mutable. <code>r.x</code>{" "}
-        is an <code>lvalue</code>. Records can be constructed using a similar
-        syntax to a <code>map</code>. Typically, a <code>record</code> type is
-        combined with a type definition. The name of the type is not
-        significant. A <code>record</code> is just a collection of fields.
-        Record equality works the same as <code>map</code> equality.
+        A <code>record</code> type has specific named fields. Fields can be
+        accessed with <code>r.x</code>. Records are mutable. <code>r.x</code> is
+        an <code>lvalue</code>. Records can be constructed using a similar
+        syntax to a <code>map</code>.
+      </p>
+
+      <p>
+        Typically, a <code>record</code> type is combined with a type
+        definition. The name of the type is not significant. A{" "}
+        <code>record</code> is just a collection of fields. Record equality
+        works the same as <code>map</code> equality.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -81,7 +85,7 @@ export default function Records() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e654f32a7a59c8aaa08540142579994b&file=records.bal",
+                "https://play.ballerina.io/?gist=6114102801308989fc628a7ab90697bb&file=records.bal",
                 "_blank"
               );
             }}
@@ -270,8 +274,8 @@ export default function Records() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Optional fields"
-            href="/learn/by-example/optional-fields"
+            title="Computed field key"
+            href="/learn/by-example/computed-field-key"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -281,7 +285,7 @@ export default function Records() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Optional fields
+                  Computed field key
                 </span>
               </div>
               <svg

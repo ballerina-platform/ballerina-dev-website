@@ -15,43 +15,52 @@ const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/log;
 
-// Define an interceptor service class named \`LogInterceptor\`. It cannot have any \`resource/remote\`
-// methods except the \`execute()\` remote method.
+// Define an interceptor service class named \`LogInterceptor\`. It cannot have
+// any \`resource/remote\` methods except the \`execute()\` remote method.
 readonly service class LogInterceptor {
 
-    // Infers the \`graphql:Interceptors\` service object from the GraphQL package.
+    // Infers the \`graphql:Interceptors\` service object from the GraphQL
+    // package.
     *graphql:Interceptor;
 
-    // Implement the \`execute()\` remote function provided by the \`graphql:Interceptor\` object.
-    // Within the function, the \`graphql:Context\` and the \`graphql:Field\` object can be accessed to
-    // get the request and field related information.
-    isolated remote function execute(graphql:Context context, graphql:Field 'field)
+    // Implement the \`execute()\` remote function provided by the
+    // \`graphql:Interceptor\` object. Within the function, the \`graphql:Context\`
+    // and the \`graphql:Field\` object can be accessed to get the request and
+    // field related information.
+    isolated remote function execute(graphql:Context context,
+                                     graphql:Field 'field)
                                      returns anydata|error {
 
-        // Access the current execution field name using the \`graphql:Field\` object.
+        // Access the current execution field name using the \`graphql:Field\`
+        // object.
         string fieldName = 'field.getName();
 
-        // The log statement executes before the actual resolver execution.
+        // The log statement executes before the actual resolver
+        // execution.
         log:printInfo(string \`Field "\${fieldName}" execution started!\`);
 
-        // The \`context.resolve()\` function can be used to invoke the next interceptor. If all the
-        // interceptors were executed, it invokes the \`actual resolver\` function. The function
-        // returns an \`anydata\` type value that includes the execution result of the next
-        // interceptor or the actual resolver. To call the \`context.resolve()\` function, the
-        // \`graphql:Field\` value should be provided as the argument.
+        // The \`context.resolve()\` function can be used to invoke the next
+        // interceptor. If all the interceptors were executed, it invokes
+        // the \`actual resolver\` function. The function returns an \`anydata\`
+        // type value that includes the execution result of the next
+        // interceptor or the actual resolver. To call the \`context.resolve()\`
+        // function, the \`graphql:Field\` value should be provided as the
+        // argument.
         var data = context.resolve('field);
 
         // This log statement executes after the resolver execution.
         log:printInfo(string \`Field "\${fieldName}" execution completed!\`);
 
-        // Returns the execution result of the next interceptor or the actual resolver.
+        // Returns the execution result of the next interceptor or the actual
+        // resolver.
         return data;
+
     }
 }
 
 @graphql:ServiceConfig {
-    // Interceptor instances should be inserted to the \`interceptors\` array according to the
-    // execution order.
+    // Interceptor instances should be inserted to the \`interceptors\` array
+    // according to the execution order.
     interceptors: [new LogInterceptor()]
 
 }
@@ -312,7 +321,7 @@ export default function GraphqlInterceptors() {
             <code className="d-flex flex-column">
               <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
               <span>{`# The query used: { name }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ name }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ name }"}' 'http://localhost:4000/graphql'`}</span>
               <span>{`{"data":{"name":"GraphQL Interceptors"}}`}</span>
             </code>
           </pre>

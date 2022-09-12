@@ -1,5 +1,5 @@
 {
-  "title": "Ignoring return values and errors",
+  "title": "Ignore return values and errors",
   "description": "This BBE demonstrates how return values and errors can be ignored in Ballerina",
   "keywords": [
     "ballerina",

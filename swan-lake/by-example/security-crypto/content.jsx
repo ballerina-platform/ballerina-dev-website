@@ -21,7 +21,8 @@ function hash() returns error? {
     string value = "Hello Ballerina!";
     byte[] input = value.toBytes();
 
-    // Hashing input value using the [MD5 hashing algorithm](https://docs.central.ballerina.io/ballerina/crypto/latest/functions#hashMd5), and printing the hash value using the Hex encoding.
+    // Hashing input value using the [MD5 hashing algorithm, and printing the hash value using the Hex encoding.
+    // For details, see https://lib.ballerina.io/ballerina/crypto/latest/functions#hashMd5
     byte[] output = crypto:hashMd5(input);
     io:println("Hex encoded hash with MD5: " + output.toBase16());
 
@@ -250,20 +251,15 @@ export default function SecurityCrypto() {
 
       <p>
         The <code>crypto</code> stdlib provides functions usable to perform
-        different cryptographic operations such as
+        different cryptographic operations such as hashing, HMAC generation,
+        checksum generation, encryption, decryption, digitally signing data and
+        verifying digitally signed data.
       </p>
-
-      <p>
-        hashing, HMAC generation, checksum generation, encryption, decryption,
-        digitally signing data and
-      </p>
-
-      <p>verifying digitally signed data.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/crypto/latest/">
-          Crypto module
+        <a href="https://lib.ballerina.io/ballerina/crypto/latest/">
+          <code>crypto</code> module
         </a>
         .
       </p>

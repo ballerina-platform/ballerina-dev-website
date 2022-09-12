@@ -78,11 +78,10 @@ export default function GrpcSimple() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Simple RPC</h1>
 
-      <p>The gRPC Server Connector exposes the gRPC service over HTTP2.</p>
-
       <p>
-        In a simple RPC call, a client sends a request to a remote service and
-        waits for the response.
+        The gRPC Server Connector exposes the gRPC service over HTTP2. In a
+        simple RPC call, a client sends a request to a remote service and waits
+        for the response.
       </p>
 
       <blockquote>
@@ -380,7 +379,8 @@ export default function GrpcSimple() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'service' package.
+            Execute the commands below to build and run the <code>service</code>{" "}
+            package.
           </span>
         </li>
       </ul>
@@ -558,7 +558,8 @@ export default function GrpcSimple() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'client' package.
+            Execute the commands below to build and run the <code>client</code>{" "}
+            package.
           </span>
         </li>
       </ul>
@@ -625,10 +626,7 @@ export default function GrpcSimple() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Dynamic listener"
-            href="/learn/by-example/dynamic-listener"
-          >
+          <Link title="StopHandler" href="/learn/by-example/stop-handler">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -654,7 +652,7 @@ export default function GrpcSimple() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dynamic listener
+                  StopHandler
                 </span>
               </div>
             </div>

@@ -49,7 +49,7 @@ export default function Packs(props) {
    }
 
 
-   const distServer = (global.location.origin === "https://ballerina.io") ? process.env.distServer : "https://dist-dev.ballerina.io/";
+   const distServer = (global.location.origin === "https://ballerina.io") ? process.env.distServer : "https://dist-dev.ballerina.io";
 
    return (
       <>

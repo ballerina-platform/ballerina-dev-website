@@ -290,7 +290,9 @@ pre.default {
 }
 
 .mdContent img {
-  width: -webkit-fill-available;
+  width: -moz-available;         
+  width: -webkit-fill-available;  
+  width: fill-available;
 }
 
 .contentNav {

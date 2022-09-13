@@ -80,35 +80,19 @@ export default function HttpFailover() {
 
       <p>
         Ballerina users can configure multiple HTTP clients in a given failover
-        group.
-      </p>
-
-      <p>
-        If one of the HTTP clients (dependencies) fails, Ballerina automatically
-        fails over to another endpoint.
-      </p>
-
-      <p>
-        The following example depicts the <code>FailoverClient</code> behaviour
-        with three target services. The first two targets
-      </p>
-
-      <p>are configured to mimic failure backends.</p>
-
-      <p>
-        After the first invocation, the client resumes the failover from the
-        last successful target. In this case, it is
-      </p>
-
-      <p>
-        the third target, which will be used and the client will get the
-        immediate response for subsequent calls.
+        group. If one of the HTTP clients (dependencies) fails, Ballerina
+        automatically fails over to another endpoint. The following example
+        depicts the <code>FailoverClient</code> behaviour with three target
+        services. The first two targets are configured to mimic failure
+        backends. After the first invocation the client resumes the failover
+        from the last successful target. In this case it is the third target and
+        the client will get the immediate response for subsequent calls.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -119,7 +103,7 @@ export default function HttpFailover() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-failover",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-failover",
                 "_blank"
               );
             }}

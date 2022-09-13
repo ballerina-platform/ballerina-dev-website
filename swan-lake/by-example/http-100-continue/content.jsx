@@ -17,9 +17,11 @@ import ballerina/log;
 
 service / on new http:Listener(9090) {
 
-    resource function 'default hello(http:Caller caller, http:Request request) returns error? {
-        // [Check if the client expects a \`100-continue\` response](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue).
-        if request.expects100Continue() {
+    resource function 'default hello(http:Caller caller, http:Request request)
+            returns error? {
+        // Check if the client expects a 100-continue response.
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue.
+        if (request.expects100Continue()) {
             string mediaType = request.getContentType();
             if mediaType.toLowerAscii() == "text/plain" {
 
@@ -77,17 +79,14 @@ export default function Http100Continue() {
 
       <p>
         Convenience functions are provided in the HTTP library for ease of use
-        when handling <code>100-continue</code> scenarios.
-      </p>
-
-      <p>
+        when handling <code>100-continue</code> scenarios.{" "}
         <code>100-continue</code> indicates that the server has received the
         request headers and the client can proceed with sending the request.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
         </a>
         .
@@ -99,7 +98,7 @@ export default function Http100Continue() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-100-continue",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-100-continue",
                 "_blank"
               );
             }}

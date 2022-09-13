@@ -56,15 +56,13 @@ export default function EnvironmentVariables() {
 
       <p>
         The <code>os</code> library provides functions to retrieve information
-        about the OS and the current users of the OS.&lt;br/&gt;&lt;br/&gt;
+        about the OS and the current users of the OS.
       </p>
 
-      <p>For more information on the underlying module,</p>
-
       <p>
-        see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/os/latest/">
-          OS module
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/os/latest/">
+          <code>os</code> module
         </a>
         .
       </p>
@@ -75,7 +73,7 @@ export default function EnvironmentVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c23f78fba265428304dc67b8d16a158e&file=environment_variables.bal",
+                "https://play.ballerina.io/?gist=24d0545c21e8dda42b904c698d717956&file=environment_variables.bal",
                 "_blank"
               );
             }}
@@ -98,7 +96,7 @@ export default function EnvironmentVariables() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/environment-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/environment-variables",
                 "_blank"
               );
             }}
@@ -168,6 +166,10 @@ export default function EnvironmentVariables() {
           )}
         </Col>
       </Row>
+
+      <p>
+        To run this sample use the <code>bal run</code> command.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"

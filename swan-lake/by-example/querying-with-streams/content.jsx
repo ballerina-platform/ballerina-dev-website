@@ -106,16 +106,15 @@ export default function QueryingWithStreams() {
       <h1>Querying with streams</h1>
 
       <p>
-        If a stream terminates with <code>error</code>, the result of the query
-        expression is an <code>error</code>. You cannot use <code>foreach</code>{" "}
-        on a <code>stream</code> type with a termination type that allows{" "}
-        <code>error</code>. Instead, use <code>from</code> with the{" "}
-        <code>do</code> clause where the result is a subtype of{" "}
-        <code>error?</code>. Use the <code>stream</code> keyword in front of{" "}
-        <code>from</code> to create a <code>stream</code>, which is lazily
-        evaluated. The failure of <code>check</code> within the query will cause
-        the <code>stream</code> to produce an <code>error</code> termination
-        value.
+        If stream terminates with <code>error</code>, result of{" "}
+        <code>query expression</code> is an <code>error</code>. You cannot use{" "}
+        <code>foreach</code> on <code>stream</code> type with termination type
+        that allows <code>error</code>. Instead use <code>from</code> with{" "}
+        <code>do</code> clause; the result is a subtype of <code>error?</code>.
+        Use <code>stream</code> keyword in front of <code>from</code> to create
+        a <code>stream</code> which is lazily evaluated. The failure of{" "}
+        <code>check</code> within the <code>query</code> will cause the{" "}
+        <code>stream</code> to produce an <code>error</code> termination value.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -124,7 +123,7 @@ export default function QueryingWithStreams() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1770d30d619a3d72bbf54cca5803ef44&file=querying_with_streams.bal",
+                "https://play.ballerina.io/?gist=194b868832e23ffd56e77a774ed79400&file=querying_with_streams.bal",
                 "_blank"
               );
             }}
@@ -147,7 +146,7 @@ export default function QueryingWithStreams() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/querying-with-streams",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/querying-with-streams",
                 "_blank"
               );
             }}

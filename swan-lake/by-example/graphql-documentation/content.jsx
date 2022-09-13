@@ -32,10 +32,10 @@ service /graphql on new graphql:Listener(4000) {
 # Represents a person.
 # + name - The name of the person
 # + age - The age of the person
-type Person record {
+type Person record {|
     string name;
     int age;
-};
+|};
 `,
 ];
 
@@ -66,18 +66,15 @@ export default function GraphqlDocumentation() {
 
       <p>
         A GraphQL schema can include documentation for the schema. These
-        documentation can help you to understand the schema.
-      </p>
-
-      <p>
-        In Ballerina, the Ballerina doc comments can be used to add
-        documentation to various schema members.
+        documentation can help you to understand the schema. In Ballerina, the
+        Ballerina doc comments can be used to add documentation to various
+        schema members.
       </p>
 
       <p>
         For more information on the underlying package, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
-          <code>graphql</code> package
+        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
+          GraphQL package
         </a>
         .
       </p>
@@ -88,7 +85,7 @@ export default function GraphqlDocumentation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/graphql-documentation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/graphql-documentation",
                 "_blank"
               );
             }}

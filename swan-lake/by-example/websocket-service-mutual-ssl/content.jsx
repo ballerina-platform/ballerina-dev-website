@@ -17,7 +17,8 @@ import ballerina/websocket;
 
 // A WebSocket listener can be configured to accept new connections that are
 // secured via mutual SSL.
-// The [\`websocket:ListenerSecureSocket\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
+// The \`websocket:ListenerSecureSocket\` record provides the SSL-related listener configurations.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket.
 listener websocket:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -81,20 +82,15 @@ export default function WebsocketServiceMutualSsl() {
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
-        authentication process in which two
+        authentication process in which two parties (the client and server)
+        authenticate each other by verifying the digital certificates. It
+        ensures that both parties are assured of each other's identity.
       </p>
-
-      <p>
-        parties (the client and server) authenticate each other by verifying the
-        digital certificates.
-      </p>
-
-      <p>It ensures that both parties are assured of each other's identity.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/">
-          WebSocket module
+        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
+          <code>websocket</code> module
         </a>
         .
       </p>
@@ -105,7 +101,7 @@ export default function WebsocketServiceMutualSsl() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/websocket-service-mutual-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-service-mutual-ssl",
                 "_blank"
               );
             }}

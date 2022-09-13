@@ -16,8 +16,9 @@ const codeSnippetData = [
 import ballerina/io;
 
 // Defines the HTTP client to call the secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by passing 
-// the [\`http:BearerTokenConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/BearerTokenConfig) for the \`auth\` configuration of the client.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by
+// passing the \`http:BearerTokenConfig\` for the \`auth\` configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/BearerTokenConfig.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
         token: "56ede317-4511-44b4-8579-a08f094ee8c5"
@@ -75,7 +76,7 @@ export default function HttpClientBearerTokenAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-client-bearer-token-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-client-bearer-token-auth",
                 "_blank"
               );
             }}

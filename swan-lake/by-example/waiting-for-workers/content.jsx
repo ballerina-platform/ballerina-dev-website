@@ -56,8 +56,12 @@ export default function WaitingForWorkers() {
 
       <p>
         Named workers can continue to execute after the function's default
-        worker terminates and the function returns. A worker (function or named)
-        can use <code>wait</code> to wait for a named worker.
+        worker terminates and the function returns.
+      </p>
+
+      <p>
+        A worker (function or named) can use <code>wait</code> to wait for a
+        named worker.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -66,7 +70,7 @@ export default function WaitingForWorkers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a6df465b81a32e4926accc5723a473ca&file=waiting_for_workers.bal",
+                "https://play.ballerina.io/?gist=c26a888210f22997338c7029bcd0d25d&file=waiting_for_workers.bal",
                 "_blank"
               );
             }}
@@ -89,7 +93,7 @@ export default function WaitingForWorkers() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/waiting-for-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/waiting-for-workers",
                 "_blank"
               );
             }}

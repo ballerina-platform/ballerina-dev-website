@@ -27,7 +27,7 @@ service class WsService {
     // This \`remote function\` is triggered when a new message is received
     // from a client. It accepts \`anydata\` as the function argument. The received data 
     // will be converted to the data type stated as the function argument.
-    // For more information on data binding, see the [spec](https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md)
+    // For more information on data binding, see https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md.
     remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
         io:println("\\ntext message: " + text);
         return caller->writeMessage("You said: " + text);
@@ -63,7 +63,7 @@ export default function WebsocketBasicSample() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/websocket/latest/">
+        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
           <code>websocket</code> module
         </a>
         .
@@ -75,7 +75,7 @@ export default function WebsocketBasicSample() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/websocket-basic-sample",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-basic-sample",
                 "_blank"
               );
             }}

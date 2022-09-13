@@ -19,16 +19,18 @@ public function main() returns error? {
 
     // Initializes a NATS client with TLS/SSL and username/password authentication.
     nats:Client natsClient = check new(nats:DEFAULT_URL,
-        // To secure the client connections using username/password authentication,
-        // provide the credentials with the [\`nats:Credentials\`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
+
+        // To secure the client connections using username/password authentication, provide the credentials
+        // with the \`nats:Credentials\` record.
+        // For details, see https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials.
         auth = {
             username: "alice",
             password: "alice@123"
         },
         // To secure the client connection using TLS/SSL, the client needs to be configured with
         // a certificate file of the server.
-        // The [\`nats:SecureSocket\`](https://lib.ballerina.io/ballerinax/nats/latest/records/SecureSocket)
-        // record provides the SSL-related configurations of the client.
+        // The \`nats:SecureSocket\` record provides the SSL-related configurations of the client.
+        // For details see https://lib.ballerina.io/ballerinax/nats/latest/records/SecureSocket
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }
@@ -45,16 +47,18 @@ import ballerinax/nats;
 
 // Initializes a NATS listener with TLS/SSL and username/password authentication.
 listener nats:Listener securedEP = new(nats:DEFAULT_URL,
-    // To secure the client connections using username/password authentication,
-    // provide the credentials with the [\`nats:Credentials\`](https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials) record.
+
+    // To secure the client connections using username/password authentication, provide the credentials
+    // with the \`nats:Credentials\` record.
+    // For details, see  https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials.
     auth = {
          username: "alice",
          password: "alice@123"
     },
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
-    // The [\`nats:SecureSocket\`](https://lib.ballerina.io/ballerinax/nats/latest/records/SecureSocket)
-    // record provides the SSL-related configurations of the client.
+    // The [\`nats:SecureSocket\` record provides the SSL-related configurations of the client.
+    // For details, see https://lib.ballerina.io/ballerinax/nats/latest/records/SecureSocket.
     secureSocket = {
         cert: "../resource/path/to/public.crt"
     }
@@ -97,7 +101,7 @@ export default function NatsBasicSecureConnection() {
       <h1>Secured connection</h1>
 
       <p>
-        In this example, the underlying connections of the subscriber, and the
+        In this example, the underlying connections of the subscriber and the
         publisher are secured with TLS/SSL and Basic Auth.
       </p>
 
@@ -115,7 +119,7 @@ export default function NatsBasicSecureConnection() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-basic-secure-connection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-basic-secure-connection",
                 "_blank"
               );
             }}
@@ -249,7 +253,7 @@ export default function NatsBasicSecureConnection() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-basic-secure-connection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-basic-secure-connection",
                 "_blank"
               );
             }}

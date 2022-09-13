@@ -50,12 +50,9 @@ export default function ProgramsAndModules() {
       <h1>Programs and modules</h1>
 
       <p>
-        Every Ballerina program consists of modules. A module consists of one or
-        more <code>.bal</code> files.
-      </p>
-
-      <p>
-        The module names take the form <code>org/x.y.z</code>.
+        Every Ballerina program consists of modules. Modules are one or more{" "}
+        <code>.bal</code> files. The module names take the form{" "}
+        <code>org/x.y.z</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -64,7 +61,7 @@ export default function ProgramsAndModules() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3ef55af3be9ed2b25c1beda3a8689a7b&file=programs_and_modules.bal",
+                "https://play.ballerina.io/?gist=592e1f6144080f2b03f57011cff3d306&file=programs_and_modules.bal",
                 "_blank"
               );
             }}
@@ -87,7 +84,7 @@ export default function ProgramsAndModules() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/programs-and-modules",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/programs-and-modules",
                 "_blank"
               );
             }}

@@ -124,30 +124,27 @@ export default function MysqlCallStoredProcedures() {
 
       <p>
         This BBE demonstrates how to use the MySQL client to execute a stored
+        procedure.
       </p>
 
-      <p>procedure.</p>
-
-      <p>
-        Note that the MySQL database driver JAR should be defined in the{" "}
-        <code>Ballerina.toml</code> file as a dependency.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> The MySQL database driver JAR should be defined
+          in the <code>Ballerina.toml</code> file as a dependency. The MySQL
+          connector uses database properties from MySQL version 8.0.13 onwards.
+          Therefore, it is recommended to use a MySQL driver version greater
+          than 8.0.13.
+        </p>
+      </blockquote>
 
       <p>
         For a sample configuration and more information on the underlying
         module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerinax/mysql/latest/">
+        <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
           <code>mysql</code> module
         </a>
         .
       </p>
-
-      <p>
-        The MySQL connector uses database properties from MySQL version 8.0.13
-        onwards. Therefore, it is
-      </p>
-
-      <p>recommended to use a MySQL driver version greater than 8.0.13.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -155,7 +152,7 @@ export default function MysqlCallStoredProcedures() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/mysql-call-stored-procedures",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/mysql-call-stored-procedures",
                 "_blank"
               );
             }}
@@ -305,7 +302,7 @@ export default function MysqlCallStoredProcedures() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/mysql-call-stored-procedures",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/mysql-call-stored-procedures",
                 "_blank"
               );
             }}
@@ -382,7 +379,7 @@ export default function MysqlCallStoredProcedures() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/mysql-call-stored-procedures",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/mysql-call-stored-procedures",
                 "_blank"
               );
             }}

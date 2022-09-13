@@ -92,9 +92,6 @@ export default function GrpcServerStreaming() {
 
       <p>
         The gRPC Server Connector is used to expose gRPC services over HTTP/2.
-      </p>
-
-      <p>
         In a gRPC server streaming scenario, a client sends a request to the
         server and gets a stream to read the messages until all the messages are
         read.
@@ -129,7 +126,7 @@ export default function GrpcServerStreaming() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/grpc-server-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-server-streaming",
                 "_blank"
               );
             }}
@@ -321,7 +318,7 @@ export default function GrpcServerStreaming() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/grpc-server-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-server-streaming",
                 "_blank"
               );
             }}
@@ -396,7 +393,8 @@ export default function GrpcServerStreaming() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'service' package.
+            Execute the commands below to build and run the <code>service</code>{" "}
+            package.
           </span>
         </li>
       </ul>
@@ -499,7 +497,7 @@ export default function GrpcServerStreaming() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/grpc-server-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-server-streaming",
                 "_blank"
               );
             }}
@@ -574,7 +572,8 @@ export default function GrpcServerStreaming() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'client' package.
+            Execute the commands below to build and run the <code>client</code>{" "}
+            package.
           </span>
         </li>
       </ul>

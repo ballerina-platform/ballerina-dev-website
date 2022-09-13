@@ -80,32 +80,21 @@ export default function WebsubWebhookSample() {
 
       <p>
         Ballerina provides the capability to easily introduce subscriber
-        services that are WebSub-compliant.
-      </p>
-
-      <p>
-        Ballerina WebSub subscribers can specify the topic and hub to which they
-        wish to subscribe to receive notifications.
-      </p>
-
-      <p>
-        If not specified WebSub Subscriber Services will auto generate a unique
-        random service path segment.
+        services that are WebSub-compliant. Ballerina WebSub subscribers can
+        specify the topic and hub to which they wish to subscribe to receive
+        notifications. If not specified WebSub Subscriber Services will auto
+        generate a unique random service path segment.
       </p>
 
       <p>
         Ballerina WebSub Subscriber Services could thus be registered as
-        WebHooks to receive event notifications.
-      </p>
-
-      <p>
-        In this example, a WebSub Subscriber service is used to implement a
-        GitHub-based WebHook service.
+        WebHooks to receive event notifications. In this example, a WebSub
+        Subscriber service is used to implement a GitHub-based WebHook service.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/websub/latest/">
+        <a href="https://lib.ballerina.io/ballerina/websub/latest/">
           <code>websub</code> module
         </a>
         .
@@ -117,7 +106,7 @@ export default function WebsubWebhookSample() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/websub-webhook-sample",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websub-webhook-sample",
                 "_blank"
               );
             }}

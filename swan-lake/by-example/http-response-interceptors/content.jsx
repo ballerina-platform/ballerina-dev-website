@@ -28,8 +28,8 @@ service class ResponseInterceptor {
 
     // The \`interceptResponse\` remote function will be executed for all the
     // responses. A \`RequestContext\` is used to share data between interceptors.
-    remote function interceptResponse(http:RequestContext ctx, http:Response res) 
-            returns http:NextService|error? {
+    remote function interceptResponse(http:RequestContext ctx, 
+                        http:Response res) returns http:NextService|error? {
         // Sets a header to the response inside the interceptor service.
         res.setHeader(interceptor_header, interceptor_header_value);
         // Returns the next interceptor in the pipeline or \`nil\` if there is no 
@@ -83,20 +83,12 @@ export default function HttpResponseInterceptors() {
 
       <p>
         In addition to <code>RequestInterceptors</code>, a{" "}
-        <code>ResponseInterceptor</code> can be used to intercept the response.
-      </p>
-
-      <p>
+        <code>ResponseInterceptor</code> can be used to intercept the response.{" "}
         <code>ResponseInterceptors</code> have a remote method, which will be
-        executed before dispatching the response
+        executed before dispatching the response to the client. A collection of
+        these request and response interceptors can be configured as a pipeline
+        at the listener level or service level.
       </p>
-
-      <p>
-        to the client. A collection of these request and response interceptors
-        can be configured as a pipeline
-      </p>
-
-      <p>at the listener level or service level.</p>
 
       <p>
         For more information, see the{" "}
@@ -112,7 +104,7 @@ export default function HttpResponseInterceptors() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-response-interceptors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-response-interceptors",
                 "_blank"
               );
             }}

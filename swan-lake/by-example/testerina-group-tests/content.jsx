@@ -67,17 +67,14 @@ export default function TesterinaGroupTests() {
 
       <p>
         You can tag your test cases with a single group name or multiple group
-        names (one or more).
+        names (one or more). This allows you to control the execution of
+        selected tests.
       </p>
-
-      <p>This allows you to control the execution of selected tests.</p>
 
       <p>
         In order to execute tests belonging to a selected test group, you can
-        name the
+        name the test groups that are to be executed when you run the tests.
       </p>
-
-      <p>test groups that are to be executed when you run the tests.</p>
 
       <p>
         Likewise, you can exclude executing the selected test groups as well.
@@ -85,14 +82,11 @@ export default function TesterinaGroupTests() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/test-ballerina-code/define-test-groups/">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
           <code>test</code> module
         </a>
         .
@@ -104,7 +98,7 @@ export default function TesterinaGroupTests() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-group-tests",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-group-tests",
                 "_blank"
               );
             }}

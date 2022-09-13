@@ -15,8 +15,10 @@ const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/http;
 
-// A GraphQL listener can be configured to accept new connections that are secured via mutual SSL.
-// The [\`graphql:ListenerSecureSocket\`](https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket) record provides the SSL-related listener configurations.
+// An GraphQL listener can be configured to accept new connections that are
+// secured via mutual SSL.
+// The \`graphql:ListenerSecureSocket\` record provides the SSL-related listener configurations. 
+// For details, see https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket.
 listener graphql:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -78,7 +80,7 @@ export default function GraphqlServiceMutualSsl() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
+        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
           <code>graphql</code> module
         </a>
         .
@@ -90,7 +92,7 @@ export default function GraphqlServiceMutualSsl() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/graphql-service-mutual-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/graphql-service-mutual-ssl",
                 "_blank"
               );
             }}

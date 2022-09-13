@@ -61,7 +61,7 @@ export default function Documentation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cb8019ce1812acf57c6eea06bcb5d919&file=documentation.bal",
+                "https://play.ballerina.io/?gist=9f5fee065af75096b8900c2ece0f93ec&file=documentation.bal",
                 "_blank"
               );
             }}
@@ -84,7 +84,7 @@ export default function Documentation() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/documentation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/documentation",
                 "_blank"
               );
             }}

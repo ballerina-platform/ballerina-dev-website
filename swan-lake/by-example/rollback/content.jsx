@@ -86,14 +86,9 @@ export default function Rollback() {
 
       <p>
         If there is a fail or panic in the execution of the block, then the
-        transaction is rolled back.
-      </p>
-
-      <p>Transaction statement can also contain a rollback statement.</p>
-
-      <p>
-        Every possible exit from a transaction block must be either{" "}
-        <code>commit</code>, <code>rollback</code>, fail exit (e.g., from{" "}
+        transaction is rolled back. Transaction statement can also contain a
+        rollback statement. Every possible exit from a transaction block must be
+        either <code>commit</code>, <code>rollback</code>, fail exit (e.g., from{" "}
         <code>check</code>), or panic exit.
       </p>
 
@@ -108,7 +103,7 @@ export default function Rollback() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7df6f7799e3307f5d97a4875c36e6f93&file=rollback.bal",
+                "https://play.ballerina.io/?gist=622303b7e1a0ea56729f00f9093806c5&file=rollback.bal",
                 "_blank"
               );
             }}
@@ -131,7 +126,7 @@ export default function Rollback() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/rollback",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/rollback",
                 "_blank"
               );
             }}

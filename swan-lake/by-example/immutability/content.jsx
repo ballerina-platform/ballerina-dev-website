@@ -65,11 +65,14 @@ export default function Immutability() {
         <code>anydata</code> values can be made immutable. Simple and{" "}
         <code>string</code> values are inherently immutable. A structural value
         can be constructed as mutable or immutable. A value includes an
-        immutable flag. The immutable flag is fixed at the time of construction.
-        Attempting to mutate an immutable structure causes a panic at runtime.
-        Immutability is deep: an immutable structure can only have immutable
-        members. An immutable value is safe for concurrent access without
-        locking.
+        immutable flag.
+      </p>
+
+      <p>
+        The immutable flag is fixed at the time of construction. Attempting to
+        mutate an immutable structure causes a panic at runtime. Immutability is
+        deep: an immutable structure can only have immutable members. An
+        immutable value is safe for concurrent access without locking.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -78,7 +81,7 @@ export default function Immutability() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/immutability",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/immutability",
                 "_blank"
               );
             }}

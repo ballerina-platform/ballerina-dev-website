@@ -19,6 +19,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
+import dynamic from 'next/dynamic';
 
 import Layout from '../../layouts/LayoutDownloads';
 import styles from '../../styles/Downloads.module.css'
@@ -26,37 +27,14 @@ import { prefix } from '../../utils/prefix';
 import swanlake from '../../_data/swanlake-latest/metadata.json';
 
 export default function Downloads() {
+
+   const Packs = dynamic(() => import('../../components/downloads/packs/Packs'), { ssr: false });
  
    let vsCodeImagePath = prefix + '/images/downloads/vs-code.svg';
-   let windowsImagePath = prefix + '/images/downloads/windows.svg';
-   let linuxImagePath = prefix + '/images/downloads/linux.svg';
-   let macImagePath = prefix + '/images/downloads/mac.svg';
 
    const vscodeIcon = {
       backgroundImage: 'url('+ vsCodeImagePath +')'
    }
-
-   const windowsIcon = {
-      backgroundImage: 'url('+ windowsImagePath +')',
-      backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat',
-   }
-
-   const linuxIcon = {
-      backgroundImage: 'url('+ linuxImagePath +')',
-      backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat',
-   }
-
-   const macIcon = {
-      backgroundImage: 'url('+ macImagePath +')',
-      backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat',
-   }
-
-   const Windows = <span style={windowsIcon}>Windows</span>
-   const Linux = <span style={linuxIcon}>Linux</span>
-   const Mac = <span style={macIcon}>macOs</span>
 
    return (
       <Layout>
@@ -80,67 +58,7 @@ export default function Downloads() {
             </Row>
 
             <Row className={`${styles.donwloadVersion} pageContentRow`}>
-               <Col xs={12} sm={12} md={12} lg={4}>
-                  <h3 className={styles.dwindows} style={windowsIcon}>Windows</h3>
-                  <a id="packWindows" 
-                     href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['windows-installer']}`}
-                     className={styles.cDownload} 
-                     data-download="downloads" 
-                     data-pack={swanlake['windows-installer']}>
-                     <div className={styles.cSize}>msi <span id="packWindowsName">{swanlake['windows-installer-size']}</span></div>
-                  </a>
-                  <ul className={styles.downloadSubLinks}>
-                     <li><a id="packWindowsMd5" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['windows-installer']}.md5`}>md5</a></li>
-                     <li><a id="packWindowsSha1" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['windows-installer']}.sha1`}>SHA-1</a></li>
-                     <li><a id="packWindowsAsc" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['windows-installer']}.asc`}>asc</a></li>
-                  </ul>
-               </Col>
-               <Col xs={12} sm={12} md={12} lg={4}>
-                  <h3 className={styles.dLinux} style={linuxIcon}>Linux </h3>
-                  <div className={styles.dVersions}>
-                     <div className={styles.dVersion}>
-                        <a id="packLinux" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['linux-installer']}`} 
-                        className={styles.cDownload} 
-                        data-download="downloads" 
-                        data-pack={swanlake['linux-installer']}>
-                           <div className={styles.cSize}>deb <span id="packLinuxName">{swanlake['linux-installer-size']}</span></div>
-                        </a>
-                        <ul className={styles.downloadSubLinks}>
-                           <li><a id="packLinuxMd5" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['linux-installer']}.md5`}>md5</a></li>
-                           <li><a id="packLinuxSha1" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['linux-installer']}.sha1`}>SHA-1</a></li>
-                           <li><a id="packLinuxAsc" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['linux-installer']}.asc`}>asc</a></li>
-                        </ul>
-                     </div>
-                     <div className={styles.dVersion}>
-                        <a id="packLinux" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['rpm-installer']}`} 
-                        className={styles.cDownload} 
-                        data-download="downloads" 
-                        data-pack={swanlake['rpm-installer']}>
-                           <div className={styles.cSize}>rpm <span id="packLinuxName">{swanlake['rpm-installer-size']}</span></div>
-                        </a>
-                        <ul className={styles.downloadSubLinks}>
-                           <li><a id="packLinuxMd5" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['rpm-installer']}.md5`}>md5</a></li>
-                           <li><a id="packLinuxSha1" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['rpm-installer']}.sha1`}>SHA-1</a></li>
-                           <li><a id="packLinuxAsc" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['rpm-installer']}.asc`}>asc</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </Col>
-               <Col xs={12} sm={12} md={12} lg={4}>
-                  <h3 className={styles.dMac} style={macIcon}>macOS</h3>
-                  <a id="packMac" 
-                     href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}`}
-                     className={styles.cDownload} 
-                     data-download="downloads" 
-                     data-pack={swanlake['macos-installer']}>
-                     <div className={styles.cSize}>pkg <span id="packWindowsName">{swanlake['macos-installer-size']}</span></div>
-                  </a>
-                  <ul className={styles.downloadSubLinks}>
-                     <li><a id="packMacMd5" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}.md5`}>md5</a></li>
-                     <li><a id="packMacSha1" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}.sha1`}>SHA-1</a></li>
-                     <li><a id="packMacAsc" href={`${process.env.distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}.asc`}>asc</a></li>
-                  </ul>
-               </Col>
+               <Packs info={swanlake}/>
             </Row>
 
             <Row className={`${styles.donwloadVersion} pageContentRow`}>

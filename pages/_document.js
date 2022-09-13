@@ -56,6 +56,12 @@ export default function Document() {
         <link rel="stylesheet" href={`${prefix}/css/ballerina-search-style.css`} />
       </Head>
       <body>
+        {/*  Google Tag Manager (noscript)  */}
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+          height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
+        </noscript>
+        {/*  End Google Tag Manager (noscript)  */}
         <Main />
         <NextScript />
       </body>

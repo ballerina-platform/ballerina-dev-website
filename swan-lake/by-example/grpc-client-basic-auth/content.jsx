@@ -26,8 +26,9 @@ service HelloWorld {
 
 // Defines the gRPC client to call the Basic Auth secured APIs.
 // The client metadata is enriched with the \`Authorization: Basic <token>\`
-// header by passing the [\`grpc:CredentialsConfig\`](https://lib.ballerina.io/ballerina/grpc/latest/records/CredentialsConfig)
-// for the \`auth\` configuration of the client.
+// header by passing the \`grpc:CredentialsConfig\` for the \`auth\` configuration
+// of the client. 
+// For deatils, see https://lib.ballerina.io/ballerina/grpc/latest/records/CredentialsConfig.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     auth = {
         username: "ldclakmal",
@@ -112,7 +113,7 @@ export default function GrpcClientBasicAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/grpc-client-basic-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-basic-auth",
                 "_blank"
               );
             }}
@@ -304,7 +305,7 @@ export default function GrpcClientBasicAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/grpc-client-basic-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-basic-auth",
                 "_blank"
               );
             }}
@@ -379,11 +380,18 @@ export default function GrpcClientBasicAuth() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'client' package.
-            You may need to change the trusted certificate file path.
+            Execute the commands below to build and run the <code>client</code>{" "}
+            package. You may need to change the trusted certificate file path.
           </span>
         </li>
       </ul>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite, start a sample service
+          secured with Basic Auth.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -445,8 +453,6 @@ export default function GrpcClientBasicAuth() {
           </pre>
         </Col>
       </Row>
-
-      <p>As a prerequisite, start a sample service secured with Basic Auth.</p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

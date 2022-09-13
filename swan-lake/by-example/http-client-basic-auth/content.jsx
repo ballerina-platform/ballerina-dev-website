@@ -15,9 +15,10 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the Basic Auth secured APIs. The client is enriched with the \`
-// Authorization: Basic <token>\` header by passing the [\`http:CredentialsConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/CredentialsConfig) for the .
-// \`auth\` configuration of the client.
+// Defines the HTTP client to call the Basic Auth secured APIs.
+// The client is enriched with the \`Authorization: Basic <token>\` header by
+// passing the \`http:CredentialsConfig\` for the \`auth\` configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/CredentialsConfig.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
         username: "ldclakmal",
@@ -60,11 +61,7 @@ export default function HttpClientBasicAuth() {
 
       <p>
         A client, which is secured with Basic Auth can be used to connect to a
-        secured service.
-      </p>
-
-      <p>
-        The client is enriched with the{" "}
+        secured service. The client is enriched with the{" "}
         <code>Authorization: Basic &lt;token&gt;</code> header by passing the{" "}
         <code>http:CredentialsConfig</code> for the <code>auth</code>{" "}
         configuration of the client.
@@ -72,7 +69,7 @@ export default function HttpClientBasicAuth() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
+        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
           <code>auth</code> module
         </a>
         .
@@ -84,7 +81,7 @@ export default function HttpClientBasicAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-client-basic-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-client-basic-auth",
                 "_blank"
               );
             }}

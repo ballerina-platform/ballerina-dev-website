@@ -69,12 +69,12 @@ export default function StreamType() {
       <p>
         A <code>stream</code> represents a sequence of values that are generated
         as needed. The end of a <code>stream</code> is indicated with a
-        termination value, which is <code>error</code> or <code>nil</code>. The{" "}
-        <code>stream&lt;T,E&gt;</code> type is a <code>stream</code> in which
-        the members of the sequence are type <code>T</code> and the termination
-        value is type <code>E</code>. <code>stream&lt;T&gt;</code> means{" "}
+        termination value, which is <code>error</code> or <code>nil</code>. The
+        type <code>stream&lt;T,E&gt;</code> is a <code>stream</code> where the
+        members of the sequence are type <code>T</code> and termination value is
+        type <code>E</code>. <code>stream&lt;T&gt;</code> means{" "}
         <code>stream&lt;T,()&gt;</code>. The <code>stream</code> type is a
-        separate basic type but it is like an object.
+        separate basic type, but like an object.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -83,7 +83,7 @@ export default function StreamType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1658c1d8683c6c65d069a0ba21b64c1e&file=stream_type.bal",
+                "https://play.ballerina.io/?gist=e7aaecc92cbf5fa029b3561a38d28a2f&file=stream_type.bal",
                 "_blank"
               );
             }}
@@ -106,7 +106,7 @@ export default function StreamType() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/stream-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/stream-type",
                 "_blank"
               );
             }}

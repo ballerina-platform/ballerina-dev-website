@@ -24,14 +24,15 @@ service /graphql on new graphql:Listener(4000) {
         self.names = ["Walter White", "Jesse Pinkman", "Skyler White"];
     }
 
-    // The mandatory resource function with the \`get\` accessor represents a field in the root
-    // \`Query\` operation.
+    // The mandatory resource function with the \`get\` accessor
+    // represents a field in the root \`Query\` operation.
     resource function get names() returns string[] {
         return self.names;
     }
 
-    // A resource function with the \`subscribe\` accessor represents a field in the root
-    // \`Subscription\` operation. It must always return a stream.
+    // A resource function with the \`subscribe\` accessor 
+    // represents a field in the root \`Subscription\` operation.
+    // It must always return a stream. 
     // Each name will be returned in the \`string\` type as GraphQL responses.
     resource function subscribe names() returns stream<string, error?> {
         return self.names.toStream();
@@ -96,7 +97,7 @@ export default function GraphqlSubscriptions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/graphql-subscriptions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/graphql-subscriptions",
                 "_blank"
               );
             }}
@@ -279,9 +280,8 @@ export default function GraphqlSubscriptions() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
-              <span>{`# The query used: subscription { names }`}</span>
-              <span>{`curl 'http://localhost:4000/graphql' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: file://' --data-binary '{"query":"subscription { names }"}' --compressed`}</span>
+              <span>{`# To retrieve data, any tool that supports GraphQL Subscriptions via WebSockets can be used.`}</span>
+              <span>{`# The document: subscription { names }`}</span>
               <span>{`{ "data": { "names": "Walter White" } }`}</span>
               <span>{`{ "data": { "names": "Jesse Pinkman" } }`}</span>
               <span>{`{ "data": { "names": "Skyler White" } }`}</span>

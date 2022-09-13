@@ -80,17 +80,17 @@ export default function FtpListener() {
 
       <p>
         The FTP listener is used to receive file/directory changes that occur in
-        a remote location using the FTP protocol.
-      </p>
-
-      <p>
-        This sample includes receiving file/directory related change events from
-        a listener with default configurations using the default port.
+        a remote location using the FTP protocol. This sample includes receiving
+        file/directory related change events from a listener with default
+        configurations using the default port.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ftp/latest">FTP module</a>.
+        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">
+          <code>ftp</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -99,7 +99,7 @@ export default function FtpListener() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/ftp-listener",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/ftp-listener",
                 "_blank"
               );
             }}

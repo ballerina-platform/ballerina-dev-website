@@ -57,18 +57,14 @@ export default function WebsocketRetryClient() {
 
       <p>
         If the WebSocket client lost the connection due to some transient
-        failure, it automatically tries to
-      </p>
-
-      <p>
-        reconnect to the given backend. If the maximum reconnect attempt is
-        reached it gives up on the connection.
+        failure, it automatically tries to reconnect to the given backend. If
+        the maximum reconnect attempt is reached it gives up on the connection.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
-          WebSocket module
+          <code>websocket</code> module
         </a>
         .
       </p>
@@ -79,7 +75,7 @@ export default function WebsocketRetryClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/websocket-retry-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-retry-client",
                 "_blank"
               );
             }}

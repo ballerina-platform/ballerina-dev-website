@@ -58,24 +58,17 @@ export default function HttpAbsolutePathAndPath() {
 
       <p>
         Ballerina supports writing RESTful services according to the JAX-RS
-        specification.
-      </p>
-
-      <p>
-        You can use the <code>absolute-resource-path</code> and{" "}
-        <code>resource-name</code> to access a resource function while having
-        the <code>accessor-name</code>,
-      </p>
-
-      <p>
-        which is an HTTP verb as <code>post</code> and <code>get</code> to
-        constrain your resource function in a RESTful manner.
+        specification. You can use the <code>absolute-resource-path</code> and{" "}
+        <code>resource-name</code> to access a resource function while the{" "}
+        <code>accessor-name</code>, which is an HTTP verb as <code>post</code>{" "}
+        and <code>get</code> to constrain your resource function in a RESTful
+        manner.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -86,7 +79,7 @@ export default function HttpAbsolutePathAndPath() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-absolute-path-and-path",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-absolute-path-and-path",
                 "_blank"
               );
             }}

@@ -53,7 +53,7 @@ export default function HelloWorld() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dd28cf3a9c5707260dea3ef25c765a25&file=hello_world.bal",
+                "https://play.ballerina.io/?gist=49ac8168b2b8be166e097d206cd7e9d8&file=hello_world.bal",
                 "_blank"
               );
             }}
@@ -76,7 +76,7 @@ export default function HelloWorld() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/hello-world",
                 "_blank"
               );
             }}

@@ -107,7 +107,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
+        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
           <code>auth</code> module
         </a>
         .
@@ -119,7 +119,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/graphql-service-basic-auth-ldap-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/graphql-service-basic-auth-ldap-user-store",
                 "_blank"
               );
             }}

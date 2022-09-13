@@ -73,17 +73,17 @@ export default function FtpClient() {
 
       <p>
         The FTP client is used to perform CRUD operation on remote
-        files/directories using the FTP protocol.
-      </p>
-
-      <p>
-        This sample includes getting and putting file content with default
-        configurations using the default port number.
+        files/directories using the FTP protocol. This sample includes getting
+        and putting file content with default configurations using the default
+        port number.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ftp/latest">FTP module</a>.
+        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">
+          <code>ftp</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -92,7 +92,7 @@ export default function FtpClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/ftp-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/ftp-client",
                 "_blank"
               );
             }}

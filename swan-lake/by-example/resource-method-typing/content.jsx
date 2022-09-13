@@ -59,15 +59,17 @@ export default function ResourceMethodTyping() {
       <h1>Resource method typing</h1>
 
       <p>
-        Resource method arguments can use user-defined types. The listener will
-        use introspection to map from the protocol format (typically JSON) to
-        the user-defined type using <code>cloneWithType()</code>. The return
-        value, which is a subtype of <code>anydata</code> will be mapped from
-        the user-defined type to the protocol format, typically JSON, using{" "}
-        <code>toJson()</code>. It can generate an API description (e.g.,
-        OpenAPI) from the Ballerina service declaration. Annotations can be used
-        to refine the mapping between the Ballerina-declared type and wire
-        format.
+        Resource method arguments can use user-defined types. Listener will use
+        introspection to map from protocol format (typically JSON) to
+        user-defined type, using <code>cloneWithType</code>. Return value that
+        is subtype of <code>anydata</code> will be mapped from user-defined type
+        to protocol format, typically JSON, using <code>toJson</code>.
+      </p>
+
+      <p>
+        Can generate API description (e.g. OpenAPI) from Ballerina service
+        declaration. Annotations can be used to refine the mapping between
+        Ballerina-declared type and wire format.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -76,7 +78,7 @@ export default function ResourceMethodTyping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/resource-method-typing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/resource-method-typing",
                 "_blank"
               );
             }}
@@ -271,7 +273,7 @@ export default function ResourceMethodTyping() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Converting to user-defined type"
+            title="Convert to user-defined type"
             href="/learn/by-example/converting-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -299,7 +301,7 @@ export default function ResourceMethodTyping() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Converting to user-defined type
+                  Convert to user-defined type
                 </span>
               </div>
             </div>

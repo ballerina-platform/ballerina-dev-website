@@ -20,7 +20,8 @@ service /sample on new http:Listener(9090) {
     // request URI.
     resource function get path/[string foo](http:Request req) returns json {
 
-        // Gets the [MatrixParams](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams).
+        // Gets the \`MatrixParams\`.
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams.
         map<any> pathMParams = req.getMatrixParams("/sample/path");
         var a = <string>pathMParams["a"];
         var b = <string>pathMParams["b"];
@@ -70,14 +71,14 @@ export default function HttpMatrixParam() {
       <h1>Matrix parameter</h1>
 
       <p>
-        Ballerina supports extracting <code>MatrixParam</code> values using the{" "}
+        Ballerina supports extracting <code>MatrixParam</code> values using{" "}
         <code>http:Request</code> support method.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -88,7 +89,7 @@ export default function HttpMatrixParam() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-matrix-param",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-matrix-param",
                 "_blank"
               );
             }}

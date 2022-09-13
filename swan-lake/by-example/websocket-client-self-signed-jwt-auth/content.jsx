@@ -17,8 +17,9 @@ import ballerina/websocket;
 
 // Defines the WebSocket client to call the JWT Auth secured APIs.
 // The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the [\`websocket:JwtIssuerConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/JwtIssuerConfig) for the \`auth\` configuration of the
+// passing the \`websocket:JwtIssuerConfig\` for the \`auth\` configuration of the
 // client. A self-signed JWT is issued before the request is sent.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/JwtIssuerConfig.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
         username: "ballerina",
@@ -72,27 +73,21 @@ export default function WebsocketClientSelfSignedJwtAuth() {
 
       <p>
         A client, which is secured with self-signed JWT can be used to connect
-        to
+        to a secured service.
       </p>
-
-      <p>a secured service.</p>
 
       <p>
         The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the
-      </p>
-
-      <p>
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:JwtIssuerConfig</code> to the <code>auth</code>{" "}
-        configuration of the client. A self-signed JWT is issued
+        configuration of the client. A self-signed JWT is issued before the
+        request is sent.
       </p>
-
-      <p>before the request is sent.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
-          OAuth2 module
+        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+          <code>oauth2</code> module
         </a>
         .
       </p>
@@ -103,7 +98,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/websocket-client-self-signed-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-client-self-signed-jwt-auth",
                 "_blank"
               );
             }}

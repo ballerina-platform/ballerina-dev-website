@@ -78,17 +78,16 @@ export default function JsonNumbers() {
         <code>json</code> type allows <code>int|float|decimal</code>.{" "}
         <code>toJsonString()</code> will convert <code>int|float|decimal</code>{" "}
         into JSON numeric syntax. <code>fromJsonString()</code> converts JSON
-        numeric syntax into <code>int if possible or otherwise to </code>decimal
-        <code>. </code>cloneWithType()<code>or</code>ensureType()
-        <code>will convert from</code>int<code>or</code>decimal
-        <code>
-          into your chosen numeric type. The net result is that you can use
-        </code>
-        json
-        <code>
-          to exchange the full range of all three Ballerina numeric types.
-        </code>
-        -0<code>is an edge case: represented as</code>float`.
+        numeric syntax into <code>int</code>, if possible, and otherwise{" "}
+        <code>decimal</code>.
+      </p>
+
+      <p>
+        <code>cloneWithType()</code> or <code>ensureType()</code> will convert
+        from <code>int</code> or <code>decimal</code> into user's chosen numeric
+        type. Net result is that you can use <code>json</code> to exchange full
+        range of all three Ballerina numeric types. <code>-0</code> is an edge
+        case: represented as <code>float</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -97,7 +96,7 @@ export default function JsonNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8be74f951724d3f94a45212b7132b161&file=json_numbers.bal",
+                "https://play.ballerina.io/?gist=abb9c1736da032d67df391f2b0d47543&file=json_numbers.bal",
                 "_blank"
               );
             }}
@@ -120,7 +119,7 @@ export default function JsonNumbers() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/json-numbers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/json-numbers",
                 "_blank"
               );
             }}

@@ -83,7 +83,7 @@ export default function C2cDockerDeployment() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/c2c-docker-deployment",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/c2c-docker-deployment",
                 "_blank"
               );
             }}
@@ -175,7 +175,7 @@ export default function C2cDockerDeployment() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/c2c-docker-deployment",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/c2c-docker-deployment",
                 "_blank"
               );
             }}
@@ -510,10 +510,7 @@ export default function C2cDockerDeployment() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Gauge-based metrics"
-            href="/learn/by-example/gauge-metrics"
-          >
+          <Link title="Kubernetes" href="/learn/by-example/c2c-k8s-deployment">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -539,14 +536,17 @@ export default function C2cDockerDeployment() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Gauge-based metrics
+                  Kubernetes
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Kubernetes" href="/learn/by-example/c2c-k8s-deployment">
+          <Link
+            title="Azure Functions"
+            href="/learn/by-example/azure-functions-deployment"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -555,7 +555,7 @@ export default function C2cDockerDeployment() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Kubernetes
+                  Azure Functions
                 </span>
               </div>
               <svg

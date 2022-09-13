@@ -1,5 +1,5 @@
 {
-  "title": "Waiting for workers",
+  "title": "Wait for workers",
   "description": "This BBE demonstrates waiting for workers",
   "keywords": ["ballerina", "ballerina by example", "bbe", "worker", "wait"],
   "permalink": "/learn/by-example/waiting-for-workers",

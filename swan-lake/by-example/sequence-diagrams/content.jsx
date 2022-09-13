@@ -81,7 +81,7 @@ export default function SequenceDiagrams() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e49dedd461befaf48f4de91b9772d399&file=sequence_diagrams.bal",
+                "https://play.ballerina.io/?gist=758c1b2546ebb1c4cfe6cf26774fe1ee&file=sequence_diagrams.bal",
                 "_blank"
               );
             }}
@@ -104,7 +104,7 @@ export default function SequenceDiagrams() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/sequence-diagrams",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/sequence-diagrams",
                 "_blank"
               );
             }}
@@ -269,7 +269,7 @@ export default function SequenceDiagrams() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Waiting for workers"
+            title="Wait for workers"
             href="/learn/by-example/waiting-for-workers"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -280,7 +280,7 @@ export default function SequenceDiagrams() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Waiting for workers
+                  Wait for workers
                 </span>
               </div>
               <svg

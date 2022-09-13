@@ -84,17 +84,14 @@ export default function SftpListener() {
 
       <p>
         The SFTP listener is used to receive file/directory changes that occur
-        in a remote location using the SFTP protocol.
-      </p>
-
-      <p>
-        This sample includes receiving file/directory related change events from
-        a listener with default configurations using the default port.
+        in a remote location using the SFTP protocol. This sample includes
+        receiving file/directory related change events from a listener with
+        default configurations using the default port.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ftp/latest">
+        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">
           <code>ftp</code> module
         </a>
         .
@@ -106,7 +103,7 @@ export default function SftpListener() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/sftp-listener",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/sftp-listener",
                 "_blank"
               );
             }}

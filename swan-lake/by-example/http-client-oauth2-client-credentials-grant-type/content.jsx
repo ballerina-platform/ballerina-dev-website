@@ -16,8 +16,9 @@ const codeSnippetData = [
 import ballerina/io;
 
 // Defines the HTTP client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by passing
-// the [\`http:OAuth2ClientCredentialsGrantConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/OAuth2ClientCredentialsGrantConfig) for the \`auth\` configuration of the client.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by
+// passing the \`http:OAuth2ClientCredentialsGrantConfig\` for the \`auth\` configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2ClientCredentialsGrantConfig.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
         tokenUrl: "https://localhost:9445/oauth2/token",
@@ -74,14 +75,12 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
         The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>http:OAuth2ClientCredentialsGrantConfig</code> for the{" "}
-        <code>auth</code>
+        <code>auth</code> configuration of the client.
       </p>
-
-      <p>configuration of the client.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
+        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
           <code>oauth2</code> module
         </a>
         .
@@ -93,7 +92,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-client-oauth2-client-credentials-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-client-oauth2-client-credentials-grant-type",
                 "_blank"
               );
             }}

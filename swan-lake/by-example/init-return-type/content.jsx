@@ -62,15 +62,13 @@ export default function InitReturnType() {
       <h1>Init return type</h1>
 
       <p>
-        The <code>init</code> function has a return type, which must be a
-        subtype of <code>error?</code>. If <code>init</code> returns{" "}
-        <code>()</code>, then, the <code>new</code> expression returns the newly
-        constructed <code>object</code> to the caller. If <code>init</code>{" "}
-        returns an <code>error</code>, then, the <code>new</code> expression
-        also returns the same <code>error</code> to the caller. If{" "}
-        <code>init</code> does not specify a return type, then, the return type
-        defaults to <code>()</code> as usual meaning that <code>new</code> will
-        never return an <code>error</code>.
+        <code>init</code> function has a return type, which must be a subtype of{" "}
+        <code>error?</code>. If <code>init</code> returns <code>()</code>, then,{" "}
+        <code>new</code> returns the newly constructed <code>object</code>. If{" "}
+        <code>init</code> returns an <code>error</code>, then <code>new</code>{" "}
+        returns that <code>error</code>. If <code>init</code> does not specify a
+        return type, then the return type defaults to <code>()</code> as usual,
+        meaning that <code>new</code> will never return an <code>error</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -79,7 +77,7 @@ export default function InitReturnType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a81a18d5aa6402466177a5a96276b92a&file=init_return_type.bal",
+                "https://play.ballerina.io/?gist=82d6efa415cdef93b8272d820096268c&file=init_return_type.bal",
                 "_blank"
               );
             }}
@@ -102,7 +100,7 @@ export default function InitReturnType() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/init-return-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/init-return-type",
                 "_blank"
               );
             }}
@@ -234,7 +232,7 @@ export default function InitReturnType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Defining classes"
+            title="Define classes"
             href="/learn/by-example/defining-classes"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -262,7 +260,7 @@ export default function InitReturnType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Defining classes
+                  Define classes
                 </span>
               </div>
             </div>

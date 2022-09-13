@@ -1,0 +1,181 @@
+.donwloadVersion h2 {
+    color: #585a5e;
+    font-size: 32px;
+    margin-top: 15px;
+    font-size: 1.5rem;
+}
+
+.downloadsOther h3 {
+    color: #585a5e;
+    font-size: 32px;
+    margin-top: 15px;
+    font-size: 1.25rem;
+}
+
+.dVersions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dVersion:not(:last-child) {
+    margin-right: 1px;
+}
+
+
+.dVersion {
+    width: 50%;
+}
+
+@media (min-width: 576px) {
+    .dVersion {
+        width: 100%;
+    }
+}
+
+a.cDownload {
+    display: block;
+    transition: none !important;
+    font-size: 25px;
+    font-weight: 200;
+    background-color: #57595d;
+    color: #ffffff !important;
+    padding: 20px 8px 20px 60px;
+    text-decoration: none;
+    min-height: 60px;
+    line-height: 35px;
+    background-image: url('/images/download-bg.svg');
+    background-repeat: no-repeat;
+    background-position: left 20px top 20px;
+}
+
+.releaseLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.releaseNotes a {
+    font-size: 16px;
+    color: #20b6b0;
+    display: inline-block;
+    letter-spacing: 1px;
+    line-height: 24px;
+}
+
+ul.downloadSubLinks {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 15px;
+    margin: 0;
+    text-align: right;
+}
+
+ul.downloadSubLinks li {
+    list-style: none;
+    float: right;
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 13px;
+}
+
+ul.downloadSubLinks li:first-child {
+    margin-right: 0;
+}
+
+ul.downloadSubLinks li a,
+.instructions,
+.downloadsContent a,
+.releaseNotes a,
+.downloadsVSCode a {
+    color: #20b6b0;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.releaseNotes a:hover,
+.downloadSubLinks a:hover,
+.downloadsContent a:hover,
+.instructions:hover,
+.downloadsVSCode a:hover {
+    color: #57595d;
+    font-weight: 400;
+}
+
+.downloadsContent {
+    margin-top: 20px;
+}
+
+a.cDownload .cSize {
+    font-family: monaco, Consolas, "Lucida Console", monospace;
+    font-size: 14px;
+    color: #d9dadb;
+    margin-top: -4px;
+}
+
+.cArchived a,
+.cArchived a:hover,
+.cArchived a:focus {
+    font-size: 16px;
+    font-weight: 300;
+    background-color: #57595d;
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cArchived a:hover {
+    background-color: #20b6b0;
+}
+
+.cInstallers table {
+    width: 100%;
+    border-top: solid 0.5px #a7a8ab;
+    margin: 0;
+}
+
+.cInstallers table tr td {
+    padding: 3px 7px 3px 7px !important;
+    font-size: 13px;
+    font-weight: 400;
+    color: #585a5e;
+    border: none !important;
+    vertical-align: top;
+    border-bottom: solid 0.5px #a7a8ab !important;
+}
+
+.cInstallers table tr td a {
+    color: #20b6b0;
+}
+
+a.cDownload:hover {
+    background-image: url("/images/download-bg-white.svg");
+    background-color: #20b6b0;
+    background-repeat: no-repeat;
+    background-position: left 20px top 20px;
+}
+
+.dwindows,
+.dLinux,
+.dMac,
+.dVSCode {
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    line-height: 32px;
+    background-size: 30px;
+    font-size: 1rem;
+}
+
+p.dwindows,
+p.dLinux,
+p.dMac,
+p.dVSCode {
+    line-height: 32px;
+}
+
+.cDownloadLinkIcon {
+    padding-left: 5px !important;
+}

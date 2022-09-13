@@ -58,12 +58,9 @@ export default function ConstAndFinal() {
 
       <p>
         <code>const</code> means immutable and known at compile-time. Its type
-        is singleton: a set containing a single value.
-      </p>
-
-      <p>
-        A variable or a class field can be declared as <code>final</code>, which
-        means it cannot be assigned after it has been initialized.
+        is singleton: a set containing a single value. A variable or a class
+        field can be declared as <code>final</code>, which means it cannot be
+        assigned after it has been initialized.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -72,7 +69,7 @@ export default function ConstAndFinal() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3ebe47d0e21515a0efb1076f7a3cd11a&file=const_and_final.bal",
+                "https://play.ballerina.io/?gist=e205f3a65b8c72937819afa241b48d75&file=const_and_final.bal",
                 "_blank"
               );
             }}
@@ -95,7 +92,7 @@ export default function ConstAndFinal() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/const-and-final",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/const-and-final",
                 "_blank"
               );
             }}

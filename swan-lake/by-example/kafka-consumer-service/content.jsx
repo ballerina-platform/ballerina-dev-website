@@ -74,11 +74,8 @@ export default function KafkaConsumerService() {
 
       <p>
         Here, a Kafka consumer is used as a listener to a service with manual
-        offset commits.
-      </p>
-
-      <p>
-        For this to work properly, an active Kafka broker should be present.
+        offset commits. For this to work properly, an active Kafka broker should
+        be present.
       </p>
 
       <p>
@@ -95,7 +92,7 @@ export default function KafkaConsumerService() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/kafka-consumer-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/kafka-consumer-service",
                 "_blank"
               );
             }}

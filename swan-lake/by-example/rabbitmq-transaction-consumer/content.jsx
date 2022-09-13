@@ -68,12 +68,9 @@ export default function RabbitmqTransactionConsumer() {
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
-        RabbitMQ message listener and Ballerina transactions.
-      </p>
-
-      <p>
-        Upon successful execution of the transaction block, the acknowledgement
-        will commit or rollback in the case of any error.
+        RabbitMQ message listener and Ballerina transactions. Upon successful
+        execution of the transaction block, the acknowledgement will commit or
+        rollback in the case of any error.
       </p>
 
       <p>
@@ -95,7 +92,7 @@ export default function RabbitmqTransactionConsumer() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/rabbitmq-transaction-consumer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/rabbitmq-transaction-consumer",
                 "_blank"
               );
             }}

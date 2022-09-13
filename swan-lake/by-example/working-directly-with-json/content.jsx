@@ -67,10 +67,13 @@ export default function WorkingDirectlyWithJson() {
         rules are less strict. For example, field access (<code>.</code>) and
         optional field access (<code>?.</code>), which are generally allowed on
         records and objects for fields that are defined in the type descriptors,
-        are also additionally allowed on lax types. For such operations, some of
-        the type checking is moved from compile time to runtime.{" "}
-        <code>json</code> is defined to be a lax type along with any{" "}
-        <code>map&lt;T&gt;</code> where <code>T</code> is a lax type.
+        are also additionally allowed on lax types.
+      </p>
+
+      <p>
+        For such operations, some of the type checking is moved from compile
+        time to runtime. <code>json</code> is defined to be a lax type along
+        with any <code>map&lt;T&gt;</code> where <code>T</code> is a lax type.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -79,7 +82,7 @@ export default function WorkingDirectlyWithJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a64d7051998bd415751010fd7b78452b&file=working_directly_with_json.bal",
+                "https://play.ballerina.io/?gist=b0219a8ee07597cb09769577a24c2386&file=working_directly_with_json.bal",
                 "_blank"
               );
             }}
@@ -102,7 +105,7 @@ export default function WorkingDirectlyWithJson() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/working-directly-with-json",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/working-directly-with-json",
                 "_blank"
               );
             }}

@@ -80,7 +80,7 @@ export default function IoStrings() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/io/latest/">
+        <a href="https://lib.ballerina.io/ballerina/io/latest/">
           <code>io</code> module
         </a>
         .
@@ -92,7 +92,7 @@ export default function IoStrings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=caafd503fdf25a7a4a67232544bbeb56&file=io_strings.bal",
+                "https://play.ballerina.io/?gist=5e690618bb5083437807429f8fdbcc36&file=io_strings.bal",
                 "_blank"
               );
             }}
@@ -115,7 +115,7 @@ export default function IoStrings() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/io-strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/io-strings",
                 "_blank"
               );
             }}

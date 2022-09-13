@@ -108,7 +108,7 @@ export default function HttpCachingClient() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
         </a>
         .
@@ -120,7 +120,7 @@ export default function HttpCachingClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-caching-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-caching-client",
                 "_blank"
               );
             }}
@@ -267,15 +267,11 @@ export default function HttpCachingClient() {
               <span>{`
 `}</span>
               <span>
-                {`# The backend service responds with a `}
-                <code>{`200 OK`}</code>
-                {` and it contains `}
+                {`# The backend service responds with a 200 OK and it contains `}
                 <code>{`etag`}</code>
                 {` and `}
                 <code>{`cache-control`}</code>
-                {` headers. This response can be cached and as such, the caching client caches it. As seen from the `}
-                <code>{`max-age`}</code>
-                {` directive of the 'cache-control header, this response is valid for 15 seconds`}
+                {` headers. This response can be cached and as such the caching client caches it. As seen from the max-age directive of the 'cache-control header, this response is valid for 15 seconds.`}
               </span>
               <span>{`[2021-11-26 09:52:32,896] TRACE {http.tracelog.upstream} - [id: 0x99c1790f, correlatedSource: 0x6c720951, host:/127.0.0.1:50903 - remote:localhost/127.0.0.1:8080] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`HTTP/1.1 200 OK`}</span>
@@ -335,7 +331,7 @@ export default function HttpCachingClient() {
               <span>
                 {`# This time, the request is not served from the cache. The backend service is contacted. The `}
                 <code>{`if-none-match`}</code>
-                {` header sends the entity tag of the now stale response, so that the backend service may determine whether this response is still valid.`}
+                {` header sends the entity tag of the now stale response so that the backend service may determine whether this response is still valid.`}
               </span>
               <span>{`[2021-11-26 09:52:54,668] TRACE {http.tracelog.upstream} - [id: 0x99c1790f, correlatedSource: 0x083aeb7c, host:/127.0.0.1:50903 - remote:localhost/127.0.0.1:8080] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`GET /hello HTTP/1.1`}</span>
@@ -348,11 +344,7 @@ export default function HttpCachingClient() {
               <span>{`content-length: 0`}</span>
               <span>{`
 `}</span>
-              <span>
-                {`# The response has not changed. Therefore the backend services respond with a `}
-                <code>{`304 Not Modified`}</code>
-                {` response. Based on this, the proxy will refresh the response, so that it can continue serving the cached response.`}
-              </span>
+              <span>{`# The response has not changed. Therefore, the backend services respond with a 304 Not Modified response. Based on this, the proxy will refresh the response so that it can continue serving the cached response.`}</span>
               <span>{`[2021-11-26 09:52:54,673] TRACE {http.tracelog.upstream} - [id: 0x99c1790f, correlatedSource: 0x083aeb7c, host:/127.0.0.1:50903 - remote:localhost/127.0.0.1:8080] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`HTTP/1.1 304 Not Modified`}</span>
               <span>{`etag: 620328e8`}</span>
@@ -390,11 +382,7 @@ export default function HttpCachingClient() {
               <span>{`connection: keep-alive`}</span>
               <span>{`
 `}</span>
-              <span>
-                {`# The service responds with a `}
-                <code>{`200 OK`}</code>
-                {` with the relevant caching headers set.`}
-              </span>
+              <span>{`# The service responds with a 200 OK with the relevant caching headers set.`}</span>
               <span>{`[2021-11-26 09:52:32,890] TRACE {http.tracelog.downstream} - [id: 0x318ba81d, correlatedSource: n/a, host:localhost/127.0.0.1:8080 - remote:/127.0.0.1:50903] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))`}</span>
               <span>{`HTTP/1.1 200 OK`}</span>
               <span>{`etag: 620328e8`}</span>

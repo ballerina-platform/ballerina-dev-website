@@ -72,15 +72,19 @@ export default function MatchStatement() {
       <h1>Match statement</h1>
 
       <p>
-        The <code>match</code> statement is similar to the <code>switch</code>{" "}
-        statement in <code>C</code> and <code>JavaScript</code>. It matches the
-        value (not the type). <code>==</code> is used to test whether the
-        left-hand side matches the value being matched. The left-hand side can
-        be a simple literal (<code>nil</code>, <code>boolean</code>,{" "}
-        <code>int</code>, <code>float</code>, <code>string</code>) identifier
-        referring to a constant. The left-hand side of <code>_</code> matches if
-        the value is of type <code>any</code>. You can use <code>|</code> to
-        match more than one value.
+        <code>match</code> statement is similar to <code>switch</code> statement
+        in <code>C</code> and <code>JavaScript</code>. It matches the value, not
+        the type. <code>==</code> is used to test whether left hand side matches
+        the value being matched. Left hand side can be a simple literal (
+        <code>nil</code>, <code>boolean</code>, <code>int</code>,{" "}
+        <code>float</code>, <code>string</code>) identifier referring to a
+        constant.
+      </p>
+
+      <p>
+        Left hand side of <code>_</code> matches if the value is of type{" "}
+        <code>any</code>. You can use <code>|</code> to match more than one
+        value.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -89,7 +93,7 @@ export default function MatchStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0bd53294e2a2b170c87f57375e315b48&file=match_statement.bal",
+                "https://play.ballerina.io/?gist=a9601af88398dd5be1ba7b2ee8c4908c&file=match_statement.bal",
                 "_blank"
               );
             }}
@@ -112,7 +116,7 @@ export default function MatchStatement() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/match-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/match-statement",
                 "_blank"
               );
             }}

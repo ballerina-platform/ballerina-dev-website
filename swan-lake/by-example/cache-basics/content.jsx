@@ -65,12 +65,8 @@ export default function CacheBasics() {
 
       <p>
         The <code>cache</code> library provides in-memory cache implementation
-        APIs and
-      </p>
-
-      <p>
-        uses the <code>Least Recently Used</code> algorithm-based eviction
-        policy.
+        APIs and uses the <code>Least Recently Used</code> algorithm-based
+        eviction policy.
       </p>
 
       <p>
@@ -92,7 +88,7 @@ export default function CacheBasics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f65912ae077c017881b4e5eced092e19&file=cache_basics.bal",
+                "https://play.ballerina.io/?gist=98e05ebc02e30d4b06169ef351e5c5ee&file=cache_basics.bal",
                 "_blank"
               );
             }}
@@ -115,7 +111,7 @@ export default function CacheBasics() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/cache-basics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/cache-basics",
                 "_blank"
               );
             }}

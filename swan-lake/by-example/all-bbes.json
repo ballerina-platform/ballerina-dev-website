@@ -137,6 +137,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Included record parameters",
+        "url": "included-record-parameters",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -251,6 +258,34 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Built-in integer subtypes",
+        "url": "built-in-integer-subtypes",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Built-in string subtype",
+        "url": "built-in-string-subtype",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "ensureType function",
+        "url": "ensureType-function",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Dependent types",
+        "url": "dependent-types",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -269,6 +304,13 @@
       {
         "name": "Records",
         "url": "records",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Computed field key",
+        "url": "computed-field-key",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -295,8 +337,22 @@
         "isLearnByExample": true
       },
       {
-        "name": "Controlling openness",
+        "name": "Control openness",
         "url": "controlling-openness",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Type inclusion for records",
+        "url": "type-inclusion-for-records",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Default values for record fields",
+        "url": "default-values-for-record-fields",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -316,7 +372,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Defining classes",
+        "name": "Define classes",
         "url": "defining-classes",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -363,16 +419,23 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Type intersection for error types",
+        "url": "error-type-intersection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
   {
-    "title": "Ignoring return values and errors",
+    "title": "Ignore return values and errors",
     "column": 1,
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Ignoring return values and errors",
+        "name": "Ignore return values and errors",
         "url": "ignoring-return-values-and-errors",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -429,7 +492,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Working directly with JSON",
+        "name": "Work directly with JSON",
         "url": "working-directly-with-json",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -443,21 +506,21 @@
         "isLearnByExample": true
       },
       {
-        "name": "Converting from user-defined type to JSON",
+        "name": "Convert from user-defined type to JSON",
         "url": "converting-from-user-defined-type-to-json",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Converting from JSON to user-defined type",
+        "name": "Convert from JSON to user-defined type",
         "url": "converting-from-json-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Converting to user-defined type",
+        "name": "Convert to user-defined type",
         "url": "converting-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -521,7 +584,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructuring records",
+        "name": "Destructure records",
         "url": "destructuring-records",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -556,7 +619,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Creating tables with query",
+        "name": "Create tables with query",
         "url": "creating-tables-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -699,7 +762,7 @@
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Consuming services: client objects",
+        "name": "Consume services: client objects",
         "url": "consuming-services",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -707,7 +770,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Providing services",
+        "name": "Provide services",
         "url": "providing-services",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -798,7 +861,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Waiting for workers",
+        "name": "Wait for workers",
         "url": "waiting-for-workers",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -1448,7 +1511,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Interceptor Error Handling",
+        "name": "Interceptor error handling",
         "url": "http-interceptor-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1494,7 +1557,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Returning record values",
+        "name": "Return record values",
         "url": "graphql-returning-record-values",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1510,7 +1573,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Returning service objects",
+        "name": "Return service objects",
         "url": "graphql-returning-service-objects",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1853,13 +1916,21 @@
     ]
   },
   {
-    "title": "Listeners",
+    "title": "Listeners and StopHandlers",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
         "name": "Dynamic listener",
         "url": "dynamic-listener",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "StopHandler",
+        "url": "stop-handler",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2556,6 +2627,21 @@
     ]
   },
   {
+    "title": "SerDes",
+    "column": 3,
+    "category": "Working over the network",
+    "samples": [
+      {
+        "name": "Serialization and Deserialization",
+        "url": "serdes-simple",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "IO",
     "column": 0,
     "category": "Common libraries",
@@ -2578,6 +2664,13 @@
       {
         "name": "Read/write CSV",
         "url": "io-csv",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Read/write CSV with data mapping",
+        "url": "io-csv-datamapping",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
@@ -2971,17 +3064,24 @@
     "category": "Deployment",
     "samples": [
       {
-        "name": "Docker",
-        "url": "c2c-docker-deployment",
+        "name": "Kubernetes",
+        "url": "c2c-k8s-deployment",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "Code to Cloud",
+    "column": 0,
+    "category": "Deployment",
+    "samples": [
       {
-        "name": "Kubernetes",
-        "url": "c2c-k8s-deployment",
+        "name": "Docker",
+        "url": "c2c-docker-deployment",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",

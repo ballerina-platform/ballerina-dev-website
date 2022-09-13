@@ -17,8 +17,8 @@ import ballerina/websocket;
 
 // Defines the WebSocket client to call the Basic Auth secured APIs.
 // The client is enriched with the \`Authorization: Basic <token>\` header by
-// passing the [\`websocket:CredentialsConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/CredentialsConfig)
-// for the \`auth\` configuration of the client.
+// passing the \`websocket:CredentialsConfig\` for the \`auth\` configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/CredentialsConfig.
 websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
     auth = {
         username: "ldclakmal",
@@ -67,18 +67,15 @@ export default function WebsocketClientBasicAuth() {
 
       <p>
         The client is enriched with the{" "}
-        <code>Authorization: Basic &lt;token&gt;</code> header by passing the
-      </p>
-
-      <p>
+        <code>Authorization: Basic &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:CredentialsConfig</code> for the <code>auth</code>{" "}
         configuration of the client.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
-          Auth module
+        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+          <code>auth</code> module
         </a>
         .
       </p>
@@ -89,7 +86,7 @@ export default function WebsocketClientBasicAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/websocket-client-basic-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-client-basic-auth",
                 "_blank"
               );
             }}

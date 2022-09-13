@@ -112,8 +112,8 @@ export default function GraphqlMutations() {
 
       <p>
         For more information on the underlying package, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
-          <code>graphql</code> package
+        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
+          GraphQL package
         </a>
         .
       </p>
@@ -124,7 +124,7 @@ export default function GraphqlMutations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/graphql-mutations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/graphql-mutations",
                 "_blank"
               );
             }}

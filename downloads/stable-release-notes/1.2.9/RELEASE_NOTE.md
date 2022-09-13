@@ -41,4 +41,3 @@ Added support to read custom/optional fields from the OAuth2 introspection respo
 ##### Cache
 
 Improved the concurrent behavior of the cache.
-

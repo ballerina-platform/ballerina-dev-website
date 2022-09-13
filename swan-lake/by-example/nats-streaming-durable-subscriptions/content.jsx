@@ -79,17 +79,8 @@ export default function NatsStreamingDurableSubscriptions() {
 
       <p>
         The <code>nats</code> streaming library allows creating durable
-        subscriptions.
-      </p>
-
-      <p>
-        Regular subscriptions remember their position while the client is
-        connected.
-      </p>
-
-      <p>If the client disconnects, the position is lost.</p>
-
-      <p>
+        subscriptions. Regular subscriptions remember their position while the
+        client is connected. If the client disconnects, the position is lost.
         Durable subscriptions remember their position even if the client is
         disconnected.
       </p>
@@ -108,7 +99,7 @@ export default function NatsStreamingDurableSubscriptions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-streaming-durable-subscriptions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-streaming-durable-subscriptions",
                 "_blank"
               );
             }}
@@ -243,7 +234,7 @@ export default function NatsStreamingDurableSubscriptions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/nats-streaming-durable-subscriptions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/nats-streaming-durable-subscriptions",
                 "_blank"
               );
             }}

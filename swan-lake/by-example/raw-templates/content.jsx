@@ -74,47 +74,54 @@ export default function RawTemplates() {
       <h1>Raw templates</h1>
 
       <p>
-        A raw template is a backtick template without a tag. It exposes the
-        result of phase 1 without further processing. It is evaluated by
-        evaluating each expression and creating an object containing:
+        A raw template is a backtick template without a tag. Exposes result of
+        phase 1 without further processing. Raw template is evaluated by
+        evaluating each expression and creating an object containing.
       </p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>an array of the strings separated by insertions</span>
+          <span>
+            an <code>array</code> of the <code>strings</code> separated by
+            insertions
+          </span>
         </li>
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            an array of the results of the expression evaluation and an array of
-            strings separating them
+            an <code>array</code> of the results of expression evaluation and an{" "}
+            <code>array</code> of <code>strings</code> separating
           </span>
         </li>
       </ul>
 
-      <p>Using raw templates in SQL parameters is an important use case.</p>
+      <blockquote>
+        <p>
+          <strong>Important use case:</strong> SQL parameters.
+        </p>
+      </blockquote>
 
       <blockquote>
         <p>
           <strong>Note:</strong> The relevant database driver JAR should be
           defined in the <code>Ballerina.toml</code> file as a dependency. This
-          sample is based on an H2 database and the H2 database driver JAR needs
-          to be added to the <code>Ballerina.toml</code> file. For a sample
-          configuration and more information on the underlying module, see the{" "}
-          <a href="https://docs.central.ballerina.io/ballerinax/java.jdbc/latest/">
-            <code>jdbc</code> module
-          </a>
-          . This sample is written using H2 2.1.210 and it is recommended to use
-          an H2 JAR with versions higher than 2.1.210.
+          sample is based on an H2 database and the H2 database driver JAR need
+          to be added to <code>Ballerina.toml</code> file. This sample is
+          written using H2 2.1.210 and it is recommended to use H2 JAR with
+          versions higher than 2.1.210.
         </p>
       </blockquote>
 
       <p>
-        Create a Ballerina project and copy the following example to the
-        project.
+        For a sample configuration and more information on the underlying
+        module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
+          <code>jdbc</code> module
+        </a>
+        .
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -123,7 +130,7 @@ export default function RawTemplates() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/raw-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/raw-templates",
                 "_blank"
               );
             }}
@@ -205,7 +212,7 @@ export default function RawTemplates() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/raw-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/raw-templates",
                 "_blank"
               );
             }}

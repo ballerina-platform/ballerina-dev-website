@@ -24,8 +24,9 @@ listener websocket:Listener securedEP = new(9090,
 );
 
 // The service can be secured with Basic Auth and can be authorized optionally.
-// Basic Auth using the LDAP user store can be enabled by setting the
-// [\`websocket:LdapUserStoreConfig\`](https://docs.central.ballerina.io/ballerina/websocket/latest/records/LdapUserStoreConfig) configurations.
+// Basic Auth using the LDAP user store can be enabled by setting 
+// the \`websocket:LdapUserStoreConfig\` configurations.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/LdapUserStoreConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -97,39 +98,24 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
 
       <p>
         A WebSocket service can be secured with Basic Auth and by enforcing
-        authorization optionally.
-      </p>
-
-      <p>
-        Then, it validates the Basic Auth token sent in the{" "}
-        <code>Authorization</code> header against the provided
-      </p>
-
-      <p>
+        authorization optionally. Then, it validates the Basic Auth token sent
+        in the <code>Authorization</code> header against the provided
         configurations. This reads data from the configured LDAP. This stores
-        usernames, passwords for
+        usernames, passwords for authentication, and scopes for authorization.
       </p>
-
-      <p>authentication, and scopes for authorization.</p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be
+        declared in a service can be bound to one/more scope(s). In the
+        authorization phase, the scopes of the service are compared against the
+        scope included in the user store for at least one match between the two
+        sets.
       </p>
-
-      <p>bound to one/more scope(s).</p>
-
-      <p>
-        In the authorization phase, the scopes of the service are compared
-        against the scope included
-      </p>
-
-      <p>in the user store for at least one match between the two sets.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/auth/latest/">
-          Auth module
+        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+          <code>auth</code> module
         </a>
         .
       </p>
@@ -140,7 +126,7 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/websocket-service-basic-auth-ldap-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-service-basic-auth-ldap-user-store",
                 "_blank"
               );
             }}

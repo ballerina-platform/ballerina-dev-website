@@ -102,34 +102,19 @@ export default function CounterMetrics() {
 
       <p>
         Ballerina supports Observability out of the box and Metrics is one of
-        the three important aspects of
-      </p>
-
-      <p>
-        Observability. To observe Ballerina code, the{" "}
-        <code>--observability-included</code> build time flag should be given
-        along with the
-      </p>
-
-      <p>
-        <code>Config.toml</code> file when starting the service. The{" "}
-        <code>Config.toml</code> file contains the required runtime
+        the three important aspects of Observability.To observe Ballerina code,
+        the <code>--observability-included</code> build time flag should be
+        given along with the <code>Config.toml</code> file when starting the
+        service. The <code>Config.toml</code> file contains the required runtime
         configurations related to observability.
       </p>
 
       <p>
         You can define and use metrics to measure your own logic. A counter is
-        one type of the metrics that is
-      </p>
-
-      <p>
-        supported by default in Ballerina, and it is a cumulative metric that
-        represents a single monotonically-increasing
-      </p>
-
-      <p>
-        counter whose value can only increase or be reset to
-        zero.&lt;br/&gt;&lt;br/&gt;
+        one type of the metrics that is supported by default in Ballerina, and
+        it is a cumulative metric that represents a single
+        monotonically-increasing counter whose value can only increase or be
+        reset to zero.
       </p>
 
       <p>
@@ -146,7 +131,7 @@ export default function CounterMetrics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/counter-metrics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/counter-metrics",
                 "_blank"
               );
             }}

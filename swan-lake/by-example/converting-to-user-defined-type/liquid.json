@@ -1,5 +1,5 @@
 {
-  "title": "Converting to user-defined type",
+  "title": "Convert to user-defined type",
   "description": "This BBE demonstrates converting to a user-defined type using `cloneWithType`",
   "keywords": ["ballerina", "ballerina by example", "bbe", "conversion"],
   "permalink": "/learn/by-example/converting-to-user-defined-type",

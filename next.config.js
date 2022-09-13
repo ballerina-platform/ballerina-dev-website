@@ -84,6 +84,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/asyncapi-tool`,
       },
       {
+        source: `/${redirectBase}learn/strand-dump-tool`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/strand-dump-tool`,
+      },
+      {
         source: `/${redirectBase}learn/ballerina-shell`,
         destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/ballerina-shell`,
       },

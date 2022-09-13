@@ -81,14 +81,14 @@ export default function HttpTimeout() {
       <h1>Timeout</h1>
 
       <p>
-        The <code>Timeout</code> is used to gracefully handle network timeouts,
-        which occur when using the HTTP Client.
+        The Timeout is used to gracefully handle network timeouts, which occur
+        when using the HTTP Client.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -99,7 +99,7 @@ export default function HttpTimeout() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-timeout",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-timeout",
                 "_blank"
               );
             }}

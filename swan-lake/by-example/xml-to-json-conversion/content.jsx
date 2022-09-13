@@ -76,7 +76,7 @@ export default function XmlToJsonConversion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=32f6610d0633094158cb58b26df29fa5&file=xml_to_json_conversion.bal",
+                "https://play.ballerina.io/?gist=9f4f606700548268c6595c6e70a11ce9&file=xml_to_json_conversion.bal",
                 "_blank"
               );
             }}
@@ -99,7 +99,7 @@ export default function XmlToJsonConversion() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/xml-to-json-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/xml-to-json-conversion",
                 "_blank"
               );
             }}
@@ -225,7 +225,7 @@ export default function XmlToJsonConversion() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run xml_json_conversion.bal`}</span>
+              <span>{`bal run xml_json_conversion.bal`}</span>
               <span>{`{"Store":{"name":"Anne","address":{"street":"Main","city":"94"},"codes":["4","8"],"@id":"AST"}}`}</span>
             </code>
           </pre>

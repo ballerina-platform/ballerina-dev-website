@@ -66,12 +66,8 @@ export default function RegularExpressions() {
 
       <p>
         The <code>regex</code> library provides functionalities for searching,
-        splitting, and replacing
-      </p>
-
-      <p>
-        the set of characters of the string by using the{" "}
-        <code>regular expression</code>.
+        splitting, and replacing the set of characters of the string by using
+        the <code>regular expression</code>.
       </p>
 
       <p>
@@ -88,7 +84,7 @@ export default function RegularExpressions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1616cfdc8bed4d0eabea163c19b64139&file=regular_expressions.bal",
+                "https://play.ballerina.io/?gist=6e49d4db1a5a0daa215a16d75289b5b0&file=regular_expressions.bal",
                 "_blank"
               );
             }}
@@ -111,7 +107,7 @@ export default function RegularExpressions() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/regular-expressions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/regular-expressions",
                 "_blank"
               );
             }}

@@ -68,26 +68,19 @@ export default function TesterinaBeforeAndAfterGroups() {
 
       <p>
         The function specified with the <code>BeforeGroups</code> annotation is
-        executed once before all the tests belonging to the
+        executed once before all the tests belonging to the specified group is
+        executed and the function specified with the <code>AfterGroups</code>{" "}
+        annotation is executed once after all the tests belonging to the
+        specified group is executed.
       </p>
-
-      <p>
-        specified group is executed and the function specified with the{" "}
-        <code>AfterGroups</code> annotation is executed once after all
-      </p>
-
-      <p>the tests belonging to the specified group is executed.</p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/test-ballerina-code/execute-tests/#understand-the-test-execution-behavior">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
           <code>test</code> module
         </a>
         .
@@ -99,7 +92,7 @@ export default function TesterinaBeforeAndAfterGroups() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-before-and-after-groups",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-before-and-after-groups",
                 "_blank"
               );
             }}

@@ -74,17 +74,14 @@ export default function ReceiveEmailUsingListener() {
 
       <p>
         The email listener is used to receive (with POP3 or IMAP4) emails using
-        the SSL or STARTTLS protocols.
-      </p>
-
-      <p>
-        This sample includes receiving emails from a listener with default
-        configurations over SSL using the default ports.
+        the SSL or STARTTLS protocols. This sample includes receiving emails
+        from a listener with default configurations over SSL using the default
+        ports.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/email/latest/">
+        <a href="https://lib.ballerina.io/ballerina/email/latest/">
           <code>email</code> module
         </a>
         .
@@ -96,7 +93,7 @@ export default function ReceiveEmailUsingListener() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/receive-email-using-listener",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/receive-email-using-listener",
                 "_blank"
               );
             }}

@@ -58,50 +58,47 @@ export default function ProtoToBallerina() {
       <h1>Proto to Ballerina</h1>
 
       <p>
-        If you already have a protocol buffer file for your service(s), you can
-        use that to generate the Ballerina source code. Currently, Ballerina
+        If you already have protocol buffer file for your service(s) you can use
+        that to autogenerate Ballerina source code. Currently, Ballerina
         supports two types of code generation. <code>service</code> generation
-        generates a mock version
+        generates a mock version of the Ballerina service for an input proto
+        definition. <code>client</code> generation generates a Ballerina client
+        endpoint for an input proto definition.
       </p>
 
-      <p>
-        of the Ballerina service for an input proto definition.{" "}
-        <code>client</code> generation generates a Ballerina client endpoint for
-        an input proto definition.
-      </p>
+      <p>The Ballerina code generator supports the following parameters:</p>
 
-      <p>The Ballerina code generator supports the following parameters,</p>
-
-      <ul>
+      <ul style={{ marginLeft: "0px" }}>
         <li>
-          <code>--input</code> - The path of the .proto file. This is a
-          mandatory parameter.
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>--input</code> The path of the .proto file. This is a
+            mandatory parameter.
+          </span>
         </li>
       </ul>
-
-      <ul>
+      <ul style={{ marginLeft: "0px" }}>
         <li>
-          <code>--output</code> - The file location in which the Ballerina
-          client/service and the stub must be generated. This is an optional
-          parameter.
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>--output</code> The file location in which the Ballerina
+            client/service and the stub must be generated. This is an optional
+            parameter. If no value is specified for this parameter and proto
+            definition doesn't contain package value, the Ballerina
+            client/service and the stub files are generated inside{" "}
+            <code>temp</code> directory in the current location. This path must
+            be a project directory.
+          </span>
         </li>
       </ul>
-
-      <p>
-        If no value is specified for this parameter and proto definition doesn't
-        contain package value, the Ballerina client/service and the stub files
-      </p>
-
-      <p>
-        are generated inside <code>temp</code> directory in the current
-        location. This path must be a project directory.
-      </p>
-
-      <ul>
+      <ul style={{ marginLeft: "0px" }}>
         <li>
-          <code>--mode</code> - The mode (client or server) to generate code
-          samples. If no value is specified for this parameter, only the stub
-          file will be generated.
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>--mode</code> The mode (client or server) to generate code
+            samples. If no value is specified for this parameter, only the stub
+            file will be generated.
+          </span>
         </li>
       </ul>
 
@@ -110,17 +107,12 @@ export default function ProtoToBallerina() {
         <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
           <code>grpc</code> module
         </a>{" "}
-        and
-      </p>
-
-      <p>
-        <a href="https://ballerina.io/learn/cli-documentation/grpc/">
+        and{" "}
+        <a href="https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/">
           How to generate Ballerina code for Protocol Buffer Definition
         </a>
         .
       </p>
-
-      <p>Following is a sample proto definition.</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -128,7 +120,7 @@ export default function ProtoToBallerina() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/proto-to-ballerina",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/proto-to-ballerina",
                 "_blank"
               );
             }}

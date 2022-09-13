@@ -50,14 +50,15 @@ export default function Covariance() {
       <h1>Covariance</h1>
 
       <p>
-        Covariance means that a write to a mutable structure may result in a
-        runtime error. Lists and mappings are covariant. Arrays, maps, tuples,
-        and records have an <code>inherent</code> type that constrains mutation.
+        Arrays and maps are covariant. Static type-checking guarantees that the
+        result of a read from a mutable structure will be consistent with the
+        static type.
       </p>
 
       <p>
-        Static type-checking guarantees that the result of a read from a mutable
-        structure will be consistent with the static type.
+        Covariance means that a write to a mutable structure may result in a
+        runtime error. Arrays, maps, and records have an <code>inherent</code>{" "}
+        type that constrains mutation.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -66,7 +67,7 @@ export default function Covariance() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2358b22becc94df069d18a6070cbc297&file=covariance.bal",
+                "https://play.ballerina.io/?gist=0bc4c369149946d0bc6d7c84c77aff31&file=covariance.bal",
                 "_blank"
               );
             }}
@@ -89,7 +90,7 @@ export default function Covariance() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/covariance",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/covariance",
                 "_blank"
               );
             }}

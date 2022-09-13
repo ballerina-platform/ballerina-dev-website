@@ -178,12 +178,8 @@ export default function TesterinaMockingObjects() {
 
       <p>
         Object mocking enables controlling the values of member variables and
-        the behavior of
-      </p>
-
-      <p>
-        the member functions of an object. Mocking of objects can be done in two
-        ways.
+        the behavior of the member functions of an object. Mocking of objects
+        can be done in two ways.
       </p>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -200,34 +196,29 @@ export default function TesterinaMockingObjects() {
           <span>2.</span>
           <span>
             Stubbing the member function or member variable - stubbing the
-            behavior of functions
+            behavior of functions and values of variables
           </span>
         </li>
       </ul>
-      <p>and values of variables</p>
-
-      <p>
-        Creating a test double is suitable when a single mock function/object
-        can be used
-      </p>
-
-      <p>
-        throughout all tests whereas stubbing is ideal when defining different
-        behaviors for
-      </p>
-
-      <p>different test cases is required.</p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
+          <span>
+            Creating a test double is suitable when a single mock
+            function/object can be used throughout all tests whereas stubbing is
+            ideal when defining different behaviors for different test cases is
+            required.
+          </span>
+        </li>
+      </ul>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/test-ballerina-code/mocking/#mock-objects">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
           <code>test</code> module
         </a>
         .
@@ -239,7 +230,7 @@ export default function TesterinaMockingObjects() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-mocking-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-mocking-objects",
                 "_blank"
               );
             }}
@@ -316,7 +307,7 @@ export default function TesterinaMockingObjects() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-mocking-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-mocking-objects",
                 "_blank"
               );
             }}

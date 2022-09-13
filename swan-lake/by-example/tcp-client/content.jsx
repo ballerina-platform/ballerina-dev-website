@@ -61,17 +61,15 @@ export default function TcpClient() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Client</h1>
 
-      <p>The TCP Client is used to connect to a remote TCP server.</p>
-
       <p>
-        This sample demonstrates how the TCP client interacts with the TCP
-        server.
+        The TCP Client is used to connect to a remote TCP server. This sample
+        demonstrates how the TCP client interacts with the TCP server.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/tcp/latest">
-          TCP module
+        <a href="https://lib.ballerina.io/ballerina/tcp/latest">
+          <code>tcp</code> module
         </a>
         .
       </p>
@@ -82,7 +80,7 @@ export default function TcpClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/tcp-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/tcp-client",
                 "_blank"
               );
             }}

@@ -69,12 +69,8 @@ export default function TransactionalNamedWorkers() {
 
       <p>
         A named worker within a transactional function can be declared as{" "}
-        <code>transactional</code>.
-      </p>
-
-      <p>
-        This will start a new transaction branch for the named worker, as with a
-        distributed transaction.
+        <code>transactional</code>. This will start a new transaction branch for
+        the named worker, as with a distributed transaction.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -83,7 +79,7 @@ export default function TransactionalNamedWorkers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=32f184bfc9058f7e0fb0ef62e7b1ec1a&file=transactional_named_workers.bal",
+                "https://play.ballerina.io/?gist=45e42ef9d861134d4bfb141f740120c5&file=transactional_named_workers.bal",
                 "_blank"
               );
             }}
@@ -106,7 +102,7 @@ export default function TransactionalNamedWorkers() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/transactional-named-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/transactional-named-workers",
                 "_blank"
               );
             }}

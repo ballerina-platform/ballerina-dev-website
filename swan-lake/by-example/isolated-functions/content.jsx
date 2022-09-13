@@ -73,41 +73,38 @@ export default function IsolatedFunctions() {
 
       <p>
         A call to an <code>isolated</code> function is concurrency-safe if it is
-        called with arguments
-      </p>
-
-      <p>
-        that are safe at least until the call returns. &lt;br&gt;&lt;/br&gt;
+        called with arguments that are safe at least until the call returns.
       </p>
 
       <p>
         A function defined as <code>isolated</code>:
       </p>
 
-      <p>&lt;ul&gt;</p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>has access to mutable state only through its parameters</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>has unrestricted access to immutable state</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            can only call functions that are <code>isolated</code>
+          </span>
+        </li>
+      </ul>
 
       <p>
-        &lt;li&gt;has access to mutable state only through its
-        parameters&lt;/li&gt;
+        Constraints are enforced at compile-time. <code>isolated</code> is a
+        part of the function type. Weaker concept than pure function.
       </p>
-
-      <p>&lt;li&gt;has unrestricted access to immutable state&lt;/li&gt;</p>
-
-      <p>
-        &lt;li&gt;can only call functions that are <code>isolated</code>
-        &lt;/li&gt;
-      </p>
-
-      <p>&lt;/ul&gt;</p>
-
-      <p>&lt;br&gt;&lt;/br&gt;</p>
-
-      <p>
-        &lt;p&gt;Constraints are enforced at compile-time. <code>isolated</code>{" "}
-        is a part of the function type.
-      </p>
-
-      <p>Weaker concept than pure function.&lt;/p&gt;</p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -115,7 +112,7 @@ export default function IsolatedFunctions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=66eebbc142b1edd391cb8b275b912ab4&file=isolated_functions.bal",
+                "https://play.ballerina.io/?gist=2430cd88bf501cc05a9bb3df76232f8c&file=isolated_functions.bal",
                 "_blank"
               );
             }}
@@ -138,7 +135,7 @@ export default function IsolatedFunctions() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/isolated-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/isolated-functions",
                 "_blank"
               );
             }}

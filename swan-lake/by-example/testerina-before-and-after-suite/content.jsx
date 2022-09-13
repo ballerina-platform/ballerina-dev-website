@@ -68,34 +68,26 @@ export default function TesterinaBeforeAndAfterSuite() {
 
       <p>
         The <code>BeforeSuite</code> annotation allows you to execute a function
-        before executing a test suite.
+        before executing a test suite. Similarly, the <code>AfterSuite</code>{" "}
+        annotation can be used to execute a function after a test suite.
       </p>
 
       <p>
-        Similarly, the <code>AfterSuite</code> annotation can be used to execute
-        a function after a test suite.
+        A module is considered as a suite in the Test framework. These
+        annotations can be used to set up prerequisites and post actions for a
+        test suite.
       </p>
-
-      <p>A module is considered as a suite in the test framework.</p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/test-ballerina-code/execute-tests/#understand-the-test-execution-behavior">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
           <code>test</code> module
         </a>
         .
-      </p>
-
-      <p>
-        These annotations can be used to set up the prerequisites and post
-        actions for a test suite.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -104,7 +96,7 @@ export default function TesterinaBeforeAndAfterSuite() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-before-and-after-suite",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-before-and-after-suite",
                 "_blank"
               );
             }}

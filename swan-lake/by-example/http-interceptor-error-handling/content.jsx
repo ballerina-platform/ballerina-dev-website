@@ -108,35 +108,19 @@ export default function HttpInterceptorErrorHandling() {
 
       <p>
         Errors that occurred in the request-response pipeline can be intercepted
-        and handled
+        and handled by <code>ResponseErrorInterceptors</code>. In addition, a{" "}
+        <code>RequestErrorInterceptor</code> can be used to handle the errors
+        that occurred in the request interceptor execution path. The{" "}
+        <code>RequestErrorInterceptor</code> can send a response message
+        according to the error just like a <code>ResponseErrorInterceptor</code>
+        . Moreover, it can modify the request and dipatch it to the target
+        service.
       </p>
-
-      <p>
-        by <code>ResponseErrorInterceptors</code>. In addition, a{" "}
-        <code>RequestErrorInterceptor</code>
-      </p>
-
-      <p>
-        can be used to handle the errors that occurred in the request
-        interceptor execution
-      </p>
-
-      <p>
-        path. The <code>RequestErrorInterceptor</code> can send a response
-        message according to the
-      </p>
-
-      <p>
-        error just like a <code>ResponseErrorInterceptor</code>. Moreover, it
-        can modify the
-      </p>
-
-      <p>request and dispatch it to the target service.</p>
 
       <p>
         For more information, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -147,7 +131,7 @@ export default function HttpInterceptorErrorHandling() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-interceptor-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-interceptor-error-handling",
                 "_blank"
               );
             }}

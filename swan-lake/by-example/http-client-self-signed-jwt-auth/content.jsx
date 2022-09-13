@@ -15,9 +15,11 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the JWT Auth secured APIs. The client is enriched with 
-// the \`Authorization: Bearer <token>\` header by passing the [\`http:JwtIssuerConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig) for 
-// the \`auth\` configuration of the client. A self-signed JWT is issued before the request is sent.
+// Defines the HTTP client to call the JWT Auth secured APIs.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by
+// passing the \`http:JwtIssuerConfig\` for the \`auth\` configuration of the
+// client. A self-signed JWT is issued before the request is sent.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
         username: "ballerina",
@@ -82,7 +84,7 @@ export default function HttpClientSelfSignedJwtAuth() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
+        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
           <code>oauth2</code> module
         </a>
         .
@@ -94,7 +96,7 @@ export default function HttpClientSelfSignedJwtAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-client-self-signed-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-client-self-signed-jwt-auth",
                 "_blank"
               );
             }}

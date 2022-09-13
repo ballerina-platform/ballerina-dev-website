@@ -37,6 +37,9 @@ const TopNav = (props) => {
 
   return (
     <>
+      <div className={styles.hackathonBanner}>
+      Ballerina Coding Challenge is now open for <a href="https://www.hackerearth.com/challenges/competitive/ballerina-coding-challenge/" target="_blank" rel="noreferrer">registrations</a>!
+      </div>
       <Navbar className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} expand="lg" sticky='top'>
         <Container fluid className={(launcher === 'home') ? styles.toggleFloat : null}>
         {(launcher !== "home") ?

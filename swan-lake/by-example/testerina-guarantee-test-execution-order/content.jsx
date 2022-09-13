@@ -65,12 +65,8 @@ export default function TesterinaGuaranteeTestExecutionOrder() {
 
       <p>
         The <code>dependsOn</code> attribute can be used to define a list of
-        functions that the test
-      </p>
-
-      <p>
-        function depends on. These functions will be executed before the
-        execution of that test.
+        functions that the test function depends on. These functions will be
+        executed before the execution of that test.
       </p>
 
       <p>
@@ -80,14 +76,11 @@ export default function TesterinaGuaranteeTestExecutionOrder() {
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/test-ballerina-code/test-a-simple-function/">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
           <code>test</code> module
         </a>
         .
@@ -99,7 +92,7 @@ export default function TesterinaGuaranteeTestExecutionOrder() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-guarantee-test-execution-order",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-guarantee-test-execution-order",
                 "_blank"
               );
             }}

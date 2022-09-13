@@ -95,34 +95,46 @@ export default function XmlSubtyping() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>XML subtyping</h1>
 
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            An <code>xml</code> value belongs to <code>xml:Element</code> if it
+            consists of just an element item. Similarly for{" "}
+            <code>xml:Comment</code> and <code>xml:ProcessingInstruction</code>.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            An <code>xml</code> value belongs to <code>xml:Text</code> if it
+            consists of a text item or is empty.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            An <code>xml</code> value belongs to the type{" "}
+            <code>xml&lt;T&gt;</code> if each of its members belong to{" "}
+            <code>T</code>.
+          </span>
+        </li>
+      </ul>
+
       <p>
-        An <code>xml</code> value belongs to <code>xml:Element</code> if it
-        consists of just an element item. Similarly, an <code>xml</code> value
-        belongs to <code>xml:Comment</code> or{" "}
-        <code>xml:ProcessingInstruction</code> if it consists of just a comment
-        item or a processing instruction item respectively.
+        Functions in <code>lang.xml</code> use this to provide safe and
+        convenient typing.
       </p>
 
       <p>
-        An <code>xml</code> value belongs to <code>xml:Text</code> if it
-        consists of only a text item or is empty.
-      </p>
-
-      <p>
-        An <code>xml</code> value belongs to the type <code>xml&lt;T&gt;</code>{" "}
-        if each of its members belongs to <code>T</code>.
-      </p>
-
-      <p>
-        Functions in the <code>lang.xml</code> module use this to provide safe
-        and convenient typing. For example, <code>x.elements()</code> returns
-        element items in <code>x</code> as type{" "}
-        <code>xml&lt;xml:Element&gt;</code>.
-      </p>
-
-      <p>
-        The <code>e.getName()</code> and <code>e.setName()</code> functions are
-        defined when <code>e</code> has the <code>xml:Element</code> type.
+        For example, <code>x.elements()</code> returns element items in{" "}
+        <code>x</code> as type <code>xml&lt;xml:Element&gt;</code> and{" "}
+        <code>e.getName()</code> and <code>e.setNam ()</code> are defined when{" "}
+        <code>e</code> has type <code>xml:Element</code>.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -131,7 +143,7 @@ export default function XmlSubtyping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/xml-subtyping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/xml-subtyping",
                 "_blank"
               );
             }}

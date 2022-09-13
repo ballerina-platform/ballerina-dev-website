@@ -51,12 +51,15 @@ export default function ServiceDeclaration() {
 
       <p>
         A service represents a collection of remotely accessible methods
-        attached to a particular listener. A service declaration is a syntactic
+        attached to a particular listener. A service declaration is syntactic
         sugar for creating services in Ballerina. A service declaration gets
         desugared into several things including creating a listener object,
         registering it with the module, creating a service object, attaching the
-        service object to the listener object, etc. The type of the listener
-        determines the required type of the remote methods.
+        service object to the listener object, etc,.
+      </p>
+
+      <p>
+        The type of the listener determines required type of remote methods.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -65,7 +68,7 @@ export default function ServiceDeclaration() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/service-declaration",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/service-declaration",
                 "_blank"
               );
             }}

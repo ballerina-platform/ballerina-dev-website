@@ -84,15 +84,13 @@ export default function HttpLoadBalancer() {
 
       <p>
         An HTTP load balancing endpoint is used when the request load needs to
-        be load balanced across a given
+        be load balanced across a given set of target endpoints.
       </p>
-
-      <p>set of target endpoints.</p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          HTTP module
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
         </a>
         .
       </p>
@@ -103,7 +101,7 @@ export default function HttpLoadBalancer() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-load-balancer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-load-balancer",
                 "_blank"
               );
             }}

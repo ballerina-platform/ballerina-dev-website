@@ -68,29 +68,19 @@ export default function TesterinaBeforeAndAfterEach() {
 
       <p>
         The function specified with the <code>BeforeEach</code> annotation is
-        executed before every test and
-      </p>
-
-      <p>
-        the function specified with the <code>AfterEach</code> annotation is
-        executed after every test within the test suite.
-      </p>
-
-      <p>
-        This can be used for repeatedly initializing and tearing down test level
-        aspects before every test function.
+        executed before every test and the function specified with the{" "}
+        <code>AfterEach</code> annotation is executed after every test within
+        the test suite. This can be used for repeatedly initializing and tearing
+        down test level aspects before every test function.
       </p>
 
       <p>
         For more information, see{" "}
-        <a href="https://ballerina.io/learn/test-ballerina-code/test-quick-start/">
-          Test ballerina code
-        </a>
-      </p>
-
-      <p>
+        <a href="https://ballerina.io/learn/test-ballerina-code/execute-tests/#understand-the-test-execution-behavior">
+          Testing Ballerina Code
+        </a>{" "}
         and the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/test/latest/">
+        <a href="https://lib.ballerina.io/ballerina/test/latest/">
           <code>test</code> module
         </a>
         .
@@ -102,7 +92,7 @@ export default function TesterinaBeforeAndAfterEach() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/testerina-before-and-after-each",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-before-and-after-each",
                 "_blank"
               );
             }}

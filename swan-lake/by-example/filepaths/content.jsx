@@ -93,7 +93,7 @@ export default function Filepaths() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ed4c4e1ca259e3e57cfcc11ce3635e91&file=filepaths.bal",
+                "https://play.ballerina.io/?gist=e6cd0c6b580d9d23c4b2fd630225e332&file=filepaths.bal",
                 "_blank"
               );
             }}
@@ -116,7 +116,7 @@ export default function Filepaths() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/filepaths",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/filepaths",
                 "_blank"
               );
             }}

@@ -15,17 +15,19 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
-listener rabbitmq:Listener securedEP = new (rabbitmq:DEFAULT_HOST, 5671,
-    // To secure the client connections using username/password authentication,
-    // provide the credentials with the [\`rabbitmq:Credentials\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
+listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
+
+    // To secure the client connections using username/password authentication, provide the credentials
+    // with the \`rabbitmq:Credentials\` record.
+    // For details, see https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials.
     auth = {
         username: "alice",
         password: "alice@123"
     },
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
-    // The [\`rabbitmq:SecureSocket\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket)
-    // record provides the SSL-related configurations of the client.
+    // The \`rabbitmq:SecureSocket\` record provides the SSL-related configurations of the client.
+    // For details, see https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket.
     secureSocket = {
         cert: "../resource/path/to/public.crt"
     }
@@ -47,15 +49,17 @@ service rabbitmq:Service on securedEP {
 public function main() returns error? {
     // Creates a ballerina RabbitMQ client with TLS/SSL and username/password authentication.
     rabbitmq:Client rabbitmqClient = check new(rabbitmq:DEFAULT_HOST, 5671,
-        // To secure the client connections using username/password authentication,
-        // provide the credentials with the [\`rabbitmq:Credentials\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials) record.
+
+        // To secure the client connections using username/password authentication, provide the credentials
+        // with the \`rabbitmq:Credentials\` record.
+        // For details, see https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials.
         auth = {
              username: "alice",
              password: "alice@123"
         },
         // To secure the client connection using TLS/SSL, the client needs to be configured with
         // a certificate file of the server.
-        // The [\`rabbitmq:SecureSocket\`](https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket)
+        // For details, see https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket.
         // record provides the SSL-related configurations of the client.
         secureSocket = {
             cert: "../resource/path/to/public.crt"
@@ -117,7 +121,7 @@ export default function RabbitmqSecureConnection() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/rabbitmq-secure-connection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/rabbitmq-secure-connection",
                 "_blank"
               );
             }}
@@ -252,7 +256,7 @@ export default function RabbitmqSecureConnection() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/rabbitmq-secure-connection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/rabbitmq-secure-connection",
                 "_blank"
               );
             }}

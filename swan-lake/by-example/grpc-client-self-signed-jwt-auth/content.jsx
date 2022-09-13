@@ -26,8 +26,9 @@ service HelloWorld {
 
 // Defines the gRPC client to call the JWT Auth secured APIs.
 // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-// header by passing the [\`grpc:JwtIssuerConfig\`](https://lib.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig) for the \`auth\` configuration
+// header by passing the \`grpc:JwtIssuerConfig\`for the \`auth\` configuration
 // of the client. A self-signed JWT is issued before the request is sent.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig.
 HelloWorldClient securedEP = check new("https://localhost:9090",
     auth = {
         username: "ballerina",
@@ -88,15 +89,8 @@ export default function GrpcClientSelfSignedJwtAuth() {
 
       <p>
         The client metadata is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code>
-      </p>
-
-      <p>
-        header by passing the <code>http:JwtIssuerConfig</code> to the{" "}
-        <code>auth</code> configuration
-      </p>
-
-      <p>
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
+        <code>http:JwtIssuerConfig</code> to the <code>auth</code> configuration
         of the client. A self-signed JWT is issued before the request is sent.
       </p>
 
@@ -129,7 +123,7 @@ export default function GrpcClientSelfSignedJwtAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/grpc-client-self-signed-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-self-signed-jwt-auth",
                 "_blank"
               );
             }}
@@ -322,7 +316,7 @@ export default function GrpcClientSelfSignedJwtAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/grpc-client-self-signed-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-self-signed-jwt-auth",
                 "_blank"
               );
             }}
@@ -397,10 +391,19 @@ export default function GrpcClientSelfSignedJwtAuth() {
         <li>
           <span>4.</span>
           <span>
-            Execute the commands below to build and run the 'client' package.
+            Execute the commands below to build and run the <code>client</code>{" "}
+            package.
           </span>
         </li>
       </ul>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You may need to change the trusted certificate
+          file path and private key file path. As a prerequisite, start a sample
+          service secured with OAuth2.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded"
@@ -462,13 +465,6 @@ export default function GrpcClientSelfSignedJwtAuth() {
           </pre>
         </Col>
       </Row>
-
-      <p>
-        You may need to change the trusted certificate file path and private key
-        file path.
-      </p>
-
-      <p>As a prerequisite, start a sample service secured with OAuth2.</p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

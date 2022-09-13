@@ -71,20 +71,20 @@ export default function ErrorReporting() {
 
       <p>
         Ballerina does not have exceptions. Errors are reported by functions
-        returning <code>error</code> values and are immutable.{" "}
-        <code>error</code> is its own basic type.
+        returning <code>error</code> values.
       </p>
 
       <p>
-        The return type <code>T</code> of a function that may return an{" "}
-        <code>error</code> value will be a union with <code>error</code>,{" "}
-        <code>T|error</code>.
+        <code>error</code> is its own basic type. The return type of a function
+        that may return an <code>error</code> value will be a union with{" "}
+        <code>error</code>.
       </p>
 
       <p>
-        An <code>error</code> value includes a <code>string</code> message and
-        also the stack trace from the point at which the error is constructed
-        (i.e., <code>error(msg)</code> is called).
+        An <code>error</code> value includes a <code>string</code> message. An{" "}
+        <code>error</code> value includes the stack trace from the point at
+        which the error is constructed (i.e., <code>error(msg)</code> is
+        called). Error values are immutable.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -93,7 +93,7 @@ export default function ErrorReporting() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f97d1318eeae5dbccd7e46962be6a6f6&file=error_reporting.bal",
+                "https://play.ballerina.io/?gist=cf61126f3c2d7a9560dd020dc918152c&file=error_reporting.bal",
                 "_blank"
               );
             }}
@@ -116,7 +116,7 @@ export default function ErrorReporting() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/error-reporting",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/error-reporting",
                 "_blank"
               );
             }}

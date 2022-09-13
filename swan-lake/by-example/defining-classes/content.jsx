@@ -68,11 +68,10 @@ export default function DefiningClasses() {
 
       <p>
         A module can contain <code>class</code> definitions. <code>init</code>{" "}
-        method initializes the object and arguments to <code>new</code> are
-        directed as arguments to <code>init</code>. Methods use{" "}
-        <code>self</code> to access their object. The <code>private</code>{" "}
-        qualifier used in members means accessible only by the code within the{" "}
-        <code>class</code> definition.
+        method initializes the object. Arguments to <code>new</code> are passed
+        as arguments to <code>init</code>. Methods use <code>self</code> to
+        access their object. <code>private</code> means accessible only by code
+        within the <code>class</code> definition.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -81,7 +80,7 @@ export default function DefiningClasses() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b0c63922f72cf9ac3f90c4500c4640c7&file=defining_classes.bal",
+                "https://play.ballerina.io/?gist=6baeaf219f73deeac59109a286cbc34c&file=defining_classes.bal",
                 "_blank"
               );
             }}
@@ -104,7 +103,7 @@ export default function DefiningClasses() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/defining-classes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/defining-classes",
                 "_blank"
               );
             }}

@@ -60,36 +60,29 @@ export default function IsolatedMethods() {
 
       <p>
         Object methods can be <code>isolated</code>. An <code>isolated</code>{" "}
-        method is same as an <code>isolated</code> function with
-      </p>
-
-      <p>
+        method is same as an <code>isolated</code> function with{" "}
         <code>self</code> treated as a parameter. An <code>isolated</code>{" "}
-        method call is concurrency-safe if both the object
-      </p>
-
-      <p>
-        is safe and the arguments are safe. This is not quite enough for service
-        concurrency. When
-      </p>
-
-      <p>
-        a <code>listener</code> makes calls to a <code>remote</code> or{" "}
+        method call is concurrency-safe if both the object is safe and the
+        arguments are safe. This is not quite enough for service concurrency.
+        When a <code>listener</code> makes calls to a <code>remote</code> or{" "}
         <code>resource</code> method,
       </p>
 
-      <p>&lt;ul&gt;</p>
-
-      <p>
-        &lt;li&gt;it can ensure the safety of arguments it passes&lt;/li&gt;
-      </p>
-
-      <p>
-        &lt;li&gt;it has no way to ensure the safety of the object itself (since
-        the object may have fields)&lt;/li&gt;
-      </p>
-
-      <p>&lt;/ul&gt;</p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>it can ensure the safety of arguments it passes</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            it has no way to ensure the safety of the object itself (since the
+            object may have fields)
+          </span>
+        </li>
+      </ul>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
         <Col className="d-flex align-items-start" sm={12}>
@@ -97,7 +90,7 @@ export default function IsolatedMethods() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=01e6db0be35bff3a5c00c2a3a602c15c&file=isolated_methods.bal",
+                "https://play.ballerina.io/?gist=2dcee3b0c3fd045722a837af63fb8fb2&file=isolated_methods.bal",
                 "_blank"
               );
             }}
@@ -120,7 +113,7 @@ export default function IsolatedMethods() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/isolated-methods",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/isolated-methods",
                 "_blank"
               );
             }}

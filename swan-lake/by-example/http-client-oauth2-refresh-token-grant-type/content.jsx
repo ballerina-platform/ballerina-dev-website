@@ -16,8 +16,9 @@ const codeSnippetData = [
 import ballerina/io;
 
 // Defines the HTTP client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by passing 
-// the [\`http:OAuth2RefreshTokenGrantConfig\`](https://docs.central.ballerina.io/ballerina/http/latest/records/OAuth2RefreshTokenGrantConfig) for the \`auth\` configuration of the client.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by
+// passing the \`http:OAuth2RefreshTokenGrantConfig\` for the \`auth\` configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2RefreshTokenGrantConfig.
 http:Client securedEP = check new("https://localhost:9090",
     auth = {
         refreshUrl: "https://localhost:9445/oauth2/token",
@@ -80,7 +81,7 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/oauth2/latest/">
+        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
           <code>oauth2</code> module
         </a>
         .
@@ -92,7 +93,7 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.1.1/examples/http-client-oauth2-refresh-token-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-client-oauth2-refresh-token-grant-type",
                 "_blank"
               );
             }}

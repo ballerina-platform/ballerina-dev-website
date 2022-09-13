@@ -1027,17 +1027,14 @@ sublinks:
           - title: Atomic batch execute
             id: 6
             url: jdbc-atomic-batch-execute-operation
-  - title: Working over the network
-    id: 3
-    sublinks:
       - title: SerDes
-        id: 1
+        id: 27
         sublinks:
           - title: Serialization and Deserialization
             id: 1
             url: serdes-simple
   - title: Common libraries
-    id: 4
+    id: 3
     sublinks:
       - title: IO
         id: 1
@@ -1193,7 +1190,7 @@ sublinks:
             id: 1
             url: constraint-validations
   - title: Observability
-    id: 5
+    id: 4
     sublinks:
       - title: Tracing
         id: 1
@@ -1211,7 +1208,7 @@ sublinks:
             id: 1
             url: gauge-metrics
   - title: Deployment
-    id: 6
+    id: 5
     sublinks:
       - title: Code to Cloud
         id: 1

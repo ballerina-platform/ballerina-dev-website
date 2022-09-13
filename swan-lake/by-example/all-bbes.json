@@ -2629,7 +2629,7 @@
   {
     "title": "SerDes",
     "column": 3,
-    "category": "Working over the network",
+    "category": "Network libraries",
     "samples": [
       {
         "name": "Serialization and Deserialization",

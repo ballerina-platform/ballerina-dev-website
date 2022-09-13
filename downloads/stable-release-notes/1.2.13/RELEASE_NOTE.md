@@ -8,7 +8,7 @@ The jBallerina 1.2.13 patch release improves upon the 1.2.12 release by addressi
 
 ### Updating Ballerina
 
-You can use the [update tool](/learn/keeping-ballerina-up-to-date/) to update to jBallerina 1.2.13 as follows.
+You can use the [update tool](/learn/cli-documentation/update-tool/) to update to jBallerina 1.2.13 as follows.
 
 #### For existing users
 
@@ -24,6 +24,5 @@ However, you need to use the following commands instead of the above if you have
 #### For new users
 
 If you have not installed jBallerina, then download the [installers](/downloads/) to install.
-
 
 

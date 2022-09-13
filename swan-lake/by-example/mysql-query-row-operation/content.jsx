@@ -274,7 +274,8 @@ export default function MysqlQueryRowOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Customer (customerId = 1) : {"customerId":2,"firstName":"Dan","lastName":"Brown","registrationId":2,"creditLimit":10000.0,"country":"UK"}`}</span>
             </code>
           </pre>

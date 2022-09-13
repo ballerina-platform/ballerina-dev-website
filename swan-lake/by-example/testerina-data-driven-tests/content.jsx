@@ -230,7 +230,8 @@ export default function TesterinaDataDrivenTests() {
               <span>{`\$ bal test test_module`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Running tests`}</span>
               <span>{`        ballerinatest/test_module:0.1.0`}</span>
               <span>{`Input : [10,10,banana]`}</span>
@@ -238,13 +239,15 @@ export default function TesterinaDataDrivenTests() {
               <span>{`Input : [1,2,3]`}</span>
               <span>{`Input : [10,20,30]`}</span>
               <span>{`Input : [5,6,11]`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        [pass] mapDataProviderTest#banana`}</span>
               <span>{`        [pass] mapDataProviderTest#cherry`}</span>
               <span>{`        [pass] testAddingValues#0`}</span>
               <span>{`        [pass] testAddingValues#1`}</span>
               <span>{`        [pass] testAddingValues#2`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        5 passing`}</span>
               <span>{`        0 failing`}</span>
               <span>{`        0 skipped`}</span>

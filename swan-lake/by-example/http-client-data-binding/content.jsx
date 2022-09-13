@@ -327,7 +327,8 @@ export default function HttpClientDataBinding() {
               </span>
               <span>{`\$ curl "http://localhost:9090/call/all"`}</span>
               <span>{`{"name":"Smith", "age":15}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# To invoke the `}
                 <code>{`/call/5xx`}</code>
@@ -335,7 +336,8 @@ export default function HttpClientDataBinding() {
               </span>
               <span>{`\$ curl "http://localhost:9090/call/5xx"`}</span>
               <span>{`{"code":501, "payload":"data-binding-failed-with-501"}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {`# To invoke the `}
                 <code>{`/call/4xx`}</code>

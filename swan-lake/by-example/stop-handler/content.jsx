@@ -271,9 +271,11 @@ export default function StopHandler() {
             <code className="d-flex flex-column">
               <span>{`# Navigate to the directory that contains the`}</span>
               <span>{`# 'stop_handler.bal' file, and run the 'bal run' command below.`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`bal run stop_handler.bal`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Send the interrupt signal SIGINT to terminate the current process.`}</span>
               <span>{`Ctrl+c`}</span>
               <span>{`initial items in fruit basket: ["Apple","Orange"]`}</span>

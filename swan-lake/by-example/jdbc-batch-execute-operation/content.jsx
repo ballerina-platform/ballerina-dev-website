@@ -271,7 +271,8 @@ export default function JdbcBatchExecuteOperation() {
               </span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Insert success, generated IDs are: [1,2,3]`}</span>
             </code>
           </pre>

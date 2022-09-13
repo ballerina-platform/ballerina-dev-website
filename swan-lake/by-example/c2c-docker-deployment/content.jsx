@@ -303,16 +303,21 @@ export default function C2cDockerDeployment() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal build --cloud="docker"`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        wso2/hello:0.1.0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Generating executable`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`Generating artifacts...`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        @kubernetes:Docker                       - complete 2/2 `}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`        Execute the below command to run the generated Docker image: `}</span>
               <span>{`        docker run -d -p 9090:9090 wso2inc/hello:v0.1.0`}</span>
             </code>
@@ -374,7 +379,8 @@ export default function C2cDockerDeployment() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ docker images`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE`}</span>
               <span>{`wso2inc/hello                 v0.1.0              60d95f0928b2        About a minute ago  228MB`}</span>
             </code>

@@ -298,7 +298,8 @@ export default function HttpCors() {
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact.`}</span>
               <span>{`{"type":"middleware"}* Closing connection 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# To send a CORS preflight request.`}</span>
               <span>{`\$ curl -v "http://localhost:9092/crossOriginService/lang" -X OPTIONS -H "Origin:http://www.m3.com" -H "Access-Control-Request-Method:POST"`}</span>
               <span>{`> OPTIONS /crossOriginService/lang HTTP/1.1`}</span>

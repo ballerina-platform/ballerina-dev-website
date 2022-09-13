@@ -357,7 +357,8 @@ export default function GraphqlContext() {
               <span>{` # The query used: { profile { name salary } }`}</span>
               <span>{` curl -X POST -H "Content-type: application/json" -H "scope: admin" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{` {"data":{"profile":{"name":"Walter White", "salary":737000.0}}}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {` # Now, send a query with the `}
                 <code>{`scope`}</code>
@@ -370,7 +371,8 @@ export default function GraphqlContext() {
               <span>{` # The query used: { profile { name salary } }`}</span>
               <span>{` curl -X POST -H "Content-type: application/json" -H "scope: user" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{` {"errors":[{"message":"Permission denied", "locations":[{"line":1, "column":18}], "path":["profile", "salary"]}], "data":null}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>
                 {` # Now, send a query with the `}
                 <code>{`scope`}</code>

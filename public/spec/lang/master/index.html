@@ -16,11 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<<<<<<< HEAD
-<h1>Ballerina Language Specification, 2022R3 preview 2022-07-25</h1>
-=======
 <h1>Ballerina Language Specification, 2022R4 preview 2022-09-02</h1>
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
 <p>
 Primary contributors:
 </p>
@@ -620,25 +616,27 @@ GitHub repository where this specification is maintained.
 <li>A. <a href="#references">References</a>
 </li>
 <li>B. <a href="#changes">Changes since previous releases</a><ul>
-<li>B.1 <a href="#section_B.1">Summary of changes from 2021R2 to 2022R3</a>
+<li>B.1 <a href="#section_B.1">Summary of changes from 2022R3 to 2022R4</a>
 </li>
-<li>B.2 <a href="#section_B.2">Summary of changes from 2021R1 to 2022R2</a>
+<li>B.2 <a href="#section_B.2">Summary of changes from 2022R2 to 2022R3</a>
 </li>
-<li>B.3 <a href="#section_B.3">Summary of changes from 2021R1 to 2022R1</a>
+<li>B.3 <a href="#section_B.3">Summary of changes from 2022R1 to 2022R2</a>
 </li>
-<li>B.4 <a href="#section_B.4">Summary of changes from 2020R1 to 2021R1</a>
+<li>B.4 <a href="#section_B.4">Summary of changes from 2021R1 to 2022R1</a>
 </li>
-<li>B.5 <a href="#section_B.5">Summary of changes from 2019R3 to 2020R1</a>
+<li>B.5 <a href="#section_B.5">Summary of changes from 2020R1 to 2021R1</a>
 </li>
-<li>B.6 <a href="#section_B.6">Summary of changes from 2019R2 to 2019R3</a>
+<li>B.6 <a href="#section_B.6">Summary of changes from 2019R3 to 2020R1</a>
 </li>
-<li>B.7 <a href="#section_B.7">Summary of changes from 2019R1 to 2019R2</a>
+<li>B.7 <a href="#section_B.7">Summary of changes from 2019R2 to 2019R3</a>
 </li>
-<li>B.8 <a href="#section_B.8">Summary of changes from 0.990 to 2019R1</a>
+<li>B.8 <a href="#section_B.8">Summary of changes from 2019R1 to 2019R2</a>
 </li>
-<li>B.9 <a href="#section_B.9">Summary of changes from 0.980 to 0.990</a>
+<li>B.9 <a href="#section_B.9">Summary of changes from 0.990 to 2019R1</a>
 </li>
-<li>B.10 <a href="#section_B.10">Summary of changes from 0.970 to 0.980</a>
+<li>B.10 <a href="#section_B.10">Summary of changes from 0.980 to 0.990</a>
+</li>
+<li>B.11 <a href="#section_B.11">Summary of changes from 0.970 to 0.980</a>
 </li>
 </ul>
 </li>
@@ -5065,9 +5063,14 @@ the basic type of which the precise type is a subset.
 <span class="ntdfn" id="WS">WS</span> := <a href="#WhiteSpaceChar"><span class="ntref">WhiteSpaceChar</span></a>*
 </pre>
 <p>
-The static type of byte-array-literal is <code>byte[N]</code>, where N is the
-number of bytes encoded by the Base16Literal or Base64Literal. The inherent type
-of the array value created is also <code>byte[N]</code>.
+Let N be number of bytes encoded by the Base16Literal or Base64Literal. If the
+applicable contextually expected type is a subtype of readonly or if the
+byte-array-literal occurs within a const-expr, then the literal constructs a
+list value with its read-only bit set; in this case, the static type of the
+byte-array-literal is a singleton subtype of <code>readonly &amp;
+byte[N]</code>. Otherwise, the static type of byte-array-literal is
+<code>byte[N]</code>, and the inherent type of the list value created is also
+<code>byte[N]</code>.
 </p>
 </section>
 <section>
@@ -7165,11 +7168,19 @@ clause in the pipeline is executed lazily, pulling input from its preceding
 clause. The input to the first clause is a single empty frame.
 </p>
 <p>
-The execution of a clause may complete early with an error value, in which case
-this error value is the result of the query, except when constructing a stream.
-Otherwise, the result of evaluating a query expression is a single value, which
-is constructed from the sequence of values emitted by the last clause. The
-result must be one of the following basic types:
+When a <code>from</code> or <code>join</code> clause is executed, it makes calls
+to the <code>next</code> method of an Iterator object. If any of these calls
+return an error value <var>e</var>, then we say that the clause <em>completes
+early</em> with error value <var>e</var>.
+</p>
+<p>
+A query-expr that does not construct a stream is evaluated as described in this
+paragraph. If a clause completes early with error value <var>e</var>, then the
+result of evaluating the query-expr is <var>e</var>. The normal rules apply if
+the execution of any clause results in the evaluation of an expression
+completing abruptly. Otherwise, the result of evaluating a query expression is a
+single value, which is constructed from the sequence of values emitted by the
+last clause. The result must be one of the following basic types:
 </p>
 <ul>
 <li>list - the constructed list has a member for each emitted value; every
@@ -10456,7 +10467,7 @@ static type of the variable.
 
 <pre class="grammar"><span class="ntdfn" id="service-decl">service-decl</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> [<a href="#isolated-qual"><span class="ntref">isolated-qual</span></a>]
-   <code>service</code> [<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] [<a href="#attach-point"><span class="ntref">attach-point</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a>
+   <code>service</code> [<a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>] [<a href="#attach-point"><span class="ntref">attach-point</span></a>] <code>on</code> <a href="#expression-list"><span class="ntref">expression-list</span></a> <a href="#object-constructor-block"><span class="ntref">object-constructor-block</span></a> [<code>;</code>]
 <span class="ntdfn" id="attach-point">attach-point</span> := <a href="#absolute-resource-path"><span class="ntref">absolute-resource-path</span></a> | <a href="#string-literal"><span class="ntref">string-literal</span></a>
 <span class="ntdfn" id="absolute-resource-path">absolute-resource-path</span> :=
    <a href="#root-resource-path"><span class="ntref">root-resource-path</span></a>
@@ -10565,7 +10576,7 @@ without without relying on inference.
    [<code>public</code>] <a href="#function-quals"><span class="ntref">function-quals</span></a>
    <code>function</code> <a href="#identifier"><span class="ntref">identifier</span></a> <a href="#function-signature"><span class="ntref">function-signature</span></a> <a href="#function-defn-body"><span class="ntref">function-defn-body</span></a>
 <span class="ntdfn" id="function-defn-body">function-defn-body</span> :=
-   <a href="#block-function-body"><span class="ntref">block-function-body</span></a>
+   <a href="#block-function-body"><span class="ntref">block-function-body</span></a> [<code>;</code>]
    | <a href="#expr-function-body"><span class="ntref">expr-function-body</span></a> <code>;</code>
    | <a href="#external-function-body"><span class="ntref">external-function-body</span></a> <code>;</code>
 </pre>
@@ -10614,7 +10625,7 @@ constructed.
    <a href="#metadata"><span class="ntref">metadata</span></a>
    [<code>public</code>] <a href="#class-type-quals"><span class="ntref">class-type-quals</span></a> <code>class</code> <a href="#identifier"><span class="ntref">identifier</span></a> <code>{</code>
       <a href="#class-member"><span class="ntref">class-member</span></a>*
-  <code>}</code>
+  <code>}</code> [<code>;</code>]
 <span class="ntdfn" id="class-type-quals">class-type-quals</span> := (<code>distinct</code> | <code>readonly</code> | <a href="#isolated-qual"><span class="ntref">isolated-qual</span></a> | <a href="#object-network-qual"><span class="ntref">object-network-qual</span></a>)*
 <span class="ntdfn" id="class-member">class-member</span> :=
    <a href="#object-field"><span class="ntref">object-field</span></a>
@@ -10794,7 +10805,7 @@ the type-descriptor.
 
 <pre class="grammar"><span class="ntdfn" id="module-enum-decl">module-enum-decl</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a>
-   [<code>public</code>] <code>enum</code> <a href="#identifier"><span class="ntref">identifier</span></a> <code>{</code> <a href="#enum-member"><span class="ntref">enum-member</span></a> (<code>,</code> <a href="#enum-member"><span class="ntref">enum-member</span></a>)* <code>}</code>
+   [<code>public</code>] <code>enum</code> <a href="#identifier"><span class="ntref">identifier</span></a> <code>{</code> <a href="#enum-member"><span class="ntref">enum-member</span></a> (<code>,</code> <a href="#enum-member"><span class="ntref">enum-member</span></a>)* <code>}</code> [<code>;</code>]
 <span class="ntdfn" id="enum-member">enum-member</span> := <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#identifier"><span class="ntref">identifier</span></a> [<code>=</code> <a href="#const-expr"><span class="ntref">const-expr</span></a>]
 </pre>
 <p>
@@ -13627,9 +13638,6 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
 <section>
-<<<<<<< HEAD
-<h3 id="section_B.1">B.1 Summary of changes from 2021R2 to 2022R3</h3>
-=======
 <h3 id="section_B.1">B.1 Summary of changes from 2022R3 to 2022R4</h3>
 <ol>
 <li>A <code>byte-array-literal</code> can construct a read-only value.</li>
@@ -13641,7 +13649,6 @@ over integer sequences with steps other than 1.</li>
 </section>
 <section>
 <h3 id="section_B.2">B.2 Summary of changes from 2022R2 to 2022R3</h3>
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
 <ol>
 <li>Client objects can declare resource methods, which can be accessed using new
 <code>client-resource-access-action</code> syntax. Resource methods are now part
@@ -13669,7 +13676,7 @@ its type is nil.</li>
 </section>
 
 <section>
-<h3 id="section_B.2">B.2 Summary of changes from 2021R1 to 2022R2</h3>
+<h3 id="section_B.3">B.3 Summary of changes from 2022R1 to 2022R2</h3>
 <ol>
 <li>The <code>*</code>, <code>/</code> and <code>%</code> operators now allow
 operands to mix numeric types in specific cases: <code>*</code> allows the case
@@ -13695,7 +13702,7 @@ inferred.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.3">B.3 Summary of changes from 2021R1 to 2022R1</h3>
+<h3 id="section_B.4">B.4 Summary of changes from 2021R1 to 2022R1</h3>
 <ol>
 <li>Maps are required to preserve insertion order.</li>
 <li>The static typing rules for <code>==</code> and <code>!=</code> have been
@@ -13737,7 +13744,7 @@ nil.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.4">B.4 Summary of changes from 2020R1 to 2021R1</h3>
+<h3 id="section_B.5">B.5 Summary of changes from 2020R1 to 2021R1</h3>
 <ol>
 <li>There has been a major change to how objects works. All object type
 descriptors are what was previously called <em>abstract</em>: they declare
@@ -13811,7 +13818,7 @@ referenced using the <code>function</code> keyword rather than the
 </ol>
 </section>
 <section>
-<h3 id="section_B.5">B.5 Summary of changes from 2019R3 to 2020R1</h3>
+<h3 id="section_B.6">B.6 Summary of changes from 2019R3 to 2020R1</h3>
 <ol>
 <li>Query expressions and query actions have been added. This is the first stage
 of language-integrated query.</li>
@@ -13847,7 +13854,7 @@ types.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.6">B.6 Summary of changes from 2019R2 to 2019R3</h3>
+<h3 id="section_B.7">B.7 Summary of changes from 2019R2 to 2019R3</h3>
 <ol>
 <li>An import declaration can use <code>as _</code> to include a module in the
 program without using its symbols.</li>
@@ -13859,7 +13866,7 @@ not a named worker.</li>
 </section>
 
 <section>
-<h3 id="section_B.7">B.7 Summary of changes from 2019R1 to 2019R2</h3>
+<h3 id="section_B.8">B.8 Summary of changes from 2019R1 to 2019R2</h3>
 <ol>
 <li>The concept of a built-in method has been replaced by the concept of a lang
 library. A method call on a value of non-object type is now treated as a
@@ -13905,7 +13912,7 @@ replace the old delimited identifier syntax <code>^"<var>s</var>"</code>.</li>
 
 </section>
 <section>
-<h3 id="section_B.8">B.8 Summary of changes from 0.990 to 2019R1</h3>
+<h3 id="section_B.9">B.9 Summary of changes from 0.990 to 2019R1</h3>
 <p>
 The specification has switched to a new versioning scheme. The <var>n</var>-th
 version of the specification released in year 20<var>xy</var> will be labelled
@@ -13974,7 +13981,7 @@ now required to be specified before named arguments.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.9">B.9 Summary of changes from 0.980 to 0.990</h3>
+<h3 id="section_B.10">B.10 Summary of changes from 0.980 to 0.990</h3>
 <p>
 <strong>Structural types and values</strong>
 </p>
@@ -14068,7 +14075,7 @@ definition.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.10">B.10 Summary of changes from 0.970 to 0.980</h3>
+<h3 id="section_B.11">B.11 Summary of changes from 0.970 to 0.980</h3>
 <ol>
 <li>The decimal type has been added.</li>
 <li>There are no longer any implicit numeric conversions.</li>

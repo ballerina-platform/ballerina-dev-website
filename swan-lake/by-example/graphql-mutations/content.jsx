@@ -311,12 +311,14 @@ export default function GraphqlMutations() {
               <span>{`# The query used: { profile { name isAdult } }`}</span>
               <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name age } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{`{"data":{"profile":{"name":"Walter White", "age":51}}}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Now send a mutation to update the name.`}</span>
               <span>{`# The document used for this: mutation { updateName(name: \\"Mr. Lambert\\") { name age } }`}</span>
               <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation { updateName(name: \\"Mr. Lambert\\") { name age } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{`{"data":{"updateName":{"name":"Mr. Lambert", "age":51}}}`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Then send a mutation to update the age.`}</span>
               <span>{`# The document used for this: mutation { updateAge(age: 52) { name age } }`}</span>
               <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation { updateAge(age: 52) { name age } }" }' 'http://localhost:4000/graphql'`}</span>

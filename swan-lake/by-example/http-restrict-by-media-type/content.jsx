@@ -288,7 +288,8 @@ export default function HttpRestrictByMediaType() {
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`<name>Ballerina</name>* Closing connection 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# To invoke the service using an unsupported media type, execute the following cURL request. The content type of the`}</span>
               <span>
                 {`# request is not listed under the `}
@@ -312,7 +313,8 @@ export default function HttpRestrictByMediaType() {
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`* Closing connection 0`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned`}</span>
               <span>
                 {`# in the `}

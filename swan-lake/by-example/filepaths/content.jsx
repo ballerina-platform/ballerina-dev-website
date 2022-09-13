@@ -93,7 +93,7 @@ export default function Filepaths() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4fbfe5500911d13694ce569ddc59571a&file=filepaths.bal",
+                "https://play.ballerina.io/?gist=e6cd0c6b580d9d23c4b2fd630225e332&file=filepaths.bal",
                 "_blank"
               );
             }}
@@ -252,7 +252,8 @@ export default function Filepaths() {
               <span>{`Path elements of /A/B/C: ["A","B","C"]`}</span>
               <span>{`Built path of '/', 'foo', 'bar': /foo/bar`}</span>
               <span>{`Relative path between 'a/b/c' and 'a/c/d': ../../c/d`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`On Windows:`}</span>
               <span>{`Absolute path of test.txt: \\A\\test.txt`}</span>
               <span>{`/A/B/C is absolute: false`}</span>

@@ -93,7 +93,7 @@ export default function Directories() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3b0b6b6dc81699a83534157ec45f2e58&file=directories.bal",
+                "https://play.ballerina.io/?gist=b8d7e2a76d28d4774d8c5bcce56e95cf&file=directories.bal",
                 "_blank"
               );
             }}

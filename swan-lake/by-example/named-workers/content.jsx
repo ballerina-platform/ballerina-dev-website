@@ -78,7 +78,7 @@ export default function NamedWorkers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=788c1a132fd8de25f6664628c87c0307&file=named_workers.bal",
+                "https://play.ballerina.io/?gist=5d4fc15d8b1590e52885fb444be64d77&file=named_workers.bal",
                 "_blank"
               );
             }}

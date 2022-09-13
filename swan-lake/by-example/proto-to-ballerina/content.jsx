@@ -246,10 +246,12 @@ export default function ProtoToBallerina() {
             <code className="d-flex flex-column">
               <span>{`# Execute the command below in the Ballerina tools distribution to generate the mock service.`}</span>
               <span>{`\$ bal grpc --input proto_to_ballerina.proto --mode service --output service`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Execute the command below in the Ballerina tools distribution to generate the client endpoint and the stub file.`}</span>
               <span>{`\$ bal grpc --input proto_to_ballerina.proto --mode client --output client`}</span>
-              <span>{``}</span>
+              <span>{`
+`}</span>
               <span>{`# Execute the command below in the Ballerina tools distribution to generate the stub file.`}</span>
               <span>{`\$ bal grpc --input proto_to_ballerina.proto`}</span>
             </code>

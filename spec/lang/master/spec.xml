@@ -13,11 +13,7 @@
   </style>
 </head>
 <body>
-<<<<<<< HEAD
-<h1>Ballerina Language Specification, 2022R3 preview 2022-07-25</h1>
-=======
 <h1>Ballerina Language Specification, 2022R4 preview 2022-09-02</h1>
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
 <p>
 Primary contributors:
 </p>
@@ -4492,9 +4488,14 @@ class="grammar"><dfn>byte-array-literal</dfn> := <abbr>Base16Literal</abbr> | <a
 <dfn>WS</dfn> := <abbr>WhiteSpaceChar</abbr>*
 </pre>
 <p>
-The static type of byte-array-literal is <code>byte[N]</code>, where N is the
-number of bytes encoded by the Base16Literal or Base64Literal. The inherent type
-of the array value created is also <code>byte[N]</code>.
+Let N be number of bytes encoded by the Base16Literal or Base64Literal. If the
+applicable contextually expected type is a subtype of readonly or if the
+byte-array-literal occurs within a const-expr, then the literal constructs a
+list value with its read-only bit set; in this case, the static type of the
+byte-array-literal is a singleton subtype of <code>readonly &amp;
+byte[N]</code>. Otherwise, the static type of byte-array-literal is
+<code>byte[N]</code>, and the inherent type of the list value created is also
+<code>byte[N]</code>.
 </p>
 </section>
 <section>
@@ -6626,11 +6627,19 @@ clause in the pipeline is executed lazily, pulling input from its preceding
 clause. The input to the first clause is a single empty frame.
 </p>
 <p>
-The execution of a clause may complete early with an error value, in which case
-this error value is the result of the query, except when constructing a stream.
-Otherwise, the result of evaluating a query expression is a single value, which
-is constructed from the sequence of values emitted by the last clause. The
-result must be one of the following basic types:
+When a <code>from</code> or <code>join</code> clause is executed, it makes calls
+to the <code>next</code> method of an Iterator object. If any of these calls
+return an error value <var>e</var>, then we say that the clause <em>completes
+early</em> with error value <var>e</var>.
+</p>
+<p>
+A query-expr that does not construct a stream is evaluated as described in this
+paragraph. If a clause completes early with error value <var>e</var>, then the
+result of evaluating the query-expr is <var>e</var>. The normal rules apply if
+the execution of any clause results in the evaluation of an expression
+completing abruptly. Otherwise, the result of evaluating a query expression is a
+single value, which is constructed from the sequence of values emitted by the
+last clause. The result must be one of the following basic types:
 </p>
 <ul>
 <li>list - the constructed list has a member for each emitted value; every
@@ -9963,7 +9972,7 @@ static type of the variable.
 <pre
 class="grammar"><dfn>service-decl</dfn> :=
    <abbr>metadata</abbr> [<abbr>isolated-qual</abbr>]
-   <code>service</code> [<abbr>type-descriptor</abbr>] [<abbr>attach-point</abbr>] <code>on</code> <abbr>expression-list</abbr> <abbr>object-constructor-block</abbr>
+   <code>service</code> [<abbr>type-descriptor</abbr>] [<abbr>attach-point</abbr>] <code>on</code> <abbr>expression-list</abbr> <abbr>object-constructor-block</abbr> [<code>;</code>]
 <dfn>attach-point</dfn> := <abbr>absolute-resource-path</abbr> | <abbr>string-literal</abbr>
 <dfn>absolute-resource-path</dfn> :=
    <abbr>root-resource-path</abbr>
@@ -10072,7 +10081,7 @@ class="grammar"><dfn>function-defn</dfn> :=
    [<code>public</code>] <abbr>function-quals</abbr>
    <code>function</code> <abbr>identifier</abbr> <abbr>function-signature</abbr> <abbr>function-defn-body</abbr>
 <dfn>function-defn-body</dfn> :=
-   <abbr>block-function-body</abbr>
+   <abbr>block-function-body</abbr> [<code>;</code>]
    | <abbr>expr-function-body</abbr> <code>;</code>
    | <abbr>external-function-body</abbr> <code>;</code>
 </pre>
@@ -10123,7 +10132,7 @@ class="grammar"><dfn>module-class-defn</dfn> :=
    <abbr>metadata</abbr>
    [<code>public</code>] <abbr>class-type-quals</abbr> <code>class</code> <abbr>identifier</abbr> <code>{</code>
       <abbr>class-member</abbr>*
-  <code>}</code>
+  <code>}</code> [<code>;</code>]
 <dfn>class-type-quals</dfn> := (<code>distinct</code> | <code>readonly</code> | <abbr>isolated-qual</abbr> | <abbr>object-network-qual</abbr>)*
 <dfn>class-member</dfn> :=
    <abbr>object-field</abbr>
@@ -10308,7 +10317,7 @@ the type-descriptor.
 <pre
 class="grammar"><dfn>module-enum-decl</dfn> :=
    <abbr>metadata</abbr>
-   [<code>public</code>] <code>enum</code> <abbr>identifier</abbr> <code>{</code> <abbr>enum-member</abbr> (<code>,</code> <abbr>enum-member</abbr>)* <code>}</code>
+   [<code>public</code>] <code>enum</code> <abbr>identifier</abbr> <code>{</code> <abbr>enum-member</abbr> (<code>,</code> <abbr>enum-member</abbr>)* <code>}</code> [<code>;</code>]
 <dfn>enum-member</dfn> := <abbr>metadata</abbr> <abbr>identifier</abbr> [<code>=</code> <abbr>const-expr</abbr>]
 </pre>
 <p>
@@ -13148,9 +13157,6 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <section class="appendix">
 <h2 id="changes">B. Changes since previous releases</h2>
 <section>
-<<<<<<< HEAD
-<h3>Summary of changes from 2021R2 to 2022R3</h3>
-=======
 <h3>Summary of changes from 2022R3 to 2022R4</h3>
 <ol>
 <li>A <code>byte-array-literal</code> can construct a read-only value.</li>
@@ -13162,7 +13168,6 @@ over integer sequences with steps other than 1.</li>
 </section>
 <section>
 <h3>Summary of changes from 2022R2 to 2022R3</h3>
->>>>>>> ef577091442ca5398ead01aebce1a910f51aaf35
 <ol>
 <li>Client objects can declare resource methods, which can be accessed using new
 <code>client-resource-access-action</code> syntax. Resource methods are now part
@@ -13190,7 +13195,7 @@ its type is nil.</li>
 </section>
 
 <section>
-<h3>Summary of changes from 2021R1 to 2022R2</h3>
+<h3>Summary of changes from 2022R1 to 2022R2</h3>
 <ol>
 <li>The <code>*</code>, <code>/</code> and <code>%</code> operators now allow
 operands to mix numeric types in specific cases: <code>*</code> allows the case

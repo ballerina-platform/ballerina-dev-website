@@ -126,7 +126,7 @@ export default function ManageScheduledJobs() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f3ae32b174e24c69eab5ef1003b45f45&file=manage_scheduled_jobs.bal",
+                "https://play.ballerina.io/?gist=3821471a885ad74d9f5d6a896d8529cb&file=manage_scheduled_jobs.bal",
                 "_blank"
               );
             }}

@@ -33,20 +33,6 @@
     margin-top: 0px !important;
 }
 
-@media (min-width: 576px) {
-    .slackNum {
-        float: right;
-    }
-    
-    .slackFoot {
-        float: right;
-    }
-    .slackCount {
-        text-align: left;
-    }
-}
-
-
 .formControl {
     display: block;
     width: 100%;

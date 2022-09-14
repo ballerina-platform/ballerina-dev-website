@@ -37,7 +37,7 @@ export default function Discord() {
         <Row>
           <Col sm={12} md={6} lg={6}>
             <p>
-              Our 500+ Discord community includes experienced Ballerina engineers and experts from some of the world&apos;s top companies. Use this space to find answers to your questions, get support or learn how others are using Ballerina.
+              Our 1000+ Discord community includes experienced Ballerina engineers and experts from some of the world&apos;s top companies. Use this space to find answers to your questions, get support or learn how others are using Ballerina.
             </p>
             
             <p className={styles.member}>
@@ -49,7 +49,7 @@ export default function Discord() {
           <Col sm={12} md={6} lg={6}>
             <Row className={styles.slackCount}>
               <Col sm={12} md={6} lg={6}>
-                <p className={styles.slackNum}>500+</p>
+                <p className={styles.slackNum}>1000+</p>
                 <p className={styles.slackFoot}>Discord members</p>
               </Col>
               <Col sm={12} md={6} lg={6} className="discordImage">

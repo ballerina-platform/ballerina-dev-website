@@ -86,7 +86,7 @@ export default function QueryingTables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=34e5d0584b3f9144587a407d020eac72&file=querying_tables.bal",
+                "https://play.ballerina.io/?gist=4597ff4dfc9fea34fe9eca07370b2e85&file=querying_tables.bal",
                 "_blank"
               );
             }}

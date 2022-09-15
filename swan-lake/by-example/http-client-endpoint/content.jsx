@@ -85,7 +85,7 @@ export default function HttpClientEndpoint() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0de85722e3f33e004205d7f7c71fb6f5&file=http_client_endpoint.bal",
+                "https://play.ballerina.io/?gist=694bf57348e9ddf84b57308fe49e0130&file=http_client_endpoint.bal",
                 "_blank"
               );
             }}

@@ -97,9 +97,9 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
       </p>
 
       <p>
-        <code>Config.toml</code> has defined three users - alice, ldclakmal and
-        eve. Each user has a password and optionally assigned scopes as an
-        array.
+        The <code>Config.toml</code> file is used to store the usernames,
+        passwords, and scopes. Each user can have a password and optionally
+        assigned scopes as an array.
       </p>
 
       <p>
@@ -243,12 +243,17 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
                 <code>{`Config.toml`}</code>
                 {` file is populated correctly`}
               </span>
-              <span>{`# with the user information.`}</span>
-              <span>{`echo '[["ballerina.auth.users"]]`}</span>
+              <span>{`# with the user information. The following command can be used to populate`}</span>
+              <span>
+                {`# the `}
+                <code>{`Config.toml`}</code>
+                {` file.`}
+              </span>
+              <span>{`\$ echo '[[ballerina.auth.users]]`}</span>
               <span>{`username="alice"`}</span>
               <span>{`password="password1"`}</span>
               <span>{`scopes=["scope1"]`}</span>
-              <span>{`[["ballerina.auth.users"]]`}</span>
+              <span>{`[[ballerina.auth.users]]`}</span>
               <span>{`username="bob"`}</span>
               <span>{`password="password2"`}</span>
               <span>{`scopes=["scope2", "scope3"]' > Config.toml`}</span>

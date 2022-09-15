@@ -9091,7 +9091,7 @@ string.
 <h3 id="client_declaration_statement">7.14 Client declaration statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="client-decl-stmt">client-decl-stmt</span> := <a href="#client-decl"><span class="ntref">client-decl</span></a>
-<span class="ntdfn" id="client-decl">client-decl</span> := <code>client</code> <a href="#service-uri"><span class="ntref">service-uri</span></a> <code>as</code> <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <code>;</code>
+<span class="ntdfn" id="client-decl">client-decl</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <code>client</code> <a href="#service-uri"><span class="ntref">service-uri</span></a> <code>as</code> <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <code>;</code>
 <span class="ntdfn" id="service-uri">service-uri</span> := <a href="#string-literal"><span class="ntref">string-literal</span></a>
 </pre>
 
@@ -11086,6 +11086,7 @@ descriptor is evaluated when the type descriptor is resolved.
    | <code>var</code>
    | <code>const</code>
    | <code>listener</code>
+   | <code>client</code>
    | <code>worker</code>
 </pre>
 <p>
@@ -11171,6 +11172,11 @@ The available attachment points are described in the following table.
   <tr>
    <td>listener</td>
    <td>listener-decl</td>
+   <td>none</td>
+  </tr>
+  <tr>
+   <td>client</td>
+   <td>client-decl</td>
    <td>none</td>
   </tr>
   <tr>

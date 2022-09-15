@@ -8557,7 +8557,7 @@ string.
 
 <pre
 class="grammar"><dfn>client-decl-stmt</dfn> := <abbr>client-decl</abbr>
-<dfn>client-decl</dfn> := <code>client</code> <abbr>service-uri</abbr> <code>as</code> <abbr>module-prefix</abbr> <code>;</code>
+<dfn>client-decl</dfn> := [<abbr>annots</abbr>] <code>client</code> <abbr>service-uri</abbr> <code>as</code> <abbr>module-prefix</abbr> <code>;</code>
 <dfn>service-uri</dfn> := <abbr>string-literal</abbr>
 </pre>
 
@@ -10599,6 +10599,7 @@ class="grammar"><dfn>annot-attach-points</dfn> := <abbr>annot-attach-point</abbr
    | <code>var</code>
    | <code>const</code>
    | <code>listener</code>
+   | <code>client</code>
    | <code>worker</code>
 </pre>
 <p>
@@ -10684,6 +10685,11 @@ The available attachment points are described in the following table.
   <tr>
    <td>listener</td>
    <td>listener-decl</td>
+   <td>none</td>
+  </tr>
+  <tr>
+   <td>client</td>
+   <td>client-decl</td>
    <td>none</td>
   </tr>
   <tr>

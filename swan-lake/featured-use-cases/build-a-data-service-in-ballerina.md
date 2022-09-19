@@ -480,7 +480,7 @@ Invoke the defined resource function by sending the `POST` request below to `htt
 
 ```
 curl --location --request POST 'http://localhost:8080/employees/' \
-    --header 'Content-Type: text/plain' \
+    --header 'Content-Type: application/json' \
     --data-raw '{
         "employee_id": 6,
         "first_name": "test",

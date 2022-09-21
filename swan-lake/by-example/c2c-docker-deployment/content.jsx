@@ -510,7 +510,10 @@ export default function C2cDockerDeployment() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Kubernetes" href="/learn/by-example/c2c-k8s-deployment">
+          <Link
+            title="Gauge-based metrics"
+            href="/learn/by-example/gauge-metrics"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -536,17 +539,14 @@ export default function C2cDockerDeployment() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Kubernetes
+                  Gauge-based metrics
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Azure Functions"
-            href="/learn/by-example/azure-functions-deployment"
-          >
+          <Link title="Kubernetes" href="/learn/by-example/c2c-k8s-deployment">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -555,7 +555,7 @@ export default function C2cDockerDeployment() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Azure Functions
+                  Kubernetes
                 </span>
               </div>
               <svg

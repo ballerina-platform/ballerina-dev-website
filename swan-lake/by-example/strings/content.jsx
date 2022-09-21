@@ -72,7 +72,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=09e42ca0f1cd3c5b51b51b0f3e292350&file=strings.bal",
+                "https://play.ballerina.io/?gist=888281aa5b32d1dc84abee2eac14cbbb&file=strings.bal",
                 "_blank"
               );
             }}

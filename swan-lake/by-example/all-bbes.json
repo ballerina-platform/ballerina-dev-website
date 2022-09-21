@@ -3064,24 +3064,17 @@
     "category": "Deployment",
     "samples": [
       {
-        "name": "Kubernetes",
-        "url": "c2c-k8s-deployment",
+        "name": "Docker",
+        "url": "c2c-docker-deployment",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Code to Cloud",
-    "column": 0,
-    "category": "Deployment",
-    "samples": [
+      },
       {
-        "name": "Docker",
-        "url": "c2c-docker-deployment",
+        "name": "Kubernetes",
+        "url": "c2c-k8s-deployment",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",

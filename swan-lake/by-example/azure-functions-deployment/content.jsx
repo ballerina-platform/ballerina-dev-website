@@ -469,7 +469,7 @@ export default function AzureFunctionsDeployment() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Docker" href="/learn/by-example/c2c-docker-deployment">
+          <Link title="Kubernetes" href="/learn/by-example/c2c-k8s-deployment">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -495,7 +495,7 @@ export default function AzureFunctionsDeployment() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Docker
+                  Kubernetes
                 </span>
               </div>
             </div>

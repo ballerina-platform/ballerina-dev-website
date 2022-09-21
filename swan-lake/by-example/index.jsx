@@ -325,8 +325,8 @@ import ConstraintValidations from "./constraint-validations/content.jsx";
 import Tracing from "./tracing/content.jsx";
 import CounterMetrics from "./counter-metrics/content.jsx";
 import GaugeMetrics from "./gauge-metrics/content.jsx";
-import C2cK8sDeployment from "./c2c-k8s-deployment/content.jsx";
 import C2cDockerDeployment from "./c2c-docker-deployment/content.jsx";
+import C2cK8sDeployment from "./c2c-k8s-deployment/content.jsx";
 import AzureFunctionsDeployment from "./azure-functions-deployment/content.jsx";
 import AwsLambdaDeployment from "./aws-lambda-deployment/content.jsx";
 
@@ -658,8 +658,8 @@ const BBEs = {
   Tracing,
   CounterMetrics,
   GaugeMetrics,
-  C2cK8sDeployment,
   C2cDockerDeployment,
+  C2cK8sDeployment,
   AzureFunctionsDeployment,
   AwsLambdaDeployment,
 };

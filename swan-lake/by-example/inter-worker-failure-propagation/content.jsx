@@ -89,7 +89,7 @@ export default function InterWorkerFailurePropagation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9b8642e6439e74f40528af1908e77d8c&file=inter_worker_failure_propagation.bal",
+                "https://play.ballerina.io/?gist=c704ccefab8580ba61cb4eb0b7e1ee3a&file=inter_worker_failure_propagation.bal",
                 "_blank"
               );
             }}

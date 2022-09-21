@@ -89,7 +89,7 @@ export default function TaskFrequencyJobExecution() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f27fce8885f39af46fe3b92d9433017a&file=task_frequency_job_execution.bal",
+                "https://play.ballerina.io/?gist=19f267d3bd8d9ae5902885a40d9e8688&file=task_frequency_job_execution.bal",
                 "_blank"
               );
             }}

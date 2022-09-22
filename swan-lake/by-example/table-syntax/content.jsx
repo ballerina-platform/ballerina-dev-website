@@ -105,8 +105,8 @@ export default function TableSyntax() {
         The <code>table</code> type gives the type of the row and the name of
         the key field. The <code>table constructor expression</code> looks like
         an <code>array constructor</code>. The <code>foreach</code> statement
-        will iterate over a table's rows in their order. Use <code>t[k</code> to
-        access a row using its key.
+        will iterate over a table's rows in their order. Use <code>t[k]</code>{" "}
+        to access a row using its key.
       </p>
 
       <Row className="bbeCode mx-0 py-0 rounded" style={{ marginLeft: "0px" }}>
@@ -115,7 +115,7 @@ export default function TableSyntax() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=be912bf58ae68673d66762b991ad03c3&file=table_syntax.bal",
+                "https://play.ballerina.io/?gist=64d0530eddc5d7dc9bcf2ad1a506a880&file=table_syntax.bal",
                 "_blank"
               );
             }}

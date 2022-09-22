@@ -280,6 +280,7 @@ isolated function removeEmployee(int id) returns int|error {
 ```ballerina
 import ballerina/time;
 import ballerinax/mysql;
+import ballerinax/mysql.driver as _; // This bundles the driver to the project so that you don't need to bundle it via the `Ballerina.toml` file.
 import ballerina/sql;
 
 public type Employee record {|

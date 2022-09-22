@@ -7,19 +7,36 @@
     border: #a4a4a4 solid 1px !important;
 }
 
-.videoImage img:hover {
+/* .videoImage img:hover {
     border: 2px solid #1eb5ae !important
+} */
+.videoImage img:hover {
+    border: 2px solid #1eb5ae !important;box-shadow: 0px 0px 30px 0 rgba(0, 0, 0, 0.2) !important;
 }
-
+a.videoImage img:hover {
+    border: 2px solid #1eb5ae !important;box-shadow: 0px 0px 30px 0 rgba(151, 87, 87, 0.2) !important;
+}
+.Videos_videoLink__NMsLz{
+    box-shadow: 0px 0px 30px 0 rgba(0, 0, 0, 0.2) !important;
+}
+#cMainVideoFrame1:hover  ~ .videoPlayButton{
+    background: #20b6b0 !important;
+}
 .videoLink {
     position: relative;
 }
+.videoHeader{width: 800px !important;}
+
+
+    #cMainVideoFrame:hover + .videoPlayButton { 
+    background: #20b6b0 !important;
+    }
 
 .videoPlayButton {
     position: relative;
     z-index: 8;
-    top: -34%;
-    left: 50%;
+    top: -36.2%;
+    left: 44.5%;
     transform: translateX(-50%) translateY(-50%);
     box-sizing: content-box;
     display: block;
@@ -28,6 +45,9 @@
     background: #10101077;
     border-radius: 50%;
     padding: 22px 15px 10px 28px;
+}
+.videoPlayButton:hover{
+    background: #20b6b0 !important;
 }
 
 .videoPlayButton span {
@@ -44,6 +64,17 @@
 .videoModal div {
     background-color: transparent;
     border: none;
+    
+
+}
+.videoModal{
+    max-width: 2000px  !important;
+}
+.videoBody{width: 1030px !important;left: -300px;}
+.videoIframe{
+    /* height: 700px !important; */
+    width: 1000px !important;
+    height: 700px !important;
 }
 
 .videoHeader {
@@ -74,3 +105,33 @@
     }
 } 
 }
+
+@media only screen and (max-width:992px) {
+    .videoPlayButton{top: -28.2% !important;left: 50.5% !important;}
+    .videoModal{
+        max-width: 900px  !important;
+    }
+    .videoBody{width: 700px !important;left: -100px;}
+    .videoIframe{
+        /* height: 700px !important; */
+        width: 670px !important;
+        height: 500px !important;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .videoPlayButton{  top: -28.6% !important;left: 50% !important;}
+    .videoModal{
+        max-width: 345px  !important;
+    }
+    .videoBody{width: 450px !important;left: 0px;}
+    .videoIframe{
+        /* height: 700px !important; */
+        width: 305px !important;
+        height: 300px !important;
+    }
+}
+
+@media not all and (min-resolution:.001dpcm) { @supports (-webkit-appearance:none) and (display:flow-root) { 
+    .videoPlayButton{top: -51.2% !important;left: 50.5% !important;} 
+
+} }

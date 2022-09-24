@@ -24,22 +24,30 @@ import Search from '../search/Search';
 import { prefix } from '../../../utils/prefix';
 import styles from './TopNav.module.css';
 
-const pages = ['Download', 'Playground', 'Learn', 'Central', 'Community', 'Blog'];
-
 const TopNav = (props) => {
   const launcher = props.launcher;
   const versionPicker = 'Swan Lake';
-  const version = '';
 
   if (global.location.pathname.indexOf('learn') > 0) {
     launcher = launcher + '-learn';
   }
 
+  const now = new Date();
+  let showBanner = false;
+
+  if (now < Date.parse('2022-09-25T00:00:00.0000-00:00')) {
+    showBanner = true;
+  }
+
   return (
     <>
-      <div className={styles.hackathonBanner}>
-      Ballerina Coding Challenge is happening now. <a href="https://www.hackerearth.com/challenges/competitive/ballerina-coding-challenge/" target="_blank" rel="noreferrer">Join us</a>!
-      </div>
+      {
+        (showBanner) ?
+          <div className={styles.hackathonBanner}>
+            Ballerina Coding Challenge is happening now. <a href="https://www.hackerearth.com/challenges/competitive/ballerina-coding-challenge/" target="_blank" rel="noreferrer">Join us</a>!
+          </div>
+        : null
+      }
       <Navbar className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} expand="lg" sticky='top'>
         <Container fluid className={(launcher === 'home') ? styles.toggleFloat : null}>
         {(launcher !== "home") ?

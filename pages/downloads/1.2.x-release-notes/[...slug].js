@@ -235,12 +235,15 @@ export default function PostPage({ frontmatter, content, id }) {
               <Col xs={1} className="gitIcon">
                 <a
                   href={`${process.env.gitHubPath}downloads/1.2.x-release-notes/${id}.md`}
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Edit in GitHub"
                 >
                   <Image
                     src={`${prefix}/images/github.svg`}
                     height={20}
                     width={20}
-                    alt="Edit in github"
+                    alt="Edit in GitHub"
                   />
                 </a>
               </Col>

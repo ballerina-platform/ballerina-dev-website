@@ -164,12 +164,13 @@ export default function PostPage({ frontmatter, content, id, slug }) {
                   href={`${process.env.gitHubPath}swan-lake/why-ballerina/${slug}.md`}
                   target="_blank"
                   rel="noreferrer"
+                  title="Edit in GitHub"
                 >
                   <Image
                     src={`${prefix}/images/github.svg`}
                     height={20}
                     width={20}
-                    alt="Edit in github"
+                    alt="Edit in GitHub"
                   />
                 </a>
               </Col>

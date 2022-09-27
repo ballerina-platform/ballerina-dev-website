@@ -15,21 +15,32 @@ const codeSnippetData = [
   `import ballerina/io;
 
 public function main() {
-    // String literals use double quotes. You can use usual C escapes such as \`\\t \\n\`.
-    // Numeric escapes specify Unicode code point using one or more hex digits \`\\u{H}\`.
-    string grin = "\\u{1F600}";
+    LinkedList link1 = {value: "link1", next: ()};
+    LinkedList link2 = {value: "link2", next: link1};
+    io:println(len(link2));
+}
 
-    // String concatenation uses \`+\` operator.
-    string greeting = "Hello" + grin;
-    io:println(greeting);
+type LinkedList record {
+    string value;
+    LinkedList? next;
+};
 
-    // \`greeting[1]\` accesses character at index 1 (zero-based).
-    io:println(greeting[1]);
+function len(LinkedList ll) returns int {
+    int n = 0;
+    LinkedList? v = ll;
+    // Executes the code block that is defined within the \`while\` block
+    // as long as the value of \`v\` is not \`nil\`.
+    while v != () {
+        n += 1;
+        v = v.next;
+    }
+
+    return n;
 }
 `,
 ];
 
-export default function Strings() {
+export default function WhileStatement() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,20 +61,12 @@ export default function Strings() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Strings</h1>
+      <h1>While statement</h1>
 
       <p>
-        The <code>string</code> type represents immutable sequence of zero or
-        more Unicode characters. There is no separate character type: a
-        character is represented by a <code>string</code> of length 1.
-      </p>
-
-      <p>
-        Two <code>string</code> values are <code>==</code> if both sequences
-        have the same characters. You can use <code>&lt;</code>,{" "}
-        <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code> operators
-        on <code>string</code> values and they work by comparing code points.
-        Unpaired surrogates are not allowed.
+        The <code>while</code> statement is a more flexible iteration than{" "}
+        <code>foreach</code>. <code>break</code> and <code>continue</code>{" "}
+        statements can be used within the loops to alter control flow.
       </p>
 
       <Row
@@ -77,31 +80,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f63edec736143a04e9086b4dcc60a91&file=strings.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-          <button
-            className="bg-transparent border-0 m-0 p-2"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/while-statement",
                 "_blank"
               );
             }}
@@ -230,9 +209,8 @@ export default function Strings() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run strings.bal`}</span>
-              <span>{`Hello😀`}</span>
-              <span>{`e`}</span>
+              <span>{`\$ bal run while_statement.bal`}</span>
+              <span>{`2`}</span>
             </code>
           </pre>
         </Col>
@@ -240,7 +218,10 @@ export default function Strings() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Nil" href="/learn/by-example/nil">
+          <Link
+            title="Foreach statement"
+            href="/learn/by-example/foreach-statement"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,7 +247,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Nil
+                  Foreach statement
                 </span>
               </div>
             </div>
@@ -274,8 +255,8 @@ export default function Strings() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Booleans and conditionals"
-            href="/learn/by-example/booleans"
+            title="Langlib functions"
+            href="/learn/by-example/langlib-functions"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -285,7 +266,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Booleans and conditionals
+                  Langlib functions
                 </span>
               </div>
               <svg

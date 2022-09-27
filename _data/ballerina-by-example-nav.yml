@@ -72,10 +72,10 @@ sublinks:
             url: rest-parameters
           - title: Default values for function parameters
             id: 5
-            url: default_values_for_function_parameters
+            url: default-values-for-function-parameters
           - title: Provide function arguments by name
             id: 6
-            url: provide_function_arguments_by_name
+            url: provide-function-arguments-by-name
       - title: Iteration
         id: 7
         sublinks:

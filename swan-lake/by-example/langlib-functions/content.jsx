@@ -15,21 +15,22 @@ const codeSnippetData = [
   `import ballerina/io;
 
 public function main() {
-    // String literals use double quotes. You can use usual C escapes such as \`\\t \\n\`.
-    // Numeric escapes specify Unicode code point using one or more hex digits \`\\u{H}\`.
-    string grin = "\\u{1F600}";
+    // You can call langlib functions using the method-call syntax.
+    string s = "abc".substring(1, 2);
+    io:println(s);
 
-    // String concatenation uses \`+\` operator.
-    string greeting = "Hello" + grin;
-    io:println(greeting);
+    // \`n\` will be 1.
+    int n = s.length();
+    io:println(n);
 
-    // \`greeting[1]\` accesses character at index 1 (zero-based).
-    io:println(greeting[1]);
+    // \`s.length()\` is same as \`string:length(s)\`.
+    int m = string:length(s);
+    io:println(m);
 }
 `,
 ];
 
-export default function Strings() {
+export default function LanglibFunctions() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,20 +51,18 @@ export default function Strings() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Strings</h1>
+      <h1>Langlib functions</h1>
 
       <p>
-        The <code>string</code> type represents immutable sequence of zero or
-        more Unicode characters. There is no separate character type: a
-        character is represented by a <code>string</code> of length 1.
+        Langlib is a small library defined by language providing fundamental
+        operations on built-in data types. Langlib functions can be called using
+        convenient method-call syntax, but these types are not objects!
       </p>
 
       <p>
-        Two <code>string</code> values are <code>==</code> if both sequences
-        have the same characters. You can use <code>&lt;</code>,{" "}
-        <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code> operators
-        on <code>string</code> values and they work by comparing code points.
-        Unpaired surrogates are not allowed.
+        There exists a <code>ballerina/lang.T</code> module for each built-in
+        type <code>T</code> and they are automatically imported using{" "}
+        <code>T</code> prefix.
       </p>
 
       <Row
@@ -77,7 +76,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f63edec736143a04e9086b4dcc60a91&file=strings.bal",
+                "https://play.ballerina.io/?gist=d8abaa04889586e772328f1edcd97377&file=langlib_functions.bal",
                 "_blank"
               );
             }}
@@ -101,7 +100,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/langlib-functions",
                 "_blank"
               );
             }}
@@ -230,9 +229,10 @@ export default function Strings() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run strings.bal`}</span>
-              <span>{`Hello😀`}</span>
-              <span>{`e`}</span>
+              <span>{`\$ bal run langlib_functions.bal`}</span>
+              <span>{`b`}</span>
+              <span>{`1`}</span>
+              <span>{`1`}</span>
             </code>
           </pre>
         </Col>
@@ -240,7 +240,10 @@ export default function Strings() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Nil" href="/learn/by-example/nil">
+          <Link
+            title="While statement"
+            href="/learn/by-example/while-statement"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,7 +269,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Nil
+                  While statement
                 </span>
               </div>
             </div>
@@ -274,8 +277,8 @@ export default function Strings() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Booleans and conditionals"
-            href="/learn/by-example/booleans"
+            title="Structural typing"
+            href="/learn/by-example/structural-typing"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -285,7 +288,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Booleans and conditionals
+                  Structural typing
                 </span>
               </div>
               <svg

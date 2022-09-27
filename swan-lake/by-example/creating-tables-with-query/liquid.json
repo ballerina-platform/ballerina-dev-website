@@ -1,0 +1,17 @@
+{
+  "title": "Create tables with query",
+  "description": "This BBE demonstrates creating tables with query in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "creating table",
+    "query expression"
+  ],
+  "permalink": "/learn/by-example/creating-tables-with-query",
+  "active": "creating-tables-with-query",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/creating-tables-with-query",
+    "/swan-lake/learn/by-example/creating-tables-with-query.html"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Convert from JSON to user-defined type",
+  "description": "This BBE demonstrates converting JSON to a user-defined type",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "conversion",
+    "json"
+  ],
+  "permalink": "/learn/by-example/converting-from-json-to-user-defined-type",
+  "active": "converting-from-json-to-user-defined-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/converting-from-json-to-user-defined-type",
+    "/swan-lake/learn/by-example/converting-from-json-to-user-defined-type.html"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Querying tables",
+  "description": "This BBE demonstrates querying tables in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "querying tables",
+    "table",
+    "query",
+    "query expression"
+  ],
+  "permalink": "/learn/by-example/querying-tables",
+  "active": "querying-tables",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/querying-tables",
+    "/swan-lake/learn/by-example/querying-tables.html"
+  ]
+}

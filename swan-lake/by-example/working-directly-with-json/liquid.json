@@ -1,0 +1,11 @@
+{
+  "title": "Work directly with JSON",
+  "description": "This BBE demonstrates how to work directly with JSON values in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "json type", "json"],
+  "permalink": "/learn/by-example/working-directly-with-json",
+  "active": "working-directly-with-json",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/working-directly-with-json",
+    "/swan-lake/learn/by-example/working-directly-with-json.html"
+  ]
+}

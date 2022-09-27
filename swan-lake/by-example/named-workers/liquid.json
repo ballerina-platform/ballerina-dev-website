@@ -1,0 +1,17 @@
+{
+  "title": "Named workers",
+  "description": "This BBE demonstrates how workers can be used for concurrency",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "worker",
+    "concurrency"
+  ],
+  "permalink": "/learn/by-example/named-workers",
+  "active": "named-workers",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/named-workers",
+    "/swan-lake/learn/by-example/named-workers.html"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "title": "JSON numbers",
+  "description": "This BBE demonstrates JSON numbers in Ballerina",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "json", "numbers"],
+  "permalink": "/learn/by-example/json-numbers",
+  "active": "json-numbers",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/json-numbers",
+    "/swan-lake/learn/by-example/json-numbers.html"
+  ]
+}

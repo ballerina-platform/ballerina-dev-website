@@ -67,6 +67,15 @@ sublinks:
           - title: Included record parameters
             id: 3
             url: included-record-parameters
+          - title: Rest parameters
+            id: 4
+            url: rest-parameters
+          - title: Default values for function parameters
+            id: 5
+            url: default_values_for_function_parameters
+          - title: Provide function arguments by name
+            id: 6
+            url: provide_function_arguments_by_name
       - title: Iteration
         id: 7
         sublinks:
@@ -85,50 +94,71 @@ sublinks:
       - title: Types and typing
         id: 9
         sublinks:
+          - title: Structural typing
+            id: 1
+            url: structural-typing
+          - title: Unions
+            id: 2
+            url: unions
+          - title: Errors
+            id: 3
+            url: error-reporting
+          - title: Anydata type
+            id: 4
+            url: anydata-type
+          - title: Any type
+            id: 5
+            url: any-type
+          - title: Type definitions
+            id: 6
+            url: type-definitions
+          - title: Typedesc type
+            id: 7
+            url: typedesc-type
+          - title: Covariance
+            id: 8
+            url: covariance
+          - title: Type inference
+            id: 9
+            url: type-inference
+          - title: Built-in integer subtypes
+            id: 10
+            url: built-in-integer-subtypes
+          - title: Built-in string subtype
+            id: 11
+            url: built-in-string-subtype
+          - title: ensureType function
+            id: 12
+            url: ensureType-function
+          - title: Dependent types
+            id: 13
+            url: dependent-types
+          - title: Binding patterns in assignment
+            id: 14
+            url: binding-patterns-in-assignment
+          - title: Never type
+            id: 15
+            url: never-type
+      - title: Lists
+        id: 10
+        sublinks:
           - title: Arrays
             id: 1
             url: arrays
-          - title: Binary data
+          - title: Tuples
             id: 2
-            url: binary-data
-          - title: Structural typing
+            url: tuples
+          - title: Destructure tuples
             id: 3
-            url: structural-typing
-          - title: Unions
+            url: destructure-tuples
+          - title: Rest type in tuples
             id: 4
-            url: unions
-          - title: Errors
+            url: rest-type-in-tuples
+          - title: Binary data
             id: 5
-            url: error-reporting
-          - title: Anydata type
-            id: 6
-            url: anydata-type
-          - title: Any type
-            id: 7
-            url: any-type
-          - title: Type definitions
-            id: 8
-            url: type-definitions
-          - title: Covariance
-            id: 9
-            url: covariance
-          - title: 'Type inference '
-            id: 10
-            url: type-inference
-          - title: Built-in integer subtypes
-            id: 11
-            url: built-in-integer-subtypes
-          - title: Built-in string subtype
-            id: 12
-            url: built-in-string-subtype
-          - title: ensureType function
-            id: 13
-            url: ensureType-function
-          - title: Dependent types
-            id: 14
-            url: dependent-types
+            url: binary-data
       - title: Mappings
-        id: 10
+        id: 11
         sublinks:
           - title: Maps
             id: 1
@@ -140,7 +170,7 @@ sublinks:
             id: 3
             url: computed-field-key
       - title: Records
-        id: 11
+        id: 12
         sublinks:
           - title: Optional fields
             id: 1
@@ -157,8 +187,14 @@ sublinks:
           - title: Default values for record fields
             id: 5
             url: default-values-for-record-fields
+      - title: Array/Map symmetry
+        id: 13
+        sublinks:
+          - title: Array/Map symmetry
+            id: 1
+            url: array-map-symmetry
       - title: Objects
-        id: 12
+        id: 14
         sublinks:
           - title: Object
             id: 1
@@ -169,8 +205,17 @@ sublinks:
           - title: Init return type
             id: 3
             url: init-return-type
+          - title: Object types
+            id: 4
+            url: object-types
+          - title: Object type inclusion
+            id: 5
+            url: object-type-inclusion
+          - title: Distinct object types
+            id: 6
+            url: distinct-object-types
       - title: Error handling
-        id: 13
+        id: 15
         sublinks:
           - title: Error handling
             id: 1
@@ -187,14 +232,20 @@ sublinks:
           - title: Type intersection for error types
             id: 5
             url: error-type-intersection
+          - title: Error detail
+            id: 6
+            url: error-detail
+          - title: Error cause
+            id: 7
+            url: error-cause
       - title: Ignore return values and errors
-        id: 14
+        id: 16
         sublinks:
           - title: Ignore return values and errors
             id: 1
             url: ignoring-return-values-and-errors
       - title: Mutability and identity
-        id: 15
+        id: 17
         sublinks:
           - title: Identity
             id: 1
@@ -209,7 +260,7 @@ sublinks:
             id: 4
             url: immutability
       - title: JSON
-        id: 16
+        id: 18
         sublinks:
           - title: JSON type
             id: 1
@@ -236,7 +287,7 @@ sublinks:
             id: 8
             url: json-numbers
       - title: Tables
-        id: 17
+        id: 19
         sublinks:
           - title: Table syntax
             id: 1
@@ -248,7 +299,7 @@ sublinks:
             id: 3
             url: structured-keys
       - title: Query expressions
-        id: 18
+        id: 20
         sublinks:
           - title: Query expressions
             id: 1
@@ -281,7 +332,7 @@ sublinks:
             id: 10
             url: querying-with-streams
       - title: Backtick templates
-        id: 19
+        id: 21
         sublinks:
           - title: Raw templates
             id: 1
@@ -293,7 +344,7 @@ sublinks:
             id: 3
             url: xml-templates
       - title: XML
-        id: 20
+        id: 22
         sublinks:
           - title: XML data model
             id: 1
@@ -317,7 +368,7 @@ sublinks:
             id: 7
             url: xmlns-declarations
       - title: Metadata
-        id: 21
+        id: 23
         sublinks:
           - title: Documentation
             id: 1
@@ -326,7 +377,7 @@ sublinks:
             id: 2
             url: annotations
       - title: Network interaction
-        id: 22
+        id: 24
         sublinks:
           - title: 'Consume services: client objects'
             id: 1
@@ -350,13 +401,13 @@ sublinks:
             id: 7
             url: resource-path-parameters
       - title: Configurability
-        id: 23
+        id: 25
         sublinks:
           - title: Configurable variables
             id: 1
             url: configurable-variables
       - title: Concurrency
-        id: 24
+        id: 26
         sublinks:
           - title: Asynchronous function calls
             id: 1
@@ -391,8 +442,17 @@ sublinks:
           - title: Inter-worker failure propagation
             id: 11
             url: inter-worker-failure-propagation
+          - title: Synchronize message passing
+            id: 12
+            url: synchronize-message-passing
+          - title: Asynchronize message passing
+            id: 13
+            url: asynchronize-message-passing
+          - title: Flush
+            id: 14
+            url: flush
       - title: Transactions
-        id: 25
+        id: 27
         sublinks:
           - title: Transaction statement
             id: 1
@@ -416,7 +476,7 @@ sublinks:
             id: 7
             url: commit-rollback-handlers
       - title: Concurrency safety
-        id: 26
+        id: 28
         sublinks:
           - title: Lock statement
             id: 1
@@ -430,23 +490,32 @@ sublinks:
           - title: Readonly and isolated
             id: 4
             url: readonly-and-isolated
-          - title: Combining isolated functions and lock
+          - title: Readonly Objects and Classes
             id: 5
+            url: readonly-objects-and-classes
+          - title: Combining Isolated Functions and Lock
+            id: 6
             url: combining-isolated-functions-and-lock
           - title: Isolated variables
-            id: 6
+            id: 7
             url: isolated-variables
           - title: Isolated methods
-            id: 7
+            id: 8
             url: isolated-methods
           - title: Isolated objects
-            id: 8
+            id: 9
             url: isolated-objects
           - title: Inferring isolated
-            id: 9
+            id: 10
             url: inferring-isolated
+      - title: Interface to external code
+        id: 29
+        sublinks:
+          - title: Interface to external code
+            id: 1
+            url: interface-to-external-code
       - title: Testing
-        id: 27
+        id: 30
         sublinks:
           - title: Assertions
             id: 1
@@ -670,6 +739,12 @@ sublinks:
           - title: Interceptors
             id: 11
             url: graphql-interceptors
+          - title: Client
+            id: 12
+            url: graphql-client
+          - title: Directives
+            id: 13
+            url: graphql-directives
       - title: GraphQL security
         id: 8
         sublinks:

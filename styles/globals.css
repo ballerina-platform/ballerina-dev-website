@@ -1056,6 +1056,10 @@ table.cTopControlsContainer tbody {
   background-color: var(--output-color-background);
 }
 
+.bbeCode.indent, .bbeOutput.indent {
+  margin-left: 10px !important;
+}
+
 .bbeOutput span {
   color: var(--output-color-text);
 }

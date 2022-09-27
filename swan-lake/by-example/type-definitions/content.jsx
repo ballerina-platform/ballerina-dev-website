@@ -14,22 +14,23 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
+// Defines a type named \`MapArray\`.
+type MapArray map<string>[];
+
 public function main() {
-    // String literals use double quotes. You can use usual C escapes such as \`\\t \\n\`.
-    // Numeric escapes specify Unicode code point using one or more hex digits \`\\u{H}\`.
-    string grin = "\\u{1F600}";
+    // Creates a \`MapArray\` value.
+    // \`arr\` has elements which are of \`map<string>\` type.
+    MapArray arr = [
+        {"x": "foo"},
+        {"y": "bar"}
+    ];
 
-    // String concatenation uses \`+\` operator.
-    string greeting = "Hello" + grin;
-    io:println(greeting);
-
-    // \`greeting[1]\` accesses character at index 1 (zero-based).
-    io:println(greeting[1]);
+    io:println(arr[0]);
 }
 `,
 ];
 
-export default function Strings() {
+export default function TypeDefinitions() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,20 +51,11 @@ export default function Strings() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Strings</h1>
+      <h1>Type definitions</h1>
 
       <p>
-        The <code>string</code> type represents immutable sequence of zero or
-        more Unicode characters. There is no separate character type: a
-        character is represented by a <code>string</code> of length 1.
-      </p>
-
-      <p>
-        Two <code>string</code> values are <code>==</code> if both sequences
-        have the same characters. You can use <code>&lt;</code>,{" "}
-        <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code> operators
-        on <code>string</code> values and they work by comparing code points.
-        Unpaired surrogates are not allowed.
+        A type definition gives a name for a type. Its name is just an alias for
+        the type, like <code>typedef</code> in C.
       </p>
 
       <Row
@@ -77,7 +69,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f63edec736143a04e9086b4dcc60a91&file=strings.bal",
+                "https://play.ballerina.io/?gist=db9766baca01cd64cf5cb1c2cdabbb7f&file=type_definitions.bal",
                 "_blank"
               );
             }}
@@ -101,7 +93,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/type-definitions",
                 "_blank"
               );
             }}
@@ -230,9 +222,8 @@ export default function Strings() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run strings.bal`}</span>
-              <span>{`Hello😀`}</span>
-              <span>{`e`}</span>
+              <span>{`\$ bal run type_definitions.bal`}</span>
+              <span>{`{"x":"foo"}`}</span>
             </code>
           </pre>
         </Col>
@@ -240,7 +231,7 @@ export default function Strings() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Nil" href="/learn/by-example/nil">
+          <Link title="Any type" href="/learn/by-example/any-type">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,17 +257,14 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Nil
+                  Any type
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Booleans and conditionals"
-            href="/learn/by-example/booleans"
-          >
+          <Link title="Typedesc type" href="/learn/by-example/typedesc-type">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -285,7 +273,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Booleans and conditionals
+                  Typedesc type
                 </span>
               </div>
               <svg

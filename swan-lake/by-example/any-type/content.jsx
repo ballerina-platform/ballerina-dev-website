@@ -14,22 +14,30 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
+// A variable of type \`any\` can hold any value except an \`error\` value.
+any x = 1;
+
 public function main() {
-    // String literals use double quotes. You can use usual C escapes such as \`\\t \\n\`.
-    // Numeric escapes specify Unicode code point using one or more hex digits \`\\u{H}\`.
-    string grin = "\\u{1F600}";
+    // Can cast \`any\` to specific type.
+    int n = <int>x;
+    
+    io:println(n);
 
-    // String concatenation uses \`+\` operator.
-    string greeting = "Hello" + grin;
-    io:println(greeting);
+    // The \`lang.value\` lang library contains functions that apply to multiple basic types.
+    // \`x.toString()\` converts \`x\` to a \`string\`.
+    string s = x.toString();
 
-    // \`greeting[1]\` accesses character at index 1 (zero-based).
-    io:println(greeting[1]);
+    io:println(s == "1");
+
+    // Can test its type with the \`is\` operator.
+    float f = x is int|float ? <float>x : 0.0;
+
+    io:println(f);
 }
 `,
 ];
 
-export default function Strings() {
+export default function AnyType() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,20 +58,14 @@ export default function Strings() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Strings</h1>
+      <h1>Any type</h1>
 
       <p>
-        The <code>string</code> type represents immutable sequence of zero or
-        more Unicode characters. There is no separate character type: a
-        character is represented by a <code>string</code> of length 1.
-      </p>
-
-      <p>
-        Two <code>string</code> values are <code>==</code> if both sequences
-        have the same characters. You can use <code>&lt;</code>,{" "}
-        <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code> operators
-        on <code>string</code> values and they work by comparing code points.
-        Unpaired surrogates are not allowed.
+        <code>any</code> means any value except an <code>error</code> value.
+        Equivalent to a union of all non-error basic types. Use{" "}
+        <code>any|error</code> for absolutely any value. The{" "}
+        <code>lang.value</code> lang library contains functions that apply to
+        multiple basic types.
       </p>
 
       <Row
@@ -77,7 +79,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f63edec736143a04e9086b4dcc60a91&file=strings.bal",
+                "https://play.ballerina.io/?gist=3cb8c85620c7aa984a86c0bef27f04bd&file=any_type.bal",
                 "_blank"
               );
             }}
@@ -101,7 +103,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/any-type",
                 "_blank"
               );
             }}
@@ -230,9 +232,10 @@ export default function Strings() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run strings.bal`}</span>
-              <span>{`Hello😀`}</span>
-              <span>{`e`}</span>
+              <span>{`\$ bal run any_type.bal`}</span>
+              <span>{`1`}</span>
+              <span>{`true`}</span>
+              <span>{`1.0`}</span>
             </code>
           </pre>
         </Col>
@@ -240,7 +243,7 @@ export default function Strings() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Nil" href="/learn/by-example/nil">
+          <Link title="Anydata type" href="/learn/by-example/anydata-type">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,7 +269,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Nil
+                  Anydata type
                 </span>
               </div>
             </div>
@@ -274,8 +277,8 @@ export default function Strings() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Booleans and conditionals"
-            href="/learn/by-example/booleans"
+            title="Type definitions"
+            href="/learn/by-example/type-definitions"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -285,7 +288,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Booleans and conditionals
+                  Type definitions
                 </span>
               </div>
               <svg

@@ -15,21 +15,36 @@ const codeSnippetData = [
   `import ballerina/io;
 
 public function main() {
-    // String literals use double quotes. You can use usual C escapes such as \`\\t \\n\`.
-    // Numeric escapes specify Unicode code point using one or more hex digits \`\\u{H}\`.
-    string grin = "\\u{1F600}";
+    float v1 = sum([10.5, 20.5, 30.5]);
+    float v2 = sum2([10.5, 20.5, 30.5]);
+    io:println("v1:", v1, " v2:", v2);
+}
 
-    // String concatenation uses \`+\` operator.
-    string greeting = "Hello" + grin;
-    io:println(greeting);
+function sum(float[] v) returns float {
+    float r = 0.0;
+    // \`foreach\` statement can be used to iterate an \`array\`.
+    // Each iteration returns an element in the \`array\`.
+    foreach float x in v {
+        r += x;
+    }
 
-    // \`greeting[1]\` accesses character at index 1 (zero-based).
-    io:println(greeting[1]);
+    return r;
+}
+
+function sum2(float[] v) returns float {
+    float r = 0.0;
+    // \`m ..< n\` creates a value that when iterated over will give the
+    // integers starting from \`m\` that are \`< n\`.
+    foreach int i in 0 ..< v.length() {
+        r += v[i];
+    }
+
+    return r;
 }
 `,
 ];
 
-export default function Strings() {
+export default function ForeachStatement() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,20 +65,13 @@ export default function Strings() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Strings</h1>
+      <h1>Foreach statement</h1>
 
       <p>
-        The <code>string</code> type represents immutable sequence of zero or
-        more Unicode characters. There is no separate character type: a
-        character is represented by a <code>string</code> of length 1.
-      </p>
-
-      <p>
-        Two <code>string</code> values are <code>==</code> if both sequences
-        have the same characters. You can use <code>&lt;</code>,{" "}
-        <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code> operators
-        on <code>string</code> values and they work by comparing code points.
-        Unpaired surrogates are not allowed.
+        The <code>foreach</code> statement iterates over an iterable value, by
+        binding a variable to each member of the iterable value in order.{" "}
+        <code>foreach</code> also works for strings, and will iterate over each
+        character of the <code>string</code>.
       </p>
 
       <Row
@@ -77,7 +85,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f63edec736143a04e9086b4dcc60a91&file=strings.bal",
+                "https://play.ballerina.io/?gist=059e35056c75c303e07799b1356523e1&file=foreach_statement.bal",
                 "_blank"
               );
             }}
@@ -101,7 +109,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/foreach-statement",
                 "_blank"
               );
             }}
@@ -230,9 +238,8 @@ export default function Strings() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run strings.bal`}</span>
-              <span>{`Hello😀`}</span>
-              <span>{`e`}</span>
+              <span>{`\$ bal run foreach_statement.bal`}</span>
+              <span>{`v1:61.5 v2:61.5`}</span>
             </code>
           </pre>
         </Col>
@@ -240,7 +247,10 @@ export default function Strings() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Nil" href="/learn/by-example/nil">
+          <Link
+            title="Provide function arguments by name"
+            href="/learn/by-example/provide-function-arguments-by-name"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,7 +276,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Nil
+                  Provide function arguments by name
                 </span>
               </div>
             </div>
@@ -274,8 +284,8 @@ export default function Strings() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Booleans and conditionals"
-            href="/learn/by-example/booleans"
+            title="While statement"
+            href="/learn/by-example/while-statement"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -285,7 +295,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Booleans and conditionals
+                  While statement
                 </span>
               </div>
               <svg

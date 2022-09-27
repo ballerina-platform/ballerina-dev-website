@@ -14,22 +14,39 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
+// Parses a \`string\` value to convert to an \`int\` value. This function may return error values.
+// The return type is a union with \`error\`.
+function parse(string s) returns int|error {
+
+    int n = 0;
+    int[] cps = s.toCodePointInts();
+    foreach int cp in cps {
+        int p = cp - 0x30;
+        if p < 0 || p > 9 {
+            // If \`p\` is not a digit construct, it returns an \`error\` value with \`not a digit\` as the error message.
+            return error("not a digit");
+
+        }
+        n = n * 10 + p;
+    }
+    return n;
+}
+
 public function main() {
-    // String literals use double quotes. You can use usual C escapes such as \`\\t \\n\`.
-    // Numeric escapes specify Unicode code point using one or more hex digits \`\\u{H}\`.
-    string grin = "\\u{1F600}";
+    // An \`int\` value is returned when the argument is a \`string\` value, which can be parsed as an integer.
+    int|error x = parse("123");
 
-    // String concatenation uses \`+\` operator.
-    string greeting = "Hello" + grin;
-    io:println(greeting);
+    io:println(x);
 
-    // \`greeting[1]\` accesses character at index 1 (zero-based).
-    io:println(greeting[1]);
+    // An \`error\` value is returned when the argument is a \`string\` value, which has a character that is not a digit.
+    int|error y = parse("1h");
+
+    io:println(y);
 }
 `,
 ];
 
-export default function Strings() {
+export default function ErrorReporting() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,20 +67,24 @@ export default function Strings() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Strings</h1>
+      <h1>Errors</h1>
 
       <p>
-        The <code>string</code> type represents immutable sequence of zero or
-        more Unicode characters. There is no separate character type: a
-        character is represented by a <code>string</code> of length 1.
+        Ballerina does not have exceptions. Errors are reported by functions
+        returning <code>error</code> values.
       </p>
 
       <p>
-        Two <code>string</code> values are <code>==</code> if both sequences
-        have the same characters. You can use <code>&lt;</code>,{" "}
-        <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code> operators
-        on <code>string</code> values and they work by comparing code points.
-        Unpaired surrogates are not allowed.
+        <code>error</code> is its own basic type. The return type of a function
+        that may return an <code>error</code> value will be a union with{" "}
+        <code>error</code>.
+      </p>
+
+      <p>
+        An <code>error</code> value includes a <code>string</code> message. An{" "}
+        <code>error</code> value includes the stack trace from the point at
+        which the error is constructed (i.e., <code>error(msg)</code> is
+        called). Error values are immutable.
       </p>
 
       <Row
@@ -77,7 +98,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f63edec736143a04e9086b4dcc60a91&file=strings.bal",
+                "https://play.ballerina.io/?gist=3b03bcc44717f6a4ab7c341dba6bddfe&file=error_reporting.bal",
                 "_blank"
               );
             }}
@@ -101,7 +122,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/error-reporting",
                 "_blank"
               );
             }}
@@ -230,9 +251,9 @@ export default function Strings() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run strings.bal`}</span>
-              <span>{`Hello😀`}</span>
-              <span>{`e`}</span>
+              <span>{`\$ bal run error_reporting.bal`}</span>
+              <span>{`123`}</span>
+              <span>{`error("not a digit")`}</span>
             </code>
           </pre>
         </Col>
@@ -240,7 +261,7 @@ export default function Strings() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Nil" href="/learn/by-example/nil">
+          <Link title="Unions" href="/learn/by-example/unions">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,17 +287,14 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Nil
+                  Unions
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Booleans and conditionals"
-            href="/learn/by-example/booleans"
-          >
+          <Link title="Anydata type" href="/learn/by-example/anydata-type">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -285,7 +303,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Booleans and conditionals
+                  Anydata type
                 </span>
               </div>
               <svg

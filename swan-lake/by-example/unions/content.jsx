@@ -14,22 +14,40 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
+type StructuredName record {
+    string firstName;
+    string lastName;
+};
+
+// A \`Name\` type value can be either a \`StructuredName\` or a \`string\`.
+type Name StructuredName|string;
+
 public function main() {
-    // String literals use double quotes. You can use usual C escapes such as \`\\t \\n\`.
-    // Numeric escapes specify Unicode code point using one or more hex digits \`\\u{H}\`.
-    string grin = "\\u{1F600}";
+    // \`name1\` is a \`StructuredName\`.
+    Name name1 = {
+        firstName: "Rowan",
+        lastName: "Atkinson"
+    };
+    // \`name2\` is a \`string\`.
+    Name name2 = "Leslie Banks";
 
-    // String concatenation uses \`+\` operator.
-    string greeting = "Hello" + grin;
-    io:println(greeting);
+    io:println(nameToString(name1));
+    io:println(nameToString(name2));
+}
 
-    // \`greeting[1]\` accesses character at index 1 (zero-based).
-    io:println(greeting[1]);
+function nameToString(Name nm) returns string {
+    // Checks whether \`nm\` belongs to \`string\` type.
+    if nm is string {
+
+        return nm;
+    } else {
+        return nm.firstName + " " + nm.lastName;
+    }
 }
 `,
 ];
 
-export default function Strings() {
+export default function Unions() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,20 +68,18 @@ export default function Strings() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Strings</h1>
+      <h1>Unions</h1>
 
       <p>
-        The <code>string</code> type represents immutable sequence of zero or
-        more Unicode characters. There is no separate character type: a
-        character is represented by a <code>string</code> of length 1.
+        <code>T1|T2</code> is the union of the sets described by <code>T1</code>{" "}
+        and <code>T2</code>. <code>T?</code> is completely equivalent to{" "}
+        <code>T|()</code>. Unions are untagged. The <code>is</code> operator
+        tests whether a value belongs to a specific type.
       </p>
 
       <p>
-        Two <code>string</code> values are <code>==</code> if both sequences
-        have the same characters. You can use <code>&lt;</code>,{" "}
-        <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code> operators
-        on <code>string</code> values and they work by comparing code points.
-        Unpaired surrogates are not allowed.
+        The <code>is</code> operator in the condition causes the declared type
+        to be narrowed.
       </p>
 
       <Row
@@ -77,7 +93,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f63edec736143a04e9086b4dcc60a91&file=strings.bal",
+                "https://play.ballerina.io/?gist=37e2f3ecf3639ba4870965841105ef96&file=unions.bal",
                 "_blank"
               );
             }}
@@ -101,7 +117,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/unions",
                 "_blank"
               );
             }}
@@ -230,9 +246,9 @@ export default function Strings() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run strings.bal`}</span>
-              <span>{`Hello😀`}</span>
-              <span>{`e`}</span>
+              <span>{`\$ bal run unions.bal`}</span>
+              <span>{`Rowan Atkinson`}</span>
+              <span>{`Leslie Banks`}</span>
             </code>
           </pre>
         </Col>
@@ -240,7 +256,10 @@ export default function Strings() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Nil" href="/learn/by-example/nil">
+          <Link
+            title="Structural typing"
+            href="/learn/by-example/structural-typing"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,17 +285,14 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Nil
+                  Structural typing
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Booleans and conditionals"
-            href="/learn/by-example/booleans"
-          >
+          <Link title="Errors" href="/learn/by-example/error-reporting">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -285,7 +301,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Booleans and conditionals
+                  Errors
                 </span>
               </div>
               <svg

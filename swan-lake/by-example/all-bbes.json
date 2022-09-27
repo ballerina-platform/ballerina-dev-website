@@ -154,14 +154,14 @@
       },
       {
         "name": "Default values for function parameters",
-        "url": "default_values_for_function_parameters",
+        "url": "default-values-for-function-parameters",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
         "name": "Provide function arguments by name",
-        "url": "provide_function_arguments_by_name",
+        "url": "provide-function-arguments-by-name",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

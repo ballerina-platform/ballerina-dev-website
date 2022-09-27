@@ -1,0 +1,17 @@
+{
+  "title": "Stream type",
+  "description": "This BBE demonstrates stream type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "stream type",
+    "streams"
+  ],
+  "permalink": "/learn/by-example/stream-type",
+  "active": "stream-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/stream-type",
+    "/swan-lake/learn/by-example/stream-type.html"
+  ]
+}

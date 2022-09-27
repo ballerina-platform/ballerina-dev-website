@@ -1,0 +1,17 @@
+{
+  "title": "XML navigation ",
+  "description": "This BBE demonstrates XML navigation",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xml",
+    "xml navigation"
+  ],
+  "permalink": "/learn/by-example/xml-navigation",
+  "active": "xml-navigation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-navigation",
+    "/swan-lake/learn/by-example/xml-navigation.html"
+  ]
+}

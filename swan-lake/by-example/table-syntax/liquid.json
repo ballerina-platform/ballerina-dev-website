@@ -1,0 +1,17 @@
+{
+  "title": "Table syntax",
+  "description": "This BBE demonstrates table syntax in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "table syntax",
+    "table"
+  ],
+  "permalink": "/learn/by-example/table-syntax",
+  "active": "table-syntax",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/table-syntax",
+    "/swan-lake/learn/by-example/table-syntax.html"
+  ]
+}

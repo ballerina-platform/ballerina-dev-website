@@ -1,0 +1,17 @@
+{
+  "title": "Ignore return values and errors",
+  "description": "This BBE demonstrates how return values and errors can be ignored in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "error",
+    "ignore value"
+  ],
+  "permalink": "/learn/by-example/ignoring-return-values-and-errors",
+  "active": "ignoring-return-values-and-errors",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/ignoring-return-values-and-errors",
+    "/swan-lake/learn/by-example/ignoring-return-values-and-errors.html"
+  ]
+}

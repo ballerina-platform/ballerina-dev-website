@@ -1,0 +1,18 @@
+{
+  "title": "Binding patterns in assignment",
+  "description": "This BBE demonstrates on how destructuring can be used in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "destructuring",
+    "binding pattern",
+    "assignment"
+  ],
+  "permalink": "/learn/by-example/binding-patterns-in-assignment",
+  "active": "binding-patterns-in-assignment",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/binding-patterns-in-assignment",
+    "/swan-lake/learn/by-example/binding-patterns-in-assignment.html"
+  ]
+}

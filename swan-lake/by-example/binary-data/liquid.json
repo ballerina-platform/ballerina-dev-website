@@ -1,0 +1,17 @@
+{
+  "title": "Binary data",
+  "description": "This BBE demonstrates binary data in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binary data",
+    "byte"
+  ],
+  "permalink": "/learn/by-example/binary-data",
+  "active": "binary-data",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/binary-data",
+    "/swan-lake/learn/by-example/binary-data.html"
+  ]
+}

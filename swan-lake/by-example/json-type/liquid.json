@@ -1,0 +1,11 @@
+{
+  "title": "JSON type",
+  "description": "This BBE demonstrates json type in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "json type", "json"],
+  "permalink": "/learn/by-example/json-type",
+  "active": "json-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/json-type",
+    "/swan-lake/learn/by-example/json-type.html"
+  ]
+}

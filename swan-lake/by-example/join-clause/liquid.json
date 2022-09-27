@@ -1,0 +1,18 @@
+{
+  "title": "Join clause",
+  "description": "This BBE demonstrates join clause in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "join clause",
+    "query",
+    "query expression"
+  ],
+  "permalink": "/learn/by-example/join-clause",
+  "active": "join-clause",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/join-clause",
+    "/swan-lake/learn/by-example/join-clause.html"
+  ]
+}

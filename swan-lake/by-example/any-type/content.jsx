@@ -79,7 +79,7 @@ export default function AnyType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3cb8c85620c7aa984a86c0bef27f04bd&file=any_type.bal",
+                "https://play.ballerina.io/?gist=fae872051b025318c029646ff708a0ea&file=any_type.bal",
                 "_blank"
               );
             }}

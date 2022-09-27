@@ -1,0 +1,17 @@
+{
+  "title": "Object type inclusion",
+  "description": "This BBE demonstrates object-type inclusion in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "object types",
+    "type inclusion"
+  ],
+  "permalink": "/learn/by-example/object-type-inclusion",
+  "active": "object-type-inclusion",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/object-type-inclusion",
+    "/swan-lake/learn/by-example/object-type-inclusion.html"
+  ]
+}

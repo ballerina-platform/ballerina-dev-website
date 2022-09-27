@@ -1,0 +1,18 @@
+{
+  "title": "Default values for record fields",
+  "description": "This BBE demonstrates default values for record fields in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "default value",
+    "record",
+    "record field"
+  ],
+  "permalink": "/learn/by-example/default-values-for-record-fields",
+  "active": "default-values-for-record-fields",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/default-values-for-record-fields",
+    "/swan-lake/learn/by-example/default-values-for-record-fields.html"
+  ]
+}

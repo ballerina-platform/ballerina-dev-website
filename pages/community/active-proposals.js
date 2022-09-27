@@ -33,7 +33,6 @@ setCDN("https://unpkg.com/shiki/");
 
 import Layout from "../../layouts/LayoutOther";
 import { prefix } from "../../utils/prefix";
-import Toc from "../../components/common/pg-toc/Toc";
 
 export async function getStaticProps() {
   const fileName = fs.readFileSync(`community/proposals/active-proposals.md`, "utf-8");
@@ -171,12 +170,13 @@ export default function PostPage({ frontmatter, content, id }) {
                   href={`${process.env.gitHubPath}community/proposals/active-proposals.md`}
                   target="_blank"
                   rel="noreferrer"
+                  title="Edit in GitHub"
                 >
                   <Image
                     src={`${prefix}/images/github.svg`}
                     height={20}
                     width={20}
-                    alt="Edit in github"
+                    alt="Edit in GitHub"
                   />
                 </a>
               </Col>

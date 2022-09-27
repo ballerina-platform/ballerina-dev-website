@@ -127,12 +127,13 @@ export default function PostPage({ frontmatter, content, id }) {
                   href={`${process.env.gitHubPath}spec/spec.md`}
                   target="_blank"
                   rel="noreferrer"
+                  title="Edit in GitHub"
                 >
                   <Image
                     src={`${prefix}/images/github.svg`}
                     height={20}
                     width={20}
-                    alt="Edit in github"
+                    alt="Edit in GitHub"
                   />
                 </a>
               </Col>

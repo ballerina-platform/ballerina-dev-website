@@ -115,12 +115,13 @@ export default function PostPage({ frontmatter, content, slug }) {
                                 href={`${process.env.gitHubPath}policy/${slug}.md`}
                                 target="_blank"
                                 rel="noreferrer"
+                                title="Edit in GitHub"
                             >
                                 <Image
                                     src={`${prefix}/images/github.svg`}
                                     height={20}
                                     width={20}
-                                    alt="Edit in github"
+                                    alt="Edit in GitHub"
                                 />
                             </a>
                         </Col>

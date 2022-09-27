@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Container, Nav, Navbar, NavDropdown, Row, Col } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 
 import Search from '../search/Search';
@@ -32,22 +32,8 @@ const TopNav = (props) => {
     launcher = launcher + '-learn';
   }
 
-  const now = new Date();
-  let showBanner = false;
-
-  if (now < Date.parse('2022-09-25T00:00:00.0000-00:00')) {
-    showBanner = true;
-  }
-
   return (
     <>
-      {
-        (showBanner) ?
-          <div className={styles.hackathonBanner}>
-            Ballerina Coding Challenge is happening now. <a href="https://www.hackerearth.com/challenges/competitive/ballerina-coding-challenge/" target="_blank" rel="noreferrer">Join us</a>!
-          </div>
-        : null
-      }
       <Navbar className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} expand="lg" sticky='top'>
         <Container fluid className={(launcher === 'home') ? styles.toggleFloat : null}>
         {(launcher !== "home") ?

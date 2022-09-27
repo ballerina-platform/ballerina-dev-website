@@ -1,0 +1,16 @@
+{
+  "title": "Control openness",
+  "description": "This BBE demonstrates controlling openness in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "controlling openness"
+  ],
+  "permalink": "/learn/by-example/controlling-openness",
+  "active": "controlling-openness",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/controlling-openness",
+    "/swan-lake/learn/by-example/controlling-openness.html"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Isolated functions",
+  "description": "This BBE introduces isolated functions in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "isolated functions",
+    "concurrency safety"
+  ],
+  "permalink": "/learn/by-example/isolated-functions",
+  "active": "isolated-functions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/isolated-functions",
+    "/swan-lake/learn/by-example/isolated-functions.html"
+  ]
+}

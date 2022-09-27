@@ -1,0 +1,11 @@
+{
+  "title": "Function mocking",
+  "description": "BBE on how to mock functions for unit testing.",
+  "keywords": ["ballerina", "programming language", "testing", "mocking"],
+  "permalink": "/learn/by-example/testerina-mocking-functions",
+  "active": "testerina-mocking-functions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/testerina-mocking-functions",
+    "/swan-lake/learn/by-example/testerina-mocking-functions.html"
+  ]
+}

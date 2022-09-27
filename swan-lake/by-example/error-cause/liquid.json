@@ -1,0 +1,11 @@
+{
+  "title": "Error cause",
+  "description": "This BBE demonstrates how to add a cause to the error and access it.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "error cause"],
+  "permalink": "/learn/by-example/error-cause",
+  "active": "error-cause",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/error-cause",
+    "/swan-lake/learn/by-example/error-cause.html"
+  ]
+}

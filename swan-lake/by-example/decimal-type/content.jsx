@@ -82,7 +82,7 @@ export default function DecimalType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e8a46f2f0800426de28d89282ccc4e24&file=decimal_type.bal",
+                "https://play.ballerina.io/?gist=cb48e39a0a0a5f6ac5de7e992005c65a&file=decimal_type.bal",
                 "_blank"
               );
             }}

@@ -1,0 +1,17 @@
+{
+  "title": "Asynchronous function calls",
+  "description": "This BBE demonstrates how to use start action to call a function asynchronouly.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "start",
+    "Asynchronous function call"
+  ],
+  "permalink": "/learn/by-example/asynchronous-function-calls",
+  "active": "asynchronous-function-calls",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/asynchronous-function-calls",
+    "/swan-lake/learn/by-example/asynchronous-function-calls.html"
+  ]
+}

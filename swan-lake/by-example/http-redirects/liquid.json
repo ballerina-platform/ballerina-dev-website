@@ -1,0 +1,11 @@
+{
+  "title": "Redirects",
+  "description": "BBE on how to do HTTP redirect with the Ballerina HTTP client connector.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "http", "redirect"],
+  "permalink": "/learn/by-example/http-redirects",
+  "active": "http-redirects",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-redirects",
+    "/swan-lake/learn/by-example/http-redirects.html"
+  ]
+}

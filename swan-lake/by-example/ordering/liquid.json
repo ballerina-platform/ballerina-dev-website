@@ -1,0 +1,19 @@
+{
+  "title": "Ordering",
+  "description": "This BBE demonstrates ordering in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "ordering",
+    "order by clause",
+    "query",
+    "query expression"
+  ],
+  "permalink": "/learn/by-example/ordering",
+  "active": "ordering",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/ordering",
+    "/swan-lake/learn/by-example/ordering.html"
+  ]
+}

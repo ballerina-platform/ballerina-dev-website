@@ -14,22 +14,23 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
+function foo(int n, string... s) {
+    io:println(n);
+    io:println(s[0]);
+    io:println(s[1]);
+    io:println(s[2]);
+    io:println(s);
+    io:println(s is string[]);
+}
+
 public function main() {
-    // String literals use double quotes. You can use usual C escapes such as \`\\t \\n\`.
-    // Numeric escapes specify Unicode code point using one or more hex digits \`\\u{H}\`.
-    string grin = "\\u{1F600}";
-
-    // String concatenation uses \`+\` operator.
-    string greeting = "Hello" + grin;
-    io:println(greeting);
-
-    // \`greeting[1]\` accesses character at index 1 (zero-based).
-    io:println(greeting[1]);
+    // The \`s\` parameter will be \`["x", "y", "z"]\`.
+    foo(1, "x", "y", "z");
 }
 `,
 ];
 
-export default function Strings() {
+export default function RestParameters() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,20 +51,21 @@ export default function Strings() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Strings</h1>
+      <h1>Rest Parameters</h1>
 
       <p>
-        The <code>string</code> type represents immutable sequence of zero or
-        more Unicode characters. There is no separate character type: a
-        character is represented by a <code>string</code> of length 1.
+        Ballerina supports rest parameters. There can not be another parameter
+        after a rest parameter.
       </p>
 
       <p>
-        Two <code>string</code> values are <code>==</code> if both sequences
-        have the same characters. You can use <code>&lt;</code>,{" "}
-        <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code> operators
-        on <code>string</code> values and they work by comparing code points.
-        Unpaired surrogates are not allowed.
+        If a function has a rest parameter, that will be initialized to a newly
+        created list with the remaining arguments in the function.
+      </p>
+
+      <p>
+        The inherent type of this list is <code>T[]</code> in which{" "}
+        <code>T</code> is the type of the rest parameter.
       </p>
 
       <Row
@@ -77,7 +79,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=10cf1e4d1b6676ca898fdf4e58dbeaff&file=strings.bal",
+                "https://play.ballerina.io/?gist=41e09ff5445e194193004dd54943f340&file=rest_parameters.bal",
                 "_blank"
               );
             }}
@@ -101,7 +103,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/rest-parameters",
                 "_blank"
               );
             }}
@@ -230,9 +232,12 @@ export default function Strings() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run strings.bal`}</span>
-              <span>{`Hello😀`}</span>
-              <span>{`e`}</span>
+              <span>{`1`}</span>
+              <span>{`x`}</span>
+              <span>{`y`}</span>
+              <span>{`z`}</span>
+              <span>{`["x","y","z"]`}</span>
+              <span>{`true`}</span>
             </code>
           </pre>
         </Col>
@@ -240,7 +245,10 @@ export default function Strings() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Nil" href="/learn/by-example/nil">
+          <Link
+            title="Included record parameters"
+            href="/learn/by-example/included-record-parameters"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,7 +274,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Nil
+                  Included record parameters
                 </span>
               </div>
             </div>
@@ -274,8 +282,8 @@ export default function Strings() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Booleans and conditionals"
-            href="/learn/by-example/booleans"
+            title="Default values for function parameters"
+            href="/learn/by-example/default_values_for_function_parameters"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -285,7 +293,7 @@ export default function Strings() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Booleans and conditionals
+                  Default values for function parameters
                 </span>
               </div>
               <svg

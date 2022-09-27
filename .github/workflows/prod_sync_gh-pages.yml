@@ -1,0 +1,48 @@
+# This is a basic workflow that is manually triggered
+
+name: Publish gh-pages to prod
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prod-sync:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
+    steps:   
+    - name: Clone production b.io
+      run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-platform.github.io.git
+
+    - name: Sync production repo with pre-prod
+      run: |
+        cd ballerina-platform.github.io
+        git checkout -b deploy-website-$GITHUB_SHA origin/gh-pages
+        
+        git config --global user.email "ballerina-bot@ballerina.org"
+        git config --global user.name "ballerina-bot"
+
+        git remote add dev https://github.com/ballerina-platform/ballerina-dev-website.git
+        git pull dev gh-pages -X theirs --no-edit --no-rebase
+        rm -rf CNAME robots.txt
+        cp -r ./utils/CNAME CNAME
+        cp -r ./utils/robots.txt robots.txt
+        rm -rf ./utils/
+
+    - name: Push changes
+      run: |
+        cd ballerina-platform.github.io
+        git add .
+        git commit --allow-empty -m 'Deploy website'
+        git push origin deploy-website-$GITHUB_SHA
+        echo 'Successfully pushed to deploy-website-$GITHUB_SHA branch'
+        
+    - name: Create pull request for new site
+      shell: bash
+      run: |
+        cd ballerina-platform.github.io
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub pull-request -b gh-pages -m '[Automated] Deploy website'
+      env:
+        GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
+        

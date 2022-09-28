@@ -76,18 +76,8 @@ const escapeCharacterAdder = (content, type) => {
               fencedCodeCount = 0;
             }
           } else {
-            switch (type) {
-              case "code":
-                tempContent = "\\`";
-                break;
-              case "out":
-                if (open) {
-                  open = false;
-                } else {
-                  open = true;
-                }
-                break;
-            }
+            tempContent = "\\`";
+            break;
           }
           break;
         case "$":
@@ -106,7 +96,7 @@ const escapeCharacterAdder = (content, type) => {
       } else if (open) {
         codeContent += tempContent;
       } else if (codeContent !== "") {
-        output += `\`}<code>{\`${codeContent}\`}</code>{\``;
+        output += `\`}{\`${codeContent}\`}{\``;
         codeContent = "";
       } else if (!open) {
         output += tempContent;

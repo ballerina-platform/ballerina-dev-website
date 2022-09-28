@@ -1,0 +1,11 @@
+{
+  "title": "Open records",
+  "description": "This BBE demonstrates open records in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "open record"],
+  "permalink": "/learn/by-example/open-records",
+  "active": "open-records",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/open-records",
+    "/swan-lake/learn/by-example/open-records.html"
+  ]
+}

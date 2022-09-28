@@ -1,0 +1,18 @@
+{
+  "title": "Typed resource responses",
+  "description": "BBE on how to use the statusCode records and return types in an HTTP resource methods.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http resource",
+    "return types",
+    "statusCode records"
+  ],
+  "permalink": "/learn/by-example/http-resource-returns",
+  "active": "http-resource-returns",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-resource-returns",
+    "/swan-lake/learn/by-example/http-resource-returns.html"
+  ]
+}

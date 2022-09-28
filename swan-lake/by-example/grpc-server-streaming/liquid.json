@@ -1,0 +1,17 @@
+{
+  "title": "Server streaming RPC",
+  "description": "This Ballerina by Example has a gRPC streaming service and a client. The client sends a request to the server and receives a stream of messages.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "server streaming"
+  ],
+  "permalink": "/learn/by-example/grpc-server-streaming",
+  "active": "grpc-server-streaming",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-server-streaming",
+    "/swan-lake/learn/by-example/grpc-server-streaming.html"
+  ]
+}

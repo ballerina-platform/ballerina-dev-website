@@ -1,0 +1,17 @@
+{
+  "title": "Before and after test",
+  "description": "BBE on how to use before and after test configurations.",
+  "keywords": [
+    "ballerina",
+    "programming language",
+    "testing",
+    "before test",
+    "after test"
+  ],
+  "permalink": "/learn/by-example/testerina-before-and-after-test",
+  "active": "testerina-before-and-after-test",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/testerina-before-and-after-test",
+    "/swan-lake/learn/by-example/testerina-before-and-after-test.html"
+  ]
+}

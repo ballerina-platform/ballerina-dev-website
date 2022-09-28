@@ -1,0 +1,19 @@
+{
+  "title": "Simple query",
+  "description": "This BBE demonstrates how to use the JDBC client query operations with the stream return type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "jdbc",
+    "query",
+    "select",
+    "data"
+  ],
+  "permalink": "/learn/by-example/jdbc-query-operation",
+  "active": "jdbc-query-operation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/jdbc-query-operation",
+    "/swan-lake/learn/by-example/jdbc-query-operation.html"
+  ]
+}

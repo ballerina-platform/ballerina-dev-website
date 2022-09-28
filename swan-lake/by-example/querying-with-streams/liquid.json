@@ -1,0 +1,18 @@
+{
+  "title": "Querying with streams",
+  "description": "This BBE demonstrates querying with streams in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "streams",
+    "query",
+    "query expression"
+  ],
+  "permalink": "/learn/by-example/querying-with-streams",
+  "active": "querying-with-streams",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/querying-with-streams",
+    "/swan-lake/learn/by-example/querying-with-streams.html"
+  ]
+}

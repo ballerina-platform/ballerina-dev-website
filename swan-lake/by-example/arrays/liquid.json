@@ -1,0 +1,17 @@
+{
+  "title": "Arrays",
+  "description": "This BBE demonstrates arrays in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "arrays",
+    "mutable list"
+  ],
+  "permalink": "/learn/by-example/arrays",
+  "active": "arrays",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/arrays",
+    "/swan-lake/learn/by-example/arrays.html"
+  ]
+}

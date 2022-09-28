@@ -1,5 +1,5 @@
 {
-  "title": "Type inference ",
+  "title": "Type inference",
   "description": "This BBE demonstrates type inference in Ballerina. ",
   "keywords": ["ballerina", "ballerina by example", "bbe", "var"],
   "permalink": "/learn/by-example/type-inference",

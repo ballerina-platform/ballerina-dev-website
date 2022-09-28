@@ -1,0 +1,17 @@
+{
+  "title": "Rest parameters",
+  "description": "This BBE demonstrates rest parameters in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "rest parameters",
+    "rest params"
+  ],
+  "permalink": "/learn/by-example/rest-parameters",
+  "active": "rest-parameters",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/rest-parameters",
+    "/swan-lake/learn/by-example/rest-parameters.html"
+  ]
+}

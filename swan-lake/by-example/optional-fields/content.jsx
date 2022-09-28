@@ -86,7 +86,7 @@ export default function OptionalFields() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e6e1e333612bca1f3250eab34c2374d1&file=optional_fields.bal",
+                "https://play.ballerina.io/?gist=4502f9c55534f8ab17b58bf9fea8ee8c&file=optional_fields.bal",
                 "_blank"
               );
             }}
@@ -239,7 +239,7 @@ export default function OptionalFields() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run optional_fields.bal`}</span>
+              <span>{`\$ bal run optional_fields.bal`}</span>
               <span>{`Header value: {"from":"John","to":"Jill"}`}</span>
               <span>{`Subject value:`}</span>
             </code>

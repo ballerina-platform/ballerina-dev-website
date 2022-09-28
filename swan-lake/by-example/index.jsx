@@ -138,6 +138,7 @@ import IsolatedVariables from "./isolated-variables/content.jsx";
 import IsolatedMethods from "./isolated-methods/content.jsx";
 import IsolatedObjects from "./isolated-objects/content.jsx";
 import InferringIsolated from "./inferring-isolated/content.jsx";
+import RunStrandsSafelyOnSeparateThreads from "./run-strands-safely-on-separate-threads/content.jsx";
 import InterfaceToExternalCode from "./interface-to-external-code/content.jsx";
 import TesterinaAssertions from "./testerina-assertions/content.jsx";
 import TesterinaBeforeAndAfterTest from "./testerina-before-and-after-test/content.jsx";
@@ -493,6 +494,7 @@ const BBEs = {
   IsolatedMethods,
   IsolatedObjects,
   InferringIsolated,
+  RunStrandsSafelyOnSeparateThreads,
   InterfaceToExternalCode,
   TesterinaAssertions,
   TesterinaBeforeAndAfterTest,

@@ -94,7 +94,7 @@ export default function Identity() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a4a97ec7bbb570945bf99d16d3231aa7&file=identity.bal",
+                "https://play.ballerina.io/?gist=55f9763df3c5b21d26ed1c0d13aafa33&file=identity.bal",
                 "_blank"
               );
             }}
@@ -247,7 +247,7 @@ export default function Identity() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run identity.bal`}</span>
+              <span>{`\$ bal run identity.bal`}</span>
               <span>{`true`}</span>
               <span>{`false`}</span>
               <span>{`true`}</span>

@@ -74,7 +74,7 @@ export default function ConstAndFinal() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7748c188b17a98ed3583cb2aeecf25f9&file=const_and_final.bal",
+                "https://play.ballerina.io/?gist=945548db4f1849da89c3b69ece331bf2&file=const_and_final.bal",
                 "_blank"
               );
             }}
@@ -227,7 +227,7 @@ export default function ConstAndFinal() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run const_and_final`}</span>
+              <span>{`\$ bal run const_and_final`}</span>
               <span>{`1000`}</span>
               <span>{`https://ballerina.io`}</span>
               <span>{`Hello World`}</span>

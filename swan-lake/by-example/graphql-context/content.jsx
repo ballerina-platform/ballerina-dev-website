@@ -363,41 +363,19 @@ export default function GraphqlContext() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>
-                {`# Send a query to the GraphQL endpoint using a cURL command. Set the `}
-                <code>{`scope`}</code>
-                {` header value to `}
-                <code>{`admin`}</code>
-                {`.`}
-              </span>
+              <span>{`# Send a query to the GraphQL endpoint using a cURL command. Set the \`scope\` header value to \`admin\`.`}</span>
               <span>{` # The query used: { profile { name salary } }`}</span>
               <span>{` curl -X POST -H "Content-type: application/json" -H "scope: admin" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{` {"data":{"profile":{"name":"Walter White", "salary":737000.0}}}`}</span>
               <span>{`
 `}</span>
-              <span>
-                {` # Now, send a query with the `}
-                <code>{`scope`}</code>
-                {` header value set to `}
-                <code>{`user`}</code>
-                {`. This will return an error in the `}
-                <code>{`salary`}</code>
-                {` field.`}
-              </span>
+              <span>{` # Now, send a query with the \`scope\` header value set to \`user\`. This will return an error in the \`salary\` field.`}</span>
               <span>{` # The query used: { profile { name salary } }`}</span>
               <span>{` curl -X POST -H "Content-type: application/json" -H "scope: user" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{` {"errors":[{"message":"Permission denied", "locations":[{"line":1, "column":18}], "path":["profile", "salary"]}], "data":null}`}</span>
               <span>{`
 `}</span>
-              <span>
-                {` # Now, send a query with the `}
-                <code>{`scope`}</code>
-                {` header value set to `}
-                <code>{`unknown`}</code>
-                {`. This will return an error in the `}
-                <code>{`profile`}</code>
-                {` field.`}
-              </span>
+              <span>{` # Now, send a query with the \`scope\` header value set to \`unknown\`. This will return an error in the \`profile\` field.`}</span>
               <span>{` # The query used: { profile { name salary } }`}</span>
               <span>{` curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "{ profile { name salary } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{` {"errors":[{"message":"Permission denied", "locations":[{"line":1, "column":3}], "path":["profile"]}], "data":null}`}</span>

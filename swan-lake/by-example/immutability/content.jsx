@@ -215,7 +215,7 @@ export default function Immutability() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run immutability.bal`}</span>
+              <span>{`\$ bal run immutability.bal`}</span>
               <span>{`true`}</span>
             </code>
           </pre>

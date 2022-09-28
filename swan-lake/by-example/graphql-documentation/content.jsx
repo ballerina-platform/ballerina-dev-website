@@ -286,7 +286,7 @@ export default function GraphqlDocumentation() {
             <code className="d-flex flex-column">
               <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
               <span>{`# The query used: { __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }" }'`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }" }'`}</span>
               <span>{`'http://localhost:4000/graphql'`}</span>
               <span>{`{ "data": { "__schema": { "queryType": { "fields": [ { "name": "profile", "description": "Returns a person using the provided id.", "type": { "name": "Person", "description": "Represents a Person.", "fields": [ { "name": "name", "description": "The name of the person" }, { "name": "age", "description": "The age of the person" } ] }, "args": [ { "name": "id", "description": "The ID of the person" } ] } ] } } } }`}</span>
             </code>

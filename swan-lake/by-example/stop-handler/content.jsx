@@ -223,7 +223,7 @@ export default function StopHandler() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# Invoke the service using cURL to add a fruit item.`}</span>
-              <span>{`curl http://localhost:9090/addToBasket -d 'Guava'`}</span>
+              <span>{`\$ curl http://localhost:9090/addToBasket -d 'Guava'`}</span>
               <span>{`["Apple", "Orange", "Guava"]`}</span>
             </code>
           </pre>
@@ -289,7 +289,7 @@ export default function StopHandler() {
               <span>{`# 'stop_handler.bal' file, and run the 'bal run' command below.`}</span>
               <span>{`
 `}</span>
-              <span>{`bal run stop_handler.bal`}</span>
+              <span>{`\$ bal run stop_handler.bal`}</span>
               <span>{`
 `}</span>
               <span>{`# Send the interrupt signal SIGINT to terminate the current process.`}</span>

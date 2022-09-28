@@ -508,6 +508,9 @@ sublinks:
           - title: Inferring isolated
             id: 10
             url: inferring-isolated
+          - title: Run strands safely on separate threads
+            id: 11
+            url: run-strands-safely-on-separate-threads
       - title: Interface to external code
         id: 29
         sublinks:

@@ -101,7 +101,7 @@ export default function JsonNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=128bd850dd7ff7279c8528165a8c6978&file=json_numbers.bal",
+                "https://play.ballerina.io/?gist=d9fb0992d60287fada93a74dc16b9e22&file=json_numbers.bal",
                 "_blank"
               );
             }}
@@ -254,7 +254,7 @@ export default function JsonNumbers() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run json_numbers.bal`}</span>
+              <span>{`\$ bal run json_numbers.bal`}</span>
               <span>{`[1, 2.1, 3.24]`}</span>
               <span>{`[1,2.1,3.24]`}</span>
               <span>{`typedesc 1`}</span>

@@ -90,7 +90,7 @@ export default function MatchStatementWithMaps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=034fe4766bf93117594da8e3c870bf48&file=match_statement_with_maps.bal",
+                "https://play.ballerina.io/?gist=e1e3d8a3fa8c96268f42e69cf099b8e1&file=match_statement_with_maps.bal",
                 "_blank"
               );
             }}
@@ -243,7 +243,7 @@ export default function MatchStatementWithMaps() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run match_statement_with_maps.bal`}</span>
+              <span>{`\$ bal run match_statement_with_maps.bal`}</span>
               <span>{`Total: 100.0`}</span>
               <span>{`Total: 110.0`}</span>
               <span>{`error: invalid command`}</span>

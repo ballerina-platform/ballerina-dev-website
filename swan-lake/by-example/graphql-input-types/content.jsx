@@ -274,7 +274,7 @@ export default function GraphqlInputTypes() {
             <code className="d-flex flex-column">
               <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
               <span>{`# The query used: { greeting(name: "Walter") }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ greeting(name: \\"Walter\\") }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ greeting(name: \\"Walter\\") }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{`{"data":{"greeting":"Hello, Walter"}}`}</span>
             </code>
           </pre>

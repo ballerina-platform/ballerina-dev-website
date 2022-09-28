@@ -297,7 +297,7 @@ export default function GraphqlHierarchicalResourcePaths() {
             <code className="d-flex flex-column">
               <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
               <span>{`# The query used: { profile { quote name { first } } }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { quote name { first } } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { quote name { first } } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{`{"data":{"profile":{"quote":"I am the one who knocks!", "name":{"first":"Walter"}}}}`}</span>
             </code>
           </pre>

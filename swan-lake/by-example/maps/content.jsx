@@ -83,7 +83,7 @@ export default function Maps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3b28464325e9c07bb108b760f61348a5&file=maps.bal",
+                "https://play.ballerina.io/?gist=e8ac4402f08dba853d15efb4777ae6a3&file=maps.bal",
                 "_blank"
               );
             }}
@@ -236,7 +236,7 @@ export default function Maps() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run maps.bal`}</span>
+              <span>{`\$ bal run maps.bal`}</span>
               <span>{`1`}</span>
             </code>
           </pre>

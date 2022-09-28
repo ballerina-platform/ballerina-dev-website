@@ -83,7 +83,7 @@ export default function InterfaceToExternalCode() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0379ddb916f0a528f4af4c9022efbc7b&file=interface_to_external_code.bal",
+                "https://play.ballerina.io/?gist=2ef62b4e7294fc37dec24ffecc6b35e8&file=interface_to_external_code.bal",
                 "_blank"
               );
             }}
@@ -246,8 +246,8 @@ export default function InterfaceToExternalCode() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Inferring isolated"
-            href="/learn/by-example/inferring-isolated"
+            title="Run strands safely on separate threads"
+            href="/learn/by-example/run-strands-safely-on-separate-threads"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -274,7 +274,7 @@ export default function InterfaceToExternalCode() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Inferring isolated
+                  Run strands safely on separate threads
                 </span>
               </div>
             </div>

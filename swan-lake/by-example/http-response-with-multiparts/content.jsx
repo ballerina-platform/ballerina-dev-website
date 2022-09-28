@@ -342,18 +342,8 @@ export default function HttpResponseWithMultiparts() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# In the directory, which contains the `}
-                <code>{`.bal`}</code>
-                {` file, create a directory named `}
-                <code>{`files`}</code>
-                {`,`}
-              </span>
-              <span>
-                {`# and add an XML file named `}
-                <code>{`test.xml`}</code>
-                {` in it.`}
-              </span>
+              <span>{`# In the directory, which contains the \`.bal\` file, create a directory named \`files\`,`}</span>
+              <span>{`# and add an XML file named \`test.xml\` in it.`}</span>
               <span>{`\$ bal run response_with_multiparts.bal`}</span>
               <span>{`time = 2021-01-21 22:20:38,143 level = INFO  module = "" message = "Nested Parts Detected!" `}</span>
               <span>{`time = 2021-01-21 22:20:38,185 level = INFO  module = "" message = "JSON data: {"name":"wso2"}" `}</span>

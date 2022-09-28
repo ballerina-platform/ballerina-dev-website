@@ -294,7 +294,7 @@ export default function GraphqlReturningServiceObjects() {
             <code className="d-flex flex-column">
               <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
               <span>{`# The query used: { profile { name isAdult } }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name isAdult } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name isAdult } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{`{"data":{"profile":{"name":"Walter White", "isAdult":true}}}`}</span>
             </code>
           </pre>

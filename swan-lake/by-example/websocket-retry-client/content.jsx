@@ -210,11 +210,7 @@ export default function WebsocketRetryClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# As a prerequisite, start a sample WebSocket service, which sends a message to the client upon upgrading to a WebSocket connection.`}</span>
-              <span>
-                {`# If you are using a Ballerina WebSocket server, you can send a message to the client in the `}
-                <code>{`onOpen`}</code>
-                {` resource.`}
-              </span>
+              <span>{`# If you are using a Ballerina WebSocket server, you can send a message to the client in the \`onOpen\` resource.`}</span>
               <span>{`# The client will first connect to the server and then it will wait for 5 seconds to give time for the server to shut down.`}</span>
               <span>{`# Start the server after 5 seconds so that the client will start retrying to connect to the server and read messages.`}</span>
               <span>{`\$ bal run websocket_retry_client.bal`}</span>

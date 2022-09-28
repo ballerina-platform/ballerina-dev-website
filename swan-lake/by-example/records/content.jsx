@@ -90,7 +90,7 @@ export default function Records() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fed76c53a8e208c6b605b929016a1b37&file=records.bal",
+                "https://play.ballerina.io/?gist=05df8c3cee050721585f10b064f4c9a8&file=records.bal",
                 "_blank"
               );
             }}
@@ -243,7 +243,7 @@ export default function Records() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run records.bal`}</span>
+              <span>{`\$ bal run records.bal`}</span>
               <span>{`2`}</span>
               <span>{`1`}</span>
             </code>

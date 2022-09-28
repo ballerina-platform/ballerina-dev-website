@@ -118,7 +118,7 @@ export default function BindingPatternsInAssignment() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=becb61ba85483ca572c1e086268baa76&file=binding_patterns_in_assignment.bal",
+                "https://play.ballerina.io/?gist=2b4020829d8694d68b8e9603f96c4296&file=binding_patterns_in_assignment.bal",
                 "_blank"
               );
             }}
@@ -271,7 +271,7 @@ export default function BindingPatternsInAssignment() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run binding_patterns_in_assignment.bal`}</span>
+              <span>{`\$ bal run binding_patterns_in_assignment.bal`}</span>
               <span>{`
 `}</span>
               <span>{`0`}</span>

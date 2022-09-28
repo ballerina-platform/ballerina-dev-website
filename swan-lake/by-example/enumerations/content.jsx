@@ -80,7 +80,7 @@ export default function Enumerations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2dc40f883e9c50bce60f4e85174ced58&file=enumerations.bal",
+                "https://play.ballerina.io/?gist=da214d0baa5167a030d4b6a9ac0921ae&file=enumerations.bal",
                 "_blank"
               );
             }}
@@ -233,7 +233,7 @@ export default function Enumerations() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run enumerations.bal`}</span>
+              <span>{`\$ bal run enumerations.bal`}</span>
               <span>{`RED`}</span>
               <span>{`English`}</span>
             </code>

@@ -135,7 +135,7 @@ export default function IsolatedObjects() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=323104cb51cd8500459db29d087d17d5&file=isolated_objects.bal",
+                "https://play.ballerina.io/?gist=307845c2750e964615af20fd6c049a78&file=isolated_objects.bal",
                 "_blank"
               );
             }}
@@ -290,7 +290,7 @@ export default function IsolatedObjects() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run isolated_objects.bal`}</span>
+              <span>{`\$ bal run isolated_objects.bal`}</span>
               <span>{`1`}</span>
             </code>
           </pre>

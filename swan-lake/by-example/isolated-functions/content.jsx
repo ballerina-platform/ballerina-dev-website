@@ -117,7 +117,7 @@ export default function IsolatedFunctions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5c71d2aaa7a040696b0ee03d6ab8f613&file=isolated_functions.bal",
+                "https://play.ballerina.io/?gist=c7abb20385470b216eb95aff32d2a32f&file=isolated_functions.bal",
                 "_blank"
               );
             }}
@@ -275,7 +275,7 @@ export default function IsolatedFunctions() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run isolated_functions.bal`}</span>
+              <span>{`\$ bal run isolated_functions.bal`}</span>
               <span>{`{"v":200}`}</span>
               <span>{`{"v":100}`}</span>
             </code>

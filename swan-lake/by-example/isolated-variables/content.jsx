@@ -116,7 +116,7 @@ export default function IsolatedVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=18a6b293f5ed6fec7251373f89e5ca1d&file=isolated_variables.bal",
+                "https://play.ballerina.io/?gist=024bbdbb51c9454cb80238d78fc1f79c&file=isolated_variables.bal",
                 "_blank"
               );
             }}
@@ -271,7 +271,7 @@ export default function IsolatedVariables() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run isolated_variables.bal`}</span>
+              <span>{`\$ bal run isolated_variables.bal`}</span>
               <span>{`20`}</span>
             </code>
           </pre>

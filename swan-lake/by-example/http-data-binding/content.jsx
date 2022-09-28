@@ -293,11 +293,7 @@ export default function HttpDataBinding() {
               <span>{`{"Name":"John"}`}</span>
               <span>{`
 `}</span>
-              <span>
-                {`# To invoke the `}
-                <code>{`store`}</code>
-                {` resource, execute the below HTTP request.`}
-              </span>
+              <span>{`# To invoke the \`store\` resource, execute the below HTTP request.`}</span>
               <span>{`\$ curl http://localhost:9090/hello/store -d "<h:Store id = \\"AST\\" xmlns:h=\\"http://www.test.com\\"><h:street>Main</h:street><h:city>94</h:city></h:Store>" -H "Content-Type:application/xml"`}</span>
               <span>{`<h:city xmlns:h="http://www.test.com">94</h:city>`}</span>
             </code>

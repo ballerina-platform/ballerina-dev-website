@@ -79,7 +79,7 @@ export default function CheckExpression() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cf602cd893ad2c80189d40f667f6437e&file=check_expression.bal",
+                "https://play.ballerina.io/?gist=8306f062fbcc9d40d9b72deb94c696fe&file=check_expression.bal",
                 "_blank"
               );
             }}
@@ -232,7 +232,7 @@ export default function CheckExpression() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run check_expression.bal`}</span>
+              <span>{`\$ bal run check_expression.bal`}</span>
               <span>{`error("{ballerina/lang.int}NumberParsingError",message="'string' value 'hello' cannot be converted to 'int'")`}</span>
             </code>
           </pre>

@@ -302,18 +302,8 @@ export default function HttpRequestWithMultiparts() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# In the directory, which contains the `}
-                <code>{`.bal`}</code>
-                {` file, create a directory named `}
-                <code>{`file`}</code>
-                {`,`}
-              </span>
-              <span>
-                {`# and add an XML file named `}
-                <code>{`test.xml`}</code>
-                {` in it.`}
-              </span>
+              <span>{`# In the directory, which contains the \`.bal\` file, create a directory named \`file\`,`}</span>
+              <span>{`# and add an XML file named \`test.xml\` in it.`}</span>
               <span>{`\$ bal run request_with_multiparts.bal`}</span>
               <span>{`time = 2021-01-21 22:00:17,167 level = INFO  module = "" message = "{"name":"ballerina"}"`}</span>
               <span>{`time = 2021-01-21 22:01:18,466 level = INFO  module = "" message = "{"name":"wso2"}"`}</span>

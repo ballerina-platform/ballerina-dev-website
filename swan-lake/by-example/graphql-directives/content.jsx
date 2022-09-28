@@ -322,42 +322,28 @@ export default function GraphqlDirectives() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>
-                {`# Using the `}
-                <code>{`@skip`}</code>
-                {` directive in a query.`}
-              </span>
+              <span>{`# Using the \`@skip\` directive in a query.`}</span>
               <span>{`# The query used: { profile { name, address @skip(if: true) { city } } }`}</span>
               <span>{`
 `}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @skip(if: true) { city } } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @skip(if: true) { city } } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{`{"data":{"profile":{"name":"Walter White"}}}`}</span>
               <span>{`
 `}</span>
               <span>{`
 `}</span>
-              <span>
-                {`# Using the `}
-                <code>{`@include`}</code>
-                {` directive in a query.`}
-              </span>
+              <span>{`# Using the \`@include\` directive in a query.`}</span>
               <span>{`# The query used: { profile { name, address @include(if: true) { city } } }`}</span>
               <span>{`
 `}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @include(if: true) { city } } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @include(if: true) { city } } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{`{"data":{"profile":{"name":"Walter White", "address":{"city":"Albuquerque"}}}}`}</span>
               <span>{`
 `}</span>
               <span>{`# Introspections to check deprecated enum values.`}</span>
               <span>{`# The query used: { __type(name: "Gender") { name, enumValues { name, isDeprecated, deprecationReason } } }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __type(name: \\"Gender\\") { name, enumValues(includeDeprecated: true) { name, isDeprecated, deprecationReason } } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>
-                {`{"data":{"__type":{"name":"Gender", "enumValues":[{"name":"OTHER", "isDeprecated":false, "deprecationReason":null}, {"name":"NON_BINARY", "isDeprecated":true, "deprecationReason":"The `}
-                <code>{`NON_BINARY`}</code>
-                {` is deprecated use `}
-                <code>{`OTHER`}</code>
-                {` instead"}, {"name":"FEMALE", "isDeprecated":false, "deprecationReason":null}, {"name":"MALE", "isDeprecated":false, "deprecationReason":null}]}}}`}
-              </span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __type(name: \\"Gender\\") { name, enumValues(includeDeprecated: true) { name, isDeprecated, deprecationReason } } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`{"data":{"__type":{"name":"Gender", "enumValues":[{"name":"OTHER", "isDeprecated":false, "deprecationReason":null}, {"name":"NON_BINARY", "isDeprecated":true, "deprecationReason":"The \`NON_BINARY\` is deprecated use \`OTHER\` instead"}, {"name":"FEMALE", "isDeprecated":false, "deprecationReason":null}, {"name":"MALE", "isDeprecated":false, "deprecationReason":null}]}}}`}</span>
             </code>
           </pre>
         </Col>

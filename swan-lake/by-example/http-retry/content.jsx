@@ -329,11 +329,7 @@ export default function HttpRetry() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>
-                {`# If the request that was sent to the `}
-                <code>{`retry`}</code>
-                {` resource fails due to an error, the client tries sending the request again.`}
-              </span>
+              <span>{`# If the request that was sent to the \`retry\` resource fails due to an error, the client tries sending the request again.`}</span>
               <span>{`\$ curl http://localhost:9090/retry`}</span>
               <span>{`Hello World!!!`}</span>
             </code>

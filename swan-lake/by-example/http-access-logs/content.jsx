@@ -207,11 +207,7 @@ export default function HttpAccessLogs() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# Run the service by setting the configurations in the `}
-                <code>{`Config.toml`}</code>
-                {` file as follows to have logs in the console.`}
-              </span>
+              <span>{`# Run the service by setting the configurations in the \`Config.toml\` file as follows to have logs in the console.`}</span>
               <span>{`\$ echo '[ballerina.http.accessLogConfig] console = true' > Config.toml`}</span>
               <span>{`
 `}</span>
@@ -220,11 +216,7 @@ export default function HttpAccessLogs() {
               <span>{`0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /hello HTTP/1.1" 200 10 "-" "curl/7.64.1"`}</span>
               <span>{`
 `}</span>
-              <span>
-                {`# Else, change the `}
-                <code>{`Config.toml`}</code>
-                {` file as follows to direct the log to the specified file.`}
-              </span>
+              <span>{`# Else, change the \`Config.toml\` file as follows to direct the log to the specified file.`}</span>
               <span>{`\$ echo '[ballerina.http.accessLogConfig] path = "testAccessLog.txt"' > Config.toml`}</span>
               <span>{`
 `}</span>

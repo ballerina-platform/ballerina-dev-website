@@ -218,18 +218,8 @@ export default function IoBytes() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>
-                {`# In the directory, which contains the `}
-                <code>{`.bal`}</code>
-                {` file, create a directory named `}
-                <code>{`files`}</code>
-                {`,`}
-              </span>
-              <span>
-                {`# and add an image file named `}
-                <code>{`ballerina.jpg`}</code>
-                {` in it as follows.`}
-              </span>
+              <span>{`# In the directory, which contains the \`.bal\` file, create a directory named \`files\`,`}</span>
+              <span>{`# and add an image file named \`ballerina.jpg\` in it as follows.`}</span>
               <span>{`# tree .`}</span>
               <span>{`# ├── files`}</span>
               <span>{`# │   └── ballerina.jpeg`}</span>

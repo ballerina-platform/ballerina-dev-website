@@ -85,7 +85,7 @@ export default function ReadonlyAndIsolated() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=517e48e14306c78210e118b6dc30ea54&file=readonly_and_isolated.bal",
+                "https://play.ballerina.io/?gist=c4177e480f43441561ad1a8491e31de0&file=readonly_and_isolated.bal",
                 "_blank"
               );
             }}
@@ -240,7 +240,7 @@ export default function ReadonlyAndIsolated() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run readonly_and_isolated.bal`}</span>
+              <span>{`\$ bal run readonly_and_isolated.bal`}</span>
               <span>{`{"bordeaux":{"latitude":"44.8378N","longitude":"0.5792W"},"paris":{"latitude":"48.8566N","longitude":"2.3522E"}}`}</span>
             </code>
           </pre>

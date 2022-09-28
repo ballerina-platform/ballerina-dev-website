@@ -80,7 +80,7 @@ export default function ReadonlyType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b148f2f274abef2c57f20d4e72bd95de&file=readonly_type.bal",
+                "https://play.ballerina.io/?gist=b0ef96b17bd97cd52b2d323a1c3d9110&file=readonly_type.bal",
                 "_blank"
               );
             }}
@@ -235,7 +235,7 @@ export default function ReadonlyType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run readonly_type.bal`}</span>
+              <span>{`\$ bal run readonly_type.bal`}</span>
               <span>{`[{"k":"John","value":17},{"k":"Anne","value":18}]`}</span>
             </code>
           </pre>

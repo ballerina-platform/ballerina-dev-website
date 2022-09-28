@@ -90,7 +90,7 @@ export default function ConvertingFromUserDefinedTypeToJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2a3241594fdee59067900eed264a6ece&file=converting_from_user_defined_type_to_json.bal",
+                "https://play.ballerina.io/?gist=ab28ec06d2b5e2da1714cb6fe9eb5ea3&file=converting_from_user_defined_type_to_json.bal",
                 "_blank"
               );
             }}
@@ -243,7 +243,7 @@ export default function ConvertingFromUserDefinedTypeToJson() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run converting_from_user_defined_type_to_json.bal`}</span>
+              <span>{`\$ bal run converting_from_user_defined_type_to_json.bal`}</span>
               <span>{`{"x":1.0,"y":2.0}`}</span>
               <span>{`{"x":1.0,"y":2.0,"z":"city"}`}</span>
             </code>

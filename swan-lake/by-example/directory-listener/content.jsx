@@ -244,7 +244,7 @@ export default function DirectoryListener() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run directory_listener.bal`}</span>
+              <span>{`\$ bal run directory_listener.bal`}</span>
               <span>{`time = 2020-12-12 13:49:08,497 level = INFO  module = "" message = "Create: /home/ballerina/fs-server-connector/observed-dir/test1.txt"`}</span>
               <span>{`time = 2020-12-12 13:49:41,709 level = INFO  module = "" message = "Modify: /home/ballerina/fs-server-connector/observed-dir/test1.txt"`}</span>
               <span>{`time = 2020-12-12 13:50:04,997 level = INFO  module = "" message = "Delete: /home/ballerina/fs-server-connector/observed-dir/test1.txt"`}</span>

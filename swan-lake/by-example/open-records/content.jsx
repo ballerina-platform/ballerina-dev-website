@@ -89,7 +89,7 @@ export default function OpenRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ae50d490e1ad24fadd3425cb2663890e&file=open_records.bal",
+                "https://play.ballerina.io/?gist=f2498d6e8098e3e773ce038e9eaea6bb&file=open_records.bal",
                 "_blank"
               );
             }}
@@ -242,7 +242,7 @@ export default function OpenRecords() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run open_records.bal`}</span>
+              <span>{`\$ bal run open_records.bal`}</span>
               <span>{`{"name":"James","id":10}`}</span>
               <span>{`{"name":"John","country":"UK"}`}</span>
             </code>

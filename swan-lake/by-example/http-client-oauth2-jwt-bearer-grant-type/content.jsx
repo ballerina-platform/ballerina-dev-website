@@ -231,7 +231,7 @@ export default function HttpClientOauth2JwtBearerGrantType() {
             <code className="d-flex flex-column">
               <span>{`# As a prerequisite, start a sample service secured with OAuth2.`}</span>
               <span>{`# You may need to change the trusted certificate file path.`}</span>
-              <span>{`bal run http_client_oauth2_jwt_bearer_grant_type.bal`}</span>
+              <span>{`\$ bal run http_client_oauth2_jwt_bearer_grant_type.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

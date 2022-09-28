@@ -1,0 +1,19 @@
+{
+  "title": "Query with one result",
+  "description": "This BBE demonstrates how to use the JDBC client select query row operations.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "jdbc",
+    "query",
+    "select",
+    "data"
+  ],
+  "permalink": "/learn/by-example/jdbc-query-row-operation",
+  "active": "jdbc-query-row-operation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/jdbc-query-row-operation",
+    "/swan-lake/learn/by-example/jdbc-query-row-operation.html"
+  ]
+}

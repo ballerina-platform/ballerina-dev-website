@@ -279,7 +279,7 @@ export default function GraphqlHelloWorld() {
             <code className="d-flex flex-column">
               <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
               <span>{`# The query used: { greeting }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ greeting }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ greeting }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{`{"data":{"greeting":"Hello, World"}}`}</span>
             </code>
           </pre>

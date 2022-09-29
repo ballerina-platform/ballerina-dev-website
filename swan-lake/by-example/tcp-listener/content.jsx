@@ -227,7 +227,7 @@ export default function TcpListener() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run tcp_listener.bal`}</span>
+              <span>{`\$ bal run tcp_listener.bal`}</span>
               <span>{`Client connected to echoServer: 48735`}</span>
               <span>{`Echo: Hello Ballerina Echo from client`}</span>
               <span>{`Client left`}</span>

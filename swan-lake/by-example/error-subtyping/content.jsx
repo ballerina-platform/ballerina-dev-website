@@ -83,7 +83,7 @@ export default function ErrorSubtyping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=70de5a50a685c4e47fcb3590378575f5&file=error_subtyping.bal",
+                "https://play.ballerina.io/?gist=38e28d5ad2f4d6946ac1c437a3da2442&file=error_subtyping.bal",
                 "_blank"
               );
             }}
@@ -236,7 +236,7 @@ export default function ErrorSubtyping() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run error_subtyping.bal`}</span>
+              <span>{`\$ bal run error_subtyping.bal`}</span>
               <span>{`X`}</span>
             </code>
           </pre>

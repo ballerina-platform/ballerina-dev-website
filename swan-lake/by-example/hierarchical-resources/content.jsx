@@ -199,7 +199,7 @@ export default function HierarchicalResources() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run hierarchical_resources.bal`}</span>
+              <span>{`\$ bal run hierarchical_resources.bal`}</span>
             </code>
           </pre>
         </Col>

@@ -85,7 +85,7 @@ export default function JsonType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=91ffe542bb7a2e95a1a64943722a4493&file=json_type.bal",
+                "https://play.ballerina.io/?gist=c974c3a361c1e265bcb798a6d7e67558&file=json_type.bal",
                 "_blank"
               );
             }}
@@ -238,7 +238,7 @@ export default function JsonType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run json_type.bal`}</span>
+              <span>{`\$ bal run json_type.bal`}</span>
               <span>{`{"x":1, "y":2}`}</span>
               <span>{`{"x":1,"y":2}`}</span>
             </code>

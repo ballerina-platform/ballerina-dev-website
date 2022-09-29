@@ -104,7 +104,7 @@ export default function InferringIsolated() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=85866731657cbed15fda862d171a67e3&file=inferring_isolated.bal",
+                "https://play.ballerina.io/?gist=bf22602297a8079d4d20cba3d183cd69&file=inferring_isolated.bal",
                 "_blank"
               );
             }}
@@ -259,7 +259,7 @@ export default function InferringIsolated() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run inferring_isolated.bal`}</span>
+              <span>{`\$ bal run inferring_isolated.bal`}</span>
               <span>{`true`}</span>
               <span>{`Hello Anne`}</span>
               <span>{`Hello John`}</span>
@@ -307,8 +307,8 @@ export default function InferringIsolated() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Interface to external code"
-            href="/learn/by-example/interface-to-external-code"
+            title="Run strands safely on separate threads"
+            href="/learn/by-example/run-strands-safely-on-separate-threads"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -318,7 +318,7 @@ export default function InferringIsolated() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interface to external code
+                  Run strands safely on separate threads
                 </span>
               </div>
               <svg

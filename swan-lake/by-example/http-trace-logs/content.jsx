@@ -218,16 +218,8 @@ export default function HttpTraceLogs() {
               <span>{`ballerina: HTTP trace log enabled`}</span>
               <span>{`
 `}</span>
-              <span>
-                {`# In the logs, `}
-                <code>{`http.downstream`}</code>
-                {` refers to the HTTP traffic that flows between the client and Ballerina.`}
-              </span>
-              <span>
-                {`# while `}
-                <code>{`http.upstream`}</code>
-                {` refers to the HTTP traffic that flows between Ballerina and the backend.`}
-              </span>
+              <span>{`# In the logs, \`http.downstream\` refers to the HTTP traffic that flows between the client and Ballerina.`}</span>
+              <span>{`# while \`http.upstream\` refers to the HTTP traffic that flows between Ballerina and the backend.`}</span>
               <span>{`
 `}</span>
               <span>{`[2021-10-06 18:18:11,118] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7] REGISTERED`}</span>

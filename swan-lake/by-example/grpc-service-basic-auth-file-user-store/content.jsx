@@ -507,17 +507,9 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>
-                {`# As a prerequisite, ensure that the `}
-                <code>{`Config.toml`}</code>
-                {` file is populated correctly`}
-              </span>
+              <span>{`# As a prerequisite, ensure that the \`Config.toml\` file is populated correctly`}</span>
               <span>{`# with the user information. The following command can be used to populate`}</span>
-              <span>
-                {`# the `}
-                <code>{`Config.toml`}</code>
-                {` file.`}
-              </span>
+              <span>{`# the \`Config.toml\` file.`}</span>
               <span>{`\$ echo '[[ballerina.auth.users]]`}</span>
               <span>{`username="alice"`}</span>
               <span>{`password="password1"`}</span>

@@ -81,7 +81,7 @@ export default function XmlToJsonConversion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3a02e1b49383576aaa34f53ad9c582b4&file=xml_to_json_conversion.bal",
+                "https://play.ballerina.io/?gist=74363e6d5cf2fd8e4654638b9ee29f37&file=xml_to_json_conversion.bal",
                 "_blank"
               );
             }}
@@ -238,7 +238,7 @@ export default function XmlToJsonConversion() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run xml_json_conversion.bal`}</span>
+              <span>{`\$ bal run xml_json_conversion.bal`}</span>
               <span>{`{"Store":{"name":"Anne","address":{"street":"Main","city":"94"},"codes":["4","8"],"@id":"AST"}}`}</span>
             </code>
           </pre>

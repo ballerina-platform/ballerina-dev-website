@@ -307,11 +307,7 @@ export default function HttpRestrictByMediaType() {
               <span>{`
 `}</span>
               <span>{`# To invoke the service using an unsupported media type, execute the following cURL request. The content type of the`}</span>
-              <span>
-                {`# request is not listed under the `}
-                <code>{`consumes`}</code>
-                {` resource configuration.`}
-              </span>
+              <span>{`# request is not listed under the \`consumes\` resource configuration.`}</span>
               <span>{`\$ curl -v http://localhost:9092/infoService -H "Accept:application/xml" -H "Content-Type:text/plain" -d "Hello ballerina"`}</span>
               <span>{`> POST /infoService HTTP/1.1`}</span>
               <span>{`> Host: localhost:9092`}</span>
@@ -332,13 +328,7 @@ export default function HttpRestrictByMediaType() {
               <span>{`
 `}</span>
               <span>{`# To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned`}</span>
-              <span>
-                {`# in the `}
-                <code>{`Accept`}</code>
-                {` header is not listed under the `}
-                <code>{`produces`}</code>
-                {` resource configuration.`}
-              </span>
+              <span>{`# in the \`Accept\` header is not listed under the \`produces\` resource configuration.`}</span>
               <span>{`\$ curl -v http://localhost:9092/infoService -H "Accept:text/html" -H "Content-Type:application/json" -d '{"name":"Ballerina"}'`}</span>
               <span>{`> POST /infoService HTTP/1.1`}</span>
               <span>{`> Host: localhost:9092`}</span>

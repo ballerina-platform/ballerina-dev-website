@@ -336,29 +336,17 @@ export default function HttpClientDataBinding() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>
-                {`# To invoke the `}
-                <code>{`/call/all`}</code>
-                {` resource, use the cURL command below.`}
-              </span>
+              <span>{`# To invoke the \`/call/all\` resource, use the cURL command below.`}</span>
               <span>{`\$ curl "http://localhost:9090/call/all"`}</span>
               <span>{`{"name":"Smith", "age":15}`}</span>
               <span>{`
 `}</span>
-              <span>
-                {`# To invoke the `}
-                <code>{`/call/5xx`}</code>
-                {` resource, use the cURL command below.`}
-              </span>
+              <span>{`# To invoke the \`/call/5xx\` resource, use the cURL command below.`}</span>
               <span>{`\$ curl "http://localhost:9090/call/5xx"`}</span>
               <span>{`{"code":501, "payload":"data-binding-failed-with-501"}`}</span>
               <span>{`
 `}</span>
-              <span>
-                {`# To invoke the `}
-                <code>{`/call/4xx`}</code>
-                {` resource, use the cURL command below.`}
-              </span>
+              <span>{`# To invoke the \`/call/4xx\` resource, use the cURL command below.`}</span>
               <span>{`\$ curl "http://localhost:9090/call/4xx"`}</span>
               <span>{`{"code":404, "payload":"no matching resource found for path : /backend/err , method : POST"}`}</span>
             </code>

@@ -91,7 +91,7 @@ export default function Annotations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5255e959932bdab8466fffb90233cda5&file=annotations.bal",
+                "https://play.ballerina.io/?gist=bccd3677806ed0ed6661d854b51f1047&file=annotations.bal",
                 "_blank"
               );
             }}
@@ -244,7 +244,7 @@ export default function Annotations() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run annotations.bal`}</span>
+              <span>{`\$ bal run annotations.bal`}</span>
               <span>{`{"value":"T1"}`}</span>
             </code>
           </pre>

@@ -90,7 +90,7 @@ export default function Strands() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6e24f258be8cb2e306440b0d1cbb7934&file=strands.bal",
+                "https://play.ballerina.io/?gist=ad06501df453798ad699d3d8eb98365a&file=strands.bal",
                 "_blank"
               );
             }}
@@ -243,7 +243,7 @@ export default function Strands() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run strands.bal`}</span>
+              <span>{`\$ bal run strands.bal`}</span>
               <span>{`In function worker`}</span>
               <span>{`In worker B`}</span>
               <span>{`Worker B end`}</span>

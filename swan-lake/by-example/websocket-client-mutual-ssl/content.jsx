@@ -224,7 +224,7 @@ export default function WebsocketClientMutualSsl() {
               <span>{`# As a prerequisite, start a sample service secured with mutual SSL.`}</span>
               <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
               <span>{`# trusted certificate file path.`}</span>
-              <span>{`bal run websocket_client_mutual_ssl.bal`}</span>
+              <span>{`\$ bal run websocket_client_mutual_ssl.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
           </pre>

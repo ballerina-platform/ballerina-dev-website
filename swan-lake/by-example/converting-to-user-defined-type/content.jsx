@@ -84,7 +84,7 @@ export default function ConvertingToUserDefinedType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=65c924b3b5cb852345b8e59e29464edc&file=converting_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=e36999f4d0baeae90e545504c773d474&file=converting_to_user_defined_type.bal",
                 "_blank"
               );
             }}
@@ -237,7 +237,7 @@ export default function ConvertingToUserDefinedType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run converting_to_user_defined_type.bal`}</span>
+              <span>{`\$ bal run converting_to_user_defined_type.bal`}</span>
               <span>{`1.0`}</span>
               <span>{`1.0`}</span>
             </code>

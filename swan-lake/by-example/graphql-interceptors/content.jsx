@@ -337,7 +337,7 @@ export default function GraphqlInterceptors() {
             <code className="d-flex flex-column">
               <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
               <span>{`# The query used: { name }`}</span>
-              <span>{`curl -X POST -H "Content-type: application/json" -d '{ "query": "{ name }"}' 'http://localhost:4000/graphql'`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ name }"}' 'http://localhost:4000/graphql'`}</span>
               <span>{`{"data":{"name":"GraphQL Interceptors"}}`}</span>
             </code>
           </pre>

@@ -319,48 +319,14 @@ export default function GraphqlFileUpload() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`# Send a HTTP multipart request to upload a single file via the GraphQL endpoint using a cURL command.`}</span>
-              <span>
-                {`# The first part of the request is `}
-                <code>{`operations`}</code>
-                {` that includes a `}
-                <code>{`JSON-encoded`}</code>
-                {` map value.`}
-              </span>
-              <span>
-                {`# The `}
-                <code>{`operations`}</code>
-                {` map value is similar to a standard GraphQL POST request, in which all the variable values related to the file upload are `}
-                <code>{`null`}</code>
-                {`.`}
-              </span>
-              <span>
-                {`# `}
-                <code>{`operations`}</code>
-                {`: { "query": "mutation(\$file: Upload!) { singleFileUpload(file: \$file) }", "variables": {"file": null} }`}
-              </span>
+              <span>{`# The first part of the request is \`operations\` that includes a \`JSON-encoded\` map value.`}</span>
+              <span>{`# The \`operations\` map value is similar to a standard GraphQL POST request, in which all the variable values related to the file upload are \`null\`.`}</span>
+              <span>{`# \`operations\`: { "query": "mutation(\$file: Upload!) { singleFileUpload(file: \$file) }", "variables": {"file": null} }`}</span>
               <span>{`
 `}</span>
-              <span>
-                {`# The second part of the request is a `}
-                <code>{`map`}</code>
-                {` field that includes a `}
-                <code>{`JSON-encoded`}</code>
-                {` map of files that occurred in the operations.`}
-              </span>
-              <span>
-                {`# The `}
-                <code>{`key`}</code>
-                {` is file field name and the `}
-                <code>{`value`}</code>
-                {` is an array of paths in which the files occurred in the `}
-                <code>{`operations`}</code>
-                {`.`}
-              </span>
-              <span>
-                {`# `}
-                <code>{`map`}</code>
-                {`: { “0”: ["variables.file"] }`}
-              </span>
+              <span>{`# The second part of the request is a \`map\` field that includes a \`JSON-encoded\` map of files that occurred in the operations.`}</span>
+              <span>{`# The \`key\` is file field name and the \`value\` is an array of paths in which the files occurred in the \`operations\`.`}</span>
+              <span>{`# \`map\`: { “0”: ["variables.file"] }`}</span>
               <span>{`
 `}</span>
               <span>{`# A file can be added to the next part of the request with a unique, arbitrary field name.`}</span>
@@ -375,44 +341,14 @@ export default function GraphqlFileUpload() {
               <span>{`
 `}</span>
               <span>{`# Now, send a request with multiple files.`}</span>
-              <span>
-                {`# The variable value related to the files is an array of `}
-                <code>{`null`}</code>
-                {` values.`}
-              </span>
-              <span>
-                {`# `}
-                <code>{`operations`}</code>
-                {`: { "query": "mutation(\$file: [Upload!]!) { multipleFileUpload(files: \$file) }", "variables": { "file": [null, null] } }`}
-              </span>
+              <span>{`# The variable value related to the files is an array of \`null\` values.`}</span>
+              <span>{`# \`operations\`: { "query": "mutation(\$file: [Upload!]!) { multipleFileUpload(files: \$file) }", "variables": { "file": [null, null] } }`}</span>
               <span>{`
 `}</span>
-              <span>
-                {`# Same as the single file upload, the `}
-                <code>{`map`}</code>
-                {` value is a JSON-encoded map of paths in which files occurred in the `}
-                <code>{`operations`}</code>
-                {`.`}
-              </span>
-              <span>
-                {`# Since the `}
-                <code>{`operations`}</code>
-                {` has an array of `}
-                <code>{`null`}</code>
-                {` values, an array index is included in the path value.`}
-              </span>
-              <span>
-                {`#  E.g., In `}
-                <code>{`file.0`}</code>
-                {`, `}
-                <code>{`0`}</code>
-                {` is the array index.`}
-              </span>
-              <span>
-                {`# `}
-                <code>{`map`}</code>
-                {`: { "0": ["variables.file.0"], "1": ["variables.file.1"]}`}
-              </span>
+              <span>{`# Same as the single file upload, the \`map\` value is a JSON-encoded map of paths in which files occurred in the \`operations\`.`}</span>
+              <span>{`# Since the \`operations\` has an array of \`null\` values, an array index is included in the path value.`}</span>
+              <span>{`#  E.g., In \`file.0\`, \`0\` is the array index.`}</span>
+              <span>{`# \`map\`: { "0": ["variables.file.0"], "1": ["variables.file.1"]}`}</span>
               <span>{`
 `}</span>
               <span>{`# Files can be added to the next fields of the request with a unique, arbitrary field name.`}</span>

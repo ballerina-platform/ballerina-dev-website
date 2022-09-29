@@ -120,7 +120,7 @@ export default function CombiningIsolatedFunctionsAndLock() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fbacb358b12cdcc5bb72dd1ec9c9ec6d&file=combining_isolated_functions_and_lock.bal",
+                "https://play.ballerina.io/?gist=72ce305cd902531a5886308593a51fb5&file=combining_isolated_functions_and_lock.bal",
                 "_blank"
               );
             }}
@@ -278,7 +278,7 @@ export default function CombiningIsolatedFunctionsAndLock() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run combining_isolated_functions_and_lock.bal`}</span>
+              <span>{`\$ bal run combining_isolated_functions_and_lock.bal`}</span>
               <span>{`{"v":200}`}</span>
             </code>
           </pre>

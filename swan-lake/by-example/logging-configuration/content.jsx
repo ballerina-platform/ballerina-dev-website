@@ -208,21 +208,11 @@ export default function LoggingConfiguration() {
               <span>{`time = 2021-05-25T11:06:54.998+05:30 level = ERROR module = "" message = "error log"`}</span>
               <span>{`time = 2021-05-25T11:06:55.009+05:30 level = INFO module = "" message = "info log"`}</span>
               <span>{`time = 2021-05-25T11:06:55.010+05:30 level = WARN module = "" message = "warn log"`}</span>
-              <span>
-                {`# As shown in the output, only the `}
-                <code>{`INFO`}</code>
-                {` and higher level logs are logged by default.`}
-              </span>
+              <span>{`# As shown in the output, only the \`INFO\` and higher level logs are logged by default.`}</span>
               <span>{`
 `}</span>
               <span>{`# The log level can be configured via a Ballerina configuration file.`}</span>
-              <span>
-                {`# To set the global log level to `}
-                <code>{`DEBUG`}</code>
-                {`, place the entry given below in the `}
-                <code>{`Config.toml`}</code>
-                {` file and run the sample.`}
-              </span>
+              <span>{`# To set the global log level to \`DEBUG\`, place the entry given below in the \`Config.toml\` file and run the sample.`}</span>
               <span>{`# \`\`\``}</span>
               <span>{`# [ballerina.log]`}</span>
               <span>{`# level = "DEBUG"`}</span>
@@ -231,19 +221,11 @@ export default function LoggingConfiguration() {
               <span>{`time = 2021-05-25T11:11:24.914+05:30 level = ERROR module = "" message = "error log"`}</span>
               <span>{`time = 2021-05-25T11:11:24.915+05:30 level = INFO module = "" message = "info log"`}</span>
               <span>{`time = 2021-05-25T11:11:24.915+05:30 level = WARN module = "" message = "warn log"`}</span>
-              <span>
-                {`# As shown in the output, now the `}
-                <code>{`DEBUG`}</code>
-                {` and higher level logs are logged.`}
-              </span>
+              <span>{`# As shown in the output, now the \`DEBUG\` and higher level logs are logged.`}</span>
               <span>{`
 `}</span>
               <span>{`# Each module can also be assigned its own log level. To assign a`}</span>
-              <span>
-                {`# log level to a module, provide the following entry in the `}
-                <code>{`Config.toml`}</code>
-                {` file:`}
-              </span>
+              <span>{`# log level to a module, provide the following entry in the \`Config.toml\` file:`}</span>
               <span>{`#`}</span>
               <span>{`# \`\`\``}</span>
               <span>{`# [[ballerina.log.modules]]`}</span>
@@ -253,11 +235,7 @@ export default function LoggingConfiguration() {
               <span>{`
 `}</span>
               <span>{`# By default, log messages are logged to the console in the LogFmt format.`}</span>
-              <span>
-                {`# To set the output format to JSON, place the entry given below in the `}
-                <code>{`Config.toml`}</code>
-                {` file and run the sample.`}
-              </span>
+              <span>{`# To set the output format to JSON, place the entry given below in the \`Config.toml\` file and run the sample.`}</span>
               <span>{`# \`\`\``}</span>
               <span>{`# [ballerina.log]`}</span>
               <span>{`# format = "json"`}</span>

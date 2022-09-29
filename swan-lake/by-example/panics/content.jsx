@@ -90,7 +90,7 @@ export default function Panics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=598b4503db92f2c3f9c78ecfbe43828f&file=panics.bal",
+                "https://play.ballerina.io/?gist=dc4f1b426d637b5ea8685f7708e3dcfc&file=panics.bal",
                 "_blank"
               );
             }}
@@ -243,7 +243,7 @@ export default function Panics() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run panics.bal`}</span>
+              <span>{`\$ bal run panics.bal`}</span>
               <span>{`error("division by 0")`}</span>
               <span>{`error: division by 0`}</span>
               <span>{`        at panics:divide(panics.bal:8)`}</span>

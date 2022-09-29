@@ -92,7 +92,7 @@ export default function BacktickTemplates() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=393af5177831bf1d81e59a27273ec4d0&file=backtick_templates.bal",
+                "https://play.ballerina.io/?gist=0d77692872a6bd27b3952533e373f6e0&file=backtick_templates.bal",
                 "_blank"
               );
             }}
@@ -247,7 +247,7 @@ export default function BacktickTemplates() {
             <code className="d-flex flex-column">
               <span>{`\$ bal run backtick_templates.bal`}</span>
               <span>{`Hello, James`}</span>
-              <span>{`Backtick:`}</span>
+              <span>{`Backtick:\``}</span>
             </code>
           </pre>
         </Col>

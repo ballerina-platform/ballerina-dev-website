@@ -95,7 +95,7 @@ export default function SerdesSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f6875ef6392ff28a5f2c821c830259b9&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=37789ca1dacb689e94347627a1c5283e&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -248,7 +248,7 @@ export default function SerdesSimple() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run serdes_simple.bal`}</span>
+              <span>{`\$ bal run serdes_simple.bal`}</span>
               <span>{`{"id":7894,"name":"Liam","fees":24999.99}`}</span>
             </code>
           </pre>

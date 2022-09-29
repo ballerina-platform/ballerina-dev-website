@@ -83,7 +83,7 @@ export default function ErrorHandling() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5151d027b3db92dd66ef9dffd66df237&file=error_handling.bal",
+                "https://play.ballerina.io/?gist=6bf514bbf8702d14becf176d4935e7cc&file=error_handling.bal",
                 "_blank"
               );
             }}
@@ -236,7 +236,7 @@ export default function ErrorHandling() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`bal run error_handling.bal`}</span>
+              <span>{`\$ bal run error_handling.bal`}</span>
               <span>{`error: {ballerina/lang.int}NumberParsingError {"message":"'string' value 'hello' cannot be converted to 'int'"}`}</span>
             </code>
           </pre>

@@ -74,7 +74,7 @@ export default function ConstAndFinal() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=945548db4f1849da89c3b69ece331bf2&file=const_and_final.bal",
+                "https://play.ballerina.io/?gist=7bd815e95ffd180c982df38f8ef5ed31&file=const_and_final.bal",
                 "_blank"
               );
             }}

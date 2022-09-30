@@ -1,0 +1,17 @@
+{
+  "title": "Binding patterns in match statement",
+  "description": "This BBE demonstrates binding patterns in a `match` statement.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "spread operator",
+    "binding pattern"
+  ],
+  "permalink": "/learn/by-example/binding-patterns-in-match-statement",
+  "active": "binding-patterns-in-match-statement",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/binding-patterns-in-match-statement",
+    "/swan-lake/learn/by-example/binding-patterns-in-match-statement.html"
+  ]
+}

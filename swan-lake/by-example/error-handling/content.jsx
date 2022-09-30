@@ -83,7 +83,7 @@ export default function ErrorHandling() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6bf514bbf8702d14becf176d4935e7cc&file=error_handling.bal",
+                "https://play.ballerina.io/?gist=007e26d5bb7cd83c915d53c3e41990b2&file=error_handling.bal",
                 "_blank"
               );
             }}
@@ -246,8 +246,8 @@ export default function ErrorHandling() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Distinct object types"
-            href="/learn/by-example/distinct-object-types"
+            title="Binding patterns in match statement"
+            href="/learn/by-example/binding-patterns-in-match-statement"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -274,7 +274,7 @@ export default function ErrorHandling() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Distinct object types
+                  Binding patterns in match statement
                 </span>
               </div>
             </div>

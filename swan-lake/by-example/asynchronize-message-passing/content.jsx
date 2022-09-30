@@ -62,7 +62,7 @@ export default function AsynchronizeMessagePassing() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Async send</h1>
+      <h1>Asynchronize message passing</h1>
 
       <p>
         Use <code>-&gt; W</code> to send a message asynchronously to a{" "}
@@ -82,7 +82,7 @@ export default function AsynchronizeMessagePassing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9f586c2d93e4a8dc1729ef7f2dc537b0&file=asynchronize_message_passing.bal",
+                "https://play.ballerina.io/?gist=1f242728128301328ce4c57c32f847ad&file=asynchronize_message_passing.bal",
                 "_blank"
               );
             }}

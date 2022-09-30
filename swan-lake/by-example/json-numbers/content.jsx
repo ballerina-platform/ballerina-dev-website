@@ -101,7 +101,7 @@ export default function JsonNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d9fb0992d60287fada93a74dc16b9e22&file=json_numbers.bal",
+                "https://play.ballerina.io/?gist=8838c732ec89c39f5fa6607ef399d377&file=json_numbers.bal",
                 "_blank"
               );
             }}

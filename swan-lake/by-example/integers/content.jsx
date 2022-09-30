@@ -69,7 +69,7 @@ export default function Integers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9d0793a5a71d132037622016ace6711b&file=integers.bal",
+                "https://play.ballerina.io/?gist=1f06ee1b438daa844fab0bcc7106a0c2&file=integers.bal",
                 "_blank"
               );
             }}
@@ -231,7 +231,10 @@ export default function Integers() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Identifiers" href="/learn/by-example/identifiers">
+          <Link
+            title="Expression-oriented style"
+            href="/learn/by-example/expression-oriented-style"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -257,7 +260,7 @@ export default function Integers() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Identifiers
+                  Expression-oriented style
                 </span>
               </div>
             </div>

@@ -66,7 +66,7 @@ export default function SynchronizeMessagePassing() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Sync send</h1>
+      <h1>Synchronize message passing</h1>
 
       <p>
         Use <code>-&gt;&gt; W</code> to send a message synchronously to the{" "}
@@ -89,7 +89,7 @@ export default function SynchronizeMessagePassing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=30bb97684c52ea6495c307e2ea341492&file=synchronize_message_passing.bal",
+                "https://play.ballerina.io/?gist=21f2bb9b23092e5c16eefe0d06d7cc1b&file=synchronize_message_passing.bal",
                 "_blank"
               );
             }}

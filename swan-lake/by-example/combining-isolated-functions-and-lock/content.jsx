@@ -120,7 +120,7 @@ export default function CombiningIsolatedFunctionsAndLock() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=72ce305cd902531a5886308593a51fb5&file=combining_isolated_functions_and_lock.bal",
+                "https://play.ballerina.io/?gist=e802abcc2ca393c283b53d974460167a&file=combining_isolated_functions_and_lock.bal",
                 "_blank"
               );
             }}

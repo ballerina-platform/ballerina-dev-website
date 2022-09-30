@@ -368,10 +368,7 @@ export default function RawTemplates() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Querying with streams"
-            href="/learn/by-example/querying-with-streams"
-          >
+          <Link title="Query actions" href="/learn/by-example/query-actions">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -397,7 +394,7 @@ export default function RawTemplates() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Querying with streams
+                  Query actions
                 </span>
               </div>
             </div>

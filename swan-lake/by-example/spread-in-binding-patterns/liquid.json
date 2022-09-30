@@ -1,0 +1,17 @@
+{
+  "title": "Spread in binding patterns",
+  "description": "This BBE demonstrates the rest binding pattern in binding patterns.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "spread operator",
+    "binding pattern"
+  ],
+  "permalink": "/learn/by-example/spread-in-binding-patterns",
+  "active": "spread-in-binding-patterns",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/spread-in-binding-patterns",
+    "/swan-lake/learn/by-example/spread-in-binding-patterns.html"
+  ]
+}

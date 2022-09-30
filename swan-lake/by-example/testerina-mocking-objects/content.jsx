@@ -527,8 +527,8 @@ export default function TesterinaMockingObjects() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service path and resource path"
-            href="/learn/by-example/http-absolute-path-and-path"
+            title="Expression-oriented style"
+            href="/learn/by-example/expression-oriented-style"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -538,7 +538,7 @@ export default function TesterinaMockingObjects() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service path and resource path
+                  Expression-oriented style
                 </span>
               </div>
               <svg

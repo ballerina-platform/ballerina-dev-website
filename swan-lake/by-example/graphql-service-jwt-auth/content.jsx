@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-listener graphql:Listener securedEP = new(9090,
+listener graphql:Listener securedEP = new(4000,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",

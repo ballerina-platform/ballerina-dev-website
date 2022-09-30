@@ -291,8 +291,8 @@ export default function HttpAbsolutePathAndPath() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Object mocking"
-            href="/learn/by-example/testerina-mocking-objects"
+            title="Expression-oriented style"
+            href="/learn/by-example/expression-oriented-style"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -319,7 +319,7 @@ export default function HttpAbsolutePathAndPath() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Object mocking
+                  Expression-oriented style
                 </span>
               </div>
             </div>

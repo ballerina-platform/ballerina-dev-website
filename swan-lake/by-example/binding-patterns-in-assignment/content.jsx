@@ -118,7 +118,7 @@ export default function BindingPatternsInAssignment() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2b4020829d8694d68b8e9603f96c4296&file=binding_patterns_in_assignment.bal",
+                "https://play.ballerina.io/?gist=54c94d12b626bec18caf9a8974a6c8f3&file=binding_patterns_in_assignment.bal",
                 "_blank"
               );
             }}
@@ -294,8 +294,8 @@ export default function BindingPatternsInAssignment() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Dependent types"
-            href="/learn/by-example/dependent-types"
+            title="Distinct object types"
+            href="/learn/by-example/distinct-object-types"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -322,14 +322,17 @@ export default function BindingPatternsInAssignment() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dependent types
+                  Distinct object types
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Never type" href="/learn/by-example/never-type">
+          <Link
+            title="Spread in binding patterns"
+            href="/learn/by-example/spread-in-binding-patterns"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -338,7 +341,7 @@ export default function BindingPatternsInAssignment() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Never type
+                  Spread in binding patterns
                 </span>
               </div>
               <svg

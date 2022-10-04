@@ -78,7 +78,7 @@ export default function EnvironmentVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c5dce3f1b9233fd9e61ba944501c662c&file=environment_variables.bal",
+                "https://play.ballerina.io/?gist=a6ac385b0f6d2173c451e101ca87eeab&file=environment_variables.bal",
                 "_blank"
               );
             }}

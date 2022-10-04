@@ -128,7 +128,7 @@ export default function QueryingWithStreams() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3d5a2e3cf634cb2fee710688665d2847&file=querying_with_streams.bal",
+                "https://play.ballerina.io/?gist=635aa6a20e9214564af180e1bdfe0d46&file=querying_with_streams.bal",
                 "_blank"
               );
             }}
@@ -324,7 +324,7 @@ export default function QueryingWithStreams() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Raw templates" href="/learn/by-example/raw-templates">
+          <Link title="Query actions" href="/learn/by-example/query-actions">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -333,7 +333,7 @@ export default function QueryingWithStreams() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Raw templates
+                  Query actions
                 </span>
               </div>
               <svg

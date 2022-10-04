@@ -99,7 +99,7 @@ export default function DistinctObjectTypes() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=09a5ee7bafde803f3506de3e44b0b8e4&file=distinct_object_types.bal",
+                "https://play.ballerina.io/?gist=3a394ab6cf595145140b64ef0ef72055&file=distinct_object_types.bal",
                 "_blank"
               );
             }}
@@ -297,7 +297,10 @@ export default function DistinctObjectTypes() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Error handling" href="/learn/by-example/error-handling">
+          <Link
+            title="Binding patterns in assignment"
+            href="/learn/by-example/binding-patterns-in-assignment"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -306,7 +309,7 @@ export default function DistinctObjectTypes() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error handling
+                  Binding patterns in assignment
                 </span>
               </div>
               <svg

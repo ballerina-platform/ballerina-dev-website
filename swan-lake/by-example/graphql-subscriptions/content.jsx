@@ -341,7 +341,7 @@ export default function GraphqlSubscriptions() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Context" href="/learn/by-example/graphql-context">
+          <Link title="Interfaces" href="/learn/by-example/graphql-interfaces">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -350,7 +350,7 @@ export default function GraphqlSubscriptions() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Context
+                  Interfaces
                 </span>
               </div>
               <svg

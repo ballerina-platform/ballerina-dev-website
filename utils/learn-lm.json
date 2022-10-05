@@ -9,7 +9,7 @@
         {
             "dirName": "Learn the platform",
             "level": 1,
-            "position": 4,
+            "position": 5,
             "isDir": true,
             "url": "swan-lake/learn-the-platform",
             "id": "learn-the-platform",
@@ -545,7 +545,7 @@
         {
             "dirName": "Featured use cases",
             "level": 1,
-            "position": 3,
+            "position": 4,
             "isDir": true,
             "url": "swan-lake/featured-use-cases",
             "id": "featured-use-cases",
@@ -603,7 +603,7 @@
         {
             "dirName": "Learn the language",
             "level": 1,
-            "position": 2,
+            "position": 3,
             "isDir": true,
             "url": "swan-lake/learn-the-language",
             "id": "learn-the-language",
@@ -687,7 +687,7 @@
         {
             "dirName": "Get started",
             "level": 1,
-            "position": 1,
+            "position": 2,
             "isDir": true,
             "url": "swan-lake/get-started",
             "id": "get-started",
@@ -1307,7 +1307,7 @@
         {
             "dirName": "Why Ballerina",
             "level": 1,
-            "position": 0,
+            "position": 1,
             "isDir": true,
             "url": "swan-lake/why-ballerina",
             "id": "why-ballerina",

@@ -159,10 +159,15 @@ a {
 
 .mdContent h3,
 .policyContent h3,
-.downloads h3,
 .archiveContent h3 {
   margin-top: 40px;
   /* margin-top: 20px; */
+  color: #585a5e;
+  font-size: 1.3rem;
+  scroll-margin-top: 60px;
+}
+
+.downloads h3 {
   color: #585a5e;
   font-size: 1.3rem;
   scroll-margin-top: 60px;

@@ -61,42 +61,6 @@ export default function Downloads() {
                <Packs info={swanlake}/>
             </Row>
 
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
-               <Col xs={12}>
-               <div className={styles.releaseLinks} >
-                     <div className={styles.releaseNotes} >
-                        <p><a href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${swanlake.version}`}>RELEASE NOTES &gt;</a></p>
-                     </div>
-                     <div className={styles.releaseNotes} >
-                        <p><a href={`${prefix}/downloads/archived/#swan-lake-archived-versions`}>ARCHIVED VERSIONS &gt;</a></p>
-                     </div>
-                  </div>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
-               <Col xs={12}>
-                  <p>
-                     To <a href={`${prefix}/learn/install-ballerina/installation-options/#verify-the-installation`} className={styles.instructions}>verify that Ballerina was successfully installed</a>, execute 
-                     the <code className="highlighter-rouge language-plaintext">bal version<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> command 
-                     in the Terminal/Shell. For more information on installing Ballerina, see <a href={`${prefix}/learn/install-ballerina/installation-options/`} className={styles.instructions}>Installation options</a>.
-                  </p>
-                  <p>Next, install the Ballerina Visual Studio Code extension.</p>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.downloadsVSCode} pageContentRow`}>
-               <Col xs={12} sm={12} md={12} lg={4}>
-                  <h3 className={styles.dVSCode} style={vscodeIcon}>Visual Studio Code</h3>
-                  <a id="packWindows" href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" 
-                  className={styles.cDownload} data-download="downloads" 
-                  target="_blank" rel="noreferrer">
-                     <div className={styles.cSize}>Ballerina Extension<span id="packWindowsName"></span></div>
-                  </a>
-                  <br/>
-                  <p>Now, you are all set to <a href={`${prefix}/learn/get-started-with-ballerina/`}>get started with Ballerina.</a></p>
-               </Col>
-            </Row>
 
             <Row className={`${styles.downloadsOther} pageContentRow`}>
                <Col xs={12} sm={12} md={6} lg={6}>
@@ -129,6 +93,54 @@ export default function Downloads() {
                         </table>
                      </div>
                   </div>
+               </Col>
+            </Row>
+
+            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+               <Col xs={12}>
+                  <p>
+                     To <a href={`${prefix}/learn/install-ballerina/installation-options/#verify-the-installation`} className={styles.instructions}>verify that Ballerina was successfully installed</a>, execute 
+                     the <code className="highlighter-rouge language-plaintext">bal version<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> command 
+                     in the Terminal/Shell. For more information on installing Ballerina, see <a href={`${prefix}/learn/install-ballerina/installation-options/`} className={styles.instructions}>Installation options</a>.
+                  </p>
+               </Col>
+            </Row>
+
+            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+               <Col xs={12}>
+               <div className={styles.releaseLinks} >
+                     <div className={styles.releaseNotes} >
+                        <p><a href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${swanlake.version}`}>RELEASE NOTES &gt;</a></p>
+                     </div>
+                     <div className={styles.releaseNotes} >
+                        <p><a href={`${prefix}/downloads/archived/#swan-lake-archived-versions`}>ARCHIVED VERSIONS &gt;</a></p>
+                     </div>
+                  </div>
+               </Col>
+            </Row>
+
+            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+               <Col xs={12}>
+                  <h2 id="swanlake"><span>Visual Studio Code extension</span></h2>
+               </Col>
+            </Row>
+
+            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+               <Col xs={12}>
+                  <p>Next, install the Ballerina Visual Studio Code extension.</p>
+               </Col>
+            </Row>
+
+            <Row className={`${styles.downloadsVSCode} pageContentRow`}>
+               <Col xs={12} sm={12} md={12} lg={4}>
+                  <h3 className={styles.dVSCode} style={vscodeIcon}>Visual Studio Code</h3>
+                  <a id="packWindows" href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" 
+                  className={styles.cDownload} data-download="downloads" 
+                  target="_blank" rel="noreferrer">
+                     <div className={styles.cSize}>Ballerina Extension<span id="packWindowsName"></span></div>
+                  </a>
+                  <br/>
+                  <p>Now, you are all set to <a href={`${prefix}/learn/get-started-with-ballerina/`}>get started with Ballerina.</a></p>
                </Col>
             </Row>
          </Col>

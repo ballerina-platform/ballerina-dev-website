@@ -101,7 +101,7 @@ export default function IoCsvDatamapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ee8fa4f8ed9944eeea24f17f75bfd5c4&file=io_csv_datamapping.bal",
+                "https://play.ballerina.io/?gist=86bffd5ecd80311f2a06d96b96f0cf24&file=io_csv_datamapping.bal",
                 "_blank"
               );
             }}
@@ -125,7 +125,7 @@ export default function IoCsvDatamapping() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/io-csv-datamapping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/io-csv-datamapping",
                 "_blank"
               );
             }}

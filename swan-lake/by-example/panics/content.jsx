@@ -90,7 +90,7 @@ export default function Panics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=750e231f3c144fc1981c902ed2f2a88b&file=panics.bal",
+                "https://play.ballerina.io/?gist=1162d20d5ba87f9f69502fc4165e7ae5&file=panics.bal",
                 "_blank"
               );
             }}
@@ -114,7 +114,7 @@ export default function Panics() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/panics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/panics",
                 "_blank"
               );
             }}

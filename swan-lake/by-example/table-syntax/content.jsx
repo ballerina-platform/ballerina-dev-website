@@ -120,7 +120,7 @@ export default function TableSyntax() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=55a1e9c7d52b7838a199b05bf54536f7&file=table_syntax.bal",
+                "https://play.ballerina.io/?gist=2323dbfd7a37d59f8db58baf7cd7dfce&file=table_syntax.bal",
                 "_blank"
               );
             }}
@@ -144,7 +144,7 @@ export default function TableSyntax() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/table-syntax",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/table-syntax",
                 "_blank"
               );
             }}

@@ -85,7 +85,7 @@ export default function DestructuringRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c4c320d777f651ea32e1743d744c757c&file=destructuring_records.bal",
+                "https://play.ballerina.io/?gist=c044e48001b31b773af007a9f5c8167f&file=destructuring_records.bal",
                 "_blank"
               );
             }}
@@ -109,7 +109,7 @@ export default function DestructuringRecords() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/destructuring-records",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/destructuring-records",
                 "_blank"
               );
             }}

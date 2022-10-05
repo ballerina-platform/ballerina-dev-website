@@ -136,7 +136,7 @@ export default function Rollback() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a92941835bf5c2d1a7eca9b31cef7d00&file=rollback.bal",
+                "https://play.ballerina.io/?gist=2588f7b2061736f591f549fabccb5d7c&file=rollback.bal",
                 "_blank"
               );
             }}
@@ -160,7 +160,7 @@ export default function Rollback() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/rollback",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/rollback",
                 "_blank"
               );
             }}

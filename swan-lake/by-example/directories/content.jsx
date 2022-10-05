@@ -98,7 +98,7 @@ export default function Directories() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cf7f6e5ed92422423bf5126ac35d8523&file=directories.bal",
+                "https://play.ballerina.io/?gist=45d0fd7cc5ed6353cd4f3d8a9ef1ae4b&file=directories.bal",
                 "_blank"
               );
             }}
@@ -122,7 +122,7 @@ export default function Directories() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/directories",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/directories",
                 "_blank"
               );
             }}

@@ -159,7 +159,7 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-service-basic-auth-ldap-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/grpc-service-basic-auth-ldap-user-store",
                 "_blank"
               );
             }}
@@ -364,7 +364,7 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-service-basic-auth-ldap-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/grpc-service-basic-auth-ldap-user-store",
                 "_blank"
               );
             }}

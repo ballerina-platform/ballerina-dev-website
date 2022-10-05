@@ -90,7 +90,7 @@ export default function MatchStatementWithMaps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c6a5a6b374b2ab26aa2fc7627a08e80c&file=match_statement_with_maps.bal",
+                "https://play.ballerina.io/?gist=7ab0d34a6a7594b8f963d7a125c0885e&file=match_statement_with_maps.bal",
                 "_blank"
               );
             }}
@@ -114,7 +114,7 @@ export default function MatchStatementWithMaps() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/match-statement-with-maps",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/match-statement-with-maps",
                 "_blank"
               );
             }}

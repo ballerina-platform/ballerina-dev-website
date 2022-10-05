@@ -89,7 +89,7 @@ export default function SynchronizeMessagePassing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bce59b795363fc013572a8ac7aa2eebb&file=synchronize_message_passing.bal",
+                "https://play.ballerina.io/?gist=d01f8bb4f212044ac0bb278c88bacb8b&file=synchronize_message_passing.bal",
                 "_blank"
               );
             }}
@@ -113,7 +113,7 @@ export default function SynchronizeMessagePassing() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/synchronize-message-passing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/synchronize-message-passing",
                 "_blank"
               );
             }}

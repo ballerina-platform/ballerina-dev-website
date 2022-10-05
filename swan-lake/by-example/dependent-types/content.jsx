@@ -77,7 +77,7 @@ export default function DependentTypes() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=982150207fc3db0b01bf134b8cfa67ca&file=dependent_types.bal",
+                "https://play.ballerina.io/?gist=7689b51b5c38a47d6ecca21d0986f1dc&file=dependent_types.bal",
                 "_blank"
               );
             }}
@@ -276,10 +276,7 @@ export default function DependentTypes() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Binding patterns in assignment"
-            href="/learn/by-example/binding-patterns-in-assignment"
-          >
+          <Link title="Never type" href="/learn/by-example/never-type">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -288,7 +285,7 @@ export default function DependentTypes() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Binding patterns in assignment
+                  Never type
                 </span>
               </div>
               <svg

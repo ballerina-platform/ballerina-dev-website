@@ -32,7 +32,6 @@ import BuiltInIntegerSubtypes from "./built-in-integer-subtypes/content.jsx";
 import BuiltInStringSubtype from "./built-in-string-subtype/content.jsx";
 import EnsureTypeFunction from "./ensureType-function/content.jsx";
 import DependentTypes from "./dependent-types/content.jsx";
-import BindingPatternsInAssignment from "./binding-patterns-in-assignment/content.jsx";
 import NeverType from "./never-type/content.jsx";
 import Arrays from "./arrays/content.jsx";
 import Tuples from "./tuples/content.jsx";
@@ -54,6 +53,9 @@ import InitReturnType from "./init-return-type/content.jsx";
 import ObjectTypes from "./object-types/content.jsx";
 import ObjectTypeInclusion from "./object-type-inclusion/content.jsx";
 import DistinctObjectTypes from "./distinct-object-types/content.jsx";
+import BindingPatternsInAssignment from "./binding-patterns-in-assignment/content.jsx";
+import SpreadInBindingPatterns from "./spread-in-binding-patterns/content.jsx";
+import BindingPatternsInMatchStatement from "./binding-patterns-in-match-statement/content.jsx";
 import ErrorHandling from "./error-handling/content.jsx";
 import CheckExpression from "./check-expression/content.jsx";
 import ErrorSubtyping from "./error-subtyping/content.jsx";
@@ -87,6 +89,7 @@ import CreatingTablesWithQuery from "./creating-tables-with-query/content.jsx";
 import JoinClause from "./join-clause/content.jsx";
 import StreamType from "./stream-type/content.jsx";
 import QueryingWithStreams from "./querying-with-streams/content.jsx";
+import QueryActions from "./query-actions/content.jsx";
 import RawTemplates from "./raw-templates/content.jsx";
 import BacktickTemplates from "./backtick-templates/content.jsx";
 import XmlTemplates from "./xml-templates/content.jsx";
@@ -150,6 +153,7 @@ import TesterinaGuaranteeTestExecutionOrder from "./testerina-guarantee-test-exe
 import TesterinaGroupTests from "./testerina-group-tests/content.jsx";
 import TesterinaMockingFunctions from "./testerina-mocking-functions/content.jsx";
 import TesterinaMockingObjects from "./testerina-mocking-objects/content.jsx";
+import ExpressionOrientedStyle from "./expression-oriented-style/content.jsx";
 import HttpAbsolutePathAndPath from "./http-absolute-path-and-path/content.jsx";
 import HttpDataBinding from "./http-data-binding/content.jsx";
 import HttpDefaultResource from "./http-default-resource/content.jsx";
@@ -202,6 +206,7 @@ import GraphqlReturningServiceObjects from "./graphql-returning-service-objects/
 import GraphqlInputTypes from "./graphql-input-types/content.jsx";
 import GraphqlMutations from "./graphql-mutations/content.jsx";
 import GraphqlSubscriptions from "./graphql-subscriptions/content.jsx";
+import GraphqlInterfaces from "./graphql-interfaces/content.jsx";
 import GraphqlContext from "./graphql-context/content.jsx";
 import GraphqlFileUpload from "./graphql-file-upload/content.jsx";
 import GraphqlDocumentation from "./graphql-documentation/content.jsx";
@@ -388,7 +393,6 @@ const BBEs = {
   BuiltInStringSubtype,
   EnsureTypeFunction,
   DependentTypes,
-  BindingPatternsInAssignment,
   NeverType,
   Arrays,
   Tuples,
@@ -410,6 +414,9 @@ const BBEs = {
   ObjectTypes,
   ObjectTypeInclusion,
   DistinctObjectTypes,
+  BindingPatternsInAssignment,
+  SpreadInBindingPatterns,
+  BindingPatternsInMatchStatement,
   ErrorHandling,
   CheckExpression,
   ErrorSubtyping,
@@ -443,6 +450,7 @@ const BBEs = {
   JoinClause,
   StreamType,
   QueryingWithStreams,
+  QueryActions,
   RawTemplates,
   BacktickTemplates,
   XmlTemplates,
@@ -506,6 +514,7 @@ const BBEs = {
   TesterinaGroupTests,
   TesterinaMockingFunctions,
   TesterinaMockingObjects,
+  ExpressionOrientedStyle,
   HttpAbsolutePathAndPath,
   HttpDataBinding,
   HttpDefaultResource,
@@ -558,6 +567,7 @@ const BBEs = {
   GraphqlInputTypes,
   GraphqlMutations,
   GraphqlSubscriptions,
+  GraphqlInterfaces,
   GraphqlContext,
   GraphqlFileUpload,
   GraphqlDocumentation,

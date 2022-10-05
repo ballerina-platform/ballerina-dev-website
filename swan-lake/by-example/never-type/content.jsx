@@ -94,7 +94,7 @@ export default function NeverType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=14a68eca4389de6cd1415ce042b1397c&file=never_type.bal",
+                "https://play.ballerina.io/?gist=fff38efb3604c2c7f15732a6a8010c63&file=never_type.bal",
                 "_blank"
               );
             }}
@@ -262,8 +262,8 @@ export default function NeverType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Binding patterns in assignment"
-            href="/learn/by-example/binding-patterns-in-assignment"
+            title="Dependent types"
+            href="/learn/by-example/dependent-types"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -290,7 +290,7 @@ export default function NeverType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Binding patterns in assignment
+                  Dependent types
                 </span>
               </div>
             </div>

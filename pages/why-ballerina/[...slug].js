@@ -131,7 +131,7 @@ export default function PostPage({ frontmatter, content, id, slug }) {
       <Layout>
         <Col sm={3} xxl={2} className="leftNav d-none d-sm-block">
           <LeftNav
-            launcher="why-bal"
+            launcher="learn"
             id={id}
             mainDir="why-ballerina"
             Toc={LearnToc}
@@ -145,7 +145,7 @@ export default function PostPage({ frontmatter, content, id, slug }) {
             <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
               <LeftNav
-                launcher="why-bal"
+                launcher="learn"
                 id={id}
                 mainDir="why-ballerina"
                 Toc={LearnToc}

@@ -92,7 +92,7 @@ export default function JoinClause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b377a7fc520b042f435b511b1c65da3e&file=join_clause.bal",
+                "https://play.ballerina.io/?gist=51d3f73bbe24454c595632efa9243aad&file=join_clause.bal",
                 "_blank"
               );
             }}
@@ -116,7 +116,7 @@ export default function JoinClause() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/join-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/join-clause",
                 "_blank"
               );
             }}

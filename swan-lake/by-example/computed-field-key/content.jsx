@@ -82,7 +82,7 @@ export default function ComputedFieldKey() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d434c4eab10b73cb8b1ae76c3a643a44&file=computed_field_key.bal",
+                "https://play.ballerina.io/?gist=47aadbb8aac4117f506b15a52bc159d6&file=computed_field_key.bal",
                 "_blank"
               );
             }}
@@ -106,7 +106,7 @@ export default function ComputedFieldKey() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/computed-field-key",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/computed-field-key",
                 "_blank"
               );
             }}

@@ -81,7 +81,7 @@ export default function XmlFromJsonConversion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=196edf2ea99ec4387e0fa3926c224f8a&file=xml_from_json_conversion.bal",
+                "https://play.ballerina.io/?gist=591c917bed50f687d533e869d2a634b9&file=xml_from_json_conversion.bal",
                 "_blank"
               );
             }}
@@ -105,7 +105,7 @@ export default function XmlFromJsonConversion() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/xml-from-json-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/xml-from-json-conversion",
                 "_blank"
               );
             }}

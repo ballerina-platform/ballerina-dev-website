@@ -78,7 +78,7 @@ export default function IncludedRecordParameters() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5cbdd14424a0b05d839df026e82d882e&file=included_record_parameters.bal",
+                "https://play.ballerina.io/?gist=d90500daebaf078640f889449d3e55be&file=included_record_parameters.bal",
                 "_blank"
               );
             }}
@@ -102,7 +102,7 @@ export default function IncludedRecordParameters() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/included-record-parameters",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/included-record-parameters",
                 "_blank"
               );
             }}

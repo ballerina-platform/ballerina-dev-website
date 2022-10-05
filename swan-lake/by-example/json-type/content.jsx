@@ -85,7 +85,7 @@ export default function JsonType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=99edefc90bcd278957c6da21ebeedb44&file=json_type.bal",
+                "https://play.ballerina.io/?gist=00b22ab8a7fbb4b4b8c477ade4a9a1bf&file=json_type.bal",
                 "_blank"
               );
             }}
@@ -109,7 +109,7 @@ export default function JsonType() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/json-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/json-type",
                 "_blank"
               );
             }}

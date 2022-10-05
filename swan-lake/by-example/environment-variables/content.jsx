@@ -78,7 +78,7 @@ export default function EnvironmentVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a6ac385b0f6d2173c451e101ca87eeab&file=environment_variables.bal",
+                "https://play.ballerina.io/?gist=b61d00e5afbc7f2fc1bbb8080288b0f8&file=environment_variables.bal",
                 "_blank"
               );
             }}
@@ -102,7 +102,7 @@ export default function EnvironmentVariables() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/environment-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/environment-variables",
                 "_blank"
               );
             }}

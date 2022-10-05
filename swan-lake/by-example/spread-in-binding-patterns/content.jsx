@@ -74,7 +74,7 @@ export default function SpreadInBindingPatterns() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f4fb50fc8ddaa61e8c4a1ad87e51a710&file=spread_in_binding_patterns.bal",
+                "https://play.ballerina.io/?gist=21360ea897d5669a3c86339c3880a531&file=spread_in_binding_patterns.bal",
                 "_blank"
               );
             }}
@@ -98,7 +98,7 @@ export default function SpreadInBindingPatterns() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/spread-in-binding-patterns",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/spread-in-binding-patterns",
                 "_blank"
               );
             }}

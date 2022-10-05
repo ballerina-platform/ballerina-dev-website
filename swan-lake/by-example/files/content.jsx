@@ -102,7 +102,7 @@ export default function Files() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=917d1e39b6fe520f03ea29fba06fb33a&file=files.bal",
+                "https://play.ballerina.io/?gist=a2a5302c21391ed0fb0e6605bb5d7cae&file=files.bal",
                 "_blank"
               );
             }}
@@ -126,7 +126,7 @@ export default function Files() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/files",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/files",
                 "_blank"
               );
             }}

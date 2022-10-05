@@ -96,7 +96,7 @@ export default function QueryActions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=07377ba23be2143add37bd3d9a9516e0&file=query_actions.bal",
+                "https://play.ballerina.io/?gist=d7c7a4f577ffd3104705d270560f9e69&file=query_actions.bal",
                 "_blank"
               );
             }}
@@ -120,7 +120,7 @@ export default function QueryActions() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/query-actions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/query-actions",
                 "_blank"
               );
             }}

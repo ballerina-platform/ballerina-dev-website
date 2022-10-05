@@ -91,7 +91,7 @@ export default function QueryingTables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f00192a0338d2bf79b0abea7b9d16c20&file=querying_tables.bal",
+                "https://play.ballerina.io/?gist=39c089ffcb05d8f997a9ab747fb54c48&file=querying_tables.bal",
                 "_blank"
               );
             }}
@@ -115,7 +115,7 @@ export default function QueryingTables() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/querying-tables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/querying-tables",
                 "_blank"
               );
             }}

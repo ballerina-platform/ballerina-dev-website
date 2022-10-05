@@ -80,7 +80,7 @@ export default function DestructureTuples() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5c398904975227ff2b2bf70de9ea169c&file=destructure_tuples.bal",
+                "https://play.ballerina.io/?gist=eb302d4e21e64d36028c0e1d6fe672e3&file=destructure_tuples.bal",
                 "_blank"
               );
             }}
@@ -104,7 +104,7 @@ export default function DestructureTuples() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/destructure-tuples",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/destructure-tuples",
                 "_blank"
               );
             }}

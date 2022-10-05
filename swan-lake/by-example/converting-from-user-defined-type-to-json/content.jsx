@@ -90,7 +90,7 @@ export default function ConvertingFromUserDefinedTypeToJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c44113f811c9adbb36c68654dfd2bb48&file=converting_from_user_defined_type_to_json.bal",
+                "https://play.ballerina.io/?gist=efb075b7961103699f2e0d742c657e75&file=converting_from_user_defined_type_to_json.bal",
                 "_blank"
               );
             }}
@@ -114,7 +114,7 @@ export default function ConvertingFromUserDefinedTypeToJson() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/converting-from-user-defined-type-to-json",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/converting-from-user-defined-type-to-json",
                 "_blank"
               );
             }}

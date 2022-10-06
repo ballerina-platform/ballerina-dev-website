@@ -125,21 +125,14 @@ export default function Downloads() {
                </Col>
             </Row>
 
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+            <Row className={`${styles.downloadsVSCode} pageContentRow`}>
                <Col xs={12}>
-                  <p>Next, install the Ballerina Visual Studio Code extension.</p>
+                  <p>Next, install the Ballerina Visual Studio Code extension from the <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" target="_blank">VS Code marketplace.</a></p>
                </Col>
             </Row>
 
             <Row className={`${styles.downloadsVSCode} pageContentRow`}>
                <Col xs={12} sm={12} md={12} lg={4}>
-                  <h3 className={styles.dVSCode} style={vscodeIcon}>Visual Studio Code</h3>
-                  <a id="packWindows" href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" 
-                  className={styles.cDownload} data-download="downloads" 
-                  target="_blank" rel="noreferrer">
-                     <div className={styles.cSize}>Ballerina Extension<span id="packWindowsName"></span></div>
-                  </a>
-                  <br/>
                   <p>Now, you are all set to <a href={`${prefix}/learn/get-started-with-ballerina/`}>get started with Ballerina.</a></p>
                </Col>
             </Row>

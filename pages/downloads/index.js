@@ -61,6 +61,18 @@ export default function Downloads() {
                <Packs info={swanlake}/>
             </Row>
 
+            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+               <Col xs={12}>
+               <div className={styles.releaseLinks} >
+                     <div className={styles.releaseNotes} >
+                        <p><a href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${swanlake.version}`}>RELEASE NOTES &gt;</a></p>
+                     </div>
+                     <div className={styles.releaseNotes} >
+                        <p><a href={`${prefix}/downloads/archived/#swan-lake-archived-versions`}>ARCHIVED VERSIONS &gt;</a></p>
+                     </div>
+                  </div>
+               </Col>
+            </Row>
 
             <Row className={`${styles.downloadsOther} pageContentRow`}>
                <Col xs={12} sm={12} md={6} lg={6}>
@@ -108,26 +120,24 @@ export default function Downloads() {
 
             <Row className={`${styles.donwloadVersion} pageContentRow`}>
                <Col xs={12}>
-               <div className={styles.releaseLinks} >
-                     <div className={styles.releaseNotes} >
-                        <p><a href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${swanlake.version}`}>RELEASE NOTES &gt;</a></p>
-                     </div>
-                     <div className={styles.releaseNotes} >
-                        <p><a href={`${prefix}/downloads/archived/#swan-lake-archived-versions`}>ARCHIVED VERSIONS &gt;</a></p>
-                     </div>
-                  </div>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
-               <Col xs={12}>
                   <h2 id="swanlake"><span>Visual Studio Code extension</span></h2>
                </Col>
             </Row>
 
             <Row className={`${styles.downloadsVSCode} pageContentRow`}>
                <Col xs={12}>
-                  <p>Next, install the Ballerina Visual Studio Code extension from the <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" target="_blank" rel="noreferrer">VS Code marketplace.</a></p>
+                  <p>Next, install the Ballerina Visual Studio Code extension from the VS Code marketplace.</p>
+               </Col>
+            </Row>
+
+            <Row className={`${styles.downloadsVSCode} pageContentRow`}>
+               <Col xs={12} sm={12} md={12} lg={4}>
+                  <h3 className={styles.dVSCode} style={vscodeIcon}>Visual Studio Code</h3>
+                  <a id="packWindows" href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" 
+                  className={styles.cDownload} data-download="downloads" 
+                  target="_blank" rel="noreferrer">
+                     <div className={styles.cSize}>Ballerina extension<span id="packWindowsName"></span></div>
+                  </a>
                </Col>
             </Row>
 

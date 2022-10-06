@@ -96,7 +96,7 @@ export default function Http11To20ProtocolSwitch() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-1-1-to-2-0-protocol-switch",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/http-1-1-to-2-0-protocol-switch",
                 "_blank"
               );
             }}

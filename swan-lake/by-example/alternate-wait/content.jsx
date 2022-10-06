@@ -87,7 +87,7 @@ export default function AlternateWait() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ac148cdc4959ce65b531540b27ea907c&file=alternate_wait.bal",
+                "https://play.ballerina.io/?gist=14531e8dfda223f532ce25c6b409b12b&file=alternate_wait.bal",
                 "_blank"
               );
             }}
@@ -111,7 +111,7 @@ export default function AlternateWait() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/alternate-wait",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/alternate-wait",
                 "_blank"
               );
             }}

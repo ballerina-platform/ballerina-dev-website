@@ -73,7 +73,7 @@ export default function EnsureTypeFunction() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=74efbd596fe20707e66b1033ec5ac033&file=ensureType_function.bal",
+                "https://play.ballerina.io/?gist=a00d148e120f96ed4662d87eca526c98&file=ensureType_function.bal",
                 "_blank"
               );
             }}
@@ -97,7 +97,7 @@ export default function EnsureTypeFunction() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/ensureType-function",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/ensureType-function",
                 "_blank"
               );
             }}

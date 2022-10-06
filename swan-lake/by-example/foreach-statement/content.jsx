@@ -85,7 +85,7 @@ export default function ForeachStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=be5344c49f03260ebe38de196055ad92&file=foreach_statement.bal",
+                "https://play.ballerina.io/?gist=fabd8ca550a1454767f203e57ea72298&file=foreach_statement.bal",
                 "_blank"
               );
             }}
@@ -109,7 +109,7 @@ export default function ForeachStatement() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/foreach-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/foreach-statement",
                 "_blank"
               );
             }}

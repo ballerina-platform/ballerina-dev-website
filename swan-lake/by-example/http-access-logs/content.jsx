@@ -76,7 +76,7 @@ export default function HttpAccessLogs() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-access-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/http-access-logs",
                 "_blank"
               );
             }}

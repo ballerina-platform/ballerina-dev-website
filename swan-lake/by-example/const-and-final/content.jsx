@@ -74,7 +74,7 @@ export default function ConstAndFinal() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d8202b477b25c85981fb2df38b8a9b95&file=const_and_final.bal",
+                "https://play.ballerina.io/?gist=d44ab83f80084a32efd3145da25c7a74&file=const_and_final.bal",
                 "_blank"
               );
             }}
@@ -98,7 +98,7 @@ export default function ConstAndFinal() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/const-and-final",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/const-and-final",
                 "_blank"
               );
             }}

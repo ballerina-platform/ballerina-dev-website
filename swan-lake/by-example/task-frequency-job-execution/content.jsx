@@ -94,7 +94,7 @@ export default function TaskFrequencyJobExecution() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bf31ea280a39be22e88acac6fbf84fa3&file=task_frequency_job_execution.bal",
+                "https://play.ballerina.io/?gist=f1c0b57686d2e3f0b65edf73439c8d20&file=task_frequency_job_execution.bal",
                 "_blank"
               );
             }}
@@ -118,7 +118,7 @@ export default function TaskFrequencyJobExecution() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/task-frequency-job-execution",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/task-frequency-job-execution",
                 "_blank"
               );
             }}

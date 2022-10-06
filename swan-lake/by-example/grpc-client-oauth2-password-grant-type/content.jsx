@@ -136,7 +136,7 @@ export default function GrpcClientOauth2PasswordGrantType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-oauth2-password-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/grpc-client-oauth2-password-grant-type",
                 "_blank"
               );
             }}
@@ -340,7 +340,7 @@ export default function GrpcClientOauth2PasswordGrantType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-oauth2-password-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/grpc-client-oauth2-password-grant-type",
                 "_blank"
               );
             }}

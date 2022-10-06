@@ -115,7 +115,7 @@ export default function BindingPatternsInMatchStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8c6558ed6312a99c5b194dccf9b1a066&file=binding_patterns_in_match_statement.bal",
+                "https://play.ballerina.io/?gist=745ecb1147e75b1610beea6154071f02&file=binding_patterns_in_match_statement.bal",
                 "_blank"
               );
             }}
@@ -139,7 +139,7 @@ export default function BindingPatternsInMatchStatement() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/binding-patterns-in-match-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/binding-patterns-in-match-statement",
                 "_blank"
               );
             }}

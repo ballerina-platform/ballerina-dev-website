@@ -171,7 +171,7 @@ export default function XmlOperations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=856e14e22ad6fa486891a4b3a36140fa&file=xml_operations.bal",
+                "https://play.ballerina.io/?gist=13f4621edc4bf94d52d9e0bab646d457&file=xml_operations.bal",
                 "_blank"
               );
             }}
@@ -195,7 +195,7 @@ export default function XmlOperations() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/xml-operations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/xml-operations",
                 "_blank"
               );
             }}

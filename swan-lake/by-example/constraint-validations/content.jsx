@@ -112,7 +112,7 @@ export default function ConstraintValidations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f9c1b5a3194a3739e7961886f5793353&file=constraint_validations.bal",
+                "https://play.ballerina.io/?gist=ed7ad2d9293ecbd97c92761b73b5df09&file=constraint_validations.bal",
                 "_blank"
               );
             }}
@@ -136,7 +136,7 @@ export default function ConstraintValidations() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/constraint-validations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/constraint-validations",
                 "_blank"
               );
             }}

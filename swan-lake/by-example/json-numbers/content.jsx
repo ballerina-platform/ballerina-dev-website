@@ -101,7 +101,7 @@ export default function JsonNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=649095cb491594943ed064bd34c6a3bb&file=json_numbers.bal",
+                "https://play.ballerina.io/?gist=4daaf91f5ed5677b851fe3d03f5abafe&file=json_numbers.bal",
                 "_blank"
               );
             }}
@@ -125,7 +125,7 @@ export default function JsonNumbers() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/json-numbers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/json-numbers",
                 "_blank"
               );
             }}

@@ -72,7 +72,7 @@ export default function ConfigurableVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3c1520b5d1f01e185d644d9bec9111b9&file=configurable_variables.bal",
+                "https://play.ballerina.io/?gist=80ffb14ea1c854b5ded15a85714f86ee&file=configurable_variables.bal",
                 "_blank"
               );
             }}
@@ -96,7 +96,7 @@ export default function ConfigurableVariables() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/configurable-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/configurable-variables",
                 "_blank"
               );
             }}

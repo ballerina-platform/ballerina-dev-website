@@ -89,7 +89,7 @@ export default function OpenRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e39fe31f308861e6079f631c6601d1f3&file=open_records.bal",
+                "https://play.ballerina.io/?gist=335b0a66908301106136998d152c5117&file=open_records.bal",
                 "_blank"
               );
             }}
@@ -113,7 +113,7 @@ export default function OpenRecords() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/open-records",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/open-records",
                 "_blank"
               );
             }}

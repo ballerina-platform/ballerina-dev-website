@@ -127,7 +127,7 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadsVSCode} pageContentRow`}>
                <Col xs={12}>
-                  <p>Next, install the Ballerina Visual Studio Code extension from the <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" target="_blank">VS Code marketplace.</a></p>
+                  <p>Next, install the Ballerina Visual Studio Code extension from the <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" target="_blank" rel="noreferrer">VS Code marketplace.</a></p>
                </Col>
             </Row>
 

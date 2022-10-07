@@ -41,7 +41,7 @@ export default function Discord() {
             </p>
             
             <p className={styles.member}>
-              Join the <a href="https://discord.com/invite/wAJYFbMrG2" target="_blank" rel="noreferrer" passHref>Discord community</a>
+              Join the <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref>Discord community</a>
             </p>
           </Col>
 

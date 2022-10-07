@@ -52,7 +52,7 @@
                          </a>
                        </li>
                        <li>
-                         <a className={styles.footerLinkSM} href="https://discord.com/invite/wAJYFbMrG2" target="_blank" rel="noreferrer" passHref title="Discord">
+                         <a className={styles.footerLinkSM} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref title="Discord">
                            <Image src={`${prefix}/images/discord-grey.svg`} width={17} height={17} alt="Discord" />
                          </a>
                        </li>

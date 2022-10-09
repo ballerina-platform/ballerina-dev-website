@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R4 preview 2022-10-08</h1>
+<h1>Ballerina Language Specification, 2022R4 preview 2022-10-09</h1>
 <p>
 Primary contributors:
 </p>
@@ -11475,6 +11475,18 @@ given below.
 Note that <code>ReUnicodeGeneralCategoryAbbr</code> omits <code>Cs</code>, which
 is used for surrogate code points, since these cannot occur in a Ballerina
 string.
+</p>
+<p>
+The abstract parsing function that is part of the data tag definition behaves as
+follows. The argument string values are concatenated into a single string with a
+distinct token inserted between them to represent the interpolation point. The
+resulting string is parsed against the above <code>RegExp</code> grammar with
+the interpolation point token being an additional possibility allowed for
+<code>ReAtom</code>. The abstract parsing function returns a function that will
+behave equivalently to parsing the original string with
+<code>(?:<var>r<sub>i</sub></var>)</code> inserted at interpolation point
+<code><var>i</var></code>, where <code><var>r</var><sub>i</sub></code> is the
+string representation of the interpolated regular expression.
 </p>
 <p>
 The most rigorous specification of the semantics of Perl-style regular

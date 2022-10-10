@@ -13554,6 +13554,7 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <section>
 <h3>Summary of changes from 2022R3 to 2022R4</h3>
 <ol>
+<li>Regular expressions have been added as a new data type.</li>
 <li>A <code>byte-array-literal</code> can construct a read-only value.</li>
 <li>An optional semi-colon is now allowed after top-level definitions and
 method definitions that are currentlty terminated by <code>}</code>.</li>

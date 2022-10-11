@@ -38,25 +38,15 @@ const TopNav = (props) => {
         <Container fluid className={(launcher === 'home') ? styles.toggleFloat : null}>
         {(launcher !== "home") ?
           <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-            
-              <Image src={`${prefix}/images/ballerina-logo.svg`} height={28} width={150} alt="Ballerina Logo" />
-              
-            
+              <Image src={`${prefix}/images/ballerina-logo.svg`} height={28} width={150} alt="Ballerina Logo" />  
           </Navbar.Brand>
           : null
           }
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll" className={styles.navItems}>
-            {/* <Nav
-              className="topNav ms-auto my-2 my-lg-0"
-              style={{ maxHeight: '100px' }}
-              navbarScroll
-            > */}
             <Nav
               className={`${styles.topNav} ms-auto my-2 my-lg-0`}
-              style={{ maxHeight: '100px' }}
-              navbarScroll
-            >
+              navbarScroll >
               <Nav.Link className={(launcher === 'downloads') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/downloads`}>Download</Nav.Link>
               <Nav.Link className={styles.navItem} href="https://play.ballerina.io/" target='_blank' rel="noreferrer">Playground</Nav.Link>
               <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>

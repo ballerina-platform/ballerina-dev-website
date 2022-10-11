@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R4 preview 2022-10-10</h1>
+<h1>Ballerina Language Specification, 2022R4 preview 2022-10-11</h1>
 <p>
 Primary contributors:
 </p>
@@ -8595,11 +8595,6 @@ class="grammar"><dfn>client-decl-stmt</dfn> := <abbr>client-decl</abbr>
 <dfn>client-decl</dfn> := [<abbr>annots</abbr>] <code>client</code> <abbr>service-uri</abbr> <code>as</code> <abbr>module-prefix</abbr> <code>;</code>
 <dfn>service-uri</dfn> := <abbr>string-literal</abbr>
 </pre>
-
-<p>
-The static type of the <code>simple-const-expr</code> must be a subtype of
-string.
-</p>
 
 </section>
 <section>

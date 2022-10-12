@@ -1,6 +1,22 @@
 {
     "events": [
         {
+            "date": "Nov 9, 2022",
+            "day": "Wed.",
+            "time": "2.30 p.m. IST",
+            "expire": "2022-11-10T00:00:00.0000-00:00",
+            "location": "Vilnius Lithuania & Online",
+            "url": "https://www.buildstuff.events/agenda-list",
+            "eventType": "Build Stuff Conference",
+            "eventName": "Busy Developer's Guide to Ballerina",
+            "presenterTwitter": "https://twitter.com/tedneward",
+            "presenter": "Ted Neward",
+            "presenterDesignation": "Co-founder, Solidify",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "Sep 22, 2022",
             "day": "Thur.",
             "time": "12.00 a.m. GMT",

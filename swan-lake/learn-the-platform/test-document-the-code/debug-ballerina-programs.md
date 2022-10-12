@@ -168,22 +168,6 @@ Follow the steps below to start a remote debug session.
 
 <br/>
 
-### Run the Ballerina program in a separate terminal while debugging
-
-Follow the steps below to start a program debug session that launches the Ballerina program in a separate integrated terminal. This would make it possible to debug programs that take user input in the **Ballerina Debug** mode.
-
-1. Create the `launch.json` configuration file if it is not created already. For instructions on creating the `launch.json` file, see [start a debug session with configurations](#start-a-debug-session-with-configurations).
-
-2. Open the `launch.json` file, and set the `terminal` configuration under the `Ballerina Debug` section to `integrated`. 
-
-3. After setting the configuration, click the **Start Debugging** icon on the upper left corner to start debugging.
-
-    You will see the program executing on a separate integrated terminal titled **BALLERINA DEBUG TERMINAL**. Simultaneously, you can use the **DEBUG CONSOLE** for evaluations.
-
-    ![Debug Run Program in Terminal](/learn/images/debugger-run-in-terminal.gif)
-
-<br/>
-
 ## Use debug configurations
 
 The Ballerina debugger supports various debug configuration options via the `launch.json` file. 
@@ -238,6 +222,9 @@ The following attributes are supported for all Ballerina `launch` configurations
 
 - `env` - Any environment variables you need to configure for launching the Ballerina program can be passed as a map of strings (name and value).
 - `debugTests` - Indicates whether to debug the tests for the given script.
+- `terminal` - By setting this attribute value to `integrated`, you can launch the Ballerina program in a separate integrated VSCode terminal. The program evaluations can be carried out on the `Debug Console`, as usual.
+
+    ![Debug Run Program in Terminal](/learn/images/debugger-run-in-terminal.gif)
 
 The following attributes are supported for all Ballerina `attach` configurations.
 

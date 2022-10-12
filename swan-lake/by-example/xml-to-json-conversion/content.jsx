@@ -72,7 +72,6 @@ export default function XmlToJsonConversion() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -81,7 +80,7 @@ export default function XmlToJsonConversion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4bdda908c9bfc67a6f6100965fa12338&file=xml_to_json_conversion.bal",
+                "https://play.ballerina.io/?gist=36b48a1844e1ec8a680ab5c112a6576e&file=xml_to_json_conversion.bal",
                 "_blank"
               );
             }}
@@ -101,6 +100,7 @@ export default function XmlToJsonConversion() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -184,9 +184,7 @@ export default function XmlToJsonConversion() {
       </p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

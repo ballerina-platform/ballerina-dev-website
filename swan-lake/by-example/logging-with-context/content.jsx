@@ -69,7 +69,6 @@ export default function LoggingWithContext() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -78,7 +77,7 @@ export default function LoggingWithContext() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=57435c0f085d2a746d6e256cd91e391c&file=logging_with_context.bal",
+                "https://play.ballerina.io/?gist=55d03bd9722b9e7c462a8fe402cedc7e&file=logging_with_context.bal",
                 "_blank"
               );
             }}
@@ -98,6 +97,7 @@ export default function LoggingWithContext() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -181,9 +181,7 @@ export default function LoggingWithContext() {
       </p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

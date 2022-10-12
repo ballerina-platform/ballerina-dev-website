@@ -137,8 +137,7 @@ export default function GrpcServiceJwtAuth() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      indent
-      "
+      indent"
         style={{ marginLeft: "32px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
@@ -231,9 +230,7 @@ export default function GrpcServiceJwtAuth() {
       </ul>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        indent
-        "
+        className="bbeOutput mx-0 py-0 rounded indent"
         style={{ marginLeft: "24px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
@@ -341,8 +338,7 @@ export default function GrpcServiceJwtAuth() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      indent
-      "
+      indent"
         style={{ marginLeft: "24px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
@@ -442,9 +438,7 @@ export default function GrpcServiceJwtAuth() {
       </blockquote>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        indent
-        "
+        className="bbeOutput mx-0 py-0 rounded indent"
         style={{ marginLeft: "24px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

@@ -808,7 +808,7 @@
         "name": "Strands",
         "url": "strands",
         "verifyBuild": true,
-        "verifyOutput": false,
+        "verifyOutput": true,
         "isLearnByExample": true
       },
       {
@@ -1082,7 +1082,7 @@
   {
     "title": "REST API",
     "column": 0,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Service path and resource path",
@@ -1161,7 +1161,7 @@
   {
     "title": "REST client",
     "column": 0,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Client",
@@ -1191,7 +1191,7 @@
   {
     "title": "REST API security",
     "column": 0,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Service - SSL/TLS",
@@ -1318,7 +1318,7 @@
   {
     "title": "REST API advanced",
     "column": 0,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Redirects",
@@ -1421,7 +1421,7 @@
   {
     "title": "REST API interceptors",
     "column": 1,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Interceptors",
@@ -1452,7 +1452,7 @@
   {
     "title": "HTTP2",
     "column": 1,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "HTTP 1.1 to 2.0 protocol switch",
@@ -1475,7 +1475,7 @@
   {
     "title": "GraphQL",
     "column": 1,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Hello world",
@@ -1549,21 +1549,13 @@
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
-      },
-      {
-        "name": "Interceptors",
-        "url": "graphql-interceptors",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
       }
     ]
   },
   {
     "title": "GraphQL security",
     "column": 1,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Service - SSL/TLS",
@@ -1618,7 +1610,7 @@
   {
     "title": "WebSockets",
     "column": 1,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Client",
@@ -1650,7 +1642,7 @@
   {
     "title": "WebSocket security",
     "column": 1,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Service - SSL/TLS",
@@ -1777,7 +1769,7 @@
   {
     "title": "WebSub",
     "column": 1,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "WebSub subscriber service",
@@ -1792,7 +1784,7 @@
   {
     "title": "Resiliency",
     "column": 2,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Circuit breaker",
@@ -1839,7 +1831,7 @@
   {
     "title": "Listeners",
     "column": 2,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Dynamic listener",
@@ -1854,7 +1846,7 @@
   {
     "title": "gRPC",
     "column": 2,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Simple RPC",
@@ -1915,7 +1907,7 @@
   {
     "title": "gRPC security",
     "column": 2,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Service - SSL/TLS",
@@ -2042,7 +2034,7 @@
   {
     "title": "NATS",
     "column": 2,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Publish/subscribe",
@@ -2076,7 +2068,7 @@
   {
     "title": "STAN",
     "column": 2,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Publish/subscribe",
@@ -2128,7 +2120,7 @@
   {
     "title": "Kafka",
     "column": 2,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Producer",
@@ -2198,7 +2190,7 @@
   {
     "title": "RabbitMQ",
     "column": 3,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Producer",
@@ -2259,7 +2251,7 @@
   {
     "title": "TCP",
     "column": 3,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Client",
@@ -2293,7 +2285,7 @@
   {
     "title": "UDP",
     "column": 3,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Connectionless client",
@@ -2327,7 +2319,7 @@
   {
     "title": "Email",
     "column": 3,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Send emails",
@@ -2361,7 +2353,7 @@
   {
     "title": "FTP",
     "column": 3,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Client",
@@ -2386,7 +2378,7 @@
   {
     "title": "SFTP",
     "column": 3,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Client",
@@ -2411,7 +2403,7 @@
   {
     "title": "MySQL",
     "column": 3,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Simple query",
@@ -2423,17 +2415,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Query with one result",
-        "url": "mysql-query-row-operation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Query with advanced mapping",
-        "url": "mysql-query-column-mapping",
+        "name": "Query with complex types",
+        "url": "mysql-complex-type-queries",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2481,7 +2464,7 @@
   {
     "title": "JDBC",
     "column": 3,
-    "category": "Network libraries",
+    "category": "Working over the network",
     "samples": [
       {
         "name": "Simple query",
@@ -2493,17 +2476,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Query with one result",
-        "url": "jdbc-query-row-operation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Query with advanced mapping",
-        "url": "jdbc-query-column-mapping",
+        "name": "Query with complex types",
+        "url": "jdbc-complex-type-queries",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2865,29 +2839,8 @@
     "category": "Common libraries",
     "samples": [
       {
-        "name": "XML to JSON conversion",
-        "url": "xml-to-json-conversion",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "JSON to XML conversion ",
-        "url": "xml-from-json-conversion",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "XML to record conversion",
-        "url": "xml-to-record-conversion",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Record to XML conversion",
-        "url": "xml-from-record-conversion",
+        "name": "XML JSON conversion",
+        "url": "xml-json-conversion",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": false
@@ -2941,17 +2894,8 @@
     "category": "Deployment",
     "samples": [
       {
-        "name": "Docker",
-        "url": "c2c-docker-deployment",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
         "name": "Kubernetes",
-        "url": "c2c-k8s-deployment",
+        "url": "c2c-deployment",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",

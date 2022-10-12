@@ -451,7 +451,7 @@ sublinks:
           - title: Object mocking
             id: 10
             url: testerina-mocking-objects
-  - title: Network libraries
+  - title: Working over the network
     id: 2
     sublinks:
       - title: REST API
@@ -634,9 +634,6 @@ sublinks:
           - title: Documentation
             id: 9
             url: graphql-documentation
-          - title: Interceptors
-            id: 10
-            url: graphql-interceptors
       - title: GraphQL security
         id: 8
         sublinks:
@@ -952,23 +949,20 @@ sublinks:
           - title: Simple query
             id: 1
             url: mysql-query-operation
-          - title: Query with one result
+          - title: Query with complex types
             id: 2
-            url: mysql-query-row-operation
-          - title: Query with advanced mapping
-            id: 3
-            url: mysql-query-column-mapping
+            url: mysql-complex-type-queries
           - title: DML and DDL operation
-            id: 4
+            id: 3
             url: mysql-execute-operation
           - title: Batch execute
-            id: 5
+            id: 4
             url: mysql-batch-execute-operation
           - title: Atomic batch execute
-            id: 6
+            id: 5
             url: mysql-atomic-batch-execute-operation
           - title: Call stored procedures
-            id: 7
+            id: 6
             url: mysql-call-stored-procedures
       - title: JDBC
         id: 26
@@ -976,20 +970,17 @@ sublinks:
           - title: Simple query
             id: 1
             url: jdbc-query-operation
-          - title: Query with one result
+          - title: Query with complex types
             id: 2
-            url: jdbc-query-row-operation
-          - title: Query with advanced mapping
-            id: 3
-            url: jdbc-query-column-mapping
+            url: jdbc-complex-type-queries
           - title: DML and DDL operation
-            id: 4
+            id: 3
             url: jdbc-execute-operation
           - title: Batch execute
-            id: 5
+            id: 4
             url: jdbc-batch-execute-operation
           - title: Atomic batch execute
-            id: 6
+            id: 5
             url: jdbc-atomic-batch-execute-operation
   - title: Common libraries
     id: 3
@@ -1126,18 +1117,9 @@ sublinks:
       - title: XML data
         id: 14
         sublinks:
-          - title: XML to JSON conversion
+          - title: XML JSON conversion
             id: 1
-            url: xml-to-json-conversion
-          - title: 'JSON to XML conversion '
-            id: 2
-            url: xml-from-json-conversion
-          - title: XML to record conversion
-            id: 3
-            url: xml-to-record-conversion
-          - title: Record to XML conversion
-            id: 4
-            url: xml-from-record-conversion
+            url: xml-json-conversion
   - title: Observability
     id: 4
     sublinks:
@@ -1162,12 +1144,9 @@ sublinks:
       - title: Code to Cloud
         id: 1
         sublinks:
-          - title: Docker
-            id: 1
-            url: c2c-docker-deployment
           - title: Kubernetes
-            id: 2
-            url: c2c-k8s-deployment
+            id: 1
+            url: c2c-deployment
       - title: Function as a Service
         id: 2
         sublinks:

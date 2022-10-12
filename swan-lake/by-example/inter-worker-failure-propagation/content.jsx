@@ -85,7 +85,6 @@ export default function InterWorkerFailurePropagation() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -94,7 +93,7 @@ export default function InterWorkerFailurePropagation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c965528fa27f65229e9c6ea08769132a&file=inter_worker_failure_propagation.bal",
+                "https://play.ballerina.io/?gist=2ba816718f8ae587ba0e7ddf45d68cdc&file=inter_worker_failure_propagation.bal",
                 "_blank"
               );
             }}
@@ -114,6 +113,7 @@ export default function InterWorkerFailurePropagation() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -193,9 +193,7 @@ export default function InterWorkerFailurePropagation() {
       </Row>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

@@ -103,7 +103,6 @@ export default function ConstraintValidations() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -112,7 +111,7 @@ export default function ConstraintValidations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ed7ad2d9293ecbd97c92761b73b5df09&file=constraint_validations.bal",
+                "https://play.ballerina.io/?gist=ad77707e5d309cbf6cbd37d036098b19&file=constraint_validations.bal",
                 "_blank"
               );
             }}
@@ -132,6 +131,7 @@ export default function ConstraintValidations() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -211,9 +211,7 @@ export default function ConstraintValidations() {
       </Row>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

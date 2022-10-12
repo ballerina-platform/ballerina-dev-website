@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-//\`var\` says that the type of the variable is from the type of expression, which is used to initialize it.
+// \`var\` says that the type of the variable is from the type of expression, which is used to initialize it.
 var x = "str";
 
 function printLines(string[] sv) {
@@ -76,7 +76,6 @@ export default function TypeInference() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -85,7 +84,7 @@ export default function TypeInference() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e794a42ad1d61f38a85496654193aac2&file=type_inference.bal",
+                "https://play.ballerina.io/?gist=9b48a2d0ac1601b95bad78c6b7ef8ffe&file=type_inference.bal",
                 "_blank"
               );
             }}
@@ -105,6 +104,7 @@ export default function TypeInference() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -184,9 +184,7 @@ export default function TypeInference() {
       </Row>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

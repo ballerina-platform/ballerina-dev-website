@@ -66,7 +66,6 @@ export default function WaitingForWorkers() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -75,7 +74,7 @@ export default function WaitingForWorkers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=71e539063cbd6aadf8eff25ac68cbe19&file=waiting_for_workers.bal",
+                "https://play.ballerina.io/?gist=7a50d1ebabb98d002e83d5341a5e05ed&file=waiting_for_workers.bal",
                 "_blank"
               );
             }}
@@ -95,6 +94,7 @@ export default function WaitingForWorkers() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -174,9 +174,7 @@ export default function WaitingForWorkers() {
       </Row>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

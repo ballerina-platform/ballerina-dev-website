@@ -74,7 +74,6 @@ export default function DefaultValuesForRecordFields() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -83,7 +82,7 @@ export default function DefaultValuesForRecordFields() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b8c38cd3828ccebfd304e34ad51869b5&file=default_values_for_record_fields.bal",
+                "https://play.ballerina.io/?gist=ebd20fcbbfa29d13c2df63585ac08c1e&file=default_values_for_record_fields.bal",
                 "_blank"
               );
             }}
@@ -103,6 +102,7 @@ export default function DefaultValuesForRecordFields() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -182,9 +182,7 @@ export default function DefaultValuesForRecordFields() {
       </Row>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

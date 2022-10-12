@@ -81,7 +81,6 @@ export default function ConvertingFromUserDefinedTypeToJson() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -90,7 +89,7 @@ export default function ConvertingFromUserDefinedTypeToJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=efb075b7961103699f2e0d742c657e75&file=converting_from_user_defined_type_to_json.bal",
+                "https://play.ballerina.io/?gist=be776ea0dae13b39daf49f6e3a523e5e&file=converting_from_user_defined_type_to_json.bal",
                 "_blank"
               );
             }}
@@ -110,6 +109,7 @@ export default function ConvertingFromUserDefinedTypeToJson() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -189,9 +189,7 @@ export default function ConvertingFromUserDefinedTypeToJson() {
       </Row>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

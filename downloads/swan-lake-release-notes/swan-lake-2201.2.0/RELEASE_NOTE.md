@@ -705,8 +705,6 @@ type NewRecord record {
 
 - Added semantic API support for the client resource access action
 
-### Breaking changes
-
 ### Ballerina packages updates
 
 #### New features

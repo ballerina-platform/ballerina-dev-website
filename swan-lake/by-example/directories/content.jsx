@@ -89,7 +89,6 @@ export default function Directories() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -98,7 +97,7 @@ export default function Directories() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=45d0fd7cc5ed6353cd4f3d8a9ef1ae4b&file=directories.bal",
+                "https://play.ballerina.io/?gist=098404718d09ba1057225f0053bea61a&file=directories.bal",
                 "_blank"
               );
             }}
@@ -118,6 +117,7 @@ export default function Directories() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -201,9 +201,7 @@ export default function Directories() {
       </p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

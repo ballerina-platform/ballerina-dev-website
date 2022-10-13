@@ -78,7 +78,6 @@ export default function WorkingDirectlyWithJson() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -87,7 +86,7 @@ export default function WorkingDirectlyWithJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c436842d22dc32f4cbceb3fc048a3f60&file=working_directly_with_json.bal",
+                "https://play.ballerina.io/?gist=82132ecbb08351991ff00316d8f2f860&file=working_directly_with_json.bal",
                 "_blank"
               );
             }}
@@ -107,6 +106,7 @@ export default function WorkingDirectlyWithJson() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -188,9 +188,7 @@ export default function WorkingDirectlyWithJson() {
       <p>Run the example as follows.</p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

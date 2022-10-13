@@ -65,7 +65,6 @@ export default function RandomNumbers() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -74,7 +73,7 @@ export default function RandomNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=37584e405491c3e1ef53fbdc015f70cf&file=random_numbers.bal",
+                "https://play.ballerina.io/?gist=681a66270d0ebf84bed03d7c1b63ecc3&file=random_numbers.bal",
                 "_blank"
               );
             }}
@@ -94,6 +93,7 @@ export default function RandomNumbers() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -177,9 +177,7 @@ export default function RandomNumbers() {
       </p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

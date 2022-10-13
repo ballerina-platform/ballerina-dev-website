@@ -92,7 +92,6 @@ export default function IoCsvDatamapping() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -101,7 +100,7 @@ export default function IoCsvDatamapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=86bffd5ecd80311f2a06d96b96f0cf24&file=io_csv_datamapping.bal",
+                "https://play.ballerina.io/?gist=460b12bcd63fd5c4b5f0562bf775324d&file=io_csv_datamapping.bal",
                 "_blank"
               );
             }}
@@ -121,6 +120,7 @@ export default function IoCsvDatamapping() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -204,9 +204,7 @@ export default function IoCsvDatamapping() {
       </p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

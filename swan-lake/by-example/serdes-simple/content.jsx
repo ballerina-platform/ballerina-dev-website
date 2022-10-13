@@ -86,7 +86,6 @@ export default function SerdesSimple() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -95,7 +94,7 @@ export default function SerdesSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=85b134fca2649aeb4577ddac88e59fe5&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=13de26b6c4b4c262afd41e51a225d4c8&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -115,6 +114,7 @@ export default function SerdesSimple() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -194,9 +194,7 @@ export default function SerdesSimple() {
       </Row>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

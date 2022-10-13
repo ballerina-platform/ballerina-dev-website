@@ -74,7 +74,6 @@ export default function ErrorSubtyping() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -83,7 +82,7 @@ export default function ErrorSubtyping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0833c94f2145dbd3ce2010c3e34dc3e8&file=error_subtyping.bal",
+                "https://play.ballerina.io/?gist=0a7295b146ba266aff4ab983c279d7e1&file=error_subtyping.bal",
                 "_blank"
               );
             }}
@@ -103,6 +102,7 @@ export default function ErrorSubtyping() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -182,9 +182,7 @@ export default function ErrorSubtyping() {
       </Row>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

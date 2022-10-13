@@ -87,7 +87,6 @@ export default function C2cK8sDeployment() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -187,7 +186,6 @@ export default function C2cK8sDeployment() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -276,9 +274,7 @@ export default function C2cK8sDeployment() {
       </p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
@@ -363,9 +359,7 @@ export default function C2cK8sDeployment() {
       <p>Push the created Docker image to Docker Hub.</p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
@@ -426,9 +420,7 @@ export default function C2cK8sDeployment() {
       <p>Create the deployment using the Kubernetes artifacts.</p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
@@ -492,9 +484,7 @@ export default function C2cK8sDeployment() {
       <p>Verify the Kubernetes pods.</p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
@@ -557,9 +547,7 @@ export default function C2cK8sDeployment() {
       <p>Expose via NodePort to test in the developer environment.</p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
@@ -621,9 +609,7 @@ export default function C2cK8sDeployment() {
       <p>Get the External IP and port of the Kubernetes service.</p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
@@ -692,9 +678,7 @@ export default function C2cK8sDeployment() {
       </p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
@@ -756,9 +740,7 @@ export default function C2cK8sDeployment() {
       <p>Access the deployed service via CURL.</p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

@@ -76,7 +76,6 @@ export default function DefiningClasses() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -85,7 +84,7 @@ export default function DefiningClasses() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cf20ae129f6de3529d3a915c249b8d7f&file=defining_classes.bal",
+                "https://play.ballerina.io/?gist=86872ea036c39d610316ec621ed47b46&file=defining_classes.bal",
                 "_blank"
               );
             }}
@@ -105,6 +104,7 @@ export default function DefiningClasses() {
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
             </svg>
           </button>
+
           <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
@@ -184,9 +184,7 @@ export default function DefiningClasses() {
       </Row>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">

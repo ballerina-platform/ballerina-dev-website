@@ -315,7 +315,7 @@ function getSum(int a, int b, int c) returns int {
 }
 ```
 
-#### Bug fixes
+#### Backward Incompatible Changes
 
 - A bug that resulted in allowing access to non-public error intersection types outside the module has been fixed.
 
@@ -379,6 +379,8 @@ public function main() {
     ];
 }
 ```
+
+#### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.2.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%222201.2.0%22).
 

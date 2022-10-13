@@ -315,7 +315,7 @@ function getSum(int a, int b, int c) returns int {
 }
 ```
 
-#### Backward Incompatible Changes
+#### Backward incompatible changes
 
 - A bug that resulted in allowing access to non-public error intersection types outside the module has been fixed.
 

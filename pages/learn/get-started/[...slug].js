@@ -26,7 +26,7 @@ import { Liquid } from "liquidjs";
 
 import Layout from "../../../layouts/LayoutDocs";
 import LeftNav from "../../../components/common/left-nav/LeftNav";
-import MainContent from "../../../components/common/main-content/mainContent";
+import MainContent from "../../../components/common/main-content/MainContent";
 import { prefix } from "../../../utils/prefix";
 import Toc from "../../../components/common/pg-toc/Toc";
 import LearnToc from "../../../utils/learn-lm.json";
@@ -140,6 +140,9 @@ export default function PostPage({
     setShowToc(data)
   }
 
+  // Languages used in Get started section
+  const languages = ["bash","ballerina"];
+
   return (
     <>
       <Head>
@@ -228,7 +231,8 @@ export default function PostPage({
 
             <MainContent
               content={AddLiquid(content)}
-              handleToc={handleToc}/>
+              handleToc={handleToc}
+              languages={languages}/>
 
           </Container>
         </Col>

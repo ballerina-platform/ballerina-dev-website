@@ -24,7 +24,7 @@ import Image from "next-image-export-optimizer";
 import Head from "next/head";
 
 import Layout from "../../layouts/LayoutOther";
-import MainContent from "../../components/common/main-content/mainContent";
+import MainContent from "../../components/common/main-content/MainContent";
 import { prefix } from "../../utils/prefix";
 import Toc from "../../components/common/pg-toc/Toc";
 

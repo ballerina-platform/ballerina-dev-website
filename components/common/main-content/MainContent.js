@@ -27,6 +27,7 @@ import HighlightSyntax from '../highlight-syntax/HighlightSyntax';
 export default function MainContent(props) {
 
   const content = props.content;
+  const languages = props.languages;
 
   // Add id attributes to headings
   const extractText = (value) => {
@@ -232,7 +233,8 @@ export default function MainContent(props) {
             : match ?
               <HighlightSyntax 
                 codeSnippet={String(children).replace(/\n$/, '')} 
-                lang={match[1].toLowerCase()}/>
+                lang={match[1].toLowerCase()}
+                languages={languages}/>
               : <pre className='default'>
                 <code className={className} {...props}>
                   {children}

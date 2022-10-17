@@ -25,7 +25,7 @@ import Head from "next/head";
 
 import Layout from "../../layouts/LayoutDocs";
 import LeftNav from "../../components/common/left-nav/LeftNav";
-import MainContent from "../../components/common/main-content/mainContent";
+import MainContent from "../../components/common/main-content/MainContent";
 import { prefix } from "../../utils/prefix";
 import LearnToc from "../../utils/learn-lm.json";
 import Toc from "../../components/common/pg-toc/Toc";

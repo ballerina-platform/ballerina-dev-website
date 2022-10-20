@@ -136,8 +136,14 @@ sublinks:
           - title: Never type
             id: 14
             url: never-type
-      - title: Lists
+      - title: Expression-oriented style
         id: 10
+        sublinks:
+          - title: Expression-oriented style
+            id: 1
+            url: expression-oriented-style
+      - title: Lists
+        id: 11
         sublinks:
           - title: Arrays
             id: 1
@@ -155,7 +161,7 @@ sublinks:
             id: 5
             url: binary-data
       - title: Mappings
-        id: 11
+        id: 12
         sublinks:
           - title: Maps
             id: 1
@@ -167,7 +173,7 @@ sublinks:
             id: 3
             url: computed-field-key
       - title: Records
-        id: 12
+        id: 13
         sublinks:
           - title: Optional fields
             id: 1
@@ -185,13 +191,13 @@ sublinks:
             id: 5
             url: default-values-for-record-fields
       - title: Array/Map symmetry
-        id: 13
+        id: 14
         sublinks:
           - title: Array/Map symmetry
             id: 1
             url: array-map-symmetry
       - title: Objects
-        id: 14
+        id: 15
         sublinks:
           - title: Object
             id: 1
@@ -212,7 +218,7 @@ sublinks:
             id: 6
             url: distinct-object-types
       - title: Binding patterns
-        id: 15
+        id: 16
         sublinks:
           - title: Binding patterns in assignment
             id: 1
@@ -224,7 +230,7 @@ sublinks:
             id: 3
             url: binding-patterns-in-match-statement
       - title: Error handling
-        id: 16
+        id: 17
         sublinks:
           - title: Error handling
             id: 1
@@ -248,13 +254,13 @@ sublinks:
             id: 7
             url: error-cause
       - title: Ignore return values and errors
-        id: 17
+        id: 18
         sublinks:
           - title: Ignore return values and errors
             id: 1
             url: ignoring-return-values-and-errors
       - title: Mutability and identity
-        id: 18
+        id: 19
         sublinks:
           - title: Identity
             id: 1
@@ -269,7 +275,7 @@ sublinks:
             id: 4
             url: immutability
       - title: JSON
-        id: 19
+        id: 20
         sublinks:
           - title: JSON type
             id: 1
@@ -296,7 +302,7 @@ sublinks:
             id: 8
             url: json-numbers
       - title: Tables
-        id: 20
+        id: 21
         sublinks:
           - title: Table syntax
             id: 1
@@ -308,7 +314,7 @@ sublinks:
             id: 3
             url: structured-keys
       - title: Query expressions
-        id: 21
+        id: 22
         sublinks:
           - title: Query expressions
             id: 1
@@ -341,13 +347,13 @@ sublinks:
             id: 10
             url: querying-with-streams
       - title: Query actions
-        id: 22
+        id: 23
         sublinks:
           - title: Query actions
             id: 1
             url: query-actions
       - title: Backtick templates
-        id: 23
+        id: 24
         sublinks:
           - title: Raw templates
             id: 1
@@ -359,7 +365,7 @@ sublinks:
             id: 3
             url: xml-templates
       - title: XML
-        id: 24
+        id: 25
         sublinks:
           - title: XML data model
             id: 1
@@ -383,7 +389,7 @@ sublinks:
             id: 7
             url: xmlns-declarations
       - title: Metadata
-        id: 25
+        id: 26
         sublinks:
           - title: Documentation
             id: 1
@@ -392,7 +398,7 @@ sublinks:
             id: 2
             url: annotations
       - title: Network interaction
-        id: 26
+        id: 27
         sublinks:
           - title: 'Consume services: client objects'
             id: 1
@@ -416,13 +422,13 @@ sublinks:
             id: 7
             url: resource-path-parameters
       - title: Configurability
-        id: 27
+        id: 28
         sublinks:
           - title: Configurable variables
             id: 1
             url: configurable-variables
       - title: Concurrency
-        id: 28
+        id: 29
         sublinks:
           - title: Asynchronous function calls
             id: 1
@@ -467,7 +473,7 @@ sublinks:
             id: 14
             url: flush
       - title: Transactions
-        id: 29
+        id: 30
         sublinks:
           - title: Transaction statement
             id: 1
@@ -491,7 +497,7 @@ sublinks:
             id: 7
             url: commit-rollback-handlers
       - title: Concurrency safety
-        id: 30
+        id: 31
         sublinks:
           - title: Lock statement
             id: 1
@@ -527,13 +533,13 @@ sublinks:
             id: 11
             url: run-strands-safely-on-separate-threads
       - title: Interface to external code
-        id: 31
+        id: 32
         sublinks:
           - title: Interface to external code
             id: 1
             url: interface-to-external-code
       - title: Testing
-        id: 32
+        id: 33
         sublinks:
           - title: Assertions
             id: 1
@@ -565,12 +571,6 @@ sublinks:
           - title: Object mocking
             id: 10
             url: testerina-mocking-objects
-      - title: Expression-oriented style
-        id: 33
-        sublinks:
-          - title: Expression-oriented style
-            id: 1
-            url: expression-oriented-style
   - title: Network libraries
     id: 2
     sublinks:

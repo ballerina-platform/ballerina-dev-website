@@ -90,8 +90,9 @@ The mapping of Ballerina types to TOML types can be explained through the follow
 | record[]                 | <code>type  Person  record {</code><br/>    <code>string  name;</code><br/>    <code>int  age;</code><br/><code>};</code><br/>  <code>configurable   Person[]  peope = ?;</code>                                                                                                                      | Array of TOML tables             | `[[people]]`<br/>  `name = "John"`<br/> `age = 45`<br/> `[[people]]`<br/>  `name = "Jack"`<br/> `age = 32`                                  |
 | table                    | <code>configurable   table &lt;map&lt;string&gt;&gt; users = ?; </code>                                                                                                                                                                                                                               | Array of TOML tables             | `[[users]]`<br/> `name = "Tom"`<br/> `occupation = "Software Engineer"`<br/> `[[users]]`<br/> `name = "Harry"`<br/> `occupation = "Doctor"` |
 | table[]                  | <code>configurable   table &lt;map&lt;string&gt;&gt;[] userTeams = ?; </code>                                                                                                                                                                                                                         | 2D Array of inline-TOML tables   | `userTeams = [[{name = "Tom", team = "Dev"}, {name = "Harry", team = "Dev"}], [{name = "Anna", team = "Finance"}]]`                         |
+<br/>
 
->**Note:** The `()` type is supported in a configurable variable only if it has optional configuration. In a 
-> configurable variable of record type, it is only supported if the `()` typed fields has default values.
+>**Note:** The `()` type is supported in a configurable variable only if it has the optional configuration. In a 
+record type configurable variable, it is only supported if the `()` typed fields have default values.
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

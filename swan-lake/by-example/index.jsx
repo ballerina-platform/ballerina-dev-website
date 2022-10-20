@@ -33,6 +33,7 @@ import BuiltInStringSubtype from "./built-in-string-subtype/content.jsx";
 import EnsureTypeFunction from "./ensureType-function/content.jsx";
 import DependentTypes from "./dependent-types/content.jsx";
 import NeverType from "./never-type/content.jsx";
+import ExpressionOrientedStyle from "./expression-oriented-style/content.jsx";
 import Arrays from "./arrays/content.jsx";
 import Tuples from "./tuples/content.jsx";
 import DestructureTuples from "./destructure-tuples/content.jsx";
@@ -153,7 +154,6 @@ import TesterinaGuaranteeTestExecutionOrder from "./testerina-guarantee-test-exe
 import TesterinaGroupTests from "./testerina-group-tests/content.jsx";
 import TesterinaMockingFunctions from "./testerina-mocking-functions/content.jsx";
 import TesterinaMockingObjects from "./testerina-mocking-objects/content.jsx";
-import ExpressionOrientedStyle from "./expression-oriented-style/content.jsx";
 import HttpAbsolutePathAndPath from "./http-absolute-path-and-path/content.jsx";
 import HttpDataBinding from "./http-data-binding/content.jsx";
 import HttpDefaultResource from "./http-default-resource/content.jsx";
@@ -394,6 +394,7 @@ const BBEs = {
   EnsureTypeFunction,
   DependentTypes,
   NeverType,
+  ExpressionOrientedStyle,
   Arrays,
   Tuples,
   DestructureTuples,
@@ -514,7 +515,6 @@ const BBEs = {
   TesterinaGroupTests,
   TesterinaMockingFunctions,
   TesterinaMockingObjects,
-  ExpressionOrientedStyle,
   HttpAbsolutePathAndPath,
   HttpDataBinding,
   HttpDefaultResource,

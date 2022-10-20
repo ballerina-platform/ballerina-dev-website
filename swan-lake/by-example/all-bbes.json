@@ -311,6 +311,20 @@
     ]
   },
   {
+    "title": "Expression-oriented style",
+    "column": 0,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "Expression-oriented style",
+        "url": "expression-oriented-style",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Lists",
     "column": 1,
     "category": "Language concepts",
@@ -1342,20 +1356,6 @@
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
         "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Expression-oriented style",
-    "column": 0,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "Expression-oriented style",
-        "url": "expression-oriented-style",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
       }
     ]
   },

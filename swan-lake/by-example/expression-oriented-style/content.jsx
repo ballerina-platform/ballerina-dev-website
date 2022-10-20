@@ -88,7 +88,7 @@ export default function ExpressionOrientedStyle() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5b1cc637af223990fe0afff9c1ee3a3e&file=expression_oriented_style.bal",
+                "https://play.ballerina.io/?gist=a1c81b3734d27910b24e9d31c21d1213&file=expression_oriented_style.bal",
                 "_blank"
               );
             }}
@@ -230,10 +230,7 @@ export default function ExpressionOrientedStyle() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Object mocking"
-            href="/learn/by-example/testerina-mocking-objects"
-          >
+          <Link title="Never type" href="/learn/by-example/never-type">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -259,17 +256,14 @@ export default function ExpressionOrientedStyle() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Object mocking
+                  Never type
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Service path and resource path"
-            href="/learn/by-example/http-absolute-path-and-path"
-          >
+          <Link title="Arrays" href="/learn/by-example/arrays">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -278,7 +272,7 @@ export default function ExpressionOrientedStyle() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service path and resource path
+                  Arrays
                 </span>
               </div>
               <svg

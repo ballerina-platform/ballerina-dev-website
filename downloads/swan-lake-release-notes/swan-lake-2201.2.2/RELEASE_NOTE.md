@@ -45,6 +45,4 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.2.2](https://git
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.2.2 of the repositories below.
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.2.2+is%3Aclosed)
-- [CLI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A2201.2.2+label%3AArea%2FCLI)
-- [Project API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.2.2+is%3Aclosed+label%3AArea%2FProjectAPI)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.2.2+is%3Aclosed+label%3AArea%2FDebugger)

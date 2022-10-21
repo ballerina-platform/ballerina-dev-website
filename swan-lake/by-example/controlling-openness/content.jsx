@@ -85,7 +85,7 @@ export default function ControllingOpenness() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9628da9ab072d429529c89dd6c5a6017&file=controlling_openness.bal",
+                "https://play.ballerina.io/?gist=f50716aa5747e185081e3d3fd62d7069&file=controlling_openness.bal",
                 "_blank"
               );
             }}

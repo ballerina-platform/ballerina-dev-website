@@ -86,7 +86,7 @@ export default function IoCsv() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f4e1c4119d54e4bbd0ade228c34918d7&file=io_csv.bal",
+                "https://play.ballerina.io/?gist=a10b99c6041177327dc810e333c966e1&file=io_csv.bal",
                 "_blank"
               );
             }}
@@ -111,7 +111,7 @@ export default function IoCsv() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/io-csv",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/io-csv",
                 "_blank"
               );
             }}

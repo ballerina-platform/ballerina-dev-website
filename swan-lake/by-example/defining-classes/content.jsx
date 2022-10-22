@@ -84,7 +84,7 @@ export default function DefiningClasses() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1c5ad206da7a4fe78f42736ab183aef1&file=defining_classes.bal",
+                "https://play.ballerina.io/?gist=1eba914518c61e08bb3a7f5249530553&file=defining_classes.bal",
                 "_blank"
               );
             }}
@@ -109,7 +109,7 @@ export default function DefiningClasses() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/defining-classes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/defining-classes",
                 "_blank"
               );
             }}

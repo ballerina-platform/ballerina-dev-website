@@ -89,7 +89,7 @@ export default function HttpClientEndpoint() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b9735e3aebf5ed2693e97eb38caeceb7&file=http_client_endpoint.bal",
+                "https://play.ballerina.io/?gist=8447be87b06a20ab8dfae0236de2bff4&file=http_client_endpoint.bal",
                 "_blank"
               );
             }}
@@ -114,7 +114,7 @@ export default function HttpClientEndpoint() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/http-client-endpoint",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-client-endpoint",
                 "_blank"
               );
             }}

@@ -83,7 +83,7 @@ export default function FunctionValues() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c5288319fd102abee57651237b24afcf&file=function_values.bal",
+                "https://play.ballerina.io/?gist=e960c4318ef636af7ae294ccc8c0be16&file=function_values.bal",
                 "_blank"
               );
             }}
@@ -108,7 +108,7 @@ export default function FunctionValues() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/function-values",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/function-values",
                 "_blank"
               );
             }}

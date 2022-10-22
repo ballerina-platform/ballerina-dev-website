@@ -85,7 +85,7 @@ export default function HttpClientBasicAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/http-client-basic-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-client-basic-auth",
                 "_blank"
               );
             }}

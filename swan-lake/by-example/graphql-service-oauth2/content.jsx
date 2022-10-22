@@ -116,7 +116,7 @@ export default function GraphqlServiceOauth2() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/graphql-service-oauth2",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/graphql-service-oauth2",
                 "_blank"
               );
             }}

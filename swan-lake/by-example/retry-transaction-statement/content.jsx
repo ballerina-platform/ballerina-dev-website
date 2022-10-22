@@ -89,7 +89,7 @@ export default function RetryTransactionStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=54f0e43f12475860e53bb289347e1dab&file=retry_transaction_statement.bal",
+                "https://play.ballerina.io/?gist=77e34a679b8977718ad00d3291be761b&file=retry_transaction_statement.bal",
                 "_blank"
               );
             }}
@@ -114,7 +114,7 @@ export default function RetryTransactionStatement() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/retry-transaction-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/retry-transaction-statement",
                 "_blank"
               );
             }}

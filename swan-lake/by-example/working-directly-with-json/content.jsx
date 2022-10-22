@@ -86,7 +86,7 @@ export default function WorkingDirectlyWithJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7e78dc045b6d580a9d5b6415cc785f96&file=working_directly_with_json.bal",
+                "https://play.ballerina.io/?gist=d4f8b890fcb5d345b0a6ed72530d140d&file=working_directly_with_json.bal",
                 "_blank"
               );
             }}
@@ -111,7 +111,7 @@ export default function WorkingDirectlyWithJson() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/working-directly-with-json",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/working-directly-with-json",
                 "_blank"
               );
             }}

@@ -201,7 +201,7 @@ export default function NatsStreamingStartPosition() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/nats-streaming-start-position",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/nats-streaming-start-position",
                 "_blank"
               );
             }}
@@ -352,7 +352,7 @@ export default function NatsStreamingStartPosition() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/nats-streaming-start-position",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/nats-streaming-start-position",
                 "_blank"
               );
             }}

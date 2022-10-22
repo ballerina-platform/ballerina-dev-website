@@ -140,7 +140,7 @@ export default function GrpcSimpleWithHeaders() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/grpc-simple-with-headers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/grpc-simple-with-headers",
                 "_blank"
               );
             }}
@@ -342,7 +342,7 @@ export default function GrpcSimpleWithHeaders() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/grpc-simple-with-headers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/grpc-simple-with-headers",
                 "_blank"
               );
             }}
@@ -530,7 +530,7 @@ export default function GrpcSimpleWithHeaders() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/grpc-simple-with-headers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/grpc-simple-with-headers",
                 "_blank"
               );
             }}

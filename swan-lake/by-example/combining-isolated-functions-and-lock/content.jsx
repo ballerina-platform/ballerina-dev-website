@@ -119,7 +119,7 @@ export default function CombiningIsolatedFunctionsAndLock() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=aa017ec825ad07a763c0f5c0b2395958&file=combining_isolated_functions_and_lock.bal",
+                "https://play.ballerina.io/?gist=caf044f3af26eb3d00cbe11e33d93de7&file=combining_isolated_functions_and_lock.bal",
                 "_blank"
               );
             }}
@@ -144,7 +144,7 @@ export default function CombiningIsolatedFunctionsAndLock() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/combining-isolated-functions-and-lock",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/combining-isolated-functions-and-lock",
                 "_blank"
               );
             }}

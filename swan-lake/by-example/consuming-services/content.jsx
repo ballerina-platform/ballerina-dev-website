@@ -72,7 +72,7 @@ export default function ConsumingServices() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0aa011dcd4c6b12a0d52dadbb33db624&file=consuming_services.bal",
+                "https://play.ballerina.io/?gist=da34534662915f8db3e5bb81177d7850&file=consuming_services.bal",
                 "_blank"
               );
             }}
@@ -97,7 +97,7 @@ export default function ConsumingServices() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/consuming-services",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/consuming-services",
                 "_blank"
               );
             }}

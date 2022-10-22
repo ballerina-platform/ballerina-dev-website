@@ -134,7 +134,7 @@ export default function RawTemplates() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/raw-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/raw-templates",
                 "_blank"
               );
             }}
@@ -223,7 +223,7 @@ export default function RawTemplates() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/raw-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/raw-templates",
                 "_blank"
               );
             }}

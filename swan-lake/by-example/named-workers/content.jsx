@@ -82,7 +82,7 @@ export default function NamedWorkers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=90045b825489cbed9bd64805d1bcc81b&file=named_workers.bal",
+                "https://play.ballerina.io/?gist=0a9e93d2b84ecaa61ef34e3875c19a68&file=named_workers.bal",
                 "_blank"
               );
             }}
@@ -107,7 +107,7 @@ export default function NamedWorkers() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/named-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/named-workers",
                 "_blank"
               );
             }}

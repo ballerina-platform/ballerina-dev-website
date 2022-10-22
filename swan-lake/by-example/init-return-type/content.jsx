@@ -81,7 +81,7 @@ export default function InitReturnType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4274a82205a91b8bd115239391e45ba0&file=init_return_type.bal",
+                "https://play.ballerina.io/?gist=383fc619987b02aa92ef9b339f577c65&file=init_return_type.bal",
                 "_blank"
               );
             }}
@@ -106,7 +106,7 @@ export default function InitReturnType() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/init-return-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/init-return-type",
                 "_blank"
               );
             }}

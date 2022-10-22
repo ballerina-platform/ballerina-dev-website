@@ -92,7 +92,7 @@ export default function CacheBasics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=87f395da91efd8232abbd694a02e2a6e&file=cache_basics.bal",
+                "https://play.ballerina.io/?gist=215a37de5f784bdfcfa2c5aa3dc4bba5&file=cache_basics.bal",
                 "_blank"
               );
             }}
@@ -117,7 +117,7 @@ export default function CacheBasics() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/cache-basics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/cache-basics",
                 "_blank"
               );
             }}

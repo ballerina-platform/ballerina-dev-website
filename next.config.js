@@ -218,6 +218,14 @@ const nextConfig = {
         destination: `/${redirectBase}policies/trademark-usage-policy`,
       },
       {
+        source: `/code-of-conduct`,
+        destination: `/${redirectBase}policies/code-of-conduct`,
+      },
+      {
+        source: `/CODEOWNERS`,
+        destination: `/${redirectBase}policies/CODEOWNERS`,
+      },
+      {
         source: `/spec/lang/2022R2/`,
         destination: `/spec/lang/2022R2/index.html`,
       },

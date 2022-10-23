@@ -101,7 +101,7 @@ export default function GraphqlSubscriptions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/graphql-subscriptions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/graphql-subscriptions",
                 "_blank"
               );
             }}

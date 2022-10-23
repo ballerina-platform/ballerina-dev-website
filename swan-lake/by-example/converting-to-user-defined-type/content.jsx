@@ -83,7 +83,7 @@ export default function ConvertingToUserDefinedType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5e5daccffa12fe6bacb9993053b8b4c2&file=converting_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=b6b1149506e59c1389a44b6c01999da9&file=converting_to_user_defined_type.bal",
                 "_blank"
               );
             }}
@@ -108,7 +108,7 @@ export default function ConvertingToUserDefinedType() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/converting-to-user-defined-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/converting-to-user-defined-type",
                 "_blank"
               );
             }}

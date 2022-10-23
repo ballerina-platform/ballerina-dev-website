@@ -78,7 +78,7 @@ export default function AnyType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=144ff66205f2e2630283ef19dc4e764a&file=any_type.bal",
+                "https://play.ballerina.io/?gist=7b7ab2e44ec92cb98c5df7c9a813fad4&file=any_type.bal",
                 "_blank"
               );
             }}
@@ -103,7 +103,7 @@ export default function AnyType() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/any-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/any-type",
                 "_blank"
               );
             }}

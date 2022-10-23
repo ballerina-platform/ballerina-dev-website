@@ -67,7 +67,7 @@ export default function Functions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f86b1261c21cbc7752fc8238770576fb&file=functions.bal",
+                "https://play.ballerina.io/?gist=d996c72e483548fd7f2c73b0a7b29586&file=functions.bal",
                 "_blank"
               );
             }}
@@ -92,7 +92,7 @@ export default function Functions() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/functions",
                 "_blank"
               );
             }}

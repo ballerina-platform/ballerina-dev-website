@@ -110,7 +110,7 @@ export default function UuidOperations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1020d690bcb451b92dc3d3aa77f9f8ca&file=uuid_operations.bal",
+                "https://play.ballerina.io/?gist=525350321a8f04ec63ff420db14db5b0&file=uuid_operations.bal",
                 "_blank"
               );
             }}
@@ -135,7 +135,7 @@ export default function UuidOperations() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/uuid-operations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/uuid-operations",
                 "_blank"
               );
             }}

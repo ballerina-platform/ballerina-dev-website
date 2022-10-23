@@ -21,7 +21,8 @@ listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitm
 // The \`ackMode\` is by default rabbitmq:AUTO_ACK where messages are acknowledged
 // immediately after consuming.
 @rabbitmq:ServiceConfig {
-    queueName: "MyQueue"
+    queueName: "MyQueue",
+    autoAck: false
 }
 // Attaches the service to the listener.
 service rabbitmq:Service on channelListener {
@@ -87,7 +88,7 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/rabbitmq-consumer-with-client-acknowledgement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/rabbitmq-consumer-with-client-acknowledgement",
                 "_blank"
               );
             }}

@@ -92,7 +92,7 @@ export default function Ordering() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1c3677d085ccf46472004fb3722824c0&file=ordering.bal",
+                "https://play.ballerina.io/?gist=b1418e4d3570bc66d784a1543e917f22&file=ordering.bal",
                 "_blank"
               );
             }}
@@ -117,7 +117,7 @@ export default function Ordering() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/ordering",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/ordering",
                 "_blank"
               );
             }}

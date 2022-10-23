@@ -75,7 +75,7 @@ export default function BinaryData() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a578a3e814c490e0db821123e61720e7&file=binary_data.bal",
+                "https://play.ballerina.io/?gist=4afe221734473575192da077bb1914bc&file=binary_data.bal",
                 "_blank"
               );
             }}
@@ -100,7 +100,7 @@ export default function BinaryData() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/binary-data",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/binary-data",
                 "_blank"
               );
             }}

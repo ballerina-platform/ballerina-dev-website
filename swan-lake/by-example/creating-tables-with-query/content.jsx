@@ -77,7 +77,7 @@ export default function CreatingTablesWithQuery() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3df4f2f3c95e1c69d0a01ab65a00cfa9&file=creating_tables_with_query.bal",
+                "https://play.ballerina.io/?gist=9d13a596ea4d9d9d9a1d7f5ee83fb00a&file=creating_tables_with_query.bal",
                 "_blank"
               );
             }}
@@ -102,7 +102,7 @@ export default function CreatingTablesWithQuery() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/creating-tables-with-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/creating-tables-with-query",
                 "_blank"
               );
             }}

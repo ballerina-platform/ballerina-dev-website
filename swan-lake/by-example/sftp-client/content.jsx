@@ -104,7 +104,7 @@ export default function SftpClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/sftp-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/sftp-client",
                 "_blank"
               );
             }}

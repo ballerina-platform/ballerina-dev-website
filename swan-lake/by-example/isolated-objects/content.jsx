@@ -134,7 +134,7 @@ export default function IsolatedObjects() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=800169f1cacc7770b0c3fccfd1dbf532&file=isolated_objects.bal",
+                "https://play.ballerina.io/?gist=626b03eb08c086bbcc039536e5577bdf&file=isolated_objects.bal",
                 "_blank"
               );
             }}
@@ -159,7 +159,7 @@ export default function IsolatedObjects() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.1/examples/isolated-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/isolated-objects",
                 "_blank"
               );
             }}

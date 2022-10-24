@@ -60,7 +60,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.2.2](https://git
 - Improved the LS Package Loader to update the package map after pulling a module
 - Improved the `Import module` code action to change the module prefix when the module is already imported
 - Improved the sorting in the method call expression, limit expression, error constructor, and positional argument
-- Refactored the usage of commands in code actions with code action resolve request
+- Refactored the usage of commands in code actions with a code action resolve request
 - Improved the `Compiler plugin` code action to prevent applying invalid text edits
 
 ### Bug Fixes

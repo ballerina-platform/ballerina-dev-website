@@ -50,7 +50,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.2.2](https://git
     - an expression or set of statements to a function
 - Improved the `Create variable` code action to provide a rename popup after applying it
 - Added a new code action to convert an array to array mapping into a query expression
-- Introduced new API to load a project into the Workspace Manager
+- Introduced a new API to load a project into the Workspace Manager
 
 ### Improvements
 

@@ -132,7 +132,8 @@ service /covid/status on new http:Listener(9000){
 
 In this code:
 
-- Unlike normal functions, resource functions can have accessors. In this case, the accessor is set to `get`, which means only HTTP `GET` requests could hit this resource. Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. The default status code HTTP responses are `200 OK`.
+- Unlike normal functions, resource functions can have accessors. In this case, the accessor is set to `get`, which means only HTTP `GET` requests could hit this resource. Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. 
+- The default HTTP response status code for a resource method other than `post` is `200 OK`. For an HTTP `POST` resource, the default HTTP response status code is `201 Creted`. 
 
 ### Create the second resource to add data
 
@@ -141,7 +142,7 @@ To create the second resource of the first endpoint to add new COVID-19 data to 
 
 ```ballerina
 resource function post countries(@http:Payload CovidEntry[] covidEntries)
-                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
+                                    returns CovidEntry[]|ConflictingIsoCodesError {
 
     string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
         where covidTable.hasKey(covidEntry.iso_code)
@@ -155,31 +156,14 @@ resource function post countries(@http:Payload CovidEntry[] covidEntries)
         };
     } else {
         covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-        return <CreatedCovidEntries>{body: covidEntries};
+        return covidEntries;
     }
 }
 ```
 
 In this code:
 
-- It is chosen to either accept the entire payload or send back an error. Copying this straightway results in an error, which is expected as the `CreatedCovidEntries` and `ConflictingIsoCodesError` types are not defined yet.
-
-#### Define the record type
-
-To define the `CreatedCovidEntries` record, add the code below to the API template file (i.e., `service.bal`).
-
-```ballerina
-public type CreatedCovidEntries record {|
-   *http:Created;
-   CovidEntry[] body;
-|};
-```
-
-In this code:
-- This resource has a resource argument named `covidEntries` annotated with `@http:Payload`. This means the resource is expecting a payload with type `CovideEntry[]`. There are two types of records `CreatedCovidEntries` and `ConflictingIsoCodesError` as the return values. Following is the definition of `CreatedCovidEntries`.
-- `*http:Created` is the Ballerina way of saying one type is a subtype of another. In this case, `CreatedCovidEntries` is a subtype of `*http:Created`.
-- Ballerina has defined a set of types for each HTTP status code. This allows you to write services in a type-oriented way, which in turn is helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. 
-- Returning this record results in an HTTP `201` response with a JSON payload. The body of the response is of type `CovidEntry[]`.
+- It is chosen to either accept the entire payload or send back an error. Copying this straightway results in an error, which is expected as the `ConflictingIsoCodesError` type is not defined yet.
 
 #### Define the error records
 

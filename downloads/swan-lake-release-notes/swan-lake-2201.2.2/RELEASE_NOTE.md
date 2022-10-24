@@ -56,7 +56,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.2.2](https://git
 
 #### Language Server
 
-- Improved code action support for optional fields, union typed fields & query expressions
+- Improved code action support for optional fields, union typed fields, and query expressions
 - Improved the LS Package Loader to update the package map after pulling a module
 - Improved the `Import module` code action to change the module prefix when the module is already imported
 - Improved sorting in method call expression, limit expression, error constructor and positional argument

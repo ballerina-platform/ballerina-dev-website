@@ -164,6 +164,7 @@ resource function post countries(@http:Payload CovidEntry[] covidEntries)
 In this code:
 
 - It is chosen to either accept the entire payload or send back an error. Copying this straightway results in an error, which is expected as the `ConflictingIsoCodesError` type is not defined yet.
+- This resource has a resource argument named `covidEntries` annotated with `@http:Payload`. This means the resource is expecting a payload with type `CovideEntry[]`. There are two types of records `CovideEntry[]` and `ConflictingIsoCodesError` as the return values.
 
 #### Define the error records
 
@@ -181,7 +182,9 @@ public type ErrorMsg record {|
 ```
 
 In this code:
+- `*http:Conflict` is the Ballerina way of saying one type is a subtype of another. In this case, `ConflictingIsoCodesError` is a subtype of `http:Conflict`.
 - The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. Based on the need, users can have any data type for their response body.
+- Ballerina has defined a set of types for each HTTP status code. This allows you to write services in a type-oriented way, which in turn is helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. 
 
 ## Implement the second endpoint
 

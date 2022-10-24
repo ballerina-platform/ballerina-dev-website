@@ -44,7 +44,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.2.2](https://git
 
 #### Language Server
 
-- Introduced new refactor extract code actions
+- Introduced new refactor extract code actions to extract the below.
     - A new code action to extract a constant expression to a constant
     - A new code action to extract an expression to a local variable
     - A new code action to extract an expression or set of statements to a function

@@ -348,7 +348,7 @@ You view the output below.
 Execute the cURL command below.
 
 ```
-$ curl http://localhost:9000/covid/status/countries -d '[{"iso_code":"DEU", "country":"Germany", "cases":159333, "deaths":7390, "recovered":126084, "active":6833}]' -H 'Content-Type: application/json'
+$ curl http://localhost:9000/covid/status/countries -d "[{\"iso_code\":\"DEU\", \"country\":\"Germany\", \"cases\":159333, \"deaths\":7390, \"recovered\":126084, \"active\":6833}]" -H "Content-Type: application/json"
 ```
 
 You view the output below.

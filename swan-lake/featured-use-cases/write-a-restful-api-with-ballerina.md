@@ -149,7 +149,7 @@ resource function post countries(@http:Payload CovidEntry[] covidEntries)
         select covidEntry.iso_code;
 
     if conflictingISOs.length() > 0 {
-        return <ConflictingIsoCodesError>{
+        return {
             body: {
                 errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
             }
@@ -241,7 +241,7 @@ service /covid/status on new http:Listener(9000) {
     }
 
     resource function post countries(@http:Payload CovidEntry[] covidEntries)
-                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
+                                    returns CovidEntry[]|ConflictingIsoCodesError {
 
         string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
             where covidTable.hasKey(covidEntry.iso_code)
@@ -255,7 +255,7 @@ service /covid/status on new http:Listener(9000) {
             };
         } else {
             covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-            return <CreatedCovidEntries>{body: covidEntries};
+            return covidEntries;
         }
     }
 
@@ -286,11 +286,6 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
     {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
     {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
 ];
-
-public type CreatedCovidEntries record {|
-    *http:Created;
-    CovidEntry[] body;
-|};
 
 public type ConflictingIsoCodesError record {|
     *http:Conflict;

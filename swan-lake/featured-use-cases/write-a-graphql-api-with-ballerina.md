@@ -63,6 +63,8 @@ This creates a directory named `covid19` with the default module along with a sa
 ```
 .
 ├── covid19
+│   ├── tests
+│   │   └── service_test.bal
 │   ├── Ballerina.toml
 │   └── service.bal
 ```

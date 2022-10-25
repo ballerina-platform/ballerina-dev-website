@@ -298,6 +298,8 @@ The following pattern is useful if you want to present a clearer Ballerina API, 
 Imagine that you want to design an API to manipulate a stack of string values by using the Java `ArrayDeque` utility. You can create a Ballerina class as follows.
 
 ```ballerina
+import ballerina/jballerina.java;
+
 public class StringStack {
    private handle jObj;
 
@@ -429,17 +431,29 @@ error: java.util.NoSuchElementException
 You can use the `trap` action to stop the propagation of the panic and to get an `error` value.
 
 ```ballerina
+import ballerina/io;
+import ballerina/jballerina.java;
+
+function newArrayDeque() returns handle = @java:Constructor {
+    'class: "java.util.ArrayDeque"
+} external;
+
+function pop(handle receiver) returns handle = @java:Method {
+    'class: "java.util.ArrayDeque"
+} external;
+
 public function main() {
-   handle arrayDeque = newArrayDeque();
-   handle | error element = trap pop(arrayDeque);
-   if element is error {
-       io:println(element.message());
-       io:println(element.detail());
-       io:println(element.stackTrace().callStack);
-   } else {
-       // .....
-   }
+    handle arrayDeque = newArrayDeque();
+    handle|error element = trap pop(arrayDeque);
+    if element is error {
+        io:println(element.message());
+        io:println(element.detail());
+        io:println(element.stackTrace());
+    } else {
+        // .....
+    }
 }
+
 ```
 ### Java checked exceptions
 Below, you can see how to call a Java method that throws a checked exception. As illustrated in the following example, the corresponding Ballerina function should have the `error` type as part of its return type.
@@ -514,7 +528,7 @@ public function main() {
 
 Since the queue is empty in this case, `peek` should return null i.e., `element` should refer to Java null.  The output of this program is as follows.
 
-```ballerina
+```
  error: java.lang.NoSuchFieldError {"message":"JAVA_NULL_REFERENCE_ERROR"}
 	at array_deque:toString(array_deque.bal:19)
 	   array_deque:main(array_deque.bal:27)
@@ -523,6 +537,21 @@ Since the queue is empty in this case, `peek` should return null i.e., `element`
 This is equivalent to a Java NPE. In such situations, you should check for null using the `java:isNull()` function. Below is the modified example.
 
 ```ballerina
+import ballerina/jballerina.java;
+
+function newArrayDeque() returns handle = @java:Constructor {
+   'class: "java.util.ArrayDeque"
+} external;
+
+function peek(handle receiver) returns handle = @java:Method {
+   'class: "java.util.ArrayDeque"
+} external;
+
+// Linked with the `java.lang.Object.toString()` method in Java.
+function toString(handle objInstance) returns handle = @java:Method {
+   'class: "java.lang.Object"
+} external;
+
 public function main() {
    handle arrayDeque = newArrayDeque();
    handle element = peek(arrayDeque);

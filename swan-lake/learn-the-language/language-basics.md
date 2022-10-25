@@ -22,7 +22,7 @@ This guide presents the subset of the Ballerina language that is common to most 
 
 Ballerina programs consist of modules and each module consists of one or more *`.bal`* files.
   
-The most important thing that a module does is define named functions.
+The most important thing that a module does is, defining named functions.
 
 Here's what a simple Ballerina module looks like:
 

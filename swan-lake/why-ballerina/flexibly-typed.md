@@ -334,7 +334,7 @@ $ bal run sample.bal
                                        <span class="cTableCode"><code>curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "EXCELLENT", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record -H 'Content-Type: application/json'</code></span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode"><code>High credit score {"name":"Tim Kern","birthYear":1995,"married":false,"creditScore":"EXCELLENT","country":"Japan","zipcode":"98101"}</code></span>
+                                       <span class="cTableCode"><code>High credit score {"name":"Tim Kern","birthYear":1995,"married":false,"creditScore":"EXCELLENT","zipcode":"98101","country":"Japan"}</code></span>
                                     </td>
                                  </tr> 
 </table>

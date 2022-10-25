@@ -426,8 +426,6 @@ service /employees on new http:Listener(8080) {
     }
 
 }
-        
-}
 ```
 
 ## The `service.bal` file complete code 

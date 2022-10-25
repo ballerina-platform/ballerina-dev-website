@@ -132,7 +132,8 @@ service /covid/status on new http:Listener(9000){
 
 In this code:
 
-- Unlike normal functions, resource functions can have accessors. In this case, the accessor is set to `get`, which means only HTTP `GET` requests could hit this resource. Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. The default status code HTTP responses are `200 OK`.
+- Unlike normal functions, resource functions can have accessors. In this case, the accessor is set to `get`, which means only HTTP `GET` requests could hit this resource. Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. 
+- The default HTTP response status code for a resource method other than `post` is `200 OK`. For an HTTP `POST` resource, the default HTTP response status code is `201 Creted`. 
 
 ### Create the second resource to add data
 
@@ -141,45 +142,29 @@ To create the second resource of the first endpoint to add new COVID-19 data to 
 
 ```ballerina
 resource function post countries(@http:Payload CovidEntry[] covidEntries)
-                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
+                                    returns CovidEntry[]|ConflictingIsoCodesError {
 
     string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
         where covidTable.hasKey(covidEntry.iso_code)
         select covidEntry.iso_code;
 
     if conflictingISOs.length() > 0 {
-        return <ConflictingIsoCodesError>{
+        return {
             body: {
                 errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
             }
         };
     } else {
         covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-        return <CreatedCovidEntries>{body: covidEntries};
+        return covidEntries;
     }
 }
 ```
 
 In this code:
 
-- It is chosen to either accept the entire payload or send back an error. Copying this straightway results in an error, which is expected as the `CreatedCovidEntries` and `ConflictingIsoCodesError` types are not defined yet.
-
-#### Define the record type
-
-To define the `CreatedCovidEntries` record, add the code below to the API template file (i.e., `service.bal`).
-
-```ballerina
-public type CreatedCovidEntries record {|
-   *http:Created;
-   CovidEntry[] body;
-|};
-```
-
-In this code:
-- This resource has a resource argument named `covidEntries` annotated with `@http:Payload`. This means the resource is expecting a payload with type `CovideEntry[]`. There are two types of records `CreatedCovidEntries` and `ConflictingIsoCodesError` as the return values. Following is the definition of `CreatedCovidEntries`.
-- `*http:Created` is the Ballerina way of saying one type is a subtype of another. In this case, `CreatedCovidEntries` is a subtype of `*http:Created`.
-- Ballerina has defined a set of types for each HTTP status code. This allows you to write services in a type-oriented way, which in turn is helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. 
-- Returning this record results in an HTTP `201` response with a JSON payload. The body of the response is of type `CovidEntry[]`.
+- It is chosen to either accept the entire payload or send back an error. Copying this straightway results in an error, which is expected as the `ConflictingIsoCodesError` type is not defined yet.
+- This resource has a resource argument named `covidEntries` annotated with `@http:Payload`. This means the resource is expecting a payload with the `CovideEntry[]` type. There are two types of records `CovideEntry[]` and `ConflictingIsoCodesError` that will be used as the return values.
 
 #### Define the error records
 
@@ -197,7 +182,9 @@ public type ErrorMsg record {|
 ```
 
 In this code:
+- Ballerina uses `*http:Conflict` to denote that one type is a subtype of another. In this case, `ConflictingIsoCodesError` is a subtype of `http:Conflict`.
 - The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. Based on the need, users can have any data type for their response body.
+- Ballerina has a defined set of types for each HTTP status code. This allows you to write services in a type-oriented way, which in turn is helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. 
 
 ## Implement the second endpoint
 
@@ -254,7 +241,7 @@ service /covid/status on new http:Listener(9000) {
     }
 
     resource function post countries(@http:Payload CovidEntry[] covidEntries)
-                                    returns CreatedCovidEntries|ConflictingIsoCodesError {
+                                    returns CovidEntry[]|ConflictingIsoCodesError {
 
         string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
             where covidTable.hasKey(covidEntry.iso_code)
@@ -268,7 +255,7 @@ service /covid/status on new http:Listener(9000) {
             };
         } else {
             covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
-            return <CreatedCovidEntries>{body: covidEntries};
+            return covidEntries;
         }
     }
 
@@ -299,11 +286,6 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
     {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
     {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
 ];
-
-public type CreatedCovidEntries record {|
-    *http:Created;
-    CovidEntry[] body;
-|};
 
 public type ConflictingIsoCodesError record {|
     *http:Conflict;
@@ -366,7 +348,7 @@ You view the output below.
 Execute the cURL command below.
 
 ```
-$ curl http://localhost:9000/covid/status/countries -d '[{"iso_code":"DEU", "country":"Germany", "cases":159333, "deaths":7390, "recovered":126084, "active":6833}]'
+$ curl http://localhost:9000/covid/status/countries -d "[{\"iso_code\":\"DEU\", \"country\":\"Germany\", \"cases\":159333, \"deaths\":7390, \"recovered\":126084, \"active\":6833}]" -H "Content-Type: application/json"
 ```
 
 You view the output below.

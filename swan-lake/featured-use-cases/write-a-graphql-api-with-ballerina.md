@@ -218,10 +218,9 @@ As per the design, there are two fields in the `Query` type and one field in the
 To create the `all` field, which returns an array of `CovidData` type, add the code below to the `service.bal` file.
 
 ```ballerina
-    resource function get all() returns CovidData[] {
-        CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
-        return covidEntries.map(entry => new CovidData(entry));
-    }
+resource function get all() returns CovidData[] {
+    CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
+    return covidEntries.map(entry => new CovidData(entry));
 }
 ```
 

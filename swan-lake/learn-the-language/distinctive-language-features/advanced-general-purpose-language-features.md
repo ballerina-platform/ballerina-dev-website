@@ -588,7 +588,7 @@ function whoops() returns never {
 
 In the above code example, the function **``whoops()``** always panics. It never returns normally. Therefore, it is perfectly fine to describe the return type of this function as ``never``.
 
-A variable cannot be of the ``never`` type. But you can use it with streams and ``xml``. **``stream<int, never>``** means that it is an infinite stream. **``xml<never>``** means that it is an empty sequence, and can be used to define the type for an empty XML sequence.
+A variable cannot be of the ``never`` type. However, you can use it with streams and ``xml``. **``stream<int, never>``** means that it is an infinite stream. **``xml<never>``** means that it is an empty sequence, and can be used to define the type for an empty XML sequence.
 
 One of the interesting ways of leveraging the ``never`` type in records is to use it to set constraints on the fields it may contain.
 

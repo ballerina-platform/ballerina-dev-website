@@ -86,7 +86,7 @@ export default function AlternateWait() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=25929aa70623973251b39f6ca4740fd2&file=alternate_wait.bal",
+                "https://play.ballerina.io/?gist=0a4db1ad21d154bfd4f72d473d132fce&file=alternate_wait.bal",
                 "_blank"
               );
             }}

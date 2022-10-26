@@ -199,6 +199,8 @@ So this service object defines a resource **``/hello``** with a query parameter 
 Resources are hierarchical. They have a path, which consists of a base path and multiple segments.
 
 ```ballerina
+import ballerina/http;
+
 service /demo on new http:Listener(8080) {
 
     resource function get greeting/hello(string name) returns string {
@@ -216,9 +218,11 @@ A single listener can have multiple services attached to it, each with different
 The resource paths can also be parameterized such that instead of having fixed, static paths, they can be assigned dynamically during the resource access.  
 
 ```ballerina
-// GET /demo/greeting/James would return "Hello, James"
+import ballerina/http;
+
 service /demo on new http:Listener(8080) {
 
+    // GET /demo/greeting/James would return "Hello, James"
     resource function get greeting/[string name]() returns string {
         return "Hello, " + name;
     }

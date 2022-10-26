@@ -252,7 +252,7 @@ If you compare these functions with the Java method signatures, you would notice
 
 ```ballerina
 public function main() {
-    // Create a new instance of `ArrayDeque`.
+    // Create a new `ArrayDeque` instance.
     handle arrayDequeObj = newArrayDeque();
 
     // Convert a Ballerina string to a Java string.
@@ -333,7 +333,7 @@ function push(handle receiver, handle element) = @java:Method {
 } external;
 ```
 
-This class presents a much clearer API compared to the previous API. Below is a sample usage of this class.
+This class presents a much clearer API compared to the previous API. The below is a sample usage of this class.
 
 ```ballerina
 public function main() {
@@ -456,7 +456,7 @@ public function main() {
 
 ```
 ### Java checked exceptions
-Below, you can see how to call a Java method that throws a checked exception. As illustrated in the following example, the corresponding Ballerina function should have the `error` type as part of its return type.
+The example below shows how to call a Java method that throws a checked exception. As illustrated in it, the corresponding Ballerina function should have the `error` type as part of its return type.
 
 The `java.util.zip.ZipFile` class is used to read entries in a ZIP file. There are many constructors in this class. Here, the constructor that takes the file name as an argument is used.
 

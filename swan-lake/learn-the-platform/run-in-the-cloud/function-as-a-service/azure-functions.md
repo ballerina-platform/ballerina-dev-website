@@ -144,7 +144,7 @@ service / on new af:HttpListener() {
 }
 ```
 
-Build the package by executing the `bal build` command on the package directory, and then, deploy it using the `func` command shown in the Ballerina build output as in the previous section.
+Execute the `bal build` command on the package directory to build the package. Then, execute the `func` command shown in the Ballerina build output as in the previous section to deploy it.
 
 Now, the deployed Azure Function can be tested by invoking it using an HTTP client such as cURL. 
 

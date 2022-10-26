@@ -109,7 +109,7 @@ Ballerina also has a concept of a configurable variable. A module-level variable
 configurable int port = 8080;
 ```
 
-The initializer of a configurable variable can be overridden at runtime. A variable where runtime configuration is required can use ``?`` as the initializer. Values for these variables can be provided via `Config.toml` file.
+The initializer of a configurable variable can be overridden at runtime. A variable for which a runtime configuration is required, can use ``?`` as the initializer. Values for these variables can be provided via the `Config.toml` file.
 
 ```ballerina
 configurable string password = ?;

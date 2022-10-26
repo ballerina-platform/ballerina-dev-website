@@ -441,7 +441,7 @@ In the above code example, the **``IntPair``** type is a tuple type of two membe
 
 ## Rest type in tuples
 
-Similar to how maps can be described as record types, arrays can also be defined as tuple types using ``...``.
+Similar to how maps can be described as record types, arrays can also be defined as tuple types using the ``...`` syntax.
 
 ```ballerina
 // int followed by
@@ -489,7 +489,7 @@ This feature is also useful in service resource methods whose parameters are map
 ```ballerina
 service on hl {
     // With URL file/x/y/z
-    // `path`` will be ["x", "y", "z"].
+    // `path` will be ["x", "y", "z"].
     resource function get file/[string... path]()
             returns string|error {
         // ...
@@ -528,7 +528,7 @@ function merge(Date d, TimeOfDay t) returns DateTime {
 
 In the above code example, **``Date``** and **``TimeofDay``** types are closed record types that are included in the **``DateTime``** record. The function **``merge()``** returns a value of type **``DateTime``** which is constructed using the spread operator with the arguments of type **``Date``** and **``TimeofDay``**, which is equivalent to specifying each individual field from the two arguments explicitly.
 
-Spreading also works in the case of function calls, by calling ``f(...x)`` which expands ``x`` into function arguments. If **``x``** is a list the arguments are arranged positionally, else in the case of mapping, they are arranged as named arguments. You can use spreading in a list constructor, as ``[...x]`` or in a mapping constructor, as ``{...x}``. You can also use it in an error constructor, ``error(msg, ...x)``, in which case ``x`` must be a mapping.
+Spreading also works in the case of function calls, by calling ``f(...x)``, which expands ``x`` into function arguments. If **``x``** is a list, the arguments are arranged positionally, else, in the case of a mapping, they are arranged as named arguments. You can use spreading in a list constructor as ``[...x]`` or in a mapping constructor as ``{...x}``. You can also use it in an error constructor as ``error(msg, ...x)``, in which case ``x`` must be a mapping.
 
 The basic rule to allow the spread operator is that the static type of the expression guarantees type safety with each value. For example, if the **``Date``** and **``TimeofDay``** are open records, containing the same name for a member, then at the time of spreading to construct the record **``DateTime``**, this will lead to a duplication of fields. Therefore, this will not be allowed at compile-time.
 
@@ -588,7 +588,7 @@ function whoops() returns never {
 
 In the above code example, the function **``whoops()``** always panics. It never returns normally. Therefore, it is perfectly fine to describe the return type of this function as ``never``.
 
-A variable cannot be of the ``never`` type. But you can use it with streams and ``xml``. **``stream<int,never>``** means that it is an infinite stream. **``xml<never>``** means that it is an empty sequence, and can be used to define the type for an empty XML sequence.
+A variable cannot be of the ``never`` type. However, you can use it with streams and ``xml``. **``stream<int, never>``** means that it is an infinite stream. **``xml<never>``** means that it is an empty sequence, and can be used to define the type for an empty XML sequence.
 
 One of the interesting ways of leveraging the ``never`` type in records is to use it to set constraints on the fields it may contain.
 
@@ -613,9 +613,9 @@ type PairRest record {
 };
 ```
 
-In the above code example, **``Pair``** is an open record. Therefore **``p``** is constructed with the fields **``x``**, **``y``**, and an additional field **``color``**.  You can use a binding pattern to define a variable **``rest``**, which contains fields other than **``x``** and **``y``**. That makes **``rest``** a type of map with the key ``"color"`` and the value ``"blue`"``. The type for **``rest``** is defined as **``PairRest``**, which is a record with two optional fields **``x``** and **``y``**, of the ``never`` type. But since you cannot have variables with ``never`` type, the net result is that you cannot have these fields in the record. Thus ``record { never x?; never y?; }`` means that it can have any field of type ``anydata``, except fields with keys ``x`` and ``y``.
+In the above code example, **``Pair``** is an open record. Therefore, **``p``** is constructed with the fields **``x``**, **``y``**, and an additional field **``color``**.  You can use a binding pattern to define a variable **``rest``**, which contains fields other than **``x``** and **``y``**. That makes **``rest``** a type of map with the key ``"color"`` and the value ``"blue"``. The type for **``rest``** is defined as **``PairRest``**, which is a record with two optional fields **``x``** and **``y``** of the ``never`` type. However, as you cannot have variables with the ``never`` type, the net result is that you cannot have these fields in the record. Thus, ``record { never x?; never y?; }`` means that it can have any field of the type ``anydata``, except fields with keys ``x`` and ``y``.
 
-So this means that **``rest``** can have any field except the fields with keys `x` and `y` since they are already bound. The ``never`` type can be leveraged with optional fields to indicate that that record will never have the particular field.
+This means that **``rest``** can have any field except the fields with keys `x` and `y` since they are already bound. The ``never`` type can be leveraged with optional fields to indicate that a record will never have that particular field.
 
 ## Interface to external code
 
@@ -628,7 +628,7 @@ public function open(string path)
 
 In the above code example, the **``open()``** function has an external implementation since its body is defined as **``= external``**. The ``external`` keyword can be annotated to add additional information that specifies where the implementation comes from.
 
-As part of interfacing with external implementation, Ballerina supports another basic type called ``handle``. A ``handle`` value is a reference to storage managed externally and it may be passed a reference to an external function, like in the JVM where you may have a Java object reference pointing to the implementation.
+As part of interfacing with an external implementation, Ballerina supports another basic type called ``handle``. A ``handle`` value is a reference to storage managed externally and it may be passed as a reference to an external function like in the **JVM** where you may have a Java object reference pointing to the implementation.
 
 The ``handle`` type is basically an opaque handle that can be passed to external functions. There is no typing for ``handle`` and it can be added as a private member of a Ballerina class for better type safety. Alternatively, you can also have an entire module that is implemented in something other than Ballerina.
 
@@ -687,7 +687,6 @@ function demo() returns boolean {
 ```
 
 In the above code example, the type **``R``** is a record. **``t``** is a ``typedesc`` representing a record type and **``R``** is assigned to it. Inside the function **``demo()``**, a value of type **``R``** is constructed as **``r``**, which is then assigned to **``v``** of the ``any`` type. Finally, the ``typeof`` operator is used to retrieve the ``typedesc`` value of **``v``** which is compared with the typedesc of **``t``**.
-.
 The ``typeof`` operator gets the dynamic type of a value. Dynamic types for mutable structures are inherent types.
 
 ## ``ensureType`` function
@@ -741,9 +740,7 @@ public type IntConstraints record {
     int maxInclusive?;
 };
 
-public
-annotation IntConstraints
-    ConstrainedInt on type;
+public annotation IntConstraints ConstrainedInt on type;
 ```
 
 In the above code example, the annotation declaration declares an annotation tag **``ConstrainedInt``** with the type **``IntConstraints``** as the type of the value associated with the annotation. The syntactic construct type which follows on declares that this annotation can be applied on types.
@@ -755,8 +752,7 @@ This can be used in another module, as follows.
 @m:ConstrainedInt { minInclusive: 1 }
 type PositiveInt int;
 
-m:IntConstraints? c
-    = PositiveInt.@m:ConstrainedInt;
+m:IntConstraints? c = PositiveInt.@m:ConstrainedInt;
 ```
 
 In the above code example, the **``ConstrainedInt``** annotation is defined with just the **``minInclusive``** field. It is applied to a type **``PositiveInt``**.  At runtime, a ``typedesc`` value can be used to access the annotations. You can use a reference to **``PositiveInt``** to get the ``typedesc`` value and then use the ``.@`` notation on it followed by the annotation tag to retrieve the particular annotation. If the annotation is present, annotation access will return a value of the associated type **``IntConstraints``**. Since the annotation may or may not be specified, annotation access may also return nil. Therefore, the result of annotation access will be the union of **``IntConstraints``** and nil.

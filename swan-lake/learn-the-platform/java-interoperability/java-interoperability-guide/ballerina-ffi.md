@@ -210,13 +210,13 @@ import ballerina/jballerina.java;
 import ballerina/io;
 
 function randomUUID() returns handle = @java:Method {
-   name: "randomUUID",
-   'class: "java.util.UUID"
+    name: "randomUUID",
+    'class: "java.util.UUID"
 } external;
 
 public function main() {
-   handle uuid = randomUUID();
-   io:println(uuid);
+    handle uuid = randomUUID();
+    io:println(uuid);
 }
 ```
 
@@ -224,7 +224,7 @@ The `name` field is optional here. If the Ballerina function name is the same as
 
 ```ballerina
 function randomUUID() returns handle = @java:Method {
-   'class: "java.util.UUID"
+    'class: "java.util.UUID"
 } external;
 ```
 
@@ -240,11 +240,11 @@ Below are the corresponding Ballerina functions that are linked to these methods
 
 ```ballerina
 function pop(handle arrayDequeObj) returns handle = @java:Method {
-   'class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 function push(handle arrayDequeObj, handle e) = @java:Method {
-   'class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 ```
 
@@ -252,15 +252,15 @@ If you compare these functions with the Java method signatures, you would notice
 
 ```ballerina
 public function main() {
-   // Create a new instance of `ArrayDeque`.
-   handle arrayDequeObj = newArrayDeque();
+    // Create a new `ArrayDeque` instance.
+    handle arrayDequeObj = newArrayDeque();
 
-   // Convert a Ballerina string to a Java string.
-   string str = "Ballerina";
-   handle handleStr = java:fromString(str);
+    // Convert a Ballerina string to a Java string.
+    string str = "Ballerina";
+    handle handleStr = java:fromString(str);
 
-   push(arrayDequeObj, handleStr);
-   handle e = pop(arrayDequeObj);
+    push(arrayDequeObj, handleStr);
+    handle e = pop(arrayDequeObj);
 }
 ```
 
@@ -298,46 +298,48 @@ The following pattern is useful if you want to present a clearer Ballerina API, 
 Imagine that you want to design an API to manipulate a stack of string values by using the Java `ArrayDeque` utility. You can create a Ballerina class as follows.
 
 ```ballerina
+import ballerina/jballerina.java;
+
 public class StringStack {
-   private handle jObj;
+    private handle jObj;
 
-   public function init() {
-       self.jObj = newArrayDeque();
-   }
+    public function init() {
+        self.jObj = newArrayDeque();
+    }
 
-   public function push(string element) {
-       push(self.jObj, java:fromString(element));
-   }
+    public function push(string element) {
+        push(self.jObj, java:fromString(element));
+    }
 
-   public function pop() returns string {
-       handle handleEle = pop(self.jObj);
-       // Error handling and null safety are discussed later in this guide
-       // This example uses an empty string for now.
-       return java:toString(handleEle) ?: "";
+    public function pop() returns string {
+        handle handleEle = pop(self.jObj);
+        // Error handling and null safety are discussed later in this guide
+        // This example uses an empty string for now.
+        return java:toString(handleEle) ?: "";
 
-   }
+    }
 }
 
 function newArrayDeque() returns handle = @java:Constructor {
-   'class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 function pop(handle receiver) returns handle = @java:Method {
-   'class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 function push(handle receiver, handle element) = @java:Method {
-   'class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 ```
 
-This class presents a much clearer API compared to the previous API. Below is a sample usage of this class.
+This class presents a much clearer API compared to the previous API. The below is a sample usage of this class.
 
 ```ballerina
 public function main() {
-   StringStack stack = new();
-   stack.push("Ballerina");
-   string element = stack.pop();
+    StringStack stack = new();
+    stack.push("Ballerina");
+    string element = stack.pop();
 }
 ```
 
@@ -357,33 +359,33 @@ Below is the set of Ballerina functions that are linked with the above Java meth
 
 ```ballerina
 function appendBool(handle sbObj, boolean b) returns handle = @java:Method {
-   name: "append",
-   paramTypes: ["boolean"],
-   'class: "java.lang.StringBuffer"
+    name: "append",
+    paramTypes: ["boolean"],
+    'class: "java.lang.StringBuffer"
 } external;
 
 function appendInt(handle sbObj, int i) returns handle = @java:Method {
-   name: "append",
-   paramTypes: ["int"],
-   'class: "java.lang.StringBuffer"
+    name: "append",
+    paramTypes: ["int"],
+    'class: "java.lang.StringBuffer"
 } external;
 
 function appendCharArray(handle sbObj, handle str) returns handle = @java:Method {
-   name: "append",
-   paramTypes: [{'class: "char", dimensions: 1}],
-   'class: "java.lang.StringBuffer"
+    name: "append",
+    paramTypes: [{'class: "char", dimensions: 1}],
+    'class: "java.lang.StringBuffer"
 } external;
 
 function appendString(handle sbObj, handle str) returns handle = @java:Method {
-   name: "append",
-   paramTypes: ["java.lang.String"],
-   'class: "java.lang.StringBuffer"
+    name: "append",
+    paramTypes: ["java.lang.String"],
+    'class: "java.lang.StringBuffer"
 } external;
 
 function appendStringBuffer(handle sbObj, handle sb) returns handle = @java:Method {
-   name: "append",
-   paramTypes: ["java.lang.StringBuffer"],
-   'class: "java.lang.StringBuffer"
+    name: "append",
+    paramTypes: ["java.lang.StringBuffer"],
+    'class: "java.lang.StringBuffer"
 } external;
 ```
 
@@ -405,16 +407,16 @@ The following example tries to pop an element out of an empty queue. The `pop` m
 import ballerina/jballerina.java;
 
 function newArrayDeque() returns handle = @java:Constructor {
-   'class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 function pop(handle receiver) returns handle = @java:Method {
-   'class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 public function main() {
-   handle arrayDeque = newArrayDeque();
-   handle element = pop(arrayDeque);
+    handle arrayDeque = newArrayDeque();
+    handle element = pop(arrayDeque);
 }
 ```
 
@@ -429,20 +431,32 @@ error: java.util.NoSuchElementException
 You can use the `trap` action to stop the propagation of the panic and to get an `error` value.
 
 ```ballerina
+import ballerina/io;
+import ballerina/jballerina.java;
+
+function newArrayDeque() returns handle = @java:Constructor {
+    'class: "java.util.ArrayDeque"
+} external;
+
+function pop(handle receiver) returns handle = @java:Method {
+    'class: "java.util.ArrayDeque"
+} external;
+
 public function main() {
-   handle arrayDeque = newArrayDeque();
-   handle | error element = trap pop(arrayDeque);
-   if element is error {
-       io:println(element.message());
-       io:println(element.detail());
-       io:println(element.stackTrace().callStack);
-   } else {
-       // .....
-   }
+    handle arrayDeque = newArrayDeque();
+    handle|error element = trap pop(arrayDeque);
+    if element is error {
+        io:println(element.message());
+        io:println(element.detail());
+        io:println(element.stackTrace());
+    } else {
+        // .....
+    }
 }
+
 ```
 ### Java checked exceptions
-Below, you can see how to call a Java method that throws a checked exception. As illustrated in the following example, the corresponding Ballerina function should have the `error` type as part of its return type.
+The example below shows how to call a Java method that throws a checked exception. As illustrated in it, the corresponding Ballerina function should have the `error` type as part of its return type.
 
 The `java.util.zip.ZipFile` class is used to read entries in a ZIP file. There are many constructors in this class. Here, the constructor that takes the file name as an argument is used.
 
@@ -456,12 +470,12 @@ Since this Java constructor throws a checked exception,  the `newZipfile` Baller
 import ballerina/jballerina.java;
 
 function newZipFile(handle filename) returns handle | error = @java:Constructor {
-   'class: "java.util.zip.ZipFile",
-   paramTypes: ["java.lang.String"]
+    'class: "java.util.zip.ZipFile",
+    paramTypes: ["java.lang.String"]
 } external;
 
 public function main() {
-   handle|error zipFile = newZipFile(java:fromString("some_file.zip"));
+    handle|error zipFile = newZipFile(java:fromString("some_file.zip"));
 }
 ```
 
@@ -493,28 +507,28 @@ An example Ballerina code is given below that deals with Java null. It uses the 
 import ballerina/jballerina.java;
 
 function newArrayDeque() returns handle = @java:Constructor {
-   'class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 function peek(handle receiver) returns handle = @java:Method {
-   'class: "java.util.ArrayDeque"
+    'class: "java.util.ArrayDeque"
 } external;
 
 // Linked with the `java.lang.Object.toString()` method in Java.
 function toString(handle objInstance) returns handle = @java:Method {
-   'class: "java.lang.Object"
+    'class: "java.lang.Object"
 } external;
 
 public function main() {
-   handle arrayDeque = newArrayDeque();
-   handle element = peek(arrayDeque);
-   handle str = toString(element);
+    handle arrayDeque = newArrayDeque();
+    handle element = peek(arrayDeque);
+    handle str = toString(element);
 }
 ```
 
 Since the queue is empty in this case, `peek` should return null i.e., `element` should refer to Java null.  The output of this program is as follows.
 
-```ballerina
+```
  error: java.lang.NoSuchFieldError {"message":"JAVA_NULL_REFERENCE_ERROR"}
 	at array_deque:toString(array_deque.bal:19)
 	   array_deque:main(array_deque.bal:27)
@@ -523,15 +537,30 @@ Since the queue is empty in this case, `peek` should return null i.e., `element`
 This is equivalent to a Java NPE. In such situations, you should check for null using the `java:isNull()` function. Below is the modified example.
 
 ```ballerina
-public function main() {
-   handle arrayDeque = newArrayDeque();
-   handle element = peek(arrayDeque);
+import ballerina/jballerina.java;
 
-   if java:isNull(element) {
-       // handle this case
-   } else {
-       handle str = toString(element);
-   }
+function newArrayDeque() returns handle = @java:Constructor {
+    'class: "java.util.ArrayDeque"
+} external;
+
+function peek(handle receiver) returns handle = @java:Method {
+    'class: "java.util.ArrayDeque"
+} external;
+
+// Linked with the `java.lang.Object.toString()` method in Java.
+function toString(handle objInstance) returns handle = @java:Method {
+    'class: "java.lang.Object"
+} external;
+
+public function main() {
+    handle arrayDeque = newArrayDeque();
+    handle element = peek(arrayDeque);
+
+    if java:isNull(element) {
+        // handle this case
+    } else {
+        handle str = toString(element);
+    }
 }
 ```
 
@@ -620,13 +649,13 @@ import ballerina/io;
 import ballerina/jballerina.java;
 
 public function main() {
-   int[] a = [1,2,3,4,5];
-   int[] b = arrayReverse(a);
-   io:println(b);
+    int[] a = [1,2,3,4,5];
+    int[] b = arrayReverse(a);
+    io:println(b);
 }
 
 function arrayReverse(int[] arr) returns int[] = @java:Method {
-   'class: "javalibs.app.ArrayReverse"
+    'class: "javalibs.app.ArrayReverse"
 } external;
 ```
 
@@ -656,13 +685,13 @@ import ballerina/io;
 import ballerina/jballerina.java;
 
 public function main() {
-   map<int> marks = {sam: 50, jon: 60};
-   map<int> modifiedMarks = modifyMapValues(marks);
-   io:println(modifiedMarks);
+    map<int> marks = {sam: 50, jon: 60};
+    map<int> modifiedMarks = modifyMapValues(marks);
+    io:println(modifiedMarks);
 }
 
 function modifyMapValues(map<int> marks) returns map<int> = @java:Method {
-   'class: "javalibs.app.ModifyValues"
+    'class: "javalibs.app.ModifyValues"
 } external;
 ```
 
@@ -674,13 +703,13 @@ The `@java:FieldGet` and `@java:FieldSet` annotations allow you to read and upda
 import ballerina/jballerina.java;
 
 public function pi() returns float = @java:FieldGet {
-   name:"PI",
-   'class:"java/lang/Math"
+    name:"PI",
+    'class:"java/lang/Math"
 } external;
 
 public function main() {
-   float r = 4;
-   float l = 2 * pi() * r;
+    float r = 4;
+    float l = 2 * pi() * r;
 }
 ```
 

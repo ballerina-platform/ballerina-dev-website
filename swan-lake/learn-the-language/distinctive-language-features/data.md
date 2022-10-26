@@ -560,7 +560,7 @@ Ballerina's philosophy is to use tables as containers for building centralized d
 
 Tables are a built-in data structure. They are just like the arrays and maps that you have seen so far. Therefore, they have some array-like and some map-like features.
 
-A table is an array of records, and each record represents a row in the table. The rows are identified by keys, which is similar to maps. Thus, you can either iterate over the table, item by item, like arrays, or directly point to the item using the associated key. But unlike in maps where the keys are of ``string`` type and are different from the fields, a table stores the keys as fields in the rows. This approach is similar to the concept of primary keys in a SQL-based database table where one of the columns is designated as a primary key, which is used to uniquely identify the database record.
+A table is an array of records and each record represents a row in the table. The rows are identified by keys, similar to maps. Thus, you can either iterate over the table item by item like with arrays, or directly point to the item using the associated key. However, unlike in maps where the keys are of the ``string`` type and are different from the fields, a table stores the keys as fields in the rows. This approach is similar to the concept of primary keys in an SQL-based database table in which one column or a combination of a few columns are designated as a primary key, which is used to uniquely identify the database record.
 
 Therefore, a table maintains an invariant that each row is uniquely identified by a key that is not limited to the ``string`` type and is immutable. Additionally, tables also preserve the order of the rows.
 
@@ -689,7 +689,7 @@ The actual type of the query output is determined by the context, for example, i
 You can also use a query expression to create tables.
 
 ```ballerina
-var highPaidEmployees = 
+table<Employee> key(id) highPaidEmployees = 
    table key(id) 
    from var e in employees
    where e.salary >= 1000
@@ -810,10 +810,10 @@ Raw templates are backtick templates without the tag, in which case phase two of
 One of the important use cases of raw templates is parameterized SQL queries.
 
 ```ballerina
-db->query(`SELECT * FROM  order WHERE customer_id = ${customerId}`);
+dbClient->query(`SELECT * FROM  order WHERE customer_id = ${customerId}`);
 ```
 
-In the above example, assume that **``db``** is a client object making a remote call to a SQL database. The raw template passed to the query method translates to an array of two strings ``"SELECT * FROM order WHERE customer_id ="`` and ``""``. The second string is empty as it comes after the expression. Along with that, it also passes an array of evaluated expressions which is the value of the **``customerId``** variable here. Thus, the SQL syntax is turned into the right syntax with the required substitution for the underlying SQL implementation.
+In the above example, assume that **``dbClient``** is a client object making a remote call to an SQL database. The raw template passed to the query method translates to an array of two strings ``"SELECT * FROM order WHERE customer_id ="`` and ``""``. The second string is empty as it comes after the expression. Along with that, it also passes an array of evaluated expressions, which is the value of the **``customerId``** variable here. Thus, the SQL syntax is turned into the right syntax with the required substitution for the underlying SQL implementation.
 
 ## XML overview
 
@@ -884,13 +884,16 @@ The ``==`` operator does a deep equals comparison.
 You can loop through the ``xml`` elements in a ``foreach`` statement.
 
 ```ballerina
-xml x4 = xml `<name>Sherlock Holmes</name><details>
+import ballerina/io;
+
+public function main() {
+    xml x4 = xml `<name>Sherlock Holmes</name><details>
                     <author>Sir Arthur Conan Doyle</author>
                     <language>English</language>
                 </details>`;
-
-foreach var item in x4 {
-    io:println(item);
+    foreach var item in x4 {
+        io:println(item);
+    }
 }
 ```
 

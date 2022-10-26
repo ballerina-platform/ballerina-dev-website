@@ -96,7 +96,7 @@ The created function app name should be provided to the placeholders shown in th
 
 A sample execution to deploy the functions to Azure Functions is shown below. 
 
-```
+```bash
 $ func azure functionapp publish <function_app_name> --script-root target/azure_functions 
 Getting site publishing info...
 Creating archive for current directory...

@@ -95,25 +95,24 @@ After updating the Ballerina Tool, you can use the `bal dist` command to manage 
 ```sh
 → bal help dist
 NAME
-       bal-dist - Manage Ballerina distributions
+       bal dist - Manage Ballerina distributions
 
 SYNOPSIS
-       bal dist <command> <-h | --help>
-       bal dist <command> [<args>]
-
+       bal dist
+       bal dist <command> [<-h> | <--help>]
+       bal dist <command> <args>
 
 DESCRIPTION
-       Dist enables you to install, update, and switch among Ballerina distributions
-       from patch and minor release channels.
-
+       Display details of all the commands that are available to install, update,
+       and switch between Ballerina distributions from the patch and minor
+       release channels.
 
 OPTIONS
        -h, --help
-           Print usage details of a command.
-
+           Print the usage details of all commands.
 
 BALLERINA COMMANDS
-       Here is a list of available subcommands:
+       The below is a list of available subcommands:
 
        update     Update to the latest patch version of the active distribution
        pull       Fetch a distribution and set it as the active version
@@ -121,8 +120,17 @@ BALLERINA COMMANDS
        list       List locally and remotely available distributions
        remove     Remove distributions in your local environment
 
-
 Use 'bal help dist <command>' for more information on a specific command.
+
+EXAMPLES
+       Manage Ballerina distributions.
+          $ bal dist
+
+       Print the usage details of all commands.
+          $ bal dist --help
+
+       Print the usage details of the `bal dist update` command.
+          $ bal help dist update
 ```
 
 Most of these subcommands are self-explanatory. Therefore, the sections below introduce them briefly.

@@ -401,32 +401,30 @@ demonstrates a resource function that can be used to create a new employee via a
 ```ballerina
 service /employees on new http:Listener(8080) {
 
-    	isolated resource function post .(@http:Payload Employee emp) returns int|error? {
-            return addEmployee(emp);
-        }
-
-        isolated resource function post .(@http:Payload Employee emp) returns int|error? {
-            return addEmployee(emp);
-        }
-    
-        isolated resource function get [int id]() returns Employee|error? {
-            return getEmployee(id);
-        }
-    
-        isolated resource function get .() returns Employee[]|error? {
-            return getAllEmployees();
-        }
-    
-        isolated resource function put .(@http:Payload Employee emp) returns int|error? {
-            return updateEmployee(emp);
-        }
-    
-        isolated resource function delete [int id]() returns int|error? {
-            return removeEmployee(id);       
+    isolated resource function post .(@http:Payload Employee emp) returns int|error? {
+        return addEmployee(emp);
     }
 
-}
-        
+    isolated resource function post .(@http:Payload Employee emp) returns int|error? {
+        return addEmployee(emp);
+    }
+
+    isolated resource function get [int id]() returns Employee|error? {
+        return getEmployee(id);
+    }
+
+    isolated resource function get .() returns Employee[]|error? {
+        return getAllEmployees();
+    }
+
+    isolated resource function put .(@http:Payload Employee emp) returns int|error? {
+        return updateEmployee(emp);
+    }
+
+    isolated resource function delete [int id]() returns int|error? {
+        return removeEmployee(id);       
+    }
+    
 }
 ```
 
@@ -481,7 +479,7 @@ Invoke the defined resource function by sending the `POST` request below to `htt
 
 ```
 curl --location --request POST 'http://localhost:8080/employees/' \
-    --header 'Content-Type: text/plain' \
+    --header 'Content-Type: application/json' \
     --data-raw '{
         "employee_id": 6,
         "first_name": "test",

@@ -144,7 +144,7 @@ service / on new af:HttpListener() {
 }
 ```
 
-Execute the `bal build` command on the package directory to build the package. Then, execute the `func` command shown in the Ballerina build output as in the previous section to deploy it.
+Execute the `bal build` command on the package directory to build the package. Then, execute the `func azure functionapp publish <function_app_name> --script-root target/azure_functions ` command shown in the Ballerina build output to deploy it.
 
 Now, the deployed Azure Function can be tested by invoking it using an HTTP client such as cURL. 
 
@@ -203,7 +203,7 @@ service "cosmos" on cosmosEp {
 
 ```
 
-Execute the `bal build` command on the package directory to build the package. Then, execute the `func` command shown in the Ballerina build output as in the previous section to deploy it.
+Execute the `bal build` command on the package directory to build the package. Then, execute the `func azure functionapp publish <function_app_name> --script-root target/azure_functions ` command shown in the Ballerina build output to deploy it.
 
 Once the function is deployed, add an item to the collection.
 1. Navigate to the collection created in the **Data Explorer**.

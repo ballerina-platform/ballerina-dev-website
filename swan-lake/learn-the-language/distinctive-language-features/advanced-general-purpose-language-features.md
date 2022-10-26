@@ -528,7 +528,7 @@ function merge(Date d, TimeOfDay t) returns DateTime {
 
 In the above code example, **``Date``** and **``TimeofDay``** types are closed record types that are included in the **``DateTime``** record. The function **``merge()``** returns a value of type **``DateTime``** which is constructed using the spread operator with the arguments of type **``Date``** and **``TimeofDay``**, which is equivalent to specifying each individual field from the two arguments explicitly.
 
-Spreading also works in the case of function calls, by calling ``f(...x)`` which expands ``x`` into function arguments. If **``x``** is a list the arguments are arranged positionally, else in the case of a mapping, they are arranged as named arguments. You can use spreading in a list constructor, as ``[...x]`` or in a mapping constructor, as ``{...x}``. You can also use it in an error constructor, ``error(msg, ...x)``, in which case ``x`` must be a mapping.
+Spreading also works in the case of function calls, by calling ``f(...x)``, which expands ``x`` into function arguments. If **``x``** is a list, the arguments are arranged positionally, else, in the case of a mapping, they are arranged as named arguments. You can use spreading in a list constructor as ``[...x]`` or in a mapping constructor as ``{...x}``. You can also use it in an error constructor as ``error(msg, ...x)``, in which case ``x`` must be a mapping.
 
 The basic rule to allow the spread operator is that the static type of the expression guarantees type safety with each value. For example, if the **``Date``** and **``TimeofDay``** are open records, containing the same name for a member, then at the time of spreading to construct the record **``DateTime``**, this will lead to a duplication of fields. Therefore, this will not be allowed at compile-time.
 
@@ -613,9 +613,9 @@ type PairRest record {
 };
 ```
 
-In the above code example, **``Pair``** is an open record. Therefore **``p``** is constructed with the fields **``x``**, **``y``**, and an additional field **``color``**.  You can use a binding pattern to define a variable **``rest``**, which contains fields other than **``x``** and **``y``**. That makes **``rest``** a type of map with the key ``"color"`` and the value ``"blue"``. The type for **``rest``** is defined as **``PairRest``**, which is a record with two optional fields **``x``** and **``y``**, of the ``never`` type. But since you cannot have variables with ``never`` type, the net result is that you cannot have these fields in the record. Thus ``record { never x?; never y?; }`` means that it can have any field of type ``anydata``, except fields with keys ``x`` and ``y``.
+In the above code example, **``Pair``** is an open record. Therefore, **``p``** is constructed with the fields **``x``**, **``y``**, and an additional field **``color``**.  You can use a binding pattern to define a variable **``rest``**, which contains fields other than **``x``** and **``y``**. That makes **``rest``** a type of map with the key ``"color"`` and the value ``"blue"``. The type for **``rest``** is defined as **``PairRest``**, which is a record with two optional fields **``x``** and **``y``** of the ``never`` type. However, as you cannot have variables with the ``never`` type, the net result is that you cannot have these fields in the record. Thus, ``record { never x?; never y?; }`` means that it can have any field of the type ``anydata``, except fields with keys ``x`` and ``y``.
 
-So this means that **``rest``** can have any field except the fields with keys `x` and `y` since they are already bound. The ``never`` type can be leveraged with optional fields to indicate that a record will never have the particular field.
+This means that **``rest``** can have any field except the fields with keys `x` and `y` since they are already bound. The ``never`` type can be leveraged with optional fields to indicate that a record will never have that particular field.
 
 ## Interface to external code
 
@@ -628,7 +628,7 @@ public function open(string path)
 
 In the above code example, the **``open()``** function has an external implementation since its body is defined as **``= external``**. The ``external`` keyword can be annotated to add additional information that specifies where the implementation comes from.
 
-As part of interfacing with external implementation, Ballerina supports another basic type called ``handle``. A ``handle`` value is a reference to storage managed externally, and it may be passed as a reference to an external function, like in the **JVM** where you may have a Java object reference pointing to the implementation.
+As part of interfacing with an external implementation, Ballerina supports another basic type called ``handle``. A ``handle`` value is a reference to storage managed externally and it may be passed as a reference to an external function like in the **JVM** where you may have a Java object reference pointing to the implementation.
 
 The ``handle`` type is basically an opaque handle that can be passed to external functions. There is no typing for ``handle`` and it can be added as a private member of a Ballerina class for better type safety. Alternatively, you can also have an entire module that is implemented in something other than Ballerina.
 

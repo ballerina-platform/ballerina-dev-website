@@ -147,7 +147,7 @@ To add the business logic to the remote method (in this case, you only need to u
 
     listener grpc:Listener grpcListener = new (9090);
 
-    @grpc:ServiceDescriptor {descriptor: ROOT_DESCRIPTOR_HELLOWORLD, descMap: getDescriptorMapHelloworld()}
+    @grpc:Descriptor {value: HELLOWORLD_DESC}
     service "Greeter" on grpcListener {
 
         remote function sayHello(HelloRequest value) returns HelloReply|error {

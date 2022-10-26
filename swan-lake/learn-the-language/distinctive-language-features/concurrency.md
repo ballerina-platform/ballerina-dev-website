@@ -513,11 +513,6 @@ type Row record {
 
     int v;
 };
-
-table<Row> key(k) t = table [
-    // Can safely use `s` as a key.
-    {k: s, v: 17}
-];
 ```
 
 In the above code example, the string array **``s``** is declared as read-only using the type intersection operator ``&``. The type of **``s``** is both an array of strings and ``readonly,`` which means that it is an immutable array. This is enforced at compile-time to ensure that the values of the array **``s``** are immutable. Therefore, it is safe to pass it as an argument to an ``isolated`` function.

@@ -441,7 +441,7 @@ In the above code example, the **``IntPair``** type is a tuple type of two membe
 
 ## Rest type in tuples
 
-Similar to how maps can be described as record types, arrays can also be defined as tuple types using ``...`` syntax.
+Similar to how maps can be described as record types, arrays can also be defined as tuple types using the ``...`` syntax.
 
 ```ballerina
 // int followed by
@@ -615,7 +615,7 @@ type PairRest record {
 
 In the above code example, **``Pair``** is an open record. Therefore **``p``** is constructed with the fields **``x``**, **``y``**, and an additional field **``color``**.  You can use a binding pattern to define a variable **``rest``**, which contains fields other than **``x``** and **``y``**. That makes **``rest``** a type of map with the key ``"color"`` and the value ``"blue"``. The type for **``rest``** is defined as **``PairRest``**, which is a record with two optional fields **``x``** and **``y``**, of the ``never`` type. But since you cannot have variables with ``never`` type, the net result is that you cannot have these fields in the record. Thus ``record { never x?; never y?; }`` means that it can have any field of type ``anydata``, except fields with keys ``x`` and ``y``.
 
-So this means that **``rest``** can have any field except the fields with keys `x` and `y` since they are already bound. The ``never`` type can be leveraged with optional fields to indicate that record will never have the particular field.
+So this means that **``rest``** can have any field except the fields with keys `x` and `y` since they are already bound. The ``never`` type can be leveraged with optional fields to indicate that a record will never have the particular field.
 
 ## Interface to external code
 

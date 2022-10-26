@@ -1,7 +1,7 @@
 ---
 layout: ballerina-distinctive-language-features-left-nav-pages-swanlake
 title: Network interaction
-description: In this part, you will learn about the features of the Ballerina programming language that are distinctive. These features revolve around key design considerations that make Ballerina suitable for cloud application programming using small and medium-sized programs.
+description: In this part, you will learn about the distinctive features of the Ballerina programming language. These features revolve around key design considerations that make Ballerina suitable for cloud application programming using small and medium-sized programs.
 keywords: ballerina, programming language, ballerina packages,language-guide
 permalink: /learn/distinctive-language-features/network-interaction/
 active: network-interaction
@@ -199,6 +199,8 @@ So this service object defines a resource **``/hello``** with a query parameter 
 Resources are hierarchical. They have a path, which consists of a base path and multiple segments.
 
 ```ballerina
+import ballerina/http;
+
 service /demo on new http:Listener(8080) {
 
     resource function get greeting/hello(string name) returns string {
@@ -216,9 +218,11 @@ A single listener can have multiple services attached to it, each with different
 The resource paths can also be parameterized such that instead of having fixed, static paths, they can be assigned dynamically during the resource access.  
 
 ```ballerina
-// GET /demo/greeting/James would return "Hello, James"
+import ballerina/http;
+
 service /demo on new http:Listener(8080) {
 
+    // GET /demo/greeting/James would return "Hello, James"
     resource function get greeting/[string name]() returns string {
         return "Hello, " + name;
     }

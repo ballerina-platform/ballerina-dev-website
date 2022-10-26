@@ -148,7 +148,7 @@ Build the package by executing the `bal build` command on the package directory,
 
 Now, the deployed Azure Function can be tested by invoking it using an HTTP client such as cURL. 
 
-```
+```bash
 $ curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"name":"Jack","age":21}' \   

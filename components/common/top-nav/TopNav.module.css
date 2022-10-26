@@ -1,0 +1,147 @@
+.navbar {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+nav.home {
+    background-color: #494949;
+    color: #fff;
+}
+
+nav.docs, nav.downloads, nav.other, nav.docs-learn, 
+nav.community, .brokenLink, .brokenLink-learn, nav.rn {
+    background-color: #fff;
+}
+
+/* added to increase spacing on sides */
+.logo {
+    padding-left: 0.4rem;
+}
+
+.navItems {
+    padding-right: 0.4rem;
+}
+/* --------------------------------------- */
+
+.topNav a.navItem {
+    color: #20b6b0 !important;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.topNav a.navItem.active {
+    color: #57595d !important;
+}
+
+.toggleFloat {
+    justify-content: end !important;
+}
+
+.home .topNav a.navItem, .home #navbarScrollingDropdown {
+    color: #fff !important;
+}
+
+.home .topNav a.navItem:hover {
+    color: #20b6b0 !important;
+}
+
+.topNav a.active, .topNav a:hover {
+    color: #57595d !important;
+}
+
+.topNav #navbarScrollingDropdown::after {
+    color: #20b6b0;
+}
+
+.home .topNav #navbarScrollingDropdown::after {
+    color: #ffffff;
+}
+
+.searchButton {
+    align-items: center;
+    background: #ebedf0 !important;
+    border: 1px solid #ccc !important;
+    border-radius: 0px !important;
+    color: #969faf !important;
+    cursor: pointer;
+    display: flex;
+    height: 36px;
+    justify-content: space-between;
+    margin: 0px;
+    padding: 0 100px 0 20px !important;
+    user-select: none;
+}
+
+.searchButton:active,.searchButton:focus,.searchButton:hover {
+    background: #ffffff;
+    box-shadow: inset 0 0 0 2px #20b6b0 !important;
+    color: #1c1e21;
+    outline: none
+}
+
+.searchButtonContainer {
+    align-items: center;
+    display: flex
+}
+
+.searchButtonIcon {
+    stroke-width: 1.6
+}
+
+.searchButton .searchButtonIcon {
+    color: #494949
+}
+
+.DocSearch-Button-Placeholder, .searchButtonIcon {
+    font-size: 16px;
+    font-weight: 300;
+    padding: 0 12px 0 14px;
+    letter-spacing: 0.2px;
+}
+
+.searchButtonKeys {
+    display: none !important;
+    min-width: calc(40px + .8em);
+/* align-items: flex-end; */
+}
+
+.searchButtonKeys {
+    align-items: center;
+    background: linear-gradient(-225deg,#d5dbe4,#f8f8f8);
+    border-radius: 0px;
+    box-shadow: inset 0 -2px 0 0 #cdcde6,inset 0 0 1px 1px #fff,0 1px 2px 1px rgba(30,35,90,0.4);
+    color: #969faf;
+    display: flex;
+    height: 18px;
+    justify-content: center;
+    margin-right: .4em;
+    padding-bottom: 2px;
+    position: relative;
+    top: -1px;
+    width: 20px;
+} 
+
+@media (min-width: 992px) {
+    .searchButton {
+        /* padding-right: 0.5rem;
+        padding-left: 0.5rem; */
+        margin-left: 0.5rem;
+    }
+}
+
+.hackathonBanner {
+    text-align: center;
+    color: #fff;
+    background-color: #20b6b0 !important;
+    padding: 10px 0 10px 0;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.hackathonBanner a {
+    color: #fff;
+}
+
+.hackathonBanner a:hover{
+    color: #545454 !important;
+}

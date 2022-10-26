@@ -39,7 +39,7 @@ You can use the update tool to update to Ballerina Swan Lake Preview 7 as follow
 
 ##### For existing users
 
-If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](http://ballerina.io/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
+If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](/learn/cli-documentation/update-tool/). To do this, first, execute the command below to get the update tool updated to its latest version. 
                         
 > `ballerina update`
 
@@ -76,7 +76,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 With this release we will be introducing Ballerina Packages. Ballerina Package is a bundle that consist of one or more Ballerina modules. Going forward, the Ballerina Package will be used to share Ballerina libraries. 
 
 
-With the introduction of Ballerina packages Ballerina project structure and build tools has also been changed. Please refer to the [Organizing Ballerina Code](/learn/organizing-ballerina-code/) for more details. 
+With the introduction of Ballerina packages Ballerina project structure and build tools has also been changed. Please refer to the [Organize Ballerina Code](/learn/organize-ballerina-code/) for more details. 
 
 
 For Swan Lake releases Ballerina Central will support users to push and pull Ballerina Packages. Going forward It will not be possible to push individual modules with swan lake releases. With the preview releases you have the ability to push and pull Ballerina Packages to/from Central. However the Packages pushed using preview releases will be cleared when we release the swan lake GA release.You can use the existing Ballerina Central key to push Packages.

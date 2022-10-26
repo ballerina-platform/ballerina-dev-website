@@ -1,0 +1,17 @@
+{
+  "title": "Rest type in tuples",
+  "description": "This BBE demonstrates the rest types in Ballerina tuple types.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "rest type",
+    "tuple rest type"
+  ],
+  "permalink": "/learn/by-example/rest-type-in-tuples",
+  "active": "rest-type-in-tuples",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/rest-type-in-tuples",
+    "/swan-lake/learn/by-example/rest-type-in-tuples.html"
+  ]
+}

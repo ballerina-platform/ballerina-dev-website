@@ -7,8 +7,6 @@ redirect_from:
     - /downloads/swan-lake-release-notes/2201-1-0
     - /downloads/swan-lake-release-notes/2201-1-0-swan-lake/
     - /downloads/swan-lake-release-notes/2201-1-0-swan-lake
-    - /downloads/swan-lake-release-notes/
-    - /downloads/swan-lake-release-notes
 ---
 
 ## Overview of Ballerina 2201.1.0 (Swan Lake Update 1)
@@ -18,7 +16,7 @@ redirect_from:
 
 ## Update Ballerina
 
-If you are already using Ballerina, use the [Ballerina Update tool](/learn/tooling-guide/cli-tools/update-tool/) to directly update to 2201.1.0 by running the command below.
+If you are already using Ballerina, use the [Ballerina Update tool](/learn/cli-documentation/update-tool/) to directly update to 2201.1.0 by running the command below.
 
 > `bal dist pull 2201.1.0`
 
@@ -634,11 +632,11 @@ To view bug fixes, see the [GitHub milestone for Ballerina 2201.1.0 (Swan Lake U
 
 #### AsyncAPI tool
 
-Introduced the AsyncAPI tool, which will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the [AsyncAPI Specification version 2.x](https://www.asyncapi.com/docs/specifications/v2.0.0). For more information, see [Ballerina AsyncAPI support](/learn/ballerina-asyncapi-support) and [AsyncAPI CLI documentation](/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
+Introduced the AsyncAPI tool, which will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the [AsyncAPI Specification version 2.x](https://www.asyncapi.com/docs/specifications/v2.0.0). For more information, see [Ballerina AsyncAPI support](/learn/asyncapi-tool/) and [AsyncAPI CLI documentation](/learn/cli-documentation/asyncapi/#asyncapi-to-ballerina).
 
 #### GraphQL client tool
 
-Introduced the GraphQL client tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](/learn/ballerina-graphql-support/) and [GraphQL CLI documentation](/learn/cli-documentation/graphql/#graphql-to-ballerina).
+Introduced the GraphQL client tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](/learn/graphql-client-tool/) and [GraphQL CLI documentation](/learn/cli-documentation/graphql/#graphql-to-ballerina).
 
 #### Language server
 

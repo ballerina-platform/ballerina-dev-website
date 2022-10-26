@@ -1,0 +1,17 @@
+{
+  "title": "XML templates and query",
+  "description": "This BBE demonstrates the use of XML templates and queries in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xml templates",
+    "query"
+  ],
+  "permalink": "/learn/by-example/xml-templates-and-query",
+  "active": "xml-templates-and-query",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-templates-and-query",
+    "/swan-lake/learn/by-example/xml-templates-and-query.html"
+  ]
+}

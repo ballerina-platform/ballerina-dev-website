@@ -1,0 +1,11 @@
+{
+  "title": "Tuples",
+  "description": "This BBE demonstrates Ballerina tuple types.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "tuples"],
+  "permalink": "/learn/by-example/tuples",
+  "active": "tuples",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/tuples",
+    "/swan-lake/learn/by-example/tuples.html"
+  ]
+}

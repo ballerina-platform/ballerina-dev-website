@@ -25,7 +25,7 @@
         - title: Statically typed and structural
           url: /why-ballerina/flexibly-typed/#statically-typed-and-structural
           active: statically-typed-and-structural
-        - title: Open-by-default 
+        - title: Open by default 
           url: /why-ballerina/flexibly-typed/#open-by-default
           active: open-by-default
         - title: Network communication with data binding

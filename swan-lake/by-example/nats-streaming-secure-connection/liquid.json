@@ -1,0 +1,20 @@
+{
+  "title": "Secured connection",
+  "description": "BBE on producing and consuming a message from a subject in the NATS streaming server using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "stan",
+    "credentials",
+    "tls",
+    "ssl",
+    "authentication"
+  ],
+  "permalink": "/learn/by-example/nats-streaming-secure-connection",
+  "active": "nats-streaming-secure-connection",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/nats-streaming-secure-connection",
+    "/swan-lake/learn/by-example/nats-streaming-secure-connection.html"
+  ]
+}

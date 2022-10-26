@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides functions to retrieve information about the system and the current users of the system. The system:exec method creates the system:Process object, which can control and obtain information about a Ballerina process.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,system">
+
+    <title>API Docs - ballerina/system</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="/css/latest-bootstrap.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="/css/latest-bootstrap-theme.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="/js/latest-bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+     .cVersionChangeBanner{
+    color: #000000;
+    background-color: #fcdf4a !important;
+    width: 100%;
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    transition : all 0.3s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 9;
+    }
+    .cInfoBannerLink{
+        color: #000000;
+        text-decoration: underline;
+    }
+     .cInfoBannerLink:hover{
+        color: #545454 !important;
+        text-decoration: underline !important;
+    }
+   
+    .content-wrapper{
+        padding-top: 2em !important;
+    }
+    @media only screen and (max-width: 992px) {
+        .content-wrapper {padding-top: 7em !important}
+
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+
+    
+        <div class="version">v1.2.14</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../system/index.html" onclick="menuLinkClick()">
+            <h3>system</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../system/index.html#records" onclick="menuLinkClick()">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../system/index.html#objects" onclick="menuLinkClick()">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../system/index.html#functions" onclick="menuLinkClick()">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../system/index.html#constants" onclick="menuLinkClick()">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../system/index.html#types" onclick="menuLinkClick()">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../system/index.html#errors" onclick="menuLinkClick()">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../email/index.html">email</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+    <div class="content-wrapper pusher">
+        <div>
+    <a id="toc" class="toc item" onclick="displayMenu()">
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">system</span>
+                    
+                </h1>
+                    <h2>Module overview</h2>
+<p>This module provides functions to retrieve information about the system and the current users of the system. The <code>system:exec</code> method creates the <code>system:Process</code> object, which can control and obtain information about a Ballerina process.</p>
+<p>For information on the operations, which you can perform with the system module, see the below <strong>Functions</strong>.</p>
+
+
+            
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Record type to hold the details of an error.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+            <section class="method-content" id="objects">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#objects">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Objects </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="Process" title="Process">
+                                <a class="objects " href="objects/Process.html">Process</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>This object contains information on a process being created from Ballerina.
+                            </td>
+                        </tr>
+                    
+                </table>
+             </section>
+            
+
+            
+
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="exec" title="exec">
+                                <a class="functions " href="functions.html#exec">exec</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Executes an operating system command as a subprocess of the current process.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getEnv" title="getEnv">
+                                <a class="functions " href="functions.html#getEnv">getEnv</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns the environment variable value associated with the provided name.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getUserHome" title="getUserHome">
+                                <a class="functions " href="functions.html#getUserHome">getUserHome</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns the current user's home directory path.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="getUsername" title="getUsername">
+                                <a class="functions " href="functions.html#getUsername">getUsername</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns the current user's name.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="uuid" title="uuid">
+                                <a class="functions " href="functions.html#uuid">uuid</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Returns a random UUID string.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="INVALID_OPERATION_ERROR" title="INVALID_OPERATION_ERROR">
+                                <a class="constant " href="constants.html#INVALID_OPERATION_ERROR">INVALID_OPERATION_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the error code for invalid operations.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PERMISSION_ERROR" title="PERMISSION_ERROR">
+                                <a class="constant " href="constants.html#PERMISSION_ERROR">PERMISSION_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the error code for permission errors.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="FILE_SYSTEM_ERROR" title="FILE_SYSTEM_ERROR">
+                                <a class="constant " href="constants.html#FILE_SYSTEM_ERROR">FILE_SYSTEM_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the error code for file system errors.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="FILE_NOT_FOUND_ERROR" title="FILE_NOT_FOUND_ERROR">
+                                <a class="constant " href="constants.html#FILE_NOT_FOUND_ERROR">FILE_NOT_FOUND_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents the error code for file not found.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+            
+            <section class="method-content" id="types">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#types">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Types </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="Error" title="Error">
+                                <a class="types " href="types.html#Error">Error</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents System related errors.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+             <section class="method-content" id="errors">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#errors">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Errors </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="FileNotFoundError" title="FileNotFoundError">
+                                <a class="errors " href="errors.html#FileNotFoundError">FileNotFoundError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents a <code>FileNotFoundError</code> with a detailed message.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="FileSystemError" title="FileSystemError">
+                                <a class="errors " href="errors.html#FileSystemError">FileSystemError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents a <code>FileSystemError</code> with a detailed message.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="InvalidOperationError" title="InvalidOperationError">
+                                <a class="errors " href="errors.html#InvalidOperationError">InvalidOperationError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents an <code>InvalidOperationError</code> with a detailed message.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="PermissionError" title="PermissionError">
+                                <a class="errors " href="errors.html#PermissionError">PermissionError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <p>Represents a <code>PermissionError</code> with a detailed message.
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+        </div>
+    </div>
+
+</body>
+
+<script>
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+<script>
+function menuLinkClick() {
+  if(window.matchMedia("(max-width: 600px)").matches) {
+    document.getElementsByClassName("navi-wrapper")[0].style.display = "none";
+  }
+}
+function displayMenu() {
+  var nav = document.getElementsByClassName("navi-wrapper")[0];
+  var content = document.getElementsByClassName("content-wrapper")[0];
+  if (nav.style.display === "none" || nav.style.display === "") {
+    nav.style.display = "block";
+    content.style.marginLeft = "210px";
+  } else {
+    nav.style.display = "none";
+    content.style.marginLeft = "0px";
+  }
+}
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+<script>
+$(document).ready(function(e) {
+    if($('#versions')) {
+      if($("option[value='1.1']")) { 
+        $("option[value='1.1']").remove();
+      }
+      if($("option[value='1.0']")) {
+        $("option[value='1.0']").remove();
+      }
+     }
+});
+</script>
+
+

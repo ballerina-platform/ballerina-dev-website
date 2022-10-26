@@ -1,0 +1,72 @@
+name: Deploy Nextjs app to gh-pages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_BASE_PATH: ""
+      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: master
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Checkout gh-pages
+        run: |
+          mkdir gh-pages
+          cd gh-pages
+          git init
+          git remote add origin https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-dev-website.git
+          git fetch origin
+          git checkout -b deploy-website-$GITHUB_SHA origin/gh-pages
+
+      - name: Export static files
+        run: npm run export
+
+      - name: Add .nojekyll file
+        run: touch out/.nojekyll
+
+      - name: Rearrange files to match the urls
+        run: |
+          chmod +x utils/rearrangeFiles.sh
+          utils/rearrangeFiles.sh
+        shell: bash
+
+      - name: Deploy
+        run: |
+          cp -r .github CNAME robots.txt gh-pages/.git utils out
+          cd out
+          git config --global user.email "ballerina-bot@ballerina.org"
+          git config --global user.name "ballerina-bot"
+          git add .
+          git commit --allow-empty -m 'Deploy website'
+          git push origin deploy-website-$GITHUB_SHA
+          echo 'Successfully pushed to deploy-website-$GITHUB_SHA branch'
+
+      - name: Create pull request for new site
+        shell: bash
+        run: |
+          cd out
+          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+          bin/hub pull-request -b gh-pages -m '[Automated] Deploy website'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

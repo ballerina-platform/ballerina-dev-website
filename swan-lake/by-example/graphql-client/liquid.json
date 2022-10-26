@@ -1,0 +1,17 @@
+{
+  "title": "Client",
+  "description": "A GraphQL client written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql client"
+  ],
+  "permalink": "/learn/by-example/graphql-client",
+  "active": "graphql-client",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-client",
+    "/swan-lake/learn/by-example/graphql-client.html"
+  ]
+}

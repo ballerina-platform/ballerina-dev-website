@@ -1,0 +1,19 @@
+{
+  "title": "SASL authentication - consumer",
+  "description": "BBE on how to configure a Kafka consumer to use SASL/PLAIN authentication.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "kafka",
+    "consumer",
+    "authentication",
+    "SASL"
+  ],
+  "permalink": "/learn/by-example/kafka-authentication-sasl-plain-consumer",
+  "active": "kafka-authentication-sasl-plain-consumer",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/kafka-authentication-sasl-plain-consumer",
+    "/swan-lake/learn/by-example/kafka-authentication-sasl-plain-consumer.html"
+  ]
+}

@@ -84,7 +84,7 @@ Generating executable
         Execute the command below to deploy the function locally.
         func start --script-root target/azure_functions --java
 
-        Execute the below command to deploy Ballerina Azure Functions:
+        Execute the command below to deploy Ballerina Azure Functions.
         func azure functionapp publish <function_app_name> --script-root target/azure_functions 
 
         target/bin/azure_functions_deployment.jar

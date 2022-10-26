@@ -2,7 +2,7 @@ import sys
 from github import Github
 from os import linesep
 
-# Getting the command line arguments as inputs
+# Getting the command-line arguments as inputs
 token = sys.argv[1]
 version = str(sys.argv[2])
 sha256 = sys.argv[3]
@@ -72,13 +72,13 @@ update = repo.update_file(contents.path, commit_msg_title, ballerina_rb_file_con
 
 body = '''
 This PR is created by @ballerina-bot.
-In case any issue arises, please feel free to contact @sAnjana or @shafreenAnfar. 
+In case any issue arises, please feel free to contact @NipunaMadhushan or @keizer619.
 Otherwise, drop us a message at ballerina-dev@googlegroups.com regarding any concerns.
 '''
 
-# At the moment, the PR will be sent to sanjana/homebrew-core and thereby verified and merged. Then a new PR can be manually sent to 
+# At the moment, the PR will be sent to NipunaMadhushan/homebrew-core and thereby verified and merged. Then a new PR can be manually sent to
 # Homebrew/homebrew-core repo
-intermediate_user = github_instance.get_user("sanjana")
+intermediate_user = github_instance.get_user("NipunaMadhushan")
 intermediate_user_repo = homebrew_user.get_repo("homebrew-core")
 
 pr = intermediate_user_repo.create_pull(title=commit_msg_title, body=body, base="master", head='{}:{}'.format(current_user_login, 'master'))

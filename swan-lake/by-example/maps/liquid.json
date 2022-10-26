@@ -1,0 +1,11 @@
+{
+  "title": "Maps",
+  "description": "This BBE demonstrates maps in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "maps"],
+  "permalink": "/learn/by-example/maps",
+  "active": "maps",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/maps",
+    "/swan-lake/learn/by-example/maps.html"
+  ]
+}

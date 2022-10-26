@@ -1,0 +1,17 @@
+{
+  "title": "Flush",
+  "description": "This BBE demonstrates how the `flush` action can be used for concurrency.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "flush",
+    "concurrency"
+  ],
+  "permalink": "/learn/by-example/flush",
+  "active": "flush",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/flush",
+    "/swan-lake/learn/by-example/flush.html"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Listener",
+  "description": "This BBE is about receiving file/directory changes that occur in a remote FTP server. It has a listener-based functionality for receiving these events.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "FTP",
+    "remote file",
+    "listener"
+  ],
+  "permalink": "/learn/by-example/ftp-listener",
+  "active": "ftp-listener",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/ftp-listener",
+    "/swan-lake/learn/by-example/ftp-listener.html"
+  ]
+}

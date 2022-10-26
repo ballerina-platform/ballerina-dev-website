@@ -6,7 +6,7 @@ title: Release Note
 
 The jBallerina 1.2.9 patch release improves upon the 1.2.8 release by introducing the features listed below and addressing a number of [bugs](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.9%22+label%3AType%2FBug+is%3Aclosed) and [improvements](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A%22Ballerina+1.2.9%22+is%3Aclosed+label%3AType%2FImprovement).
 
-You can use the [update tool](/learn/keeping-ballerina-up-to-date/) to update to jBallerina 1.2.9 as follows.
+You can use the [update tool](/learn/cli-documentation/update-tool/) to update to jBallerina 1.2.9 as follows.
 
 **For existing users:**
 
@@ -41,4 +41,3 @@ Added support to read custom/optional fields from the OAuth2 introspection respo
 ##### Cache
 
 Improved the concurrent behavior of the cache.
-

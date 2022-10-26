@@ -1,0 +1,20 @@
+{
+  "title": "Request Interceptors",
+  "description": "This BBE demonstrates the HTTP Request Interceptors in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "service",
+    "interceptor",
+    "request",
+    "filter"
+  ],
+  "permalink": "/learn/by-example/http-request-interceptors",
+  "active": "http-request-interceptors",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-request-interceptors",
+    "/swan-lake/learn/by-example/http-request-interceptors.html"
+  ]
+}

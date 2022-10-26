@@ -24,15 +24,15 @@ This release is the fourth preview version of Ballerina Swan Lake. This release 
         - [Improved support for quoted identifiers](#improved-support-for-quoted-identifiers)
         -  [Subsequent initialization support for local final variables](#subsequent-initialization-support-for-local-final-variables)
         - [Handle errors at a single point](#handle-errors-at-a-single-point)
-        - [The Fail statement](#the-fail-statement)
+        - [The `fail` statement](#the-fail-statement)
         - [Predeclared module prefixes](#predeclared-module-prefixes)
         - [Improved lang library functions](#improved-lang-library-functions)
     - [Runtime](#runtime)
-        - [jBallerina Runtime APIs](#jballerina-runtime-apis)
+        - [jBallerina runtime APIs](#jballerina-runtime-apis)
         - [Asynchronous Java interoperability](#asynchronous-java-interoperability)
-    - [Standard Library](#standard-library)
-    - [Developer Tools](#developer-tools)
-        - [The OpenAPI Tool](#the-openapi-tool)
+    - [Standard library](#standard-library)
+    - [Developer tools](#developer-tools)
+        - [The OpenAPI tool](#the-openapi-tool)
         - [Improvements related to code actions](#improvements-related-to-code-actions)
         - [Code formatting](#code-formatting)
 
@@ -42,7 +42,7 @@ You can use the update tool to update to Ballerina Swan Lake Preview 4 as follow
 
 #### For existing users
 
-If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](http://ballerina.io/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the update tool updated to its latest version. 
+If you are already using Ballerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](/learn/cli-documentation/update-tool/). To do this, first, execute the command below to get the update tool updated to its latest version. 
                         
 > `ballerina update`
 
@@ -385,7 +385,7 @@ string[] sortedCars = cars.sort(array:DESCENDING, car => car.length());
 
 #### Runtime
 
-##### jBallerina Runtime APIs
+##### jBallerina runtime APIs
 
 The jBallerina runtime APIs were moved to the `org.ballerinalang.jvm.api` package and new APIs were introduced. The following APIs can be used to manage various runtime constructs.
 
@@ -415,7 +415,7 @@ The BIR is now improved by including local variable scope information. With this
 
 Along with the scoping, BIR now contains a new variable kind named `SYNTHETIC`, which identifies the variables generated at the de-sugar phase. These are skipped when adding meta-data so that generated variables do not appear in the scope with a debug hit.
 
-#### Standard Library
+#### Standard library
 
 Re-align organization names of the connectors. 
 
@@ -426,9 +426,9 @@ Re-align organization names of the connectors.
 |rabbitmq| ballerina/rabbitmq| ballerinax/rabbitmq|
 |nats| ballerina/nats| ballerinax/nats|
 
-#### Developer Tools
+#### Developer tools
 
-##### The OpenAPI Tool
+##### The OpenAPI tool
 
 ###### OpenAPI CLI
 

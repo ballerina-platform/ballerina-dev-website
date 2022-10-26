@@ -1,0 +1,11 @@
+{
+  "title": "Error detail",
+  "description": "This BBE demonstrates how to add a detail component to the error and access it.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "error detail"],
+  "permalink": "/learn/by-example/error-detail",
+  "active": "error-detail",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/error-detail",
+    "/swan-lake/learn/by-example/error-detail.html"
+  ]
+}

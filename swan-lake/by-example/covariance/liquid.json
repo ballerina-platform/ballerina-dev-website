@@ -1,0 +1,18 @@
+{
+  "title": "Covariance",
+  "description": "This BBE demonstrates covariance in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "covariance",
+    "arrays",
+    "maps"
+  ],
+  "permalink": "/learn/by-example/covariance",
+  "active": "covariance",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/covariance",
+    "/swan-lake/learn/by-example/covariance.html"
+  ]
+}

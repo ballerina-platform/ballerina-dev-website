@@ -1,27 +1,36 @@
-- title: Writing a RESTful API with Ballerina
+- title: Write a RESTful API with Ballerina
   url: #
   sublinks:
-    - title: Setting up the Prerequisites
-      url: /learn/writing-a-restful-api-with-ballerina/#setting-up-the-prerequisites
-      active: setting-up-the-prerequisites
-    - title: Designing the Two Endpoints
-      url: /learn/writing-a-restful-api-with-ballerina/#designing-the-two-endpoints
-      active: designing-the-two-endpoints
-    - title: Creating a Package for Your Code
-      url: /learn/writing-a-restful-api-with-ballerina/#creating-a-package-for-your-code
-      active: creating-a-package-for-your-code
-    - title: Creating the COVID-19 Dataset
-      url: /learn/writing-a-restful-api-with-ballerina/#creating-the-covid-19-dataset
-      active: creating-the-covid-19-dataset
-    - title: Writing a Resource to Get All the COVID-19 Data
-      url: /learn/writing-a-restful-api-with-ballerina/#writing-a-resource-to-get-all-the-covid-19-data
-      active: writing-a-resource-to-get-all-the-covid-19-data
-    - title: Writing a Resource to Add COVID-19 Data by ISO Code
-      url: /learn/writing-a-restful-api-with-ballerina/#writing-a-resource-to-add-covid-19-data-by-iso-code
-      active: writing-a-resource-to-add-covid-19-data-by-iso-code
-    - title: Writing a Resource to Get Filtered COVID-19 Data by ISO Code
-      url: /learn/writing-a-restful-api-with-ballerina/#writing-a-resource-to-get-filtered-covid-19-data-by-iso-code
-      active: writing-a-resource-to-get-filtered-covid-19-data-by-iso-code
-    - title: The Complete Code
-      url: /learn/writing-a-restful-api-with-ballerina/#the-complete-code
+    - title: Set up the prerequisites
+      url: /learn/write-a-restful-api-with-ballerina/#set-up-the-prerequisites
+      active: set-up-the-prerequisites
+    - title: Understand the implementation
+      url: /learn/writing-a-restful-api-with-ballerina/#understand-the-implementation
+      active: understand-the-implementation
+    - title: Create the service package
+      url: /learn/write-a-restful-api-with-ballerina/#create-the-service-package
+      active: create-the-service-package
+    - title: Create the dataset
+      url: /learn/write-a-restful-api-with-ballerina/#create-the-dataset
+      active: create-the-dataset
+    - title: Create the service
+      url: /learn/write-a-restful-api-with-ballerina/#create-the-service
+      active: create-the-service
+    - title: Implement the first endpoint
+      url: /learn/write-a-restful-api-with-ballerina/#implement-the-first-endpoint
+      active: implement-the-first-endpoint
+    - title: Implement the second endpoint
+      url: /learn/write-a-restful-api-with-ballerina/#implement-the-second-endpoint
+      active: implement-the-second-endpoint
+    - title: The complete code
+      url: /learn/write-a-restful-api-with-ballerina/#the-complete-code
       active: the-complete-code
+    - title: Run the service
+      url: /learn/write-a-restful-api-with-ballerina/#run-the-service
+      active: run-the-service
+    - title: Try the service
+      url: /learn/write-a-restful-api-with-ballerina/#try-the-service
+      active: try-the-service
+    - title: Learn more
+      url: /learn/write-a-restful-api-with-ballerina/#learn-more
+      active: learn-more

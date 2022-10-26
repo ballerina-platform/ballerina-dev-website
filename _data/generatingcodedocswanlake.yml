@@ -1,15 +1,15 @@
-- title: Generating Code Documentation
+- title: Generate code documentation
   url: #
   sublinks:
-    - title: Generating Documentation for Modules
-      url: /learn/generating-code-documentation/#generating-documentation-for-modules
-      active: generating-documentation-for-modules
-    - title: Writing Ballerina Documentation
-      url: /learn/generating-code-documentation/#writing-ballerina-documentation
-      active: writing-ballerina-documentation
-    - title: Documenting a Module
-      url: /learn/generating-code-documentation/#documenting-a-module
-      active: documenting-a-module
-    - title: Generating Ballerina Documentation
-      url: /learn/generating-code-documentation/#generating-ballerina-documentation
-      active: generating-ballerina-documentation
+    - title: Generate documentation for modules
+      url: /learn/generate-code-documentation/#generating-documentation-for-modules
+      active: generate-documentation-for-modules
+    - title: Write Ballerina documentation
+      url: /learn/generate-code-documentation/#write-ballerina-documentation
+      active: write-ballerina-documentation
+    - title: Document a module
+      url: /learn/generate-code-documentation/#document-a-module
+      active: document-a-module
+    - title: Generate Ballerina documentation
+      url: /learn/generate-code-documentation/#generate-ballerina-documentation
+      active: generate-ballerina-documentation

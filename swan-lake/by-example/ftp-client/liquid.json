@@ -1,0 +1,11 @@
+{
+  "title": "Client",
+  "description": "This is a BBE on getting and putting file content on a remote FTP server.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "FTP"],
+  "permalink": "/learn/by-example/ftp-client",
+  "active": "ftp-client",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/ftp-client",
+    "/swan-lake/learn/by-example/ftp-client.html"
+  ]
+}

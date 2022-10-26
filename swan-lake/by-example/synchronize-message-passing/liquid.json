@@ -1,0 +1,18 @@
+{
+  "title": "Synchronize message passing",
+  "description": "This BBE demonstrates how the `sync send` action can be used for concurrency in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "sync send",
+    "concurrency",
+    "worker"
+  ],
+  "permalink": "/learn/by-example/synchronize-message-passing",
+  "active": "synchronize-message-passing",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/synchronize-message-passing",
+    "/swan-lake/learn/by-example/synchronize-message-passing.html"
+  ]
+}

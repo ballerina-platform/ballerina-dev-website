@@ -1,0 +1,17 @@
+{
+  "title": "Destructure tuples",
+  "description": "This BBE demonstrates destructuring tuples in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "tuples",
+    "destructure tuples"
+  ],
+  "permalink": "/learn/by-example/destructure-tuples",
+  "active": "destructure-tuples",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/destructure-tuples",
+    "/swan-lake/learn/by-example/destructure-tuples.html"
+  ]
+}

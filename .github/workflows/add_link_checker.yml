@@ -7,19 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build the site
-        uses: shafreenAnfar/jekyll-build-action@v5
-      - name: Lychee link checker action
-        id: lc
-        uses: lycheeverse/lychee-action@v1.0.4
-        with:
-          args: /learn/** /1.2/** /_site/** --exclude twitter.com --exclude novacodecamp.org --exclude %7B%7B%20site.dist_server%20%7D%7D --exclude %7B%7B%20site.plugin_vscode_repo%20%7D%7D --verbose --base https://dev.ballerina.io *.md *.html
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: Link Checker Report
-          path:  ./lychee/out.md  
-      - name: Fail if there were link errors
-        run: exit ${{ steps.lc.outputs.exit_code }}
+      # - name: Build the site
+      #   uses: shafreenAnfar/jekyll-build-action@v5
+      # - name: Lychee link checker action
+      #   id: lc
+      #   uses: lycheeverse/lychee-action@v1.0.4
+      #   with:
+      #     args: /learn/** /1.2/** /_site/** --exclude localhost:4000 --exclude twitter.com --exclude disease.sh/v3 --exclude api.github.com --exclude novacodecamp.org --exclude %7B%7B%20site.dist_server%20%7D%7D --exclude %7B%7B%20site.plugin_vscode_repo%20%7D%7D --verbose --base https://pre-prod.ballerina.io *.md *.html
+      # - name: Archive production artifacts
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: Link Checker Report
+      #     path:  ./lychee/out.md  
+      # - name: Fail if there were link errors
+      #   run: exit ${{ steps.lc.outputs.exit_code }}
         
         

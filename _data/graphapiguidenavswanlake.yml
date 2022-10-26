@@ -1,18 +1,36 @@
-- title: Writing a GraphQL API with Ballerina
+- title: Write a GraphQL API with Ballerina
   url: #
   sublinks:
-    - title: Setting up the Prerequisites
-      url: /learn/writing-a-graphql-api-with-ballerina/#setting-up-the-prerequisites
-      active: setting-up-the-prerequisites
-    - title: Designing the GraphQL Endpoint
-      url: /learn/writing-a-graphql-api-with-ballerina/#designing-the-graphql-endpoint
-      active: designing-the-graphql-endpoint
-    - title: Creating a Datasource for the Project
-      url: /learn/writing-a-graphql-api-with-ballerina/#creating-a-datasource-for-the-project
-      active: creating-a-datasource-for-the-project
-    - title: Writing the Ballerina Service
-      url: /learn/writing-a-graphql-api-with-ballerina/#writing-the-ballerina-service
-      active: writing-the-ballerina-service
-    - title: Accessing the GraphQL Endpoint
-      url: /learn/writing-a-graphql-api-with-ballerina/#accessing-the-graphql-endpoint
-      active: accessing-the-graphql-endpoint
+    - title: Set up the prerequisites
+      url: /learn/write-a-graphql-api-with-ballerina/#set-up-the-prerequisites
+      active: set-up-the-prerequisites
+    - title: Design the GraphQL endpoint
+      url: /learn/write-a-graphql-api-with-ballerina/#design-the-graphql-endpoint
+      active: design-the-graphql-endpoint
+    - title: Create the service package
+      url: /learn/write-a-graphql-api-with-ballerina/#create-the-service-package
+      active: create-the-service-package
+    - title: Create the data source 
+      url: /learn/write-a-graphql-api-with-ballerina/#create-the-data-source 
+      active: create-the-data-source
+    - title: Create the object types
+      url: /learn/write-a-graphql-api-with-ballerina/#create-the-object-types
+      active: create-the-object-types
+    - title: Create the service
+      url: /learn/write-a-graphql-api-with-ballerina/#create-the-service
+      active: create-the-service
+    - title: The complete code
+      url: /learn/write-a-graphql-api-with-ballerina/#the-complete-code
+      active: the-complete-code
+    - title: Run the service
+      url: /learn/write-a-graphql-api-with-ballerina/#run-the-service
+      active: run-the-service
+    - title: View the generated schema
+      url: /learn/write-a-graphql-api-with-ballerina/#view-the-generated-schema
+      active: view-the-generated-schema
+    - title: Try the service
+      url: /learn/write-a-graphql-api-with-ballerina/#try-the-service
+      active: try-the-service
+    - title: Learn more
+      url: /learn/write-a-graphql-api-with-ballerina/#learn-more
+      active: learn-more

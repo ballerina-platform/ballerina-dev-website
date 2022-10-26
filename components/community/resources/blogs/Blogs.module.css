@@ -1,0 +1,42 @@
+.fBlogs {
+    padding: 30px;
+}
+
+.blogs {
+    background-color: #e6eaeb5d;
+    padding: 30px;
+}
+
+.fBlogs h2, .blogs h2 {
+    font-size: 1.5rem;
+}
+
+.fBlogs h4, .blogs h4 {
+    font-size: 1.25rem;
+}
+
+.blogWrapper {
+    height:528px; 
+    overflow-y: scroll;
+}
+
+.blogInfo {
+    padding: 10px 0 10px 0;
+    margin: 0px 0px 10px 0;
+    border-bottom: 1px solid rgba(161, 161, 161, 0.5);
+}
+
+.blogInfo a {
+    color: #20b6b0;
+    text-decoration: none;
+}
+
+.blogInfo a:hover {
+    color: #57595d;
+    text-decoration: none;
+}
+
+.last {
+    border: none !important;
+}
+

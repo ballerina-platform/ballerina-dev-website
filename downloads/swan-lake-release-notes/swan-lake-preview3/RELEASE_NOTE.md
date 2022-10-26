@@ -14,7 +14,7 @@ You can use the update tool to update to Ballerina Swan Lake Preview 3 as follow
 
 **For existing users:**
 
-If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](http://ballerina.io/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the Update Tool updated to its latest version. 
+If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](/learn/cli-documentation/update-tool/). To do this, first, execute the command below to get the update tool updated to its latest version. 
                         
 > `ballerina update`
 
@@ -71,7 +71,7 @@ public static BString getFullName(ObjectValue objectValue) {
 }
 ```
 
-##### Order by clause for sorting 
+##### `Order by` clause for sorting 
 
 This release introduces the `order by` clause support for sorting in query expression/action. An order-by clause is executed by constructing a list of entries.
 
@@ -127,9 +127,9 @@ DeptPerson[] deptPersonList =
         };
 ```
 
-#### Standard Library
+#### Standard library
 
-##### SQL Connectors
+##### SQL connectors
 
 Stored procedures can now be executed through SQL connectors (JDBC & MySQL). 
 
@@ -153,15 +153,15 @@ if (ret is error) {
 }
 
 ```
-##### Module Organization
+##### Module organization
 
 The `ballerina/nats` library was moved to Ballerina Central. Previously, this module was packed in the Ballerina distribution. With this change, this library can now be released independently.
 
-#### Developer Tools
+#### Developer tools
 
-##### Language Server
+##### Language server
 
-###### Introducing AI-based `Data Mapping` Code Action
+###### Introducing AI-based `Data Mapping` code action
 
 Two record types can now be mapped automatically using the `Data Mapping` code action. Once a possible record mapping instance is identified, it suggests a mapping based on an AI algorithm. A mapping function will be generated automatically and added to the workspace to perform the record mapping.
 
@@ -212,9 +212,9 @@ Furthermore, the line with the error would be replaced with a function call as s
 Grade grades = mapNameAndGradeToGrade(student);
 ```
 
-For more information, see [Code Actions](/learn/tooling-guide/visual-studio-code-extension/language-support/#code-actions).
+For more information, see [Code Actions](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
 
-##### Test Framework
+##### Test framework
 
 ###### Support single test execution
 
@@ -314,7 +314,7 @@ function afterSuiteFunc2() {
 
 #### Code to Cloud
 
-##### Azure Functions Support
+##### Azure Functions support
 
 Ballerina now supports writing serverless functions using the Azure Functions framework. 
 
@@ -332,4 +332,4 @@ public function fromHttpToQueue(af:Context ctx,
 }
 ```
 
-For more information, see [Azure Functions](https://ballerina.io/swan-lake/learn/deployment/azure-functions/).
+For more information, see [Azure Functions](https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/).

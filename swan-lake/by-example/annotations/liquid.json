@@ -1,0 +1,11 @@
+{
+  "title": "Annotations",
+  "description": "This BBE demonstrates how to use annotations in Ballerina",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "annotations"],
+  "permalink": "/learn/by-example/annotations",
+  "active": "annotations",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/annotations",
+    "/swan-lake/learn/by-example/annotations.html"
+  ]
+}

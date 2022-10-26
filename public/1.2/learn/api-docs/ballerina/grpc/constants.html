@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="This module provides support for the gRPC messaging protocol. gRPC is an inter-process communication technology that allows you to connect, invoke and operate distributed heterogeneous applications as easily as making a local function call. The gRPC protocol is layered over HTTP/2 and It uses Protocol Buffers for marshaling/unmarshaling messages. This makes gRPC, highly efficient on wire and a simple service definition framework.
+"
+    />
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,grpc" />
+
+    <title>API Docs - Constants : grpc</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+    <link
+      rel="stylesheet"
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+    <!-- Optional theme -->
+    <link
+      rel="stylesheet"
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
+      crossorigin="anonymous"
+    />
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+      src="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript" src="/js/api-doc-template.js"></script>
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css" />
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css" />
+    <link rel="stylesheet" href="/css/ballerina-io-api-new.css" />
+
+    <style>
+      .line-numbers-wrap {
+        display: none;
+      }
+    </style>
+    <!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css" />
+    <link
+      rel="stylesheet"
+      href="../html-template-resources/styles/css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../html-template-resources/styles/css/font.css"
+    />
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+  </head>
+
+  <body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+      </div>
+    </div>
+    <div class="cVersionChangeBanner">
+       This API documentation is for Ballerina 1.2.0. <a href="https://lib.ballerina.io" class="cInfoBannerLink">View API documentation for the latest release</a>.
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation" style="top:50px">
+</div>
+    <div class="clearfix"></div>
+    <div class="navi-wrapper">
+      <div class="navi-wrapper-content">
+        <a
+          href="
+    ../index.html"
+        >
+          <img
+            class="logo"
+            src="../html-template-resources/images/ballerina-logo.png"
+          />
+        </a>
+
+        <div class="version">v1.2.14</div>
+
+        <div class="primary-list module">
+          <a href="../grpc/index.html" onclick="menuLinkClick()">
+            <h3>grpc</h3>
+          </a>
+
+          <ul>
+            <li>
+              <a
+                data="records"
+                href="../grpc/index.html#records"
+                onclick="menuLinkClick()"
+                >Records</a
+              >
+            </li>
+
+            <li>
+              <a
+                data="objects"
+                href="../grpc/index.html#objects"
+                onclick="menuLinkClick()"
+                >Objects</a
+              >
+            </li>
+
+            <li>
+              <a
+                data="clients"
+                href="../grpc/index.html#clients"
+                onclick="menuLinkClick()"
+                >Clients</a
+              >
+            </li>
+
+            <li>
+              <a
+                data="listeners"
+                href="../grpc/index.html#listeners"
+                onclick="menuLinkClick()"
+                >Listeners</a
+              >
+            </li>
+
+            <li>
+              <a
+                data="functions"
+                href="../grpc/index.html#functions"
+                onclick="menuLinkClick()"
+                >Functions</a
+              >
+            </li>
+
+            <li>
+              <a
+                data="constants"
+                href="../grpc/index.html#constants"
+                onclick="menuLinkClick()"
+                >Constants</a
+              >
+            </li>
+
+            <li>
+              <a
+                data="annotations"
+                href="../grpc/index.html#annotations"
+                onclick="menuLinkClick()"
+                >Annotations</a
+              >
+            </li>
+
+            <li>
+              <a
+                data="types"
+                href="../grpc/index.html#types"
+                onclick="menuLinkClick()"
+                >Types</a
+              >
+            </li>
+
+            <li>
+              <a
+                data="errors"
+                href="../grpc/index.html#errors"
+                onclick="menuLinkClick()"
+                >Errors</a
+              >
+            </li>
+          </ul>
+          <div class="ui divider"></div>
+        </div>
+
+        <div class="primary-list module-list">
+          <h3>All Modules</h3>
+          <ul>
+            <li>
+              <a href="../auth/index.html">auth</a>
+            </li>
+
+            <li>
+              <a href="../cache/index.html">cache</a>
+            </li>
+
+            <li>
+              <a href="../config/index.html">config</a>
+            </li>
+
+            <li>
+              <a href="../crypto/index.html">crypto</a>
+            </li>
+
+            <li>
+              <a href="../email/index.html">email</a>
+            </li>
+
+            <li>
+              <a href="../encoding/index.html">encoding</a>
+            </li>
+
+            <li>
+              <a href="../file/index.html">file</a>
+            </li>
+
+            <li>
+              <a href="../filepath/index.html">filepath</a>
+            </li>
+
+            <li>
+              <a href="../grpc/index.html">grpc</a>
+            </li>
+
+            <li>
+              <a href="../http/index.html">http</a>
+            </li>
+
+            <li>
+              <a href="../io/index.html">io</a>
+            </li>
+
+            <li>
+              <a href="../java/index.html">java</a>
+            </li>
+
+            <li>
+              <a href="../java.arrays/index.html">java.arrays</a>
+            </li>
+
+            <li>
+              <a href="../java.jdbc/index.html">java.jdbc</a>
+            </li>
+
+            <li>
+              <a href="../jsonutils/index.html">jsonutils</a>
+            </li>
+
+            <li>
+              <a href="../jwt/index.html">jwt</a>
+            </li>
+
+            <li>
+              <a href="../kafka/index.html">kafka</a>
+            </li>
+
+            <li>
+              <a href="../lang.array/index.html">lang.array</a>
+            </li>
+
+            <li>
+              <a href="../lang.boolean/index.html">lang.boolean</a>
+            </li>
+
+            <li>
+              <a href="../lang.decimal/index.html">lang.decimal</a>
+            </li>
+
+            <li>
+              <a href="../lang.error/index.html">lang.error</a>
+            </li>
+
+            <li>
+              <a href="../lang.float/index.html">lang.float</a>
+            </li>
+
+            <li>
+              <a href="../lang.future/index.html">lang.future</a>
+            </li>
+
+            <li>
+              <a href="../lang.int/index.html">lang.int</a>
+            </li>
+
+            <li>
+              <a href="../lang.map/index.html">lang.map</a>
+            </li>
+
+            <li>
+              <a href="../lang.object/index.html">lang.object</a>
+            </li>
+
+            <li>
+              <a href="../lang.stream/index.html">lang.stream</a>
+            </li>
+
+            <li>
+              <a href="../lang.string/index.html">lang.string</a>
+            </li>
+
+            <li>
+              <a href="../lang.table/index.html">lang.table</a>
+            </li>
+
+            <li>
+              <a href="../lang.typedesc/index.html">lang.typedesc</a>
+            </li>
+
+            <li>
+              <a href="../lang.value/index.html">lang.value</a>
+            </li>
+
+            <li>
+              <a href="../lang.xml/index.html">lang.xml</a>
+            </li>
+
+            <li>
+              <a href="../ldap/index.html">ldap</a>
+            </li>
+
+            <li>
+              <a href="../log/index.html">log</a>
+            </li>
+
+            <li>
+              <a href="../math/index.html">math</a>
+            </li>
+
+            <li>
+              <a href="../mime/index.html">mime</a>
+            </li>
+
+            <li>
+              <a href="../nats/index.html">nats</a>
+            </li>
+
+            <li>
+              <a href="../oauth2/index.html">oauth2</a>
+            </li>
+
+            <li>
+              <a href="../observe/index.html">observe</a>
+            </li>
+
+            <li>
+              <a href="../openapi/index.html">openapi</a>
+            </li>
+
+            <li>
+              <a href="../rabbitmq/index.html">rabbitmq</a>
+            </li>
+
+            <li>
+              <a href="../reflect/index.html">reflect</a>
+            </li>
+
+            <li>
+              <a href="../runtime/index.html">runtime</a>
+            </li>
+
+            <li>
+              <a href="../socket/index.html">socket</a>
+            </li>
+
+            <li>
+              <a href="../stringutils/index.html">stringutils</a>
+            </li>
+
+            <li>
+              <a href="../system/index.html">system</a>
+            </li>
+
+            <li>
+              <a href="../task/index.html">task</a>
+            </li>
+
+            <li>
+              <a href="../test/index.html">test</a>
+            </li>
+
+            <li>
+              <a href="../time/index.html">time</a>
+            </li>
+
+            <li>
+              <a href="../transactions/index.html">transactions</a>
+            </li>
+
+            <li>
+              <a href="../websub/index.html">websub</a>
+            </li>
+
+            <li>
+              <a href="../xmlutils/index.html">xmlutils</a>
+            </li>
+
+            <li>
+              <a href="../xslt/index.html">xslt</a>
+            </li>
+          </ul>
+          <div class="ui divider"></div>
+        </div>
+      </div>
+    </div>
+    <div class="content-wrapper pusher">
+      <div>
+        <a id="toc" class="toc item" onclick="displayMenu()">
+          <img src="../html-template-resources/images/menu.svg" />
+        </a>
+      </div>
+      <div class="main-wrapper">
+        <h1>
+          <a
+            class="breadcrumb-home"
+            href="
+    ../index.html"
+          >
+            <img
+              class="breadcrumb-home-icon"
+              src="../html-template-resources/images/home.svg"
+            />
+          </a>
+          <span class="title-type">Constants - </span>
+          <a href="../grpc/index.html">grpc</a>
+        </h1>
+        <div class="constants">
+          <div class="data-wrapper">
+            <div class="params-listing">
+              <ul>
+                <li id="OK">
+                  <b>OK</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  0
+                </li>
+                <li>
+                  <p>The gRPC error status code: 0 OK.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="CANCELED">
+                  <b>CANCELED</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  1
+                </li>
+                <li>
+                  <p>The gRPC error status code: 1 Canceled.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="UNKNOWN">
+                  <b>UNKNOWN</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  2
+                </li>
+                <li>
+                  <p>The gRPC error status code: 2 Unknown.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="INVALID_ARGUMENT">
+                  <b>INVALID_ARGUMENT</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  3
+                </li>
+                <li>
+                  <p>The gRPC error status code: 3 Invalid Argument.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="DEADLINE_EXCEEDED">
+                  <b>DEADLINE_EXCEEDED</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  4
+                </li>
+                <li>
+                  <p>The gRPC error status code: 4 Deadline Exceeded.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="NOT_FOUND">
+                  <b>NOT_FOUND</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  5
+                </li>
+                <li>
+                  <p>The gRPC error status code: 5 Not Found.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="ALREADY_EXISTS">
+                  <b>ALREADY_EXISTS</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  6
+                </li>
+                <li>
+                  <p>The gRPC error status code: 6 Already Exists.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="PERMISSION_DENIED">
+                  <b>PERMISSION_DENIED</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  7
+                </li>
+                <li>
+                  <p>The gRPC error status code: 7 Permission Denied.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="RESOURCE_EXHAUSTED">
+                  <b>RESOURCE_EXHAUSTED</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  8
+                </li>
+                <li>
+                  <p>The gRPC error status code: 8 Resource Exhausted.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="FAILED_PRECONDITION">
+                  <b>FAILED_PRECONDITION</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  9
+                </li>
+                <li>
+                  <p>The gRPC error status code: 9 Failed Precondition.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="ABORTED">
+                  <b>ABORTED</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  10
+                </li>
+                <li>
+                  <p>The gRPC error status code: 10 Aborted.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="OUT_OF_RANGE">
+                  <b>OUT_OF_RANGE</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  11
+                </li>
+                <li>
+                  <p>The gRPC error status code: 11 Out of Range.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="UNIMPLEMENTED">
+                  <b>UNIMPLEMENTED</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  12
+                </li>
+                <li>
+                  <p>The gRPC error status code: 12 Unimplemented.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="INTERNAL">
+                  <b>INTERNAL</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  13
+                </li>
+                <li>
+                  <p>The gRPC error status code: 13 Internal.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="UNAVAILABLE">
+                  <b>UNAVAILABLE</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  14
+                </li>
+                <li>
+                  <p>The gRPC error status code: 14 Unavailable.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="DATA_LOSS">
+                  <b>DATA_LOSS</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  15
+                </li>
+                <li>
+                  <p>The gRPC error status code: 15 Data Loss.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="UNAUTHENTICATED">
+                  <b>UNAUTHENTICATED</b>
+                  <span class="type">
+                    <span class="builtin-type">int</span></span
+                  >
+                  16
+                </li>
+                <li>
+                  <p>The gRPC error status code: 16 Unauthenticated.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="COMPRESSION_AUTO">
+                  <b>COMPRESSION_AUTO</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  AUTO
+                </li>
+                <li>
+                  <p>
+                    When service behaves as a HTTP gateway inbound
+                    request/response accept-encoding option is set as the
+                    outbound request/response accept-encoding/content-encoding
+                    option.
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="COMPRESSION_ALWAYS">
+                  <b>COMPRESSION_ALWAYS</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  ALWAYS
+                </li>
+                <li>
+                  <p>
+                    Always set accept-encoding/content-encoding in outbound
+                    request/response.
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="COMPRESSION_NEVER">
+                  <b>COMPRESSION_NEVER</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  NEVER
+                </li>
+                <li>
+                  <p>
+                    Never set accept-encoding/content-encoding header in
+                    outbound request/response.
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="CANCELLED_ERROR">
+                  <b>CANCELLED_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}CancelledError
+                </li>
+                <li>
+                  <p>Represents the reason of the cancelled error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="UNKNOWN_ERROR">
+                  <b>UNKNOWN_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}UnKnownError
+                </li>
+                <li>
+                  <p>Represents the reason of the unknown error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="INVALID_ARGUMENT_ERROR">
+                  <b>INVALID_ARGUMENT_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}InvalidArgumentError
+                </li>
+                <li>
+                  <p>Represents the reason of the invalid argument error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="DEADLINE_EXCEEDED_ERROR">
+                  <b>DEADLINE_EXCEEDED_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}DeadlineExceededError
+                </li>
+                <li>
+                  <p>Represents the reason of the deadline exceeded error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="NOT_FOUND_ERROR">
+                  <b>NOT_FOUND_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}NotFoundError
+                </li>
+                <li>
+                  <p>Represents the reason of the not found error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="ALREADY_EXISTS_ERROR">
+                  <b>ALREADY_EXISTS_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}AleadyExistsError
+                </li>
+                <li>
+                  <p>Represents the reason of the already exists error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="PERMISSION_DENIED_ERROR">
+                  <b>PERMISSION_DENIED_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}PermissionDeniedError
+                </li>
+                <li>
+                  <p>Represents the reason of the permission denied error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="UNAUTHENTICATED_ERROR">
+                  <b>UNAUTHENTICATED_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}UnauthenticatedError
+                </li>
+                <li>
+                  <p>Represents the reason of the unauthenticated error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="RESOURCE_EXHAUSTED_ERROR">
+                  <b>RESOURCE_EXHAUSTED_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}ResourceExhaustedError
+                </li>
+                <li>
+                  <p>Represents the reason of the resource exhausted error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="FAILED_PRECONDITION_ERROR">
+                  <b>FAILED_PRECONDITION_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}FailedPreconditionError
+                </li>
+                <li>
+                  <p>Represents the reason of the failed precondition error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="ABORTED_ERROR">
+                  <b>ABORTED_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}AbortedError
+                </li>
+                <li>
+                  <p>Represents the reason of the aborted error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="OUT_OF_RANGE_ERROR">
+                  <b>OUT_OF_RANGE_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}OutOfRangeError
+                </li>
+                <li>
+                  <p>Represents the reason of the out of range error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="UNIMPLEMENTED_ERROR">
+                  <b>UNIMPLEMENTED_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}UnimplementedError
+                </li>
+                <li>
+                  <p>Represents the reason of the unimplemented error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="INTERNAL_ERROR">
+                  <b>INTERNAL_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}InternalError
+                </li>
+                <li>
+                  <p>Represents the reason of the internal error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="UNAVAILABLE_ERROR">
+                  <b>UNAVAILABLE_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}UnavailableError
+                </li>
+                <li>
+                  <p>Represents the reason of the unavailable error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="DATA_LOSS_ERROR">
+                  <b>DATA_LOSS_ERROR</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}DataLossError
+                </li>
+                <li>
+                  <p>Represents the reason of the data loss error.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="params-listing">
+              <ul>
+                <li id="ALL_RETRY_ATTEMPTS_FAILED">
+                  <b>ALL_RETRY_ATTEMPTS_FAILED</b>
+                  <span class="type">
+                    <span class="builtin-type">string</span></span
+                  >
+                  {ballerina/grpc}AllRetryAttemptsFailed
+                </li>
+                <li>
+                  <p>
+                    Represents the reason of all the retry attempts failed
+                    scenario.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    let mainNavLinks = document.querySelectorAll(
+      ".primary-list.module ul li a"
+    );
+    let mainSections = document.querySelectorAll(
+      ".main-wrapper section.method-content"
+    );
+
+    let lastId;
+    let cur = [];
+
+    let contentWrapper = document.querySelector(".content-wrapper");
+    contentWrapper.addEventListener("scroll", (event) => {
+      let fromTop = contentWrapper.scrollTop;
+
+      mainNavLinks.forEach((link) => {
+        let section = document.querySelector(
+          "#" + link.attributes.getNamedItem("data").textContent
+        );
+
+        if (
+          section.offsetTop <= fromTop &&
+          section.offsetTop + section.offsetHeight > fromTop
+        ) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");
+        }
+      });
+    });
+  </script>
+  <script>
+    function menuLinkClick() {
+      if (window.matchMedia("(max-width: 600px)").matches) {
+        document.getElementsByClassName("navi-wrapper")[0].style.display =
+          "none";
+      }
+    }
+    function displayMenu() {
+      var nav = document.getElementsByClassName("navi-wrapper")[0];
+      var content = document.getElementsByClassName("content-wrapper")[0];
+      if (nav.style.display === "none" || nav.style.display === "") {
+        nav.style.display = "block";
+        content.style.marginLeft = "210px";
+      } else {
+        nav.style.display = "none";
+        content.style.marginLeft = "0px";
+      }
+    }
+  </script>
+  <script>
+    function menuLinkClick() {
+      if (window.matchMedia("(max-width: 600px)").matches) {
+        document.getElementsByClassName("navi-wrapper")[0].style.display =
+          "none";
+      }
+    }
+    function displayMenu() {
+      var nav = document.getElementsByClassName("navi-wrapper")[0];
+      var content = document.getElementsByClassName("content-wrapper")[0];
+      if (nav.style.display === "none" || nav.style.display === "") {
+        nav.style.display = "block";
+        content.style.marginLeft = "210px";
+      } else {
+        nav.style.display = "none";
+        content.style.marginLeft = "0px";
+      }
+    }
+  </script>
+
+  <script>
+    window.onload = (event) => {
+      ballerinaHighlighter.highlightSnippets();
+    };
+  </script>
+</html>

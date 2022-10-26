@@ -1,0 +1,17 @@
+{
+  "title": "Run strands safely on separate threads",
+  "description": "This BBE demonstrates how to run strands safely on a separate thread based on isolation.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "inferring isolated",
+    "strand"
+  ],
+  "permalink": "/learn/by-example/run-strands-safely-on-separate-threads",
+  "active": "run-strands-safely-on-separate-threads",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/run-strands-safely-on-separate-threads",
+    "/swan-lake/learn/by-example/run-strands-safely-on-separate-threads.html"
+  ]
+}

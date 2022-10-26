@@ -1,0 +1,11 @@
+{
+  "title": "Type definitions",
+  "description": "This BBE demonstrates type definitions in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "type definition"],
+  "permalink": "/learn/by-example/type-definitions",
+  "active": "type-definitions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/type-definitions",
+    "/swan-lake/learn/by-example/type-definitions.html"
+  ]
+}

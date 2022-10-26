@@ -5,16 +5,29 @@ labels: 'Type/Task'
 
 ---
 
-**Description:**
-<!-- Give a brief description of the task -->
+## Description
+> A brief description of the task.
 
-**Describe your task(s)**
+## Related website/documentation area
+> Add/Uncomment the relevant area label out of the following. 
 
-**Related Issues (optional):**
-<!-- Any related issues such as sub tasks, issues reported in other repositories (e.g component repositories), similar problems, etc. -->
+<!--Area/BBEs-->
+<!--Area/HomePageSamples-->
+<!--Area/LearnPages-->
+<!--Area/CommonPages-->
+<!--Area/Backend-->
+<!--Area/UIUX-->
+<!--Area/Workflows-->
+<!--Area/Blog-->
 
-**Suggested Labels (optional):**
-<!-- Optional comma separated list of suggested labels. Non committers can’t assign labels to issues, so this will help issue creators who are not a committer to suggest possible labels-->
+## Describe your task(s)
+> A detailed description of the task.
 
-**Suggested Assignees (optional):**
-<!--Optional comma separated list of suggested team members who should attend the issue. Non committers can’t assign issues to assignees, so this will help issue creators who are not a committer to suggest possible assignees-->
+## Related issue(s) (optional)
+> Any related issues such as sub tasks and issues reported in other repositories (e.g., component repositories), similar problems, etc. 
+
+## Suggested label(s) (optional)
+> Optional comma-separated list of suggested labels. Non committers can’t assign labels to issues, and thereby, this will help issue creators who are not a committer to suggest possible labels.
+
+## Suggested assignee(s) (optional)
+> Optional comma-separated list of suggested team members who should attend the issue. Non committers can’t assign issues to assignees, and thereby, this will help issue creators who are not a committer to suggest possible assignees.

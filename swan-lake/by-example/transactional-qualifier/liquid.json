@@ -1,0 +1,17 @@
+{
+  "title": "Transactional qualifier",
+  "description": "This BBE introduces the transactional qualifier in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "transactional",
+    "transactional qualifier"
+  ],
+  "permalink": "/learn/by-example/transactional-qualifier",
+  "active": "transactional-qualifier",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/transactional-qualifier",
+    "/swan-lake/learn/by-example/transactional-qualifier.html"
+  ]
+}

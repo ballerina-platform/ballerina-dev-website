@@ -13,7 +13,7 @@ You can use the update tool to update to Ballerina Swan Lake Preview 2 as follow
 
 **For existing users:**
 
-If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](/swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the Update Tool updated to its latest version. 
+If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina update tool](/learn/cli-documentation/update-tool/). To do this, first, execute the command below to get the update tool updated to its latest version. 
                         
 > `ballerina update`
 
@@ -226,7 +226,7 @@ public function main() {
 }
 ```
 
-#### Standard Library
+#### Standard library
 
 ##### HTTP
 
@@ -276,13 +276,13 @@ The following standard libraries were moved to Ballerina Central. Previously, th
 - ballerina/websub
 - ballerinax/rabbitmq
 
-#### Developer Tools
+#### Developer tools
 
-##### Test Framework
+##### Test framework
 
-###### Improved Mocking API
+###### Improved mocking API
 
-**Object Mocking**
+**Object mocking**
 
 The syntax for initializing a mock object was improved to remove the cast.
 
@@ -298,7 +298,7 @@ New syntax:
 http:Client mockHttpClient = test:mock(http:Client);
 ```
 
-**Function Mocking**
+**Function mocking**
 
 The mocking API now supports scoping and stubbing of mock functions that are declared for functions in imported modules.
 With the above support, the `@MockFn {}` and `@Mock {}` annotations have been unified and now all function mocks can be declared with the `@Mock {}` annotation.

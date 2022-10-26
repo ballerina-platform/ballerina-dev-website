@@ -124,6 +124,7 @@ Execute the `/vars` command as shown below to view the declared variables.
 
 ```
 =$ /vars
+| Variable declarations
 | (a) int a = 10
 ```
 
@@ -288,13 +289,11 @@ For example, see below.
 ```
 =$ /help strings
 | 
-| Topic description :
+| # Strings
 | 
-|  The `string` type represents immutable sequence of zero or more Unicode characters. 
-|  There is no separate character type: a character is represented by a `string` of length 1.
-|  Two `string` values are `==` if both sequences have the same characters.
-|  You can use `<`, `<=`, `>`, and `>=` operators on `string` values and they work by comparing code points.
-|  Unpaired surrogates are not allowed.
+| The `string` type represents immutable sequence of zero or more Unicode characters.  There is no separate character type: a character is represented by a `string` of length 1.
+| 
+| Two `string` values are `==` if both sequences have the same characters. You can use `<`, `<=`, `>`, and `>=` operators on `string` values and they work by comparing code points. Unpaired surrogates are not allowed.
 | 
 | For examples, visit https://ballerina.io/learn/by-example/strings
 ```

@@ -81,7 +81,7 @@ Compiling source
 Generating executable
         @azure_functions:Function: get-hello
 
-        Execute the below command to deploy the function locally:
+        Execute the command below to deploy the function locally.
         func start --script-root target/azure_functions --java
 
         Execute the below command to deploy Ballerina Azure Functions:

@@ -67,7 +67,7 @@ In Ballerina, `triggers` are represented by `listeners`. When the `af:HttpListen
 
 Output bindings are defined in the return type definition. For services with the `HttpListener` attachment, `HttpOutput` is the default output binding. You can override the default behavior by specifying them explicitly in the return type. For example, see [HTTP Trigger -> Queue Output](#http-trigger---queue-output).
 
-In the code sample shown above, it has an empty service path and resource path named `hello`. The accessor is `get`. It expects a request with a query parameter for the field `name`. The required artifact generation and data binding will be handled by `ballerinax/azure_functions` package automatically.
+In the code sample shown above, it has an empty service path and resource path named `hello`. The accessor is `get`. It expects a request with a query parameter for the field `name`. The required artifact generation and data binding will be handled by the `ballerinax/azure_functions` package automatically.
 
 ### Build the function
 

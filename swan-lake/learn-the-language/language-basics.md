@@ -252,7 +252,7 @@ Arrays are sequential data structures consisting of values of the same type.
 You can declare an array of integers as:
 
 ```ballerina
-int[] v = [1,2,3];  
+int[] v = [1, 2, 3];  
 ```
 
 You can index the individual elements of this array using the ``v[i]`` notation. Array indexing starts with zero. So the second element of **``v``** can be accessed as *``v[1]``*.

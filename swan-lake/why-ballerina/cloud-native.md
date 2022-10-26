@@ -195,7 +195,7 @@ twitter:Client twitterClient = check new ({
 
 public function main() returns error? {
     twitter:Tweet status = check twitterClient->tweet("Hello World!");
-    io:println("Tweeted: ", <@untainted>status.id);
+    io:println("Tweeted: ", status.id);
 }
 ```
 

@@ -109,7 +109,7 @@ Ballerina also has a concept of a configurable variable. A module-level variable
 configurable int port = 8080;
 ```
 
-The initializer of a configurable variable can be overridden at runtime. A variable for which a runtime configuration is required, can use ``?`` as the initializer. Values for these variables can be provided via the `Config.toml` file.
+The initializer of a configurable variable can be overridden at runtime. A variable for which a runtime configuration is required, can use ``?`` as the initializer. Values for these variables can be provided through configuration files, command line arguments, and environment variables.
 
 ```ballerina
 configurable string password = ?;
@@ -459,7 +459,7 @@ int[] evenNums = from var i in nums
 
 In the above code example, **``nums``** is an integer array containing a list of numbers.
 
-The array **``numTimes10``** is constructed by iterating over **``nums``** using the ``from`` clause,  where **``i``** is the iteration value, and then using the ``select`` clause to evaluate the expression **``i * 10``** to include the result in the array. Therefore, the result is a new list **``[10,20,30,40]``**.
+The  **``numTimes10``** array is constructed by iterating over **``nums``** using the ``from`` clause,  where **``i``** is the iteration value, and then using the ``select`` clause to evaluate the **``i * 10``** expression to include the result in the array. Therefore, the result is a new **``[10,20,30,40]``** list.
 
 Similarly, you can also apply SQL-like filters to the iteration value using the ``where`` clause. The array **``evenNums``** is built in that way by introducing the ``where`` clause that filters the values for which the expression evaluates to ``true``. The resultant list is **``[2,4]``**.
 

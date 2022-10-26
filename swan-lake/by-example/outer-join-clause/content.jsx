@@ -14,33 +14,51 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-public function main() returns error? {
-    // Initializes the CSV file paths and content.
-    string csvFilePath1 = "./files/csvFile1.csv";
-    string csvFilePath2 = "./files/csvFile2.csv";
-    string[][] csvContent = [["1", "James", "10000"], ["2", "Nathan", "150000"],
-    ["3", "Ronald", "120000"], ["4", "Roy", "6000"],
-    ["5", "Oliver", "1100000"]];
+type Department record {|
+   int id;
+   string name;
+|};
 
-    // Writes the given content \`string[][]\` to a CSV file in csvFilePath1.
-    check io:fileWriteCsv(csvFilePath1, csvContent);
-    // Reads the previously-saved CSV file as a \`string[][]\`.
-    string[][] readCsv = check io:fileReadCsv(csvFilePath1);
-    io:println(readCsv);
+type Person record {|
+   int id;
+   string fname;
+   string lname;
+|};
 
-    // Writes the given content as a stream to a CSV file.
-    check io:fileWriteCsvFromStream(csvFilePath2, csvContent.toStream());
-    // Reads the previously-saved CSV file as a stream.
-    stream<string[], io:Error?> csvStream = check
-                                        io:fileReadCsvAsStream(csvFilePath2);
-    // Iterates through the stream and prints the content.
-    check csvStream.forEach(function(string[] val) {
-                              io:println(val);
-                          });
-}`,
+type DeptPerson record {|
+   string fname;
+   string? dept;
+|};
+
+public function main() {
+    Person p1 = {id: 1, fname: "Alex", lname: "George"};
+    Person p2 = {id: 2, fname: "John", lname: "Fonseka"};
+    Person p3 = {id: 3, fname: "Ted", lname: "Perera"};
+
+    Department d1 = {id: 1, name:"HR"};
+    Department d2 = {id: 2, name:"Operations"};
+
+    Person[] personList = [p1, p2, p3];
+    Department[] deptList = [d1, d2];
+
+    DeptPerson[] deptPersonList =
+       from Person person in personList
+       // The \`outer join\` clause performs a left outer equijoin.
+       // For the records for which there is no matching record
+       // on the \`deptList\`, the resulting record will contain \`nil\` fields.
+       outer join var dept in deptList
+       on person.id equals dept?.id
+       select {
+           fname : person.fname,
+           dept : dept?.name
+       };
+
+    io:println(deptPersonList);
+}
+`,
 ];
 
-export default function IoCsv() {
+export default function OuterJoinClause() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,19 +79,14 @@ export default function IoCsv() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Read/write CSV</h1>
+      <h1>Outer join clause</h1>
 
       <p>
-        The Ballerina <code>io</code> library contains APIs to read/write CSV
-        content from/to a file.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/io/latest/">
-          <code>io</code> module
-        </a>
-        .
+        The <code>outer join</code> clause performs a left outer equijoin. This
+        join returns each element of the first collection regardless of whether
+        it has any matching elements in the second collection. For the values
+        for which there is no matching value on the second collection, the
+        resulting value will contain <code>nil</code>.
       </p>
 
       <Row
@@ -86,7 +99,7 @@ export default function IoCsv() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4af7bef780e79822ec56e1f0a3b4e3dd&file=io_csv.bal",
+                "https://play.ballerina.io/?gist=5852ed34602655ba1027aa384ab377de&file=outer_join_clause.bal",
                 "_blank"
               );
             }}
@@ -107,31 +120,9 @@ export default function IoCsv() {
             </svg>
           </button>
 
-          <button
-            className="bg-transparent border-0 m-0 p-2"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/io-csv",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -149,7 +140,7 @@ export default function IoCsv() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -184,10 +175,6 @@ export default function IoCsv() {
           )}
         </Col>
       </Row>
-
-      <p>
-        To run this sample, use the <code>bal run</code> command.
-      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -242,13 +229,8 @@ export default function IoCsv() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run io_csv.bal`}</span>
-              <span>{`[["1","James","10000"],["2","Nathan","150000"],["3","Ronald","120000"],["4","Roy","6000"],["5","Oliver","1100000"]]`}</span>
-              <span>{`["1","James","10000"]`}</span>
-              <span>{`["2","Nathan","150000"]`}</span>
-              <span>{`["3","Ronald","120000"]`}</span>
-              <span>{`["4","Roy","6000"]`}</span>
-              <span>{`["5","Oliver","1100000"]`}</span>
+              <span>{`\$ bal run outer_join_clause.bal`}</span>
+              <span>{`[{"fname":"Alex","dept":"HR"},{"fname":"John","dept":"Operations"},{"fname":"Ted","dept":null}]`}</span>
             </code>
           </pre>
         </Col>
@@ -256,7 +238,7 @@ export default function IoCsv() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Read/write strings" href="/learn/by-example/io-strings">
+          <Link title="Join clause" href="/learn/by-example/join-clause">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -282,17 +264,14 @@ export default function IoCsv() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/write strings
+                  Join clause
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Read/write CSV with data mapping"
-            href="/learn/by-example/io-csv-datamapping"
-          >
+          <Link title="Stream type" href="/learn/by-example/stream-type">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -301,7 +280,7 @@ export default function IoCsv() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/write CSV with data mapping
+                  Stream type
                 </span>
               </div>
               <svg

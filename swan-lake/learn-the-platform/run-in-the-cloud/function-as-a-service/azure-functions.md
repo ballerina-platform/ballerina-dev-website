@@ -206,7 +206,7 @@ service "cosmos" on cosmosEp {
 Execute the `bal build` command on the package directory to build the package. Then, execute the `func` command shown in the Ballerina build output as in the previous section to deploy it.
 
 Once the function is deployed, add an item to the collection.
-1. Go to the created collection in the **Data Explorer**.
+1. Navigate to the collection created in the **Data Explorer**.
 2. Click **New Item** to add a new item to the collection.
 3. Go to the queue page and observe the added new entry.
 

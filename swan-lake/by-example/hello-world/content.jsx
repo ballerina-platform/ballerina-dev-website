@@ -57,7 +57,7 @@ export default function HelloWorld() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bce68a3cb1537df2611cdcff41df87ea&file=hello_world.bal",
+                "https://play.ballerina.io/?gist=08c26334cfcf7405dad28a943fa51d2b&file=hello_world.bal",
                 "_blank"
               );
             }}

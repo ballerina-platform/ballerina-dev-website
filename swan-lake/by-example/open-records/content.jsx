@@ -25,7 +25,6 @@ type Employee record {
     int id;
 };
 
-// Adds an additional \`id\` field to \`e\`.
 Employee e = {
     name: "James", id: 10
 };
@@ -33,6 +32,7 @@ Employee e = {
 // You can assign an \`Employee\` type value to a \`Person\`.
 Person p = e;
 
+// Create a \`Person\` value with an additional \`country\` field.
 Person p2 = {
     name: "John", "country": "UK"
 };
@@ -88,7 +88,7 @@ export default function OpenRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=48ce1aab8ad702de65cfc879aa74a112&file=open_records.bal",
+                "https://play.ballerina.io/?gist=34455bf2a4d8372041589fe0bb197ee6&file=open_records.bal",
                 "_blank"
               );
             }}

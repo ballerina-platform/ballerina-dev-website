@@ -74,11 +74,18 @@ COMMANDS
         format          Format Ballerina source files
         grpc            Generate the Ballerina sources for a given Protocol
                         Buffer definition
+        graphql         Generate Ballerina client sources
+                        for a given GraphQL schema (SDL) and GraphQL queries
         openapi         Generate the Ballerina sources for a given OpenAPI
                         definition and vice versa
+        asyncapi        Generate the Ballerina sources for a given AsyncAPI definition
         bindgen         Generate the Ballerina bindings for Java APIs
         shell           Run Ballerina interactive REPL
         version         Print the Ballerina version
+
+   Update Commands:
+        dist            Manage Ballerina distributions
+        update          Update the Ballerina tool
 
 ```
 

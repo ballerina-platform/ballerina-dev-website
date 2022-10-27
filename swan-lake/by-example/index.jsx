@@ -88,6 +88,7 @@ import LimitClause from "./limit-clause/content.jsx";
 import QueryingTables from "./querying-tables/content.jsx";
 import CreatingTablesWithQuery from "./creating-tables-with-query/content.jsx";
 import JoinClause from "./join-clause/content.jsx";
+import OuterJoinClause from "./outer-join-clause/content.jsx";
 import StreamType from "./stream-type/content.jsx";
 import QueryingWithStreams from "./querying-with-streams/content.jsx";
 import QueryActions from "./query-actions/content.jsx";
@@ -449,6 +450,7 @@ const BBEs = {
   QueryingTables,
   CreatingTablesWithQuery,
   JoinClause,
+  OuterJoinClause,
   StreamType,
   QueryingWithStreams,
   QueryActions,

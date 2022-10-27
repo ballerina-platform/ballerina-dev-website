@@ -156,7 +156,7 @@ First, let's create a new Ballerina package:
 
 ```
 $ bal new math
-Created new Ballerina package 'math' at math
+Created new package 'math' at math
 $ tree
 └── math
     ├── Ballerina.toml

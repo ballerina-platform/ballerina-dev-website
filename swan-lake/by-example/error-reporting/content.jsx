@@ -97,7 +97,7 @@ export default function ErrorReporting() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e4a6c81d6c472755b0e0f4a8b81f2baa&file=error_reporting.bal",
+                "https://play.ballerina.io/?gist=e3401e0c89ff4b1ea3561cdb51576946&file=error_reporting.bal",
                 "_blank"
               );
             }}

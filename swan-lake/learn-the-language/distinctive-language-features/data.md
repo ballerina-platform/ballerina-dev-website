@@ -109,7 +109,7 @@ Ballerina also has a concept of a configurable variable. A module-level variable
 configurable int port = 8080;
 ```
 
-The initializer of a configurable variable can be overridden at runtime. A variable where runtime configuration is required can use ``?`` as the initializer.
+The initializer of a configurable variable can be overridden at runtime. A variable for which a runtime configuration is required, can use ``?`` as the initializer. Values for these variables can be provided through configuration files, command line arguments, and environment variables.
 
 ```ballerina
 configurable string password = ?;
@@ -236,7 +236,7 @@ json j = {
 };
 ```
 
-The ``json`` type is the union of ``( ) | boolean | int | float | decimal | string | json[ ] | map<json>`` .  
+The ``json`` type is the union of ``() | boolean | int | float | decimal | string | json[] | map<json>`` .  
 
 A ``json`` value can be converted to and from JSON format in a straightforward way, except for the numeric types in Ballerina, which are not natively available in the JSON specification.
 
@@ -459,7 +459,7 @@ int[] evenNums = from var i in nums
 
 In the above code example, **``nums``** is an integer array containing a list of numbers.
 
-The array **``numTimes10``** is constructed by iterating over **``nums``** using the ``from`` clause,  where **``i``** is the iteration value, and then using the ``select`` clause to evaluate the expression **``i \* 10``** to include the result in the array. Therefore, the result is a new list **``[10,20,30,40]``**.
+The  **``numTimes10``** array is constructed by iterating over **``nums``** using the ``from`` clause,  where **``i``** is the iteration value, and then using the ``select`` clause to evaluate the **``i * 10``** expression to include the result in the array. Therefore, the result is a new **``[10,20,30,40]``** list.
 
 Similarly, you can also apply SQL-like filters to the iteration value using the ``where`` clause. The array **``evenNums``** is built in that way by introducing the ``where`` clause that filters the values for which the expression evaluates to ``true``. The resultant list is **``[2,4]``**.
 
@@ -560,7 +560,7 @@ Ballerina's philosophy is to use tables as containers for building centralized d
 
 Tables are a built-in data structure. They are just like the arrays and maps that you have seen so far. Therefore, they have some array-like and some map-like features.
 
-A table is an array of records, and each record represents a row in the table. The rows are identified by keys, which is similar to maps. Thus, you can either iterate over the table, item by item, like arrays, or directly point to the item using the associated key. But unlike in maps where the keys are of ``string`` type and are different from the fields, a table stores the keys as fields in the rows. This approach is similar to the concept of primary keys in a SQL-based database table where one of the columns is designated as a primary key, which is used to uniquely identify the database record.
+A table is an array of records and each record represents a row in the table. The rows are identified by keys, similar to maps. Thus, you can either iterate over the table item by item like with arrays, or directly point to the item using the associated key. However, unlike in maps where the keys are of the ``string`` type and are different from the fields, a table stores the keys as fields in the rows. This approach is similar to the concept of primary keys in an SQL-based database table in which one column or a combination of a few columns are designated as a primary key, which is used to uniquely identify the database record.
 
 Therefore, a table maintains an invariant that each row is uniquely identified by a key that is not limited to the ``string`` type and is immutable. Additionally, tables also preserve the order of the rows.
 
@@ -689,7 +689,7 @@ The actual type of the query output is determined by the context, for example, i
 You can also use a query expression to create tables.
 
 ```ballerina
-var highPaidEmployees = 
+table<Employee> key(id) highPaidEmployees = 
    table key(id) 
    from var e in employees
    where e.salary >= 1000
@@ -810,10 +810,10 @@ Raw templates are backtick templates without the tag, in which case phase two of
 One of the important use cases of raw templates is parameterized SQL queries.
 
 ```ballerina
-db->query(`SELECT * FROM  order WHERE customer_id = ${customerId}`);
+dbClient->query(`SELECT * FROM  order WHERE customer_id = ${customerId}`);
 ```
 
-In the above example, assume that **``db``** is a client object making a remote call to a SQL database. The raw template passed to the query method translates to an array of two strings ``"SELECT * FROM order WHERE customer_id ="`` and ``""``. The second string is empty as it comes after the expression. Along with that, it also passes an array of evaluated expressions which is the value of the **``customerId``** variable here. Thus, the SQL syntax is turned into the right syntax with the required substitution for the underlying SQL implementation.
+In the above example, assume that **``dbClient``** is a client object making a remote call to an SQL database. The raw template passed to the query method translates to an array of two strings ``"SELECT * FROM order WHERE customer_id ="`` and ``""``. The second string is empty as it comes after the expression. Along with that, it also passes an array of evaluated expressions, which is the value of the **``customerId``** variable here. Thus, the SQL syntax is turned into the right syntax with the required substitution for the underlying SQL implementation.
 
 ## XML overview
 
@@ -884,13 +884,16 @@ The ``==`` operator does a deep equals comparison.
 You can loop through the ``xml`` elements in a ``foreach`` statement.
 
 ```ballerina
-xml x4 = xml `<name>Sherlock Holmes</name><details>
+import ballerina/io;
+
+public function main() {
+    xml x4 = xml `<name>Sherlock Holmes</name><details>
                     <author>Sir Arthur Conan Doyle</author>
                     <language>English</language>
                 </details>`;
-
-foreach var item in x4 {
-    io:println(item);
+    foreach var item in x4 {
+        io:println(item);
+    }
 }
 ```
 

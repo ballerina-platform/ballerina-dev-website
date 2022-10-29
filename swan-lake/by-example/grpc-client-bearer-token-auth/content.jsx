@@ -296,6 +296,13 @@ export default function GrpcClientBearerTokenAuth() {
         </li>
       </ul>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       indent"
@@ -392,8 +399,8 @@ export default function GrpcClientBearerTokenAuth() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You may need to change the trusted certificate
-          file path. As a prerequisite, start a secured sample service.
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a secured sample service.
         </p>
       </blockquote>
 

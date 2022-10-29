@@ -79,6 +79,14 @@ export default function HttpClientMutualSsl() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file
+          path, private key file path, and trusted certificate file path in the
+          code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -163,7 +171,18 @@ export default function HttpClientMutualSsl() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the following command.</p>
+      <p>Run the client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a{" "}
+          <a href="-example/http-service-mutual-ssl/">
+            sample service secured with mutual SSL
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -218,9 +237,6 @@ export default function HttpClientMutualSsl() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a sample service secured with mutual SSL.`}</span>
-              <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
-              <span>{`# trusted certificate file path.`}</span>
               <span>{`\$ bal run http_client_mutual_ssl.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>

@@ -319,6 +319,13 @@ export default function GrpcServiceMutualSsl() {
         </li>
       </ul>
 
+      <pre>
+        <code>
+          **Tip:** You may need to change the certificate file path, private key
+          file path, and trusted certificate file path in the code below.
+        </code>
+      </pre>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       indent"
@@ -413,11 +420,6 @@ export default function GrpcServiceMutualSsl() {
         </li>
       </ul>
 
-      <p>
-        <strong>Info:</strong> You may need to change the certificate file path,
-        private key file path, and trusted certificate file path.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
         style={{ marginLeft: "24px" }}
@@ -479,6 +481,16 @@ export default function GrpcServiceMutualSsl() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/grpc-client-mutual-ssl/">
+            sample Mutual SSL client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

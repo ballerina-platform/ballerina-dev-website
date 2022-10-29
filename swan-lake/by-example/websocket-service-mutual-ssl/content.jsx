@@ -95,6 +95,14 @@ export default function WebsocketServiceMutualSsl() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file
+          path, private key file path, and trusted certificate file path in the
+          code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -179,6 +187,8 @@ export default function WebsocketServiceMutualSsl() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -232,8 +242,6 @@ export default function WebsocketServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
-              <span>{`# trusted certificate file path.`}</span>
               <span>{`\$ bal run websocket_service_mutual_ssl.bal`}</span>
             </code>
           </pre>

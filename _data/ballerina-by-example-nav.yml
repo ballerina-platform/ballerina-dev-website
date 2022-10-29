@@ -340,14 +340,11 @@ sublinks:
           - title: Join clause
             id: 8
             url: join-clause
-          - title: Outer Join clause
-            id: 9
-            url: outer-join-clause
           - title: Stream type
-            id: 10
+            id: 9
             url: stream-type
           - title: Querying with streams
-            id: 11
+            id: 10
             url: querying-with-streams
       - title: Query actions
         id: 23

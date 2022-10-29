@@ -86,6 +86,13 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -172,6 +179,13 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
 
       <p>Run the client program by executing the following command.</p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a sample service secured with OAuth2.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -225,8 +239,6 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a sample service secured with OAuth2.`}</span>
-              <span>{`# You may need to change the trusted certificate file path.`}</span>
               <span>{`\$ bal run http_client_oauth2_client_credentials_grant_type.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>

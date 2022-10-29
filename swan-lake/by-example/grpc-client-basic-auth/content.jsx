@@ -404,8 +404,8 @@ export default function GrpcClientBasicAuth() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite, start a sample service
-          secured with Basic Auth.
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a sample service secured with Basic Auth.
         </p>
       </blockquote>
 

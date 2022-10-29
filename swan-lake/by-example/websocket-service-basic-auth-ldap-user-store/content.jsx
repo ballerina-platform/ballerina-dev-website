@@ -120,6 +120,13 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -204,6 +211,8 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -257,7 +266,6 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
               <span>{`\$ bal run websocket_service_basic_auth_ldap_user_store.bal`}</span>
             </code>
           </pre>

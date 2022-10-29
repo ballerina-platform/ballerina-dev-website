@@ -112,6 +112,13 @@ export default function TcpTransportSecurity() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -196,6 +203,8 @@ export default function TcpTransportSecurity() {
         </Col>
       </Row>
 
+      <p>Run the client by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -249,13 +258,19 @@ export default function TcpTransportSecurity() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the trusted certificate file path.`}</span>
               <span>{`\$ bal run tcp_transport_security_client.bal`}</span>
               <span>{`Received message: Hello, World!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -341,6 +356,8 @@ export default function TcpTransportSecurity() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -394,7 +411,6 @@ export default function TcpTransportSecurity() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
               <span>{`\$ bal run tcp_transport_security_service.bal`}</span>
               <span>{`Client connected on server port: 5639`}</span>
               <span>{`Received message: Hello, World!`}</span>

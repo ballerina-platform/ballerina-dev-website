@@ -308,6 +308,14 @@ export default function GrpcClientMutualSsl() {
         </li>
       </ul>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file
+          path, private key file path, and trusted certificate file path in the
+          code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       indent"
@@ -404,9 +412,12 @@ export default function GrpcClientMutualSsl() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You may need to change the certificate file
-          path, private key file path, and trusted certificate file path. As a
-          prerequisite, start a sample service secured with mutual SSL.
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a{" "}
+          <a href="/learn/by-example/grpc-service-mutual-ssl/">
+            sample service secured with Mutual SSL
+          </a>
+          .
         </p>
       </blockquote>
 

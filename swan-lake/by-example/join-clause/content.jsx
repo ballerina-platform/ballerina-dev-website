@@ -91,7 +91,7 @@ export default function JoinClause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0cd3a058af51a967a3408cd0c8124a76&file=join_clause.bal",
+                "https://play.ballerina.io/?gist=c9b65f3fb79910eb25c83c5f4374339c&file=join_clause.bal",
                 "_blank"
               );
             }}
@@ -288,10 +288,7 @@ export default function JoinClause() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Outer Join clause"
-            href="/learn/by-example/outer-join-clause"
-          >
+          <Link title="Stream type" href="/learn/by-example/stream-type">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -300,7 +297,7 @@ export default function JoinClause() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Outer Join clause
+                  Stream type
                 </span>
               </div>
               <svg

@@ -98,7 +98,7 @@ export default function DistinctObjectTypes() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5e37352d93349df3e8540646304200fb&file=distinct_object_types.bal",
+                "https://play.ballerina.io/?gist=4d9f37ae5bbab22a474eccc7e9689a1c&file=distinct_object_types.bal",
                 "_blank"
               );
             }}
@@ -139,7 +139,7 @@ export default function DistinctObjectTypes() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

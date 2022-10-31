@@ -85,7 +85,7 @@ export default function Flush() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=939c7f4fc86cbe06da2fa69065f95b89&file=flush.bal",
+                "https://play.ballerina.io/?gist=bce39422ac8e8ddcf81c40cac40725b5&file=flush.bal",
                 "_blank"
               );
             }}
@@ -126,7 +126,7 @@ export default function Flush() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

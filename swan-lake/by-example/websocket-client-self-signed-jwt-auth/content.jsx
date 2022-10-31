@@ -92,6 +92,13 @@ export default function WebsocketClientSelfSignedJwtAuth() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path and private key file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -176,6 +183,15 @@ export default function WebsocketClientSelfSignedJwtAuth() {
         </Col>
       </Row>
 
+      <p>Run the client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a sample service secured with JWT Auth.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -229,8 +245,6 @@ export default function WebsocketClientSelfSignedJwtAuth() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Before testing this sample, first start a sample service secured with JWT Auth.`}</span>
-              <span>{`# You may need to change the trusted certificate file path and private key file path.`}</span>
               <span>{`\$ bal run websocket_client_self_signed_jwt_auth.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>

@@ -82,6 +82,13 @@ export default function WebsocketServiceSslTls() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -166,6 +173,8 @@ export default function WebsocketServiceSslTls() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -219,12 +228,21 @@ export default function WebsocketServiceSslTls() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
               <span>{`\$ bal run websocket_service_ssl_tls.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/websocket-client-ssl-tls/">
+            sample SSL/TLS client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

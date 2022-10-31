@@ -299,6 +299,13 @@ export default function GrpcClientSslTls() {
         </li>
       </ul>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       indent"
@@ -395,8 +402,12 @@ export default function GrpcClientSslTls() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You may need to change the trusted certificate
-          file path. As a prerequisite, start a sample service secured with SSL.
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a{" "}
+          <a href="earn/by-example/grpc-service-ssl-tls/">
+            sample service secured with SSL/TLS
+          </a>
+          .
         </p>
       </blockquote>
 

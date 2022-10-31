@@ -71,7 +71,7 @@ export default function HttpServiceMutualSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Mutual SSL</h1>
+      <h1>Service - mutual SSL</h1>
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
@@ -87,6 +87,14 @@ export default function HttpServiceMutualSsl() {
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file
+          path, private key file path, and trusted certificate file path in the
+          code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -172,7 +180,7 @@ export default function HttpServiceMutualSsl() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the following command.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -227,15 +235,13 @@ export default function HttpServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
-              <span>{`# trusted certificate file path.`}</span>
               <span>{`\$ bal run http_service_mutual_ssl.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <p>Invoke the service as follows.</p>
+      <p>Invoke the service by executing the cURL command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -290,13 +296,23 @@ export default function HttpServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# To invoke the service, use the cURL commands below.`}</span>
               <span>{`\$ curl https://localhost:9090/foo/bar --cert /path/to/client-public.crt`}</span>
               <span>{`    --key /path/to/client-private.key --cacert /path/to/server-public.crt`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
+          <a href="/learn/by-example/http-client-mutual-ssl/">
+            sample Mutual SSL/TLS client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

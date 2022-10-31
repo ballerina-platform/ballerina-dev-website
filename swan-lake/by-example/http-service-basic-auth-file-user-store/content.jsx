@@ -107,6 +107,13 @@ export default function HttpServiceBasicAuthFileUserStore() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -191,7 +198,34 @@ export default function HttpServiceBasicAuthFileUserStore() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the following command.</p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the service,
+          populate the <code>Config.toml</code> file correctly with the user
+          information as shown below.
+        </p>
+      </blockquote>
+
+      <pre style={{ marginLeft: "32px" }} className="p-3 rounded toml">
+        <code>
+          [[ballerina.auth.users]] username="alice" password="password1"
+          scopes=["scope1"] [[ballerina.auth.users]] username="bob"
+          password="password2" scopes=["scope2", "scope3"]
+        </code>
+      </pre>
+
+      <p>Run the service by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
+          <a href="/learn/by-example/http-service-basic-auth-file-user-store/">
+            Basic Auth file user store client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -246,20 +280,6 @@ export default function HttpServiceBasicAuthFileUserStore() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, ensure that the \`Config.toml\` file is populated correctly`}</span>
-              <span>{`# with the user information. The following command can be used to populate`}</span>
-              <span>{`# the \`Config.toml\` file.`}</span>
-              <span>{`\$ echo '[[ballerina.auth.users]]`}</span>
-              <span>{`username="alice"`}</span>
-              <span>{`password="password1"`}</span>
-              <span>{`scopes=["scope1"]`}</span>
-              <span>{`[[ballerina.auth.users]]`}</span>
-              <span>{`username="bob"`}</span>
-              <span>{`password="password2"`}</span>
-              <span>{`scopes=["scope2", "scope3"]' > Config.toml`}</span>
-              <span>{`
-`}</span>
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
               <span>{`\$ bal run http_service_basic_auth_file_user_store.bal`}</span>
             </code>
           </pre>

@@ -103,7 +103,7 @@ export default function InferringIsolated() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=296c3403ede40a7e8c8e79e8cbaa8e95&file=inferring_isolated.bal",
+                "https://play.ballerina.io/?gist=7feb3e0f3abcdc484ba0fd35234d987b&file=inferring_isolated.bal",
                 "_blank"
               );
             }}

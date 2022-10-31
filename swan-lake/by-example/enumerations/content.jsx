@@ -79,7 +79,7 @@ export default function Enumerations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bf6fd6f7b0ab9a02965896ec386569f4&file=enumerations.bal",
+                "https://play.ballerina.io/?gist=91ed38f29580b4ce7d4e020af8e5db5e&file=enumerations.bal",
                 "_blank"
               );
             }}

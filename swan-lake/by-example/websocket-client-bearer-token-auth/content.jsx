@@ -71,6 +71,13 @@ export default function WebsocketClientBearerTokenAuth() {
         configuration of the client.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -155,6 +162,15 @@ export default function WebsocketClientBearerTokenAuth() {
         </Col>
       </Row>
 
+      <p>Run the client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a secured sample service.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -208,8 +224,6 @@ export default function WebsocketClientBearerTokenAuth() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a secured sample service.`}</span>
-              <span>{`# You may need to change the trusted certificate file path.`}</span>
               <span>{`\$ bal run websocket_client_bearer_token_auth.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>

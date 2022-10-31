@@ -337,6 +337,13 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         </li>
       </ul>
 
+      <pre>
+        <code>
+          &gt;**Tip:** You may need to change the certificate file path and
+          private key file path in the code below.
+        </code>
+      </pre>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       indent"
@@ -425,11 +432,19 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         <li>
           <span>4.</span>
           <span>
-            As a prerequisite, ensure that the <code>Config.toml</code> file is
-            populated correctly with the user information.
+            As a prerequisite, execute the command below to populate the{" "}
+            <code>Config.toml</code> file correctly with the user information.
           </span>
         </li>
       </ul>
+
+      <pre style={{ marginLeft: "32px" }} className="p-3 rounded bash">
+        <code>
+          $ echo '[[ballerina.auth.users]] username="alice" password="password1"
+          scopes=["scope1"] [[ballerina.auth.users]] username="bob"
+          password="password2" scopes=["scope2", "scope3"]' > Config.toml
+        </code>
+      </pre>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -440,13 +455,6 @@ export default function GrpcServiceBasicAuthFileUserStore() {
           </span>
         </li>
       </ul>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> You may need to change the certificate file
-          path and private key file path.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
@@ -501,19 +509,6 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, ensure that the \`Config.toml\` file is populated correctly`}</span>
-              <span>{`# with the user information. The following command can be used to populate`}</span>
-              <span>{`# the \`Config.toml\` file.`}</span>
-              <span>{`\$ echo '[[ballerina.auth.users]]`}</span>
-              <span>{`username="alice"`}</span>
-              <span>{`password="password1"`}</span>
-              <span>{`scopes=["scope1"]`}</span>
-              <span>{`[[ballerina.auth.users]]`}</span>
-              <span>{`username="bob"`}</span>
-              <span>{`password="password2"`}</span>
-              <span>{`scopes=["scope2", "scope3"]' > Config.toml`}</span>
-              <span>{`
-`}</span>
               <span>{`\$ bal build service`}</span>
               <span>{`
 `}</span>

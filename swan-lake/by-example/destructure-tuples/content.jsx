@@ -79,7 +79,7 @@ export default function DestructureTuples() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6c88987aef3c7148bd8ce77b8efb5f45&file=destructure_tuples.bal",
+                "https://play.ballerina.io/?gist=e01c9369d1ee01bce8185e35b92315fa&file=destructure_tuples.bal",
                 "_blank"
               );
             }}
@@ -120,7 +120,7 @@ export default function DestructureTuples() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

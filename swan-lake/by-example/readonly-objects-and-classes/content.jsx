@@ -91,7 +91,7 @@ export default function ReadonlyObjectsAndClasses() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5e457ffdcc2e56060683b5b5d18875cf&file=readonly_objects_and_classes.bal",
+                "https://play.ballerina.io/?gist=9e35c0986d39e943cd42e001e46eb4fd&file=readonly_objects_and_classes.bal",
                 "_blank"
               );
             }}
@@ -132,7 +132,7 @@ export default function ReadonlyObjectsAndClasses() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

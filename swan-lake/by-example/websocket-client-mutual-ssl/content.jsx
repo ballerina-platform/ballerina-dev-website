@@ -81,6 +81,14 @@ export default function WebsocketClientMutualSsl() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file
+          path, private key file path, and trusted certificate file path in the
+          code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -165,6 +173,19 @@ export default function WebsocketClientMutualSsl() {
         </Col>
       </Row>
 
+      <p>Run the client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a{" "}
+          <a href="/learn/by-example/websocket-service-mutual-ssl/">
+            sample service secured with Mutual SSL
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -218,9 +239,6 @@ export default function WebsocketClientMutualSsl() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a sample service secured with mutual SSL.`}</span>
-              <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
-              <span>{`# trusted certificate file path.`}</span>
               <span>{`\$ bal run websocket_client_mutual_ssl.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>

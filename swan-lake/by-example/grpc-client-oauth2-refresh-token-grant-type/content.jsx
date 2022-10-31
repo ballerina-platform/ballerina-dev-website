@@ -317,6 +317,13 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
         </li>
       </ul>
 
+      <pre>
+        <code>
+          &gt;**Tip:** You may need to change the trusted certificate file path
+          in the code below.
+        </code>
+      </pre>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       indent"
@@ -408,13 +415,12 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
         </li>
       </ul>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite, start a sample service
-          secured with OAuth2. You may need to change the trusted certificate
-          file path.
-        </p>
-      </blockquote>
+      <pre>
+        <code>
+          &gt;**Info:** As a prerequisite to running the client, start a sample
+          service secured with OAuth2.
+        </code>
+      </pre>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"

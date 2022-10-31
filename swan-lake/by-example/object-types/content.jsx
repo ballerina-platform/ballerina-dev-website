@@ -82,7 +82,7 @@ export default function ObjectTypes() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=872499175766f16e1f6bbb35a58a28a3&file=object_types.bal",
+                "https://play.ballerina.io/?gist=a91fbee45884efb4db06c7d00112a75d&file=object_types.bal",
                 "_blank"
               );
             }}
@@ -123,7 +123,7 @@ export default function ObjectTypes() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

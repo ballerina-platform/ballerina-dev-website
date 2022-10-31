@@ -79,7 +79,7 @@ export default function TypedescType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=01cb980c746908dc312488d8eb2d3029&file=typedesc_type.bal",
+                "https://play.ballerina.io/?gist=c8196883fffdee8a60cd069037a71349&file=typedesc_type.bal",
                 "_blank"
               );
             }}
@@ -120,7 +120,7 @@ export default function TypedescType() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

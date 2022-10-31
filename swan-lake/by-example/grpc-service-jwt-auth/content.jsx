@@ -336,6 +336,13 @@ export default function GrpcServiceJwtAuth() {
         </li>
       </ul>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       indent"
@@ -429,13 +436,6 @@ export default function GrpcServiceJwtAuth() {
           </span>
         </li>
       </ul>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> You may need to change the certificate file
-          path and private key file path.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"

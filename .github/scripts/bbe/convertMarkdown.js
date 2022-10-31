@@ -256,7 +256,7 @@ md.use(container, "code", {
       </button>
     ) : (
       <button
-        className="bg-transparent border-0 m-0 p-2${env.editOnGithubLink !== "" ? "" : " ms-auto"}"
+        className="bg-transparent border-0 m-0 p-2${env.editOnGithubLink === "" && env.playgroundLink === undefined  ? " ms-auto" : ""}"
         onClick={() => {
           updateCodeClick${env.codeCount}(true);
           copyToClipboard(codeSnippetData[${env.codeCount - 1}]);

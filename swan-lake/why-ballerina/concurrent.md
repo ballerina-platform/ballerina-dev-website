@@ -63,7 +63,7 @@ Worker message passing (via Ballerina’s `send (->)` and `receive (<-)` actions
 
 A strand in Ballerina runs on a separate thread if it is safe. The isolated feature is used to identify such cases. 
 A call to an isolated function is concurrency-safe if it is called with arguments that are safe at least until the 
-call returns. The strand created in a `start` action for an isolated function, may run on a separate thread. The strand 
+call returns. The strand created in a `start` action for an isolated function may run on a separate thread. The strand 
 of a named worker may run on a separate thread from the default worker if the function is isolated.
 
 ```ballerina

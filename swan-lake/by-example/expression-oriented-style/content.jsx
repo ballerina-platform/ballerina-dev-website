@@ -68,6 +68,8 @@ export default function ExpressionOrientedStyle() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
+      <h1>Expression-oriented style</h1>
+
       <p>
         Ballerina supports statements for familiarity but also tries to enable
         an expression-oriented style to be more intuitive.
@@ -88,7 +90,7 @@ export default function ExpressionOrientedStyle() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=337410bf54ed98acbe5aea956bcf0775&file=expression_oriented_style.bal",
+                "https://play.ballerina.io/?gist=fbf3e8a982dfeb921d5e4bb48a147b80&file=expression_oriented_style.bal",
                 "_blank"
               );
             }}
@@ -129,7 +131,7 @@ export default function ExpressionOrientedStyle() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

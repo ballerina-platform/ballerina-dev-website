@@ -23,11 +23,8 @@ import ballerinax/rabbitmq;
 // Attaches the service to the listener.
 service on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
     // Gets triggered when a message is received by the queue.
-    remote function onMessage(rabbitmq:Message message, rabbitmq:Caller caller) returns error? {
-        string|error messageContent = 'string:fromBytes(message.content);
-        if messageContent is string {
-            log:printInfo("The message received: " + messageContent);
-        }
+    remote function onMessage(StringMessage message, rabbitmq:Caller caller) returns error? {
+        log:printInfo("The message received: " + message.content);
         // Acknowledges a single message positively.
         // The acknowledgement gets committed upon successful execution of the transaction,
         // or will rollback otherwise.
@@ -40,6 +37,11 @@ service on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
         }
     }
 }
+
+public type StringMessage record {|
+    *rabbitmq:AnydataMessage;
+    string content;
+|};
 `,
 ];
 

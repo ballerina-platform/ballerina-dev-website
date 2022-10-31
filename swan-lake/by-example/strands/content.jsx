@@ -89,7 +89,7 @@ export default function Strands() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c04d64ba57baed4e4379b9b9f7e1697b&file=strands.bal",
+                "https://play.ballerina.io/?gist=66a6d0089734b62134e3ac98e155d840&file=strands.bal",
                 "_blank"
               );
             }}

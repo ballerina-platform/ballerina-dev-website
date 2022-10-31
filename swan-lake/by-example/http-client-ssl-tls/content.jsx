@@ -70,6 +70,13 @@ export default function HttpClientSslTls() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -154,7 +161,18 @@ export default function HttpClientSslTls() {
         </Col>
       </Row>
 
-      <p>Run the secure client program by executing the following command.</p>
+      <p>Run the secure client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a{" "}
+          <a href="earn/by-example/http-service-ssl-tls/">
+            sample service secured with SSL/TLS
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -209,8 +227,6 @@ export default function HttpClientSslTls() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a sample service secured with SSL.`}</span>
-              <span>{`# You may need to change the trusted certificate file path.`}</span>
               <span>{`\$ bal run http_client_ssl_tls.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>

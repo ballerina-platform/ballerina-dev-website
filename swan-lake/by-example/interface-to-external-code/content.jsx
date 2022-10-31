@@ -82,7 +82,7 @@ export default function InterfaceToExternalCode() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bb6860064e4d644b8604d85f00cd247c&file=interface_to_external_code.bal",
+                "https://play.ballerina.io/?gist=c8f84eeeb8b2da109b23dfd514aa3cc2&file=interface_to_external_code.bal",
                 "_blank"
               );
             }}
@@ -123,7 +123,7 @@ export default function InterfaceToExternalCode() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

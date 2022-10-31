@@ -117,7 +117,7 @@ export default function BindingPatternsInAssignment() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3909f237784e55e46e5c14197bf50f6e&file=binding_patterns_in_assignment.bal",
+                "https://play.ballerina.io/?gist=98f55488080a4e964e5efa972195c831&file=binding_patterns_in_assignment.bal",
                 "_blank"
               );
             }}
@@ -158,7 +158,7 @@ export default function BindingPatternsInAssignment() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

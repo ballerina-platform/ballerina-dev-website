@@ -95,7 +95,7 @@ export default function QueryActions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fdf8bc377a73fd14cd1214b2aab9f327&file=query_actions.bal",
+                "https://play.ballerina.io/?gist=563198c823cf35b80736771f43c5595d&file=query_actions.bal",
                 "_blank"
               );
             }}
@@ -136,7 +136,7 @@ export default function QueryActions() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

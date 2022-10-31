@@ -109,7 +109,7 @@ export default function ObjectTypeInclusion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=add2d6a291931749d6e92c5d614703d8&file=object_type_inclusion.bal",
+                "https://play.ballerina.io/?gist=834c8c4716266fa28b185fc41d779aad&file=object_type_inclusion.bal",
                 "_blank"
               );
             }}
@@ -150,7 +150,7 @@ export default function ObjectTypeInclusion() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

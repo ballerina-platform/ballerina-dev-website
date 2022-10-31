@@ -307,6 +307,13 @@ export default function GrpcServiceSslTls() {
         </li>
       </ul>
 
+      <blockquote>
+        <p>
+          <strong>Tip</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       indent"
@@ -401,13 +408,6 @@ export default function GrpcServiceSslTls() {
         </li>
       </ul>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> You may need to change the certificate file
-          path and private key file path.
-        </p>
-      </blockquote>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
         style={{ marginLeft: "24px" }}
@@ -469,6 +469,16 @@ export default function GrpcServiceSslTls() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/grpc-client-ssl-tls/">
+            sample SSL/TLS client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

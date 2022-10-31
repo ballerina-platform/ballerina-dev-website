@@ -88,7 +88,7 @@ export default function SynchronizeMessagePassing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ce4b2ff15b556fb36e45eb00105b9caf&file=synchronize_message_passing.bal",
+                "https://play.ballerina.io/?gist=ac64d3de5c3253c599af5fad3da75ff5&file=synchronize_message_passing.bal",
                 "_blank"
               );
             }}
@@ -129,7 +129,7 @@ export default function SynchronizeMessagePassing() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

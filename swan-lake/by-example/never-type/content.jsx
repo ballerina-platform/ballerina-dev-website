@@ -93,7 +93,7 @@ export default function NeverType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=19ca0893f7879e0e34596e844f19e948&file=never_type.bal",
+                "https://play.ballerina.io/?gist=3a509e90f7865d86f2075726b7fcd66a&file=never_type.bal",
                 "_blank"
               );
             }}
@@ -134,7 +134,7 @@ export default function NeverType() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

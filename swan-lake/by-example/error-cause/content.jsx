@@ -78,7 +78,7 @@ export default function ErrorCause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7e86e7be28dcab5228061c87b67215ce&file=error_cause.bal",
+                "https://play.ballerina.io/?gist=7095ae7f48c7138c3279e83092644798&file=error_cause.bal",
                 "_blank"
               );
             }}
@@ -119,7 +119,7 @@ export default function ErrorCause() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

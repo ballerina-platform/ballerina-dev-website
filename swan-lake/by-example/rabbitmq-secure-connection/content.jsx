@@ -38,11 +38,15 @@ listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
 }
 // Attaches the service to the listener.
 service rabbitmq:Service on securedEP {
-    remote function onMessage(rabbitmq:Message message) returns error? {
-        string messageContent = check string:fromBytes(message.content);
-        log:printInfo("Received message: " + messageContent);
+    remote function onMessage(StringMessage message) returns error? {
+        log:printInfo("Received message: " + message.content);
     }
 }
+
+public type StringMessage record {|
+    *rabbitmq:AnydataMessage;
+    string content;
+|};
 `,
   `import ballerinax/rabbitmq;
 

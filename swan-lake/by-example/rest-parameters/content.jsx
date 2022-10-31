@@ -78,7 +78,7 @@ export default function RestParameters() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=410c5a85c278c2eef208306022fd8d7b&file=rest_parameters.bal",
+                "https://play.ballerina.io/?gist=06b4c95a8095a6935d5177aaf71f21f4&file=rest_parameters.bal",
                 "_blank"
               );
             }}
@@ -119,7 +119,7 @@ export default function RestParameters() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

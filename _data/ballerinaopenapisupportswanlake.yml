@@ -31,6 +31,9 @@
         - title: Generate with nillable types
           url: /learn/openapi-tool/#generate-with-nillable-types
           active: generate-with-nillable-types
+        - title: Generate client for IDL import
+          url: /learn/openapi-tool/#generate-client-for-idl-import
+          active: generate-client-for-idl-import
     - title: Publish your client
       url: /learn/openapi-tool/#publish-your-client
       active: publish-your-client

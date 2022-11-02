@@ -7522,7 +7522,7 @@ return <var>E</var >}</code>.
 </section>
 
 <section>
-<h4>External functions</h4>
+<h4>Functions with external bodies</h4>
 
 <pre
 class="grammar"><dfn>external-function-body</dfn> := <code>=</code> [<abbr>annots</abbr>] <code>external</code> 
@@ -7596,8 +7596,8 @@ is called concurrently on multiple strands.
 class="grammar"><dfn>statement</dfn> := 
    <abbr>action-stmt</abbr>
    | <abbr>local-var-decl-stmt</abbr>
-   | <abbr>xmlns-decl-stmt</abbr>
    | <abbr>client-decl-stmt</abbr>
+   | <abbr>xmlns-decl-stmt</abbr>
    | <abbr>assignment-stmt</abbr>
    | <abbr>compound-assignment-stmt</abbr>
    | <abbr>destructuring-assignment-stmt</abbr>
@@ -8554,6 +8554,23 @@ the statement-block of S completes normally or when a continue-stmt is executed.
 
 </section>
 <section>
+<h3>External client declaration statement</h3>
+
+<pre
+class="grammar"><dfn>client-decl-stmt</dfn> := <abbr>client-decl</abbr>
+</pre>
+
+<p>
+The semantics of a <code>client-decl</code> are described in the <a
+href="#module_external_client_declaration">Module external client declaration</a> section.
+</p>
+<p>
+A <code>module-prefix</code> declared by a <code>client-decl</code> in a
+<code>client-decl-stmt</code> has block-scope.
+</p>
+
+</section>
+<section>
 <h3 id="XML_namespace_declaration_statement">XML namespace declaration statement</h3>
 
 <pre
@@ -8586,16 +8603,6 @@ The prefix <code>xmlns</code> is predeclared as
 The static type of the <code>simple-const-expr</code> must be a subtype of
 string.
 </p>
-</section>
-<section>
-<h3 id="client_declaration_statement">Client declaration statement</h3>
-
-<pre
-class="grammar"><dfn>client-decl-stmt</dfn> := <abbr>client-decl</abbr>
-<dfn>client-decl</dfn> := [<abbr>annots</abbr>] <code>client</code> <abbr>service-uri</abbr> <code>as</code> <abbr>module-prefix</abbr> <code>;</code>
-<dfn>service-uri</dfn> := <abbr>string-literal</abbr>
-</pre>
-
 </section>
 <section>
 <h3>Assignment</h3>
@@ -9840,8 +9847,8 @@ class="grammar"><dfn>module-part</dfn> := <abbr>import-decl</abbr>* <abbr>other-
    | <abbr>module-var-decl</abbr>
    | <abbr>module-const-decl</abbr>
    | <abbr>module-enum-decl</abbr>
-   | <abbr>module-xmlns-decl</abbr>
    | <abbr>module-client-decl</abbr>
+   | <abbr>module-xmlns-decl</abbr>
    | <abbr>annotation-decl</abbr>
 </pre>
 <section>
@@ -9855,7 +9862,7 @@ class="grammar"><dfn>import-decl</dfn> := <code>import</code> [<abbr>org-name</a
 <dfn>module-name</dfn> := <abbr>import-identifier</abbr> (<code>.</code> <abbr>import-identifier</abbr>)*
 <dfn>import-identifier</dfn> := <abbr>RestrictedIdentifier</abbr>
 
-<dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <abbr>NoSpaceColon</abbr> <abbr>identifier</abbr>
+<dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <abbr>NoSpaceColon</abbr> (<abbr>identifier</abbr> | "<abbr>client</abbr>")
 </pre>
 <p>
 If org-name is omitted, it is defaulted from the organization of the importing
@@ -10477,6 +10484,32 @@ public type Color RED|GREEN|BLUE;
 </section>
 
 <section>
+<h3 id="module_external_client_declaration">Module external client declaration</h3>
+<pre
+class="grammar"><dfn>module-client-decl</dfn> := <abbr>client-decl</abbr>
+<dfn>client-decl</dfn> := [<abbr>annots</abbr>] <code>client</code> <abbr>service-uri</abbr> <code>as</code> <abbr>module-prefix</abbr> <code>;</code>
+<dfn>service-uri</dfn> := <abbr>string-literal</abbr>
+</pre>
+
+<p>
+A <code>client-decl</code> constructs a module that contains a client class that
+can be used to access a service described by a web resource. The
+<code>service-uri</code> specifies the URI of this resource. The format of the
+description is not constrained by this specification, but implementations are
+expected to support OpenAPI documents as described by the OpenAPI specification.
+The constructed module can also contain declarations of types and constants used
+by the client class. The <code>client-decl</code> also declares a
+<code>module-prefix</code>, which can be used to refer to the constructed
+module.
+</p>
+<p>
+The scope of a <code>module-prefix</code> declared in the
+<code>module-client-decl</code> is the source part in which the
+<code>module-client-decl</code> occurs.
+</p>
+
+</section>
+<section>
 <h3>Module XML namespace declaration</h3>
 <pre
 class="grammar"><dfn>module-xmlns-decl</dfn> := <abbr>xmlns-decl</abbr>
@@ -10495,17 +10528,6 @@ statement</a> section.
 
 </section>
 
-<section>
-<h3>Module client declaration</h3>
-<pre
-class="grammar"><dfn>module-client-decl</dfn> := <abbr>client-decl</abbr>
-</pre>
-
-<p>
-The semantics of client-decl are described in the <a
-href="#client_declaration_statement">Client declaration statement</a> section.
-</p>
-</section>
 
 </section>
 <section>

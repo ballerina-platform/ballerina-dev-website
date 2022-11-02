@@ -393,7 +393,7 @@ GitHub repository where this specification is maintained.
 </li>
 <li>7.3.3 <a href="#section_7.3.3">Expression-bodied functions</a>
 </li>
-<li>7.3.4 <a href="#section_7.3.4">External functions</a>
+<li>7.3.4 <a href="#section_7.3.4">Functions with external bodies</a>
 </li>
 <li>7.3.5 <a href="#isolated_functions">Isolated functions</a>
 </li>
@@ -450,9 +450,9 @@ GitHub repository where this specification is maintained.
 </li>
 <li>7.12 <a href="#conditional_variable_type_narrowing">Conditional variable type narrowing</a>
 </li>
-<li>7.13 <a href="#XML_namespace_declaration_statement">XML namespace declaration statement</a>
+<li>7.13 <a href="#section_7.13">External client declaration statement</a>
 </li>
-<li>7.14 <a href="#client_declaration_statement">Client declaration statement</a>
+<li>7.14 <a href="#XML_namespace_declaration_statement">XML namespace declaration statement</a>
 </li>
 <li>7.15 <a href="#section_7.15">Assignment</a><ul>
 <li>7.15.1 <a href="#section_7.15.1">Lvalues</a>
@@ -556,9 +556,9 @@ GitHub repository where this specification is maintained.
 </li>
 <li>8.9 <a href="#section_8.9">Module enumeration declaration</a>
 </li>
-<li>8.10 <a href="#section_8.10">Module XML namespace declaration</a>
+<li>8.10 <a href="#module_external_client_declaration">Module external client declaration</a>
 </li>
-<li>8.11 <a href="#section_8.11">Module client declaration</a>
+<li>8.11 <a href="#section_8.11">Module XML namespace declaration</a>
 </li>
 </ul>
 </li>
@@ -8066,7 +8066,7 @@ return <var>E</var>}</code>.
 </section>
 
 <section>
-<h4 id="section_7.3.4">7.3.4 External functions</h4>
+<h4 id="section_7.3.4">7.3.4 Functions with external bodies</h4>
 
 <pre class="grammar"><span class="ntdfn" id="external-function-body">external-function-body</span> := <code>=</code> [<a href="#annots"><span class="ntref">annots</span></a>] <code>external</code> 
 </pre>
@@ -8138,8 +8138,8 @@ is called concurrently on multiple strands.
 <pre class="grammar"><span class="ntdfn" id="statement">statement</span> := 
    <a href="#action-stmt"><span class="ntref">action-stmt</span></a>
    | <a href="#local-var-decl-stmt"><span class="ntref">local-var-decl-stmt</span></a>
-   | <a href="#xmlns-decl-stmt"><span class="ntref">xmlns-decl-stmt</span></a>
    | <a href="#client-decl-stmt"><span class="ntref">client-decl-stmt</span></a>
+   | <a href="#xmlns-decl-stmt"><span class="ntref">xmlns-decl-stmt</span></a>
    | <a href="#assignment-stmt"><span class="ntref">assignment-stmt</span></a>
    | <a href="#compound-assignment-stmt"><span class="ntref">compound-assignment-stmt</span></a>
    | <a href="#destructuring-assignment-stmt"><span class="ntref">destructuring-assignment-stmt</span></a>
@@ -9090,7 +9090,22 @@ the statement-block of S completes normally or when a continue-stmt is executed.
 
 </section>
 <section>
-<h3 id="XML_namespace_declaration_statement">7.13 XML namespace declaration statement</h3>
+<h3 id="section_7.13">7.13 External client declaration statement</h3>
+
+<pre class="grammar"><span class="ntdfn" id="client-decl-stmt">client-decl-stmt</span> := <a href="#client-decl"><span class="ntref">client-decl</span></a>
+</pre>
+
+<p>
+The semantics of a <code>client-decl</code> are described in the <a href="#module_external_client_declaration">Module external client declaration</a> section.
+</p>
+<p>
+A <code>module-prefix</code> declared by a <code>client-decl</code> in a
+<code>client-decl-stmt</code> has block-scope.
+</p>
+
+</section>
+<section>
+<h3 id="XML_namespace_declaration_statement">7.14 XML namespace declaration statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="xmlns-decl-stmt">xmlns-decl-stmt</span> := <a href="#xmlns-decl"><span class="ntref">xmlns-decl</span></a>
 <span class="ntdfn" id="xmlns-decl">xmlns-decl</span> := <code>xmlns</code> <a href="#xml-namespace-uri"><span class="ntref">xml-namespace-uri</span></a> [ <code>as</code> <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> ] <code>;</code>
@@ -9121,15 +9136,6 @@ The prefix <code>xmlns</code> is predeclared as
 The static type of the <code>simple-const-expr</code> must be a subtype of
 string.
 </p>
-</section>
-<section>
-<h3 id="client_declaration_statement">7.14 Client declaration statement</h3>
-
-<pre class="grammar"><span class="ntdfn" id="client-decl-stmt">client-decl-stmt</span> := <a href="#client-decl"><span class="ntref">client-decl</span></a>
-<span class="ntdfn" id="client-decl">client-decl</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <code>client</code> <a href="#service-uri"><span class="ntref">service-uri</span></a> <code>as</code> <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <code>;</code>
-<span class="ntdfn" id="service-uri">service-uri</span> := <a href="#string-literal"><span class="ntref">string-literal</span></a>
-</pre>
-
 </section>
 <section>
 <h3 id="section_7.15">7.15 Assignment</h3>
@@ -10347,8 +10353,8 @@ not constrained.
    | <a href="#module-var-decl"><span class="ntref">module-var-decl</span></a>
    | <a href="#module-const-decl"><span class="ntref">module-const-decl</span></a>
    | <a href="#module-enum-decl"><span class="ntref">module-enum-decl</span></a>
-   | <a href="#module-xmlns-decl"><span class="ntref">module-xmlns-decl</span></a>
    | <a href="#module-client-decl"><span class="ntref">module-client-decl</span></a>
+   | <a href="#module-xmlns-decl"><span class="ntref">module-xmlns-decl</span></a>
    | <a href="#annotation-decl"><span class="ntref">annotation-decl</span></a>
 </pre>
 <section>
@@ -10361,7 +10367,7 @@ not constrained.
 <span class="ntdfn" id="module-name">module-name</span> := <a href="#import-identifier"><span class="ntref">import-identifier</span></a> (<code>.</code> <a href="#import-identifier"><span class="ntref">import-identifier</span></a>)*
 <span class="ntdfn" id="import-identifier">import-identifier</span> := <a href="#RestrictedIdentifier"><span class="ntref">RestrictedIdentifier</span></a>
 
-<span class="ntdfn" id="qualified-identifier">qualified-identifier</span> := <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <a href="#NoSpaceColon"><span class="ntref">NoSpaceColon</span></a> <a href="#identifier"><span class="ntref">identifier</span></a>
+<span class="ntdfn" id="qualified-identifier">qualified-identifier</span> := <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <a href="#NoSpaceColon"><span class="ntref">NoSpaceColon</span></a> (<a href="#identifier"><span class="ntref">identifier</span></a> | "<a href="#client"><span class="ntref">client</span></a>")
 </pre>
 <p>
 If org-name is omitted, it is defaulted from the organization of the importing
@@ -10973,7 +10979,32 @@ public type Color RED|GREEN|BLUE;
 </section>
 
 <section>
-<h3 id="section_8.10">8.10 Module XML namespace declaration</h3>
+<h3 id="module_external_client_declaration">8.10 Module external client declaration</h3>
+<pre class="grammar"><span class="ntdfn" id="module-client-decl">module-client-decl</span> := <a href="#client-decl"><span class="ntref">client-decl</span></a>
+<span class="ntdfn" id="client-decl">client-decl</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <code>client</code> <a href="#service-uri"><span class="ntref">service-uri</span></a> <code>as</code> <a href="#module-prefix"><span class="ntref">module-prefix</span></a> <code>;</code>
+<span class="ntdfn" id="service-uri">service-uri</span> := <a href="#string-literal"><span class="ntref">string-literal</span></a>
+</pre>
+
+<p>
+A <code>client-decl</code> constructs a module that contains a client class that
+can be used to access a service described by a web resource. The
+<code>service-uri</code> specifies the URI of this resource. The format of the
+description is not constrained by this specification, but implementations are
+expected to support OpenAPI documents as described by the OpenAPI specification.
+The constructed module can also contain declarations of types and constants used
+by the client class. The <code>client-decl</code> also declares a
+<code>module-prefix</code>, which can be used to refer to the constructed
+module.
+</p>
+<p>
+The scope of a <code>module-prefix</code> declared in the
+<code>module-client-decl</code> is the source part in which the
+<code>module-client-decl</code> occurs.
+</p>
+
+</section>
+<section>
+<h3 id="section_8.11">8.11 Module XML namespace declaration</h3>
 <pre class="grammar"><span class="ntdfn" id="module-xmlns-decl">module-xmlns-decl</span> := <a href="#xmlns-decl"><span class="ntref">xmlns-decl</span></a>
 </pre>
 
@@ -10989,15 +11020,6 @@ statement</a> section.
 
 </section>
 
-<section>
-<h3 id="section_8.11">8.11 Module client declaration</h3>
-<pre class="grammar"><span class="ntdfn" id="module-client-decl">module-client-decl</span> := <a href="#client-decl"><span class="ntref">client-decl</span></a>
-</pre>
-
-<p>
-The semantics of client-decl are described in the <a href="#client_declaration_statement">Client declaration statement</a> section.
-</p>
-</section>
 
 </section>
 <section>

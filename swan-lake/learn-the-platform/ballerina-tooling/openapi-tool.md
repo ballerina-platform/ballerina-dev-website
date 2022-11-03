@@ -247,15 +247,15 @@ $ bal openapi -i <openapi-contract> --mode client --client-methods <resource|rem
 
 ### Generate client for IDL import
 
-With a non-Ballerina Interface Definition Language(IDL) import support, you can add openAPI specification to generate the IDL client and define it as a top-level import to your ballerina file in a below way.
+The non-Ballerina Interface Definition Language(IDL) import feature allows you to add an openAPI specification to generate the IDL client and define it as a top-level import in your Ballerina file as follows.
 
 ```ballerina
 client "./openapi.yaml" as foo;
 ```
-This IDL client import will be simplified the user experience with respect to the using CLI command.
+This IDL client import will simplify the user experience with respect to using the CLI command.
 
-If you need to add additional details to create your IDL client, use below annotation `@openapi:ClientConfig` with field attributes.
-All of these fields are optional.
+If you need to add additional details to create your IDL client, use the `@openapi:ClientConfig` annotation below with field attributes.
+>**Info:** All of these fields are optional.
 
 ```ballerina
 @openapi:ClientConfig {
@@ -267,7 +267,7 @@ All of these fields are optional.
 }
 client "./openapi.yaml" as foo;
 ```
->**Info:** For annotation attributes details, see [Annotation reference](#annotation-reference).
+>**Info:** For details of the annotation attributes, see [Annotation reference](#annotation-reference).
 
 ## Publish your client
 
@@ -299,7 +299,7 @@ To see your new client in Ballerina central in the future, follow the steps belo
 
 ## Annotation reference
 
-### `@openapi:ServiceInfo` annotation
+### The `@openapi:ServiceInfo` annotation
 
 The `@openapi:ServiceInfo` annotation supports several usages in the Ballerina OpenAPI tool.
 
@@ -323,19 +323,19 @@ service /greet on new http:Listener(9090) {
 The attributes of the annotation are optional and can be used for each particular purpose as described below.  
 
 
-| Attribute                      | Description                                                                                                                                                                                                                                                                                                                  |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Contract: string?`            | Here, you can provide a path to the OpenAPI contract as a string and the OpenAPI file can either be a `.yaml` or `.json`.                                                                                                                                                                                                    |
-| `Tags: string[]?`              | The compiler only validates resources against operations, which are tagged with a tag specified in the list. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.                                                                                                  |
-| `Operations: string[]?`        | This should contain a list of operation names that need to be validated against the resources in the service. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.  If both tags and operations are defined, it validates against the union set of the resources.  |
-| `ExcludeTags: string[]?`       | This stores the tags that do not need to be validated. The annotation can not have both the `excludeTags` and `Tags` attributes at the same time.                                                                                                                                                                            |
-| `ExcludeOperations: string[]?` | This specifies the operations that do not need to be validated.                                                                                                                                                                                                                                                              |
-| `FailOnErrors: boolean?`       | To turn off the validation, add this to the annotation with the value as `false`.                                                                                                                                                                                                                                            |
-| `Title: string?`               | Use this to add the title of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                           |
-| `Version: string?`             | Use this to add the version of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                         |
-| `Embed: string?`               | To turn off generating OpenAPI documentation for service for introspection endpoint support, use this attribute with `false` in the annotation.                                                                                                                                                                              |
+| Attribute                      | Description                                                                                                                                                                                                                                                                                                      |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Contract: string?`            | Provides a path to the OpenAPI contract as a string and the OpenAPI file can either be a `.yaml` or `.json`.                                                                                                                                                                                                     |
+| `Tags: string[]?`              | Specifies the tag in the list for the compiler to validate resources against operations that are tagged with it. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.                                                                                  |
+| `Operations: string[]?`        | Contains a list of operation names that need to be validated against the resources in the service. If not specified, the compiler validates resources against all the operations defined in the OpenAPI contract.  If both tags and operations are defined, it validates against the union set of the resources. |
+| `ExcludeTags: string[]?`       | Stores the tags that do not need to be validated. The annotation can not have both the `excludeTags` and `Tags` attributes at the same time.                                                                                                                                                                     |
+| `ExcludeOperations: string[]?` | Specifies the operations that do not need to be validated.                                                                                                                                                                                                                                                       |
+| `FailOnErrors: boolean?`       | Turns off the validation when used with `false` in the annotation.                                                                                                                                                                                                                                               |
+| `Title: string?`               | Adds the title of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                          |
+| `Version: string?`             | Adds the version of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                        |
+| `Embed: string?`               | Turns off generating OpenAPI documentation for the service for introspection endpoint support when used with `false` in the annotation.                                                                                                                                                                          |
 
-### `@openapi:ClientConfig` annotation
+### The `@openapi:ClientConfig` annotation
 
 The `@openapi:ClientConfig` annotation supports for IDL client generation.
 
@@ -350,12 +350,12 @@ The `@openapi:ClientConfig` annotation supports for IDL client generation.
 client "./openapi.yaml" as foo;
 ```
 
-The attributes of the annotation are optional and can be used for each particular purpose as described below.
+>**Info:** The attributes of the annotation are optional and can be used for each particular purpose as described below.
 
-| Attribute                      | Description                                                                                                                                                                                                                    |
-|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Tags: string[]?`              | Generate only remote/resources functions for operations, which are tagged with a tag specified in the list. If not specified, the generator generates remote/resources for all the operations defined in the OpenAPI contract. |
-| `Operations: string[]?`        | This should contain a list of operation names that need to be included in the client. If not specified, the generator generates remote/resources for all the operations defined in the OpenAPI contract.                       |
-| `License: string?`             | Here, you can provide a path to the license as a string and the license file should be a text file.                                                                                                                            |
-| `isResource: boolean?`         | To select client methods as remote functions for generation, add this to the annotation with the value `false`.                                                                                                                |
-| `Nullable: boolean?`           | To enable generating all data types in the record with Ballerina nil support, add this to the annotation with the value `true`.                                                                                                |  
+| Attribute                      | Description                                                                                                                                                                                                                      |
+|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Tags: string[]?`              | Generate only the remote/resources functions for operations that are tagged with a tag specified in the list. If not specified, the generator generates remote/resources for all the operations defined in the OpenAPI contract. |
+| `Operations: string[]?`        | Contains a list of operation names that need to be included in the client. If not specified, the generator generates remote/resources for all the operations defined in the OpenAPI contract.                                    |
+| `License: string?`             | Provides a path to the license as a string and the license file should be a text file.                                                                                                                                           |
+| `isResource: boolean?`         | Specifies the client methods selected as remote functions for generation when used with `false` in the annotation.                                                                                                               |
+| `Nullable: boolean?`           | Enables generating all data types in the record with Ballerina nil support, when used with `true` in the annotation.                                                                                                             |  

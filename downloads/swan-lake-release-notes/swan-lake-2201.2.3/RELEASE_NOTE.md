@@ -36,7 +36,15 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ## Language updates
 
+### Bug fixes
+
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.2.3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.2.3+is%3Aclosed)
+
+## Standard library updates
+
+### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.2.3](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.2.3%22+label%3AType%2FBug).
 
 ## Developer tools updates
 
@@ -44,13 +52,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.2.3](https://git
 
 #### Language Server
 
-### Improvements
-
-#### Language Server
+* Add a new quick-fix code action to fill in the missing required fields of a mapping constructor
+* Add a new module-level completion item to generate an expression-bodied function snippet
 
 ### Bug Fixes
 
-To view bug fixes, see the GitHub milestone for Swan Lake 2201.2.2 of the repositories below.
+To view bug fixes, see the GitHub milestone for Swan Lake 2201.2.3 of the repositories below.
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.2.3+is%3Aclosed)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.2.3+is%3Aclosed+label%3AArea%2FDebugger)

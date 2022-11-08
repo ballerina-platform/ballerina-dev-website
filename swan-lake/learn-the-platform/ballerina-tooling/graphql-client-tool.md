@@ -158,12 +158,12 @@ You can also use the `graphql` CLI tool to generate a Ballerina module. For more
 
 ### Generate client using IDL import
 
-With the non-Ballerina Interface Definition Language(IDL) import support, you can use GraphQL configuration files to generate IDL clients by adding as a top-level declaration in your ballerina code in the following way. The GraphQL config file should be located in the same Ballerina package/module directory which uses the IDL client declaration. 
+With the non-Ballerina Interface Definition Language(IDL) import support, you can use GraphQL configuration files to generate IDL clients by adding a top-level declaration in your Ballerina code in the following way. The GraphQL config file should be located in the same Ballerina package/module directory which uses the IDL client declaration. 
 
 ```ballerina
 client "./graphql.config.yaml" as foo;
 ```
->**Note:** The IDL import is supported only for single client generation configutations. This can not be used for [multiple module generation configutations](/learn/graphql-client-tool/#generate-multiple-clients-from-a-graphql-config). 
+>**Note:** The GrapQL IDL client declaration is only supported for single client generation configutations. This can not be used for [multiple module generation configutations](/learn/graphql-client-tool/#generate-multiple-clients-from-a-graphql-config). 
 
 ## Advanced use cases
 

@@ -110,13 +110,13 @@ This will contain the resolved dependency versions. From thereon, the versions l
 
 In the subsequent builds, the compiler will automatically update the versions of the dependencies at the patch level. Therefore, if any patch release is available for a dependency, the compiler will intelligently pick the latest patch version during package build.
 
->**Note:** Automatic updates for minor and major versions are not supported by the compiler yet, however the minimum dependency version can be specified in the `Ballerina.toml` file.
+>**Note:** Automatic updates for minor and major versions are not supported by the compiler. However, the minimum dependency version can be specified in the `Ballerina.toml` file.
 
 The `Dependencies.toml` file is auto-generated and managed by the Ballerina CLI and does not need user intervention. 
 Updating the versions of the existing dependencies, adding dependency entries related to a newly-added import statement, and deleting entries 
 of a removed import statement are handled by the CLI itself.
 
-The minimum dependency version can be specified in the `Ballerina.toml` file which will update the dependency to the specified version or the latest compatible version. 
+The minimum dependency version can be specified in the `Ballerina.toml` file, which will update the dependency to the specified version or the latest compatible version. 
 
 For example, the minimum version of the `ballerinax/mysql` dependency can be specified in the following way.
 ```toml

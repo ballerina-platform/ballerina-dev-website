@@ -43,7 +43,7 @@ permalink: /community/active-proposals
 |[Proposal: Write GraphQL Schema to a File](https://github.com/ballerina-platform/ballerina-standard-library/issues/3286)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|11|2022-08-26|Active|
 |[Proposal: Proto file generation for Protocol Buffers SerDes](https://github.com/ballerina-platform/ballerina-standard-library/issues/3217)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2022-08-04|Draft|
 |[Proposal: Introduce a new API to wait until a given scheduled job is completed ](https://github.com/ballerina-platform/ballerina-standard-library/issues/3018)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|0|2022-06-20|Active|
-|[Proposal: Ballerina Constraint Package](https://github.com/ballerina-platform/ballerina-standard-library/issues/2850)|[ldclakmal](https://github.com/ldclakmal)|21|2022-04-20|Accepted|
+|[Proposal: Ballerina Constraint Package](https://github.com/ballerina-platform/ballerina-standard-library/issues/2850)|[ldclakmal](https://github.com/ldclakmal)|22|2022-04-20|Accepted|
 |[Proposal: VSCode command to download OpenAPI specification](https://github.com/ballerina-platform/ballerina-standard-library/issues/2509)|[shafreenAnfar](https://github.com/shafreenAnfar)|0|2021-12-20|Draft|
 |[Proposal: Ballerina VSCode try-out plugin for REST APIs](https://github.com/ballerina-platform/ballerina-standard-library/issues/2508)|[shafreenAnfar](https://github.com/shafreenAnfar)|0|2021-12-19|Draft|
 |[Proposal: `continue` action for HTTP Client API](https://github.com/ballerina-platform/ballerina-standard-library/issues/2038)|[ayeshLK](https://github.com/ayeshLK)|4|2021-10-12|Active|

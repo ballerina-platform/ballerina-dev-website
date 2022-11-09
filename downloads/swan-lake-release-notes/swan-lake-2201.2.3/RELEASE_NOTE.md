@@ -55,13 +55,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.2.3](https://git
 * Added a new quick-fix code action to fill in the missing required fields of a mapping constructor
 * Added a new module-level completion item to generate an expression-bodied function snippet
 
-## Improvements
+### Improvements
 
-### OpenAPI Tool
--Improved the OpenAPI client configuration handling functionality. Now, the record, which contains the information for client initialization is changed from the `ClientConfig` to `ConnectionConfig`. A few of the defaultable configuration fields, which were in the `ClientConfig` have been changed to the optional fields in the `ConnectionConfig` record. Due to this change, the `ConnectionConfig` record can be defined as a configurable variable.
+#### OpenAPI Tool
 
-> Note: Please note that there will be an issue with version compatibility when you use client connectors generated using the old Ballerina version (before 2201.2.3) with your latest Ballerina implementation.
-Therefore, if you have already published client connectors to the Ballerina central using previous Ballerina versions, it would be great if you republish those connectors with the Ballerina version 2201.2.3 to avoid the compilation issue.
+Improved the OpenAPI client configuration handling functionality. Now, the record, which contains the information for client initialization is changed from the `ClientConfig` to `ConnectionConfig`. A few of the defaultable configuration fields, which were in the `ClientConfig` have been changed to the optional fields in the `ConnectionConfig` record. Due to this change, the `ConnectionConfig` record can be defined as a configurable variable.
+
+>**Note:** Due to the above new configuration changes, it is recommended to republish the client connectors that you have already published to Ballerina Central using previous Ballerina versions.
 
 ### Bug Fixes
 

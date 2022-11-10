@@ -24,10 +24,42 @@ import Intro from '../components/home-page/intro/Intro';
 import WhyBal from '../components/home-page/why-bal/WhyBal';
 import Videos from '../components/home-page/videos/Videos';
 import Events from '../components/home-page/events/Events';
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
+
+import fs from "fs";
+import matter from "gray-matter";
 
 
-export default function Home() {
+var traverseFolder = function (dir) {
+  var results = [];
+  var list = fs.readdirSync(dir);
+  list.forEach(function (file) {
+    var filex = dir + "/" + file;
+    results.push(filex);
+  });
+  return results;
+};
+
+export async function getStaticProps() {
+  const files = traverseFolder("components/home-page/bal-action/action-bbe");
+  var samples = {};
+
+  files.forEach(function (item, index) {
+    const filename = fs.readFileSync(item, "utf-8");
+    const sampleName = item.replace('components/home-page/bal-action/action-bbe/', '').replace('.md','');
+    const { data: frontmatter, content } = matter(filename);
+    samples[sampleName] = content;
+  });
+
+  return {
+    props: {
+      samples
+    },
+  };
+}
+
+
+export default function Home({ samples }) {
   const BalAction = dynamic(() => import('../components/home-page/bal-action/BalAction'), { ssr: false });
 
   return (
@@ -38,23 +70,17 @@ export default function Home() {
           <Intro />
         </Row>
 
-
-
         <Row className={styles.homeBalAction}>
-          <BalAction />
+          <BalAction samples={samples}/>
         </Row>
-
-
 
         <Row className={styles.homeWhyBal}>
           <WhyBal />
         </Row>
 
-
         <Row className={styles.homeVideos}>
           <Videos />
         </Row>
-
 
         <Row className={styles.homeEvents}>
           <Events />

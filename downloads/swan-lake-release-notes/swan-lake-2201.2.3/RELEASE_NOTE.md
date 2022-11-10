@@ -61,7 +61,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.2.3](https://git
 
 Improved the OpenAPI client configuration handling functionality. Now, the record, which contains the information for client initialization is changed from the `ClientConfig` to `ConnectionConfig`. A few of the defaultable configuration fields, which were in the `ClientConfig` have been changed to the optional fields in the `ConnectionConfig` record. Due to this change, the `ConnectionConfig` record can be defined as a configurable variable.
 
->**Note:** Due to the above new configuration changes, it is recommended to republish the client connectors that you have already published to Ballerina Central using previous Ballerina versions.
+>**Note:** Due to the above new configuration changes, it is recommended to republish the client connectors that you have already published to Ballerina Central using this release.
 
 ### Bug Fixes
 

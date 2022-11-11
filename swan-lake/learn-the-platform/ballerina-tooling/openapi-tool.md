@@ -245,40 +245,6 @@ $ bal openapi -i <openapi-contract> --mode client --client-methods <resource|rem
 
 >**Info:** For more command options, see [OpenAPI to Ballerina](/learn/cli-documentation/openapi/#openapi-to-ballerina).
 
-### Generate client for IDL import
-
-The non-Ballerina Interface Definition Language(IDL) import feature allows you to add an OpenAPI specification to generate the IDL client. With this support, OpenAPI specifications can be imported(i.e. declared) at module level and consumed as follows.
-
-```ballerina
-// Add the client import with the OpenAPI specification. 
-client "./openapi.yaml" as weather;
-
-public function main() returns error? {
-    // Initializes the client which is generated from the IDL import.
-    weather:Client weatherClient = check new ();
-    // Consume the `/weather` resource defined in the OpenAPI specification.
-    weather:CurrentWeatherData weatherResult = check weatherClient->/weather("Colombo");
-}
-```
-This IDL client import will simplify the user experience with respect to using the CLI command.
-
-If you need to add additional details to configure your IDL client, use the `@openapi:ClientConfig` annotation below with field attributes.
->**Info:** All of these fields are optional.
-
-```ballerina
-import ballerina/openapi;
-
-@openapi:ClientConfig {
-    tags: ["store"],
-    operations: ["op1", "op2"],
-    license: "/path/to/license_file.txt",
-    isResource: true // (default value => true),
-    nullable: false // (default value => false)
-}
-client "./openapi.yaml" as weather;
-```
->**Info:** For details of the annotation attributes, see [Annotation reference](#annotation-reference).
-
 ## Publish your client
 
 To see your new client in Ballerina central in the future, follow the steps below to send a GitHub Pull Request to the WSO2 `openapi-connectors` repository to publish it.
@@ -345,27 +311,3 @@ The attributes of the annotation are optional and can be used for each particula
 | `Version: string?`             | Adds the version of the `info` section in the generated OpenAPI contract.                                                                                                                                                                                                                                        |
 | `Embed: string?`               | Turns off generating OpenAPI documentation for the service for introspection endpoint support when used with `false` in the annotation.                                                                                                                                                                          |
 
-### The `@openapi:ClientConfig` annotation
-
-The `@openapi:ClientConfig` annotation supports for IDL client generation.
-
-```ballerina
-@openapi:ClientConfig {
-    tags: ["store"],
-    operations: ["op1", "op2"],
-    license: "/path/to/license_file.txt",
-    isResource: true // (default value => true),
-    nullable: false // (default value => false)
-}
-client "./openapi.yaml" as foo;
-```
-
->**Info:** The attributes of the annotation are optional and can be used for each particular purpose as described below.
-
-| Attribute                      | Description                                                                                                                                                                                                                      |
-|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Tags: string[]?`              | Generate only the remote/resources functions for operations that are tagged with a tag specified in the list. If not specified, the generator generates remote/resources for all the operations defined in the OpenAPI contract. |
-| `Operations: string[]?`        | Contains a list of operation names that need to be included in the client. If not specified, the generator generates remote/resources for all the operations defined in the OpenAPI contract.                                    |
-| `License: string?`             | Provides a path to the license as a string and the license file should be a text file.                                                                                                                                           |
-| `isResource: boolean?`         | Specifies the client methods selected as remote functions for generation when used with `false` in the annotation.                                                                                                               |
-| `Nullable: boolean?`           | Enables generating all data types in the record with Ballerina nil support, when used with `true` in the annotation.                                                                                                             |  

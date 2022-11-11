@@ -22,9 +22,6 @@
         - title: Sample usage of the generated client
           url: /learn/graphql-client-tool/#sample-usage-of-the-generated-client
           active: sample-usage-of-the-generated-client
-        - title: Generate client using IDL import
-          url: /learn/graphql-client-tool/#generate-client-using-idl-import
-          active: generate-client-using-idl-import
     - title: Advanced use cases
       url: /learn/graphql-client-tool/#advanced-use-cases
       sublinks:

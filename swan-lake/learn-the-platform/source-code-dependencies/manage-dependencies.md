@@ -123,7 +123,7 @@ For example, the minimum version of the `ballerinax/mysql` dependency can be spe
 [[dependency]]
 org = "ballerinax"
 name = "mysql"
-version = "1.3.0”
+version = "1.5.0”
 ```
 
 ## Use dependencies from the local repository

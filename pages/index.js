@@ -62,6 +62,24 @@ export async function getStaticProps() {
 export default function Home({ samples }) {
   const BalAction = dynamic(() => import('../components/home-page/bal-action/BalAction'), { ssr: false });
 
+  const getLink = (element, id) => {
+    if (element.tagName.toLowerCase() === "path")
+      element = element.parentElement;
+
+    const elementNodeList = document.querySelectorAll(`#${id}`);
+    const elementArray = Array.prototype.slice.call(elementNodeList);
+    const count = elementArray.indexOf(element.parentElement);
+
+    if (count === 0) {
+      location.hash = `#${id}`;
+    } else {
+      location.hash = `#${id}-${count}`;
+    }
+
+    navigator.clipboard.writeText(window.location.href);
+    element.parentElement.scrollIntoView();
+  };
+
   return (
     <Layout>
       <Col sm={12}>
@@ -71,19 +89,19 @@ export default function Home({ samples }) {
         </Row>
 
         <Row className={styles.homeBalAction}>
-          <BalAction samples={samples}/>
+          <BalAction samples={samples} getLink={getLink}/>
         </Row>
 
         <Row className={styles.homeWhyBal}>
-          <WhyBal />
+          <WhyBal getLink={getLink}/>
         </Row>
 
         <Row className={styles.homeVideos}>
-          <Videos />
+          <Videos getLink={getLink}/>
         </Row>
 
         <Row className={styles.homeEvents}>
-          <Events />
+          <Events getLink={getLink}/>
         </Row>
 
       </Col>

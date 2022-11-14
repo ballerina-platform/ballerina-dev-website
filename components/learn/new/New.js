@@ -20,16 +20,29 @@ import * as React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 import styles from './New.module.css';
-import { prefix } from '../../../utils/prefix';
 
-export default function New() {
+export default function New(props) {
 
   return (
     <>
 
         <Row className="pageContentRow learnRow llanding">
           <Col xs={12} md={12}>
-            <h2>What&apos;s new</h2> 
+            <h2 id="whats-new" className='section'>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                className="bi bi-link-45deg mdButton pe-2"
+                viewBox="0 0 16 16"
+                onClick={(e) => props.getLink(e.target, 'whats-new')}
+              >
+                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+              </svg>
+              What&apos;s new
+            </h2> 
           </Col>
         </Row>
 

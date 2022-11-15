@@ -110,9 +110,9 @@ This will contain the latest compatible dependency versions. From thereon, the v
 
 ### Update dependency versions
 
-The Dependencies.toml generated during the compiler will automatically update the versions of the dependencies at the patch level. Therefore, if any patch release is available for a dependency, the compiler will pick the latest patch version.
+The `Dependencies.toml` file generated during the compiler will automatically update the versions of the dependencies at the patch level. Therefore, if any patch release is available for a dependency, the compiler will pick the latest patch version.
 
->**Note:** The automatic update runs only once a day to optimize the time taken during frequent builds. Run `bal clean` if you want to enable automatic updates for the next build.
+>**Note:** The automatic update runs only once a day to optimize the time taken during frequent builds. Run the `bal clean` command if you want to enable automatic updates for the next build.
 
 To update the minor or the major version of a dependency, specify the dependency version in the `Ballerina.toml` file. The provided version is considered as the minimum required version for compiling the package, which will update the dependency to the latest version that is compatible with the version provided in the `Ballerina.toml` as well as the version locked in the`Dependencies.toml`.
 

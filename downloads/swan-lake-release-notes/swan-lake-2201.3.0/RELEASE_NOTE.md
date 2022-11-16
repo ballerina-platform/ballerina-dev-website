@@ -127,7 +127,7 @@ Previously, `-9223372036854775808` was allowed to be assigned to an integer in B
 int result = -9223372036854775808; // error: '9223372036854775808' is out of range for 'int'
 ```
 
-#### Restriction requiring the typed binding pattern of an outer join clause to use `var`
+#### Restriction on the typed binding pattern of an outer join clause to use `var`
 
 Previously, the typed binding pattern in an outer join clause was allowed to be any type descriptor, but now it has been restricted to be `var` so that an optional type (`T?`) will be inferred as the type.
 

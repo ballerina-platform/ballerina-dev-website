@@ -772,21 +772,21 @@ sublinks:
           - title: Interfaces implementing interfaces
             id: 9
             url: graphql-interfaces-implementing-interfaces
-          - title: Context
-            id: 10
-            url: graphql-context
-          - title: File upload
-            id: 11
-            url: graphql-file-upload
           - title: Documentation
-            id: 12
+            id: 10
             url: graphql-documentation
+          - title: Directives
+            id: 11
+            url: graphql-directives
+          - title: Context
+            id: 12
+            url: graphql-context
           - title: Interceptors
             id: 13
             url: graphql-interceptors
-          - title: Directives
+          - title: File upload
             id: 14
-            url: graphql-directives
+            url: graphql-file-upload
           - title: Hierarchical resource paths
             id: 15
             url: graphql-hierarchical-resource-paths

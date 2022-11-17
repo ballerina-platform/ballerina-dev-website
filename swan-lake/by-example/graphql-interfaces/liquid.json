@@ -1,0 +1,17 @@
+{
+  "title": "Interfaces",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql interfaces"
+  ],
+  "permalink": "/learn/by-example/graphql-interfaces",
+  "active": "graphql-interfaces",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-interfaces",
+    "/swan-lake/learn/by-example/graphql-interfaces.html"
+  ]
+}

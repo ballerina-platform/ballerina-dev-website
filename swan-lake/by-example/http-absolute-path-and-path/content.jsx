@@ -14,18 +14,28 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane" },
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
+
 // The \`absolute resource path\` represents the absolute path to the service. When bound to a listener
 // endpoint, the service will be accessible at the specified path. If the path is omitted, then it defaults to \`/\`.
-// A string literal also can represent the absolute path. E.g., \`"/foo"\`.
-// The \`type descriptor\` represents the respective type of the service. E.g., \`http:Service\`.
-service http:Service /foo on new http:Listener(9090) {
+// Identifiers and string literals can represent the absolute path. E.g., \`/music\\-info\`, \`"/music-info"\`.
+service /info on new http:Listener(9090) {
 
-    // The \`resource method name\` (\`post\`) confines the resource to the specified HTTP methods. In this
-    // instance, only \`POST\` requests are allowed. The \`default\` accessor can be used to match with all methods
+    // The \`resource method name\` (\`get\`) confines the resource to the specified HTTP methods. In this
+    // instance, only \`GET\` requests are allowed. The \`default\` accessor can be used to match with all methods
     // including standard HTTP methods and custom methods.
-    // The \`resource path\` associates the relative path to the service object's path. E.g., \`bar\`.
-    resource function post bar(@http:Payload json payload) returns json {
-        return payload;
+    // The \`resource path\` associates the relative path to the service object's path. E.g., \`albums\`.
+    // The \`.\` as \`resource path\` represents the current resource that is \`/\`.
+    resource function get albums() returns Album[] {
+        return albums.toArray();
     }
 }
 `,
@@ -70,7 +80,13 @@ export default function HttpAbsolutePathAndPath() {
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
         </a>
-        .
+      </p>
+
+      <p>
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#222-service-base-path">
+          specification
+        </a>
       </p>
 
       <Row
@@ -281,8 +297,8 @@ export default function HttpAbsolutePathAndPath() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/foo/bar -d "{\\"hello\\": \\"world\\"}" -H "Content-Type: application/json"`}</span>
-              <span>{`{"hello":"world"}`}</span>
+              <span>{`\$ curl http://localhost:9090/info/albums`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
@@ -291,8 +307,8 @@ export default function HttpAbsolutePathAndPath() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Expression-oriented style"
-            href="/learn/by-example/expression-oriented-style"
+            title="Basic REST API"
+            href="/learn/by-example/http-basic-rest-api"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -319,7 +335,7 @@ export default function HttpAbsolutePathAndPath() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Expression-oriented style
+                  Basic REST API
                 </span>
               </div>
             </div>

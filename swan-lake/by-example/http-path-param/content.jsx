@@ -14,16 +14,27 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-service /company on new http:Listener(9090) {
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-    // The path param is defined as a part of the resource path along with the type and it is extracted from the
-    // request URI.
-    resource function get empId/[int id]() returns json {
-        return {empId: id};
-    }
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane" },
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
-    resource function get empName/[string first]/[string last]() returns json {
-        return {firstName: first, lastName: last};
+service / on new http:Listener(9090) {
+
+    // The path param is defined as a part of the resource path within brackets along with the type and it is
+    // extracted from the request URI.
+    resource function get albums/[string title]() returns Album|http:NotFound {
+        Album? album = albums[title];
+        if album is () {
+            return http:NOT_FOUND;
+        } else {
+            return album;
+        }
     }
 }
 `,
@@ -65,6 +76,13 @@ export default function HttpPathParam() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
+        </a>
+      </p>
+
+      <p>
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#233-path-parameter">
+          specification
         </a>
         .
       </p>
@@ -277,12 +295,8 @@ export default function HttpPathParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/company/empId/23"`}</span>
-              <span>{`{"empId":23}`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl "http://localhost:9090/company/empName/Adele/Ferguson"`}</span>
-              <span>{`{"firstName":"Adele", "lastName":"Ferguson"}`}</span>
+              <span>{`\$ curl "curl http://localhost:9090/albums/Jeru"`}</span>
+              <span>{`{"title":"Jeru", "artist":"Gerry Mulligan"`}</span>
             </code>
           </pre>
         </Col>
@@ -291,8 +305,8 @@ export default function HttpPathParam() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Default resource"
-            href="/learn/by-example/http-default-resource"
+            title="Service data binding"
+            href="/learn/by-example/http-data-binding"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -319,7 +333,7 @@ export default function HttpPathParam() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Default resource
+                  Service data binding
                 </span>
               </div>
             </div>

@@ -14,27 +14,20 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-xmlns "http://www.test.com" as test;
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-type Student record {
-    string Name;
-    int Grade;
-};
+table<Album> key(title) albums = table [];
 
-service /hello on new http:Listener(9090) {
+service / on new http:Listener(9090) {
 
-    // The \`Student\` parameter in the payload annotation.
-    // represents the entity body of the inbound request.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/Payload.
-    resource function post student(@http:Payload Student student) returns json {
-        string name = student.Name;
-        return {Name: name};
-    }
-
-    //Binds the XML payload of the inbound request to the \`store\` variable.
-    resource function post store(@http:Payload xml store) returns xml {
-        xml city = store/<test: city>;
-        return city;
+    // The \`album\` parameter in the payload annotation represents the entity body of the inbound request.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/HttpPayload.
+    resource function post albums(@http:Payload Album album) returns Album {
+        albums.add(album);
+        return album;
     }
 }
 `,
@@ -77,6 +70,13 @@ export default function HttpDataBinding() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
+        </a>
+      </p>
+
+      <p>
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#2344-payload-parameter">
+          specification
         </a>
         .
       </p>
@@ -289,13 +289,8 @@ export default function HttpDataBinding() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/hello/student -d '{ "Name": "John", "Grade": 12, "Marks": {"English" : "85", "IT" : "100"}}' -H "Content-Type:application/json"`}</span>
-              <span>{`{"Name":"John"}`}</span>
-              <span>{`
-`}</span>
-              <span>{`# To invoke the \`store\` resource, execute the below HTTP request.`}</span>
-              <span>{`\$ curl http://localhost:9090/hello/store -d "<h:Store id = \\"AST\\" xmlns:h=\\"http://www.test.com\\"><h:street>Main</h:street><h:city>94</h:city></h:Store>" -H "Content-Type:application/xml"`}</span>
-              <span>{`<h:city xmlns:h="http://www.test.com">94</h:city>`}</span>
+              <span>{`\$ curl http://localhost:9090/albums -H "Content-type:application/json" -d "{\\"title\\": \\"Sarah Vaughan and Clifford Brown\\", \\"artist\\": \\"Sarah Vaughan\\"}"`}</span>
+              <span>{`{"title":"Sarah Vaughan and Clifford Brown", "artist":"Sarah Vaughan"}`}</span>
             </code>
           </pre>
         </Col>
@@ -339,10 +334,7 @@ export default function HttpDataBinding() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Default resource"
-            href="/learn/by-example/http-default-resource"
-          >
+          <Link title="Path parameter" href="/learn/by-example/http-path-param">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -351,7 +343,7 @@ export default function HttpDataBinding() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Default resource
+                  Path parameter
                 </span>
               </div>
               <svg

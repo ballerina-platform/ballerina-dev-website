@@ -13,16 +13,27 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/http;
-import ballerina/log;
+import ballerina/mime;
+
+type Album readonly & record {|
+    string title;
+    string artist;
+
+|};
+
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
 service / on new http:Listener(9090) {
-    // The \`clientKey\` method argument is considered as the value for the
-    // \`X-Client-Key\` HTTP header.
-    resource function get hello(@http:Header {name: "X-Client-Key"} string clientKey)
-            returns string {
 
-        log:printInfo("Received header value: " + clientKey);
-        return clientKey;
+    // The \`accept\` argument with \`@http:Header\` annotation takes the value of the \`Accept\` request header.
+    resource function get albums(@http:Header string accept) returns Album[]|http:NotAcceptable {
+        if !string:equalsIgnoreCaseAscii(accept, mime:APPLICATION_JSON) {
+            return http:NOT_ACCEPTABLE;
+        }
+        return albums.toArray();
     }
 }
 `,
@@ -72,6 +83,13 @@ export default function HttpHeaderParam() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
+        </a>
+      </p>
+
+      <p>
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#2345-header-parameter">
+          specification
         </a>
         .
       </p>
@@ -219,7 +237,6 @@ export default function HttpHeaderParam() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_headers.bal`}</span>
-              <span>{`time = 2021-06-25T11:56:13.746+05:30 level = INFO module = "" message = "Received header value 0987654321"`}</span>
             </code>
           </pre>
         </Col>
@@ -285,8 +302,8 @@ export default function HttpHeaderParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/hello -H "X-Client-Key: 0987654321"`}</span>
-              <span>{`0987654321`}</span>
+              <span>{`\$ curl "http://localhost:9090/albums" -H "Accept:application/json"`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
@@ -295,8 +312,8 @@ export default function HttpHeaderParam() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Matrix parameter"
-            href="/learn/by-example/http-matrix-param"
+            title="Query parameter"
+            href="/learn/by-example/http-query-parameter"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -323,7 +340,7 @@ export default function HttpHeaderParam() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Matrix parameter
+                  Query parameter
                 </span>
               </div>
             </div>
@@ -331,7 +348,7 @@ export default function HttpHeaderParam() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Typed resource responses"
+            title="Returned response types"
             href="/learn/by-example/http-resource-returns"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -342,7 +359,7 @@ export default function HttpHeaderParam() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Typed resource responses
+                  Returned response types
                 </span>
               </div>
               <svg

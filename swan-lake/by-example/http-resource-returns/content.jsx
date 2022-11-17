@@ -14,50 +14,22 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-type PersonAccount record {
-    string name;
-    int accountNo;
-};
+type Album readonly & record {|
+    string title;
+    string artist;
 
-service /bank on new http:Listener(9090) {
+|};
 
-    // The resource returns the json type values and the \`Content-type\` header is set according to the \`mediaType\`
-    // field of \`@http:Payload\` annotation. 
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/HttpPayload.
-    resource function get branch() returns @http:Payload {mediaType:"application/json+id"} json {
-        return { branch : ["Colombo, Srilanka"]};
-    }
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
-    // The StatusCodeResponse can be state as return type to send responses with specific HTTP status codes.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/types#StatusCodeResponse.
-    resource function get [string 'type]()
-            returns http:Ok|http:InternalServerError {
-        if 'type == "open" {
+service / on new http:Listener(9090) {
 
-            // Create a response with the \`200\` status code and set the body as the response payload.
-            http:Ok ok = {body: "Bank is open"};
-            return ok;
-        } else {
-
-            // Creates response with 500 status code and set body as response payload.
-            http:InternalServerError err = {body: "Bank is closed"};
-            return err;
-        }
-    }
-
-    // Inline response records are useful to return headers and body along with status code. In this instance the
-    // return type is a subtype of the \`http:Created\` record, hence 201 response will be sent.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/Created.
-    resource function put account(@http:Payload string name)
-            returns record {|*http:Created; PersonAccount body;|} {
-        PersonAccount account = {accountNo: 84230, name: name};
-        return {
-            mediaType: "application/account+json",
-            headers: {
-                "Location": "/myServer/084230"
-            },
-            body: account
-        };
+    // The resource returns the \`Album\` typed array value
+    resource function get albums() returns Album[] {
+        return albums.toArray();
     }
 }
 `,
@@ -103,6 +75,13 @@ export default function HttpResourceReturns() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
+        </a>
+      </p>
+
+      <p>
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#235-return-types">
+          specification
         </a>
         .
       </p>
@@ -315,55 +294,19 @@ export default function HttpResourceReturns() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v "http://localhost:9090/bank/branch"`}</span>
-              <span>{`> GET /bank/branch HTTP/1.1`}</span>
+              <span>{`\$ curl http://localhost:9090/albums -v`}</span>
+              <span>{`> GET /albums HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`>`}</span>
               <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: application/json+id`}</span>
-              <span>{`< content-length: 32`}</span>
+              <span>{`< content-type: application/json`}</span>
+              <span>{`< content-length: 95`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Sat, 15 May 2021 16:14:10 +0530`}</span>
+              <span>{`< date: Mon, 14 Nov 2022 15:08:04 +0530`}</span>
               <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`{"branch":["Colombo, Srilanka"]}* Closing connection 0`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl -v "http://localhost:9090/bank/open"`}</span>
-              <span>{`> GET /bank/open HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 12`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Sat, 15 May 2021 16:16:56 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`Bank is open* Closing connection 0`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl -v "http://localhost:9090/bank/account" -d "bal" -X PUT`}</span>
-              <span>{`> PUT /bank/account HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`> Content-Length: 3`}</span>
-              <span>{`> Content-Type: application/x-www-form-urlencoded`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 201 Created`}</span>
-              <span>{`< Location: /myServer/084230`}</span>
-              <span>{`< content-type: application/account+json`}</span>
-              <span>{`< content-length: 33`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Sat, 15 May 2021 16:19:31 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`{"name":"bal", "accountNo":84230}* Closing connection 0`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
@@ -408,8 +351,8 @@ export default function HttpResourceReturns() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Restrict by media type"
-            href="/learn/by-example/http-restrict-by-media-type"
+            title="Status code response record"
+            href="/learn/by-example/http-status-code-record"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -419,7 +362,7 @@ export default function HttpResourceReturns() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Restrict by media type
+                  Status code response record
                 </span>
               </div>
               <svg

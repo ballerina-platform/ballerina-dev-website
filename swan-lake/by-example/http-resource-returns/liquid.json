@@ -1,5 +1,5 @@
 {
-  "title": "Typed resource responses",
+  "title": "Returned response types",
   "description": "BBE on how to use the statusCode records and return types in an HTTP resource methods.",
   "keywords": [
     "ballerina",

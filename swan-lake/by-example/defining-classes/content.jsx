@@ -85,7 +85,7 @@ export default function DefiningClasses() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cfce20310c70a3ca4f5965973c4cdef4&file=object.bal",
+                "https://play.ballerina.io/?gist=f09061ad2f1234324d6fda2f1a8f06d6&file=defining_classes.bal",
                 "_blank"
               );
             }}

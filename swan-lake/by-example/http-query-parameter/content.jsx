@@ -14,25 +14,25 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-service /product on new http:Listener(9090) {
+type Album readonly & record {|
+    string title;
+    string artist;
+    int year;
+|};
 
-    // The \`a\`, \`b\` method arguments are considered as query parameters.
-    resource function get count(int a, int b) returns json {
-        return { count : a + b};
-    }
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane", year: 1958},
+    {title: "Jeru", artist: "Gerry Mulligan", year: 1962}
+];
 
-    // The query param type is nilable, which means the URI may contain the param.
-    // In the absence of the query param \`id\`, the type is nil.
-    resource function get name(string? id) returns string {
-        if id is string {
-            return "product_" + id;
-        }
-        return "product_0000";
-    }
+service / on new http:Listener(9090) {
 
-    // The multiple query param values also can be accommodate to an array.
-    resource function get detail(string[]? colour) returns json {
-        return { product_colour : colour};
+    // The \`year\` resource method argument is considered as the query parameter which is extracted from the
+    // request URI.
+    resource function get albums(int year) returns Album[] {
+        table<Album> selected = from Album album in albums
+                     where album.year == year select album;
+        return selected.toArray();
     }
 }
 `,
@@ -76,6 +76,13 @@ export default function HttpQueryParameter() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
+        </a>
+      </p>
+
+      <p>
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#2343-query-parameter">
+          specification
         </a>
         .
       </p>
@@ -288,16 +295,8 @@ export default function HttpQueryParameter() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/product/count?a=315&b=585"`}</span>
-              <span>{`{"count":900}`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl "http://localhost:9090/product/name?id=432423"`}</span>
-              <span>{`product_432423`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl "http://localhost:9090/product/detail?colour=red&colour=green"`}</span>
-              <span>{`{"product_colour":["red", "green"]}`}</span>
+              <span>{`\$ curl "http://localhost:9090/albums?year=1958"`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane", "year":1958}]%`}</span>
             </code>
           </pre>
         </Col>
@@ -339,8 +338,8 @@ export default function HttpQueryParameter() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Matrix parameter"
-            href="/learn/by-example/http-matrix-param"
+            title="Header parameter"
+            href="/learn/by-example/http-header-param"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -350,7 +349,7 @@ export default function HttpQueryParameter() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Matrix parameter
+                  Header parameter
                 </span>
               </div>
               <svg

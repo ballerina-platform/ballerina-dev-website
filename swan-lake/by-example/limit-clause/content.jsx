@@ -80,7 +80,7 @@ export default function LimitClause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2de6866d40a719b4ec2322e8fe49ddf6&file=limit_clause.bal",
+                "https://play.ballerina.io/?gist=43731ac1565222e07ce9150dc0c82d56&file=limit_clause.bal",
                 "_blank"
               );
             }}

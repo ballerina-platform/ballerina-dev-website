@@ -128,7 +128,7 @@ export default function QueryingWithStreams() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ec5b9c0d7074bcf1b01c7eb471c68c0a&file=querying_with_streams.bal",
+                "https://play.ballerina.io/?gist=ac59db1d7a8e2433a1c34097cc73ff50&file=querying_with_streams.bal",
                 "_blank"
               );
             }}

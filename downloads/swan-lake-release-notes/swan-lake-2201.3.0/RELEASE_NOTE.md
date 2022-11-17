@@ -129,7 +129,7 @@ int result = -9223372036854775808; // error: '9223372036854775808' is out of ran
 
 #### Restriction on the typed binding pattern of an outer join clause to use `var`
 
-Previously, the typed binding pattern in an outer join clause was allowed to be any type descriptor, but now it has been restricted to be `var` so that an optional type (`T?`) will be inferred as the type.
+Previously, the typed binding pattern in an outer join clause was allowed to be any type descriptor, but now it has been restricted to allow only `var`, so that an optional type (`T?`) will be inferred as the type.
 
 ```ballerina
 type User record {|
@@ -164,7 +164,7 @@ public function main() {
         on login.userId equals user?.id
         select {name: user?.name, login: login.time};
 
-    // Now, the code below gives an error at the typed binding of the outer join clause.
+    // Now, the code below gives an error at the typed binding pattern of the outer join clause.
     _ = from var login in logins
         outer join User user in users  // error: outer join must be declared with 'var'
         on login.userId equals user.id

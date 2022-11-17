@@ -127,9 +127,9 @@ Previously, `-9223372036854775808` was allowed to be assigned to an integer in B
 int result = -9223372036854775808; // error: '9223372036854775808' is out of range for 'int'
 ```
 
-#### Restricted the typed binding of the query expression outer join to `var`
+#### Restriction on the typed binding pattern of an outer join clause to use `var`
 
-Previously, the typed binding for outer join could be any type descriptor, but now it's restricted to be `var` so that it will be inferred as a nillable type.
+Previously, the typed binding pattern in an outer join clause was allowed to be any type descriptor, but now it has been restricted to allow only `var`, so that an optional type (`T?`) will be inferred as the type.
 
 ```ballerina
 type User record {|
@@ -164,9 +164,9 @@ public function main() {
         on login.userId equals user?.id
         select {name: user?.name, login: login.time};
 
-    // Now, the code below gives an error at the outer join typed binding.
+    // Now, the code below gives an error at the typed binding pattern of the outer join clause.
     _ = from var login in logins
-        outer join User user in users  //error: outer join must be declared with 'var'
+        outer join User user in users  // error: outer join must be declared with 'var'
         on login.userId equals user.id
         select {name: user?.name, login: login.time};
 }

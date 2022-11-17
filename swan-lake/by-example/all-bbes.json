@@ -1459,9 +1459,8 @@
       {
         "name": "Client data binding",
         "url": "http-client-data-binding",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       }
     ]
@@ -1875,25 +1874,24 @@
         "isLearnByExample": false
       },
       {
-        "name": "Context",
-        "url": "graphql-context",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "File upload",
-        "url": "graphql-file-upload",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
         "name": "Documentation",
         "url": "graphql-documentation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Directives",
+        "url": "graphql-directives",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Context",
+        "url": "graphql-context",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1908,10 +1906,11 @@
         "isLearnByExample": false
       },
       {
-        "name": "Directives",
-        "url": "graphql-directives",
+        "name": "File upload",
+        "url": "graphql-file-upload",
         "verifyBuild": true,
         "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
       },

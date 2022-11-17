@@ -1,0 +1,18 @@
+{
+  "title": "Transactional producer",
+  "description": "BBE on how to transactionally produce messages using `kafka:Producer`.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "kafka",
+    "producer",
+    "transaction"
+  ],
+  "permalink": "/learn/by-example/kafka-producer-transactional",
+  "active": "kafka-producer-transactional",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/kafka-producer-transactional",
+    "/swan-lake/learn/by-example/kafka-producer-transactional.html"
+  ]
+}

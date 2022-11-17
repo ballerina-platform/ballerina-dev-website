@@ -1,0 +1,18 @@
+{
+  "title": "Timeout",
+  "description": "BBE on how to use an HTTP timeout in Ballerina. This will set a timeout for the requests to get a response and will return an error if a response is not returned within the given timeout.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "http",
+    "resiliency",
+    "timeout"
+  ],
+  "permalink": "/learn/by-example/http-timeout",
+  "active": "http-timeout",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-timeout",
+    "/swan-lake/learn/by-example/http-timeout.html"
+  ]
+}

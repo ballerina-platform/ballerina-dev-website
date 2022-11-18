@@ -105,7 +105,7 @@ export default function CacheInvalidation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=30046cd1fc29591a09db45606f26c767&file=cache_invalidation.bal",
+                "https://play.ballerina.io/?gist=89fdc34928e99de6f1b7c3fd263bd15c&file=cache_invalidation.bal",
                 "_blank"
               );
             }}

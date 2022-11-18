@@ -72,7 +72,7 @@ export default function GrpcClientClientStreaming() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client streaming RPC client</h1>
+      <h1>gRPC client - Client streaming RPC</h1>
 
       <p>
         The gRPC Server Connector is used to expose gRPC services over HTTP/2.

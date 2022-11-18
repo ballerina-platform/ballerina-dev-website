@@ -25,7 +25,7 @@ public function main() returns error? {
     // Publishing messages to an exchange using a routing key.
     // Publishes the message using newClient and the routing key named MyQueue.
     string message = "Hello from Ballerina";
-    check newClient->publishMessage({content: message.toBytes(), routingKey: "MyQueue"});
+    check newClient->publishMessage({content: message, routingKey: "MyQueue"});
 
     // Consuming message from the routing key MyQueue.
     StringMessage messageReceived = check newClient->consumeMessage("MyQueue");
@@ -60,7 +60,7 @@ export default function RabbitmqSyncConsumer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Secured connection</h1>
+      <h1>RabbitMQ Client - Consumer</h1>
 
       <p>
         The underlying connections of the consumer and the producer are secured

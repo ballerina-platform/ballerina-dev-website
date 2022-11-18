@@ -29,7 +29,7 @@ public function main() returns error? {
 
     // Publishes the message using the \`rabbitmqClient\` and the routing key named \`Secured\`.
     string message = "Hello from Ballerina";
-    check rabbitmqClient->publishMessage({content: message.toBytes(), routingKey: "Secured"});
+    check rabbitmqClient->publishMessage({content: message, routingKey: "Secured"});
 }
 `,
 ];
@@ -55,7 +55,7 @@ export default function RabbitmqClientSecureConnection() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Secured connection</h1>
+      <h1>RabbitMQ Client - SSL/TLS</h1>
 
       <p>The underlying connection of the producer is secured with TLS/SSL.</p>
 
@@ -216,7 +216,7 @@ export default function RabbitmqClientSecureConnection() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic authentication"
+            title="Client - Basic authentication"
             href="/learn/by-example/rabbitmq-client-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -244,14 +244,17 @@ export default function RabbitmqClientSecureConnection() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication
+                  Client - Basic authentication
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Consumer" href="/learn/by-example/rabbitmq-consumer">
+          <Link
+            title="Service - Basic authentication"
+            href="/learn/by-example/rabbitmq-service-basic-auth"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -260,7 +263,7 @@ export default function RabbitmqClientSecureConnection() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consumer
+                  Service - Basic authentication
                 </span>
               </div>
               <svg

@@ -65,7 +65,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Basic Auth file user store</h1>
+      <h1>GraphQL service - Basic Auth file user store</h1>
 
       <p>
         A GraphQL service can be secured with Basic Auth and optionally by
@@ -282,7 +282,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - Mutual SSL"
+            title="Mutual SSL"
             href="/learn/by-example/graphql-service-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -310,7 +310,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Mutual SSL
+                  Mutual SSL
                 </span>
               </div>
             </div>
@@ -318,7 +318,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth LDAP user store"
+            title="Basic Auth LDAP user store"
             href="/learn/by-example/graphql-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -329,7 +329,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth LDAP user store
+                  Basic Auth LDAP user store
                 </span>
               </div>
               <svg

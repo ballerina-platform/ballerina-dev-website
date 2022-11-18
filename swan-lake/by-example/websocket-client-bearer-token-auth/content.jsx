@@ -56,7 +56,7 @@ export default function WebsocketClientBearerTokenAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Bearer Token Auth client</h1>
+      <h1>WebSocket client - Bearer Token Auth</h1>
 
       <p>
         A client, which is secured with Bearer token auth can be used to connect

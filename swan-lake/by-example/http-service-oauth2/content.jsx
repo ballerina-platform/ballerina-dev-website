@@ -80,38 +80,27 @@ export default function HttpServiceOauth2() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - OAuth2</h1>
+      <h1>HTTP service - OAuth2</h1>
 
       <p>
         An HTTP service/resource can be secured with OAuth2 and by enforcing
         authorization optionally. Then, it validates the OAuth2 token sent in
         the <code>Authorization</code> header against the provided
         configurations. This calls the configured introspection endpoint to
-        validate.
-      </p>
-
-      <p>
-        Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s). The scope can
-        be included in the introspection response using a custom claim
+        validate. Ballerina uses the concept of scopes for authorization. A
+        resource declared in a service can be bound to one/more scope(s). The
+        scope can be included in the introspection response using a custom claim
         attribute. That custom claim attribute also can be configured as the{" "}
-        <code>scopeKey</code>.
-      </p>
-
-      <p>
-        In the authorization phase, the scopes of the service/resource are
-        compared against the scope included in the introspection response for at
-        least one match between the two sets.
+        <code>scopeKey</code>. In the authorization phase, the scopes of the
+        service/resource are compared against the scope included in the
+        introspection response for at least one match between the two sets.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
           <code>oauth2</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#9114-listener---oauth2">
           <code>http</code> specification
@@ -287,10 +276,7 @@ export default function HttpServiceOauth2() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Service - JWT Auth"
-            href="/learn/by-example/http-service-jwt-auth"
-          >
+          <Link title="JWT Auth" href="/learn/by-example/http-service-jwt-auth">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -316,17 +302,14 @@ export default function HttpServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - JWT Auth
+                  JWT Auth
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Client - SSL/TLS"
-            href="/learn/by-example/http-client-ssl-tls"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/http-client-ssl-tls">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -335,7 +318,7 @@ export default function HttpServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
               <svg

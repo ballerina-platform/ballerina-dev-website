@@ -14,23 +14,15 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-service /graphql on new graphql:Listener(4000) {
-
-    // Returning the \`Animal\` type from a GraphQL resolver will identify it as an interface.
-    resource function get animals() returns Animal[] {
-        return [new Leopard(), new Elephant()];
-    }
-}
-
 // Define the interface \`Animal\` using a \`distinct\` \`service\` object.
-public type Animal distinct service object {
+type Animal distinct service object {
 
     // Define the field \`name\` as a resource function definition.
     resource function get name() returns string;
 };
 
 // Define the \`Leopard\` class implementing the \`Animal\` interface.
-public distinct service class Leopard {
+distinct service class Leopard {
 
     // This denotes that this object implements the \`Animal\` interface.
     *Animal;
@@ -48,11 +40,19 @@ public distinct service class Leopard {
 }
 
 // Another class implementing the \`Animal\` interface.
-public distinct service class Elephant {
+distinct service class Elephant {
     *Animal;
 
     resource function get name() returns string {
         return "Elephas maximus maximus";
+    }
+}
+
+service /graphql on new graphql:Listener(4000) {
+
+    // Returning the \`Animal\` type from a GraphQL resolver will identify it as an interface.
+    resource function get animals() returns Animal[] {
+        return [new Leopard(), new Elephant()];
     }
 }
 `,
@@ -358,6 +358,13 @@ export default function GraphqlInterfaces() {
         To send the document, use the following cURL command in a separate
         terminal.
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

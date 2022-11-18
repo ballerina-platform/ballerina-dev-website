@@ -90,7 +90,7 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Basic auth service - LDAP user store</h1>
+      <h1>gRPC service - Basic auth LDAP user store</h1>
 
       <p>
         A gRPC service/resource can be secured with Basic Auth and by enforcing

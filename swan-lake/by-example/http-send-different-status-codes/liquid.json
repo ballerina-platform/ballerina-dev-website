@@ -1,0 +1,18 @@
+{
+  "title": "Send different status codes",
+  "description": "BBE on how to use the statusCode records in an HTTP resource methods.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http resource",
+    "return types",
+    "statusCode records"
+  ],
+  "permalink": "/learn/by-example/http-send-different-status-codes",
+  "active": "http-send-different-status-codes",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-send-different-status-codes",
+    "/swan-lake/learn/by-example/http-send-different-status-codes.html"
+  ]
+}

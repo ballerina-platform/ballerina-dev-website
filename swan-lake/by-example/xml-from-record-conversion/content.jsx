@@ -103,7 +103,7 @@ export default function XmlFromRecordConversion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2bd8b160e055cac37a92c3fcacb73e69&file=xml_from_record_conversion.bal",
+                "https://play.ballerina.io/?gist=32ac4b0b0585dcf18e1d31e4a26d3bbd&file=xml_from_record_conversion.bal",
                 "_blank"
               );
             }}

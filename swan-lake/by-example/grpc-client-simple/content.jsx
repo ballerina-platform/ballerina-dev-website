@@ -60,7 +60,7 @@ export default function GrpcClientSimple() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Simple RPC client</h1>
+      <h1>gRPC client - Simple RPC</h1>
 
       <p>
         The gRPC Server Connector exposes the gRPC service over HTTP2. In a

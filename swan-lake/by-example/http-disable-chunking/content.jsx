@@ -23,7 +23,7 @@ const codeSnippetData = [
 // When chunking is set to \`CHUNKING_AUTO\`, chunking is done based on the request.
 // The \`http1Settings\` annotation provides the chunking-related configurations.
 // For details, see https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings.
-final http:Client clientEndpoint = check new ("http://localhost:9090", httpVersion = http:HTTP_1_1,
+http:Client clientEndpoint = check new ("http://localhost:9090", httpVersion = http:HTTP_1_1,
                         http1Settings = {chunking: http:CHUNKING_NEVER});
 
 service / on new http:Listener(9092) {

@@ -24,7 +24,7 @@ public function main() returns error? {
     // Publishing messages to an exchange using a routing key.
     // Publishes the message using newClient and the routing key named MyQueue.
     string message = "Hello from Ballerina";
-    check newClient->publishMessage({content: message.toBytes(), routingKey: "MyQueue"});
+    check newClient->publishMessage({content: message, routingKey: "MyQueue"});
 }
 `,
 ];
@@ -50,7 +50,7 @@ export default function RabbitmqProducer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Producer</h1>
+      <h1>RabbitMQ Client - Producer</h1>
 
       <p>
         Producing in RabbitMQ means nothing more than sending. In this example,
@@ -214,8 +214,8 @@ export default function RabbitmqProducer() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="SASL authentication - producer"
-            href="/learn/by-example/kafka-authentication-sasl-plain-producer"
+            title="Transactional consumer"
+            href="/learn/by-example/rabbitmq-transaction-consumer"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -242,7 +242,7 @@ export default function RabbitmqProducer() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SASL authentication - producer
+                  Transactional consumer
                 </span>
               </div>
             </div>

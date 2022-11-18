@@ -57,7 +57,7 @@ export default function WebsocketBasicSample() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service</h1>
+      <h1>WebSocket service</h1>
 
       <p>
         This explains how the Ballerina WebSocket server interacts with a
@@ -237,10 +237,7 @@ export default function WebsocketBasicSample() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Service - OAuth2"
-            href="/learn/by-example/graphql-service-oauth2"
-          >
+          <Link title="Auth2" href="/learn/by-example/graphql-service-oauth2">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,7 +263,7 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - OAuth2
+                  Auth2
                 </span>
               </div>
             </div>

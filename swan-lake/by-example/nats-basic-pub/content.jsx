@@ -49,7 +49,7 @@ export default function NatsBasicPub() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Publish/Subscribe</h1>
+      <h1>NATS Client - Publish</h1>
 
       <p>
         The NATS client is used either to produce a message to a subject or
@@ -223,10 +223,7 @@ export default function NatsBasicPub() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="OAuth2 JWT Bearer grant type"
-            href="/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type"
-          >
+          <Link title="Reply" href="/learn/by-example/nats-basic-reply">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -252,7 +249,7 @@ export default function NatsBasicPub() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 JWT Bearer grant type
+                  Reply
                 </span>
               </div>
             </div>

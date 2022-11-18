@@ -65,7 +65,7 @@ export default function GrpcClientOauth2JwtBearerGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>OAuth2 client - JWT bearer grant type</h1>
+      <h1>gRPC client - OAuth2 JWT bearer grant type</h1>
 
       <p>
         A client, which is secured with an OAuth2 JWT bearer grant type can be
@@ -302,7 +302,7 @@ export default function GrpcClientOauth2JwtBearerGrantType() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Publish" href="/learn/by-example/nats-basic-pub">
+          <Link title="Subscribe" href="/learn/by-example/nats-basic-sub">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -311,7 +311,7 @@ export default function GrpcClientOauth2JwtBearerGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Publish
+                  Subscribe
                 </span>
               </div>
               <svg

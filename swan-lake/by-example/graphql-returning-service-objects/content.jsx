@@ -14,16 +14,6 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-service /graphql on new graphql:Listener(4000) {
-
-    // This resolver returns a service type, which will be mapped to a GraphQL \`OBJECT\` type named
-    // \`Person\`. Each resource function in the service type is mapped to a field in the \`OBJECT\`
-    // type.
-    resource function get profile() returns Person {
-        return new("Walter White", 51);
-    }
-}
-
 // Define a service class to use as an object in the GraphQL service.
 service class Person {
     private final string name;
@@ -43,6 +33,16 @@ service class Person {
     }
     resource function get isAdult() returns boolean {
         return self.age > 21;
+    }
+}
+
+service /graphql on new graphql:Listener(4000) {
+
+    // This resolver returns a service type, which will be mapped to a GraphQL \`OBJECT\` type named
+    // \`Person\`. Each resource function in the service type is mapped to a field in the \`OBJECT\`
+    // type.
+    resource function get profile() returns Person {
+        return new("Walter White", 51);
     }
 }
 `,
@@ -79,7 +79,7 @@ export default function GraphqlReturningServiceObjects() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Returning service objects</h1>
+      <h1>GraphQL output object - Service</h1>
 
       <p>
         A GraphQL resource function can return service objects. The returning
@@ -94,6 +94,16 @@ export default function GraphqlReturningServiceObjects() {
         <code>Query</code> type. A GraphQL client can query on this service to
         retrieve specific fields or subfields of the <code>Person</code> object.
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Note:</strong> Although both the record and service types can
+          be used to represent an Object type, using a record type as an Object
+          has limitations. For example, a field represented as a record field
+          can not have an input argument, as opposed to a field represented
+          using a resource method in a service class.
+        </p>
+      </blockquote>
 
       <p>
         For more information on the underlying package, see the{" "}
@@ -345,6 +355,13 @@ export default function GraphqlReturningServiceObjects() {
         terminal.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -410,7 +427,7 @@ export default function GraphqlReturningServiceObjects() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Return record values"
+            title="Record as output object"
             href="/learn/by-example/graphql-returning-record-values"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -438,7 +455,7 @@ export default function GraphqlReturningServiceObjects() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Return record values
+                  Record as output object
                 </span>
               </div>
             </div>

@@ -13,42 +13,24 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/http;
-import ballerina/lang.runtime;
+import ballerina/io;
 
-// Define the failover client endpoint to call the backend services.
-http:FailoverClient foBackendEP = check new ({
+public function main() returns error? {
+    // Define the failover client endpoint to call the backend services.
+    http:FailoverClient httpClient = check new ({
 
-    timeout: 5,
-    failoverCodes: [501, 502, 503],
-    interval: 5,
-    // Define a set of HTTP Clients that are targeted for failover.
-    targets: [
-            {url: "http://nonexistentEP/mock1"},
-            {url: "http://localhost:8080/echo"},
-            {url: "http://localhost:8080/mock"}
-        ]
-});
-
-service / on new http:Listener(9090) {
-    resource function 'default fo() returns string|error {
-        string payload = check foBackendEP->/;
-        return payload;
-    }
-}
-
-// Define the sample service to mock connection timeouts and service outages.
-service / on new http:Listener(8080) {
-    resource function 'default echo() returns string {
-
-        // Delay the response for 30 seconds to mimic network level delays.
-        runtime:sleep(30);
-        return "The echo resource is invoked";
-    }
-
-    // Define the sample resource to mock a healthy service.
-    resource function 'default mock() returns string {
-        return "The mock resource is invoked.";
-    }
+        timeout: 5,
+        failoverCodes: [501, 502, 503],
+        interval: 5,
+        // Define a set of HTTP Clients that are targeted for failover.
+        targets: [
+                {url: "http://nonexistentEP/mock1"},
+                {url: "http://localhost:8080/echo"},
+                {url: "http://localhost:8080/mock"}
+            ]
+    });
+    string payload = check httpClient->/greeting;
+    io:println(payload);
 }
 `,
 ];
@@ -58,8 +40,6 @@ export default function HttpFailover() {
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
-  const [outputClick2, updateOutputClick2] = useState(false);
-  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -93,11 +73,7 @@ export default function HttpFailover() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
-        .
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#2418-failover">
           specification
@@ -190,7 +166,9 @@ export default function HttpFailover() {
         </Col>
       </Row>
 
-      <p>Run the service as follows.</p>
+      <p>Run the program by executing the following command.</p>
+
+      <p>Before executing following sample, run the backend service.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -253,74 +231,6 @@ export default function HttpFailover() {
         </Col>
       </Row>
 
-      <p>
-        Invoke the service by executing the following cURL command in a new
-        terminal.
-      </p>
-
-      <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={12} className="d-flex align-items-start">
-          {outputClick2 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="output-btn bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              onClick={() => {
-                updateOutputClick2(true);
-                const extractedText = extractOutput(ref2.current.innerText);
-                copyToClipboard(extractedText);
-                setTimeout(() => {
-                  updateOutputClick2(false);
-                }, 3000);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#EEEEEE"
-                className="output-btn bi bi-clipboard"
-                viewBox="0 0 16 16"
-                aria-label="Copy to Clipboard"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          <pre ref={ref2}>
-            <code className="d-flex flex-column">
-              <span>{`# The first invocation will take a while but the subsequent invocations will be faster.`}</span>
-              <span>{`\$ curl http://localhost:9090/fo`}</span>
-              <span>{`Mock Resource is Invoked.`}</span>
-            </code>
-          </pre>
-        </Col>
-      </Row>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
@@ -359,7 +269,10 @@ export default function HttpFailover() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Retry" href="/learn/by-example/http-retry">
+          <Link
+            title="Dynamic listener"
+            href="/learn/by-example/dynamic-listener"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -368,7 +281,7 @@ export default function HttpFailover() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Retry
+                  Dynamic listener
                 </span>
               </div>
               <svg

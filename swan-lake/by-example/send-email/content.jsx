@@ -63,7 +63,7 @@ export default function SendEmail() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Send emails</h1>
+      <h1>Send email</h1>
 
       <p>
         The Email Connector is used to send (with SMTP) emails using the SSL or
@@ -233,8 +233,8 @@ export default function SendEmail() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Connection-oriented client"
-            href="/learn/by-example/udp-connect-client"
+            title="Receive email"
+            href="/learn/by-example/receive-email-using-service"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -261,7 +261,7 @@ export default function SendEmail() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Connection-oriented client
+                  Receive email
                 </span>
               </div>
             </div>

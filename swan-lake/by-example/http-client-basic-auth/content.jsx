@@ -15,21 +15,20 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the Basic Auth secured APIs.
-// The client is enriched with the \`Authorization: Basic <token>\` header by
-// passing the \`http:CredentialsConfig\` for the \`auth\` configuration of the client.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/CredentialsConfig.
-http:Client securedEP = check new("https://localhost:9090",
-    auth = {
-        username: "ldclakmal",
-        password: "ldclakmal@123"
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
+    // Defines the HTTP client to call the Basic Auth secured APIs.
+    // The client is enriched with the \`Authorization: Basic <token>\` header by
+    // passing the \`http:CredentialsConfig\` for the \`auth\` configuration of the client.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/CredentialsConfig.
+    http:Client securedEP = check new("https://localhost:9090",
+        auth = {
+            username: "ldclakmal",
+            password: "ldclakmal@123"
+        },
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
     string response = check securedEP->/foo/bar;
     io:println(response);
 }
@@ -57,7 +56,7 @@ export default function HttpClientBasicAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - Basic Auth</h1>
+      <h1>HTTP client - Basic auth</h1>
 
       <p>
         A client, which is secured with Basic Auth can be used to connect to a
@@ -71,10 +70,7 @@ export default function HttpClientBasicAuth() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/auth/latest/">
           <code>auth</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#9115-client---basic-auth">
           <code>http</code> specification
@@ -252,7 +248,7 @@ export default function HttpClientBasicAuth() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - Mutual SSL"
+            title="Mutual SSL"
             href="/learn/by-example/http-client-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -280,7 +276,7 @@ export default function HttpClientBasicAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Mutual SSL
+                  Mutual SSL
                 </span>
               </div>
             </div>
@@ -288,7 +284,7 @@ export default function HttpClientBasicAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - Bearer Token Auth"
+            title="Bearer Token Auth"
             href="/learn/by-example/http-client-bearer-token-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -299,7 +295,7 @@ export default function HttpClientBasicAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Bearer Token Auth
+                  Bearer Token Auth
                 </span>
               </div>
               <svg

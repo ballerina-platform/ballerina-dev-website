@@ -61,7 +61,7 @@ export default function ReceiveEmailUsingClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Receive emails using a client</h1>
+      <h1>Receive email using a client</h1>
 
       <p>
         The email client is used to receive (with POP3 or IMAP4) emails using
@@ -269,10 +269,7 @@ export default function ReceiveEmailUsingClient() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Receive email"
-            href="/learn/by-example/receive-email-using-service"
-          >
+          <Link title="Read" href="/learn/by-example/ftp-service-read">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -281,7 +278,7 @@ export default function ReceiveEmailUsingClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive email
+                  Read
                 </span>
               </div>
               <svg

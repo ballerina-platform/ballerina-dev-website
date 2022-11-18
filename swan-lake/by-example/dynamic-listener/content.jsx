@@ -15,7 +15,7 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/lang.runtime;
 
-final http:Listener httpListener = check new (9090);
+http:Listener httpListener = check new (9090);
 
 http:Service helloService =  service object {
 
@@ -300,7 +300,7 @@ export default function DynamicListener() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Timeout" href="/learn/by-example/http-timeout">
+          <Link title="Failover" href="/learn/by-example/http-failover">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -326,7 +326,7 @@ export default function DynamicListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Timeout
+                  Failover
                 </span>
               </div>
             </div>

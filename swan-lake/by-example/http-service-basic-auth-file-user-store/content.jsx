@@ -71,7 +71,7 @@ export default function HttpServiceBasicAuthFileUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Basic Auth file user store</h1>
+      <h1>HTTP service - Basic auth file user store</h1>
 
       <p>
         An HTTP service/resource can be secured with Basic Auth and optionally
@@ -79,34 +79,20 @@ export default function HttpServiceBasicAuthFileUserStore() {
         in the <code>Authorization</code> header against the provided
         configurations. This reads data from a file, which has a TOML format.
         This stores the usernames, passwords for authentication, and scopes for
-        authorization.
-      </p>
-
-      <p>
-        Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s).
-      </p>
-
-      <p>
-        In the authorization phase, the scopes of the service/resource are
-        compared against the scope included in the user store for at least one
-        match between the two sets.
-      </p>
-
-      <p>
-        The <code>Config.toml</code> file is used to store the usernames,
-        passwords, and scopes. Each user can have a password and optionally
-        assigned scopes as an array.
+        authorization. Ballerina uses the concept of scopes for authorization. A
+        resource declared in a service can be bound to one/more scope(s). In the
+        authorization phase, the scopes of the service/resource are compared
+        against the scope included in the user store for at least one match
+        between the two sets. The <code>Config.toml</code> file is used to store
+        the usernames, passwords, and scopes. Each user can have a password and
+        optionally assigned scopes as an array.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/auth/latest/">
           <code>auth</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#9111-listener---basic-auth---file-user-store">
           <code>http</code> specification
@@ -299,7 +285,7 @@ export default function HttpServiceBasicAuthFileUserStore() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - Mutual SSL"
+            title="Mutual SSL"
             href="/learn/by-example/http-service-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -327,7 +313,7 @@ export default function HttpServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Mutual SSL
+                  Mutual SSL
                 </span>
               </div>
             </div>
@@ -335,7 +321,7 @@ export default function HttpServiceBasicAuthFileUserStore() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth LDAP user store"
+            title="Basic Auth LDAP user store"
             href="/learn/by-example/http-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -346,7 +332,7 @@ export default function HttpServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth LDAP user store
+                  Basic Auth LDAP user store
                 </span>
               </div>
               <svg

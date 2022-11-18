@@ -1,5 +1,5 @@
 {
-  "title": "Client - Basic Auth",
+  "title": "Basic Auth",
   "description": "BBE on how to secure HTTP client with Basic Auth in Ballerina.",
   "keywords": [
     "ballerina",

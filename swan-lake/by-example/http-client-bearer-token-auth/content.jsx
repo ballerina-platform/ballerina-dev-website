@@ -15,20 +15,19 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the \`http:BearerTokenConfig\` for the \`auth\` configuration of the client.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/BearerTokenConfig.
-http:Client securedEP = check new("https://localhost:9090",
-    auth = {
-        token: "56ede317-4511-44b4-8579-a08f094ee8c5"
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
+    // Defines the HTTP client to call the secured APIs.
+    // The client is enriched with the \`Authorization: Bearer <token>\` header by
+    // passing the \`http:BearerTokenConfig\` for the \`auth\` configuration of the client.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/BearerTokenConfig.
+    http:Client securedEP = check new("https://localhost:9090",
+        auth = {
+            token: "56ede317-4511-44b4-8579-a08f094ee8c5"
+        },
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
     string response = check securedEP->/foo/bar;
     io:println(response);
 }
@@ -56,15 +55,11 @@ export default function HttpClientBearerTokenAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - Bearer Token Auth</h1>
+      <h1>HTTP Client - Bearer token auth</h1>
 
       <p>
         A client, which is secured with Bearer token auth can be used to connect
-        to a secured service.
-      </p>
-
-      <p>
-        The client is enriched with the{" "}
+        to a secured service. The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>http:BearerTokenConfig</code> for the <code>auth</code>{" "}
         configuration of the client.
@@ -236,7 +231,7 @@ export default function HttpClientBearerTokenAuth() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - Basic Auth"
+            title="Basic Auth"
             href="/learn/by-example/http-client-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -264,7 +259,7 @@ export default function HttpClientBearerTokenAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Basic Auth
+                  Basic Auth
                 </span>
               </div>
             </div>
@@ -272,7 +267,7 @@ export default function HttpClientBearerTokenAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - self signed JWT Auth"
+            title="Self signed JWT Auth"
             href="/learn/by-example/http-client-self-signed-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -283,7 +278,7 @@ export default function HttpClientBearerTokenAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - self signed JWT Auth
+                  Self signed JWT Auth
                 </span>
               </div>
               <svg

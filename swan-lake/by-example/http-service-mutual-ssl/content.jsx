@@ -71,7 +71,7 @@ export default function HttpServiceMutualSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - mutual SSL</h1>
+      <h1>HTTP service - Mutual SSL</h1>
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
@@ -84,10 +84,7 @@ export default function HttpServiceMutualSsl() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#922-listener---mutual-ssl">
           <code>http</code> specification
@@ -328,10 +325,7 @@ export default function HttpServiceMutualSsl() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Service - SSL/TLS"
-            href="/learn/by-example/http-service-ssl-tls"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/http-service-ssl-tls">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -357,7 +351,7 @@ export default function HttpServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
             </div>
@@ -365,7 +359,7 @@ export default function HttpServiceMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth file user store"
+            title="Basic Auth file user store"
             href="/learn/by-example/http-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -376,7 +370,7 @@ export default function HttpServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth file user store
+                  Basic Auth file user store
                 </span>
               </div>
               <svg

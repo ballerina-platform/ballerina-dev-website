@@ -58,7 +58,7 @@ export default function GraphqlServiceSslTls() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - SSL/TLS</h1>
+      <h1>GraphQL service - SSL/TLS</h1>
 
       <p>
         You can use the GraphQL listener to connect to or interact with an HTTPS
@@ -272,7 +272,7 @@ export default function GraphqlServiceSslTls() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Mutual SSL"
+            title="Mutual SSL"
             href="/learn/by-example/graphql-service-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -283,7 +283,7 @@ export default function GraphqlServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Mutual SSL
+                  Mutual SSL
                 </span>
               </div>
               <svg

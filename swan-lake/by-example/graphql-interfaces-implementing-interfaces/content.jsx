@@ -14,23 +14,15 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-service /graphql on new graphql:Listener(4000) {
-
-    // Returning the \`Animal\` type from a GraphQL resolver will identify it as an interface.
-    resource function get animals() returns Animal[] {
-        return [new Leopard(), new Elephant()];
-    }
-}
-
 // Define the \`Animal\` interface using a \`distinct\` \`service\` object.
-public type Animal distinct service object {
+type Animal distinct service object {
 
     // Define the \`name\` field as a resource function definition.
     resource function get name() returns string;
 };
 
 // Define another \`Mammal\` interface, which implements the \`Animal\` interface.
-public type Mammal distinct service object {
+type Mammal distinct service object {
 
     // This denotes that this interface implements the \`Animal\` interface.
     *Animal;
@@ -40,7 +32,7 @@ public type Mammal distinct service object {
 };
 
 // Define the \`Leopard\` class implementing the \`Mammal\` interface.
-public distinct service class Leopard {
+distinct service class Leopard {
 
     // This denotes that this object implements the \`Mammal\` interface.
     *Mammal;
@@ -63,7 +55,7 @@ public distinct service class Leopard {
 }
 
 // Another class implementing the \`Mammal\` class.
-public distinct service class Elephant {
+distinct service class Elephant {
     *Mammal;
 
     resource function get name() returns string {
@@ -72,6 +64,14 @@ public distinct service class Elephant {
 
     resource function get call() returns string {
         return "Trumpet";
+    }
+}
+
+service /graphql on new graphql:Listener(4000) {
+
+    // Returning the \`Animal\` type from a GraphQL resolver will identify it as an interface.
+    resource function get animals() returns Animal[] {
+        return [new Leopard(), new Elephant()];
     }
 }
 `,
@@ -376,6 +376,13 @@ export default function GraphqlInterfacesImplementingInterfaces() {
         terminal.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -474,8 +481,8 @@ export default function GraphqlInterfacesImplementingInterfaces() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Documentation"
-            href="/learn/by-example/graphql-documentation"
+            title="GraphiQL client"
+            href="/learn/by-example/graphql-graphiql"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -485,7 +492,7 @@ export default function GraphqlInterfacesImplementingInterfaces() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Documentation
+                  GraphiQL client
                 </span>
               </div>
               <svg

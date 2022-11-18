@@ -77,7 +77,7 @@ export default function GrpcServiceJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - JWT Auth</h1>
+      <h1>JWT auth service</h1>
 
       <p>
         A gRPC service/resource can be secured with JWT and by enforcing

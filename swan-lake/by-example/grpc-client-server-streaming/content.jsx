@@ -25,10 +25,10 @@ service HelloWorld {
 import ballerina/grpc;
 import ballerina/io;
 
-// Creates a gRPC client to interact with the remote server.
-HelloWorldClient ep = check new ("http://localhost:9090");
-
 public function main() returns error? {
+    // Creates a gRPC client to interact with the remote server.
+    HelloWorldClient ep = check new ("http://localhost:9090");
+
     // Executes the streaming RPC call and gets the response as a stream.
     stream<string, grpc:Error?> result = check ep->lotsOfReplies("WSO2");
     // Iterates through the stream and prints the content.
@@ -63,7 +63,7 @@ export default function GrpcClientServerStreaming() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - Server streaming RPC</h1>
+      <h1>Server streaming RPC client</h1>
 
       <p>
         The gRPC Server Connector is used to expose gRPC services over HTTP/2.

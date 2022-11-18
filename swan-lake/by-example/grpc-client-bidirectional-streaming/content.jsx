@@ -31,10 +31,10 @@ message ChatMessage {
   `// This is the client implementation of the bidirectional streaming scenario.
 import ballerina/io;
 
-// Creates a gRPC client to interact with the remote server.
-ChatClient ep = check new ("http://localhost:9090");
-
 public function main() returns error? {
+    // Creates a gRPC client to interact with the remote server.
+    ChatClient ep = check new ("http://localhost:9090");
+
     // Executes the RPC call and receives the customized streaming client.
     ChatStreamingClient streamingClient = check ep->chat();
     // Reads the server responses in another strand.
@@ -89,7 +89,7 @@ export default function GrpcClientBidirectionalStreaming() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - Bidirectional streaming RPC</h1>
+      <h1>Bidirectional streaming RPC client</h1>
 
       <p>
         The gRPC server connector exposes the gRPC service over HTTP2. In a gRPC

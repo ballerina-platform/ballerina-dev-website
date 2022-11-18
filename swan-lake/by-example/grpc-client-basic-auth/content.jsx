@@ -14,22 +14,22 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-// Defines the gRPC client to call the Basic Auth secured APIs.
-// The client metadata is enriched with the \`Authorization: Basic <token>\`
-// header by passing the \`grpc:CredentialsConfig\` for the \`auth\` configuration
-// of the client. 
-// For deatils, see https://lib.ballerina.io/ballerina/grpc/latest/records/CredentialsConfig.
-HelloWorldClient securedEP = check new("https://localhost:9090",
-    auth = {
-        username: "ldclakmal",
-        password: "ldclakmal@123"
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
+    // Defines the gRPC client to call the Basic Auth secured APIs.
+    // The client metadata is enriched with the \`Authorization: Basic <token>\`
+    // header by passing the \`grpc:CredentialsConfig\` for the \`auth\` configuration
+    // of the client.
+    // For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/CredentialsConfig.
+    HelloWorldClient securedEP = check new("https://localhost:9090",
+        auth = {
+            username: "ldclakmal",
+            password: "ldclakmal@123"
+        },
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
+
     string result = check securedEP->hello("WSO2");
     io:println(result);
 }
@@ -57,7 +57,7 @@ export default function GrpcClientBasicAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - Basic Auth</h1>
+      <h1>Basic auth client</h1>
 
       <p>
         A client, which is secured with Basic Auth can be used to connect to a

@@ -70,7 +70,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Basic Auth file user store</h1>
+      <h1>Basic auth service - File user store</h1>
 
       <p>
         A gRPC service/resource can be secured with Basic Auth and optionally by

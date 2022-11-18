@@ -77,7 +77,11 @@ $ jps
 28845 $_init
 ```
 
-You get the PID for this program as 28845 because `$_init` is the main class of the Ballerina program. 
+You get the PID for this program as 28845 because `$_init` is the main class of the Ballerina program.
+
+>**Note:** If you run the tests in a Ballerina package or a file using the `bal test` command, you need to get the 
+PID of the process denoted by the `BTestMain` classname.
+
 To get the strand dump, send the `SIGTRAP` signal to that process. You can use the following CLI command.
 ```
 $ kill -SIGTRAP 28845

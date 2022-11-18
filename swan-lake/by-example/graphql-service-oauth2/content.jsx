@@ -306,7 +306,7 @@ export default function GraphqlServiceOauth2() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/websocket-client">
+          <Link title="Service" href="/learn/by-example/websocket-basic-sample">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -315,7 +315,7 @@ export default function GraphqlServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Service
                 </span>
               </div>
               <svg

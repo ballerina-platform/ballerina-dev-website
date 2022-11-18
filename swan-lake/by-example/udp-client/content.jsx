@@ -237,10 +237,7 @@ export default function UdpClient() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Transport security"
-            href="/learn/by-example/tcp-transport-security"
-          >
+          <Link title="Service" href="/learn/by-example/udp-listener">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,7 +263,7 @@ export default function UdpClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Transport security
+                  Service
                 </span>
               </div>
             </div>

@@ -225,8 +225,8 @@ export default function UdpListener() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Connection-oriented client"
-            href="/learn/by-example/udp-connect-client"
+            title="Transport security"
+            href="/learn/by-example/tcp-transport-security"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -253,14 +253,17 @@ export default function UdpListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Connection-oriented client
+                  Transport security
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Send emails" href="/learn/by-example/send-email">
+          <Link
+            title="Connectionless client"
+            href="/learn/by-example/udp-client"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -269,7 +272,7 @@ export default function UdpListener() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send emails
+                  Connectionless client
                 </span>
               </div>
               <svg

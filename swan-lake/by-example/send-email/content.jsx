@@ -22,24 +22,16 @@ public function main() returns error? {
 
     // Defines the email that is required to be sent.
     email:Message email = {
-        // "TO", "CC", and "BCC" address lists are added as follows.
-        // Only the "TO" address list is mandatory out of these three.
-        to: ["receiver1@email.com", "receiver2@email.com"],
-        cc: ["receiver3@email.com", "receiver4@email.com"],
-        bcc: ["receiver5@email.com"],
+        // "TO", "CC", and "BCC" addresses can be added as follows.
+        // Only the "TO" address is mandatory out of these three.
+        // For details, see https://lib.ballerina.io/ballerina/email/latest/records/Message
+        to: "receiver1@email.com",
+        cc: "receiver2@email.com",
+        bcc: "receiver3@email.com",
         // Subject of the email is added as follows. This field is mandatory.
         subject: "Sample Email",
         // Body content (text) of the email is added as follows. This field is optional.
-        body: "This is a sample email.",
-        // Email author's address is added as follows. This field is mandatory.
-        'from: "author@email.com",
-        // Email sender service address is added as follows. This field is optional. \`Sender\` is 
-        // the same as the \`from\` when the email author himself sends the email.
-        sender: "sender@email.com",
-        // List of recipients when replying to the email is added as follows. This field is 
-        // optional. These addresses are required when the emails are to be replied to some other 
-        // address(es) other than the sender or the author.
-        replyTo: ["replyTo1@email.com", "replyTo2@email.com"]
+        body: "This is a sample email."
     };
 
     // Sends the email message with the client. The \`send\` method can be used instead if the 
@@ -240,7 +232,10 @@ export default function SendEmail() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/udp-listener">
+          <Link
+            title="Connection-oriented client"
+            href="/learn/by-example/udp-connect-client"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,7 +261,7 @@ export default function SendEmail() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  Connection-oriented client
                 </span>
               </div>
             </div>
@@ -274,7 +269,7 @@ export default function SendEmail() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Receive emails using a client"
+            title="Receive email"
             href="/learn/by-example/receive-email-using-client"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -285,7 +280,7 @@ export default function SendEmail() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive emails using a client
+                  Receive email
                 </span>
               </div>
               <svg

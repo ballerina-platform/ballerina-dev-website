@@ -81,7 +81,7 @@ export default function Tuples() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2193904c80bcbfe055d633670975eccd&file=tuples.bal",
+                "https://play.ballerina.io/?gist=12a0ad2afc8435f5e490f08499233a5a&file=tuples.bal",
                 "_blank"
               );
             }}

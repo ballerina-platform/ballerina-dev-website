@@ -266,7 +266,10 @@ export default function WebsocketRetryClient() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/websocket-basic-sample">
+          <Link
+            title="SSL/TLS"
+            href="/learn/by-example/websocket-service-ssl-tls"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -275,7 +278,7 @@ export default function WebsocketRetryClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  SSL/TLS
                 </span>
               </div>
               <svg

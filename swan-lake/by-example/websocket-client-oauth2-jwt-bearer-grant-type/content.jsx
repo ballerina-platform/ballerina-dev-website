@@ -15,29 +15,28 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerina/websocket;
 
-// Defines the WebSocket client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the \`websocket:OAuth2JwtBearerGrantConfig\` for the \`auth\` configuration of the client.
-// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2JwtBearerGrantConfig.
-websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
-    auth = {
-        tokenUrl: "https://localhost:9445/oauth2/token",
-        assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: ["admin"],
-        clientConfig: {
-            secureSocket: {
-                cert: "../resource/path/to/public.crt"
-            }
-        }
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
+    // Defines the WebSocket client to call the OAuth2 secured APIs.
+    // The client is enriched with the \`Authorization: Bearer <token>\` header by
+    // passing the \`websocket:OAuth2JwtBearerGrantConfig\` for the \`auth\` configuration of the client.
+    // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2JwtBearerGrantConfig.
+    websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
+        auth = {
+            tokenUrl: "https://localhost:9445/oauth2/token",
+            assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
+            clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+            clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+            scopes: ["admin"],
+            clientConfig: {
+                secureSocket: {
+                    cert: "../resource/path/to/public.crt"
+                }
+            }
+        },
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
     check securedEP->writeMessage("Hello, World!");
     string textMessage = check securedEP->readMessage();
     io:println(textMessage);
@@ -66,7 +65,7 @@ export default function WebsocketClientOauth2JwtBearerGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - OAuth2 JWT Bearer grant type</h1>
+      <h1>OAuth2 client - JWT Bearer grant type</h1>
 
       <p>
         A client, which is secured with an OAuth2 JWT bearer grant type can be

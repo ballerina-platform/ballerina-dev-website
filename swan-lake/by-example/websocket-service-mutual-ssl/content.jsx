@@ -78,7 +78,7 @@ export default function WebsocketServiceMutualSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Mutual SSL</h1>
+      <h1>Mutual SSL service</h1>
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based

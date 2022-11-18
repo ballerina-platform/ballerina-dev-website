@@ -53,7 +53,7 @@ export default function WebsocketRetryClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - Retry</h1>
+      <h1>Retry client</h1>
 
       <p>
         If the WebSocket client lost the connection due to some transient

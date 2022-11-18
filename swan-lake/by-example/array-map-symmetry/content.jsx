@@ -139,7 +139,7 @@ export default function ArrayMapSymmetry() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3da2e294d10f3463f8c4c51ed156bd8a&file=array_map_symmetry.bal",
+                "https://play.ballerina.io/?gist=e78c7ed16d8b697d60ed698236a64460&file=array_map_symmetry.bal",
                 "_blank"
               );
             }}

@@ -15,39 +15,38 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerina/websocket;
 
-// Defines the WebSocket client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the \`websocket:OAuth2PasswordGrantConfig\` to the \`auth\` configuration of the client.
-// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2PasswordGrantConfig.
-websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
-    auth = {
-        tokenUrl: "https://localhost:9445/oauth2/token",
-        username: "admin",
-        password: "admin",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: ["admin"],
-        refreshConfig: {
-            refreshUrl: "https://localhost:9445/oauth2/token",
-            scopes: ["hello"],
+public function main() returns error? {
+    // Defines the WebSocket client to call the OAuth2 secured APIs.
+    // The client is enriched with the \`Authorization: Bearer <token>\` header by
+    // passing the \`websocket:OAuth2PasswordGrantConfig\` to the \`auth\` configuration of the client.
+    // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2PasswordGrantConfig.
+    websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
+        auth = {
+            tokenUrl: "https://localhost:9445/oauth2/token",
+            username: "admin",
+            password: "admin",
+            clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+            clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+            scopes: ["admin"],
+            refreshConfig: {
+                refreshUrl: "https://localhost:9445/oauth2/token",
+                scopes: ["hello"],
+                clientConfig: {
+                    secureSocket: {
+                        cert: "../resource/path/to/public.crt"
+                    }
+                }
+            },
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
                 }
             }
         },
-        clientConfig: {
-            secureSocket: {
-                cert: "../resource/path/to/public.crt"
-            }
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
         }
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
-public function main() returns error? {
+    );
     check securedEP->writeMessage("Hello, World!");
     string textMessage = check securedEP->readMessage();
     io:println(textMessage);
@@ -76,7 +75,7 @@ export default function WebsocketClientOauth2PasswordGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - OAuth2 Password grant type</h1>
+      <h1>OAuth2 client - Password grant type</h1>
 
       <p>
         A client, which is secured with OAuth2 password grant type can be used

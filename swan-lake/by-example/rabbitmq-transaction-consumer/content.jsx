@@ -238,8 +238,8 @@ export default function RabbitmqTransactionConsumer() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Transactional producer"
-            href="/learn/by-example/rabbitmq-transaction-producer"
+            title="Acknowledgements"
+            href="/learn/by-example/rabbitmq-consumer-with-client-acknowledgement"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -266,7 +266,7 @@ export default function RabbitmqTransactionConsumer() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Transactional producer
+                  Acknowledgements
                 </span>
               </div>
             </div>
@@ -274,8 +274,8 @@ export default function RabbitmqTransactionConsumer() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Secured connection"
-            href="/learn/by-example/rabbitmq-secure-connection"
+            title="Basic authentication"
+            href="/learn/by-example/rabbitmq-service-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -285,7 +285,7 @@ export default function RabbitmqTransactionConsumer() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Secured connection
+                  Basic authentication
                 </span>
               </div>
               <svg

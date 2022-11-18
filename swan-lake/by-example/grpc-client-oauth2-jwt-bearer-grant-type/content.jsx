@@ -302,10 +302,7 @@ export default function GrpcClientOauth2JwtBearerGrantType() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Publish/subscribe"
-            href="/learn/by-example/nats-basic-pub-sub"
-          >
+          <Link title="Publish" href="/learn/by-example/nats-basic-pub">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -314,7 +311,7 @@ export default function GrpcClientOauth2JwtBearerGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Publish/subscribe
+                  Publish
                 </span>
               </div>
               <svg

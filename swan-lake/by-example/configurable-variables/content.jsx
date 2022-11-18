@@ -72,7 +72,7 @@ export default function ConfigurableVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b5c713792b1be89afa282a097d86cb41&file=configurable_variables.bal",
+                "https://play.ballerina.io/?gist=6d08e4896f123b6e5b6b342f866ae6a7&file=configurable_variables.bal",
                 "_blank"
               );
             }}

@@ -2491,13 +2491,13 @@
     ]
   },
   {
-    "title": "NATS",
+    "title": "NATS Client",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Publish/subscribe",
-        "url": "nats-basic-pub-sub",
+        "name": "Publish",
+        "url": "nats-basic-pub",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2505,8 +2505,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Request/reply",
-        "url": "nats-basic-request-reply",
+        "name": "Request",
+        "url": "nats-basic-request",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2514,8 +2514,60 @@
         "isLearnByExample": false
       },
       {
-        "name": "Secured connection",
-        "url": "nats-basic-secure-connection",
+        "name": "Basic Authentication",
+        "url": "nats-client-basic-auth",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "SSL/TLS",
+        "url": "nats-client-secure-connection",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "NATS Service",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Subscribe",
+        "url": "nats-basic-sub",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Reply",
+        "url": "nats-basic-reply",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic Authentication",
+        "url": "nats-service-basic-auth",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "SSL/TLS",
+        "url": "nats-service-secure-connection",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2647,7 +2699,7 @@
     ]
   },
   {
-    "title": "RabbitMQ",
+    "title": "RabbitMQ Client",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -2662,16 +2714,7 @@
       },
       {
         "name": "Consumer",
-        "url": "rabbitmq-consumer",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client acknowledgements",
-        "url": "rabbitmq-consumer-with-client-acknowledgement",
+        "url": "rabbitmq-sync-consumer",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2688,6 +2731,49 @@
         "isLearnByExample": false
       },
       {
+        "name": "Basic authentication",
+        "url": "rabbitmq-client-basic-auth",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "SSL/TLS",
+        "url": "rabbitmq-client-secure-connection",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "RabbitMQ Service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Consumer",
+        "url": "rabbitmq-consumer",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Acknowledgements",
+        "url": "rabbitmq-consumer-with-client-acknowledgement",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Transactional consumer",
         "url": "rabbitmq-transaction-consumer",
         "verifyBuild": false,
@@ -2697,8 +2783,17 @@
         "isLearnByExample": false
       },
       {
-        "name": "Secured connection",
-        "url": "rabbitmq-secure-connection",
+        "name": "Basic authentication",
+        "url": "rabbitmq-service-basic-auth",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "SSL/TLS",
+        "url": "rabbitmq-service-secure-connection",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2817,13 +2912,13 @@
     ]
   },
   {
-    "title": "FTP",
+    "title": "FTP Service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
-        "url": "ftp-client",
+        "name": "Read",
+        "url": "ftp-service-read",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -2831,8 +2926,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Listener",
-        "url": "ftp-listener",
+        "name": "Read/Write",
+        "url": "ftp-service-read-write",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -2842,13 +2937,13 @@
     ]
   },
   {
-    "title": "SFTP",
+    "title": "FTP Client",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
-        "url": "sftp-client",
+        "name": "Read",
+        "url": "ftp-client-read",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -2856,8 +2951,58 @@
         "isLearnByExample": false
       },
       {
-        "name": "Listener",
-        "url": "sftp-listener",
+        "name": "Write",
+        "url": "ftp-client-write",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "SFTP Service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Read",
+        "url": "sftp-service-read",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Read/Write",
+        "url": "sftp-service-read-write",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "SFTP Client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Read",
+        "url": "sftp-client-read",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Write",
+        "url": "sftp-client-write",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",

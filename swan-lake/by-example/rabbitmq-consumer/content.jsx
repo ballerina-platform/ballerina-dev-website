@@ -18,22 +18,11 @@ import ballerinax/rabbitmq;
 listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
 // The consumer service listens to the "MyQueue" queue.
-// The \`ackMode\` is by default rabbitmq:AUTO_ACK where messages are acknowledged
-// immediately after consuming.
-@rabbitmq:ServiceConfig {
-    queueName: "MyQueue"
-}
-// Attaches the service to the listener.
-service on channelListener {
-    remote function onMessage(StringMessage message) returns error? {
-        log:printInfo("Received message: " + message.content);
+service "MyQueue" on channelListener {
+    remote function onMessage(string message) returns error? {
+        log:printInfo("Received message: " + message);
     }
 }
-
-public type StringMessage record {|
-    *rabbitmq:AnydataMessage;
-    string content;
-|};
 `,
 ];
 
@@ -62,13 +51,9 @@ export default function RabbitmqConsumer() {
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
-        RabbitMQ message listener. The Ballerina RabbitMQ connection used here
-        can be re-used to create multiple channels.
-      </p>
-
-      <p>
-        Multiple services consuming messages from the same queue or from
-        different queues can be attached to the same Listener.
+        RabbitMQ message listener. Multiple services consuming messages from the
+        same queue or from different queues can be attached to the same
+        Listener.
       </p>
 
       <p>
@@ -228,7 +213,10 @@ export default function RabbitmqConsumer() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Producer" href="/learn/by-example/rabbitmq-producer">
+          <Link
+            title="SSL/TLS"
+            href="/learn/by-example/rabbitmq-client-secure-connection"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -254,7 +242,7 @@ export default function RabbitmqConsumer() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer
+                  SSL/TLS
                 </span>
               </div>
             </div>
@@ -262,7 +250,7 @@ export default function RabbitmqConsumer() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client acknowledgements"
+            title="Acknowledgements"
             href="/learn/by-example/rabbitmq-consumer-with-client-acknowledgement"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -273,7 +261,7 @@ export default function RabbitmqConsumer() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client acknowledgements
+                  Acknowledgements
                 </span>
               </div>
               <svg

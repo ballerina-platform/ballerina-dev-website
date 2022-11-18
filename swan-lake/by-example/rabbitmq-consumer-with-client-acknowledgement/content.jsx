@@ -265,8 +265,8 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Transactional producer"
-            href="/learn/by-example/rabbitmq-transaction-producer"
+            title="Transactional consumer"
+            href="/learn/by-example/rabbitmq-transaction-consumer"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -276,7 +276,7 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Transactional producer
+                  Transactional consumer
                 </span>
               </div>
               <svg

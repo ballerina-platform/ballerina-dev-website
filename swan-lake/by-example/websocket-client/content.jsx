@@ -226,10 +226,7 @@ export default function WebsocketClient() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Service - OAuth2"
-            href="/learn/by-example/graphql-service-oauth2"
-          >
+          <Link title="Service" href="/learn/by-example/websocket-basic-sample">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -255,7 +252,7 @@ export default function WebsocketClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - OAuth2
+                  Service
                 </span>
               </div>
             </div>

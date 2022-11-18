@@ -1995,6 +1995,22 @@
     ]
   },
   {
+    "title": "WebSocket service",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Service",
+        "url": "websocket-basic-sample",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "WebSocket client",
     "column": 1,
     "category": "Network libraries",
@@ -2012,22 +2028,6 @@
         "url": "websocket-retry-client",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "WebSocket service",
-    "column": 1,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Service",
-        "url": "websocket-basic-sample",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Service cannot be stopped",
         "disablePlayground": true,
         "isLearnByExample": false
       }
@@ -2713,20 +2713,20 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
-        "url": "tcp-client",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Service not present",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
         "name": "Service",
         "url": "tcp-listener",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Client",
+        "url": "tcp-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service not present",
         "disablePlayground": true,
         "isLearnByExample": false
       },
@@ -2747,6 +2747,15 @@
     "category": "Network libraries",
     "samples": [
       {
+        "name": "Service",
+        "url": "udp-listener",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Connectionless client",
         "url": "udp-client",
         "verifyBuild": true,
@@ -2763,25 +2772,16 @@
         "disableVerificationReason": "Service cannot be reached",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
-      {
-        "name": "Service",
-        "url": "udp-listener",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Service cannot be stopped",
-        "disablePlayground": true,
-        "isLearnByExample": false
       }
     ]
   },
   {
-    "title": "Email",
+    "title": "Email client",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Send emails",
+        "name": "Send email",
         "url": "send-email",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2790,17 +2790,24 @@
         "isLearnByExample": false
       },
       {
-        "name": "Receive emails using a client",
+        "name": "Receive email",
         "url": "receive-email-using-client",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "Email service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
       {
-        "name": "Receive emails using a listener",
-        "url": "receive-email-using-listener",
+        "name": "Receive email",
+        "url": "receive-email-using-service",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",

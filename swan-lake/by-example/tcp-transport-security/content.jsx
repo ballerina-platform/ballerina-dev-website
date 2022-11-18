@@ -427,7 +427,7 @@ export default function TcpTransportSecurity() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/tcp-listener">
+          <Link title="Client" href="/learn/by-example/tcp-client">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -453,17 +453,14 @@ export default function TcpTransportSecurity() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  Client
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Connectionless client"
-            href="/learn/by-example/udp-client"
-          >
+          <Link title="Service" href="/learn/by-example/udp-listener">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -472,7 +469,7 @@ export default function TcpTransportSecurity() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Connectionless client
+                  Service
                 </span>
               </div>
               <svg

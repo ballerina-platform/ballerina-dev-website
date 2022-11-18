@@ -237,7 +237,10 @@ export default function WebsocketBasicSample() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Retry" href="/learn/by-example/websocket-retry-client">
+          <Link
+            title="Service - OAuth2"
+            href="/learn/by-example/graphql-service-oauth2"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -263,17 +266,14 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Retry
+                  Service - OAuth2
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="SSL/TLS"
-            href="/learn/by-example/websocket-service-ssl-tls"
-          >
+          <Link title="Client" href="/learn/by-example/websocket-client">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -282,7 +282,7 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Client
                 </span>
               </div>
               <svg

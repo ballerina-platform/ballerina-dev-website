@@ -83,7 +83,7 @@ export default function InterfaceToExternalCode() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=919f0c36e18adf33eed3158a6dda984d&file=interface_to_external_code.bal",
+                "https://play.ballerina.io/?gist=50e18980c20ece36fedd0aacae9400a7&file=interface_to_external_code.bal",
                 "_blank"
               );
             }}

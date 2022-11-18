@@ -224,10 +224,7 @@ export default function TcpClient() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Secured connection"
-            href="/learn/by-example/rabbitmq-secure-connection"
-          >
+          <Link title="Service" href="/learn/by-example/tcp-listener">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -253,14 +250,17 @@ export default function TcpClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Secured connection
+                  Service
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/tcp-listener">
+          <Link
+            title="Transport security"
+            href="/learn/by-example/tcp-transport-security"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -269,7 +269,7 @@ export default function TcpClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  Transport security
                 </span>
               </div>
               <svg

@@ -817,8 +817,14 @@ sublinks:
           - title: Service - OAuth2
             id: 6
             url: graphql-service-oauth2
-      - title: WebSocket client
+      - title: WebSocket service
         id: 11
+        sublinks:
+          - title: Service
+            id: 1
+            url: websocket-basic-sample
+      - title: WebSocket client
+        id: 12
         sublinks:
           - title: Client
             id: 1
@@ -826,12 +832,6 @@ sublinks:
           - title: Retry
             id: 2
             url: websocket-retry-client
-      - title: WebSocket service
-        id: 12
-        sublinks:
-          - title: Service
-            id: 1
-            url: websocket-basic-sample
       - title: WebSocket service security
         id: 13
         sublinks:
@@ -1081,41 +1081,44 @@ sublinks:
       - title: TCP
         id: 26
         sublinks:
-          - title: Client
-            id: 1
-            url: tcp-client
           - title: Service
-            id: 2
+            id: 1
             url: tcp-listener
+          - title: Client
+            id: 2
+            url: tcp-client
           - title: Transport security
             id: 3
             url: tcp-transport-security
       - title: UDP
         id: 27
         sublinks:
-          - title: Connectionless client
+          - title: Service
             id: 1
+            url: udp-listener
+          - title: Connectionless client
+            id: 2
             url: udp-client
           - title: Connection-oriented client
-            id: 2
-            url: udp-connect-client
-          - title: Service
             id: 3
-            url: udp-listener
-      - title: Email
+            url: udp-connect-client
+      - title: Email client
         id: 28
         sublinks:
-          - title: Send emails
+          - title: Send email
             id: 1
             url: send-email
-          - title: Receive emails using a client
+          - title: Receive email
             id: 2
             url: receive-email-using-client
-          - title: Receive emails using a listener
-            id: 3
-            url: receive-email-using-listener
-      - title: FTP
+      - title: Email service
         id: 29
+        sublinks:
+          - title: Receive email
+            id: 1
+            url: receive-email-using-service
+      - title: FTP
+        id: 30
         sublinks:
           - title: Client
             id: 1
@@ -1124,7 +1127,7 @@ sublinks:
             id: 2
             url: ftp-listener
       - title: SFTP
-        id: 30
+        id: 31
         sublinks:
           - title: Client
             id: 1
@@ -1133,7 +1136,7 @@ sublinks:
             id: 2
             url: sftp-listener
       - title: MySQL
-        id: 31
+        id: 32
         sublinks:
           - title: Simple query
             id: 1
@@ -1157,7 +1160,7 @@ sublinks:
             id: 7
             url: mysql-call-stored-procedures
       - title: JDBC
-        id: 32
+        id: 33
         sublinks:
           - title: Simple query
             id: 1
@@ -1178,7 +1181,7 @@ sublinks:
             id: 6
             url: jdbc-atomic-transaction
       - title: SerDes
-        id: 33
+        id: 34
         sublinks:
           - title: Serialization and Deserialization
             id: 1

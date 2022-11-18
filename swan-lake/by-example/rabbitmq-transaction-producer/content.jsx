@@ -23,7 +23,7 @@ public function main() returns error? {
     transaction {
         string message = "Hello from Ballerina";
         // Publishes the message using the routing key named "MyQueue".
-        check newClient->publishMessage({content: message.toBytes(), routingKey: "MyQueue"});
+        check newClient->publishMessage({content: message, routingKey: "MyQueue"});
         check commit;
     }
 }
@@ -51,7 +51,7 @@ export default function RabbitmqTransactionProducer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Transactional producer</h1>
+      <h1>RabbitMQ Client - Transactional Producer</h1>
 
       <p>
         A message is sent to an existing queue using the Ballerina RabbitMQ
@@ -253,7 +253,7 @@ export default function RabbitmqTransactionProducer() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic authentication"
+            title="Client - Basic authentication"
             href="/learn/by-example/rabbitmq-client-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -264,7 +264,7 @@ export default function RabbitmqTransactionProducer() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication
+                  Client - Basic authentication
                 </span>
               </div>
               <svg

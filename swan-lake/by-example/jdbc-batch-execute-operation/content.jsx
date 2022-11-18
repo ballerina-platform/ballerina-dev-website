@@ -117,7 +117,7 @@ export default function JdbcBatchExecuteOperation() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Batch execution</h1>
+      <h1>JDBC client - Batch execution</h1>
 
       <p>
         This BBE demonstrates how to use the JDBC client to execute a batch of
@@ -229,6 +229,12 @@ export default function JdbcBatchExecuteOperation() {
         </Col>
       </Row>
 
+      <p>
+        Create a Ballerina project. Copy the example to the project and add the
+        relevant database driver JAR details to the <code>Ballerina.toml</code>{" "}
+        file. Execute the command below to build and run the project.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -284,9 +290,6 @@ export default function JdbcBatchExecuteOperation() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina project.`}</span>
-              <span>{`# Copy the example to the project and add the relevant database driver JAR details to the \`Ballerina.toml\` file.`}</span>
-              <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
               <span>{`
 `}</span>

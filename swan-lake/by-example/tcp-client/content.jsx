@@ -59,7 +59,7 @@ export default function TcpClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client</h1>
+      <h1>TCP client</h1>
 
       <p>
         The TCP Client is used to connect to a remote TCP server. This sample
@@ -257,10 +257,7 @@ export default function TcpClient() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Transport security"
-            href="/learn/by-example/tcp-transport-security"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/tcp-service-ssl-tls">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -269,7 +266,7 @@ export default function TcpClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Transport security
+                  SSL/TLS
                 </span>
               </div>
               <svg

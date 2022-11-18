@@ -90,7 +90,7 @@ export default function TypeInclusionForRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3cc88e6e042220e824613f597d1d036b&file=type_inclusion_for_records.bal",
+                "https://play.ballerina.io/?gist=0cf550615b5afe76b9a93b6ae7110431&file=type_inclusion_for_records.bal",
                 "_blank"
               );
             }}

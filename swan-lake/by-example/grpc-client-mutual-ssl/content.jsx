@@ -62,7 +62,7 @@ export default function GrpcClientMutualSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Mutual SSL client</h1>
+      <h1>gRPC client - Mutual SSL</h1>
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based

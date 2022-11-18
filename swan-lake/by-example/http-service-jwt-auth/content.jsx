@@ -77,35 +77,26 @@ export default function HttpServiceJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - JWT Auth</h1>
+      <h1>HTTP service - JWT auth</h1>
 
       <p>
         An HTTP service/resource can be secured with JWT and by enforcing
         authorization optionally. Then, it validates the JWT sent in the{" "}
         <code>Authorization</code> header against the provided configurations.
-      </p>
-
-      <p>
         Ballerina uses the concept of scopes for authorization. A resource
         declared in a service can be bound to one/more scope(s). The scope can
         be included in the JWT using a custom claim attribute. That custom claim
-        attribute also can be configured as the <code>scopeKey</code>.
-      </p>
-
-      <p>
-        In the authorization phase, the scopes of the service/resource are
-        compared against the scope included in the JWT for at least one match
-        between the two sets.
+        attribute also can be configured as the <code>scopeKey</code>. In the
+        authorization phase, the scopes of the service/resource are compared
+        against the scope included in the JWT for at least one match between the
+        two sets.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
           <code>jwt</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#9113-listener---jwt-auth">
           <code>http</code> specification
@@ -282,7 +273,7 @@ export default function HttpServiceJwtAuth() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth LDAP user store"
+            title="Basic Auth LDAP user store"
             href="/learn/by-example/http-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -310,17 +301,14 @@ export default function HttpServiceJwtAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth LDAP user store
+                  Basic Auth LDAP user store
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Service - OAuth2"
-            href="/learn/by-example/http-service-oauth2"
-          >
+          <Link title="OAuth2" href="/learn/by-example/http-service-oauth2">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -329,7 +317,7 @@ export default function HttpServiceJwtAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - OAuth2
+                  OAuth2
                 </span>
               </div>
               <svg

@@ -67,7 +67,7 @@ export default function UdpClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Connectionless client</h1>
+      <h1>UDP connectionless client</h1>
 
       <p>
         The UDP Client is used to send data to a specific remote host using the

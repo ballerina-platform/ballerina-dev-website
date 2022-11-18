@@ -1,5 +1,5 @@
 {
-  "title": "SSL/TLS",
+  "title": "NATS client - SSL/TLS",
   "description": "BBE on producing and consuming a message from a subject in the NATS basic server using Ballerina.",
   "keywords": [
     "ballerina",

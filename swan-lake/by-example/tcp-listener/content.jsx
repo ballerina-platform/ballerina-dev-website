@@ -71,7 +71,7 @@ export default function TcpListener() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Listener</h1>
+      <h1>TCP service</h1>
 
       <p>
         The TCP Listener is used to expose a TCP service over the TCP protocol.
@@ -239,7 +239,7 @@ export default function TcpListener() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="SSL/TLS"
+            title="Service - SSL/TLS"
             href="/learn/by-example/rabbitmq-service-secure-connection"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -267,7 +267,7 @@ export default function TcpListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Service - SSL/TLS
                 </span>
               </div>
             </div>

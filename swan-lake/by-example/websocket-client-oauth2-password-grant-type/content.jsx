@@ -75,7 +75,7 @@ export default function WebsocketClientOauth2PasswordGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>OAuth2 client - Password grant type</h1>
+      <h1>WebSocket client - OAuth2 Password grant type</h1>
 
       <p>
         A client, which is secured with OAuth2 password grant type can be used

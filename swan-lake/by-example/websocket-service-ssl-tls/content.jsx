@@ -65,7 +65,7 @@ export default function WebsocketServiceSslTls() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>SSL/TLS service</h1>
+      <h1>WebSocket service - SSL/TLS</h1>
 
       <p>
         You can use the WebSocket listener to connect to or interact with an

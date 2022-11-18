@@ -49,7 +49,7 @@ export default function NatsBasicSub() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Publish/Subscribe</h1>
+      <h1>NATS Service - Subscribe</h1>
 
       <p>
         The NATS client is used either to produce a message to a subject or
@@ -225,8 +225,8 @@ export default function NatsBasicSub() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="SSL/TLS"
-            href="/learn/by-example/nats-client-secure-connection"
+            title="OAuth2 JWT Bearer grant type"
+            href="/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -253,7 +253,7 @@ export default function NatsBasicSub() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  OAuth2 JWT Bearer grant type
                 </span>
               </div>
             </div>

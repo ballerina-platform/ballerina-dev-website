@@ -15,32 +15,31 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the JWT Auth secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the \`http:JwtIssuerConfig\` for the \`auth\` configuration of the
-// client. A self-signed JWT is issued before the request is sent.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig.
-http:Client securedEP = check new("https://localhost:9090",
-    auth = {
-        username: "ballerina",
-        issuer: "wso2",
-        audience: ["ballerina", "ballerina.org", "ballerina.io"],
-        keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
-        jwtId: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In",
-        customClaims: { "scp": "admin" },
-        expTime: 3600,
-        signatureConfig: {
-            config: {
-                keyFile: "../resource/path/to/private.key"
-            }
-        }
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
+    // Defines the HTTP client to call the JWT Auth secured APIs.
+    // The client is enriched with the \`Authorization: Bearer <token>\` header by
+    // passing the \`http:JwtIssuerConfig\` for the \`auth\` configuration of the
+    // client. A self-signed JWT is issued before the request is sent.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig.
+    http:Client securedEP = check new("https://localhost:9090",
+        auth = {
+            username: "ballerina",
+            issuer: "wso2",
+            audience: ["ballerina", "ballerina.org", "ballerina.io"],
+            keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
+            jwtId: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In",
+            customClaims: { "scp": "admin" },
+            expTime: 3600,
+            signatureConfig: {
+                config: {
+                    keyFile: "../resource/path/to/private.key"
+                }
+            }
+        },
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
     string response = check securedEP->/foo/bar;
     io:println(response);
 }
@@ -68,7 +67,7 @@ export default function HttpClientSelfSignedJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - self signed JWT Auth</h1>
+      <h1>HTTP client - Self signed JWT auth</h1>
 
       <p>
         A client, which is secured with self-signed JWT can be used to connect
@@ -267,7 +266,7 @@ export default function HttpClientSelfSignedJwtAuth() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - Bearer Token Auth"
+            title="Bearer Token Auth"
             href="/learn/by-example/http-client-bearer-token-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -295,7 +294,7 @@ export default function HttpClientSelfSignedJwtAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Bearer Token Auth
+                  Bearer Token Auth
                 </span>
               </div>
             </div>
@@ -303,7 +302,7 @@ export default function HttpClientSelfSignedJwtAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 Client Credentials grant type"
+            title="OAuth2 Client Credentials grant type"
             href="/learn/by-example/http-client-oauth2-client-credentials-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -314,7 +313,7 @@ export default function HttpClientSelfSignedJwtAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 Client Credentials grant type
+                  OAuth2 Client Credentials grant type
                 </span>
               </div>
               <svg

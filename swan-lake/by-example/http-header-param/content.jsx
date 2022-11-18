@@ -348,8 +348,8 @@ export default function HttpHeaderParam() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Returned response types"
-            href="/learn/by-example/http-resource-returns"
+            title="Send response"
+            href="/learn/by-example/http-send-response"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -359,7 +359,7 @@ export default function HttpHeaderParam() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Returned response types
+                  Send response
                 </span>
               </div>
               <svg

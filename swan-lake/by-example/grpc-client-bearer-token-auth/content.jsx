@@ -56,7 +56,7 @@ export default function GrpcClientBearerTokenAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Bearer token auth client</h1>
+      <h1>gRPC client - Bearer token auth</h1>
 
       <p>
         A client, which is secured with Bearer token auth can be used to connect

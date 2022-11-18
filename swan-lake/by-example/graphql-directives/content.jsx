@@ -14,35 +14,14 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-service /graphql on new graphql:Listener(4000) {
-    // Marking a field as deprecated.
-    # # Deprecated
-    # The \`person\` field is deprecated. Use \`profile\` instead.
-    @deprecated
-    resource function get person() returns Person {
-        return person;
-    }
-
-    resource function get profile() returns Person {
-        return person;
-    }
-}
-
-public type Person record {
+type Person record {
     string name;
     int age;
     Gender gender;
-    Address address;
-};
-
-public type Address record {
-    string number;
-    string street;
-    string city;
 };
 
 // Marking enum value as deprecated.
-public enum Gender {
+enum Gender {
     MALE,
     FEMALE,
     # # Deprecated
@@ -52,32 +31,39 @@ public enum Gender {
     OTHER
 }
 
-Person person = {
-    name: "Walter White",
-    age: 51,
-    gender: MALE,
-    address: {
-        number: "308",
-        street: "Negra Arroyo Lane",
-        city: "Albuquerque"
+service /graphql on new graphql:Listener(4000) {
+    // Marking a field as deprecated.
+    # # Deprecated
+    # The \`person\` field is deprecated. Use \`profile\` instead.
+    @deprecated
+    resource function get person() returns Person {
+        return {
+            name: "Walter White",
+            age: 51,
+            gender: MALE
+        };
     }
-};
-`,
-  `{
-    profile {
-        name
-        address @skip(if: true) {
-            city
-        }
+
+    resource function get profile() returns Person {
+        return {
+            name: "Walter White",
+            age: 51,
+            gender: MALE
+        };
     }
 }
 `,
   `{
     profile {
         name
-        address @include(if: true) {
-            city
-        }
+        gender @skip(if: true)
+    }
+}
+`,
+  `{
+    profile {
+        name
+        gender @include(if: true) {
     }
 }
 `,
@@ -406,6 +392,13 @@ export default function GraphqlDirectives() {
         terminal.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -461,7 +454,7 @@ export default function GraphqlDirectives() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @skip(if: true) { city } } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, gender @skip(if: true) } }" }' 'http://localhost:4000/graphql'`}</span>
               <span>{`{"data":{"profile":{"name":"Walter White"}}}`}</span>
             </code>
           </pre>
@@ -615,8 +608,8 @@ export default function GraphqlDirectives() {
         <Col sm={12}>
           <pre ref={ref3}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, address @include(if: true) { city } } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"profile":{"name":"Walter White", "address":{"city":"Albuquerque"}}}}`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name, gender @include(if: true) } }" }' 'http://localhost:4000/graphql'`}</span>
+              <span>{`{"data":{"profile":{"name":"Walter White", "gender":"MALE"}}}`}</span>
             </code>
           </pre>
         </Col>
@@ -770,7 +763,7 @@ export default function GraphqlDirectives() {
           <pre ref={ref4}>
             <code className="d-flex flex-column">
               <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __type(name: \\"Gender\\") { name, enumValues(includeDeprecated: true) { name, isDeprecated, deprecationReason } } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"__type":{"name":"Gender", "enumValues":[{"name":"OTHER", "isDeprecated":false, "deprecationReason":null}, {"name":"NON_BINARY", "isDeprecated":true, "deprecationReason":"The \`NON_BINARY\` is deprecated use \`OTHER\` instead"}, {"name":"FEMALE", "isDeprecated":false, "deprecationReason":null}, {"name":"MALE", "isDeprecated":false, "deprecationReason":null}]}}}`}</span>
+              <span>{`{"data":{"__type":{"name":"Gender", "enumValues":[{"name":"OTHER", "isDeprecated":false, "deprecationReason":null}, {"name":"NON_BINARY", "isDeprecated":true, "deprecationReason":"The \`NON_BINARY\` is deprecated. Use \`OTHER\` instead."}, {"name":"FEMALE", "isDeprecated":false, "deprecationReason":null}, {"name":"MALE", "isDeprecated":false, "deprecationReason":null}]}}}`}</span>
             </code>
           </pre>
         </Col>

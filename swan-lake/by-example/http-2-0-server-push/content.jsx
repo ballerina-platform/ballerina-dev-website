@@ -74,7 +74,7 @@ import ballerina/log;
 
 // Create an HTTP client that can send HTTP/2 messages.
 // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Client.
-final http:Client clientEP = check new ("http://localhost:7090");
+http:Client clientEP = check new ("http://localhost:7090");
 
 public function main() returns error? {
 

@@ -59,7 +59,7 @@ export default function WebsocketClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client</h1>
+      <h1>WebSocket client</h1>
 
       <p>
         The WebSocket client can be used to connect to and interact with a

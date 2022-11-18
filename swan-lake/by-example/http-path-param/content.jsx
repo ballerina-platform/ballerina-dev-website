@@ -32,9 +32,8 @@ service / on new http:Listener(9090) {
         Album? album = albums[title];
         if album is () {
             return http:NOT_FOUND;
-        } else {
-            return album;
         }
+        return album;
     }
 }
 `,
@@ -229,7 +228,7 @@ export default function HttpPathParam() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run http_path_param.bal`}</span>
+              <span>{`\$ bal run path_param.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -295,7 +294,7 @@ export default function HttpPathParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "curl http://localhost:9090/albums/Jeru"`}</span>
+              <span>{`\$ curl "http://localhost:9090/albums/Jeru"`}</span>
               <span>{`{"title":"Jeru", "artist":"Gerry Mulligan"`}</span>
             </code>
           </pre>

@@ -57,7 +57,7 @@ export default function GrpcClientBasicAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Basic auth client</h1>
+      <h1>gRPC client - Basic auth</h1>
 
       <p>
         A client, which is secured with Basic Auth can be used to connect to a

@@ -57,7 +57,7 @@ export default function NatsClientBasicAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Secured connection</h1>
+      <h1>NATS Client - Basic Authentication</h1>
 
       <p>
         In this example, the underlying connections of the subscriber and the
@@ -254,7 +254,7 @@ export default function NatsClientBasicAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="SSL/TLS"
+            title="NATS client - SSL/TLS"
             href="/learn/by-example/nats-client-secure-connection"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -265,7 +265,7 @@ export default function NatsClientBasicAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  NATS client - SSL/TLS
                 </span>
               </div>
               <svg

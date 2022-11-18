@@ -65,7 +65,7 @@ export default function UdpConnectClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Connection-oriented client</h1>
+      <h1>UDP connection-oriented client</h1>
 
       <p>
         The ConnectClient is configured so that it only receives data from, and
@@ -277,7 +277,10 @@ export default function UdpConnectClient() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Send email" href="/learn/by-example/send-email">
+          <Link
+            title="Receive email"
+            href="/learn/by-example/receive-email-using-service"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -286,7 +289,7 @@ export default function UdpConnectClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send email
+                  Receive email
                 </span>
               </div>
               <svg

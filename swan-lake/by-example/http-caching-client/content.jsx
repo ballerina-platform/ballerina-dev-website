@@ -24,7 +24,7 @@ const codeSnippetData = [
 // the \`cacheConfig\`. Currently, there are only 2 policies:
 // \`CACHE_CONTROL_AND_VALIDATORS\` (the default policy) and \`RFC_7234\`.
 
-final http:Client cachingEP = check new ("http://localhost:8080",
+http:Client cachingEP = check new ("http://localhost:8080",
     cache = {enabled: true, isShared: true});
 
 service / on new http:Listener(9090) {
@@ -205,6 +205,16 @@ export default function HttpCachingClient() {
 
       <p>Run the service by executing the following command.</p>
 
+      <p>
+        (The two services have to be run separately to observe the following
+        output.
+      </p>
+
+      <p>
+        For clarity, only the relevant parts of the HTTP trace logs have been
+        included here.)
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -260,8 +270,6 @@ export default function HttpCachingClient() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# The two services have to be run separately to observe the following output.`}</span>
-              <span>{`# For clarity, only the relevant parts of the HTTP trace logs have been included here.`}</span>
               <span>{`\$ bal run http_caching_client.bal -- -Cballerina.http.traceLogConsole=true`}</span>
               <span>{`
 `}</span>

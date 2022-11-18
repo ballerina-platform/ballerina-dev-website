@@ -80,7 +80,7 @@ export default function GrpcServiceBidirectionalStreaming() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Bidirectional streaming RPC service</h1>
+      <h1>gRPC service - Bidirectional streaming RPC</h1>
 
       <p>
         The gRPC server connector exposes the gRPC service over HTTP2. In a gRPC

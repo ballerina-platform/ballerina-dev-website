@@ -1,0 +1,17 @@
+{
+  "title": "Write",
+  "description": "This is a BBE on getting and putting file content on a remote SFTP server.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "SFTP",
+    "FTP security"
+  ],
+  "permalink": "/learn/by-example/sftp-client-write",
+  "active": "sftp-client-write",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/sftp-client-write",
+    "/swan-lake/learn/by-example/sftp-client-write.html"
+  ]
+}

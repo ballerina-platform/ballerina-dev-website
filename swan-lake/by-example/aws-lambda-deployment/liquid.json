@@ -1,0 +1,11 @@
+{
+  "title": "AWS Lambda",
+  "description": "AWS Lambda is an event driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with \"@awslambda:Function\", which should have the function signature `function (awslambda:Context, json|EventType) returns json|error`.",
+  "keywords": [],
+  "permalink": "/learn/by-example/aws-lambda-deployment",
+  "active": "aws-lambda-deployment",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/aws-lambda-deployment",
+    "/swan-lake/learn/by-example/aws-lambda-deployment.html"
+  ]
+}

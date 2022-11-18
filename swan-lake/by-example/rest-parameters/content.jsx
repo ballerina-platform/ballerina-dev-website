@@ -79,7 +79,7 @@ export default function RestParameters() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=126f3ecd1891f90221d7944e4e36775f&file=rest_parameters.bal",
+                "https://play.ballerina.io/?gist=f004d5daebe6f4b6b86b134ed1828224&file=rest_parameters.bal",
                 "_blank"
               );
             }}

@@ -98,7 +98,7 @@ export default function MatchStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dffb2416c7852e74e0a6bf6ef527cd89&file=match_statement.bal",
+                "https://play.ballerina.io/?gist=a54f7177a2b1cf50f067c69d3cd4ad8d&file=match_statement.bal",
                 "_blank"
               );
             }}

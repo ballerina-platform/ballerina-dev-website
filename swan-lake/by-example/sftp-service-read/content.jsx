@@ -79,7 +79,7 @@ export default function SftpServiceRead() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Listener</h1>
+      <h1>Service Read</h1>
 
       <p>
         The SFTP service is used to receive file/directory changes that occur in

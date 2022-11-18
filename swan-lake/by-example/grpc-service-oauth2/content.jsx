@@ -79,7 +79,7 @@ export default function GrpcServiceOauth2() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - OAuth2</h1>
+      <h1>OAuth2 service</h1>
 
       <p>
         A gRPC service/resource can be secured with OAuth2 and by enforcing

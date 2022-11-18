@@ -14,40 +14,40 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-// Defines the gRPC client to call the OAuth2 secured APIs.
-// The client metadata is enriched with the \`Authorization: Bearer <token>\`
-// header by passing the \`grpc:OAuth2PasswordGrantConfig\` to the \`auth\`
-// configuration of the client.
-// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2PasswordGrantConfig.
-HelloWorldClient securedEP = check new("https://localhost:9090",
-    auth = {
-        tokenUrl: "https://localhost:9445/oauth2/token",
-        username: "admin",
-        password: "admin",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: ["admin"],
-        refreshConfig: {
-            refreshUrl: "https://localhost:9445/oauth2/token",
-            scopes: ["hello"],
+public function main() returns error? {
+    // Defines the gRPC client to call the OAuth2 secured APIs.
+    // The client metadata is enriched with the \`Authorization: Bearer <token>\`
+    // header by passing the \`grpc:OAuth2PasswordGrantConfig\` to the \`auth\`
+    // configuration of the client.
+    // For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2PasswordGrantConfig.
+    HelloWorldClient securedEP = check new("https://localhost:9090",
+        auth = {
+            tokenUrl: "https://localhost:9445/oauth2/token",
+            username: "admin",
+            password: "admin",
+            clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+            clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+            scopes: ["admin"],
+            refreshConfig: {
+                refreshUrl: "https://localhost:9445/oauth2/token",
+                scopes: ["hello"],
+                clientConfig: {
+                    secureSocket: {
+                        cert: "../resource/path/to/public.crt"
+                    }
+                }
+            },
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
                 }
             }
         },
-        clientConfig: {
-            secureSocket: {
-                cert: "../resource/path/to/public.crt"
-            }
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
         }
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
+    );
 
-public function main() returns error? {
     string result = check securedEP->hello("WSO2");
     io:println(result);
 }
@@ -75,7 +75,7 @@ export default function GrpcClientOauth2PasswordGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - OAuth2 Password grant type</h1>
+      <h1>OAuth2 client - Password grant type</h1>
 
       <p>
         A client, which is secured with OAuth2 password grant type can be used

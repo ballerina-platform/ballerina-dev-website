@@ -12,57 +12,53 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/io;
+  `import ballerina/ftp;
+import ballerina/log;
 
-type Cloneable object {
-    function clone() returns Cloneable;
-};
+// Creates the listener with the connection parameters and the protocol-related
+// configuration. The polling interval specifies the time duration between each
+// poll performed by the listener in seconds. The listener listens to the files
+// with the given file name pattern located in the specified path.
+listener ftp:Listener remoteServer = check new ({
+    protocol: ftp:SFTP,
+    host: "sftp.example.com",
+    auth: {
+        credentials: {
+            username: "user1",
+            password: "pass456"
+        },
+        privateKey: {
+            path: "../resource/path/to/private.key",
+            password: "keyPass123"
+        }
+    },
+    port: 22,
+    path: "/home/in",
+    fileNamePattern: "(.*).txt"
+});
 
-type Shape object {
-    // The \`Cloneable\` object type is included as a part of the interface of 
-    // the \`Shape\` object type.
-    *Cloneable;
+// One or many services can listen to the SFTP listener for the
+// periodically-polled file related events.
+service on remoteServer {
+    // When a file event is successfully received, the \`onFileChange\` method is called.
+    remote function onFileChange(ftp:WatchEvent event) {
+        // \`addedFiles\` contains the paths of the newly-added files/directories
+        // after the last polling was called.
+        foreach ftp:FileInfo addedFile in event.addedFiles {
+            log:printInfo("Added file path: " + addedFile.path);
+        }
 
-    // \`draw()\` is a part of \`Shape\`'s own type. 
-    // The \`clone()\` function is also included from the \`Cloneable\` type.
-    function draw() returns string;
-};
-
-class Circle {
-    // The \`Circle\` class includes the \`Shape\` object type.
-    // Therefore, it has to implement both the \`clone()\` and \`draw()\` methods.
-    *Shape;
-
-    int radius;
-
-    function init(int radius) {
-        self.radius = radius;
+        // \`deletedFiles\` contains the paths of the deleted files/directories
+        // after the last polling was called.
+        foreach string deletedFile in event.deletedFiles {
+            log:printInfo("Deleted file path: " + deletedFile);
+        }
     }
-
-    // Returning \`Circle\` is valid as the \`Circle\` type becomes a subtype of the \`Cloneable\` type
-    // once it includes the \`Cloneable\` object type.
-    function clone() returns Circle {
-        return new(self.radius);
-    }
-
-    function draw() returns string {
-        return string \`circle:\${self.radius}\`;
-    }
-}
-
-public function main() {
-    Circle circle = new Circle(5);
-    io:println(circle.draw());
-
-    Circle circleClone = circle.clone();
-    io:println(circleClone.draw());
-
-    io:println(circle === circleClone);
 }
 `,
 ];
 
-export default function ObjectTypeInclusion() {
+export default function SftpServiceRead() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -83,20 +79,21 @@ export default function ObjectTypeInclusion() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Object type inclusion</h1>
+      <h1>Listener</h1>
 
       <p>
-        Object type inclusion enables two things. Firstly, it allows the
-        creation of an object type that includes another object type such that
-        one interface extends another interface. Secondly, it allows creating a
-        class that includes a type like the class implementing the interface.
-        You can include object types using the <code>*T</code> syntax.
+        The SFTP service is used to receive file/directory changes that occur in
+        a remote location using the SFTP protocol. This sample includes
+        receiving file/directory related change events from a listener with
+        default configurations using the default port.
       </p>
 
       <p>
-        The implementation of the object type within the class that includes the
-        type is checked at the compile time. This provides interface
-        inheritance. Ballerina does not support implementation inheritance.
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">
+          <code>ftp</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -110,31 +107,7 @@ export default function ObjectTypeInclusion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2080c4a6a6b03b488a812eb1f81e26cc&file=object_type_inclusion.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-          <button
-            className="bg-transparent border-0 m-0 p-2"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/object-type-inclusion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/sftp-service-read",
                 "_blank"
               );
             }}
@@ -208,6 +181,11 @@ export default function ObjectTypeInclusion() {
         </Col>
       </Row>
 
+      <p>
+        Paths of the newly-added and newly-deleted files/directories during the
+        latest polling will be printed for each of the polled events.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -263,10 +241,7 @@ export default function ObjectTypeInclusion() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run object_type_inclusion.bal`}</span>
-              <span>{`false`}</span>
-              <span>{`circle:5`}</span>
-              <span>{`circle:5`}</span>
+              <span>{`\$ bal run sftp_service_read.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -274,7 +249,7 @@ export default function ObjectTypeInclusion() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Object types" href="/learn/by-example/object-types">
+          <Link title="Write" href="/learn/by-example/ftp-client-write">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -300,7 +275,7 @@ export default function ObjectTypeInclusion() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Object types
+                  Write
                 </span>
               </div>
             </div>
@@ -308,8 +283,8 @@ export default function ObjectTypeInclusion() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Distinct object types"
-            href="/learn/by-example/distinct-object-types"
+            title="Read/Write"
+            href="/learn/by-example/sftp-service-read-write"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -319,7 +294,7 @@ export default function ObjectTypeInclusion() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Distinct object types
+                  Read/Write
                 </span>
               </div>
               <svg

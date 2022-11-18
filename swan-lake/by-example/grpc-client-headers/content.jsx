@@ -17,10 +17,10 @@ import ballerina/grpc;
 import ballerina/io;
 import ballerina/protobuf.types.wrappers;
 
-// Creates a gRPC client to interact with the remote server.
-HelloWorldClient ep = check new ("http://localhost:9090");
-
 public function main() returns error? {
+    // Creates a gRPC client to interact with the remote server.
+    HelloWorldClient ep = check new ("http://localhost:9090");
+
     // Creates the request message with the header value.
     wrappers:ContextString requestMessage =
     {content: "WSO2", headers: {client_header_key: "0987654321"}};
@@ -58,7 +58,7 @@ export default function GrpcClientHeaders() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - Send/Receive headers</h1>
+      <h1>Simple RPC client - Send/Receive headers</h1>
 
       <p>
         The gRPC module provides support for sending/receiving headers as a part

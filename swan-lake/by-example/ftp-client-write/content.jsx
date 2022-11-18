@@ -57,7 +57,7 @@ export default function FtpClientWrite() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Write</h1>
+      <h1>Client Write</h1>
 
       <p>
         The FTP client is used to perform CRUD operation on remote

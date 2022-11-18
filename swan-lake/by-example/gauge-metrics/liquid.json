@@ -1,0 +1,19 @@
+{
+  "title": "Gauge-based metrics",
+  "description": "BBE on how to use the default Gauge Metrics Observability feature in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "observability",
+    "tracing",
+    "opentracing",
+    "gauge"
+  ],
+  "permalink": "/learn/by-example/gauge-metrics",
+  "active": "gauge-metrics",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/gauge-metrics",
+    "/swan-lake/learn/by-example/gauge-metrics.html"
+  ]
+}

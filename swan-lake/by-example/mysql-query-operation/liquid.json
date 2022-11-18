@@ -1,0 +1,19 @@
+{
+  "title": "Simple query",
+  "description": "This BBE demonstrates how to use the MySQL client select query operations with the stream return type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "MySQL",
+    "query",
+    "select",
+    "data"
+  ],
+  "permalink": "/learn/by-example/mysql-query-operation",
+  "active": "mysql-query-operation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mysql-query-operation",
+    "/swan-lake/learn/by-example/mysql-query-operation.html"
+  ]
+}

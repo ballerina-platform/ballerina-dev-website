@@ -61,7 +61,7 @@ export default function FtpClientRead() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client</h1>
+      <h1>Client Read</h1>
 
       <p>
         The FTP client is used to perform CRUD operation on remote

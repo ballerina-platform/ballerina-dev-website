@@ -156,14 +156,14 @@ import TesterinaGuaranteeTestExecutionOrder from "./testerina-guarantee-test-exe
 import TesterinaGroupTests from "./testerina-group-tests/content.jsx";
 import TesterinaMockingFunctions from "./testerina-mocking-functions/content.jsx";
 import TesterinaMockingObjects from "./testerina-mocking-objects/content.jsx";
-import HttpBasicRestApi from "./http-basic-rest-api/content.jsx";
-import HttpAbsolutePathAndPath from "./http-absolute-path-and-path/content.jsx";
+import HttpBasicRestService from "./http-basic-rest-service/content.jsx";
+import HttpServicePathAndResourcePath from "./http-service-path-and-resource-path/content.jsx";
 import HttpDataBinding from "./http-data-binding/content.jsx";
 import HttpPathParam from "./http-path-param/content.jsx";
 import HttpQueryParameter from "./http-query-parameter/content.jsx";
 import HttpHeaderParam from "./http-header-param/content.jsx";
-import HttpResourceReturns from "./http-resource-returns/content.jsx";
-import HttpStatusCodeRecord from "./http-status-code-record/content.jsx";
+import HttpSendResponse from "./http-send-response/content.jsx";
+import HttpSendDifferentStatusCodes from "./http-send-different-status-codes/content.jsx";
 import HttpClientEndpoint from "./http-client-endpoint/content.jsx";
 import HttpClientDataBinding from "./http-client-data-binding/content.jsx";
 import HttpServiceSslTls from "./http-service-ssl-tls/content.jsx";
@@ -212,6 +212,7 @@ import GraphqlSubscriptions from "./graphql-subscriptions/content.jsx";
 import GraphqlInputObjects from "./graphql-input-objects/content.jsx";
 import GraphqlInterfaces from "./graphql-interfaces/content.jsx";
 import GraphqlInterfacesImplementingInterfaces from "./graphql-interfaces-implementing-interfaces/content.jsx";
+import GraphqlGraphiql from "./graphql-graphiql/content.jsx";
 import GraphqlDocumentation from "./graphql-documentation/content.jsx";
 import GraphqlDirectives from "./graphql-directives/content.jsx";
 import GraphqlContext from "./graphql-context/content.jsx";
@@ -244,11 +245,11 @@ import WebsocketClientOauth2PasswordGrantType from "./websocket-client-oauth2-pa
 import WebsocketClientOauth2RefreshTokenGrantType from "./websocket-client-oauth2-refresh-token-grant-type/content.jsx";
 import WebsocketClientOauth2JwtBearerGrantType from "./websocket-client-oauth2-jwt-bearer-grant-type/content.jsx";
 import WebsubWebhookSample from "./websub-webhook-sample/content.jsx";
+import HttpTimeout from "./http-timeout/content.jsx";
+import HttpRetry from "./http-retry/content.jsx";
 import HttpCircuitBreaker from "./http-circuit-breaker/content.jsx";
 import HttpLoadBalancer from "./http-load-balancer/content.jsx";
 import HttpFailover from "./http-failover/content.jsx";
-import HttpRetry from "./http-retry/content.jsx";
-import HttpTimeout from "./http-timeout/content.jsx";
 import DynamicListener from "./dynamic-listener/content.jsx";
 import StopHandler from "./stop-handler/content.jsx";
 import GrpcServiceSimple from "./grpc-service-simple/content.jsx";
@@ -276,45 +277,43 @@ import GrpcClientOauth2ClientCredentialsGrantType from "./grpc-client-oauth2-cli
 import GrpcClientOauth2PasswordGrantType from "./grpc-client-oauth2-password-grant-type/content.jsx";
 import GrpcClientOauth2RefreshTokenGrantType from "./grpc-client-oauth2-refresh-token-grant-type/content.jsx";
 import GrpcClientOauth2JwtBearerGrantType from "./grpc-client-oauth2-jwt-bearer-grant-type/content.jsx";
+import NatsBasicSub from "./nats-basic-sub/content.jsx";
+import NatsBasicReply from "./nats-basic-reply/content.jsx";
 import NatsBasicPub from "./nats-basic-pub/content.jsx";
 import NatsBasicRequest from "./nats-basic-request/content.jsx";
 import NatsClientBasicAuth from "./nats-client-basic-auth/content.jsx";
 import NatsClientSecureConnection from "./nats-client-secure-connection/content.jsx";
-import NatsBasicSub from "./nats-basic-sub/content.jsx";
-import NatsBasicReply from "./nats-basic-reply/content.jsx";
 import NatsServiceBasicAuth from "./nats-service-basic-auth/content.jsx";
 import NatsServiceSecureConnection from "./nats-service-secure-connection/content.jsx";
-import NatsStreamingPubSub from "./nats-streaming-pub-sub/content.jsx";
-import NatsStreamingQueueGroup from "./nats-streaming-queue-group/content.jsx";
-import NatsStreamingDurableSubscriptions from "./nats-streaming-durable-subscriptions/content.jsx";
-import NatsStreamingStartPosition from "./nats-streaming-start-position/content.jsx";
-import NatsStreamingSecureConnection from "./nats-streaming-secure-connection/content.jsx";
-import KafkaProducer from "./kafka-producer/content.jsx";
-import KafkaConsumerService from "./kafka-consumer-service/content.jsx";
-import KafkaConsumerClientPollPayload from "./kafka-consumer-client-poll-payload/content.jsx";
-import KafkaConsumerClientPollConsumerRecord from "./kafka-consumer-client-poll-consumer-record/content.jsx";
-import KafkaProducerTransactional from "./kafka-producer-transactional/content.jsx";
-import KafkaAuthenticationSaslPlainConsumer from "./kafka-authentication-sasl-plain-consumer/content.jsx";
-import KafkaAuthenticationSaslPlainProducer from "./kafka-authentication-sasl-plain-producer/content.jsx";
+import KafkaClientProducer from "./kafka-client-producer/content.jsx";
+import KafkaClientConsumerPollPayload from "./kafka-client-consumer-poll-payload/content.jsx";
+import KafkaClientConsumerPollConsumerRecord from "./kafka-client-consumer-poll-consumer-record/content.jsx";
+import KafkaServiceSasl from "./kafka-service-sasl/content.jsx";
+import KafkaServiceSsl from "./kafka-service-ssl/content.jsx";
+import KafkaClientProducerSasl from "./kafka-client-producer-sasl/content.jsx";
+import KafkaClientConsumerSasl from "./kafka-client-consumer-sasl/content.jsx";
+import KafkaClientProducerSsl from "./kafka-client-producer-ssl/content.jsx";
+import KafkaClientConsumerSsl from "./kafka-client-consumer-ssl/content.jsx";
+import RabbitmqConsumer from "./rabbitmq-consumer/content.jsx";
+import RabbitmqConsumerWithClientAcknowledgement from "./rabbitmq-consumer-with-client-acknowledgement/content.jsx";
+import RabbitmqTransactionConsumer from "./rabbitmq-transaction-consumer/content.jsx";
 import RabbitmqProducer from "./rabbitmq-producer/content.jsx";
 import RabbitmqSyncConsumer from "./rabbitmq-sync-consumer/content.jsx";
 import RabbitmqTransactionProducer from "./rabbitmq-transaction-producer/content.jsx";
 import RabbitmqClientBasicAuth from "./rabbitmq-client-basic-auth/content.jsx";
 import RabbitmqClientSecureConnection from "./rabbitmq-client-secure-connection/content.jsx";
-import RabbitmqConsumer from "./rabbitmq-consumer/content.jsx";
-import RabbitmqConsumerWithClientAcknowledgement from "./rabbitmq-consumer-with-client-acknowledgement/content.jsx";
-import RabbitmqTransactionConsumer from "./rabbitmq-transaction-consumer/content.jsx";
 import RabbitmqServiceBasicAuth from "./rabbitmq-service-basic-auth/content.jsx";
 import RabbitmqServiceSecureConnection from "./rabbitmq-service-secure-connection/content.jsx";
 import TcpListener from "./tcp-listener/content.jsx";
 import TcpClient from "./tcp-client/content.jsx";
-import TcpTransportSecurity from "./tcp-transport-security/content.jsx";
+import TcpServiceSslTls from "./tcp-service-ssl-tls/content.jsx";
+import TcpClientSslTls from "./tcp-client-ssl-tls/content.jsx";
 import UdpListener from "./udp-listener/content.jsx";
 import UdpClient from "./udp-client/content.jsx";
 import UdpConnectClient from "./udp-connect-client/content.jsx";
+import ReceiveEmailUsingService from "./receive-email-using-service/content.jsx";
 import SendEmail from "./send-email/content.jsx";
 import ReceiveEmailUsingClient from "./receive-email-using-client/content.jsx";
-import ReceiveEmailUsingService from "./receive-email-using-service/content.jsx";
 import FtpServiceRead from "./ftp-service-read/content.jsx";
 import FtpServiceReadWrite from "./ftp-service-read-write/content.jsx";
 import FtpClientRead from "./ftp-client-read/content.jsx";
@@ -540,14 +539,14 @@ const BBEs = {
   TesterinaGroupTests,
   TesterinaMockingFunctions,
   TesterinaMockingObjects,
-  HttpBasicRestApi,
-  HttpAbsolutePathAndPath,
+  HttpBasicRestService,
+  HttpServicePathAndResourcePath,
   HttpDataBinding,
   HttpPathParam,
   HttpQueryParameter,
   HttpHeaderParam,
-  HttpResourceReturns,
-  HttpStatusCodeRecord,
+  HttpSendResponse,
+  HttpSendDifferentStatusCodes,
   HttpClientEndpoint,
   HttpClientDataBinding,
   HttpServiceSslTls,
@@ -596,6 +595,7 @@ const BBEs = {
   GraphqlInputObjects,
   GraphqlInterfaces,
   GraphqlInterfacesImplementingInterfaces,
+  GraphqlGraphiql,
   GraphqlDocumentation,
   GraphqlDirectives,
   GraphqlContext,
@@ -628,11 +628,11 @@ const BBEs = {
   WebsocketClientOauth2RefreshTokenGrantType,
   WebsocketClientOauth2JwtBearerGrantType,
   WebsubWebhookSample,
+  HttpTimeout,
+  HttpRetry,
   HttpCircuitBreaker,
   HttpLoadBalancer,
   HttpFailover,
-  HttpRetry,
-  HttpTimeout,
   DynamicListener,
   StopHandler,
   GrpcServiceSimple,
@@ -660,45 +660,43 @@ const BBEs = {
   GrpcClientOauth2PasswordGrantType,
   GrpcClientOauth2RefreshTokenGrantType,
   GrpcClientOauth2JwtBearerGrantType,
+  NatsBasicSub,
+  NatsBasicReply,
   NatsBasicPub,
   NatsBasicRequest,
   NatsClientBasicAuth,
   NatsClientSecureConnection,
-  NatsBasicSub,
-  NatsBasicReply,
   NatsServiceBasicAuth,
   NatsServiceSecureConnection,
-  NatsStreamingPubSub,
-  NatsStreamingQueueGroup,
-  NatsStreamingDurableSubscriptions,
-  NatsStreamingStartPosition,
-  NatsStreamingSecureConnection,
-  KafkaProducer,
-  KafkaConsumerService,
-  KafkaConsumerClientPollPayload,
-  KafkaConsumerClientPollConsumerRecord,
-  KafkaProducerTransactional,
-  KafkaAuthenticationSaslPlainConsumer,
-  KafkaAuthenticationSaslPlainProducer,
+  KafkaClientProducer,
+  KafkaClientConsumerPollPayload,
+  KafkaClientConsumerPollConsumerRecord,
+  KafkaServiceSasl,
+  KafkaServiceSsl,
+  KafkaClientProducerSasl,
+  KafkaClientConsumerSasl,
+  KafkaClientProducerSsl,
+  KafkaClientConsumerSsl,
+  RabbitmqConsumer,
+  RabbitmqConsumerWithClientAcknowledgement,
+  RabbitmqTransactionConsumer,
   RabbitmqProducer,
   RabbitmqSyncConsumer,
   RabbitmqTransactionProducer,
   RabbitmqClientBasicAuth,
   RabbitmqClientSecureConnection,
-  RabbitmqConsumer,
-  RabbitmqConsumerWithClientAcknowledgement,
-  RabbitmqTransactionConsumer,
   RabbitmqServiceBasicAuth,
   RabbitmqServiceSecureConnection,
   TcpListener,
   TcpClient,
-  TcpTransportSecurity,
+  TcpServiceSslTls,
+  TcpClientSslTls,
   UdpListener,
   UdpClient,
   UdpConnectClient,
+  ReceiveEmailUsingService,
   SendEmail,
   ReceiveEmailUsingClient,
-  ReceiveEmailUsingService,
   FtpServiceRead,
   FtpServiceReadWrite,
   FtpClientRead,

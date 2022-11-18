@@ -59,7 +59,7 @@ export default function GrpcServiceHeaders() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Simple RPC service - Send/Receive headers</h1>
+      <h1>gRPC service - Send/Receive headers</h1>
 
       <p>
         The gRPC module provides support for sending/receiving headers as a part

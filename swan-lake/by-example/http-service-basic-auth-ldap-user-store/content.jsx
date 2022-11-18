@@ -90,7 +90,7 @@ export default function HttpServiceBasicAuthLdapUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Basic Auth LDAP user store</h1>
+      <h1>HTTP service - Basic auth LDAP user store</h1>
 
       <p>
         An HTTP service/resource can be secured with Basic Auth and by enforcing
@@ -98,30 +98,18 @@ export default function HttpServiceBasicAuthLdapUserStore() {
         in the <code>Authorization</code> header against the provided
         configurations. This reads data from the configured LDAP. This stores
         usernames, passwords for authentication, and scopes for authorization.
-      </p>
-
-      <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s).
-      </p>
-
-      <p>
-        In the authorization phase, the scopes of the service/resource are
-        compared against the scope included in the user store for at least one
-        match between the two sets.
+        declared in a service can be bound to one/more scope(s). In the
+        authorization phase, the scopes of the service/resource are compared
+        against the scope included in the user store for at least one match
+        between the two sets.
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          `auth module
-        </a>
-      </p>
-
-      <p>
-        and{" "}
         <a href="https://ballerina.io/spec/http/#9112-listener---basic-auth---ldap-user-store">
-          <code>http</code> specification
+          `auth module](https://lib.ballerina.io/ballerina/auth/latest/) and
+          [`http` specification
         </a>
         .
       </p>
@@ -295,7 +283,7 @@ export default function HttpServiceBasicAuthLdapUserStore() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth file user store"
+            title="Basic Auth file user store"
             href="/learn/by-example/http-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -323,17 +311,14 @@ export default function HttpServiceBasicAuthLdapUserStore() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth file user store
+                  Basic Auth file user store
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Service - JWT Auth"
-            href="/learn/by-example/http-service-jwt-auth"
-          >
+          <Link title="JWT Auth" href="/learn/by-example/http-service-jwt-auth">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -342,7 +327,7 @@ export default function HttpServiceBasicAuthLdapUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - JWT Auth
+                  JWT Auth
                 </span>
               </div>
               <svg

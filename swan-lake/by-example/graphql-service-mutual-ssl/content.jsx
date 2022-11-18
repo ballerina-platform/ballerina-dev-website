@@ -69,7 +69,7 @@ export default function GraphqlServiceMutualSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Mutual SSL</h1>
+      <h1>GraphQL service - Mutual SSL</h1>
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
@@ -251,7 +251,7 @@ export default function GraphqlServiceMutualSsl() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - SSL/TLS"
+            title="SSL/TLS"
             href="/learn/by-example/graphql-service-ssl-tls"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -279,7 +279,7 @@ export default function GraphqlServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
             </div>
@@ -287,7 +287,7 @@ export default function GraphqlServiceMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth file user store"
+            title="Basic Auth file user store"
             href="/learn/by-example/graphql-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -298,7 +298,7 @@ export default function GraphqlServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth file user store
+                  Basic Auth file user store
                 </span>
               </div>
               <svg

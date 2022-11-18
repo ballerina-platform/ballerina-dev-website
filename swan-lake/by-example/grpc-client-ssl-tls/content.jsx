@@ -53,7 +53,7 @@ export default function GrpcClientSslTls() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>SSL/TLS client</h1>
+      <h1>gRPC client - SSL/TLS</h1>
 
       <p>
         You can use the gRPC client to connect or interact with a gRPC listener

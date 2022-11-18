@@ -66,7 +66,7 @@ export default function RabbitmqTransactionConsumer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Transactional consumer</h1>
+      <h1>RabbitMQ Service - Transactional Consumer</h1>
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
@@ -273,10 +273,7 @@ export default function RabbitmqTransactionConsumer() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Basic authentication"
-            href="/learn/by-example/rabbitmq-service-basic-auth"
-          >
+          <Link title="Producer" href="/learn/by-example/rabbitmq-producer">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -285,7 +282,7 @@ export default function RabbitmqTransactionConsumer() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication
+                  Producer
                 </span>
               </div>
               <svg

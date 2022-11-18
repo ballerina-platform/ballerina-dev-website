@@ -70,13 +70,13 @@ export default function ReceiveEmailUsingService() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Receive emails using a listener</h1>
+      <h1>Receive email using a service</h1>
 
       <p>
-        The email listener is used to receive (with POP3 or IMAP4) emails using
+        The email service is used to receive (with POP3 or IMAP4) emails using
         the SSL or STARTTLS protocols. This sample includes receiving emails
-        from a listener with default configurations over SSL using the default
-        ports via POP3. To use IMAP4 refer to{" "}
+        service attached to a POP3 listener with default configurations over SSL
+        using the default ports. To use IMAP4 refer to{" "}
         <a href="https://lib.ballerina.io/ballerina/email/latest/classes/ImapListener">
           <code>IMAP listener</code>
         </a>
@@ -246,8 +246,8 @@ export default function ReceiveEmailUsingService() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Receive email"
-            href="/learn/by-example/receive-email-using-client"
+            title="Connection-oriented client"
+            href="/learn/by-example/udp-connect-client"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -274,14 +274,14 @@ export default function ReceiveEmailUsingService() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive email
+                  Connection-oriented client
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Read" href="/learn/by-example/ftp-service-read">
+          <Link title="Send email" href="/learn/by-example/send-email">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -290,7 +290,7 @@ export default function ReceiveEmailUsingService() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read
+                  Send email
                 </span>
               </div>
               <svg

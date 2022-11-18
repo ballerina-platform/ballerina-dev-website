@@ -17,7 +17,7 @@ const codeSnippetData = [
 // The \`absolute resource path\` can be omitted. Then, it defaults to \`/\`.
 service on new http:Listener(9090) {
 
-    // The \`default\` accessor name can be used to match with all methods including the standard HTTP methods
+    // The \`default\` accessor can be used to match with all methods including the standard HTTP methods
     // and custom methods. The rest param is used to represent the wildcard of the \`resource path\` in which any path
     // segment will get dispatched to the resource in the absence of an exact path match.
     resource function 'default [string... paths](http:Request req) returns string {
@@ -284,7 +284,7 @@ export default function HttpDefaultResource() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 JWT Bearer grant type"
+            title="OAuth2 JWT Bearer grant type"
             href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -312,7 +312,7 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 JWT Bearer grant type
+                  OAuth2 JWT Bearer grant type
                 </span>
               </div>
             </div>

@@ -22,7 +22,7 @@ type Album readonly & record {|
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
-    final http:Client httpClient = check new ("localhost:9090");
+    http:Client httpClient = check new ("localhost:9090");
 
     // Sends a \`GET\` request to the "/albums" resource.
     // The verb is not mandatory as it is default to "GET".
@@ -60,7 +60,7 @@ export default function HttpClientEndpoint() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client</h1>
+      <h1>HTTP client</h1>
 
       <p>
         The HTTP Client Connector can be used to connect to and interact with an
@@ -71,17 +71,9 @@ export default function HttpClientEndpoint() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#24-client">specification</a>.
-      </p>
-
-      <p>
-        Before executing following sample, run the service in{" "}
-        <code>Basic REST API</code> example.
       </p>
 
       <Row
@@ -95,7 +87,7 @@ export default function HttpClientEndpoint() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a2aa96c4b09daab978713172915bb170&file=http_client_endpoint.bal",
+                "https://play.ballerina.io/?gist=22ef881de6c83a5aa9e1b4a272c1f6bc&file=binding_patterns_in_match_statement.bal",
                 "_blank"
               );
             }}
@@ -195,6 +187,11 @@ export default function HttpClientEndpoint() {
 
       <p>Run the client program by executing the following command.</p>
 
+      <p>
+        Before executing following sample, run the service in{" "}
+        <code>Basic REST service</code> example.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -263,8 +260,8 @@ export default function HttpClientEndpoint() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Status code response record"
-            href="/learn/by-example/http-status-code-record"
+            title="Send different status codes"
+            href="/learn/by-example/http-send-different-status-codes"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -291,7 +288,7 @@ export default function HttpClientEndpoint() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Status code response record
+                  Send different status codes
                 </span>
               </div>
             </div>

@@ -80,7 +80,7 @@ export default function WebsocketServiceJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>JWT Auth service</h1>
+      <h1>WebSocket service - JWT Auth</h1>
 
       <p>
         A WebSocket service can be secured with JWT and by

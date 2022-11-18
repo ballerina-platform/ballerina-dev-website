@@ -121,7 +121,7 @@ export default function MysqlQueryOperation() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Simple query</h1>
+      <h1>MySQL client - Simple query</h1>
 
       <p>
         This BBE demonstrates how to use the MySQL client select query
@@ -221,6 +221,11 @@ export default function MysqlQueryOperation() {
         </Col>
       </Row>
 
+      <p>
+        Create a Ballerina project. Copy the example to the project. Execute the
+        command below to build and run the project.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -276,9 +281,6 @@ export default function MysqlQueryOperation() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina project.`}</span>
-              <span>{`# Copy the example to the project.`}</span>
-              <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
               <span>{`
 `}</span>

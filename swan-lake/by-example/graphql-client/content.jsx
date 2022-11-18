@@ -15,14 +15,10 @@ const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/io;
 
-// User defined data types to perform client side data-binding
+// User defined data types to perform client side data-binding. This includes separate fields for
+// GraphQL errors and data.
 type ResponseWithErrors record {|
     *graphql:GenericResponseWithErrors;
-    Data data;
-|};
-
-type Response record {|
-    *graphql:GenericResponse;
     Data data;
 |};
 
@@ -30,10 +26,10 @@ type Data record {|
     Person profile;
 |};
 
-type Person record {
+type Person record {|
     string name;
     int age;
-};
+|};
 
 public function main() returns error? {
     // Creates a new client with the backend URL.
@@ -41,14 +37,13 @@ public function main() returns error? {
 
     string document = "{ profile { name, age } }";
 
-    // The \`execute()\` remote function of graphql:Client takes a GraphQL document
-    // as the required argument and sends a request to the specified backend URL
-    // seeking a response. On the retrieval of a successful response, the client
-    // tries to perform data binding for the user-defined data type. On failure to
-    // retrieve a successful response or when the client fails to perform data
-    // binding, a graphql:ClientError will be returned.
+    // The \`execute()\` remote function of the graphql:Client takes a GraphQL document as the
+    // required argument and sends a request to the specified backend URL seeking a response. On the
+    // retrieval of a successful response, the client tries to perform data binding for the
+    // user-defined data type. On failure to retrieve a successful response or when the client fails
+    // to perform data binding, a graphql:ClientError will be returned.
     ResponseWithErrors response = check graphqlClient->execute(document);
-    io:println(response.data.profile.name);
+    io:println(response.data.profile);
 }
 `,
 ];
@@ -77,8 +72,21 @@ export default function GraphqlClient() {
       <h1>Client</h1>
 
       <p>
-        The GraphQL Client Connector can be used to connect and interact with a
-        GraphQL server.
+        The GraphQL Client can be used to connect and interact with a GraphQL
+        server.
+      </p>
+
+      <p>
+        This example shows how to send a GraphQL request and retrieve the
+        response in a user-defined type.
+      </p>
+
+      <p>
+        For more information on the underlying package, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
+          GraphQL package
+        </a>
+        .
       </p>
 
       <Row
@@ -178,8 +186,8 @@ export default function GraphqlClient() {
       </p>
 
       <p>
-        As the prerequisites to run the client program execute server program
-        given in{" "}
+        As a prerequisite to run the client program, execute a ballerina GraphQL
+        server program given in{" "}
         <a href="https://ballerina.io/learn/by-example/graphql-returning-record-values">
           Returning record values example
         </a>
@@ -244,10 +252,7 @@ export default function GraphqlClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run graphql_client.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`# This will print the output below upon successful retrieval of response.`}</span>
-              <span>{`Walter White`}</span>
+              <span>{`{"name":"Walter White","age":51}`}</span>
             </code>
           </pre>
         </Col>
@@ -292,7 +297,7 @@ export default function GraphqlClient() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - SSL/TLS"
+            title="SSL/TLS"
             href="/learn/by-example/graphql-service-ssl-tls"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -303,7 +308,7 @@ export default function GraphqlClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
               <svg

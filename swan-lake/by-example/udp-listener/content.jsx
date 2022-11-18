@@ -55,7 +55,7 @@ export default function UdpListener() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Listener</h1>
+      <h1>UDP service</h1>
 
       <p>
         The UDP Listener is used to expose a UDP service over the UDP protocol.
@@ -224,10 +224,7 @@ export default function UdpListener() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Transport security"
-            href="/learn/by-example/tcp-transport-security"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/tcp-client-ssl-tls">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -253,7 +250,7 @@ export default function UdpListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Transport security
+                  SSL/TLS
                 </span>
               </div>
             </div>

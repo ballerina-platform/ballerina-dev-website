@@ -47,7 +47,7 @@ export default function RabbitmqConsumer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Consumer</h1>
+      <h1>RabbitMQ Service - Consumer</h1>
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
@@ -214,8 +214,8 @@ export default function RabbitmqConsumer() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="SSL/TLS"
-            href="/learn/by-example/rabbitmq-client-secure-connection"
+            title="Consumer SSL"
+            href="/learn/by-example/kafka-client-consumer-ssl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -242,7 +242,7 @@ export default function RabbitmqConsumer() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Consumer SSL
                 </span>
               </div>
             </div>

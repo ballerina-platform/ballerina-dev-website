@@ -68,7 +68,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Self signed JWT Auth client</h1>
+      <h1>WebSocket client - Self signed JWT Auth</h1>
 
       <p>
         A client, which is secured with self-signed JWT can be used to connect

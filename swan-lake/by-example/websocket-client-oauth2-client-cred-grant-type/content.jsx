@@ -64,7 +64,7 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>OAuth2 client - Credentials grant type</h1>
+      <h1>WebSocket client - OAuth2 Client Credentials grant type</h1>
 
       <p>
         A client, which is secured with OAuth2 client credentials grant typecan

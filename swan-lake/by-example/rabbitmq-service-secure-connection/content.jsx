@@ -54,7 +54,7 @@ export default function RabbitmqServiceSecureConnection() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Secured connection</h1>
+      <h1>RabbitMQ Service - SSL/TLS</h1>
 
       <p>
         The underlying connection of the consumer service is secured with
@@ -219,7 +219,7 @@ export default function RabbitmqServiceSecureConnection() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic authentication"
+            title="Service - Basic authentication"
             href="/learn/by-example/rabbitmq-service-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -247,7 +247,7 @@ export default function RabbitmqServiceSecureConnection() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication
+                  Service - Basic authentication
                 </span>
               </div>
             </div>

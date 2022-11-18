@@ -320,6 +320,13 @@ export default function GraphqlHelloWorld() {
         terminal.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -421,7 +428,7 @@ export default function GraphqlHelloWorld() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Return record values"
+            title="Record as output object"
             href="/learn/by-example/graphql-returning-record-values"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -432,7 +439,7 @@ export default function GraphqlHelloWorld() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Return record values
+                  Record as output object
                 </span>
               </div>
               <svg

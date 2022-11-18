@@ -1374,13 +1374,13 @@
     ]
   },
   {
-    "title": "REST API",
+    "title": "REST service",
     "column": 0,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Basic REST API",
-        "url": "http-basic-rest-api",
+        "name": "Basic REST service",
+        "url": "http-basic-rest-service",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1388,7 +1388,7 @@
       },
       {
         "name": "Service path and resource path",
-        "url": "http-absolute-path-and-path",
+        "url": "http-service-path-and-resource-path",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1427,16 +1427,16 @@
         "isLearnByExample": false
       },
       {
-        "name": "Returned response types",
-        "url": "http-resource-returns",
+        "name": "Send response",
+        "url": "http-send-response",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Status code response record",
-        "url": "http-status-code-record",
+        "name": "Send different status codes",
+        "url": "http-send-different-status-codes",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1471,7 +1471,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Service - SSL/TLS",
+        "name": "SSL/TLS",
         "url": "http-service-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1479,7 +1479,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Mutual SSL",
+        "name": "Mutual SSL",
         "url": "http-service-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1487,7 +1487,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth file user store",
+        "name": "Basic Auth file user store",
         "url": "http-service-basic-auth-file-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1495,7 +1495,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth LDAP user store",
+        "name": "Basic Auth LDAP user store",
         "url": "http-service-basic-auth-ldap-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1503,7 +1503,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - JWT Auth",
+        "name": "JWT Auth",
         "url": "http-service-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1511,7 +1511,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - OAuth2",
+        "name": "OAuth2",
         "url": "http-service-oauth2",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1526,7 +1526,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client - SSL/TLS",
+        "name": "SSL/TLS",
         "url": "http-client-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1534,7 +1534,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - Mutual SSL",
+        "name": "Mutual SSL",
         "url": "http-client-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1542,7 +1542,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - Basic Auth",
+        "name": "Basic Auth",
         "url": "http-client-basic-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1550,7 +1550,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - Bearer Token Auth",
+        "name": "Bearer Token Auth",
         "url": "http-client-bearer-token-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1558,7 +1558,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - self signed JWT Auth",
+        "name": "Self signed JWT Auth",
         "url": "http-client-self-signed-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1566,7 +1566,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 Client Credentials grant type",
+        "name": "OAuth2 Client Credentials grant type",
         "url": "http-client-oauth2-client-credentials-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1574,7 +1574,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 Password grant type",
+        "name": "OAuth2 Password grant type",
         "url": "http-client-oauth2-password-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1582,7 +1582,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 Refresh Token grant type",
+        "name": "OAuth2 Refresh Token grant type",
         "url": "http-client-oauth2-refresh-token-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1590,7 +1590,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 JWT Bearer grant type",
+        "name": "OAuth2 JWT Bearer grant type",
         "url": "http-client-oauth2-jwt-bearer-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1735,7 +1735,7 @@
     ]
   },
   {
-    "title": "REST API interceptors",
+    "title": "REST service interceptors",
     "column": 1,
     "category": "Network libraries",
     "samples": [
@@ -1810,7 +1810,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Return record values",
+        "name": "Record as output object",
         "url": "graphql-returning-record-values",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1818,7 +1818,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Return service objects",
+        "name": "Service as output object",
         "url": "graphql-returning-service-objects",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1868,6 +1868,14 @@
       {
         "name": "Interfaces implementing interfaces",
         "url": "graphql-interfaces-implementing-interfaces",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "GraphiQL client",
+        "url": "graphql-graphiql",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1945,7 +1953,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Service - SSL/TLS",
+        "name": "SSL/TLS",
         "url": "graphql-service-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1953,7 +1961,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Mutual SSL",
+        "name": "Mutual SSL",
         "url": "graphql-service-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1961,7 +1969,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth file user store",
+        "name": "Basic Auth file user store",
         "url": "graphql-service-basic-auth-file-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1969,7 +1977,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth LDAP user store",
+        "name": "Basic Auth LDAP user store",
         "url": "graphql-service-basic-auth-ldap-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1977,7 +1985,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - JWT Auth",
+        "name": "JWT Auth",
         "url": "graphql-service-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1985,7 +1993,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - OAuth2",
+        "name": "Auth2",
         "url": "graphql-service-oauth2",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2183,10 +2191,26 @@
     ]
   },
   {
-    "title": "Resiliency",
+    "title": "HTTP client resiliency",
     "column": 2,
     "category": "Network libraries",
     "samples": [
+      {
+        "name": "Timeout",
+        "url": "http-timeout",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Retry",
+        "url": "http-retry",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
       {
         "name": "Circuit breaker",
         "url": "http-circuit-breaker",
@@ -2206,22 +2230,6 @@
       {
         "name": "Failover",
         "url": "http-failover",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Retry",
-        "url": "http-retry",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Timeout",
-        "url": "http-timeout",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2491,49 +2499,6 @@
     ]
   },
   {
-    "title": "NATS Client",
-    "column": 2,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Publish",
-        "url": "nats-basic-pub",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Request",
-        "url": "nats-basic-request",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Basic Authentication",
-        "url": "nats-client-basic-auth",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "SSL/TLS",
-        "url": "nats-client-secure-connection",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
     "title": "NATS Service",
     "column": 2,
     "category": "Network libraries",
@@ -2555,9 +2520,59 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "NATS Client",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Publish",
+        "url": "nats-basic-pub",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
       },
       {
-        "name": "Basic Authentication",
+        "name": "Request",
+        "url": "nats-basic-request",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "NATS security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "NATS client - Basic authentication",
+        "url": "nats-client-basic-auth",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "NATS client - SSL/TLS",
+        "url": "nats-client-secure-connection",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "NATS Service - Basic authentication",
         "url": "nats-service-basic-auth",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2566,7 +2581,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "SSL/TLS",
+        "name": "NATS Service - SSL/TLS",
         "url": "nats-service-secure-connection",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2577,65 +2592,13 @@
     ]
   },
   {
-    "title": "STAN",
-    "column": 2,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Publish/subscribe",
-        "url": "nats-streaming-pub-sub",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Queue groups",
-        "url": "nats-streaming-queue-group",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Durable subscriptions",
-        "url": "nats-streaming-durable-subscriptions",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Historical message replay",
-        "url": "nats-streaming-start-position",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Secured connection",
-        "url": "nats-streaming-secure-connection",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Kafka",
+    "title": "Kafka client",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
         "name": "Producer",
-        "url": "kafka-producer",
+        "url": "kafka-client-producer",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2643,8 +2606,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Consumer service",
-        "url": "kafka-consumer-service",
+        "name": "Consumer - Poll Payload",
+        "url": "kafka-client-consumer-poll-payload",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2652,44 +2615,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Consumer client - Poll Payload",
-        "url": "kafka-consumer-client-poll-payload",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Consumer client - Poll ConsumerRecord",
-        "url": "kafka-consumer-client-poll-consumer-record",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Transactional producer",
-        "url": "kafka-producer-transactional",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "SASL authentication - consumer",
-        "url": "kafka-authentication-sasl-plain-consumer",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "SASL authentication - producer",
-        "url": "kafka-authentication-sasl-plain-producer",
+        "name": "Consumer - Poll ConsumerRecord",
+        "url": "kafka-client-consumer-poll-consumer-record",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2699,13 +2626,13 @@
     ]
   },
   {
-    "title": "RabbitMQ Client",
-    "column": 3,
+    "title": "Kafka secured service",
+    "column": 2,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Producer",
-        "url": "rabbitmq-producer",
+        "name": "SASL Authentication",
+        "url": "kafka-service-sasl",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2713,35 +2640,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Consumer",
-        "url": "rabbitmq-sync-consumer",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Transactional producer",
-        "url": "rabbitmq-transaction-producer",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Basic authentication",
-        "url": "rabbitmq-client-basic-auth",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "SSL/TLS",
-        "url": "rabbitmq-client-secure-connection",
+        "name": "SSL",
+        "url": "kafka-service-ssl",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2751,7 +2651,50 @@
     ]
   },
   {
-    "title": "RabbitMQ Service",
+    "title": "Kafka secured client",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Producer SASL Authentication",
+        "url": "kafka-client-producer-sasl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Consumer SASL Authentication",
+        "url": "kafka-client-consumer-sasl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Producer SSL",
+        "url": "kafka-client-producer-ssl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Consumer SSL",
+        "url": "kafka-client-consumer-ssl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "RabbitMQ service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -2781,9 +2724,68 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "RabbitMQ client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Producer",
+        "url": "rabbitmq-producer",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
       },
       {
-        "name": "Basic authentication",
+        "name": "Consumer",
+        "url": "rabbitmq-sync-consumer",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Transactional producer",
+        "url": "rabbitmq-transaction-producer",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "RabbitMQ security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Client - Basic authentication",
+        "url": "rabbitmq-client-basic-auth",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Client - SSL/TLS",
+        "url": "rabbitmq-client-secure-connection",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Service - Basic authentication",
         "url": "rabbitmq-service-basic-auth",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2792,7 +2794,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "SSL/TLS",
+        "name": "Service - SSL/TLS",
         "url": "rabbitmq-service-secure-connection",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2803,7 +2805,7 @@
     ]
   },
   {
-    "title": "TCP",
+    "title": "TCP service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -2815,7 +2817,14 @@
         "disableVerificationReason": "Service cannot be stopped",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "TCP client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
       {
         "name": "Client",
         "url": "tcp-client",
@@ -2824,20 +2833,41 @@
         "disableVerificationReason": "Service not present",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "TCP service security",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
       {
-        "name": "Transport security",
-        "url": "tcp-transport-security",
+        "name": "SSL/TLS",
+        "url": "tcp-service-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
         "isLearnByExample": false
       }
     ]
   },
   {
-    "title": "UDP",
+    "title": "TCP client security",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "tcp-client-ssl-tls",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "UDP service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -2849,7 +2879,14 @@
         "disableVerificationReason": "Service cannot be stopped",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "UDP client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
       {
         "name": "Connectionless client",
         "url": "udp-client",
@@ -2865,6 +2902,22 @@
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Service cannot be reached",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Email service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive email",
+        "url": "receive-email-using-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
       }
@@ -2887,22 +2940,6 @@
       {
         "name": "Receive email",
         "url": "receive-email-using-client",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Email service",
-    "column": 3,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Receive email",
-        "url": "receive-email-using-service",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3012,7 +3049,7 @@
     ]
   },
   {
-    "title": "MySQL",
+    "title": "MySQL client",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -3082,7 +3119,7 @@
     ]
   },
   {
-    "title": "JDBC",
+    "title": "JDBC client",
     "column": 3,
     "category": "Network libraries",
     "samples": [

@@ -74,7 +74,7 @@ export default function GraphqlServiceOauth2() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - OAuth2</h1>
+      <h1>GraphQL service - OAuth2</h1>
 
       <p>
         A GraphQL service can be secured with OAuth2 and by enforcing
@@ -271,7 +271,7 @@ export default function GraphqlServiceOauth2() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - JWT Auth"
+            title="JWT Auth"
             href="/learn/by-example/graphql-service-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -299,7 +299,7 @@ export default function GraphqlServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - JWT Auth
+                  JWT Auth
                 </span>
               </div>
             </div>

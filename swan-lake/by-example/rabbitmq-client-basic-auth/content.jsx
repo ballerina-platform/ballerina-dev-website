@@ -29,7 +29,7 @@ public function main() returns error? {
 
     // Publishes the message using the \`rabbitmqClient\` and the routing key named \`Secured\`.
     string message = "Hello from Ballerina";
-    check rabbitmqClient->publishMessage({content: message.toBytes(), routingKey: "Secured"});
+    check rabbitmqClient->publishMessage({content: message, routingKey: "Secured"});
 }
 `,
 ];
@@ -55,7 +55,7 @@ export default function RabbitmqClientBasicAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Secured connection</h1>
+      <h1>RabbitMQ Client - Basic Authentication</h1>
 
       <p>
         The underlying connection of the producer is secured with basic
@@ -255,7 +255,7 @@ export default function RabbitmqClientBasicAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="SSL/TLS"
+            title="Client - SSL/TLS"
             href="/learn/by-example/rabbitmq-client-secure-connection"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -266,7 +266,7 @@ export default function RabbitmqClientBasicAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Client - SSL/TLS
                 </span>
               </div>
               <svg

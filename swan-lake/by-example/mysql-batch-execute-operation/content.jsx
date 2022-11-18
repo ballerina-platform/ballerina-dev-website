@@ -122,7 +122,7 @@ export default function MysqlBatchExecuteOperation() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Batch execution</h1>
+      <h1>MySQL client - Batch execution</h1>
 
       <p>
         This BBE demonstrates how to use the MySQL client to execute a batch of
@@ -222,6 +222,11 @@ export default function MysqlBatchExecuteOperation() {
         </Col>
       </Row>
 
+      <p>
+        Create a Ballerina project. Copy the example to the project. Execute the
+        command below to build and run the project.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -277,9 +282,6 @@ export default function MysqlBatchExecuteOperation() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina project.`}</span>
-              <span>{`# Copy the example to the project.`}</span>
-              <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
               <span>{`
 `}</span>

@@ -246,7 +246,7 @@ export default function FtpServiceRead() {
         <Col sm={6}>
           <Link
             title="Receive email"
-            href="/learn/by-example/receive-email-using-service"
+            href="/learn/by-example/receive-email-using-client"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg

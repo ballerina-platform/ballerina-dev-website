@@ -324,6 +324,13 @@ export default function GraphqlInputTypes() {
         terminal.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -389,7 +396,7 @@ export default function GraphqlInputTypes() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Return service objects"
+            title="Service as output object"
             href="/learn/by-example/graphql-returning-service-objects"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -417,7 +424,7 @@ export default function GraphqlInputTypes() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Return service objects
+                  Service as output object
                 </span>
               </div>
             </div>

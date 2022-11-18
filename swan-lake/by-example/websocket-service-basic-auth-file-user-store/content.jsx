@@ -74,7 +74,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Basic Auth File user store service</h1>
+      <h1>WebSocket service - Basic Auth File user store</h1>
 
       <p>
         A WebSocket service can be secured with Basic Auth and optionally by

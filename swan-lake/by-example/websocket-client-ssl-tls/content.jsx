@@ -54,7 +54,7 @@ export default function WebsocketClientSslTls() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>SSL/TLS client</h1>
+      <h1>WebSocket client - SSL/TLS</h1>
 
       <p>
         You can use the WSS client to connect or interact with an WSS listener.

@@ -14,6 +14,15 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
+// All the types that are used in the GraphQL service can have doc comments to add as documentation.
+# Represents a person.
+# + name - The name of the person
+# + age - The age of the person
+type Person record {|
+    string name;
+    int age;
+|};
+
 service /graphql on new graphql:Listener(4000) {
 
     // Add doc comments to reflect them in the generated GraphQL schema.
@@ -29,15 +38,6 @@ service /graphql on new graphql:Listener(4000) {
         return;
     }
 }
-
-// All the types that are used in the GraphQL service can have doc comments to add as documentation.
-# Represents a person.
-# + name - The name of the person
-# + age - The age of the person
-type Person record {|
-    string name;
-    int age;
-|};
 `,
   ` {
     __schema {
@@ -353,6 +353,13 @@ export default function GraphqlDocumentation() {
         terminal.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -418,8 +425,8 @@ export default function GraphqlDocumentation() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Interfaces implementing interfaces"
-            href="/learn/by-example/graphql-interfaces-implementing-interfaces"
+            title="GraphiQL client"
+            href="/learn/by-example/graphql-graphiql"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -446,7 +453,7 @@ export default function GraphqlDocumentation() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interfaces implementing interfaces
+                  GraphiQL client
                 </span>
               </div>
             </div>

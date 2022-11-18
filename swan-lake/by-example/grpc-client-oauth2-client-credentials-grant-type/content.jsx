@@ -64,7 +64,7 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>OAuth2 client - Client credentials grant type</h1>
+      <h1>gRPC client - OAuth2 client credentials grant type</h1>
 
       <p>
         A client, which is secured with OAuth2 client credentials grant type can

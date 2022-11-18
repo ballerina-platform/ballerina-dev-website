@@ -67,7 +67,7 @@ export default function GrpcClientSelfSignedJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Self-signed JWT auth client</h1>
+      <h1>gRPC client - Self signed JWT auth</h1>
 
       <p>
         A client, which is secured with self-signed JWT can be used to connect

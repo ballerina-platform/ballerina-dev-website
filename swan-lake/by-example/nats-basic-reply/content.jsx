@@ -51,7 +51,7 @@ export default function NatsBasicReply() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Request/Reply</h1>
+      <h1>NATS Service - Reply</h1>
 
       <p>
         The NATS client is used either to produce a message to a subject or
@@ -258,10 +258,7 @@ export default function NatsBasicReply() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Basic Authentication"
-            href="/learn/by-example/nats-service-basic-auth"
-          >
+          <Link title="Publish" href="/learn/by-example/nats-basic-pub">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -270,7 +267,7 @@ export default function NatsBasicReply() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic Authentication
+                  Publish
                 </span>
               </div>
               <svg

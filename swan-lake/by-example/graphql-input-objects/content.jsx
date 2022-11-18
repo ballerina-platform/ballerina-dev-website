@@ -14,6 +14,18 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
+// Define the \`NewPost\` record type to use as an input object.
+type NewPost record {|
+    string author;
+    string content;
+|};
+
+// Define the \`Post\` record type to use as an output object.
+type Post record {|
+    *NewPost;
+    int id;
+|};
+
 service /graphql on new graphql:Listener(4000) {
 
     // Define an in-memory array to store the Posts
@@ -35,18 +47,6 @@ service /graphql on new graphql:Listener(4000) {
         return self.posts;
     }
 }
-
-// Define the \`NewPost\` record type to use as an input object.
-public type NewPost record {|
-    string author;
-    string content;
-|};
-
-// Define the \`Post\` record type to use as an output object.
-public type Post record {|
-    *NewPost;
-    int id;
-|};
 `,
   `mutation {
     addPost(newPost: { author: "Sam", content: "Hello" }) {
@@ -345,6 +345,13 @@ export default function GraphqlInputObjects() {
         To send the document, use the following cURL command in a separate
         terminal.
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

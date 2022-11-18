@@ -1,5 +1,5 @@
 {
-  "title": "Client acknowledgements",
+  "title": "Acknowledgements",
   "description": "BBE on manually acknowledging the messages consumed from a RabbitMQ queue using Ballerina.",
   "keywords": [
     "ballerina",

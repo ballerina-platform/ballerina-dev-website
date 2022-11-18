@@ -94,7 +94,7 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Basic Auth LDAP user store</h1>
+      <h1>Basic Auth LDAP user store service</h1>
 
       <p>
         A WebSocket service can be secured with Basic Auth and by enforcing

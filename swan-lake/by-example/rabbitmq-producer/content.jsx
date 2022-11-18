@@ -53,8 +53,8 @@ export default function RabbitmqProducer() {
       <h1>Producer</h1>
 
       <p>
-        The messages are sent to two different queues, to one queue using the
-        same channel and to the other using two different channels.
+        Producing in RabbitMQ means nothing more than sending. In this example,
+        the producer is sending a single message to the queue MyQueue.
       </p>
 
       <p>
@@ -249,7 +249,10 @@ export default function RabbitmqProducer() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Consumer" href="/learn/by-example/rabbitmq-consumer">
+          <Link
+            title="Consumer"
+            href="/learn/by-example/rabbitmq-sync-consumer"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

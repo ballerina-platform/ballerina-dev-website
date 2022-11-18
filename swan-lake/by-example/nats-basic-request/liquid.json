@@ -1,5 +1,5 @@
 {
-  "title": "Request/reply",
+  "title": "Request",
   "description": "BBE on producing and consuming a message from a subject in the NATS basic server using Ballerina.",
   "keywords": [
     "ballerina",
@@ -11,10 +11,10 @@
     "request",
     "reply"
   ],
-  "permalink": "/learn/by-example/nats-basic-request-reply",
-  "active": "nats-basic-request-reply",
+  "permalink": "/learn/by-example/nats-basic-request",
+  "active": "nats-basic-request",
   "redirect_from": [
-    "/swan-lake/learn/by-example/nats-basic-request-reply",
-    "/swan-lake/learn/by-example/nats-basic-request-reply.html"
+    "/swan-lake/learn/by-example/nats-basic-request",
+    "/swan-lake/learn/by-example/nats-basic-request.html"
   ]
 }

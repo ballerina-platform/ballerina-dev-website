@@ -1003,20 +1003,38 @@ sublinks:
           - title: OAuth2 JWT Bearer grant type
             id: 9
             url: grpc-client-oauth2-jwt-bearer-grant-type
-      - title: NATS
+      - title: NATS Client
         id: 22
         sublinks:
-          - title: Publish/subscribe
+          - title: Publish
             id: 1
-            url: nats-basic-pub-sub
-          - title: Request/reply
+            url: nats-basic-pub
+          - title: Request
             id: 2
-            url: nats-basic-request-reply
-          - title: Secured connection
+            url: nats-basic-request
+          - title: Basic Authentication
             id: 3
-            url: nats-basic-secure-connection
-      - title: STAN
+            url: nats-client-basic-auth
+          - title: SSL/TLS
+            id: 4
+            url: nats-client-secure-connection
+      - title: NATS Service
         id: 23
+        sublinks:
+          - title: Subscribe
+            id: 1
+            url: nats-basic-sub
+          - title: Reply
+            id: 2
+            url: nats-basic-reply
+          - title: Basic Authentication
+            id: 3
+            url: nats-service-basic-auth
+          - title: SSL/TLS
+            id: 4
+            url: nats-service-secure-connection
+      - title: STAN
+        id: 24
         sublinks:
           - title: Publish/subscribe
             id: 1
@@ -1034,7 +1052,7 @@ sublinks:
             id: 5
             url: nats-streaming-secure-connection
       - title: Kafka
-        id: 24
+        id: 25
         sublinks:
           - title: Producer
             id: 1
@@ -1057,29 +1075,44 @@ sublinks:
           - title: SASL authentication - producer
             id: 7
             url: kafka-authentication-sasl-plain-producer
-      - title: RabbitMQ
-        id: 25
+      - title: RabbitMQ Client
+        id: 26
         sublinks:
           - title: Producer
             id: 1
             url: rabbitmq-producer
           - title: Consumer
             id: 2
-            url: rabbitmq-consumer
-          - title: Client acknowledgements
-            id: 3
-            url: rabbitmq-consumer-with-client-acknowledgement
+            url: rabbitmq-sync-consumer
           - title: Transactional producer
-            id: 4
+            id: 3
             url: rabbitmq-transaction-producer
-          - title: Transactional consumer
+          - title: Basic authentication
+            id: 4
+            url: rabbitmq-client-basic-auth
+          - title: SSL/TLS
             id: 5
+            url: rabbitmq-client-secure-connection
+      - title: RabbitMQ Service
+        id: 27
+        sublinks:
+          - title: Consumer
+            id: 1
+            url: rabbitmq-consumer
+          - title: Acknowledgements
+            id: 2
+            url: rabbitmq-consumer-with-client-acknowledgement
+          - title: Transactional consumer
+            id: 3
             url: rabbitmq-transaction-consumer
-          - title: Secured connection
-            id: 6
-            url: rabbitmq-secure-connection
+          - title: Basic authentication
+            id: 4
+            url: rabbitmq-service-basic-auth
+          - title: SSL/TLS
+            id: 5
+            url: rabbitmq-service-secure-connection
       - title: TCP
-        id: 26
+        id: 28
         sublinks:
           - title: Service
             id: 1
@@ -1091,7 +1124,7 @@ sublinks:
             id: 3
             url: tcp-transport-security
       - title: UDP
-        id: 27
+        id: 29
         sublinks:
           - title: Service
             id: 1
@@ -1103,7 +1136,7 @@ sublinks:
             id: 3
             url: udp-connect-client
       - title: Email client
-        id: 28
+        id: 30
         sublinks:
           - title: Send email
             id: 1
@@ -1112,31 +1145,49 @@ sublinks:
             id: 2
             url: receive-email-using-client
       - title: Email service
-        id: 29
+        id: 31
         sublinks:
           - title: Receive email
             id: 1
             url: receive-email-using-service
-      - title: FTP
-        id: 30
-        sublinks:
-          - title: Client
-            id: 1
-            url: ftp-client
-          - title: Listener
-            id: 2
-            url: ftp-listener
-      - title: SFTP
-        id: 31
-        sublinks:
-          - title: Client
-            id: 1
-            url: sftp-client
-          - title: Listener
-            id: 2
-            url: sftp-listener
-      - title: MySQL
+      - title: FTP Service
         id: 32
+        sublinks:
+          - title: Read
+            id: 1
+            url: ftp-service-read
+          - title: Read/Write
+            id: 2
+            url: ftp-service-read-write
+      - title: FTP Client
+        id: 33
+        sublinks:
+          - title: Read
+            id: 1
+            url: ftp-client-read
+          - title: Write
+            id: 2
+            url: ftp-client-write
+      - title: SFTP Service
+        id: 34
+        sublinks:
+          - title: Read
+            id: 1
+            url: sftp-service-read
+          - title: Read/Write
+            id: 2
+            url: sftp-service-read-write
+      - title: SFTP Client
+        id: 35
+        sublinks:
+          - title: Read
+            id: 1
+            url: sftp-client-read
+          - title: Write
+            id: 2
+            url: sftp-client-write
+      - title: MySQL
+        id: 36
         sublinks:
           - title: Simple query
             id: 1
@@ -1160,7 +1211,7 @@ sublinks:
             id: 7
             url: mysql-call-stored-procedures
       - title: JDBC
-        id: 33
+        id: 37
         sublinks:
           - title: Simple query
             id: 1
@@ -1181,7 +1232,7 @@ sublinks:
             id: 6
             url: jdbc-atomic-transaction
       - title: SerDes
-        id: 34
+        id: 38
         sublinks:
           - title: Serialization and Deserialization
             id: 1

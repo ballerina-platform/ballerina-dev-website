@@ -16,26 +16,25 @@ const codeSnippetData = [
 import ballerina/io;
 import ballerina/websocket;
 
-// A WebSocket client can be configured to initiate new connections that are
-// secured via mutual SSL.
-// The \`websocket:ClientSecureSocket\` record provides the SSL-related configurations.
-// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket.
-websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
-    secureSocket = {
-        key: {
-            certFile: "../resource/path/to/public.crt",
-            keyFile: "../resource/path/to/private.key"
-        },
-        cert: "../resource/path/to/public.crt",
-        // \`protocol\` and \`ciphers\` can be optionally configured.
-        protocol: {
-            name: http:TLS
-        },
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-    }
-);
-
 public function main() returns error? {
+    // A WebSocket client can be configured to initiate new connections that are
+    // secured via mutual SSL.
+    // The \`websocket:ClientSecureSocket\` record provides the SSL-related configurations.
+    // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket.
+    websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
+        secureSocket = {
+            key: {
+                certFile: "../resource/path/to/public.crt",
+                keyFile: "../resource/path/to/private.key"
+            },
+            cert: "../resource/path/to/public.crt",
+            // \`protocol\` and \`ciphers\` can be optionally configured.
+            protocol: {
+                name: http:TLS
+            },
+            ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+        }
+    );
     check securedEP->writeMessage("Hello, World!");
     string textMessage = check securedEP->readMessage();
     io:println(textMessage);
@@ -64,7 +63,7 @@ export default function WebsocketClientMutualSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - Mutual SSL</h1>
+      <h1>Mutual SSL client</h1>
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based

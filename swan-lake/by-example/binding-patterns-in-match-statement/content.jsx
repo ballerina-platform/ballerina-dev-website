@@ -115,7 +115,7 @@ export default function BindingPatternsInMatchStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=25e7e01dc51c36a670c7892474f8b6f9&file=binding_patterns_in_match_statement.bal",
+                "https://play.ballerina.io/?gist=651071d819c58b3e3297a552889a19a0&file=binding_patterns_in_match_statement.bal",
                 "_blank"
               );
             }}

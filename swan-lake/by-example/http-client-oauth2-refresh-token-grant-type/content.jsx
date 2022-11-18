@@ -15,29 +15,28 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the \`http:OAuth2RefreshTokenGrantConfig\` for the \`auth\` configuration of the client.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2RefreshTokenGrantConfig.
-http:Client securedEP = check new("https://localhost:9090",
-    auth = {
-        refreshUrl: "https://localhost:9445/oauth2/token",
-        refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: ["admin"],
-        clientConfig: {
-            secureSocket: {
-                cert: "../resource/path/to/public.crt"
-            }
-        }
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
+    // Defines the HTTP client to call the OAuth2 secured APIs.
+    // The client is enriched with the \`Authorization: Bearer <token>\` header by
+    // passing the \`http:OAuth2RefreshTokenGrantConfig\` for the \`auth\` configuration of the client.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2RefreshTokenGrantConfig.
+    http:Client securedEP = check new("https://localhost:9090",
+        auth = {
+            refreshUrl: "https://localhost:9445/oauth2/token",
+            refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
+            clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+            clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+            scopes: ["admin"],
+            clientConfig: {
+                secureSocket: {
+                    cert: "../resource/path/to/public.crt"
+                }
+            }
+        },
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
     string response = check securedEP->/foo/bar;
     io:println(response);
 }
@@ -65,15 +64,11 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - OAuth2 Refresh Token grant type</h1>
+      <h1>HTTP client - OAuth2 refresh token grant type</h1>
 
       <p>
         A client, which is secured with an OAuth2 refresh token grant type can
-        be used to connect to a secured service.
-      </p>
-
-      <p>
-        The client is enriched with the{" "}
+        be used to connect to a secured service. The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>http:OAuth2RefreshTokenGrantConfig</code> to the <code>auth</code>{" "}
         configuration of the client.
@@ -254,7 +249,7 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 Password grant type"
+            title="OAuth2 Password grant type"
             href="/learn/by-example/http-client-oauth2-password-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -282,7 +277,7 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 Password grant type
+                  OAuth2 Password grant type
                 </span>
               </div>
             </div>
@@ -290,7 +285,7 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 JWT Bearer grant type"
+            title="OAuth2 JWT Bearer grant type"
             href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -301,7 +296,7 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 JWT Bearer grant type
+                  OAuth2 JWT Bearer grant type
                 </span>
               </div>
               <svg

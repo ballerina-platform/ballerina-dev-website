@@ -14,6 +14,18 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
+// Define the custom record types for the returning data.
+public type Person record {|
+    string name;
+    int age;
+    Address address;
+|};
+public type Address record {|
+    string number;
+    string street;
+    string city;
+|};
+
 service /graphql on new graphql:Listener(4000) {
 
     // Ballerina GraphQL resolvers can return \`record\` values. The record will be mapped to an
@@ -30,18 +42,6 @@ service /graphql on new graphql:Listener(4000) {
         };
     }
 }
-
-// Define the custom record types for the returning data.
-public type Person record {|
-    string name;
-    int age;
-    Address address;
-|};
-public type Address record {|
-    string number;
-    string street;
-    string city;
-|};
 `,
   `{
     profile {
@@ -78,7 +78,7 @@ export default function GraphqlReturningRecordValues() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Returning record values</h1>
+      <h1>GraphQL output object - Record</h1>
 
       <p>
         In a Ballerina GraphQL service, a record type can be used to represent
@@ -94,6 +94,16 @@ export default function GraphqlReturningRecordValues() {
         <code>Query</code> type. A GraphQL client can query on this service to
         retrieve specific fields or subfields of the <code>Person</code> object.
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Note:</strong> Although both the record and service types can
+          be used to represent an Object type, using a record type as an Object
+          has limitations. For example, a field represented as a record field
+          can not have an input argument, as opposed to a field represented
+          using a resource method in a service class.
+        </p>
+      </blockquote>
 
       <p>
         For more information on the underlying package, see the{" "}
@@ -345,6 +355,13 @@ export default function GraphqlReturningRecordValues() {
         terminal.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -446,7 +463,7 @@ export default function GraphqlReturningRecordValues() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Return service objects"
+            title="Service as output object"
             href="/learn/by-example/graphql-returning-service-objects"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -457,7 +474,7 @@ export default function GraphqlReturningRecordValues() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Return service objects
+                  Service as output object
                 </span>
               </div>
               <svg

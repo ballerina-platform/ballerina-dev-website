@@ -257,6 +257,13 @@ export default function GraphqlSubscriptions() {
         service.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-graphiql/">GraphiQL</a>.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       

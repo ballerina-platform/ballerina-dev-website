@@ -300,7 +300,7 @@ export default function HttpDataBinding() {
         <Col sm={6}>
           <Link
             title="Service path and resource path"
-            href="/learn/by-example/http-absolute-path-and-path"
+            href="/learn/by-example/http-service-path-and-resource-path"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg

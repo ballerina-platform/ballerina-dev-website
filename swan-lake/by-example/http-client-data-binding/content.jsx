@@ -22,7 +22,7 @@ type Album readonly & record {|
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
-    final http:Client httpClient = check new("http://localhost:9090");
+    http:Client httpClient = check new("http://localhost:9090");
 
     // Binding the payload to a \`record\` array type.
     // The contextually expected type is inferred from the LHS variable type.
@@ -53,7 +53,7 @@ export default function HttpClientDataBinding() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client data binding</h1>
+      <h1>HTTP client - Data binding</h1>
 
       <p>
         Through client data binding, the response payload can be accessed
@@ -87,7 +87,7 @@ export default function HttpClientDataBinding() {
 
       <p>
         Before executing following sample, run the service in{" "}
-        <code>Basic REST API</code> example.
+        <code>Basic REST service</code> example.
       </p>
 
       <Row
@@ -101,7 +101,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e3782ea70bf64968cdb3f7ec5aedb208&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=068a476ab2bfdc7911325c7688b81cfd&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}
@@ -298,10 +298,7 @@ export default function HttpClientDataBinding() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Service - SSL/TLS"
-            href="/learn/by-example/http-service-ssl-tls"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/http-service-ssl-tls">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -310,7 +307,7 @@ export default function HttpClientDataBinding() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
               <svg

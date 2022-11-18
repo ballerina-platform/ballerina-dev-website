@@ -78,7 +78,7 @@ export default function Nil() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b9a5fae1494984f4447657f312508392&file=nil.bal",
+                "https://play.ballerina.io/?gist=5aee4b3bb56cf5c80ce8dcefa0ae9332&file=nil.bal",
                 "_blank"
               );
             }}

@@ -194,8 +194,8 @@ To complete this part of the guide, you need:
 
    listener http:Listener helloEP = new(9090);
 
-   service /helloWorld on helloEP {
-       resource function get sayHello() returns string {   
+   service / on helloEP {
+       resource function get greeting() returns string {   
               return "Hello, Docker!";   
        }
    }

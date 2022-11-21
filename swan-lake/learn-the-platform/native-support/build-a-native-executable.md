@@ -227,7 +227,7 @@ To complete this part of the guide, you need:
     ---> Running in 14262200d0d3
    Removing intermediate container 14262200d0d3
     ---> 750b429d3412
-   Step 3/11 : COPY hello_world.jar .
+   Step 3/11 : COPY hello_docker.jar .
     ---> 75c2e6ab58bd
    Step 4/11 : RUN sh build-native.sh hello_docker.jar hello_docker
     ---> Running in ba1e3c6403eb
@@ -306,9 +306,9 @@ To complete this part of the guide, you need:
     ---> Running in eaf7546d5caa
    Removing intermediate container eaf7546d5caa
     ---> a3731c04eb7e
-   Step 10/11 : COPY --from=build /app/build/hello_world .
+   Step 10/11 : COPY --from=build /app/build/hello_docker .
     ---> bf5d0ff0d524
-   Step 11/11 : CMD ["./hello_world"]
+   Step 11/11 : CMD ["./hello_docker"]
     ---> Running in 6f65341da08a
    Removing intermediate container 6f65341da08a
     ---> 47c7a10a79ef
@@ -337,9 +337,9 @@ To complete this part of the guide, you need:
 
    WORKDIR /app/build
 
-   COPY hello_world.jar .
+   COPY hello_docker.jar .
 
-   RUN sh build-native.sh hello_world.jar hello_world
+   RUN sh build-native.sh hello_docker.jar hello_docker
 
    FROM debian:11-slim
 
@@ -349,9 +349,9 @@ To complete this part of the guide, you need:
    EXPOSE  8080
    USER ballerina
 
-   COPY --from=build /app/build/hello_world .
+   COPY --from=build /app/build/hello_docker .
 
-   CMD ["./hello_world"]
+   CMD ["./hello_docker"]
    ```
 
 4. Execute the docker image :

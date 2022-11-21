@@ -71,7 +71,7 @@ export default function TcpListener() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>TCP service</h1>
+      <h1>TCP service - Send/Receive bytes</h1>
 
       <p>
         The TCP Listener is used to expose a TCP service over the TCP protocol.
@@ -274,7 +274,7 @@ export default function TcpListener() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/tcp-client">
+          <Link title="Send/Receive bytes" href="/learn/by-example/tcp-client">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -283,7 +283,7 @@ export default function TcpListener() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Send/Receive bytes
                 </span>
               </div>
               <svg

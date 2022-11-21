@@ -69,7 +69,7 @@ export default function KafkaClientProducerSasl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka producer - SASL authentication</h1>
+      <h1>Kafka client - Producer SASL authentication</h1>
 
       <p>
         This shows how the SASL/PLAIN authentication is done in the{" "}

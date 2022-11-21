@@ -14,11 +14,11 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// The \`graphql:Service\` exposes a GraphQL service on the provided port.
+// Service attached to a GraphQL listener exposes a GraphQL service on the provided port.
 service /graphql on new graphql:Listener(4000) {
 
-    // A resource function with \`get\` accessor inside a \`graphql:Service\` represents a resolver.
-    // The resource function will be mapped to a field names \`greeting\` in the \`Query\` type.
+    // A resource function with \`get\` accessor inside a \`graphql:Service\` represents a field in the
+    // root \`Query\` type.
     resource function get greeting() returns string {
         return "Hello, World";
     }
@@ -54,7 +54,7 @@ export default function GraphqlHelloWorld() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Hello world</h1>
+      <h1>GraphQL service - Hello world</h1>
 
       <p>
         A GraphQL service in Ballerina represents a GraphQL schema. Each

@@ -62,23 +62,21 @@ export default function HttpPathParam() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Path parameter</h1>
+      <h1>REST service - Path parameter</h1>
 
       <p>
         The <code>http</code> module provides first class support for specifying{" "}
         <code>Path parameters</code> in the resource path along with the type.
-        The supported types are string, int, float, boolean, and decimal (e.g.,
-        path/[string foo]).
+        The supported types are <code>string</code>, <code>int</code>,{" "}
+        <code>float</code>, <code>boolean</code>, and <code>decimal</code>{" "}
+        (e.g., path/[string foo]).
       </p>
 
       <p>
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#233-path-parameter">
           specification
@@ -304,8 +302,8 @@ export default function HttpPathParam() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service data binding"
-            href="/learn/by-example/http-data-binding"
+            title="Payload data binding"
+            href="/learn/by-example/http-service-data-binding"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -332,7 +330,7 @@ export default function HttpPathParam() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service data binding
+                  Payload data binding
                 </span>
               </div>
             </div>

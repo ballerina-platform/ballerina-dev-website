@@ -67,7 +67,7 @@ export default function UdpClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>UDP connectionless client</h1>
+      <h1>UDP client - Send/Receive datagram</h1>
 
       <p>
         The UDP Client is used to send data to a specific remote host using the
@@ -237,7 +237,10 @@ export default function UdpClient() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/udp-listener">
+          <Link
+            title="Send/Receive datagram"
+            href="/learn/by-example/udp-listener"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -263,7 +266,7 @@ export default function UdpClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  Send/Receive datagram
                 </span>
               </div>
             </div>
@@ -271,7 +274,7 @@ export default function UdpClient() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Connection-oriented client"
+            title="Send/Receive datagram with connection"
             href="/learn/by-example/udp-connect-client"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -282,7 +285,7 @@ export default function UdpClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Connection-oriented client
+                  Send/Receive datagram with connection
                 </span>
               </div>
               <svg

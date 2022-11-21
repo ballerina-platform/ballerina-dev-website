@@ -78,7 +78,7 @@ export default function GraphqlReturningRecordValues() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL output object - Record</h1>
+      <h1>GraphQL service - Record as output object</h1>
 
       <p>
         In a Ballerina GraphQL service, a record type can be used to represent

@@ -1,5 +1,5 @@
 {
-  "title": "JWT Auth",
+  "title": "JWT authentication",
   "description": "BBE on how to secure gRPC service with JWT Auth in Ballerina.",
   "keywords": [
     "ballerina",

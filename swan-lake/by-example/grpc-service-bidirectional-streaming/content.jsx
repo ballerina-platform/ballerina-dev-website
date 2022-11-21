@@ -517,7 +517,7 @@ export default function GrpcServiceBidirectionalStreaming() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client streaming RPC"
+            title="Client-side streaming RPC"
             href="/learn/by-example/grpc-service-client-streaming"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -545,7 +545,7 @@ export default function GrpcServiceBidirectionalStreaming() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client streaming RPC
+                  Client-side streaming RPC
                 </span>
               </div>
             </div>

@@ -144,7 +144,7 @@ export default function GraphqlContext() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Context</h1>
+      <h1>GraphQL service - Context</h1>
 
       <p>
         The <code>graphql:Context</code> object can be used to pass meta

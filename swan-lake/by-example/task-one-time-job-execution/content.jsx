@@ -98,7 +98,7 @@ export default function TaskOneTimeJobExecution() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=97a4d417b87f7208b6d9a86f87358be4&file=task_one_time_job_execution.bal",
+                "https://play.ballerina.io/?gist=6b862fb7563e77d83779a5efbf50f6d2&file=task_one_time_job_execution.bal",
                 "_blank"
               );
             }}

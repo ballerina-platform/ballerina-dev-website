@@ -296,7 +296,7 @@ export default function GrpcClientMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic Auth"
+            title="Basic authentication"
             href="/learn/by-example/grpc-client-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -307,7 +307,7 @@ export default function GrpcClientMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic Auth
+                  Basic authentication
                 </span>
               </div>
               <svg

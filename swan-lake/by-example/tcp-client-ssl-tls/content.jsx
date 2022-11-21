@@ -270,7 +270,10 @@ export default function TcpClientSslTls() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/udp-listener">
+          <Link
+            title="Send/Receive datagram"
+            href="/learn/by-example/udp-listener"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -279,7 +282,7 @@ export default function TcpClientSslTls() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  Send/Receive datagram
                 </span>
               </div>
               <svg

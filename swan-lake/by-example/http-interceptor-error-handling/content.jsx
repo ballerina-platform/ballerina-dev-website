@@ -104,7 +104,7 @@ export default function HttpInterceptorErrorHandling() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Interceptor Error Handling</h1>
+      <h1>HTTP service - Interceptor error handling</h1>
 
       <p>
         Errors that occurred in the request-response pipeline can be intercepted
@@ -121,10 +121,7 @@ export default function HttpInterceptorErrorHandling() {
         For more information, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#82-error-handling">
           specification

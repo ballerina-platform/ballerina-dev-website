@@ -267,7 +267,7 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="OAuth2 Password grant type"
+            title="OAuth2 password grant type"
             href="/learn/by-example/grpc-client-oauth2-password-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -295,7 +295,7 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 Password grant type
+                  OAuth2 password grant type
                 </span>
               </div>
             </div>
@@ -303,7 +303,7 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="OAuth2 JWT Bearer grant type"
+            title="OAuth2 JWT bearer grant type"
             href="/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -314,7 +314,7 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 JWT Bearer grant type
+                  OAuth2 JWT bearer grant type
                 </span>
               </div>
               <svg

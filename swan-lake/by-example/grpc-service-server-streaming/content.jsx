@@ -67,7 +67,7 @@ export default function GrpcServiceServerStreaming() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>gRPC service - Server streaming RPC</h1>
+      <h1>gRPC service - Server-side streaming RPC</h1>
 
       <p>
         The gRPC Server Connector is used to expose gRPC services over HTTP/2.
@@ -511,7 +511,7 @@ export default function GrpcServiceServerStreaming() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client streaming RPC"
+            title="Client-side streaming RPC"
             href="/learn/by-example/grpc-service-client-streaming"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -522,7 +522,7 @@ export default function GrpcServiceServerStreaming() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client streaming RPC
+                  Client-side streaming RPC
                 </span>
               </div>
               <svg

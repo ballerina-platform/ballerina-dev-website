@@ -68,7 +68,7 @@ export default function KafkaClientProducerSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka producer - SSL/TLS</h1>
+      <h1>Kafka client - Producer SSL/TLS</h1>
 
       <p>
         This shows how the SSL encryption is done in the{" "}

@@ -74,7 +74,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket service - Basic authentication - File user store</h1>
+      <h1>WebSocket service - Basic authentication file user store</h1>
 
       <p>
         A WebSocket service can be secured with Basic authentication and
@@ -330,7 +330,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic authentication - LDAP user store"
+            title="Basic authentication LDAP user store"
             href="/learn/by-example/websocket-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -341,7 +341,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication - LDAP user store
+                  Basic authentication LDAP user store
                 </span>
               </div>
               <svg

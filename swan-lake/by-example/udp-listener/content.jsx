@@ -55,7 +55,7 @@ export default function UdpListener() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>UDP service</h1>
+      <h1>UDP service - Send/Receive datagram</h1>
 
       <p>
         The UDP Listener is used to expose a UDP service over the UDP protocol.
@@ -258,7 +258,7 @@ export default function UdpListener() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Connectionless client"
+            title="Send/Receive datagram"
             href="/learn/by-example/udp-client"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -269,7 +269,7 @@ export default function UdpListener() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Connectionless client
+                  Send/Receive datagram
                 </span>
               </div>
               <svg

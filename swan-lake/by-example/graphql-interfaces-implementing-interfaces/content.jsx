@@ -113,7 +113,7 @@ export default function GraphqlInterfacesImplementingInterfaces() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Interfaces implementing interfaces</h1>
+      <h1>GraphQL service - Interfaces implementing interfaces</h1>
 
       <p>
         A GraphQL schema can have interfaces that can be implemented using other

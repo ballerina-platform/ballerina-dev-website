@@ -79,7 +79,7 @@ export default function HttpResponseInterceptors() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Response Interceptors</h1>
+      <h1>HTTP service - Response interceptors</h1>
 
       <p>
         In addition to <code>RequestInterceptors</code>, a{" "}

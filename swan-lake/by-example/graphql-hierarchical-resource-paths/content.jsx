@@ -14,12 +14,12 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// This service has multiple resources with hierarchical resource paths. The root operation has a
-// field named \`profile\` and it is the first segment of the hierarchical path in this service. The
-// type of this field will also be \`profile\`. (For hierarchical paths, the field name and the type
-// name will be the same). The \`profile\` type has two fields: \`quote\` and \`name\`. The type of the
-// \`quote\` field is \`String!\` and the type of the \`name\` field is \`name!\`. The \`name\` type has two
-// fields:\`first\` and the \`last\`. Both of the fields are of type \`String!\`.
+// This service has multiple resources with hierarchical resource paths. Since all the resource
+// paths starts with \`profile\`, the root \`Query\` operation will have a single field named \`profile\`.
+// The type of this field will also be \`profile\`. (For hierarchical paths, the field name and the
+// type name will be the same). The \`profile\` type has two fields: \`quote\` and \`name\`. The type of
+// the \`quote\` field is \`String!\` and the type of the \`name\` field is \`name!\`. The \`name\` type has
+// two fields: \`first\` and the \`last\`. Both of the fields are of type \`String!\`.
 service /graphql on new graphql:Listener(4000) {
 
     // This resource represents the \`quote\` field under the \`profile\` object.
@@ -75,7 +75,7 @@ export default function GraphqlHierarchicalResourcePaths() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Hierarchical resource paths</h1>
+      <h1>GraphQL service - Hierarchical resource paths</h1>
 
       <p>
         The resources in Ballerina GraphQL services can have hierarchical
@@ -449,7 +449,10 @@ export default function GraphqlHierarchicalResourcePaths() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/graphql-client">
+          <Link
+            title="Query GraphQL endpoint"
+            href="/learn/by-example/graphql-client-query-endpoint"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -458,7 +461,7 @@ export default function GraphqlHierarchicalResourcePaths() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Query GraphQL endpoint
                 </span>
               </div>
               <svg

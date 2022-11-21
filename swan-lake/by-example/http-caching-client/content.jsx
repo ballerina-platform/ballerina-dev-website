@@ -97,7 +97,7 @@ export default function HttpCachingClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Caching client</h1>
+      <h1>HTTP client - Caching</h1>
 
       <p>
         HTTP caching is enabled by default in HTTP client endpoints. Users can
@@ -109,10 +109,7 @@ export default function HttpCachingClient() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#2412-caching">specification</a>
         .
@@ -207,12 +204,8 @@ export default function HttpCachingClient() {
 
       <p>
         (The two services have to be run separately to observe the following
-        output.
-      </p>
-
-      <p>
-        For clarity, only the relevant parts of the HTTP trace logs have been
-        included here.)
+        output. For clarity, only the relevant parts of the HTTP trace logs have
+        been included here.)
       </p>
 
       <Row

@@ -84,7 +84,7 @@ export default function HttpCircuitBreaker() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Circuit breaker</h1>
+      <h1>HTTP client - Circuit breaker</h1>
 
       <p>
         The circuit breaker is used to gracefully handle errors which could
@@ -190,7 +190,12 @@ export default function HttpCircuitBreaker() {
 
       <p>Run the program by executing the following command.</p>
 
-      <p>Before executing following sample, run the backend service.</p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a service.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

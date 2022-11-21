@@ -127,7 +127,7 @@ export default function GraphqlMutations() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Mutations</h1>
+      <h1>GraphQL service - Mutations</h1>
 
       <p>
         A remote function inside a GraphQL service represents a field in the

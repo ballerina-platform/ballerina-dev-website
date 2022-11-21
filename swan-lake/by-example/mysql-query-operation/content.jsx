@@ -468,7 +468,7 @@ export default function MysqlQueryOperation() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Write" href="/learn/by-example/sftp-client-write">
+          <Link title="Write file" href="/learn/by-example/sftp-client-write">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -494,7 +494,7 @@ export default function MysqlQueryOperation() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Write
+                  Write file
                 </span>
               </div>
             </div>

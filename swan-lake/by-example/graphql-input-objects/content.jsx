@@ -31,10 +31,9 @@ service /graphql on new graphql:Listener(4000) {
     // Define an in-memory array to store the Posts
     private final Post[] posts = [];
 
-    // The input parameters of a resolver function become input arguments of the corresponding
-    // GraphQL field. In this GraphQL service, the \`addPost\` remote method has an input argument
-    // \`newPost\` of type \`NewPost\`. This \`NewPost\` record type will be mapped to an \`INPUT_OBJECT\`
-    // type in the generated GraphQL schema.
+    // This remote method (\`addPost\`) has an input argument \`newPost\` of type \`NewPost\`. This
+    // \`NewPost\` record type will be mapped to an \`INPUT_OBJECT\` type in the generated GraphQL
+    // schema.
     remote function addPost(NewPost newPost) returns Post {
         int id = self.posts.length();
         Post post = {id: id, ...newPost};
@@ -80,11 +79,17 @@ export default function GraphqlInputObjects() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Input objects</h1>
+      <h1>GraphQL service - Input objects</h1>
 
       <p>
-        GraphQL resources can have record types as input parameters, which will
-        be mapped to <code>INPUT_OBJECT</code>s in the generated GraphQL schema.
+        GraphQL resolvers can have record types as input parameters, which will
+        be mapped to an <code>INPUT_OBJECT</code>s in the generated GraphQL
+        schema. The input parameters of the resolver function will be added as
+        input arguments of the corresponding field in the generated GraphQL
+        schema.
+      </p>
+
+      <p>
         According to the GraphQL specification, an input type cannot be used as
         an output type. Therefore, using the same type as an input and an output
         will result is a compilation error.

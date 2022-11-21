@@ -249,7 +249,7 @@ export default function HttpClientOauth2JwtBearerGrantType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="OAuth2 Refresh Token grant type"
+            title="OAuth2 refresh token grant type"
             href="/learn/by-example/http-client-oauth2-refresh-token-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -277,7 +277,7 @@ export default function HttpClientOauth2JwtBearerGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 Refresh Token grant type
+                  OAuth2 refresh token grant type
                 </span>
               </div>
             </div>

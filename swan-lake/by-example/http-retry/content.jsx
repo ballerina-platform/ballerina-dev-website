@@ -64,7 +64,7 @@ export default function HttpRetry() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Retry</h1>
+      <h1>HTTP client - Retry</h1>
 
       <p>
         The HTTP retry client tries sending over the same request to the backend
@@ -167,7 +167,12 @@ export default function HttpRetry() {
 
       <p>Run the program by executing the following command.</p>
 
-      <p>Before executing following sample, run the backend service.</p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a service.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

@@ -83,7 +83,7 @@ export default function Maps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8f45f156f31900dd028edbfba9abd0dd&file=maps.bal",
+                "https://play.ballerina.io/?gist=ed7e9ed982af7b01b293ab1e51644002&file=maps.bal",
                 "_blank"
               );
             }}

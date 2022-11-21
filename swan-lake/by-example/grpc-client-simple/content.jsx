@@ -467,8 +467,8 @@ export default function GrpcClientSimple() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send/Receive headers"
-            href="/learn/by-example/grpc-service-headers"
+            title="Server reflection"
+            href="/learn/by-example/grpc-server-reflection"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -495,7 +495,7 @@ export default function GrpcClientSimple() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive headers
+                  Server reflection
                 </span>
               </div>
             </div>
@@ -503,7 +503,7 @@ export default function GrpcClientSimple() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Server streaming RPC"
+            title="Server-side streaming RPC"
             href="/learn/by-example/grpc-client-server-streaming"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -514,7 +514,7 @@ export default function GrpcClientSimple() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Server streaming RPC
+                  Server-side streaming RPC
                 </span>
               </div>
               <svg

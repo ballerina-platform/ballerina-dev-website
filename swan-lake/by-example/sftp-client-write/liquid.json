@@ -1,5 +1,5 @@
 {
-  "title": "Write",
+  "title": "Write file",
   "description": "This is a BBE on getting and putting file content on a remote SFTP server.",
   "keywords": [
     "ballerina",

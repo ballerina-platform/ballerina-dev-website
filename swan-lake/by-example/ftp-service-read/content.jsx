@@ -74,7 +74,7 @@ export default function FtpServiceRead() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service Read</h1>
+      <h1>FTP service - Read file</h1>
 
       <p>
         The FTP listener is used to receive file/directory changes that occur in
@@ -281,7 +281,7 @@ export default function FtpServiceRead() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Read/Write"
+            title="Read/Write file"
             href="/learn/by-example/ftp-service-read-write"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -292,7 +292,7 @@ export default function FtpServiceRead() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/Write
+                  Read/Write file
                 </span>
               </div>
               <svg

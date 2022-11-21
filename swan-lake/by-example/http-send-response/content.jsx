@@ -58,7 +58,7 @@ export default function HttpSendResponse() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Typed resource responses</h1>
+      <h1>REST service - Send response</h1>
 
       <p>
         The resource method can return <code>anydata</code> type, an{" "}
@@ -75,10 +75,7 @@ export default function HttpSendResponse() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#235-return-types">
           specification

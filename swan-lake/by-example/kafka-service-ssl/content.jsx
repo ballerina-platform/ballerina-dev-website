@@ -233,8 +233,8 @@ export default function KafkaServiceSsl() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Consumer - Poll ConsumerRecord"
-            href="/learn/by-example/kafka-client-consumer-poll-consumer-record"
+            title="Consumer record data binding"
+            href="/learn/by-example/kafka-client-consumer-record-data-binding"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -261,7 +261,7 @@ export default function KafkaServiceSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consumer - Poll ConsumerRecord
+                  Consumer record data binding
                 </span>
               </div>
             </div>

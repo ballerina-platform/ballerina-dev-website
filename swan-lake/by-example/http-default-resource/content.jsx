@@ -50,7 +50,7 @@ export default function HttpDefaultResource() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Default resource</h1>
+      <h1>REST service - Default resource</h1>
 
       <p>
         Ballerina provides rest params in the resource path and the default
@@ -284,7 +284,7 @@ export default function HttpDefaultResource() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="OAuth2 JWT Bearer grant type"
+            title="OAuth2 JWT bearer grant type"
             href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -312,7 +312,7 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 JWT Bearer grant type
+                  OAuth2 JWT bearer grant type
                 </span>
               </div>
             </div>

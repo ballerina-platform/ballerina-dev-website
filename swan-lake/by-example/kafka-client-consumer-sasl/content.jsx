@@ -68,7 +68,7 @@ export default function KafkaClientConsumerSasl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka consumer - SASL authentication</h1>
+      <h1>Kafka client - Consumer SASL authentication</h1>
 
       <p>
         This shows how the SASL/PLAIN authentication is done in the{" "}

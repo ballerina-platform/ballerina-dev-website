@@ -16,7 +16,6 @@ const codeSnippetData = [
 
 service /graphql on new graphql:Listener(4000) {
 
-    // The input parameters of a resolver become input values of the corresponding GraphQL field.
     // In the generated schema of this GraphQL service, the \`greeting\` field of the \`Query\` type has
     // an input value \`name\`, which is of the type \`String!\`.
     resource function get greeting(string name) returns string {
@@ -54,7 +53,7 @@ export default function GraphqlInputTypes() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Input types</h1>
+      <h1>GraphQL service - Input types</h1>
 
       <p>
         GraphQL resources can have input parameters, which will be mapped to

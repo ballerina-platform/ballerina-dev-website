@@ -1,5 +1,5 @@
 {
-  "title": "Bearer Token Auth",
+  "title": "Bearer token authentication",
   "description": "BBE on how to secure gRPC client with Bearer token auth in Ballerina.",
   "keywords": [
     "ballerina",

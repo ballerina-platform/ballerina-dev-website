@@ -589,9 +589,9 @@ sublinks:
           - title: Service path and resource path
             id: 2
             url: http-service-path-and-resource-path
-          - title: Service data binding
+          - title: Payload data binding
             id: 3
-            url: http-data-binding
+            url: http-service-data-binding
           - title: Path parameter
             id: 4
             url: http-path-param
@@ -607,13 +607,13 @@ sublinks:
           - title: Send different status codes
             id: 8
             url: http-send-different-status-codes
-      - title: REST client
+      - title: HTTP client
         id: 2
         sublinks:
-          - title: Client
+          - title: Send request/Receive response
             id: 1
             url: http-client-endpoint
-          - title: Client data binding
+          - title: Payload binding
             id: 2
             url: http-client-data-binding
       - title: REST service security
@@ -625,15 +625,15 @@ sublinks:
           - title: Mutual SSL
             id: 2
             url: http-service-mutual-ssl
-          - title: Basic Auth file user store
+          - title: Basic authentication file user store
             id: 3
-            url: http-service-basic-auth-file-user-store
-          - title: Basic Auth LDAP user store
+            url: http-service-basic-authentication-file-user-store
+          - title: Basic authentication LDAP user store
             id: 4
-            url: http-service-basic-auth-ldap-user-store
-          - title: JWT Auth
+            url: http-service-basic-authentication-ldap-user-store
+          - title: JWT authentication
             id: 5
-            url: http-service-jwt-auth
+            url: http-service-jwt-authentication
           - title: OAuth2
             id: 6
             url: http-service-oauth2
@@ -646,25 +646,25 @@ sublinks:
           - title: Mutual SSL
             id: 2
             url: http-client-mutual-ssl
-          - title: Basic Auth
+          - title: Basic authentication
             id: 3
-            url: http-client-basic-auth
-          - title: Bearer Token Auth
+            url: http-client-basic-authentication
+          - title: Bearer token authentication
             id: 4
-            url: http-client-bearer-token-auth
-          - title: Self signed JWT Auth
+            url: http-client-bearer-token-authentication
+          - title: Self signed JWT authentication
             id: 5
-            url: http-client-self-signed-jwt-auth
-          - title: OAuth2 Client Credentials grant type
+            url: http-client-self-signed-jwt-authentication
+          - title: OAuth2 client credentials grant type
             id: 6
             url: http-client-oauth2-client-credentials-grant-type
-          - title: OAuth2 Password grant type
+          - title: OAuth2 password grant type
             id: 7
             url: http-client-oauth2-password-grant-type
-          - title: OAuth2 Refresh Token grant type
+          - title: OAuth2 refresh token grant type
             id: 8
             url: http-client-oauth2-refresh-token-grant-type
-          - title: OAuth2 JWT Bearer grant type
+          - title: OAuth2 JWT bearer grant type
             id: 9
             url: http-client-oauth2-jwt-bearer-grant-type
       - title: HTTP advanced
@@ -718,7 +718,7 @@ sublinks:
           - title: Passthrough
             id: 16
             url: http-passthrough
-      - title: REST service interceptors
+      - title: HTTP service interceptors
         id: 6
         sublinks:
           - title: Request Interceptors
@@ -796,9 +796,9 @@ sublinks:
       - title: GraphQL client
         id: 9
         sublinks:
-          - title: Client
+          - title: Query GraphQL endpoint
             id: 1
-            url: graphql-client
+            url: graphql-client-query-endpoint
       - title: GraphQL service security
         id: 10
         sublinks:
@@ -823,16 +823,16 @@ sublinks:
       - title: WebSocket service
         id: 11
         sublinks:
-          - title: Service
+          - title: Send/Receive messages
             id: 1
             url: websocket-basic-sample
       - title: WebSocket client
         id: 12
         sublinks:
-          - title: Client
+          - title: Send/Receive messages
             id: 1
             url: websocket-client
-          - title: Retry
+          - title: Retry on failure
             id: 2
             url: websocket-retry-client
       - title: WebSocket service security
@@ -844,10 +844,10 @@ sublinks:
           - title: Mutual SSL
             id: 2
             url: websocket-service-mutual-ssl
-          - title: Basic authentication - File user store
+          - title: Basic authentication file user store
             id: 3
             url: websocket-service-basic-auth-file-user-store
-          - title: Basic authentication - LDAP user store
+          - title: Basic authentication LDAP user store
             id: 4
             url: websocket-service-basic-auth-ldap-user-store
           - title: JWT authentication
@@ -925,10 +925,10 @@ sublinks:
           - title: Simple RPC
             id: 1
             url: grpc-service-simple
-          - title: Server streaming RPC
+          - title: Server-side streaming RPC
             id: 2
             url: grpc-service-server-streaming
-          - title: Client streaming RPC
+          - title: Client-side streaming RPC
             id: 3
             url: grpc-service-client-streaming
           - title: Bidirectional streaming RPC
@@ -937,16 +937,19 @@ sublinks:
           - title: Send/Receive headers
             id: 5
             url: grpc-service-headers
+          - title: Server reflection
+            id: 6
+            url: grpc-server-reflection
       - title: gRPC client
         id: 19
         sublinks:
           - title: Simple RPC
             id: 1
             url: grpc-client-simple
-          - title: Server streaming RPC
+          - title: Server-side streaming RPC
             id: 2
             url: grpc-client-server-streaming
-          - title: Client streaming RPC
+          - title: Client-side streaming RPC
             id: 3
             url: grpc-client-client-streaming
           - title: Bidirectional streaming RPC
@@ -964,13 +967,13 @@ sublinks:
           - title: Mutual SSL
             id: 2
             url: grpc-service-mutual-ssl
-          - title: Basic Auth file user store
+          - title: Basic authentication file user store
             id: 3
             url: grpc-service-basic-auth-file-user-store
-          - title: Basic Auth LDAP user store
+          - title: Basic authentication LDAP user store
             id: 4
             url: grpc-service-basic-auth-ldap-user-store
-          - title: JWT Auth
+          - title: JWT authentication
             id: 5
             url: grpc-service-jwt-auth
           - title: OAuth2
@@ -985,25 +988,25 @@ sublinks:
           - title: Mutual SSL
             id: 2
             url: grpc-client-mutual-ssl
-          - title: Basic Auth
+          - title: Basic authentication
             id: 3
             url: grpc-client-basic-auth
-          - title: Bearer Token Auth
+          - title: Bearer token authentication
             id: 4
             url: grpc-client-bearer-token-auth
-          - title: Self signed JWT Auth
+          - title: Self signed JWT authentication
             id: 5
             url: grpc-client-self-signed-jwt-auth
-          - title: OAuth2 Client Credentials grant type
+          - title: OAuth2 client credentials grant type
             id: 6
             url: grpc-client-oauth2-client-credentials-grant-type
-          - title: OAuth2 Password grant type
+          - title: OAuth2 password grant type
             id: 7
             url: grpc-client-oauth2-password-grant-type
-          - title: OAuth2 Refresh Token grant type
+          - title: OAuth2 refresh token grant type
             id: 8
             url: grpc-client-oauth2-refresh-token-grant-type
-          - title: OAuth2 JWT Bearer grant type
+          - title: OAuth2 JWT bearer grant type
             id: 9
             url: grpc-client-oauth2-jwt-bearer-grant-type
       - title: NATS service
@@ -1042,20 +1045,26 @@ sublinks:
           - title: Basic authentication
             id: 2
             url: nats-client-basic-auth
-      - title: Kafka client
+      - title: Kafka service
         id: 26
         sublinks:
-          - title: Producer
+          - title: Service
             id: 1
-            url: kafka-client-producer
-          - title: Consumer - Poll Payload
-            id: 2
-            url: kafka-client-consumer-poll-payload
-          - title: Consumer - Poll ConsumerRecord
-            id: 3
-            url: kafka-client-consumer-poll-consumer-record
-      - title: Kafka secured service
+            url: kafka-service
+      - title: Kafka client
         id: 27
+        sublinks:
+          - title: Produce message
+            id: 1
+            url: kafka-client-produce-message
+          - title: Payload data binding
+            id: 2
+            url: kafka-client-payload-data-binding
+          - title: Consumer record data binding
+            id: 3
+            url: kafka-client-consumer-record-data-binding
+      - title: Kafka service security
+        id: 28
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1063,8 +1072,8 @@ sublinks:
           - title: SASL authentication
             id: 2
             url: kafka-service-sasl
-      - title: Kafka secured client
-        id: 28
+      - title: Kafka client security
+        id: 29
         sublinks:
           - title: Producer SSL/TLS
             id: 1
@@ -1079,7 +1088,7 @@ sublinks:
             id: 4
             url: kafka-client-consumer-sasl
       - title: RabbitMQ service
-        id: 29
+        id: 30
         sublinks:
           - title: Consumer
             id: 1
@@ -1091,7 +1100,7 @@ sublinks:
             id: 3
             url: rabbitmq-transaction-consumer
       - title: RabbitMQ client
-        id: 30
+        id: 31
         sublinks:
           - title: Producer
             id: 1
@@ -1103,7 +1112,7 @@ sublinks:
             id: 3
             url: rabbitmq-transaction-producer
       - title: RabbitMQ service security
-        id: 31
+        id: 32
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1112,7 +1121,7 @@ sublinks:
             id: 2
             url: rabbitmq-service-basic-auth
       - title: RabbitMQ client security
-        id: 32
+        id: 33
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1121,52 +1130,52 @@ sublinks:
             id: 2
             url: rabbitmq-client-basic-auth
       - title: TCP service
-        id: 33
+        id: 34
         sublinks:
-          - title: Service
+          - title: Send/Receive bytes
             id: 1
             url: tcp-listener
       - title: TCP client
-        id: 34
+        id: 35
         sublinks:
-          - title: Client
+          - title: Send/Receive bytes
             id: 1
             url: tcp-client
       - title: TCP service security
-        id: 35
+        id: 36
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-service-ssl-tls
       - title: TCP client security
-        id: 36
+        id: 37
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-client-ssl-tls
       - title: UDP service
-        id: 37
+        id: 38
         sublinks:
-          - title: Service
+          - title: Send/Receive datagram
             id: 1
             url: udp-listener
       - title: UDP client
-        id: 38
+        id: 39
         sublinks:
-          - title: Connectionless client
+          - title: Send/Receive datagram
             id: 1
             url: udp-client
-          - title: Connection-oriented client
+          - title: Send/Receive datagram with connection
             id: 2
             url: udp-connect-client
       - title: Email service
-        id: 39
+        id: 40
         sublinks:
           - title: Receive email
             id: 1
             url: receive-email-using-service
       - title: Email client
-        id: 40
+        id: 41
         sublinks:
           - title: Send email
             id: 1
@@ -1175,43 +1184,43 @@ sublinks:
             id: 2
             url: receive-email-using-client
       - title: FTP Service
-        id: 41
+        id: 42
         sublinks:
-          - title: Read
+          - title: Read file
             id: 1
             url: ftp-service-read
-          - title: Read/Write
+          - title: Read/Write file
             id: 2
             url: ftp-service-read-write
       - title: FTP Client
-        id: 42
+        id: 43
         sublinks:
-          - title: Read
+          - title: Read file
             id: 1
             url: ftp-client-read
-          - title: Write
+          - title: Write file
             id: 2
             url: ftp-client-write
       - title: SFTP Service
-        id: 43
+        id: 44
         sublinks:
-          - title: Read
+          - title: Read file
             id: 1
             url: sftp-service-read
-          - title: Read/Write
+          - title: Read/Write file
             id: 2
             url: sftp-service-read-write
       - title: SFTP Client
-        id: 44
+        id: 45
         sublinks:
-          - title: Read
+          - title: Read file
             id: 1
             url: sftp-client-read
-          - title: Write
+          - title: Write file
             id: 2
             url: sftp-client-write
       - title: MySQL client
-        id: 45
+        id: 46
         sublinks:
           - title: Simple query
             id: 1
@@ -1235,7 +1244,7 @@ sublinks:
             id: 7
             url: mysql-call-stored-procedures
       - title: JDBC client
-        id: 46
+        id: 47
         sublinks:
           - title: Simple query
             id: 1
@@ -1256,7 +1265,7 @@ sublinks:
             id: 6
             url: jdbc-atomic-transaction
       - title: SerDes
-        id: 47
+        id: 48
         sublinks:
           - title: Serialization and Deserialization
             id: 1

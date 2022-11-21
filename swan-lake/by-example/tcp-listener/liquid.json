@@ -1,5 +1,5 @@
 {
-  "title": "Service",
+  "title": "Send/Receive bytes",
   "description": "This Ballerina sample demonstrates how the TCP  listener service interacts with the TCP client.",
   "keywords": ["ballerina", "ballerina by example", "bbe", "socket", "tcp"],
   "permalink": "/learn/by-example/tcp-listener",

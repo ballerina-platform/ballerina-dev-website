@@ -79,7 +79,7 @@ export default function GraphqlReturningServiceObjects() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL output object - Service</h1>
+      <h1>GraphQL service - Service as output object</h1>
 
       <p>
         A GraphQL resource function can return service objects. The returning

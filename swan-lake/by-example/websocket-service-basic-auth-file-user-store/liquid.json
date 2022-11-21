@@ -1,5 +1,5 @@
 {
-  "title": "Basic authentication - File user store",
+  "title": "Basic authentication file user store",
   "description": "BBE on how to secure WebSocket service with Basic Auth in Ballerina.",
   "keywords": [
     "ballerina",

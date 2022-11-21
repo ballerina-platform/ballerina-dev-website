@@ -251,7 +251,7 @@ export default function TcpServiceSslTls() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/tcp-client">
+          <Link title="Send/Receive bytes" href="/learn/by-example/tcp-client">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -277,7 +277,7 @@ export default function TcpServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Send/Receive bytes
                 </span>
               </div>
             </div>

@@ -1,5 +1,5 @@
 {
-  "title": "Client",
+  "title": "Send/Receive messages",
   "description": "This BBE demonstrates how a WebSocket client can be used to connect to and interact with a WebSocket server using Ballerina.",
   "keywords": [
     "ballerina",

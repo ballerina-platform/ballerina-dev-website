@@ -62,7 +62,7 @@ export default function HttpHeaderParam() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Header parameter</h1>
+      <h1>REST service - Header parameter</h1>
 
       <p>
         The <code>http</code> module provides support for accessing inbound
@@ -83,10 +83,7 @@ export default function HttpHeaderParam() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#2345-header-parameter">
           specification

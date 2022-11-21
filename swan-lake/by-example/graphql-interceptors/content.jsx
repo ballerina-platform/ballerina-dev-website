@@ -93,7 +93,7 @@ export default function GraphqlInterceptors() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Interceptors</h1>
+      <h1>GraphQL service - Interceptors</h1>
 
       <p>
         The GraphQL <code>interceptors</code> can be used to execute custom
@@ -113,9 +113,9 @@ export default function GraphqlInterceptors() {
       </p>
 
       <p>
-        Interceptors follow the <code>onion principle</code> when executing.
-        Also, the inserting order of the interceptor instances into the array
-        will be the execution order of the interceptors.
+        Interceptors follow the <em>onion principle</em> when executing. Also,
+        the inserting order of the interceptor instances into the array will be
+        the execution order of the interceptors.
       </p>
 
       <p>

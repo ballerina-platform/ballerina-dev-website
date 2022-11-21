@@ -290,7 +290,10 @@ export default function GrpcServiceHeaders() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-client-simple">
+          <Link
+            title="Server reflection"
+            href="/learn/by-example/grpc-server-reflection"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -299,7 +302,7 @@ export default function GrpcServiceHeaders() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Simple RPC
+                  Server reflection
                 </span>
               </div>
               <svg

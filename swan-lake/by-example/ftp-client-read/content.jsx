@@ -61,7 +61,7 @@ export default function FtpClientRead() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client Read</h1>
+      <h1>FTP client - Read file</h1>
 
       <p>
         The FTP client is used to perform CRUD operation on remote
@@ -228,7 +228,7 @@ export default function FtpClientRead() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Read/Write"
+            title="Read/Write file"
             href="/learn/by-example/ftp-service-read-write"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -256,14 +256,14 @@ export default function FtpClientRead() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/Write
+                  Read/Write file
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Write" href="/learn/by-example/ftp-client-write">
+          <Link title="Write file" href="/learn/by-example/ftp-client-write">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -272,7 +272,7 @@ export default function FtpClientRead() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Write
+                  Write file
                 </span>
               </div>
               <svg

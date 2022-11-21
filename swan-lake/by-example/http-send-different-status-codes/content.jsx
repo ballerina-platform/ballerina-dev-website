@@ -70,7 +70,7 @@ export default function HttpSendDifferentStatusCodes() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Status code response records</h1>
+      <h1>REST service - Send different status codes</h1>
 
       <p>
         The resource method can return <code>StatusCodeResponse</code> records
@@ -358,7 +358,10 @@ export default function HttpSendDifferentStatusCodes() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/http-client-endpoint">
+          <Link
+            title="Send request/Receive response"
+            href="/learn/by-example/http-client-endpoint"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -367,7 +370,7 @@ export default function HttpSendDifferentStatusCodes() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Send request/Receive response
                 </span>
               </div>
               <svg

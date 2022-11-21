@@ -1,5 +1,5 @@
 {
-  "title": "Server streaming RPC",
+  "title": "Server-side streaming RPC",
   "description": "This Ballerina by Example has a gRPC streaming service for server streaming RPC.",
   "keywords": [
     "ballerina",

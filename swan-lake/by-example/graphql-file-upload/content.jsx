@@ -18,11 +18,11 @@ import ballerina/io;
 service /fileUpload on new graphql:Listener(4000) {
 
     // Remote functions can use the \`graphql:Upload\` type as an input parameter type.
-    remote function singleFileUpload(graphql:Upload file) returns string|error {
+    remote function fileUpload(graphql:Upload file) returns string|error {
 
         // The uploaded file information can be accessed using the \`graphql:Upload\` type.
         string fileName = file.fileName;
-        string path = string\`./uploads/\${fileName}\`;
+        string path = string \`./uploads/\${fileName}\`;
 
         // Access the byte stream of the file from the \`graphql:Upload\` type. The type of the
         // \`byteStream\` field is \`stream<byte[], io:Error?>\`.
@@ -33,11 +33,11 @@ service /fileUpload on new graphql:Listener(4000) {
         check io:fileWriteBlocksFromStream(path, byteStream);
 
         // Returns the message if the uploading process is successful.
-        return string\`File \${fileName} successfully uploaded\`;
+        return string \`File \${fileName} successfully uploaded\`;
     }
 
-    resource function get getUploadedFileNames() returns string {
-        return "Upload files using mutation";
+    resource function get getUploadedFileNames() returns string[] {
+        return ["image1.png", "image2.png"];
     }
 }
 `,
@@ -66,7 +66,7 @@ export default function GraphqlFileUpload() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>File upload</h1>
+      <h1>GraphQL service - File upload</h1>
 
       <p>
         GraphQL package provides a way to upload files through the GraphQL

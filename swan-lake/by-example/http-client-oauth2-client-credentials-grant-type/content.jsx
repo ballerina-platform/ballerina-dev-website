@@ -248,8 +248,8 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Self signed JWT Auth"
-            href="/learn/by-example/http-client-self-signed-jwt-auth"
+            title="Self signed JWT authentication"
+            href="/learn/by-example/http-client-self-signed-jwt-authentication"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -276,7 +276,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT Auth
+                  Self signed JWT authentication
                 </span>
               </div>
             </div>
@@ -284,7 +284,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="OAuth2 Password grant type"
+            title="OAuth2 password grant type"
             href="/learn/by-example/http-client-oauth2-password-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -295,7 +295,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 Password grant type
+                  OAuth2 password grant type
                 </span>
               </div>
               <svg

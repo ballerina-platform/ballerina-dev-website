@@ -79,7 +79,7 @@ export default function SftpServiceRead() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service Read</h1>
+      <h1>SFTP service - Read file</h1>
 
       <p>
         The SFTP service is used to receive file/directory changes that occur in
@@ -249,7 +249,7 @@ export default function SftpServiceRead() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Write" href="/learn/by-example/ftp-client-write">
+          <Link title="Write file" href="/learn/by-example/ftp-client-write">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -275,7 +275,7 @@ export default function SftpServiceRead() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Write
+                  Write file
                 </span>
               </div>
             </div>
@@ -283,7 +283,7 @@ export default function SftpServiceRead() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Read/Write"
+            title="Read/Write file"
             href="/learn/by-example/sftp-service-read-write"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -294,7 +294,7 @@ export default function SftpServiceRead() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/Write
+                  Read/Write file
                 </span>
               </div>
               <svg

@@ -53,19 +53,16 @@ export default function HttpClientDataBinding() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP client - Data binding</h1>
+      <h1>HTTP client - Payload data binding</h1>
 
       <p>
-        Through client data binding, the response payload can be accessed
-        directly. The payload type is inferred from the contextually-expected
-        type or from the <code>targetType</code> argument. An{" "}
-        <code>anydata</code> type or <code>http:Response</code> is expected as
-        the return value type along with the error.
-      </p>
-
-      <p>
-        When the user expects client data binding to happen, the HTTP error
-        responses (<code>4XX</code>, <code>5XX</code>) will be categorized as an{" "}
+        Through client payload data binding, the response payload can be
+        accessed directly. The payload type is inferred from the
+        contextually-expected type or from the <code>targetType</code> argument.
+        An <code>anydata</code> type or <code>http:Response</code> is expected
+        as the return value type along with the error. When the user expects
+        client data binding to happen, the HTTP error responses (
+        <code>4XX</code>, <code>5XX</code>) will be categorized as an{" "}
         <code>error</code> (<code>http:ClientRequestError</code>,{" "}
         <code>http:RemoteServerError</code>) of the client remote operation.
       </p>
@@ -74,20 +71,12 @@ export default function HttpClientDataBinding() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#243-client-action-return-types">
           specification
         </a>
         .
-      </p>
-
-      <p>
-        Before executing following sample, run the service in{" "}
-        <code>Basic REST service</code> example.
       </p>
 
       <Row
@@ -101,7 +90,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d7e4bbfc3c147563c817fa9fc5ed5697&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=d8efbba11b757f71329c79d9b1a8e50f&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}
@@ -201,6 +190,17 @@ export default function HttpClientDataBinding() {
 
       <p>Run the client program by executing the following command.</p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a{" "}
+          <a href="learn/by-example/http-basic-rest-service/">
+            Basic REST service
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -265,7 +265,10 @@ export default function HttpClientDataBinding() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/http-client-endpoint">
+          <Link
+            title="Send request/Receive response"
+            href="/learn/by-example/http-client-endpoint"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -291,7 +294,7 @@ export default function HttpClientDataBinding() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Send request/Receive response
                 </span>
               </div>
             </div>

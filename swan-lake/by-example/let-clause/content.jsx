@@ -82,7 +82,7 @@ export default function LetClause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b866746643626f858e0cdceb23ab253d&file=let_clause.bal",
+                "https://play.ballerina.io/?gist=951be24de29849f27769eec130efca82&file=let_clause.bal",
                 "_blank"
               );
             }}

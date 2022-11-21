@@ -276,7 +276,10 @@ export default function HttpServiceOauth2() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="JWT Auth" href="/learn/by-example/http-service-jwt-auth">
+          <Link
+            title="JWT authentication"
+            href="/learn/by-example/http-service-jwt-authentication"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -302,7 +305,7 @@ export default function HttpServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  JWT Auth
+                  JWT authentication
                 </span>
               </div>
             </div>

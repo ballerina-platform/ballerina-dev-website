@@ -70,15 +70,15 @@ export default function GrpcServiceBasicAuthFileUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>gRPC service - Basic auth file user store</h1>
+      <h1>gRPC service - Basic authentication file user store</h1>
 
       <p>
-        A gRPC service/resource can be secured with Basic Auth and optionally by
-        enforcing authorization. Then, it validates the Basic Auth token sent as
-        the <code>Authorization</code> metadata against the provided
-        configurations. This reads data from a file, which has a TOML format.
-        This stores the usernames, passwords for authentication, and scopes for
-        authorization.
+        A gRPC service/resource can be secured with Basic authentication and
+        optionally by enforcing authorization. Then, it validates the Basic Auth
+        token sent as the <code>Authorization</code> metadata against the
+        provided configurations. This reads data from a file, which has a TOML
+        format. This stores the usernames, passwords for authentication, and
+        scopes for authorization.
       </p>
 
       <p>
@@ -338,7 +338,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic Auth LDAP user store"
+            title="Basic authentication LDAP user store"
             href="/learn/by-example/grpc-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -349,7 +349,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic Auth LDAP user store
+                  Basic authentication LDAP user store
                 </span>
               </div>
               <svg

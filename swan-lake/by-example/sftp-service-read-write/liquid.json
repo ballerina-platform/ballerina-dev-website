@@ -1,5 +1,5 @@
 {
-  "title": "Read/Write",
+  "title": "Read/Write file",
   "description": "This BBE is about receiving file/directory changes that occur in a remote SFTP server and using the `ftp:Caller` to interact with the SFTP server.",
   "keywords": [
     "ballerina",

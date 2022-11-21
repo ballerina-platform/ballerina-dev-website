@@ -87,7 +87,7 @@ export default function HttpErrorHandling() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Error Handling</h1>
+      <h1>HTTP service - Error handling</h1>
 
       <p>
         Error handling is an integral part of any network program. Errors can be
@@ -104,10 +104,7 @@ export default function HttpErrorHandling() {
         For more information, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
-      </p>
-
-      <p>
+        </a>{" "}
         and{" "}
         <a href="https://ballerina.io/spec/http/#82-error-handling">
           specification

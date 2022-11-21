@@ -1,5 +1,5 @@
 {
-  "title": "Self signed JWT Auth",
+  "title": "Self signed JWT authentication",
   "description": "BBE on how to secure gRPC client with self-signed JWT Auth in Ballerina.",
   "keywords": [
     "ballerina",

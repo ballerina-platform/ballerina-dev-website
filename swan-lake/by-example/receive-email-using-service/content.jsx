@@ -246,7 +246,7 @@ export default function ReceiveEmailUsingService() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Connection-oriented client"
+            title="Send/Receive datagram with connection"
             href="/learn/by-example/udp-connect-client"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -274,7 +274,7 @@ export default function ReceiveEmailUsingService() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Connection-oriented client
+                  Send/Receive datagram with connection
                 </span>
               </div>
             </div>

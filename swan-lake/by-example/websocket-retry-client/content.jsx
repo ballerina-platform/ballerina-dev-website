@@ -53,7 +53,7 @@ export default function WebsocketRetryClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket client - Retry</h1>
+      <h1>WebSocket client - Retry on failure</h1>
 
       <p>
         If the WebSocket client lost the connection due to some transient
@@ -233,7 +233,10 @@ export default function WebsocketRetryClient() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/websocket-client">
+          <Link
+            title="Send/Receive messages"
+            href="/learn/by-example/websocket-client"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +262,7 @@ export default function WebsocketRetryClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Send/Receive messages
                 </span>
               </div>
             </div>

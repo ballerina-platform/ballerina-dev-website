@@ -57,11 +57,11 @@ export default function GrpcClientBasicAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>gRPC client - Basic auth</h1>
+      <h1>gRPC client - Basic authentication</h1>
 
       <p>
-        A client, which is secured with Basic Auth can be used to connect to a
-        secured service.
+        A client, which is secured with Basic authentication can be used to
+        connect to a secured service.
       </p>
 
       <p>
@@ -298,7 +298,7 @@ export default function GrpcClientBasicAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Bearer Token Auth"
+            title="Bearer token authentication"
             href="/learn/by-example/grpc-client-bearer-token-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -309,7 +309,7 @@ export default function GrpcClientBasicAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Bearer Token Auth
+                  Bearer token authentication
                 </span>
               </div>
               <svg

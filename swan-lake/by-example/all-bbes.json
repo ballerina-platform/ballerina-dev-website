@@ -1395,8 +1395,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service data binding",
-        "url": "http-data-binding",
+        "name": "Payload data binding",
+        "url": "http-service-data-binding",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1445,19 +1445,19 @@
     ]
   },
   {
-    "title": "REST client",
+    "title": "HTTP client",
     "column": 0,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
+        "name": "Send request/Receive response",
         "url": "http-client-endpoint",
         "verifyBuild": false,
         "verifyOutput": false,
         "isLearnByExample": false
       },
       {
-        "name": "Client data binding",
+        "name": "Payload binding",
         "url": "http-client-data-binding",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -1487,24 +1487,24 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic Auth file user store",
-        "url": "http-service-basic-auth-file-user-store",
+        "name": "Basic authentication file user store",
+        "url": "http-service-basic-authentication-file-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Basic Auth LDAP user store",
-        "url": "http-service-basic-auth-ldap-user-store",
+        "name": "Basic authentication LDAP user store",
+        "url": "http-service-basic-authentication-ldap-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "JWT Auth",
-        "url": "http-service-jwt-auth",
+        "name": "JWT authentication",
+        "url": "http-service-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1542,31 +1542,31 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic Auth",
-        "url": "http-client-basic-auth",
+        "name": "Basic authentication",
+        "url": "http-client-basic-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Bearer Token Auth",
-        "url": "http-client-bearer-token-auth",
+        "name": "Bearer token authentication",
+        "url": "http-client-bearer-token-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Self signed JWT Auth",
-        "url": "http-client-self-signed-jwt-auth",
+        "name": "Self signed JWT authentication",
+        "url": "http-client-self-signed-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 Client Credentials grant type",
+        "name": "OAuth2 client credentials grant type",
         "url": "http-client-oauth2-client-credentials-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1574,7 +1574,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 Password grant type",
+        "name": "OAuth2 password grant type",
         "url": "http-client-oauth2-password-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1582,7 +1582,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 Refresh Token grant type",
+        "name": "OAuth2 refresh token grant type",
         "url": "http-client-oauth2-refresh-token-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1590,7 +1590,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 JWT Bearer grant type",
+        "name": "OAuth2 JWT bearer grant type",
         "url": "http-client-oauth2-jwt-bearer-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1735,7 +1735,7 @@
     ]
   },
   {
-    "title": "REST service interceptors",
+    "title": "HTTP service interceptors",
     "column": 1,
     "category": "Network libraries",
     "samples": [
@@ -1938,8 +1938,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
-        "url": "graphql-client",
+        "name": "Query GraphQL endpoint",
+        "url": "graphql-client-query-endpoint",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2008,7 +2008,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Service",
+        "name": "Send/Receive messages",
         "url": "websocket-basic-sample",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2024,7 +2024,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
+        "name": "Send/Receive messages",
         "url": "websocket-client",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2032,7 +2032,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Retry",
+        "name": "Retry on failure",
         "url": "websocket-retry-client",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2063,7 +2063,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic authentication - File user store",
+        "name": "Basic authentication file user store",
         "url": "websocket-service-basic-auth-file-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2071,7 +2071,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic authentication - LDAP user store",
+        "name": "Basic authentication LDAP user store",
         "url": "websocket-service-basic-auth-ldap-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2275,7 +2275,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Server streaming RPC",
+        "name": "Server-side streaming RPC",
         "url": "grpc-service-server-streaming",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2284,7 +2284,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client streaming RPC",
+        "name": "Client-side streaming RPC",
         "url": "grpc-service-client-streaming",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2309,6 +2309,15 @@
         "disableVerificationReason": "Has different naming convention",
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Server reflection",
+        "url": "grpc-server-reflection",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Has different naming convention",
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
@@ -2327,7 +2336,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Server streaming RPC",
+        "name": "Server-side streaming RPC",
         "url": "grpc-client-server-streaming",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2336,7 +2345,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client streaming RPC",
+        "name": "Client-side streaming RPC",
         "url": "grpc-client-client-streaming",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2386,7 +2395,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic Auth file user store",
+        "name": "Basic authentication file user store",
         "url": "grpc-service-basic-auth-file-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2394,7 +2403,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic Auth LDAP user store",
+        "name": "Basic authentication LDAP user store",
         "url": "grpc-service-basic-auth-ldap-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2402,7 +2411,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "JWT Auth",
+        "name": "JWT authentication",
         "url": "grpc-service-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2441,7 +2450,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic Auth",
+        "name": "Basic authentication",
         "url": "grpc-client-basic-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2449,7 +2458,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Bearer Token Auth",
+        "name": "Bearer token authentication",
         "url": "grpc-client-bearer-token-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2457,7 +2466,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Self signed JWT Auth",
+        "name": "Self signed JWT authentication",
         "url": "grpc-client-self-signed-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2465,7 +2474,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 Client Credentials grant type",
+        "name": "OAuth2 client credentials grant type",
         "url": "grpc-client-oauth2-client-credentials-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2473,7 +2482,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 Password grant type",
+        "name": "OAuth2 password grant type",
         "url": "grpc-client-oauth2-password-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2481,7 +2490,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 Refresh Token grant type",
+        "name": "OAuth2 refresh token grant type",
         "url": "grpc-client-oauth2-refresh-token-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2489,7 +2498,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 JWT Bearer grant type",
+        "name": "OAuth2 JWT bearer grant type",
         "url": "grpc-client-oauth2-jwt-bearer-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2599,31 +2608,13 @@
     ]
   },
   {
-    "title": "Kafka client",
+    "title": "Kafka service",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Producer",
-        "url": "kafka-client-producer",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Consumer - Poll Payload",
-        "url": "kafka-client-consumer-poll-payload",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Consumer - Poll ConsumerRecord",
-        "url": "kafka-client-consumer-poll-consumer-record",
+        "name": "Service",
+        "url": "kafka-service",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2633,7 +2624,41 @@
     ]
   },
   {
-    "title": "Kafka secured service",
+    "title": "Kafka client",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Produce message",
+        "url": "kafka-client-produce-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Payload data binding",
+        "url": "kafka-client-payload-data-binding",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Consumer record data binding",
+        "url": "kafka-client-consumer-record-data-binding",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kafka service security",
     "column": 2,
     "category": "Network libraries",
     "samples": [
@@ -2658,7 +2683,7 @@
     ]
   },
   {
-    "title": "Kafka secured client",
+    "title": "Kafka client security",
     "column": 2,
     "category": "Network libraries",
     "samples": [
@@ -2824,7 +2849,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Service",
+        "name": "Send/Receive bytes",
         "url": "tcp-listener",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2840,7 +2865,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
+        "name": "Send/Receive bytes",
         "url": "tcp-client",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2886,7 +2911,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Service",
+        "name": "Send/Receive datagram",
         "url": "udp-listener",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2902,7 +2927,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Connectionless client",
+        "name": "Send/Receive datagram",
         "url": "udp-client",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2911,7 +2936,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Connection-oriented client",
+        "name": "Send/Receive datagram with connection",
         "url": "udp-connect-client",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2968,7 +2993,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read",
+        "name": "Read file",
         "url": "ftp-service-read",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2977,7 +3002,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Read/Write",
+        "name": "Read/Write file",
         "url": "ftp-service-read-write",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2993,7 +3018,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read",
+        "name": "Read file",
         "url": "ftp-client-read",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3002,7 +3027,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write",
+        "name": "Write file",
         "url": "ftp-client-write",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3018,7 +3043,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read",
+        "name": "Read file",
         "url": "sftp-service-read",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3027,7 +3052,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Read/Write",
+        "name": "Read/Write file",
         "url": "sftp-service-read-write",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3043,7 +3068,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read",
+        "name": "Read file",
         "url": "sftp-client-read",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3052,7 +3077,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write",
+        "name": "Write file",
         "url": "sftp-client-write",
         "verifyBuild": true,
         "verifyOutput": false,

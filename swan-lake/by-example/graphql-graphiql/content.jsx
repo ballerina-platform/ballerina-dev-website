@@ -51,7 +51,7 @@ export default function GraphqlGraphiql() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphiQL client</h1>
+      <h1>GraphQL service - GraphiQL client</h1>
 
       <p>
         The Ballerina GraphQL includes a built-in GraphiQL client for testing
@@ -225,7 +225,7 @@ export default function GraphqlGraphiql() {
 
       <p>
         To access the GraphiQL client, open a browser and access{" "}
-        <code>http://localhost:4000/graphiql</code>. Following is a sample
+        <code>http://localhost:4000/testing</code>. Following is a sample
         screenshot of the GraphiQL client.
       </p>
 

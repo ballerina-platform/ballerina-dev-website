@@ -77,7 +77,7 @@ export default function GrpcServiceJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>gRPC service - JWT auth</h1>
+      <h1>gRPC service - JWT authentication</h1>
 
       <p>
         A gRPC service/resource can be secured with JWT and by enforcing
@@ -289,7 +289,7 @@ export default function GrpcServiceJwtAuth() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic Auth LDAP user store"
+            title="Basic authentication LDAP user store"
             href="/learn/by-example/grpc-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -317,7 +317,7 @@ export default function GrpcServiceJwtAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic Auth LDAP user store
+                  Basic authentication LDAP user store
                 </span>
               </div>
             </div>

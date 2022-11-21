@@ -66,7 +66,7 @@ export default function SftpClientWrite() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client Write</h1>
+      <h1>SFTP client - Write file</h1>
 
       <p>
         The SFTP client is used to perform CRUD operation on remote
@@ -232,7 +232,7 @@ export default function SftpClientWrite() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Read" href="/learn/by-example/sftp-client-read">
+          <Link title="Read file" href="/learn/by-example/sftp-client-read">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +258,7 @@ export default function SftpClientWrite() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read
+                  Read file
                 </span>
               </div>
             </div>

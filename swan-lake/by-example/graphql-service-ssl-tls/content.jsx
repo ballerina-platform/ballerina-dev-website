@@ -238,7 +238,10 @@ export default function GraphqlServiceSslTls() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/graphql-client">
+          <Link
+            title="Query GraphQL endpoint"
+            href="/learn/by-example/graphql-client-query-endpoint"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -264,7 +267,7 @@ export default function GraphqlServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Query GraphQL endpoint
                 </span>
               </div>
             </div>

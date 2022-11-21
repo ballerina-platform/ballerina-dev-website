@@ -56,7 +56,7 @@ export default function HttpFailover() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Failover</h1>
+      <h1>HTTP client - Failover</h1>
 
       <p>
         Ballerina users can configure multiple HTTP clients in a given failover
@@ -168,7 +168,12 @@ export default function HttpFailover() {
 
       <p>Run the program by executing the following command.</p>
 
-      <p>Before executing following sample, run the backend service.</p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a service.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

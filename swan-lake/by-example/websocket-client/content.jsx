@@ -59,7 +59,7 @@ export default function WebsocketClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket client</h1>
+      <h1>WebSocket client - Send/Receive messages</h1>
 
       <p>
         The WebSocket client can be used to connect to and interact with a
@@ -226,7 +226,10 @@ export default function WebsocketClient() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/websocket-basic-sample">
+          <Link
+            title="Send/Receive messages"
+            href="/learn/by-example/websocket-basic-sample"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -252,14 +255,17 @@ export default function WebsocketClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  Send/Receive messages
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Retry" href="/learn/by-example/websocket-retry-client">
+          <Link
+            title="Retry on failure"
+            href="/learn/by-example/websocket-retry-client"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -268,7 +274,7 @@ export default function WebsocketClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Retry
+                  Retry on failure
                 </span>
               </div>
               <svg

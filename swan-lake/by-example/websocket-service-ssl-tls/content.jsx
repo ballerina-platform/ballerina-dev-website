@@ -249,7 +249,10 @@ export default function WebsocketServiceSslTls() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Retry" href="/learn/by-example/websocket-retry-client">
+          <Link
+            title="Retry on failure"
+            href="/learn/by-example/websocket-retry-client"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -275,7 +278,7 @@ export default function WebsocketServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Retry
+                  Retry on failure
                 </span>
               </div>
             </div>

@@ -75,7 +75,7 @@ export default function GrpcClientOauth2PasswordGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>gRPC client - OAuth2 Password grant type</h1>
+      <h1>gRPC client - OAuth2 password grant type</h1>
 
       <p>
         A client, which is secured with OAuth2 password grant type can be used
@@ -277,7 +277,7 @@ export default function GrpcClientOauth2PasswordGrantType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="OAuth2 Client Credentials grant type"
+            title="OAuth2 client credentials grant type"
             href="/learn/by-example/grpc-client-oauth2-client-credentials-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -305,7 +305,7 @@ export default function GrpcClientOauth2PasswordGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 Client Credentials grant type
+                  OAuth2 client credentials grant type
                 </span>
               </div>
             </div>
@@ -313,7 +313,7 @@ export default function GrpcClientOauth2PasswordGrantType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="OAuth2 Refresh Token grant type"
+            title="OAuth2 refresh token grant type"
             href="/learn/by-example/grpc-client-oauth2-refresh-token-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -324,7 +324,7 @@ export default function GrpcClientOauth2PasswordGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 Refresh Token grant type
+                  OAuth2 refresh token grant type
                 </span>
               </div>
               <svg

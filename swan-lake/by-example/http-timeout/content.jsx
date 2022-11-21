@@ -47,7 +47,7 @@ export default function HttpTimeout() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Timeout</h1>
+      <h1>HTTP client - Timeout</h1>
 
       <p>
         The timeout is used to gracefully handle response delays which could
@@ -149,10 +149,12 @@ export default function HttpTimeout() {
 
       <p>Run the program by executing the following command.</p>
 
-      <p>
-        Before executing following sample, run the service with a timeout more
-        than 10 seconds.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a service with a timeout more than 10 seconds.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

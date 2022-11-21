@@ -67,7 +67,7 @@ export default function GrpcClientSelfSignedJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>gRPC client - Self signed JWT auth</h1>
+      <h1>gRPC client - Self signed JWT authentication</h1>
 
       <p>
         A client, which is secured with self-signed JWT can be used to connect
@@ -272,7 +272,7 @@ export default function GrpcClientSelfSignedJwtAuth() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Bearer Token Auth"
+            title="Bearer token authentication"
             href="/learn/by-example/grpc-client-bearer-token-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -300,7 +300,7 @@ export default function GrpcClientSelfSignedJwtAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Bearer Token Auth
+                  Bearer token authentication
                 </span>
               </div>
             </div>
@@ -308,7 +308,7 @@ export default function GrpcClientSelfSignedJwtAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="OAuth2 Client Credentials grant type"
+            title="OAuth2 client credentials grant type"
             href="/learn/by-example/grpc-client-oauth2-client-credentials-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -319,7 +319,7 @@ export default function GrpcClientSelfSignedJwtAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 Client Credentials grant type
+                  OAuth2 client credentials grant type
                 </span>
               </div>
               <svg

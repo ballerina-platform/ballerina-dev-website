@@ -279,7 +279,7 @@ export default function WebsocketServiceJwtAuth() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic authentication - LDAP user store"
+            title="Basic authentication LDAP user store"
             href="/learn/by-example/websocket-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -307,7 +307,7 @@ export default function WebsocketServiceJwtAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication - LDAP user store
+                  Basic authentication LDAP user store
                 </span>
               </div>
             </div>

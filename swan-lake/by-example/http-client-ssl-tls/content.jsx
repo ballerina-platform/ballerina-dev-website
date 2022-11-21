@@ -171,7 +171,7 @@ export default function HttpClientSslTls() {
         <p>
           <strong>Info:</strong> As a prerequisite to running the client, start
           a{" "}
-          <a href="earn/by-example/http-service-ssl-tls/">
+          <a href="learn/by-example/http-service-ssl-tls/">
             sample service secured with SSL/TLS
           </a>
           .

@@ -64,11 +64,11 @@ export default function HttpServicePathAndResourcePath() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service path and resource path</h1>
+      <h1>REST service - Service path and resource path</h1>
 
       <p>
         Ballerina supports writing RESTful services according to the JAX-RS
-        specification. You can use the <code>absolute-resource-path</code> and{" "}
+        specification. You can use the <code>service-path</code> and{" "}
         <code>resource-name</code> to access a resource function while the{" "}
         <code>accessor-name</code>, which is an HTTP verb as <code>post</code>{" "}
         and <code>get</code> to constrain your resource function in a RESTful
@@ -340,8 +340,8 @@ export default function HttpServicePathAndResourcePath() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service data binding"
-            href="/learn/by-example/http-data-binding"
+            title="Payload data binding"
+            href="/learn/by-example/http-service-data-binding"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -351,7 +351,7 @@ export default function HttpServicePathAndResourcePath() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service data binding
+                  Payload data binding
                 </span>
               </div>
               <svg

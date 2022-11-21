@@ -110,7 +110,7 @@ export default function GraphqlDirectives() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Directives</h1>
+      <h1>GraphQL service - Directives</h1>
 
       <p>The Ballerina GraphQL supports the following GraphQL directives.</p>
 

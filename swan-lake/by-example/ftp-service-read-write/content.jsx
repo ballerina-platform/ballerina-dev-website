@@ -68,7 +68,7 @@ export default function FtpServiceReadWrite() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service Read/Write</h1>
+      <h1>FTP service - Read/Write file</h1>
 
       <p>
         The FTP service is used to receive file/directory changes that occur in
@@ -239,7 +239,7 @@ export default function FtpServiceReadWrite() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Read" href="/learn/by-example/ftp-service-read">
+          <Link title="Read file" href="/learn/by-example/ftp-service-read">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -265,14 +265,14 @@ export default function FtpServiceReadWrite() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read
+                  Read file
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Read" href="/learn/by-example/ftp-client-read">
+          <Link title="Read file" href="/learn/by-example/ftp-client-read">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -281,7 +281,7 @@ export default function FtpServiceReadWrite() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read
+                  Read file
                 </span>
               </div>
               <svg

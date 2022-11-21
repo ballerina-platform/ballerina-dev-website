@@ -311,7 +311,7 @@ export default function HttpServiceSslTls() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client data binding"
+            title="Payload binding"
             href="/learn/by-example/http-client-data-binding"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -339,7 +339,7 @@ export default function HttpServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client data binding
+                  Payload binding
                 </span>
               </div>
             </div>

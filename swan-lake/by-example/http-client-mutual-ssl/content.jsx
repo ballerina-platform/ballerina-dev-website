@@ -285,8 +285,8 @@ export default function HttpClientMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic Auth"
-            href="/learn/by-example/http-client-basic-auth"
+            title="Basic authentication"
+            href="/learn/by-example/http-client-basic-authentication"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -296,7 +296,7 @@ export default function HttpClientMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic Auth
+                  Basic authentication
                 </span>
               </div>
               <svg

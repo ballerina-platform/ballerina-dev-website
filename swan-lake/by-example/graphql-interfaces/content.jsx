@@ -91,7 +91,7 @@ export default function GraphqlInterfaces() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Interfaces</h1>
+      <h1>GraphQL service - Interfaces</h1>
 
       <p>
         A GraphQL schema can have interfaces. In Ballerina, interfaces are

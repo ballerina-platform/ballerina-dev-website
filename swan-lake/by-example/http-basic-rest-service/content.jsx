@@ -63,21 +63,14 @@ export default function HttpBasicRestService() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Basic REST service</h1>
+      <h1>REST service - Basic</h1>
 
       <p>
         Ballerina supports writing RESTful with its first class service and
-        resource concepts.
-      </p>
-
-      <p>
-        The <code>accessor-name</code>, service/resource name, data binding,
-        path and query parameter support helps to write meaningful
-      </p>
-
-      <p>
-        APIs. The sample depicts the way of writing <code>GET</code> and{" "}
-        <code>POST</code> resources
+        resource concepts. The <code>accessor-name</code>, service/resource
+        name, data binding, path and query parameter support helps to write
+        meaningful APIs. The sample depicts the way of writing <code>GET</code>{" "}
+        and <code>POST</code> resources
       </p>
 
       <p>

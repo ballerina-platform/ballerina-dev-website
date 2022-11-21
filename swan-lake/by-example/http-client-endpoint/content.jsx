@@ -29,9 +29,6 @@ public function main() returns error? {
     Album[] albums = check httpClient->/albums;
     io:println("GET request:" + albums.toJsonString());
 
-    // above call can be executed as follows using remote methods too.
-    albums = check httpClient->get("/albums");
-
     // Sends a \`POST\` request to the "/albums" resource.
     Album album  = check httpClient->/albums.post({title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"});
     io:println("\\nPOST request:" + album.toJsonString());
@@ -60,7 +57,7 @@ export default function HttpClientEndpoint() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP client</h1>
+      <h1>HTTP client - Send request/Receive response</h1>
 
       <p>
         The HTTP Client Connector can be used to connect to and interact with an
@@ -87,7 +84,7 @@ export default function HttpClientEndpoint() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1b6da0313344ee67b45f0576a964b331&file=http_client_endpoint.bal",
+                "https://play.ballerina.io/?gist=da3d42eef197addf64d0945ccf26c415&file=http_client_endpoint.bal",
                 "_blank"
               );
             }}
@@ -187,10 +184,16 @@ export default function HttpClientEndpoint() {
 
       <p>Run the client program by executing the following command.</p>
 
-      <p>
-        Before executing following sample, run the service in{" "}
-        <code>Basic REST service</code> example.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a{" "}
+          <a href="learn/by-example/http-basic-rest-service/">
+            Basic REST service
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -296,7 +299,7 @@ export default function HttpClientEndpoint() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client data binding"
+            title="Payload binding"
             href="/learn/by-example/http-client-data-binding"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -307,7 +310,7 @@ export default function HttpClientEndpoint() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client data binding
+                  Payload binding
                 </span>
               </div>
               <svg

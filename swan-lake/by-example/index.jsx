@@ -158,7 +158,7 @@ import TesterinaMockingFunctions from "./testerina-mocking-functions/content.jsx
 import TesterinaMockingObjects from "./testerina-mocking-objects/content.jsx";
 import HttpBasicRestService from "./http-basic-rest-service/content.jsx";
 import HttpServicePathAndResourcePath from "./http-service-path-and-resource-path/content.jsx";
-import HttpDataBinding from "./http-data-binding/content.jsx";
+import HttpServiceDataBinding from "./http-service-data-binding/content.jsx";
 import HttpPathParam from "./http-path-param/content.jsx";
 import HttpQueryParameter from "./http-query-parameter/content.jsx";
 import HttpHeaderParam from "./http-header-param/content.jsx";
@@ -168,15 +168,15 @@ import HttpClientEndpoint from "./http-client-endpoint/content.jsx";
 import HttpClientDataBinding from "./http-client-data-binding/content.jsx";
 import HttpServiceSslTls from "./http-service-ssl-tls/content.jsx";
 import HttpServiceMutualSsl from "./http-service-mutual-ssl/content.jsx";
-import HttpServiceBasicAuthFileUserStore from "./http-service-basic-auth-file-user-store/content.jsx";
-import HttpServiceBasicAuthLdapUserStore from "./http-service-basic-auth-ldap-user-store/content.jsx";
-import HttpServiceJwtAuth from "./http-service-jwt-auth/content.jsx";
+import HttpServiceBasicAuthenticationFileUserStore from "./http-service-basic-authentication-file-user-store/content.jsx";
+import HttpServiceBasicAuthenticationLdapUserStore from "./http-service-basic-authentication-ldap-user-store/content.jsx";
+import HttpServiceJwtAuthentication from "./http-service-jwt-authentication/content.jsx";
 import HttpServiceOauth2 from "./http-service-oauth2/content.jsx";
 import HttpClientSslTls from "./http-client-ssl-tls/content.jsx";
 import HttpClientMutualSsl from "./http-client-mutual-ssl/content.jsx";
-import HttpClientBasicAuth from "./http-client-basic-auth/content.jsx";
-import HttpClientBearerTokenAuth from "./http-client-bearer-token-auth/content.jsx";
-import HttpClientSelfSignedJwtAuth from "./http-client-self-signed-jwt-auth/content.jsx";
+import HttpClientBasicAuthentication from "./http-client-basic-authentication/content.jsx";
+import HttpClientBearerTokenAuthentication from "./http-client-bearer-token-authentication/content.jsx";
+import HttpClientSelfSignedJwtAuthentication from "./http-client-self-signed-jwt-authentication/content.jsx";
 import HttpClientOauth2ClientCredentialsGrantType from "./http-client-oauth2-client-credentials-grant-type/content.jsx";
 import HttpClientOauth2PasswordGrantType from "./http-client-oauth2-password-grant-type/content.jsx";
 import HttpClientOauth2RefreshTokenGrantType from "./http-client-oauth2-refresh-token-grant-type/content.jsx";
@@ -219,7 +219,7 @@ import GraphqlContext from "./graphql-context/content.jsx";
 import GraphqlInterceptors from "./graphql-interceptors/content.jsx";
 import GraphqlFileUpload from "./graphql-file-upload/content.jsx";
 import GraphqlHierarchicalResourcePaths from "./graphql-hierarchical-resource-paths/content.jsx";
-import GraphqlClient from "./graphql-client/content.jsx";
+import GraphqlClientQueryEndpoint from "./graphql-client-query-endpoint/content.jsx";
 import GraphqlServiceSslTls from "./graphql-service-ssl-tls/content.jsx";
 import GraphqlServiceMutualSsl from "./graphql-service-mutual-ssl/content.jsx";
 import GraphqlServiceBasicAuthFileUserStore from "./graphql-service-basic-auth-file-user-store/content.jsx";
@@ -257,6 +257,7 @@ import GrpcServiceServerStreaming from "./grpc-service-server-streaming/content.
 import GrpcServiceClientStreaming from "./grpc-service-client-streaming/content.jsx";
 import GrpcServiceBidirectionalStreaming from "./grpc-service-bidirectional-streaming/content.jsx";
 import GrpcServiceHeaders from "./grpc-service-headers/content.jsx";
+import GrpcServerReflection from "./grpc-server-reflection/content.jsx";
 import GrpcClientSimple from "./grpc-client-simple/content.jsx";
 import GrpcClientServerStreaming from "./grpc-client-server-streaming/content.jsx";
 import GrpcClientClientStreaming from "./grpc-client-client-streaming/content.jsx";
@@ -285,9 +286,10 @@ import NatsServiceSecureConnection from "./nats-service-secure-connection/conten
 import NatsServiceBasicAuth from "./nats-service-basic-auth/content.jsx";
 import NatsClientSecureConnection from "./nats-client-secure-connection/content.jsx";
 import NatsClientBasicAuth from "./nats-client-basic-auth/content.jsx";
-import KafkaClientProducer from "./kafka-client-producer/content.jsx";
-import KafkaClientConsumerPollPayload from "./kafka-client-consumer-poll-payload/content.jsx";
-import KafkaClientConsumerPollConsumerRecord from "./kafka-client-consumer-poll-consumer-record/content.jsx";
+import KafkaService from "./kafka-service/content.jsx";
+import KafkaClientProduceMessage from "./kafka-client-produce-message/content.jsx";
+import KafkaClientPayloadDataBinding from "./kafka-client-payload-data-binding/content.jsx";
+import KafkaClientConsumerRecordDataBinding from "./kafka-client-consumer-record-data-binding/content.jsx";
 import KafkaServiceSsl from "./kafka-service-ssl/content.jsx";
 import KafkaServiceSasl from "./kafka-service-sasl/content.jsx";
 import KafkaClientProducerSsl from "./kafka-client-producer-ssl/content.jsx";
@@ -541,7 +543,7 @@ const BBEs = {
   TesterinaMockingObjects,
   HttpBasicRestService,
   HttpServicePathAndResourcePath,
-  HttpDataBinding,
+  HttpServiceDataBinding,
   HttpPathParam,
   HttpQueryParameter,
   HttpHeaderParam,
@@ -551,15 +553,15 @@ const BBEs = {
   HttpClientDataBinding,
   HttpServiceSslTls,
   HttpServiceMutualSsl,
-  HttpServiceBasicAuthFileUserStore,
-  HttpServiceBasicAuthLdapUserStore,
-  HttpServiceJwtAuth,
+  HttpServiceBasicAuthenticationFileUserStore,
+  HttpServiceBasicAuthenticationLdapUserStore,
+  HttpServiceJwtAuthentication,
   HttpServiceOauth2,
   HttpClientSslTls,
   HttpClientMutualSsl,
-  HttpClientBasicAuth,
-  HttpClientBearerTokenAuth,
-  HttpClientSelfSignedJwtAuth,
+  HttpClientBasicAuthentication,
+  HttpClientBearerTokenAuthentication,
+  HttpClientSelfSignedJwtAuthentication,
   HttpClientOauth2ClientCredentialsGrantType,
   HttpClientOauth2PasswordGrantType,
   HttpClientOauth2RefreshTokenGrantType,
@@ -602,7 +604,7 @@ const BBEs = {
   GraphqlInterceptors,
   GraphqlFileUpload,
   GraphqlHierarchicalResourcePaths,
-  GraphqlClient,
+  GraphqlClientQueryEndpoint,
   GraphqlServiceSslTls,
   GraphqlServiceMutualSsl,
   GraphqlServiceBasicAuthFileUserStore,
@@ -640,6 +642,7 @@ const BBEs = {
   GrpcServiceClientStreaming,
   GrpcServiceBidirectionalStreaming,
   GrpcServiceHeaders,
+  GrpcServerReflection,
   GrpcClientSimple,
   GrpcClientServerStreaming,
   GrpcClientClientStreaming,
@@ -668,9 +671,10 @@ const BBEs = {
   NatsServiceBasicAuth,
   NatsClientSecureConnection,
   NatsClientBasicAuth,
-  KafkaClientProducer,
-  KafkaClientConsumerPollPayload,
-  KafkaClientConsumerPollConsumerRecord,
+  KafkaService,
+  KafkaClientProduceMessage,
+  KafkaClientPayloadDataBinding,
+  KafkaClientConsumerRecordDataBinding,
   KafkaServiceSsl,
   KafkaServiceSasl,
   KafkaClientProducerSsl,

@@ -57,7 +57,7 @@ export default function WebsocketBasicSample() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket service</h1>
+      <h1>WebSocket service - Send/Receive messages</h1>
 
       <p>
         This explains how the Ballerina WebSocket server interacts with a
@@ -270,7 +270,10 @@ export default function WebsocketBasicSample() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/websocket-client">
+          <Link
+            title="Send/Receive messages"
+            href="/learn/by-example/websocket-client"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -279,7 +282,7 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Send/Receive messages
                 </span>
               </div>
               <svg

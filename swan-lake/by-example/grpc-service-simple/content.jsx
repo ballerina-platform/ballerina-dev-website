@@ -499,7 +499,7 @@ export default function GrpcServiceSimple() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Server streaming RPC"
+            title="Server-side streaming RPC"
             href="/learn/by-example/grpc-service-server-streaming"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -510,7 +510,7 @@ export default function GrpcServiceSimple() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Server streaming RPC
+                  Server-side streaming RPC
                 </span>
               </div>
               <svg

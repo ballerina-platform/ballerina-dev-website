@@ -359,8 +359,8 @@ export default function HttpServiceMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic Auth file user store"
-            href="/learn/by-example/http-service-basic-auth-file-user-store"
+            title="Basic authentication file user store"
+            href="/learn/by-example/http-service-basic-authentication-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -370,7 +370,7 @@ export default function HttpServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic Auth file user store
+                  Basic authentication file user store
                 </span>
               </div>
               <svg

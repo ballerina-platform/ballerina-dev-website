@@ -88,7 +88,7 @@ export default function GraphqlDocumentation() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Documentation</h1>
+      <h1>GraphQL service - Documentation</h1>
 
       <p>
         A GraphQL schema can include documentation for the schema. These

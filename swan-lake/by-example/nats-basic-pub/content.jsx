@@ -49,7 +49,7 @@ export default function NatsBasicPub() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>NATS Client - Publish</h1>
+      <h1>NATS client - Publish</h1>
 
       <p>
         The NATS client is used either to produce a message to a subject or

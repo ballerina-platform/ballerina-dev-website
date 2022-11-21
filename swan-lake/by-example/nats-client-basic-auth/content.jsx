@@ -57,7 +57,7 @@ export default function NatsClientBasicAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>NATS Client - Basic Authentication</h1>
+      <h1>NATS client - Basic authentication</h1>
 
       <p>
         In this example, the underlying connections of the subscriber and the
@@ -220,7 +220,10 @@ export default function NatsClientBasicAuth() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Request" href="/learn/by-example/nats-basic-request">
+          <Link
+            title="SSL/TLS"
+            href="/learn/by-example/nats-client-secure-connection"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -246,17 +249,14 @@ export default function NatsClientBasicAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request
+                  SSL/TLS
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="NATS client - SSL/TLS"
-            href="/learn/by-example/nats-client-secure-connection"
-          >
+          <Link title="Producer" href="/learn/by-example/kafka-client-producer">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -265,7 +265,7 @@ export default function NatsClientBasicAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  NATS client - SSL/TLS
+                  Producer
                 </span>
               </div>
               <svg

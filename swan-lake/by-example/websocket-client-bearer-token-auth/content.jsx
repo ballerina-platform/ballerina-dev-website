@@ -56,11 +56,11 @@ export default function WebsocketClientBearerTokenAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket client - Bearer Token Auth</h1>
+      <h1>WebSocket client - Bearer token authentication</h1>
 
       <p>
-        A client, which is secured with Bearer token auth can be used to connect
-        to a secured service.
+        A client, which is secured with Bearer token authentication can be used
+        to connect to a secured service.
       </p>
 
       <p>
@@ -243,7 +243,7 @@ export default function WebsocketClientBearerTokenAuth() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic Auth"
+            title="Basic authentication"
             href="/learn/by-example/websocket-client-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -271,7 +271,7 @@ export default function WebsocketClientBearerTokenAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic Auth
+                  Basic authentication
                 </span>
               </div>
             </div>
@@ -279,7 +279,7 @@ export default function WebsocketClientBearerTokenAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Self signed JWT Auth"
+            title="Self signed JWT authentication"
             href="/learn/by-example/websocket-client-self-signed-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -290,7 +290,7 @@ export default function WebsocketClientBearerTokenAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT Auth
+                  Self signed JWT authentication
                 </span>
               </div>
               <svg

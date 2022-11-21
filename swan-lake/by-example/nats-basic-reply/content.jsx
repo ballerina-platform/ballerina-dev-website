@@ -51,7 +51,7 @@ export default function NatsBasicReply() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>NATS Service - Reply</h1>
+      <h1>NATS service - Reply</h1>
 
       <p>
         The NATS client is used either to produce a message to a subject or

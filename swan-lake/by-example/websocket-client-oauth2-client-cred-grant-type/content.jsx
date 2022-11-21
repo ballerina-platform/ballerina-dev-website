@@ -64,7 +64,7 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket client - OAuth2 Client Credentials grant type</h1>
+      <h1>WebSocket client - OAuth2 client credentials grant type</h1>
 
       <p>
         A client, which is secured with OAuth2 client credentials grant typecan
@@ -256,7 +256,7 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Self signed JWT Auth"
+            title="Self signed JWT authentication"
             href="/learn/by-example/websocket-client-self-signed-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -284,7 +284,7 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT Auth
+                  Self signed JWT authentication
                 </span>
               </div>
             </div>

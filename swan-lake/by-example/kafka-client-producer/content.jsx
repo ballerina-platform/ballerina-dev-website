@@ -224,8 +224,8 @@ export default function KafkaClientProducer() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="NATS Service - SSL/TLS"
-            href="/learn/by-example/nats-service-secure-connection"
+            title="Basic authentication"
+            href="/learn/by-example/nats-client-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -252,7 +252,7 @@ export default function KafkaClientProducer() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  NATS Service - SSL/TLS
+                  Basic authentication
                 </span>
               </div>
             </div>

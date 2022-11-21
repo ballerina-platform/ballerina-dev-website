@@ -61,7 +61,7 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>RabbitMQ Service - Consumer with Acknowledgement</h1>
+      <h1>RabbitMQ service - Consumer with acknowledgement</h1>
 
       <p>
         The messages are consumed from an existing queue using the Ballerina

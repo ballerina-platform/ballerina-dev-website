@@ -68,7 +68,7 @@ export default function KafkaServiceSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka service - SSL</h1>
+      <h1>Kafka service - SSL/TLS</h1>
 
       <p>
         This shows how the SSL encryption is done in the{" "}
@@ -233,8 +233,8 @@ export default function KafkaServiceSsl() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="SASL Authentication"
-            href="/learn/by-example/kafka-service-sasl"
+            title="Consumer - Poll ConsumerRecord"
+            href="/learn/by-example/kafka-client-consumer-poll-consumer-record"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -261,7 +261,7 @@ export default function KafkaServiceSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SASL Authentication
+                  Consumer - Poll ConsumerRecord
                 </span>
               </div>
             </div>
@@ -269,8 +269,8 @@ export default function KafkaServiceSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Producer SASL Authentication"
-            href="/learn/by-example/kafka-client-producer-sasl"
+            title="SASL authentication"
+            href="/learn/by-example/kafka-service-sasl"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -280,7 +280,7 @@ export default function KafkaServiceSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer SASL Authentication
+                  SASL authentication
                 </span>
               </div>
               <svg

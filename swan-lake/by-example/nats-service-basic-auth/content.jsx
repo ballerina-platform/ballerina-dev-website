@@ -56,7 +56,7 @@ export default function NatsServiceBasicAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>NATS Service - Basic Authentication</h1>
+      <h1>NATS service - Basic authentication</h1>
 
       <p>
         In this example, the underlying connections of the subscriber is secured
@@ -221,8 +221,8 @@ export default function NatsServiceBasicAuth() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="NATS client - SSL/TLS"
-            href="/learn/by-example/nats-client-secure-connection"
+            title="SSL/TLS"
+            href="/learn/by-example/nats-service-secure-connection"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -249,7 +249,7 @@ export default function NatsServiceBasicAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  NATS client - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
             </div>
@@ -257,8 +257,8 @@ export default function NatsServiceBasicAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="NATS Service - SSL/TLS"
-            href="/learn/by-example/nats-service-secure-connection"
+            title="SSL/TLS"
+            href="/learn/by-example/nats-client-secure-connection"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -268,7 +268,7 @@ export default function NatsServiceBasicAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  NATS Service - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
               <svg

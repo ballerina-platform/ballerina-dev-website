@@ -1,5 +1,5 @@
 {
-  "title": "Consumer SASL Authentication",
+  "title": "Consumer SASL authentication",
   "description": "BBE on how to configure a Kafka consumer to use SASL/PLAIN authentication.",
   "keywords": [
     "ballerina",

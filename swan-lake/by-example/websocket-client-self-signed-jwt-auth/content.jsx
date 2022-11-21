@@ -16,7 +16,7 @@ const codeSnippetData = [
 import ballerina/websocket;
 
 public function main() returns error? {
-    // Defines the WebSocket client to call the JWT Auth secured APIs.
+    // Defines the WebSocket client to call the JWT authentication secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`websocket:JwtIssuerConfig\` for the \`auth\` configuration of the
     // client. A self-signed JWT is issued before the request is sent.
@@ -68,7 +68,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket client - Self signed JWT Auth</h1>
+      <h1>WebSocket client - Self signed JWT authentication</h1>
 
       <p>
         A client, which is secured with self-signed JWT can be used to connect
@@ -190,7 +190,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
           <strong>Info:</strong> As a prerequisite to running the client, start
           the{" "}
           <a href="/learn/by-example/websocket-service-jwt-auth/">
-            JWT Auth service
+            JWT authentication service
           </a>
           .
         </p>
@@ -261,7 +261,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Bearer Token Auth"
+            title="Bearer token authentication"
             href="/learn/by-example/websocket-client-bearer-token-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -289,7 +289,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Bearer Token Auth
+                  Bearer token authentication
                 </span>
               </div>
             </div>
@@ -297,7 +297,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="OAuth2 Client Credentials grant type"
+            title="OAuth2 client credentials grant type"
             href="/learn/by-example/websocket-client-oauth2-client-cred-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -308,7 +308,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 Client Credentials grant type
+                  OAuth2 client credentials grant type
                 </span>
               </div>
               <svg

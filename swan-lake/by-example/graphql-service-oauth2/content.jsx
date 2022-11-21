@@ -271,7 +271,7 @@ export default function GraphqlServiceOauth2() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="JWT Auth"
+            title="JWT authentication"
             href="/learn/by-example/graphql-service-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -299,7 +299,7 @@ export default function GraphqlServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  JWT Auth
+                  JWT authentication
                 </span>
               </div>
             </div>

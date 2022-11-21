@@ -50,7 +50,7 @@ export default function RabbitmqProducer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>RabbitMQ Client - Producer</h1>
+      <h1>RabbitMQ client - Producer</h1>
 
       <p>
         Producing in RabbitMQ means nothing more than sending. In this example,

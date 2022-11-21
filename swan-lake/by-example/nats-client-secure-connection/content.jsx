@@ -57,7 +57,7 @@ export default function NatsClientSecureConnection() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>NATS Client - SSL/TLS</h1>
+      <h1>NATS client - SSL/TLS</h1>
 
       <p>
         In this example, the underlying connections of the subscriber and the
@@ -221,8 +221,8 @@ export default function NatsClientSecureConnection() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="NATS client - Basic authentication"
-            href="/learn/by-example/nats-client-basic-auth"
+            title="Basic authentication"
+            href="/learn/by-example/nats-service-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -249,7 +249,7 @@ export default function NatsClientSecureConnection() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  NATS client - Basic authentication
+                  Basic authentication
                 </span>
               </div>
             </div>
@@ -257,8 +257,8 @@ export default function NatsClientSecureConnection() {
         </Col>
         <Col sm={6}>
           <Link
-            title="NATS Service - Basic authentication"
-            href="/learn/by-example/nats-service-basic-auth"
+            title="Basic authentication"
+            href="/learn/by-example/nats-client-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -268,7 +268,7 @@ export default function NatsClientSecureConnection() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  NATS Service - Basic authentication
+                  Basic authentication
                 </span>
               </div>
               <svg

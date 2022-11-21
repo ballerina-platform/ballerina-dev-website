@@ -51,7 +51,7 @@ export default function RabbitmqTransactionProducer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>RabbitMQ Client - Transactional Producer</h1>
+      <h1>RabbitMQ client - Transactional producer</h1>
 
       <p>
         A message is sent to an existing queue using the Ballerina RabbitMQ
@@ -253,8 +253,8 @@ export default function RabbitmqTransactionProducer() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - Basic authentication"
-            href="/learn/by-example/rabbitmq-client-basic-auth"
+            title="SSL/TLS"
+            href="/learn/by-example/rabbitmq-service-secure-connection"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -264,7 +264,7 @@ export default function RabbitmqTransactionProducer() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Basic authentication
+                  SSL/TLS
                 </span>
               </div>
               <svg

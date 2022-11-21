@@ -234,7 +234,7 @@ export default function KafkaClientConsumerSasl() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Producer SASL Authentication"
+            title="Producer SASL authentication"
             href="/learn/by-example/kafka-client-producer-sasl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -262,17 +262,14 @@ export default function KafkaClientConsumerSasl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer SASL Authentication
+                  Producer SASL authentication
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Producer SSL"
-            href="/learn/by-example/kafka-client-producer-ssl"
-          >
+          <Link title="Consumer" href="/learn/by-example/rabbitmq-consumer">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -281,7 +278,7 @@ export default function KafkaClientConsumerSasl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer SSL
+                  Consumer
                 </span>
               </div>
               <svg

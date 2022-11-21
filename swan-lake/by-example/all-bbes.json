@@ -1969,7 +1969,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic Auth file user store",
+        "name": "Basic authentication file user store",
         "url": "graphql-service-basic-auth-file-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1977,7 +1977,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic Auth LDAP user store",
+        "name": "Basic authentication LDAP user store",
         "url": "graphql-service-basic-auth-ldap-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1985,7 +1985,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "JWT Auth",
+        "name": "JWT authentication",
         "url": "graphql-service-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1993,7 +1993,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Auth2",
+        "name": "OAuth2",
         "url": "graphql-service-oauth2",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2063,7 +2063,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic Auth File user store",
+        "name": "Basic authentication - File user store",
         "url": "websocket-service-basic-auth-file-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2071,7 +2071,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic Auth LDAP user store",
+        "name": "Basic authentication - LDAP user store",
         "url": "websocket-service-basic-auth-ldap-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2079,7 +2079,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "JWT Auth",
+        "name": "JWT authentication",
         "url": "websocket-service-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2118,7 +2118,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Basic Auth",
+        "name": "Basic authentication",
         "url": "websocket-client-basic-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2126,7 +2126,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Bearer Token Auth",
+        "name": "Bearer token authentication",
         "url": "websocket-client-bearer-token-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2134,7 +2134,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Self signed JWT Auth",
+        "name": "Self signed JWT authentication",
         "url": "websocket-client-self-signed-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2142,7 +2142,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 Client Credentials grant type",
+        "name": "OAuth2 client credentials grant type",
         "url": "websocket-client-oauth2-client-cred-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2158,7 +2158,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 Refresh Token grant type",
+        "name": "OAuth2 refresh token grant type",
         "url": "websocket-client-oauth2-refresh-token-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2166,7 +2166,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 JWT Bearer grant type",
+        "name": "OAuth2 JWT bearer grant type",
         "url": "websocket-client-oauth2-jwt-bearer-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2499,7 +2499,7 @@
     ]
   },
   {
-    "title": "NATS Service",
+    "title": "NATS service",
     "column": 2,
     "category": "Network libraries",
     "samples": [
@@ -2524,7 +2524,7 @@
     ]
   },
   {
-    "title": "NATS Client",
+    "title": "NATS client",
     "column": 2,
     "category": "Network libraries",
     "samples": [
@@ -2549,13 +2549,13 @@
     ]
   },
   {
-    "title": "NATS security",
+    "title": "NATS service security",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "NATS client - Basic authentication",
-        "url": "nats-client-basic-auth",
+        "name": "SSL/TLS",
+        "url": "nats-service-secure-connection",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2563,7 +2563,23 @@
         "isLearnByExample": false
       },
       {
-        "name": "NATS client - SSL/TLS",
+        "name": "Basic authentication",
+        "url": "nats-service-basic-auth",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "NATS client security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
         "url": "nats-client-secure-connection",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2572,17 +2588,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "NATS Service - Basic authentication",
-        "url": "nats-service-basic-auth",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "NATS Service - SSL/TLS",
-        "url": "nats-service-secure-connection",
+        "name": "Basic authentication",
+        "url": "nats-client-basic-auth",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2631,8 +2638,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "SASL Authentication",
-        "url": "kafka-service-sasl",
+        "name": "SSL/TLS",
+        "url": "kafka-service-ssl",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2640,8 +2647,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "SSL",
-        "url": "kafka-service-ssl",
+        "name": "SASL authentication",
+        "url": "kafka-service-sasl",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2656,25 +2663,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Producer SASL Authentication",
-        "url": "kafka-client-producer-sasl",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Consumer SASL Authentication",
-        "url": "kafka-client-consumer-sasl",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Producer SSL",
+        "name": "Producer SSL/TLS",
         "url": "kafka-client-producer-ssl",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2683,8 +2672,26 @@
         "isLearnByExample": false
       },
       {
-        "name": "Consumer SSL",
+        "name": "Consumer SSL/TLS",
         "url": "kafka-client-consumer-ssl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Producer SASL authentication",
+        "url": "kafka-client-producer-sasl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Consumer SASL authentication",
+        "url": "kafka-client-consumer-sasl",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2762,13 +2769,13 @@
     ]
   },
   {
-    "title": "RabbitMQ security",
+    "title": "RabbitMQ service security",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client - Basic authentication",
-        "url": "rabbitmq-client-basic-auth",
+        "name": "SSL/TLS",
+        "url": "rabbitmq-service-secure-connection",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2776,7 +2783,23 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - SSL/TLS",
+        "name": "Basic authentication",
+        "url": "rabbitmq-service-basic-auth",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "RabbitMQ client security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
         "url": "rabbitmq-client-secure-connection",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2785,17 +2808,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic authentication",
-        "url": "rabbitmq-service-basic-auth",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Service - SSL/TLS",
-        "url": "rabbitmq-service-secure-connection",
+        "name": "Basic authentication",
+        "url": "rabbitmq-client-basic-auth",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2838,7 +2852,7 @@
   },
   {
     "title": "TCP service security",
-    "column": 1,
+    "column": 3,
     "category": "Network libraries",
     "samples": [
       {
@@ -2853,7 +2867,7 @@
   },
   {
     "title": "TCP client security",
-    "column": 1,
+    "column": 3,
     "category": "Network libraries",
     "samples": [
       {

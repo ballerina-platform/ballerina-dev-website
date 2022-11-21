@@ -231,7 +231,7 @@ export default function GraphqlGraphiql() {
 
       <p>
         <img
-          src="/learn/by-example/images/grapihql-client.png"
+          src="/learn/by-example/images/graphiql-client.png"
           alt="GraphiQL client"
           title="GraphiQL Client"
         />

@@ -192,7 +192,7 @@ To complete this part of the guide, you need:
    ```ballerina
    import ballerina/http;
 
-   listener http:Listener helloEP = new(9090);
+   listener http:Listener helloEP = new(8080);
 
    service / on helloEP {
        resource function get greeting() returns string {   

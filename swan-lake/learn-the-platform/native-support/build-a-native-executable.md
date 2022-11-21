@@ -86,7 +86,7 @@ Since the environment is set up for building a native executable, let's see how 
    listener http:Listener httpListener = new (8080);
    service / on httpListener {
        resource function get greeting() returns string { 
-       return "Hello, World!"; 
+              return "Hello, World!"; 
        }
    }
    ```
@@ -196,7 +196,7 @@ To complete this part of the guide, you need:
 
    service /helloWorld on helloEP {
        resource function get sayHello() returns string {   
-       return "Hello, Docker!";   
+              return "Hello, Docker!";   
        }
    }
    ```

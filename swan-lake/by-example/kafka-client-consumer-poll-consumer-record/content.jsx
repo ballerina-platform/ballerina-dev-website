@@ -279,10 +279,7 @@ export default function KafkaClientConsumerPollConsumerRecord() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="SASL Authentication"
-            href="/learn/by-example/kafka-service-sasl"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/kafka-service-ssl">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -291,7 +288,7 @@ export default function KafkaClientConsumerPollConsumerRecord() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SASL Authentication
+                  SSL/TLS
                 </span>
               </div>
               <svg

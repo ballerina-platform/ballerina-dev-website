@@ -239,8 +239,8 @@ export default function TcpListener() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - SSL/TLS"
-            href="/learn/by-example/rabbitmq-service-secure-connection"
+            title="Basic authentication"
+            href="/learn/by-example/rabbitmq-client-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -267,7 +267,7 @@ export default function TcpListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  Basic authentication
                 </span>
               </div>
             </div>

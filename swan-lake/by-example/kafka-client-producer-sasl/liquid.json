@@ -1,5 +1,5 @@
 {
-  "title": "Producer SASL Authentication",
+  "title": "Producer SASL authentication",
   "description": "BBE on how to configure a Kafka producer to use SASL/PLAIN authentication.",
   "keywords": [
     "ballerina",

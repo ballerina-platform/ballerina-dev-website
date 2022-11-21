@@ -23,8 +23,8 @@ listener websocket:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with JWT Auth and can be authorized
-// optionally. JWT Auth can be enabled by setting the \`websocket:JwtValidatorConfig\` configurations.
+// The service can be secured with JWT authentication and can be authorized
+// optionally. JWT authentication can be enabled by setting the \`websocket:JwtValidatorConfig\` configurations.
 // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/JwtValidatorConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
@@ -80,7 +80,7 @@ export default function WebsocketServiceJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket service - JWT Auth</h1>
+      <h1>WebSocket service - JWT authentication</h1>
 
       <p>
         A WebSocket service can be secured with JWT and by
@@ -270,7 +270,7 @@ export default function WebsocketServiceJwtAuth() {
           <strong>Info:</strong> Alternatively, you can invoke the above service
           via the{" "}
           <a href="/learn/by-example/websocket-client-self-signed-jwt-auth">
-            self-signed JWT Auth client
+            self-signed JWT authentication client
           </a>
           .
         </p>
@@ -279,7 +279,7 @@ export default function WebsocketServiceJwtAuth() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic Auth LDAP user store"
+            title="Basic authentication - LDAP user store"
             href="/learn/by-example/websocket-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -307,7 +307,7 @@ export default function WebsocketServiceJwtAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic Auth LDAP user store
+                  Basic authentication - LDAP user store
                 </span>
               </div>
             </div>

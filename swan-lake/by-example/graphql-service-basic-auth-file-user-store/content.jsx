@@ -65,15 +65,15 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL service - Basic Auth file user store</h1>
+      <h1>GraphQL service - Basic authentication file user store</h1>
 
       <p>
-        A GraphQL service can be secured with Basic Auth and optionally by
-        enforcing authorization. Then, it validates the Basic Auth token sent in
-        the <code>Authorization</code> header against the provided
-        configurations. This reads data from a file, which has a TOML format.
-        This stores the usernames, passwords for authentication, and scopes for
-        authorization.
+        A GraphQL service can be secured with Basic authentication and
+        optionally by enforcing authorization. Then, it validates the Basic
+        authentication token sent in the <code>Authorization</code> header
+        against the provided configurations. This reads data from a file, which
+        has a TOML format. This stores the usernames, passwords for
+        authentication, and scopes for authorization.
       </p>
 
       <p>
@@ -318,7 +318,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic Auth LDAP user store"
+            title="Basic authentication LDAP user store"
             href="/learn/by-example/graphql-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -329,7 +329,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic Auth LDAP user store
+                  Basic authentication LDAP user store
                 </span>
               </div>
               <svg

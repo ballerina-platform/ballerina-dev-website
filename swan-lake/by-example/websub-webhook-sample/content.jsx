@@ -256,7 +256,7 @@ export default function WebsubWebhookSample() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="OAuth2 JWT Bearer grant type"
+            title="OAuth2 JWT bearer grant type"
             href="/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -284,7 +284,7 @@ export default function WebsubWebhookSample() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 JWT Bearer grant type
+                  OAuth2 JWT bearer grant type
                 </span>
               </div>
             </div>

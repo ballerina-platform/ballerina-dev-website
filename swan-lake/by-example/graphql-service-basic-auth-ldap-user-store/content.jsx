@@ -84,14 +84,15 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL service - basic Auth LDAP user store</h1>
+      <h1>GraphQL service - Basic authentication LDAP user store</h1>
 
       <p>
-        A GraphQL service can be secured with Basic Auth and by enforcing
-        authorization optionally. Then, it validates the Basic Auth token sent
-        in the <code>Authorization</code> header against the provided
-        configurations. This reads data from the configured LDAP. This stores
-        usernames, passwords for authentication, and scopes for authorization.
+        A GraphQL service can be secured with Basic authentication and by
+        enforcing authorization optionally. Then, it validates the Basic
+        authentication token sent in the <code>Authorization</code> header
+        against the provided configurations. This reads data from the configured
+        LDAP. This stores usernames, passwords for authentication, and scopes
+        for authorization.
       </p>
 
       <p>
@@ -278,7 +279,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic Auth file user store"
+            title="Basic authentication file user store"
             href="/learn/by-example/graphql-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -306,7 +307,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic Auth file user store
+                  Basic authentication file user store
                 </span>
               </div>
             </div>
@@ -314,7 +315,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
         </Col>
         <Col sm={6}>
           <Link
-            title="JWT Auth"
+            title="JWT authentication"
             href="/learn/by-example/graphql-service-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -325,7 +326,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  JWT Auth
+                  JWT authentication
                 </span>
               </div>
               <svg

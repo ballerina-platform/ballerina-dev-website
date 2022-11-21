@@ -281,29 +281,29 @@ import NatsBasicSub from "./nats-basic-sub/content.jsx";
 import NatsBasicReply from "./nats-basic-reply/content.jsx";
 import NatsBasicPub from "./nats-basic-pub/content.jsx";
 import NatsBasicRequest from "./nats-basic-request/content.jsx";
-import NatsClientBasicAuth from "./nats-client-basic-auth/content.jsx";
-import NatsClientSecureConnection from "./nats-client-secure-connection/content.jsx";
-import NatsServiceBasicAuth from "./nats-service-basic-auth/content.jsx";
 import NatsServiceSecureConnection from "./nats-service-secure-connection/content.jsx";
+import NatsServiceBasicAuth from "./nats-service-basic-auth/content.jsx";
+import NatsClientSecureConnection from "./nats-client-secure-connection/content.jsx";
+import NatsClientBasicAuth from "./nats-client-basic-auth/content.jsx";
 import KafkaClientProducer from "./kafka-client-producer/content.jsx";
 import KafkaClientConsumerPollPayload from "./kafka-client-consumer-poll-payload/content.jsx";
 import KafkaClientConsumerPollConsumerRecord from "./kafka-client-consumer-poll-consumer-record/content.jsx";
-import KafkaServiceSasl from "./kafka-service-sasl/content.jsx";
 import KafkaServiceSsl from "./kafka-service-ssl/content.jsx";
-import KafkaClientProducerSasl from "./kafka-client-producer-sasl/content.jsx";
-import KafkaClientConsumerSasl from "./kafka-client-consumer-sasl/content.jsx";
+import KafkaServiceSasl from "./kafka-service-sasl/content.jsx";
 import KafkaClientProducerSsl from "./kafka-client-producer-ssl/content.jsx";
 import KafkaClientConsumerSsl from "./kafka-client-consumer-ssl/content.jsx";
+import KafkaClientProducerSasl from "./kafka-client-producer-sasl/content.jsx";
+import KafkaClientConsumerSasl from "./kafka-client-consumer-sasl/content.jsx";
 import RabbitmqConsumer from "./rabbitmq-consumer/content.jsx";
 import RabbitmqConsumerWithClientAcknowledgement from "./rabbitmq-consumer-with-client-acknowledgement/content.jsx";
 import RabbitmqTransactionConsumer from "./rabbitmq-transaction-consumer/content.jsx";
 import RabbitmqProducer from "./rabbitmq-producer/content.jsx";
 import RabbitmqSyncConsumer from "./rabbitmq-sync-consumer/content.jsx";
 import RabbitmqTransactionProducer from "./rabbitmq-transaction-producer/content.jsx";
-import RabbitmqClientBasicAuth from "./rabbitmq-client-basic-auth/content.jsx";
-import RabbitmqClientSecureConnection from "./rabbitmq-client-secure-connection/content.jsx";
-import RabbitmqServiceBasicAuth from "./rabbitmq-service-basic-auth/content.jsx";
 import RabbitmqServiceSecureConnection from "./rabbitmq-service-secure-connection/content.jsx";
+import RabbitmqServiceBasicAuth from "./rabbitmq-service-basic-auth/content.jsx";
+import RabbitmqClientSecureConnection from "./rabbitmq-client-secure-connection/content.jsx";
+import RabbitmqClientBasicAuth from "./rabbitmq-client-basic-auth/content.jsx";
 import TcpListener from "./tcp-listener/content.jsx";
 import TcpClient from "./tcp-client/content.jsx";
 import TcpServiceSslTls from "./tcp-service-ssl-tls/content.jsx";
@@ -664,29 +664,29 @@ const BBEs = {
   NatsBasicReply,
   NatsBasicPub,
   NatsBasicRequest,
-  NatsClientBasicAuth,
-  NatsClientSecureConnection,
-  NatsServiceBasicAuth,
   NatsServiceSecureConnection,
+  NatsServiceBasicAuth,
+  NatsClientSecureConnection,
+  NatsClientBasicAuth,
   KafkaClientProducer,
   KafkaClientConsumerPollPayload,
   KafkaClientConsumerPollConsumerRecord,
-  KafkaServiceSasl,
   KafkaServiceSsl,
-  KafkaClientProducerSasl,
-  KafkaClientConsumerSasl,
+  KafkaServiceSasl,
   KafkaClientProducerSsl,
   KafkaClientConsumerSsl,
+  KafkaClientProducerSasl,
+  KafkaClientConsumerSasl,
   RabbitmqConsumer,
   RabbitmqConsumerWithClientAcknowledgement,
   RabbitmqTransactionConsumer,
   RabbitmqProducer,
   RabbitmqSyncConsumer,
   RabbitmqTransactionProducer,
-  RabbitmqClientBasicAuth,
-  RabbitmqClientSecureConnection,
-  RabbitmqServiceBasicAuth,
   RabbitmqServiceSecureConnection,
+  RabbitmqServiceBasicAuth,
+  RabbitmqClientSecureConnection,
+  RabbitmqClientBasicAuth,
   TcpListener,
   TcpClient,
   TcpServiceSslTls,

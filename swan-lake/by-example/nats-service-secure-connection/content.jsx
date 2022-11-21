@@ -56,7 +56,7 @@ export default function NatsServiceSecureConnection() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>NATS Service - SSL/TLS</h1>
+      <h1>NATS service - SSL/TLS</h1>
 
       <p>
         In this example, the underlying connections of the subscriber and the
@@ -220,10 +220,7 @@ export default function NatsServiceSecureConnection() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="NATS Service - Basic authentication"
-            href="/learn/by-example/nats-service-basic-auth"
-          >
+          <Link title="Request" href="/learn/by-example/nats-basic-request">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -249,14 +246,17 @@ export default function NatsServiceSecureConnection() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  NATS Service - Basic authentication
+                  Request
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Producer" href="/learn/by-example/kafka-client-producer">
+          <Link
+            title="Basic authentication"
+            href="/learn/by-example/nats-service-basic-auth"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -265,7 +265,7 @@ export default function NatsServiceSecureConnection() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer
+                  Basic authentication
                 </span>
               </div>
               <svg

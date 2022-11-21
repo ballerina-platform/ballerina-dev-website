@@ -235,10 +235,7 @@ export default function KafkaServiceSasl() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Consumer - Poll ConsumerRecord"
-            href="/learn/by-example/kafka-client-consumer-poll-consumer-record"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/kafka-service-ssl">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -264,14 +261,17 @@ export default function KafkaServiceSasl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consumer - Poll ConsumerRecord
+                  SSL/TLS
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="SSL" href="/learn/by-example/kafka-service-ssl">
+          <Link
+            title="Producer SSL/TLS"
+            href="/learn/by-example/kafka-client-producer-ssl"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -280,7 +280,7 @@ export default function KafkaServiceSasl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL
+                  Producer SSL/TLS
                 </span>
               </div>
               <svg

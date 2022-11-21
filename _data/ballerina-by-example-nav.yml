@@ -808,16 +808,16 @@ sublinks:
           - title: Mutual SSL
             id: 2
             url: graphql-service-mutual-ssl
-          - title: Basic Auth file user store
+          - title: Basic authentication file user store
             id: 3
             url: graphql-service-basic-auth-file-user-store
-          - title: Basic Auth LDAP user store
+          - title: Basic authentication LDAP user store
             id: 4
             url: graphql-service-basic-auth-ldap-user-store
-          - title: JWT Auth
+          - title: JWT authentication
             id: 5
             url: graphql-service-jwt-auth
-          - title: Auth2
+          - title: OAuth2
             id: 6
             url: graphql-service-oauth2
       - title: WebSocket service
@@ -844,13 +844,13 @@ sublinks:
           - title: Mutual SSL
             id: 2
             url: websocket-service-mutual-ssl
-          - title: Basic Auth File user store
+          - title: Basic authentication - File user store
             id: 3
             url: websocket-service-basic-auth-file-user-store
-          - title: Basic Auth LDAP user store
+          - title: Basic authentication - LDAP user store
             id: 4
             url: websocket-service-basic-auth-ldap-user-store
-          - title: JWT Auth
+          - title: JWT authentication
             id: 5
             url: websocket-service-jwt-auth
           - title: OAuth2
@@ -865,25 +865,25 @@ sublinks:
           - title: Mutual SSL
             id: 2
             url: websocket-client-mutual-ssl
-          - title: Basic Auth
+          - title: Basic authentication
             id: 3
             url: websocket-client-basic-auth
-          - title: Bearer Token Auth
+          - title: Bearer token authentication
             id: 4
             url: websocket-client-bearer-token-auth
-          - title: Self signed JWT Auth
+          - title: Self signed JWT authentication
             id: 5
             url: websocket-client-self-signed-jwt-auth
-          - title: OAuth2 Client Credentials grant type
+          - title: OAuth2 client credentials grant type
             id: 6
             url: websocket-client-oauth2-client-cred-grant-type
           - title: OAuth2 Password grant type
             id: 7
             url: websocket-client-oauth2-password-grant-type
-          - title: OAuth2 Refresh Token grant type
+          - title: OAuth2 refresh token grant type
             id: 8
             url: websocket-client-oauth2-refresh-token-grant-type
-          - title: OAuth2 JWT Bearer grant type
+          - title: OAuth2 JWT bearer grant type
             id: 9
             url: websocket-client-oauth2-jwt-bearer-grant-type
       - title: WebSub
@@ -1006,7 +1006,7 @@ sublinks:
           - title: OAuth2 JWT Bearer grant type
             id: 9
             url: grpc-client-oauth2-jwt-bearer-grant-type
-      - title: NATS Service
+      - title: NATS service
         id: 22
         sublinks:
           - title: Subscribe
@@ -1015,7 +1015,7 @@ sublinks:
           - title: Reply
             id: 2
             url: nats-basic-reply
-      - title: NATS Client
+      - title: NATS client
         id: 23
         sublinks:
           - title: Publish
@@ -1024,23 +1024,26 @@ sublinks:
           - title: Request
             id: 2
             url: nats-basic-request
-      - title: NATS security
+      - title: NATS service security
         id: 24
         sublinks:
-          - title: NATS client - Basic authentication
+          - title: SSL/TLS
             id: 1
-            url: nats-client-basic-auth
-          - title: NATS client - SSL/TLS
-            id: 2
-            url: nats-client-secure-connection
-          - title: NATS Service - Basic authentication
-            id: 3
-            url: nats-service-basic-auth
-          - title: NATS Service - SSL/TLS
-            id: 4
             url: nats-service-secure-connection
-      - title: Kafka client
+          - title: Basic authentication
+            id: 2
+            url: nats-service-basic-auth
+      - title: NATS client security
         id: 25
+        sublinks:
+          - title: SSL/TLS
+            id: 1
+            url: nats-client-secure-connection
+          - title: Basic authentication
+            id: 2
+            url: nats-client-basic-auth
+      - title: Kafka client
+        id: 26
         sublinks:
           - title: Producer
             id: 1
@@ -1052,31 +1055,31 @@ sublinks:
             id: 3
             url: kafka-client-consumer-poll-consumer-record
       - title: Kafka secured service
-        id: 26
-        sublinks:
-          - title: SASL Authentication
-            id: 1
-            url: kafka-service-sasl
-          - title: SSL
-            id: 2
-            url: kafka-service-ssl
-      - title: Kafka secured client
         id: 27
         sublinks:
-          - title: Producer SASL Authentication
+          - title: SSL/TLS
             id: 1
-            url: kafka-client-producer-sasl
-          - title: Consumer SASL Authentication
+            url: kafka-service-ssl
+          - title: SASL authentication
             id: 2
-            url: kafka-client-consumer-sasl
-          - title: Producer SSL
-            id: 3
-            url: kafka-client-producer-ssl
-          - title: Consumer SSL
-            id: 4
-            url: kafka-client-consumer-ssl
-      - title: RabbitMQ service
+            url: kafka-service-sasl
+      - title: Kafka secured client
         id: 28
+        sublinks:
+          - title: Producer SSL/TLS
+            id: 1
+            url: kafka-client-producer-ssl
+          - title: Consumer SSL/TLS
+            id: 2
+            url: kafka-client-consumer-ssl
+          - title: Producer SASL authentication
+            id: 3
+            url: kafka-client-producer-sasl
+          - title: Consumer SASL authentication
+            id: 4
+            url: kafka-client-consumer-sasl
+      - title: RabbitMQ service
+        id: 29
         sublinks:
           - title: Consumer
             id: 1
@@ -1088,7 +1091,7 @@ sublinks:
             id: 3
             url: rabbitmq-transaction-consumer
       - title: RabbitMQ client
-        id: 29
+        id: 30
         sublinks:
           - title: Producer
             id: 1
@@ -1099,53 +1102,56 @@ sublinks:
           - title: Transactional producer
             id: 3
             url: rabbitmq-transaction-producer
-      - title: RabbitMQ security
-        id: 30
-        sublinks:
-          - title: Client - Basic authentication
-            id: 1
-            url: rabbitmq-client-basic-auth
-          - title: Client - SSL/TLS
-            id: 2
-            url: rabbitmq-client-secure-connection
-          - title: Service - Basic authentication
-            id: 3
-            url: rabbitmq-service-basic-auth
-          - title: Service - SSL/TLS
-            id: 4
-            url: rabbitmq-service-secure-connection
-      - title: TCP service
+      - title: RabbitMQ service security
         id: 31
+        sublinks:
+          - title: SSL/TLS
+            id: 1
+            url: rabbitmq-service-secure-connection
+          - title: Basic authentication
+            id: 2
+            url: rabbitmq-service-basic-auth
+      - title: RabbitMQ client security
+        id: 32
+        sublinks:
+          - title: SSL/TLS
+            id: 1
+            url: rabbitmq-client-secure-connection
+          - title: Basic authentication
+            id: 2
+            url: rabbitmq-client-basic-auth
+      - title: TCP service
+        id: 33
         sublinks:
           - title: Service
             id: 1
             url: tcp-listener
       - title: TCP client
-        id: 32
+        id: 34
         sublinks:
           - title: Client
             id: 1
             url: tcp-client
       - title: TCP service security
-        id: 33
+        id: 35
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-service-ssl-tls
       - title: TCP client security
-        id: 34
+        id: 36
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-client-ssl-tls
       - title: UDP service
-        id: 35
+        id: 37
         sublinks:
           - title: Service
             id: 1
             url: udp-listener
       - title: UDP client
-        id: 36
+        id: 38
         sublinks:
           - title: Connectionless client
             id: 1
@@ -1154,13 +1160,13 @@ sublinks:
             id: 2
             url: udp-connect-client
       - title: Email service
-        id: 37
+        id: 39
         sublinks:
           - title: Receive email
             id: 1
             url: receive-email-using-service
       - title: Email client
-        id: 38
+        id: 40
         sublinks:
           - title: Send email
             id: 1
@@ -1169,7 +1175,7 @@ sublinks:
             id: 2
             url: receive-email-using-client
       - title: FTP Service
-        id: 39
+        id: 41
         sublinks:
           - title: Read
             id: 1
@@ -1178,7 +1184,7 @@ sublinks:
             id: 2
             url: ftp-service-read-write
       - title: FTP Client
-        id: 40
+        id: 42
         sublinks:
           - title: Read
             id: 1
@@ -1187,7 +1193,7 @@ sublinks:
             id: 2
             url: ftp-client-write
       - title: SFTP Service
-        id: 41
+        id: 43
         sublinks:
           - title: Read
             id: 1
@@ -1196,7 +1202,7 @@ sublinks:
             id: 2
             url: sftp-service-read-write
       - title: SFTP Client
-        id: 42
+        id: 44
         sublinks:
           - title: Read
             id: 1
@@ -1205,7 +1211,7 @@ sublinks:
             id: 2
             url: sftp-client-write
       - title: MySQL client
-        id: 43
+        id: 45
         sublinks:
           - title: Simple query
             id: 1
@@ -1229,7 +1235,7 @@ sublinks:
             id: 7
             url: mysql-call-stored-procedures
       - title: JDBC client
-        id: 44
+        id: 46
         sublinks:
           - title: Simple query
             id: 1
@@ -1250,7 +1256,7 @@ sublinks:
             id: 6
             url: jdbc-atomic-transaction
       - title: SerDes
-        id: 45
+        id: 47
         sublinks:
           - title: Serialization and Deserialization
             id: 1

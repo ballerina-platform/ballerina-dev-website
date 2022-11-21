@@ -65,7 +65,7 @@ export default function WebsocketClientOauth2JwtBearerGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket client - OAuth2 JWT Bearer grant type</h1>
+      <h1>WebSocket client - OAuth2 JWT bearer grant type</h1>
 
       <p>
         A client, which is secured with an OAuth2 JWT bearer grant type can be
@@ -257,7 +257,7 @@ export default function WebsocketClientOauth2JwtBearerGrantType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="OAuth2 Refresh Token grant type"
+            title="OAuth2 refresh token grant type"
             href="/learn/by-example/websocket-client-oauth2-refresh-token-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -285,7 +285,7 @@ export default function WebsocketClientOauth2JwtBearerGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 Refresh Token grant type
+                  OAuth2 refresh token grant type
                 </span>
               </div>
             </div>

@@ -1,5 +1,5 @@
 {
-  "title": "Producer SSL",
+  "title": "Producer SSL/TLS",
   "description": "BBE on how to configure a Kafka producer to use SSL encryption.",
   "keywords": [
     "ballerina",

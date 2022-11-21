@@ -55,7 +55,7 @@ export default function RabbitmqClientSecureConnection() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>RabbitMQ Client - SSL/TLS</h1>
+      <h1>RabbitMQ client - SSL/TLS</h1>
 
       <p>The underlying connection of the producer is secured with TLS/SSL.</p>
 
@@ -216,8 +216,8 @@ export default function RabbitmqClientSecureConnection() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - Basic authentication"
-            href="/learn/by-example/rabbitmq-client-basic-auth"
+            title="Basic authentication"
+            href="/learn/by-example/rabbitmq-service-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -244,7 +244,7 @@ export default function RabbitmqClientSecureConnection() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Basic authentication
+                  Basic authentication
                 </span>
               </div>
             </div>
@@ -252,8 +252,8 @@ export default function RabbitmqClientSecureConnection() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Basic authentication"
-            href="/learn/by-example/rabbitmq-service-basic-auth"
+            title="Basic authentication"
+            href="/learn/by-example/rabbitmq-client-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -263,7 +263,7 @@ export default function RabbitmqClientSecureConnection() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic authentication
+                  Basic authentication
                 </span>
               </div>
               <svg

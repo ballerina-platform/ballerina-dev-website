@@ -1,5 +1,5 @@
 {
-  "title": "Service - SSL/TLS",
+  "title": "SSL/TLS",
   "description": "BBE on consuming messages using a secured connection.",
   "keywords": [
     "ballerina",

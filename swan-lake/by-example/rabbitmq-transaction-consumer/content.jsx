@@ -66,7 +66,7 @@ export default function RabbitmqTransactionConsumer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>RabbitMQ Service - Transactional Consumer</h1>
+      <h1>RabbitMQ service - Transactional consumer</h1>
 
       <p>
         The messages are consumed from an existing queue using the Ballerina

@@ -54,7 +54,7 @@ export default function RabbitmqServiceSecureConnection() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>RabbitMQ Service - SSL/TLS</h1>
+      <h1>RabbitMQ service - SSL/TLS</h1>
 
       <p>
         The underlying connection of the consumer service is secured with
@@ -219,8 +219,8 @@ export default function RabbitmqServiceSecureConnection() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - Basic authentication"
-            href="/learn/by-example/rabbitmq-service-basic-auth"
+            title="Transactional producer"
+            href="/learn/by-example/rabbitmq-transaction-producer"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -247,14 +247,17 @@ export default function RabbitmqServiceSecureConnection() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic authentication
+                  Transactional producer
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/tcp-listener">
+          <Link
+            title="Basic authentication"
+            href="/learn/by-example/rabbitmq-service-basic-auth"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -263,7 +266,7 @@ export default function RabbitmqServiceSecureConnection() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  Basic authentication
                 </span>
               </div>
               <svg

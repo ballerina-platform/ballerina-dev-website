@@ -1,5 +1,5 @@
 {
-  "title": "Client - Basic authentication",
+  "title": "Basic authentication",
   "description": "BBE on consuming messages using a secured connection.",
   "keywords": [
     "ballerina",

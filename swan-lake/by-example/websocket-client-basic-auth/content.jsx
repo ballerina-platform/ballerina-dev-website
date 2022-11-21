@@ -15,7 +15,7 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerina/websocket;
 
-// Defines the WebSocket client to call the Basic Auth secured APIs.
+// Defines the WebSocket client to call the Basic authentication secured APIs.
 // The client is enriched with the \`Authorization: Basic <token>\` header by
 // passing the \`websocket:CredentialsConfig\` for the \`auth\` configuration of the client.
 // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/CredentialsConfig.
@@ -58,11 +58,11 @@ export default function WebsocketClientBasicAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket client - Basic Auth</h1>
+      <h1>WebSocket client - Basic authentication</h1>
 
       <p>
-        A client, which is secured with Basic Auth can be used to connect to a
-        secured service.
+        A client, which is secured with Basic authentication can be used to
+        connect to a secured service.
       </p>
 
       <p>
@@ -179,7 +179,7 @@ export default function WebsocketClientBasicAuth() {
           <strong>Info:</strong> As a prerequisite to running the client, start
           the{" "}
           <a href="/learn/by-example/websocket-service-basic-auth-file-user-store/">
-            Basic Auth file user store service
+            Basic authentication file user store service
           </a>
           .
         </p>
@@ -286,7 +286,7 @@ export default function WebsocketClientBasicAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Bearer Token Auth"
+            title="Bearer token authentication"
             href="/learn/by-example/websocket-client-bearer-token-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -297,7 +297,7 @@ export default function WebsocketClientBasicAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Bearer Token Auth
+                  Bearer token authentication
                 </span>
               </div>
               <svg

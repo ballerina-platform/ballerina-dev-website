@@ -56,7 +56,7 @@ export default function NatsBasicRequest() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>NATS Client - Request</h1>
+      <h1>NATS client - Request</h1>
 
       <p>
         The NATS client is used either to produce a message to a subject or
@@ -264,8 +264,8 @@ export default function NatsBasicRequest() {
         </Col>
         <Col sm={6}>
           <Link
-            title="NATS client - Basic authentication"
-            href="/learn/by-example/nats-client-basic-auth"
+            title="SSL/TLS"
+            href="/learn/by-example/nats-service-secure-connection"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -275,7 +275,7 @@ export default function NatsBasicRequest() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  NATS client - Basic authentication
+                  SSL/TLS
                 </span>
               </div>
               <svg

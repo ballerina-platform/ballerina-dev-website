@@ -1,5 +1,5 @@
 {
-  "title": "SSL",
+  "title": "SSL/TLS",
   "description": "BBE on how to configure a Kafka listener to use SSL encryption.",
   "keywords": [
     "ballerina",

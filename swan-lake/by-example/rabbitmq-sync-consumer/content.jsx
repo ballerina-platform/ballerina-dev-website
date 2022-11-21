@@ -60,7 +60,7 @@ export default function RabbitmqSyncConsumer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>RabbitMQ Client - Consumer</h1>
+      <h1>RabbitMQ client - Consumer</h1>
 
       <p>
         The underlying connections of the consumer and the producer are secured

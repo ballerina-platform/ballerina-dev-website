@@ -290,7 +290,7 @@ export default function WebsocketServiceMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic Auth File user store"
+            title="Basic authentication - File user store"
             href="/learn/by-example/websocket-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -301,7 +301,7 @@ export default function WebsocketServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic Auth File user store
+                  Basic authentication - File user store
                 </span>
               </div>
               <svg

@@ -83,7 +83,7 @@ export default function ObjectTypes() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=23bc5204b39eb3aac646ccefa0077951&file=object_types.bal",
+                "https://play.ballerina.io/?gist=260956fafb73fc41ec90ba8100ee4488&file=object_types.bal",
                 "_blank"
               );
             }}

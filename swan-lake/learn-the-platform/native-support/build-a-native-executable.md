@@ -106,17 +106,17 @@ To complete this part of the guide, you need:
     2 user-specific feature(s)
     - com.oracle.svm.thirdparty.gson.GsonFeature
     - io.ballerina.stdlib.crypto.svm.BouncyCastleFeature
-   [2/7] Performing analysis...  [************]                                           (269.1s @ 4.48GB)
+   [2/7] Performing analysis...  [************]                                           (169.1s @ 4.48GB)
      24,836 (94.74%) of 26,215 classes reachable
      81,216 (82.54%) of 98,394 fields reachable
     145,899 (76.07%) of 191,785 methods reachable
       1,392 classes,   712 fields, and 2,478 methods registered for reflection
          91 classes,    94 fields, and    66 methods registered for JNI access
           6 native libraries: -framework CoreServices, -framework Foundation, dl, pthread, stdc++, z
-   [3/7] Building universe...                                                              (33.3s @ 3.25GB)
-   [4/7] Parsing methods...      [******]                                                  (43.7s @ 3.12GB)
+   [3/7] Building universe...                                                              (13.3s @ 3.25GB)
+   [4/7] Parsing methods...      [******]                                                  (23.7s @ 3.12GB)
    [5/7] Inlining methods...     [***]                                                     (12.4s @ 4.63GB)
-   [6/7] Compiling methods...    [***************]                                        (230.8s @ 4.54GB)
+   [6/7] Compiling methods...    [***************]                                        (130.8s @ 4.54GB)
    [7/7] Creating image...                                                                 (19.1s @ 5.45GB)
      88.47MB (60.32%) for code area:   105,528 compilation units
      57.72MB (39.36%) for image heap:  478,129 objects and 30 resources
@@ -142,7 +142,7 @@ To complete this part of the guide, you need:
    /Users/user/Documents/native-executable-demo/hello_world/target/bin/hello_world (executable)
    /Users/user/Documents/native-executable-demo/hello_world/target/bin/hello_world.build_artifacts.txt (txt)
    ========================================================================================================
-   Finished generating 'hello_world' in 5m 39s.
+   Finished generating 'hello_world' in 6m 24s.
    ```
 
    > **Note:** On Windows, the Microsoft Native Tools for Visual Studio must be initialized before building a native-image. You can do this by starting the **x64 Native Tools Command Prompt** that was installed with the Visual Studio Build Tools. In the x64 Native Tools Command Prompt, navigate to your project folder and run `bal build --native`.
@@ -222,10 +222,10 @@ To complete this part of the guide, you need:
    WARNING: Unknown module: org.graalvm.nativeimage.llvm specified to --add-exports
    WARNING: Unknown module: org.graalvm.nativeimage.llvm specified to --add-exports
    WARNING: Unknown module: org.graalvm.nativeimage.llvm specified to --add-exports
-   =========================================================================================================
+   ========================================================================================================
    GraalVM Native Image: Generating 'hello_docker' (executable)...
-   =========================================================================================================
-   [1/7] Initializing...                                                                    (38.4s @ 0.41GB)
+   ========================================================================================================
+   [1/7] Initializing...                                                                   (38.4s @ 0.41GB)
     Version info: 'GraalVM 22.2.0 Java 11 CE'
     Java version info: '11.0.16+8-jvmci-22.2-b06'
     C compiler: gcc (redhat, x86_64, 8.5.0)
@@ -233,42 +233,42 @@ To complete this part of the guide, you need:
     2 user-specific feature(s)
     - com.oracle.svm.thirdparty.gson.GsonFeature
     - io.ballerina.stdlib.crypto.svm.BouncyCastleFeature
-   [2/7] Performing analysis...  [************]                                            (171.7s @ 3.36GB)
+   [2/7] Performing analysis...  [************]                                           (171.7s @ 3.36GB)
      25,054 (94.83%) of 26,419 classes reachable
      81,841 (82.43%) of 99,283 fields reachable
     147,544 (76.50%) of 192,861 methods reachable
       1,392 classes,   712 fields, and 2,489 methods registered for reflection
          91 classes,    93 fields, and    69 methods registered for JNI access
           7 native libraries: dl, m, pthread, rt, stdc++, z
-   [3/7] Building universe...                                                               (13.5s @ 3.48GB)
-   [4/7] Parsing methods...      [*****]                                                    (26.3s @ 2.43GB)
-   [5/7] Inlining methods...     [***]                                                       (8.7s @ 2.73GB)
-   [6/7] Compiling methods...    [************]                                            (155.1s @ 2.74GB)
-   [7/7] Creating image...                                                                  (15.5s @ 2.95GB)
+   [3/7] Building universe...                                                              (13.5s @ 3.48GB)
+   [4/7] Parsing methods...      [*****]                                                   (26.3s @ 2.43GB)
+   [5/7] Inlining methods...     [***]                                                      (8.7s @ 2.73GB)
+   [6/7] Compiling methods...    [************]                                           (155.1s @ 2.74GB)
+   [7/7] Creating image...                                                                 (15.5s @ 2.95GB)
      93.75MB (61.13%) for code area:   106,991 compilation units
      59.04MB (38.49%) for image heap:  477,025 objects and 91 resources
     594.88KB ( 0.38%) for other data
     153.37MB in total
-   ---------------------------------------------------------------------------------------------------------
-   Top 10 packages in code area:                   Top 10 object types in image heap:
-     19.30MB ballerina.http/2                        15.89MB byte[] for code metadata
-      4.50MB ballerina.http/2.types                  10.36MB byte[] for embedded resources
-      2.82MB ballerina.io/1                           6.83MB java.lang.Class
-      1.91MB ballerina.file/1                         5.03MB byte[] for java.lang.String
-      1.80MB ballerina.jwt/2                          4.60MB java.lang.String
-      1.60MB sun.security.ssl                         3.60MB byte[] for general heap data
-      1.42MB ballerina.oauth2/2                       2.29MB com.oracle.svm.core.hub.DynamicHubCompanion
-      1.25MB java.lang.invoke                         1.28MB byte[] for reflection metadata
-      1.22MB com.sun.media.sound                    974.95KB java.lang.String[]
-      1.06MB ballerina.lang$0046query/0             926.91KB c.o.svm.core.hub.DynamicHub$ReflectionMetadata
-     56.09MB for 865 more packages                    6.28MB for 3527 more object types
-   ---------------------------------------------------------------------------------------------------------
+   --------------------------------------------------------------------------------------------------------
+   Top 10 packages in code area:                  Top 10 object types in image heap:
+     19.30MB ballerina.http/2                       15.89MB byte[] for code metadata
+      4.50MB ballerina.http/2.types                 10.36MB byte[] for embedded resources
+      2.82MB ballerina.io/1                          6.83MB java.lang.Class
+      1.91MB ballerina.file/1                        5.03MB byte[] for java.lang.String
+      1.80MB ballerina.jwt/2                         4.60MB java.lang.String
+      1.60MB sun.security.ssl                        3.60MB byte[] for general heap data
+      1.42MB ballerina.oauth2/2                      2.29MB com.oracle.svm.core.hub.DynamicHubCompanion
+      1.25MB java.lang.invoke                        1.28MB byte[] for reflection metadata
+      1.22MB com.sun.media.sound                   974.95KB java.lang.String[]
+      1.06MB ballerina.lang$0046query/0            926.91KB c.o.svm.core.hub.DynamicHub$ReflectionMetadata
+     56.09MB for 865 more packages                   6.28MB for 3527 more object types
+   --------------------------------------------------------------------------------------------------------
               58.4s (12.6% of total time) in 124 GCs | Peak RSS: 5.41GB | CPU load: 6.50
-   ---------------------------------------------------------------------------------------------------------
+   --------------------------------------------------------------------------------------------------------
    Produced artifacts:
     /app/build/hello_docker (executable)
     /app/build/hello_docker.build_artifacts.txt (txt)
-   =========================================================================================================
+   ========================================================================================================
    Finished generating 'hello_docker' in 6m 32s.
    Removing intermediate container ba1e3c6403eb
     ---> e7e7bce1a5e8

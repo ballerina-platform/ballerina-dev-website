@@ -278,7 +278,7 @@ export default function Platform(props) {
             <div className={styles.content}>
               <p className={styles.title}>
                 <a href={`${prefix}/learn/build-a-native-executable`} className={styles.titleLink}>
-                  Build A Native Executable [Experimental]
+                  [Experimental] Build a native executable
                 </a>
               </p>
               <p className={styles.description}>Building a GraalVM native executable from Ballerina.</p>

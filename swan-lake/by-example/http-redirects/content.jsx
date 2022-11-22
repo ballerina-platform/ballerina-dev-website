@@ -17,16 +17,14 @@ const codeSnippetData = [
 // Creates an HTTP client to interact with a remote endpoint.
 // The \`followRedirects\` record provides configurations associated with HTTP redirects.
 // For details, see https://lib.ballerina.io/ballerina/http/latest/records/FollowRedirects.
-http:Client clientEndpoint = check new ("http://localhost:9092", {
-        followRedirects: {enabled: true, maxCount: 5}
-    }
-);
+http:Client clientEndpoint = check new ("http://localhost:9092",
+        followRedirects = {enabled: true, maxCount: 5});
 
 service / on new http:Listener(9090) {
 
-    resource function get hello() returns string|error {
+    resource function get greeting() returns string|error {
         // Sends a \`GET\` request to the specified endpoint and Retrieved the text payload from the response.
-        string returnResult = check clientEndpoint->get("/redirect1");
+        string returnResult = check clientEndpoint->/redirect1;
         return "Response received : " + returnResult;
     }
 }
@@ -86,6 +84,13 @@ export default function HttpRedirects() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
+        </a>
+      </p>
+
+      <p>
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#2413-redirect">
+          specification
         </a>
         .
       </p>
@@ -298,7 +303,7 @@ export default function HttpRedirects() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v http://localhost:9090/hello/`}</span>
+              <span>{`\$ curl -v http://localhost:9090/greeting`}</span>
               <span>{`*   Trying 127.0.0.1:9090...`}</span>
               <span>{`* TCP_NODELAY set`}</span>
               <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
@@ -324,8 +329,8 @@ export default function HttpRedirects() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 JWT Bearer grant type"
-            href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type"
+            title="Default resource"
+            href="/learn/by-example/http-default-resource"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -352,7 +357,7 @@ export default function HttpRedirects() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 JWT Bearer grant type
+                  Default resource
                 </span>
               </div>
             </div>

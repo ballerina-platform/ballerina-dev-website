@@ -29,15 +29,7 @@ listener websocket:Listener securedEP = new(9090,
         mutualSsl: {
             verifyClient: http:REQUIRE,
             cert: "../resource/path/to/public.crt"
-        },
-        // Enables the preferred SSL protocol and its versions.
-        protocol: {
-            name: http:TLS,
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        // Configures the preferred ciphers.
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-
+        }
     }
 );
 
@@ -78,7 +70,7 @@ export default function WebsocketServiceMutualSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Mutual SSL</h1>
+      <h1>WebSocket service - Mutual SSL</h1>
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
@@ -94,6 +86,14 @@ export default function WebsocketServiceMutualSsl() {
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file
+          path, private key file path, and trusted certificate file path in the
+          code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -180,6 +180,8 @@ export default function WebsocketServiceMutualSsl() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -235,8 +237,6 @@ export default function WebsocketServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
-              <span>{`# trusted certificate file path.`}</span>
               <span>{`\$ bal run websocket_service_mutual_ssl.bal`}</span>
             </code>
           </pre>
@@ -246,7 +246,7 @@ export default function WebsocketServiceMutualSsl() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - SSL/TLS"
+            title="SSL/TLS"
             href="/learn/by-example/websocket-service-ssl-tls"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -274,7 +274,7 @@ export default function WebsocketServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
             </div>
@@ -282,7 +282,7 @@ export default function WebsocketServiceMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth File user store"
+            title="Basic authentication file user store"
             href="/learn/by-example/websocket-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -293,7 +293,7 @@ export default function WebsocketServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth File user store
+                  Basic authentication file user store
                 </span>
               </div>
               <svg

@@ -15,31 +15,30 @@ const codeSnippetData = [
   `import ballerina/http;
 
 // The HTTP client's chunking behavior can be configured as \`CHUNKING_AUTO\`,
-// \`CHUNKING_ALWAYS\`, or \`CHUNKING_NEVER\`.
+// \`CHUNKING_ALWAYS\`, or \`CHUNKING_NEVER\` only available HTTP/1.1 protocol.
 // For details, see https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO,
 // https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_ALWAYS,  and
-// https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_NEVER. 
-// In this example, it is set to \`CHUNKING_NEVER\`, which means that chunking never happens irrespective of the request size. 
+// https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_NEVER.
+// In this example, it is set to \`CHUNKING_NEVER\`, which means that chunking never happens irrespective of the request size.
 // When chunking is set to \`CHUNKING_AUTO\`, chunking is done based on the request.
 // The \`http1Settings\` annotation provides the chunking-related configurations.
 // For details, see https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings.
-final http:Client clientEndpoint = check new ("http://localhost:9090",
-                        {http1Settings: {chunking: http:CHUNKING_NEVER}});
+http:Client clientEndpoint = check new ("http://localhost:9090", httpVersion = http:HTTP_1_1,
+                        http1Settings = {chunking: http:CHUNKING_NEVER});
 
 service / on new http:Listener(9092) {
-    resource function get chunkingSample() returns json|error {
+    resource function get chunk() returns string|error {
         //Invoke endpoint along with a JSON payload.
-        json clientResponse = check clientEndpoint->post("/echo", {"name": "Ballerina"});
-        return clientResponse;
+        string response = check clientEndpoint->/payload.post({"name": "Ballerina"});
+        return response;
     }
 }
 
 // A sample backend, which responds according to the chunking behavior.
 service / on new http:Listener(9090) {
-    resource function post echo(@http:Header{name:"Content-length"} string cLen) returns json {
+    resource function post payload(@http:Header{name:"Content-length"} string cLen) returns string {
         //Set the response with the content length.
-        string value = "Length-" + cLen;
-        return {"Outbound request content": value};
+        return string \`Outbound request content length: \${cLen}\`;
     }
 }
 `,
@@ -293,8 +292,8 @@ export default function HttpDisableChunking() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9092/chunkingSample`}</span>
-              <span>{`{"Outbound request content":"Length-20"}`}</span>
+              <span>{`\$ curl http://localhost:9092/chunk`}</span>
+              <span>{`Outbound request content length: 20`}</span>
             </code>
           </pre>
         </Col>

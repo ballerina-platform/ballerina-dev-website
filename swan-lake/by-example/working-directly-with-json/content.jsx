@@ -87,7 +87,7 @@ export default function WorkingDirectlyWithJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6afff2cfb0bd815671cacd19cde2be4e&file=working_directly_with_json.bal",
+                "https://play.ballerina.io/?gist=dd87f172721db50c28a29205ec37859f&file=working_directly_with_json.bal",
                 "_blank"
               );
             }}

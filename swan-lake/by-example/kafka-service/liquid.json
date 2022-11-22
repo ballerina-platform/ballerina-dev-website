@@ -1,0 +1,20 @@
+{
+  "title": "Service",
+  "description": "BBE on creating a Kafka service to receive messages in an asynchronous manner using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "kafka",
+    "consumer",
+    "listener",
+    "service",
+    "asynchronous"
+  ],
+  "permalink": "/learn/by-example/kafka-service",
+  "active": "kafka-service",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/kafka-service",
+    "/swan-lake/learn/by-example/kafka-service.html"
+  ]
+}

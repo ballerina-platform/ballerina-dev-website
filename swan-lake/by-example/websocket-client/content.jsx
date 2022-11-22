@@ -59,7 +59,7 @@ export default function WebsocketClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client</h1>
+      <h1>WebSocket client - Send/Receive messages</h1>
 
       <p>
         The WebSocket client can be used to connect to and interact with a
@@ -227,8 +227,8 @@ export default function WebsocketClient() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - OAuth2"
-            href="/learn/by-example/graphql-service-oauth2"
+            title="Send/Receive messages"
+            href="/learn/by-example/websocket-basic-sample"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -255,7 +255,7 @@ export default function WebsocketClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - OAuth2
+                  Send/Receive messages
                 </span>
               </div>
             </div>
@@ -263,7 +263,7 @@ export default function WebsocketClient() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - Retry"
+            title="Retry on failure"
             href="/learn/by-example/websocket-retry-client"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -274,7 +274,7 @@ export default function WebsocketClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Retry
+                  Retry on failure
                 </span>
               </div>
               <svg

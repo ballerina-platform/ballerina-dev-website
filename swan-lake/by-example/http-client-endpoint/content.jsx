@@ -15,30 +15,23 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 public function main() returns error? {
-    // Creates a new client with the backend URL.
-    final http:Client clientEndpoint = check new ("http://postman-echo.com");
-    
-    // Sends a \`GET\` request to the specified endpoint.
-    io:println("GET request:");
-    json resp = check clientEndpoint->get("/get?test=123");
-    io:println(resp.toJsonString());
+    // Creates a new client with the Basic REST service URL.
+    http:Client httpClient = check new ("localhost:9090");
 
-    // The \`get()\`, \`head()\`, and \`options()\` have the optional headers parameter to send out headers,
-    io:println("\\nGET request with Headers:");
-    resp = check clientEndpoint->get("/get", {"Sample-Name": "http-client-connector"});
-    io:println(resp.toJsonString());
+    // Sends a \`GET\` request to the "/albums" resource.
+    // The verb is not mandatory as it is default to "GET".
+    Album[] albums = check httpClient->/albums;
+    io:println("GET request:" + albums.toJsonString());
 
-    // Sends a \`POST\` request to the specified endpoint.
-    io:println("\\nPOST request:");
-    resp = check clientEndpoint->post("/post", "POST: Hello World");
-    io:println(resp.toJsonString());
-
-    // Uses the \`execute()\` remote function for custom HTTP verbs.
-    io:println("\\nUse custom HTTP verbs:");
-    http:Response response = check clientEndpoint->execute("COPY", "/get", "CUSTOM: Hello World");
-
-    io:println("Status code: " + response.statusCode.toString());
+    // Sends a \`POST\` request to the "/albums" resource.
+    Album album  = check httpClient->/albums.post({title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"});
+    io:println("\\nPOST request:" + album.toJsonString());
 }
 `,
 ];
@@ -64,7 +57,7 @@ export default function HttpClientEndpoint() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client</h1>
+      <h1>HTTP client - Send request/Receive response</h1>
 
       <p>
         The HTTP Client Connector can be used to connect to and interact with an
@@ -75,8 +68,9 @@ export default function HttpClientEndpoint() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
-        .
+        </a>{" "}
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#24-client">specification</a>.
       </p>
 
       <Row
@@ -90,7 +84,7 @@ export default function HttpClientEndpoint() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8e1fa35a30ae9ea02e34937f7f45305e&file=http_client_endpoint.bal",
+                "https://play.ballerina.io/?gist=5302a7f29a9a265b5d474dd8465c995e&file=http_client_endpoint.bal",
                 "_blank"
               );
             }}
@@ -190,6 +184,17 @@ export default function HttpClientEndpoint() {
 
       <p>Run the client program by executing the following command.</p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a{" "}
+          <a href="learn/by-example/http-basic-rest-service/">
+            Basic REST service
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -246,20 +251,10 @@ export default function HttpClientEndpoint() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_client_endpoint.bal`}</span>
-              <span>{`GET request:`}</span>
-              <span>{`{"args":{"test":"123"}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e3-2cec8477340e121571a5df88", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get?test=123"}`}</span>
+              <span>{`GET request:[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
               <span>{`
 `}</span>
-              <span>{`GET request with Headers:`}</span>
-              <span>{`{"args":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e6-124af9746490533b1a560cca", "sample-name":"http-client-connector", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get"}`}</span>
-              <span>{`
-`}</span>
-              <span>{`POST request:`}</span>
-              <span>{`{"args":{}, "data":"POST: Hello World", "files":{}, "form":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b723e6-60ad459c47889ca53a89df90", "content-length":"17", "content-type":"text/plain", "user-agent":"ballerina"}, "json":null, "url":"http://postman-echo.com/post"}`}</span>
-              <span>{`
-`}</span>
-              <span>{`Use custom HTTP verbs:`}</span>
-              <span>{`Status code: 404`}</span>
+              <span>{`POST request:{"title":"Sarah Vaughan and Clifford Brown", "artist":"Sarah Vaughan"}`}</span>
             </code>
           </pre>
         </Col>
@@ -268,8 +263,8 @@ export default function HttpClientEndpoint() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Restrict by media type"
-            href="/learn/by-example/http-restrict-by-media-type"
+            title="Send different status codes"
+            href="/learn/by-example/http-send-different-status-codes"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -296,7 +291,7 @@ export default function HttpClientEndpoint() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Restrict by media type
+                  Send different status codes
                 </span>
               </div>
             </div>
@@ -304,7 +299,7 @@ export default function HttpClientEndpoint() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client data binding"
+            title="Payload binding"
             href="/learn/by-example/http-client-data-binding"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -315,7 +310,7 @@ export default function HttpClientEndpoint() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client data binding
+                  Payload binding
                 </span>
               </div>
               <svg

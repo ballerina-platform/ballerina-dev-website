@@ -15,40 +15,39 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the \`http:OAuth2PasswordGrantConfig\` to the \`auth\` configuration of the client.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2PasswordGrantConfig.
-http:Client securedEP = check new("https://localhost:9090",
-    auth = {
-        tokenUrl: "https://localhost:9445/oauth2/token",
-        username: "admin",
-        password: "admin",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: ["admin"],
-        refreshConfig: {
-            refreshUrl: "https://localhost:9445/oauth2/token",
-            scopes: ["hello"],
+public function main() returns error? {
+    // Defines the HTTP client to call the OAuth2 secured APIs.
+    // The client is enriched with the \`Authorization: Bearer <token>\` header by
+    // passing the \`http:OAuth2PasswordGrantConfig\` to the \`auth\` configuration of the client.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2PasswordGrantConfig.
+    http:Client securedEP = check new("https://localhost:9090",
+        auth = {
+            tokenUrl: "https://localhost:9445/oauth2/token",
+            username: "admin",
+            password: "admin",
+            clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+            clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+            scopes: ["admin"],
+            refreshConfig: {
+                refreshUrl: "https://localhost:9445/oauth2/token",
+                scopes: ["hello"],
+                clientConfig: {
+                    secureSocket: {
+                        cert: "../resource/path/to/public.crt"
+                    }
+                }
+            },
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
                 }
             }
         },
-        clientConfig: {
-            secureSocket: {
-                cert: "../resource/path/to/public.crt"
-            }
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
         }
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
-public function main() returns error? {
-    string response = check securedEP->get("/foo/bar");
+    );
+    string response = check securedEP->/foo/bar;
     io:println(response);
 }
 `,
@@ -75,15 +74,11 @@ export default function HttpClientOauth2PasswordGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - OAuth2 Password grant type</h1>
+      <h1>HTTP client - OAuth2 password grant type</h1>
 
       <p>
         A client, which is secured with OAuth2 password grant type can be used
-        to connect to a secured service.
-      </p>
-
-      <p>
-        The client is enriched with the{" "}
+        to connect to a secured service. The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>http:OAuth2PasswordGrantConfig</code> to the <code>auth</code>{" "}
         configuration of the client.
@@ -96,6 +91,13 @@ export default function HttpClientOauth2PasswordGrantType() {
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -182,7 +184,15 @@ export default function HttpClientOauth2PasswordGrantType() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the following command.</p>
+      <p>Run the client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          the{" "}
+          <a href="/learn/by-example/http-service-oauth2/">OAuth2 service</a>.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -239,8 +249,6 @@ export default function HttpClientOauth2PasswordGrantType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a sample service secured with OAuth2.`}</span>
-              <span>{`# You may need to change the trusted certificate file path.`}</span>
               <span>{`\$ bal run http_client_oauth2_password_grant_type.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
@@ -251,7 +259,7 @@ export default function HttpClientOauth2PasswordGrantType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 Client Credentials grant type"
+            title="OAuth2 client credentials grant type"
             href="/learn/by-example/http-client-oauth2-client-credentials-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -279,7 +287,7 @@ export default function HttpClientOauth2PasswordGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 Client Credentials grant type
+                  OAuth2 client credentials grant type
                 </span>
               </div>
             </div>
@@ -287,7 +295,7 @@ export default function HttpClientOauth2PasswordGrantType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 Refresh Token grant type"
+            title="OAuth2 refresh token grant type"
             href="/learn/by-example/http-client-oauth2-refresh-token-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -298,7 +306,7 @@ export default function HttpClientOauth2PasswordGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 Refresh Token grant type
+                  OAuth2 refresh token grant type
                 </span>
               </div>
               <svg

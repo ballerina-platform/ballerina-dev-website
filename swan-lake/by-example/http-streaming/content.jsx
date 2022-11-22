@@ -31,14 +31,13 @@ service /'stream on new http:Listener(9090) {
             contentType = mime:APPLICATION_PDF);
 
         //Sends the request to the receiver service with the file content.
-        string clientResponse = check clientEndpoint->post("/stream/receiver", request);
+        string clientResponse = check clientEndpoint->/'stream/receiver.post(request);
 
         // forward the received payload to the caller.
         return clientResponse;
     }
 
-    resource function post receiver(http:Caller caller,
-                                    http:Request request) returns error? {
+    resource function post receiver(http:Request request) returns string|error {
         // Retrieve the byte stream.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getByteStream.
         stream<byte[], io:Error?> streamer = check request.getByteStream();
@@ -307,7 +306,7 @@ export default function HttpStreaming() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -X GET http://localhost:9090/stream/fileupload`}</span>
+              <span>{`\$ curl http://localhost:9090/stream/fileupload`}</span>
               <span>{`File Received!`}</span>
             </code>
           </pre>
@@ -316,7 +315,10 @@ export default function HttpStreaming() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="100 continue" href="/learn/by-example/http-100-continue">
+          <Link
+            title="Caching client"
+            href="/learn/by-example/http-caching-client"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -342,7 +344,7 @@ export default function HttpStreaming() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  100 continue
+                  Caching client
                 </span>
               </div>
             </div>

@@ -68,6 +68,8 @@ export default function ExpressionOrientedStyle() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
+      <h1>Expression-oriented style</h1>
+
       <p>
         Ballerina supports statements for familiarity but also tries to enable
         an expression-oriented style to be more intuitive.
@@ -89,7 +91,7 @@ export default function ExpressionOrientedStyle() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ef4deafc4f8ee41c7ebffc83d18a60c2&file=expression_oriented_style.bal",
+                "https://play.ballerina.io/?gist=776c201f0befdc4d7e5b3b8ff93de40d&file=expression_oriented_style.bal",
                 "_blank"
               );
             }}
@@ -254,10 +256,7 @@ export default function ExpressionOrientedStyle() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Object mocking"
-            href="/learn/by-example/testerina-mocking-objects"
-          >
+          <Link title="Never type" href="/learn/by-example/never-type">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -283,17 +282,14 @@ export default function ExpressionOrientedStyle() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Object mocking
+                  Never type
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Service path and resource path"
-            href="/learn/by-example/http-absolute-path-and-path"
-          >
+          <Link title="Arrays" href="/learn/by-example/arrays">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -302,7 +298,7 @@ export default function ExpressionOrientedStyle() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service path and resource path
+                  Arrays
                 </span>
               </div>
               <svg

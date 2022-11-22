@@ -77,7 +77,7 @@ export default function StructuredKeys() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1ee98c33ef424fd6a2ec3813e01da89d&file=structured_keys.bal",
+                "https://play.ballerina.io/?gist=25eb3c5d92c6ba633013a0d82eff16ef&file=structured_keys.bal",
                 "_blank"
               );
             }}

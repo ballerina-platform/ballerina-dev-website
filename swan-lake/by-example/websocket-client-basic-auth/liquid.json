@@ -1,5 +1,5 @@
 {
-  "title": "Client - Basic Auth",
+  "title": "Basic authentication",
   "description": "BBE on how to secure WebSocket client with Basic Auth in Ballerina.",
   "keywords": [
     "ballerina",

@@ -21,27 +21,21 @@ http:Client clientEP = check new ("http://localhost:9090");
 //Binds the listener to the service.
 service /multiparts on new http:Listener(9090) {
 
-    resource function post decode(http:Request request)
-            returns http:Response|http:InternalServerError {
+    resource function post decoder(http:Request request)
+            returns http:Response|http:InternalServerError|error {
         http:Response response = new;
-        // Extracts bodyparts from the request.
+        // Extracts body parts from the request.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getBodyParts.
-        var bodyParts = request.getBodyParts();
-
-        if bodyParts is mime:Entity[] {
-            foreach var part in bodyParts {
-                handleContent(part);
-            }
-            response.setPayload(bodyParts);
-            return response;
-        } else {
-            log:printError(bodyParts.message());
-            return {body:"Error in decoding multiparts!"};
+        var bodyParts = check request.getBodyParts();
+        foreach var part in bodyParts {
+            handleContent(part);
         }
+        response.setPayload(bodyParts);
+        return response;
     }
 
-    resource function get encode(http:Request req)
-            returns http:Response|http:InternalServerError {
+    resource function get encoder(http:Request req) returns
+            http:Response|http:InternalServerError|error {
         //Create a \`json\` body part.
         mime:Entity jsonBodyPart = new;
         jsonBodyPart.setContentDisposition(getContentDispositionForFormData("json part"));
@@ -63,12 +57,8 @@ service /multiparts on new http:Listener(9090) {
         // E.g., \`multipart/mixed\`, \`multipart/related\` etc.
         // You need to pass the content type that suits your requirement.
         request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
-        http:Response|error returnResponse = clientEP->post("/multiparts/decode", request);
-        if returnResponse is http:Response {
-            return returnResponse;
-        } else {
-            return {body:"Error occurred while sending multipart request!"};
-        }
+        http:Response returnResponse = check clientEP->/multiparts/decoder.post(request);
+        return returnResponse;
     }
 }
 
@@ -383,7 +373,7 @@ export default function HttpRequestWithMultiparts() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -F "part1={\\"name\\":\\"ballerina\\"};type=application/json" http://localhost:9090/multiparts/decode -H "Content-Type: multipart/mixed" -H 'Expect:'`}</span>
+              <span>{`\$ curl -F "part1={\\"name\\":\\"ballerina\\"};type=application/json" http://localhost:9090/multiparts/decoder -H "Content-Type: multipart/mixed" -H 'Expect:'`}</span>
               <span>{`--f710b4a02896b88a`}</span>
               <span>{`content-disposition: attachment;name="part1"`}</span>
               <span>{`content-type: application/json`}</span>
@@ -395,8 +385,8 @@ export default function HttpRequestWithMultiparts() {
               <span>{`
 `}</span>
               <span>{`# The cURL command, which you need to execute to encode the parts of the body and send a multipart request via the Ballerina service.`}</span>
-              <span>{`\$ curl -v http://localhost:9090/multiparts/encode`}</span>
-              <span>{`> GET /multiparts/encode HTTP/1.1`}</span>
+              <span>{`\$ curl -v http://localhost:9090/multiparts/encoder`}</span>
+              <span>{`> GET /multiparts/encoder HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept: */*`}</span>

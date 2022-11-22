@@ -256,7 +256,7 @@ export default function WebsubWebhookSample() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 JWT Bearer grant type"
+            title="OAuth2 JWT bearer grant type"
             href="/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -284,17 +284,14 @@ export default function WebsubWebhookSample() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 JWT Bearer grant type
+                  OAuth2 JWT bearer grant type
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Circuit breaker"
-            href="/learn/by-example/http-circuit-breaker"
-          >
+          <Link title="Timeout" href="/learn/by-example/http-timeout">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -303,7 +300,7 @@ export default function WebsubWebhookSample() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Circuit breaker
+                  Timeout
                 </span>
               </div>
               <svg

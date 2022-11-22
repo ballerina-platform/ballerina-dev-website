@@ -1,5 +1,5 @@
 {
-  "title": "Client",
+  "title": "Send request/Receive response",
   "description": "BBE on how to interact with an HTTP server using Ballerina HTTP Client Connector.",
   "keywords": ["ballerina", "ballerina by examples", "bbe", "http", "client"],
   "permalink": "/learn/by-example/http-client-endpoint",

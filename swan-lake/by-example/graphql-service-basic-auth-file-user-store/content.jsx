@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-listener graphql:Listener securedEP = new(4000,
+listener graphql:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -65,15 +65,15 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Basic Auth file user store</h1>
+      <h1>GraphQL service - Basic authentication file user store</h1>
 
       <p>
-        A GraphQL service can be secured with Basic Auth and optionally by
-        enforcing authorization. Then, it validates the Basic Auth token sent in
-        the <code>Authorization</code> header against the provided
-        configurations. This reads data from a file, which has a TOML format.
-        This stores the usernames, passwords for authentication, and scopes for
-        authorization.
+        A GraphQL service can be secured with Basic authentication and
+        optionally by enforcing authorization. Then, it validates the Basic
+        authentication token sent in the <code>Authorization</code> header
+        against the provided configurations. This reads data from a file, which
+        has a TOML format. This stores the usernames, passwords for
+        authentication, and scopes for authorization.
       </p>
 
       <p>
@@ -100,6 +100,13 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> # You may need to change the certificate file
+          path and private key file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -186,7 +193,23 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
         </Col>
       </Row>
 
-      <p>Run the service as follows.</p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the service,
+          populate the <code>Config.toml</code> file correctly with the user
+          information as shown below.
+        </p>
+      </blockquote>
+
+      <pre style={{ marginLeft: "32px" }} className="p-3 rounded toml">
+        <code>
+          [[ballerina.auth.users]] username="alice" password="password1"
+          scopes=["scope1"] [[ballerina.auth.users]] username="bob"
+          password="password2" scopes=["scope2", "scope3"]
+        </code>
+      </pre>
+
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -243,30 +266,23 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, ensure that the \`Config.toml\` file is populated correctly`}</span>
-              <span>{`# with the user information. The following command can be used to populate`}</span>
-              <span>{`# the \`Config.toml\` file.`}</span>
-              <span>{`\$ echo '[[ballerina.auth.users]]`}</span>
-              <span>{`username="alice"`}</span>
-              <span>{`password="password1"`}</span>
-              <span>{`scopes=["scope1"]`}</span>
-              <span>{`[[ballerina.auth.users]]`}</span>
-              <span>{`username="bob"`}</span>
-              <span>{`password="password2"`}</span>
-              <span>{`scopes=["scope2", "scope3"]' > Config.toml`}</span>
-              <span>{`
-`}</span>
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
               <span>{`\$ bal run graphql_service_basic_auth_file_user_store.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - Mutual SSL"
+            title="Mutual SSL"
             href="/learn/by-example/graphql-service-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -294,7 +310,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Mutual SSL
+                  Mutual SSL
                 </span>
               </div>
             </div>
@@ -302,7 +318,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth LDAP user store"
+            title="Basic authentication LDAP user store"
             href="/learn/by-example/graphql-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -313,7 +329,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth LDAP user store
+                  Basic authentication LDAP user store
                 </span>
               </div>
               <svg

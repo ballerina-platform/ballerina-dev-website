@@ -1,5 +1,5 @@
 ---
-title: [Experimental] Build a native executable
+title: "[Experimental] Build a native executable"
 permalink: /learn/build-a-native-executable/
 description: This guide walks you through compiling a Ballerina application to a native executable and packing the native executable in a container.
 keywords: ballerina, programming language, restful-api, ballerina packages, language-guide
@@ -7,7 +7,7 @@ active: build-a-native-executable
 intro: This guide walks you through compiling a Ballerina application to a native executable and packing the native executable in a container.
 ---
 
-This guide walks you through compiling a Ballerina application to a native executable and packing the native executable in a container. This feature was introduced as an experimental feature in the Swan Lake Update 3 release and it will become official with the following releases. In case you come across any issues do report them as the Ballerina team will be aggressively addressing them.
+This feature was introduced as an experimental feature in the Swan Lake Update 3 release and it will become official with the following releases. In case you come across any issues do report them as the Ballerina team will be aggressively addressing them.
 
 ## GraalVM
 

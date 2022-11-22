@@ -21,7 +21,7 @@ function hash() returns error? {
     string value = "Hello Ballerina!";
     byte[] input = value.toBytes();
 
-    // Hashing input value using the [MD5 hashing algorithm, and printing the hash value using the Hex encoding.
+    // Hashing input value using the MD5 hashing algorithm, and printing the hash value using the Hex encoding.
     // For details, see https://lib.ballerina.io/ballerina/crypto/latest/functions#hashMd5
     byte[] output = crypto:hashMd5(input);
     io:println("Hex encoded hash with MD5: " + output.toBase16());
@@ -264,6 +264,14 @@ export default function SecurityCrypto() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file
+          path, private key file path, and trusted certificate file path in the
+          code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -349,6 +357,8 @@ export default function SecurityCrypto() {
         </Col>
       </Row>
 
+      <p>Run the program by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -404,8 +414,6 @@ export default function SecurityCrypto() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
-              <span>{`# trusted certificate file path.`}</span>
               <span>{`\$ bal run security_crypto.bal`}</span>
               <span>{`Hex encoded hash with MD5: 0605402ee16d8e96511a58ff105bc24a`}</span>
               <span>{`Base64 encoded hash with SHA1: /8fwbGIevBvv2Nl3gEL9DtWas+Q=`}</span>

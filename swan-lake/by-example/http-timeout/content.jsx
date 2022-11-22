@@ -13,44 +13,15 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/http;
-import ballerina/lang.runtime;
+import ballerina/io;
 
-final http:Client backendClientEP = check new ("http://localhost:8080", {
-    // Timeout configuration.
-    timeout: 10
-});
-
-// Create an HTTP service bound to the listener endpoint.
-service / on new http:Listener(9090) {
-
-    resource function get timeout() returns string|http:InternalServerError {
-        string|error response = backendClientEP->get("/hello");
-
-        // If the \`response\` is a \`string\` (text/plain), it is sent back to the
-        // client. Also, if the \`response\` is an \`http:ClientError\`, an internal
-        // server error is returned to the client.
-        if response is string {
-            return response;
-        } else {
-            if response is http:IdleTimeoutError {
-                return { body: 
-                "Request timed out. Please try again in sometime."};
-            } else {
-                return { body: response.message()};
-            }
-        }
-
-    }
-}
-
-// This sample service is used to mock connection timeouts.
-service / on new http:Listener(8080) {
-
-    resource function get hello() returns string {
-        // Delay the response by 15 seconds to mimic the network level delays.
-        runtime:sleep(15);
-        return "Hello World!!!";
-    }
+public function main() returns error? {
+    http:Client backendClientEP = check new ("http://localhost:8080", {
+        // Timeout configuration.
+        timeout: 10
+    });
+    string payload = check backendClientEP->/greeting;
+    io:println(payload);
 }
 `,
 ];
@@ -60,8 +31,6 @@ export default function HttpTimeout() {
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
-  const [outputClick2, updateOutputClick2] = useState(false);
-  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -78,11 +47,11 @@ export default function HttpTimeout() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Timeout</h1>
+      <h1>HTTP client - Timeout</h1>
 
       <p>
-        The Timeout is used to gracefully handle network timeouts, which occur
-        when using the HTTP Client.
+        The timeout is used to gracefully handle response delays which could
+        occur due to network problems or the back-end
       </p>
 
       <p>
@@ -178,7 +147,14 @@ export default function HttpTimeout() {
         </Col>
       </Row>
 
-      <p>Run the service as follows.</p>
+      <p>Run the program by executing the following command.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a service with a timeout more than 10 seconds.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -241,92 +217,12 @@ export default function HttpTimeout() {
         </Col>
       </Row>
 
-      <p>
-        Invoke the service by executing the following cURL command in a new
-        terminal.
-      </p>
-
-      <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={12} className="d-flex align-items-start">
-          {outputClick2 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="output-btn bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              onClick={() => {
-                updateOutputClick2(true);
-                const extractedText = extractOutput(ref2.current.innerText);
-                copyToClipboard(extractedText);
-                setTimeout(() => {
-                  updateOutputClick2(false);
-                }, 3000);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#EEEEEE"
-                className="output-btn bi bi-clipboard"
-                viewBox="0 0 16 16"
-                aria-label="Copy to Clipboard"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          <pre ref={ref2}>
-            <code className="d-flex flex-column">
-              <span>{`\$ curl -v http://localhost:9090/timeout`}</span>
-              <span>{`*   Trying 127.0.0.1:9090...`}</span>
-              <span>{`* TCP_NODELAY set`}</span>
-              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> GET /timeout HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.68.0`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`> `}</span>
-              <span>{`* Mark bundle as not supporting multiuse`}</span>
-              <span>{`< HTTP/1.1 500 Internal Server Error`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 48`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Mon, 21 Sep 2020 20:36:56 +0530`}</span>
-              <span>{`< `}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`Request timed out. Please try again in sometime.`}</span>
-            </code>
-          </pre>
-        </Col>
-      </Row>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Retry" href="/learn/by-example/http-retry">
+          <Link
+            title="WebSub subscriber service"
+            href="/learn/by-example/websub-webhook-sample"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -352,17 +248,14 @@ export default function HttpTimeout() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Retry
+                  WebSub subscriber service
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Dynamic listener"
-            href="/learn/by-example/dynamic-listener"
-          >
+          <Link title="Retry" href="/learn/by-example/http-retry">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -371,7 +264,7 @@ export default function HttpTimeout() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dynamic listener
+                  Retry
                 </span>
               </div>
               <svg

@@ -1,0 +1,21 @@
+{
+  "title": "Atomic transactions",
+  "description": "This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML operations inside a transaction block in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "mysql",
+    "insert",
+    "update",
+    "delete",
+    "batch update",
+    "transaction"
+  ],
+  "permalink": "/learn/by-example/mysql-atomic-transaction",
+  "active": "mysql-atomic-transaction",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mysql-atomic-transaction",
+    "/swan-lake/learn/by-example/mysql-atomic-transaction.html"
+  ]
+}

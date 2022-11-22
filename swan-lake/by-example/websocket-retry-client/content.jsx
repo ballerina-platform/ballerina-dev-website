@@ -17,7 +17,7 @@ import ballerina/websocket;
 
 public function main() returns error? {
     websocket:Client wsClient = check new("ws://localhost:9090/foo", {
-        // Set the maximum retry count to 20 so that it will try 20 times with an interval of
+        // Set the maximum retry count to 20 so that it will try 20 times with the default interval of
         // 1 second in between the retry attempts.
         retryConfig: { maxCount: 20 }
     });
@@ -53,7 +53,7 @@ export default function WebsocketRetryClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - Retry</h1>
+      <h1>WebSocket client - Retry on failure</h1>
 
       <p>
         If the WebSocket client lost the connection due to some transient
@@ -68,6 +68,19 @@ export default function WebsocketRetryClient() {
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a sample WebSocket service, which sends a message to the client upon
+          upgrading to a WebSocket connection.If you are using a Ballerina
+          WebSocket server, you can send a message to the client in the{" "}
+          <code>onOpen</code> resource. The client will first connect to the
+          server and then it will wait for 5 seconds to give time for the server
+          to shut down. Start the server after 5 seconds so that the client will
+          start retrying to connect to the server and read messages.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -209,10 +222,6 @@ export default function WebsocketRetryClient() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a sample WebSocket service, which sends a message to the client upon upgrading to a WebSocket connection.`}</span>
-              <span>{`# If you are using a Ballerina WebSocket server, you can send a message to the client in the \`onOpen\` resource.`}</span>
-              <span>{`# The client will first connect to the server and then it will wait for 5 seconds to give time for the server to shut down.`}</span>
-              <span>{`# Start the server after 5 seconds so that the client will start retrying to connect to the server and read messages.`}</span>
               <span>{`\$ bal run websocket_retry_client.bal`}</span>
               <span>{`Hello World!`}</span>
               <span>{`Please shutdown the server now. And restart at least within 15 seconds`}</span>
@@ -224,7 +233,10 @@ export default function WebsocketRetryClient() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/websocket-client">
+          <Link
+            title="Send/Receive messages"
+            href="/learn/by-example/websocket-client"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -250,14 +262,17 @@ export default function WebsocketRetryClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Send/Receive messages
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/websocket-basic-sample">
+          <Link
+            title="SSL/TLS"
+            href="/learn/by-example/websocket-service-ssl-tls"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -266,7 +281,7 @@ export default function WebsocketRetryClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  SSL/TLS
                 </span>
               </div>
               <svg

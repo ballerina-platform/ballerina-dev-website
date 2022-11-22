@@ -1,6 +1,6 @@
 {
   "title": "Azure Functions",
-  "description": "Azure Functions is an event driven, serverless computing platform. Ballerina functions can be deployed in Azure Functions by annotating a Ballerina function with Azure functions annotation\". You can view the code examples below.",
+  "description": "Azure Functions is an event driven, serverless computing platform. Azure Functions can be written from Ballerina using the listeners and services provided by Azure Functions package. You can view the code examples below.",
   "keywords": [],
   "permalink": "/learn/by-example/azure-functions-deployment",
   "active": "azure-functions-deployment",

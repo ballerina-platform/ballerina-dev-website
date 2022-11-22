@@ -15,30 +15,29 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the \`http:OAuth2JwtBearerGrantConfig\` for the \`auth\` configuration of the client.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2JwtBearerGrantConfig.
-http:Client securedEP = check new("https://localhost:9090",
-    auth = {
-        tokenUrl: "https://localhost:9445/oauth2/token",
-        assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: ["admin"],
-        clientConfig: {
-            secureSocket: {
-                cert: "../resource/path/to/public.crt"
-            }
-        }
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
-    string response = check securedEP->get("/foo/bar");
+    // Defines the HTTP client to call the OAuth2 secured APIs.
+    // The client is enriched with the \`Authorization: Bearer <token>\` header by
+    // passing the \`http:OAuth2JwtBearerGrantConfig\` for the \`auth\` configuration of the client.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2JwtBearerGrantConfig.
+    http:Client securedEP = check new("https://localhost:9090",
+        auth = {
+            tokenUrl: "https://localhost:9445/oauth2/token",
+            assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
+            clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+            clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+            scopes: ["admin"],
+            clientConfig: {
+                secureSocket: {
+                    cert: "../resource/path/to/public.crt"
+                }
+            }
+        },
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
+    string response = check securedEP->/foo/bar;
     io:println(response);
 }
 `,
@@ -65,15 +64,11 @@ export default function HttpClientOauth2JwtBearerGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - OAuth2 JWT Bearer grant type</h1>
+      <h1>HTTP client - OAuth2 JWT bearer grant type</h1>
 
       <p>
         A client, which is secured with an OAuth2 JWT bearer grant type can be
-        used to connect to a secured service.
-      </p>
-
-      <p>
-        The client is enriched with the{" "}
+        used to connect to a secured service. The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>http:OAuth2JwtBearerGrantConfig</code> to the <code>auth</code>{" "}
         configuration of the client.
@@ -86,6 +81,13 @@ export default function HttpClientOauth2JwtBearerGrantType() {
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -172,7 +174,15 @@ export default function HttpClientOauth2JwtBearerGrantType() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the following command.</p>
+      <p>Run the client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          the{" "}
+          <a href="/learn/by-example/http-service-oauth2/">OAuth2 service</a>.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -229,8 +239,6 @@ export default function HttpClientOauth2JwtBearerGrantType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a sample service secured with OAuth2.`}</span>
-              <span>{`# You may need to change the trusted certificate file path.`}</span>
               <span>{`\$ bal run http_client_oauth2_jwt_bearer_grant_type.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
@@ -241,7 +249,7 @@ export default function HttpClientOauth2JwtBearerGrantType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 Refresh Token grant type"
+            title="OAuth2 refresh token grant type"
             href="/learn/by-example/http-client-oauth2-refresh-token-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -269,14 +277,17 @@ export default function HttpClientOauth2JwtBearerGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 Refresh Token grant type
+                  OAuth2 refresh token grant type
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Redirects" href="/learn/by-example/http-redirects">
+          <Link
+            title="Default resource"
+            href="/learn/by-example/http-default-resource"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -285,7 +296,7 @@ export default function HttpClientOauth2JwtBearerGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Redirects
+                  Default resource
                 </span>
               </div>
               <svg

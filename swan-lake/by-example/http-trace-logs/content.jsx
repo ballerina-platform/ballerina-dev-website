@@ -16,10 +16,10 @@ const codeSnippetData = [
 
 service / on new http:Listener(9090) {
 
-    resource function get hello(http:Request req) returns http:Response|error {
-        http:Client clientEP = check new ("http://httpstat.us");
-        http:Response resp = check clientEP->forward("/200", req);
-        return resp;
+    resource function get trace(http:Request req) returns string|error {
+        http:Client clientEP = check new ("httpstat.us");
+        string payload = check clientEP->forward("/200", req);
+        return payload;
     }
 }
 `,
@@ -222,84 +222,51 @@ export default function HttpTraceLogs() {
               <span>{`# while \`http.upstream\` refers to the HTTP traffic that flows between Ballerina and the backend.`}</span>
               <span>{`
 `}</span>
-              <span>{`[2021-10-06 18:18:11,118] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7] REGISTERED`}</span>
-              <span>{`[2021-10-06 18:18:11,151] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] ACTIVE`}</span>
-              <span>{`[2021-10-06 18:18:11,187] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
-              <span>{`GET /hello HTTP/1.1`}</span>
+              <span>{`[2022-10-23 00:06:18,501] TRACE {http.tracelog.downstream} - [id: 0x0f56628d] REGISTERED`}</span>
+              <span>{`[2022-10-23 00:06:18,527] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] ACTIVE`}</span>
+              <span>{`[2022-10-23 00:06:18,547] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
+              <span>{`GET /trace HTTP/1.1`}</span>
               <span>{`Host: localhost:9090`}</span>
               <span>{`User-Agent: curl/7.64.1`}</span>
               <span>{`Accept: */*`}</span>
-              <span>{`[2021-10-06 18:18:11,223] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] INBOUND: EmptyLastHttpContent, 0B`}</span>
-              <span>{`[2021-10-06 18:18:11,225] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] READ COMPLETE`}</span>
-              <span>{`[2021-10-06 18:18:11,418] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c] REGISTERED`}</span>
-              <span>{`[2021-10-06 18:18:11,418] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c] CONNECT: httpstat.us/172.67.134.121:80, null`}</span>
-              <span>{`[2021-10-06 18:18:11,661] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c, correlatedSource: n/a, host:/192.168.1.21:50368 - remote:httpstat.us/172.67.134.121:80] DEREGISTER`}</span>
-              <span>{`[2021-10-06 18:18:11,664] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c, correlatedSource: n/a, host:/192.168.1.21:50368 - remote:httpstat.us/172.67.134.121:80] ACTIVE`}</span>
-              <span>{`[2021-10-06 18:18:11,665] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c, correlatedSource: n/a, host:/192.168.1.21:50368 - remote:httpstat.us/172.67.134.121:80] UNREGISTERED`}</span>
-              <span>{`[2021-10-06 18:18:11,665] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c] REGISTERED`}</span>
-              <span>{`[2021-10-06 18:18:11,671] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c, correlatedSource: 0x91dfb8c7, host:/192.168.1.21:50368 - remote:httpstat.us/172.67.134.121:80] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
+              <span>{`[2022-10-23 00:06:18,595] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] INBOUND: EmptyLastHttpContent, 0B`}</span>
+              <span>{`[2022-10-23 00:06:18,597] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] READ COMPLETE`}</span>
+              <span>{`[2022-10-23 00:06:18,742] TRACE {http.tracelog.upstream} - [id: 0xc000e604] REGISTERED`}</span>
+              <span>{`[2022-10-23 00:06:18,742] TRACE {http.tracelog.upstream} - [id: 0xc000e604] CONNECT: httpstat.us/20.40.202.3:80, null`}</span>
+              <span>{`[2022-10-23 00:06:18,994] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] ACTIVE`}</span>
+              <span>{`[2022-10-23 00:06:18,998] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`GET /200 HTTP/1.1`}</span>
+              <span>{`User-Agent: curl/7.64.1`}</span>
               <span>{`Accept: */*`}</span>
               <span>{`host: httpstat.us`}</span>
-              <span>{`user-agent: ballerina`}</span>
               <span>{`connection: keep-alive`}</span>
-              <span>{`[2021-10-06 18:18:11,674] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c, correlatedSource: 0x91dfb8c7, host:/192.168.1.21:50368 - remote:httpstat.us/172.67.134.121:80] OUTBOUND: EmptyLastHttpContent, 0B`}</span>
-              <span>{`[2021-10-06 18:18:11,675] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c, correlatedSource: 0x91dfb8c7, host:/192.168.1.21:50368 - remote:httpstat.us/172.67.134.121:80] FLUSH`}</span>
-              <span>{`[2021-10-06 18:18:12,027] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c, correlatedSource: 0x91dfb8c7, host:/192.168.1.21:50368 - remote:httpstat.us/172.67.134.121:80] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)`}</span>
+              <span>{`upgrade: h2c`}</span>
+              <span>{`HTTP2-Settings: AAEAABAAAAIAAAABAAN_____AAQAAP__AAUAAEAAAAYAACAA`}</span>
+              <span>{`connection: HTTP2-Settings,upgrade`}</span>
+              <span>{`[2022-10-23 00:06:19,003] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] OUTBOUND: EmptyLastHttpContent, 0B`}</span>
+              <span>{`[2022-10-23 00:06:19,004] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] FLUSH`}</span>
+              <span>{`[2022-10-23 00:06:19,330] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)`}</span>
               <span>{`HTTP/1.1 200 OK`}</span>
-              <span>{`Date: Wed, 06 Oct 2021 12:48:11 GMT`}</span>
-              <span>{`Content-Type: text/plain; charset=utf-8`}</span>
-              <span>{`Transfer-Encoding: chunked`}</span>
-              <span>{`Connection: keep-alive`}</span>
-              <span>{`cache-control: private`}</span>
-              <span>{`vary: Accept-Encoding`}</span>
-              <span>{`x-aspnetmvc-version: 5.1`}</span>
-              <span>{`access-control-allow-origin: *`}</span>
-              <span>{`access-control-expose-headers: Link, Content-Range, Location, WWW-Authenticate, Proxy-Authenticate, Retry-After`}</span>
-              <span>{`access-control-expose-headers: Request-Context`}</span>
-              <span>{`x-aspnet-version: 4.0.30319`}</span>
-              <span>{`request-context: appId=cid-v1:7585021b-2db7-4da6-abff-2cf23005f0a9`}</span>
-              <span>{`x-powered-by: ASP.NET`}</span>
-              <span>{`set-cookie: ARRAffinity=dd9ed9b645068a439255e4a6e0a4e0f2b5c11799187f1613a5766939d04a2bc0;Path=/;HttpOnly;Domain=httpstat.us`}</span>
-              <span>{`CF-Cache-Status: DYNAMIC`}</span>
-              <span>{`Report-To: {"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=Df0k19O1x6RNB6Uc0hwC%2BFcQZS27%2BOuWb1JATwpu15Zhvdxc3Yd465533%2BuB2PIJKEBfRrCyHSgNLMiDje2EMkli18C83LScpe4czBPDKbUV77XLGuzwGdu9oGoCpQ%3D%3D"}],"group":"cf-nel","max_age":604800}`}</span>
-              <span>{`NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}`}</span>
-              <span>{`Server: cloudflare`}</span>
-              <span>{`CF-RAY: 699f00a99def15af-EWR`}</span>
-              <span>{`alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443"; ma=86400`}</span>
-              <span>{`[2021-10-06 18:18:12,040] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c, correlatedSource: 0x91dfb8c7, host:/192.168.1.21:50368 - remote:httpstat.us/172.67.134.121:80] INBOUND: DefaultHttpContent(data: PooledSlicedByteBuf(ridx: 0, widx: 6, cap: 6/6, unwrapped: PooledUnsafeDirectByteBuf(ridx: 1172, widx: 1177, cap: 2048)), decoderResult: success), 6B`}</span>
+              <span>{`Content-Type: text/plain`}</span>
+              <span>{`Date: Sat, 22 Oct 2022 18:36:18 GMT`}</span>
+              <span>{`Server: Kestrel`}</span>
+              <span>{`Set-Cookie: ARRAffinity=bc45149c0fc23967cdceb8859c6de398da9b0c4a4d96e0fa4231363f21476d65;Path=/;HttpOnly;Domain=httpstat.us`}</span>
+              <span>{`Request-Context: appId=cid-v1:1e93d241-20e4-4513-bbd7-f452a16a5d69`}</span>
+              <span>{`content-length: 6`}</span>
+              <span>{`[2022-10-23 00:06:19,339] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] INBOUND: DefaultLastHttpContent(data: PooledSlicedByteBuf(ridx: 0, widx: 6, cap: 6/6, unwrapped: PooledUnsafeDirectByteBuf(ridx: 317, widx: 317, cap: 2048)), decoderResult: success), 6B`}</span>
               <span>{`200 OK`}</span>
-              <span>{`[2021-10-06 18:18:12,041] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c, correlatedSource: 0x91dfb8c7, host:/192.168.1.21:50368 - remote:httpstat.us/172.67.134.121:80] INBOUND: EmptyLastHttpContent, 0B`}</span>
-              <span>{`[2021-10-06 18:18:12,043] TRACE {http.tracelog.upstream} - [id: 0xf7c32f4c, correlatedSource: 0x91dfb8c7, host:/192.168.1.21:50368 - remote:httpstat.us/172.67.134.121:80] READ COMPLETE`}</span>
-              <span>{`[2021-10-06 18:18:12,046] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] OUTBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)`}</span>
+              <span>{`[2022-10-23 00:06:19,340] TRACE {http.tracelog.upstream} - [id: 0xc000e604, correlatedSource: 0x0f56628d, host:/192.168.1.21:63835 - remote:httpstat.us/20.40.202.3:80] READ COMPLETE`}</span>
+              <span>{`[2022-10-23 00:06:19,377] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 6, cap: 6, components=1))`}</span>
               <span>{`HTTP/1.1 200 OK`}</span>
-              <span>{`Date: Wed, 06 Oct 2021 12:48:11 GMT`}</span>
-              <span>{`Content-Type: text/plain; charset=utf-8`}</span>
-              <span>{`Transfer-Encoding: chunked`}</span>
-              <span>{`cache-control: private`}</span>
-              <span>{`vary: Accept-Encoding`}</span>
-              <span>{`x-aspnetmvc-version: 5.1`}</span>
-              <span>{`access-control-allow-origin: *`}</span>
-              <span>{`access-control-expose-headers: Link, Content-Range, Location, WWW-Authenticate, Proxy-Authenticate, Retry-After`}</span>
-              <span>{`access-control-expose-headers: Request-Context`}</span>
-              <span>{`x-aspnet-version: 4.0.30319`}</span>
-              <span>{`request-context: appId=cid-v1:7585021b-2db7-4da6-abff-2cf23005f0a9`}</span>
-              <span>{`x-powered-by: ASP.NET`}</span>
-              <span>{`set-cookie: ARRAffinity=dd9ed9b645068a439255e4a6e0a4e0f2b5c11799187f1613a5766939d04a2bc0;Path=/;HttpOnly;Domain=httpstat.us`}</span>
-              <span>{`CF-Cache-Status: DYNAMIC`}</span>
-              <span>{`Report-To: {"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=Df0k19O1x6RNB6Uc0hwC%2BFcQZS27%2BOuWb1JATwpu15Zhvdxc3Yd465533%2BuB2PIJKEBfRrCyHSgNLMiDje2EMkli18C83LScpe4czBPDKbUV77XLGuzwGdu9oGoCpQ%3D%3D"}],"group":"cf-nel","max_age":604800}`}</span>
-              <span>{`NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}`}</span>
-              <span>{`CF-RAY: 699f00a99def15af-EWR`}</span>
-              <span>{`alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443"; ma=86400`}</span>
-              <span>{`server: cloudflare`}</span>
-              <span>{`[2021-10-06 18:18:12,048] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] OUTBOUND: DefaultHttpContent(data: PooledSlicedByteBuf(ridx: 0, widx: 6, cap: 6/6, unwrapped: PooledUnsafeDirectByteBuf(ridx: 1177, widx: 1177, cap: 2048)), decoderResult: success), 6B`}</span>
+              <span>{`content-type: text/plain`}</span>
+              <span>{`content-length: 6`}</span>
+              <span>{`server: ballerina`}</span>
+              <span>{`date: Sun, 23 Oct 2022 00:06:19 +0530, 6B`}</span>
               <span>{`200 OK`}</span>
-              <span>{`[2021-10-06 18:18:12,049] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] FLUSH`}</span>
-              <span>{`[2021-10-06 18:18:12,054] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] OUTBOUND: DefaultLastHttpContent(data: UnpooledByteBufAllocator\$InstrumentedUnpooledUnsafeHeapByteBuf(ridx: 0, widx: 0, cap: 0), decoderResult: success), 0B`}</span>
-              <span>{`[2021-10-06 18:18:12,055] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] FLUSH`}</span>
-              <span>{`[2021-10-06 18:18:12,057] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] READ COMPLETE`}</span>
-              <span>{`[2021-10-06 18:18:12,058] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] INACTIVE`}</span>
-              <span>{`[2021-10-06 18:18:12,061] TRACE {http.tracelog.downstream} - [id: 0x91dfb8c7, correlatedSource: n/a, host:localhost/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50367] UNREGISTERED`}</span>
+              <span>{`[2022-10-23 00:06:19,382] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] FLUSH`}</span>
+              <span>{`[2022-10-23 00:06:19,385] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] READ COMPLETE`}</span>
+              <span>{`[2022-10-23 00:06:19,386] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] INACTIVE`}</span>
+              <span>{`[2022-10-23 00:06:19,388] TRACE {http.tracelog.downstream} - [id: 0x0f56628d, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:63834] UNREGISTERED`}</span>
             </code>
           </pre>
         </Col>
@@ -365,7 +332,7 @@ export default function HttpTraceLogs() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/hello`}</span>
+              <span>{`\$ curl http://localhost:9090/trace`}</span>
               <span>{`200 OK`}</span>
             </code>
           </pre>

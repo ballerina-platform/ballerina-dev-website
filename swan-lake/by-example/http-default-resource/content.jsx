@@ -17,11 +17,11 @@ const codeSnippetData = [
 // The \`absolute resource path\` can be omitted. Then, it defaults to \`/\`.
 service on new http:Listener(9090) {
 
-    // The \`default\` accessor name can be used to match with all methods including the standard HTTP methods
+    // The \`default\` accessor can be used to match with all methods including the standard HTTP methods
     // and custom methods. The rest param is used to represent the wildcard of the \`resource path\` in which any path
     // segment will get dispatched to the resource in the absence of an exact path match.
-    resource function 'default [string... paths](http:Request req) returns json {
-        return {method: req.method, path: paths};
+    resource function 'default [string... paths](http:Request req) returns string {
+        return string \`method: \${req.method}, path: \${paths.toString()}\`;
     }
 }
 `,
@@ -50,7 +50,7 @@ export default function HttpDefaultResource() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Default resource</h1>
+      <h1>REST service - Default resource</h1>
 
       <p>
         Ballerina provides rest params in the resource path and the default
@@ -274,8 +274,8 @@ export default function HttpDefaultResource() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/foo/bar" -X POST`}</span>
-              <span>{`{"method":"POST", "path":["foo", "bar"]}`}</span>
+              <span>{`\$ curl "http://localhost:9090/foo/bar"`}</span>
+              <span>{`method: GET, path: ["foo","bar"]`}</span>
             </code>
           </pre>
         </Col>
@@ -284,8 +284,8 @@ export default function HttpDefaultResource() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service data binding"
-            href="/learn/by-example/http-data-binding"
+            title="OAuth2 JWT bearer grant type"
+            href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -312,14 +312,14 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service data binding
+                  OAuth2 JWT bearer grant type
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Path parameter" href="/learn/by-example/http-path-param">
+          <Link title="Redirects" href="/learn/by-example/http-redirects">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -328,7 +328,7 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Path parameter
+                  Redirects
                 </span>
               </div>
               <svg

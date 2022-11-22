@@ -36,29 +36,6 @@ public function main() returns error? {
 
     // Closes the POP3 store, which would close the TCP connection.
     check popClient->close();
-
-    // Creates the client with the connection parameters, host, username, and password. 
-    // An error is received in a failure. The default port number \`993\` is used over SSL with 
-    // these configurations.
-    email:ImapClient imapClient = check new ("imap.email.com",
-        "reader@email.com", "pass456");
-
-    // Reads the first unseen email received by the IMAP4 server. \`()\` is returned when there are 
-    // no new unseen emails. In error cases, an error is returned.
-    emailResponse = check imapClient->receiveMessage();
-
-    if emailResponse is email:Message {
-        io:println("IMAP client received an email.");
-        io:println("Email Subject: ", emailResponse.subject);
-        io:println("Email Body: ", emailResponse?.body);
-    // When no emails are available in the server, \`()\` is returned.
-    } else {
-        io:println("There are no emails in the INBOX.");
-    }
-
-    // Closes the IMAP store which would close the TCP connection.
-    check imapClient->close();
-
 }
 `,
 ];
@@ -84,12 +61,18 @@ export default function ReceiveEmailUsingClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Receive emails using a client</h1>
+      <h1>Receive email using a client</h1>
 
       <p>
         The email client is used to receive (with POP3 or IMAP4) emails using
         the SSL or STARTTLS protocols. This sample includes receiving emails
-        with default configurations over SSL using the default ports.
+        with default configurations over SSL using the default ports via POP3.
+        Since, IMAP4 has similar syntax we could replace{" "}
+        <code>POP3 client</code> with{" "}
+        <a href="https://lib.ballerina.io/ballerina/email/latest/clients/ImapClient">
+          <code>IMAP client</code>
+        </a>
+        .
       </p>
 
       <p>
@@ -253,7 +236,7 @@ export default function ReceiveEmailUsingClient() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Send emails" href="/learn/by-example/send-email">
+          <Link title="Send email" href="/learn/by-example/send-email">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -279,17 +262,14 @@ export default function ReceiveEmailUsingClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send emails
+                  Send email
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Receive emails using a listener"
-            href="/learn/by-example/receive-email-using-listener"
-          >
+          <Link title="Read file" href="/learn/by-example/ftp-service-read">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -298,7 +278,7 @@ export default function ReceiveEmailUsingClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive emails using a listener
+                  Read file
                 </span>
               </div>
               <svg

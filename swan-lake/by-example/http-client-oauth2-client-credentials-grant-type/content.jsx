@@ -15,29 +15,28 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// Defines the HTTP client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the \`http:OAuth2ClientCredentialsGrantConfig\` for the \`auth\` configuration of the client.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2ClientCredentialsGrantConfig.
-http:Client securedEP = check new("https://localhost:9090",
-    auth = {
-        tokenUrl: "https://localhost:9445/oauth2/token",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: ["admin"],
-        clientConfig: {
-            secureSocket: {
-                cert: "../resource/path/to/public.crt"
-            }
-        }
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
-    string response = check securedEP->get("/foo/bar");
+    // Defines the HTTP client to call the OAuth2 secured APIs.
+    // The client is enriched with the \`Authorization: Bearer <token>\` header by
+    // passing the \`http:OAuth2ClientCredentialsGrantConfig\` for the \`auth\` configuration of the client.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2ClientCredentialsGrantConfig.
+    http:Client securedEP = check new("https://localhost:9090",
+        auth = {
+            tokenUrl: "https://localhost:9445/oauth2/token",
+            clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+            clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+            scopes: ["admin"],
+            clientConfig: {
+                secureSocket: {
+                    cert: "../resource/path/to/public.crt"
+                }
+            }
+        },
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
+    string response = check securedEP->/foo/bar;
     io:println(response);
 }
 `,
@@ -64,15 +63,11 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - OAuth2 Client Credentials grant type</h1>
+      <h1>HTTP client - OAuth2 client credentials grant type</h1>
 
       <p>
         A client, which is secured with OAuth2 client credentials grant type can
-        be used to connect to a secured service.
-      </p>
-
-      <p>
-        The client is enriched with the{" "}
+        be used to connect to a secured service. The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>http:OAuth2ClientCredentialsGrantConfig</code> for the{" "}
         <code>auth</code> configuration of the client.
@@ -85,6 +80,13 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -173,6 +175,14 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
 
       <p>Run the client program by executing the following command.</p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          the{" "}
+          <a href="/learn/by-example/http-service-oauth2/">OAuth2 service</a>.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -228,8 +238,6 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a sample service secured with OAuth2.`}</span>
-              <span>{`# You may need to change the trusted certificate file path.`}</span>
               <span>{`\$ bal run http_client_oauth2_client_credentials_grant_type.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
@@ -240,8 +248,8 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - self signed JWT Auth"
-            href="/learn/by-example/http-client-self-signed-jwt-auth"
+            title="Self signed JWT authentication"
+            href="/learn/by-example/http-client-self-signed-jwt-authentication"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -268,7 +276,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - self signed JWT Auth
+                  Self signed JWT authentication
                 </span>
               </div>
             </div>
@@ -276,7 +284,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 Password grant type"
+            title="OAuth2 password grant type"
             href="/learn/by-example/http-client-oauth2-password-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -287,7 +295,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 Password grant type
+                  OAuth2 password grant type
                 </span>
               </div>
               <svg

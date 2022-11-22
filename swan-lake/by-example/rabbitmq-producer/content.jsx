@@ -18,13 +18,9 @@ public function main() returns error? {
     // Creates a ballerina RabbitMQ client.
     rabbitmq:Client newClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
-    // Declares the queue, MyQueue.
-    check newClient->queueDeclare("MyQueue");
-
     // Publishing messages to an exchange using a routing key.
     // Publishes the message using newClient and the routing key named MyQueue.
-    string message = "Hello from Ballerina";
-    check newClient->publishMessage({content: message.toBytes(), routingKey: "MyQueue"});
+    check newClient->publishMessage({content: "Hello from Ballerina", routingKey: "MyQueue"});
 }
 `,
 ];
@@ -50,11 +46,13 @@ export default function RabbitmqProducer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Producer</h1>
+      <h1>RabbitMQ client - Produce message</h1>
 
       <p>
-        The messages are sent to two different queues, to one queue using the
-        same channel and to the other using two different channels.
+        In this example, the producer is sending a single message to the
+        pre-declared queue, MyQueue. See{" "}
+        <code>RabbitMQ client - Declare a queue</code> sample for more details
+        on declaring the queue.
       </p>
 
       <p>
@@ -214,8 +212,8 @@ export default function RabbitmqProducer() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="SASL authentication - producer"
-            href="/learn/by-example/kafka-authentication-sasl-plain-producer"
+            title="Declare a queue"
+            href="/learn/by-example/rabbitmq-queue-declare"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -242,14 +240,17 @@ export default function RabbitmqProducer() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SASL authentication - producer
+                  Declare a queue
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Consumer" href="/learn/by-example/rabbitmq-consumer">
+          <Link
+            title="Consume message"
+            href="/learn/by-example/rabbitmq-sync-consumer"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -258,7 +259,7 @@ export default function RabbitmqProducer() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consumer
+                  Consume message
                 </span>
               </div>
               <svg

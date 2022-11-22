@@ -18,16 +18,9 @@ import ballerinax/rabbitmq;
 listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
 // The consumer service listens to the "MyQueue" queue.
-// The \`ackMode\` is by default rabbitmq:AUTO_ACK where messages are acknowledged
-// immediately after consuming.
-@rabbitmq:ServiceConfig {
-    queueName: "MyQueue"
-}
-// Attaches the service to the listener.
-service on channelListener {
-    remote function onMessage(rabbitmq:Message message) returns error? {
-        string messageContent = check string:fromBytes(message.content);
-        log:printInfo("Received message: " + messageContent);
+service "MyQueue" on channelListener {
+    remote function onMessage(string message) returns error? {
+        log:printInfo("Received message: " + message);
     }
 }
 `,
@@ -54,17 +47,13 @@ export default function RabbitmqConsumer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Consumer</h1>
+      <h1>RabbitMQ service - Consume message</h1>
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
-        RabbitMQ message listener. The Ballerina RabbitMQ connection used here
-        can be re-used to create multiple channels.
-      </p>
-
-      <p>
-        Multiple services consuming messages from the same queue or from
-        different queues can be attached to the same Listener.
+        RabbitMQ message listener. Multiple services consuming messages from the
+        same queue or from different queues can be attached to the same
+        Listener.
       </p>
 
       <p>
@@ -224,7 +213,10 @@ export default function RabbitmqConsumer() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Producer" href="/learn/by-example/rabbitmq-producer">
+          <Link
+            title="Consumer SASL authentication"
+            href="/learn/by-example/kafka-client-consumer-sasl"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -250,7 +242,7 @@ export default function RabbitmqConsumer() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer
+                  Consumer SASL authentication
                 </span>
               </div>
             </div>
@@ -258,7 +250,7 @@ export default function RabbitmqConsumer() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client acknowledgements"
+            title="Consume message with acknowledgement"
             href="/learn/by-example/rabbitmq-consumer-with-client-acknowledgement"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -269,7 +261,7 @@ export default function RabbitmqConsumer() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client acknowledgements
+                  Consume message with acknowledgement
                 </span>
               </div>
               <svg

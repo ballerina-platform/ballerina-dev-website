@@ -340,7 +340,7 @@ export default function StopHandler() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-simple">
+          <Link title="Simple RPC" href="/learn/by-example/grpc-service-simple">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

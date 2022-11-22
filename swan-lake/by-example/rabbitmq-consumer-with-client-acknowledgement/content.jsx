@@ -21,17 +21,22 @@ listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitm
 // The \`ackMode\` is by default rabbitmq:AUTO_ACK where messages are acknowledged
 // immediately after consuming.
 @rabbitmq:ServiceConfig {
-    queueName: "MyQueue"
+    queueName: "MyQueue",
+    autoAck: false
 }
 // Attaches the service to the listener.
 service rabbitmq:Service on channelListener {
-    remote function onMessage(rabbitmq:Message message, rabbitmq:Caller caller) returns error? {
-        string messageContent = check string:fromBytes(message.content);
-        log:printInfo("Received message: " + messageContent);
+    remote function onMessage(StringMessage message, rabbitmq:Caller caller) returns error? {
+        log:printInfo("Received message: " + message.content);
         // Positively acknowledges a single message.
         check caller->basicAck();
     }
 }
+
+public type StringMessage record {|
+    *rabbitmq:AnydataMessage;
+    string content;
+|};
 `,
 ];
 
@@ -56,17 +61,13 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client acknowledgements</h1>
+      <h1>RabbitMQ service - Consumer with acknowledgement</h1>
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
         RabbitMQ message listener. The received messages are acknowledged
-        manually.
-      </p>
-
-      <p>
-        By default, the ackMode is rabbitmq:AUTO_ACK, which will automatically
-        acknowledge all messages once consumed.
+        manually. By default, the ackMode is <code>rabbitmq:AUTO_ACK</code>,
+        which will automatically acknowledge all messages once consumed.
       </p>
 
       <p>
@@ -226,7 +227,10 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Consumer" href="/learn/by-example/rabbitmq-consumer">
+          <Link
+            title="Consume message"
+            href="/learn/by-example/rabbitmq-consumer"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -252,7 +256,7 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consumer
+                  Consume message
                 </span>
               </div>
             </div>
@@ -260,8 +264,8 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Transactional producer"
-            href="/learn/by-example/rabbitmq-transaction-producer"
+            title="Transactional consumer"
+            href="/learn/by-example/rabbitmq-transaction-consumer"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -271,7 +275,7 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Transactional producer
+                  Transactional consumer
                 </span>
               </div>
               <svg

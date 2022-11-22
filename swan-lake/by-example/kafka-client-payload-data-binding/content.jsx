@@ -23,10 +23,8 @@ public type Order record {|
 |};
 
 kafka:ConsumerConfiguration consumerConfiguration = {
-    groupId: "group-id",
-    offsetReset: "earliest",
-    // Subscribes to the topic \`test-kafka-topic\`.
-    topics: ["test-kafka-topic"]
+    groupId: "order-group-id",
+    topics: "order-topic"
 };
 
 public function main() returns error? {
@@ -75,13 +73,16 @@ export default function KafkaClientPayloadDataBinding() {
         work properly, an active Kafka broker should be present.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          <code>kafka</code> module
-        </a>
-        .
-      </p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on the underlying module,
+          see the{" "}
+          <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
+            <code>kafka</code> module
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 

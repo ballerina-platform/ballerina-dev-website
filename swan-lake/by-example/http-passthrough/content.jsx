@@ -289,7 +289,7 @@ export default function HttpPassthrough() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Response With multiparts"
+            title="Response with multiparts"
             href="/learn/by-example/http-response-with-multiparts"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -317,7 +317,7 @@ export default function HttpPassthrough() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Response With multiparts
+                  Response with multiparts
                 </span>
               </div>
             </div>

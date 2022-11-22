@@ -79,11 +79,7 @@ export default function WebsocketClientOauth2PasswordGrantType() {
 
       <p>
         A client, which is secured with OAuth2 password grant type can be used
-        to connect to a secured service.
-      </p>
-
-      <p>
-        The client is enriched with the{" "}
+        to connect to a secured service. The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:OAuth2PasswordGrantConfig</code> to the{" "}
         <code>auth</code> configuration of the client.

@@ -346,7 +346,7 @@ export default function HttpRequestInterceptors() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Request With multiparts"
+            title="Request with multiparts"
             href="/learn/by-example/http-request-with-multiparts"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -374,7 +374,7 @@ export default function HttpRequestInterceptors() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request With multiparts
+                  Request with multiparts
                 </span>
               </div>
             </div>

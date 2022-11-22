@@ -284,7 +284,7 @@ export default function HttpServiceCacheResponse() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Response With multiparts"
+            title="Response with multiparts"
             href="/learn/by-example/http-response-with-multiparts"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -295,7 +295,7 @@ export default function HttpServiceCacheResponse() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Response With multiparts
+                  Response with multiparts
                 </span>
               </div>
               <svg

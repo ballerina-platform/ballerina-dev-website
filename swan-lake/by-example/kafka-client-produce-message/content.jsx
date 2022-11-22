@@ -67,13 +67,16 @@ export default function KafkaClientProduceMessage() {
         Kafka broker should be present.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          <code>kafka</code> module
-        </a>
-        .
-      </p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on the underlying module,
+          see the{" "}
+          <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
+            <code>kafka</code> module
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -223,7 +226,10 @@ export default function KafkaClientProduceMessage() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/kafka-service">
+          <Link
+            title="Consume message"
+            href="/learn/by-example/kafka-service-consume-message"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -249,7 +255,7 @@ export default function KafkaClientProduceMessage() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  Consume message
                 </span>
               </div>
             </div>

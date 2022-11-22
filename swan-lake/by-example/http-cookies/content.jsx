@@ -84,7 +84,7 @@ http:ClientConfiguration clientEPConfig = {
 
 public function main() returns error? {
     // Create a new HTTP client by giving the URL and the client configuration.
-    http:Client httpClient = check new("http://localhost:9095/cookieDemo", clientEPConfig);
+    http:Client httpClient = check new("localhost:9095/cookieDemo", clientEPConfig);
 
     // Send a username and password as a JSON payload to the backend.
     json payload = {

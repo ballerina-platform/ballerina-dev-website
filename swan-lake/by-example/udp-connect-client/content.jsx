@@ -26,11 +26,9 @@ public function main() returns error? {
     // localHost = "localhost", timeout = 5);\`
     udp:ConnectClient socketClient = check new("localhost", 9090);
 
-    string msg = "Hello Ballerina echo";
-
     // Sends the data to the connected remote host.
     // The parameter is a \`byte[]\`, which contains the data to be sent.
-    check socketClient->writeBytes(msg.toBytes());
+    check socketClient->writeBytes("Hello Ballerina echo".toBytes());
     io:println("Data was sent to the remote host.");
 
     // Waits until the data is received from the connected host.

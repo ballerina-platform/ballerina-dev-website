@@ -23,10 +23,8 @@ public type Order record {|
 |};
 
 kafka:ConsumerConfiguration consumerConfigs = {
-    groupId: "group-id",
-    // Subscribes to the topic \`test-kafka-topic\`.
-    topics: ["test-kafka-topic"],
-    pollingInterval: 1
+    groupId: "order-group-id",
+    topics: "order-topic"
 };
 
 service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {
@@ -42,7 +40,7 @@ service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {
 `,
 ];
 
-export default function KafkaService() {
+export default function KafkaServiceConsumeMessage() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -63,7 +61,7 @@ export default function KafkaService() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka service</h1>
+      <h1>Kafka service - Consume message</h1>
 
       <p>
         Here, a Kafka consumer is used as a listener to a service with automatic
@@ -71,13 +69,16 @@ export default function KafkaService() {
         be present.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          <code>kafka</code> module
-        </a>
-        .
-      </p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on the underlying module,
+          see the{" "}
+          <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
+            <code>kafka</code> module
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -90,7 +91,7 @@ export default function KafkaService() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/kafka-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/kafka-service-consume-message",
                 "_blank"
               );
             }}

@@ -1,5 +1,5 @@
 {
-  "title": "Service",
+  "title": "Consume message",
   "description": "BBE on creating a Kafka service to receive messages in an asynchronous manner using Ballerina.",
   "keywords": [
     "ballerina",
@@ -11,10 +11,10 @@
     "service",
     "asynchronous"
   ],
-  "permalink": "/learn/by-example/kafka-service",
-  "active": "kafka-service",
+  "permalink": "/learn/by-example/kafka-service-consume-message",
+  "active": "kafka-service-consume-message",
   "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-service",
-    "/swan-lake/learn/by-example/kafka-service.html"
+    "/swan-lake/learn/by-example/kafka-service-consume-message",
+    "/swan-lake/learn/by-example/kafka-service-consume-message.html"
   ]
 }

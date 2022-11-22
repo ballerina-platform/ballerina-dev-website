@@ -18,7 +18,7 @@ syntax = "proto3";
 import "google/protobuf/wrappers.proto";
 
 service HelloWorld {
-	rpc hello (google.protobuf.StringValue) returns (google.protobuf.StringValue);
+    rpc hello (google.protobuf.StringValue) returns (google.protobuf.StringValue);
 }
 `,
   `// This is the client implementation of the simple RPC scenario.

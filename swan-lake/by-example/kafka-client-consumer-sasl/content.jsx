@@ -15,12 +15,9 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/log;
 
-// Define the relevant SASL URL of the configured Kafka server.
-const SASL_URL = "localhost:9093";
-
 kafka:ConsumerConfiguration consumerConfigs = {
-    groupId: "test-group",
-    topics: ["demo-security"],
+    groupId: "log-group-id",
+    topics: "log-topic",
     // Provide the relevant authentication configurations to authenticate the consumer 
     // by the \`kafka:AuthenticationConfiguration\`.
     // For details, see https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration.
@@ -36,11 +33,11 @@ kafka:ConsumerConfiguration consumerConfigs = {
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 };
 
-service on new kafka:Listener(SASL_URL, consumerConfigs) {
-    remote function onConsumerRecord(string[] values) returns error? {
-        check from string value in values
+service on new kafka:Listener("localhost:9093", consumerConfigs) {
+    remote function onConsumerRecord(string[] logs) returns error? {
+        check from string log in logs
             do {
-                log:printInfo("Received value: " + value);
+                log:printInfo("Received log: " + log);
             };
     }
 }
@@ -77,13 +74,16 @@ export default function KafkaClientConsumerSasl() {
         SASL/PLAIN authentication mechanism.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          <code>kafka</code> module
-        </a>
-        .
-      </p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on the underlying module,
+          see the{" "}
+          <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
+            <code>kafka</code> module
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 

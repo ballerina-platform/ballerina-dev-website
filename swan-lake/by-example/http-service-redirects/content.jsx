@@ -57,8 +57,8 @@ export default function HttpServiceRedirects() {
       <h1>HTTP service - Redirects</h1>
 
       <p>
-        The HTTP service provides redirection through <code>http:Caller</code>{" "}
-        method <code>redirect()</code>. The response contains the specified
+        The HTTP service provides redirection through <code>redirect()</code>{" "}
+        method of <code>http:Caller</code>. The response contains the specified
         status code and the <code>Location</code> header.
       </p>
 
@@ -230,7 +230,7 @@ export default function HttpServiceRedirects() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You may invoke the service via{" "}
-          <a href="learn/by-example/http-client-redirects/">Redirect client</a>.
+          <a href="../http-client-redirects/">Redirect client</a>.
         </p>
       </blockquote>
 

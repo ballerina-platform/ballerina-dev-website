@@ -67,7 +67,7 @@ export default function VariablesAndTypes() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=85cab14081dc7bbcd7a274a8e5391a96&file=variables_and_types.bal",
+                "https://play.ballerina.io/?gist=9f8f8d7b007a8a2bb6cead8fa50ab232&file=variables_and_types.bal",
                 "_blank"
               );
             }}

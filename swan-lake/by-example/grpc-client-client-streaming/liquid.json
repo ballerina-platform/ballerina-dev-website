@@ -1,0 +1,18 @@
+{
+  "title": "Client-side streaming RPC",
+  "description": "This Ballerina by Example has a gRPC streaming client for client streaming RPC.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "client streaming",
+    "client"
+  ],
+  "permalink": "/learn/by-example/grpc-client-client-streaming",
+  "active": "grpc-client-client-streaming",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-client-client-streaming",
+    "/swan-lake/learn/by-example/grpc-client-client-streaming.html"
+  ]
+}

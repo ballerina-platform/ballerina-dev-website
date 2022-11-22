@@ -24,13 +24,12 @@ const codeSnippetData = [
 // the \`cacheConfig\`. Currently, there are only 2 policies:
 // \`CACHE_CONTROL_AND_VALIDATORS\` (the default policy) and \`RFC_7234\`.
 
-final http:Client cachingEP = checkpanic new ("http://localhost:8080", 
+http:Client cachingEP = check new ("http://localhost:8080",
     cache = {enabled: true, isShared: true});
 
 service / on new http:Listener(9090) {
 
-    resource function get cache(http:Request req)
-            returns http:Response|error? {
+    resource function get greeting(http:Request req) returns http:Response|error {
         http:Response response = check cachingEP->forward("/hello", req);
         // If the request was successful, an HTTP response will be returned.
         return response;
@@ -98,7 +97,7 @@ export default function HttpCachingClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Caching client</h1>
+      <h1>HTTP client - Caching</h1>
 
       <p>
         HTTP caching is enabled by default in HTTP client endpoints. Users can
@@ -110,7 +109,9 @@ export default function HttpCachingClient() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
-        </a>
+        </a>{" "}
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#2412-caching">specification</a>
         .
       </p>
 
@@ -201,6 +202,12 @@ export default function HttpCachingClient() {
 
       <p>Run the service by executing the following command.</p>
 
+      <p>
+        (The two services have to be run separately to observe the following
+        output. For clarity, only the relevant parts of the HTTP trace logs have
+        been included here.)
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -256,14 +263,12 @@ export default function HttpCachingClient() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# The two services have to be run separately to observe the following output.`}</span>
-              <span>{`# For clarity, only the relevant parts of the HTTP trace logs have been included here.`}</span>
               <span>{`\$ bal run http_caching_client.bal -- -Cballerina.http.traceLogConsole=true`}</span>
               <span>{`
 `}</span>
               <span>{`# The caching proxy receives a request from a client.`}</span>
               <span>{`[2021-11-26 09:52:32,588] TRACE {http.tracelog.downstream} - [id: 0x6c720951, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50902] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
-              <span>{`GET /cache HTTP/1.1`}</span>
+              <span>{`GET /greeting HTTP/1.1`}</span>
               <span>{`Host: localhost:9090`}</span>
               <span>{`User-Agent: curl/7.64.1`}</span>
               <span>{`Accept: */*`}</span>
@@ -306,7 +311,7 @@ export default function HttpCachingClient() {
 `}</span>
               <span>{`# Subsequent requests to the proxy within the next 15 seconds are served from the proxy's cache. As seen here, the backend service is not contacted.`}</span>
               <span>{`[2021-11-26 09:52:40,143] TRACE {http.tracelog.downstream} - [id: 0xc79f9038, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50915] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
-              <span>{`GET /cache HTTP/1.1`}</span>
+              <span>{`GET /greeting HTTP/1.1`}</span>
               <span>{`Host: localhost:9090`}</span>
               <span>{`User-Agent: curl/7.64.1`}</span>
               <span>{`Accept: */*`}</span>
@@ -328,7 +333,7 @@ export default function HttpCachingClient() {
 `}</span>
               <span>{`# Another request is sent after remaining idle for a while.`}</span>
               <span>{`[2021-11-26 09:52:54,648] TRACE {http.tracelog.downstream} - [id: 0x083aeb7c, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50916] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
-              <span>{`GET /cache HTTP/1.1`}</span>
+              <span>{`GET /greeting HTTP/1.1`}</span>
               <span>{`Host: localhost:9090`}</span>
               <span>{`User-Agent: curl/7.64.1`}</span>
               <span>{`Accept: */*`}</span>
@@ -480,7 +485,7 @@ export default function HttpCachingClient() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v http://localhost:9090/cache`}</span>
+              <span>{`\$ curl -v http://localhost:9090/greeting`}</span>
               <span>{`> GET /cache HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.64.1`}</span>
@@ -498,7 +503,7 @@ export default function HttpCachingClient() {
               <span>{`{"message":"Hello, World!"}`}</span>
               <span>{`
 `}</span>
-              <span>{`\$ curl -v http://localhost:9090/cache`}</span>
+              <span>{`\$ curl -v http://localhost:9090/greeting`}</span>
               <span>{`> GET /cache HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.64.1`}</span>
@@ -517,7 +522,7 @@ export default function HttpCachingClient() {
               <span>{`{"message":"Hello, World!"}`}</span>
               <span>{`
 `}</span>
-              <span>{`\$ curl -v http://localhost:9090/cache`}</span>
+              <span>{`\$ curl -v http://localhost:9090/greeting`}</span>
               <span>{`> GET /cache HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.64.1`}</span>
@@ -542,8 +547,8 @@ export default function HttpCachingClient() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client data binding"
-            href="/learn/by-example/http-client-data-binding"
+            title="Restrict by media type"
+            href="/learn/by-example/http-restrict-by-media-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -570,17 +575,14 @@ export default function HttpCachingClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client data binding
+                  Restrict by media type
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Service - SSL/TLS"
-            href="/learn/by-example/http-service-ssl-tls"
-          >
+          <Link title="Streaming" href="/learn/by-example/http-streaming">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -589,7 +591,7 @@ export default function HttpCachingClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  Streaming
                 </span>
               </div>
               <svg

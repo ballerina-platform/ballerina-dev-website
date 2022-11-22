@@ -28,15 +28,7 @@ listener http:Listener securedEP = new(9090,
         mutualSsl: {
             verifyClient: http:REQUIRE,
             cert: "../resource/path/to/public.crt"
-        },
-        // Enables the preferred SSL protocol and its versions.
-        protocol: {
-            name: http:TLS,
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        // Configures the preferred ciphers.
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-
+        }
     }
 );
 
@@ -71,7 +63,7 @@ export default function HttpServiceMutualSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Mutual SSL</h1>
+      <h1>HTTP service - Mutual SSL</h1>
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
@@ -84,9 +76,21 @@ export default function HttpServiceMutualSsl() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
+        </a>{" "}
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#922-listener---mutual-ssl">
+          <code>http</code> specification
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file
+          path, private key file path, and trusted certificate file path in the
+          code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -173,7 +177,7 @@ export default function HttpServiceMutualSsl() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the following command.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -230,15 +234,13 @@ export default function HttpServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path, private key file path, and`}</span>
-              <span>{`# trusted certificate file path.`}</span>
               <span>{`\$ bal run http_service_mutual_ssl.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <p>Invoke the service as follows.</p>
+      <p>Invoke the service by executing the cURL command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -295,7 +297,6 @@ export default function HttpServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# To invoke the service, use the cURL commands below.`}</span>
               <span>{`\$ curl https://localhost:9090/foo/bar --cert /path/to/client-public.crt`}</span>
               <span>{`    --key /path/to/client-private.key --cacert /path/to/server-public.crt`}</span>
             </code>
@@ -303,12 +304,20 @@ export default function HttpServiceMutualSsl() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
+          <a href="/learn/by-example/http-client-mutual-ssl/">
+            sample Mutual SSL/TLS client
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Service - SSL/TLS"
-            href="/learn/by-example/http-service-ssl-tls"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/http-service-ssl-tls">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -334,7 +343,7 @@ export default function HttpServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
             </div>
@@ -342,8 +351,8 @@ export default function HttpServiceMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth file user store"
-            href="/learn/by-example/http-service-basic-auth-file-user-store"
+            title="Basic authentication file user store"
+            href="/learn/by-example/http-service-basic-authentication-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -353,7 +362,7 @@ export default function HttpServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth file user store
+                  Basic authentication file user store
                 </span>
               </div>
               <svg

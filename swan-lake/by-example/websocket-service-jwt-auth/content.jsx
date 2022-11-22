@@ -23,8 +23,8 @@ listener websocket:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with JWT Auth and can be authorized
-// optionally. JWT Auth can be enabled by setting the \`websocket:JwtValidatorConfig\` configurations.
+// The service can be secured with JWT authentication and can be authorized
+// optionally. JWT authentication can be enabled by setting the \`websocket:JwtValidatorConfig\` configurations.
 // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/JwtValidatorConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
@@ -80,7 +80,7 @@ export default function WebsocketServiceJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - JWT Auth</h1>
+      <h1>WebSocket service - JWT authentication</h1>
 
       <p>
         A WebSocket service can be secured with JWT and by
@@ -109,6 +109,13 @@ export default function WebsocketServiceJwtAuth() {
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -195,6 +202,8 @@ export default function WebsocketServiceJwtAuth() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the cURL command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -250,17 +259,27 @@ export default function WebsocketServiceJwtAuth() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
               <span>{`\$bal run websocket_service_jwt_auth.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
+          <a href="/learn/by-example/websocket-client-self-signed-jwt-auth">
+            self-signed JWT authentication client
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth LDAP user store"
+            title="Basic authentication LDAP user store"
             href="/learn/by-example/websocket-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -288,7 +307,7 @@ export default function WebsocketServiceJwtAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth LDAP user store
+                  Basic authentication LDAP user store
                 </span>
               </div>
             </div>
@@ -296,7 +315,7 @@ export default function WebsocketServiceJwtAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - OAuth2"
+            title="OAuth2"
             href="/learn/by-example/websocket-service-oauth2"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -307,7 +326,7 @@ export default function WebsocketServiceJwtAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - OAuth2
+                  OAuth2
                 </span>
               </div>
               <svg

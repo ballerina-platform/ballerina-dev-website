@@ -88,7 +88,7 @@ export default function XmlnsDeclarations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2072f160c5443af9d29a877b732ea05a&file=xmlns_declarations.bal",
+                "https://play.ballerina.io/?gist=5c550d0a903f7ae3410dafcf30d9f91c&file=xmlns_declarations.bal",
                 "_blank"
               );
             }}

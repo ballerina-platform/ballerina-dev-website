@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-listener graphql:Listener securedEP = new(4000,
+listener graphql:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -74,7 +74,7 @@ export default function GraphqlServiceOauth2() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - OAuth2</h1>
+      <h1>GraphQL service - OAuth2</h1>
 
       <p>
         A GraphQL service can be secured with OAuth2 and by enforcing
@@ -105,6 +105,13 @@ export default function GraphqlServiceOauth2() {
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -191,7 +198,7 @@ export default function GraphqlServiceOauth2() {
         </Col>
       </Row>
 
-      <p>Run the service as follows.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -248,17 +255,23 @@ export default function GraphqlServiceOauth2() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
               <span>{`\$ bal run graphql_service_oauth2.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - JWT Auth"
+            title="JWT authentication"
             href="/learn/by-example/graphql-service-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -286,14 +299,17 @@ export default function GraphqlServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - JWT Auth
+                  JWT authentication
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/websocket-client">
+          <Link
+            title="Send/Receive messages"
+            href="/learn/by-example/websocket-basic-sample"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -302,7 +318,7 @@ export default function GraphqlServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Send/Receive messages
                 </span>
               </div>
               <svg

@@ -30,7 +30,7 @@ service class WsService {
     // For more information on data binding, see https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md.
     remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
         io:println("\\ntext message: " + text);
-        return caller->writeMessage("You said: " + text);
+        check caller->writeMessage("You said: " + text);
     }
 }
 `,
@@ -57,9 +57,22 @@ export default function WebsocketBasicSample() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service</h1>
+      <h1>WebSocket service - Send/Receive messages</h1>
 
-      <p>This explains the basic functions of a WebSocket server.</p>
+      <p>
+        This explains how the Ballerina WebSocket server interacts with a
+        WebSocket client. Apart from the <code>onMessage</code> remote function
+        given in the example, there are few other remote functions to receive
+        different types of WebSocket messages. The <code>onOpen</code> remote
+        function is dispatched as soon as the WebSocket handshake is completed
+        and the connection is established, <code>onPing</code> and{" "}
+        <code>onPong</code> remote methods are dispatched upon receiving ping
+        and pong messages respectively, <code>onIdleTimeout</code> remote method
+        is dispatched when the idle timeout is reached, <code>onClose</code> is
+        dispatched when a close frame with a statusCode and a reason is received
+        and <code>onError</code> is dispatched when an error occurs in the
+        WebSocket connection.
+      </p>
 
       <p>
         For more information on the underlying module, see the{" "}
@@ -68,6 +81,13 @@ export default function WebsocketBasicSample() {
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/websocket-client/">WebSocket client</a>.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -217,10 +237,7 @@ export default function WebsocketBasicSample() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Client - Retry"
-            href="/learn/by-example/websocket-retry-client"
-          >
+          <Link title="OAuth2" href="/learn/by-example/graphql-service-oauth2">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -246,7 +263,7 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Retry
+                  OAuth2
                 </span>
               </div>
             </div>
@@ -254,8 +271,8 @@ export default function WebsocketBasicSample() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - SSL/TLS"
-            href="/learn/by-example/websocket-service-ssl-tls"
+            title="Send/Receive messages"
+            href="/learn/by-example/websocket-client"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -265,7 +282,7 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  Send/Receive messages
                 </span>
               </div>
               <svg

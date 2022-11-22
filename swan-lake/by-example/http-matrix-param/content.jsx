@@ -14,32 +14,31 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-service /sample on new http:Listener(9090) {
+type Params record {|
+    string path;
+    map<json> matrix;
+|};
+
+service / on new http:Listener(9090) {
 
     // The path param is defined as a part of the resource path along with the type and it is extracted from the
     // request URI.
-    resource function get path/[string foo](http:Request req) returns json {
+    resource function get params/[string foo](http:Request req) returns Params {
 
         // Gets the \`MatrixParams\`.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams.
-        map<any> pathMParams = req.getMatrixParams("/sample/path");
+        map<any> pathMParams = req.getMatrixParams("/params");
         var a = <string>pathMParams["a"];
         var b = <string>pathMParams["b"];
         string pathMatrixStr = string \`a=\${a}, b=\${b}\`;
 
-        map<any> fooMParams = req.getMatrixParams("/sample/path/" + foo);
+        map<any> fooMParams = req.getMatrixParams("/params/" + foo);
         var x = <string>fooMParams["x"];
         var y = <string>fooMParams["y"];
         string fooMatrixStr = string \`x=\${x}, y=\${y}\`;
-        json matrixJson = {"path": pathMatrixStr, "foo": fooMatrixStr};
+        map<json> matrixJson = {path: pathMatrixStr, foo: fooMatrixStr};
 
-        // Create a JSON payload with the extracted values.
-        json responseJson = {
-            "pathParam": foo,
-            "matrix": matrixJson
-        };
-        // Send a response with the JSON payload to the client.
-        return responseJson;
+        return { path: foo, matrix: matrixJson};
     }
 }
 `,
@@ -68,7 +67,7 @@ export default function HttpMatrixParam() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Matrix parameter</h1>
+      <h1>HTTP service - Matrix parameter</h1>
 
       <p>
         Ballerina supports extracting <code>MatrixParam</code> values using{" "}
@@ -291,8 +290,8 @@ export default function HttpMatrixParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/sample/path;a=4;b=5/value1;x=10;y=15"`}</span>
-              <span>{`{"pathParam":"value1", "matrix":{"path":"a=4, b=5", "foo":"x=10, y=15"}}`}</span>
+              <span>{`\$ curl "http://localhost:9090/params;a=4;b=5/value1;x=10;y=15"`}</span>
+              <span>{`{"path":"value1", "matrix":{"path":"a=4, b=5", "foo":"x=10, y=15"}}`}</span>
             </code>
           </pre>
         </Col>
@@ -300,10 +299,7 @@ export default function HttpMatrixParam() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Query parameter"
-            href="/learn/by-example/http-query-parameter"
-          >
+          <Link title="100 continue" href="/learn/by-example/http-100-continue">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -329,7 +325,7 @@ export default function HttpMatrixParam() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Query parameter
+                  100 continue
                 </span>
               </div>
             </div>
@@ -337,8 +333,8 @@ export default function HttpMatrixParam() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Header parameter"
-            href="/learn/by-example/http-header-param"
+            title="Restrict by media type"
+            href="/learn/by-example/http-restrict-by-media-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -348,7 +344,7 @@ export default function HttpMatrixParam() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Header parameter
+                  Restrict by media type
                 </span>
               </div>
               <svg

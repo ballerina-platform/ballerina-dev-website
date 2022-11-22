@@ -22,7 +22,7 @@ http:Client clientEP = check new ("http://localhost:9092");
 
 service /multiparts on new http:Listener(9092) {
 
-    resource function get encode_out_response() returns http:Response {
+    resource function get encoder() returns http:Response {
         // Creates an enclosing entity to hold the child parts.
         mime:Entity parentPart = new;
 
@@ -53,24 +53,16 @@ service /multiparts on new http:Listener(9092) {
 service /multiparts on new http:Listener(9090) {
 
     // This resource accepts multipart responses.
-    resource function get decode_in_response() returns string|http:InternalServerError {
-        http:Response|error returnResult = clientEP->get("/multiparts/encode_out_response");
-        if (returnResult is http:Response) {
-            // Extracts the body parts from the response.
-            // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts.
-            var parentParts = returnResult.getBodyParts();
-            if (parentParts is mime:Entity[]) {
-                //Loops through body parts.
-                foreach var parentPart in parentParts {
-                    handleNestedParts(parentPart);
-                }
-                return "Body Parts Received!";
-            } else {
-                return { body: "Invalid payload"};
-            }
-        } else {
-            return { body: "Connection error"};
+    resource function get decoder() returns string|http:InternalServerError|error {
+        http:Response returnResult = check clientEP->/multiparts/encoder;
+        // Extracts the body parts from the response.
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts.
+        mime:Entity[] parentParts = check returnResult.getBodyParts();
+        //Loops through body parts.
+        foreach var parentPart in parentParts {
+            handleNestedParts(parentPart);
         }
+        return "Body Parts Received!";
     }
 }
 
@@ -182,7 +174,7 @@ export default function HttpResponseWithMultiparts() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Response With multiparts</h1>
+      <h1>HTTP service - Response With multiparts</h1>
 
       <p>
         Ballerina supports encoding and decoding multipart content in HTTP
@@ -422,17 +414,17 @@ export default function HttpResponseWithMultiparts() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -X GET http://localhost:9092/multiparts/encode_out_response`}</span>
-              <span>{`--5afd3d91ee639af3`}</span>
-              <span>{`content-type: multipart/mixed;boundary=de5520ef3bc703d7`}</span>
+              <span>{`\$ curl http://localhost:9092/multiparts/encoder`}</span>
+              <span>{`--646e483fc8826c55`}</span>
+              <span>{`content-type: multipart/mixed;boundary=e8a931f5e25d263e`}</span>
               <span>{`
 `}</span>
-              <span>{`--de5520ef3bc703d7`}</span>
+              <span>{`--e8a931f5e25d263e`}</span>
               <span>{`content-type: application/json`}</span>
               <span>{`
 `}</span>
               <span>{`{"name":"wso2"}`}</span>
-              <span>{`--de5520ef3bc703d7`}</span>
+              <span>{`--e8a931f5e25d263e`}</span>
               <span>{`content-type: text/xml`}</span>
               <span>{`
 `}</span>
@@ -440,14 +432,16 @@ export default function HttpResponseWithMultiparts() {
               <span>{`    <version>0.963</version>`}</span>
               <span>{`    <test>test xml file to be used as a file part</test>`}</span>
               <span>{`</ballerinalang>`}</span>
-              <span>{`--de5520ef3bc703d7--`}</span>
               <span>{`
 `}</span>
-              <span>{`--5afd3d91ee639af3--`}</span>
+              <span>{`--e8a931f5e25d263e--`}</span>
+              <span>{`
+`}</span>
+              <span>{`--646e483fc8826c55--`}</span>
               <span>{`
 `}</span>
               <span>{`#To decode the inbound response with multiparts.`}</span>
-              <span>{`\$ curl -X GET http://localhost:9090/multiparts/decode_in_response`}</span>
+              <span>{`\$ curl http://localhost:9090/multiparts/decoder`}</span>
               <span>{`Body Parts Received!`}</span>
             </code>
           </pre>
@@ -456,7 +450,10 @@ export default function HttpResponseWithMultiparts() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Chunking" href="/learn/by-example/http-disable-chunking">
+          <Link
+            title="Sending cache response"
+            href="/learn/by-example/http-service-cache-response"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -482,17 +479,14 @@ export default function HttpResponseWithMultiparts() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Chunking
+                  Sending cache response
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Request With multiparts"
-            href="/learn/by-example/http-request-with-multiparts"
-          >
+          <Link title="Passthrough" href="/learn/by-example/http-passthrough">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -501,7 +495,7 @@ export default function HttpResponseWithMultiparts() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request With multiparts
+                  Passthrough
                 </span>
               </div>
               <svg

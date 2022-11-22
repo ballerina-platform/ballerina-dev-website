@@ -94,7 +94,7 @@ export default function NeverType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fff38efb3604c2c7f15732a6a8010c63&file=never_type.bal",
+                "https://play.ballerina.io/?gist=2a988841279c8509ff83ac162809e581&file=never_type.bal",
                 "_blank"
               );
             }}
@@ -297,7 +297,10 @@ export default function NeverType() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Arrays" href="/learn/by-example/arrays">
+          <Link
+            title="Expression-oriented style"
+            href="/learn/by-example/expression-oriented-style"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -306,7 +309,7 @@ export default function NeverType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Arrays
+                  Expression-oriented style
                 </span>
               </div>
               <svg

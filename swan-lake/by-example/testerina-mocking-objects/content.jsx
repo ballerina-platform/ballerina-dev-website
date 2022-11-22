@@ -527,8 +527,8 @@ export default function TesterinaMockingObjects() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Expression-oriented style"
-            href="/learn/by-example/expression-oriented-style"
+            title="Basic REST service"
+            href="/learn/by-example/http-basic-rest-service"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -538,7 +538,7 @@ export default function TesterinaMockingObjects() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Expression-oriented style
+                  Basic REST service
                 </span>
               </div>
               <svg

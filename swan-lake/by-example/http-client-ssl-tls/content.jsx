@@ -15,19 +15,18 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// An HTTP client can be configured to communicate through HTTPS as well.
-// To secure a client using HTTPS, the client needs to be configured with
-// a certificate file of the listener. The \`http:ClientSecureSocket\` record
-// provides the SSL-related configurations of the client.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket.
-http:Client securedEP = check new("https://localhost:9090",
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
-    string response = check securedEP->get("/foo/bar");
+    // An HTTP client can be configured to communicate through HTTPS as well.
+    // To secure a client using HTTPS, the client needs to be configured with
+    // a certificate file of the listener. The \`http:ClientSecureSocket\` record
+    // provides the SSL-related configurations of the client.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket.
+    http:Client securedEP = check new("https://localhost:9090",
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
+    string response = check securedEP->/foo/bar;
     io:println(response);
 }
 `,
@@ -54,7 +53,7 @@ export default function HttpClientSslTls() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - SSL/TLS</h1>
+      <h1>HTTP client - SSL/TLS</h1>
 
       <p>
         You can use the HTTPS client to connect or interact with an HTTPS
@@ -66,9 +65,20 @@ export default function HttpClientSslTls() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
+        </a>{" "}
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#923-client---ssltls">
+          <code>http</code> specification
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -155,7 +165,18 @@ export default function HttpClientSslTls() {
         </Col>
       </Row>
 
-      <p>Run the secure client program by executing the following command.</p>
+      <p>Run the secure client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a{" "}
+          <a href="learn/by-example/http-service-ssl-tls/">
+            sample service secured with SSL/TLS
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -212,8 +233,6 @@ export default function HttpClientSslTls() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a sample service secured with SSL.`}</span>
-              <span>{`# You may need to change the trusted certificate file path.`}</span>
               <span>{`\$ bal run http_client_ssl_tls.bal`}</span>
               <span>{`Hello, World!`}</span>
             </code>
@@ -223,10 +242,7 @@ export default function HttpClientSslTls() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Service - OAuth2"
-            href="/learn/by-example/http-service-oauth2"
-          >
+          <Link title="OAuth2" href="/learn/by-example/http-service-oauth2">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -252,7 +268,7 @@ export default function HttpClientSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - OAuth2
+                  OAuth2
                 </span>
               </div>
             </div>
@@ -260,7 +276,7 @@ export default function HttpClientSslTls() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - Mutual SSL"
+            title="Mutual SSL"
             href="/learn/by-example/http-client-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -271,7 +287,7 @@ export default function HttpClientSslTls() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Mutual SSL
+                  Mutual SSL
                 </span>
               </div>
               <svg

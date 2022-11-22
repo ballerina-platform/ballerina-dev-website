@@ -1,0 +1,18 @@
+{
+  "title": "Chunking",
+  "description": "BBE on how to configure the chunking behavior of the HTTP service in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "chunked",
+    "transfer-encoding"
+  ],
+  "permalink": "/learn/by-example/http-service-chunking",
+  "active": "http-service-chunking",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-service-chunking",
+    "/swan-lake/learn/by-example/http-service-chunking.html"
+  ]
+}

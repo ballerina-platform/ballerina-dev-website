@@ -85,7 +85,7 @@ export default function ForeachStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=be5344c49f03260ebe38de196055ad92&file=foreach_statement.bal",
+                "https://play.ballerina.io/?gist=96929d24773c80caeef134743f10c0a3&file=foreach_statement.bal",
                 "_blank"
               );
             }}
@@ -248,8 +248,8 @@ export default function ForeachStatement() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Provide function arguments by name"
-            href="/learn/by-example/provide-function-arguments-by-name"
+            title="Function pointers"
+            href="/learn/by-example/function-pointers"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -276,7 +276,7 @@ export default function ForeachStatement() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Provide function arguments by name
+                  Function pointers
                 </span>
               </div>
             </div>

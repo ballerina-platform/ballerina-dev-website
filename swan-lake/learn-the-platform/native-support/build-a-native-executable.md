@@ -7,44 +7,42 @@ active: build-a-native-executable
 intro: This guide walks you through compiling a Ballerina application to a native executable and packing the native executable in a container.
 ---
 
-This guide walks you through compiling a Ballerina application to a native executable and packing the native executable in a container. This feature is introduced as an experimental feature in update3 and hopes to make it official with the following releases. In case you come across any issues do report them as the Ballerina team will be aggressively addressing them.
-
-Before getting started, let's first understand some key aspects which can be helpful to understand  the native executable generating process better.
+This guide walks you through compiling a Ballerina application to a native executable and packing the native executable in a container. This feature was introduced as an experimental feature in the Swan Lake Update 3 release and it will become official with the following releases. In case you come across any issues do report them as the Ballerina team will be aggressively addressing them.
 
 ## GraalVM
 
-Building a Ballerina native executable requires the [GraalVM](https://www.graalvm.org) [native-image](https://www.graalvm.org/22.3/reference-manual/native-image/) compiler. GraalVM is a high-performance, cloud native and polyglot JDK designed to accelerate the execution of applications. There are three different distributions on GraalVM: Oracle GraalVM Community Edition (CE), Oracle GraalVM Enterprise Edition (EE) and Mandrel. You can install any to use Ballerina native functionality.
+Building a Ballerina native executable requires the [GraalVM](https://www.graalvm.org) [native-image](https://www.graalvm.org/22.3/reference-manual/native-image/) compiler. GraalVM is a high-performance, cloud native, and polyglot JDK designed to accelerate the execution of applications. There are three different distributions on GraalVM: Oracle GraalVM Community Edition (CE), Oracle GraalVM Enterprise Edition (EE), and Mandrel. You can install any to use the Ballerina native functionality.
 
-- GraalVM CE is the free version of GraalVM which is distributed under GPLv2+CE at the time of this writing.
-- GraaLVM EE is the paid version of GraalVM which comes with a few additional features such as options for GC, debugging and other optimizations.
-- Mandrel is a downstream distribution of the Oracle GraalVM CE which is maintained by RedHat.
+- GraalVM CE is the free version of GraalVM, which is distributed under GPLv2+CE.
+- GraaLVM EE is the paid version of GraalVM, which comes with a few additional features such as options for GC, debugging, and other optimizations.
+- Mandrel is a downstream distribution of the Oracle GraalVM CE, which is maintained by RedHat.
 
 This article uses GraalVM CE to discuss the following topics.
 
-## Native Executable vs Uber Jar
+## Native executable vs uber Jar
 
-When compiling a  Ballerina application using bal build, the output is an uber jar. As you already know, running the jar requires a JVM. JVM uses Just In Time (JIT) compiler to generate native code during runtime.
+When compiling a  Ballerina application using the `bal build` command the output is an uber JAR file. As you already know, running the JAR requires a JVM. JVM uses a Just In Time (JIT) compiler to generate native code during runtime.
 
-On the other hand, when compiling a Ballerina application using `bal build --native`, the output is the native executable local to the host machine. In order to build the native executable, GraalVM uses Ahead Of Time compilation (AOT) which requires the generated uber jar as the input to produce the native executable. Native Image generation performs aggressive optimizations such as unused code elimination in the JDK and its dependencies, heap snapshotting, and static code initializations.
+On the other hand, when compiling a Ballerina application using `bal build --native`, the output is the native executable local to the host machine. In order to build the native executable, GraalVM uses Ahead Of Time compilation (AOT), which requires the generated uber JAR as the input to produce the native executable. Native Image generation performs aggressive optimizations such as unused code elimination in the JDK and its dependencies, heap snapshotting, and static code initializations.
 
-The difference between the both approaches result in different pros and cons as depicted in the below diagram.
+The difference between both approaches result in different pros and cons as depicted in the spider graph diagram.
 
 The following spider graph illustrates the key differences:
 
-![AOT Vs JIT](/learn/images/aot-vs-jit.jpeg)
+![AOT vs JIT](/learn/images/aot-vs-jit.jpeg)
 
-As depicted in the image, AOT compilation with GraalVM provides the following advantages over the standard JIT compilation, making it ideal for container runtimes.
+As depicted in the image, AOT compilation with GraalVM provides the following advantages over the standard JIT compilation making it ideal for container runtimes.
 - Use a fraction of the resources required by the JVM.
 - Applications start in milliseconds.
-- Deliver peak performance immediately, no warmup.
+- Deliver peak performance immediately with no warmup.
 - Can be packaged into lightweight container images for faster and more efficient deployments.
 - Reduced attack surface.
 
-The only downside is, the GraalVM native Image build is a highly complicated process which may consume a lot of memory and CPU, resulting in extended build time. However, the GraalVM community is continuously working on improving its performance.
+The only downside is that the GraalVM native image build is a highly complicated process, which may consume a lot of memory and CPU resulting in an extended build time. However, the GraalVM community is continuously working on improving its performance.
 
-## Ballerina Native Image
+## Ballerina native image
 
-From Ballerina 2201.3.0 (SwanLake), Ballerina supports GraalVM AOT compilation to generate standalone executables by passing the native flag in the build command: `bal build --native` . The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK.
+From Ballerina 2201.3.0 (SwanLake) onwards, Ballerina supports GraalVM AOT compilation to generate standalone executables by passing the native flag in the build command: `bal build --native`. The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK.
 
 ## Build a native executable locally
 
@@ -59,27 +57,25 @@ To complete this part of the guide, you need:
 
 ### Configure GraalVM
 
-1. Install GraalVM if you have not already.
+1. Install GraalVM if you have not done it already.
     - Install GraalVM with one line!
       ```
       $ bash <(curl -sL https://get.graalvm.org/jdk)  graalvm-ce-java11-22.3.0
       ```
-      > **Tip:** Above command does install the native-image tool which is required to generate the native images along with GraalVM.
-    - For additional information check [GraalVM startup guide](https://www.graalvm.org/22.2/docs/getting-started/)
+      > **Tip:** The above command installs the native-image tool, which is required to generate the native images along with GraalVM.
+    - For additional information, see [Get Started with GraalVM](https://www.graalvm.org/22.2/docs/getting-started/)
 2. Configure the runtime environment. Set the `GRAALVM_HOME` environment variable to the GraalVM installation directory as directed at the end of the execution of the above command.
 
-> **Note:** On Windows, Native Image requires Visual Studio Code and Microsoft Visual C++(MSVC). Follow this [guide](https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311) to install Visual Studio Code with the Windows 10 SDK.
-
-Since the environment is set up for building a native executable, let's see how to build a  native executable for a simple Ballerina HTTP server application.
+> **Note:** On Windows, the native image requires Visual Studio Code and Microsoft Visual C++(MSVC). For instructions on installing Visual Studio Code with the Windows 10 SDK, go to [Using GraalVM and Native Image on Windows 10](https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311) to install Visual Studio Code with the Windows 10 SDK.
 
 ### Build a native executable
 
-1. Create a ballerina service package :
+1. Execute the command below to create a Ballerina service package :
    ```
    $ bal new hello_world -t service
    ```
 
-2. Replace the content of the file service.bal :
+2. Replace the content of the `service.bal` file with the following.
    ```ballerina
    import ballerina/http;
 
@@ -91,7 +87,7 @@ Since the environment is set up for building a native executable, let's see how 
    }
    ```
 
-3. Create native executable :
+3. Run `bal build --native` to create the native executable.
    ```
    $ bal build --native
    WARNING : Native image generation is an experimental feature, which supports only a limited set of functionality
@@ -155,20 +151,18 @@ Since the environment is set up for building a native executable, let's see how 
        /Users/user/Documents/GraalVM/mocking-test/hello_world/target/bin/hello_world
    ```
 
-   > **Note:** On Windows, the Microsoft Native Tools for Visual Studio must first be initialized before building a native-image. You can do this by starting the x64 Native Tools Command Prompt that was installed with the Visual Studio Build Tools. At x64 Native Tools Command Prompt you can navigate to your project folder and run `bal build --native`.
+   > **Note:** On Windows, the Microsoft Native Tools for Visual Studio must be initialized before building a native-image. You can do this by starting the **x64 Native Tools Command Prompt** that was installed with the Visual Studio Build Tools. In the x64 Native Tools Command Prompt, navigate to your project folder and run `bal build --native`.
 
-4. Running the native executable :
+4. Run the native executable located in the `target/bin` directory :
    ```
    $ ./target/bin/hello_world
    ```
 
-5. Testing the service with a curl request :
+5. Test the service with a cURL request :
    ```
    $ curl http://localhost:8080/greeting
    Hello, World!
    ```
-
-Great! Now you have built and tested a native executable for a simple Ballerina HTTP server application. Let’s see how to build the native executable and pack it in a container.
 
 ## Pack the native executable in a container
 
@@ -183,12 +177,12 @@ To complete this part of the guide, you need:
 
 ### Build a native executable in a container
 
-1. Create a ballerina service package :
+1. Execute the command below to create a Ballerina service package :
    ```
    $ bal new hello_docker -t service
    ```
 
-2. Replace the content of the file service.bal :
+2. Replace the content of the file `service.bal` with the following.
    ```ballerina
    import ballerina/http;
 
@@ -201,7 +195,7 @@ To complete this part of the guide, you need:
    }
    ```
 
-3. Generate the artifacts with native executable
+3. Execute `bal build --native --cloud=docker` to generate the artifacts with the native executable. Optionally, you can create a file named `Cloud.toml` in the package directory to add cloud related configurations. For more information, see the [docker](https://ballerina.io/learn/by-example/c2c-docker-deployment/) and [k8s](https://ballerina.io/learn/by-example/c2c-k8s-deployment/) documentation.
     ```
    $ bal build --native --cloud=docker
    Compiling source
@@ -321,16 +315,7 @@ To complete this part of the guide, you need:
        target/bin/hello_docker.jar
    ```
 
-   Further optionally you can create a file named Cloud.toml in the package directory and add the content below. The values below describe the image being generated. For more information please see the [docker](https://ballerina.io/learn/by-example/c2c-docker-deployment/) and [k8s](https://ballerina.io/learn/by-example/c2c-k8s-deployment/) documentation.
-
-   ```toml
-   [container.image]
-   repository="wso2inc" # ex - Docker hub name
-   name="hello" # container name
-   tag="v0.1.0"
-   ```
-
-   The docker file :
+   The Docker file :
    ```	
    # Auto Generated Dockerfile
    FROM ballerina/native-builder:latest as build
@@ -354,12 +339,12 @@ To complete this part of the guide, you need:
    CMD ["./hello_docker"]
    ```
 
-4. Execute the docker image :
+4. Execute the Docker image :
    ```
    $ docker run -d -p 8080:8080 wso2inc/hello:v0.1.0
    ```
 
-5. Testing the service with a curl request :
+5. Test the service with a cURL request :
    ```
    $ curl http://localhost:8080/greeting
    Hello, Docker!

@@ -1,5 +1,5 @@
 {
-  "title": "DML and DDL operation",
+  "title": "DML and DDL operations",
   "description": "This BBE on the use of the JDBC client with the DDL and DML operations in Ballerina.",
   "keywords": [
     "ballerina",

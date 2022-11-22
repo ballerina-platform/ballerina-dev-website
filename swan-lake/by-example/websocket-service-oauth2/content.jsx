@@ -83,7 +83,7 @@ export default function WebsocketServiceOauth2() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - OAuth2</h1>
+      <h1>WebSocket service - OAuth2</h1>
 
       <p>
         A WebSocket service can be secured with OAuth2 and by enforcing
@@ -114,6 +114,13 @@ export default function WebsocketServiceOauth2() {
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -200,6 +207,8 @@ export default function WebsocketServiceOauth2() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the cURL command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -255,17 +264,27 @@ export default function WebsocketServiceOauth2() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
               <span>{`\$ bal run websocket_service_oauth2.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
+          <a href="/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type">
+            OAuth2 JWT Bearer grant type client
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - JWT Auth"
+            title="JWT authentication"
             href="/learn/by-example/websocket-service-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -293,7 +312,7 @@ export default function WebsocketServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - JWT Auth
+                  JWT authentication
                 </span>
               </div>
             </div>
@@ -301,7 +320,7 @@ export default function WebsocketServiceOauth2() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - SSL/TLS"
+            title="SSL/TLS"
             href="/learn/by-example/websocket-client-ssl-tls"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -312,7 +331,7 @@ export default function WebsocketServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
               <svg

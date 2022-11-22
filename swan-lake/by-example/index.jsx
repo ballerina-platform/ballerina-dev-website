@@ -16,6 +16,7 @@ import IncludedRecordParameters from "./included-record-parameters/content.jsx";
 import RestParameters from "./rest-parameters/content.jsx";
 import DefaultValuesForFunctionParameters from "./default-values-for-function-parameters/content.jsx";
 import ProvideFunctionArgumentsByName from "./provide-function-arguments-by-name/content.jsx";
+import FunctionPointers from "./function-pointers/content.jsx";
 import ForeachStatement from "./foreach-statement/content.jsx";
 import WhileStatement from "./while-statement/content.jsx";
 import LanglibFunctions from "./langlib-functions/content.jsx";
@@ -33,6 +34,7 @@ import BuiltInStringSubtype from "./built-in-string-subtype/content.jsx";
 import EnsureTypeFunction from "./ensureType-function/content.jsx";
 import DependentTypes from "./dependent-types/content.jsx";
 import NeverType from "./never-type/content.jsx";
+import ExpressionOrientedStyle from "./expression-oriented-style/content.jsx";
 import Arrays from "./arrays/content.jsx";
 import Tuples from "./tuples/content.jsx";
 import DestructureTuples from "./destructure-tuples/content.jsx";
@@ -87,6 +89,7 @@ import LimitClause from "./limit-clause/content.jsx";
 import QueryingTables from "./querying-tables/content.jsx";
 import CreatingTablesWithQuery from "./creating-tables-with-query/content.jsx";
 import JoinClause from "./join-clause/content.jsx";
+import OuterJoinClause from "./outer-join-clause/content.jsx";
 import StreamType from "./stream-type/content.jsx";
 import QueryingWithStreams from "./querying-with-streams/content.jsx";
 import QueryActions from "./query-actions/content.jsx";
@@ -153,46 +156,51 @@ import TesterinaGuaranteeTestExecutionOrder from "./testerina-guarantee-test-exe
 import TesterinaGroupTests from "./testerina-group-tests/content.jsx";
 import TesterinaMockingFunctions from "./testerina-mocking-functions/content.jsx";
 import TesterinaMockingObjects from "./testerina-mocking-objects/content.jsx";
-import ExpressionOrientedStyle from "./expression-oriented-style/content.jsx";
-import HttpAbsolutePathAndPath from "./http-absolute-path-and-path/content.jsx";
-import HttpDataBinding from "./http-data-binding/content.jsx";
-import HttpDefaultResource from "./http-default-resource/content.jsx";
+import HttpBasicRestService from "./http-basic-rest-service/content.jsx";
+import HttpServicePathAndResourcePath from "./http-service-path-and-resource-path/content.jsx";
+import HttpServiceDataBinding from "./http-service-data-binding/content.jsx";
 import HttpPathParam from "./http-path-param/content.jsx";
 import HttpQueryParameter from "./http-query-parameter/content.jsx";
-import HttpMatrixParam from "./http-matrix-param/content.jsx";
 import HttpHeaderParam from "./http-header-param/content.jsx";
-import HttpResourceReturns from "./http-resource-returns/content.jsx";
-import HttpRestrictByMediaType from "./http-restrict-by-media-type/content.jsx";
+import HttpSendResponse from "./http-send-response/content.jsx";
+import HttpSendDifferentStatusCodes from "./http-send-different-status-codes/content.jsx";
 import HttpClientEndpoint from "./http-client-endpoint/content.jsx";
 import HttpClientDataBinding from "./http-client-data-binding/content.jsx";
-import HttpCachingClient from "./http-caching-client/content.jsx";
 import HttpServiceSslTls from "./http-service-ssl-tls/content.jsx";
 import HttpServiceMutualSsl from "./http-service-mutual-ssl/content.jsx";
-import HttpServiceBasicAuthFileUserStore from "./http-service-basic-auth-file-user-store/content.jsx";
-import HttpServiceBasicAuthLdapUserStore from "./http-service-basic-auth-ldap-user-store/content.jsx";
-import HttpServiceJwtAuth from "./http-service-jwt-auth/content.jsx";
+import HttpServiceBasicAuthenticationFileUserStore from "./http-service-basic-authentication-file-user-store/content.jsx";
+import HttpServiceBasicAuthenticationLdapUserStore from "./http-service-basic-authentication-ldap-user-store/content.jsx";
+import HttpServiceJwtAuthentication from "./http-service-jwt-authentication/content.jsx";
 import HttpServiceOauth2 from "./http-service-oauth2/content.jsx";
 import HttpClientSslTls from "./http-client-ssl-tls/content.jsx";
 import HttpClientMutualSsl from "./http-client-mutual-ssl/content.jsx";
-import HttpClientBasicAuth from "./http-client-basic-auth/content.jsx";
-import HttpClientBearerTokenAuth from "./http-client-bearer-token-auth/content.jsx";
-import HttpClientSelfSignedJwtAuth from "./http-client-self-signed-jwt-auth/content.jsx";
+import HttpClientBasicAuthentication from "./http-client-basic-authentication/content.jsx";
+import HttpClientBearerTokenAuthentication from "./http-client-bearer-token-authentication/content.jsx";
+import HttpClientSelfSignedJwtAuthentication from "./http-client-self-signed-jwt-authentication/content.jsx";
 import HttpClientOauth2ClientCredentialsGrantType from "./http-client-oauth2-client-credentials-grant-type/content.jsx";
 import HttpClientOauth2PasswordGrantType from "./http-client-oauth2-password-grant-type/content.jsx";
 import HttpClientOauth2RefreshTokenGrantType from "./http-client-oauth2-refresh-token-grant-type/content.jsx";
 import HttpClientOauth2JwtBearerGrantType from "./http-client-oauth2-jwt-bearer-grant-type/content.jsx";
-import HttpRedirects from "./http-redirects/content.jsx";
+import HttpDefaultResource from "./http-default-resource/content.jsx";
+import HttpServiceRedirects from "./http-service-redirects/content.jsx";
 import HttpCors from "./http-cors/content.jsx";
 import Http100Continue from "./http-100-continue/content.jsx";
-import HttpStreaming from "./http-streaming/content.jsx";
+import HttpMatrixParam from "./http-matrix-param/content.jsx";
+import HttpRestrictByMediaType from "./http-restrict-by-media-type/content.jsx";
+import HttpServiceFileUpload from "./http-service-file-upload/content.jsx";
 import HttpCompression from "./http-compression/content.jsx";
 import HttpTraceLogs from "./http-trace-logs/content.jsx";
 import HttpAccessLogs from "./http-access-logs/content.jsx";
 import HttpCookies from "./http-cookies/content.jsx";
-import HttpDisableChunking from "./http-disable-chunking/content.jsx";
+import HttpServiceChunking from "./http-service-chunking/content.jsx";
+import HttpServiceCacheResponse from "./http-service-cache-response/content.jsx";
 import HttpResponseWithMultiparts from "./http-response-with-multiparts/content.jsx";
-import HttpRequestWithMultiparts from "./http-request-with-multiparts/content.jsx";
 import HttpPassthrough from "./http-passthrough/content.jsx";
+import HttpClientRedirects from "./http-client-redirects/content.jsx";
+import HttpClientFileUpload from "./http-client-file-upload/content.jsx";
+import HttpClientChunking from "./http-client-chunking/content.jsx";
+import HttpCachingClient from "./http-caching-client/content.jsx";
+import HttpRequestWithMultiparts from "./http-request-with-multiparts/content.jsx";
 import HttpRequestInterceptors from "./http-request-interceptors/content.jsx";
 import HttpResponseInterceptors from "./http-response-interceptors/content.jsx";
 import HttpErrorHandling from "./http-error-handling/content.jsx";
@@ -201,27 +209,30 @@ import Http11To20ProtocolSwitch from "./http-1-1-to-2-0-protocol-switch/content.
 import Http20ServerPush from "./http-2-0-server-push/content.jsx";
 import GraphqlHelloWorld from "./graphql-hello-world/content.jsx";
 import GraphqlReturningRecordValues from "./graphql-returning-record-values/content.jsx";
-import GraphqlHierarchicalResourcePaths from "./graphql-hierarchical-resource-paths/content.jsx";
 import GraphqlReturningServiceObjects from "./graphql-returning-service-objects/content.jsx";
 import GraphqlInputTypes from "./graphql-input-types/content.jsx";
 import GraphqlMutations from "./graphql-mutations/content.jsx";
 import GraphqlSubscriptions from "./graphql-subscriptions/content.jsx";
+import GraphqlInputObjects from "./graphql-input-objects/content.jsx";
 import GraphqlInterfaces from "./graphql-interfaces/content.jsx";
-import GraphqlContext from "./graphql-context/content.jsx";
-import GraphqlFileUpload from "./graphql-file-upload/content.jsx";
+import GraphqlInterfacesImplementingInterfaces from "./graphql-interfaces-implementing-interfaces/content.jsx";
+import GraphqlGraphiql from "./graphql-graphiql/content.jsx";
 import GraphqlDocumentation from "./graphql-documentation/content.jsx";
-import GraphqlInterceptors from "./graphql-interceptors/content.jsx";
-import GraphqlClient from "./graphql-client/content.jsx";
 import GraphqlDirectives from "./graphql-directives/content.jsx";
+import GraphqlContext from "./graphql-context/content.jsx";
+import GraphqlInterceptors from "./graphql-interceptors/content.jsx";
+import GraphqlFileUpload from "./graphql-file-upload/content.jsx";
+import GraphqlHierarchicalResourcePaths from "./graphql-hierarchical-resource-paths/content.jsx";
+import GraphqlClientQueryEndpoint from "./graphql-client-query-endpoint/content.jsx";
 import GraphqlServiceSslTls from "./graphql-service-ssl-tls/content.jsx";
 import GraphqlServiceMutualSsl from "./graphql-service-mutual-ssl/content.jsx";
 import GraphqlServiceBasicAuthFileUserStore from "./graphql-service-basic-auth-file-user-store/content.jsx";
 import GraphqlServiceBasicAuthLdapUserStore from "./graphql-service-basic-auth-ldap-user-store/content.jsx";
 import GraphqlServiceJwtAuth from "./graphql-service-jwt-auth/content.jsx";
 import GraphqlServiceOauth2 from "./graphql-service-oauth2/content.jsx";
+import WebsocketBasicSample from "./websocket-basic-sample/content.jsx";
 import WebsocketClient from "./websocket-client/content.jsx";
 import WebsocketRetryClient from "./websocket-retry-client/content.jsx";
-import WebsocketBasicSample from "./websocket-basic-sample/content.jsx";
 import WebsocketServiceSslTls from "./websocket-service-ssl-tls/content.jsx";
 import WebsocketServiceMutualSsl from "./websocket-service-mutual-ssl/content.jsx";
 import WebsocketServiceBasicAuthFileUserStore from "./websocket-service-basic-auth-file-user-store/content.jsx";
@@ -238,19 +249,26 @@ import WebsocketClientOauth2PasswordGrantType from "./websocket-client-oauth2-pa
 import WebsocketClientOauth2RefreshTokenGrantType from "./websocket-client-oauth2-refresh-token-grant-type/content.jsx";
 import WebsocketClientOauth2JwtBearerGrantType from "./websocket-client-oauth2-jwt-bearer-grant-type/content.jsx";
 import WebsubWebhookSample from "./websub-webhook-sample/content.jsx";
+import HttpTimeout from "./http-timeout/content.jsx";
+import HttpRetry from "./http-retry/content.jsx";
 import HttpCircuitBreaker from "./http-circuit-breaker/content.jsx";
 import HttpLoadBalancer from "./http-load-balancer/content.jsx";
 import HttpFailover from "./http-failover/content.jsx";
-import HttpRetry from "./http-retry/content.jsx";
-import HttpTimeout from "./http-timeout/content.jsx";
 import DynamicListener from "./dynamic-listener/content.jsx";
 import StopHandler from "./stop-handler/content.jsx";
-import GrpcSimple from "./grpc-simple/content.jsx";
-import GrpcSimpleWithHeaders from "./grpc-simple-with-headers/content.jsx";
-import GrpcServerStreaming from "./grpc-server-streaming/content.jsx";
-import GrpcClientStreaming from "./grpc-client-streaming/content.jsx";
-import GrpcBidirectionalStreaming from "./grpc-bidirectional-streaming/content.jsx";
-import ProtoToBallerina from "./proto-to-ballerina/content.jsx";
+import GrpcServiceSimple from "./grpc-service-simple/content.jsx";
+import GrpcServiceServerStreaming from "./grpc-service-server-streaming/content.jsx";
+import GrpcServiceClientStreaming from "./grpc-service-client-streaming/content.jsx";
+import GrpcServiceBidirectionalStreaming from "./grpc-service-bidirectional-streaming/content.jsx";
+import GrpcServiceHeaders from "./grpc-service-headers/content.jsx";
+import GrpcServerReflection from "./grpc-server-reflection/content.jsx";
+import GrpcServiceCheckDeadline from "./grpc-service-check-deadline/content.jsx";
+import GrpcClientSimple from "./grpc-client-simple/content.jsx";
+import GrpcClientServerStreaming from "./grpc-client-server-streaming/content.jsx";
+import GrpcClientClientStreaming from "./grpc-client-client-streaming/content.jsx";
+import GrpcClientBidirectionalStreaming from "./grpc-client-bidirectional-streaming/content.jsx";
+import GrpcClientHeaders from "./grpc-client-headers/content.jsx";
+import GrpcClientSetDeadline from "./grpc-client-set-deadline/content.jsx";
 import GrpcServiceSslTls from "./grpc-service-ssl-tls/content.jsx";
 import GrpcServiceMutualSsl from "./grpc-service-mutual-ssl/content.jsx";
 import GrpcServiceBasicAuthFileUserStore from "./grpc-service-basic-auth-file-user-store/content.jsx";
@@ -266,53 +284,66 @@ import GrpcClientOauth2ClientCredentialsGrantType from "./grpc-client-oauth2-cli
 import GrpcClientOauth2PasswordGrantType from "./grpc-client-oauth2-password-grant-type/content.jsx";
 import GrpcClientOauth2RefreshTokenGrantType from "./grpc-client-oauth2-refresh-token-grant-type/content.jsx";
 import GrpcClientOauth2JwtBearerGrantType from "./grpc-client-oauth2-jwt-bearer-grant-type/content.jsx";
-import NatsBasicPubSub from "./nats-basic-pub-sub/content.jsx";
-import NatsBasicRequestReply from "./nats-basic-request-reply/content.jsx";
-import NatsBasicSecureConnection from "./nats-basic-secure-connection/content.jsx";
-import NatsStreamingPubSub from "./nats-streaming-pub-sub/content.jsx";
-import NatsStreamingQueueGroup from "./nats-streaming-queue-group/content.jsx";
-import NatsStreamingDurableSubscriptions from "./nats-streaming-durable-subscriptions/content.jsx";
-import NatsStreamingStartPosition from "./nats-streaming-start-position/content.jsx";
-import NatsStreamingSecureConnection from "./nats-streaming-secure-connection/content.jsx";
-import KafkaProducer from "./kafka-producer/content.jsx";
-import KafkaConsumerService from "./kafka-consumer-service/content.jsx";
-import KafkaConsumerClientPollPayload from "./kafka-consumer-client-poll-payload/content.jsx";
-import KafkaConsumerClientPollConsumerRecord from "./kafka-consumer-client-poll-consumer-record/content.jsx";
-import KafkaProducerTransactional from "./kafka-producer-transactional/content.jsx";
-import KafkaAuthenticationSaslPlainConsumer from "./kafka-authentication-sasl-plain-consumer/content.jsx";
-import KafkaAuthenticationSaslPlainProducer from "./kafka-authentication-sasl-plain-producer/content.jsx";
-import RabbitmqProducer from "./rabbitmq-producer/content.jsx";
+import NatsBasicSub from "./nats-basic-sub/content.jsx";
+import NatsBasicReply from "./nats-basic-reply/content.jsx";
+import NatsBasicPub from "./nats-basic-pub/content.jsx";
+import NatsBasicRequest from "./nats-basic-request/content.jsx";
+import NatsServiceSecureConnection from "./nats-service-secure-connection/content.jsx";
+import NatsServiceBasicAuth from "./nats-service-basic-auth/content.jsx";
+import NatsClientSecureConnection from "./nats-client-secure-connection/content.jsx";
+import NatsClientBasicAuth from "./nats-client-basic-auth/content.jsx";
+import KafkaService from "./kafka-service/content.jsx";
+import KafkaClientProduceMessage from "./kafka-client-produce-message/content.jsx";
+import KafkaClientPayloadDataBinding from "./kafka-client-payload-data-binding/content.jsx";
+import KafkaClientConsumerRecordDataBinding from "./kafka-client-consumer-record-data-binding/content.jsx";
+import KafkaServiceSsl from "./kafka-service-ssl/content.jsx";
+import KafkaServiceSasl from "./kafka-service-sasl/content.jsx";
+import KafkaClientProducerSsl from "./kafka-client-producer-ssl/content.jsx";
+import KafkaClientConsumerSsl from "./kafka-client-consumer-ssl/content.jsx";
+import KafkaClientProducerSasl from "./kafka-client-producer-sasl/content.jsx";
+import KafkaClientConsumerSasl from "./kafka-client-consumer-sasl/content.jsx";
 import RabbitmqConsumer from "./rabbitmq-consumer/content.jsx";
 import RabbitmqConsumerWithClientAcknowledgement from "./rabbitmq-consumer-with-client-acknowledgement/content.jsx";
-import RabbitmqTransactionProducer from "./rabbitmq-transaction-producer/content.jsx";
 import RabbitmqTransactionConsumer from "./rabbitmq-transaction-consumer/content.jsx";
-import RabbitmqSecureConnection from "./rabbitmq-secure-connection/content.jsx";
-import TcpClient from "./tcp-client/content.jsx";
+import RabbitmqQueueDeclare from "./rabbitmq-queue-declare/content.jsx";
+import RabbitmqProducer from "./rabbitmq-producer/content.jsx";
+import RabbitmqSyncConsumer from "./rabbitmq-sync-consumer/content.jsx";
+import RabbitmqTransactionProducer from "./rabbitmq-transaction-producer/content.jsx";
+import RabbitmqServiceSecureConnection from "./rabbitmq-service-secure-connection/content.jsx";
+import RabbitmqServiceBasicAuth from "./rabbitmq-service-basic-auth/content.jsx";
+import RabbitmqClientSecureConnection from "./rabbitmq-client-secure-connection/content.jsx";
+import RabbitmqClientBasicAuth from "./rabbitmq-client-basic-auth/content.jsx";
 import TcpListener from "./tcp-listener/content.jsx";
-import TcpTransportSecurity from "./tcp-transport-security/content.jsx";
+import TcpClient from "./tcp-client/content.jsx";
+import TcpServiceSslTls from "./tcp-service-ssl-tls/content.jsx";
+import TcpClientSslTls from "./tcp-client-ssl-tls/content.jsx";
+import UdpListener from "./udp-listener/content.jsx";
 import UdpClient from "./udp-client/content.jsx";
 import UdpConnectClient from "./udp-connect-client/content.jsx";
-import UdpListener from "./udp-listener/content.jsx";
+import ReceiveEmailUsingService from "./receive-email-using-service/content.jsx";
 import SendEmail from "./send-email/content.jsx";
 import ReceiveEmailUsingClient from "./receive-email-using-client/content.jsx";
-import ReceiveEmailUsingListener from "./receive-email-using-listener/content.jsx";
-import FtpClient from "./ftp-client/content.jsx";
-import FtpListener from "./ftp-listener/content.jsx";
-import SftpClient from "./sftp-client/content.jsx";
-import SftpListener from "./sftp-listener/content.jsx";
+import FtpServiceRead from "./ftp-service-read/content.jsx";
+import FtpServiceReadWrite from "./ftp-service-read-write/content.jsx";
+import FtpClientRead from "./ftp-client-read/content.jsx";
+import FtpClientWrite from "./ftp-client-write/content.jsx";
+import SftpServiceRead from "./sftp-service-read/content.jsx";
+import SftpServiceReadWrite from "./sftp-service-read-write/content.jsx";
+import SftpClientRead from "./sftp-client-read/content.jsx";
+import SftpClientWrite from "./sftp-client-write/content.jsx";
 import MysqlQueryOperation from "./mysql-query-operation/content.jsx";
 import MysqlQueryRowOperation from "./mysql-query-row-operation/content.jsx";
 import MysqlQueryColumnMapping from "./mysql-query-column-mapping/content.jsx";
 import MysqlExecuteOperation from "./mysql-execute-operation/content.jsx";
 import MysqlBatchExecuteOperation from "./mysql-batch-execute-operation/content.jsx";
-import MysqlAtomicBatchExecuteOperation from "./mysql-atomic-batch-execute-operation/content.jsx";
+import MysqlAtomicTransaction from "./mysql-atomic-transaction/content.jsx";
 import MysqlCallStoredProcedures from "./mysql-call-stored-procedures/content.jsx";
 import JdbcQueryOperation from "./jdbc-query-operation/content.jsx";
 import JdbcQueryRowOperation from "./jdbc-query-row-operation/content.jsx";
 import JdbcQueryColumnMapping from "./jdbc-query-column-mapping/content.jsx";
 import JdbcExecuteOperation from "./jdbc-execute-operation/content.jsx";
 import JdbcBatchExecuteOperation from "./jdbc-batch-execute-operation/content.jsx";
-import JdbcAtomicBatchExecuteOperation from "./jdbc-atomic-batch-execute-operation/content.jsx";
+import JdbcAtomicTransaction from "./jdbc-atomic-transaction/content.jsx";
 import SerdesSimple from "./serdes-simple/content.jsx";
 import IoBytes from "./io-bytes/content.jsx";
 import IoStrings from "./io-strings/content.jsx";
@@ -377,6 +408,7 @@ const BBEs = {
   RestParameters,
   DefaultValuesForFunctionParameters,
   ProvideFunctionArgumentsByName,
+  FunctionPointers,
   ForeachStatement,
   WhileStatement,
   LanglibFunctions,
@@ -394,6 +426,7 @@ const BBEs = {
   EnsureTypeFunction,
   DependentTypes,
   NeverType,
+  ExpressionOrientedStyle,
   Arrays,
   Tuples,
   DestructureTuples,
@@ -448,6 +481,7 @@ const BBEs = {
   QueryingTables,
   CreatingTablesWithQuery,
   JoinClause,
+  OuterJoinClause,
   StreamType,
   QueryingWithStreams,
   QueryActions,
@@ -514,46 +548,51 @@ const BBEs = {
   TesterinaGroupTests,
   TesterinaMockingFunctions,
   TesterinaMockingObjects,
-  ExpressionOrientedStyle,
-  HttpAbsolutePathAndPath,
-  HttpDataBinding,
-  HttpDefaultResource,
+  HttpBasicRestService,
+  HttpServicePathAndResourcePath,
+  HttpServiceDataBinding,
   HttpPathParam,
   HttpQueryParameter,
-  HttpMatrixParam,
   HttpHeaderParam,
-  HttpResourceReturns,
-  HttpRestrictByMediaType,
+  HttpSendResponse,
+  HttpSendDifferentStatusCodes,
   HttpClientEndpoint,
   HttpClientDataBinding,
-  HttpCachingClient,
   HttpServiceSslTls,
   HttpServiceMutualSsl,
-  HttpServiceBasicAuthFileUserStore,
-  HttpServiceBasicAuthLdapUserStore,
-  HttpServiceJwtAuth,
+  HttpServiceBasicAuthenticationFileUserStore,
+  HttpServiceBasicAuthenticationLdapUserStore,
+  HttpServiceJwtAuthentication,
   HttpServiceOauth2,
   HttpClientSslTls,
   HttpClientMutualSsl,
-  HttpClientBasicAuth,
-  HttpClientBearerTokenAuth,
-  HttpClientSelfSignedJwtAuth,
+  HttpClientBasicAuthentication,
+  HttpClientBearerTokenAuthentication,
+  HttpClientSelfSignedJwtAuthentication,
   HttpClientOauth2ClientCredentialsGrantType,
   HttpClientOauth2PasswordGrantType,
   HttpClientOauth2RefreshTokenGrantType,
   HttpClientOauth2JwtBearerGrantType,
-  HttpRedirects,
+  HttpDefaultResource,
+  HttpServiceRedirects,
   HttpCors,
   Http100Continue,
-  HttpStreaming,
+  HttpMatrixParam,
+  HttpRestrictByMediaType,
+  HttpServiceFileUpload,
   HttpCompression,
   HttpTraceLogs,
   HttpAccessLogs,
   HttpCookies,
-  HttpDisableChunking,
+  HttpServiceChunking,
+  HttpServiceCacheResponse,
   HttpResponseWithMultiparts,
-  HttpRequestWithMultiparts,
   HttpPassthrough,
+  HttpClientRedirects,
+  HttpClientFileUpload,
+  HttpClientChunking,
+  HttpCachingClient,
+  HttpRequestWithMultiparts,
   HttpRequestInterceptors,
   HttpResponseInterceptors,
   HttpErrorHandling,
@@ -562,27 +601,30 @@ const BBEs = {
   Http20ServerPush,
   GraphqlHelloWorld,
   GraphqlReturningRecordValues,
-  GraphqlHierarchicalResourcePaths,
   GraphqlReturningServiceObjects,
   GraphqlInputTypes,
   GraphqlMutations,
   GraphqlSubscriptions,
+  GraphqlInputObjects,
   GraphqlInterfaces,
-  GraphqlContext,
-  GraphqlFileUpload,
+  GraphqlInterfacesImplementingInterfaces,
+  GraphqlGraphiql,
   GraphqlDocumentation,
-  GraphqlInterceptors,
-  GraphqlClient,
   GraphqlDirectives,
+  GraphqlContext,
+  GraphqlInterceptors,
+  GraphqlFileUpload,
+  GraphqlHierarchicalResourcePaths,
+  GraphqlClientQueryEndpoint,
   GraphqlServiceSslTls,
   GraphqlServiceMutualSsl,
   GraphqlServiceBasicAuthFileUserStore,
   GraphqlServiceBasicAuthLdapUserStore,
   GraphqlServiceJwtAuth,
   GraphqlServiceOauth2,
+  WebsocketBasicSample,
   WebsocketClient,
   WebsocketRetryClient,
-  WebsocketBasicSample,
   WebsocketServiceSslTls,
   WebsocketServiceMutualSsl,
   WebsocketServiceBasicAuthFileUserStore,
@@ -599,19 +641,26 @@ const BBEs = {
   WebsocketClientOauth2RefreshTokenGrantType,
   WebsocketClientOauth2JwtBearerGrantType,
   WebsubWebhookSample,
+  HttpTimeout,
+  HttpRetry,
   HttpCircuitBreaker,
   HttpLoadBalancer,
   HttpFailover,
-  HttpRetry,
-  HttpTimeout,
   DynamicListener,
   StopHandler,
-  GrpcSimple,
-  GrpcSimpleWithHeaders,
-  GrpcServerStreaming,
-  GrpcClientStreaming,
-  GrpcBidirectionalStreaming,
-  ProtoToBallerina,
+  GrpcServiceSimple,
+  GrpcServiceServerStreaming,
+  GrpcServiceClientStreaming,
+  GrpcServiceBidirectionalStreaming,
+  GrpcServiceHeaders,
+  GrpcServerReflection,
+  GrpcServiceCheckDeadline,
+  GrpcClientSimple,
+  GrpcClientServerStreaming,
+  GrpcClientClientStreaming,
+  GrpcClientBidirectionalStreaming,
+  GrpcClientHeaders,
+  GrpcClientSetDeadline,
   GrpcServiceSslTls,
   GrpcServiceMutualSsl,
   GrpcServiceBasicAuthFileUserStore,
@@ -627,53 +676,66 @@ const BBEs = {
   GrpcClientOauth2PasswordGrantType,
   GrpcClientOauth2RefreshTokenGrantType,
   GrpcClientOauth2JwtBearerGrantType,
-  NatsBasicPubSub,
-  NatsBasicRequestReply,
-  NatsBasicSecureConnection,
-  NatsStreamingPubSub,
-  NatsStreamingQueueGroup,
-  NatsStreamingDurableSubscriptions,
-  NatsStreamingStartPosition,
-  NatsStreamingSecureConnection,
-  KafkaProducer,
-  KafkaConsumerService,
-  KafkaConsumerClientPollPayload,
-  KafkaConsumerClientPollConsumerRecord,
-  KafkaProducerTransactional,
-  KafkaAuthenticationSaslPlainConsumer,
-  KafkaAuthenticationSaslPlainProducer,
-  RabbitmqProducer,
+  NatsBasicSub,
+  NatsBasicReply,
+  NatsBasicPub,
+  NatsBasicRequest,
+  NatsServiceSecureConnection,
+  NatsServiceBasicAuth,
+  NatsClientSecureConnection,
+  NatsClientBasicAuth,
+  KafkaService,
+  KafkaClientProduceMessage,
+  KafkaClientPayloadDataBinding,
+  KafkaClientConsumerRecordDataBinding,
+  KafkaServiceSsl,
+  KafkaServiceSasl,
+  KafkaClientProducerSsl,
+  KafkaClientConsumerSsl,
+  KafkaClientProducerSasl,
+  KafkaClientConsumerSasl,
   RabbitmqConsumer,
   RabbitmqConsumerWithClientAcknowledgement,
-  RabbitmqTransactionProducer,
   RabbitmqTransactionConsumer,
-  RabbitmqSecureConnection,
-  TcpClient,
+  RabbitmqQueueDeclare,
+  RabbitmqProducer,
+  RabbitmqSyncConsumer,
+  RabbitmqTransactionProducer,
+  RabbitmqServiceSecureConnection,
+  RabbitmqServiceBasicAuth,
+  RabbitmqClientSecureConnection,
+  RabbitmqClientBasicAuth,
   TcpListener,
-  TcpTransportSecurity,
+  TcpClient,
+  TcpServiceSslTls,
+  TcpClientSslTls,
+  UdpListener,
   UdpClient,
   UdpConnectClient,
-  UdpListener,
+  ReceiveEmailUsingService,
   SendEmail,
   ReceiveEmailUsingClient,
-  ReceiveEmailUsingListener,
-  FtpClient,
-  FtpListener,
-  SftpClient,
-  SftpListener,
+  FtpServiceRead,
+  FtpServiceReadWrite,
+  FtpClientRead,
+  FtpClientWrite,
+  SftpServiceRead,
+  SftpServiceReadWrite,
+  SftpClientRead,
+  SftpClientWrite,
   MysqlQueryOperation,
   MysqlQueryRowOperation,
   MysqlQueryColumnMapping,
   MysqlExecuteOperation,
   MysqlBatchExecuteOperation,
-  MysqlAtomicBatchExecuteOperation,
+  MysqlAtomicTransaction,
   MysqlCallStoredProcedures,
   JdbcQueryOperation,
   JdbcQueryRowOperation,
   JdbcQueryColumnMapping,
   JdbcExecuteOperation,
   JdbcBatchExecuteOperation,
-  JdbcAtomicBatchExecuteOperation,
+  JdbcAtomicTransaction,
   SerdesSimple,
   IoBytes,
   IoStrings,

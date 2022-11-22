@@ -1,0 +1,19 @@
+{
+  "title": "Query GraphQL endpoint",
+  "description": "A GraphQL client written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "client",
+    "query",
+    "mutation"
+  ],
+  "permalink": "/learn/by-example/graphql-client-query-endpoint",
+  "active": "graphql-client-query-endpoint",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-client-query-endpoint",
+    "/swan-lake/learn/by-example/graphql-client-query-endpoint.html"
+  ]
+}

@@ -14,20 +14,20 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-http:Client clientEP = check new ("http://postman-echo.com");
+http:Client clientEP = check new ("postman-echo.com");
 
 service / on new http:Listener(9090) {
 
-    // The passthrough resource allows all HTTP methods as the accessor is \`default\`.
-    resource function 'default passthrough(http:Request req)
-            returns http:Response|error? {
+    // The passthrough resource allows all HTTP methods as the accessor is \`default\`. The rest parameter in the
+    // resource path, allows any request URI to get dispatched
+    resource function 'default [string... path](http:Request req) returns json|error {
         // When forward()\` is called on the backend client endpoint, it forwards the request that the passthrough
         // resource received to the backend. When forwarding, the request is made using the same HTTP method that was
         // used to invoke the passthrough resource. The \`forward()\` function returns the response from the backend if
         // there are no errors.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Client#forward.
-        http:Response response = check clientEP->forward("/get", req);
-        return response;
+        json payload = check clientEP->forward("/get", req);
+        return payload;
     }
 }
 `,
@@ -56,7 +56,7 @@ export default function HttpPassthrough() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Passthrough</h1>
+      <h1>HTTP service - Passthrough</h1>
 
       <p>
         The passthrough sample exhibits the process of an HTTP client connector.
@@ -289,8 +289,8 @@ export default function HttpPassthrough() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Request With multiparts"
-            href="/learn/by-example/http-request-with-multiparts"
+            title="Response With multiparts"
+            href="/learn/by-example/http-response-with-multiparts"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -317,7 +317,7 @@ export default function HttpPassthrough() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request With multiparts
+                  Response With multiparts
                 </span>
               </div>
             </div>
@@ -325,8 +325,8 @@ export default function HttpPassthrough() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Request Interceptors"
-            href="/learn/by-example/http-request-interceptors"
+            title="Redirects"
+            href="/learn/by-example/http-client-redirects"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -336,7 +336,7 @@ export default function HttpPassthrough() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request Interceptors
+                  Redirects
                 </span>
               </div>
               <svg

@@ -13,36 +13,26 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/http;
-import ballerina/log;
 
 // Create an endpoint with port 7090 to accept HTTP requests.
 listener http:Listener http2ServiceEP = new (7090);
 
-service /http2Service on http2ServiceEP {
+service /http2service on http2ServiceEP {
 
-    resource function 'default .(http:Caller caller) {
+    resource function 'default .(http:Caller caller) returns error? {
 
-        // Send a push promise. 
+        // Send a push promise.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Caller#promise.
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");
-        var promiseResponse1 = caller->promise(promise1);
-        if promiseResponse1 is error {
-            log:printError("Error occurred while sending the promise1", 'error = promiseResponse1);
-        }
+        check caller->promise(promise1);
 
         // Send another push promise.
         http:PushPromise promise2 = new (path = "/resource2", method = "GET");
-        var promiseResponse2 = caller->promise(promise2);
-        if promiseResponse2 is error {
-            log:printError("Error occurred while sending the promise2", 'error = promiseResponse2);
-        }
+        check caller->promise(promise2);
 
         // Send one more push promise.
         http:PushPromise promise3 = new (path = "/resource3", method = "GET");
-        var promiseResponse3 = caller->promise(promise3);
-        if promiseResponse3 is error {
-            log:printError("Error occurred while sending the promise3", 'error = promiseResponse3);
-        }
+        check caller->promise(promise3);
 
         // Construct the requested resource.
         http:Response res = new;
@@ -50,23 +40,16 @@ service /http2Service on http2ServiceEP {
         res.setPayload(msg);
 
         // Send the requested resource.
-        var response = caller->respond(res);
-        if response is error {
-            log:printError("Error occurred while sending the response", 'error = response);
-        }
+        check caller->respond(res);
 
         // Construct promised resource1.
         http:Response push1 = new;
         msg = {"push": {"name": "resource1"}};
         push1.setPayload(msg);
 
-        // Push promised \`resource1\`. 
+        // Push promised \`resource1\`.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse.
-        var pushResponse1 = caller->pushPromisedResponse(promise1, push1);
-        if pushResponse1 is error {
-            log:printError("Error occurred while sending the promised response1", 
-                    'error = pushResponse1);
-        }
+        check caller->pushPromisedResponse(promise1, push1);
 
         // Construct promised \`resource2\`.
         http:Response push2 = new;
@@ -74,11 +57,7 @@ service /http2Service on http2ServiceEP {
         push2.setPayload(msg);
 
         // Push promised \`resource2\`.
-        var pushResponse2 = caller->pushPromisedResponse(promise2, push2);
-        if pushResponse2 is error {
-            log:printError("Error occurred while sending the promised response2", 
-                    'error = pushResponse2);
-        }
+        check caller->pushPromisedResponse(promise2, push2);
 
         // Construct promised \`resource3\`.
         http:Response push3 = new;
@@ -86,11 +65,7 @@ service /http2Service on http2ServiceEP {
         push3.setPayload(msg);
 
         // Push promised \`resource3\`.
-        var pushResponse3 = caller->pushPromisedResponse(promise3, push3);
-        if pushResponse3 is error {
-            log:printError("Error occurred while sending the promised response3", 
-                    'error = pushResponse3);
-        }
+        check caller->pushPromisedResponse(promise3, push3);
     }
 }
 `,
@@ -98,25 +73,15 @@ service /http2Service on http2ServiceEP {
 import ballerina/log;
 
 // Create an HTTP client that can send HTTP/2 messages.
-// HTTP version is set to 2.0.
 // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Client.
-final http:Client clientEP =
-        check new ("http://localhost:7090", {httpVersion: "2.0"});
+http:Client clientEP = check new ("localhost:7090");
 
-public function main() {
+public function main() returns error? {
 
     http:Request serviceReq = new;
-    http:HttpFuture httpFuture = new;
     // Submit a request.
     // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Client#submit.
-    var submissionResult = clientEP->submit("GET", "/http2Service", serviceReq);
-
-    if submissionResult is http:HttpFuture {
-        httpFuture = submissionResult;
-    } else {
-        log:printError("Error occurred while submitting a request", 'error = submissionResult);
-        return;
-    }
+    http:HttpFuture httpFuture = check clientEP->submit("GET", "/http2Service", serviceReq);
 
     http:PushPromise?[] promises = [];
     int promiseCount = 0;
@@ -125,18 +90,9 @@ public function main() {
     boolean hasPromise = clientEP->hasPromise(httpFuture);
 
     while hasPromise {
-        http:PushPromise pushPromise = new;
         // Get the next promise.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Client#getNextPromise.
-        var nextPromiseResult = clientEP->getNextPromise(httpFuture);
-
-        if nextPromiseResult is http:PushPromise {
-            pushPromise = nextPromiseResult;
-        } else {
-            log:printError("Error occurred while fetching a push promise",
-                'error = nextPromiseResult);
-            return;
-        }
+        http:PushPromise pushPromise = check clientEP->getNextPromise(httpFuture);
         log:printInfo("Received a promise for " + pushPromise.path);
 
         if pushPromise.path == "/resource2" {
@@ -144,56 +100,28 @@ public function main() {
             // Therefore, reject the promise.
             // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Client#rejectPromise.
             clientEP->rejectPromise(pushPromise);
-
             log:printInfo("Push promise for resource2 rejected");
         } else {
             // Store the required promises.
             promises[promiseCount] = pushPromise;
-
             promiseCount = promiseCount + 1;
         }
         hasPromise = clientEP->hasPromise(httpFuture);
     }
 
-    http:Response response = new;
     // Get the requested resource.
     // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Client#getResponse.
-    var result = clientEP->getResponse(httpFuture);
-
-    if result is http:Response {
-        response = result;
-    } else {
-        log:printError("Error occurred while fetching response",
-                'error = <error>result);
-        return;
-    }
-
-    var responsePayload = response.getJsonPayload();
-    if responsePayload is json {
-        log:printInfo("Response : " + responsePayload.toJsonString());
-    } else {
-        log:printError("Expected response payload not received", 'error = responsePayload);
-    }
+    http:Response response = check clientEP->getResponse(httpFuture);
+    json responsePayload = check response.getJsonPayload();
+    log:printInfo("Response : " + responsePayload.toJsonString());
 
     // Fetch required promise responses.
     foreach var p in promises {
         http:PushPromise promise = <http:PushPromise>p;
-        http:Response promisedResponse = new;
-        var promisedResponseResult = clientEP->getPromisedResponse(promise);
-        if promisedResponseResult is http:Response {
-            promisedResponse = promisedResponseResult;
-        } else {
-            log:printError("Error occurred while fetching promised response",
-                'error = promisedResponseResult);
-            return;
-        }
-        var promisedPayload = promisedResponse.getJsonPayload();
-        if promisedPayload is json {
-            log:printInfo("Promised resource : " + promisedPayload.toJsonString());
-        } else {
-            log:printError("Expected promised response payload not received",
-                'error = promisedPayload);
-        }
+        http:Response promisedResponse = check clientEP->getPromisedResponse(promise);
+        json promisedPayload = check promisedResponse.getJsonPayload();
+        log:printInfo("Promised resource : " + promisedPayload.toJsonString());
+
     }
 }
 `,

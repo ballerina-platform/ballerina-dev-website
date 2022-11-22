@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// \`COMPRESSION_ALWAY\`S\` guarantees a compressed response entity body. Compression scheme is set to the
+// \`COMPRESSION_ALWAYS\` guarantees a compressed response entity body. Compression scheme is set to the
 // value indicated in Accept-Encoding request header. When a particular header is not present or the header
 // value is "identity", encoding is done using the "gzip" scheme.
 // For details, see https://lib.ballerina.io/ballerina/http/latest/constants#COMPRESSION_ALWAYS.
@@ -30,7 +30,7 @@ const codeSnippetData = [
 service / on new http:Listener(9090) {
 
     // The response entity body is always compressed since MIME type has matched.
-    resource function 'default alwaysCompress() returns string {
+    resource function 'default compress() returns string {
         return "Type : This is a string.";
     }
 }
@@ -60,7 +60,7 @@ export default function HttpCompression() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Compression</h1>
+      <h1>HTTP service - Compression</h1>
 
       <p>
         The HTTP service can be configured to change the compression behaviour.
@@ -70,12 +70,12 @@ export default function HttpCompression() {
         &quot;identity&quot;, the server does not perform any compression.
         Compression is disabled when the option is set to{" "}
         <code>COMPRESSION_NEVER</code> and always enabled when the option is set
-        to <code>COMPRESSION_ALWAYS</code>
+        to <code>COMPRESSION_ALWAYS</code>. In the same way{" "}
+        <code>http:Client</code> can be configured as well.
       </p>
 
       <p>
-        In the same way <code>http:Client</code> can be configured as well. For
-        more information on the underlying module, see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
         </a>
@@ -294,8 +294,8 @@ export default function HttpCompression() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v --output - http://localhost:9090/alwaysCompress`}</span>
-              <span>{`> GET /alwaysCompress/getString HTTP/1.1`}</span>
+              <span>{`\$ curl -v --output - http://localhost:9090/compress`}</span>
+              <span>{`> GET /compress HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.58.0`}</span>
               <span>{`> Accept: */*`}</span>
@@ -316,7 +316,10 @@ export default function HttpCompression() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Streaming" href="/learn/by-example/http-streaming">
+          <Link
+            title="File upload"
+            href="/learn/by-example/http-service-file-upload"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -342,7 +345,7 @@ export default function HttpCompression() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Streaming
+                  File upload
                 </span>
               </div>
             </div>

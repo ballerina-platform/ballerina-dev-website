@@ -15,17 +15,15 @@ const codeSnippetData = [
   `import ballerina/http;
 
 // HTTP version is set to 2.0.
-final http:Client http2serviceClientEP = check new ("http://localhost:7090");
+http:Client http2serviceClientEP = check new ("localhost:7090");
 
 // Since the default HTTP version is 2.0, HTTP version is set to 1.1.
-service / on new http:Listener(9090, httpVersion = "1.1") {
+service / on new http:Listener(9090, httpVersion = http:HTTP_1_1) {
 
-    resource function 'default http11Service(http:Request clientRequest)
-            returns json|error {
+    resource function 'default http11service(http:Request clientRequest) returns string|error {
         // Forward the \`clientRequest\` to the \`http2\` service.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request.
-        json clientResponse = check
-            http2serviceClientEP->forward("/http2service", clientRequest);
+        string clientResponse = check http2serviceClientEP->forward("/http2service", clientRequest);
 
         // Send the response back to the caller.
         return clientResponse;
@@ -35,13 +33,9 @@ service / on new http:Listener(9090, httpVersion = "1.1") {
 
 service / on new http:Listener(7090) {
 
-    resource function 'default http2service() returns json {
+    resource function 'default http2service() returns string {
         // Send the response back to the caller (http11Service).
-        return { 
-            "response": {
-                "message":"response from http2 service"
-            }
-        };
+        return "message : response from http2 service";
     }
 }
 `,
@@ -291,8 +285,8 @@ export default function Http11To20ProtocolSwitch() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`// Invoke the HTTP/1.1 service using "cURL".`}</span>
-              <span>{`\$ curl http://localhost:9090/http11Service`}</span>
-              <span>{`{"response":{"message":"response from http2 service"}}`}</span>
+              <span>{`\$ curl http://localhost:9090/http11service`}</span>
+              <span>{`message : response from http2 service`}</span>
             </code>
           </pre>
         </Col>

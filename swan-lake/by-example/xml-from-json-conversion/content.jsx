@@ -81,7 +81,7 @@ export default function XmlFromJsonConversion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=196edf2ea99ec4387e0fa3926c224f8a&file=xml_from_json_conversion.bal",
+                "https://play.ballerina.io/?gist=9f9b5e8114e1125928b84859e06232b2&file=xml_from_json_conversion.bal",
                 "_blank"
               );
             }}

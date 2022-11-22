@@ -21,7 +21,7 @@ public function main() returns error? {
     // Optionally, you can provide the interface that the socket needs to bind 
     // and the timeout in seconds, which specifies the read timeout value.
     // tcp:Client client = check new ("localhost", 3000, localHost = "localhost", timeout = 5);
-    tcp:Client socketClient = check new ("localhost", 3000);
+    tcp:Client socketClient = check new ("localhost", 9090);
 
     // Send the desired content to the server.
     string msg = "Hello Ballerina Echo from client";
@@ -59,7 +59,7 @@ export default function TcpClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client</h1>
+      <h1>TCP client - Send/Receive bytes</h1>
 
       <p>
         The TCP Client is used to connect to a remote TCP server. This sample
@@ -225,8 +225,8 @@ export default function TcpClient() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Secured connection"
-            href="/learn/by-example/rabbitmq-secure-connection"
+            title="Send/Receive bytes"
+            href="/learn/by-example/tcp-listener"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -253,14 +253,14 @@ export default function TcpClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Secured connection
+                  Send/Receive bytes
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Listener" href="/learn/by-example/tcp-listener">
+          <Link title="SSL/TLS" href="/learn/by-example/tcp-service-ssl-tls">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -269,7 +269,7 @@ export default function TcpClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Listener
+                  SSL/TLS
                 </span>
               </div>
               <svg

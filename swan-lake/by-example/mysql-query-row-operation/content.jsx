@@ -14,6 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
 
 // Defines a record to load the query result.
 type Customer record {|
@@ -112,26 +113,15 @@ export default function MysqlQueryRowOperation() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Query with one result</h1>
+      <h1>MySQL client - Query with one result</h1>
 
       <p>
         This BBE demonstrates how to use the MySQL client select query row
         operations.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Note:</strong> The MySQL database driver JAR should be defined
-          in the <code>Ballerina.toml</code> file as a dependency. The MySQL
-          connector uses database properties from MySQL version 8.0.13 onwards.
-          Therefore, it is recommended to use a MySQL driver version greater
-          than 8.0.13.
-        </p>
-      </blockquote>
-
       <p>
-        For a sample configuration and more information on the underlying
-        module, see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
           <code>mysql</code> module
         </a>
@@ -223,6 +213,11 @@ export default function MysqlQueryRowOperation() {
         </Col>
       </Row>
 
+      <p>
+        Create a Ballerina project. Copy the example to the project. Execute the
+        command below to build and run the project.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -278,9 +273,6 @@ export default function MysqlQueryRowOperation() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina project.`}</span>
-              <span>{`# Copy the example to the project and add the relevant database driver JAR details to the \`Ballerina.toml\` file.`}</span>
-              <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
               <span>{`
 `}</span>

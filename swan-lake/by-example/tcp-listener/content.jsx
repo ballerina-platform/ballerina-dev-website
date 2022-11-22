@@ -17,7 +17,7 @@ import ballerina/log;
 import ballerina/tcp;
 
 // Bind the service to the port. 
-service on new tcp:Listener(3000) {
+service on new tcp:Listener(9090) {
 
     // This remote method is invoked when the new client connects to the server.
     remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
@@ -33,7 +33,7 @@ service class EchoService {
     remote function onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
         io:println("Echo: ", string:fromBytes(data));
         // Echoes back the data to the client from which the data is received.
-        return caller->writeBytes(data);
+        check caller->writeBytes(data);
     }
 
     // This remote method is invoked in an erroneous situation,
@@ -71,7 +71,7 @@ export default function TcpListener() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Listener</h1>
+      <h1>TCP service - Send/Receive bytes</h1>
 
       <p>
         The TCP Listener is used to expose a TCP service over the TCP protocol.
@@ -238,7 +238,10 @@ export default function TcpListener() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/tcp-client">
+          <Link
+            title="Basic authentication"
+            href="/learn/by-example/rabbitmq-client-basic-auth"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -264,17 +267,14 @@ export default function TcpListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Basic authentication
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Transport security"
-            href="/learn/by-example/tcp-transport-security"
-          >
+          <Link title="Send/Receive bytes" href="/learn/by-example/tcp-client">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -283,7 +283,7 @@ export default function TcpListener() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Transport security
+                  Send/Receive bytes
                 </span>
               </div>
               <svg

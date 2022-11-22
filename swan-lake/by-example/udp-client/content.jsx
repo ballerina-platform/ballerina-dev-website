@@ -19,14 +19,14 @@ public function main() returns error? {
   
     // Creates a new connectionless UDP client.
     // Optionally, you can provide the address that the socket needs to bind 
-    // and the timeout in milliseconds, which specifies the read timeout value.
+    // and the timeout in seconds, which specifies the read timeout value.
     // E.g.: \`udp:Client client = new (localHost = "localhost", timeout = 5);\`
     udp:Client socketClient = check new;
 
     string msg = "Hello Ballerina echo";
     udp:Datagram datagram = {
         remoteHost: "localhost",
-        remotePort : 8080,
+        remotePort : 9090,
         data : msg.toBytes()
     };
 
@@ -42,7 +42,6 @@ public function main() returns error? {
 
     // Closes the client and releases the bound port.
     check socketClient->close();
-
 }
 `,
 ];
@@ -68,7 +67,7 @@ export default function UdpClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Connectionless client</h1>
+      <h1>UDP client - Send/Receive datagram</h1>
 
       <p>
         The UDP Client is used to send data to a specific remote host using the
@@ -239,8 +238,8 @@ export default function UdpClient() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Transport security"
-            href="/learn/by-example/tcp-transport-security"
+            title="Send/Receive datagram"
+            href="/learn/by-example/udp-listener"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -267,7 +266,7 @@ export default function UdpClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Transport security
+                  Send/Receive datagram
                 </span>
               </div>
             </div>
@@ -275,7 +274,7 @@ export default function UdpClient() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Connection-oriented client"
+            title="Send/Receive datagram with connection"
             href="/learn/by-example/udp-connect-client"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -286,7 +285,7 @@ export default function UdpClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Connection-oriented client
+                  Send/Receive datagram with connection
                 </span>
               </div>
               <svg

@@ -1,0 +1,17 @@
+{
+  "title": "Function pointers",
+  "description": "This BBE introduces function pointers in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "function pointers",
+    "defaultable parameters"
+  ],
+  "permalink": "/learn/by-example/function-pointers",
+  "active": "function-pointers",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/function-pointers",
+    "/swan-lake/learn/by-example/function-pointers.html"
+  ]
+}

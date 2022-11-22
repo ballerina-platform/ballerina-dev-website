@@ -36,14 +36,14 @@ service /crossOriginService on new http:Listener(9092) {
             allowHeaders: ["X-Content-Type-Options", "X-PINGOTHER"]
         }
     }
-    resource function get company() returns json {
-        return {"type": "middleware"};
+    resource function get company() returns string {
+        return "middleware";
     }
 
     // Since there are no resource-level CORS configs defined here, the global
     // service-level CORS configs will be applied to this resource.
-    resource function post lang() returns json {
-        return {"lang": "Ballerina"};
+    resource function post lang(@http:Payload string lang) returns string {
+        return lang;
     }
 }
 `,
@@ -72,7 +72,7 @@ export default function HttpCors() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>CORS</h1>
+      <h1>HTTP service - CORS</h1>
 
       <p>
         The CORS headers can be applied in both the service-level and the
@@ -306,14 +306,15 @@ export default function HttpCors() {
               <span>{`> Origin:http://www.bbc.com`}</span>
               <span>{`>`}</span>
               <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: application/json`}</span>
+              <span>{`< content-type: text/plain`}</span>
               <span>{`< access-control-allow-origin: http://www.bbc.com`}</span>
               <span>{`< access-control-allow-credentials: true`}</span>
-              <span>{`< content-length: 21`}</span>
+              <span>{`< content-length: 10`}</span>
               <span>{`< server: ballerina`}</span>
+              <span>{`< date: Sat, 22 Oct 2022 20:51:49 +0530`}</span>
               <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact.`}</span>
-              <span>{`{"type":"middleware"}* Closing connection 0`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`middleware* Closing connection 0`}</span>
               <span>{`
 `}</span>
               <span>{`# To send a CORS preflight request.`}</span>
@@ -329,8 +330,8 @@ export default function HttpCors() {
               <span>{`< access-control-allow-origin: http://www.m3.com`}</span>
               <span>{`< access-control-max-age: 84900`}</span>
               <span>{`< access-control-allow-methods: POST`}</span>
-              <span>{`< content-length: 0`}</span>
               <span>{`< server: ballerina`}</span>
+              <span>{`< date: Sat, 22 Oct 2022 20:53:12 +0530`}</span>
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`* Closing connection 0`}</span>
@@ -341,7 +342,10 @@ export default function HttpCors() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Redirects" href="/learn/by-example/http-redirects">
+          <Link
+            title="Redirects"
+            href="/learn/by-example/http-service-redirects"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

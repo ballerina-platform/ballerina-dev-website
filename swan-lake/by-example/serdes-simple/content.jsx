@@ -95,7 +95,7 @@ export default function SerdesSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b99c11f37b7a81313d0caca858b00730&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=8660403fc1a214e4a882dd49eefd6e79&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -258,8 +258,8 @@ export default function SerdesSimple() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Atomic batch execute"
-            href="/learn/by-example/jdbc-atomic-batch-execute-operation"
+            title="Atomic transactions"
+            href="/learn/by-example/jdbc-atomic-transaction"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -286,7 +286,7 @@ export default function SerdesSimple() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Atomic batch execute
+                  Atomic transactions
                 </span>
               </div>
             </div>

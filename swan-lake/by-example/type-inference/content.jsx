@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-//\`var\` says that the type of the variable is from the type of expression, which is used to initialize it.
+// \`var\` says that the type of the variable is from the type of expression, which is used to initialize it.
 var x = "str";
 
 function printLines(string[] sv) {
@@ -85,7 +85,7 @@ export default function TypeInference() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d77a3d788b29ea66ec10085ae7a3ef2a&file=type_inference.bal",
+                "https://play.ballerina.io/?gist=7472227b5cd6e11f4da43e5b4575029c&file=type_inference.bal",
                 "_blank"
               );
             }}

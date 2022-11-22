@@ -59,7 +59,7 @@ export default function HttpServiceSslTls() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - SSL/TLS</h1>
+      <h1>HTTP service - SSL/TLS</h1>
 
       <p>
         You can use the HTTPS listener to connect to or interact with an HTTPS
@@ -71,9 +71,20 @@ export default function HttpServiceSslTls() {
         For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
+        </a>{" "}
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#921-listener---ssltls">
+          <code>http</code> specification
         </a>
         .
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -160,7 +171,7 @@ export default function HttpServiceSslTls() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the following command.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -217,14 +228,13 @@ export default function HttpServiceSslTls() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# You may need to change the certificate file path and private key file path.`}</span>
               <span>{`\$ bal run http_service_ssl_tls.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <p>Invoke the service as follows.</p>
+      <p>Invoke the service by executing the cURL command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -281,18 +291,28 @@ export default function HttpServiceSslTls() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# To invoke the service, use the cURL commands below.`}</span>
               <span>{`\$ curl https://localhost:9090/foo/bar --cacert /path/to/server-public.crt`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
+          <a href="/learn/by-example/http-client-ssl-tls/">
+            sample SSL/TLS client
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Caching client"
-            href="/learn/by-example/http-caching-client"
+            title="Payload data binding"
+            href="/learn/by-example/http-client-data-binding"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -319,7 +339,7 @@ export default function HttpServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Caching client
+                  Payload data binding
                 </span>
               </div>
             </div>
@@ -327,7 +347,7 @@ export default function HttpServiceSslTls() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Mutual SSL"
+            title="Mutual SSL"
             href="/learn/by-example/http-service-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -338,7 +358,7 @@ export default function HttpServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Mutual SSL
+                  Mutual SSL
                 </span>
               </div>
               <svg

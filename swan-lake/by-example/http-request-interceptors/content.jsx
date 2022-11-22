@@ -88,7 +88,7 @@ export default function HttpRequestInterceptors() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Request interceptors</h1>
+      <h1>HTTP service - Request interceptors</h1>
 
       <p>
         Interceptors are used to execute some common logic such as logging,
@@ -104,6 +104,10 @@ export default function HttpRequestInterceptors() {
         For more information, see the{" "}
         <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
+        </a>{" "}
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#811-request-interceptor">
+          specification
         </a>
         .
       </p>
@@ -341,7 +345,10 @@ export default function HttpRequestInterceptors() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Passthrough" href="/learn/by-example/http-passthrough">
+          <Link
+            title="Request With multiparts"
+            href="/learn/by-example/http-request-with-multiparts"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -367,7 +374,7 @@ export default function HttpRequestInterceptors() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Passthrough
+                  Request With multiparts
                 </span>
               </div>
             </div>

@@ -75,7 +75,7 @@ export default function Arrays() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=adcf5be2d71889d6db44c98a31ba4650&file=arrays.bal",
+                "https://play.ballerina.io/?gist=6c7d8830c4673737b08030a142c0c590&file=arrays.bal",
                 "_blank"
               );
             }}
@@ -238,7 +238,10 @@ export default function Arrays() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Never type" href="/learn/by-example/never-type">
+          <Link
+            title="Expression-oriented style"
+            href="/learn/by-example/expression-oriented-style"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -264,7 +267,7 @@ export default function Arrays() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Never type
+                  Expression-oriented style
                 </span>
               </div>
             </div>

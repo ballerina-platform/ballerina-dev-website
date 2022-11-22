@@ -1,0 +1,19 @@
+{
+  "title": "Basic authentication",
+  "description": "BBE on consuming messages using a secured connection.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "rabbitmq",
+    "ssl",
+    "tls",
+    "authentication",
+    "credentials"
+  ],
+  "permalink": "/learn/by-example/rabbitmq-client-basic-auth",
+  "active": "rabbitmq-client-basic-auth",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/rabbitmq-client-basic-auth",
+    "/swan-lake/learn/by-example/rabbitmq-client-basic-auth.html"
+  ]
+}

@@ -100,7 +100,7 @@ export default function JdbcExecuteOperation() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>DML and DDL operation</h1>
+      <h1>JDBC client - DML and DDL operations</h1>
 
       <p>
         This BBE demonstrates how to use the JDBC client with DDL and DML
@@ -212,6 +212,12 @@ export default function JdbcExecuteOperation() {
         </Col>
       </Row>
 
+      <p>
+        Create a Ballerina project. Copy the example to the project and add the
+        relevant database driver JAR details to the <code>Ballerina.toml</code>{" "}
+        file. Execute the command below to build and run the project.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -267,9 +273,6 @@ export default function JdbcExecuteOperation() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina project.`}</span>
-              <span>{`# Copy the example to the project and add the relevant database driver JAR details to the \`Ballerina.toml\` file.`}</span>
-              <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
               <span>{`
 `}</span>
@@ -493,7 +496,7 @@ export default function JdbcExecuteOperation() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Batch execute"
+            title="Batch execution"
             href="/learn/by-example/jdbc-batch-execute-operation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -504,7 +507,7 @@ export default function JdbcExecuteOperation() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Batch execute
+                  Batch execution
                 </span>
               </div>
               <svg

@@ -21,10 +21,10 @@ public function main() returns error? {
     // Creates a new connection-oriented UDP client by providing the
     // \`remoteHost\` and the \`remotePort\`.
     // Optionally, you can provide the interface that the socket needs to bind 
-    // and the timeout in milliseconds, which specifies the read timeout value.
-    // E.g.: \`udp:Client client = new ("www.ballerina.com", 80,
+    // and the timeout in seconds, which specifies the read timeout value.
+    // E.g.: \`udp:ConnectClient socketClient = new ("www.ballerina.com", 80,
     // localHost = "localhost", timeout = 5);\`
-    udp:ConnectClient socketClient = check new("localhost", 8080);
+    udp:ConnectClient socketClient = check new("localhost", 9090);
 
     string msg = "Hello Ballerina echo";
 
@@ -65,7 +65,7 @@ export default function UdpConnectClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Connection-oriented client</h1>
+      <h1>UDP client - Send/Receive datagram with connection</h1>
 
       <p>
         The ConnectClient is configured so that it only receives data from, and
@@ -242,7 +242,7 @@ export default function UdpConnectClient() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Connectionless client"
+            title="Send/Receive datagram"
             href="/learn/by-example/udp-client"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -270,14 +270,17 @@ export default function UdpConnectClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Connectionless client
+                  Send/Receive datagram
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Listener" href="/learn/by-example/udp-listener">
+          <Link
+            title="Receive email"
+            href="/learn/by-example/receive-email-using-service"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -286,7 +289,7 @@ export default function UdpConnectClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Listener
+                  Receive email
                 </span>
               </div>
               <svg

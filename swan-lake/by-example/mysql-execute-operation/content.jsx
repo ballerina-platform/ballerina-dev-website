@@ -15,6 +15,7 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
+import ballerinax/mysql.driver as _;
 
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
@@ -107,26 +108,15 @@ export default function MysqlExecuteOperation() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>DML and DDL operation</h1>
+      <h1>MySQL client - DML and DDL operations</h1>
 
       <p>
         This BBE demonstrates how to use the MySQL client with the DDL and DML
         operations.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Note:</strong> The MySQL database driver JAR should be defined
-          in the <code>Ballerina.toml</code> file as a dependency.The MySQL
-          connector uses database properties from MySQL version 8.0.13 onwards.
-          Therefore, it is recommended to use a MySQL driver version greater
-          than 8.0.13.
-        </p>
-      </blockquote>
-
       <p>
-        For a sample configuration and more information on the underlying
-        module, see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
           <code>mysql</code> module
         </a>
@@ -218,6 +208,11 @@ export default function MysqlExecuteOperation() {
         </Col>
       </Row>
 
+      <p>
+        Create a Ballerina project. Copy the example to the project. Execute the
+        command below to build and run the project.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -273,9 +268,6 @@ export default function MysqlExecuteOperation() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina project.`}</span>
-              <span>{`# Copy the example to the project and add the relevant database driver JAR details to the \`Ballerina.toml\` file.`}</span>
-              <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
               <span>{`
 `}</span>
@@ -499,7 +491,7 @@ export default function MysqlExecuteOperation() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Batch execute"
+            title="Batch execution"
             href="/learn/by-example/mysql-batch-execute-operation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -510,7 +502,7 @@ export default function MysqlExecuteOperation() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Batch execute
+                  Batch execution
                 </span>
               </div>
               <svg

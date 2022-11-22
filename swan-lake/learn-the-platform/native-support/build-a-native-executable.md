@@ -90,14 +90,11 @@ To complete this part of the guide, you need:
 3. Run `bal build --native` to create the native executable.
    ```
    $ bal build --native
-   WARNING : Native image generation is an experimental feature, which supports only a limited set of functionality
+   WARNING : Native image generation is an experimental feature, which supports only a limited set of functionality.
    Compiling source
        user/hello_world:0.1.0
 
-   Generating executable
-       target/bin/hello_world.jar
-
-   Generating GraalVM native image
+   Generating executable with Native image
    ================================================================================================================
    GraalVM Native Image: Generating 'hello_world' (executable)...
    ================================================================================================================
@@ -142,13 +139,11 @@ To complete this part of the guide, you need:
                103.7s (15.9% of total time) in 62 GCs | Peak RSS: 5.65GB | CPU load: 2.53
    ----------------------------------------------------------------------------------------------------------------
    Produced artifacts:
-    /Users/user/Documents/GraalVM/mocking-test/hello_world/target/bin/hello_world (executable)
-    /Users/user/Documents/GraalVM/mocking-test/hello_world/target/bin/hello_world.build_artifacts.txt (txt)
+   /Users/user/Documents/native-executable-demo/hello_world/target/bin/hello_world (executable)
+   /Users/user/Documents/native-executable-demo/hello_world/target/bin/hello_world.build_artifacts.txt (txt)
    ================================================================================================================
-   Finished generating 'hello_world' in 4m 16s.
-
-   GraalVM image generated
-       /Users/user/Documents/GraalVM/mocking-test/hello_world/target/bin/hello_world
+   Finished generating 'hello_world' in 5m 39s.
+      target/bin/hello_world.jar
    ```
 
    > **Note:** On Windows, the Microsoft Native Tools for Visual Studio must be initialized before building a native-image. You can do this by starting the **x64 Native Tools Command Prompt** that was installed with the Visual Studio Build Tools. In the x64 Native Tools Command Prompt, navigate to your project folder and run `bal build --native`.
@@ -205,7 +200,7 @@ To complete this part of the guide, you need:
 
    Generating artifacts
 
-   Building the native image. This my take a while
+   Building the native image. This may take a while
 
    Sending build context to Docker daemon  34.99MB
    Step 1/11 : FROM ballerina/native-builder:latest as build
@@ -307,10 +302,10 @@ To complete this part of the guide, you need:
    Removing intermediate container 6f65341da08a
     ---> 47c7a10a79ef
    Successfully built 47c7a10a79ef
-   Successfully tagged wso2inc/hello:v0.1.0
+   Successfully tagged hello_docker:latest
 
    Execute the below command to run the generated Docker image: 
-       docker run -d -p 8080:8080 wso2inc/hello:v0.1.0
+       docker run -d -p 8080:8080 hello_docker:latest
 
        target/bin/hello_docker.jar
    ```
@@ -341,7 +336,7 @@ To complete this part of the guide, you need:
 
 4. Execute the Docker image :
    ```
-   $ docker run -d -p 8080:8080 wso2inc/hello:v0.1.0
+   $ docker run -d -p 8080:8080 hello_docker:latest
    ```
 
 5. Test the service with a cURL request :

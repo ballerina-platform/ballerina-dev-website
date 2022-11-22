@@ -29,7 +29,7 @@ The difference between both approaches result in different pros and cons as depi
 
 The following spider graph illustrates the key differences:
 
-![AOT vs JIT](/learn/images/aot-vs-jit.jpeg)
+![AOT vs JIT](/learn/images/aot-vs-jit.png)
 
 As depicted in the image, AOT compilation with GraalVM provides the following advantages over the standard JIT compilation making it ideal for container runtimes.
 - Use a fraction of the resources required by the JVM.

@@ -58,7 +58,7 @@ To complete this part of the guide, you need:
 ### Configure GraalVM
 
 1. Install GraalVM if you have not done it already.
-    - Install GraalVM with one line!
+    - Install GraalVM with one line
       ```
       $ bash <(curl -sL https://get.graalvm.org/jdk)  graalvm-ce-java11-22.3.0
       ```

@@ -307,7 +307,7 @@ export default function GraphqlServiceOauth2() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Send/Receive messages"
+            title="Send/Receive message"
             href="/learn/by-example/websocket-basic-sample"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -318,7 +318,7 @@ export default function GraphqlServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive messages
+                  Send/Receive message
                 </span>
               </div>
               <svg

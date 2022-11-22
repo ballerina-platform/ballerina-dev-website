@@ -15,9 +15,6 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerinax/kafka;
 
-// Define the relevant SSL URL of the configured Kafka server.
-const SSL_URL = "localhost:9094";
-
 kafka:ProducerConfiguration producerConfig = {
     // Provide the relevant secure socket configurations by using \`kafka:SecureSocket\`.
     // For details, see https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket.
@@ -33,10 +30,10 @@ kafka:ProducerConfiguration producerConfig = {
 };
 
 public function main() returns kafka:Error? {
-    kafka:Producer messageProducer = check new (SSL_URL, producerConfig);
+    kafka:Producer messageProducer = check new ("localhost:9094", producerConfig);
     kafka:Error? result = messageProducer->send({
-        topic: "demo-security",
-        value: "Hello, World!"
+        topic: "log-topic",
+        value: "login failed for user 212341 at 1669113239"
     });
     if result is kafka:Error {
         io:println("Message publish unsuccessful : " + result.message());
@@ -76,13 +73,16 @@ export default function KafkaClientProducerSsl() {
         server must be present, and it should be configured to use the SSL.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          <code>kafka</code> module
-        </a>
-        .
-      </p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on the underlying module,
+          see the{" "}
+          <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
+            <code>kafka</code> module
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 

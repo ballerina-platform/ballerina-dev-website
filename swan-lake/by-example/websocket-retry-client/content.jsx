@@ -17,17 +17,16 @@ import ballerina/websocket;
 
 public function main() returns error? {
     websocket:Client wsClient = check new("ws://localhost:9090/foo", {
-        // Set the maximum retry count to 20 so that it will try 20 times with the default interval of
-        // 1 second in between the retry attempts.
-        retryConfig: { maxCount: 20 }
+        // Set the maximum retry count to 5 so that it will try 5 times with the interval of
+        // 5 second in between the retry attempts.
+        retryConfig: {
+            maxCount: 5,
+            interval: 5
+        }
     });
     // Read the message sent from the server upon upgrading to a WebSocket connection.
     string text = check wsClient->readMessage();
     io:println(text);
-    io:println("Please shutdown the server now. And restart at least within 15 seconds");
-    // Client will retry 20 times(20 seconds in time) until the server gets started.
-    string retryMsg = check wsClient->readMessage();
-    io:println(retryMsg);
 }
 `,
 ];
@@ -73,12 +72,11 @@ export default function WebsocketRetryClient() {
         <p>
           <strong>Info:</strong> As a prerequisite to running the client, start
           a sample WebSocket service, which sends a message to the client upon
-          upgrading to a WebSocket connection.If you are using a Ballerina
+          upgrading to a WebSocket connection. If you are using a Ballerina
           WebSocket server, you can send a message to the client in the{" "}
-          <code>onOpen</code> resource. The client will first connect to the
-          server and then it will wait for 5 seconds to give time for the server
-          to shut down. Start the server after 5 seconds so that the client will
-          start retrying to connect to the server and read messages.
+          <code>onOpen</code> resource. The client will try to connect to the
+          server 5 times with the interval of 5 second in between retry attempts
+          as configured.
         </p>
       </blockquote>
 
@@ -234,7 +232,7 @@ export default function WebsocketRetryClient() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send/Receive messages"
+            title="Send/Receive message"
             href="/learn/by-example/websocket-client"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -262,7 +260,7 @@ export default function WebsocketRetryClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive messages
+                  Send/Receive message
                 </span>
               </div>
             </div>

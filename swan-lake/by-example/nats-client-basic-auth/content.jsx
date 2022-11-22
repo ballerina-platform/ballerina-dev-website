@@ -256,7 +256,10 @@ export default function NatsClientBasicAuth() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/kafka-service">
+          <Link
+            title="Consume message"
+            href="/learn/by-example/kafka-service-consume-message"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -265,7 +268,7 @@ export default function NatsClientBasicAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  Consume message
                 </span>
               </div>
               <svg

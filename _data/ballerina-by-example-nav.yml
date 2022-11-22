@@ -709,7 +709,7 @@ sublinks:
           - title: Sending cache response
             id: 13
             url: http-service-cache-response
-          - title: Response With multiparts
+          - title: Response with multiparts
             id: 14
             url: http-response-with-multiparts
           - title: Passthrough
@@ -727,10 +727,10 @@ sublinks:
           - title: Chunking
             id: 3
             url: http-client-chunking
-          - title: Caching client
+          - title: Caching
             id: 4
             url: http-caching-client
-          - title: Request With multiparts
+          - title: Request with multiparts
             id: 5
             url: http-request-with-multiparts
       - title: HTTP service interceptors
@@ -838,13 +838,13 @@ sublinks:
       - title: WebSocket service
         id: 12
         sublinks:
-          - title: Send/Receive messages
+          - title: Send/Receive message
             id: 1
             url: websocket-basic-sample
       - title: WebSocket client
         id: 13
         sublinks:
-          - title: Send/Receive messages
+          - title: Send/Receive message
             id: 1
             url: websocket-client
           - title: Retry on failure
@@ -1069,9 +1069,9 @@ sublinks:
       - title: Kafka service
         id: 27
         sublinks:
-          - title: Service
+          - title: Consume message
             id: 1
-            url: kafka-service
+            url: kafka-service-consume-message
       - title: Kafka client
         id: 28
         sublinks:

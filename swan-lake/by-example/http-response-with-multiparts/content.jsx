@@ -17,9 +17,6 @@ import ballerina/io;
 import ballerina/log;
 import ballerina/mime;
 
-// Creates an endpoint for the client.
-http:Client clientEP = check new ("http://localhost:9092");
-
 service /multiparts on new http:Listener(9092) {
 
     resource function get encoder() returns http:Response {
@@ -54,7 +51,8 @@ service /multiparts on new http:Listener(9090) {
 
     // This resource accepts multipart responses.
     resource function get decoder() returns string|http:InternalServerError|error {
-        http:Response returnResult = check clientEP->/multiparts/encoder;
+        http:Client httpClient = check new ("localhost:9092");
+        http:Response returnResult = check httpClient->/multiparts/encoder;
         // Extracts the body parts from the response.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts.
         mime:Entity[] parentParts = check returnResult.getBodyParts();
@@ -174,7 +172,7 @@ export default function HttpResponseWithMultiparts() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - Response With multiparts</h1>
+      <h1>HTTP service - Response with multiparts</h1>
 
       <p>
         Ballerina supports encoding and decoding multipart content in HTTP

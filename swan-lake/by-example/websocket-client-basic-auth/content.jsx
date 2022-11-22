@@ -62,11 +62,7 @@ export default function WebsocketClientBasicAuth() {
 
       <p>
         A client, which is secured with Basic authentication can be used to
-        connect to a secured service.
-      </p>
-
-      <p>
-        The client is enriched with the{" "}
+        connect to a secured service. The client is enriched with the{" "}
         <code>Authorization: Basic &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:CredentialsConfig</code> for the <code>auth</code>{" "}
         configuration of the client.

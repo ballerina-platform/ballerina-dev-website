@@ -24,9 +24,7 @@ public function main() returns error? {
     tcp:Client socketClient = check new ("localhost", 9090);
 
     // Send the desired content to the server.
-    string msg = "Hello Ballerina Echo from client";
-    byte[] msgByteArray = msg.toBytes();
-    check socketClient->writeBytes(msgByteArray);
+    check socketClient->writeBytes("Hello Ballerina Echo from client".toBytes());
 
     // Read the response from the server.
     readonly & byte[] receivedData = check socketClient->readBytes();

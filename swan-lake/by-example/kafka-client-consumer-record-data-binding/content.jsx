@@ -22,18 +22,16 @@ public type Order record {|
     boolean isValid;
 |};
 
-kafka:ConsumerConfiguration consumerConfiguration = {
-    groupId: "group-id",
-    offsetReset: "earliest",
-    // Subscribes to the topic \`test-kafka-topic\`.
-    topics: ["test-kafka-topic"]
-};
-
 // Create a subtype of \`kafka:AnydataConsumerRecord\`.
 public type OrderConsumerRecord record {|
     *kafka:AnydataConsumerRecord;
     Order value;
 |};
+
+kafka:ConsumerConfiguration consumerConfiguration = {
+    groupId: "order-group-id",
+    topics: "order-topic"
+};
 
 public function main() returns error? {
     kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
@@ -87,13 +85,16 @@ export default function KafkaClientConsumerRecordDataBinding() {
         be present.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-          <code>kafka</code> module
-        </a>
-        .
-      </p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on the underlying module,
+          see the{" "}
+          <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
+            <code>kafka</code> module
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 

@@ -16,8 +16,6 @@ const codeSnippetData = [
 import ballerina/log;
 import ballerina/mime;
 
-http:Client clientEP = check new ("http://localhost:9090");
-
 //Binds the listener to the service.
 service /multiparts on new http:Listener(9090) {
 
@@ -57,7 +55,8 @@ service /multiparts on new http:Listener(9090) {
         // E.g., \`multipart/mixed\`, \`multipart/related\` etc.
         // You need to pass the content type that suits your requirement.
         request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
-        http:Response returnResponse = check clientEP->/multiparts/decoder.post(request);
+        http:Client httpClient = check new ("localhost:9090");
+        http:Response returnResponse = check httpClient->/multiparts/decoder.post(request);
         return returnResponse;
     }
 }
@@ -132,7 +131,7 @@ export default function HttpRequestWithMultiparts() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP client - Request With multiparts</h1>
+      <h1>HTTP client - Request with multiparts</h1>
 
       <p>
         Ballerina supports encoding and decoding multipart content in http
@@ -424,10 +423,7 @@ export default function HttpRequestWithMultiparts() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Caching client"
-            href="/learn/by-example/http-caching-client"
-          >
+          <Link title="Caching" href="/learn/by-example/http-caching-client">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -453,7 +449,7 @@ export default function HttpRequestWithMultiparts() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Caching client
+                  Caching
                 </span>
               </div>
             </div>

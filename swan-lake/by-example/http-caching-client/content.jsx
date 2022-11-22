@@ -431,7 +431,7 @@ export default function HttpCachingClient() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Request With multiparts"
+            title="Request with multiparts"
             href="/learn/by-example/http-request-with-multiparts"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -442,7 +442,7 @@ export default function HttpCachingClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request With multiparts
+                  Request with multiparts
                 </span>
               </div>
               <svg

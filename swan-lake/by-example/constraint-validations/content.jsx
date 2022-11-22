@@ -112,7 +112,7 @@ export default function ConstraintValidations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=606fb54ff73f276a8fe508629db5991d&file=constraint_validations.bal",
+                "https://play.ballerina.io/?gist=5421bcc542041c13fd81ed57e3a86718&file=constraint_validations.bal",
                 "_blank"
               );
             }}

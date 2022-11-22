@@ -93,7 +93,7 @@ export default function CommitRollbackHandlers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6c6dcd388a9cfe4381b93f41cbc59837&file=commit_rollback_handlers.bal",
+                "https://play.ballerina.io/?gist=388bbcc8670687b0ee4dbd2ec5e0a51e&file=commit_rollback_handlers.bal",
                 "_blank"
               );
             }}

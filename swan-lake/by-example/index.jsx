@@ -292,7 +292,7 @@ import NatsServiceSecureConnection from "./nats-service-secure-connection/conten
 import NatsServiceBasicAuth from "./nats-service-basic-auth/content.jsx";
 import NatsClientSecureConnection from "./nats-client-secure-connection/content.jsx";
 import NatsClientBasicAuth from "./nats-client-basic-auth/content.jsx";
-import KafkaService from "./kafka-service/content.jsx";
+import KafkaServiceConsumeMessage from "./kafka-service-consume-message/content.jsx";
 import KafkaClientProduceMessage from "./kafka-client-produce-message/content.jsx";
 import KafkaClientPayloadDataBinding from "./kafka-client-payload-data-binding/content.jsx";
 import KafkaClientConsumerRecordDataBinding from "./kafka-client-consumer-record-data-binding/content.jsx";
@@ -684,7 +684,7 @@ const BBEs = {
   NatsServiceBasicAuth,
   NatsClientSecureConnection,
   NatsClientBasicAuth,
-  KafkaService,
+  KafkaServiceConsumeMessage,
   KafkaClientProduceMessage,
   KafkaClientPayloadDataBinding,
   KafkaClientConsumerRecordDataBinding,

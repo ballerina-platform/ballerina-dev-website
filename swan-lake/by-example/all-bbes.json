@@ -1709,7 +1709,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Response With multiparts",
+        "name": "Response with multiparts",
         "url": "http-response-with-multiparts",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -1756,7 +1756,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Caching client",
+        "name": "Caching",
         "url": "http-caching-client",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1764,7 +1764,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Request With multiparts",
+        "name": "Request with multiparts",
         "url": "http-request-with-multiparts",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2047,7 +2047,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Send/Receive messages",
+        "name": "Send/Receive message",
         "url": "websocket-basic-sample",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2063,7 +2063,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Send/Receive messages",
+        "name": "Send/Receive message",
         "url": "websocket-client",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2670,8 +2670,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Service",
-        "url": "kafka-service",
+        "name": "Consume message",
+        "url": "kafka-service-consume-message",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

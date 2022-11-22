@@ -266,10 +266,7 @@ export default function HttpClientChunking() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Caching client"
-            href="/learn/by-example/http-caching-client"
-          >
+          <Link title="Caching" href="/learn/by-example/http-caching-client">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -278,7 +275,7 @@ export default function HttpClientChunking() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Caching client
+                  Caching
                 </span>
               </div>
               <svg

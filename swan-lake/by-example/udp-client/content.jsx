@@ -23,11 +23,10 @@ public function main() returns error? {
     // E.g.: \`udp:Client client = new (localHost = "localhost", timeout = 5);\`
     udp:Client socketClient = check new;
 
-    string msg = "Hello Ballerina echo";
     udp:Datagram datagram = {
         remoteHost: "localhost",
         remotePort : 9090,
-        data : msg.toBytes()
+        data : "Hello Ballerina echo".toBytes()
     };
 
     // Sends the data to the remote host.

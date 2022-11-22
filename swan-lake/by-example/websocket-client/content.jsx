@@ -227,7 +227,7 @@ export default function WebsocketClient() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send/Receive messages"
+            title="Send/Receive message"
             href="/learn/by-example/websocket-basic-sample"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -255,7 +255,7 @@ export default function WebsocketClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive messages
+                  Send/Receive message
                 </span>
               </div>
             </div>

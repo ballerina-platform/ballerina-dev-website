@@ -17,11 +17,11 @@ import ballerina/log;
 
 service / on new http:Listener(9090) {
 
-    resource function 'default hello(http:Caller caller, http:Request request)
+    resource function post greeting(http:Caller caller, http:Request request)
             returns error? {
         // Check if the client expects a 100-continue response.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue.
-        if (request.expects100Continue()) {
+        if request.expects100Continue() {
             string mediaType = request.getContentType();
             if mediaType.toLowerAscii() == "text/plain" {
 
@@ -301,10 +301,10 @@ export default function Http100Continue() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v -d "TEST 100 CONTINUE" http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: text/plain'`}</span>
+              <span>{`\$ curl -v -d "TEST 100 CONTINUE" http://localhost:9090/greeting -H 'Expect:100-continue' -H 'Content-Type: text/plain'`}</span>
               <span>{`*   Trying 127.0.0.1...`}</span>
               <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> POST /hello HTTP/1.1`}</span>
+              <span>{`> POST /greeting HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.58.0`}</span>
               <span>{`> Accept: */*`}</span>
@@ -328,9 +328,9 @@ export default function Http100Continue() {
 `}</span>
               <span>{`# Use the following client to invoke the service using an unsupported media type. The service is supposed to ignore`}</span>
               <span>{`# the payload if the content type does not match.`}</span>
-              <span>{`\$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: application/json'`}</span>
+              <span>{`\$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/greeting -H 'Expect:100-continue' -H 'Content-Type: application/json'`}</span>
               <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> POST /hello HTTP/1.1`}</span>
+              <span>{`> POST /greeting HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.58.0`}</span>
               <span>{`> Accept: */*`}</span>
@@ -387,7 +387,10 @@ export default function Http100Continue() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Streaming" href="/learn/by-example/http-streaming">
+          <Link
+            title="Matrix parameter"
+            href="/learn/by-example/http-matrix-param"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -396,7 +399,7 @@ export default function Http100Continue() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Streaming
+                  Matrix parameter
                 </span>
               </div>
               <svg

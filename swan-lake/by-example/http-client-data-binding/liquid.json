@@ -1,5 +1,5 @@
 {
-  "title": "Client data binding",
+  "title": "Payload binding",
   "description": "BBE demonstrates the data-binding capability of an HTTP client.",
   "keywords": [
     "ballerina",

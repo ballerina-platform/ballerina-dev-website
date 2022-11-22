@@ -27,17 +27,15 @@ service /cookieDemo on serverEP {
         // Check the password value.
         if password == "p@ssw0rd" {
 
-                    // Create a new cookie by setting \`name\` as the \`username\` and \`value\` as the logged-in user's name. 
-                    // Set the cookies path as \`/\` to apply it to all the resources in the service.
-                    // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Cookie.
-                    http:Cookie cookie = new("username", name.toString(),
-                                                path = "/");
-
+            // Create a new cookie by setting \`name\` as the \`username\` and \`value\` as the logged-in user's name.
+            // Set the cookies path as \`/\` to apply it to all the resources in the service.
+            // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Cookie.
+            http:Cookie cookie = new("username", name.toString(), path = "/");
             http:Response response = new;
 
-                    // Add the created cookie to the response.
-                    // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#addCookie.
-                    response.addCookie(cookie);
+            // Add the created cookie to the response.
+            // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#addCookie.
+            response.addCookie(cookie);
 
             // Set a message payload to inform that the login has
             // been succeeded.
@@ -77,7 +75,7 @@ service /cookieDemo on serverEP {
 import ballerina/log;
 
 // HTTP client configurations associated with enabling cookies.
-// For detauils, see https://lib.ballerina.io/ballerina/http/latest/records/CookieConfig.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/CookieConfig.
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
@@ -150,7 +148,11 @@ export default function HttpCookies() {
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
         </a>
-        .
+      </p>
+
+      <p>
+        and{" "}
+        <a href="https://ballerina.io/spec/http/#2416-cookie">specification</a>.
       </p>
 
       <Row

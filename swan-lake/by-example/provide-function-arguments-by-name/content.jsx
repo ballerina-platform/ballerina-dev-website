@@ -79,8 +79,8 @@ export default function ProvideFunctionArgumentsByName() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Foreach statement"
-            href="/learn/by-example/foreach-statement"
+            title="Function pointers"
+            href="/learn/by-example/function-pointers"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -90,7 +90,7 @@ export default function ProvideFunctionArgumentsByName() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Foreach statement
+                  Function pointers
                 </span>
               </div>
               <svg

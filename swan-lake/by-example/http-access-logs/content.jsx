@@ -16,7 +16,7 @@ const codeSnippetData = [
 
 service / on new http:Listener(9095) {
 
-    resource function get hello() returns string {
+    resource function get accesslog() returns string {
         return "Successful";
     }
 }
@@ -213,7 +213,7 @@ export default function HttpAccessLogs() {
 `}</span>
               <span>{`\$ bal run http_access_logs.bal`}</span>
               <span>{`ballerina: HTTP access log enabled`}</span>
-              <span>{`0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /hello HTTP/1.1" 200 10 "-" "curl/7.64.1"`}</span>
+              <span>{`0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /accesslog HTTP/1.1" 200 10 "-" "curl/7.64.1"`}</span>
               <span>{`
 `}</span>
               <span>{`# Else, change the \`Config.toml\` file as follows to direct the log to the specified file.`}</span>
@@ -287,7 +287,7 @@ export default function HttpAccessLogs() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9095/hello`}</span>
+              <span>{`\$ curl http://localhost:9095/accesslog`}</span>
               <span>{`Successful`}</span>
             </code>
           </pre>

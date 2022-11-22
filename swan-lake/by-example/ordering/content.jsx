@@ -93,7 +93,7 @@ export default function Ordering() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=19fa7631a083ae0097ba5d611c69ea24&file=ordering.bal",
+                "https://play.ballerina.io/?gist=e3c29df0d2e32612ecf679bf82d47c0f&file=ordering.bal",
                 "_blank"
               );
             }}

@@ -23,7 +23,7 @@
                     "id": "native-support",
                     "subDirectories": [
                         {
-                            "dirName": "Build A Native Executable [Experimental]",
+                            "dirName": "[Experimental] Build a native executable",
                             "level": 3,
                             "position": 1,
                             "isDir": false,

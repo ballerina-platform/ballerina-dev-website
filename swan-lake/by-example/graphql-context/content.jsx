@@ -515,7 +515,7 @@ export default function GraphqlContext() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -524,7 +524,6 @@ export default function GraphqlContext() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest/classes/Context">
               <code>graphql:Context</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -535,7 +534,6 @@ export default function GraphqlContext() {
             <a href="/spec/graphql/#8-context">
               <code>graphql:Context</code> - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

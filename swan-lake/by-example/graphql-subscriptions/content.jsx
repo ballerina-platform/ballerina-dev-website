@@ -406,7 +406,7 @@ export default function GraphqlSubscriptions() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -415,7 +415,6 @@ export default function GraphqlSubscriptions() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
               <code>graphql</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -426,7 +425,6 @@ export default function GraphqlSubscriptions() {
             <a href="/spec/graphql/#313-the-subscription-type">
               <code>graphql</code> subscription type - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

@@ -17,19 +17,14 @@ import ballerina/websocket;
 
 public function main() returns error? {
    // Create a new WebSocket client.
-   // For details, see https://lib.ballerina.io/ballerina/websocket/latest/clients/Client.
    websocket:Client echoClient = check new("ws://localhost:9090/echo");
 
    // Write a message to the server using \`writeMessage\`.
-   // For details, see https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#writeMessage. 
    // This function accepts \`anydata\`. If the given type is a \`byte[]\`, the message will be sent as
    // binary frames and the rest of the data types will be sent as text frames.
-   // For more information on data binding, 
-   // see https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md.
    check echoClient->writeMessage("Hello World!");
 
    // Read a message echoed from the server using \`readMessage\`.
-   // For details, see https://lib.ballerina.io/ballerina/websocket/latest/clients/Client#readMessage.
    // The contextually-expected data type is inferred from the LHS variable type. The received data
    // will be converted to that particular data type.
    string message = check echoClient->readMessage();
@@ -65,14 +60,6 @@ export default function WebsocketClient() {
         The WebSocket client can be used to connect to and interact with a
         WebSocket server in a synchronous manner. This example demonstrates how
         to read and write messages using a Ballerina WebSocket client.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
-          <code>websocket</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -223,6 +210,39 @@ export default function WebsocketClient() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest/clients/Client">
+              <code>websocket:Client</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/websocket/#4-client">
+              <code>websocket:Client</code> - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md">
+              <code>websocket:Client</code> data binding - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

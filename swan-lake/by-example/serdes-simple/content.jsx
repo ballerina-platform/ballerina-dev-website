@@ -68,20 +68,12 @@ export default function SerdesSimple() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Serialization and Deserialization</h1>
+      <h1>SerDes - Serialization/Deserialization</h1>
 
       <p>
         The <code>serdes</code> module helps to serialize and deserialize
         subtypes of Ballerina <code>anydata</code>. This sample demonstrates how
         to serialize and deserialize a user defined record type.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/serdes/latest">
-          <code>serdes</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -95,7 +87,7 @@ export default function SerdesSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=68c62fa2177092fa1d8e47aff458b387&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=90ef97d751dd358a2a607cfea926f1d9&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -254,6 +246,29 @@ export default function SerdesSimple() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/serdes/latest">
+              <code>serdes</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/serdes">
+              <code>serdes</code> - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

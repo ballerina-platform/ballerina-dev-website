@@ -19,7 +19,6 @@ kafka:ConsumerConfiguration consumerConfigs = {
     groupId: "log-group-id",
     topics: "log-topic",
     // Provide the relevant secure socket configurations by using \`kafka:SecureSocket\`.
-    // For details, see https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket.
     secureSocket: {
         cert: "./resources/path/to/public.crt",
         protocol: {
@@ -70,17 +69,6 @@ export default function KafkaClientConsumerSsl() {
         <code>kafka:Consumer</code>. For this to work properly, an active Kafka
         server must be present, and it should be configured to use SSL.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-            <code>kafka</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -227,6 +215,29 @@ export default function KafkaClientConsumerSsl() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/SecureSocket">
+              <code>kafka:SecureSocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4212-secure-client">
+              Secure client - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

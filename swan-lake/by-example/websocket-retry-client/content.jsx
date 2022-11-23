@@ -60,18 +60,10 @@ export default function WebsocketRetryClient() {
         the maximum reconnect attempt is reached it gives up on the connection.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
-          <code>websocket</code> module
-        </a>
-        .
-      </p>
-
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a sample WebSocket service, which sends a message to the client upon
+          <strong>Tip:</strong> As a prerequisite to running the client, start a
+          sample WebSocket service, which sends a message to the client upon
           upgrading to a WebSocket connection. If you are using a Ballerina
           WebSocket server, you can send a message to the client in the{" "}
           <code>onOpen</code> resource. The client will try to connect to the
@@ -228,6 +220,19 @@ export default function WebsocketRetryClient() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

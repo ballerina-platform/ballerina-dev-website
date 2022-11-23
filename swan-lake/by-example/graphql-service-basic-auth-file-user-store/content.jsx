@@ -250,7 +250,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -259,7 +259,6 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
               <code>graphql</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -281,7 +280,6 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
               <code>graphql</code> basic authentication - file user store -
               Specification
             </a>
-            .
           </span>
         </li>
       </ul>

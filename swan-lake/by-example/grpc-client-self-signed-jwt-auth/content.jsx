@@ -19,7 +19,6 @@ public function main() returns error? {
     // The client metadata is enriched with the \`Authorization: Bearer <token>\`
     // header by passing the \`grpc:JwtIssuerConfig\`for the \`auth\` configuration
     // of the client. A self-signed JWT is issued before the request is sent.
-    // For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             username: "ballerina",
@@ -80,34 +79,6 @@ export default function GrpcClientSelfSignedJwtAuth() {
         <code>http:JwtIssuerConfig</code> to the <code>auth</code> configuration
         of the client. A self-signed JWT is issued before the request is sent.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-            <code>oauth2</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Setting up the client is the same as setting up
-          the simple RPC client with additional configurations. You can refer to
-          the{" "}
-          <a href="/learn/by-example/grpc-client-simple/">simple RPC client</a>{" "}
-          to implement the client used below.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -196,9 +167,16 @@ export default function GrpcClientSelfSignedJwtAuth() {
 
       <p>Execute the command below to run the client.</p>
 
+      <p>
+        Setting up the client is the same as setting up the unary RPC client
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
+        implement the client used here.
+      </p>
+
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
+          <strong>Tip:</strong> As a prerequisite to running the client, start
           the{" "}
           <a href="/learn/by-example/grpc-service-jwt-auth/">
             JWT Auth service
@@ -268,6 +246,39 @@ export default function GrpcClientSelfSignedJwtAuth() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig">
+              <code>grpc:JwtIssuerConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#5117-client---self-signed-jwt-auth">
+              Self signed JWT authentication - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+              <code>oauth2</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

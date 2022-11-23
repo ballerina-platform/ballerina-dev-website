@@ -26,7 +26,6 @@ listener grpc:Listener securedEP = new (9090,
 // The service can be secured with JWT Auth and can be authorized
 // optionally. JWT Auth can be enabled by setting the
 // \`grpc:JwtValidatorConfig\` configurations.
-// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/JwtValidatorConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -97,36 +96,6 @@ export default function GrpcServiceJwtAuth() {
         compared against the scope included in the JWT for at least one match
         between the two sets.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-            <code>jwt</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Setting up the service is the same as setting
-          up the simple RPC service with additional configurations. You can
-          refer to the{" "}
-          <a href="/learn/by-example/grpc-service-simple/">
-            simple RPC service
-          </a>{" "}
-          to implement the service used below.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -215,6 +184,13 @@ export default function GrpcServiceJwtAuth() {
 
       <p>Execute the command below to run the service.</p>
 
+      <p>
+        Setting up the service is the same as setting up the unary RPC service
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
+        implement the service used below.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         indent
@@ -278,13 +254,46 @@ export default function GrpcServiceJwtAuth() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/grpc-client-self-signed-jwt-auth">
             gRPC self-signed JWT Auth client
           </a>
           .
         </p>
       </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/JwtValidatorConfig">
+              <code>grpc:JwtValidatorConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#5113-service---jwt-auth">
+              JWT authentication - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
+              <code>jwt</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

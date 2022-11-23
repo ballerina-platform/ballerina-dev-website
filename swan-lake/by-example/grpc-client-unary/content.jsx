@@ -21,8 +21,7 @@ service HelloWorld {
     rpc hello (google.protobuf.StringValue) returns (google.protobuf.StringValue);
 }
 `,
-  `// This is the client implementation of the simple RPC scenario.
-import ballerina/io;
+  `import ballerina/io;
 
 public function main() returns error? {
     // Creates a gRPC client to interact with the remote server.
@@ -36,7 +35,7 @@ public function main() returns error? {
 `,
 ];
 
-export default function GrpcClientSimple() {
+export default function GrpcClientUnary() {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -60,24 +59,13 @@ export default function GrpcClientSimple() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>gRPC client - Simple RPC</h1>
+      <h1>gRPC client - Unary RPC</h1>
 
       <p>
         The gRPC Server Connector exposes the gRPC service over HTTP2. In a
-        simple RPC call, a client sends a request to a remote service and waits
+        unary RPC call, a client sends a request to a remote service and waits
         for the response.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-            <code>grpc</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
 
       <h2>Generate the service definition</h2>
 
@@ -86,7 +74,7 @@ export default function GrpcClientSimple() {
           <span>1.</span>
           <span>
             Create a new Protocol Buffers definition file named{" "}
-            <code>grpc_simple.proto</code> and add the service definition below.
+            <code>grpc_unary.proto</code> and add the service definition below.
           </span>
         </li>
       </ul>
@@ -102,7 +90,7 @@ export default function GrpcClientSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-simple",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-unary",
                 "_blank"
               );
             }}
@@ -241,27 +229,16 @@ export default function GrpcClientSimple() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal grpc --input grpc_simple.proto  --output stubs`}</span>
+              <span>{`\$ bal grpc --input grpc_unary.proto  --output stubs`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
       <p>
-        Once you run the command, the <code>grpc_simple_pb.bal</code> file gets
+        Once you run the command, the <code>grpc_unary_pb.bal</code> file gets
         generated inside the <code>stubs</code> directory.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the{" "}
-          <a href="https://ballerina.io/learn/cli-documentation/grpc/">
-            gRPC/Protocol Buffers
-          </a>{" "}
-          guide.
-        </p>
-      </blockquote>
 
       <h2>Implement and run the client</h2>
 
@@ -269,24 +246,19 @@ export default function GrpcClientSimple() {
         <li>
           <span>1.</span>
           <span>
-            Create a Ballerina package (e.g., <code>client</code>).
+            Create a Ballerina package (e.g., <code>client</code>). Delete the{" "}
+            <code>main.bal</code> file created by default as it is not required
+            for this example.
           </span>
         </li>
       </ul>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> Delete the <code>main.bal</code> file created by
-          default as it is not required for this example.
-        </p>
-      </blockquote>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>2.</span>
           <span>
-            Copy the generated <code>grpc_unary_blocking_pb.bal</code> file from
-            the <code>stubs</code> directory to the <code>client</code> package.
+            Copy the generated <code>grpc_unary_pb.bal</code> file from the{" "}
+            <code>stubs</code> directory to the <code>client</code> package.
           </span>
         </li>
       </ul>
@@ -295,9 +267,8 @@ export default function GrpcClientSimple() {
         <li>
           <span>3.</span>
           <span>
-            Create a new <code>grpc_unary_blocking_client.bal</code> file inside
-            the <code>client</code> package and add the client implementation
-            below.
+            Create a new <code>grpc_unary_client.bal</code> file inside the{" "}
+            <code>client</code> package and add the client implementation below.
           </span>
         </li>
       </ul>
@@ -313,7 +284,7 @@ export default function GrpcClientSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-simple",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-unary",
                 "_blank"
               );
             }}
@@ -396,12 +367,9 @@ export default function GrpcClientSimple() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
+          <strong>Tip:</strong> As a prerequisite to running the client, start
           the{" "}
-          <a href="/learn/by-example/grpc-service-simple/">
-            simple RPC service
-          </a>
-          .
+          <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a>.
         </p>
       </blockquote>
 
@@ -466,6 +434,37 @@ export default function GrpcClientSimple() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest">
+              Unary RPC - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#41-simple-rpc">Unary RPC - specification</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/cli-documentation/grpc/">
+              Ballerina protocol buffers guide
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -1,5 +1,5 @@
 {
-  "title": "Simple RPC",
+  "title": "Unary RPC",
   "description": "This Ballerina by Example has a gRPC service for simple RPC.",
   "keywords": [
     "ballerina",
@@ -10,10 +10,10 @@
     "simple",
     "service"
   ],
-  "permalink": "/learn/by-example/grpc-service-simple",
-  "active": "grpc-service-simple",
+  "permalink": "/learn/by-example/grpc-service-unary",
+  "active": "grpc-service-unary",
   "redirect_from": [
-    "/swan-lake/learn/by-example/grpc-service-simple",
-    "/swan-lake/learn/by-example/grpc-service-simple.html"
+    "/swan-lake/learn/by-example/grpc-service-unary",
+    "/swan-lake/learn/by-example/grpc-service-unary.html"
   ]
 }

@@ -19,7 +19,6 @@ public function main() returns error? {
     // Defines the WebSocket client to call the OAuth2 secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`websocket:OAuth2RefreshTokenGrantConfig\` for the \`auth\` configuration of the client.
-    // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2RefreshTokenGrantConfig.
     websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
         auth = {
             refreshUrl: "https://localhost:9445/oauth2/token",
@@ -74,21 +73,6 @@ export default function WebsocketClientOauth2RefreshTokenGrantType() {
         <code>websocket:OAuth2RefreshTokenGrantConfig</code> to the{" "}
         <code>auth</code> configuration of the client.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          <code>oauth2</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -179,7 +163,7 @@ export default function WebsocketClientOauth2RefreshTokenGrantType() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
+          <strong>Tip:</strong> As a prerequisite to running the client, start
           the{" "}
           <a href="/learn/by-example/websocket-service-oauth2/">
             OAuth2 service
@@ -249,6 +233,39 @@ export default function WebsocketClientOauth2RefreshTokenGrantType() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+              <code>oauth2</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/websocket/#52-authentication-and-authorization">
+              <code>websocket</code> authentication - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

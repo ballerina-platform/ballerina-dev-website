@@ -420,7 +420,7 @@ export default function GraphqlInterfaces() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -429,7 +429,6 @@ export default function GraphqlInterfaces() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
               <code>graphql</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -440,7 +439,6 @@ export default function GraphqlInterfaces() {
             <a href="/spec/graphql/#46-interfaces">
               <code>graphql</code> interfaces - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

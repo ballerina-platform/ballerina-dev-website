@@ -67,17 +67,6 @@ export default function KafkaClientProduceMessage() {
         Kafka broker should be present.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-            <code>kafka</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -223,6 +212,29 @@ export default function KafkaClientProduceMessage() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Producer#send">
+              <code>kafka:send</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#33-functions">
+              <code>kafka:send</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

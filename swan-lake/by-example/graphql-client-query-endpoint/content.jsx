@@ -247,7 +247,7 @@ export default function GraphqlClientQueryEndpoint() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -256,7 +256,6 @@ export default function GraphqlClientQueryEndpoint() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest/clients/Client">
               <code>graphql:Client</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -267,7 +266,6 @@ export default function GraphqlClientQueryEndpoint() {
             <a href="/spec/graphql/#25-client">
               <code>graphql:Client</code> - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

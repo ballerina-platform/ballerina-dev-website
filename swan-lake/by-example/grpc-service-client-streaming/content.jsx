@@ -21,8 +21,7 @@ service HelloWorld {
 	rpc lotsOfGreetings (stream google.protobuf.StringValue) returns (google.protobuf.StringValue);
 }
 `,
-  `// This is the server implementation of the client streaming scenario.
-import ballerina/grpc;
+  `import ballerina/grpc;
 import ballerina/log;
 
 @grpc:Descriptor {
@@ -82,17 +81,6 @@ export default function GrpcServiceClientStreaming() {
         writing the messages, it waits for the server to read them and return a
         response.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-            <code>grpc</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
 
       <h2>Generate the service definition</h2>
 
@@ -267,17 +255,6 @@ export default function GrpcServiceClientStreaming() {
         Once you run the command, the <code>grpc_client_streaming_pb.bal</code>{" "}
         file gets generated inside the stubs directory.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the{" "}
-          <a href="https://ballerina.io/learn/cli-documentation/grpc/">
-            gRPC/Protocol Buffers
-          </a>{" "}
-          guide.
-        </p>
-      </blockquote>
 
       <h2>Implement and run the service</h2>
 
@@ -470,13 +447,46 @@ export default function GrpcServiceClientStreaming() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/grpc-client-client-streaming/">
             client streaming RPC client
           </a>
           .
         </p>
       </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest">
+              Client-side streaming - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#43-client-streaming-rpc">
+              Client-side streaming - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/cli-documentation/grpc/">
+              Ballerina protocol buffers guide
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

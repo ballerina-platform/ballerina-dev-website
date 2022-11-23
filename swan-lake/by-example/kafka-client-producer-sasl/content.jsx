@@ -17,13 +17,10 @@ import ballerinax/kafka;
 
 kafka:ProducerConfiguration producerConfig = {
     // Provide the relevant authentication configurations to authenticate the producer by \`kafka:AuthenticationConfiguration\`.
-    // For details, see https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration.
     auth: {
         // Provide the authentication mechanism used by the Kafka server.
         mechanism: kafka:AUTH_SASL_PLAIN,
         // Username and password should be set here in order to authenticate the producer.
-        // For information on how to secure values instead of directly using plain text values,
-        // see https://ballerina.io/learn/by-example/configurable-variables.html.
         username: "alice",
         password: "alice@123"
     },
@@ -74,17 +71,6 @@ export default function KafkaClientProducerSasl() {
         server must be present, and it should be configured to use the
         SASL/PLAIN authentication mechanism.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-            <code>kafka</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -232,6 +218,29 @@ export default function KafkaClientProducerSasl() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/AuthenticationConfiguration">
+              <code>kafka:AuthenticationConfiguration</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#322-secure-client">
+              SASL authentication - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

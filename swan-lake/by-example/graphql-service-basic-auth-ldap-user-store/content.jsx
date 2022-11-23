@@ -254,7 +254,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -263,7 +263,6 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
               <code>graphql</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -285,7 +284,6 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
               <code>graphql</code> basic authentication - LDAP user store -
               Specification
             </a>
-            .
           </span>
         </li>
       </ul>

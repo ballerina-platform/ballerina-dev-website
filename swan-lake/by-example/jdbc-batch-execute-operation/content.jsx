@@ -469,7 +469,7 @@ export default function JdbcBatchExecuteOperation() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -478,7 +478,6 @@ export default function JdbcBatchExecuteOperation() {
             <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
               <code>jdbc:Client</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -486,10 +485,9 @@ export default function JdbcBatchExecuteOperation() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://github.com/ballerina-platform/module-ballerinax-java.jdbc/blob/master/docs/spec/spec.md">
+            <a href="https://github.com/ballerina-platform/module-ballerinax-java.jdbc/blob/master/docs/spec/spec.md#2-client">
               <code>jdbc:Client</code> - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

@@ -235,7 +235,7 @@ export default function IoBytes() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Serialization and Deserialization"
+            title="Serialization/Deserialization"
             href="/learn/by-example/serdes-simple"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -263,7 +263,7 @@ export default function IoBytes() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Serialization and Deserialization
+                  Serialization/Deserialization
                 </span>
               </div>
             </div>

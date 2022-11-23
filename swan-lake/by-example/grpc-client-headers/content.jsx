@@ -12,8 +12,7 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `// This is the client implementation of the simple RPC scenario.
-import ballerina/grpc;
+  `import ballerina/grpc;
 import ballerina/io;
 import ballerina/protobuf.types.wrappers;
 
@@ -68,27 +67,6 @@ export default function GrpcClientHeaders() {
         type returns all the values for a given header key. gRPC also provides
         set of Utility apis to manipulate header values.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-            <code>grpc</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Setting up the client is the same as setting up
-          the simple RPC client with input and output parameter change. You can
-          refer to the{" "}
-          <a href="/learn/by-example/grpc-client-simple/">simple RPC client</a>{" "}
-          to implement the client used below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -177,9 +155,16 @@ export default function GrpcClientHeaders() {
 
       <p>Execute the command below to run the client.</p>
 
+      <p>
+        Setting up the client is the same as setting up the unary RPC client
+        with input and output parameter change. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
+        implement the client used here.
+      </p>
+
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
+          <strong>Tip:</strong> As a prerequisite to running the client, start
           the{" "}
           <a href="learn/by-example/grpc-service-headers/">
             simple RPC service with headers
@@ -250,6 +235,27 @@ export default function GrpcClientHeaders() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest">
+              gRPC - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/">gRPC - specification</a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

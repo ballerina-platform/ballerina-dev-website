@@ -19,7 +19,6 @@ public function main() returns error? {
     // Defines the WebSocket client to call the secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`websocket:BearerTokenConfig\` for the \`auth\` configuration of the client.
-    // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/BearerTokenConfig.
     websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
         auth = {
             token: "56ede317-4511-44b4-8579-a08f094ee8c5"
@@ -65,20 +64,6 @@ export default function WebsocketClientBearerTokenAuth() {
         <code>websocket:BearerTokenConfig</code> for the <code>auth</code>{" "}
         configuration of the client.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          <code>auth</code> module
-        </a>
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -167,13 +152,6 @@ export default function WebsocketClientBearerTokenAuth() {
 
       <p>Run the client program by executing the command below.</p>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a secured sample service.
-        </p>
-      </blockquote>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -235,6 +213,29 @@ export default function WebsocketClientBearerTokenAuth() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/websocket/#52-authentication-and-authorization">
+              <code>websocket</code> authentication - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

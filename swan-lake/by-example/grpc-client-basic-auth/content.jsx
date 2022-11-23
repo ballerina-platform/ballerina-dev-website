@@ -17,9 +17,7 @@ const codeSnippetData = [
 public function main() returns error? {
     // Defines the gRPC client to call the Basic Auth secured APIs.
     // The client metadata is enriched with the \`Authorization: Basic <token>\`
-    // header by passing the \`grpc:CredentialsConfig\` for the \`auth\` configuration
-    // of the client.
-    // For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/CredentialsConfig.
+    // header by passing the \`grpc:CredentialsConfig\` for the \`auth\` configuration of the client.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             username: "ldclakmal",
@@ -70,27 +68,6 @@ export default function GrpcClientBasicAuth() {
         <code>grpc:CredentialsConfig</code> for the <code>auth</code>{" "}
         configuration of the client.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/auth/latest">
-            <code>auth</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Setting up the client is the same as setting up
-          the simple RPC client with additional configurations. You can refer to
-          the{" "}
-          <a href="/learn/by-example/grpc-client-simple/">simple RPC client</a>{" "}
-          to implement the client used below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -177,14 +154,18 @@ export default function GrpcClientBasicAuth() {
         </Col>
       </Row>
 
+      <p>Execute the command below to run the client.</p>
+
       <p>
-        Execute the command below to run the client. You may need to change the
-        trusted certificate file path.
+        Setting up the client is the same as setting up the unary RPC client
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
+        implement the client used here.
       </p>
 
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
+          <strong>Tip:</strong> As a prerequisite to running the client, start
           the{" "}
           <a href="/learn/by-example/grpc-service-basic-auth-file-user-store/">
             Basic Auth file user store service
@@ -258,6 +239,39 @@ export default function GrpcClientBasicAuth() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest/types#ClientAuthConfig">
+              Basic authentication - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#5115-client---basic-auth">
+              Basic authentication - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+              <code>auth</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

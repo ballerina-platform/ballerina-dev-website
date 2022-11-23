@@ -20,7 +20,6 @@ import ballerina/tcp;
 // a certificate file and a private key file for the listener.
 // The \`tcp:ListenerSecureSocket\` record provides the
 // SSL-related listener configurations of the listener.
-// For details, see https://lib.ballerina.io/ballerina/tcp/latest/records/ListenerSecureSocket.
 listener tcp:Listener securedListnerEP = check new(3000,
     secureSocket = {
         key: {
@@ -75,21 +74,6 @@ export default function TcpServiceSslTls() {
         This demonstrates how the Ballerina TCP service can be configured to
         secure the connection over SSL/TLS.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/tcp/latest">
-          <code>tcp</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -243,11 +227,34 @@ export default function TcpServiceSslTls() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/tcp-client-ssl-tls/">TCP SSL/TLS client</a>
           .
         </p>
       </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/tcp/latest">
+              <code>tcp</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/tcp/#511-configuring-tls-in-server-side">
+              <code>tcp</code> SSL/TLS - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

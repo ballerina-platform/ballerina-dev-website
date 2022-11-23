@@ -256,14 +256,14 @@ import HttpLoadBalancer from "./http-load-balancer/content.jsx";
 import HttpFailover from "./http-failover/content.jsx";
 import DynamicListener from "./dynamic-listener/content.jsx";
 import StopHandler from "./stop-handler/content.jsx";
-import GrpcServiceSimple from "./grpc-service-simple/content.jsx";
+import GrpcServiceUnary from "./grpc-service-unary/content.jsx";
 import GrpcServiceServerStreaming from "./grpc-service-server-streaming/content.jsx";
 import GrpcServiceClientStreaming from "./grpc-service-client-streaming/content.jsx";
 import GrpcServiceBidirectionalStreaming from "./grpc-service-bidirectional-streaming/content.jsx";
 import GrpcServiceHeaders from "./grpc-service-headers/content.jsx";
 import GrpcServerReflection from "./grpc-server-reflection/content.jsx";
 import GrpcServiceCheckDeadline from "./grpc-service-check-deadline/content.jsx";
-import GrpcClientSimple from "./grpc-client-simple/content.jsx";
+import GrpcClientUnary from "./grpc-client-unary/content.jsx";
 import GrpcClientServerStreaming from "./grpc-client-server-streaming/content.jsx";
 import GrpcClientClientStreaming from "./grpc-client-client-streaming/content.jsx";
 import GrpcClientBidirectionalStreaming from "./grpc-client-bidirectional-streaming/content.jsx";
@@ -648,14 +648,14 @@ const BBEs = {
   HttpFailover,
   DynamicListener,
   StopHandler,
-  GrpcServiceSimple,
+  GrpcServiceUnary,
   GrpcServiceServerStreaming,
   GrpcServiceClientStreaming,
   GrpcServiceBidirectionalStreaming,
   GrpcServiceHeaders,
   GrpcServerReflection,
   GrpcServiceCheckDeadline,
-  GrpcClientSimple,
+  GrpcClientUnary,
   GrpcClientServerStreaming,
   GrpcClientClientStreaming,
   GrpcClientBidirectionalStreaming,

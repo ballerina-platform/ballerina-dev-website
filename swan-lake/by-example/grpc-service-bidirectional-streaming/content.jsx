@@ -28,8 +28,7 @@ message ChatMessage {
 `,
   `\$ bal grpc --input grpc_bidirectional_streaming.proto  --output stubs
 `,
-  `// This is the server implementation of the bidirectional streaming scenario.
-import ballerina/grpc;
+  `import ballerina/grpc;
 import ballerina/log;
 
 @grpc:Descriptor {
@@ -89,17 +88,6 @@ export default function GrpcServiceBidirectionalStreaming() {
         stream. In such scenarios, the two streams operate independently.
         Therefore, clients and servers can read and write in any order.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-            <code>grpc</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
 
       <h2>Generate the service definition</h2>
 
@@ -300,34 +288,18 @@ export default function GrpcServiceBidirectionalStreaming() {
         inside the <code>stubs</code> directory.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the{" "}
-          <a href="https://ballerina.io/learn/cli-documentation/grpc/">
-            gRPC/Protocol Buffers
-          </a>{" "}
-          guide.
-        </p>
-      </blockquote>
-
       <h2>Implement and run the service</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>1.</span>
           <span>
-            Create a Ballerina package (e.g., <code>service</code>).
+            Create a Ballerina package (e.g., <code>service</code>). Delete the{" "}
+            <code>main.bal</code> file created by default as it is not required
+            for this example.
           </span>
         </li>
       </ul>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> Delete the <code>main.bal</code> file created by
-          default as it is not required for this example.
-        </p>
-      </blockquote>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -506,13 +478,46 @@ export default function GrpcServiceBidirectionalStreaming() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/grpc-client-bidirectional-streaming/">
             bidirectional streaming RPC client
           </a>
           .
         </p>
       </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest">
+              Bidirectional streaming - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#44-bidirectional-streaming-rpc">
+              Bidirectional streaming - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/cli-documentation/grpc/">
+              Ballerina protocol buffers guide
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

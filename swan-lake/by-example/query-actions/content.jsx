@@ -96,7 +96,7 @@ export default function QueryActions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a17b5a1a23a6f0eb75b2ee07dc4ab812&file=query_actions.bal",
+                "https://play.ballerina.io/?gist=b8f76e4734deab741e9e81678b218611&file=query_actions.bal",
                 "_blank"
               );
             }}

@@ -16,8 +16,7 @@ const codeSnippetData = [
 import ballerina/io;
 
 // Creates the listener with the connection parameters and the protocol-related
-// configuration. The polling interval specifies the time duration between each
-// poll performed by the listener in seconds. The listener listens to the files
+// configuration. The listener listens to the files
 // with the given file name pattern located in the specified path.
 listener ftp:Listener remoteServer = check new ({
     protocol: ftp:SFTP,
@@ -83,14 +82,6 @@ export default function SftpServiceReadWrite() {
         receiving file/directory related change events from a listener and using
         the <code>append</code> api of the <code>ftp:Caller</code> to interact
         with the SFTP server.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">
-          <code>ftp</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -243,6 +234,29 @@ export default function SftpServiceReadWrite() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller">
+              <code>ftp:Caller</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/ftp/#52-functions">
+              <code>ftp:Caller</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

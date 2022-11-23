@@ -240,7 +240,7 @@ export default function GraphqlServiceJwtAuth() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -249,7 +249,6 @@ export default function GraphqlServiceJwtAuth() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
               <code>graphql</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -268,9 +267,8 @@ export default function GraphqlServiceJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#11113-jwt-authentication">
-              <code>graphql</code> service type as object - Specification
+              <code>graphql</code> JWT authentication - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

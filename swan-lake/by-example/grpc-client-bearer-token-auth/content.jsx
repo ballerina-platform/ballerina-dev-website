@@ -17,9 +17,7 @@ const codeSnippetData = [
 public function main() returns error? {
     // Defines the gRPC client to call the secured APIs.
     // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-    // header by passing the \`grpc:BearerTokenConfig\` for the \`auth\` configuration
-    // of the client.
-    // For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/BearerTokenConfig.
+    // header by passing the \`grpc:BearerTokenConfig\` for the \`auth\` configuration of the client.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             token: "56ede317-4511-44b4-8579-a08f094ee8c5"
@@ -69,32 +67,6 @@ export default function GrpcClientBearerTokenAuth() {
         <code>grpc:BearerTokenConfig</code> for the <code>auth</code>{" "}
         configuration of the client.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/auth/latest">
-            <code>auth</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> You can refer to the{" "}
-          <a href="/learn/by-example/grpc-client-simple/">simple RPC client</a>{" "}
-          to implement the client used below.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -183,10 +155,16 @@ export default function GrpcClientBearerTokenAuth() {
 
       <p>Execute the command below to run the client.</p>
 
+      <p>
+        You can refer to the{" "}
+        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
+        implement the client used here.
+      </p>
+
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a secured sample service.
+          <strong>Tip:</strong> As a prerequisite to running the client, start a
+          secured service.
         </p>
       </blockquote>
 
@@ -251,6 +229,39 @@ export default function GrpcClientBearerTokenAuth() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/BearerTokenConfig">
+              Bearer token authentication - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#5116-client---bearer-token-auth">
+              Bearer token authentication - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+              <code>auth</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

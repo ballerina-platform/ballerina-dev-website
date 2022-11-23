@@ -16,8 +16,7 @@ const codeSnippetData = [
 import ballerina/log;
 
 // Creates the listener with the connection parameters and the protocol-related
-// configuration. The polling interval specifies the time duration between each
-// poll performed by the listener in seconds. The listener listens to the files
+// configuration. The listener listens to the files
 // with the given file name pattern located in the specified path.
 listener ftp:Listener remoteServer = check new ({
     protocol: ftp:FTP,
@@ -81,14 +80,6 @@ export default function FtpServiceRead() {
         a remote location using the FTP protocol. This sample includes receiving
         file/directory related change events from a listener with default
         configurations using the default port.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/ftp/latest/">
-          <code>ftp</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -241,6 +232,29 @@ export default function FtpServiceRead() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener">
+              <code>ftp:Listener</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/ftp/#422-secure-listener">
+              FTP listener - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

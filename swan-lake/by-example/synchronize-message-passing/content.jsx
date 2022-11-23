@@ -89,7 +89,7 @@ export default function SynchronizeMessagePassing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7b114c667064dde81008880e2ff54328&file=synchronize_message_passing.bal",
+                "https://play.ballerina.io/?gist=22d28fc7fb760bdabac1a63d6f615c4c&file=synchronize_message_passing.bal",
                 "_blank"
               );
             }}

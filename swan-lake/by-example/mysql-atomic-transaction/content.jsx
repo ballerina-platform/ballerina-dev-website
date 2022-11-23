@@ -541,7 +541,7 @@ export default function MysqlAtomicTransaction() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -550,7 +550,6 @@ export default function MysqlAtomicTransaction() {
             <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
               <code>mysql:Client</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -558,10 +557,9 @@ export default function MysqlAtomicTransaction() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://github.com/ballerina-platform/module-ballerinax-mysql/blob/master/docs/spec/spec.md">
+            <a href="https://github.com/ballerina-platform/module-ballerinax-mysql/blob/master/docs/spec/spec.md#2-client">
               <code>mysql:Client</code> - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

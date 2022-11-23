@@ -117,21 +117,15 @@ export default function GraphqlInterfacesImplementingInterfaces() {
 
       <p>
         A GraphQL schema can have interfaces that can be implemented using other
-        interfaces.
+        interfaces. In Ballerina, interfaces are defined as{" "}
+        <code>distinct</code> <code>service</code> objects. The Ballerina type
+        inclusion is used to include the interface type to another interface
+        type.
       </p>
 
       <p>
-        In Ballerina, interfaces are defined as <code>distinct</code>{" "}
-        <code>service</code> objects. The Ballerina type inclusion is used to
-        include the interface type to another interface type.
-      </p>
-
-      <p>
-        For more information on the underlying package, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
-        </a>
-        .
+        This example shows how to define interfaces that implement other
+        interfaces in Ballerina.
       </p>
 
       <Row
@@ -444,6 +438,31 @@ export default function GraphqlInterfacesImplementingInterfaces() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
+              <code>graphql</code> - API documentation
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#46-interfaces">
+              <code>graphql</code> interfaces - Specification
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

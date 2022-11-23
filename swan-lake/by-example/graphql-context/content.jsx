@@ -109,39 +109,30 @@ export default function GraphqlContext() {
         information between the resolver functions. A context object is created
         per request. An init function should be provided using the{" "}
         <code>graphql:ServiceConfig</code> parameter named{" "}
-        <code>contextInit</code>.
+        <code>contextInit</code>. Inside this function, the{" "}
+        <code>graphql:Context</code> can be initialized. The corresponding{" "}
+        <code>http:RequestContext</code> and <code>http:Request</code> can be
+        accessed from the init function.
       </p>
 
       <p>
-        Inside the init function, the <code>graphql:Context</code> can be
-        initialized. The corresponding <code>http:RequestContext</code> and{" "}
-        <code>http:Request</code> can be accessed from the init function.
+        You can add attributes to the <code>graphql:Context</code> as key-value
+        pairs. The key is a <code>string</code> and the value can be any{" "}
+        <code>readonly</code> value or an <code>isolated</code> object. If the
+        init function is not provided, an empty context object will be created.
       </p>
 
-      <p>
-        You can add attributes to the context as key-value pairs. The key is a{" "}
-        <code>string</code> and the value can be any <code>readonly</code> value
-        or an <code>isolated</code> object. If the init function is not
-        provided, an empty context object will be created.
-      </p>
-
-      <p>
-        If the <code>graphql:Context</code> is defined as the first parameter of
-        a resolver function, it will be accessible inside the resolver. Passing
-        down the context is not necessary.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> If the <code>graphql:Context</code> is defined
+          as the first parameter of a resolver function, it will be accessible
+          inside the resolver. Passing down the context is not necessary.
+        </p>
+      </blockquote>
 
       <p>
         This example shows how to initialize and access the context as well as
         how to set/get attributes in the context.
-      </p>
-
-      <p>
-        For more information on the underlying package, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
-        </a>
-        .
       </p>
 
       <Row
@@ -523,6 +514,31 @@ export default function GraphqlContext() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/classes/Context">
+              <code>graphql:Context</code> - API documentation
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#8-context">
+              <code>graphql:Context</code> - Specification
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

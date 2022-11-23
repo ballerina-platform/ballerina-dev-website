@@ -63,14 +63,6 @@ export default function GraphqlGraphiql() {
       </p>
 
       <p>
-        For more information on the underlying package, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
-        </a>
-        .
-      </p>
-
-      <p>
         This example shows how to enable the GraphiQL client for a Ballerina
         GraphQL service.
       </p>
@@ -236,6 +228,31 @@ export default function GraphqlGraphiql() {
           title="GraphiQL Client"
         />
       </p>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
+              <code>graphql</code> - API documentation
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#121-graphiql-client">
+              <code>graphql</code> GraphiQL - Specification
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

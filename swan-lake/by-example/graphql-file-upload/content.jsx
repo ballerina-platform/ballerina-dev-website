@@ -80,24 +80,12 @@ export default function GraphqlFileUpload() {
         of the file that needs to be uploaded and that can be used only with the
         mutation operations, i.e. remote functions. The value of{" "}
         <code>graphql:Upload</code> type is extracted from the HTTP multipart
-        request, which will be received by the GraphQL endpoints. Refer the{" "}
-        <a href="https://ballerina.io/spec/graphql/#6-file-upload">
-          Ballerina GraphQL specification
-        </a>{" "}
-        for more information on file upload.
+        request, which will be received by the GraphQL endpoints.
       </p>
 
       <p>
         This example shows how to implement a GraphQL endpoint that can be used
         to upload files.
-      </p>
-
-      <p>
-        For more information on the underlying package, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
-        </a>
-        .
       </p>
 
       <Row
@@ -351,6 +339,31 @@ export default function GraphqlFileUpload() {
         This will create a directory <code>uploads</code> where the service is
         running, and then saves the <code>file1.png</code> inside it.
       </p>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/Upload">
+              <code>graphql:Upload</code> - API documentation
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#6-file-upload">
+              <code>graphql</code> file upload - Specification
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

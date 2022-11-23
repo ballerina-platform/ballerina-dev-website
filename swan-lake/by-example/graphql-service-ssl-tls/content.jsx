@@ -66,21 +66,6 @@ export default function GraphqlServiceSslTls() {
         configurations to the server to expose an HTTPS connection.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          <code>graphql</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -229,12 +214,30 @@ export default function GraphqlServiceSslTls() {
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
-        </p>
-      </blockquote>
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
+              <code>graphql</code> - API documentation
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#1121-ssltls">
+              <code>graphql</code> SSL/TLS - Specification
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

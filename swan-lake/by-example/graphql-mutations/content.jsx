@@ -400,7 +400,7 @@ export default function GraphqlMutations() {
         </p>
       </blockquote>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -409,7 +409,6 @@ export default function GraphqlMutations() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
               <code>graphql</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -420,7 +419,6 @@ export default function GraphqlMutations() {
             <a href="/spec/graphql/#312-the-mutation-type">
               <code>graphql</code> mutation type - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

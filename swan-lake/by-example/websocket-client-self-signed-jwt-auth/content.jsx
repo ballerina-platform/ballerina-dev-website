@@ -20,7 +20,6 @@ public function main() returns error? {
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`websocket:JwtIssuerConfig\` for the \`auth\` configuration of the
     // client. A self-signed JWT is issued before the request is sent.
-    // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/JwtIssuerConfig.
     websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
         auth = {
             username: "ballerina",
@@ -78,21 +77,6 @@ export default function WebsocketClientSelfSignedJwtAuth() {
         configuration of the client. A self-signed JWT is issued before the
         request is sent.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          <code>oauth2</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -253,6 +237,39 @@ export default function WebsocketClientSelfSignedJwtAuth() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+              <code>oauth2</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/websocket/#52-authentication-and-authorization">
+              <code>websocket</code> authentication - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -25,10 +25,8 @@ listener websocket:Listener securedEP = new(9090,
 
 // The service can be secured with OAuth2 and by enforcing authorization
 // optionally. It can be enabled by setting the \`websocket:OAuth2IntrospectionConfig\` configurations.
-// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2IntrospectionConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type
-// configurations for \`scopes\` field.
+// Authorization can be enabled by setting the \`string|string[]\` type configurations for \`scopes\` field.
 @websocket:ServiceConfig {
     auth: [
         {
@@ -98,29 +96,10 @@ export default function WebsocketServiceOauth2() {
         declared in a service can be bound to one/more scope(s). The scope can
         be included in the introspection response using a custom claim
         attribute. That custom claim attribute also can be configured as the{" "}
-        <code>scopeKey</code>.
+        <code>scopeKey</code>. In the authorization phase, the scopes of the
+        service are compared against the scope included in the introspection
+        response for at least one match between the two sets.
       </p>
-
-      <p>
-        In the authorization phase, the scopes of the service are compared
-        against the scope included in the introspection response for at least
-        one match between the two sets.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          <code>oauth2</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -272,7 +251,7 @@ export default function WebsocketServiceOauth2() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> Alternatively, you can invoke the above service
+          <strong>Tip:</strong> Alternatively, you can invoke the above service
           via the{" "}
           <a href="/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type">
             OAuth2 JWT Bearer grant type client
@@ -280,6 +259,39 @@ export default function WebsocketServiceOauth2() {
           .
         </p>
       </blockquote>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+              <code>oauth2</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/websocket/#52-authentication-and-authorization">
+              <code>websocket</code> authentication - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -214,7 +214,7 @@ export default function GraphqlServiceSslTls() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -223,7 +223,6 @@ export default function GraphqlServiceSslTls() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
               <code>graphql</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -234,7 +233,6 @@ export default function GraphqlServiceSslTls() {
             <a href="/spec/graphql/#1121-ssltls">
               <code>graphql</code> SSL/TLS - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

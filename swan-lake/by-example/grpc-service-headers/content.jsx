@@ -12,8 +12,7 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `// This is the server implementation of the simple RPC scenario.
-import ballerina/grpc;
+  `import ballerina/grpc;
 import ballerina/log;
 import ballerina/protobuf.types.wrappers;
 
@@ -69,29 +68,6 @@ export default function GrpcServiceHeaders() {
         type returns all the values for a given header key. gRPC also provides
         set of Utility apis to manipulate header values.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-            <code>grpc</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Setting up the service is the same as setting
-          up the simple RPC service with input and output parameter change. You
-          can refer to the{" "}
-          <a href="/learn/by-example/grpc-service-simple/">
-            simple RPC service
-          </a>{" "}
-          to implement the service used below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -180,6 +156,13 @@ export default function GrpcServiceHeaders() {
 
       <p>Execute the command below to run the service.</p>
 
+      <p>
+        Setting up the service is the same as setting up the unary RPC service
+        with input and output parameter change. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
+        implement the service used below.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         indent
@@ -244,13 +227,34 @@ export default function GrpcServiceHeaders() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/grpc-client-headers/">
             simple RPC client with headers
           </a>
           .
         </p>
       </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest">
+              gRPC - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/">gRPC - specification</a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

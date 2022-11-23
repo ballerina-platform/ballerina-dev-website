@@ -20,7 +20,6 @@ public function main() returns error? {
     // A WebSocket client can be configured to initiate new connections that are
     // secured via mutual SSL.
     // The \`websocket:ClientSecureSocket\` record provides the SSL-related configurations.
-    // For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket.
     websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
         secureSocket = {
             key: {
@@ -66,22 +65,6 @@ export default function WebsocketClientMutualSsl() {
         authenticate each other by verifying the digital certificates. It
         ensures that both parties are assured of each other's identity.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
-          <code>websocket</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file
-          path, private key file path, and trusted certificate file path in the
-          code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -172,8 +155,7 @@ export default function WebsocketClientMutualSsl() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a{" "}
+          <strong>Tip:</strong> As a prerequisite to running the client, start a{" "}
           <a href="/learn/by-example/websocket-service-mutual-ssl/">
             sample service secured with Mutual SSL
           </a>
@@ -242,6 +224,29 @@ export default function WebsocketClientMutualSsl() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/websocket/#5-securing-the-websocket-connections">
+              <code>websocket</code> SSL/TLS - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

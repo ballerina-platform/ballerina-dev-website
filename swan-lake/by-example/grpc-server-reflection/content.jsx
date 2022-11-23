@@ -57,32 +57,10 @@ export default function GrpcServerReflection() {
         gRPC server at run time.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-            <code>grpc</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Setting up the service is the same as setting
-          up the simple RPC service with additional configurations. You can
-          refer to the{" "}
-          <a href="/learn/by-example/grpc-service-simple/">
-            simple RPC service
-          </a>{" "}
-          to implement the service used below.
-        </p>
-      </blockquote>
-
       <p>
         After implementing the service, you can enable server reflection by
-        providing the <code>reflectionEnabled</code> configuration.
+        providing the <code>reflectionEnabled</code> configuration to the{" "}
+        <code>grpc:ListenerConfiguration</code>.
       </p>
 
       <Row
@@ -171,6 +149,13 @@ export default function GrpcServerReflection() {
       </Row>
 
       <p>Execute the command below to run the service.</p>
+
+      <p>
+        Setting up the service is the same as setting up the unary RPC service
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
+        implement the service used below.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -317,6 +302,29 @@ export default function GrpcServerReflection() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerConfiguration">
+              <code>grpc:ListenerConfiguration</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#7-grpc-server-reflection">
+              Server reflection - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

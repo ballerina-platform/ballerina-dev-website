@@ -937,9 +937,9 @@ sublinks:
       - title: gRPC service
         id: 19
         sublinks:
-          - title: Simple RPC
+          - title: Unary RPC
             id: 1
-            url: grpc-service-simple
+            url: grpc-service-unary
           - title: Server-side streaming RPC
             id: 2
             url: grpc-service-server-streaming
@@ -961,9 +961,9 @@ sublinks:
       - title: gRPC client
         id: 20
         sublinks:
-          - title: Simple RPC
+          - title: Unary RPC
             id: 1
-            url: grpc-client-simple
+            url: grpc-client-unary
           - title: Server-side streaming RPC
             id: 2
             url: grpc-client-server-streaming
@@ -1291,7 +1291,7 @@ sublinks:
       - title: SerDes
         id: 49
         sublinks:
-          - title: Serialization and Deserialization
+          - title: Serialization/Deserialization
             id: 1
             url: serdes-simple
   - title: Common libraries

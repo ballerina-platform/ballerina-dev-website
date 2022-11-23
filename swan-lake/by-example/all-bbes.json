@@ -2305,8 +2305,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Simple RPC",
-        "url": "grpc-service-simple",
+        "name": "Unary RPC",
+        "url": "grpc-service-unary",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
@@ -2375,8 +2375,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Simple RPC",
-        "url": "grpc-client-simple",
+        "name": "Unary RPC",
+        "url": "grpc-client-unary",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
@@ -3290,7 +3290,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Serialization and Deserialization",
+        "name": "Serialization/Deserialization",
         "url": "serdes-simple",
         "verifyBuild": true,
         "verifyOutput": true,

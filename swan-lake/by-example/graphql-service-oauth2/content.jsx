@@ -246,7 +246,7 @@ export default function GraphqlServiceOauth2() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -255,7 +255,6 @@ export default function GraphqlServiceOauth2() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
               <code>graphql</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -274,9 +273,8 @@ export default function GraphqlServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#11114-oauth2">
-              <code>graphql</code> service type as object - Specification
+              <code>graphql</code> OAuth2 - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

@@ -61,29 +61,6 @@ export default function GrpcServiceCheckDeadline() {
         has been exceeded and will respond accordingly.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-            <code>grpc</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Setting up the service is the same as setting
-          up the simple RPC service with additional configurations. You can
-          refer to the{" "}
-          <a href="/learn/by-example/grpc-service-simple/">
-            simple RPC service
-          </a>{" "}
-          to implement the service used below.
-        </p>
-      </blockquote>
-
       <p>
         After implementing the service, you can add the deadline check as
         follows.
@@ -176,6 +153,13 @@ export default function GrpcServiceCheckDeadline() {
 
       <p>Execute the command below to run the service.</p>
 
+      <p>
+        Setting up the service is the same as setting up the unary RPC service
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
+        implement the service used below.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -239,13 +223,36 @@ export default function GrpcServiceCheckDeadline() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/grpc-service-set-deadline/">
             gRPC client - Set deadline
           </a>
           .
         </p>
       </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest/functions#isCancelled">
+              <code>grpc:isCancelled</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#61-grpc-deadline">
+              Check deadline - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -285,7 +292,7 @@ export default function GrpcServiceCheckDeadline() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-client-simple">
+          <Link title="Unary RPC" href="/learn/by-example/grpc-client-unary">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -294,7 +301,7 @@ export default function GrpcServiceCheckDeadline() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Simple RPC
+                  Unary RPC
                 </span>
               </div>
               <svg

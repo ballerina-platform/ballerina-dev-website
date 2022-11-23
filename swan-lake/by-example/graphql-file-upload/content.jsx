@@ -340,7 +340,7 @@ export default function GraphqlFileUpload() {
         running, and then saves the <code>file1.png</code> inside it.
       </p>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -349,7 +349,6 @@ export default function GraphqlFileUpload() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/Upload">
               <code>graphql:Upload</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -360,7 +359,6 @@ export default function GraphqlFileUpload() {
             <a href="/spec/graphql/#6-file-upload">
               <code>graphql</code> file upload - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

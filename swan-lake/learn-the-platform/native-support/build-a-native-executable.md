@@ -9,6 +9,8 @@ intro: This guide walks you through compiling a Ballerina application to a nativ
 
 This feature was introduced as an experimental feature in the Swan Lake Update 3 release and it will become official with the following releases. In case you come across any issues do report them as the Ballerina team will be aggressively addressing them.
 
+The key aspects below help you understand the native executable generating process better.
+
 ## GraalVM
 
 Building a Ballerina native executable requires the [GraalVM](https://www.graalvm.org) [native-image](https://www.graalvm.org/22.3/reference-manual/native-image/) compiler. GraalVM is a high-performance, cloud native, and polyglot JDK designed to accelerate the execution of applications. There are three different distributions on GraalVM: Oracle GraalVM Community Edition (CE), Oracle GraalVM Enterprise Edition (EE), and Mandrel. You can install any to use the Ballerina native functionality.
@@ -19,7 +21,7 @@ Building a Ballerina native executable requires the [GraalVM](https://www.graalv
 
 This article uses GraalVM CE to discuss the following topics.
 
-## Native executable vs uber Jar
+## Native executable vs. Uber Jar
 
 When compiling a  Ballerina application using the `bal build` command the output is an uber JAR file. As you already know, running the JAR requires a JVM. JVM uses a Just In Time (JIT) compiler to generate native code during runtime.
 
@@ -68,6 +70,8 @@ To complete this part of the guide, you need:
 
 > **Note:** On Windows, the native image requires Visual Studio Code and Microsoft Visual C++(MSVC). For instructions on installing Visual Studio Code with the Windows 10 SDK, go to [Using GraalVM and Native Image on Windows 10](https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311) to install Visual Studio Code with the Windows 10 SDK.
 
+After the environment is set up, follow the steps below to build a native executable for a simple Ballerina HTTP server application.
+
 ### Build a native executable
 
 1. Execute the command below to create a Ballerina service package :
@@ -95,10 +99,10 @@ To complete this part of the guide, you need:
        user/hello_world:0.1.0
 
    Generating executable with Native image
-   ========================================================================================================
+   =======================================================================================================
    GraalVM Native Image: Generating 'hello_world' (executable)...
-   ========================================================================================================
-   [1/7] Initializing...                                                                   (15.7s @ 0.40GB)
+   =======================================================================================================
+   [1/7] Initializing...                                                                  (15.7s @ 0.40GB)
     Version info: 'GraalVM 22.3.0 Java 11 CE'
     Java version info: '11.0.17+8-jvmci-22.3-b08'
     C compiler: cc (apple, x86_64, 14.0.0)
@@ -106,48 +110,48 @@ To complete this part of the guide, you need:
     2 user-specific feature(s)
     - com.oracle.svm.thirdparty.gson.GsonFeature
     - io.ballerina.stdlib.crypto.svm.BouncyCastleFeature
-   [2/7] Performing analysis...  [************]                                           (169.1s @ 4.48GB)
+   [2/7] Performing analysis...  [************]                                          (169.1s @ 4.48GB)
      24,836 (94.74%) of 26,215 classes reachable
      81,216 (82.54%) of 98,394 fields reachable
     145,899 (76.07%) of 191,785 methods reachable
       1,392 classes,   712 fields, and 2,478 methods registered for reflection
          91 classes,    94 fields, and    66 methods registered for JNI access
           6 native libraries: -framework CoreServices, -framework Foundation, dl, pthread, stdc++, z
-   [3/7] Building universe...                                                              (13.3s @ 3.25GB)
-   [4/7] Parsing methods...      [******]                                                  (23.7s @ 3.12GB)
-   [5/7] Inlining methods...     [***]                                                     (12.4s @ 4.63GB)
-   [6/7] Compiling methods...    [***************]                                        (130.8s @ 4.54GB)
-   [7/7] Creating image...                                                                 (19.1s @ 5.45GB)
+   [3/7] Building universe...                                                             (13.3s @ 3.25GB)
+   [4/7] Parsing methods...      [******]                                                 (23.7s @ 3.12GB)
+   [5/7] Inlining methods...     [***]                                                    (12.4s @ 4.63GB)
+   [6/7] Compiling methods...    [***************]                                       (130.8s @ 4.54GB)
+   [7/7] Creating image...                                                                (19.1s @ 5.45GB)
      88.47MB (60.32%) for code area:   105,528 compilation units
      57.72MB (39.36%) for image heap:  478,129 objects and 30 resources
     484.48KB ( 0.32%) for other data
     146.66MB in total
-   --------------------------------------------------------------------------------------------------------
-   Top 10 packages in code area:                  Top 10 object types in image heap:
-     17.96MB ballerina.http/2                       15.60MB byte[] for code metadata
-      4.49MB ballerina.http/2.types                  9.81MB byte[] for embedded resources
-      2.58MB ballerina.io/1                          6.59MB java.lang.Class
-      1.85MB ballerina.file/1                        5.02MB byte[] for java.lang.String
-      1.72MB ballerina.jwt/2                         4.62MB java.lang.String
-      1.57MB sun.security.ssl                        3.58MB byte[] for general heap data
-      1.30MB ballerina.oauth2/2                      2.27MB com.oracle.svm.core.hub.DynamicHubCompanion
-      1.23MB java.lang.invoke                        1.26MB byte[] for reflection metadata
-      1.18MB com.sun.media.sound                   959.04KB java.lang.String[]
-   1011.31KB ballerina.lang$0046query/0            919.38KB c.o.svm.core.hub.DynamicHub$ReflectionMetadata
-     52.84MB for 847 more packages                   6.45MB for 3500 more object types
-   --------------------------------------------------------------------------------------------------------
+   -------------------------------------------------------------------------------------------------------
+   Top 10 packages in code area:                 Top 10 object types in image heap:
+     17.96MB ballerina.http/2                      15.60MB byte[] for code metadata
+      4.49MB ballerina.http/2.types                 9.81MB byte[] for embedded resources
+      2.58MB ballerina.io/1                         6.59MB java.lang.Class
+      1.85MB ballerina.file/1                       5.02MB byte[] for java.lang.String
+      1.72MB ballerina.jwt/2                        4.62MB java.lang.String
+      1.57MB sun.security.ssl                       3.58MB byte[] for general heap data
+      1.30MB ballerina.oauth2/2                     2.27MB com.oracle.svm.core.hub.DynamicHubCompanion
+      1.23MB java.lang.invoke                       1.26MB byte[] for reflection metadata
+      1.18MB com.sun.media.sound                  959.04KB java.lang.String[]
+   1011.31KB ballerina.lang$0046query/0           919.38KB c.o.svm.core.hub.DynamicHub$ReflectionMetadata
+     52.84MB for 847 more packages                  6.45MB for 3500 more object types
+   -------------------------------------------------------------------------------------------------------
                103.7s (15.9% of total time) in 62 GCs | Peak RSS: 5.65GB | CPU load: 2.53
-   --------------------------------------------------------------------------------------------------------
+   -------------------------------------------------------------------------------------------------------
    Produced artifacts:
-   /Users/user/Documents/native-executable-demo/hello_world/target/bin/hello_world (executable)
-   /Users/user/Documents/native-executable-demo/hello_world/target/bin/hello_world.build_artifacts.txt (txt)
-   ========================================================================================================
+   /Users/user/Documents/hello_world/target/bin/hello_world (executable)
+   /Users/user/Documents/hello_world/target/bin/hello_world.build_artifacts.txt (txt)
+   =======================================================================================================
    Finished generating 'hello_world' in 6m 24s.
    ```
 
    > **Note:** On Windows, the Microsoft Native Tools for Visual Studio must be initialized before building a native-image. You can do this by starting the **x64 Native Tools Command Prompt** that was installed with the Visual Studio Build Tools. In the x64 Native Tools Command Prompt, navigate to your project folder and run `bal build --native`.
 
-4. Run the native executable located in the `target/bin` directory :
+4. Execute the command below to run the native executable.
    ```
    $ ./target/bin/hello_world
    ```
@@ -157,6 +161,8 @@ To complete this part of the guide, you need:
    $ curl http://localhost:8080/greeting
    Hello, World!
    ```
+
+Now, you have built and tested a native executable locally for a simple Ballerina HTTP server application. 
 
 ## Pack the native executable in a container
 
@@ -168,6 +174,8 @@ To complete this part of the guide, you need:
    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
 3. [Docker](https://www.docker.com) installed and configured in your machine
 4. A command terminal
+
+After the environment is set up, follow the steps below to build the native executable and pack it in a container.
 
 ### Build a native executable in a container
 

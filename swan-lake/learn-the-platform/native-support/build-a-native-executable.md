@@ -83,8 +83,7 @@ After the environment is set up, follow the steps below to build a native execut
    ```ballerina
    import ballerina/http;
 
-   listener http:Listener httpListener = new (8080);
-   service / on httpListener {
+   service / on new http:Listener(8080) {
        resource function get greeting() returns string { 
               return "Hello, World!"; 
        }
@@ -188,9 +187,7 @@ After the environment is set up, follow the steps below to build the native exec
    ```ballerina
    import ballerina/http;
 
-   listener http:Listener helloEP = new(8080);
-
-   service / on helloEP {
+   service / on new http:Listener(8080) {
        resource function get greeting() returns string {   
               return "Hello, Docker!";   
        }

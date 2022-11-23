@@ -19,7 +19,6 @@ public function main() returns error? {
     // The client metadata is enriched with the \`Authorization: Bearer <token>\`
     // header by passing the \`grpc:OAuth2ClientCredentialsGrantConfig for the
     // \`auth\` configuration of the client.
-    // For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2ClientCredentialsGrantConfig.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
@@ -77,34 +76,6 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
         <code>grpc:OAuth2ClientCredentialsGrantConfig</code> for the{" "}
         <code>auth</code> configuration of the client.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/oauth2/latest">
-            <code>oauth2</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Setting up the client is the same as setting up
-          the simple RPC client with additional configurations. You can refer to
-          the{" "}
-          <a href="/learn/by-example/grpc-client-simple/">simple RPC client</a>{" "}
-          to implement the client used below.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -193,9 +164,16 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
 
       <p>Execute the command below to run the client.</p>
 
+      <p>
+        Setting up the client is the same as setting up the unary RPC client
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
+        implement the client used here.
+      </p>
+
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
+          <strong>Tip:</strong> As a prerequisite to running the client, start
           the{" "}
           <a href="/learn/by-example/grpc-service-oauth2/">OAuth2 service</a>.
         </p>
@@ -262,6 +240,40 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2ClientCredentialsGrantConfig">
+              <code>grpc:OAuth2ClientCredentialsGrantConfig</code> - API
+              documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#5118-client---oauth2">
+              OAuth2 authentication and authorization - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+              <code>oauth2</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

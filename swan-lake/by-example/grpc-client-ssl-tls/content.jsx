@@ -19,7 +19,6 @@ public function main() returns error? {
     // To secure a client using SSL/TLS, the client needs to be configured with
     // a certificate file of the listener.
     // The \`grpc:ClientSecureSocket\` record provides the SSL-related configurations of the client.
-    // For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         secureSocket = {
             cert: "../resource/path/to/public.crt"
@@ -61,34 +60,6 @@ export default function GrpcClientSslTls() {
         configurations to the client to initiate an HTTPS connection over
         HTTP/2.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-            <code>grpc</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Setting up the client is the same as setting up
-          the simple RPC client with additional configurations. You can refer to
-          the{" "}
-          <a href="/learn/by-example/grpc-client-simple/">simple RPC client</a>{" "}
-          to implement the client used below.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -177,10 +148,16 @@ export default function GrpcClientSslTls() {
 
       <p>Execute the command below to run the client.</p>
 
+      <p>
+        Setting up the client is the same as setting up the unary RPC client
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
+        implement the client used here.
+      </p>
+
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a{" "}
+          <strong>Tip:</strong> As a prerequisite to running the client, start a{" "}
           <a href="earn/by-example/grpc-service-ssl-tls/">
             sample service secured with SSL/TLS
           </a>
@@ -249,6 +226,29 @@ export default function GrpcClientSslTls() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket">
+              <code>grpc:ClientSecureSocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#52-ssltls-and-mutual-ssl">
+              SSL/TLS - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

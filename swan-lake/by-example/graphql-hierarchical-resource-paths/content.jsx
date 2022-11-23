@@ -403,7 +403,7 @@ export default function GraphqlHierarchicalResourcePaths() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -412,7 +412,6 @@ export default function GraphqlHierarchicalResourcePaths() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
               <code>graphql</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -423,7 +422,6 @@ export default function GraphqlHierarchicalResourcePaths() {
             <a href="/spec/graphql/#333-hierarchical-resource-path">
               <code>graphql</code> hierarchical resource paths - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

@@ -70,14 +70,6 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
         which will automatically acknowledge all messages once consumed.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          <code>rabbitmq</code> module
-        </a>
-        .
-      </p>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -224,6 +216,29 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Caller">
+              <code>rabbitmq:Caller</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#8-client-acknowledgements">
+              <code>rabbitmq:Caller</code> - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

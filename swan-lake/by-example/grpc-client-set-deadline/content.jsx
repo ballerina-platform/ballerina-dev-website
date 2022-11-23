@@ -63,27 +63,6 @@ export default function GrpcClientSetDeadline() {
         <code>DEADLINE_EXCEEDED</code>.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-            <code>grpc</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Setting up the client is the same as setting up
-          the simple RPC client with additional configurations. You can refer to
-          the{" "}
-          <a href="/learn/by-example/grpc-client-simple/">simple RPC client</a>{" "}
-          to implement the client used below.
-        </p>
-      </blockquote>
-
       <p>You can set the deadline as a header as follows.</p>
 
       <Row
@@ -176,10 +155,16 @@ export default function GrpcClientSetDeadline() {
         the service has been implemented.
       </p>
 
+      <p>
+        Setting up the client is the same as setting up the unary RPC client
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
+        implement the client used here.
+      </p>
+
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a{" "}
+          <strong>Tip:</strong> As a prerequisite to running the client, start a{" "}
           <a href="/learn/by-example/grpc-service-set-deadline/">
             sample service with/without a configured deadline
           </a>
@@ -248,6 +233,29 @@ export default function GrpcClientSetDeadline() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest/functions#setDeadline">
+              Set deadline - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#61-grpc-deadline">
+              Set deadline - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

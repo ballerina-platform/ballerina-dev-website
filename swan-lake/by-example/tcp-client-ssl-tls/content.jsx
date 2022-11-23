@@ -61,21 +61,6 @@ export default function TcpClientSslTls() {
         (i.e., the server is verified by the client).
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/tcp/latest">
-          <code>tcp</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -165,8 +150,7 @@ export default function TcpClientSslTls() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a{" "}
+          <strong>Tip:</strong> As a prerequisite to running the client, start a{" "}
           <a href="/learn/by-example/tcp-service-ssl-tls/">
             sample service secured with SSL/TLS
           </a>
@@ -234,6 +218,29 @@ export default function TcpClientSslTls() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/tcp/latest">
+              <code>tcp</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/tcp/#512-configuring-tls-in-client-side">
+              <code>tcp</code> SSL/TLS - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

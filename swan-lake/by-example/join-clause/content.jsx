@@ -92,7 +92,7 @@ export default function JoinClause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9a0631f896808f96dad5f1911dbc1b3d&file=join_clause.bal",
+                "https://play.ballerina.io/?gist=444c3787797edb163ee0ee3bc019e4a7&file=join_clause.bal",
                 "_blank"
               );
             }}

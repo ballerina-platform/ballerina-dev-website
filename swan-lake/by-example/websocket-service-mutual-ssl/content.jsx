@@ -18,7 +18,6 @@ import ballerina/websocket;
 // A WebSocket listener can be configured to accept new connections that are
 // secured via mutual SSL.
 // The \`websocket:ListenerSecureSocket\` record provides the SSL-related listener configurations.
-// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket.
 listener websocket:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -78,22 +77,6 @@ export default function WebsocketServiceMutualSsl() {
         authenticate each other by verifying the digital certificates. It
         ensures that both parties are assured of each other's identity.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
-          <code>websocket</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file
-          path, private key file path, and trusted certificate file path in the
-          code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -242,6 +225,29 @@ export default function WebsocketServiceMutualSsl() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/websocket/#5-securing-the-websocket-connections">
+              <code>websocket</code> SSL/TLS - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

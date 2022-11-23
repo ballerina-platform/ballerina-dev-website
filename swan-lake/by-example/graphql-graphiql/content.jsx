@@ -229,7 +229,7 @@ export default function GraphqlGraphiql() {
         />
       </p>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -238,7 +238,6 @@ export default function GraphqlGraphiql() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
               <code>graphql</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -249,7 +248,6 @@ export default function GraphqlGraphiql() {
             <a href="/spec/graphql/#121-graphiql-client">
               <code>graphql</code> GraphiQL - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

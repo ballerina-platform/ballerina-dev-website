@@ -25,7 +25,6 @@ listener grpc:Listener securedEP = new (9090,
 
 // The service can be secured with OAuth2 and by enforcing authorization
 // optionally. It can be enabled by setting the \`grpc:OAuth2IntrospectionConfig\` configurations.
-// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -102,36 +101,6 @@ export default function GrpcServiceOauth2() {
         compared against the scope included in the introspection response for at
         least one match between the two sets.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-            <code>oauth2</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Setting up the service is the same as setting
-          up the simple RPC service with additional configurations. You can
-          refer to the{" "}
-          <a href="/learn/by-example/grpc-service-simple/">
-            simple RPC service
-          </a>{" "}
-          to implement the service used below.
-        </p>
-      </blockquote>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -220,6 +189,13 @@ export default function GrpcServiceOauth2() {
 
       <p>Execute the command below to run the service.</p>
 
+      <p>
+        Setting up the service is the same as setting up the unary RPC service
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
+        implement the service used below.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         indent
@@ -283,8 +259,8 @@ export default function GrpcServiceOauth2() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the
-          clients below.
+          <strong>Tip:</strong> You can invoke the above service via the clients
+          below.
         </p>
       </blockquote>
 
@@ -324,6 +300,39 @@ export default function GrpcServiceOauth2() {
           <span>
             <a href="/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type">
               gRPC OAuth2 JWT Bearer grant type client
+            </a>
+          </span>
+        </li>
+      </ul>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig">
+              <code>grpc:OAuth2IntrospectionConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#5114-service---oauth2">
+              OAuth2 - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+              <code>oauth2</code> package - API documentation
             </a>
           </span>
         </li>

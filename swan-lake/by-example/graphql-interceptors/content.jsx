@@ -438,7 +438,7 @@ export default function GraphqlInterceptors() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -447,7 +447,6 @@ export default function GraphqlInterceptors() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest/objectTypes/Interceptor">
               <code>graphql:Interceptor</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -456,9 +455,8 @@ export default function GraphqlInterceptors() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#10-interceptors">
-              <code>graphql</code> input types - Specification
+              <code>graphql</code> interceptors - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

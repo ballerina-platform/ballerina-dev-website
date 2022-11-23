@@ -17,7 +17,6 @@ import ballerinax/kafka;
 
 kafka:ProducerConfiguration producerConfig = {
     // Provide the relevant secure socket configurations by using \`kafka:SecureSocket\`.
-    // For details, see https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket.
     secureSocket: {
         cert: "./resources/path/to/public.crt",
         protocol: {
@@ -230,6 +229,29 @@ export default function KafkaClientProducerSsl() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/SecureSocket">
+              <code>kafka:SecureSocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#322-secure-client">
+              Secure client - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

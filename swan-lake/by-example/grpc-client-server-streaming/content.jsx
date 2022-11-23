@@ -21,8 +21,7 @@ service HelloWorld {
 	rpc lotsOfReplies (google.protobuf.StringValue) returns (stream google.protobuf.StringValue);
 }
 `,
-  `// This is the client implementation for the server streaming scenario.
-import ballerina/grpc;
+  `import ballerina/grpc;
 import ballerina/io;
 
 public function main() returns error? {
@@ -71,17 +70,6 @@ export default function GrpcClientServerStreaming() {
         server and gets a stream to read the messages until all the messages are
         read.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-            <code>grpc</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
 
       <h2>Generate the service definition</h2>
 
@@ -257,34 +245,18 @@ export default function GrpcClientServerStreaming() {
         file gets generated inside the stubs directory.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the{" "}
-          <a href="https://ballerina.io/learn/cli-documentation/grpc/">
-            gRPC/Protocol Buffers
-          </a>{" "}
-          guide.
-        </p>
-      </blockquote>
-
       <h2>Implement and run the client</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>1.</span>
           <span>
-            Create a Ballerina package (e.g., <code>client</code>).
+            Create a Ballerina package (e.g., <code>client</code>). Delete the{" "}
+            <code>main.bal</code> file created by default as it is not required
+            for this example.
           </span>
         </li>
       </ul>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> Delete the <code>main.bal</code> file created by
-          default as it is not required for this example.
-        </p>
-      </blockquote>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -402,7 +374,7 @@ export default function GrpcClientServerStreaming() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
+          <strong>Tip:</strong> As a prerequisite to running the client, start
           the{" "}
           <a href="learn/by-example/grpc-service-server-streaming/">
             server streaming RPC service
@@ -475,9 +447,42 @@ export default function GrpcClientServerStreaming() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest">
+              Server-side streaming - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#42-server-streaming-rpc">
+              Server-side streaming - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/cli-documentation/grpc/">
+              Ballerina protocol buffers guide
+            </a>
+          </span>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-client-simple">
+          <Link title="Unary RPC" href="/learn/by-example/grpc-client-unary">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -503,7 +508,7 @@ export default function GrpcClientServerStreaming() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Simple RPC
+                  Unary RPC
                 </span>
               </div>
             </div>

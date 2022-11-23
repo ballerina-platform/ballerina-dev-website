@@ -381,7 +381,7 @@ export default function GraphqlHelloWorld() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
@@ -390,7 +390,6 @@ export default function GraphqlHelloWorld() {
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
               <code>graphql</code> - API documentation
             </a>
-            .
           </span>
         </li>
       </ul>
@@ -401,7 +400,6 @@ export default function GraphqlHelloWorld() {
             <a href="/spec/graphql/#311-the-query-type">
               <code>graphql</code> query type - Specification
             </a>
-            .
           </span>
         </li>
       </ul>

@@ -79,8 +79,7 @@ To complete this part of the guide, you need:
    ```ballerina
    import ballerina/http;
 
-   listener http:Listener httpListener = new (8080);
-   service / on httpListener {
+   service / on new http:Listener(8080) {
        resource function get greeting() returns string { 
               return "Hello, World!"; 
        }
@@ -180,9 +179,7 @@ To complete this part of the guide, you need:
    ```ballerina
    import ballerina/http;
 
-   listener http:Listener helloEP = new(8080);
-
-   service / on helloEP {
+   service / on new http:Listener(8080) {
        resource function get greeting() returns string {   
               return "Hello, Docker!";   
        }

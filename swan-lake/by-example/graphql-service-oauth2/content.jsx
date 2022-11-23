@@ -98,21 +98,6 @@ export default function GraphqlServiceOauth2() {
         one match between the two sets.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          <code>oauth2</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -261,12 +246,40 @@ export default function GraphqlServiceOauth2() {
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
-        </p>
-      </blockquote>
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
+              <code>graphql</code> - API documentation
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+              <code>oauth2</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#11114-oauth2">
+              <code>graphql</code> service type as object - Specification
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

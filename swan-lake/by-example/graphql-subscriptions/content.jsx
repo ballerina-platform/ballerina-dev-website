@@ -95,14 +95,6 @@ export default function GraphqlSubscriptions() {
         <code>names</code> in the root <code>Subscription</code> type.
       </p>
 
-      <p>
-        For more information on the underlying package, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/graphql/latest/">
-          <code>graphql</code> package
-        </a>
-        .
-      </p>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -413,6 +405,31 @@ export default function GraphqlSubscriptions() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
+              <code>graphql</code> - API documentation
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#313-the-subscription-type">
+              <code>graphql</code> subscription type - Specification
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

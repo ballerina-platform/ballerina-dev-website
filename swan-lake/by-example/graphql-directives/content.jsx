@@ -114,32 +114,37 @@ export default function GraphqlDirectives() {
 
       <p>The Ballerina GraphQL supports the following GraphQL directives.</p>
 
-      <p>
-        <code>@depricated</code> - Marks the schema definition of a field or
-        enum value as deprecated with an optional reason.
-      </p>
-
-      <p>
-        <code>@skip(if: Boolean!)</code> - If true, the decorated field or
-        fragment in an operation is not resolved by the GraphQL server.
-      </p>
-
-      <p>
-        <code>@include(if: Boolean!)</code> - If false, the decorated field or
-        fragment in an operation is not resolved by the GraphQL server.
-      </p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>@depricated</code> - Marks the schema definition of a field or
+            enum value as deprecated with an optional reason.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>@skip(if: Boolean!)</code> - If true, the decorated field or
+            fragment in an operation is not resolved by the GraphQL server.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <code>@include(if: Boolean!)</code> - If false, the decorated field
+            or fragment in an operation is not resolved by the GraphQL server.
+          </span>
+        </li>
+      </ul>
 
       <p>
         This example shows how to use GraphQL directives in Ballerina GraphQL
         services.
-      </p>
-
-      <p>
-        For more information on the underlying package, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
-        </a>
-        .
       </p>
 
       <Row
@@ -768,6 +773,31 @@ export default function GraphqlDirectives() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
+              <code>graphql</code> - API documentation
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#5-directives">
+              <code>graphql</code> directives - Specification
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

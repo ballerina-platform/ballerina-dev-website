@@ -131,18 +131,13 @@ export default function JdbcQueryOperation() {
           H2 database driver JAR needs to be added to the{" "}
           <code>Ballerina.toml</code> file. This sample is written using H2
           2.0.6 and it is recommended to use an H2 JAR file of a version higher
-          than 2.0.2.
+          than 2.0.2. For a sample configuration, see the{" "}
+          <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
+            <code>jdbc</code> module
+          </a>
+          .
         </p>
       </blockquote>
-
-      <p>
-        For a sample configuration and more information on the underlying
-        module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
-          <code>jdbc</code> module
-        </a>{" "}
-        .&lt;br&gt;&lt;br&gt;
-      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -474,6 +469,31 @@ export default function JdbcQueryOperation() {
           )}
         </Col>
       </Row>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
+              <code>jdbc:Client</code> - API documentation
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/ballerina-platform/module-ballerinax-java.jdbc/blob/master/docs/spec/spec.md">
+              <code>jdbc:Client</code> - Specification
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

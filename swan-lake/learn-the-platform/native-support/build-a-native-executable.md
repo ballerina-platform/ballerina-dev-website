@@ -46,6 +46,16 @@ The only downside is that the GraalVM native image build is a highly complicated
 
 From Ballerina 2201.3.0 (SwanLake) onwards, Ballerina supports GraalVM AOT compilation to generate standalone executables by passing the native flag in the build command: `bal build --native`. The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK.
 
+> **Info:** Apart from Ballerina runtime and standard libraries the following Ballerina external libraries are GraalVM compatible :
+>  - [NATS](https://central.ballerina.io/ballerinax/nats)
+>  - [Kafka](https://central.ballerina.io/ballerinax/kafka)
+>  - [RabbitMQ](https://central.ballerina.io/ballerinax/rabbitmq)
+>  - [JDBC](https://central.ballerina.io/ballerinax/java.jdbc)
+>  - [MSSQL](https://central.ballerina.io/ballerinax/mssql)
+>  - [MySQL](https://central.ballerina.io/ballerinax/mysql)
+>  - [OracleDB](https://central.ballerina.io/ballerinax/oracledb)
+>  - [PostgreSQL](https://central.ballerina.io/ballerinax/postgresql)
+
 ## Build a native executable locally
 
 ### Set up the prerequisites
@@ -60,12 +70,12 @@ To complete this part of the guide, you need:
 ### Configure GraalVM
 
 1. Install GraalVM if you have not done it already.
-    - Install GraalVM with one line
+    - Install GraalVM on Linux, macOS, and Windows(via Git Bash, Cygwin, or WSL) with one line
       ```
       $ bash <(curl -sL https://get.graalvm.org/jdk)  graalvm-ce-java11-22.3.0
       ```
       > **Tip:** The above command installs the native-image tool, which is required to generate the native images along with GraalVM.
-    - For additional information, see [Get Started with GraalVM](https://www.graalvm.org/22.2/docs/getting-started/)
+    - For additional information, see [Get Started with GraalVM](https://www.graalvm.org/22.3/docs/getting-started)
 2. Configure the runtime environment. Set the `GRAALVM_HOME` environment variable to the GraalVM installation directory as directed at the end of the execution of the above command.
 
 > **Note:** On Windows, the native image requires Visual Studio Code and Microsoft Visual C++(MSVC). For instructions on installing Visual Studio Code with the Windows 10 SDK, go to [Using GraalVM and Native Image on Windows 10](https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311) to install Visual Studio Code with the Windows 10 SDK.

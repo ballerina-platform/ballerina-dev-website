@@ -22,7 +22,6 @@ public function main() returns error? {
     // When chunking is set to \`CHUNKING_AUTO\`, chunking is done based on the request.
     // The \`http1Settings\` annotation provides the chunking-related configurations.
     // For details, see https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings.
-
     http:Client httpClient = check new ("localhost:9090",
         httpVersion = http:HTTP_1_1,
         http1Settings = {
@@ -63,14 +62,6 @@ export default function HttpClientChunking() {
         client sends messages with the <code>content-length</code> header. If
         the message size is larger than the buffer size (8K), messages are
         chunked. Chunking can be disabled using the client options.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -227,6 +218,19 @@ export default function HttpClientChunking() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings">
+              <code>http1Settings</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -17,7 +17,6 @@ const codeSnippetData = [
 // \`COMPRESSION_ALWAYS\` guarantees a compressed response entity body. Compression scheme is set to the
 // value indicated in Accept-Encoding request header. When a particular header is not present or the header
 // value is "identity", encoding is done using the "gzip" scheme.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/constants#COMPRESSION_ALWAYS.
 // By default, Ballerina compresses any MIME type unless they are mentioned under \`contentTypes\`.
 // Compression can be constrained to certain MIME types by specifying them as an array of MIME types.
 // In this example encoding is applied to "text/plain" responses only.
@@ -72,14 +71,6 @@ export default function HttpCompression() {
         <code>COMPRESSION_NEVER</code> and always enabled when the option is set
         to <code>COMPRESSION_ALWAYS</code>. In the same way{" "}
         <code>http:Client</code> can be configured as well.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -313,6 +304,19 @@ export default function HttpCompression() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/constants#COMPRESSION_ALWAYS">
+              <code>COMPRESSION_ALWAYS</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

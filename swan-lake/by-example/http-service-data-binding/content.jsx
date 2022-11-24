@@ -24,7 +24,6 @@ table<Album> key(title) albums = table [];
 service / on new http:Listener(9090) {
 
     // The \`album\` parameter in the payload annotation represents the entity body of the inbound request.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/HttpPayload.
     resource function post albums(@http:Payload Album album) returns Album {
         albums.add(album);
         return album;
@@ -63,19 +62,7 @@ export default function HttpServiceDataBinding() {
         through a resource signature parameter. The payload parameter should be
         declared with the <code>@Payload</code> annotation and the parameter
         type can be <code>anydata</code>. Binding failures will be responded
-        with 400 Bad Request response.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#2344-payload-parameter">
-          specification
-        </a>
-        .
+        with a 400 Bad Request response.
       </p>
 
       <Row
@@ -292,6 +279,29 @@ export default function HttpServiceDataBinding() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/annotations#Payload">
+              <code>http:Payload</code> annotation - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#2344-payload-parameter">
+              <code>Payload parameter</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

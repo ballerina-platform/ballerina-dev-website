@@ -26,7 +26,6 @@ listener http:Listener securedEP = new(9090,
 // The service can be secured with Basic Auth and can be authorized optionally.
 // Using Basic Auth with the file user store can be enabled by setting 
 // the \`http:FileUserStoreConfig\` configurations.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/FileUserStoreConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -74,7 +73,7 @@ export default function HttpServiceBasicAuthenticationFileUserStore() {
       <h1>HTTP service - Basic authentication file user store</h1>
 
       <p>
-        An HTTP service/resource can be secured with Basic authentication and
+        An HTTP service/resource can be secured with basic authentication and
         optionally by enforcing authorization. Then, it validates the Basic
         authentication token sent in the <code>Authorization</code> header
         against the provided configurations. This reads data from a file, which
@@ -88,25 +87,6 @@ export default function HttpServiceBasicAuthenticationFileUserStore() {
         and scopes. Each user can have a password and optionally assigned scopes
         as an array.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          <code>auth</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#9111-listener---basic-auth---file-user-store">
-          <code>http</code> specification
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -282,6 +262,40 @@ export default function HttpServiceBasicAuthenticationFileUserStore() {
           .
         </p>
       </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/FileUserStoreConfig">
+              <code>http:FileUserStoreConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+              <code>auth</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#9111-listener---basic-auth---file-user-store">
+              <code>Listener basic authentication file user store</code> -
+              specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

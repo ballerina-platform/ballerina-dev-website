@@ -25,7 +25,6 @@ listener http:Listener securedEP = new(9090,
 
 // The service can be secured with Basic Auth and can be authorized  optionally.
 // Basic Auth using the LDAP user store can be enabled by setting the \`http:LdapUserStoreConfig\` configurations.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/LdapUserStoreConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -104,22 +103,6 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
         against the scope included in the user store for at least one match
         between the two sets.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://ballerina.io/spec/http/#9112-listener---basic-auth---ldap-user-store">
-          `auth module](https://lib.ballerina.io/ballerina/auth/latest/) and
-          [`http` specification
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -279,6 +262,40 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
           .
         </p>
       </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/LdapUserStoreConfig">
+              <code>http:LdapUserStoreConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+              <code>auth</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#9112-listener---basic-auth---ldap-user-store">
+              <code>Listener basic authentication LDAP user store</code> -
+              specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -98,7 +98,7 @@ export default function Filepaths() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=57861151862b01c42d62b9afa9b529ee&file=filepaths.bal",
+                "https://play.ballerina.io/?gist=69155e47de45a48a4996aab6b53967af&file=filepaths.bal",
                 "_blank"
               );
             }}

@@ -19,7 +19,6 @@ public function main() returns error? {
     // Defines the HTTP client to call the secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`http:BearerTokenConfig\` for the \`auth\` configuration of the client.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/BearerTokenConfig.
     http:Client securedEP = check new("https://localhost:9090",
         auth = {
             token: "56ede317-4511-44b4-8579-a08f094ee8c5"
@@ -55,7 +54,7 @@ export default function HttpClientBearerTokenAuthentication() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP Client - Bearer token authentication</h1>
+      <h1>HTTP client - Bearer token authentication</h1>
 
       <p>
         A client, which is secured with Bearer token auth can be used to connect
@@ -64,13 +63,6 @@ export default function HttpClientBearerTokenAuthentication() {
         <code>http:BearerTokenConfig</code> for the <code>auth</code>{" "}
         configuration of the client.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -227,6 +219,39 @@ export default function HttpClientBearerTokenAuthentication() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/BearerTokenConfig">
+              <code>http:BearerTokenConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+              <code>auth</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#9116-client---bearer-token-auth">
+              <code>Client bearer token authentication</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

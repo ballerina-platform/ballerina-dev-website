@@ -25,7 +25,6 @@ public function main() returns error? {
     // header. The user can control this behaviour by setting the \`policy\` field of
     // the \`cacheConfig\`. Currently, there are only 2 policies:
     // \`CACHE_CONTROL_AND_VALIDATORS\` (the default policy) and \`RFC_7234\`.
-
     http:Client httpClient = check new ("localhost:9090",
         cache = {
             enabled: true,
@@ -65,16 +64,6 @@ export default function HttpCachingClient() {
         HTTP caching is enabled by default in HTTP client endpoints. Users can
         configure caching using the <code>cache</code> field in the client
         configurations.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#2412-caching">specification</a>
-        .
       </p>
 
       <Row
@@ -394,6 +383,29 @@ export default function HttpCachingClient() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#2412-caching">
+              <code>Caching</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

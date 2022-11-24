@@ -29,12 +29,10 @@ service /cookieDemo on serverEP {
 
             // Create a new cookie by setting \`name\` as the \`username\` and \`value\` as the logged-in user's name.
             // Set the cookies path as \`/\` to apply it to all the resources in the service.
-            // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Cookie.
             http:Cookie cookie = new("username", name.toString(), path = "/");
             http:Response response = new;
 
             // Add the created cookie to the response.
-            // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#addCookie.
             response.addCookie(cookie);
 
             // Set a message payload to inform that the login has
@@ -47,7 +45,6 @@ service /cookieDemo on serverEP {
 
     resource function get welcome(http:Request req) returns string {
         // Retrieve cookies from the request.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getCookies.
         http:Cookie[] cookies = req.getCookies();
 
         // Get the cookie value of the \`username\`.
@@ -75,7 +72,6 @@ service /cookieDemo on serverEP {
 import ballerina/log;
 
 // HTTP client configurations associated with enabling cookies.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/CookieConfig.
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
@@ -98,11 +94,8 @@ public function main() returns error? {
     if loginResp.statusCode != 200 {
         log:printError("Login failed");
     } else {
-        // When the login is successful, make another request to the
-        // \`/welcome\` resource of the backend service.
-        // As cookies are enabled in the HTTP client, it automatically handles cookies
-        // received with the login response and sends the relevant cookies
-        // to the \`welcome\` service resource.
+        // When the login is successful, make another request to the \`/welcome\` resource of the backend service.
+        // As cookies are enabled in the HTTP client, it automatically handles cookies received with the login response and sends the relevant cookies to the \`welcome\` service resource.
         string welcomeResp = check httpClient->get("/welcome");
 
         // A welcome message with the sent username will get printed.
@@ -141,15 +134,6 @@ export default function HttpCookies() {
       <p>
         HTTP cookies can track, personalize, and manage the session in the
         service and client.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#2416-cookie">specification</a>.
       </p>
 
       <Row
@@ -450,6 +434,29 @@ export default function HttpCookies() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Cookie">
+              <code>http:Cookie</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#2416-cookie">
+              <code>Cookie</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

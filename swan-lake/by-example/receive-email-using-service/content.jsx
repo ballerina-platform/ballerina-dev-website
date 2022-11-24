@@ -28,8 +28,7 @@ listener email:PopListener emailListener = check new ({
 // One or many services can listen to the email listener for the periodically-polled emails.
 service "emailObserver" on emailListener {
 
-    // When an email is successfully received, the \`onMessage\` method is
-    // called.
+    // When an email is successfully received, the \`onMessage\` method is called.
     remote function onMessage(email:Message emailMessage) {
         log:printInfo("POP Listener received an email", subject = emailMessage.subject,
             content = emailMessage?.body);
@@ -44,7 +43,6 @@ service "emailObserver" on emailListener {
     remote function onClose(email:Error? closeError) {
         log:printInfo("Closed the listener");
     }
-
 }
 `,
 ];
@@ -70,7 +68,7 @@ export default function ReceiveEmailUsingService() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Receive email using a service</h1>
+      <h1>Email service - Receive email</h1>
 
       <p>
         The email service is used to receive (with POP3 or IMAP4) emails using
@@ -79,14 +77,6 @@ export default function ReceiveEmailUsingService() {
         using the default ports. To use IMAP4 refer to{" "}
         <a href="https://lib.ballerina.io/ballerina/email/latest/classes/ImapListener">
           <code>IMAP listener</code>
-        </a>
-        .
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/email/latest/">
-          <code>email</code> module
         </a>
         .
       </p>
@@ -178,6 +168,13 @@ export default function ReceiveEmailUsingService() {
 
       <p>Run the email service by executing the following command.</p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> The subject and the content body of the listened
+          emails will be printed for each of the polled emails.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -234,14 +231,33 @@ export default function ReceiveEmailUsingService() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run receive_email_using_listener.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`# Subject and the content body of the listened emails will be printed for each`}</span>
-              <span>{`# of the polled emails.`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/email/latest/">
+              <code>email</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/email/#4-service">
+              <code>email</code> service - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

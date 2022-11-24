@@ -24,7 +24,6 @@ public function main() returns error? {
     email:Message email = {
         // "TO", "CC", and "BCC" addresses can be added as follows.
         // Only the "TO" address is mandatory out of these three.
-        // For details, see https://lib.ballerina.io/ballerina/email/latest/records/Message
         to: "receiver1@email.com",
         cc: "receiver2@email.com",
         bcc: "receiver3@email.com",
@@ -63,20 +62,12 @@ export default function SendEmail() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Send email</h1>
+      <h1>Email client - Send email</h1>
 
       <p>
-        The Email Connector is used to send (with SMTP) emails using the SSL or
+        The email connector is used to send (with SMTP) emails using the SSL or
         STARTTLS protocols. This sample includes sending emails with default
         configurations over SSL using the default ports.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/email/latest/">
-          <code>email</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -229,6 +220,29 @@ export default function SendEmail() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/email/latest/records/Message">
+              <code>email:Message</code> record - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/email/#3-client">
+              <code>email</code> client - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

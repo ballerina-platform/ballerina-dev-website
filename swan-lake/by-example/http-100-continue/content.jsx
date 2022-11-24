@@ -20,7 +20,6 @@ service / on new http:Listener(9090) {
     resource function post greeting(http:Caller caller, http:Request request)
             returns error? {
         // Check if the client expects a 100-continue response.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue.
         if request.expects100Continue() {
             string mediaType = request.getContentType();
             if mediaType.toLowerAscii() == "text/plain" {
@@ -82,14 +81,6 @@ export default function Http100Continue() {
         when handling <code>100-continue</code> scenarios.{" "}
         <code>100-continue</code> indicates that the server has received the
         request headers and the client can proceed with sending the request.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -351,6 +342,19 @@ export default function Http100Continue() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue">
+              <code>expects100Continue()</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

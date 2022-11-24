@@ -61,7 +61,7 @@ export default function ReceiveEmailUsingClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Receive email using a client</h1>
+      <h1>Email client - Receive email</h1>
 
       <p>
         The email client is used to receive (with POP3 or IMAP4) emails using
@@ -71,14 +71,6 @@ export default function ReceiveEmailUsingClient() {
         <code>POP3 client</code> with{" "}
         <a href="https://lib.ballerina.io/ballerina/email/latest/clients/ImapClient">
           <code>IMAP client</code>
-        </a>
-        .
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/email/latest/">
-          <code>email</code> module
         </a>
         .
       </p>
@@ -233,6 +225,29 @@ export default function ReceiveEmailUsingClient() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/email/latest/">
+              <code>email</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/email/#3-client">
+              <code>email</code> client - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

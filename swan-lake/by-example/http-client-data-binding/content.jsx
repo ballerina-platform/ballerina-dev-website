@@ -67,18 +67,6 @@ export default function HttpClientDataBinding() {
         <code>http:RemoteServerError</code>) of the client remote operation.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#243-client-action-return-types">
-          specification
-        </a>
-        .
-      </p>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -90,7 +78,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d6d8b12cadc1728d7dca25ed8a5bfb8b&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=69e598d83306b21a0c147c3a1ba2e0f2&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}
@@ -263,11 +251,34 @@ export default function HttpClientDataBinding() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#243-client-action-return-types">
+              <code>Client return types</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
             title="Send request/Receive response"
-            href="/learn/by-example/http-client-endpoint"
+            href="/learn/by-example/http-client-send-request-receive-response"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg

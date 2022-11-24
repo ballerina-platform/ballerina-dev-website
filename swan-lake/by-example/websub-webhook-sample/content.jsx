@@ -13,8 +13,8 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `// The Ballerina WebSub Subscriber service, which could be used as a WebHook Listener for GitHub.
-import ballerina/websub;
 import ballerina/io;
+import ballerina/websub;
 
 // Annotation-based configurations specifying the subscription parameters.
 @websub:SubscriberServiceConfig {
@@ -76,28 +76,17 @@ export default function WebsubWebhookSample() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSub subscriber service</h1>
+      <h1>WebSub service - Subscriber</h1>
 
       <p>
         Ballerina provides the capability to easily introduce subscriber
         services that are WebSub-compliant. Ballerina WebSub subscribers can
         specify the topic and hub to which they wish to subscribe to receive
         notifications. If not specified WebSub Subscriber Services will auto
-        generate a unique random service path segment.
-      </p>
-
-      <p>
-        Ballerina WebSub Subscriber Services could thus be registered as
-        WebHooks to receive event notifications. In this example, a WebSub
-        Subscriber service is used to implement a GitHub-based WebHook service.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websub/latest/">
-          <code>websub</code> module
-        </a>
-        .
+        generate a unique random service path segment. Ballerina WebSub
+        Subscriber Services could thus be registered as WebHooks to receive
+        event notifications. In this example, a WebSub Subscriber service is
+        used to implement a GitHub-based WebHook service.
       </p>
 
       <Row
@@ -253,6 +242,29 @@ export default function WebsubWebhookSample() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websub/latest/">
+              <code>websub</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/websub/#22-subscriber-service">
+              Subscriber service - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
@@ -291,7 +303,10 @@ export default function WebsubWebhookSample() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Timeout" href="/learn/by-example/http-timeout">
+          <Link
+            title="Dynamic listener"
+            href="/learn/by-example/dynamic-listener"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -300,7 +315,7 @@ export default function WebsubWebhookSample() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Timeout
+                  Dynamic listener
                 </span>
               </div>
               <svg

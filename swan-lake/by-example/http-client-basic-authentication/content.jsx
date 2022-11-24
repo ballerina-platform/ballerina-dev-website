@@ -19,7 +19,6 @@ public function main() returns error? {
     // Defines the HTTP client to call the Basic Auth secured APIs.
     // The client is enriched with the \`Authorization: Basic <token>\` header by
     // passing the \`http:CredentialsConfig\` for the \`auth\` configuration of the client.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/CredentialsConfig.
     http:Client securedEP = check new("https://localhost:9090",
         auth = {
             username: "ldclakmal",
@@ -65,25 +64,6 @@ export default function HttpClientBasicAuthentication() {
         <code>http:CredentialsConfig</code> for the <code>auth</code>{" "}
         configuration of the client.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          <code>auth</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#9115-client---basic-auth">
-          <code>http</code> specification
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -244,6 +224,39 @@ export default function HttpClientBasicAuthentication() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/CredentialsConfig">
+              <code>http:CredentialsConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+              <code>auth</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#9115-client---basic-auth">
+              <code>Client basic authentication</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

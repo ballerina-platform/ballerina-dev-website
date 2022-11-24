@@ -17,7 +17,6 @@ const codeSnippetData = [
 // An HTTP listener can be configured to accept new connections that are
 // secured via mutual SSL.
 // The \`http:ListenerSecureSocket\` record provides the SSL-related listener configurations.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket.
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -71,26 +70,6 @@ export default function HttpServiceMutualSsl() {
         authenticate each other by verifying the digital certificates. It
         ensures that both parties are assured of each other's identity.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#922-listener---mutual-ssl">
-          <code>http</code> specification
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file
-          path, private key file path, and trusted certificate file path in the
-          code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -314,6 +293,29 @@ export default function HttpServiceMutualSsl() {
           .
         </p>
       </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket">
+              <code>http:ListenerSecureSocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#922-listener---mutual-ssl">
+              <code>Listener mutual SSL</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

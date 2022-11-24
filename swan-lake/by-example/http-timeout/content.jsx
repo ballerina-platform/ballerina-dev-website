@@ -51,15 +51,7 @@ export default function HttpTimeout() {
 
       <p>
         The timeout is used to gracefully handle response delays which could
-        occur due to network problems or the back-end
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
+        occur due to network problems or the back-end.
       </p>
 
       <Row
@@ -217,11 +209,24 @@ export default function HttpTimeout() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="WebSub subscriber service"
-            href="/learn/by-example/websub-webhook-sample"
+            title="OAuth2 JWT bearer grant type"
+            href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -248,7 +253,7 @@ export default function HttpTimeout() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  WebSub subscriber service
+                  OAuth2 JWT bearer grant type
                 </span>
               </div>
             </div>

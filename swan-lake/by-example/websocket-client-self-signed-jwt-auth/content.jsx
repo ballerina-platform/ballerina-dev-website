@@ -167,7 +167,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
+          <strong>Tip:</strong> As a prerequisite to running the client, start
           the{" "}
           <a href="/learn/by-example/websocket-service-jwt-auth/">
             JWT authentication service

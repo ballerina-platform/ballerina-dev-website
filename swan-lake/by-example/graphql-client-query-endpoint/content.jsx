@@ -174,14 +174,16 @@ export default function GraphqlClientQueryEndpoint() {
         .
       </p>
 
-      <p>
-        As a prerequisite to run the client program, execute a ballerina GraphQL
-        server program given in{" "}
-        <a href="https://ballerina.io/learn/by-example/graphql-returning-record-values">
-          Returning record values example
-        </a>
-        .
-      </p>
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> As a prerequisite to run the client program,
+          execute a ballerina GraphQL server program given in{" "}
+          <a href="https://ballerina.io/learn/by-example/graphql-returning-record-values">
+            Record as output object
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
 
       <p>Run the client program by executing the following command.</p>
 

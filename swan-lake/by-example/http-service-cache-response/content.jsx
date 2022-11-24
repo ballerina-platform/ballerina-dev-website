@@ -80,14 +80,6 @@ export default function HttpServiceCacheResponse() {
         response.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
-      </p>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -247,6 +239,19 @@ export default function HttpServiceCacheResponse() {
         Invoke the service via the{" "}
         <a href="/learn/by-example/http-caching-client">Caching client</a>.
       </p>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/ResponseCacheControl">
+              <code>http:ResponseCacheControl</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

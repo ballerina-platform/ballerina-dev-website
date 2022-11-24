@@ -164,7 +164,7 @@ import HttpQueryParameter from "./http-query-parameter/content.jsx";
 import HttpHeaderParam from "./http-header-param/content.jsx";
 import HttpSendResponse from "./http-send-response/content.jsx";
 import HttpSendDifferentStatusCodes from "./http-send-different-status-codes/content.jsx";
-import HttpClientEndpoint from "./http-client-endpoint/content.jsx";
+import HttpClientSendRequestReceiveResponse from "./http-client-send-request-receive-response/content.jsx";
 import HttpClientDataBinding from "./http-client-data-binding/content.jsx";
 import HttpServiceSslTls from "./http-service-ssl-tls/content.jsx";
 import HttpServiceMutualSsl from "./http-service-mutual-ssl/content.jsx";
@@ -181,6 +181,11 @@ import HttpClientOauth2ClientCredentialsGrantType from "./http-client-oauth2-cli
 import HttpClientOauth2PasswordGrantType from "./http-client-oauth2-password-grant-type/content.jsx";
 import HttpClientOauth2RefreshTokenGrantType from "./http-client-oauth2-refresh-token-grant-type/content.jsx";
 import HttpClientOauth2JwtBearerGrantType from "./http-client-oauth2-jwt-bearer-grant-type/content.jsx";
+import HttpTimeout from "./http-timeout/content.jsx";
+import HttpRetry from "./http-retry/content.jsx";
+import HttpCircuitBreaker from "./http-circuit-breaker/content.jsx";
+import HttpLoadBalancer from "./http-load-balancer/content.jsx";
+import HttpFailover from "./http-failover/content.jsx";
 import HttpDefaultResource from "./http-default-resource/content.jsx";
 import HttpServiceRedirects from "./http-service-redirects/content.jsx";
 import HttpCors from "./http-cors/content.jsx";
@@ -249,11 +254,6 @@ import WebsocketClientOauth2PasswordGrantType from "./websocket-client-oauth2-pa
 import WebsocketClientOauth2RefreshTokenGrantType from "./websocket-client-oauth2-refresh-token-grant-type/content.jsx";
 import WebsocketClientOauth2JwtBearerGrantType from "./websocket-client-oauth2-jwt-bearer-grant-type/content.jsx";
 import WebsubWebhookSample from "./websub-webhook-sample/content.jsx";
-import HttpTimeout from "./http-timeout/content.jsx";
-import HttpRetry from "./http-retry/content.jsx";
-import HttpCircuitBreaker from "./http-circuit-breaker/content.jsx";
-import HttpLoadBalancer from "./http-load-balancer/content.jsx";
-import HttpFailover from "./http-failover/content.jsx";
 import DynamicListener from "./dynamic-listener/content.jsx";
 import StopHandler from "./stop-handler/content.jsx";
 import GrpcServiceUnary from "./grpc-service-unary/content.jsx";
@@ -556,7 +556,7 @@ const BBEs = {
   HttpHeaderParam,
   HttpSendResponse,
   HttpSendDifferentStatusCodes,
-  HttpClientEndpoint,
+  HttpClientSendRequestReceiveResponse,
   HttpClientDataBinding,
   HttpServiceSslTls,
   HttpServiceMutualSsl,
@@ -573,6 +573,11 @@ const BBEs = {
   HttpClientOauth2PasswordGrantType,
   HttpClientOauth2RefreshTokenGrantType,
   HttpClientOauth2JwtBearerGrantType,
+  HttpTimeout,
+  HttpRetry,
+  HttpCircuitBreaker,
+  HttpLoadBalancer,
+  HttpFailover,
   HttpDefaultResource,
   HttpServiceRedirects,
   HttpCors,
@@ -641,11 +646,6 @@ const BBEs = {
   WebsocketClientOauth2RefreshTokenGrantType,
   WebsocketClientOauth2JwtBearerGrantType,
   WebsubWebhookSample,
-  HttpTimeout,
-  HttpRetry,
-  HttpCircuitBreaker,
-  HttpLoadBalancer,
-  HttpFailover,
   DynamicListener,
   StopHandler,
   GrpcServiceUnary,

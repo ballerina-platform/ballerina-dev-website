@@ -30,8 +30,7 @@ table<Album> key(title) albums = table [
 // The \`service path\` can be represented by both identifiers and string literals. E.g., \`/music\\-info\`, \`"/music-info"\`.
 service /info on new http:Listener(9090) {
 
-    // The \`resource accessor\` (\`get\`) confines the resource to the specified HTTP methods.
-    // In this instance, only \`GET\` requests are allowed.
+    // The \`resource accessor\` (\`get\`) confines the resource to the specified HTTP methods. In this instance, only \`GET\` requests are allowed.
     // The \`resource path\` associates the relative path to the service object's path. E.g., \`albums\`.
     // The \`.\` represents the current resource that is \`/\`.
     resource function get albums() returns Album[] {
@@ -73,17 +72,6 @@ export default function HttpServicePathAndResourcePath() {
         <code>accessor-name</code>, which is an HTTP verb as <code>post</code>{" "}
         and <code>get</code> to constrain your resource function in a RESTful
         manner.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#222-service-base-path">
-          specification
-        </a>
       </p>
 
       <Row
@@ -300,6 +288,29 @@ export default function HttpServicePathAndResourcePath() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#222-service-base-path">
+              <code>Service path</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

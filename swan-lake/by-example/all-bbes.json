@@ -1451,7 +1451,7 @@
     "samples": [
       {
         "name": "Send request/Receive response",
-        "url": "http-client-endpoint",
+        "url": "http-client-send-request-receive-response",
         "verifyBuild": false,
         "verifyOutput": false,
         "isLearnByExample": false
@@ -1592,6 +1592,53 @@
       {
         "name": "OAuth2 JWT bearer grant type",
         "url": "http-client-oauth2-jwt-bearer-grant-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "HTTP client resiliency",
+    "column": 0,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Timeout",
+        "url": "http-timeout",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Retry",
+        "url": "http-retry",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Circuit breaker",
+        "url": "http-circuit-breaker",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Load balancer",
+        "url": "http-load-balancer",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Failover",
+        "url": "http-failover",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2222,53 +2269,6 @@
       {
         "name": "WebSub subscriber service",
         "url": "websub-webhook-sample",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "HTTP client resiliency",
-    "column": 2,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Timeout",
-        "url": "http-timeout",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Retry",
-        "url": "http-retry",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Circuit breaker",
-        "url": "http-circuit-breaker",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Load balancer",
-        "url": "http-load-balancer",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Failover",
-        "url": "http-failover",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,

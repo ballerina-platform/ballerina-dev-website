@@ -20,7 +20,6 @@ service / on new http:Listener(9090) {
     // an array of strings. The resource can only consume/accept \`text/plain\` media type. Therefore,
     // the \`Content-Type\` header of the request must be \`text/plain\` types. The resource can produce
     // \`application/xml\` payloads. Therefore, you need to set the \`Accept\` header accordingly.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/HttpResourceConfig.
     @http:ResourceConfig {
         consumes: ["text/plain"],
         produces: ["application/xml"]
@@ -66,18 +65,6 @@ export default function HttpRestrictByMediaType() {
         <code>consumes</code> and <code>produces</code> annotation attributes of
         the <code>ResourceConfig</code> annotation, which is used with
         resources.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#42-resource-configuration">
-          specification
-        </a>
-        .
       </p>
 
       <Row
@@ -360,6 +347,29 @@ export default function HttpRestrictByMediaType() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/HttpResourceConfig">
+              <code>http:ResourceConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#42-resource-configuration">
+              <code>Resource configuration</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -378,13 +378,6 @@ export default function GraphqlContext() {
         value set to <code>admin</code>.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
-        </p>
-      </blockquote>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -514,6 +507,13 @@ export default function GraphqlContext() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 

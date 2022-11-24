@@ -19,7 +19,6 @@ service / on new http:Listener(9090) {
 
     resource function post receiver(http:Request request) returns string|error {
         // Retrieve the byte stream.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getByteStream.
         stream<byte[], io:Error?> streamer = check request.getByteStream();
 
         // Writes the incoming stream to a file using the \`io:fileWriteBlocksFromStream\` API
@@ -59,14 +58,6 @@ export default function HttpServiceFileUpload() {
         Ballerina supports HTTP input and output streaming capability based on
         the Ballerina <code>stream</code> type. The example depicts a file
         upload through streaming.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -224,6 +215,19 @@ export default function HttpServiceFileUpload() {
         </a>
         .
       </p>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Request#getByteStream">
+              <code>getByteStream()</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

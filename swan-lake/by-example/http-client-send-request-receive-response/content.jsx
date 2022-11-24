@@ -36,7 +36,7 @@ public function main() returns error? {
 `,
 ];
 
-export default function HttpClientEndpoint() {
+export default function HttpClientSendRequestReceiveResponse() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -60,17 +60,9 @@ export default function HttpClientEndpoint() {
       <h1>HTTP client - Send request/Receive response</h1>
 
       <p>
-        The HTTP Client Connector can be used to connect to and interact with an
-        HTTP server.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#24-client">specification</a>.
+        The HTTP client can be used to connect to and interact with an HTTP
+        server. The client is instantiated with URL and uses resource function
+        to make the network calls.
       </p>
 
       <Row
@@ -84,7 +76,7 @@ export default function HttpClientEndpoint() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=505481660372866155c0e7551eb16518&file=http_client_endpoint.bal",
+                "https://play.ballerina.io/?gist=b86ef9c23b0b630e182469c1e855b28c&file=http_client_send_request_receive_response.bal",
                 "_blank"
               );
             }}
@@ -108,7 +100,7 @@ export default function HttpClientEndpoint() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-client-endpoint",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-client-send-request-receive-response",
                 "_blank"
               );
             }}
@@ -250,7 +242,7 @@ export default function HttpClientEndpoint() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run http_client_endpoint.bal`}</span>
+              <span>{`\$ bal run http_client_send_request_receive_response.bal`}</span>
               <span>{`GET request:[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
               <span>{`
 `}</span>
@@ -259,6 +251,29 @@ export default function HttpClientEndpoint() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#24-client">
+              <code>Client</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

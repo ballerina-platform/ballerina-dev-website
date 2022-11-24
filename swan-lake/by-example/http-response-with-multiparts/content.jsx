@@ -35,7 +35,6 @@ service /multiparts on new http:Listener(9092) {
         // Creates an array to hold the child parts.
         mime:Entity[] childParts = [childPart1, childPart2];
         // Sets the child parts to the parent part.
-        // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#setBodyParts.
         parentPart.setBodyParts(childParts,
             contentType = mime:MULTIPART_MIXED);
         // Creates an array to hold the parent part and set it to the response.
@@ -54,7 +53,6 @@ service /multiparts on new http:Listener(9090) {
         http:Client httpClient = check new ("localhost:9092");
         http:Response returnResult = check httpClient->/multiparts/encoder;
         // Extracts the body parts from the response.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#getBodyParts.
         mime:Entity[] parentParts = check returnResult.getBodyParts();
         //Loops through body parts.
         foreach var parentPart in parentParts {
@@ -86,7 +84,6 @@ function handleContent(mime:Entity bodyPart) {
     string baseType = getBaseType(bodyPart.getContentType());
     if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
         // Extracts XML data from the body part.
-        // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getXml.
         var payload = bodyPart.getXml();
         if (payload is xml) {
              log:printInfo("XML data: " + payload.toString());
@@ -95,7 +92,6 @@ function handleContent(mime:Entity bodyPart) {
         }
     } else if (mime:APPLICATION_JSON == baseType) {
         // Extracts JSON data from the body part.
-        // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getJson.
         var payload = bodyPart.getJson();
         if (payload is json) {
             log:printInfo("JSON data: " + payload.toJsonString());
@@ -104,7 +100,6 @@ function handleContent(mime:Entity bodyPart) {
         }
     } else if (mime:TEXT_PLAIN == baseType) {
         // Extracts text data from the body part.
-        // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getText.
         var payload = bodyPart.getText();
         if (payload is string) {
             log:printInfo("Text data: " + payload);
@@ -113,7 +108,6 @@ function handleContent(mime:Entity bodyPart) {
         }
     } else if (mime:APPLICATION_PDF == baseType) {
         // Extracts the byte stream from the body part and saves it as a file.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#getByteStream.
         var payload = bodyPart.getByteStream();
         if (payload is stream<byte[], io:Error?>) {
             //Writes the incoming stream to a file using the \`io:fileWriteBlocksFromStream\` API by providing the file location to which the content should be written.
@@ -180,14 +174,6 @@ export default function HttpResponseWithMultiparts() {
         an HTTP inbound response, you get an array of the parts of the body (an
         array of entities). If the received parts contain nested parts, you can
         loop through the parent parts and get the child parts.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/mime/latest/">
-          <code>mime</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -445,6 +431,29 @@ export default function HttpResponseWithMultiparts() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#setBodyParts">
+              <code>setBodyParts()</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/mime/#3-supported-multipart-types">
+              <code>Supported-multipart-types</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

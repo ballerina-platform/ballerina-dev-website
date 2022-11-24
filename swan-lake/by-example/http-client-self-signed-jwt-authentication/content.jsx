@@ -20,7 +20,6 @@ public function main() returns error? {
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`http:JwtIssuerConfig\` for the \`auth\` configuration of the
     // client. A self-signed JWT is issued before the request is sent.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig.
     http:Client securedEP = check new("https://localhost:9090",
         auth = {
             username: "ballerina",
@@ -76,25 +75,6 @@ export default function HttpClientSelfSignedJwtAuthentication() {
         <code>http:JwtIssuerConfig</code> to the <code>auth</code> configuration
         of the client. A self-signed JWT is issued before the request is sent.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          <code>oauth2</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#9127-client---self-signed-jwt">
-          <code>http</code> specification
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -255,6 +235,39 @@ export default function HttpClientSelfSignedJwtAuthentication() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig">
+              <code>http:JwtIssuerConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
+              <code>jwt</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#9127-client---self-signed-jwt">
+              <code>Client self signed JWT authentication</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -18,7 +18,6 @@ const codeSnippetData = [
 // To secure a listener using HTTPS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
 // The \`http:ListenerSecureSocket\` record provides the SSL-related listener configurations of the listener.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket.
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -66,25 +65,6 @@ export default function HttpServiceSslTls() {
         client. Provide the <code>http:ListenerSecureSocket</code>{" "}
         configurations to the server to expose an HTTPS connection.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#921-listener---ssltls">
-          <code>http</code> specification
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -307,6 +287,29 @@ export default function HttpServiceSslTls() {
           .
         </p>
       </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket">
+              <code>http:ListenerSecureSocket</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#921-listener---ssltls">
+              <code>Listener SSL/TLS</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -26,7 +26,6 @@ service / on new http:Listener(9090) {
     resource function get params/[string foo](http:Request req) returns Params {
 
         // Gets the \`MatrixParams\`.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams.
         map<any> pathMParams = req.getMatrixParams("/params");
         var a = <string>pathMParams["a"];
         var b = <string>pathMParams["b"];
@@ -72,14 +71,6 @@ export default function HttpMatrixParam() {
       <p>
         Ballerina supports extracting <code>MatrixParam</code> values using{" "}
         <code>http:Request</code> support method.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -296,6 +287,19 @@ export default function HttpMatrixParam() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams">
+              <code>getMatrixParams()</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

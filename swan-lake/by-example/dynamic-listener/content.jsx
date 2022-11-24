@@ -300,7 +300,10 @@ export default function DynamicListener() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Failover" href="/learn/by-example/http-failover">
+          <Link
+            title="WebSub subscriber service"
+            href="/learn/by-example/websub-webhook-sample"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -326,7 +329,7 @@ export default function DynamicListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Failover
+                  WebSub subscriber service
                 </span>
               </div>
             </div>

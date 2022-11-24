@@ -19,7 +19,6 @@ public function main() returns error? {
     // Defines the HTTP client to call the OAuth2 secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`http:OAuth2PasswordGrantConfig\` to the \`auth\` configuration of the client.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2PasswordGrantConfig.
     http:Client securedEP = check new("https://localhost:9090",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
@@ -83,21 +82,6 @@ export default function HttpClientOauth2PasswordGrantType() {
         <code>http:OAuth2PasswordGrantConfig</code> to the <code>auth</code>{" "}
         configuration of the client.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          <code>oauth2</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -255,6 +239,29 @@ export default function HttpClientOauth2PasswordGrantType() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/OAuth2PasswordGrantConfig">
+              <code>http:OAuth2PasswordGrantConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+              <code>oauth2</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

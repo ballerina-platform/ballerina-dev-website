@@ -73,23 +73,11 @@ export default function HttpSendDifferentStatusCodes() {
       <h1>REST service - Send different status codes</h1>
 
       <p>
-        The resource method can return <code>StatusCodeResponse</code> records
-        that contains response headers and payload. Ballerina provides build in
+        The resource method can return <code>StatusCodeResponse</code> record
+        that contains response headers and payload. Ballerina provides built in
         records for each HTTP status codes. In addition to that, record
         constants are also available in any modification is not needed for the
-        default data.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#2351-status-code-response">
-          specification
-        </a>
-        .
+        default values.
       </p>
 
       <Row
@@ -320,6 +308,29 @@ export default function HttpSendDifferentStatusCodes() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#2351-status-code-response">
+              <code>Status code response</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
@@ -360,7 +371,7 @@ export default function HttpSendDifferentStatusCodes() {
         <Col sm={6}>
           <Link
             title="Send request/Receive response"
-            href="/learn/by-example/http-client-endpoint"
+            href="/learn/by-example/http-client-send-request-receive-response"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

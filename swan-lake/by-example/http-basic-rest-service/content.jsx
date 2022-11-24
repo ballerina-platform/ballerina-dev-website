@@ -67,18 +67,11 @@ export default function HttpBasicRestService() {
 
       <p>
         Ballerina supports writing RESTful with its first class service and
-        resource concepts. The <code>accessor-name</code>, service/resource
-        name, data binding, path and query parameter support helps to write
-        meaningful APIs. The sample depicts the way of writing <code>GET</code>{" "}
-        and <code>POST</code> resources
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
+        resource concepts. The <code>accessor-name</code>,{" "}
+        <code>service/resource name</code>, <code>data binding</code>,{" "}
+        <code>path</code> and <code>query</code> parameter support helps to
+        write meaningful APIs. The sample depicts the way of writing{" "}
+        <code>GET</code> and <code>POST</code> resources.
       </p>
 
       <Row
@@ -299,6 +292,29 @@ export default function HttpBasicRestService() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#23-resource">
+              <code>Resource</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

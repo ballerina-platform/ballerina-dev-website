@@ -100,18 +100,6 @@ export default function HttpRequestInterceptors() {
         target service.
       </p>
 
-      <p>
-        For more information, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#811-request-interceptor">
-          specification
-        </a>
-        .
-      </p>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -342,6 +330,29 @@ export default function HttpRequestInterceptors() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#811-request-interceptor">
+              <code>Request interceptor</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -22,7 +22,6 @@ service / on new http:Listener(9090, httpVersion = http:HTTP_1_1) {
 
     resource function 'default http11service(http:Request clientRequest) returns string|error {
         // Forward the \`clientRequest\` to the \`http2\` service.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request.
         string clientResponse = check http2serviceClientEP->forward("/http2service", clientRequest);
 
         // Send the response back to the caller.
@@ -69,14 +68,6 @@ export default function Http11To20ProtocolSwitch() {
       <p>
         The HTTP service receives a message over the HTTP/1.1 protocol and
         forwards it to another service over the HTTP/2.0 protocol.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -291,6 +282,29 @@ export default function Http11To20ProtocolSwitch() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#10-protocol-upgrade">
+              <code>Protocol upgrade</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

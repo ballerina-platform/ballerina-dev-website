@@ -25,7 +25,6 @@ service / on new http:Listener(9090) {
         // resource received to the backend. When forwarding, the request is made using the same HTTP method that was
         // used to invoke the passthrough resource. The \`forward()\` function returns the response from the backend if
         // there are no errors.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Client#forward.
         json payload = check clientEP->forward("/get", req);
         return payload;
     }
@@ -61,14 +60,6 @@ export default function HttpPassthrough() {
       <p>
         The passthrough sample exhibits the process of an HTTP client connector.
         The 'Echo Service' is used as a sample backend.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -285,6 +276,29 @@ export default function HttpPassthrough() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/clients/Client#forward">
+              <code>forward()</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#2424-forwardexecute-methods">
+              <code>forward method</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

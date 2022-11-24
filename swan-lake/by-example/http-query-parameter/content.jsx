@@ -27,8 +27,7 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The \`year\` resource method argument is considered as the query parameter which is extracted from the
-    // request URI.
+    // The \`year\` resource method argument is considered as the query parameter which is extracted from the request URI.
     resource function get albums(int year) returns Album[] {
         table<Album> selected = from Album album in albums
                      where album.year == year select album;
@@ -67,22 +66,10 @@ export default function HttpQueryParameter() {
         The <code>http</code> module provides first class support for reading
         URL query parameters as resource method argument. The supported types
         are <code>string</code>, <code>int</code>, <code>float</code>,{" "}
-        <code>boolean</code>, <code>decimal</code>, and the array types of the
-        aforementioned types. The query param type can be nilable (e.g.,
-        (string? bar)). The request also provide certain method to retrieve
-        query param at their convenience.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#2343-query-parameter">
-          specification
-        </a>
-        .
+        <code>boolean</code>, <code>decimal</code>, and the{" "}
+        <code>array types</code> of the aforementioned types. The query param
+        type can be nilable (e.g., (<code>string? bar</code>)). The request also
+        provide certain method to retrieve query param at their convenience.
       </p>
 
       <Row
@@ -294,11 +281,34 @@ export default function HttpQueryParameter() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ curl "http://localhost:9090/albums?year=1958"`}</span>
-              <span>{`[{"title":"Blue Train", "artist":"John Coltrane", "year":1958}]%`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane", "year":1958}]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#2343-query-parameter">
+              <code>Query parameter</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

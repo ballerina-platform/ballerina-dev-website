@@ -15,7 +15,6 @@ const codeSnippetData = [
   `import ballerina/http;
 
 // The service-level CORS config applies globally to each \`resource\`.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig.
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["http://www.m3.com", "http://www.hello.com"],
@@ -28,7 +27,6 @@ const codeSnippetData = [
 service /crossOriginService on new http:Listener(9092) {
 
     // The resource-level CORS config overrides the service-level CORS headers.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig.
     @http:ResourceConfig {
         cors: {
             allowOrigins: ["http://www.bbc.com"],
@@ -72,21 +70,13 @@ export default function HttpCors() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - CORS</h1>
+      <h1>HTTP service - CORS (Cross-Origin Resource Sharing)</h1>
 
       <p>
         The CORS headers can be applied in both the service-level and the
         resource-level. Service-level CORS headers apply to all the resources
         unless there are headers configured at the resource-level. Ballerina
         CORS supports both simple and pre-flight requests.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -339,6 +329,19 @@ export default function HttpCors() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig">
+              <code>http:CorsConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

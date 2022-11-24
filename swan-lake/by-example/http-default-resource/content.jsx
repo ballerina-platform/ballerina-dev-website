@@ -58,14 +58,6 @@ export default function HttpDefaultResource() {
         It can be used to handle unmatched requests.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
-      </p>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -281,12 +273,32 @@ export default function HttpDefaultResource() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#233-path-parameter">
+              <code>Default resource</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="OAuth2 JWT bearer grant type"
-            href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type"
-          >
+          <Link title="Failover" href="/learn/by-example/http-failover">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -312,7 +324,7 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 JWT bearer grant type
+                  Failover
                 </span>
               </div>
             </div>

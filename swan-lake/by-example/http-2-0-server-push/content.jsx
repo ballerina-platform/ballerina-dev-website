@@ -22,7 +22,6 @@ service /http2service on http2ServiceEP {
     resource function 'default .(http:Caller caller) returns error? {
 
         // Send a push promise.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Caller#promise.
         http:PushPromise promise1 = new (path = "/resource1", method = "GET");
         check caller->promise(promise1);
 
@@ -48,7 +47,6 @@ service /http2service on http2ServiceEP {
         push1.setPayload(msg);
 
         // Push promised \`resource1\`.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse.
         check caller->pushPromisedResponse(promise1, push1);
 
         // Construct promised \`resource2\`.
@@ -151,20 +149,12 @@ export default function Http20ServerPush() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP 2.0 server push</h1>
+      <h1>HTTP service - Server push</h1>
 
       <p>
         HTTP/2 server push messages can be sent and received using the Ballerina{" "}
         <code>http</code> library. HTTP/2 Server Push messages allow the server
         to send resources to the client before the client requests for it.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -469,6 +459,39 @@ export default function Http20ServerPush() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/clients/Caller#promise">
+              <code>promise()</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse">
+              <code>pushPromisedResponse()</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#1011-push-promise-and-promise-response">
+              <code>Server push</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

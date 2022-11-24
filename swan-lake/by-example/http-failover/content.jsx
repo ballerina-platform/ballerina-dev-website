@@ -69,18 +69,6 @@ export default function HttpFailover() {
         the client will get the immediate response for subsequent calls.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#2418-failover">
-          specification
-        </a>
-        .
-      </p>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -236,6 +224,29 @@ export default function HttpFailover() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#2418-failover">
+              <code>Failover</code> - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
@@ -275,8 +286,8 @@ export default function HttpFailover() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Dynamic listener"
-            href="/learn/by-example/dynamic-listener"
+            title="Default resource"
+            href="/learn/by-example/http-default-resource"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -286,7 +297,7 @@ export default function HttpFailover() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dynamic listener
+                  Default resource
                 </span>
               </div>
               <svg

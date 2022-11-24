@@ -612,7 +612,7 @@ sublinks:
         sublinks:
           - title: Send request/Receive response
             id: 1
-            url: http-client-endpoint
+            url: http-client-send-request-receive-response
           - title: Payload data binding
             id: 2
             url: http-client-data-binding
@@ -667,8 +667,26 @@ sublinks:
           - title: OAuth2 JWT bearer grant type
             id: 9
             url: http-client-oauth2-jwt-bearer-grant-type
-      - title: HTTP service advanced
+      - title: HTTP client resiliency
         id: 5
+        sublinks:
+          - title: Timeout
+            id: 1
+            url: http-timeout
+          - title: Retry
+            id: 2
+            url: http-retry
+          - title: Circuit breaker
+            id: 3
+            url: http-circuit-breaker
+          - title: Load balancer
+            id: 4
+            url: http-load-balancer
+          - title: Failover
+            id: 5
+            url: http-failover
+      - title: HTTP service advanced
+        id: 6
         sublinks:
           - title: Default resource
             id: 1
@@ -716,7 +734,7 @@ sublinks:
             id: 15
             url: http-passthrough
       - title: HTTP client advanced
-        id: 6
+        id: 7
         sublinks:
           - title: Redirects
             id: 1
@@ -734,7 +752,7 @@ sublinks:
             id: 5
             url: http-request-with-multiparts
       - title: HTTP service interceptors
-        id: 7
+        id: 8
         sublinks:
           - title: Request Interceptors
             id: 1
@@ -749,7 +767,7 @@ sublinks:
             id: 4
             url: http-interceptor-error-handling
       - title: HTTP2
-        id: 8
+        id: 9
         sublinks:
           - title: HTTP 1.1 to 2.0 protocol switch
             id: 1
@@ -758,7 +776,7 @@ sublinks:
             id: 2
             url: http-2-0-server-push
       - title: GraphQL service
-        id: 9
+        id: 10
         sublinks:
           - title: Hello world
             id: 1
@@ -809,13 +827,13 @@ sublinks:
             id: 16
             url: graphql-hierarchical-resource-paths
       - title: GraphQL client
-        id: 10
+        id: 11
         sublinks:
           - title: Query GraphQL endpoint
             id: 1
             url: graphql-client-query-endpoint
       - title: GraphQL service security
-        id: 11
+        id: 12
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -836,13 +854,13 @@ sublinks:
             id: 6
             url: graphql-service-oauth2
       - title: WebSocket service
-        id: 12
+        id: 13
         sublinks:
           - title: Send/Receive message
             id: 1
             url: websocket-basic-sample
       - title: WebSocket client
-        id: 13
+        id: 14
         sublinks:
           - title: Send/Receive message
             id: 1
@@ -851,7 +869,7 @@ sublinks:
             id: 2
             url: websocket-retry-client
       - title: WebSocket service security
-        id: 14
+        id: 15
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -872,7 +890,7 @@ sublinks:
             id: 6
             url: websocket-service-oauth2
       - title: WebSocket client security
-        id: 15
+        id: 16
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -902,29 +920,11 @@ sublinks:
             id: 9
             url: websocket-client-oauth2-jwt-bearer-grant-type
       - title: WebSub
-        id: 16
+        id: 17
         sublinks:
           - title: WebSub subscriber service
             id: 1
             url: websub-webhook-sample
-      - title: HTTP client resiliency
-        id: 17
-        sublinks:
-          - title: Timeout
-            id: 1
-            url: http-timeout
-          - title: Retry
-            id: 2
-            url: http-retry
-          - title: Circuit breaker
-            id: 3
-            url: http-circuit-breaker
-          - title: Load balancer
-            id: 4
-            url: http-load-balancer
-          - title: Failover
-            id: 5
-            url: http-failover
       - title: Listeners and StopHandlers
         id: 18
         sublinks:

@@ -67,7 +67,7 @@ export default function Identifiers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a1f0835791ae643a59369266406cbfd1&file=identifiers.bal",
+                "https://play.ballerina.io/?gist=6f53b71ffb0af16b98409a6003c610d0&file=identifiers.bal",
                 "_blank"
               );
             }}

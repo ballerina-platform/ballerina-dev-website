@@ -14,6 +14,11 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -56,13 +61,16 @@ listener http:Listener securedEP = new(9090,
         }
     ]
 }
-service /foo on securedEP {
+service / on securedEP {
 
     // It is optional to override the authentication and authorization
     // configurations at the resource levels. Otherwise, the service auth
     // configurations will be applied automatically to the resources as well.
-    resource function get bar() returns string {
-        return "Hello, World!";
+    resource function get albums() returns Album[] {
+        return [
+            {title: "Blue Train", artist: "John Coltrane"},
+            {title: "Jeru", artist: "Gerry Mulligan"}
+        ];
     }
 }
 `,
@@ -92,9 +100,9 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
       <h1>HTTP service - Basic authentication LDAP user store</h1>
 
       <p>
-        An HTTP service/resource can be secured with Basic Auth and by enforcing
-        authorization optionally. Then, it validates the Basic Auth token sent
-        in the <code>Authorization</code> header against the provided
+        An HTTP service/resource can be secured with basic authentication and by
+        enforcing authorization optionally. Then, it validates the Basic Auth
+        token sent in the <code>Authorization</code> header against the provided
         configurations. This reads data from the configured LDAP. This stores
         usernames, passwords for authentication, and scopes for authorization.
         Ballerina uses the concept of scopes for authorization. A resource
@@ -189,7 +197,7 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the cURL command below.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -254,8 +262,7 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> Alternatively, you can invoke the above service
-          via the{" "}
+          <strong>Info:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-basic-authentication">
             Basic authentication client
           </a>

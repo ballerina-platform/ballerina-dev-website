@@ -14,6 +14,11 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 // An HTTP listener can be configured to accept new connections that are
 // secured via mutual SSL.
 // The \`http:ListenerSecureSocket\` record provides the SSL-related listener configurations.
@@ -31,9 +36,12 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-service /foo on securedEP {
-    resource function get bar() returns string {
-        return "Hello, World!";
+service / on securedEP {
+    resource function get albums() returns Album[] {
+        return [
+            {title: "Blue Train", artist: "John Coltrane"},
+            {title: "Jeru", artist: "Gerry Mulligan"}
+        ];
     }
 }
 `,
@@ -276,7 +284,7 @@ export default function HttpServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl https://localhost:9090/foo/bar --cert /path/to/client-public.crt`}</span>
+              <span>{`\$ curl https://localhost:9090/albums --cert /path/to/client-public.crt`}</span>
               <span>{`    --key /path/to/client-private.key --cacert /path/to/server-public.crt`}</span>
             </code>
           </pre>

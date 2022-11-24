@@ -15,6 +15,11 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 public function main() returns error? {
     // Defines the HTTP client to call the OAuth2 secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
@@ -36,8 +41,8 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    string response = check securedEP->/foo/bar;
-    io:println(response);
+    Album[] payload = check securedEP->/albums;
+    io:println(payload);
 }
 `,
 ];
@@ -224,7 +229,7 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_client_oauth2_refresh_token_grant_type.bal`}</span>
-              <span>{`Hello, World!`}</span>
+              <span>{`[{"title":"Blue Train","artist":"John Coltrane"},{"title":"Jeru","artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>

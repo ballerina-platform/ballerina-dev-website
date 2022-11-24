@@ -14,6 +14,11 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -43,13 +48,16 @@ listener http:Listener securedEP = new(9090,
         }
     ]
 }
-service /foo on securedEP {
+service / on securedEP {
 
     // It is optional to override the authentication and authorization
     // configurations at the resource levels. Otherwise, the service auth
     // configurations will be applied automatically to the resources as well.
-    resource function get bar() returns string {
-        return "Hello, World!";
+    resource function get albums() returns Album[] {
+        return [
+            {title: "Blue Train", artist: "John Coltrane"},
+            {title: "Jeru", artist: "Gerry Mulligan"}
+        ];
     }
 }
 `,
@@ -176,7 +184,7 @@ export default function HttpServiceJwtAuthentication() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the cURL command below.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -241,8 +249,7 @@ export default function HttpServiceJwtAuthentication() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> Alternatively, you can invoke the above service
-          via the{" "}
+          <strong>Info:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-self-signed-jwt-authentication">
             self-signed JWT authentication client
           </a>

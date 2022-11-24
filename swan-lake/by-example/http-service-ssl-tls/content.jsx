@@ -14,6 +14,11 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 // An HTTP listener can be configured to communicate through HTTPS as well.
 // To secure a listener using HTTPS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
@@ -27,9 +32,12 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-service /foo on securedEP {
-    resource function get bar() returns string {
-        return "Hello, World!";
+service / on securedEP {
+    resource function get albums() returns Album[] {
+        return [
+            {title: "Blue Train", artist: "John Coltrane"},
+            {title: "Jeru", artist: "Gerry Mulligan"}
+        ];
     }
 }
 `,
@@ -271,7 +279,7 @@ export default function HttpServiceSslTls() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl https://localhost:9090/foo/bar --cacert /path/to/server-public.crt`}</span>
+              <span>{`\$ curl https://localhost:9090/albums --cacert /path/to/server-public.crt`}</span>
             </code>
           </pre>
         </Col>

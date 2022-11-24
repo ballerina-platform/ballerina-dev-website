@@ -15,6 +15,11 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 public function main() returns error? {
     // Defines the HTTP client to call the Basic Auth secured APIs.
     // The client is enriched with the \`Authorization: Basic <token>\` header by
@@ -28,8 +33,8 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    string response = check securedEP->/foo/bar;
-    io:println(response);
+    Album[] payload = check securedEP->/albums;
+    io:println(payload);
 }
 `,
 ];
@@ -58,8 +63,8 @@ export default function HttpClientBasicAuthentication() {
       <h1>HTTP client - Basic authentication</h1>
 
       <p>
-        A client, which is secured with Basic Auth can be used to connect to a
-        secured service. The client is enriched with the{" "}
+        A client, which is secured with basic authentication can be used to
+        connect to a secured service. The client is enriched with the{" "}
         <code>Authorization: Basic &lt;token&gt;</code> header by passing the{" "}
         <code>http:CredentialsConfig</code> for the <code>auth</code>{" "}
         configuration of the client.
@@ -219,7 +224,7 @@ export default function HttpClientBasicAuthentication() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_client_basic_auth.bal`}</span>
-              <span>{`Hello, World!`}</span>
+              <span>{`[{"title":"Blue Train","artist":"John Coltrane"},{"title":"Jeru","artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>

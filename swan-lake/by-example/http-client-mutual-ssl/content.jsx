@@ -15,6 +15,11 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 public function main() returns error? {
     // An HTTP client can be configured to initiate new connections that are secured via mutual SSL.
     // The \`http:ClientSecureSocket\` record provides the SSL-related configurations.
@@ -27,8 +32,8 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    string response = check securedEP->/foo/bar;
-    io:println(response);
+    Album[] payload = check securedEP->/albums;
+    io:println(payload);
 }
 `,
 ];
@@ -217,7 +222,7 @@ export default function HttpClientMutualSsl() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_client_mutual_ssl.bal`}</span>
-              <span>{`Hello, World!`}</span>
+              <span>{`[{"title":"Blue Train","artist":"John Coltrane"},{"title":"Jeru","artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>

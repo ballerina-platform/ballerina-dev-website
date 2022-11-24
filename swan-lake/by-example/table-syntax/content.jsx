@@ -120,7 +120,7 @@ export default function TableSyntax() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=37eddda5a654e4ebe368caad819600d8&file=table_syntax.bal",
+                "https://play.ballerina.io/?gist=6682b9880ae0036b02cbfb799655e9cf&file=table_syntax.bal",
                 "_blank"
               );
             }}

@@ -70,7 +70,7 @@ To complete this part of the guide, you need:
 ### Configure GraalVM
 
 1. Install GraalVM if you have not done it already.
-    - Install GraalVM on Linux, macOS, and Windows (via Git Bash, Cygwin, or WSL) with one line
+    - Install GraalVM on Linux, macOS, and Windows (via Git Bash, Cygwin, or WSL) using the following command.
       ```
       $ bash <(curl -sL https://get.graalvm.org/jdk)  graalvm-ce-java11-22.3.0
       ```

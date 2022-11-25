@@ -20,7 +20,7 @@ type Album readonly & record {|
 |};
 
 table<Album> key(title) albums = table [
-    {title: "Blue Train", artist: "John Coltrane" },
+    {title: "Blue Train", artist: "John Coltrane"},
     {title: "Jeru", artist: "Gerry Mulligan"}
 ];
 
@@ -281,7 +281,7 @@ export default function HttpPathParam() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ curl "http://localhost:9090/albums/Jeru"`}</span>
-              <span>{`{"title":"Jeru", "artist":"Gerry Mulligan"`}</span>
+              <span>{`{"title":"Jeru", "artist":"Gerry Mulligan"}`}</span>
             </code>
           </pre>
         </Col>

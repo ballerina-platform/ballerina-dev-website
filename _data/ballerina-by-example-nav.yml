@@ -586,9 +586,9 @@ sublinks:
           - title: Basic REST service
             id: 1
             url: http-basic-rest-service
-          - title: Service path and resource path
+          - title: Service path and resource name
             id: 2
-            url: http-service-path-and-resource-path
+            url: http-service-path-and-resource-name
           - title: Payload data binding
             id: 3
             url: http-service-data-binding

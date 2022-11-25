@@ -20,18 +20,16 @@ type Album readonly & record {|
 |};
 
 table<Album> key(title) albums = table [
-    {title: "Blue Train", artist: "John Coltrane" },
+    {title: "Blue Train", artist: "John Coltrane"},
     {title: "Jeru", artist: "Gerry Mulligan"}
 ];
 
 service / on new http:Listener(9090) {
 
-    // Retrieves all the album as an array
     resource function get albums() returns Album[] {
         return albums.toArray();
     }
 
-    // Creates an album using the inbound payload
     resource function post albums(@http:Payload Album album) returns Album {
         albums.add(album);
         return album;
@@ -355,8 +353,8 @@ export default function HttpBasicRestService() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service path and resource path"
-            href="/learn/by-example/http-service-path-and-resource-path"
+            title="Service path and resource name"
+            href="/learn/by-example/http-service-path-and-resource-name"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -366,7 +364,7 @@ export default function HttpBasicRestService() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service path and resource path
+                  Service path and resource name
                 </span>
               </div>
               <svg

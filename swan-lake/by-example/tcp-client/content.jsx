@@ -24,7 +24,7 @@ public function main() returns error? {
     tcp:Client socketClient = check new ("localhost", 9090);
 
     // Send the desired content to the server.
-    check socketClient->writeBytes("Hello Ballerina Echo from client".toBytes());
+    check socketClient->writeBytes("Hello Ballerina".toBytes());
 
     // Read the response from the server.
     readonly & byte[] receivedData = check socketClient->readBytes();
@@ -149,6 +149,15 @@ export default function TcpClient() {
         </Col>
       </Row>
 
+      <p>Run the client by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> As a prerequisite to running the client, start a{" "}
+          <a href="/learn/by-example/tcp-listener/">tcp service</a>.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -204,9 +213,8 @@ export default function TcpClient() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a sample TCP service.`}</span>
               <span>{`\$ bal run tcp_client.bal`}</span>
-              <span>{`Received: Hello Ballerina Echo from client`}</span>
+              <span>{`Received: Hello Ballerina`}</span>
             </code>
           </pre>
         </Col>

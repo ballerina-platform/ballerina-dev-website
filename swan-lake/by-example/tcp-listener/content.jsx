@@ -229,7 +229,7 @@ export default function TcpListener() {
             <code className="d-flex flex-column">
               <span>{`\$ bal run tcp_listener.bal`}</span>
               <span>{`Client connected to echoServer: 48735`}</span>
-              <span>{`Echo: Hello Ballerina Echo from client`}</span>
+              <span>{`Echo: Hello Ballerina`}</span>
               <span>{`Client left`}</span>
             </code>
           </pre>

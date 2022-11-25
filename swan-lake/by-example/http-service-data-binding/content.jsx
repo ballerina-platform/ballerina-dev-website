@@ -306,8 +306,8 @@ export default function HttpServiceDataBinding() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service path and resource path"
-            href="/learn/by-example/http-service-path-and-resource-path"
+            title="Service path and resource name"
+            href="/learn/by-example/http-service-path-and-resource-name"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -334,7 +334,7 @@ export default function HttpServiceDataBinding() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service path and resource path
+                  Service path and resource name
                 </span>
               </div>
             </div>

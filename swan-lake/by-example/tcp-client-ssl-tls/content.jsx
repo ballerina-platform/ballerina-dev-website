@@ -151,11 +151,9 @@ export default function TcpClientSslTls() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
-            <a href="/learn/by-example/tcp-service-ssl-tls/">
-              sample service secured with SSL/TLS
-            </a>
-            .
+            Run the TCP service given in the{" "}
+            <a href="/learn/by-example/tcp-service-ssl-tls/">SSL/TLS</a>{" "}
+            example.
           </span>
         </li>
       </ul>

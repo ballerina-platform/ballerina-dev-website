@@ -15,11 +15,8 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/nats;
 
-// Initializes a NATS listener.
-listener nats:Listener subscription = new (nats:DEFAULT_URL);
-
 // Binds the consumer to listen to the messages published to the 'demo.bbe' subject.
-service "demo.bbe" on subscription {
+service "demo.bbe" on new nats:Listener(nats:DEFAULT_URL) {
     remote function onMessage(string message) returns error? {
         // Logs the incoming message.
         log:printInfo("Received message: " + message);
@@ -52,14 +49,10 @@ export default function NatsBasicSub() {
       <h1>NATS service - Consume message</h1>
 
       <p>
-        In this example, the NATS service is used to consume messages from a
-        subject. In order to execute this example, it is required that a NATS
-        server is up and running on its default host, port, and cluster. For
-        instructions on installing the NATS server, go to{" "}
-        <a href="https://docs.nats.io/nats-server/installation">
-          NATS Server Installation
-        </a>
-        .
+        NATS implements a publish-subscribe message distribution model. A
+        publisher sends a message to a subject and any active subscriber
+        listening to that subject can consume the message. In this example, the
+        NATS service is used to consume messages from a subject.
       </p>
 
       <Row
@@ -146,6 +139,11 @@ export default function NatsBasicSub() {
           )}
         </Col>
       </Row>
+
+      <p>
+        To run the sample, start an instance of the NATS server and execute the
+        following command.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

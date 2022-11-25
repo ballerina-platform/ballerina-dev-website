@@ -175,11 +175,9 @@ export default function WebsocketClientOauth2PasswordGrantType() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
-            <a href="/learn/by-example/websocket-service-oauth2/">
-              OAuth2 service
-            </a>
-            .
+            Run the WebSocket service given in the{" "}
+            <a href="/learn/by-example/websocket-service-oauth2/">OAuth2</a>{" "}
+            example.
           </span>
         </li>
       </ul>

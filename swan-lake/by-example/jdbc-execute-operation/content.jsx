@@ -114,11 +114,7 @@ export default function JdbcExecuteOperation() {
           H2 database driver JAR needs to be added to the{" "}
           <code>Ballerina.toml</code> file. This sample is written using H2
           2.0.6 and it is recommended to use an H2 JAR file of a version higher
-          than 2.0.2. For a sample configuration, see the{" "}
-          <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
-            <code>jdbc</code> module
-          </a>
-          .
+          than 2.0.2.
         </p>
       </blockquote>
 
@@ -207,11 +203,40 @@ export default function JdbcExecuteOperation() {
         </Col>
       </Row>
 
-      <p>
-        Create a Ballerina project. Copy the example to the project and add the
-        relevant database driver JAR details to the <code>Ballerina.toml</code>{" "}
-        file. Execute the command below to build and run the project.
-      </p>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Create a Ballerina project.</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Copy the example to the project along with util files.</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Add the relevant database driver JAR details to the{" "}
+            <code>Ballerina.toml</code> file. For a sample configuration, see
+            the{" "}
+            <a href="https://lib.ballerina.io/ballerinax/java.jdbc/latest/">
+              <code>jdbc</code> module
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Run the sample by executing the command below.</span>
+        </li>
+      </ul>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

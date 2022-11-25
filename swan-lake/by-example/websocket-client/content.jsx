@@ -147,6 +147,21 @@ export default function WebsocketClient() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the WebSocket service given in the{" "}
+            <a href="/learn/by-example/websocket-basic-sample/">
+              Send/Receive message
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
       <p>Run the client program by executing the command below.</p>
 
       <Row
@@ -229,16 +244,6 @@ export default function WebsocketClient() {
           <span>
             <a href="/spec/websocket/#4-client">
               <code>websocket:Client</code> - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md">
-              <code>websocket:Client</code> data binding - Specification
             </a>
           </span>
         </li>

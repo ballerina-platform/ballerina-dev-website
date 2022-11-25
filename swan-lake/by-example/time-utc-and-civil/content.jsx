@@ -91,7 +91,7 @@ export default function TimeUtcAndCivil() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=47cbef148d8907cf4c5056a48ef2811a&file=time_utc_and_civil.bal",
+                "https://play.ballerina.io/?gist=cd4d5615cb7d8fc7b4382794c89c09c6&file=time_utc_and_civil.bal",
                 "_blank"
               );
             }}

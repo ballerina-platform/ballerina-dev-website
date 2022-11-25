@@ -52,14 +52,10 @@ export default function NatsBasicPub() {
       <h1>NATS client - Publish message</h1>
 
       <p>
-        In this example, the NATS client is used to produce a message to a
-        subject. In order to execute this example, it is required that a NATS
-        server is up and running on its default host, port, and cluster. For
-        instructions on installing the NATS server, go to{" "}
-        <a href="https://docs.nats.io/nats-server/installation">
-          NATS Server Installation
-        </a>
-        .
+        NATS implements a publish-subscribe message distribution model. A
+        publisher sends a message to a subject and any active subscriber
+        listening to that subject can consume the message. In this example, the
+        NATS client is used to produce a message to a subject.
       </p>
 
       <Row
@@ -146,6 +142,11 @@ export default function NatsBasicPub() {
           )}
         </Col>
       </Row>
+
+      <p>
+        To run the sample, start an instance of the NATS server and execute the
+        following command.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

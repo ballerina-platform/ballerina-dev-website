@@ -169,11 +169,11 @@ export default function WebsocketClientSelfSignedJwtAuth() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
+            Run the WebSocket service given in the{" "}
             <a href="/learn/by-example/websocket-service-jwt-auth/">
-              JWT authentication service
-            </a>
-            .
+              JWT authentication
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

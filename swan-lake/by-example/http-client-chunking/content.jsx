@@ -149,14 +149,16 @@ export default function HttpClientChunking() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the following command.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a service which checks for Content-Length header.
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "8px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Start a service which checks for Content-Length header.</span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

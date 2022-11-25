@@ -92,7 +92,7 @@ export default function ReadonlyObjectsAndClasses() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ea9537f7b54b4008085bfb06ec317adc&file=readonly_objects_and_classes.bal",
+                "https://play.ballerina.io/?gist=03795133d66d8c17cac453f8681c0866&file=readonly_objects_and_classes.bal",
                 "_blank"
               );
             }}

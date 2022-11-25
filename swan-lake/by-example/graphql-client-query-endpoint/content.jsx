@@ -175,7 +175,7 @@ export default function GraphqlClientQueryEndpoint() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Execute the ballerina GraphQL server program given in{" "}
+            Run the GraphQL service given in the{" "}
             <a href="https://ballerina.io/learn/by-example/graphql-returning-record-values">
               Record as output object
             </a>{" "}

@@ -250,16 +250,6 @@ export default function WebsocketBasicSample() {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md">
-              <code>websocket</code> service data binding
-            </a>
-          </span>
-        </li>
-      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

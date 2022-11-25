@@ -15,9 +15,9 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/log;
 
-kafka:ConsumerConfiguration consumerConfigs = {
-    groupId: "log-id",
-    topics: "log-topic",
+listener kafka:Listener securedEp = check new ("localhost:9094", {
+    groupId: "order-log-group-id",
+    topics: "order-log-topic",
     // Provide the relevant secure socket configurations by using \`kafka:SecureSocket\`.
     secureSocket: {
         cert: "./resources/path/to/public.crt",
@@ -28,9 +28,9 @@ kafka:ConsumerConfiguration consumerConfigs = {
     },
     // Provide the type of the security protocol to use in the broker connection.
     securityProtocol: kafka:PROTOCOL_SSL
-};
+});
 
-service on new kafka:Listener("localhost:9094", consumerConfigs) {
+service on securedEp {
     remote function onConsumerRecord(string[] logs) returns error? {
         check from string log in logs
             do {
@@ -155,6 +155,23 @@ export default function KafkaServiceSsl() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Execute{" "}
+            <a href="/learn/by-example/kafka-client-producer-ssl">
+              Kafka client - Producer SSL/TLS
+            </a>{" "}
+            example to produce some messages to the topic.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -211,6 +228,7 @@ export default function KafkaServiceSsl() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_service_ssl.bal`}</span>
+              <span>{`time = 2022-11-25T15:18:24.061+05:30 level = INFO module = "" message = "Received log: new order for item 2311 was placed on 1669113239"`}</span>
             </code>
           </pre>
         </Col>
@@ -223,7 +241,7 @@ export default function KafkaServiceSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/SecureSocket">
-              <code>kafka:SecureSocket</code> - API documentation
+              <code>kafka:SecureSocket</code> record - API documentation
             </a>
           </span>
         </li>

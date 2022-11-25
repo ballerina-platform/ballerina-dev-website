@@ -15,10 +15,10 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/log;
 
-kafka:ConsumerConfiguration consumerConfigs = {
-    groupId: "log-group-id",
+listener kafka:Listener securedEp = check new ("localhost:9093", {
+    groupId: "order-log-group-id",
     // Subscribes to the topic \`test-kafka-topic\`.
-    topics: "log-topic",
+    topics: ["order-log-topic"],
     // Provide the relevant authentication configurations to authenticate the consumer
     // by the \`kafka:AuthenticationConfiguration\`.
     auth: {
@@ -29,9 +29,9 @@ kafka:ConsumerConfiguration consumerConfigs = {
         password: "alice@123"
     },
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
-};
+});
 
-service on new kafka:Listener("localhost:9093", consumerConfigs) {
+service on securedEp {
     remote function onConsumerRecord(string[] logs) returns error? {
         check from string log in logs
             do {
@@ -157,6 +157,23 @@ export default function KafkaServiceSasl() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Execute{" "}
+            <a href="/learn/by-example/kafka-client-producer-ssl">
+              Kafka client - Producer SSL/TLS
+            </a>{" "}
+            example to produce some messages to the topic.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -213,6 +230,7 @@ export default function KafkaServiceSasl() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_service_sasl.bal`}</span>
+              <span>{`time = 2022-11-25T15:10:12.566+05:30 level = INFO module = "" message = "Received log: new order for item 2311 was placed on 1669113239"`}</span>
             </code>
           </pre>
         </Col>
@@ -225,7 +243,8 @@ export default function KafkaServiceSasl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/AuthenticationConfiguration">
-              <code>kafka:AuthenticationConfiguration</code> - API documentation
+              <code>kafka:AuthenticationConfiguration</code> record - API
+              documentation
             </a>
           </span>
         </li>

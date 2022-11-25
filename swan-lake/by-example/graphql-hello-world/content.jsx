@@ -17,7 +17,7 @@ const codeSnippetData = [
 // Service attached to a GraphQL listener exposes a GraphQL service on the provided port.
 service /graphql on new graphql:Listener(9090) {
 
-    // A resource function with \`get\` accessor inside a \`graphql:Service\` represents a field in the
+    // A resource method with \`get\` accessor inside a \`graphql:Service\` represents a field in the
     // root \`Query\` type.
     resource function get greeting() returns string {
         return "Hello, World";
@@ -58,10 +58,10 @@ export default function GraphqlHelloWorld() {
 
       <p>
         A GraphQL service in Ballerina represents a GraphQL schema. Each
-        resource function of the <code>graphql:Service</code> with the{" "}
+        resource method of the <code>graphql:Service</code> with the{" "}
         <code>get</code> accessor represents a resolver function in the root{" "}
-        <code>Query</code> type. The return type of each resource function will
-        be the type of each field represented by the resource function.
+        <code>Query</code> type. The return type of each resource method will be
+        the type of each field represented by the resource method.
       </p>
 
       <p>
@@ -388,7 +388,7 @@ export default function GraphqlHelloWorld() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>

@@ -149,14 +149,18 @@ export default function TcpClient() {
         </Col>
       </Row>
 
-      <p>Run the client by executing the command below.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start a{" "}
-          <a href="/learn/by-example/tcp-listener/">tcp service</a>.
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start the <a href="/learn/by-example/tcp-listener/">tcp service</a>.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -227,7 +231,7 @@ export default function TcpClient() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/tcp/latest/clients/Client">
-              <code>tcp:Client</code> - API documentation
+              <code>tcp:Client</code> client object - API documentation
             </a>
           </span>
         </li>

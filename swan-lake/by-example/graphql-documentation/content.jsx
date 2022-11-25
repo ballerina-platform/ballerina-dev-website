@@ -421,7 +421,7 @@ export default function GraphqlDocumentation() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>
@@ -430,7 +430,7 @@ export default function GraphqlDocumentation() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#5-directives">
+            <a href="/spec/graphql/#35-documentation">
               <code>graphql</code> documentations - Specification
             </a>
           </span>

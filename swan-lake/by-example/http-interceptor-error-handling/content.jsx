@@ -355,7 +355,7 @@ export default function HttpInterceptorErrorHandling() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package API documentation
+              <code>http</code> - API documentation
             </a>
           </span>
         </li>
@@ -374,7 +374,7 @@ export default function HttpInterceptorErrorHandling() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Error Handling"
+            title="Error handling"
             href="/learn/by-example/http-error-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -402,7 +402,7 @@ export default function HttpInterceptorErrorHandling() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error Handling
+                  Error handling
                 </span>
               </div>
             </div>

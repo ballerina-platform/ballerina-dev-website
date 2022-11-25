@@ -235,8 +235,8 @@ export default function GraphqlGraphiql() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
+              <code>graphql:ServiceConfig</code> annotation - API documentation
             </a>
           </span>
         </li>
@@ -245,7 +245,17 @@ export default function GraphqlGraphiql() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#121-graphiql-client">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/Graphiql">
+              <code>graphql:GraphiQL</code> record - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#915-graphiql-configurations">
               <code>graphql</code> GraphiQL - Specification
             </a>
           </span>

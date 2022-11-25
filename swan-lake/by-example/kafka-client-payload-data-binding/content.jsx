@@ -22,13 +22,11 @@ public type Order record {|
     boolean isValid;
 |};
 
-kafka:ConsumerConfiguration consumerConfiguration = {
-    groupId: "order-group-id",
-    topics: "order-topic"
-};
-
 public function main() returns error? {
-    kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, consumerConfiguration);
+    kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, {
+        groupId: "order-group-id",
+        topics: "order-topic"
+    });
 
     // Polls the consumer for payload.
     Order[] orders = check orderConsumer->pollPayload(1);
@@ -36,7 +34,7 @@ public function main() returns error? {
     check from Order 'order in orders
         where 'order.isValid
         do {
-            io:println('order.productName);
+            io:println(string \`Received valid order for \${'order.productName}\`);
         };
 }
 `,
@@ -158,6 +156,23 @@ export default function KafkaClientPayloadDataBinding() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Execute{" "}
+            <a href="/learn/by-example/kafka-client-produce-message">
+              Kafka client - Produce message
+            </a>{" "}
+            example to produce some messages to the topic.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -214,6 +229,7 @@ export default function KafkaClientPayloadDataBinding() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_client_consumer_poll_payload.bal`}</span>
+              <span>{`Received valid order for Sport shoe`}</span>
             </code>
           </pre>
         </Col>
@@ -226,7 +242,8 @@ export default function KafkaClientPayloadDataBinding() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Consumer#pollPayload">
-              <code>kafka:pollPayload</code> - API documentation
+              <code>kafka:Consumer-&gt;pollPayload</code> function - API
+              documentation
             </a>
           </span>
         </li>

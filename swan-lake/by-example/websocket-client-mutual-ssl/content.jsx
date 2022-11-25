@@ -151,17 +151,22 @@ export default function WebsocketClientMutualSsl() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the command below.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start a{" "}
-          <a href="/learn/by-example/websocket-service-mutual-ssl/">
-            sample service secured with Mutual SSL
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start the{" "}
+            <a href="/learn/by-example/websocket-service-mutual-ssl/">
+              sample service secured with Mutual SSL
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -232,7 +237,7 @@ export default function WebsocketClientMutualSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>

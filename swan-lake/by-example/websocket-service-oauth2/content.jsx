@@ -186,7 +186,7 @@ export default function WebsocketServiceOauth2() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the cURL command below.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -267,7 +267,7 @@ export default function WebsocketServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>
@@ -277,7 +277,7 @@ export default function WebsocketServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> - API documentation
+              <code>oauth2</code> package - API documentation
             </a>
           </span>
         </li>

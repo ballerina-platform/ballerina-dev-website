@@ -19,7 +19,6 @@ const codeSnippetData = [
 // a certificate file and a private key file for the listener.
 // The \`graphql:ListenerSecureSocket\` record provides the
 // SSL-related listener configurations of the listener.
-// For details, see https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket.
 listener graphql:Listener securedEP = new (9090,
     secureSocket = {
         key: {
@@ -220,8 +219,20 @@ export default function GraphqlServiceSslTls() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerConfiguration">
+              <code>graphql:ListenerConfiguration</code> record - API
+              documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket">
+              <code>graphql:ListenerSecureSocket</code> record - API
+              documentation
             </a>
           </span>
         </li>

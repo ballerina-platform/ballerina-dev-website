@@ -101,7 +101,7 @@ export default function IoCsvDatamapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=75d6f307713b3ea209b00692250db4b3&file=io_csv_datamapping.bal",
+                "https://play.ballerina.io/?gist=c30dd53649c358425213f5a72ac18817&file=io_csv_datamapping.bal",
                 "_blank"
               );
             }}

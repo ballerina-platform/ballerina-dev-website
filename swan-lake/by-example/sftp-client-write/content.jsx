@@ -19,7 +19,7 @@ public function main() returns error? {
     // Creates the client with the connection parameters, host, username, and
     // password. An error is returned in a failure. The default port number
     // \`22\` for SSH is used with these configurations.
-    ftp:ClientConfiguration config = {
+    ftp:Client clientEp = check new ({
         protocol: ftp:SFTP,
         host: "sftp.example.com",
         port: 22,
@@ -32,15 +32,14 @@ public function main() returns error? {
                 password: "keyPass123"
             }
         }
-    };
-    ftp:Client clientEp = check new (config);
+    });
 
-    // Add a new file to the given file location. In error cases, 
+    // Add a new file to the given file location. In error cases,
     // an error is returned. The local file is provided as a stream of
     // \`io:Block\` in which 1024 is the block size.
     stream<io:Block, io:Error?> bStream
-        = check io:fileReadBlocksAsStream("/local/logFile.txt", 1024);
-    check clientEp->put("/server", bStream);
+        = check io:fileReadBlocksAsStream("./local/logFile.txt", 1024);
+    check clientEp->put("/server/logFile.txt", bStream);
 }
 `,
 ];
@@ -159,7 +158,10 @@ export default function SftpClientWrite() {
         </Col>
       </Row>
 
-      <p>The newly-added file will appear in the SFTP server.</p>
+      <p>
+        Run the program by executing the following command. The newly-added file
+        will appear in the SFTP server.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -229,7 +231,7 @@ export default function SftpClientWrite() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#put">
-              Write file - API documentation
+              <code>ftp:Client-&gt;put</code> method - API documentation
             </a>
           </span>
         </li>

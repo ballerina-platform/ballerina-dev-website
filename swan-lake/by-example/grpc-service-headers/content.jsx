@@ -154,14 +154,14 @@ export default function GrpcServiceHeaders() {
         </Col>
       </Row>
 
-      <p>Execute the command below to run the service.</p>
-
       <p>
         Setting up the service is the same as setting up the unary RPC service
         with input and output parameter change. You can refer to the{" "}
         <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
         implement the service used below.
       </p>
+
+      <p>Execute the command below to run the service.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -242,7 +242,7 @@ export default function GrpcServiceHeaders() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              gRPC - API documentation
+              <code>grpc</code> package - API documentation
             </a>
           </span>
         </li>
@@ -251,7 +251,9 @@ export default function GrpcServiceHeaders() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/grpc/">gRPC - specification</a>
+            <a href="/spec/grpc/">
+              <code>grpc</code> package - specification
+            </a>
           </span>
         </li>
       </ul>

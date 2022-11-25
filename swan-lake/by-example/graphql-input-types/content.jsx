@@ -391,7 +391,7 @@ export default function GraphqlInputTypes() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>
@@ -400,7 +400,7 @@ export default function GraphqlInputTypes() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#4-types">
+            <a href="/spec/graphql/#45-input-types">
               <code>graphql</code> input types - Specification
             </a>
           </span>

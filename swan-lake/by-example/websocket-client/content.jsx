@@ -147,6 +147,8 @@ export default function WebsocketClient() {
         </Col>
       </Row>
 
+      <p>Run the client program by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -203,8 +205,6 @@ export default function WebsocketClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run websocket_text_client.bal`}</span>
-              <span>{`
-`}</span>
               <span>{`Hello World!`}</span>
             </code>
           </pre>
@@ -218,7 +218,7 @@ export default function WebsocketClient() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest/clients/Client">
-              <code>websocket:Client</code> - API documentation
+              <code>websocket:Client</code> client object - API documentation
             </a>
           </span>
         </li>

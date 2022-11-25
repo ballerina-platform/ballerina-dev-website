@@ -442,7 +442,7 @@ export default function GrpcServiceUnary() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              Unary RPC - API documentation
+              <code>grpc</code> package - API documentation
             </a>
           </span>
         </li>

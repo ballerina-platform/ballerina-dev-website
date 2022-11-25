@@ -154,8 +154,6 @@ export default function GrpcClientBasicAuth() {
         </Col>
       </Row>
 
-      <p>Execute the command below to run the client.</p>
-
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with additional configurations. You can refer to the{" "}
@@ -163,20 +161,26 @@ export default function GrpcClientBasicAuth() {
         implement the client used here.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start
-          the{" "}
-          <a href="/learn/by-example/grpc-service-basic-auth-file-user-store/">
-            Basic Auth file user store service
-          </a>{" "}
-          or{" "}
-          <a href="/learn/by-example/grpc-service-basic-auth-ldap-user-store/">
-            Basic Auth LDAP user store service
-          </a>
-          .
-        </p>
-      </blockquote>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start the{" "}
+            <a href="/learn/by-example/grpc-service-basic-auth-file-user-store/">
+              Basic Auth file user store service
+            </a>{" "}
+            or{" "}
+            <a href="/learn/by-example/grpc-service-basic-auth-ldap-user-store/">
+              Basic Auth LDAP user store service
+            </a>{" "}
+            service examples.
+          </span>
+        </li>
+      </ul>
+
+      <p>Execute the command below to run the client.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -247,7 +251,7 @@ export default function GrpcClientBasicAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest/types#ClientAuthConfig">
-              Basic authentication - API documentation
+              <code>grpc:ClientAuthConfig</code> type - API documentation
             </a>
           </span>
         </li>

@@ -454,7 +454,7 @@ export default function GrpcServiceServerStreaming() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              Server-side streaming - API documentation
+              <code>grpc</code> package - API documentation
             </a>
           </span>
         </li>

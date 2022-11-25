@@ -22,18 +22,18 @@ public type Order record {|
     boolean isValid;
 |};
 
-kafka:ConsumerConfiguration consumerConfigs = {
+listener kafka:Listener ep = check new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
     topics: "order-topic"
-};
+});
 
-service on new kafka:Listener(kafka:DEFAULT_URL, consumerConfigs) {
+service on ep {
     remote function onConsumerRecord(Order[] orders) returns error? {
         // The set of orders received by the service are processed one by one.
         check from Order 'order in orders
             where 'order.isValid
             do {
-                log:printInfo("Received Valid Order: " + 'order.toString());
+                log:printInfo(string \`Received valid order for \${'order.productName}\`);
             };
     }
 }
@@ -154,6 +154,23 @@ export default function KafkaServiceConsumeMessage() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Execute{" "}
+            <a href="/learn/by-example/kafka-client-produce-message">
+              Kafka client - Produce message
+            </a>{" "}
+            example to produce some messages to the topic.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -210,6 +227,7 @@ export default function KafkaServiceConsumeMessage() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_service.bal`}</span>
+              <span>{`time = 2022-11-25T14:55:59.366+05:30 level = INFO module = "" message = "Received valid order for Sport shoe"`}</span>
             </code>
           </pre>
         </Col>
@@ -222,7 +240,7 @@ export default function KafkaServiceConsumeMessage() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Listener">
-              <code>kafka:Listener</code> - API documentation
+              <code>kafka:Listener</code> client object - API documentation
             </a>
           </span>
         </li>

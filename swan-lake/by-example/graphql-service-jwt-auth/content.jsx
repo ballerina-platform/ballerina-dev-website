@@ -246,8 +246,19 @@ export default function GraphqlServiceJwtAuth() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
+              <code>graphql:ServiceConfig</code> annotation - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/JwtValidatorConfigWithScopes">
+              <code>graphql:JwtValidatorConfigWithScopes</code> record - API
+              documentation
             </a>
           </span>
         </li>
@@ -257,7 +268,7 @@ export default function GraphqlServiceJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-              <code>jwt</code> - API documentation
+              <code>jwt</code> package - API documentation
             </a>
           </span>
         </li>

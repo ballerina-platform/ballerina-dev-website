@@ -26,10 +26,10 @@ public function main() returns error? {
 
     // Sends the message to the Kafka topic.
     check orderProducer->send({
-        topic: "test-kafka-topic",
+        topic: "order-topic",
         value: {
             orderId: 1,
-            productName: "ABC",
+            productName: "Sport shoe",
             price: 27.5,
             isValid: true
         }
@@ -152,6 +152,8 @@ export default function KafkaClientProduceMessage() {
         </Col>
       </Row>
 
+      <p>Run the program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -220,7 +222,7 @@ export default function KafkaClientProduceMessage() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Producer#send">
-              <code>kafka:send</code> - API documentation
+              <code>kafka:Producer-&gt;send</code> function - API documentation
             </a>
           </span>
         </li>
@@ -230,7 +232,7 @@ export default function KafkaClientProduceMessage() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#33-functions">
-              <code>kafka:send</code> - specification
+              <code>kafka:Producer</code> functions - specification
             </a>
           </span>
         </li>

@@ -28,7 +28,7 @@ service /graphql on new graphql:Listener(9090) {
         return self.names;
     }
 
-    // A resource function with the \`subscribe\` accessor represents a field in the root
+    // A resource method with the \`subscribe\` accessor represents a field in the root
     // \`Subscription\` operation. It must always return a stream. Since the stream is of type
     // \`string\`, the resulting field in the generated GraphQL schema will be of type \`String!\`.
     resource function subscribe names() returns stream<string> {
@@ -69,25 +69,24 @@ export default function GraphqlSubscriptions() {
       <h1>Subscriptions</h1>
 
       <p>
-        A resource function with the <code>subscribe</code> accessor inside a
+        A resource method with the <code>subscribe</code> accessor inside a
         GraphQL service represents a field in the root <code>Subscription</code>{" "}
-        type. Therefore, if a resource function with the <code>subscribe</code>{" "}
+        type. Therefore, if a resource method with the <code>subscribe</code>{" "}
         accessor is present inside the Ballerina GraphQL service, the
         auto-generated schema will have a <code>Subscription</code> type.
       </p>
 
       <p>
-        A resource function with <code>subscribe</code> accessor must return a{" "}
+        A resource method with <code>subscribe</code> accessor must return a{" "}
         <code>stream</code> type. Not returning a <code>stream</code> type will
         result in a compilation error.
       </p>
 
       <p>
-        Each resource function with the <code>subscribe</code> accessor in the
+        Each resource method with the <code>subscribe</code> accessor in the
         service will be added as a field of the <code>Subscription</code> type.
-        The field name will be the resource function name and the field type
-        will be the constraint type of the stream returned from the resource
-        function.
+        The field name will be the resource method name and the field type will
+        be the constraint type of the stream returned from the resource method.
       </p>
 
       <p>
@@ -413,7 +412,7 @@ export default function GraphqlSubscriptions() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>

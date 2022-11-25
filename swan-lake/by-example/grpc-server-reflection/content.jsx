@@ -148,14 +148,14 @@ export default function GrpcServerReflection() {
         </Col>
       </Row>
 
-      <p>Execute the command below to run the service.</p>
-
       <p>
         Setting up the service is the same as setting up the unary RPC service
         with additional configurations. You can refer to the{" "}
         <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
         implement the service used below.
       </p>
+
+      <p>Execute the command below to run the service.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -310,7 +310,7 @@ export default function GrpcServerReflection() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerConfiguration">
-              <code>grpc:ListenerConfiguration</code> - API documentation
+              <code>grpc:ListenerConfiguration</code> record - API documentation
             </a>
           </span>
         </li>

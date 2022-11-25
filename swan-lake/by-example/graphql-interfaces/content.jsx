@@ -17,7 +17,7 @@ const codeSnippetData = [
 // Define the interface \`Animal\` using a \`distinct\` \`service\` object.
 type Animal distinct service object {
 
-    // Define the field \`name\` as a resource function definition.
+    // Define the field \`name\` as a resource method definition.
     resource function get name() returns string;
 };
 
@@ -96,7 +96,7 @@ export default function GraphqlInterfaces() {
       <p>
         A GraphQL schema can have interfaces. In Ballerina, interfaces are
         defined using <code>distinct</code> <code>service</code> objects and the
-        fields of the interfaces are defined as resource function definitions.
+        fields of the interfaces are defined as resource method definitions.
         Objects that are implementing the interfaces must implement the{" "}
         <code>resource</code> methods defined in the service objects. The
         Ballerina type inclusion is used to include the interface type to an
@@ -427,7 +427,7 @@ export default function GraphqlInterfaces() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>

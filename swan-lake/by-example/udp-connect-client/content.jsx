@@ -37,7 +37,6 @@ public function main() returns error? {
 
     // Closes the client and releases the bound port.
     check socketClient->close();
-
 }
 `,
 ];
@@ -162,6 +161,19 @@ export default function UdpConnectClient() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start the <a href="/learn/by-example/udp-listener/">udp service</a>.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -218,11 +230,7 @@ export default function UdpConnectClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_connect_client.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`# This will print the output below upon a successful write.`}</span>
               <span>{`Data was sent to the remote host.`}</span>
-              <span>{`# Print the response that is returned from the server as an echo.`}</span>
               <span>{`Received: Hello Ballerina echo`}</span>
             </code>
           </pre>
@@ -236,7 +244,7 @@ export default function UdpConnectClient() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/udp/latest/clients/Client">
-              <code>udp:Client</code> - API documentation
+              <code>udp:Client</code> client object - API documentation
             </a>
           </span>
         </li>

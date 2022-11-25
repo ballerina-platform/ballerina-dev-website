@@ -149,8 +149,6 @@ export default function GrpcClientMutualSsl() {
         </Col>
       </Row>
 
-      <p>Execute the command below to run the client.</p>
-
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with additional configurations. You can refer to the{" "}
@@ -158,15 +156,22 @@ export default function GrpcClientMutualSsl() {
         implement the client used here.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start a{" "}
-          <a href="/learn/by-example/grpc-service-mutual-ssl/">
-            sample service secured with Mutual SSL
-          </a>
-          .
-        </p>
-      </blockquote>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="/learn/by-example/grpc-service-mutual-ssl/">
+              sample service secured with Mutual SSL
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Execute the command below to run the client.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -237,7 +242,7 @@ export default function GrpcClientMutualSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket">
-              <code>grpc:ClientSecureSocket</code> - API documentation
+              <code>grpc:ClientSecureSocket</code> record - API documentation
             </a>
           </span>
         </li>

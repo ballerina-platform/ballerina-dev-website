@@ -167,9 +167,25 @@ export default function FtpServiceRead() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Execute{" "}
+            <a href="/learn/by-example/ftp-client-write">
+              FTP client - Write file
+            </a>{" "}
+            example to put a file in the FTP server.
+          </span>
+        </li>
+      </ul>
+
       <p>
-        Paths of the newly-added and newly-deleted files/directories during the
-        latest polling will be printed for each of the polled events.
+        Run the program by executing the following command. Paths of the
+        newly-added and newly-deleted files/directories during the latest
+        polling will be printed for each of the polled events.
       </p>
 
       <Row
@@ -240,7 +256,7 @@ export default function FtpServiceRead() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener">
-              <code>ftp:Listener</code> - API documentation
+              <code>ftp:Listener</code> client object - API documentation
             </a>
           </span>
         </li>

@@ -1826,7 +1826,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Request Interceptors",
+        "name": "Request interceptors",
         "url": "http-request-interceptors",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1834,7 +1834,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Response Interceptors",
+        "name": "Response interceptors",
         "url": "http-response-interceptors",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1842,7 +1842,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Error Handling",
+        "name": "Error handling",
         "url": "http-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,

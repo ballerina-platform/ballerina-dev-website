@@ -66,7 +66,7 @@ export default function ProgramsAndModules() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=60c49aa9e65c3f92f2a243584a12aa13&file=programs_and_modules.bal",
+                "https://play.ballerina.io/?gist=93f947d772fe012dd9dba4bc5a68a861&file=programs_and_modules.bal",
                 "_blank"
               );
             }}

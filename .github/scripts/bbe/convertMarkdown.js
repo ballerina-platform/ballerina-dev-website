@@ -130,8 +130,9 @@ const sleep = (timeout) => {
 
 // render code snippet
 const codeSnippetGenerator = (code, marginLeftMultiplier, lang) => {
-  let output = `<pre style={{ marginLeft: "${marginLeftMultiplier * 8}px" }} 
-    className="p-3 rounded ${lang}"><code>${code}</code></pre>`;
+  let output = `<pre style={{ marginLeft: "${
+    marginLeftMultiplier * 8
+  }px" }} className="p-3 rounded ${lang}"><code>${code}</code></pre>`;
 
   return output;
 };
@@ -187,11 +188,16 @@ md.use(container, "code", {
   render: function (tokens, idx, options, env, self) {
     if (tokens[idx].nesting === 1) {
       return `<Row className="bbeCode mx-0 py-0 rounded 
-      ${env.isIndent ? 'indent' : ''}" 
-      style={{ marginLeft: "${env.marginLeftMultiplier * 8}px" }}>
+      ${
+        env.isIndent ? 'indent' : ''
+      }
+      " style={{ marginLeft: "${
+        env.marginLeftMultiplier * 8
+      }px" }}>
   <Col className="d-flex align-items-start" sm={12}>
-    ${env.playgroundLink != undefined
-          ? `<button
+    ${
+      env.playgroundLink != undefined
+        ? `<button
         className="bg-transparent border-0 m-0 p-2 ms-auto"
         onClick={() => {
           window.open(
@@ -216,10 +222,11 @@ md.use(container, "code", {
         </svg>
       </button>`
         : ""
-    } 
-    ${(env.editOnGithubLink !== "") ? `
+    }
     <button
-      className="bg-transparent border-0 m-0 p-2${env.playgroundLink != undefined ? "" : " ms-auto"}"
+      className="bg-transparent border-0 m-0 p-2${
+        env.playgroundLink != undefined ? "" : " ms-auto"
+      }"
       onClick={() => {
         window.open("${env.editOnGithubLink}", "_blank");
       }}
@@ -236,12 +243,9 @@ md.use(container, "code", {
         <title>Edit on Github</title>
         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
       </svg>
-    </button>`
-          : ""
-    }
+    </button>
     {codeClick${env.codeCount} ? (
-      <button className="bg-transparent border-0 m-0 p-2${env.editOnGithubLink !== "" ? "" : " ms-auto"}" 
-        disabled aria-label="Copy to Clipboard Check">
+      <button className="bg-transparent border-0 m-0 p-2" disabled aria-label="Copy to Clipboard Check">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -256,7 +260,7 @@ md.use(container, "code", {
       </button>
     ) : (
       <button
-        className="bg-transparent border-0 m-0 p-2${env.editOnGithubLink === "" && env.playgroundLink === undefined  ? " ms-auto" : ""}"
+        className="bg-transparent border-0 m-0 p-2"
         onClick={() => {
           updateCodeClick${env.codeCount}(true);
           copyToClipboard(codeSnippetData[${env.codeCount - 1}]);
@@ -310,8 +314,13 @@ md.use(container, "out", {
       let outputRead = fs.readFileSync(filePath, "utf-8").trim();
       let outputSplitted = outputRead.split("\n");
       let output =
-        `<Row className="bbeOutput mx-0 py-0 rounded ${env.isIndent ? 'indent' : ''}" 
-          style={{ marginLeft: "${env.marginLeftMultiplier * 8}px" }}>
+        `<Row className="bbeOutput mx-0 py-0 rounded 
+        ${
+          env.isIndent ? 'indent' : ''
+        }
+        " style={{ marginLeft: "${
+          env.marginLeftMultiplier * 8
+        }px" }}>
   <Col sm={12} className="d-flex align-items-start">
     {outputClick${env.outputCount} ? (
       <button
@@ -335,7 +344,9 @@ md.use(container, "out", {
         className="bg-transparent border-0 m-0 p-2 ms-auto"
         onClick={() => {
           updateOutputClick${env.outputCount}(true);
-          const extractedText = extractOutput(ref${env.outputCount}.current.innerText);
+          const extractedText = extractOutput(ref${
+            env.outputCount
+          }.current.innerText);
           copyToClipboard(extractedText);
           setTimeout(() => {
             updateOutputClick${env.outputCount}(false);
@@ -485,7 +496,9 @@ const generateContent = (
 
   const nextButton =
     Object.keys(nextBBE).length != 0
-      ? `<Col${Object.keys(prevBBE).length == 0 ? ` className="ms-auto"` : ""} sm={6}>
+      ? `<Col${
+          Object.keys(prevBBE).length == 0 ? ` className="ms-auto"` : ""
+        } sm={6}>
       <Link
         title="${nextBBE.name}"
         href="/learn/by-example/${nextBBE.url}"
@@ -528,11 +541,15 @@ const generateContent = (
   let outputClicks = "";
 
   for (let i = 0; i < codeCount; i++) {
-    codeClicks += `const [codeClick${i + 1}, updateCodeClick${i + 1}] = useState(false);\n`;
+    codeClicks += `const [codeClick${i + 1}, updateCodeClick${
+      i + 1
+    }] = useState(false);\n`;
   }
 
   for (let i = 0; i < outputCount; i++) {
-    outputClicks += `const [outputClick${i + 1}, updateOutputClick${i + 1}] = useState(false);\nconst ref${i + 1} = createRef()\n`;
+    outputClicks += `const [outputClick${i + 1}, updateOutputClick${
+      i + 1
+    }] = useState(false);\nconst ref${i + 1} = createRef()\n`;
   }
 
   codeClicks = codeClicks.trim();
@@ -644,17 +661,7 @@ const generate = async (examplesDir, outputDir) => {
         let name = bbe["name"],
           url = bbe["url"],
           relPath = `${examplesDir}/${url}`,
-          editOnGithubLink = "";
-
-        // Check whether the BBE can be edited in github
-        try {
-          const response = await axios.get(`${editOnGithubBaseUrl}/${url}`);
-          if (response.status === 200) {
-            editOnGithubLink = `${editOnGithubBaseUrl}/${url}`;
-          }
-        } catch (err) {
-          console.error(err)
-        }
+          editOnGithubLink = `${editOnGithubBaseUrl}/${url}`;
 
         indexArray.push(url);
 
@@ -725,13 +732,13 @@ const generate = async (examplesDir, outputDir) => {
 
                     let { fileName, codeContent } = extractCode(relPath, m[2]);
 
-                    // if (playground) {
-                    //   playgroundLink = await generatePlaygroundLink(
-                    //     codeContent,
-                    //     relPath,
-                    //     fileName
-                    //   );
-                    // }
+                    if (playground) {
+                      playgroundLink = await generatePlaygroundLink(
+                        codeContent,
+                        relPath,
+                        fileName
+                      );
+                    }
 
                     convertedLine = md.render(m[2], {
                       codeCount,
@@ -764,10 +771,17 @@ const generate = async (examplesDir, outputDir) => {
                   } else if (listRegex.test(line)) {
                     let match = line.match(listRegex);
                     let listContent = md.render(match[3]);
-                    convertedLine = `<ul style={{ marginLeft: "${match[1].length * 8}px" }}>
+                    convertedLine = `<ul style={{ marginLeft: "${
+                      match[1].length * 8
+                    }px" }}>
                     <li>
-                        <span>${match[2] === "-" ? `&#8226;&nbsp;` : `${match[2]}.`}</span>
-                        <span>${listContent.slice(3,listContent.length - 5)}</span>
+                        <span>${
+                          match[2] === "-" ? `&#8226;&nbsp;` : `${match[2]}.`
+                        }</span>
+                        <span>${listContent.slice(
+                          3,
+                          listContent.length - 5
+                        )}</span>
                     </li>
                 </ul>`;
                   } else {

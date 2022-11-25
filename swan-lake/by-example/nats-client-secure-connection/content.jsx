@@ -60,6 +60,12 @@ export default function NatsClientSecureConnection() {
       <h1>NATS client - SSL/TLS</h1>
 
       <p>
+        The NATS client connections can be secured by encrypting with TLS. In
+        this example, the underlying connection of the listener is secured with
+        basic authentication.
+      </p>
+
+      <p>
         In this example, the underlying connection of the publisher is secured
         with TLS/SSL.
       </p>
@@ -148,6 +154,11 @@ export default function NatsClientSecureConnection() {
           )}
         </Col>
       </Row>
+
+      <p>
+        To run the sample, start an instance of the NATS server and execute the
+        following command.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

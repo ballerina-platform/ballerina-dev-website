@@ -157,11 +157,11 @@ export default function WebsocketClientBasicAuth() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
+            Run the WebSocket service given in the{" "}
             <a href="/learn/by-example/websocket-service-basic-auth-file-user-store/">
-              Basic authentication file user store service
-            </a>
-            .
+              Basic authentication file user store
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

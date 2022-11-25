@@ -167,7 +167,9 @@ export default function UdpConnectClient() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the <a href="/learn/by-example/udp-listener/">udp service</a>.
+            Run the UDP service given in the{" "}
+            <a href="/learn/by-example/udp-listener/">Send/Receive datagram</a>{" "}
+            example.
           </span>
         </li>
       </ul>

@@ -31,7 +31,8 @@ public function main() returns error? {
     check initialize();
 
     // Initializes the MySQL client. The \`mysqlClient\` can be reused to access the database throughout the application execution.
-    mysql:Client mysqlClient = check new (user = "root", password = "Test@123", database = "CUSTOMER");
+    mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root",
+                                          password = "Test@123", database = "CUSTOMER");
 
     float creditLimit = 5000;
 
@@ -213,10 +214,26 @@ export default function MysqlQueryOperation() {
         </Col>
       </Row>
 
-      <p>
-        Create a Ballerina project. Copy the example to the project. Execute the
-        command below to build and run the project.
-      </p>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Create a Ballerina project.</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Copy the example to the project along with util files.</span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Run the sample by executing the command below.</span>
+        </li>
+      </ul>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

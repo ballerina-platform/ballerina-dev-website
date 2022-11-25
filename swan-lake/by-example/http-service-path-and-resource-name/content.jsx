@@ -30,7 +30,7 @@ table<Album> key(title) albums = table [
 service /info on new http:Listener(9090) {
 
     // The \`resource name\` is \`albums\` and the \`resource accessor\` is \`get\`.
-    // The \`.\` represents the current resource that is \`/\`.
+    // The \`.\` represents the current resource that is \`/info\`.
     resource function get albums() returns Album[] {
         return albums.toArray();
     }
@@ -292,7 +292,7 @@ export default function HttpServicePathAndResourceName() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

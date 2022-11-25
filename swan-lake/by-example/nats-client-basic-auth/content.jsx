@@ -60,8 +60,10 @@ export default function NatsClientBasicAuth() {
       <h1>NATS client - Basic authentication</h1>
 
       <p>
-        In this example, the underlying connection of the publisher is secured
-        with Basic Auth.
+        NATS client connections can be authenticated in many ways. One of them
+        is by using the username and password credentials. In this example, the
+        underlying connection of the publisher is secured with basic
+        authentication.
       </p>
 
       <Row
@@ -148,6 +150,11 @@ export default function NatsClientBasicAuth() {
           )}
         </Col>
       </Row>
+
+      <p>
+        To run the sample, start an instance of the NATS server and execute the
+        following command.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

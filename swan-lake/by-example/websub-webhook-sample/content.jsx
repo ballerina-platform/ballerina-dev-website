@@ -249,7 +249,7 @@ export default function WebsubWebhookSample() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websub/latest/">
-              <code>websub</code> - API documentation
+              <code>websub</code> package - API documentation
             </a>
           </span>
         </li>
@@ -259,7 +259,7 @@ export default function WebsubWebhookSample() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://ballerina.io/spec/websub/#22-subscriber-service">
-              Subscriber service - specification
+              <code>Subscriber service</code> - specification
             </a>
           </span>
         </li>

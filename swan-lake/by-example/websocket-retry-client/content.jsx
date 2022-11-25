@@ -12,11 +12,10 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/io;
-import ballerina/websocket;
+  `import ballerina/websocket;
 
 public function main() returns error? {
-    websocket:Client wsClient = check new("ws://localhost:9090/foo", {
+    websocket:Client wsClient = check new("ws://localhost:9090/echo", {
         // Set the maximum retry count to 5 so that it will try 5 times with the interval of
         // 5 second in between the retry attempts.
         retryConfig: {
@@ -24,9 +23,7 @@ public function main() returns error? {
             interval: 5
         }
     });
-    // Read the message sent from the server upon upgrading to a WebSocket connection.
-    string text = check wsClient->readMessage();
-    io:println(text);
+    check wsClient->writeMessage("Hey Sam!");
 }
 `,
 ];
@@ -59,22 +56,6 @@ export default function WebsocketRetryClient() {
         failure, it automatically tries to reconnect to the given backend. If
         the maximum reconnect attempt is reached it gives up on the connection.
       </p>
-
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Start a sample WebSocket service, which sends a message to the
-            client upon upgrading to a WebSocket connection. If you are using a
-            Ballerina WebSocket server, you can send a message to the client in
-            the <code>onOpen</code> resource. The client will try to connect to
-            the server 5 times with the interval of 5 second in between retry
-            attempts as configured.
-          </span>
-        </li>
-      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -160,6 +141,21 @@ export default function WebsocketRetryClient() {
           )}
         </Col>
       </Row>
+
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the WebSocket service given in the{" "}
+            <a href="/learn/by-example/websocket-basic-sample/">
+              Send/Receive message
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
 
       <p>Run the client program by executing the command below.</p>
 

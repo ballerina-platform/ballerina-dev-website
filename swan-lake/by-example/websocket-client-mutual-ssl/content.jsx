@@ -157,11 +157,11 @@ export default function WebsocketClientMutualSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
+            Run the WebSocket service given in the{" "}
             <a href="/learn/by-example/websocket-service-mutual-ssl/">
-              sample service secured with Mutual SSL
-            </a>
-            .
+              Mutual SSL
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

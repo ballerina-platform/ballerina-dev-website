@@ -76,7 +76,7 @@ export default function HttpClientSendRequestReceiveResponse() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=404b571cc49221cccb5ac95889aba6e0&file=http_client_send_request_receive_response.bal",
+                "https://play.ballerina.io/?gist=4d5d59a52a1a4f278062f1331507b5e0&file=http_client_send_request_receive_response.bal",
                 "_blank"
               );
             }}
@@ -174,18 +174,22 @@ export default function HttpClientSendRequestReceiveResponse() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the following command.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a{" "}
-          <a href="learn/by-example/http-basic-rest-service/">
-            Basic REST service
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="learn/by-example/http-basic-rest-service/">
+              Basic REST service
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -259,7 +263,7 @@ export default function HttpClientSendRequestReceiveResponse() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

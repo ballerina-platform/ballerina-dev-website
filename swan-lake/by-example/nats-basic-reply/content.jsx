@@ -15,11 +15,8 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/nats;
 
-// Initializes the NATS listener.
-listener nats:Listener subscription = new (nats:DEFAULT_URL);
-
 // Binds the consumer to listen to the messages published to the 'demo.bbe' subject.
-service "demo.bbe" on subscription {
+service "demo.bbe" on new nats:Listener(nats:DEFAULT_URL) {
     remote function onRequest(string message) returns string|error {
         // Logs the incoming message.
         log:printInfo("Received message: " + message);
@@ -54,14 +51,11 @@ export default function NatsBasicReply() {
       <h1>NATS service - Send reply to request message</h1>
 
       <p>
-        In this example, the NATS service is used to send replies to incoming
-        request messages. In order to execute this example, it is required that
-        a NATS server is up and running on its default host, port, and cluster.
-        For instructions on installing the NATS server, go to{" "}
-        <a href="https://docs.nats.io/nats-server/installation">
-          NATS Server Installation
-        </a>
-        .
+        NATS supports the Request-Reply pattern using its core message
+        distribution model, publish, and subscribe. A request is sent to a given
+        subject and consumers listening to that subject can send responses to
+        the reply subject. In this example, the NATS service is used to send
+        replies to incoming request messages.
       </p>
 
       <Row
@@ -148,6 +142,11 @@ export default function NatsBasicReply() {
           )}
         </Col>
       </Row>
+
+      <p>
+        To run the sample, start an instance of the NATS server and execute the
+        following command.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

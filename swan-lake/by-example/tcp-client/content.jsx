@@ -155,7 +155,9 @@ export default function TcpClient() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the <a href="/learn/by-example/tcp-listener/">tcp service</a>.
+            Run the TCP service given in the{" "}
+            <a href="/learn/by-example/tcp-listener/">Send/Receive bytes</a>{" "}
+            example.
           </span>
         </li>
       </ul>

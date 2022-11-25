@@ -148,6 +148,11 @@ export default function NatsServiceSecureConnection() {
         </Col>
       </Row>
 
+      <p>
+        To run the sample, start an instance of the NATS server and execute the
+        following command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         

@@ -16,22 +16,25 @@ const codeSnippetData = [
 import ballerinax/nats;
 
 public function main() returns error? {
-    string message = "Hello from Ballerina";
     // Initializes a NATS client.
     nats:Client natsClient = check new (nats:DEFAULT_URL);
 
     // Sends a request and returns the reply.
-    nats:Message reply = check natsClient->requestMessage({
-        content: message.toBytes(),
+    StringMessage reply = check natsClient->requestMessage({
+        content: "Hello from Ballerina",
         subject: "demo.bbe"
     });
     // Prints the reply message.
-    string replyContent = check string:fromBytes(reply.content);
-    io:println("Reply message: " + replyContent);
+    io:println("Reply message: " + reply.content);
 
     // Closes the client connection.
     check natsClient.close();
 }
+
+public type StringMessage record {|
+    *nats:AnydataMessage;
+    string content;
+|};
 `,
 ];
 
@@ -59,14 +62,11 @@ export default function NatsBasicRequest() {
       <h1>NATS client - Send request message</h1>
 
       <p>
-        In this example, the NATS client is used to send a request to a subject.
-        In order to execute this example, it is required that a NATS server is
-        up and running on its default host, port, and cluster. For instructions
-        on installing the NATS server, go to{" "}
-        <a href="https://docs.nats.io/nats-server/installation">
-          NATS Server Installation
-        </a>
-        .
+        NATS supports the Request-Reply pattern using its core message
+        distribution model, publish, and subscribe. A request is sent to a given
+        subject and consumers listening to that subject can send responses to
+        the reply subject. In this example, the NATS client is used to send a
+        request to a subject.
       </p>
 
       <Row
@@ -153,6 +153,11 @@ export default function NatsBasicRequest() {
           )}
         </Col>
       </Row>
+
+      <p>
+        To run the sample, start an instance of the NATS server and execute the
+        following command.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

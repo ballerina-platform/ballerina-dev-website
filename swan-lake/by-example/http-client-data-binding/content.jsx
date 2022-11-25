@@ -78,7 +78,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5f03a80605ec52cfc415151e8206531e&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=2cdc40aa60c9396314c679d8d6194b9c&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}
@@ -176,18 +176,22 @@ export default function HttpClientDataBinding() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the following command.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a{" "}
-          <a href="learn/by-example/http-basic-rest-service/">
-            Basic REST service
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="learn/by-example/http-basic-rest-service/">
+              Basic REST service
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -258,7 +262,7 @@ export default function HttpClientDataBinding() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

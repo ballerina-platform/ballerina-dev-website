@@ -155,18 +155,22 @@ export default function HttpClientRedirects() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the following command.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a{" "}
-          <a href="learn/by-example/http-service-redirects/">
-            Redirect service
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="learn/by-example/http-service-redirects/">
+              Redirect service
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -239,7 +243,7 @@ export default function HttpClientRedirects() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

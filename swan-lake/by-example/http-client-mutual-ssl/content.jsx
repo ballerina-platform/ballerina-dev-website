@@ -153,18 +153,22 @@ export default function HttpClientMutualSsl() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the command below.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a{" "}
-          <a href="-example/http-service-mutual-ssl/">
-            sample service secured with mutual SSL
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="-example/http-service-mutual-ssl/">
+              sample service secured with mutual SSL
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

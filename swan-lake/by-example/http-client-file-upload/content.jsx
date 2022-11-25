@@ -148,18 +148,22 @@ export default function HttpClientFileUpload() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the following command.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a{" "}
-          <a href="learn/by-example/http-service-file-upload/">
-            Service file upload
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="learn/by-example/http-service-file-upload/">
+              Service file upload
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

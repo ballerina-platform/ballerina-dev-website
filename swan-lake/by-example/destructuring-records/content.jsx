@@ -85,7 +85,7 @@ export default function DestructuringRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d5cf87f208318adde50c89b5a637b386&file=destructuring_records.bal",
+                "https://play.ballerina.io/?gist=b07208c215c338f4c3411d9fbd402519&file=destructuring_records.bal",
                 "_blank"
               );
             }}

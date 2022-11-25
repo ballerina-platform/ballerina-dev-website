@@ -323,26 +323,19 @@ After the environment is set up, follow the steps below to build the native exec
    ```
 
    The Docker file :
-   ```	
+   ```dockerfile	
    # Auto Generated Dockerfile
    FROM ballerina/native-builder:latest as build
-
    WORKDIR /app/build
-
    COPY hello_docker.jar .
-
    RUN sh build-native.sh hello_docker.jar hello_docker
-
+   
    FROM debian:11-slim
-
    RUN useradd -ms /bin/bash ballerina
    WORKDIR /home/ballerina
-
    EXPOSE  8080
    USER ballerina
-
    COPY --from=build /app/build/hello_docker .
-
    CMD ["./hello_docker"]
    ```
 

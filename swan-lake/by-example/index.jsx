@@ -157,7 +157,7 @@ import TesterinaGroupTests from "./testerina-group-tests/content.jsx";
 import TesterinaMockingFunctions from "./testerina-mocking-functions/content.jsx";
 import TesterinaMockingObjects from "./testerina-mocking-objects/content.jsx";
 import HttpBasicRestService from "./http-basic-rest-service/content.jsx";
-import HttpServicePathAndResourcePath from "./http-service-path-and-resource-path/content.jsx";
+import HttpServicePathAndResourceName from "./http-service-path-and-resource-name/content.jsx";
 import HttpServiceDataBinding from "./http-service-data-binding/content.jsx";
 import HttpPathParam from "./http-path-param/content.jsx";
 import HttpQueryParameter from "./http-query-parameter/content.jsx";
@@ -549,7 +549,7 @@ const BBEs = {
   TesterinaMockingFunctions,
   TesterinaMockingObjects,
   HttpBasicRestService,
-  HttpServicePathAndResourcePath,
+  HttpServicePathAndResourceName,
   HttpServiceDataBinding,
   HttpPathParam,
   HttpQueryParameter,

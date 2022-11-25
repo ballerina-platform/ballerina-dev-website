@@ -20,18 +20,16 @@ type Album readonly & record {|
 |};
 
 table<Album> key(title) albums = table [
-    {title: "Blue Train", artist: "John Coltrane" },
+    {title: "Blue Train", artist: "John Coltrane"},
     {title: "Jeru", artist: "Gerry Mulligan"}
 ];
 
 // The \`service path\` represents the absolute path to the service.
-// To access the service, the \`service path\` is placed next to the host(and port) in the request URL.
 // If the \`service path\` is omitted, then it defaults to \`/\`.
-// The \`service path\` can be represented by both identifiers and string literals. E.g., \`/music\\-info\`, \`"/music-info"\`.
+// It can be represented by both identifiers and string literals. E.g., \`/music\\-info\`, \`"/music-info"\`.
 service /info on new http:Listener(9090) {
 
-    // The \`resource accessor\` (\`get\`) confines the resource to the specified HTTP methods. In this instance, only \`GET\` requests are allowed.
-    // The \`resource path\` associates the relative path to the service object's path. E.g., \`albums\`.
+    // The \`resource name\` is \`albums\` and the \`resource accessor\` is \`get\`.
     // The \`.\` represents the current resource that is \`/\`.
     resource function get albums() returns Album[] {
         return albums.toArray();
@@ -40,7 +38,7 @@ service /info on new http:Listener(9090) {
 `,
 ];
 
-export default function HttpServicePathAndResourcePath() {
+export default function HttpServicePathAndResourceName() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -63,15 +61,13 @@ export default function HttpServicePathAndResourcePath() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>REST service - Service path and resource path</h1>
+      <h1>REST service - Service path and resource name</h1>
 
       <p>
-        Ballerina supports writing RESTful services according to the JAX-RS
-        specification. You can use the <code>service-path</code> and{" "}
-        <code>resource-name</code> to access a resource function while the{" "}
-        <code>accessor-name</code>, which is an HTTP verb as <code>post</code>{" "}
-        and <code>get</code> to constrain your resource function in a RESTful
-        manner.
+        Ballerina supports writing RESTful services. Each resource function can
+        be invoked via <code>service-path</code> and <code>resource-name</code>.
+        The <code>resource accessor</code> confines the resource to the
+        specified HTTP method.
       </p>
 
       <Row
@@ -85,7 +81,7 @@ export default function HttpServicePathAndResourcePath() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-service-path-and-resource-path",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-service-path-and-resource-name",
                 "_blank"
               );
             }}
@@ -216,7 +212,7 @@ export default function HttpServicePathAndResourcePath() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run service_path_and_resource_path.bal`}</span>
+              <span>{`\$ bal run service_path_and_resource_name.bal`}</span>
             </code>
           </pre>
         </Col>

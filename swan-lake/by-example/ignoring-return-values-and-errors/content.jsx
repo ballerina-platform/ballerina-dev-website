@@ -93,7 +93,7 @@ export default function IgnoringReturnValuesAndErrors() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=db5e276122aa89d61afe7030e636a216&file=ignoring_return_values_and_errors.bal",
+                "https://play.ballerina.io/?gist=5bb7f344c59c2b088c64fbfd0ad5410e&file=ignoring_return_values_and_errors.bal",
                 "_blank"
               );
             }}

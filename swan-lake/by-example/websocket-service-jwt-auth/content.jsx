@@ -182,7 +182,7 @@ export default function WebsocketServiceJwtAuth() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the cURL command below.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -239,7 +239,7 @@ export default function WebsocketServiceJwtAuth() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$bal run websocket_service_jwt_auth.bal`}</span>
+              <span>{`\$ bal run websocket_service_jwt_auth.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -263,7 +263,7 @@ export default function WebsocketServiceJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>
@@ -273,7 +273,7 @@ export default function WebsocketServiceJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-              <code>jwt</code> - API documentation
+              <code>jwt</code> package - API documentation
             </a>
           </span>
         </li>

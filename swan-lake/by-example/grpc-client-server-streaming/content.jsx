@@ -245,6 +245,21 @@ export default function GrpcClientServerStreaming() {
         file gets generated inside the stubs directory.
       </p>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start the{" "}
+            <a href="learn/by-example/grpc-service-server-streaming/">
+              server streaming RPC service
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
       <h2>Implement and run the client</h2>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -372,17 +387,6 @@ export default function GrpcClientServerStreaming() {
         </li>
       </ul>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start
-          the{" "}
-          <a href="learn/by-example/grpc-service-server-streaming/">
-            server streaming RPC service
-          </a>
-          .
-        </p>
-      </blockquote>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         indent
@@ -454,7 +458,7 @@ export default function GrpcClientServerStreaming() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              Server-side streaming - API documentation
+              <code>grpc</code> package - API documentation
             </a>
           </span>
         </li>

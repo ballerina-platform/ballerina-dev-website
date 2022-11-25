@@ -33,7 +33,7 @@ public function main() returns error? {
 
     string document = "{ profile { name, age } }";
 
-    // The \`execute()\` remote function of the graphql:Client takes a GraphQL document as the
+    // The \`execute()\` remote method of the graphql:Client takes a GraphQL document as the
     // required argument and sends a request to the specified backend URL seeking a response. On the
     // retrieval of a successful response, the client tries to perform data binding for the
     // user-defined data type. On failure to retrieve a successful response or when the client fails
@@ -166,24 +166,23 @@ export default function GraphqlClientQueryEndpoint() {
       <p>
         Further, the execute method optionally takes a map of variables and an
         operationName in case the document contains any variables or contains
-        more than one operation. For more information on the underlying package,
-        see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          <code>graphql</code> package
-        </a>
-        .
+        more than one operation.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to run the client program,
-          execute a ballerina GraphQL server program given in{" "}
-          <a href="https://ballerina.io/learn/by-example/graphql-returning-record-values">
-            Record as output object
-          </a>{" "}
-          example.
-        </p>
-      </blockquote>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Execute the ballerina GraphQL server program given in{" "}
+            <a href="https://ballerina.io/learn/by-example/graphql-returning-record-values">
+              Record as output object
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
 
       <p>Run the client program by executing the following command.</p>
 
@@ -256,7 +255,7 @@ export default function GraphqlClientQueryEndpoint() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest/clients/Client">
-              <code>graphql:Client</code> - API documentation
+              <code>graphql:Client</code> client object - API documentation
             </a>
           </span>
         </li>

@@ -153,20 +153,22 @@ export default function GrpcClientBearerTokenAuth() {
         </Col>
       </Row>
 
-      <p>Execute the command below to run the client.</p>
-
       <p>
         You can refer to the{" "}
         <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
         implement the client used here.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start a
-          secured service.
-        </p>
-      </blockquote>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Start a secured service.</span>
+        </li>
+      </ul>
+
+      <p>Execute the command below to run the client.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -237,7 +239,7 @@ export default function GrpcClientBearerTokenAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/BearerTokenConfig">
-              Bearer token authentication - API documentation
+              <code>grpc:BearerTokenConfig</code> record - API documentation
             </a>
           </span>
         </li>

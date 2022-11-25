@@ -79,14 +79,6 @@ export default function TcpListener() {
         with the TCP client.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/tcp/latest">
-          <code>tcp</code> module
-        </a>
-        .
-      </p>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       
@@ -172,6 +164,8 @@ export default function TcpListener() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -243,7 +237,7 @@ export default function TcpListener() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/tcp/latest">
-              <code>tcp</code> - API documentation
+              <code>tcp</code> package - API documentation
             </a>
           </span>
         </li>
@@ -253,7 +247,7 @@ export default function TcpListener() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/tcp/#3-service-types">
-              <code>tcp</code> Service - Specification
+              <code>tcp</code> service - Specification
             </a>
           </span>
         </li>

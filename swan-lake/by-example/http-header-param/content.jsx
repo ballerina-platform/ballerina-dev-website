@@ -300,7 +300,7 @@ export default function HttpHeaderParam() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package API documentation
+              <code>http</code> - API documentation
             </a>
           </span>
         </li>

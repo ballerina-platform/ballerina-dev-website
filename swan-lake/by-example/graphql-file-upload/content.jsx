@@ -17,7 +17,7 @@ import ballerina/io;
 
 service /fileUpload on new graphql:Listener(9090) {
 
-    // Remote functions can use the \`graphql:Upload\` type as an input parameter type.
+    // Remote methods can use the \`graphql:Upload\` type as an input parameter type.
     remote function fileUpload(graphql:Upload file) returns string|error {
 
         // The uploaded file information can be accessed using the \`graphql:Upload\` type.
@@ -78,7 +78,7 @@ export default function GraphqlFileUpload() {
       <p>
         The in-built <code>graphql:Upload</code> type can represent the details
         of the file that needs to be uploaded and that can be used only with the
-        mutation operations, i.e. remote functions. The value of{" "}
+        mutation operations, i.e. remote methods. The value of{" "}
         <code>graphql:Upload</code> type is extracted from the HTTP multipart
         request, which will be received by the GraphQL endpoints.
       </p>
@@ -347,7 +347,7 @@ export default function GraphqlFileUpload() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/Upload">
-              <code>graphql:Upload</code> - API documentation
+              <code>graphql:Upload</code> record - API documentation
             </a>
           </span>
         </li>

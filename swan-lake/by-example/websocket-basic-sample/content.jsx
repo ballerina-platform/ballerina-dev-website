@@ -158,6 +158,8 @@ export default function WebsocketBasicSample() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -233,7 +235,7 @@ export default function WebsocketBasicSample() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> service - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>

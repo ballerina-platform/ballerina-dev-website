@@ -149,6 +149,8 @@ export default function UdpListener() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -205,9 +207,6 @@ export default function UdpListener() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_listener.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`# This will print the output below upon a successful read by the listener.`}</span>
               <span>{`Received by listener: Hello Ballerina echo`}</span>
             </code>
           </pre>
@@ -221,7 +220,7 @@ export default function UdpListener() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/udp/latest">
-              <code>udp</code> - API documentation
+              <code>udp</code> package - API documentation
             </a>
           </span>
         </li>

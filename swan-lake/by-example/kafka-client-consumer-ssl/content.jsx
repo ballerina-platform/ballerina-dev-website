@@ -13,30 +13,31 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerinax/kafka;
-import ballerina/log;
+import ballerina/io;
 
-kafka:ConsumerConfiguration consumerConfigs = {
-    groupId: "log-group-id",
-    topics: "log-topic",
-    // Provide the relevant secure socket configurations by using \`kafka:SecureSocket\`.
-    secureSocket: {
-        cert: "./resources/path/to/public.crt",
-        protocol: {
-            // Provide the relevant security protocol.
-            name: kafka:SSL
-        }
-    },
-    // Provide the type of the security protocol to use in the broker connection.
-    securityProtocol: kafka:PROTOCOL_SSL
-};
+public function main() returns error? {
+    kafka:Consumer logConsumer = check new ("localhost:9094", {
+        groupId: "order-log-group-id",
+        topics: ["order-log-topic"],
+        // Provide the relevant secure socket configurations by using \`kafka:SecureSocket\`.
+        secureSocket: {
+            cert: "./resources/path/to/public.crt",
+            protocol: {
+                // Provide the relevant security protocol.
+                name: kafka:SSL
+            }
+        },
+        // Provide the type of the security protocol to use in the broker connection.
+        securityProtocol: kafka:PROTOCOL_SSL
+    });
 
-service on new kafka:Listener("localhost:9094", consumerConfigs) {
-    remote function onConsumerRecord(string[] logs) returns error? {
-        check from string log in logs
-            do {
-                log:printInfo("Received log: " + log);
-            };
-    }
+    // Polls the consumer for payload.
+    string[] logs = check logConsumer->pollPayload(1);
+
+    check from string log in logs
+        do {
+            io:println(string \`Received log: \${log}\`);
+        };
 }
 `,
 ];
@@ -155,6 +156,23 @@ export default function KafkaClientConsumerSsl() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Execute{" "}
+            <a href="/learn/by-example/kafka-client-producer-ssl">
+              Kafka client - Producer SSL/TLS
+            </a>{" "}
+            example to produce some messages to the topic.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -211,6 +229,7 @@ export default function KafkaClientConsumerSsl() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_client_consumer_sasl.bal`}</span>
+              <span>{`Received log: new order for item 2311 was placed on 1669113239`}</span>
             </code>
           </pre>
         </Col>
@@ -223,7 +242,7 @@ export default function KafkaClientConsumerSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/SecureSocket">
-              <code>kafka:SecureSocket</code> - API documentation
+              <code>kafka:SecureSocket</code> record - API documentation
             </a>
           </span>
         </li>

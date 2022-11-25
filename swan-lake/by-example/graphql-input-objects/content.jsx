@@ -419,7 +419,7 @@ export default function GraphqlInputObjects() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>
@@ -428,7 +428,7 @@ export default function GraphqlInputObjects() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#45-input-objects">
+            <a href="/spec/graphql/#452-input-objects">
               <code>graphql</code> input objects - Specification
             </a>
           </span>

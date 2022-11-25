@@ -17,7 +17,7 @@ const codeSnippetData = [
 // Define the \`Animal\` interface using a \`distinct\` \`service\` object.
 type Animal distinct service object {
 
-    // Define the \`name\` field as a resource function definition.
+    // Define the \`name\` field as a resource method definition.
     resource function get name() returns string;
 };
 
@@ -446,7 +446,7 @@ export default function GraphqlInterfacesImplementingInterfaces() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>
@@ -455,7 +455,7 @@ export default function GraphqlInterfacesImplementingInterfaces() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#46-interfaces">
+            <a href="/spec/graphql/#461-interfaces-implementing-interfaces">
               <code>graphql</code> interfaces - Specification
             </a>
           </span>

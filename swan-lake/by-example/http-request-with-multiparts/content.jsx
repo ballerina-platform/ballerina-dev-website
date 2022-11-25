@@ -466,7 +466,7 @@ export default function HttpRequestWithMultiparts() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Request Interceptors"
+            title="Request interceptors"
             href="/learn/by-example/http-request-interceptors"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -477,7 +477,7 @@ export default function HttpRequestWithMultiparts() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request Interceptors
+                  Request interceptors
                 </span>
               </div>
               <svg

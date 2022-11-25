@@ -233,7 +233,7 @@ export default function ReceiveEmailUsingClient() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/email/latest/">
-              <code>email</code> package API documentation
+              <code>email</code> - API documentation
             </a>
           </span>
         </li>

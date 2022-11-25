@@ -162,8 +162,6 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
         </Col>
       </Row>
 
-      <p>Execute the command below to run the client.</p>
-
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with additional configurations. You can refer to the{" "}
@@ -171,13 +169,19 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
         implement the client used here.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start
-          the{" "}
-          <a href="/learn/by-example/grpc-service-oauth2/">OAuth2 service</a>.
-        </p>
-      </blockquote>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start the{" "}
+            <a href="/learn/by-example/grpc-service-oauth2/">OAuth2 service</a>.
+          </span>
+        </li>
+      </ul>
+
+      <p>Execute the command below to run the client.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -248,7 +252,7 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2ClientCredentialsGrantConfig">
-              <code>grpc:OAuth2ClientCredentialsGrantConfig</code> - API
+              <code>grpc:OAuth2ClientCredentialsGrantConfig</code> record - API
               documentation
             </a>
           </span>

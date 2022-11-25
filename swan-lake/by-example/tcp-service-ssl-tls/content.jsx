@@ -240,7 +240,7 @@ export default function TcpServiceSslTls() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/tcp/latest">
-              <code>tcp</code> - API documentation
+              <code>tcp</code> package - API documentation
             </a>
           </span>
         </li>

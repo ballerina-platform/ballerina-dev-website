@@ -252,8 +252,19 @@ export default function GraphqlServiceOauth2() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
+              <code>graphql:ServiceConfig</code> annotation - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/OAuth2IntrospectionConfigWithScopes">
+              <code>graphql:OAuth2IntrospectionConfigWithScopes</code> record -
+              API documentation
             </a>
           </span>
         </li>
@@ -263,7 +274,7 @@ export default function GraphqlServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> - API documentation
+              <code>oauth2</code> package - API documentation
             </a>
           </span>
         </li>

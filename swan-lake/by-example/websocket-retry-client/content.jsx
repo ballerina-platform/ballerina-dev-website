@@ -60,17 +60,21 @@ export default function WebsocketRetryClient() {
         the maximum reconnect attempt is reached it gives up on the connection.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start a
-          sample WebSocket service, which sends a message to the client upon
-          upgrading to a WebSocket connection. If you are using a Ballerina
-          WebSocket server, you can send a message to the client in the{" "}
-          <code>onOpen</code> resource. The client will try to connect to the
-          server 5 times with the interval of 5 second in between retry attempts
-          as configured.
-        </p>
-      </blockquote>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a sample WebSocket service, which sends a message to the
+            client upon upgrading to a WebSocket connection. If you are using a
+            Ballerina WebSocket server, you can send a message to the client in
+            the <code>onOpen</code> resource. The client will try to connect to
+            the server 5 times with the interval of 5 second in between retry
+            attempts as configured.
+          </span>
+        </li>
+      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -157,6 +161,8 @@ export default function WebsocketRetryClient() {
         </Col>
       </Row>
 
+      <p>Run the client program by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -214,8 +220,6 @@ export default function WebsocketRetryClient() {
             <code className="d-flex flex-column">
               <span>{`\$ bal run websocket_retry_client.bal`}</span>
               <span>{`Hello World!`}</span>
-              <span>{`Please shutdown the server now. And restart at least within 15 seconds`}</span>
-              <span>{`Hello World!`}</span>
             </code>
           </pre>
         </Col>
@@ -228,7 +232,7 @@ export default function WebsocketRetryClient() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>

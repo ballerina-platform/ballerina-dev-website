@@ -754,13 +754,13 @@ sublinks:
       - title: HTTP service interceptors
         id: 8
         sublinks:
-          - title: Request Interceptors
+          - title: Request interceptors
             id: 1
             url: http-request-interceptors
-          - title: Response Interceptors
+          - title: Response interceptors
             id: 2
             url: http-response-interceptors
-          - title: Error Handling
+          - title: Error handling
             id: 3
             url: http-error-handling
           - title: Interceptor error handling

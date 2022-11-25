@@ -522,7 +522,7 @@ export default function GraphqlContext() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest/classes/Context">
-              <code>graphql:Context</code> - API documentation
+              <code>graphql:Context</code> object - API documentation
             </a>
           </span>
         </li>

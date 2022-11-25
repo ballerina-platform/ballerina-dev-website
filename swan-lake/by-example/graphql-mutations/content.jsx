@@ -30,13 +30,13 @@ service /graphql on new graphql:Listener(9090) {
         self.person = {name: "Walter White", age: 51};
     }
 
-    // A resource function represents a field in the root \`Query\` operation.
+    // A resource method represents a field in the root \`Query\` operation.
     resource function get profile() returns Person {
         return self.person;
     }
 
-    // A remote function represents a field in the root \`Mutation\` operation. After updating the
-    // name, the \`person\` object will be returned.
+    // A remote method represents a field in the root \`Mutation\` operation. After updating the name,
+    // the \`person\` object will be returned.
     remote function updateName(string name) returns Person {
         self.person.name = name;
         return self.person;
@@ -79,13 +79,13 @@ export default function GraphqlMutations() {
       <h1>GraphQL service - Mutations</h1>
 
       <p>
-        A remote function inside a GraphQL service represents a field in the
-        root <code>Mutation</code> object type. Therefore, if a remote function
-        is present inside the Ballerina GraphQL service, the auto-generated
-        schema will have the <code>Mutation</code> type. Each remote function in
-        the service will be added as a field of the <code>Mutation</code> type.
-        The field name will be the remote function name and the field type will
-        be the return type of the remote function.
+        A remote method inside a GraphQL service represents a field in the root{" "}
+        <code>Mutation</code> object type. Therefore, if a remote method is
+        present inside the Ballerina GraphQL service, the auto-generated schema
+        will have the <code>Mutation</code> type. Each remote method in the
+        service will be added as a field of the <code>Mutation</code> type. The
+        field name will be the remote method name and the field type will be the
+        return type of the remote method.
       </p>
 
       <p>
@@ -407,7 +407,7 @@ export default function GraphqlMutations() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>

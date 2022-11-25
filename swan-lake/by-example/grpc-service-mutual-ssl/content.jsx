@@ -156,14 +156,14 @@ export default function GrpcServiceMutualSsl() {
         </Col>
       </Row>
 
-      <p>Execute the command below to run the service.</p>
-
       <p>
         Setting up the service is the same as setting up the unary RPC service
         with additional configurations. You can refer to the{" "}
         <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
         implement the service used below.
       </p>
+
+      <p>Execute the command below to run the service.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -243,7 +243,7 @@ export default function GrpcServiceMutualSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket">
-              <code>grpc:ListenerSecureSocket</code> - API documentation
+              <code>grpc:ListenerSecureSocket</code> record - API documentation
             </a>
           </span>
         </li>

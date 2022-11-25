@@ -163,18 +163,22 @@ export default function WebsocketClientSelfSignedJwtAuth() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the command below.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start
-          the{" "}
-          <a href="/learn/by-example/websocket-service-jwt-auth/">
-            JWT authentication service
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start the{" "}
+            <a href="/learn/by-example/websocket-service-jwt-auth/">
+              JWT authentication service
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -245,7 +249,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>
@@ -255,7 +259,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> - API documentation
+              <code>oauth2</code> package - API documentation
             </a>
           </span>
         </li>

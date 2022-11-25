@@ -12,32 +12,25 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/io;
-import ballerinax/kafka;
-
-kafka:ProducerConfiguration producerConfig = {
-    // Provide the relevant authentication configurations to authenticate the producer by \`kafka:AuthenticationConfiguration\`.
-    auth: {
-        // Provide the authentication mechanism used by the Kafka server.
-        mechanism: kafka:AUTH_SASL_PLAIN,
-        // Username and password should be set here in order to authenticate the producer.
-        username: "alice",
-        password: "alice@123"
-    },
-    securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
-};
+  `import ballerinax/kafka;
 
 public function main() returns kafka:Error? {
-    kafka:Producer messageProducer = check new ("localhost:9093", producerConfig);
-    kafka:Error? result = messageProducer->send({
-        topic: "log-topic",
-        value: "login failed for user 212341 at 1669113239"
+    kafka:Producer messageProducer = check new ("localhost:9093", {
+        // Provide the relevant authentication configurations to authenticate the producer by
+        // \`kafka:AuthenticationConfiguration\`.
+        auth: {
+            // Provide the authentication mechanism used by the Kafka server.
+            mechanism: kafka:AUTH_SASL_PLAIN,
+            // Username and password should be set here in order to authenticate the producer.
+            username: "alice",
+            password: "alice@123"
+        },
+        securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
     });
-    if result is kafka:Error {
-        io:println("Message publish unsuccessful : " + result.message());
-    } else {
-        io:println("Message published successfully.");
-    }
+    check messageProducer->send({
+        topic: "order-log-topic",
+        value: "new order for item 2311 was placed on 1669113239"
+    });
 }
 `,
 ];
@@ -157,6 +150,8 @@ export default function KafkaClientProducerSasl() {
         </Col>
       </Row>
 
+      <p>Run the program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -213,7 +208,6 @@ export default function KafkaClientProducerSasl() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_client_producer_sasl.bal`}</span>
-              <span>{`Message published successfully.`}</span>
             </code>
           </pre>
         </Col>
@@ -226,7 +220,8 @@ export default function KafkaClientProducerSasl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/AuthenticationConfiguration">
-              <code>kafka:AuthenticationConfiguration</code> - API documentation
+              <code>kafka:AuthenticationConfiguration</code> record - API
+              documentation
             </a>
           </span>
         </li>

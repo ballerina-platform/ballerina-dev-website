@@ -153,8 +153,6 @@ export default function GrpcClientHeaders() {
         </Col>
       </Row>
 
-      <p>Execute the command below to run the client.</p>
-
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with input and output parameter change. You can refer to the{" "}
@@ -162,16 +160,22 @@ export default function GrpcClientHeaders() {
         implement the client used here.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start
-          the{" "}
-          <a href="learn/by-example/grpc-service-headers/">
-            simple RPC service with headers
-          </a>
-          .
-        </p>
-      </blockquote>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start the{" "}
+            <a href="learn/by-example/grpc-service-headers/">
+              simple RPC service with headers
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Execute the command below to run the client.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -243,7 +247,7 @@ export default function GrpcClientHeaders() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              gRPC - API documentation
+              <code>grpc</code> package - API documentation
             </a>
           </span>
         </li>
@@ -252,7 +256,9 @@ export default function GrpcClientHeaders() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/grpc/">gRPC - specification</a>
+            <a href="/spec/grpc/">
+              <code>grpc</code> package - specification
+            </a>
           </span>
         </li>
       </ul>

@@ -38,7 +38,7 @@ service on remoteServer {
     remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) returns error? {
         foreach ftp:FileInfo addedFile in event.addedFiles {
             // The \`ftp:Caller\` can be used to append another file to the added files in the server.
-            stream<io:Block, io:Error?> bStream = check io:fileReadBlocksAsStream("/local/appendFile.txt", 7);
+            stream<io:Block, io:Error?> bStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
             check caller->append(addedFile.path, bStream);
         }
     }
@@ -162,9 +162,25 @@ export default function FtpServiceReadWrite() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Execute{" "}
+            <a href="/learn/by-example/ftp-client-write">
+              FTP client - Write file
+            </a>{" "}
+            example to put a file in the FTP server.
+          </span>
+        </li>
+      </ul>
+
       <p>
-        Each newly added file in the SFTP server will be appended with the
-        content in the appending file.
+        Run the program by executing the following command. Each newly added
+        file in the SFTP server will be appended with the content in the
+        appending file.
       </p>
 
       <Row
@@ -235,7 +251,7 @@ export default function FtpServiceReadWrite() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller">
-              <code>ftp:Caller</code> - API documentation
+              <code>ftp:Caller</code> client object - API documentation
             </a>
           </span>
         </li>
@@ -245,7 +261,7 @@ export default function FtpServiceReadWrite() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/ftp/#52-functions">
-              <code>ftp:Caller</code> - specification
+              <code>ftp:Caller</code> functions - specification
             </a>
           </span>
         </li>

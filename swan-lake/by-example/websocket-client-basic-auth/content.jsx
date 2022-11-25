@@ -15,20 +15,19 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerina/websocket;
 
-// Defines the WebSocket client to call the Basic authentication secured APIs.
-// The client is enriched with the \`Authorization: Basic <token>\` header by
-// passing the \`websocket:CredentialsConfig\` for the \`auth\` configuration of the client.
-websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
-    auth = {
-        username: "ldclakmal",
-        password: "ldclakmal@123"
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
+    // Defines the WebSocket client to call the Basic authentication secured APIs.
+    // The client is enriched with the \`Authorization: Basic <token>\` header by
+    // passing the \`websocket:CredentialsConfig\` for the \`auth\` configuration of the client.
+    websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
+        auth = {
+            username: "ldclakmal",
+            password: "ldclakmal@123"
+        },
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
     check securedEP->writeMessage("Hello, World!");
     string textMessage = check securedEP->readMessage();
     io:println(textMessage);
@@ -152,18 +151,22 @@ export default function WebsocketClientBasicAuth() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the command below.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start
-          the{" "}
-          <a href="/learn/by-example/websocket-service-basic-auth-file-user-store/">
-            Basic authentication file user store service
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start the{" "}
+            <a href="/learn/by-example/websocket-service-basic-auth-file-user-store/">
+              Basic authentication file user store service
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -234,7 +237,7 @@ export default function WebsocketClientBasicAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>
@@ -244,7 +247,7 @@ export default function WebsocketClientBasicAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> - API documentation
+              <code>auth</code> package - API documentation
             </a>
           </span>
         </li>

@@ -61,8 +61,8 @@ export default function HttpClientSendRequestReceiveResponse() {
 
       <p>
         The HTTP client can be used to connect to and interact with an HTTP
-        server. The client is instantiated with URL and uses resource function
-        to make the network calls.
+        server. The client is instantiated with URL and uses resource method to
+        make the network calls.
       </p>
 
       <Row
@@ -76,7 +76,7 @@ export default function HttpClientSendRequestReceiveResponse() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0abc5c0c95c62577abd8cc4907a913f7&file=http_client_send_request_receive_response.bal",
+                "https://play.ballerina.io/?gist=404b571cc49221cccb5ac95889aba6e0&file=http_client_send_request_receive_response.bal",
                 "_blank"
               );
             }}
@@ -259,7 +259,7 @@ export default function HttpClientSendRequestReceiveResponse() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package API documentation
+              <code>http</code> - API documentation
             </a>
           </span>
         </li>

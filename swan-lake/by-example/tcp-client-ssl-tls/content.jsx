@@ -20,7 +20,6 @@ public function main() returns error? {
     // a certificate file of the listener.
     // The \`tcp:ClientSecureSocket\` record provides the
     // SSL-related configurations of the client.
-    // For details, see https://lib.ballerina.io/ballerina/tcp/latest/records/ClientSecureSocket.
     tcp:Client securedClientEP = check new("localhost", 3000,
         secureSocket = {
             cert: "../resource/path/to/public.crt"
@@ -146,17 +145,22 @@ export default function TcpClientSslTls() {
         </Col>
       </Row>
 
-      <p>Run the client by executing the command below.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start a{" "}
-          <a href="/learn/by-example/tcp-service-ssl-tls/">
-            sample service secured with SSL/TLS
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start the{" "}
+            <a href="/learn/by-example/tcp-service-ssl-tls/">
+              sample service secured with SSL/TLS
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -226,7 +230,7 @@ export default function TcpClientSslTls() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/tcp/latest">
-              <code>tcp</code> - API documentation
+              <code>tcp</code> package - API documentation
             </a>
           </span>
         </li>

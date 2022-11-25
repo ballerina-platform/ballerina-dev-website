@@ -19,7 +19,7 @@ public function main() returns error? {
     // Creates the client with the connection parameters, host, username, and
     // password. An error is returned in a failure. The default port number
     // \`22\` for SSH is used with these configurations.
-    ftp:ClientConfiguration config = {
+    ftp:Client clientEp = check new ({
         protocol: ftp:SFTP,
         host: "sftp.example.com",
         port: 22,
@@ -32,15 +32,14 @@ public function main() returns error? {
                 password: "keyPass123"
             }
         }
-    };
-    ftp:Client clientEp = check new (config);
+    });
 
     // Reads a file from a FTP server for a given file path. In error cases,
     // an error is returned.
-    stream<byte[] & readonly, io:Error?> fileStream = check clientEp->get("/server/book.txt");
-    check fileStream.forEach(isolated function(byte[] & readonly fileContent) {
-        io:println("File content received: " + checkpanic string:fromBytes(fileContent));
-    });
+    stream<byte[] & readonly, io:Error?> fileStream = check clientEp->get("/server/logFile.txt");
+
+    // Write the content to a file.
+    check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
 
     // Closes the file stream to finish the \`get\` operation.
     check fileStream.close();
@@ -163,7 +162,25 @@ export default function SftpClientRead() {
         </Col>
       </Row>
 
-      <p>File content of the received file would get printed.</p>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Execute{" "}
+            <a href="/learn/by-example/sftp-client-write">
+              SFTP client - Write file
+            </a>{" "}
+            example to put a file in the FTP server.
+          </span>
+        </li>
+      </ul>
+
+      <p>
+        Run the program by executing the following command. The newly-added file
+        will appear in the local directory.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -233,7 +250,7 @@ export default function SftpClientRead() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#get">
-              Read file - API documentation
+              <code>ftp:Client-&gt;gett</code> method - API documentation
             </a>
           </span>
         </li>

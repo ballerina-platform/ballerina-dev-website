@@ -260,8 +260,19 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
+              <code>graphql:ServiceConfig</code> annotation - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/LdapUserStoreConfigWithScopes">
+              <code>graphql:LdapUserStoreConfigWithScopes</code> record - API
+              documentation
             </a>
           </span>
         </li>
@@ -271,7 +282,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> - API documentation
+              <code>auth</code> package - API documentation
             </a>
           </span>
         </li>

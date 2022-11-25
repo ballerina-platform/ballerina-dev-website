@@ -24,7 +24,7 @@ service class Person {
         self.age = age;
     }
 
-    // Each resource function becomes a field of the \`Person\` type.
+    // Each resource method becomes a field of the \`Person\` type.
     resource function get name() returns string {
         return self.name;
     }
@@ -39,7 +39,7 @@ service class Person {
 service /graphql on new graphql:Listener(9090) {
 
     // This resolver returns a service type, which will be mapped to a GraphQL \`OBJECT\` type named
-    // \`Person\`. Each resource function in the service type is mapped to a field in the \`OBJECT\`
+    // \`Person\`. Each resource method in the service type is mapped to a field in the \`OBJECT\`
     // type.
     resource function get profile() returns Person {
         return new ("Walter White", 51);
@@ -82,9 +82,9 @@ export default function GraphqlReturningServiceObjects() {
       <h1>GraphQL service - Service as output object</h1>
 
       <p>
-        A GraphQL resource function can return service objects. The returning
+        A GraphQL resource method can return service objects. The returning
         service objects are mapped to an <code>OBJECT</code> type in the GraphQL
-        schema. Each resource function in the returned service object becomes a
+        schema. Each resource method in the returned service object becomes a
         field in the created <code>OBJECT</code> type.
       </p>
 
@@ -423,7 +423,7 @@ export default function GraphqlReturningServiceObjects() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>

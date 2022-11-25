@@ -338,7 +338,7 @@ export default function HttpRequestInterceptors() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package API documentation
+              <code>http</code> - API documentation
             </a>
           </span>
         </li>
@@ -393,7 +393,7 @@ export default function HttpRequestInterceptors() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Response Interceptors"
+            title="Response interceptors"
             href="/learn/by-example/http-response-interceptors"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -404,7 +404,7 @@ export default function HttpRequestInterceptors() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Response Interceptors
+                  Response interceptors
                 </span>
               </div>
               <svg

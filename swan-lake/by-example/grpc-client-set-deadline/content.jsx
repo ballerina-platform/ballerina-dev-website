@@ -151,26 +151,31 @@ export default function GrpcClientSetDeadline() {
       </Row>
 
       <p>
-        Execute the command below to run the client. Output will depend on how
-        the service has been implemented.
-      </p>
-
-      <p>
         Setting up the client is the same as setting up the unary RPC client
         with additional configurations. You can refer to the{" "}
         <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
         implement the client used here.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> As a prerequisite to running the client, start a{" "}
-          <a href="/learn/by-example/grpc-service-set-deadline/">
-            sample service with/without a configured deadline
-          </a>
-          .
-        </p>
-      </blockquote>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="/learn/by-example/grpc-service-set-deadline/">
+              sample service with/without a configured deadline
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>
+        Execute the command below to run the client. Output will depend on how
+        the service has been implemented.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -241,7 +246,7 @@ export default function GrpcClientSetDeadline() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest/functions#setDeadline">
-              Set deadline - API documentation
+              <code>grpc:setDeadline</code> function - API documentation
             </a>
           </span>
         </li>

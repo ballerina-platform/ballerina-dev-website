@@ -15,30 +15,6 @@
             "id": "swan-lake-release-notes",
             "subDirectories": [
                 {
-                    "dirName": "2201.2.3 (Swan Lake Update 2)",
-                    "level": 2,
-                    "position": 1,
-                    "isDir": false,
-                    "url": "/downloads/swan-lake-release-notes/swan-lake-2201.2.3",
-                    "id": "swan-lake-2201.2.3"
-                },
-                {
-                    "dirName": "2201.2.2 (Swan Lake Update 2)",
-                    "level": 2,
-                    "position": 1,
-                    "isDir": false,
-                    "url": "/downloads/swan-lake-release-notes/swan-lake-2201.2.2",
-                    "id": "swan-lake-2201.2.2"
-                },
-                {
-                    "dirName": "2201.2.1 (Swan Lake Update 2)",
-                    "level": 2,
-                    "position": 1,
-                    "isDir": false,
-                    "url": "/downloads/swan-lake-release-notes/swan-lake-2201.2.1",
-                    "id": "swan-lake-2201.2.1"
-                },
-                {
                     "dirName": "2201.2.0 (Swan Lake Update 2)",
                     "level": 2,
                     "position": 1,
@@ -291,14 +267,6 @@
             "url": "/downloads/1.2.x-release-notes",
             "id": "1.2.x-release-notes",
             "subDirectories": [
-                {
-                    "dirName": "1.2.34",
-                    "level": 2,
-                    "position": 1,
-                    "isDir": false,
-                    "url": "/downloads/1.2.x-release-notes/1.2.34",
-                    "id": "1.2.34"
-                },
                 {
                     "dirName": "1.2.33",
                     "level": 2,

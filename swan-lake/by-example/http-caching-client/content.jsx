@@ -151,18 +151,22 @@ export default function HttpCachingClient() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the following command.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          the{" "}
-          <a href="learn/by-example/http-service-cache-response/">
-            Sending cache response
-          </a>{" "}
-          example.
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start the{" "}
+            <a href="learn/by-example/http-service-cache-response/">
+              Sending cache response service
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

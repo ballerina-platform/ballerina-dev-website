@@ -248,12 +248,8 @@ export default function JdbcBatchExecuteOperation() {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>Run the sample by executing the command below.</span>
-        </li>
-      </ul>
+
+      <p>Run the sample by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

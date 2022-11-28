@@ -90,7 +90,7 @@ export default function RetryTransactionStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=47f834f8ef6371c8a0bc0cf939e38f29&file=retry_transaction_statement.bal",
+                "https://play.ballerina.io/?gist=51834f8b925d5e55fb5c37e420efbf2f&file=retry_transaction_statement.bal",
                 "_blank"
               );
             }}

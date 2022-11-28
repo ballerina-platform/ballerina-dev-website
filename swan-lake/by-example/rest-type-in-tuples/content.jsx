@@ -78,7 +78,7 @@ export default function RestTypeInTuples() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4f57aee5b3e52658b1d8784339e8ddba&file=rest_type_in_tuples.bal",
+                "https://play.ballerina.io/?gist=45848c0746a10703085311e91de63089&file=rest_type_in_tuples.bal",
                 "_blank"
               );
             }}

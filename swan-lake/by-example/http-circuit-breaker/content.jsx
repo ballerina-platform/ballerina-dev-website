@@ -19,7 +19,7 @@ public function main() returns error? {
     // The circuit breaker looks for errors across a rolling time window.
     // After the circuit is broken, it does not send requests to
     // the backend until the \`resetTime\`.
-    http:Client httpClient = check new ("localhost:8080",
+    http:Client httpClient = check new ("localhost:9090",
         // Configuration options that control the behavior of the circuit
         // breaker.
         circuitBreaker = {
@@ -57,7 +57,7 @@ public function main() returns error? {
 
         }
     );
-    string payload = check httpClient->/greeting;
+    string payload = check httpClient->/albums;
     io:println(payload);
 }
 `,
@@ -178,10 +178,16 @@ export default function HttpCircuitBreaker() {
 
       <h2>Prerequisites</h2>
 
-      <ul style={{ marginLeft: "8px" }}>
+      <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>Start a service.</span>
+          <span>
+            Start the{" "}
+            <a href="/learn/by-example/http-basic-rest-service/">
+              Basic REST service
+            </a>
+            .
+          </span>
         </li>
       </ul>
 

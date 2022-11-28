@@ -28,7 +28,7 @@ public function main() returns error? {
             chunking: http:CHUNKING_NEVER
         }
     );
-    string payload = check httpClient->/payload.post({"name": "Ballerina"});
+    string payload = check httpClient->/albums.post({title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"});
     io:println(payload);
 }
 `,
@@ -151,10 +151,16 @@ export default function HttpClientChunking() {
 
       <h2>Prerequisites</h2>
 
-      <ul style={{ marginLeft: "8px" }}>
+      <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>Start a service which checks for Content-Length header.</span>
+          <span>
+            Start the{" "}
+            <a href="/learn/by-example/http-basic-rest-service/">
+              Basic REST service
+            </a>
+            .
+          </span>
         </li>
       </ul>
 

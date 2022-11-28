@@ -93,7 +93,7 @@ export default function CacheBasics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e8621c76907216a3b42d99e6b0f7fcc9&file=cache_basics.bal",
+                "https://play.ballerina.io/?gist=33df8a8035985bdd6926e21158ed29df&file=cache_basics.bal",
                 "_blank"
               );
             }}

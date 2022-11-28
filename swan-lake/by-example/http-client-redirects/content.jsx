@@ -162,7 +162,7 @@ export default function HttpClientRedirects() {
           <span>&#8226;&nbsp;</span>
           <span>
             Start a{" "}
-            <a href="learn/by-example/http-service-redirects/">
+            <a href="/learn/by-example/http-service-redirects/">
               Redirect service
             </a>
             .

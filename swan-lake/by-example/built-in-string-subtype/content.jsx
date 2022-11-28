@@ -78,7 +78,7 @@ export default function BuiltInStringSubtype() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=33423c9531de5624f3d951bf790e1e3d&file=built_in_string_subtype.bal",
+                "https://play.ballerina.io/?gist=12b87570d20d6223784518b2b43a602a&file=built_in_string_subtype.bal",
                 "_blank"
               );
             }}

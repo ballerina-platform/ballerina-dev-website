@@ -159,7 +159,7 @@ export default function HttpClientBearerTokenAuthentication() {
       <ul style={{ marginLeft: "8px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>Start a secured sample service.</span>
+          <span>Run a sample secured service.</span>
         </li>
       </ul>
 

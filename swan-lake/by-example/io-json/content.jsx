@@ -84,7 +84,7 @@ export default function IoJson() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=109488f4d8843879051bc0824bbb69fa&file=io_json.bal",
+                "https://play.ballerina.io/?gist=51b6cd14ad2484daec414e5e904152f7&file=io_json.bal",
                 "_blank"
               );
             }}

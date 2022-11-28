@@ -159,11 +159,11 @@ export default function HttpFailover() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
+            Run the HTTP service given in the{" "}
             <a href="/learn/by-example/http-basic-rest-service/">
               Basic REST service
-            </a>
-            .
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

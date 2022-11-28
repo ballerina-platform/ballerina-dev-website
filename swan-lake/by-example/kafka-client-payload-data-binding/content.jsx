@@ -15,12 +15,12 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/io;
 
-public type Order record {|
+public type Order record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
 public function main() returns error? {
     kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, {
@@ -250,7 +250,7 @@ export default function KafkaClientPayloadDataBinding() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Consumer#pollPayload">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/clients/Consumer#pollPayload">
               <code>kafka:Consumer-&gt;pollPayload</code> function - API
               documentation
             </a>

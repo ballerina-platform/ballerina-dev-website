@@ -15,6 +15,13 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 // The consumer service listens to the "MyQueue" queue.
 @rabbitmq:ServiceConfig {
     queueName: "MyQueue",
@@ -22,16 +29,15 @@ import ballerinax/rabbitmq;
 }
 // Attaches the service to the listener.
 service on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
-    // Gets triggered when a message is received by the queue.
-    remote function onMessage(StringMessage message, rabbitmq:Caller caller) returns error? {
-        log:printInfo("The message received: " + message.content);
+    remote function onMessage(Order 'order, rabbitmq:Caller caller) returns error? {
         // Acknowledges a single message positively.
-        // The acknowledgement gets committed upon successful execution of the transaction,
-        // or will rollback otherwise.
         transaction {
-            rabbitmq:Error? result = caller->basicAck();
-            if result is error {
-                log:printError("Error occurred while acknowledging the message.");
+            if 'order.isValid {
+                log:printInfo(string \`Received valid order for \${'order.productName}\`);
+                rabbitmq:Error? result = caller->basicAck();
+                if result is error {
+                    log:printError("Error occurred while acknowledging the message.");
+                }
             }
             check commit;
         }
@@ -162,6 +168,21 @@ export default function RabbitmqTransactionConsumer() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://www.rabbitmq.com/download.html">RabbitMQ server</a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -224,6 +245,16 @@ export default function RabbitmqTransactionConsumer() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/rabbitmq-transaction-producer//">
+            RabbitMQ client - Transactional producer
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -231,7 +262,7 @@ export default function RabbitmqTransactionConsumer() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-              <code>rabbitmq</code> - API documentation
+              <code>rabbitmq</code> package - API documentation
             </a>
           </span>
         </li>
@@ -241,7 +272,7 @@ export default function RabbitmqTransactionConsumer() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#8-client-acknowledgements">
-              <code>rabbitmq:Caller</code> - Specification
+              <code>rabbitmq</code> acknowledgements - Specification
             </a>
           </span>
         </li>

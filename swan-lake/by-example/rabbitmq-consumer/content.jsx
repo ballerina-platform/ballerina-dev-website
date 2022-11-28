@@ -15,12 +15,19 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
-listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
 
 // The consumer service listens to the "MyQueue" queue.
-service "MyQueue" on channelListener {
-    remote function onMessage(string message) returns error? {
-        log:printInfo("Received message: " + message);
+service "OrderQueue" on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
+    remote function onMessage(Order 'order) returns error? {
+        if 'order.isValid {
+            log:printInfo(string \`Received valid order for \${'order.productName}\`);
+        }
     }
 }
 `,
@@ -141,6 +148,21 @@ export default function RabbitmqConsumer() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://www.rabbitmq.com/download.html">RabbitMQ server</a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -203,6 +225,13 @@ export default function RabbitmqConsumer() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/rabbitmq-producer/">RabbitMQ client</a>.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -210,7 +239,7 @@ export default function RabbitmqConsumer() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-              <code>rabbitmq</code> - API documentation
+              <code>rabbitmq</code> package - API documentation
             </a>
           </span>
         </li>
@@ -220,7 +249,7 @@ export default function RabbitmqConsumer() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#6-subscribing">
-              <code>rabbitmq:Listener</code> - Specification
+              <code>rabbitmq</code> subscribing - Specification
             </a>
           </span>
         </li>

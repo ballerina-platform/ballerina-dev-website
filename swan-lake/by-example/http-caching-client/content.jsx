@@ -157,11 +157,11 @@ export default function HttpCachingClient() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
+            Run the HTTP service given in the{" "}
             <a href="learn/by-example/http-service-cache-response/">
               Sending cache response service
-            </a>
-            .
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

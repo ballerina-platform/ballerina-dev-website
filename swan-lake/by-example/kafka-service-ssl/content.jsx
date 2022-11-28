@@ -15,12 +15,12 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/log;
 
-public type Order record {|
+public type Order record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
 listener kafka:Listener orderListener = check new ("localhost:9094", {
     groupId: "order-group-id",
@@ -261,7 +261,7 @@ export default function KafkaServiceSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/SecureSocket">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket">
               <code>kafka:SecureSocket</code> record - API documentation
             </a>
           </span>
@@ -281,8 +281,8 @@ export default function KafkaServiceSsl() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Consumer record data binding"
-            href="/learn/by-example/kafka-client-consumer-record-data-binding"
+            title="Constraint validation"
+            href="/learn/by-example/kafka-client-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -309,7 +309,7 @@ export default function KafkaServiceSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consumer record data binding
+                  Constraint validation
                 </span>
               </div>
             </div>

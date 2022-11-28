@@ -15,12 +15,12 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/io;
 
-public type Order record {|
+public type Order record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
 public function main() returns error? {
     kafka:Consumer orderConsumer = check new ("localhost:9094", {
@@ -261,7 +261,7 @@ export default function KafkaClientConsumerSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/SecureSocket">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket">
               <code>kafka:SecureSocket</code> record - API documentation
             </a>
           </span>

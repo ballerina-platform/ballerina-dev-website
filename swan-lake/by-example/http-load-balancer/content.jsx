@@ -152,11 +152,11 @@ export default function HttpLoadBalancer() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start multiple{" "}
+            Run multiple instances of the HTTP service given in{" "}
             <a href="/learn/by-example/http-basic-rest-service/">
               Basic REST services
             </a>{" "}
-            by changing the ports accordingly.
+            example by changing the ports accordingly.
           </span>
         </li>
       </ul>

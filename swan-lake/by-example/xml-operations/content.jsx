@@ -171,7 +171,7 @@ export default function XmlOperations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ef49f948932263f0c6aa9a81654f3c31&file=xml_operations.bal",
+                "https://play.ballerina.io/?gist=680cf5400d62b8e3db0cca3f232fb51f&file=xml_operations.bal",
                 "_blank"
               );
             }}

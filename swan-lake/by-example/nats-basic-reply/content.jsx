@@ -15,13 +15,22 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/nats;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 // Binds the consumer to listen to the messages published to the 'demo.bbe' subject.
-service "demo.bbe" on new nats:Listener(nats:DEFAULT_URL) {
-    remote function onRequest(string message) returns string|error {
-        // Logs the incoming message.
-        log:printInfo("Received message: " + message);
-        // Sends the reply message to the \`replyTo\` subject of the received message.
-        return "Hello Back!";
+service "orders.valid" on new nats:Listener(nats:DEFAULT_URL) {
+    remote function onRequest(Order 'order) returns string|error {
+        if 'order.isValid {
+            log:printInfo(string \`Received valid order for \${'order.productName}\`);
+            return "Received valid order!";
+        } else {
+            return "Received invalid order!";
+        }
     }
 }
 `,
@@ -143,10 +152,22 @@ export default function NatsBasicReply() {
         </Col>
       </Row>
 
-      <p>
-        To run the sample, start an instance of the NATS server and execute the
-        following command.
-      </p>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://docs.nats.io/nats-concepts/what-is-nats/walkthrough_setup">
+              NATS server
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the service by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -210,6 +231,13 @@ export default function NatsBasicReply() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/nats-basic-request/">NATS client</a>.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -217,7 +245,7 @@ export default function NatsBasicReply() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/nats/latest">
-              <code>nats</code> - API documentation
+              <code>nats</code> package - API documentation
             </a>
           </span>
         </li>
@@ -227,7 +255,7 @@ export default function NatsBasicReply() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#4-subscribing">
-              <code>nats:Client</code> - Specification
+              <code>nats</code> subscribing - Specification
             </a>
           </span>
         </li>

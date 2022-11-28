@@ -162,6 +162,21 @@ export default function FtpServiceReadWrite() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="https://hub.docker.com/r/stilliard/pure-ftpd/">
+              FTP server
+            </a>{" "}
+            instance.
+          </span>
+        </li>
+      </ul>
+
       <p>
         Run the program by executing the following command. Each newly added
         file in the SFTP server will be appended with the content in the
@@ -231,7 +246,7 @@ export default function FtpServiceReadWrite() {
 
       <blockquote>
         <p>
-          <strong>TIP</strong> Run the FTP client given in the{" "}
+          <strong>Tip:</strong> Run the FTP client given in the{" "}
           <a href="/learn/by-example/ftp-client-write">
             FTP client - Write file
           </a>{" "}

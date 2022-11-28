@@ -159,9 +159,9 @@ export default function HttpClientMutualSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start a{" "}
-            <a href="-example/http-service-mutual-ssl/">
-              sample service secured with mutual SSL
+            Run the HTTP service given in the{" "}
+            <a href="/learn/by-example/http-service-mutual-ssl/">
+              Mutual SSL service
             </a>
             .
           </span>

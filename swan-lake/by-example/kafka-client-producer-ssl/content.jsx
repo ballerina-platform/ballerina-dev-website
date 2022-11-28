@@ -258,7 +258,7 @@ export default function KafkaClientProducerSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/SecureSocket">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket">
               <code>kafka:SecureSocket</code> record - API documentation
             </a>
           </span>

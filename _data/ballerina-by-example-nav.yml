@@ -1072,6 +1072,9 @@ sublinks:
           - title: Consume message
             id: 1
             url: kafka-service-consume-message
+          - title: Constraint validation
+            id: 2
+            url: kafka-service-constraint-validation
       - title: Kafka client
         id: 28
         sublinks:
@@ -1084,6 +1087,9 @@ sublinks:
           - title: Consumer record data binding
             id: 3
             url: kafka-client-consumer-record-data-binding
+          - title: Constraint validation
+            id: 4
+            url: kafka-client-constraint-validation
       - title: Kafka service security
         id: 29
         sublinks:

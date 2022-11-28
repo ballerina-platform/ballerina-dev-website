@@ -246,7 +246,7 @@ export default function KafkaClientProducerSasl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/records/AuthenticationConfiguration">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration">
               <code>kafka:AuthenticationConfiguration</code> record - API
               documentation
             </a>

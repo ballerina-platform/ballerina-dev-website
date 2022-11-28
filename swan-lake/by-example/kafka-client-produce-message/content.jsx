@@ -233,7 +233,7 @@ export default function KafkaClientProduceMessage() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Producer#send">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/clients/Producer#send">
               <code>kafka:Producer-&gt;send</code> function - API documentation
             </a>
           </span>
@@ -253,8 +253,8 @@ export default function KafkaClientProduceMessage() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Consume message"
-            href="/learn/by-example/kafka-service-consume-message"
+            title="Constraint validation"
+            href="/learn/by-example/kafka-service-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -281,7 +281,7 @@ export default function KafkaClientProduceMessage() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consume message
+                  Constraint validation
                 </span>
               </div>
             </div>

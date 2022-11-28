@@ -168,11 +168,21 @@ export default function SftpClientRead() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+            Start a{" "}
+            <a href="https://hub.docker.com/r/atmoz/sftp/">SFTP server</a>{" "}
+            instance.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
             Run the SFTP client given in the{" "}
             <a href="/learn/by-example/sftp-client-write">
               SFTP client - Write file
             </a>{" "}
-            example to put a file in the FTP server.
+            example to put a file in the SFTP server.
           </span>
         </li>
       </ul>

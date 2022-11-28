@@ -14,13 +14,23 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerinax/nats;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 public function main() returns error? {
-    string message = "Hello from Ballerina";
     // Initializes a NATS client.
     nats:Client natsClient = check new (nats:DEFAULT_URL);
 
     // Produces a message to the specified subject.
-    check natsClient->publishMessage({content: message.toBytes(), subject: "demo.bbe"});
+    check natsClient->publishMessage({content: { orderId: 1,
+                                                 productName: "Sport shoe",
+                                                 price: 27.5,
+                                                 isValid: true
+                                               }, subject: "orders.valid"});
 
     // Closes the client connection.
     check natsClient.close();
@@ -143,10 +153,34 @@ export default function NatsBasicPub() {
         </Col>
       </Row>
 
-      <p>
-        To run the sample, start an instance of the NATS server and execute the
-        following command.
-      </p>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://docs.nats.io/nats-concepts/what-is-nats/walkthrough_setup">
+              NATS server
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the NATS service given in the{" "}
+            <a href="/learn/by-example/nats-basic-sub/">
+              NATS service - Consume message
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -216,7 +250,7 @@ export default function NatsBasicPub() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/nats/latest/clients/Client">
-              <code>nats:Client</code> - API documentation
+              <code>nats:Client</code> client object - API documentation
             </a>
           </span>
         </li>
@@ -226,7 +260,7 @@ export default function NatsBasicPub() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#3-publishing">
-              <code>nats:Client</code> - Specification
+              <code>nats</code> publishing - Specification
             </a>
           </span>
         </li>

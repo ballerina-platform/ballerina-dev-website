@@ -161,11 +161,11 @@ export default function HttpClientRedirects() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start a{" "}
+            Run the HTTP service given in the{" "}
             <a href="/learn/by-example/http-service-redirects/">
               Redirect service
-            </a>
-            .
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

@@ -149,6 +149,21 @@ export default function FtpClientWrite() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="https://hub.docker.com/r/stilliard/pure-ftpd/">
+              FTP server
+            </a>{" "}
+            instance.
+          </span>
+        </li>
+      </ul>
+
       <p>
         Run the program by executing the following command. The newly-added file
         will appear in the FTP server.

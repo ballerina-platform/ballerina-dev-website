@@ -188,6 +188,15 @@ export default function HttpServiceOauth2() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>STS endpoint should be up and running</span>
+        </li>
+      </ul>
+
       <p>Run the service by executing the command below.</p>
 
       <Row

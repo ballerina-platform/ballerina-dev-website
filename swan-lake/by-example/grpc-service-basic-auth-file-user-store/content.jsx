@@ -198,8 +198,10 @@ export default function GrpcServiceBasicAuthFileUserStore() {
       <p>
         Setting up the service is the same as setting up the unary RPC service
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
-        implement the service used below.
+        <a href="/learn/by-example/grpc-service-unary/">
+          gRPC service - Unary RPC
+        </a>{" "}
+        to implement the service used below.
       </p>
 
       <p>Execute the command below to run the service.</p>
@@ -269,7 +271,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/grpc-client-basic-auth">
-            gRPC Basic Auth client
+            gRPC client - Basic authentication
           </a>
           .
         </p>
@@ -292,7 +294,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5111-service---basic-auth---file-user-store">
-              Basic authentication file user store - specification
+              Basic authentication file user store - Specification
             </a>
           </span>
         </li>

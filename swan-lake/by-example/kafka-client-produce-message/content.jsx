@@ -63,8 +63,7 @@ export default function KafkaClientProduceMessage() {
 
       <p>
         This shows how to send messages to a Kafka topic using a{" "}
-        <code>kafka:Producer</code> client. For this to work properly, an active
-        Kafka broker should be present.
+        <code>kafka:Producer</code> client.
       </p>
 
       <Row
@@ -152,6 +151,19 @@ export default function KafkaClientProduceMessage() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
+            instance.
+          </span>
+        </li>
+      </ul>
+
       <p>Run the program by executing the following command.</p>
 
       <Row
@@ -232,7 +244,7 @@ export default function KafkaClientProduceMessage() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#33-functions">
-              <code>kafka:Producer</code> functions - specification
+              <code>kafka:Producer</code> functions - Specification
             </a>
           </span>
         </li>

@@ -154,8 +154,10 @@ export default function GrpcServiceCheckDeadline() {
       <p>
         Setting up the service is the same as setting up the unary RPC service
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
-        implement the service used below.
+        <a href="/learn/by-example/grpc-service-unary/">
+          gRPC service - Unary RPC
+        </a>{" "}
+        to implement the service used below.
       </p>
 
       <p>Execute the command below to run the service.</p>
@@ -224,7 +226,7 @@ export default function GrpcServiceCheckDeadline() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/grpc-service-set-deadline/">
+          <a href="/learn/by-example/grpc-client-set-deadline/">
             gRPC client - Set deadline
           </a>
           .
@@ -248,7 +250,7 @@ export default function GrpcServiceCheckDeadline() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#61-grpc-deadline">
-              Check deadline - specification
+              Check deadline - Specification
             </a>
           </span>
         </li>

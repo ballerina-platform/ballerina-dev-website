@@ -18,7 +18,7 @@ import ballerina/io;
 // Creates the listener with the connection parameters and the protocol-related
 // configuration. The listener listens to the files
 // with the given file name pattern located in the specified path.
-listener ftp:Listener remoteServer = check new ({
+listener ftp:Listener fileListener = check new ({
     protocol: ftp:SFTP,
     host: "sftp.example.com",
     auth: {
@@ -38,7 +38,7 @@ listener ftp:Listener remoteServer = check new ({
 
 // One or many services can listen to the SFTP listener for the
 // periodically-polled file related events.
-service on remoteServer {
+service on fileListener {
     // When a file event is successfully received, the \`onFileChange\` method is called.
     remote function onFileChange(ftp:WatchEvent event, ftp:Caller caller) returns error? {
         // \`addedFiles\` contains the paths of the newly-added files/directories
@@ -169,21 +169,6 @@ export default function SftpServiceReadWrite() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Execute{" "}
-            <a href="/learn/by-example/sftp-client-write">
-              SFTP client - Write file
-            </a>{" "}
-            example to put a file in the FTP server.
-          </span>
-        </li>
-      </ul>
-
       <p>
         Run the program by executing the following command. Each newly added
         file in the SFTP server will be appended with the content in the
@@ -251,6 +236,16 @@ export default function SftpServiceReadWrite() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>TIP</strong> Run the SFTP client given in the{" "}
+          <a href="/learn/by-example/sftp-client-write">
+            SFTP client - Write file
+          </a>{" "}
+          example to put a file in the FTP server.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -268,7 +263,7 @@ export default function SftpServiceReadWrite() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/ftp/#52-functions">
-              <code>ftp:Caller</code> function - specification
+              <code>ftp:Caller</code> function - Specification
             </a>
           </span>
         </li>

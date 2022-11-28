@@ -19,7 +19,7 @@ public function main() returns error? {
     // Creates the client with the connection parameters, host, username, and
     // password. An error is returned in a failure. The default port number
     // \`22\` for SSH is used with these configurations.
-    ftp:Client clientEp = check new ({
+    ftp:Client fileClient = check new ({
         protocol: ftp:SFTP,
         host: "sftp.example.com",
         port: 22,
@@ -36,7 +36,7 @@ public function main() returns error? {
 
     // Reads a file from a FTP server for a given file path. In error cases,
     // an error is returned.
-    stream<byte[] & readonly, io:Error?> fileStream = check clientEp->get("/server/logFile.txt");
+    stream<byte[] & readonly, io:Error?> fileStream = check fileClient->get("/server/logFile.txt");
 
     // Write the content to a file.
     check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
@@ -168,7 +168,7 @@ export default function SftpClientRead() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Execute{" "}
+            Run the SFTP client given in the{" "}
             <a href="/learn/by-example/sftp-client-write">
               SFTP client - Write file
             </a>{" "}
@@ -250,7 +250,7 @@ export default function SftpClientRead() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#get">
-              <code>ftp:Client-&gt;gett</code> method - API documentation
+              <code>ftp:Client-&gt;get</code> method - API documentation
             </a>
           </span>
         </li>
@@ -260,7 +260,7 @@ export default function SftpClientRead() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/ftp/#322-secure-client">
-              SFTP client - specification
+              SFTP client - Specification
             </a>
           </span>
         </li>

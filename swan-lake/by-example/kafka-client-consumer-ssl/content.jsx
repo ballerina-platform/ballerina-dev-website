@@ -15,10 +15,17 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/io;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 public function main() returns error? {
-    kafka:Consumer logConsumer = check new ("localhost:9094", {
-        groupId: "order-log-group-id",
-        topics: ["order-log-topic"],
+    kafka:Consumer orderConsumer = check new ("localhost:9094", {
+        groupId: "order-group-id",
+        topics: ["order-topic"],
         // Provide the relevant secure socket configurations by using \`kafka:SecureSocket\`.
         secureSocket: {
             cert: "./resources/path/to/public.crt",
@@ -32,11 +39,11 @@ public function main() returns error? {
     });
 
     // Polls the consumer for payload.
-    string[] logs = check logConsumer->pollPayload(1);
+    Order[] orders = check orderConsumer->pollPayload(1);
 
-    check from string log in logs
+    check from Order 'order in orders
         do {
-            io:println(string \`Received log: \${log}\`);
+            io:println(string \`Received valid order for \${'order.productName}\`);
         };
 }
 `,
@@ -67,8 +74,7 @@ export default function KafkaClientConsumerSsl() {
 
       <p>
         This shows how the SSL encryption is done in the{" "}
-        <code>kafka:Consumer</code>. For this to work properly, an active Kafka
-        server must be present, and it should be configured to use SSL.
+        <code>kafka:Consumer</code>.
       </p>
 
       <Row
@@ -162,7 +168,21 @@ export default function KafkaClientConsumerSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Execute{" "}
+            Start a{" "}
+            <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
+            instance configured to use{" "}
+            <a href="https://docs.confluent.io/3.0.0/kafka/ssl.html#configuring-kafka-brokers">
+              SSL/TLS
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the Kafka client given in the{" "}
             <a href="/learn/by-example/kafka-client-producer-ssl">
               Kafka client - Producer SSL/TLS
             </a>{" "}
@@ -229,7 +249,7 @@ export default function KafkaClientConsumerSsl() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_client_consumer_sasl.bal`}</span>
-              <span>{`Received log: new order for item 2311 was placed on 1669113239`}</span>
+              <span>{`Received valid order for Sport shoe`}</span>
             </code>
           </pre>
         </Col>
@@ -252,7 +272,7 @@ export default function KafkaClientConsumerSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4212-secure-client">
-              Secure client - specification
+              Secure client - Specification
             </a>
           </span>
         </li>

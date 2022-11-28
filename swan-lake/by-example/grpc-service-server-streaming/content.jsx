@@ -441,7 +441,7 @@ export default function GrpcServiceServerStreaming() {
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/grpc-client-server-streaming/">
-            server streaming RPC client
+            gRPC client - Server-side streaming RPC
           </a>
           .
         </p>
@@ -464,7 +464,7 @@ export default function GrpcServiceServerStreaming() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#42-server-streaming-rpc">
-              Server-side streaming - specification
+              Server-side streaming - Specification
             </a>
           </span>
         </li>

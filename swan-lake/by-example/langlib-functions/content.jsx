@@ -76,7 +76,7 @@ export default function LanglibFunctions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d1d4b6132149b801d8653bfbfeb03183&file=langlib_functions.bal",
+                "https://play.ballerina.io/?gist=c0b789318d72be6b4c8626a7b6eae7e1&file=langlib_functions.bal",
                 "_blank"
               );
             }}

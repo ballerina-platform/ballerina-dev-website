@@ -303,11 +303,11 @@ export default function GrpcClientBidirectionalStreaming() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
-            <a href="learn/by-example/grpc-service-bidirectional-streaming/">
+            Run the gRPC service given in the{" "}
+            <a href="/learn/by-example/grpc-service-bidirectional-streaming/">
               bidirectional streaming RPC service
-            </a>
-            .
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>
@@ -520,7 +520,7 @@ export default function GrpcClientBidirectionalStreaming() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#44-bidirectional-streaming-rpc">
-              Bidirectional streaming - specification
+              Bidirectional streaming - Specification
             </a>
           </span>
         </li>

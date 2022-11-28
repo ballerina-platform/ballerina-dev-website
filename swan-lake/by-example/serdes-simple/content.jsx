@@ -72,8 +72,9 @@ export default function SerdesSimple() {
 
       <p>
         The <code>serdes</code> module helps to serialize and deserialize
-        subtypes of Ballerina <code>anydata</code>. This sample demonstrates how
-        to serialize and deserialize a user defined record type.
+        subtypes of Ballerina <code>anydata</code>. This example demonstrates
+        how to serialize and deserialize a user defined <code>record</code>{" "}
+        type.
       </p>
 
       <Row
@@ -87,7 +88,7 @@ export default function SerdesSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=74f399f944bd757ea3667293f5cb0cdc&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=2ce4d2df9ed090034e007a97327da180&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -184,6 +185,8 @@ export default function SerdesSimple() {
           )}
         </Col>
       </Row>
+
+      <p>Run the program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

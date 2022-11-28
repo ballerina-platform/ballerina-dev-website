@@ -15,10 +15,17 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/io;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 public function main() returns error? {
-    kafka:Consumer logConsumer = check new ("localhost:9093", {
-        groupId: "order-log-group-id",
-        topics: "order-log-topic",
+    kafka:Consumer orderConsumer = check new ("localhost:9093", {
+        groupId: "order-group-id",
+        topics: "order-topic",
         // Provide the relevant authentication configurations to authenticate the consumer
         // by the \`kafka:AuthenticationConfiguration\`.
         auth: {
@@ -32,11 +39,11 @@ public function main() returns error? {
     });
 
     // Polls the consumer for payload.
-    string[] logs = check logConsumer->pollPayload(1);
+    Order[] orders = check logConsumer->pollPayload(1);
 
-    check from string log in logs
+    check from Order 'order in orders
         do {
-            io:println(string \`Received log: \${log}\`);
+            io:println(string \`Received valid order for \${'order.productName}\`);
         };
 }
 `,
@@ -67,9 +74,7 @@ export default function KafkaClientConsumerSasl() {
 
       <p>
         This shows how the SASL/PLAIN authentication is done in the{" "}
-        <code>kafka:Consumer</code>. For this to work properly, an active Kafka
-        server must be present, and it should be configured to use the
-        SASL/PLAIN authentication mechanism.
+        <code>kafka:Consumer</code>.
       </p>
 
       <Row
@@ -163,7 +168,21 @@ export default function KafkaClientConsumerSasl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Execute{" "}
+            Start a{" "}
+            <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
+            instance configured to use the{" "}
+            <a href="https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html#sasl-plain-overview">
+              SASL/PLAIN authentication mechanism
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the Kafka client given in the{" "}
             <a href="/learn/by-example/kafka-client-producer-sasl">
               Kafka client - Producer SASL authentication
             </a>{" "}
@@ -230,7 +249,7 @@ export default function KafkaClientConsumerSasl() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_client_consumer_sasl.bal`}</span>
-              <span>{`Received log: new order for item 2311 was placed on 1669113239`}</span>
+              <span>{`Received valid order for Sport shoe`}</span>
             </code>
           </pre>
         </Col>
@@ -254,7 +273,7 @@ export default function KafkaClientConsumerSasl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4212-secure-client">
-              SASL authentication - specification
+              SASL authentication - Specification
             </a>
           </span>
         </li>

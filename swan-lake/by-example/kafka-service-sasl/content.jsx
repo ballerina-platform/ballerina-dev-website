@@ -15,10 +15,17 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/log;
 
-listener kafka:Listener securedEp = check new ("localhost:9093", {
-    groupId: "order-log-group-id",
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
+listener kafka:Listener orderListener = check new ("localhost:9093", {
+    groupId: "order-group-id",
     // Subscribes to the topic \`test-kafka-topic\`.
-    topics: ["order-log-topic"],
+    topics: ["order-topic"],
     // Provide the relevant authentication configurations to authenticate the consumer
     // by the \`kafka:AuthenticationConfiguration\`.
     auth: {
@@ -31,11 +38,12 @@ listener kafka:Listener securedEp = check new ("localhost:9093", {
     securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
 });
 
-service on securedEp {
-    remote function onConsumerRecord(string[] logs) returns error? {
-        check from string log in logs
+service on orderListener {
+    remote function onConsumerRecord(Order[] orders) returns error? {
+        check from Order 'order in orders
+            where 'order.isValid
             do {
-                log:printInfo(string \`Received log: \${log}\`);
+                log:printInfo(string \`Received valid order for \${'order.productName}\`);
             };
     }
 }
@@ -67,9 +75,7 @@ export default function KafkaServiceSasl() {
 
       <p>
         This shows how the SASL/PLAIN authentication is used in the{" "}
-        <code>kafka:Listener</code>. For this to work properly, an active Kafka
-        broker should be present, and it should be configured to use the
-        SASL/PLAIN authentication mechanism.
+        <code>kafka:Listener</code>.
       </p>
 
       <Row
@@ -163,7 +169,21 @@ export default function KafkaServiceSasl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Execute{" "}
+            Start a{" "}
+            <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
+            instance configured to use the{" "}
+            <a href="https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html#sasl-plain-overview">
+              SASL/PLAIN authentication mechanism
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the Kafka client given in the{" "}
             <a href="/learn/by-example/kafka-client-producer-ssl">
               Kafka client - Producer SSL/TLS
             </a>{" "}
@@ -230,7 +250,7 @@ export default function KafkaServiceSasl() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_service_sasl.bal`}</span>
-              <span>{`time = 2022-11-25T15:10:12.566+05:30 level = INFO module = "" message = "Received log: new order for item 2311 was placed on 1669113239"`}</span>
+              <span>{`time = 2022-11-25T14:55:59.366+05:30 level = INFO module = "" message = "Received valid order for Sport shoe"`}</span>
             </code>
           </pre>
         </Col>
@@ -254,7 +274,7 @@ export default function KafkaServiceSasl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4312-secure-listener">
-              SASL authentication - specification
+              SASL authentication - Specification
             </a>
           </span>
         </li>

@@ -166,8 +166,10 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
-        implement the client used here.
+        <a href="/learn/by-example/grpc-client-unary/">
+          gRPC client - Unary RPC
+        </a>{" "}
+        to implement the client used here.
       </p>
 
       <h2>Prerequisites</h2>
@@ -176,8 +178,11 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
-            <a href="/learn/by-example/grpc-service-oauth2/">OAuth2 service</a>.
+            Run the gRPC service given in the{" "}
+            <a href="/learn/by-example/grpc-service-oauth2/">
+              gRPC service - OAuth2
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>
@@ -264,7 +269,7 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5118-client---oauth2">
-              OAuth2 authentication and authorization - specification
+              OAuth2 authentication and authorization - Specification
             </a>
           </span>
         </li>

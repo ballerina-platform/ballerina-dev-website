@@ -94,7 +94,7 @@ export default function NeverType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=704535fdacebb28cb0018e16fe432828&file=never_type.bal",
+                "https://play.ballerina.io/?gist=9b4e2f53d78dab902ca60bfb6378b6fd&file=never_type.bal",
                 "_blank"
               );
             }}

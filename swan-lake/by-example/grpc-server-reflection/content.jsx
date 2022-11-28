@@ -151,8 +151,10 @@ export default function GrpcServerReflection() {
       <p>
         Setting up the service is the same as setting up the unary RPC service
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
-        implement the service used below.
+        <a href="/learn/by-example/grpc-service-unary/">
+          gRPC service - Unary RPC
+        </a>{" "}
+        to implement the service used below.
       </p>
 
       <p>Execute the command below to run the service.</p>
@@ -320,7 +322,7 @@ export default function GrpcServerReflection() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#7-grpc-server-reflection">
-              Server reflection - specification
+              Server reflection - Specification
             </a>
           </span>
         </li>

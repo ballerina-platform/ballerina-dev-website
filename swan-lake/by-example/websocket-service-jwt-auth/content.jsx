@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/websocket;
 
-listener websocket:Listener securedEP = new(9090,
+listener websocket:Listener chatListener = new(9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -43,16 +43,16 @@ listener websocket:Listener securedEP = new(9090,
         }
     ]
 }
-service /foo on securedEP {
-    resource function get bar() returns websocket:Service {
-        return new WsService();
+service /chat on chatListener {
+    resource function get .() returns websocket:Service {
+        return new ChatService();
    }
 }
 
-service class WsService {
+service class ChatService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
-        check caller->writeMessage(text);
+    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
+        check caller->writeMessage("Hello, How are you?");
     }
 }
 `,
@@ -247,8 +247,7 @@ export default function WebsocketServiceJwtAuth() {
 
       <blockquote>
         <p>
-          <strong>Tip:</strong> Alternatively, you can invoke the above service
-          via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/websocket-client-self-signed-jwt-auth">
             self-signed JWT authentication client
           </a>

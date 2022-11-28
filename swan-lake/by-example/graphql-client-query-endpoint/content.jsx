@@ -29,7 +29,7 @@ type Person record {|
 
 public function main() returns error? {
     // Creates a new client with the backend URL.
-    graphql:Client graphqlClient = check new ("http://localhost:9090/graphql");
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql");
 
     string document = "{ profile { name, age } }";
 

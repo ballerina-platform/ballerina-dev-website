@@ -20,14 +20,14 @@ public function main() returns error? {
     // To secure a client using TLS/SSL, the client needs to be configured with
     // a certificate file of the listener.
     // The \`websocket:ClientSecureSocket\` record provides the SSL-related configurations of the client.
-    websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
+    websocket:Client chatClient = check new("wss://localhost:9090/chat",
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }
     );
-    check securedEP->writeMessage("Hello, World!");
-    string textMessage = check securedEP->readMessage();
-    io:println(textMessage);
+    check chatClient->writeMessage("Hello, John!");
+    string chatMessage = check chatClient->readMessage();
+    io:println(chatMessage);
 }
 `,
 ];
@@ -217,7 +217,7 @@ export default function WebsocketClientSslTls() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_client_ssl_tls.bal`}</span>
-              <span>{`Hello, World!`}</span>
+              <span>{`Hello, How are you?`}</span>
             </code>
           </pre>
         </Col>

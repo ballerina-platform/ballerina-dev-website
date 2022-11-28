@@ -480,7 +480,7 @@ export default function GrpcServiceBidirectionalStreaming() {
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/grpc-client-bidirectional-streaming/">
-            bidirectional streaming RPC client
+            gRPC client - Bidirectional streaming RPC
           </a>
           .
         </p>
@@ -503,7 +503,7 @@ export default function GrpcServiceBidirectionalStreaming() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#44-bidirectional-streaming-rpc">
-              Bidirectional streaming - specification
+              Bidirectional streaming - Specification
             </a>
           </span>
         </li>

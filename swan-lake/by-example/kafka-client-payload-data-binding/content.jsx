@@ -67,8 +67,7 @@ export default function KafkaClientPayloadDataBinding() {
         This shows how to use a <code>kafka:Consumer</code> as a simple payload
         consumer for the instances where the metadata related to the message is
         not needed. This consumer uses the builtin byte array deserializer for
-        the value and converts the value to the user defined type. For this to
-        work properly, an active Kafka broker should be present.
+        the value and converts the value to the user defined type.
       </p>
 
       <Row
@@ -162,7 +161,17 @@ export default function KafkaClientPayloadDataBinding() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Execute{" "}
+            Start a{" "}
+            <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
+            instance.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the Kafka client given in the{" "}
             <a href="/learn/by-example/kafka-client-produce-message">
               Kafka client - Produce message
             </a>{" "}
@@ -253,7 +262,7 @@ export default function KafkaClientPayloadDataBinding() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#422-consume-messages">
-              Consume messages - specification
+              Consume messages - Specification
             </a>
           </span>
         </li>

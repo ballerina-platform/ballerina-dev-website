@@ -102,7 +102,7 @@ export default function CheckSemantics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6bb5646c526b9f0b242ef3c63a02f629&file=check_semantics.bal",
+                "https://play.ballerina.io/?gist=4c824ba80319ffff2af174e05fdf4262&file=check_semantics.bal",
                 "_blank"
               );
             }}

@@ -16,11 +16,11 @@ const codeSnippetData = [
 import ballerina/io;
 
 public function main() returns error? {
-    http:Client backendClientEP = check new ("localhost:8080", {
+    http:Client backendClientEP = check new ("localhost:9090", {
         // Timeout configuration.
         timeout: 10
     });
-    string payload = check backendClientEP->/greeting;
+    string payload = check backendClientEP->/albums;
     io:println(payload);
 }
 `,
@@ -144,7 +144,13 @@ export default function HttpTimeout() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>Start a service with a timeout more than 10 seconds.</span>
+          <span>
+            Start the{" "}
+            <a href="/learn/by-example/http-basic-rest-service/">
+              Basic REST service
+            </a>
+            .
+          </span>
         </li>
       </ul>
 

@@ -157,7 +157,7 @@ export default function HttpClientSslTls() {
           <span>&#8226;&nbsp;</span>
           <span>
             Start a{" "}
-            <a href="learn/by-example/http-service-ssl-tls/">
+            <a href="/learn/by-example/http-service-ssl-tls/">
               sample service secured with SSL/TLS
             </a>
             .

@@ -16,7 +16,7 @@ const codeSnippetData = [
 import ballerina/io;
 
 public function main() returns error? {
-    http:Client httpClient = check new ("localhost:8080",
+    http:Client httpClient = check new ("localhost:9090",
         // Retry configuration options.
         retryConfig = {
 
@@ -37,7 +37,7 @@ public function main() returns error? {
             // interval.
             maxWaitInterval: 20
         });
-    string payload = check httpClient->/greeting;
+    string payload = check httpClient->/albums;
     io:println(payload);
 }
 `,
@@ -161,7 +161,13 @@ export default function HttpRetry() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>Start a service.</span>
+          <span>
+            Start the{" "}
+            <a href="/learn/by-example/http-basic-rest-service/">
+              Basic REST service
+            </a>
+            .
+          </span>
         </li>
       </ul>
 

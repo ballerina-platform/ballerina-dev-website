@@ -87,7 +87,7 @@ export default function FunctionPointers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5c9fc7e72e82192584255a33a25b7146&file=function_pointers.bal",
+                "https://play.ballerina.io/?gist=644ad6b21fb97922f15baeb39a14f132&file=function_pointers.bal",
                 "_blank"
               );
             }}

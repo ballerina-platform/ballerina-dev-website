@@ -155,7 +155,7 @@ export default function HttpClientFileUpload() {
           <span>&#8226;&nbsp;</span>
           <span>
             Start a{" "}
-            <a href="learn/by-example/http-service-file-upload/">
+            <a href="/learn/by-example/http-service-file-upload/">
               Service file upload
             </a>
             .

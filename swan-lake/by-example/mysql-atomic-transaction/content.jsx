@@ -225,12 +225,8 @@ export default function MysqlAtomicTransaction() {
           <span>Change the database configurations in the files.</span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>Execute the command below.</span>
-        </li>
-      </ul>
+
+      <p>Run the sample by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 

@@ -99,7 +99,7 @@ export default function DistinctObjectTypes() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0c371b647f1afff7136744ca3ebadfab&file=distinct_object_types.bal",
+                "https://play.ballerina.io/?gist=afa13de1633926582934b0f3017f6fff&file=distinct_object_types.bal",
                 "_blank"
               );
             }}

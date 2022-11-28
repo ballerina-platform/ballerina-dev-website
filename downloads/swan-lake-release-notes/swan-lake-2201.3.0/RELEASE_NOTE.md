@@ -10,11 +10,11 @@ redirect_from:
     - /downloads/swan-lake-release-notes/2201-3-0-swan-lake
 ---
 
-### Overview of Ballerina 2201.3.0 (Swan Lake)
+## Overview of Ballerina 2201.3.0 (Swan Lake)
 
 <em>2201.3.0 (Swan Lake) is the third major release of 2022, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R4 version of the Language Specification.</em> 
 
-### Update Ballerina
+## Update Ballerina
 
 **If you are already using Ballerina 2201.0.0 (Swan Lake)**, run either of the commands below to directly update to 2201.3.0 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/).
 
@@ -28,11 +28,12 @@ redirect_from:
 
 However, if you are using a version below 2201.0.0 (Swan Lake) and if you already ran `bal dist update` (or `bal dist pull 2201.3.0`) before `bal update`, see [Troubleshooting](/downloads/swan-lake-release-notes/swan-lake-2201.0.0#troubleshooting) to recover your installation.
 
-### Install Ballerina
+## Install Ballerina
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-### Migrate from Swan Lake Beta releases
+## Migrate from Swan Lake Beta releases
+
 >**Info:** If you have been using Swan Lake Beta releases, delete the `Dependencies.toml` files in your Ballerina packages when migrating to Ballerina 2201.3.0 (Swan Lake). 
 
 A few backward-incompatible changes have been introduced during the Swan Lake Beta program, and thereby, some of your existing packages may not compile with Ballerina 2201.3.0 (Swan Lake). Therefore, you need to delete the `Dependencies.toml` file to force the dependency resolver to use the latest versions of your dependencies. 
@@ -43,7 +44,7 @@ A few backward-incompatible changes have been introduced during the Swan Lake Be
 
 #### Added a new field to the `display` annotation
 
-A new field named `kind` has been introduced to the `display` annotation to indicate the kind of the data. Allowed values are "text", "password", and "file".
+A new field named `kind` has been introduced to the `display` annotation to indicate the kind of data. Allowed values are `text`, `password`, and `file`.
 
 ```ballerina
 public type RefreshTokenGrantConfig record {|
@@ -83,7 +84,7 @@ function getSum(int num1, int num2, int num3) returns int {
 
 #### More improvements on working with optional fields
 
-If there is an optional field `T x?;` in a record, the absence of `x` is represented by nil where `T` does not allow nil.
+If there is an optional `T x?;` field in a record, the absence of `x` is represented by nil where `T` does not allow nil.
 
 ```ballerina
 import ballerina/io;
@@ -108,20 +109,20 @@ public function main() {
 ```
 
 #### Allow an optional terminating semicolon for module-level declarations
+
 Previously, a closing semicolon was not allowed after the module-level declarations below.
 - block function body
 - service declaration
 - module class definition
 - module enumeration declaration 
 
-Now, you can optionally end these declarations with a semicolon.
-
+Now, optionally, you can end these declarations with a semicolon.
 
 ### Backward-incompatible changes
 
 #### Disallow using the `-9223372036854775808` unary expression as an integer
 
-Previously, `-9223372036854775808` was allowed to be assigned to an integer in Ballerina. However, according to the language specification, `-9223372036854775808` is considered as a unary expression, which requires the expression  after `-` to be a valid value for `int`. Therefore, `-9223372036854775808` now results in a compilation error since `9223372036854775808` is out of range for `int`.
+Previously, `-9223372036854775808` was allowed to be assigned to an integer in Ballerina. However, according to the language specification, `-9223372036854775808` is considered a unary expression, which requires the expression after `-` to be a valid value for `int`. Therefore, `-9223372036854775808` now results in a compilation error since `9223372036854775808` is out of range for `int`.
 
 ```
 int result = -9223372036854775808; // error: '9223372036854775808' is out of range for 'int'
@@ -129,7 +130,7 @@ int result = -9223372036854775808; // error: '9223372036854775808' is out of ran
 
 #### Restriction on the typed binding pattern of an outer join clause to use `var`
 
-Previously, the typed binding pattern in an outer join clause was allowed to be any type descriptor, but now it has been restricted to allow only `var`, so that an optional type (`T?`) will be inferred as the type.
+Previously, the typed binding pattern in an outer join clause was allowed to be any type descriptor, but now it has been restricted to allow only `var` so that an optional type (`T?`) will be inferred as the type.
 
 ```ballerina
 type User record {|
@@ -183,16 +184,19 @@ public function main() {
 ### Improvements
 
 #### Semantic API
-- Improved the `constValue()` method to retrieve the constant value as an object from the constant symbol
+Improved the `constValue()` method to retrieve the constant value as an object from the constant symbol
 
 #### Syntax API
-- Added a few methods to the `NodeParser` API. The following methods have been introduced for the `NodeParser` class.
+
+Added a few methods to the `NodeParser` API. The methods below have been introduced for the `NodeParser` class.
   - `Node parseObjectMember(String text)`
   - `ModulePartNode parseModulePart(String text)`
   - `IntermediateClauseNode parseIntermediateClause(String text, boolean allowActions)`
 
 ### Backward-incompatible changes
-- Updated NodeFactory methods to allow optional terminating semicolon for module-level declarations. The methods below in the `NodeFactory` have been updated with an extra parameter for the optional semicolon token.
+
+Updated the `NodeFactory` methods to allow optional terminating semicolons for module-level declarations. The methods below in the `NodeFactory` have been updated with an extra parameter for the optional semicolon token.
+
   - `createServiceDeclarationNode`
   - `createFunctionBodyBlockNode`
   - `createEnumDeclarationNode`
@@ -213,7 +217,8 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 ### Improvements
 
 #### Semantic API
-- Improved the `constValue()` method to retrieve the constant value as an object from the constant symbol
+
+Improved the `constValue()` method to retrieve the constant value as an object from the constant symbol.
 
 ### Bug fixes
 
@@ -221,19 +226,17 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 
 ## Runtime updates
 
-### New features
-
 ### Improvements
 
 #### Strand dump showing the total strand count
 
 The total number of strand groups and strands created in a Ballerina program is now shown in the strand dump.
 
-#### Allow ambiguous target types in `fromJsonWithType` & `cloneWithType`
+#### Allow ambiguous target types in `fromJsonWithType` and `cloneWithType`
 
-The `fromJsonWithType` & `cloneWithType` functions returned an error in the earlier implementation when the user-specified target type was a union type consisting of multiple convertible types for a given source value. Now, for such user-specified target types, the operation succeeds without returning an error by returning a value whose inherent type is as follows. If the given source value belongs to at least one of the member types of the target union type, the inherent type of the returned value is the first found type to which the source value belongs. Otherwise, the inherent type of the returned value is the first convertible type in the union.
+The `fromJsonWithType` and `cloneWithType` functions returned an error in the earlier implementation when the user-specified target type was a union type consisting of multiple convertible types for a given source value. Now, for such user-specified target types, the operation succeeds without returning an error by returning a value whose inherent type is as follows. If the given source value belongs to at least one of the member types of the target union type, the inherent type of the returned value is the first found type to which the source value belongs. Otherwise, the inherent type of the returned value is the first convertible type in the union.
 
-For example, the following operations will not return an error.
+For example, the operations below will not return an error.
 
 ```ballerina
 type PetByAge record {
@@ -286,12 +289,12 @@ array2 = [[{id = 1, name = "Anne"}, {id = 2, name = "Bob"}], [{id = 3, name = "C
 
 ```
 
-#### Configurable support for nil type
+#### Configurable support for the `nil` type
 
 The configurable feature is now improved to support the following `()` cases.
 
-- configurable variables of nil type 
-The configurable variables with nil type are now supported if the configuration is optional.
+- configurable variables of `nil` type 
+The configurable variables of the `nil` type are now supported if the configuration is optional.
 
 For example, the following will be initialized with the default values without providing a compilation error.
 
@@ -300,8 +303,8 @@ configurable () nilValue = ();
 configurable ())[] nilArray = [];
 ```
 
-- record fields with nil type
-The record fields of nil type or a union of nil are now supported by the configurable feature only if the field contains a default value.
+- record fields with `nil` type
+The record fields of `nil` type or a union of `nil` are now supported by the configurable feature only if the field contains a default value.
 
 For example, if the configurable variables are defined in the following way,
 
@@ -321,7 +324,8 @@ the values can be provided in the `Config.toml` file as follows.
 person = {id = 101, name = "Tom"}
 ```
 
-#### Configurable support for `json` type
+#### Configurable support for the `json` type
+
 As `json` is a sub-type of `anydata`, it is now supported by the configurable feature.
 
 For example, if the configurable variables are defined in the following way,
@@ -350,7 +354,7 @@ the values are provided in the `Config.toml` as follows.
 ```toml
 arr = [1, 2]
 ```
-It will create an array with the `[1,2,0,0,0]` elements because the filler value of `int` type is `0`.
+It will create an array with the `[1,2,0,0,0]` elements because the filler value of the `int` type is `0`.
 
 ### Bug fixes
 
@@ -367,7 +371,7 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 - Added the missing HTTP status codes
 - Made the socket configuration to be configurable in both listener and client configurations
 - Added defaultable parameter support for query parameters
-- Added support for populating HATEOAS link's `types` field based on the resource return type
+- Added support for populating the HATEOAS link's `types` field based on the resource return type
 
 #### `graphql` package
 
@@ -385,7 +389,7 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 ##### `http` package
 
 - Reduced the listener default timeout to 60s and client default timeout to 30s
-- Improved data binding based on the  MIME type match
+- Improved data binding based on the MIME type match
 
 #### `graphql` package
 
@@ -396,6 +400,10 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 #### `gRPC` package
 
 - Updated Protocol Buffers version to 3.21.7
+
+### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.3.0%22+label%3AType%2FBug)
 
 ## Developer tools updates
 
@@ -411,37 +419,29 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 #### CLI
 
 ##### Native-image build (Experimental)
+
 Introduced the `--native` flag, which generates a GraalVM native executable when building a Ballerina project.
-- The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK.
-- `bal build --native`
+
+- The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK
+
+- The new CLI command will be `bal build --native`
 
 >**Note:** There is a known [issue](https://github.com/ballerina-platform/ballerina-lang/issues/38665) in the native image build when using locks along with loops. 
 
-## Code to Cloud updates
-
-### New features
-- Introduced the native executable Docker image creation for cloud-enabled projects by executing the `bal build --native` command
-
-#### Ballerina Shell
-
-#### Ballerina Update Tool
-
 #### Debugger
 
-* Introduced the run-in-terminal feature, which provides the capability to debug Ballerina programs (that take user inputs) in the launch mode. This can be achieved by setting the `terminal` attribute in the launch configurations to `integrated`. Once the configuration is set, launching the debugger will cause the Ballerina programs to be executed in a separate integrated VS Code terminal.
+Introduced the `run-in-terminal` feature, which provides the capability to debug Ballerina programs (that take user inputs) in the launch mode. This can be achieved by setting the `terminal` attribute in the launch configurations to `integrated`. Once the configuration is set, launching the debugger will cause the Ballerina programs to be executed in a separate integrated VS Code terminal.
 
 ### Improvements
 
 #### Language Server
-- Improved completions sorting within the expression of the `if` condition
+
+- Improved completion sorting within the expression of the `if` condition
 - Improved the `Change variable type` code action
 
-#### Ballerina Shell
+#### GraphQL Tool
 
-#### Ballerina Update Tool
-
-#### GraphQL Tool 
-- Introduced single client generation for single schema definition
+- Introduced single client generation for a single schema definition
 - Improved the GraphQL client config generation to support runtime configurability
 
 ### Bug fixes
@@ -449,9 +449,12 @@ Introduced the `--native` flag, which generates a GraalVM native executable when
 To view bug fixes, see the GitHub milestone for 2201.3.0 (Swan Lake) of the repositories below.
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+label%3ATeam%2FLanguageServer)
-- [Update Tool](https://github.com/ballerina-platform/ballerina-update-tool/issues?q=is%3Aissue+milestone%3A%22Ballerina+2201.3.0%22+is%3Aclosed+label%3AType%2FBug)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Ballerina+2201.3.0%22+is%3Aclosed)
+- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.3.0%22+label%3AType%2FBug+is%3Aclosed)
 - [ProjectAPI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FDevTools+milestone%3A2201.3.0+label%3AArea%2FProjectAPI)
 - [Semantic API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AArea%2FSemanticAPI+)
 
-## Breaking changes
+## Code to Cloud updates
+
+### New features
+
+Introduced the native executable Docker image creation for cloud-enabled projects by executing the `bal build --native` command.

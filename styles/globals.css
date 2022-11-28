@@ -1206,3 +1206,7 @@ table.cTopControlsContainer tbody {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+.relatedLinks {
+  margin-bottom: 0 !important;
+}

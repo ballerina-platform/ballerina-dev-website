@@ -709,9 +709,11 @@ const generate = async (examplesDir, outputDir) => {
                 codeSnippetLang,
                 codeSnippetArray = [],
                 listRegex = /^(\s*)(\d|-)(?:\.?)+\s*(.*)/;
+                relatedLinks = false;
 
               for (const line of contentArray) {
                 let convertedLine;
+
                 if (description === undefined && !metatagsFound) {
                   if (/^\w/.test(line)) description = line;
                 }
@@ -725,20 +727,24 @@ const generate = async (examplesDir, outputDir) => {
                     isIndent = true;
                   }
 
+                  if (line.includes("## Related links")) {
+                      relatedLinks = true;
+                    }
                   if (line.includes("::: code")) {
                     let playgroundLink;
                     let m = line.match(lineReg);
                     codeCount++;
 
                     let { fileName, codeContent } = extractCode(relPath, m[2]);
+                    
 
-                    if (playground) {
-                      playgroundLink = await generatePlaygroundLink(
-                        codeContent,
-                        relPath,
-                        fileName
-                      );
-                    }
+                    // if (playground) {
+                    //   playgroundLink = await generatePlaygroundLink(
+                    //     codeContent,
+                    //     relPath,
+                    //     fileName
+                    //   );
+                    // }
 
                     convertedLine = md.render(m[2], {
                       codeCount,
@@ -773,7 +779,10 @@ const generate = async (examplesDir, outputDir) => {
                     let listContent = md.render(match[3]);
                     convertedLine = `<ul style={{ marginLeft: "${
                       match[1].length * 8
-                    }px" }}>
+                    }px" 
+                  }} ${
+                    relatedLinks ? 'class="relatedLinks"' : ''
+                  }>
                     <li>
                         <span>${
                           match[2] === "-" ? `&#8226;&nbsp;` : `${match[2]}.`
@@ -808,6 +817,10 @@ const generate = async (examplesDir, outputDir) => {
               }
 
               codeSection = updatedArray.join("\n");
+              if(relatedLinks) {
+                codeSection = codeSection + "<span style={{marginBottom:'20px'}}></span>";
+              }
+
             }
           }
         }

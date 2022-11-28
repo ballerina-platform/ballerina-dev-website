@@ -702,6 +702,7 @@ const generate = async (examplesDir, outputDir) => {
                 codeSnippetLang,
                 codeSnippetArray = [],
                 listRegex = /^(\s*)(\d|-)(?:\.?)+\s*(.*)/;
+                relatedLinks = false;
 
               for (const line of contentArray) {
                 let convertedLine;
@@ -716,6 +717,10 @@ const generate = async (examplesDir, outputDir) => {
 
                   if (line.match(/^\s+::: code/) || line.match(/^\s+::: out/)) {
                     isIndent = true;
+                  }
+
+                  if (line.includes("## Related links")) {
+                    relatedLinks = true;
                   }
 
                   if (line.includes("::: code")) {
@@ -764,12 +769,22 @@ const generate = async (examplesDir, outputDir) => {
                   } else if (listRegex.test(line)) {
                     let match = line.match(listRegex);
                     let listContent = md.render(match[3]);
-                    convertedLine = `<ul style={{ marginLeft: "${match[1].length * 8}px" }}>
-                    <li>
-                        <span>${match[2] === "-" ? `&#8226;&nbsp;` : `${match[2]}.`}</span>
-                        <span>${listContent.slice(3,listContent.length - 5)}</span>
-                    </li>
-                </ul>`;
+                    convertedLine = `<ul style={{ marginLeft: "${
+                      match[1].length * 8
+                        }px" 
+                      }} ${
+                        relatedLinks ? 'class="relatedLinks"' : ''
+                      }>
+                        <li>
+                            <span>${
+                              match[2] === "-" ? `&#8226;&nbsp;` : `${match[2]}.`
+                            }</span>
+                            <span>${listContent.slice(
+                              3,
+                              listContent.length - 5
+                            )}</span>
+                        </li>
+                    </ul>`;
                   } else {
                     convertedLine = escapeParagraphCharacters(md.render(line));
                   }
@@ -794,6 +809,9 @@ const generate = async (examplesDir, outputDir) => {
               }
 
               codeSection = updatedArray.join("\n");
+              if(relatedLinks) {
+                codeSection = codeSection + "<span style={{marginBottom:'20px'}}></span>";
+              }
             }
           }
         }

@@ -1197,6 +1197,10 @@ table.cTopControlsContainer tbody {
   visibility: visible;
 }
 
+.bbeBody .relatedLinks {
+  margin-bottom: 0 !important;
+}
+
 /* CSS for hard coded html content in mds. */
 .cCodeTable.cCodeTableFixedLayout {
   table-layout: fixed;

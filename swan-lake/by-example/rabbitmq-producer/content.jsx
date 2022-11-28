@@ -14,13 +14,24 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerinax/rabbitmq;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 public function main() returns error? {
     // Creates a ballerina RabbitMQ client.
     rabbitmq:Client newClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
     // Publishing messages to an exchange using a routing key.
     // Publishes the message using newClient and the routing key named MyQueue.
-    check newClient->publishMessage({content: "Hello from Ballerina", routingKey: "MyQueue"});
+    check newClient->publishMessage({content: { orderId: 1,
+                                                productName: "Sport shoe",
+                                                price: 27.5,
+                                                isValid: true
+                                              }, routingKey: "OrderQueue"});
 }
 `,
 ];
@@ -140,6 +151,45 @@ export default function RabbitmqProducer() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://www.rabbitmq.com/download.html">RabbitMQ server</a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Declare the queue as given in the{" "}
+            <a href="/learn/by-example/rabbitmq-queue-declare/">
+              RabbitMQ client - Declare queue
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the RabbitMQ service given in the{" "}
+            <a href="/learn/by-example/rabbitmq-consumer/">
+              RabbitMQ service - Consume message
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -208,7 +258,7 @@ export default function RabbitmqProducer() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Client">
-              <code>rabbitmq:Client</code> - API documentation
+              <code>rabbitmq:Client</code> client object - API documentation
             </a>
           </span>
         </li>
@@ -218,7 +268,7 @@ export default function RabbitmqProducer() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#5-publishing">
-              <code>rabbitmq:Client</code> - Specification
+              <code>rabbitmq</code> publishing - Specification
             </a>
           </span>
         </li>

@@ -139,6 +139,21 @@ export default function RabbitmqSyncConsumer() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://www.rabbitmq.com/download.html">RabbitMQ server</a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -201,6 +216,13 @@ export default function RabbitmqSyncConsumer() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can try out the above consumer via the{" "}
+          <a href="/learn/by-example/rabbitmq-producer/">RabbitMQ client</a>.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -208,7 +230,7 @@ export default function RabbitmqSyncConsumer() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Client">
-              <code>rabbitmq:Client</code> - API documentation
+              <code>rabbitmq:Client</code> client object - API documentation
             </a>
           </span>
         </li>
@@ -218,7 +240,8 @@ export default function RabbitmqSyncConsumer() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#7-retrieving-individual-messages">
-              <code>rabbitmq:Client</code> - Specification
+              <code>rabbitmq</code> consuming individual messages -
+              Specification
             </a>
           </span>
         </li>

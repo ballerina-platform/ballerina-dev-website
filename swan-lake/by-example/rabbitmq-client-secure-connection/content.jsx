@@ -138,6 +138,21 @@ export default function RabbitmqClientSecureConnection() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://www.rabbitmq.com/download.html">RabbitMQ server</a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -216,7 +231,7 @@ export default function RabbitmqClientSecureConnection() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#2-connection">
-              <code>rabbitmq:Client</code> - Specification
+              <code>rabbitmq</code> connecting to server - Specification
             </a>
           </span>
         </li>

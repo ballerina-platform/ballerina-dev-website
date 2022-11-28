@@ -19,7 +19,7 @@ public function main() returns error? {
     rabbitmq:Client newClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
     // Declares the queue, MyQueue.
-    check newClient->queueDeclare("MyQueue");
+    check newClient->queueDeclare("OrderQueue");
 }
 `,
 ];
@@ -138,6 +138,21 @@ export default function RabbitmqQueueDeclare() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://www.rabbitmq.com/download.html">RabbitMQ server</a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -206,7 +221,7 @@ export default function RabbitmqQueueDeclare() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Client">
-              <code>rabbitmq:Client</code> - API documentation
+              <code>rabbitmq:Client</code> client object - API documentation
             </a>
           </span>
         </li>
@@ -216,7 +231,7 @@ export default function RabbitmqQueueDeclare() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#3-exchanges-and-queues">
-              <code>rabbitmq:Client</code> - Specification
+              <code>rabbitmq</code> exchanges and queues - Specification
             </a>
           </span>
         </li>

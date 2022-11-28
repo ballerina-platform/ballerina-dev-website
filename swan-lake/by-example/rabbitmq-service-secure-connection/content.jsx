@@ -146,6 +146,21 @@ export default function RabbitmqServiceSecureConnection() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://www.rabbitmq.com/download.html">RabbitMQ server</a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded 
         
@@ -208,6 +223,16 @@ export default function RabbitmqServiceSecureConnection() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/rabbitmq-client-secure-connection/">
+            RabbitMQ client - SSL/TLS
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }}>
@@ -225,7 +250,7 @@ export default function RabbitmqServiceSecureConnection() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#2-connection">
-              <code>rabbitmq:Listener</code> - Specification
+              <code>rabbitmq</code> connecting to server - Specification
             </a>
           </span>
         </li>

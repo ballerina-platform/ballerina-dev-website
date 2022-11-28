@@ -76,7 +76,7 @@ export default function HttpClientSendRequestReceiveResponse() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4567548913183a8280c254f5ec197f6b&file=http_client_send_request_receive_response.bal",
+                "https://play.ballerina.io/?gist=c8d46ca16fcd8b9987384af51d988a13&file=http_client_send_request_receive_response.bal",
                 "_blank"
               );
             }}
@@ -180,11 +180,11 @@ export default function HttpClientSendRequestReceiveResponse() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
+            Run the HTTP service given in the{" "}
             <a href="/learn/by-example/http-basic-rest-service/">
               Basic REST service
-            </a>
-            .
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

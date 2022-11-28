@@ -158,6 +158,18 @@ export default function FtpClientRead() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+            Start a{" "}
+            <a href="https://hub.docker.com/r/stilliard/pure-ftpd/">
+              FTP server
+            </a>{" "}
+            instance.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
             Run the FTP client given in the{" "}
             <a href="/learn/by-example/ftp-client-write">
               FTP client - Write file

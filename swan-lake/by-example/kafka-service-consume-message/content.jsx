@@ -15,12 +15,12 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/log;
 
-public type Order record {|
+public type Order record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
 listener kafka:Listener orderListener = check new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
@@ -248,7 +248,7 @@ export default function KafkaServiceConsumeMessage() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Listener">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/clients/Listener">
               <code>kafka:Listener</code> client object - API documentation
             </a>
           </span>
@@ -304,8 +304,8 @@ export default function KafkaServiceConsumeMessage() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Produce message"
-            href="/learn/by-example/kafka-client-produce-message"
+            title="Constraint validation"
+            href="/learn/by-example/kafka-service-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -315,7 +315,7 @@ export default function KafkaServiceConsumeMessage() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Produce message
+                  Constraint validation
                 </span>
               </div>
               <svg

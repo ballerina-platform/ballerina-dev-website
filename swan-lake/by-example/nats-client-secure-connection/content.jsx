@@ -15,8 +15,6 @@ const codeSnippetData = [
   `import ballerinax/nats;
 
 public function main() returns error? {
-    string message = "Hello from Ballerina";
-
     // Initializes a NATS client with TLS/SSL and username/password authentication.
     nats:Client natsClient = check new(nats:DEFAULT_URL,
 
@@ -27,10 +25,7 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    // Produces a message to the specified subject.
-    check natsClient->publishMessage({content: message.toBytes(), subject: "security.demo"});
 
-    // Closes the client connection.
     check natsClient.close();
 }
 `,
@@ -155,10 +150,22 @@ export default function NatsClientSecureConnection() {
         </Col>
       </Row>
 
-      <p>
-        To run the sample, start an instance of the NATS server and execute the
-        following command.
-      </p>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://docs.nats.io/nats-concepts/what-is-nats/walkthrough_setup">
+              NATS server
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -238,7 +245,7 @@ export default function NatsClientSecureConnection() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#2-connection">
-              <code>nats:Client</code> - Specification
+              <code>nats</code> connecting to server - Specification
             </a>
           </span>
         </li>

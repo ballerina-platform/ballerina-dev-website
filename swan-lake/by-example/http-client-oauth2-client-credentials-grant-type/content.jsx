@@ -168,8 +168,9 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
-            <a href="/learn/by-example/http-service-oauth2/">OAuth2 service</a>.
+            Run the HTTP service given in the{" "}
+            <a href="/learn/by-example/http-service-oauth2/">OAuth2 service</a>{" "}
+            example.
           </span>
         </li>
       </ul>

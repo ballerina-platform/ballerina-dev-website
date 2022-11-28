@@ -154,11 +154,11 @@ export default function HttpClientFileUpload() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start a{" "}
+            Run the HTTP service given in the{" "}
             <a href="/learn/by-example/http-service-file-upload/">
               Service file upload
-            </a>
-            .
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

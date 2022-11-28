@@ -15,12 +15,12 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/io;
 
-public type Order record {|
+public type Order record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
 // Create a subtype of \`kafka:AnydataConsumerRecord\`.
 public type OrderConsumerRecord record {|
@@ -262,7 +262,7 @@ export default function KafkaClientConsumerRecordDataBinding() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Consumer#poll">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/clients/Consumer#poll">
               <code>kafka:Consumer-&gt;poll</code> function - API documentation
             </a>
           </span>
@@ -317,7 +317,10 @@ export default function KafkaClientConsumerRecordDataBinding() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/kafka-service-ssl">
+          <Link
+            title="Constraint validation"
+            href="/learn/by-example/kafka-client-constraint-validation"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -326,7 +329,7 @@ export default function KafkaClientConsumerRecordDataBinding() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Constraint validation
                 </span>
               </div>
               <svg

@@ -161,11 +161,11 @@ export default function HttpClientBasicAuthentication() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
+            Run the HTTP service given in the{" "}
             <a href="/learn/by-example/http-service-basic-authentication-file-user-store">
               Basic authentication file user store service
-            </a>
-            .
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

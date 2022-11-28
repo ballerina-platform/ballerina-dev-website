@@ -78,7 +78,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=95474cc5e105b435aa3f0e7e5cdf13a2&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=6a3513e01bdeff12b0acf9dae9743115&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}
@@ -182,11 +182,11 @@ export default function HttpClientDataBinding() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
+            Run the HTTP service given in the{" "}
             <a href="/learn/by-example/http-basic-rest-service/">
               Basic REST service
-            </a>
-            .
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

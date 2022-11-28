@@ -172,6 +172,19 @@ export default function SftpServiceRead() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="https://hub.docker.com/r/atmoz/sftp/">SFTP server</a>{" "}
+            instance.
+          </span>
+        </li>
+      </ul>
+
       <p>
         Run the program by executing the following command. Paths of the
         newly-added and newly-deleted files/directories during the latest
@@ -241,11 +254,11 @@ export default function SftpServiceRead() {
 
       <blockquote>
         <p>
-          <strong>TIP</strong> Run the SFTP client given in the{" "}
+          <strong>Tip:</strong> Run the SFTP client given in the{" "}
           <a href="/learn/by-example/sftp-client-write">
             SFTP client - Write file
           </a>{" "}
-          example to put a file in the FTP server.
+          example to put a file in the SFTP server.
         </p>
       </blockquote>
 

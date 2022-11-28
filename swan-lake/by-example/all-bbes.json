@@ -2677,6 +2677,15 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Constraint validation",
+        "url": "kafka-service-constraint-validation",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
@@ -2706,6 +2715,15 @@
       {
         "name": "Consumer record data binding",
         "url": "kafka-client-consumer-record-data-binding",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Constraint validation",
+        "url": "kafka-client-constraint-validation",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

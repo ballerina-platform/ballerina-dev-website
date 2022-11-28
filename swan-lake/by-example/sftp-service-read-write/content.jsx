@@ -169,6 +169,19 @@ export default function SftpServiceReadWrite() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="https://hub.docker.com/r/atmoz/sftp/">SFTP server</a>{" "}
+            instance.
+          </span>
+        </li>
+      </ul>
+
       <p>
         Run the program by executing the following command. Each newly added
         file in the SFTP server will be appended with the content in the
@@ -238,11 +251,11 @@ export default function SftpServiceReadWrite() {
 
       <blockquote>
         <p>
-          <strong>TIP</strong> Run the SFTP client given in the{" "}
+          <strong>Tip:</strong> Run the SFTP client given in the{" "}
           <a href="/learn/by-example/sftp-client-write">
             SFTP client - Write file
           </a>{" "}
-          example to put a file in the FTP server.
+          example to put a file in the SFTP server.
         </p>
       </blockquote>
 

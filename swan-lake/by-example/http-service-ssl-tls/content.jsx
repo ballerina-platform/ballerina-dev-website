@@ -287,12 +287,8 @@ export default function HttpServiceSslTls() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> Alternatively, you can invoke the above service
-          via the{" "}
-          <a href="/learn/by-example/http-client-ssl-tls/">
-            sample SSL/TLS client
-          </a>
-          .
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-ssl-tls/">SSL/TLS client</a>.
         </p>
       </blockquote>
 

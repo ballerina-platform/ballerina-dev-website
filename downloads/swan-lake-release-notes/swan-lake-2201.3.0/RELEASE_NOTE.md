@@ -204,7 +204,7 @@ Updated the `NodeFactory` methods to allow optional terminating semicolons for m
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3ATeam%2FCompilerFETools+label%3AType%2FBug+).
+To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+label%3ATeam%2FCompilerFE+is%3Aclosed).
 
 ## Compiler API updates
 

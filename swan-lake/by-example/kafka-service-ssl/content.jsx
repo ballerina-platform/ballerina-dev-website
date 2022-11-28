@@ -15,9 +15,16 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/log;
 
-listener kafka:Listener securedEp = check new ("localhost:9094", {
-    groupId: "order-log-group-id",
-    topics: "order-log-topic",
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
+listener kafka:Listener orderListener = check new ("localhost:9094", {
+    groupId: "order-group-id",
+    topics: "order-topic",
     // Provide the relevant secure socket configurations by using \`kafka:SecureSocket\`.
     secureSocket: {
         cert: "./resources/path/to/public.crt",
@@ -30,11 +37,12 @@ listener kafka:Listener securedEp = check new ("localhost:9094", {
     securityProtocol: kafka:PROTOCOL_SSL
 });
 
-service on securedEp {
-    remote function onConsumerRecord(string[] logs) returns error? {
-        check from string log in logs
+service on orderListener {
+    remote function onConsumerRecord(Order[] orders) returns error? {
+        check from Order 'order in orders
+            where 'order.isValid
             do {
-                log:printInfo(string \`Received log: \${log}\`);
+                log:printInfo(string \`Received valid order for \${'order.productName}\`);
             };
     }
 }
@@ -66,8 +74,7 @@ export default function KafkaServiceSsl() {
 
       <p>
         This shows how the SSL encryption is done in the{" "}
-        <code>kafka:Listener</code>. For this to work properly, an active Kafka
-        broker should be present, and it should be configured to use SSL.
+        <code>kafka:Listener</code>.
       </p>
 
       <Row
@@ -161,7 +168,21 @@ export default function KafkaServiceSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Execute{" "}
+            Start a{" "}
+            <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
+            instance configured to use{" "}
+            <a href="https://docs.confluent.io/3.0.0/kafka/ssl.html#configuring-kafka-brokers">
+              SSL/TLS
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the Kafka client given in the{" "}
             <a href="/learn/by-example/kafka-client-producer-ssl">
               Kafka client - Producer SSL/TLS
             </a>{" "}
@@ -228,7 +249,7 @@ export default function KafkaServiceSsl() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_service_ssl.bal`}</span>
-              <span>{`time = 2022-11-25T15:18:24.061+05:30 level = INFO module = "" message = "Received log: new order for item 2311 was placed on 1669113239"`}</span>
+              <span>{`time = 2022-11-25T14:55:59.366+05:30 level = INFO module = "" message = "Received valid order for Sport shoe"`}</span>
             </code>
           </pre>
         </Col>
@@ -251,7 +272,7 @@ export default function KafkaServiceSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4312-secure-listener">
-              Secure listener - specification
+              Secure listener - Specification
             </a>
           </span>
         </li>

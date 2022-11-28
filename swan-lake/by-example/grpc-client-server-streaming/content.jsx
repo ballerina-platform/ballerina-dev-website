@@ -251,11 +251,11 @@ export default function GrpcClientServerStreaming() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
-            <a href="learn/by-example/grpc-service-server-streaming/">
-              server streaming RPC service
-            </a>
-            .
+            Run the gRPC service given in the{" "}
+            <a href="/learn/by-example/grpc-service-server-streaming/">
+              gRPC service - Server-side streaming RPC
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>
@@ -468,7 +468,7 @@ export default function GrpcClientServerStreaming() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#42-server-streaming-rpc">
-              Server-side streaming - specification
+              Server-side streaming - Specification
             </a>
           </span>
         </li>

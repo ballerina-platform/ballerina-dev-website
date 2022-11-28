@@ -157,8 +157,10 @@ export default function GrpcClientBasicAuth() {
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
-        implement the client used here.
+        <a href="/learn/by-example/grpc-client-unary/">
+          gRPC client - Unary RPC
+        </a>{" "}
+        to implement the client used here.
       </p>
 
       <h2>Prerequisites</h2>
@@ -167,15 +169,15 @@ export default function GrpcClientBasicAuth() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
+            Run the gRPC service given in the{" "}
             <a href="/learn/by-example/grpc-service-basic-auth-file-user-store/">
-              Basic Auth file user store service
+              gRPC service - Basic authentication file user store
             </a>{" "}
             or{" "}
             <a href="/learn/by-example/grpc-service-basic-auth-ldap-user-store/">
-              Basic Auth LDAP user store service
+              gRPC service - Basic authentication LDAP user store
             </a>{" "}
-            service examples.
+            examples.
           </span>
         </li>
       </ul>
@@ -261,7 +263,7 @@ export default function GrpcClientBasicAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5115-client---basic-auth">
-              Basic authentication - specification
+              Basic authentication - Specification
             </a>
           </span>
         </li>

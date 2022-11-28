@@ -149,8 +149,10 @@ export default function GrpcClientSslTls() {
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
-        implement the client used here.
+        <a href="/learn/by-example/grpc-client-unary/">
+          gRPC client - Unary RPC
+        </a>{" "}
+        to implement the client used here.
       </p>
 
       <h2>Prerequisites</h2>
@@ -159,11 +161,11 @@ export default function GrpcClientSslTls() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
+            Run the gRPC service given in the{" "}
             <a href="/learn/by-example/grpc-service-ssl-tls/">
-              sample service secured with SSL/TLS
-            </a>
-            .
+              gRPC service - SSL/TLS
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>
@@ -249,7 +251,7 @@ export default function GrpcClientSslTls() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#52-ssltls-and-mutual-ssl">
-              SSL/TLS - specification
+              SSL/TLS - Specification
             </a>
           </span>
         </li>

@@ -79,8 +79,7 @@ export default function KafkaClientConsumerRecordDataBinding() {
 
       <p>
         The received records are converted to the user defined type using
-        data-binding. For this to work properly, an active Kafka broker should
-        be present.
+        data-binding.
       </p>
 
       <Row
@@ -174,7 +173,17 @@ export default function KafkaClientConsumerRecordDataBinding() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Execute{" "}
+            Start a{" "}
+            <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
+            instance.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the Kafka client given in the{" "}
             <a href="/learn/by-example/kafka-client-produce-message">
               Kafka client - Produce message
             </a>{" "}
@@ -264,7 +273,7 @@ export default function KafkaClientConsumerRecordDataBinding() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#422-consume-messages">
-              Consume messages - specification
+              Consume messages - Specification
             </a>
           </span>
         </li>

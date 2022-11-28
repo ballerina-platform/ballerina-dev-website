@@ -19,7 +19,7 @@ public function main() returns error? {
     // Defines the WebSocket client to call the OAuth2 secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`websocket:OAuth2JwtBearerGrantConfig\` for the \`auth\` configuration of the client.
-    websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
+    websocket:Client chatClient = check new("wss://localhost:9090/foo/bar",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
             assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
@@ -36,9 +36,9 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    check securedEP->writeMessage("Hello, World!");
-    string textMessage = check securedEP->readMessage();
-    io:println(textMessage);
+    check chatClient->writeMessage("Hello, John!");
+    string chatMessage = check chatClient->readMessage();
+    io:println(chatMessage);
 }
 `,
 ];
@@ -230,7 +230,7 @@ export default function WebsocketClientOauth2JwtBearerGrantType() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run websocket_client_oauth2_jwt_bearer_grant_type.bal`}</span>
-              <span>{`Hello, World!`}</span>
+              <span>{`Hello, How are you?`}</span>
             </code>
           </pre>
         </Col>

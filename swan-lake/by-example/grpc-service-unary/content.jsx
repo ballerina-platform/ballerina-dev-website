@@ -431,7 +431,10 @@ export default function GrpcServiceUnary() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a>.
+          <a href="/learn/by-example/grpc-client-unary/">
+            gRPC client - Unary RPC
+          </a>
+          .
         </p>
       </blockquote>
 
@@ -451,7 +454,7 @@ export default function GrpcServiceUnary() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/grpc/#41-simple-rpc">Unary RPC - specification</a>
+            <a href="/spec/grpc/#41-simple-rpc">Unary RPC - Specification</a>
           </span>
         </li>
       </ul>

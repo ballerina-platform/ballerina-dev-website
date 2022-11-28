@@ -78,7 +78,7 @@ export default function IncludedRecordParameters() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f518c3c9a081e5a4e64635154a3a612&file=included_record_parameters.bal",
+                "https://play.ballerina.io/?gist=d8cc970b35dc076bdbce82f48b56039f&file=included_record_parameters.bal",
                 "_blank"
               );
             }}

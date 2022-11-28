@@ -157,7 +157,7 @@ export default function BuiltInIntegerSubtypes() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a6d842125f0a2981897f3ed2cd288d89&file=built_in_integer_subtypes.bal",
+                "https://play.ballerina.io/?gist=1995f9b462450463653503d10122a476&file=built_in_integer_subtypes.bal",
                 "_blank"
               );
             }}

@@ -14,8 +14,15 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerinax/kafka;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 public function main() returns kafka:Error? {
-    kafka:Producer messageProducer = check new ("localhost:9093", {
+    kafka:Producer orderProducer = check new ("localhost:9093", {
         // Provide the relevant authentication configurations to authenticate the producer by
         // \`kafka:AuthenticationConfiguration\`.
         auth: {
@@ -27,9 +34,14 @@ public function main() returns kafka:Error? {
         },
         securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
     });
-    check messageProducer->send({
-        topic: "order-log-topic",
-        value: "new order for item 2311 was placed on 1669113239"
+    check orderProducer->send({
+        topic: "order-topic",
+        value: {
+            orderId: 1,
+            productName: "Sport shoe",
+            price: 27.5,
+            isValid: true
+        }
     });
 }
 `,
@@ -60,9 +72,7 @@ export default function KafkaClientProducerSasl() {
 
       <p>
         This shows how the SASL/PLAIN authentication is done in the{" "}
-        <code>kafka:Producer</code>. For this to work properly, an active Kafka
-        server must be present, and it should be configured to use the
-        SASL/PLAIN authentication mechanism.
+        <code>kafka:Producer</code>.
       </p>
 
       <Row
@@ -150,6 +160,23 @@ export default function KafkaClientProducerSasl() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start a{" "}
+            <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
+            instance configured to use the{" "}
+            <a href="https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html#sasl-plain-overview">
+              SASL/PLAIN authentication mechanism
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
       <p>Run the program by executing the following command.</p>
 
       <Row
@@ -231,7 +258,7 @@ export default function KafkaClientProducerSasl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#322-secure-client">
-              SASL authentication - specification
+              SASL authentication - Specification
             </a>
           </span>
         </li>

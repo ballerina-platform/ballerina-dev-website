@@ -155,8 +155,10 @@ export default function GrpcClientBearerTokenAuth() {
 
       <p>
         You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
-        implement the client used here.
+        <a href="/learn/by-example/grpc-client-unary/">
+          gRPC client - Unary RPC
+        </a>{" "}
+        to implement the client used here.
       </p>
 
       <h2>Prerequisites</h2>
@@ -249,7 +251,7 @@ export default function GrpcClientBearerTokenAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5116-client---bearer-token-auth">
-              Bearer token authentication - specification
+              Bearer token authentication - Specification
             </a>
           </span>
         </li>

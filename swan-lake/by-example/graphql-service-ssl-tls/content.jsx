@@ -14,6 +14,11 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
+type Person record {|
+    string name;
+    int age;
+|};
+
 // A GraphQL listener can be configured to communicate through HTTPS as well.
 // To secure a listener using HTTPS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
@@ -29,8 +34,11 @@ listener graphql:Listener securedEP = new (9090,
 );
 
 service /graphql on securedEP {
-    resource function get greeting() returns string {
-        return "Hello, World!";
+    resource function get profile() returns Person {
+        return {
+            name: "Walter White",
+            age: 50
+        };
     }
 }
 `,

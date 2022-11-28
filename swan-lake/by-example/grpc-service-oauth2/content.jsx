@@ -190,8 +190,10 @@ export default function GrpcServiceOauth2() {
       <p>
         Setting up the service is the same as setting up the unary RPC service
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-service-unary/">unary RPC service</a> to
-        implement the service used below.
+        <a href="/learn/by-example/grpc-service-unary/">
+          gRPC service - Unary RPC
+        </a>{" "}
+        to implement the service used below.
       </p>
 
       <p>Execute the command below to run the service.</p>
@@ -269,7 +271,7 @@ export default function GrpcServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/grpc-client-oauth2-client-credentials-grant-type">
-              gRPC OAuth2 Client Credentials grant type client
+              gRPC client - OAuth2 client credentials grant type
             </a>
           </span>
         </li>
@@ -279,7 +281,7 @@ export default function GrpcServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/grpc-client-oauth2-password-grant-type">
-              gRPC OAuth2 Password grant type client
+              gRPC client - OAuth2 password grant type
             </a>
           </span>
         </li>
@@ -289,7 +291,7 @@ export default function GrpcServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/grpc-client-oauth2-refresh-token-grant-type">
-              gRPC OAuth2 Refresh Token grant type client
+              gRPC client - OAuth2 refresh token grant type
             </a>
           </span>
         </li>
@@ -299,7 +301,7 @@ export default function GrpcServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type">
-              gRPC OAuth2 JWT Bearer grant type client
+              gRPC client - OAuth2 JWT bearer grant type
             </a>
           </span>
         </li>
@@ -323,7 +325,7 @@ export default function GrpcServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5114-service---oauth2">
-              OAuth2 - specification
+              OAuth2 - Specification
             </a>
           </span>
         </li>

@@ -156,8 +156,10 @@ export default function GrpcClientHeaders() {
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with input and output parameter change. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
-        implement the client used here.
+        <a href="/learn/by-example/grpc-client-unary/">
+          gRPC client - Unary RPC
+        </a>{" "}
+        to implement the client used here.
       </p>
 
       <h2>Prerequisites</h2>
@@ -166,11 +168,11 @@ export default function GrpcClientHeaders() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
-            <a href="learn/by-example/grpc-service-headers/">
-              simple RPC service with headers
-            </a>
-            .
+            Run the gRPC service given in the{" "}
+            <a href="/learn/by-example/grpc-service-headers/">
+              gRPC service - Send/Receive headers
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>
@@ -257,7 +259,7 @@ export default function GrpcClientHeaders() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/">
-              <code>grpc</code> package - specification
+              <code>grpc</code> package - Specification
             </a>
           </span>
         </li>

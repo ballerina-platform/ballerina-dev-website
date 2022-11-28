@@ -17,17 +17,17 @@ import ballerina/websocket;
 
 public function main() returns error? {
    // Create a new WebSocket client.
-   websocket:Client echoClient = check new("ws://localhost:9090/echo");
+   websocket:Client chatClient = check new("ws://localhost:9090/chat");
 
    // Write a message to the server using \`writeMessage\`.
    // This function accepts \`anydata\`. If the given type is a \`byte[]\`, the message will be sent as
    // binary frames and the rest of the data types will be sent as text frames.
-   check echoClient->writeMessage("Hello World!");
+   check chatClient->writeMessage("Hello John!");
 
-   // Read a message echoed from the server using \`readMessage\`.
+   // Read a message sent from the server using \`readMessage\`.
    // The contextually-expected data type is inferred from the LHS variable type. The received data
    // will be converted to that particular data type.
-   string message = check echoClient->readMessage();
+   string message = check chatClient->readMessage();
    io:println(message);
 }
 `,
@@ -54,7 +54,7 @@ export default function WebsocketClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket client - Send/Receive messages</h1>
+      <h1>WebSocket client - Send/Receive message</h1>
 
       <p>
         The WebSocket client can be used to connect to and interact with a
@@ -220,7 +220,7 @@ export default function WebsocketClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run websocket_text_client.bal`}</span>
-              <span>{`Hello World!`}</span>
+              <span>{`Hello!, How are you?`}</span>
             </code>
           </pre>
         </Col>

@@ -168,8 +168,10 @@ export default function GrpcClientSelfSignedJwtAuth() {
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
-        implement the client used here.
+        <a href="/learn/by-example/grpc-client-unary/">
+          gRPC client - Unary RPC
+        </a>{" "}
+        to implement the client used here.
       </p>
 
       <h2>Prerequisites</h2>
@@ -178,11 +180,11 @@ export default function GrpcClientSelfSignedJwtAuth() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start the{" "}
+            Run the gRPC service given in the{" "}
             <a href="/learn/by-example/grpc-service-jwt-auth/">
-              JWT Auth service
-            </a>
-            .
+              gRPC service - JWT authentication
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>
@@ -268,7 +270,7 @@ export default function GrpcClientSelfSignedJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5117-client---self-signed-jwt-auth">
-              Self signed JWT authentication - specification
+              Self signed JWT authentication - Specification
             </a>
           </span>
         </li>

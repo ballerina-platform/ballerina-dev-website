@@ -74,7 +74,7 @@ export default function LockStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=007d2216d64a3ed77b3517eaf5250dde&file=lock_statement.bal",
+                "https://play.ballerina.io/?gist=c22b0ed96f757f564a97641c3326b313&file=lock_statement.bal",
                 "_blank"
               );
             }}

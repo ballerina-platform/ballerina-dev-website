@@ -65,8 +65,7 @@ export default function KafkaServiceConsumeMessage() {
 
       <p>
         Here, a Kafka consumer is used as a listener to a service with automatic
-        offset commits. For this to work properly, an active Kafka broker should
-        be present.
+        offset commits.
       </p>
 
       <Row
@@ -160,7 +159,17 @@ export default function KafkaServiceConsumeMessage() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Execute{" "}
+            Start a{" "}
+            <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
+            instance.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the Kafka client given in the{" "}
             <a href="/learn/by-example/kafka-client-produce-message">
               Kafka client - Produce message
             </a>{" "}
@@ -250,7 +259,7 @@ export default function KafkaServiceConsumeMessage() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#432-usage">
-              Service usage - specification
+              Service usage - Specification
             </a>
           </span>
         </li>

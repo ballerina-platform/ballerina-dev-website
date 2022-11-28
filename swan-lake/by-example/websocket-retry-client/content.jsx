@@ -15,7 +15,7 @@ const codeSnippetData = [
   `import ballerina/websocket;
 
 public function main() returns error? {
-    websocket:Client wsClient = check new("ws://localhost:9090/echo", {
+    websocket:Client chatRetryClient = check new("ws://localhost:9090/chat", {
         // Set the maximum retry count to 5 so that it will try 5 times with the interval of
         // 5 second in between the retry attempts.
         retryConfig: {
@@ -23,7 +23,7 @@ public function main() returns error? {
             interval: 5
         }
     });
-    check wsClient->writeMessage("Hey Sam!");
+    check chatRetryClient->writeMessage("Hey Sam!");
 }
 `,
 ];

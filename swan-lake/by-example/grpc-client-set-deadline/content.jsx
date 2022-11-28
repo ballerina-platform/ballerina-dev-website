@@ -153,8 +153,10 @@ export default function GrpcClientSetDeadline() {
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">unary RPC client</a> to
-        implement the client used here.
+        <a href="/learn/by-example/grpc-client-unary/">
+          gRPC client - Unary RPC
+        </a>{" "}
+        to implement the client used here.
       </p>
 
       <h2>Prerequisites</h2>
@@ -163,19 +165,16 @@ export default function GrpcClientSetDeadline() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Start a{" "}
-            <a href="/learn/by-example/grpc-service-set-deadline/">
-              sample service with/without a configured deadline
-            </a>
-            .
+            Run the gRPC service given in the{" "}
+            <a href="/learn/by-example/grpc-service-check-deadline/">
+              gRPC service - Check deadline
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>
 
-      <p>
-        Execute the command below to run the client. Output will depend on how
-        the service has been implemented.
-      </p>
+      <p>Execute the command below to run the client.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -256,7 +255,7 @@ export default function GrpcClientSetDeadline() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#61-grpc-deadline">
-              Set deadline - specification
+              Set deadline - Specification
             </a>
           </span>
         </li>

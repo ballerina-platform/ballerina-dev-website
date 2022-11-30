@@ -303,7 +303,7 @@ configurable () nilValue = ();
 configurable ())[] nilArray = [];
 ```
 
-- record fields with `nil` type
+- Record fields with `nil` type
 The record fields of `nil` type or a union of `nil` are now supported by the configurable feature only if the field contains a default value.
 
 For example, if the configurable variables are defined in the following way,

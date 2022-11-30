@@ -124,7 +124,7 @@ Now, optionally, you can end these declarations with a semicolon.
 
 Previously, `-9223372036854775808` was allowed to be assigned to an integer in Ballerina. However, according to the language specification, `-9223372036854775808` is considered a unary expression, which requires the expression after `-` to be a valid value for `int`. Therefore, `-9223372036854775808` now results in a compilation error since `9223372036854775808` is out of range for `int`.
 
-```
+```ballerina
 int result = -9223372036854775808; // error: '9223372036854775808' is out of range for 'int'
 ```
 

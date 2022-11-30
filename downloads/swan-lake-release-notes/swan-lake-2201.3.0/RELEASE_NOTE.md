@@ -186,7 +186,6 @@ public function main() {
 
 #### Semantic API
 - Added a new `annotAttachments()` API to get the annotation attachments and their constant values from the annotatable symbols
-- Introduced a new `ClientDeclSymbol` symbol to represent the semantic information of the client-declaration statement
 
 ### Improvements
 

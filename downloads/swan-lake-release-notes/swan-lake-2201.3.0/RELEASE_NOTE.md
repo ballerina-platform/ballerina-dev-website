@@ -36,9 +36,9 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ### New features
 
-#### Added support for function pointers with defaultable parameters
+#### Added support for function types with defaultable parameters
 
-Default values are now allowed for parameters of function pointers.
+Default values are now allowed for parameters of function types.
 
 ```ballerina
 import ballerina/io;

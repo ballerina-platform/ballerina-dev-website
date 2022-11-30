@@ -106,7 +106,7 @@ public function main() {
     Employee e = {id: 2, department: "HR"};
     e.id = ();
     e = {id: 3};
-    var {id: _, department} = e;
+    var {id: _, department} = e; // Even if the optional field `department` is absent in `e`, 
     io:println(department is ()); // true
 
     int? idOrNil = ();

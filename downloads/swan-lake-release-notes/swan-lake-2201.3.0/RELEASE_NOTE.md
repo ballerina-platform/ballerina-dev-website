@@ -399,7 +399,7 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.3.0%22+label%3AType%2FBug)
+To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+is%3Aclosed).
 
 ## Developer tools updates
 

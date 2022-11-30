@@ -84,7 +84,7 @@ function getSum(int num1, int num2, int num3) returns int {
 
 #### More improvements on working with optional fields
 
-If there is an optional `T x?;` field in a record, the absence of `x` is represented by nil where `T` does not allow nil.
+If there is an optional `T x?;` field in a record, the absence of `x` is represented by `nil` where `T` does not allow `nil`.
 
 ```ballerina
 import ballerina/io;

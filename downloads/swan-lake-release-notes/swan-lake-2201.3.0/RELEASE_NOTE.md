@@ -210,7 +210,7 @@ Updated the `NodeFactory` methods to allow optional terminating semicolons for m
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+label%3ATeam%2FCompilerFE+is%3Aclosed).
+To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+is%3Aclosed+label%3ATeam%2FCompilerFETools+).
 
 ## Runtime updates
 
@@ -431,7 +431,8 @@ Introduced the `run-in-terminal` feature, which provides the capability to debug
 - Improved the `Change variable type` code action
 
 #### OpenAPI Tool
--  Improved by changing the default behaviour from generating `remote` functions to generating `resource` functions within the client class in OpenAPI to the Ballerina CLI command.
+
+Improved by changing the default behaviour from generating `remote` functions to generating `resource` functions within the client class in OpenAPI to the Ballerina CLI command.
 
 #### GraphQL Tool
 

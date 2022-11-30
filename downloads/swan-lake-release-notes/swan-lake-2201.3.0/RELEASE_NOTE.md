@@ -167,7 +167,7 @@ public function main() {
             {id: 6789, name: "Anne"}
         ];
 
-    Entry[] _ = from var login in logins
+    Entry[] entities = from var login in logins
         outer join var user in users
         on login.userId equals user?.id
         select {name: user?.name, login: login.time};

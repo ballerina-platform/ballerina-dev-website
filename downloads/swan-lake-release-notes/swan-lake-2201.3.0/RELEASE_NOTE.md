@@ -188,6 +188,7 @@ Previously, method calls were allowed with record fields of function types simil
 type Foo record {|
     function (int a, int b) returns int func;
 |};
+
 function callFunction(Foo foo) {
     int _ = foo.func(1, 2); // error
 }

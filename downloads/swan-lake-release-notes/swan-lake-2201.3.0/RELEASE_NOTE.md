@@ -59,7 +59,7 @@ public type RefreshTokenGrantConfig record {|
 
 #### Added support for function pointers with defaultable parameters
 
-Function pointers are now allowed with default values for parameters. Any expression can be used as the default value of a function pointer parameter.
+Default values are now allowed for parameters of function pointers.
 
 ```ballerina
 import ballerina/io;

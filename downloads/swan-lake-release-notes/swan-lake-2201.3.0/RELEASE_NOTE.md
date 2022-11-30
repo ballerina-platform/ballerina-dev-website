@@ -430,6 +430,9 @@ Introduced the `run-in-terminal` feature, which provides the capability to debug
 - Improved completion sorting within the expression of the `if` condition
 - Improved the `Change variable type` code action
 
+#### OpenAPI Tool
+-  Improved by changing the default behaviour from generating `remote` functions to generating `resource` functions within the client class in OpenAPI to the Ballerina CLI command.
+
 #### GraphQL Tool
 
 - Introduced single client generation for a single schema definition

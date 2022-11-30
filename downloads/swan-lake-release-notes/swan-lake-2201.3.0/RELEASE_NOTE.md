@@ -173,7 +173,7 @@ public function main() {
         select {name: user?.name, login: login.time};
 
     // Now, the code below gives an error at the typed binding pattern of the outer join clause.
-    _ = from var login in logins
+    entities = from var login in logins
         outer join User user in users  // error: outer join must be declared with 'var'
         on login.userId equals user.id
         select {name: user?.name, login: login.time};

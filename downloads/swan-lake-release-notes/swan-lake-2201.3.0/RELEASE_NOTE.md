@@ -36,21 +36,6 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ### New features
 
-#### Added a new field to the `display` annotation
-
-A new field named `kind` has been introduced to the `display` annotation to indicate the kind of data. Allowed values are `text`, `password`, and `file`.
-
-```ballerina
-public type RefreshTokenGrantConfig record {|
-    @display {
-        iconPath: "Field.icon",
-        label: "clientSecret field",
-        kind: "password"
-    }
-    string clientSecret;
-|};
-```
-
 #### Added support for function pointers with defaultable parameters
 
 Default values are now allowed for parameters of function pointers.
@@ -74,11 +59,40 @@ function getSum(int num1, int num2, int num3) returns int {
 }
 ```
 
+#### Added a new field to the `display` annotation
+
+A new field named `kind` has been introduced to the `display` annotation to indicate the kind of data. Allowed values are `text`, `password`, and `file`.
+
+```ballerina
+public type RefreshTokenGrantConfig record {|
+    @display {
+        iconPath: "Field.icon",
+        label: "clientSecret field",
+        kind: "password"
+    }
+    string clientSecret;
+|};
+```
+
 ### Improvements
 
 #### More improvements on working with optional fields
 
-If there is an optional `T x?;` field in a record, the absence of `x` is represented by nil where `T` does not allow nil.
+Previously, there is no way to represent the absence of an optional field. Therefore, the following case does not work.
+
+```ballerina
+type Topt record {
+   int x?;
+   int y?;
+};
+
+function foo() {    
+    Topt t = {x: 2};
+    var { x, y } = t;
+}
+```
+
+However, with this new feature, the absence of an optional field can be represented by nil as shown below.
 
 ```ballerina
 import ballerina/io;
@@ -99,7 +113,6 @@ public function main() {
     e = {id: idOrNil, department: "Engineering"};
     io:println(e.id is ()); // true
 }
-
 ```
 
 #### Allow an optional terminating semicolon for module-level declarations

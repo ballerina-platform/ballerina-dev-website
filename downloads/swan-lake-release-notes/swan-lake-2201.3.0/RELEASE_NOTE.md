@@ -110,7 +110,7 @@ public function main() {
     io:println(department is ()); // true
 
     int? idOrNil = ();
-    e = {id: idOrNil, department: "Engineering"};
+    e = {id: idOrNil, department: "Engineering"}; // nil value can be used to represent the absence of optional field `id`
     io:println(e.id is ()); // true
 }
 ```

@@ -180,12 +180,25 @@ public function main() {
 }
 ```
 
+#### Disallow method calls with record fields of function types
+
+Previously, method calls were allowed with record fields of function types similar to object fields. This has now been disallowed since it is not allowed by the language specification.
+
+```ballerina
+type Foo record {|
+    function (int a, int b) returns int func;
+|};
+function callFunction(Foo foo) {
+    int _ = foo.func(1, 2); // error
+}
+```
+
 ## Compiler API updates
 
 ### New features
 
 #### Semantic API
-- Added a new `annotAttachments()` API to get the annotation attachments and their constant values from the annotatable symbols
+Added a new `annotAttachments()` API to get the annotation attachments and their constant values from the annotatable symbols
 
 ### Improvements
 
@@ -421,7 +434,7 @@ Introduced the `--native` flag, which generates a GraalVM native executable when
 
 #### Debugger
 
-Introduced the `run-in-terminal` feature, which provides the capability to debug Ballerina programs that take user inputs, in the launch mode. This can be achieved by setting the `terminal` attribute in the launch configurations to `integrated`. Once the configuration is set, launching the debugger will cause the Ballerina programs to be executed in a separate integrated VS Code terminal.
+Introduced the `run-in-terminal` feature, which provides the capability to debug Ballerina programs that take user inputs in the launch mode. This can be achieved by setting the `terminal` attribute in the launch configurations to `integrated`. Once the configuration is set, launching the debugger will cause the Ballerina programs to be executed in a separate integrated VS Code terminal.
 
 ### Improvements
 

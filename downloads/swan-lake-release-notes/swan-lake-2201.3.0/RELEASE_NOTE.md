@@ -173,22 +173,16 @@ public function main() {
 }
 ```
 
-#### Disallow calling a record’s field where the type of the field is a function
+#### Disallow method calls with record fields of function types
 
-Previously, the record’s field where the type of the field is a function allowed to call as similar to a method call expression, but now it has been disallowed and results in a compilation error.
-
+Previously, method calls were allowed with record fields of function types, similar to object fields. This has now been disallowed since it is not allowed by the language specification.
 ```ballerina
 type Foo record {|
-    function (int a, int b) returns int value;
+    function (int a, int b) returns int func;
 |};
 
-function getSum(int a, int b) returns int {
-    return a + b;
-}
-
-public function main() {
-    Foo func = {value: getSum};
-    int _ = func.d(2, 3); // error: function invocation on type 'Foo' is not supported
+function callFunction(Foo foo) {
+    int _ = foo.func(1, 2); // error
 }
 ```
 

@@ -293,7 +293,7 @@ array2 = [[{id = 1, name = "Anne"}, {id = 2, name = "Bob"}], [{id = 3, name = "C
 
 The configurable feature is now improved to support the following `()` cases.
 
-- configurable variables of `nil` type 
+- Configurable variables of `nil` type 
 The configurable variables of the `nil` type are now supported if the configuration is optional.
 
 For example, the following will be initialized with the default values without providing a compilation error.

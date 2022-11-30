@@ -32,12 +32,6 @@ However, if you are using a version below 2201.0.0 (Swan Lake) and if you alread
 
 If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
 
-## Migrate from Swan Lake Beta releases
-
->**Info:** If you have been using Swan Lake Beta releases, delete the `Dependencies.toml` files in your Ballerina packages when migrating to Ballerina 2201.3.0 (Swan Lake). 
-
-A few backward-incompatible changes have been introduced during the Swan Lake Beta program, and thereby, some of your existing packages may not compile with Ballerina 2201.3.0 (Swan Lake). Therefore, you need to delete the `Dependencies.toml` file to force the dependency resolver to use the latest versions of your dependencies. 
-
 ## Language updates
 
 ### New features
@@ -84,7 +78,7 @@ function getSum(int num1, int num2, int num3) returns int {
 
 #### More improvements on working with optional fields
 
-If there is an optional `T x?;` field in a record, the absence of `x` is represented by `nil` where `T` does not allow `nil`.
+If there is an optional `T x?;` field in a record, the absence of `x` is represented by nil where `T` does not allow nil.
 
 ```ballerina
 import ballerina/io;
@@ -289,40 +283,42 @@ array2 = [[{id = 1, name = "Anne"}, {id = 2, name = "Bob"}], [{id = 3, name = "C
 
 ```
 
-#### Configurable support for the `nil` type
+#### Configurable support for the nil type
 
 The configurable feature is now improved to support the following `()` cases.
 
-- Configurable variables of `nil` type 
-The configurable variables of the `nil` type are now supported if the configuration is optional.
+- Configurable variables of nil type 
 
-For example, the following will be initialized with the default values without providing a compilation error.
+    The configurable variables of the nil type are now supported if the configuration is optional.
 
-```ballerina
-configurable () nilValue = ();
-configurable ())[] nilArray = [];
-```
+    For example, the following will be initialized with the default values without providing a compilation error.
 
-- Record fields with `nil` type
-The record fields of `nil` type or a union of `nil` are now supported by the configurable feature only if the field contains a default value.
+    ```ballerina
+    configurable () nilValue = ();
+    configurable ())[] nilArray = [];
+    ```
 
-For example, if the configurable variables are defined in the following way,
+- Record fields with nil type
 
-```ballerina
-type Person record {
-    int id;
-    string name;
-    string? department = "HR";
-};
+    The record fields of nil type or a union of nil are now supported by the configurable feature only if the field contains a default value.
 
-configurable Person person = ?;
-```
+    For example, if the configurable variables are defined in the following way,
 
-the values can be provided in the `Config.toml` file as follows.
+    ```ballerina
+    type Person record {
+        int id;
+        string name;
+        string? department = "HR";
+    };
 
-```toml
-person = {id = 101, name = "Tom"}
-```
+    configurable Person person = ?;
+    ```
+
+    the values can be provided in the `Config.toml` file as follows.
+
+    ```toml
+    person = {id = 101, name = "Tom"}
+    ```
 
 #### Configurable support for the `json` type
 
@@ -451,7 +447,6 @@ To view bug fixes, see the GitHub milestone for 2201.3.0 (Swan Lake) of the repo
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+label%3ATeam%2FLanguageServer)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.3.0%22+label%3AType%2FBug+is%3Aclosed)
-- [ProjectAPI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FDevTools+milestone%3A2201.3.0+label%3AArea%2FProjectAPI)
 - [Semantic API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AArea%2FSemanticAPI+)
 
 ## Code to Cloud updates

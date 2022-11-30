@@ -213,24 +213,6 @@ Updated the `NodeFactory` methods to allow optional terminating semicolons for m
 
 To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+label%3ATeam%2FCompilerFE+is%3Aclosed).
 
-## Compiler API updates
-
-### New features
-
-#### Semantic API
-- Added a new `annotAttachments()` API to get the annotation attachments and their constant values from the annotatable symbols
-- Introduced a new `ClientDeclSymbol` symbol to represent the semantic information of the client-declaration statement
-
-### Improvements
-
-#### Semantic API
-
-Improved the `constValue()` method to retrieve the constant value as an object from the constant symbol.
-
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3ATeam%2FCompilerFETools+label%3AType%2FBug+).
-
 ## Runtime updates
 
 ### Improvements

@@ -416,7 +416,6 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 - Introduced a new `Extract to function` code action
 - Introduced a new code action to convert an array to array mapping into a query expression
 - Introduced the `loadProject()` API to the workspace manager to open up a project programmatically
-- Introduced a new `Generate module for client declaration` code action to generate a module for client declarations
 
 #### CLI
 

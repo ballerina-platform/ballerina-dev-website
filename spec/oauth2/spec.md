@@ -38,7 +38,7 @@ The conforming implementation of the specification is released and included in t
     * 5.2. [Client Auth](#52-client-auth)
         * 5.2.1. [Declarative Approach (HTTP Client)](#521-declarative-approach-http-client)
             * 5.2.1.1. [Bearer Token](#5211-bearer-token)
-            * 5.2.1.2. [Grant TypesT](#5212-grant-types)
+            * 5.2.1.2. [Grant Types](#5212-grant-types)
         * 5.2.2. [Imperative Approach (HTTP Client)](#522-imperative-approach-http-client)
             * 5.2.2.1. [Bearer Token](#5221-bearer-token)
             * 5.2.2.2. [Grant Types](#5222-grant-types)

@@ -114,7 +114,7 @@ The conforming implementation of the specification is released and included in t
     * 10.4 [Execution](#104-execution)
         * 10.4.1 [Service Level Interceptors](#1041-service-level-intercptors)
 11. [Security](#11-security)
-    * 11.1 [Authentication and Authorization](#111-authentication-and-authorization)
+    * 11.1 [Service Authentication and Authorization](#111-service-authentication-and-authorization)
         * 11.1.1 [Declarative Approach](#1111-declarative-approach)
             * 11.1.1.1 [Basic Authentication - File User Store](#11111-basic-authentication---file-user-store)
             * 11.1.1.2 [Basic Authentication - LDAP User Store](#11112-basic-authentication---ldap-user-store)
@@ -125,9 +125,22 @@ The conforming implementation of the specification is released and included in t
             * 11.1.2.2 [Basic Authentication - LDAP User Store](#11122-basic-authentication---ldap-user-store)
             * 11.1.2.3 [JWT Authentication](#11123-jwt-authentication)
             * 11.1.2.4 [OAuth2](#11124-oauth2)
-    * 11.2 [SSL/TLS and Mutual SSL](#112-ssltls-and-mutual-ssl)
-        * 11.2.1 [SSL/TLS](#1121-ssltls)
-        * 11.2.2 [Mutual SSL](#1122-mutual-ssl)
+    * 11.2 [Client Authentication and Authorization](#112-client-authentication-and-authorization)
+        * 11.2.1. [Basic Authentication](#1121-basic-authentication)
+        * 11.2.2. [Bearer Token Authentication](#1122-bearer-token-authentication)
+        * 11.2.3. [Self-Signed JWT Authentication](#1123-self-signed-jwt-authentication)
+        * 11.2.4. [OAuth2](#1124-oauth2)
+            * 11.2.4.1 [Client Credentials Grant Type](#11241-client-credentials-grant-type)
+            * 11.2.4.2 [Password Grant Type](#11242-password-grant-type)
+            * 11.2.4.3 [Refresh Token Grant Type](#11243-refresh-token-grant-type)
+            * 11.2.4.4 [JWT Bearer Grant Type](#11244-jwt-bearer-grant-type)
+    * 11.3 [SSL/TLS and Mutual SSL](#113-ssltls-and-mutual-ssl)
+        * 11.3.1 [Listener](#1131-listener)
+            * 11.3.1.1 [SSL/TLS](#11311-ssltls)
+            * 11.3.1.2 [Mutual SSL](#11312-mutual-ssl)
+        * 11.3.2 [Client](#1132-client)
+            * 11.3.2.1 [SSL/TLS](#11321-ssltls)
+            * 11.3.2.2 [Mutual SSL](#11322-mutual-ssl)
 12. [Tools](#11-tools)
     * 12.1 [GraphiQL Client](#121-graphiql-client)
 
@@ -1708,9 +1721,9 @@ The service level interceptors are applied to all the resolver functions in the 
 
 ## 11. Security
 
-### 11.1 Authentication and Authorization
+### 11.1 Service Authentication and Authorization
 
-There are two ways to enable authentication and authorization in Ballerina GraphQL.
+There are two ways to enable authentication and authorization in Ballerina GraphQL service.
 
 1. Declarative approach
 2. Imperative approach
@@ -1841,7 +1854,7 @@ A GraphQL service can be secured using [OAuth2](https://github.com/ballerina-pla
 
 When configured, it validates the OAuth2 token sent in the `Authorization` header in the HTTP request that contains the GraphQL document. This calls the configured OAuth2 introspection endpoint to validate.
 
-###### Example: Declarative OAuth2
+###### Example: Declarative Approach to Secure Service Using OAuth2
 
 ```ballerina
 @graphql:ServiceConfig {
@@ -2039,7 +2052,7 @@ service on new graphql:Listener(4000) {
 
 An OAuth2 introspection endpoint can be used to validate the `Authorization` header in the HTTP request that contains the GraphQL document.
 
-###### Example: Imperative OAuth2
+###### Example: Imperative Approach to Secure Service Using OAuth2
 
 ```ballerina
 graphql:OAuth2IntrospectionConfig config = {
@@ -2075,13 +2088,176 @@ service on new graphql:Listener(4000) {
 }
 ```
 
-### 11.2 SSL/TLS and Mutual SSL
+### 11.2 Client Authentication and Authorization
 
-The GraphQL listener can connect or interact with a secured client. The `graphql:ListenerSecureSocket` configuration of the listener exposes the secure connection-related configurations.
+Authentication and authorization in Ballerina GraphQL clients can be enabled using the declarative approach.
 
-#### 11.2.1 SSL/TLS
+##### 11.2.1 Basic Authentication
 
-The GraphQL listener can connect or interact with an HTTPS client using SSL/TLS. The `graphql:ListenerSecureSocket` can be used to configure the listener to expose an HTTPS connection.
+Ballerina GraphQL clients enable basic authentication with credentials by setting the `graphql:CredentialsConfig` configurations in the client. The requests from the client are automatically enriched with the `Authorization: Basic <token>` header when passing the `graphql:CredentialsConfig` for the `auth` configuration of the client.
+
+###### Example: Client Using Declarative Basic Authentication
+
+```ballerina
+public function main() returns error? {
+    graphql:Client graphqlClient = check new ("http://localhost:4000/graphql",
+        auth = {
+            username: "bob",
+            password: "bob@123"
+        }
+    );
+    string document = "{ one: profile(id: 100) {name} }";
+    ProfileResponseWithErrors response = check graphqlClient->execute(document);
+    // ...
+}
+```
+
+##### 11.2.2 Bearer Token Authentication
+
+Ballerina GraphQL clients enable authentication using bearer tokens by setting the `graphql:BearerTokenConfig` configurations in the client. The requests from the client are automatically enriched with the `Authorization: Bearer <token>` header when passing the `graphql:BearerTokenConfig` for the `auth` configuration of the client.
+
+###### Example: Client Using Declarative Bearer Token Authentication
+
+```ballerina
+public function main() returns error? {
+    graphql:Client graphqlClient = check new ("http://localhost:4000/graphql",
+        auth = {
+            token: "56ede317-4511-44b4-8579-a08f094ee8c5"
+        }
+    );
+    string document = "{ one: profile(id: 100) {name} }";
+    ProfileResponseWithErrors response = check graphqlClient->execute(document);
+    // ...
+}
+```
+
+##### 11.2.3 Self-Signed JWT Authentication
+
+Ballerina GraphQL clients enable authentication using JWTs by setting the `graphql:JwtIssuerConfig` configurations in the client.  The requests from the client are automatically enriched with the `Authorization: Bearer <token>` header when passing the `graphql:JwtIssuerConfig` for the `auth` configuration of the client.
+
+###### Example: Client Using Declarative Self Signed JWT Authentication
+
+```ballerina
+public function main() returns error? {
+    graphql:Client graphqlClient = check new ("http://localhost:4000/graphql",
+        auth = {
+            username: "ballerina",
+            issuer: "wso2",
+            audience: ["ballerina", "ballerina.org", "ballerina.io"],
+            keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
+            jwtId: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In",
+            customClaims: {"scp": "admin"},
+            expTime: 3600,
+            signatureConfig: {
+                config: {
+                    keyFile: "path/to/private.key"
+                }
+            }
+        }
+    );
+    string document = "{ one: profile(id: 100) {name} }";
+    ProfileResponseWithErrors response = check graphqlClient->execute(document);
+    // ...
+}
+```
+
+##### 11.2.4 OAuth2
+
+Ballerina GraphQL clients enable authentication using OAuth2 by setting the `graphql:OAuth2GrantConfig` configurations in the client. The requests from the client are automatically enriched with the `Authorization: Bearer <token>` header when passing the `graphql:OAuth2GrantConfig` for the `auth` configuration of the client. OAuth2 can configure in following 4 ways
+
+###### 11.2.4.1 Client Credentials Grant Type
+
+```ballerina
+graphql:Client graphqlClient = check new ("http://localhost:4000/graphql",
+    auth = {
+        tokenUrl: "https://localhost:9445/oauth2/token",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
+        clientConfig: {
+            secureSocket: {
+                cert: "path/to/public.crt"
+            }
+        }
+    }
+);
+```
+
+###### 11.2.4.2 Password Grant Type
+
+```ballerina
+graphql:Client graphqlClient = check new ("http://localhost:4000/graphql",
+    auth = {
+        tokenUrl: "https://localhost:9445/oauth2/token",
+        username: "admin",
+        password: "admin",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
+        refreshConfig: {
+            refreshUrl: "https://localhost:9445/oauth2/token",
+            scopes: ["hello"],
+            clientConfig: {
+                secureSocket: {
+                    cert: "path/to/public.crt"
+                }
+            }
+        },
+        clientConfig: {
+            secureSocket: {
+                cert: "path/to/public.crt"
+            }
+        }
+    }
+);
+```
+###### 11.2.4.3 Refresh Token Grant Type
+
+```ballerina
+graphql:Client graphqlClient = check new ("http://localhost:4000/graphql",
+    auth = {
+        refreshUrl: "https://localhost:9445/oauth2/token",
+        refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
+        clientConfig: {
+            secureSocket: {
+                cert: "path/to/public.crt"
+            }
+        }
+    }
+);
+```
+
+###### 11.2.4.4 JWT Bearer Grant Type
+
+```ballerina
+graphql:Client graphqlClient = check new ("http://localhost:4000/graphql",
+    auth = {
+        tokenUrl: "https://localhost:9445/oauth2/token",
+        assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
+        clientConfig: {
+            secureSocket: {
+                cert: "path/to/public.crt"
+            }
+        }
+    }
+);
+```
+
+### 11.3 SSL/TLS and Mutual SSL
+
+The Ballerina GraphQL listeners/clients can be used to communicate via a secured connection. This section defines the specifications for creating Ballerina GraphQL listeners and clients to communicate via a secured connection.
+
+### 11.3.1 Listener
+
+#### 11.3.1.1 SSL/TLS
+
+The GraphQL listener can be secured to communicate via HTTPS using SSL/TLS. The `graphql:ListenerSecureSocket` can be used to configure the listener to expose an HTTPS connection.
 
 Alternatively, an HTTP listener configured to connect with an HTTPS client can also be used to create the GraphQL listener to expose an HTTPS connection.
 
@@ -2124,7 +2300,7 @@ service on securedGraphqlListener {
 }
 ```
 
-#### 11.2.2 Mutual SSL
+#### 11.3.1.2 Mutual SSL
 
 The GraphQL listener supports mutual SSL, which is a certificate-based authentication process in which two parties (the client and the server) authenticate each other by verifying the digital certificates.
 
@@ -2186,6 +2362,54 @@ service on securedGraphqlListener {
     resource function get greeting() returns string {
         return "Hello, World!";
     }
+}
+```
+
+### 11.3.2 Client
+
+#### 11.3.2.1 SSL/TLS
+
+A GraphQL client can communicate with a secured GraphQL service via SSL/TLS. The `graphql:ClientSecureSocket` configuration can be used to provide configurations related to SSL/TLS.
+
+###### Example: GraphQL Client Using SSL/TLS
+
+```ballerina
+public function main() returns error? {
+    graphql:Client graphqlClient = check new ("https://localhost:4000/graphql",
+       secureSocket = {
+            cert: "path/to/public.crt"
+        }
+    );
+    string document = "{ one: profile(id: 100) {name} }";
+    ProfileResponseWithErrors response = check graphqlClient->execute(document);
+    // ...
+}
+```
+
+#### 11.3.2.2 Mutual SSL
+
+A GraphQL client can communicate with a secured GraphQL service using mutual SSL. Mutual SSL can be enabled by providing the `graphql:ClientSecureSocket` value for the `auth` configuration of the client along with providing the client certificate and key files via the `key` configuration of the `graphql:ClientSecureSocket`.
+
+###### Example: GraphQL Client Using Mutual SSL
+
+```ballerina
+public function main() returns error? {
+    graphql:Client graphqlClient = check new ("https://localhost:4000/graphql",
+       secureSocket = {
+            key: {
+                certFile: "path/to/public.crt",
+                keyFile: "path/to/private.key"
+            },
+            cert: "path/to/public.crt",
+            protocol: {
+                name: http:TLS
+            },
+            ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+        }
+    );
+    string document = "{ one: profile(id: 100) {name} }";
+    ProfileResponseWithErrors response = check graphqlClient->execute(document);
+    // ...
 }
 ```
 

@@ -87,9 +87,9 @@ export default function GraphqlHierarchicalResourcePaths() {
 
       <p>
         This example shows a GraphQL endpoint, which has a <code>profile</code>{" "}
-        field of type <code>Person</code>. A GraphQL client can query this
+        field of type <code>profile!</code>. A GraphQL client can query this
         service to retrieve specific fields or subfields of the{" "}
-        <code>Person</code> object.
+        <code>Profile</code> object.
       </p>
 
       <Row
@@ -399,7 +399,10 @@ export default function GraphqlHierarchicalResourcePaths() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+          <a href="/learn/by-example/graphql-client-query-endpoint/">
+            GraphQL client
+          </a>
+          .
         </p>
       </blockquote>
 

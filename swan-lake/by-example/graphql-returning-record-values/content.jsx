@@ -15,7 +15,7 @@ const codeSnippetData = [
   `import ballerina/graphql;
 
 // Define the custom record types for the returning data.
-public type Person record {|
+public type Profile record {|
     string name;
     int age;
     Address address;
@@ -31,7 +31,7 @@ service /graphql on new graphql:Listener(9090) {
 
     // Ballerina GraphQL resolvers can return \`record\` values. The record will be mapped to an
     // \`OBJECT\` type in the generated GraphQL schema with the same name and fields.
-    resource function get profile() returns Person {
+    resource function get profile() returns Profile {
         return {
             name: "Walter White",
             age: 51,
@@ -91,9 +91,10 @@ export default function GraphqlReturningRecordValues() {
 
       <p>
         This example shows a GraphQL endpoint, which has a field{" "}
-        <code>profile</code> of type <code>Person!</code> in the root{" "}
+        <code>profile</code> of type <code>Profile!</code> in the root{" "}
         <code>Query</code> type. A GraphQL client can query on this service to
-        retrieve specific fields or subfields of the <code>Person</code> object.
+        retrieve specific fields or subfields of the <code>Profile</code>{" "}
+        object.
       </p>
 
       <blockquote>
@@ -413,7 +414,10 @@ export default function GraphqlReturningRecordValues() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+          <a href="/learn/by-example/graphql-client-query-endpoint/">
+            GraphQL client
+          </a>
+          .
         </p>
       </blockquote>
 

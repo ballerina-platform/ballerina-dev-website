@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-type Person record {
+type Profile record {
     string name;
     int age;
     Gender gender;
@@ -34,9 +34,9 @@ enum Gender {
 service /graphql on new graphql:Listener(9090) {
     // Marking a field as deprecated.
     # # Deprecated
-    # The \`person\` field is deprecated. Use \`profile\` instead.
+    # The \`profile\` field is deprecated. Use \`profile\` instead.
     @deprecated
-    resource function get person() returns Person {
+    resource function get profileeeeeee() returns Profile {
         return {
             name: "Walter White",
             age: 51,
@@ -44,7 +44,7 @@ service /graphql on new graphql:Listener(9090) {
         };
     }
 
-    resource function get profile() returns Person {
+    resource function get profile() returns Profile {
         return {
             name: "Walter White",
             age: 51,
@@ -770,7 +770,10 @@ export default function GraphqlDirectives() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+          <a href="/learn/by-example/graphql-client-query-endpoint/">
+            GraphQL client
+          </a>
+          .
         </p>
       </blockquote>
 

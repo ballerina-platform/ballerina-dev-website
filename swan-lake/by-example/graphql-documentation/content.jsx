@@ -15,10 +15,10 @@ const codeSnippetData = [
   `import ballerina/graphql;
 
 // All the types that are used in the GraphQL service can have doc comments to add as documentation.
-# Represents a person.
-# + name - The name of the person
-# + age - The age of the person
-type Person record {|
+# Represents a profile.
+# + name - The name of the profile
+# + age - The age of the profile
+type Profile record {|
     string name;
     int age;
 |};
@@ -26,10 +26,10 @@ type Person record {|
 service /graphql on new graphql:Listener(9090) {
 
     // Add doc comments to reflect them in the generated GraphQL schema.
-    # Returns a person using the provided ID.
-    # + id - The ID of the person
-    # + return - The person with the requested ID
-    resource function get profile(int id) returns Person? {
+    # Returns a profile using the provided ID.
+    # + id - The ID of the profile
+    # + return - The profile with the requested ID
+    resource function get profile(int id) returns Profile? {
         if id == 1 {
             return {name: "Walter White", age: 52};
         } else if id == 2 {
@@ -401,7 +401,7 @@ export default function GraphqlDocumentation() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __schema { queryType { fields { name description type { name description fields { name description } } args { name description } } } } }" }' 'http://localhost:9090/graphql'`}</span>
-              <span>{`{ "data": { "__schema": { "queryType": { "fields": [ { "name": "profile", "description": "Returns a person using the provided id.", "type": { "name": "Person", "description": "Represents a Person.", "fields": [ { "name": "name", "description": "The name of the person" }, { "name": "age", "description": "The age of the person" } ] }, "args": [ { "name": "id", "description": "The ID of the person" } ] } ] } } } }`}</span>
+              <span>{`{ "data": { "__schema": { "queryType": { "fields": [ { "name": "profile", "description": "Returns a profile using the provided id.", "type": { "name": "Profile", "description": "Represents a Profile.", "fields": [ { "name": "name", "description": "The name of the profile" }, { "name": "age", "description": "The age of the profile" } ] }, "args": [ { "name": "id", "description": "The ID of the profile" } ] } ] } } } }`}</span>
             </code>
           </pre>
         </Col>
@@ -410,7 +410,10 @@ export default function GraphqlDocumentation() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+          <a href="/learn/by-example/graphql-client-query-endpoint/">
+            GraphQL client
+          </a>
+          .
         </p>
       </blockquote>
 

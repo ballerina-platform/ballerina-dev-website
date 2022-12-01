@@ -434,7 +434,10 @@ export default function GraphqlInterceptors() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+          <a href="/learn/by-example/graphql-client-query-endpoint/">
+            GraphQL client
+          </a>
+          .
         </p>
       </blockquote>
 

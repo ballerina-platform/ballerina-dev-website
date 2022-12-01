@@ -2089,6 +2089,53 @@
     ]
   },
   {
+    "title": "GraphQL client security",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "graphql-client-security-ssl-tls",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Mutual SSL",
+        "url": "graphql-client-security-mutual-ssl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic authentication",
+        "url": "graphql-client-security-basic-auth",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Self signed JWT authentication",
+        "url": "graphql-client-security-self-signed-jwt-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "OAuth2 password grant type",
+        "url": "graphql-client-security-oauth2-password-grant-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "WebSocket service",
     "column": 1,
     "category": "Network libraries",

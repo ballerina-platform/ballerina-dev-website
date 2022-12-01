@@ -23,7 +23,7 @@ type Album readonly & record {|
 public function main() returns error? {
     // An HTTP client can be configured to initiate new connections that are secured via mutual SSL.
     // The \`http:ClientSecureSocket\` record provides the SSL-related configurations.
-    http:Client securedEP = check new("https://localhost:9090",
+    http:Client securedEP = check new("localhost:9090",
         secureSocket = {
             key: {
                 certFile: "../resource/path/to/public.crt",

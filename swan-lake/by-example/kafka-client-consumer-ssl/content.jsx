@@ -15,7 +15,7 @@ const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/io;
 
-public type Order record {
+public type Order readonly & record {
     int orderId;
     string productName;
     decimal price;

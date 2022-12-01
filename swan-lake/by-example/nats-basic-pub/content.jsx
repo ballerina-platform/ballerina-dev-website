@@ -26,11 +26,15 @@ public function main() returns error? {
     nats:Client natsClient = check new (nats:DEFAULT_URL);
 
     // Produces a message to the specified subject.
-    check natsClient->publishMessage({content: { orderId: 1,
-                                                 productName: "Sport shoe",
-                                                 price: 27.5,
-                                                 isValid: true
-                                               }, subject: "orders.valid"});
+    check natsClient->publishMessage({
+        content: {
+            orderId: 1,
+            productName: "Sport shoe",
+            price: 27.5,
+            isValid: true
+        },
+        subject: "orders.valid"
+    });
 
     // Closes the client connection.
     check natsClient.close();

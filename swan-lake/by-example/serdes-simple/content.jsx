@@ -88,7 +88,7 @@ export default function SerdesSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5920bb84d714538da711d7fc99df68ee&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=82fb55581c609f44afa25557d0613f5f&file=serdes_simple.bal",
                 "_blank"
               );
             }}

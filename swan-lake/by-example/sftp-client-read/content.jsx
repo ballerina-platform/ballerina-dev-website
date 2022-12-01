@@ -38,11 +38,15 @@ public function main() returns error? {
     // an error is returned.
     stream<byte[] & readonly, io:Error?> fileStream = check fileClient->get("/server/logFile.txt");
 
-    // Write the content to a file.
-    check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
+    do {
+        // Write the content to a file.
+        check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
 
-    // Closes the file stream to finish the \`get\` operation.
-    check fileStream.close();
+        // Closes the file stream to finish the \`get\` operation.
+        check fileStream.close();
+    } on fail {
+        check fileStream.close();
+    }
 }
 `,
 ];

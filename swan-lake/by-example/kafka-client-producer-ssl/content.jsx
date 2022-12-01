@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerinax/kafka;
 
-public type Order record {|
+public type Order readonly & record {|
     int orderId;
     string productName;
     decimal price;

@@ -29,7 +29,7 @@ public type Order record {
 public function main() returns error? {
     kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, {
         groupId: "order-group-id",
-        topics: ["order-topic"]
+        topics: "order-topic"
     });
     while true {
         Order[]|kafka:Error response = orderConsumer->pollPayload(1);

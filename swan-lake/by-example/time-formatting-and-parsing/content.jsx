@@ -105,7 +105,7 @@ export default function TimeFormattingAndParsing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=628041edcd62f88ca1131bd619b22160&file=time_formatting_and_parsing.bal",
+                "https://play.ballerina.io/?gist=ddc25c6c3ff5866da862c5b01daf85c5&file=time_formatting_and_parsing.bal",
                 "_blank"
               );
             }}

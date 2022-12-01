@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-type Person record {|
+type Profile record {|
     string name;
     int age;
 |};
@@ -51,7 +51,7 @@ listener graphql:Listener securedEP = new (9090,
     ]
 }
 service /graphql on securedEP {
-    resource function get profile() returns Person {
+    resource function get profile() returns Profile {
         return {
             name: "Walter White",
             age: 50
@@ -191,6 +191,15 @@ export default function GraphqlServiceOauth2() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Run a Ballerina STS server for OAuth2 introspection.</span>
+        </li>
+      </ul>
+
       <p>Run the service by executing the command below.</p>
 
       <Row
@@ -253,6 +262,16 @@ export default function GraphqlServiceOauth2() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client-security-oauth2-password-grant-type/">
+            GraphQL client - OAuth2 password grant type
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -337,8 +356,8 @@ export default function GraphqlServiceOauth2() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Send/Receive message"
-            href="/learn/by-example/websocket-basic-sample"
+            title="SSL/TLS"
+            href="/learn/by-example/graphql-client-security-ssl-tls"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -348,7 +367,7 @@ export default function GraphqlServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive message
+                  SSL/TLS
                 </span>
               </div>
               <svg

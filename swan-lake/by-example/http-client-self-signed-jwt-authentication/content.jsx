@@ -25,7 +25,7 @@ public function main() returns error? {
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`http:JwtIssuerConfig\` for the \`auth\` configuration of the
     // client. A self-signed JWT is issued before the request is sent.
-    http:Client securedEP = check new("https://localhost:9090",
+    http:Client securedEP = check new("localhost:9090",
         auth = {
             username: "ballerina",
             issuer: "wso2",

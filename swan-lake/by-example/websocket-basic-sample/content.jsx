@@ -253,7 +253,10 @@ export default function WebsocketBasicSample() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="OAuth2" href="/learn/by-example/graphql-service-oauth2">
+          <Link
+            title="OAuth2 password grant type"
+            href="/learn/by-example/graphql-client-security-oauth2-password-grant-type"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -279,7 +282,7 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2
+                  OAuth2 password grant type
                 </span>
               </div>
             </div>

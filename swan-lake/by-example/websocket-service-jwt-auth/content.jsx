@@ -127,7 +127,7 @@ export default function WebsocketServiceJwtAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/websocket-service-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/websocket-service-jwt-auth",
                 "_blank"
               );
             }}
@@ -201,7 +201,7 @@ export default function WebsocketServiceJwtAuth() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the command below.</p>
+      <p>Run the service by executing the cURL command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -261,6 +261,17 @@ export default function WebsocketServiceJwtAuth() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
+          <a href="/learn/by-example/websocket-client-self-signed-jwt-auth">
+            self-signed JWT Auth client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

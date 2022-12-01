@@ -127,7 +127,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/websocket-service-basic-auth-file-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/websocket-service-basic-auth-file-user-store",
                 "_blank"
               );
             }}
@@ -216,7 +216,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
           password="password2" scopes=["scope2", "scope3"]
         </code>
       </pre>
-      <p>Run the service by executing the command below.</p>
+      <p>Run the service by executing the cURL command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -276,6 +276,17 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
+          <a href="/learn/by-example/websocket-client-basic-auth">
+            Basic Auth client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

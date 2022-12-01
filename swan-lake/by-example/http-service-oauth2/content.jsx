@@ -129,7 +129,7 @@ export default function HttpServiceOauth2() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-service-oauth2",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/http-service-oauth2",
                 "_blank"
               );
             }}
@@ -203,7 +203,7 @@ export default function HttpServiceOauth2() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the command below.</p>
+      <p>Run the service by executing the cURL command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -263,6 +263,17 @@ export default function HttpServiceOauth2() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
+          <a href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type">
+            OAuth2 JWT Bearer grant type client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

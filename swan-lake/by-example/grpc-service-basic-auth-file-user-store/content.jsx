@@ -145,7 +145,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/grpc-service-basic-auth-file-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/grpc-service-basic-auth-file-user-store",
                 "_blank"
               );
             }}
@@ -354,7 +354,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/grpc-service-basic-auth-file-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/grpc-service-basic-auth-file-user-store",
                 "_blank"
               );
             }}
@@ -517,6 +517,16 @@ export default function GrpcServiceBasicAuthFileUserStore() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/grpc-client-basic-auth">
+            gRPC Basic Auth client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

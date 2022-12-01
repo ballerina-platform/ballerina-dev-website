@@ -123,7 +123,7 @@ export default function GraphqlServiceOauth2() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/graphql-service-oauth2",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/graphql-service-oauth2",
                 "_blank"
               );
             }}
@@ -257,6 +257,13 @@ export default function GraphqlServiceOauth2() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

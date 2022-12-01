@@ -100,7 +100,7 @@ export default function JdbcExecuteOperation() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>DML and DDL operation</h1>
+      <h1>DML and DDL operations</h1>
 
       <p>
         This BBE demonstrates how to use the JDBC client with DDL and DML
@@ -137,7 +137,7 @@ export default function JdbcExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/jdbc-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/jdbc-execute-operation",
                 "_blank"
               );
             }}
@@ -291,7 +291,7 @@ export default function JdbcExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/jdbc-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/jdbc-execute-operation",
                 "_blank"
               );
             }}
@@ -375,7 +375,7 @@ export default function JdbcExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/jdbc-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/jdbc-execute-operation",
                 "_blank"
               );
             }}
@@ -488,7 +488,7 @@ export default function JdbcExecuteOperation() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Batch execute"
+            title="Batch execution"
             href="/learn/by-example/jdbc-batch-execute-operation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -499,7 +499,7 @@ export default function JdbcExecuteOperation() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Batch execute
+                  Batch execution
                 </span>
               </div>
               <svg

@@ -15,6 +15,16 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
+import ballerinax/mysql.driver as _;
+
+// Defines a record.
+type Customer record {|
+    string firstName;
+    string lastName;
+    int registrationID;
+    float creditLimit;
+    string country;
+|};
 
 public function main() returns error? {
     // Runs the prerequisite setup for the example.
@@ -24,15 +34,15 @@ public function main() returns error? {
     mysql:Client mysqlClient = check new (user = "root", password = "Test@123", database = "CUSTOMER");
 
     // The records to be inserted.
-    var customers = [
-        { firstName: "Peter", lastName: "Stuart", registrationID: 1, creditLimit: 5000.75, country: "USA" },
-        { firstName: "Stephanie", lastName: "Mike", registrationID: 2, creditLimit: 8000.00, country: "USA" },
-        { firstName: "Bill", lastName: "John", registrationID: 3, creditLimit: 3000.25, country: "USA" }
+    Customer[] customers = [
+        {firstName: "Peter", lastName: "Stuart", registrationID: 1, creditLimit: 5000.75, country: "USA"},
+        {firstName: "Stephanie", lastName: "Mike", registrationID: 2, creditLimit: 8000.00, country: "USA"},
+        {firstName: "Bill", lastName: "John", registrationID: 3, creditLimit: 3000.25, country: "USA"}
     ];
 
     // Creates a batch-parameterized query.
     sql:ParameterizedQuery[] insertQueries =
-        from var customer in customers
+        from Customer customer in customers
         select \`INSERT INTO Customers (firstName, lastName, registrationID, creditLimit, country)
                 VALUES (\${customer.firstName}, \${customer.lastName}, \${customer.registrationID},
                 \${customer.creditLimit}, \${customer.country})\`;
@@ -41,7 +51,7 @@ public function main() returns error? {
     sql:ExecutionResult[] result = check mysqlClient->batchExecute(insertQueries);
 
     int[] generatedIds = [];
-    foreach var summary in result {
+    foreach sql:ExecutionResult summary in result {
         generatedIds.push(<int>summary.lastInsertId);
     }
     io:println(\`Insert success, generated IDs are: \${generatedIds}\`);
@@ -112,26 +122,15 @@ export default function MysqlBatchExecuteOperation() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Batch execute</h1>
+      <h1>Batch execution</h1>
 
       <p>
         This BBE demonstrates how to use the MySQL client to execute a batch of
         DDL/DML operations.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Note:</strong> The MySQL database driver JAR should be defined
-          in the <code>Ballerina.toml</code> file as a dependency. The MySQL
-          connector uses database properties from MySQL version 8.0.13 onwards.
-          Therefore, it is recommended to use a MySQL driver version greater
-          than 8.0.13.
-        </p>
-      </blockquote>
-
       <p>
-        For a sample configuration and more information on the underlying
-        module, see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
           <code>mysql</code> module
         </a>
@@ -148,7 +147,7 @@ export default function MysqlBatchExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/mysql-batch-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/mysql-batch-execute-operation",
                 "_blank"
               );
             }}
@@ -276,7 +275,7 @@ export default function MysqlBatchExecuteOperation() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# Create a Ballerina project.`}</span>
-              <span>{`# Copy the example to the project and add the relevant database driver JAR details to the \`Ballerina.toml\` file.`}</span>
+              <span>{`# Copy the example to the project.`}</span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
               <span>{`
@@ -302,7 +301,7 @@ export default function MysqlBatchExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/mysql-batch-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/mysql-batch-execute-operation",
                 "_blank"
               );
             }}
@@ -386,7 +385,7 @@ export default function MysqlBatchExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/mysql-batch-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/mysql-batch-execute-operation",
                 "_blank"
               );
             }}
@@ -463,7 +462,7 @@ export default function MysqlBatchExecuteOperation() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="DML and DDL operation"
+            title="DML and DDL operations"
             href="/learn/by-example/mysql-execute-operation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -491,7 +490,7 @@ export default function MysqlBatchExecuteOperation() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  DML and DDL operation
+                  DML and DDL operations
                 </span>
               </div>
             </div>
@@ -499,8 +498,8 @@ export default function MysqlBatchExecuteOperation() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Atomic batch execute"
-            href="/learn/by-example/mysql-atomic-batch-execute-operation"
+            title="Atomic transactions"
+            href="/learn/by-example/mysql-atomic-transaction"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -510,7 +509,7 @@ export default function MysqlBatchExecuteOperation() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Atomic batch execute
+                  Atomic transactions
                 </span>
               </div>
               <svg

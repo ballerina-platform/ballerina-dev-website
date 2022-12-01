@@ -1,5 +1,5 @@
 {
-  "title": "Batch execute",
+  "title": "Batch execution",
   "description": "This BBE demonstrates how to use the JDBC client to execute a batch of DDL/DML operations in Ballerina.",
   "keywords": [
     "ballerina",

@@ -14,27 +14,27 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/io;
 
-public function main() returns error? {
+public function main() {
     int[] nums = [1, 2, 3, 4];
     int[] numsTimes10 = [];
 
     // The \`from\` clause works similar to a \`foreach\` statement.
-    check from var i in nums
-        // The \`do\` statement block is evaluated for each iteration.
-        do {
-            numsTimes10.push(i * 10);
-        };
+    from var i in nums
+    // The \`do\` statement block is evaluated for each iteration.
+    do {
+        numsTimes10.push(i * 10);
+    };
 
     io:println(numsTimes10);
 
     // Print only the even numbers in the \`nums\` array.
     // Intermediate clauses such as \`let\` clause, \`join\` clause, \`order by\` clause, \`where clause\` and \`limit\` clause
     // can also be used.
-    check from var i in nums
-        where i % 2 == 0
-        do {
-            io:println(i);
-        };
+    from var i in nums
+    where i % 2 == 0
+    do {
+        io:println(i);
+    };
 }
 `,
 ];
@@ -91,31 +91,6 @@ export default function QueryActions() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=563198c823cf35b80736771f43c5595d&file=query_actions.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
           {codeClick1 ? (
             <button
               className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -136,7 +111,7 @@ export default function QueryActions() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

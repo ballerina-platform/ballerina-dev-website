@@ -146,7 +146,7 @@ export default function JdbcQueryColumnMapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/jdbc-query-column-mapping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/jdbc-query-column-mapping",
                 "_blank"
               );
             }}
@@ -301,7 +301,7 @@ export default function JdbcQueryColumnMapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/jdbc-query-column-mapping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/jdbc-query-column-mapping",
                 "_blank"
               );
             }}
@@ -385,7 +385,7 @@ export default function JdbcQueryColumnMapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/jdbc-query-column-mapping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/jdbc-query-column-mapping",
                 "_blank"
               );
             }}
@@ -498,7 +498,7 @@ export default function JdbcQueryColumnMapping() {
         </Col>
         <Col sm={6}>
           <Link
-            title="DML and DDL operation"
+            title="DML and DDL operations"
             href="/learn/by-example/jdbc-execute-operation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -509,7 +509,7 @@ export default function JdbcQueryColumnMapping() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  DML and DDL operation
+                  DML and DDL operations
                 </span>
               </div>
               <svg

@@ -111,7 +111,7 @@ public function main() {
 
     int? idOrNil = ();
     e = {id: idOrNil, department: "Engineering"}; // nil value can be used to represent the absence of optional field `id`
-    io:println(e.id is ()); // true
+    io:println(e.hasKey("id")); // false
 }
 ```
 

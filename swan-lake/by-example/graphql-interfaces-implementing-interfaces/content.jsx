@@ -14,74 +14,71 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// Define the \`Animal\` interface using a \`distinct\` \`service\` object.
-type Animal distinct service object {
+// Define the \`Profile\` interface using a \`distinct\` \`service\` object.
+type Profile distinct service object {
 
     // Define the \`name\` field as a resource method definition.
     resource function get name() returns string;
 };
 
-// Define another \`Mammal\` interface, which implements the \`Animal\` interface.
-type Mammal distinct service object {
+// Define another \`Teacher\` interface, which implements the \`Profile\` interface.
+type Teacher distinct service object {
 
-    // This denotes that this interface implements the \`Animal\` interface.
-    *Animal;
+    // This denotes that this interface implements the \`Profile\` interface.
+    *Profile;
 
-    // Add an additional field to the \`Mammal\` interface.
-    resource function get call() returns string;
+    // Add an additional field to the \`Teacher\` interface.
+    resource function get school() returns string;
 };
 
-// Define the \`Leopard\` class implementing the \`Mammal\` interface.
-distinct service class Leopard {
+// Define the \`HighSchoolTeacher\` class implementing the \`Teacher\` interface.
+distinct service class HighSchoolTeacher {
+    // This denotes that this object implements the \`Teacher\` interface.
+    *Teacher;
 
-    // This denotes that this object implements the \`Mammal\` interface.
-    *Mammal;
+    private final string name;
+    private final string school;
+    private final string subject;
 
-    // Since this object implements the \`Mammal\` interface and the \`Mammal\` interface implements
-    // the \`Animal\` interface, this object must implement the fields from both interfaces.
+    function init(string name, string school, string subject) {
+        self.name = name;
+        self.school = school;
+        self.subject = subject;
+    }
+
+    // Since this object implements the \`Teacher\` interface and the \`Teacher\` interface implements
+    // the \`Profile\` interface, this object must implement the fields from both interfaces.
+    // Implement the \`name\` field from the \`Profile\` interface.
     resource function get name() returns string {
-        return "Panthera pardus kotiya";
+        return self.name;
     }
 
-    // Implement the \`call\` field from the \`Mammal\` interface.
-    resource function get call() returns string {
-        return "Growl";
+    // Implement the \`school\` field from the \`Teacher\` interface.
+    resource function get school() returns string {
+        return self.school;
     }
 
-    // Add an additional \`location\` field to the \`Leopard\` class.
-    resource function get location() returns string {
-        return "Wilpaththu";
-    }
-}
-
-// Another class implementing the \`Mammal\` class.
-distinct service class Elephant {
-    *Mammal;
-
-    resource function get name() returns string {
-        return "Elephas maximus maximus";
-    }
-
-    resource function get call() returns string {
-        return "Trumpet";
+    // Add an additional \`subject\` field to the \`HighSchoolTeacher\` class.
+    resource function get subject() returns string {
+        return self.subject;
     }
 }
 
 service /graphql on new graphql:Listener(9090) {
 
-    // Returning the \`Animal\` type from a GraphQL resolver will identify it as an interface.
-    resource function get animals() returns Animal[] {
-        return [new Leopard(), new Elephant()];
+    // Returning the \`Profile\` type from a GraphQL resolver will identify it as an interface.
+    resource function get profile() returns Profile {
+        return new HighSchoolTeacher("Walter White", "J. P. Wynne", "Chemistry");
     }
 }
 `,
   `{
-    animals {
+    profile {
         name
-        ...on Mammal {
-            call
-            ...on Leopard {
-                location
+        ... on Teacher {
+            school
+            ... on HighSchoolTeacher {
+                subject
             }
         }
     }
@@ -425,8 +422,8 @@ export default function GraphqlInterfacesImplementingInterfaces() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ animals { name ...on Mammal { call ...on Leopard { location }}}}" }' 'http://localhost:9090/graphql'`}</span>
-              <span>{`{"data":{"animals":[{"name":"Panthera pardus kotiya", "call":"Growl", "location":"Wilpaththu"}, {"name":"Elephas maximus maximus", "call":"Trumpet"}]}}`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name ...on Teacher { school ...on HighSchoolTeacher { subject }}}}" }' 'http://localhost:9090/graphql'`}</span>
+              <span>{`{"data":{"profile":{"name":"Walter White", "school":"J. P. Wynne", "subject":"Chemistry"}}}`}</span>
             </code>
           </pre>
         </Col>
@@ -435,7 +432,10 @@ export default function GraphqlInterfacesImplementingInterfaces() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+          <a href="/learn/by-example/graphql-client-query-endpoint/">
+            GraphQL client
+          </a>
+          .
         </p>
       </blockquote>
 

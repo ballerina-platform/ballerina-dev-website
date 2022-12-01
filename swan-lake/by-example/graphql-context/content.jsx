@@ -17,7 +17,7 @@ import ballerina/http;
 import ballerina/lang.value;
 
 // Define a record type to use as an object in the GraphQL service.
-type Person record {|
+type Profile record {|
     string name;
     int age;
     float salary;
@@ -42,24 +42,24 @@ type Person record {|
 }
 service /graphql on new graphql:Listener(9090) {
 
-    // Define a \`Person\` field inside the service.
-    private final Person person;
+    // Define a \`Profile\` field inside the service.
+    private final Profile profile;
 
     function init() {
-        // Initialize the \`person\` value.
-        self.person = {name: "Walter White", age: 51, salary: 737000.00};
+        // Initialize the \`profile\` value.
+        self.profile = {name: "Walter White", age: 51, salary: 737000.00};
     }
 
     // If the context is needed, it should be defined as the first parameter of the resolver
     // function.
-    resource function get profile(graphql:Context context) returns Person|error {
+    resource function get profile(graphql:Context context) returns Profile|error {
         // Retrieve the \`scope\` attribute from the context. This will return a \`graphql:Error\` if
         // the \`scope\` is not found in the context.
         value:Cloneable|isolated object {} scope = check context.get("scope");
 
         // The profile information will be returned only if the scope is \`admin\`.
         if scope is string && scope == "admin" {
-            return self.person;
+            return self.profile;
         }
 
         // Return an \`error\` if the required scope is not found.
@@ -511,7 +511,10 @@ export default function GraphqlContext() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+          <a href="/learn/by-example/graphql-client-query-endpoint/">
+            GraphQL client
+          </a>
+          .
         </p>
       </blockquote>
 

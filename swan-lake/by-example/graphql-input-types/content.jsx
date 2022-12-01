@@ -69,8 +69,8 @@ export default function GraphqlInputTypes() {
 
       <p>
         This example shows a GraphQL endpoint, which has field{" "}
-        <code>greeting</code> which has an input argument <code>name</code> of
-        type <code>String!</code>.
+        <code>greeting</code> in the root <code>Query</code> type, with an input
+        argument <code>name</code> of type <code>String!</code>.
       </p>
 
       <Row
@@ -380,7 +380,10 @@ export default function GraphqlInputTypes() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+          <a href="/learn/by-example/graphql-client-query-endpoint/">
+            GraphQL client
+          </a>
+          .
         </p>
       </blockquote>
 

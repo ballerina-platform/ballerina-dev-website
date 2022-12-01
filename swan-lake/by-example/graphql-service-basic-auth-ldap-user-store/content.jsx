@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-type Person record {|
+type Profile record {|
     string name;
     int age;
 |};
@@ -61,7 +61,7 @@ listener graphql:Listener securedEP = new (9090,
     ]
 }
 service /graphql on securedEP {
-    resource function get profile() returns Person {
+    resource function get profile() returns Profile {
         return {
             name: "Walter White",
             age: 50
@@ -261,6 +261,16 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client-security-basic-auth/">
+            GraphQL client - Basic authentication
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 

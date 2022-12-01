@@ -235,6 +235,11 @@ import GraphqlServiceBasicAuthFileUserStore from "./graphql-service-basic-auth-f
 import GraphqlServiceBasicAuthLdapUserStore from "./graphql-service-basic-auth-ldap-user-store/content.jsx";
 import GraphqlServiceJwtAuth from "./graphql-service-jwt-auth/content.jsx";
 import GraphqlServiceOauth2 from "./graphql-service-oauth2/content.jsx";
+import GraphqlClientSecuritySslTls from "./graphql-client-security-ssl-tls/content.jsx";
+import GraphqlClientSecurityMutualSsl from "./graphql-client-security-mutual-ssl/content.jsx";
+import GraphqlClientSecurityBasicAuth from "./graphql-client-security-basic-auth/content.jsx";
+import GraphqlClientSecuritySelfSignedJwtAuthentication from "./graphql-client-security-self-signed-jwt-authentication/content.jsx";
+import GraphqlClientSecurityOauth2PasswordGrantType from "./graphql-client-security-oauth2-password-grant-type/content.jsx";
 import WebsocketBasicSample from "./websocket-basic-sample/content.jsx";
 import WebsocketClient from "./websocket-client/content.jsx";
 import WebsocketRetryClient from "./websocket-retry-client/content.jsx";
@@ -629,6 +634,11 @@ const BBEs = {
   GraphqlServiceBasicAuthLdapUserStore,
   GraphqlServiceJwtAuth,
   GraphqlServiceOauth2,
+  GraphqlClientSecuritySslTls,
+  GraphqlClientSecurityMutualSsl,
+  GraphqlClientSecurityBasicAuth,
+  GraphqlClientSecuritySelfSignedJwtAuthentication,
+  GraphqlClientSecurityOauth2PasswordGrantType,
   WebsocketBasicSample,
   WebsocketClient,
   WebsocketRetryClient,

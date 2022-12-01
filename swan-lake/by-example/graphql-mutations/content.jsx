@@ -15,31 +15,31 @@ const codeSnippetData = [
   `import ballerina/graphql;
 
 // Define a record type to use as an object in the GraphQL service.
-type Person record {|
+type Profile record {|
     string name;
     int age;
 |};
 
 service /graphql on new graphql:Listener(9090) {
 
-    // Define a \`Person\` object in the service.
-    private Person person;
+    // Define a \`Profile\` object in the service.
+    private Profile profile;
 
     function init() {
-        // Initializes the \`person\` value.
-        self.person = {name: "Walter White", age: 51};
+        // Initializes the \`profile\` value.
+        self.profile = {name: "Walter White", age: 51};
     }
 
     // A resource method represents a field in the root \`Query\` operation.
-    resource function get profile() returns Person {
-        return self.person;
+    resource function get profile() returns Profile {
+        return self.profile;
     }
 
     // A remote method represents a field in the root \`Mutation\` operation. After updating the name,
-    // the \`person\` object will be returned.
-    remote function updateName(string name) returns Person {
-        self.person.name = name;
-        return self.person;
+    // the \`profile\` object will be returned.
+    remote function updateName(string name) returns Profile {
+        self.profile.name = name;
+        return self.profile;
     }
 }
 `,
@@ -91,7 +91,7 @@ export default function GraphqlMutations() {
       <p>
         This example shows a GraphQL endpoint, which has a field named{" "}
         <code>updateName</code> in the root <code>Mutation</code> type. The type
-        of the field is of type <code>Person!</code>.
+        of the field is of type <code>Profile!</code>.
       </p>
 
       <Row
@@ -396,7 +396,10 @@ export default function GraphqlMutations() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+          <a href="/learn/by-example/graphql-client-query-endpoint/">
+            GraphQL client
+          </a>
+          .
         </p>
       </blockquote>
 

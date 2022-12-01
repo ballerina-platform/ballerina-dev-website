@@ -194,6 +194,10 @@ function callFunction(Foo foo) {
 }
 ```
 
+### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+is%3Aclosed).
+
 ## Compiler API updates
 
 ### New features
@@ -230,7 +234,7 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 
 ### Improvements
 
-#### Strand dump showing the total strand count
+#### Show the total strand count in strand dump
 
 The total number of strand groups and strands created in a Ballerina program is now shown in the strand dump.
 
@@ -460,6 +464,7 @@ To view bug fixes, see the GitHub milestone for 2201.3.0 (Swan Lake) of the repo
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+label%3ATeam%2FLanguageServer)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.3.0%22+label%3AType%2FBug+is%3Aclosed)
 - [Semantic API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AArea%2FSemanticAPI+)
+- [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+label%3AArea%2FDebugger)
 
 ## Code to Cloud updates
 

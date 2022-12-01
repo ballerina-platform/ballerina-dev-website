@@ -150,7 +150,7 @@ export default function GrpcServiceOauth2() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/grpc-service-oauth2",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/grpc-service-oauth2",
                 "_blank"
               );
             }}
@@ -358,7 +358,7 @@ export default function GrpcServiceOauth2() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/grpc-service-oauth2",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/grpc-service-oauth2",
                 "_blank"
               );
             }}
@@ -503,6 +503,54 @@ export default function GrpcServiceOauth2() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the
+          clients below.
+        </p>
+      </blockquote>
+
+      <ul style={{ marginLeft: "8px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/grpc-client-oauth2-client-credentials-grant-type">
+              gRPC OAuth2 Client Credentials grant type client
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "8px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/grpc-client-oauth2-password-grant-type">
+              gRPC OAuth2 Password grant type client
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "8px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/grpc-client-oauth2-refresh-token-grant-type">
+              gRPC OAuth2 Refresh Token grant type client
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "8px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type">
+              gRPC OAuth2 JWT Bearer grant type client
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

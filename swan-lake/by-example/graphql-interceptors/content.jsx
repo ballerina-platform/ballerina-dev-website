@@ -136,7 +136,7 @@ export default function GraphqlInterceptors() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/graphql-interceptors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/graphql-interceptors",
                 "_blank"
               );
             }}
@@ -377,7 +377,7 @@ export default function GraphqlInterceptors() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/graphql-client">
+          <Link title="Directives" href="/learn/by-example/graphql-directives">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -386,7 +386,7 @@ export default function GraphqlInterceptors() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Directives
                 </span>
               </div>
               <svg

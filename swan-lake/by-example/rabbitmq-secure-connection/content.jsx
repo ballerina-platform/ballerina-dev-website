@@ -129,7 +129,7 @@ export default function RabbitmqSecureConnection() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/rabbitmq-secure-connection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/rabbitmq-secure-connection",
                 "_blank"
               );
             }}
@@ -273,7 +273,7 @@ export default function RabbitmqSecureConnection() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/rabbitmq-secure-connection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/rabbitmq-secure-connection",
                 "_blank"
               );
             }}

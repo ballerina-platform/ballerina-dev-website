@@ -92,7 +92,7 @@ export default function HttpServiceSslTls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-service-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/http-service-ssl-tls",
                 "_blank"
               );
             }}
@@ -229,17 +229,6 @@ export default function HttpServiceSslTls() {
 
       <p>Invoke the service by executing the cURL command below.</p>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Alternatively, you can invoke the above service
-          via the{" "}
-          <a href="/learn/by-example/http-client-ssl-tls/">
-            sample SSL/TLS client
-          </a>
-          .
-        </p>
-      </blockquote>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -298,6 +287,17 @@ export default function HttpServiceSslTls() {
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
+          <a href="/learn/by-example/http-client-ssl-tls/">
+            sample SSL/TLS client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -16,6 +16,7 @@ import IncludedRecordParameters from "./included-record-parameters/content.jsx";
 import RestParameters from "./rest-parameters/content.jsx";
 import DefaultValuesForFunctionParameters from "./default-values-for-function-parameters/content.jsx";
 import ProvideFunctionArgumentsByName from "./provide-function-arguments-by-name/content.jsx";
+import FunctionPointers from "./function-pointers/content.jsx";
 import ForeachStatement from "./foreach-statement/content.jsx";
 import WhileStatement from "./while-statement/content.jsx";
 import LanglibFunctions from "./langlib-functions/content.jsx";
@@ -88,6 +89,7 @@ import LimitClause from "./limit-clause/content.jsx";
 import QueryingTables from "./querying-tables/content.jsx";
 import CreatingTablesWithQuery from "./creating-tables-with-query/content.jsx";
 import JoinClause from "./join-clause/content.jsx";
+import OuterJoinClause from "./outer-join-clause/content.jsx";
 import StreamType from "./stream-type/content.jsx";
 import QueryingWithStreams from "./querying-with-streams/content.jsx";
 import QueryActions from "./query-actions/content.jsx";
@@ -211,8 +213,8 @@ import GraphqlContext from "./graphql-context/content.jsx";
 import GraphqlFileUpload from "./graphql-file-upload/content.jsx";
 import GraphqlDocumentation from "./graphql-documentation/content.jsx";
 import GraphqlInterceptors from "./graphql-interceptors/content.jsx";
-import GraphqlClient from "./graphql-client/content.jsx";
 import GraphqlDirectives from "./graphql-directives/content.jsx";
+import GraphqlClient from "./graphql-client/content.jsx";
 import GraphqlServiceSslTls from "./graphql-service-ssl-tls/content.jsx";
 import GraphqlServiceMutualSsl from "./graphql-service-mutual-ssl/content.jsx";
 import GraphqlServiceBasicAuthFileUserStore from "./graphql-service-basic-auth-file-user-store/content.jsx";
@@ -305,14 +307,14 @@ import MysqlQueryRowOperation from "./mysql-query-row-operation/content.jsx";
 import MysqlQueryColumnMapping from "./mysql-query-column-mapping/content.jsx";
 import MysqlExecuteOperation from "./mysql-execute-operation/content.jsx";
 import MysqlBatchExecuteOperation from "./mysql-batch-execute-operation/content.jsx";
-import MysqlAtomicBatchExecuteOperation from "./mysql-atomic-batch-execute-operation/content.jsx";
+import MysqlAtomicTransaction from "./mysql-atomic-transaction/content.jsx";
 import MysqlCallStoredProcedures from "./mysql-call-stored-procedures/content.jsx";
 import JdbcQueryOperation from "./jdbc-query-operation/content.jsx";
 import JdbcQueryRowOperation from "./jdbc-query-row-operation/content.jsx";
 import JdbcQueryColumnMapping from "./jdbc-query-column-mapping/content.jsx";
 import JdbcExecuteOperation from "./jdbc-execute-operation/content.jsx";
 import JdbcBatchExecuteOperation from "./jdbc-batch-execute-operation/content.jsx";
-import JdbcAtomicBatchExecuteOperation from "./jdbc-atomic-batch-execute-operation/content.jsx";
+import JdbcAtomicTransaction from "./jdbc-atomic-transaction/content.jsx";
 import SerdesSimple from "./serdes-simple/content.jsx";
 import IoBytes from "./io-bytes/content.jsx";
 import IoStrings from "./io-strings/content.jsx";
@@ -377,6 +379,7 @@ const BBEs = {
   RestParameters,
   DefaultValuesForFunctionParameters,
   ProvideFunctionArgumentsByName,
+  FunctionPointers,
   ForeachStatement,
   WhileStatement,
   LanglibFunctions,
@@ -449,6 +452,7 @@ const BBEs = {
   QueryingTables,
   CreatingTablesWithQuery,
   JoinClause,
+  OuterJoinClause,
   StreamType,
   QueryingWithStreams,
   QueryActions,
@@ -572,8 +576,8 @@ const BBEs = {
   GraphqlFileUpload,
   GraphqlDocumentation,
   GraphqlInterceptors,
-  GraphqlClient,
   GraphqlDirectives,
+  GraphqlClient,
   GraphqlServiceSslTls,
   GraphqlServiceMutualSsl,
   GraphqlServiceBasicAuthFileUserStore,
@@ -666,14 +670,14 @@ const BBEs = {
   MysqlQueryColumnMapping,
   MysqlExecuteOperation,
   MysqlBatchExecuteOperation,
-  MysqlAtomicBatchExecuteOperation,
+  MysqlAtomicTransaction,
   MysqlCallStoredProcedures,
   JdbcQueryOperation,
   JdbcQueryRowOperation,
   JdbcQueryColumnMapping,
   JdbcExecuteOperation,
   JdbcBatchExecuteOperation,
-  JdbcAtomicBatchExecuteOperation,
+  JdbcAtomicTransaction,
   SerdesSimple,
   IoBytes,
   IoStrings,

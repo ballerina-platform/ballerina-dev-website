@@ -107,7 +107,7 @@ export default function HttpClientSelfSignedJwtAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-client-self-signed-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/http-client-self-signed-jwt-auth",
                 "_blank"
               );
             }}
@@ -186,7 +186,11 @@ export default function HttpClientSelfSignedJwtAuth() {
       <blockquote>
         <p>
           <strong>Info:</strong> As a prerequisite to running the client, start
-          a sample service secured with OAuth2.
+          the{" "}
+          <a href="/learn/by-example/http-service-jwt-auth/">
+            JWT Auth service
+          </a>
+          .
         </p>
       </blockquote>
 

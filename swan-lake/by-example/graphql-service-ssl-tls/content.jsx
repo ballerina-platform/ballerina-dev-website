@@ -91,7 +91,7 @@ export default function GraphqlServiceSslTls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/graphql-service-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/graphql-service-ssl-tls",
                 "_blank"
               );
             }}
@@ -226,9 +226,16 @@ export default function GraphqlServiceSslTls() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+        </p>
+      </blockquote>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Directives" href="/learn/by-example/graphql-directives">
+          <Link title="Client" href="/learn/by-example/graphql-client">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -254,7 +261,7 @@ export default function GraphqlServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Directives
+                  Client
                 </span>
               </div>
             </div>

@@ -97,7 +97,7 @@ export default function WebsocketClientBasicAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/websocket-client-basic-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/websocket-client-basic-auth",
                 "_blank"
               );
             }}
@@ -176,7 +176,11 @@ export default function WebsocketClientBasicAuth() {
       <blockquote>
         <p>
           <strong>Info:</strong> As a prerequisite to running the client, start
-          a sample echo WebSocket service secured with Basic Auth.
+          the{" "}
+          <a href="/learn/by-example/websocket-service-basic-auth-file-user-store/">
+            Basic Auth file user store service
+          </a>
+          .
         </p>
       </blockquote>
 

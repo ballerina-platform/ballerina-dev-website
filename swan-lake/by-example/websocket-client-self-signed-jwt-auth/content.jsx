@@ -109,7 +109,7 @@ export default function WebsocketClientSelfSignedJwtAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/websocket-client-self-signed-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/websocket-client-self-signed-jwt-auth",
                 "_blank"
               );
             }}
@@ -188,7 +188,11 @@ export default function WebsocketClientSelfSignedJwtAuth() {
       <blockquote>
         <p>
           <strong>Info:</strong> As a prerequisite to running the client, start
-          a sample service secured with JWT Auth.
+          the{" "}
+          <a href="/learn/by-example/websocket-service-jwt-auth/">
+            JWT Auth service
+          </a>
+          .
         </p>
       </blockquote>
 

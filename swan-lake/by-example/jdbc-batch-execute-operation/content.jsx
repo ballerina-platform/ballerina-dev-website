@@ -16,6 +16,15 @@ const codeSnippetData = [
 import ballerinax/java.jdbc;
 import ballerina/sql;
 
+// Defines a record.
+type Customer record {|
+    string firstName;
+    string lastName;
+    int registrationID;
+    float creditLimit;
+    string country;
+|};
+
 public function main() returns error? {
 
     // Runs the prerequisite setup for the example.
@@ -25,24 +34,24 @@ public function main() returns error? {
     jdbc:Client jdbcClient = check new ("jdbc:h2:file:./target/bbes/java_jdbc", "rootUser", "rootPass");
 
     // The records to be inserted.
-    var customers = [
-        { firstName: "Peter", lastName: "Stuart", registrationID: 1, creditLimit: 5000.75, country: "USA" },
-        { firstName: "Stephanie", lastName: "Mike", registrationID: 2, creditLimit: 8000.00, country: "USA" },
-        { firstName: "Bill", lastName: "John", registrationID: 3, creditLimit: 3000.25, country: "USA" }
+    Customer[] customers = [
+        {firstName: "Peter", lastName: "Stuart", registrationID: 1, creditLimit: 5000.75, country: "USA"},
+        {firstName: "Stephanie", lastName: "Mike", registrationID: 2, creditLimit: 8000.00, country: "USA"},
+        {firstName: "Bill", lastName: "John", registrationID: 3, creditLimit: 3000.25, country: "USA"}
     ];
 
     // Creates a batch-parameterized query.
     sql:ParameterizedQuery[] insertQueries =
-        from var data in customers
+        from Customer customer in customers
         select \`INSERT INTO Customers (firstName, lastName, registrationID, creditLimit, country)
-                VALUES (\${data.firstName}, \${data.lastName}, \${data.registrationID},
-                \${data.creditLimit}, \${data.country})\`;
+                VALUES (\${customer.firstName}, \${customer.lastName}, \${customer.registrationID},
+                \${customer.creditLimit}, \${customer.country})\`;
 
     // Inserts the records with the auto-generated ID.
     sql:ExecutionResult[] result = check jdbcClient->batchExecute(insertQueries);
 
     int[] generatedIds = [];
-    foreach var summary in result {
+    foreach sql:ExecutionResult summary in result {
         generatedIds.push(<int>summary.lastInsertId);
     }
     io:println(\`Insert success, generated IDs are: \${generatedIds}\`);
@@ -108,7 +117,7 @@ export default function JdbcBatchExecuteOperation() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Batch execute</h1>
+      <h1>Batch execution</h1>
 
       <p>
         This BBE demonstrates how to use the JDBC client to execute a batch of
@@ -145,7 +154,7 @@ export default function JdbcBatchExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/jdbc-batch-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/jdbc-batch-execute-operation",
                 "_blank"
               );
             }}
@@ -299,7 +308,7 @@ export default function JdbcBatchExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/jdbc-batch-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/jdbc-batch-execute-operation",
                 "_blank"
               );
             }}
@@ -383,7 +392,7 @@ export default function JdbcBatchExecuteOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/jdbc-batch-execute-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/jdbc-batch-execute-operation",
                 "_blank"
               );
             }}
@@ -460,7 +469,7 @@ export default function JdbcBatchExecuteOperation() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="DML and DDL operation"
+            title="DML and DDL operations"
             href="/learn/by-example/jdbc-execute-operation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -488,7 +497,7 @@ export default function JdbcBatchExecuteOperation() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  DML and DDL operation
+                  DML and DDL operations
                 </span>
               </div>
             </div>
@@ -496,8 +505,8 @@ export default function JdbcBatchExecuteOperation() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Atomic batch execute"
-            href="/learn/by-example/jdbc-atomic-batch-execute-operation"
+            title="Atomic transactions"
+            href="/learn/by-example/jdbc-atomic-transaction"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -507,7 +516,7 @@ export default function JdbcBatchExecuteOperation() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Atomic batch execute
+                  Atomic transactions
                 </span>
               </div>
               <svg

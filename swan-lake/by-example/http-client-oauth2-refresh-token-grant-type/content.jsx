@@ -104,7 +104,7 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-client-oauth2-refresh-token-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/http-client-oauth2-refresh-token-grant-type",
                 "_blank"
               );
             }}
@@ -183,7 +183,8 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
       <blockquote>
         <p>
           <strong>Info:</strong> As a prerequisite to running the client, start
-          a sample service secured with OAuth2.
+          the{" "}
+          <a href="/learn/by-example/http-service-oauth2/">OAuth2 service</a>.
         </p>
       </blockquote>
 

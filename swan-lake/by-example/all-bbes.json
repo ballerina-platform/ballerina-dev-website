@@ -165,6 +165,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Function pointers",
+        "url": "function-pointers",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -782,6 +789,13 @@
       {
         "name": "Join clause",
         "url": "join-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Outer Join clause",
+        "url": "outer-join-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1761,7 +1775,7 @@
     ]
   },
   {
-    "title": "GraphQL",
+    "title": "GraphQL service",
     "column": 1,
     "category": "Network libraries",
     "samples": [
@@ -1863,16 +1877,23 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client",
-        "url": "graphql-client",
+        "name": "Directives",
+        "url": "graphql-directives",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "GraphQL client",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
       {
-        "name": "Directives",
-        "url": "graphql-directives",
+        "name": "Client",
+        "url": "graphql-client",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2769,7 +2790,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "DML and DDL operation",
+        "name": "DML and DDL operations",
         "url": "mysql-execute-operation",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2778,7 +2799,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Batch execute",
+        "name": "Batch execution",
         "url": "mysql-batch-execute-operation",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2787,8 +2808,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Atomic batch execute",
-        "url": "mysql-atomic-batch-execute-operation",
+        "name": "Atomic transactions",
+        "url": "mysql-atomic-transaction",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2839,7 +2860,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "DML and DDL operation",
+        "name": "DML and DDL operations",
         "url": "jdbc-execute-operation",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2848,7 +2869,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Batch execute",
+        "name": "Batch execution",
         "url": "jdbc-batch-execute-operation",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2857,8 +2878,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Atomic batch execute",
-        "url": "jdbc-atomic-batch-execute-operation",
+        "name": "Atomic transactions",
+        "url": "jdbc-atomic-transaction",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

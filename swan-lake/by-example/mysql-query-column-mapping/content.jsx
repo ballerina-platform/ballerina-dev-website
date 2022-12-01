@@ -15,6 +15,7 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerinax/mysql;
 import ballerina/sql;
+import ballerinax/mysql.driver as _;
 
 // Defines a record to load the query result.
 type Customer record {|
@@ -122,19 +123,8 @@ export default function MysqlQueryColumnMapping() {
         with advanced mapping for column names.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Note:</strong> The MySQL database driver JAR should be defined
-          in the <code>Ballerina.toml</code> file as a dependency. The MySQL
-          connector uses database properties from MySQL version 8.0.13 onwards.
-          Therefore, it is recommended to use a MySQL driver version greater
-          than 8.0.13.
-        </p>
-      </blockquote>
-
       <p>
-        For a sample configuration and more information on the underlying
-        module, see the{" "}
+        For more information on the underlying module, see the{" "}
         <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
           <code>mysql</code> module
         </a>
@@ -151,7 +141,7 @@ export default function MysqlQueryColumnMapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/mysql-query-column-mapping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/mysql-query-column-mapping",
                 "_blank"
               );
             }}
@@ -279,7 +269,7 @@ export default function MysqlQueryColumnMapping() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`# Create a Ballerina project.`}</span>
-              <span>{`# Copy the example to the project and add the relevant database driver JAR details to the \`Ballerina.toml\` file.`}</span>
+              <span>{`# Copy the example to the project.`}</span>
               <span>{`# Execute the command below to build and run the project.`}</span>
               <span>{`\$ bal run`}</span>
               <span>{`
@@ -306,7 +296,7 @@ export default function MysqlQueryColumnMapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/mysql-query-column-mapping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/mysql-query-column-mapping",
                 "_blank"
               );
             }}
@@ -390,7 +380,7 @@ export default function MysqlQueryColumnMapping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/mysql-query-column-mapping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/mysql-query-column-mapping",
                 "_blank"
               );
             }}
@@ -503,7 +493,7 @@ export default function MysqlQueryColumnMapping() {
         </Col>
         <Col sm={6}>
           <Link
-            title="DML and DDL operation"
+            title="DML and DDL operations"
             href="/learn/by-example/mysql-execute-operation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -514,7 +504,7 @@ export default function MysqlQueryColumnMapping() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  DML and DDL operation
+                  DML and DDL operations
                 </span>
               </div>
               <svg

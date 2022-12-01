@@ -324,7 +324,10 @@ export default function GraphqlDirectives() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/graphql-client">
+          <Link
+            title="Interceptors"
+            href="/learn/by-example/graphql-interceptors"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -350,17 +353,14 @@ export default function GraphqlDirectives() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Interceptors
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Service - SSL/TLS"
-            href="/learn/by-example/graphql-service-ssl-tls"
-          >
+          <Link title="Client" href="/learn/by-example/graphql-client">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -369,7 +369,7 @@ export default function GraphqlDirectives() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  Client
                 </span>
               </div>
               <svg

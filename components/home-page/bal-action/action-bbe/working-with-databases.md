@@ -24,11 +24,9 @@ service / on new http:Listener(8080) {
         self.db = check new (host, user, password, database, port);
     }
 
-    resource function get albums() returns Album[]|error? {
+    resource function get albums() returns Album[]|error {
         stream<Album, sql:Error?> albumStream = self.db->query(`SELECT * FROM Albums`);
-        Album[]? albums = check from Album album in albumStream select album;
-        check albumStream.close();
-        return albums;
+        return check from Album album in albumStream select album;
     }
 
     resource function get albums/[string id]() returns Album|http:NotFound|error {

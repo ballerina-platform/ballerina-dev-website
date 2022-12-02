@@ -293,10 +293,11 @@ The following API reads the content of a given CSV file as a string array of arr
 public isolated function fileReadCsv(string path, int skipHeaders = 0) returns string[][]|Error;
 ```
 
-The following API writes given CSV content to a given file.
+The following API writes given CSV content to a given file. When writing a `Record[]` content to a CSV file in `OVERWRITE`, by default, headers will be written to the CSV file as unlike `string[][],` the order of record fields is not guaranteed. For `APPEND`, order of the existing csv file is inferred using the headers and used as the order.
 
 ```ballerina
-# Write CSV content to a file.
+# Write CSV content to a file. 
+# If the input is a `Record[]` the headers are automatically written to the file.
 # ```ballerina
 # type Coord record {int x;int y;};
 # Coord[] contentRecord = [{x: 1,y: 2},{x: 1,y: 2}]

@@ -18,8 +18,8 @@ Entity refers to the header fields and the content of a message or a part of the
 The released versions of the specification can be found under the relevant GitHub tag. 
 
 If you have any feedback or suggestions about the library, start a discussion via a 
-[GitHub issue](https://github.com/ballerina-platform/ballerina-standard-library/issues) or in the 
-[Slack channel](https://ballerina.io/community/). Based on the outcome of the discussion, the specification and 
+[GitHub issue](https://github.com/ballerina-platform/ballerina-standard-library/issues) or in the
+[Discord server](https://discord.gg/ballerinalang). Based on the outcome of the discussion, the specification and 
 implementation can be updated. Community feedback is always welcome. Any accepted proposal, which affects the 
 specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label 
 `type/proposal` in GitHub.

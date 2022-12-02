@@ -80,7 +80,7 @@ export default function GraphqlClientSecuritySelfSignedJwtAuthentication() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP client - Self signed JWT authentication</h1>
+      <h1>HTTP client - Self-signed JWT authentication</h1>
 
       <p>
         A GraphQL client, which is secured with self-signed JWT can be used to
@@ -267,7 +267,7 @@ export default function GraphqlClientSecuritySelfSignedJwtAuthentication() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/JwtIssuerConfig">
-              <code>graphql:JwtIssuerConfig</code> - API documentation
+              <code>graphql:JwtIssuerConfig</code> record - API documentation
             </a>
           </span>
         </li>
@@ -278,6 +278,17 @@ export default function GraphqlClientSecuritySelfSignedJwtAuthentication() {
           <span>
             <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
               <code>jwt</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#1123-self-signed-jwt-authentication">
+              <code>graphql</code> Self-signed JWT authentication -
+              Specification
             </a>
           </span>
         </li>

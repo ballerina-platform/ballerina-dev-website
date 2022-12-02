@@ -592,20 +592,23 @@ sublinks:
           - title: Payload data binding
             id: 3
             url: http-service-data-binding
-          - title: Path parameter
+          - title: Payload constraint validation
             id: 4
+            url: http-service-payload-constraint-validation
+          - title: Path parameter
+            id: 5
             url: http-path-param
           - title: Query parameter
-            id: 5
+            id: 6
             url: http-query-parameter
           - title: Header parameter
-            id: 6
+            id: 7
             url: http-header-param
           - title: Send response
-            id: 7
+            id: 8
             url: http-send-response
           - title: Send different status codes
-            id: 8
+            id: 9
             url: http-send-different-status-codes
       - title: HTTP client
         id: 2
@@ -616,6 +619,9 @@ sublinks:
           - title: Payload data binding
             id: 2
             url: http-client-data-binding
+          - title: Payload constraint validation
+            id: 3
+            url: http-client-payload-constraint-validation
       - title: REST service security
         id: 3
         sublinks:
@@ -832,6 +838,9 @@ sublinks:
           - title: Query GraphQL endpoint
             id: 1
             url: graphql-client-query-endpoint
+          - title: Error handling
+            id: 2
+            url: graphql-client-error-handling
       - title: GraphQL service security
         id: 12
         sublinks:
@@ -877,14 +886,20 @@ sublinks:
           - title: Send/Receive message
             id: 1
             url: websocket-basic-sample
+          - title: Payload constraint validation
+            id: 2
+            url: websocket-service-payload-constraint-validation
       - title: WebSocket client
         id: 15
         sublinks:
           - title: Send/Receive message
             id: 1
             url: websocket-client
-          - title: Retry on failure
+          - title: Payload constraint validation
             id: 2
+            url: websocket-client-payload-constraint-validation
+          - title: Retry on failure
+            id: 3
             url: websocket-retry-client
       - title: WebSocket service security
         id: 16
@@ -940,7 +955,7 @@ sublinks:
       - title: WebSub
         id: 18
         sublinks:
-          - title: WebSub subscriber service
+          - title: Subscriber service
             id: 1
             url: websub-webhook-sample
       - title: Listeners and StopHandlers
@@ -1267,7 +1282,7 @@ sublinks:
           - title: Write file
             id: 2
             url: sftp-client-write
-      - title: MySQL client
+      - title: Database Access
         id: 48
         sublinks:
           - title: Simple query
@@ -1291,29 +1306,8 @@ sublinks:
           - title: Call stored procedures
             id: 7
             url: mysql-call-stored-procedures
-      - title: JDBC client
-        id: 49
-        sublinks:
-          - title: Simple query
-            id: 1
-            url: jdbc-query-operation
-          - title: Query with one result
-            id: 2
-            url: jdbc-query-row-operation
-          - title: Query with advanced mapping
-            id: 3
-            url: jdbc-query-column-mapping
-          - title: DML and DDL operations
-            id: 4
-            url: jdbc-execute-operation
-          - title: Batch execution
-            id: 5
-            url: jdbc-batch-execute-operation
-          - title: Atomic transactions
-            id: 6
-            url: jdbc-atomic-transaction
       - title: SerDes
-        id: 50
+        id: 49
         sublinks:
           - title: Serialization/Deserialization
             id: 1

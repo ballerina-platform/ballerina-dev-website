@@ -68,11 +68,7 @@ export default function ReceiveEmailUsingClient() {
         the SSL or STARTTLS protocols. This sample includes receiving emails
         with default configurations over SSL using the default ports via POP3.
         Since, IMAP4 has similar syntax we could replace{" "}
-        <code>POP3 client</code> with{" "}
-        <a href="https://lib.ballerina.io/ballerina/email/latest/clients/ImapClient">
-          <code>IMAP client</code>
-        </a>
-        .
+        <code>POP3 client</code> with <code>IMAP client</code>.
       </p>
 
       <Row
@@ -232,8 +228,8 @@ export default function ReceiveEmailUsingClient() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/">
-              <code>email</code> package - API documentation
+            <a href="https://lib.ballerina.io/ballerina/email/latest/clients/PopClient">
+              <code>email:PopClient</code> client object - API documentation
             </a>
           </span>
         </li>
@@ -242,8 +238,28 @@ export default function ReceiveEmailUsingClient() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/email/#3-client">
-              <code>email</code> client - specification
+            <a href="https://lib.ballerina.io/ballerina/email/latest/clients/ImapClient">
+              <code>email:ImapClient</code> client object - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/email/#32-pop3-client">
+              <code>email:PopClient</code> functions - specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/email/#33-imap-client">
+              <code>email:ImapClient</code> functions - specification
             </a>
           </span>
         </li>

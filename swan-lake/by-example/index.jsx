@@ -159,6 +159,7 @@ import TesterinaMockingObjects from "./testerina-mocking-objects/content.jsx";
 import HttpBasicRestService from "./http-basic-rest-service/content.jsx";
 import HttpServicePathAndResourceName from "./http-service-path-and-resource-name/content.jsx";
 import HttpServiceDataBinding from "./http-service-data-binding/content.jsx";
+import HttpServicePayloadConstraintValidation from "./http-service-payload-constraint-validation/content.jsx";
 import HttpPathParam from "./http-path-param/content.jsx";
 import HttpQueryParameter from "./http-query-parameter/content.jsx";
 import HttpHeaderParam from "./http-header-param/content.jsx";
@@ -166,6 +167,7 @@ import HttpSendResponse from "./http-send-response/content.jsx";
 import HttpSendDifferentStatusCodes from "./http-send-different-status-codes/content.jsx";
 import HttpClientSendRequestReceiveResponse from "./http-client-send-request-receive-response/content.jsx";
 import HttpClientDataBinding from "./http-client-data-binding/content.jsx";
+import HttpClientPayloadConstraintValidation from "./http-client-payload-constraint-validation/content.jsx";
 import HttpServiceSslTls from "./http-service-ssl-tls/content.jsx";
 import HttpServiceMutualSsl from "./http-service-mutual-ssl/content.jsx";
 import HttpServiceBasicAuthenticationFileUserStore from "./http-service-basic-authentication-file-user-store/content.jsx";
@@ -229,6 +231,7 @@ import GraphqlInterceptors from "./graphql-interceptors/content.jsx";
 import GraphqlFileUpload from "./graphql-file-upload/content.jsx";
 import GraphqlHierarchicalResourcePaths from "./graphql-hierarchical-resource-paths/content.jsx";
 import GraphqlClientQueryEndpoint from "./graphql-client-query-endpoint/content.jsx";
+import GraphqlClientErrorHandling from "./graphql-client-error-handling/content.jsx";
 import GraphqlServiceSslTls from "./graphql-service-ssl-tls/content.jsx";
 import GraphqlServiceMutualSsl from "./graphql-service-mutual-ssl/content.jsx";
 import GraphqlServiceBasicAuthFileUserStore from "./graphql-service-basic-auth-file-user-store/content.jsx";
@@ -241,7 +244,9 @@ import GraphqlClientSecurityBasicAuth from "./graphql-client-security-basic-auth
 import GraphqlClientSecuritySelfSignedJwtAuthentication from "./graphql-client-security-self-signed-jwt-authentication/content.jsx";
 import GraphqlClientSecurityOauth2PasswordGrantType from "./graphql-client-security-oauth2-password-grant-type/content.jsx";
 import WebsocketBasicSample from "./websocket-basic-sample/content.jsx";
+import WebsocketServicePayloadConstraintValidation from "./websocket-service-payload-constraint-validation/content.jsx";
 import WebsocketClient from "./websocket-client/content.jsx";
+import WebsocketClientPayloadConstraintValidation from "./websocket-client-payload-constraint-validation/content.jsx";
 import WebsocketRetryClient from "./websocket-retry-client/content.jsx";
 import WebsocketServiceSslTls from "./websocket-service-ssl-tls/content.jsx";
 import WebsocketServiceMutualSsl from "./websocket-service-mutual-ssl/content.jsx";
@@ -345,12 +350,6 @@ import MysqlExecuteOperation from "./mysql-execute-operation/content.jsx";
 import MysqlBatchExecuteOperation from "./mysql-batch-execute-operation/content.jsx";
 import MysqlAtomicTransaction from "./mysql-atomic-transaction/content.jsx";
 import MysqlCallStoredProcedures from "./mysql-call-stored-procedures/content.jsx";
-import JdbcQueryOperation from "./jdbc-query-operation/content.jsx";
-import JdbcQueryRowOperation from "./jdbc-query-row-operation/content.jsx";
-import JdbcQueryColumnMapping from "./jdbc-query-column-mapping/content.jsx";
-import JdbcExecuteOperation from "./jdbc-execute-operation/content.jsx";
-import JdbcBatchExecuteOperation from "./jdbc-batch-execute-operation/content.jsx";
-import JdbcAtomicTransaction from "./jdbc-atomic-transaction/content.jsx";
 import SerdesSimple from "./serdes-simple/content.jsx";
 import IoBytes from "./io-bytes/content.jsx";
 import IoStrings from "./io-strings/content.jsx";
@@ -558,6 +557,7 @@ const BBEs = {
   HttpBasicRestService,
   HttpServicePathAndResourceName,
   HttpServiceDataBinding,
+  HttpServicePayloadConstraintValidation,
   HttpPathParam,
   HttpQueryParameter,
   HttpHeaderParam,
@@ -565,6 +565,7 @@ const BBEs = {
   HttpSendDifferentStatusCodes,
   HttpClientSendRequestReceiveResponse,
   HttpClientDataBinding,
+  HttpClientPayloadConstraintValidation,
   HttpServiceSslTls,
   HttpServiceMutualSsl,
   HttpServiceBasicAuthenticationFileUserStore,
@@ -628,6 +629,7 @@ const BBEs = {
   GraphqlFileUpload,
   GraphqlHierarchicalResourcePaths,
   GraphqlClientQueryEndpoint,
+  GraphqlClientErrorHandling,
   GraphqlServiceSslTls,
   GraphqlServiceMutualSsl,
   GraphqlServiceBasicAuthFileUserStore,
@@ -640,7 +642,9 @@ const BBEs = {
   GraphqlClientSecuritySelfSignedJwtAuthentication,
   GraphqlClientSecurityOauth2PasswordGrantType,
   WebsocketBasicSample,
+  WebsocketServicePayloadConstraintValidation,
   WebsocketClient,
+  WebsocketClientPayloadConstraintValidation,
   WebsocketRetryClient,
   WebsocketServiceSslTls,
   WebsocketServiceMutualSsl,
@@ -744,12 +748,6 @@ const BBEs = {
   MysqlBatchExecuteOperation,
   MysqlAtomicTransaction,
   MysqlCallStoredProcedures,
-  JdbcQueryOperation,
-  JdbcQueryRowOperation,
-  JdbcQueryColumnMapping,
-  JdbcExecuteOperation,
-  JdbcBatchExecuteOperation,
-  JdbcAtomicTransaction,
   SerdesSimple,
   IoBytes,
   IoStrings,

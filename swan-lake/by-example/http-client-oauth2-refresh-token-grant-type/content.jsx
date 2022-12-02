@@ -24,7 +24,7 @@ public function main() returns error? {
     // Defines the HTTP client to call the OAuth2 secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`http:OAuth2RefreshTokenGrantConfig\` for the \`auth\` configuration of the client.
-    http:Client securedEP = check new("localhost:9090",
+    http:Client albumClient = check new("localhost:9090",
         auth = {
             refreshUrl: "https://localhost:9445/oauth2/token",
             refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
@@ -41,7 +41,7 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    Album[] payload = check securedEP->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }
 `,

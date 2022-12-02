@@ -74,11 +74,8 @@ export default function ReceiveEmailUsingService() {
         The email service is used to receive (with POP3 or IMAP4) emails using
         the SSL or STARTTLS protocols. This sample includes receiving emails
         service attached to a POP3 listener with default configurations over SSL
-        using the default ports. To use IMAP4 refer to{" "}
-        <a href="https://lib.ballerina.io/ballerina/email/latest/classes/ImapListener">
-          <code>IMAP listener</code>
-        </a>
-        .
+        using the default ports. To use IMAP4 the user can use{" "}
+        <code>IMAP listener</code>.
       </p>
 
       <Row
@@ -242,8 +239,18 @@ export default function ReceiveEmailUsingService() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/">
-              <code>email</code> package - API documentation
+            <a href="https://lib.ballerina.io/ballerina/email/latest/classes/PopListener">
+              <code>email:PopListener</code> listener object - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/email/latest/classes/ImapListener">
+              <code>email:PopListener</code> listener object - API documentation
             </a>
           </span>
         </li>

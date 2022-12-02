@@ -301,7 +301,7 @@ export default function DynamicListener() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="WebSub subscriber service"
+            title="Subscriber service"
             href="/learn/by-example/websub-webhook-sample"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -329,7 +329,7 @@ export default function DynamicListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  WebSub subscriber service
+                  Subscriber service
                 </span>
               </div>
             </div>

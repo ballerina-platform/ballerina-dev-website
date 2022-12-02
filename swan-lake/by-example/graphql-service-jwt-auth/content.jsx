@@ -252,7 +252,7 @@ export default function GraphqlServiceJwtAuth() {
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/graphql-client-security-self-signed-jwt-authentication/">
-            GraphQL client - Self signed JWT authentication
+            GraphQL client - Self-signed JWT authentication
           </a>{" "}
           example.
         </p>

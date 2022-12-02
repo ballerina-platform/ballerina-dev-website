@@ -290,8 +290,8 @@ export default function WebsocketBasicSample() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Send/Receive message"
-            href="/learn/by-example/websocket-client"
+            title="Payload constraint validation"
+            href="/learn/by-example/websocket-service-payload-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -301,7 +301,7 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive message
+                  Payload constraint validation
                 </span>
               </div>
               <svg

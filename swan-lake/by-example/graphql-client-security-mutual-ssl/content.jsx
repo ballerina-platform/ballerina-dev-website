@@ -254,7 +254,17 @@ export default function GraphqlClientSecurityMutualSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ClientSecureSocket">
-              <code>graphql:ClientSecureSocket</code> - API documentation
+              <code>graphql:ClientSecureSocket</code> record - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#11322-mutual-ssl">
+              <code>graphql</code> mutual SSL - Specification
             </a>
           </span>
         </li>

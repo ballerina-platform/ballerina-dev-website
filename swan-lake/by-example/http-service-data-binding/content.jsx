@@ -341,7 +341,10 @@ export default function HttpServiceDataBinding() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Path parameter" href="/learn/by-example/http-path-param">
+          <Link
+            title="Payload constraint validation"
+            href="/learn/by-example/http-service-payload-constraint-validation"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -350,7 +353,7 @@ export default function HttpServiceDataBinding() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Path parameter
+                  Payload constraint validation
                 </span>
               </div>
               <svg

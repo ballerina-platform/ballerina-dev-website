@@ -25,7 +25,7 @@ public function main() returns error? {
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`http:JwtIssuerConfig\` for the \`auth\` configuration of the
     // client. A self-signed JWT is issued before the request is sent.
-    http:Client securedEP = check new("localhost:9090",
+    http:Client albumClient = check new("localhost:9090",
         auth = {
             username: "ballerina",
             issuer: "wso2",
@@ -44,7 +44,7 @@ public function main() returns error? {
             cert: "../resource/path/to/public.crt"
         }
     );
-    Album[] payload = check securedEP->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }
 `,

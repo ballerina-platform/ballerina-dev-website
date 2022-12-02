@@ -16,11 +16,11 @@ const codeSnippetData = [
 import ballerina/io;
 
 public function main() returns error? {
-    http:Client backendClientEP = check new ("localhost:9090", {
+    http:Client albumClient = check new ("localhost:9090", {
         // Timeout configuration.
         timeout: 10
     });
-    string payload = check backendClientEP->/albums;
+    string payload = check albumClient->/albums;
     io:println(payload);
 }
 `,

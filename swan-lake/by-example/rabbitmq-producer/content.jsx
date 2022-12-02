@@ -26,11 +26,15 @@ public function main() returns error? {
     rabbitmq:Client newClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
     // Publishes the message using newClient and the routing key named OrderQueue.
-    check newClient->publishMessage({content: {orderId: 1,
-                                               productName: "Sport shoe",
-                                               price: 27.5,
-                                               isValid: true},
-                                     routingKey: "OrderQueue"});
+    check newClient->publishMessage({
+        content: {
+            orderId: 1,
+            productName: "Sport shoe",
+            price: 27.5,
+            isValid: true
+        },
+        routingKey: "OrderQueue"
+    });
 }
 `,
 ];

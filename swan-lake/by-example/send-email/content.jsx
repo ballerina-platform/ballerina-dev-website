@@ -227,6 +227,16 @@ export default function SendEmail() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+            <a href="https://lib.ballerina.io/ballerina/email/latest/clients/SmtpClient">
+              <code>email:SmtpClient</code> client object - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
             <a href="https://lib.ballerina.io/ballerina/email/latest/records/Message">
               <code>email:Message</code> record - API documentation
             </a>
@@ -237,8 +247,8 @@ export default function SendEmail() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/email/#3-client">
-              <code>email</code> client - specification
+            <a href="https://ballerina.io/spec/email/#31-smtp-client">
+              <code>email:SmtpClient</code> functions - specification
             </a>
           </span>
         </li>

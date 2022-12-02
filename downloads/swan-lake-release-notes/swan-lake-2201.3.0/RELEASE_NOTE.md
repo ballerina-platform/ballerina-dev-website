@@ -193,7 +193,7 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 ### New features
 
 #### Semantic API
-Added a new `annotAttachments()` API to get the annotation attachments and their constant values from the annotatable symbols
+Added a new `annotAttachments()` API to get the annotation attachments and their constant values from the annotatable symbols.
 
 ### Improvements
 

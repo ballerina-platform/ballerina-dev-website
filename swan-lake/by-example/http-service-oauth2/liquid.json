@@ -1,5 +1,5 @@
 {
-  "title": "OAuth2",
+  "title": "Service - OAuth2",
   "description": "BBE on how to secure HTTP service with OAuth2 in Ballerina.",
   "keywords": [
     "ballerina",

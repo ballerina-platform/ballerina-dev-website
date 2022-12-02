@@ -16,23 +16,32 @@ const codeSnippetData = [
 import ballerina/log;
 import ballerina/mime;
 
+http:Client clientEP = check new ("http://localhost:9090");
+
 //Binds the listener to the service.
 service /multiparts on new http:Listener(9090) {
 
-    resource function post decoder(http:Request request)
-            returns http:Response|http:InternalServerError|error {
+    resource function post decode(http:Request request)
+            returns http:Response|http:InternalServerError {
         http:Response response = new;
-        // Extracts body parts from the request.
-        var bodyParts = check request.getBodyParts();
-        foreach var part in bodyParts {
-            handleContent(part);
+        // Extracts bodyparts from the request.
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getBodyParts.
+        var bodyParts = request.getBodyParts();
+
+        if bodyParts is mime:Entity[] {
+            foreach var part in bodyParts {
+                handleContent(part);
+            }
+            response.setPayload(bodyParts);
+            return response;
+        } else {
+            log:printError(bodyParts.message());
+            return {body:"Error in decoding multiparts!"};
         }
-        response.setPayload(bodyParts);
-        return response;
     }
 
-    resource function get encoder(http:Request req) returns
-            http:Response|http:InternalServerError|error {
+    resource function get encode(http:Request req)
+            returns http:Response|http:InternalServerError {
         //Create a \`json\` body part.
         mime:Entity jsonBodyPart = new;
         jsonBodyPart.setContentDisposition(getContentDispositionForFormData("json part"));
@@ -48,25 +57,31 @@ service /multiparts on new http:Listener(9090) {
         mime:Entity[] bodyParts = [jsonBodyPart, xmlFilePart];
         http:Request request = new;
         // Set the body parts to the request.
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#setBodyParts.
         // Here the content-type is set as multipart form data.
         // This also works with any other multipart media type.
         // E.g., \`multipart/mixed\`, \`multipart/related\` etc.
         // You need to pass the content type that suits your requirement.
         request.setBodyParts(bodyParts, contentType = mime:MULTIPART_FORM_DATA);
-        http:Client httpClient = check new ("localhost:9090");
-        http:Response returnResponse = check httpClient->/multiparts/decoder.post(request);
-        return returnResponse;
+        http:Response|error returnResponse = clientEP->post("/multiparts/decode", request);
+        if returnResponse is http:Response {
+            return returnResponse;
+        } else {
+            return {body:"Error occurred while sending multipart request!"};
+        }
     }
 }
 
 // The content logic that handles the body parts vary based on your requirement.
 function handleContent(mime:Entity bodyPart) {
     // Get the media type from the body part retrieved from the request.
+    // For details, see https://lib.ballerina.io/ballerina/mime/latest/functions#getMediaType.
     var mediaType = mime:getMediaType(bodyPart.getContentType());
     if mediaType is mime:MediaType {
         string baseType = mediaType.getBaseType();
         if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
             // Extracts \`xml\` data from the body part.
+            // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getXml.
             var payload = bodyPart.getXml();
             if payload is xml {
                 log:printInfo(payload.toString());
@@ -75,6 +90,7 @@ function handleContent(mime:Entity bodyPart) {
             }
         } else if (mime:APPLICATION_JSON == baseType) {
             // Extracts \`json\` data from the body part.
+            // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getJson.
             var payload = bodyPart.getJson();
             if payload is json {
                 log:printInfo(payload.toJsonString());
@@ -83,6 +99,7 @@ function handleContent(mime:Entity bodyPart) {
             }
         } else if (mime:TEXT_PLAIN == baseType) {
             // Extracts text data from the body part.
+            // For details, see https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#getText.
             var payload = bodyPart.getText();
             if payload is string {
                 log:printInfo(payload);
@@ -125,7 +142,7 @@ export default function HttpRequestWithMultiparts() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP client - Request with multiparts</h1>
+      <h1>Request With multiparts</h1>
 
       <p>
         Ballerina supports encoding and decoding multipart content in http
@@ -135,15 +152,45 @@ export default function HttpRequestWithMultiparts() {
         parts according to your requirement.
       </p>
 
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/mime/latest/">
+          <code>mime</code> module
+        </a>
+        .
+      </p>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-request-with-multiparts",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -161,7 +208,7 @@ export default function HttpRequestWithMultiparts() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -331,7 +378,7 @@ export default function HttpRequestWithMultiparts() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -F "part1={\\"name\\":\\"ballerina\\"};type=application/json" http://localhost:9090/multiparts/decoder -H "Content-Type: multipart/mixed" -H 'Expect:'`}</span>
+              <span>{`\$ curl -F "part1={\\"name\\":\\"ballerina\\"};type=application/json" http://localhost:9090/multiparts/decode -H "Content-Type: multipart/mixed" -H 'Expect:'`}</span>
               <span>{`--f710b4a02896b88a`}</span>
               <span>{`content-disposition: attachment;name="part1"`}</span>
               <span>{`content-type: application/json`}</span>
@@ -343,8 +390,8 @@ export default function HttpRequestWithMultiparts() {
               <span>{`
 `}</span>
               <span>{`# The cURL command, which you need to execute to encode the parts of the body and send a multipart request via the Ballerina service.`}</span>
-              <span>{`\$ curl -v http://localhost:9090/multiparts/encoder`}</span>
-              <span>{`> GET /multiparts/encoder HTTP/1.1`}</span>
+              <span>{`\$ curl -v http://localhost:9090/multiparts/encode`}</span>
+              <span>{`> GET /multiparts/encode HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept: */*`}</span>
@@ -380,33 +427,12 @@ export default function HttpRequestWithMultiparts() {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Request#setBodyParts">
-              <code>setBodyParts()</code> - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/mime/#3-supported-multipart-types">
-              HTTP client supported-multipart-types - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Caching" href="/learn/by-example/http-caching-client">
+          <Link
+            title="Response With multiparts"
+            href="/learn/by-example/http-response-with-multiparts"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -432,17 +458,14 @@ export default function HttpRequestWithMultiparts() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Caching
+                  Response With multiparts
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="HTTP/2 to HTTP/1.1 downgrade"
-            href="/learn/by-example/http-2-to-1-1-downgrade-client"
-          >
+          <Link title="Passthrough" href="/learn/by-example/http-passthrough">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -451,7 +474,7 @@ export default function HttpRequestWithMultiparts() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  HTTP/2 to HTTP/1.1 downgrade
+                  Passthrough
                 </span>
               </div>
               <svg

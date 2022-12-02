@@ -14,11 +14,6 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-type Album readonly & record {|
-    string title;
-    string artist;
-|};
-
 listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
@@ -30,6 +25,7 @@ listener http:Listener securedEP = new(9090,
 
 // The service can be secured with OAuth2 and by enforcing authorization
 // optionally. It can be enabled by setting the \`http:OAuth2IntrospectionConfig\` configurations.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2IntrospectionConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -51,16 +47,13 @@ listener http:Listener securedEP = new(9090,
         }
     ]
 }
-service / on securedEP {
+service /foo on securedEP {
 
     // It is optional to override the authentication and authorization
     // configurations at the resource levels. Otherwise, the service auth
     // configurations will be applied automatically to the resources as well.
-    resource function get albums() returns Album[] {
-        return [
-            {title: "Blue Train", artist: "John Coltrane"},
-            {title: "Jeru", artist: "Gerry Mulligan"}
-        ];
+    resource function get bar() returns string {
+        return "Hello, World!";
     }
 }
 `,
@@ -87,21 +80,44 @@ export default function HttpServiceOauth2() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - OAuth2</h1>
+      <h1>Service - OAuth2</h1>
 
       <p>
         An HTTP service/resource can be secured with OAuth2 and by enforcing
         authorization optionally. Then, it validates the OAuth2 token sent in
         the <code>Authorization</code> header against the provided
         configurations. This calls the configured introspection endpoint to
-        validate. Ballerina uses the concept of scopes for authorization. A
-        resource declared in a service can be bound to one/more scope(s). The
-        scope can be included in the introspection response using a custom claim
-        attribute. That custom claim attribute also can be configured as the{" "}
-        <code>scopeKey</code>. In the authorization phase, the scopes of the
-        service/resource are compared against the scope included in the
-        introspection response for at least one match between the two sets.
+        validate.
       </p>
+
+      <p>
+        Ballerina uses the concept of scopes for authorization. A resource
+        declared in a service can be bound to one/more scope(s). The scope can
+        be included in the introspection response using a custom claim
+        attribute. That custom claim attribute also can be configured as the{" "}
+        <code>scopeKey</code>.
+      </p>
+
+      <p>
+        In the authorization phase, the scopes of the service/resource are
+        compared against the scope included in the introspection response for at
+        least one match between the two sets.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+          <code>oauth2</code> module
+        </a>
+        .
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -109,9 +125,31 @@ export default function HttpServiceOauth2() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-service-oauth2",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -129,7 +167,7 @@ export default function HttpServiceOauth2() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -165,16 +203,7 @@ export default function HttpServiceOauth2() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>STS endpoint should be up and running</span>
-        </li>
-      </ul>
-
-      <p>Run the service by executing the command below.</p>
+      <p>Run the service by executing the cURL command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -237,7 +266,8 @@ export default function HttpServiceOauth2() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
           <a href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type">
             OAuth2 JWT Bearer grant type client
           </a>
@@ -245,45 +275,11 @@ export default function HttpServiceOauth2() {
         </p>
       </blockquote>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/OAuth2IntrospectionConfig">
-              <code>http:OAuth2IntrospectionConfig</code> - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#9114-listener---oauth2">
-              HTTP service oauth2 - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="JWT authentication"
-            href="/learn/by-example/http-service-jwt-authentication"
+            title="Service - JWT Auth"
+            href="/learn/by-example/http-service-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -310,14 +306,17 @@ export default function HttpServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  JWT authentication
+                  Service - JWT Auth
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/http-client-ssl-tls">
+          <Link
+            title="Client - SSL/TLS"
+            href="/learn/by-example/http-client-ssl-tls"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -326,7 +325,7 @@ export default function HttpServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Client - SSL/TLS
                 </span>
               </div>
               <svg

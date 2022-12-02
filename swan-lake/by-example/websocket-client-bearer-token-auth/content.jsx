@@ -15,21 +15,23 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerina/websocket;
 
+// Defines the WebSocket client to call the secured APIs.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by
+// passing the \`websocket:BearerTokenConfig\` for the \`auth\` configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/BearerTokenConfig.
+websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
+    auth = {
+        token: "56ede317-4511-44b4-8579-a08f094ee8c5"
+    },
+    secureSocket = {
+        cert: "../resource/path/to/public.crt"
+    }
+);
+
 public function main() returns error? {
-    // Defines the WebSocket client to call the secured APIs.
-    // The client is enriched with the \`Authorization: Bearer <token>\` header by
-    // passing the \`websocket:BearerTokenConfig\` for the \`auth\` configuration of the client.
-    websocket:Client chatClient = check new("wss://localhost:9090/chat",
-        auth = {
-            token: "56ede317-4511-44b4-8579-a08f094ee8c5"
-        },
-        secureSocket = {
-            cert: "../resource/path/to/public.crt"
-        }
-    );
-    check chatClient->writeMessage("Hello, John!");
-    string chatMessage = check chatClient->readMessage();
-    io:println(chatMessage);
+    check securedEP->writeMessage("Hello, World!");
+    string textMessage = check securedEP->readMessage();
+    io:println(textMessage);
 }
 `,
 ];
@@ -55,15 +57,26 @@ export default function WebsocketClientBearerTokenAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket client - Bearer token authentication</h1>
+      <h1>Client - Bearer Token Auth</h1>
 
       <p>
-        A client, which is secured with Bearer token authentication can be used
-        to connect to a secured service. The client is enriched with the{" "}
+        A client, which is secured with Bearer token auth can be used to connect
+        to a secured service.
+      </p>
+
+      <p>
+        The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:BearerTokenConfig</code> for the <code>auth</code>{" "}
         configuration of the client.
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -71,9 +84,31 @@ export default function WebsocketClientBearerTokenAuth() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-client-bearer-token-auth",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -91,7 +126,7 @@ export default function WebsocketClientBearerTokenAuth() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -128,6 +163,13 @@ export default function WebsocketClientBearerTokenAuth() {
       </Row>
 
       <p>Run the client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a secured sample service.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -183,39 +225,16 @@ export default function WebsocketClientBearerTokenAuth() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run websocket_client_bearer_token_auth.bal`}</span>
-              <span>{`Hello, How are you?`}</span>
+              <span>{`Hello, World!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/websocket/#52-authentication-and-authorization">
-              WebSocket authentication - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic authentication"
+            title="Client - Basic Auth"
             href="/learn/by-example/websocket-client-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -243,7 +262,7 @@ export default function WebsocketClientBearerTokenAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication
+                  Client - Basic Auth
                 </span>
               </div>
             </div>
@@ -251,7 +270,7 @@ export default function WebsocketClientBearerTokenAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Client - self signed JWT Auth"
             href="/learn/by-example/websocket-client-self-signed-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -262,7 +281,7 @@ export default function WebsocketClientBearerTokenAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Client - self signed JWT Auth
                 </span>
               </div>
               <svg

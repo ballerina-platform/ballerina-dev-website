@@ -1,0 +1,18 @@
+{
+  "title": "Proto to Ballerina",
+  "description": "This BBE guides how to generate Ballerina code from a Protocol Buffer definition",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "protobuf",
+    "protocol buffer"
+  ],
+  "permalink": "/learn/by-example/proto-to-ballerina",
+  "active": "proto-to-ballerina",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/proto-to-ballerina",
+    "/swan-lake/learn/by-example/proto-to-ballerina.html"
+  ]
+}

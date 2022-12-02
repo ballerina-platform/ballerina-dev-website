@@ -1,5 +1,5 @@
 {
-  "title": "Response interceptors",
+  "title": "Response Interceptors",
   "description": "This BBE demonstrates the HTTP Interceptors in Ballerina.",
   "keywords": [
     "ballerina",

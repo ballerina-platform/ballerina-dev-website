@@ -11,9 +11,35 @@ import Link from "next/link";
 
 setCDN("https://unpkg.com/shiki/");
 
-const codeSnippetData = [];
+const codeSnippetData = [
+  `import ballerina/io;
+
+function foo(int x, int y, int z) {
+    io:println("Sum of x, y and z:", x + y + z);
+}
+
+public function main() {
+    // Call the \`foo\` function using the positional arguments.
+    foo(1, 2, 3);
+
+    // Call the \`foo\` function using the named arguments in the same order as the parameters of the function definition.
+    foo(x = 1, y = 2, z = 3);
+
+    // Call the \`foo\` function using the named arguments in a different order from the order of the parameters in the function definition.
+    foo(z = 3, y = 2, x = 1);
+
+    // Call the \`foo\` function using a combination of named arguments and positional arguments.
+    foo(1, z = 3, y = 2);
+}
+`,
+];
 
 export default function ProvideFunctionArgumentsByName() {
+  const [codeClick1, updateCodeClick1] = useState(false);
+
+  const [outputClick1, updateOutputClick1] = useState(false);
+  const ref1 = createRef();
+
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
 
@@ -36,9 +62,130 @@ export default function ProvideFunctionArgumentsByName() {
         not have to be in the same order as the parameters.
       </p>
 
-      <p>::: provide_function_arguments_by_name.bal :::</p>
+      <Row
+        className="bbeCode mx-0 py-0 rounded 
+      "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col className="d-flex align-items-start" sm={12}>
+          {codeClick1 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              disabled
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateCodeClick1(true);
+                copyToClipboard(codeSnippetData[0]);
+                setTimeout(() => {
+                  updateCodeClick1(false);
+                }, 3000);
+              }}
+              aria-label="Copy to Clipboard"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#000"
+                className="bi bi-clipboard"
+                viewBox="0 0 16 16"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          {codeSnippets[0] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[0]),
+              }}
+            />
+          )}
+        </Col>
+      </Row>
 
-      <p>::: provide_function_arguments_by_name.out :::</p>
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick1 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick1(true);
+                const extractedText = extractOutput(ref1.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick1(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`\$ bal run provide_function_arguments_by_name.bal`}</span>
+              <span>{`Sum of x, y and z:6`}</span>
+              <span>{`Sum of x, y and z:6`}</span>
+              <span>{`Sum of x, y and z:6`}</span>
+              <span>{`Sum of x, y and z:6`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

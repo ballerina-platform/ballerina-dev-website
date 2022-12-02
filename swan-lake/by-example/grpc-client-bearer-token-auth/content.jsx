@@ -12,22 +12,34 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
+  `// This is the service definition for the scenario.
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service HelloWorld {
+	rpc hello(google.protobuf.Empty) returns (google.protobuf.StringValue);
+}
+`,
   `import ballerina/io;
 
-public function main() returns error? {
-    // Defines the gRPC client to call the secured APIs.
-    // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-    // header by passing the \`grpc:BearerTokenConfig\` for the \`auth\` configuration of the client.
-    HelloWorldClient securedEP = check new("https://localhost:9090",
-        auth = {
-            token: "56ede317-4511-44b4-8579-a08f094ee8c5"
-        },
-        secureSocket = {
-            cert: "../resource/path/to/public.crt"
-        }
-    );
+// Defines the gRPC client to call the secured APIs.
+// The client metadata is enriched with the \`Authorization: Bearer <token>\`
+// header by passing the \`grpc:BearerTokenConfig\` for the \`auth\` configuration
+// of the client.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/BearerTokenConfig.
+HelloWorldClient securedEP = check new("https://localhost:9090",
+    auth = {
+        token: "56ede317-4511-44b4-8579-a08f094ee8c5"
+    },
+    secureSocket = {
+        cert: "../resource/path/to/public.crt"
+    }
+);
 
-    string result = check securedEP->hello("WSO2");
+public function main() returns error? {
+    string result = check securedEP->hello();
     io:println(result);
 }
 `,
@@ -35,9 +47,12 @@ public function main() returns error? {
 
 export default function GrpcClientBearerTokenAuth() {
   const [codeClick1, updateCodeClick1] = useState(false);
+  const [codeClick2, updateCodeClick2] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -54,11 +69,11 @@ export default function GrpcClientBearerTokenAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>gRPC client - Bearer token authentication</h1>
+      <h1>Client - Bearer Token Auth</h1>
 
       <p>
-        A client, which is secured with Bearer token authentication can be used
-        to connect to a secured service.
+        A client, which is secured with Bearer token auth can be used to connect
+        to a secured service.
       </p>
 
       <p>
@@ -68,15 +83,49 @@ export default function GrpcClientBearerTokenAuth() {
         configuration of the client.
       </p>
 
+      <h2>Generate the service definition</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>
+            Create a new Protocol Buffers definition file named{" "}
+            <code>grpc_client.proto</code> and add the service definition to it.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       indent"
         style={{ marginLeft: "24px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-bearer-token-auth",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -94,7 +143,7 @@ export default function GrpcClientBearerTokenAuth() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -130,28 +179,19 @@ export default function GrpcClientBearerTokenAuth() {
         </Col>
       </Row>
 
-      <p>
-        You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">
-          gRPC client - Unary RPC
-        </a>{" "}
-        to implement the client used here.
-      </p>
-
-      <h2>Prerequisites</h2>
-
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>&#8226;&nbsp;</span>
-          <span>Start a secured service.</span>
+          <span>2.</span>
+          <span>
+            Run the command below in the Ballerina tools distribution for stub
+            generation.
+          </span>
         </li>
       </ul>
 
-      <p>Execute the command below to run the client.</p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
-        style={{ marginLeft: "24px" }}
+        style={{ marginLeft: "32px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
@@ -202,51 +242,235 @@ export default function GrpcClientBearerTokenAuth() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run client`}</span>
-              <span>{`Hello WSO2`}</span>
+              <span>{`\$ bal grpc --input grpc_client.proto --output stubs`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
+      <p>
+        Once you run the command, the <code>grpc_client_pb.bal</code> file is
+        generated inside the stubs directory.
+      </p>
 
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on how to use the
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
+      <h2>Implement and run the client</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>&#8226;&nbsp;</span>
+          <span>1.</span>
+          <span>Create a Ballerina package.</span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/BearerTokenConfig">
-              <code>grpc:BearerTokenConfig</code> record - API documentation
-            </a>
+            Copy the generated <code>grpc_secured_pb.bal</code> stub file to the
+            package. For example, if you create a package named{" "}
+            <code>client</code>, copy the stub file to the <code>client</code>{" "}
+            package.
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+
+      <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>&#8226;&nbsp;</span>
+          <span>3.</span>
           <span>
-            <a href="/spec/grpc/#5116-client---bearer-token-auth">
-              gRPC client bearer token authentication - Specification
-            </a>
+            Create a new <code>grpc_client_bearer_token_auth.bal</code>{" "}
+            Ballerina file inside the <code>client</code> package and add the
+            client implementation.
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
+
+      <Row
+        className="bbeCode mx-0 py-0 rounded 
+      indent"
+        style={{ marginLeft: "24px" }}
+      >
+        <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-client-bearer-token-auth",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
+          {codeClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2"
+              disabled
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2"
+              onClick={() => {
+                updateCodeClick2(true);
+                copyToClipboard(codeSnippetData[1]);
+                setTimeout(() => {
+                  updateCodeClick2(false);
+                }, 3000);
+              }}
+              aria-label="Copy to Clipboard"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#000"
+                className="bi bi-clipboard"
+                viewBox="0 0 16 16"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          {codeSnippets[1] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[1]),
+              }}
+            />
+          )}
+        </Col>
+      </Row>
+
+      <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>&#8226;&nbsp;</span>
+          <span>4.</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package - API documentation
-            </a>
+            Execute the commands below to build and run the <code>client</code>{" "}
+            package.
           </span>
         </li>
       </ul>
-      <span style={{ marginBottom: "20px" }}></span>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a secured sample service.
+        </p>
+      </blockquote>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded indent"
+        style={{ marginLeft: "24px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`\$ bal build client`}</span>
+              <span>{`
+`}</span>
+              <span>{`\$ bal run client/target/bin/client.jar`}</span>
+              <span>{`Hello, World!`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic authentication"
+            title="Client - Basic Auth"
             href="/learn/by-example/grpc-client-basic-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -274,7 +498,7 @@ export default function GrpcClientBearerTokenAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication
+                  Client - Basic Auth
                 </span>
               </div>
             </div>
@@ -282,7 +506,7 @@ export default function GrpcClientBearerTokenAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Client - self signed JWT Auth"
             href="/learn/by-example/grpc-client-self-signed-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -293,7 +517,7 @@ export default function GrpcClientBearerTokenAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Client - self signed JWT Auth
                 </span>
               </div>
               <svg

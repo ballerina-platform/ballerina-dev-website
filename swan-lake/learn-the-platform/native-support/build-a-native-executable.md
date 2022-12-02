@@ -7,7 +7,7 @@ active: build-a-native-executable
 intro: This guide walks you through compiling a Ballerina application to a native executable and packing the native executable in a container.
 ---
 
-This feature was introduced as an experimental feature in the Swan Lake Update 3 release and it will become official with the following releases. In case you come across any issues do report them as the Ballerina team will be aggressively addressing them.
+This feature was introduced as an experimental feature in the Swan Lake Update 3 release and it will become official with the following releases. In case you come across any issues do report them as the Ballerina community will be aggressively addressing them.
 
 The key aspects below help you understand the native executable generating process better.
 
@@ -17,7 +17,7 @@ Building a Ballerina native executable requires the [GraalVM](https://www.graalv
 
 - GraalVM CE is the free version of GraalVM, which is distributed under GPLv2+CE.
 - GraaLVM EE is the paid version of GraalVM, which comes with a few additional features such as options for GC, debugging, and other optimizations.
-- Mandrel is a downstream distribution of the Oracle GraalVM CE, which is maintained by RedHat.
+- Mandrel is a downstream distribution of the Oracle GraalVM CE, which is maintained by Red Hat.
 
 This article uses GraalVM CE to discuss the following topics.
 
@@ -46,7 +46,7 @@ The only downside is that the GraalVM native image build is a highly complicated
 
 From Ballerina 2201.3.0 (SwanLake) onwards, Ballerina supports GraalVM AOT compilation to generate standalone executables by passing the native flag in the build command: `bal build --native`. The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK.
 
-> **Info:** Apart from the Ballerina runtime and standard libraries, the following Ballerina external libraries are GraalVM compatible :
+> **Info:** Apart from the Ballerina runtime and [standard libraries](/learn/ballerina-specifications/#standard-library-specifications), the following Ballerina external libraries are GraalVM compatible :
 >  - [`nats`](https://central.ballerina.io/ballerinax/nats)
 >  - [`kafka`](https://central.ballerina.io/ballerinax/kafka)
 >  - [`rabbitmq`](https://central.ballerina.io/ballerinax/rabbitmq)

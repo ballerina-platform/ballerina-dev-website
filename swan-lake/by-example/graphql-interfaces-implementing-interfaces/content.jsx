@@ -456,7 +456,7 @@ export default function GraphqlInterfacesImplementingInterfaces() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#461-interfaces-implementing-interfaces">
-              <code>graphql</code> interfaces - Specification
+              GraphQL interfaces implementing interfaces - Specification
             </a>
           </span>
         </li>

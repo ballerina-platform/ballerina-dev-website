@@ -78,7 +78,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8a592057cfe27df77a9b2c3078bb9b28&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=7b9fa2c3887620c32152140866e9fd45&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}
@@ -271,8 +271,8 @@ export default function HttpClientDataBinding() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#243-client-action-return-types">
-              <code>Client return types</code> - specification
+            <a href="/spec/http/#243-client-action-return-types">
+              HTTP client return types - Specification
             </a>
           </span>
         </li>

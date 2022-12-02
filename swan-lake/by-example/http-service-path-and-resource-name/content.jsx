@@ -301,8 +301,8 @@ export default function HttpServicePathAndResourceName() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#222-service-base-path">
-              <code>Service path</code> - specification
+            <a href="/spec/http/#222-service-base-path">
+              HTTP service path - Specification
             </a>
           </span>
         </li>

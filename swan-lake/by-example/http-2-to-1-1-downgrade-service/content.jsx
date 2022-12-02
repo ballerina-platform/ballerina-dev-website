@@ -14,33 +14,32 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// HTTP version is set to 2.0.
-http:Client http2serviceClientEP = check new ("localhost:7090");
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
 // Since the default HTTP version is 2.0, HTTP version is set to 1.1.
 service / on new http:Listener(9090, httpVersion = http:HTTP_1_1) {
 
-    resource function 'default http11service(http:Request clientRequest) returns string|error {
-        // Forward the \`clientRequest\` to the \`http2\` service.
-        string clientResponse = check http2serviceClientEP->forward("/http2service", clientRequest);
-
-        // Send the response back to the caller.
-        return clientResponse;
-
+    resource function get albums() returns Album[] {
+        return albums.toArray();
     }
-}
 
-service / on new http:Listener(7090) {
-
-    resource function 'default http2service() returns string {
-        // Send the response back to the caller (http11Service).
-        return "message : response from http2 service";
+    resource function post albums(@http:Payload Album album) returns Album {
+        albums.add(album);
+        return album;
     }
 }
 `,
 ];
 
-export default function Http11To20ProtocolSwitch() {
+export default function Http2To11DowngradeService() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -63,11 +62,13 @@ export default function Http11To20ProtocolSwitch() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP 1.1 to 2.0 protocol switch</h1>
+      <h1>HTTP service - HTTP/2 to HTTP/1.1 downgrade</h1>
 
       <p>
-        The HTTP service receives a message over the HTTP/1.1 protocol and
-        forwards it to another service over the HTTP/2.0 protocol.
+        The HTTP service is configured to run over the HTTP/1.1 protocol. So
+        this service will only accept requests receiving over the HTTP/1.1
+        protocol. If an HTTP/2 enabled client sends a request to this service,
+        client will also get downgraded to use HTTP/1.1.
       </p>
 
       <Row
@@ -81,7 +82,7 @@ export default function Http11To20ProtocolSwitch() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-1-1-to-2-0-protocol-switch",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-2-to-1-1-downgrade-service",
                 "_blank"
               );
             }}
@@ -155,7 +156,7 @@ export default function Http11To20ProtocolSwitch() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the following command.</p>
+      <p>Run the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -212,13 +213,16 @@ export default function Http11To20ProtocolSwitch() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run http_1_1_to_2_0_protocol_switch.bal`}</span>
+              <span>{`\$ bal run http_2_to_1_1_downgrade_service.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <p>Invoke the service as follows.</p>
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded 
@@ -275,13 +279,21 @@ export default function Http11To20ProtocolSwitch() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`// Invoke the HTTP/1.1 service using "cURL".`}</span>
-              <span>{`\$ curl http://localhost:9090/http11service`}</span>
-              <span>{`message : response from http2 service`}</span>
+              <span>{`\$ curl http://localhost:9090/albums`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-send-request-receive-response/">
+            Send request/Receive response client
+          </a>
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -299,8 +311,8 @@ export default function Http11To20ProtocolSwitch() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#10-protocol-upgrade">
-              <code>Protocol upgrade</code> - specification
+            <a href="https://ballerina.io/spec/http/#23-resource">
+              HTTP resource - specification
             </a>
           </span>
         </li>
@@ -308,10 +320,7 @@ export default function Http11To20ProtocolSwitch() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Interceptor error handling"
-            href="/learn/by-example/http-interceptor-error-handling"
-          >
+          <Link title="Passthrough" href="/learn/by-example/http-passthrough">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -337,7 +346,7 @@ export default function Http11To20ProtocolSwitch() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interceptor error handling
+                  Passthrough
                 </span>
               </div>
             </div>
@@ -345,8 +354,8 @@ export default function Http11To20ProtocolSwitch() {
         </Col>
         <Col sm={6}>
           <Link
-            title="HTTP 2.0 server push"
-            href="/learn/by-example/http-2-0-server-push"
+            title="Redirects"
+            href="/learn/by-example/http-client-redirects"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -356,7 +365,7 @@ export default function Http11To20ProtocolSwitch() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  HTTP 2.0 server push
+                  Redirects
                 </span>
               </div>
               <svg

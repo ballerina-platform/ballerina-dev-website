@@ -276,7 +276,7 @@ export default function FtpServiceRead() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/ftp/#422-secure-listener">
-              FTP listener - Specification
+              FTP service - Specification
             </a>
           </span>
         </li>

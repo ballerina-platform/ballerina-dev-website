@@ -337,8 +337,8 @@ export default function HttpResponseInterceptors() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#812-response-interceptor">
-              <code>Response interceptor</code> - specification
+            <a href="/spec/http/#812-response-interceptor">
+              HTTP service response interceptor - Specification
             </a>
           </span>
         </li>

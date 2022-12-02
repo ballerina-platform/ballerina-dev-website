@@ -268,7 +268,8 @@ export default function GrpcClientOauth2ClientCredentialsGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5118-client---oauth2">
-              OAuth2 authentication and authorization - Specification
+              gRPC client OAuth2 authentication and authorization -
+              Specification
             </a>
           </span>
         </li>

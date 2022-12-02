@@ -295,7 +295,7 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5112-service---basic-auth---ldap-user-store">
-              Basic authentication LDAP user store - Specification
+              gRPC service basic authentication LDAP user store - Specification
             </a>
           </span>
         </li>

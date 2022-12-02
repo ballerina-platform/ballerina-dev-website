@@ -250,8 +250,8 @@ export default function HttpRetry() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2414-retry">
-              <code>Retry</code> - specification
+            <a href="/spec/http/#2414-retry">
+              HTTP client retry - Specification
             </a>
           </span>
         </li>

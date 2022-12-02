@@ -271,7 +271,7 @@ export default function RabbitmqProducer() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#5-publishing">
-              <code>rabbitmq</code> publishing - Specification
+              RabbitMQ publishing - Specification
             </a>
           </span>
         </li>

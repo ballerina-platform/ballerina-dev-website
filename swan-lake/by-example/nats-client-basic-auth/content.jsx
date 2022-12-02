@@ -240,7 +240,7 @@ export default function NatsClientBasicAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#2-connection">
-              <code>nats</code> connecting to server - Specification
+              NATS connection - Specification
             </a>
           </span>
         </li>

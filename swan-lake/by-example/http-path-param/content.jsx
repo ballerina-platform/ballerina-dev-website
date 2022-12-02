@@ -303,8 +303,8 @@ export default function HttpPathParam() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#233-path-parameter">
-              <code>Path parameter</code> - specification
+            <a href="/spec/http/#233-path-parameter">
+              HTTP service path parameter - Specification
             </a>
           </span>
         </li>

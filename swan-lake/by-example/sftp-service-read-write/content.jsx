@@ -280,7 +280,7 @@ export default function SftpServiceReadWrite() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/ftp/#52-functions">
-              <code>ftp:Caller</code> function - Specification
+              <code>ftp:Caller</code> functions - Specification
             </a>
           </span>
         </li>

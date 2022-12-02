@@ -398,7 +398,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#11111-basic-authentication---file-user-store">
-              <code>graphql</code> basic authentication - file user store -
+              GraphQL service basic authentication - file user store -
               Specification
             </a>
           </span>

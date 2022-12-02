@@ -302,8 +302,8 @@ export default function HttpAccessLogs() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#824-access-log">
-              <code>Access log</code> - specification
+            <a href="/spec/http/#824-access-log">
+              HTTP service access log - Specification
             </a>
           </span>
         </li>

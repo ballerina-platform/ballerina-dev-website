@@ -344,8 +344,8 @@ export default function HttpTraceLogs() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#823-trace-log">
-              <code>Trace log</code> - specification
+            <a href="/spec/http/#823-trace-log">
+              HTTP service trace log - Specification
             </a>
           </span>
         </li>

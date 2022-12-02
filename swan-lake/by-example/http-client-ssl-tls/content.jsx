@@ -236,7 +236,7 @@ export default function HttpClientSslTls() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket">
-              <code>http:ClientSecureSocket</code> - API documentation
+              <code>http:ClientSecureSocket</code> record - API documentation
             </a>
           </span>
         </li>
@@ -245,8 +245,8 @@ export default function HttpClientSslTls() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#923-client---ssltls">
-              <code>Client SSL/TLS</code> - specification
+            <a href="/spec/http/#923-client---ssltls">
+              HTTP client SSL/TLS - Specification
             </a>
           </span>
         </li>

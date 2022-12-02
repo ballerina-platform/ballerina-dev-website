@@ -293,8 +293,8 @@ export default function HttpPassthrough() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2424-forwardexecute-methods">
-              <code>forward method</code> - specification
+            <a href="/spec/http/#2424-forwardexecute-methods">
+              HTTP service forward method - Specification
             </a>
           </span>
         </li>
@@ -339,8 +339,8 @@ export default function HttpPassthrough() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Redirects"
-            href="/learn/by-example/http-client-redirects"
+            title="HTTP/2 to HTTP/1.1 downgrade"
+            href="/learn/by-example/http-2-to-1-1-downgrade-service"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -350,7 +350,7 @@ export default function HttpPassthrough() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Redirects
+                  HTTP/2 to HTTP/1.1 downgrade
                 </span>
               </div>
               <svg

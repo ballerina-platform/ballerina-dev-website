@@ -535,7 +535,7 @@ export default function GraphqlContext() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#8-context">
-              <code>graphql:Context</code> - Specification
+              GraphQL context - Specification
             </a>
           </span>
         </li>

@@ -302,8 +302,8 @@ export default function HttpQueryParameter() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2343-query-parameter">
-              <code>Query parameter</code> - specification
+            <a href="/spec/http/#2343-query-parameter">
+              HTTP service query parameter - Specification
             </a>
           </span>
         </li>

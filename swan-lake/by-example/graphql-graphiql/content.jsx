@@ -256,7 +256,7 @@ export default function GraphqlGraphiql() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#915-graphiql-configurations">
-              <code>graphql</code> GraphiQL - Specification
+              GraphQL GraphiQL client - Specification
             </a>
           </span>
         </li>

@@ -279,7 +279,7 @@ export default function SftpServiceRead() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/ftp/#422-secure-listener">
-              SFTP listener - Specification
+              SFTP service - Specification
             </a>
           </span>
         </li>

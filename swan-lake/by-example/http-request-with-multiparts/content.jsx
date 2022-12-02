@@ -423,8 +423,8 @@ export default function HttpRequestWithMultiparts() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/mime/#3-supported-multipart-types">
-              <code>Supported-multipart-types</code> - specification
+            <a href="/spec/mime/#3-supported-multipart-types">
+              HTTP client supported-multipart-types - Specification
             </a>
           </span>
         </li>
@@ -466,8 +466,8 @@ export default function HttpRequestWithMultiparts() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Request interceptors"
-            href="/learn/by-example/http-request-interceptors"
+            title="HTTP/2 to HTTP/1.1 downgrade"
+            href="/learn/by-example/http-2-to-1-1-downgrade-client"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -477,7 +477,7 @@ export default function HttpRequestWithMultiparts() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request interceptors
+                  HTTP/2 to HTTP/1.1 downgrade
                 </span>
               </div>
               <svg

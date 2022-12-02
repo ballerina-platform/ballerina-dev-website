@@ -401,7 +401,7 @@ export default function GraphqlHelloWorld() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#311-the-query-type">
-              <code>graphql</code> query type - Specification
+              GraphQL <code>Query</code> type - Specification
             </a>
           </span>
         </li>

@@ -299,7 +299,7 @@ export default function HttpServiceSslTls() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket">
-              <code>http:ListenerSecureSocket</code> - API documentation
+              <code>http:ListenerSecureSocket</code> record - API documentation
             </a>
           </span>
         </li>
@@ -308,8 +308,8 @@ export default function HttpServiceSslTls() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#921-listener---ssltls">
-              <code>Listener SSL/TLS</code> - specification
+            <a href="/spec/http/#921-listener---ssltls">
+              HTTP service SSL/TLS - Specification
             </a>
           </span>
         </li>
@@ -318,8 +318,8 @@ export default function HttpServiceSslTls() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Payload constraint validation"
-            href="/learn/by-example/http-client-payload-constraint-validation"
+            title="Header parameter"
+            href="/learn/by-example/http-client-header-parameter"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -346,7 +346,7 @@ export default function HttpServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Payload constraint validation
+                  Header parameter
                 </span>
               </div>
             </div>

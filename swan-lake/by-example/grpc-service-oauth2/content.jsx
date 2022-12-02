@@ -325,7 +325,7 @@ export default function GrpcServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5114-service---oauth2">
-              OAuth2 - Specification
+              gRPC service OAuth2 - Specification
             </a>
           </span>
         </li>

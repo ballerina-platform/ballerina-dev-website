@@ -312,8 +312,8 @@ export default function HttpSendResponse() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#235-return-types">
-              <code>Return types</code> - specification
+            <a href="/spec/http/#235-return-types">
+              HTTP service return types - Specification
             </a>
           </span>
         </li>

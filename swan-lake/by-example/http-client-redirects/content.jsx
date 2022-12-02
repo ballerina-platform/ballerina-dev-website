@@ -63,11 +63,7 @@ export default function HttpClientRedirects() {
         <a href="https://lib.ballerina.io/ballerina/http/latest/">
           <code>http</code> module
         </a>{" "}
-        and{" "}
-        <a href="https://ballerina.io/spec/http/#2413-redirect">
-          specification
-        </a>
-        .
+        and <a href="/spec/http/#2413-redirect">specification</a>.
       </p>
 
       <Row
@@ -252,8 +248,8 @@ export default function HttpClientRedirects() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2413-redirect">
-              <code>Redirect</code> - specification
+            <a href="/spec/http/#2413-redirect">
+              HTTP client redirect - Specification
             </a>
           </span>
         </li>
@@ -261,7 +257,10 @@ export default function HttpClientRedirects() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Passthrough" href="/learn/by-example/http-passthrough">
+          <Link
+            title="HTTP/2 to HTTP/1.1 downgrade"
+            href="/learn/by-example/http-2-to-1-1-downgrade-service"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -287,7 +286,7 @@ export default function HttpClientRedirects() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Passthrough
+                  HTTP/2 to HTTP/1.1 downgrade
                 </span>
               </div>
             </div>

@@ -273,7 +273,7 @@ export default function KafkaClientConsumerSasl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4212-secure-client">
-              SASL authentication - Specification
+              Kafka client consumer SASL authentication - Specification
             </a>
           </span>
         </li>

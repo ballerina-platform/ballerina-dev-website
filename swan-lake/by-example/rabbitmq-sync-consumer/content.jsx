@@ -249,8 +249,7 @@ export default function RabbitmqSyncConsumer() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#7-retrieving-individual-messages">
-              <code>rabbitmq</code> consuming individual messages -
-              Specification
+              RabbitMQ pull API - Specification
             </a>
           </span>
         </li>

@@ -322,7 +322,7 @@ export default function GrpcServerReflection() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#7-grpc-server-reflection">
-              Server reflection - Specification
+              gRPC service server reflection - Specification
             </a>
           </span>
         </li>

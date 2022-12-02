@@ -255,7 +255,7 @@ export default function GrpcClientSetDeadline() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#61-grpc-deadline">
-              Set deadline - Specification
+              gRPC client set deadline - Specification
             </a>
           </span>
         </li>

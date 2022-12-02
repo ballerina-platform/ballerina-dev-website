@@ -251,7 +251,7 @@ export default function GrpcClientBearerTokenAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5116-client---bearer-token-auth">
-              Bearer token authentication - Specification
+              gRPC client bearer token authentication - Specification
             </a>
           </span>
         </li>

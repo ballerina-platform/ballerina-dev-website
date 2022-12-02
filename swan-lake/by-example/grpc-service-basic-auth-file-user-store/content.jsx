@@ -294,7 +294,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5111-service---basic-auth---file-user-store">
-              Basic authentication file user store - Specification
+              gRPC service basic authentication file user store - Specification
             </a>
           </span>
         </li>

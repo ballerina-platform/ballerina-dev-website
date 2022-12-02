@@ -252,6 +252,16 @@ export default function HttpServiceCacheResponse() {
           </span>
         </li>
       </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#53-matrix">
+              <code>http</code> package - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

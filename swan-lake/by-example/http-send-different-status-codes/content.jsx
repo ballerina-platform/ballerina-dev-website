@@ -324,8 +324,8 @@ export default function HttpSendDifferentStatusCodes() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2351-status-code-response">
-              <code>Status code response</code> - specification
+            <a href="/spec/http/#2351-status-code-response">
+              HTTP service status code response - Specification
             </a>
           </span>
         </li>

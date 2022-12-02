@@ -316,8 +316,8 @@ export default function HttpBasicRestService() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#23-resource">
-              <code>Resource</code> - specification
+            <a href="/spec/http/#23-resource">
+              HTTP service resource - Specification
             </a>
           </span>
         </li>

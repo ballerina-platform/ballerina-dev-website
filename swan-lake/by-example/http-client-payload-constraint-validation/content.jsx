@@ -259,7 +259,7 @@ export default function HttpClientPayloadConstraintValidation() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/">
+            <a href="/spec/http/">
               <code>http</code> package - Specification
             </a>
           </span>
@@ -314,7 +314,10 @@ export default function HttpClientPayloadConstraintValidation() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/http-service-ssl-tls">
+          <Link
+            title="Path parameter"
+            href="/learn/by-example/http-client-path-parameter"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -323,7 +326,7 @@ export default function HttpClientPayloadConstraintValidation() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Path parameter
                 </span>
               </div>
               <svg

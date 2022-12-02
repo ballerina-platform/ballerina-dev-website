@@ -346,8 +346,8 @@ export default function HttpErrorHandling() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#82-error-handling">
-              <code>Error handling</code> - specification
+            <a href="/spec/http/#82-error-handling">
+              HTTP service error handling - Specification
             </a>
           </span>
         </li>

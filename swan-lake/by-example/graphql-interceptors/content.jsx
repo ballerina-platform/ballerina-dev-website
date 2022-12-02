@@ -458,7 +458,7 @@ export default function GraphqlInterceptors() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#10-interceptors">
-              <code>graphql</code> interceptors - Specification
+              GraphQL interceptors - Specification
             </a>
           </span>
         </li>

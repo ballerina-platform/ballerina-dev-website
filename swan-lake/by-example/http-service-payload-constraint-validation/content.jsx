@@ -304,7 +304,7 @@ export default function HttpServicePayloadConstraintValidation() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/">
+            <a href="/spec/http/">
               <code>http</code> package - Specification
             </a>
           </span>

@@ -364,8 +364,8 @@ export default function HttpRestrictByMediaType() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#42-resource-configuration">
-              <code>Resource configuration</code> - specification
+            <a href="/spec/http/#42-resource-configuration">
+              HTTP service resource configuration - Specification
             </a>
           </span>
         </li>

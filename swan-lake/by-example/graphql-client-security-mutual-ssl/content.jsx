@@ -264,7 +264,7 @@ export default function GraphqlClientSecurityMutualSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#11322-mutual-ssl">
-              <code>graphql</code> mutual SSL - Specification
+              GraphQL client mutual SSL - Specification
             </a>
           </span>
         </li>

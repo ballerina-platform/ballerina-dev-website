@@ -311,7 +311,7 @@ export default function GraphqlServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#11114-oauth2">
-              <code>graphql</code> OAuth2 - Specification
+              GraphQL service OAuth2 - Specification
             </a>
           </span>
         </li>

@@ -240,8 +240,8 @@ export default function HttpLoadBalancer() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2417-load-balance">
-              <code>Load balance</code> - specification
+            <a href="/spec/http/#2417-load-balance">
+              HTTP service load balance - Specification
             </a>
           </span>
         </li>

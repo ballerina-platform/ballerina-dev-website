@@ -239,7 +239,7 @@ export default function HttpClientMutualSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket">
-              <code>http:ClientSecureSocket</code> - API documentation
+              <code>http:ClientSecureSocket</code> record - API documentation
             </a>
           </span>
         </li>
@@ -248,8 +248,8 @@ export default function HttpClientMutualSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#924-client---mutual-ssl">
-              <code>Client mutual SSL</code> - specification
+            <a href="/spec/http/#924-client---mutual-ssl">
+              HTTP client mutual SSL - Specification
             </a>
           </span>
         </li>

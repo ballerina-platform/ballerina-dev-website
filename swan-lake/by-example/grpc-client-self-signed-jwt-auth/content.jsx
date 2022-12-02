@@ -270,7 +270,7 @@ export default function GrpcClientSelfSignedJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5117-client---self-signed-jwt-auth">
-              Self signed JWT authentication - Specification
+              gRPC client self signed JWT authentication - Specification
             </a>
           </span>
         </li>

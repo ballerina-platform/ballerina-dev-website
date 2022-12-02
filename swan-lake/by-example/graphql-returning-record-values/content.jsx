@@ -438,7 +438,7 @@ export default function GraphqlReturningRecordValues() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#421-record-type-as-object">
-              <code>graphql</code> record type as object - Specification
+              GraphQL record type as object - Specification
             </a>
           </span>
         </li>

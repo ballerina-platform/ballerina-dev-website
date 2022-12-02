@@ -272,7 +272,7 @@ export default function KafkaServiceSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4312-secure-listener">
-              Secure listener - Specification
+              Kafka secure service - Specification
             </a>
           </span>
         </li>

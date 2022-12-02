@@ -80,7 +80,7 @@ export default function GraphqlClientSecuritySelfSignedJwtAuthentication() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP client - Self-signed JWT authentication</h1>
+      <h1>GraphQL client - Self signed JWT authentication</h1>
 
       <p>
         A GraphQL client, which is secured with self-signed JWT can be used to
@@ -287,8 +287,7 @@ export default function GraphqlClientSecuritySelfSignedJwtAuthentication() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#1123-self-signed-jwt-authentication">
-              <code>graphql</code> Self-signed JWT authentication -
-              Specification
+              GraphQL client self signed JWT authentication - Specification
             </a>
           </span>
         </li>

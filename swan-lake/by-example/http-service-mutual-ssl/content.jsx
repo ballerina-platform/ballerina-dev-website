@@ -317,8 +317,8 @@ export default function HttpServiceMutualSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#922-listener---mutual-ssl">
-              <code>Listener mutual SSL</code> - specification
+            <a href="/spec/http/#922-listener---mutual-ssl">
+              HTTP service mutual SSL - Secification
             </a>
           </span>
         </li>

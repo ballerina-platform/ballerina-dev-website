@@ -364,8 +364,8 @@ export default function HttpInterceptorErrorHandling() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#82-error-handling">
-              <code>Error handling</code> - specification
+            <a href="/spec/http/#82-error-handling">
+              HTTP service error handling - Specification
             </a>
           </span>
         </li>
@@ -410,8 +410,8 @@ export default function HttpInterceptorErrorHandling() {
         </Col>
         <Col sm={6}>
           <Link
-            title="HTTP 1.1 to 2.0 protocol switch"
-            href="/learn/by-example/http-1-1-to-2-0-protocol-switch"
+            title="HTTP 2.0 server push"
+            href="/learn/by-example/http-2-0-server-push"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -421,7 +421,7 @@ export default function HttpInterceptorErrorHandling() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  HTTP 1.1 to 2.0 protocol switch
+                  HTTP 2.0 server push
                 </span>
               </div>
               <svg

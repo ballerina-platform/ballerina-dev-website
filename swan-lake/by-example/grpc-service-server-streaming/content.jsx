@@ -464,7 +464,7 @@ export default function GrpcServiceServerStreaming() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#42-server-streaming-rpc">
-              Server-side streaming - Specification
+              gRPC service server-side streaming - Specification
             </a>
           </span>
         </li>

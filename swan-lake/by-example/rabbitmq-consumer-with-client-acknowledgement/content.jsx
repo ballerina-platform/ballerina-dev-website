@@ -255,7 +255,7 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#8-client-acknowledgements">
-              <code>rabbitmq</code> acknowledgements - Specification
+              RabbitMQ client acknowledgements - Specification
             </a>
           </span>
         </li>

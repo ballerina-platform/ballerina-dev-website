@@ -253,8 +253,8 @@ export default function HttpClientBearerTokenAuthentication() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#9116-client---bearer-token-auth">
-              <code>Client bearer token authentication</code> - specification
+            <a href="/spec/http/#9116-client---bearer-token-auth">
+              HTTP client bearer token authentication - Specification
             </a>
           </span>
         </li>

@@ -270,6 +270,16 @@ export default function GraphqlClientSecurityBasicAuth() {
           </span>
         </li>
       </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#1121-basic-authentication">
+              GraphQL client basic authentication - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

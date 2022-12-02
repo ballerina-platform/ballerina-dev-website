@@ -448,8 +448,8 @@ export default function HttpResponseWithMultiparts() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/mime/#3-supported-multipart-types">
-              <code>Supported-multipart-types</code> - specification
+            <a href="/spec/mime/#3-supported-multipart-types">
+              HTTP service supported-multipart-types - Specification
             </a>
           </span>
         </li>

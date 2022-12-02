@@ -404,8 +404,8 @@ export default function HttpCachingClient() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2412-caching">
-              <code>Caching</code> - specification
+            <a href="/spec/http/#2412-caching">
+              HTTP client caching - Specification
             </a>
           </span>
         </li>

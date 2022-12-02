@@ -428,7 +428,7 @@ export default function GraphqlMutations() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#312-the-mutation-type">
-              <code>graphql</code> mutation type - Specification
+              GraphQL <code>Mutation</code> type - Specification
             </a>
           </span>
         </li>

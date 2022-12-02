@@ -265,7 +265,7 @@ export default function GraphqlClientQueryEndpoint() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#25-client">
-              <code>graphql:Client</code> - Specification
+              GrapHQL client - Specification
             </a>
           </span>
         </li>

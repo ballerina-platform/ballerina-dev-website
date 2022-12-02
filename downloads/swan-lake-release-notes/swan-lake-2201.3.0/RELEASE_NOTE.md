@@ -193,12 +193,12 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 ### New features
 
 #### Semantic API
-Added a new `annotAttachments()` API to get the annotation attachments and their constant values from the annotatable symbols
+Added a new `annotAttachments()` API to get the annotation attachments and their constant values from the annotatable symbols.
 
 ### Improvements
 
 #### Semantic API
-Improved the `constValue()` method to retrieve the constant value as an object from the constant symbol
+Improved the `constValue()` method to retrieve the constant value as an object from the constant symbol.
 
 #### Syntax API
 
@@ -364,40 +364,40 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 
 ##### `http` package
 
-- Added support for killing the application when a resource function panics 
-- Added a grace period for the graceful stop of the listener
-- Added the missing HTTP status codes
-- Made the socket configuration to be configurable in both listener and client configurations
-- Added defaultable parameter support for query parameters
-- Added support for populating the HATEOAS link's `types` field based on the resource return type
+- Added support for killing the application when a resource function panics. 
+- Added a grace period for the graceful stop of the listener.
+- Added the missing HTTP status codes.
+- Made the socket configuration to be configurable in both listener and client configurations.
+- Added defaultable parameter support for query parameters.
+- Added support for populating the HATEOAS link's `types` field based on the resource return type.
 
 #### `graphql` package
 
-- Added support for disabling introspection queries
-- Added support for GraphQL interfaces
-- Added support for interfaces implementing interfaces
-- Introduced GraphQL client configurations
+- Added support for disabling introspection queries.
+- Added support for GraphQL interfaces.
+- Added support for interfaces implementing interfaces.
+- Introduced GraphQL client configurations.
 
 #### `gRPC` package
 
-- Added server reflection support for gRPC services
+- Added server reflection support for gRPC services.
 
 ### Improvements
 
 ##### `http` package
 
-- Reduced the listener default timeout to 60s and client default timeout to 30s
-- Improved data binding based on the MIME type match
+- Reduced the listener default timeout to 60s and client default timeout to 30s.
+- Improved data binding based on the MIME type match.
 
 #### `graphql` package
 
-- Added service-level interceptor execution for records fields, maps, and tables
-- Added service-level interceptor execution for subscriptions
-- Changed to return all the errors related to a GraphQL document in a single response
+- Added service-level interceptor execution for records fields, maps, and tables.
+- Added service-level interceptor execution for subscriptions.
+- Changed to return all the errors related to a GraphQL document in a single response.
 
 #### `gRPC` package
 
-- Updated Protocol Buffers version to 3.21.7
+- Updated Protocol Buffers version to 3.21.7.
 
 ### Bug fixes
 
@@ -409,11 +409,11 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 
 #### Language Server
 
-- Introduced a new `Extract to local variable` code action
-- Introduced a new `Extract to constant` code action
-- Introduced a new `Extract to function` code action
-- Introduced a new code action to convert an array to array mapping into a query expression
-- Introduced the `loadProject()` API to the workspace manager to open up a project programmatically
+- Introduced a new `Extract to local variable` code action.
+- Introduced a new `Extract to constant` code action.
+- Introduced a new `Extract to function` code action.
+- Introduced a new code action to convert an array to array mapping into a query expression.
+- Introduced the `loadProject()` API to the workspace manager to open up a project programmatically.
 
 #### CLI
 
@@ -421,9 +421,9 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 
 Introduced the `--native` flag, which generates a GraalVM native executable when building a Ballerina project.
 
-- The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK
+- The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK.
 
-- The new CLI command will be `bal build --native`
+- The new CLI command will be `bal build --native`.
 
 >**Note:** There is a known [issue](https://github.com/ballerina-platform/ballerina-lang/issues/38665) in the native image build when using locks along with loops. 
 
@@ -435,8 +435,8 @@ Introduced the `run-in-terminal` feature, which provides the capability to debug
 
 #### Language Server
 
-- Improved completion sorting within the expression of the `if` condition
-- Improved the `Change variable type` code action
+- Improved completion sorting within the expression of the `if` condition.
+- Improved the `Change variable type` code action.
 
 #### OpenAPI Tool
 
@@ -444,8 +444,8 @@ Improved CLI client generation to generate the Ballerina client resource methods
 
 #### GraphQL Tool
 
-- Introduced single client generation for a single schema definition
-- Improved the GraphQL client config generation to support runtime configurability
+- Introduced single client generation for a single schema definition.
+- Improved the GraphQL client config generation to support runtime configurability.
 
 ### Bug fixes
 

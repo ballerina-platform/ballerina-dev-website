@@ -1,5 +1,5 @@
 {
-  "title": "Receive email",
+  "title": "Receive emails using a client",
   "description": "This is a BBE on receiving emails. It has the client functionality for receiving emails.",
   "keywords": [
     "ballerina",

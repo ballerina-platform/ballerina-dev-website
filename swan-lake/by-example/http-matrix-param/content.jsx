@@ -14,30 +14,32 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-type Params record {|
-    string path;
-    map<json> matrix;
-|};
-
-service / on new http:Listener(9090) {
+service /sample on new http:Listener(9090) {
 
     // The path param is defined as a part of the resource path along with the type and it is extracted from the
     // request URI.
-    resource function get params/[string foo](http:Request req) returns Params {
+    resource function get path/[string foo](http:Request req) returns json {
 
         // Gets the \`MatrixParams\`.
-        map<any> pathMParams = req.getMatrixParams("/params");
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams.
+        map<any> pathMParams = req.getMatrixParams("/sample/path");
         var a = <string>pathMParams["a"];
         var b = <string>pathMParams["b"];
         string pathMatrixStr = string \`a=\${a}, b=\${b}\`;
 
-        map<any> fooMParams = req.getMatrixParams("/params/" + foo);
+        map<any> fooMParams = req.getMatrixParams("/sample/path/" + foo);
         var x = <string>fooMParams["x"];
         var y = <string>fooMParams["y"];
         string fooMatrixStr = string \`x=\${x}, y=\${y}\`;
-        map<json> matrixJson = {path: pathMatrixStr, foo: fooMatrixStr};
+        json matrixJson = {"path": pathMatrixStr, "foo": fooMatrixStr};
 
-        return { path: foo, matrix: matrixJson};
+        // Create a JSON payload with the extracted values.
+        json responseJson = {
+            "pathParam": foo,
+            "matrix": matrixJson
+        };
+        // Send a response with the JSON payload to the client.
+        return responseJson;
     }
 }
 `,
@@ -66,11 +68,19 @@ export default function HttpMatrixParam() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - Matrix parameter</h1>
+      <h1>Matrix parameter</h1>
 
       <p>
         Ballerina supports extracting <code>MatrixParam</code> values using{" "}
         <code>http:Request</code> support method.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -79,9 +89,31 @@ export default function HttpMatrixParam() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-matrix-param",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -99,7 +131,7 @@ export default function HttpMatrixParam() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -254,40 +286,19 @@ export default function HttpMatrixParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/params;a=4;b=5/value1;x=10;y=15"`}</span>
-              <span>{`{"path":"value1", "matrix":{"path":"a=4, b=5", "foo":"x=10, y=15"}}`}</span>
+              <span>{`\$ curl "http://localhost:9090/sample/path;a=4;b=5/value1;x=10;y=15"`}</span>
+              <span>{`{"pathParam":"value1", "matrix":{"path":"a=4, b=5", "foo":"x=10, y=15"}}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams">
-              <code>getMatrixParams()</code> - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://ballerina.io/spec/http/#53-matrix">
-              HTTP service matrix parameter - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="100 continue" href="/learn/by-example/http-100-continue">
+          <Link
+            title="Query parameter"
+            href="/learn/by-example/http-query-parameter"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -313,7 +324,7 @@ export default function HttpMatrixParam() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  100 continue
+                  Query parameter
                 </span>
               </div>
             </div>
@@ -321,8 +332,8 @@ export default function HttpMatrixParam() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Restrict by media type"
-            href="/learn/by-example/http-restrict-by-media-type"
+            title="Header parameter"
+            href="/learn/by-example/http-header-param"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -332,7 +343,7 @@ export default function HttpMatrixParam() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Restrict by media type
+                  Header parameter
                 </span>
               </div>
               <svg

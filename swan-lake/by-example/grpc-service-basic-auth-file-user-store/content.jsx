@@ -12,6 +12,16 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
+  `// This is the service definition for the scenario.
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service HelloWorld {
+	rpc hello(google.protobuf.Empty) returns (google.protobuf.StringValue);
+}
+`,
   `import ballerina/grpc;
 
 listener grpc:Listener securedEP = new(9090,
@@ -26,6 +36,7 @@ listener grpc:Listener securedEP = new(9090,
 // The service can be secured with Basic Auth and can be authorized optionally.
 // Using Basic Auth with the file user store can be enabled by setting the 
 // \`grpc:FileUserStoreConfig\` configurations.
+// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/FileUserStoreConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -37,12 +48,12 @@ listener grpc:Listener securedEP = new(9090,
         }
     ]
 }
-@grpc:Descriptor {
-    value: GRPC_SIMPLE_DESC
+@grpc:ServiceDescriptor {
+    descriptor: GRPC_SERVICE_DESC
 }
 service "HelloWorld" on securedEP {
-    remote function hello(string request) returns string {
-        return "Hello " + request;
+    remote function hello() returns string {
+        return "Hello, World!";
     }
 }
 `,
@@ -50,9 +61,12 @@ service "HelloWorld" on securedEP {
 
 export default function GrpcServiceBasicAuthFileUserStore() {
   const [codeClick1, updateCodeClick1] = useState(false);
+  const [codeClick2, updateCodeClick2] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -69,15 +83,15 @@ export default function GrpcServiceBasicAuthFileUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>gRPC service - Basic authentication file user store</h1>
+      <h1>Service - Basic Auth file user store</h1>
 
       <p>
-        A gRPC service/resource can be secured with Basic authentication and
-        optionally by enforcing authorization. Then, it validates the Basic Auth
-        token sent as the <code>Authorization</code> metadata against the
-        provided configurations. This reads data from a file, which has a TOML
-        format. This stores the usernames, passwords for authentication, and
-        scopes for authorization.
+        A gRPC service/resource can be secured with Basic Auth and optionally by
+        enforcing authorization. Then, it validates the Basic Auth token sent as
+        the <code>Authorization</code> metadata against the provided
+        configurations. This reads data from a file, which has a TOML format.
+        This stores the usernames, passwords for authentication, and scopes for
+        authorization.
       </p>
 
       <p>
@@ -97,15 +111,61 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         assigned scopes as an array.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on the underlying module,
+          see the{" "}
+          <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+            <code>auth</code> module
+          </a>
+          .
+        </p>
+      </blockquote>
+
+      <h2>Generate the service definition</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>
+            Create a new Protocol Buffers definition file named{" "}
+            <code>grpc_service.proto</code> and add the service definition to
+            it.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       indent"
-        style={{ marginLeft: "24px" }}
+        style={{ marginLeft: "32px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-service-basic-auth-file-user-store",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -123,7 +183,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -159,33 +219,19 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         </Col>
       </Row>
 
-      <p>
-        As a prerequisite, execute the command below to populate the{" "}
-        <code>Config.toml</code> file correctly with the user information.
-      </p>
-
-      <pre style={{ marginLeft: "32px" }} className="p-3 rounded bash">
-        <code>
-          $ echo '[[ballerina.auth.users]] username="alice" password="password1"
-          scopes=["scope1"] [[ballerina.auth.users]] username="bob"
-          password="password2" scopes=["scope2", "scope3"]' > Config.toml
-        </code>
-      </pre>
-
-      <p>
-        Setting up the service is the same as setting up the unary RPC service
-        with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-service-unary/">
-          gRPC service - Unary RPC
-        </a>{" "}
-        to implement the service used below.
-      </p>
-
-      <p>Execute the command below to run the service.</p>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Run the command below in the Ballerina tools distribution for stub
+            generation.
+          </span>
+        </li>
+      </ul>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
-        style={{ marginLeft: "24px" }}
+        style={{ marginLeft: "32px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
@@ -236,7 +282,237 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run service`}</span>
+              <span>{`\$ bal grpc --input grpc_service.proto --output stubs`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        Once you run the command, the <code>grpc_service_pb.bal</code> file is
+        generated inside the stubs directory.
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information on how to use the
+          Ballerina Protocol Buffers tool, see the{" "}
+          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
+            Proto To Ballerina
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
+      <h2>Implement and run the service</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>Create a Ballerina package.</span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Copy the generated <code>grpc_secured_pb.bal</code> stub file to the
+            package. For example, if you create a package named{" "}
+            <code>service</code>, copy the stub file to the <code>service</code>{" "}
+            package.
+          </span>
+        </li>
+      </ul>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
+          <span>
+            Create a new{" "}
+            <code>grpc_service_basic_auth_file_user_store.bal</code> Ballerina
+            file inside the <code>service</code> package and add the service
+            implementation.
+          </span>
+        </li>
+      </ul>
+
+      <pre>
+        <code>
+          &gt;**Tip:** You may need to change the certificate file path and
+          private key file path in the code below.
+        </code>
+      </pre>
+
+      <Row
+        className="bbeCode mx-0 py-0 rounded 
+      indent"
+        style={{ marginLeft: "24px" }}
+      >
+        <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/grpc-service-basic-auth-file-user-store",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
+          {codeClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2"
+              disabled
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2"
+              onClick={() => {
+                updateCodeClick2(true);
+                copyToClipboard(codeSnippetData[1]);
+                setTimeout(() => {
+                  updateCodeClick2(false);
+                }, 3000);
+              }}
+              aria-label="Copy to Clipboard"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#000"
+                className="bi bi-clipboard"
+                viewBox="0 0 16 16"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          {codeSnippets[1] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[1]),
+              }}
+            />
+          )}
+        </Col>
+      </Row>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>4.</span>
+          <span>
+            As a prerequisite, execute the command below to populate the{" "}
+            <code>Config.toml</code> file correctly with the user information.
+          </span>
+        </li>
+      </ul>
+
+      <pre style={{ marginLeft: "32px" }} className="p-3 rounded bash">
+        <code>
+          $ echo '[[ballerina.auth.users]] username="alice" password="password1"
+          scopes=["scope1"] [[ballerina.auth.users]] username="bob"
+          password="password2" scopes=["scope2", "scope3"]' > Config.toml
+        </code>
+      </pre>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>6.</span>
+          <span>
+            Execute the commands below to build and run the <code>service</code>{" "}
+            package.
+          </span>
+        </li>
+      </ul>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded indent"
+        style={{ marginLeft: "24px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`\$ bal build service`}</span>
+              <span>{`
+`}</span>
+              <span>{`\$ bal run service/target/bin/service.jar`}</span>
             </code>
           </pre>
         </Col>
@@ -244,52 +520,18 @@ export default function GrpcServiceBasicAuthFileUserStore() {
 
       <blockquote>
         <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <strong>Info:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/grpc-client-basic-auth">
-            gRPC client - Basic authentication
+            gRPC Basic Auth client
           </a>
           .
         </p>
       </blockquote>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/FileUserStoreConfig">
-              <code>grpc:FileUserStoreConfig</code> record - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/grpc/#5111-service---basic-auth---file-user-store">
-              gRPC service basic authentication file user store - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Mutual SSL"
+            title="Service - Mutual SSL"
             href="/learn/by-example/grpc-service-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -317,7 +559,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Mutual SSL
+                  Service - Mutual SSL
                 </span>
               </div>
             </div>
@@ -325,7 +567,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic authentication LDAP user store"
+            title="Service - Basic Auth LDAP user store"
             href="/learn/by-example/grpc-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -336,7 +578,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication LDAP user store
+                  Service - Basic Auth LDAP user store
                 </span>
               </div>
               <svg

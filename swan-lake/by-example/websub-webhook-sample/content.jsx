@@ -13,8 +13,8 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `// The Ballerina WebSub Subscriber service, which could be used as a WebHook Listener for GitHub.
-import ballerina/io;
 import ballerina/websub;
+import ballerina/io;
 
 // Annotation-based configurations specifying the subscription parameters.
 @websub:SubscriberServiceConfig {
@@ -29,22 +29,26 @@ import ballerina/websub;
         }
     }
 }
-service on new websub:Listener(9090) {
+service /JuApTOXq19 on new websub:Listener(9090) {
     // Defines the remote function that accepts the event notification request for the WebHook.
     remote function onEventNotification(websub:ContentDistributionMessage event) returns error? {
-        json retrievedContent = check event.content.ensureType();
-        if retrievedContent.zen is string {
-            int hookId = check retrievedContent.hook_id;
-            json sender = check retrievedContent.sender;
-            int senderId = check sender.id;
-            io:println(string \`PingEvent received for webhook [\${hookId}]\`);
-            io:println(string \`Event sender [\${senderId}]\`);
-        } else if retrievedContent.ref is string {
-            json repository = check retrievedContent.repository;
-            string repositoryName = check repository.name;
-            string lastUpdatedTime = check repository.updated_at;
-            io:println(string \`PushEvent received for [\${repositoryName}]\`);
-            io:println(string \`Last updated at \${lastUpdatedTime}\`);
+        var retrievedContent = event.content;
+        if retrievedContent is json {
+            if retrievedContent.zen is string {
+                int hookId = check retrievedContent.hook_id;
+                json sender = check retrievedContent.sender;
+                int senderId = check sender.id;
+                io:println(string\`PingEvent received for webhook [\${hookId}]\`);
+                io:println(string\`Event sender [\${senderId}]\`);
+            } else if retrievedContent.ref is string {
+                json repository = check retrievedContent.repository;
+                string repositoryName =  check repository.name;
+                string lastUpdatedTime =  check repository.updated_at;
+                io:println(string\`PushEvent received for [\${repositoryName}]\`);
+                io:println(string\`Last updated at \${lastUpdatedTime}\`);
+            }
+        } else {
+            io:println("Unrecognized content type, hence ignoring");
         }
     }
 }
@@ -72,17 +76,28 @@ export default function WebsubWebhookSample() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSub service - Connecting to github as a webhook</h1>
+      <h1>WebSub subscriber service</h1>
 
       <p>
         Ballerina provides the capability to easily introduce subscriber
         services that are WebSub-compliant. Ballerina WebSub subscribers can
         specify the topic and hub to which they wish to subscribe to receive
         notifications. If not specified WebSub Subscriber Services will auto
-        generate a unique random service path segment. Ballerina WebSub
-        Subscriber Services could thus be registered as WebHooks to receive
-        event notifications. In this example, a WebSub Subscriber service is
-        used to implement a GitHub-based WebHook service.
+        generate a unique random service path segment.
+      </p>
+
+      <p>
+        Ballerina WebSub Subscriber Services could thus be registered as
+        WebHooks to receive event notifications. In this example, a WebSub
+        Subscriber service is used to implement a GitHub-based WebHook service.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/websub/latest/">
+          <code>websub</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -91,9 +106,31 @@ export default function WebsubWebhookSample() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websub-webhook-sample",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -111,7 +148,7 @@ export default function WebsubWebhookSample() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -146,21 +183,6 @@ export default function WebsubWebhookSample() {
           )}
         </Col>
       </Row>
-
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>Internet connectivity to connect to github API.</span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>An active github repository to receive relevant events.</span>
-        </li>
-      </ul>
 
       <p>Run the subscriber service by executing the following command.</p>
 
@@ -228,45 +250,10 @@ export default function WebsubWebhookSample() {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/websub/latest/listeners/Listener">
-              <code>websub:Listener</code> object - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/websub/latest/annotations#SubscriberServiceConfig">
-              <code>websub:SubscriberServiceConfig</code> annotation - API
-              documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://ballerina.io/spec/websub/#22-subscriber-service">
-              <code>websub:SubscriberService</code> - specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="OAuth2 JWT bearer grant type"
+            title="Client - OAuth2 JWT Bearer grant type"
             href="/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -294,7 +281,7 @@ export default function WebsubWebhookSample() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 JWT bearer grant type
+                  Client - OAuth2 JWT Bearer grant type
                 </span>
               </div>
             </div>
@@ -302,8 +289,8 @@ export default function WebsubWebhookSample() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Dynamic listener"
-            href="/learn/by-example/dynamic-listener"
+            title="Circuit breaker"
+            href="/learn/by-example/http-circuit-breaker"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -313,7 +300,7 @@ export default function WebsubWebhookSample() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dynamic listener
+                  Circuit breaker
                 </span>
               </div>
               <svg

@@ -1,5 +1,5 @@
 {
-  "title": "Send/Receive message",
+  "title": "Service",
   "description": "This BBE demonstrates the basic functions of a WebSocket server.",
   "keywords": [
     "ballerina",

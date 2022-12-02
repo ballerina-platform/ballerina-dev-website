@@ -198,7 +198,7 @@ Added a new `annotAttachments()` API to get the annotation attachments and their
 ### Improvements
 
 #### Semantic API
-Improved the `constValue()` method to retrieve the constant value as an object from the constant symbol
+Improved the `constValue()` method to retrieve the constant value as an object from the constant symbol.
 
 #### Syntax API
 

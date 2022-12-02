@@ -22,13 +22,13 @@ public function main() returns error? {
     // When chunking is set to \`CHUNKING_AUTO\`, chunking is done based on the request.
     // The \`http1Settings\` annotation provides the chunking-related configurations.
     // For details, see https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings.
-    http:Client httpClient = check new ("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         httpVersion = http:HTTP_1_1,
         http1Settings = {
             chunking: http:CHUNKING_NEVER
         }
     );
-    string payload = check httpClient->/albums.post({title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"});
+    string payload = check albumClient->/albums.post({title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"});
     io:println(payload);
 }
 `,

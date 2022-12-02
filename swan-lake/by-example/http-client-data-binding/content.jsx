@@ -22,11 +22,11 @@ type Album readonly & record {|
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
-    http:Client httpClient = check new("localhost:9090");
+    http:Client albumClient = check new("localhost:9090");
 
     // Binding the payload to a \`record\` array type.
     // The contextually expected type is inferred from the LHS variable type.
-    Album[] albums = check httpClient->/albums;
+    Album[] albums = check albumClient->/albums;
     io:println("First artist name: " + albums[0].artist);
 }
 `,
@@ -78,7 +78,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=978e6ddc9d5ae8f9ba8d72601e29f4fa&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=8a592057cfe27df77a9b2c3078bb9b28&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}
@@ -316,7 +316,10 @@ export default function HttpClientDataBinding() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/http-service-ssl-tls">
+          <Link
+            title="Payload constraint validation"
+            href="/learn/by-example/http-client-payload-constraint-validation"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -325,7 +328,7 @@ export default function HttpClientDataBinding() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Payload constraint validation
                 </span>
               </div>
               <svg

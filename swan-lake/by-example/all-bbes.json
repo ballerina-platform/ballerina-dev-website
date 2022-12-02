@@ -1403,6 +1403,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "Payload constraint validation",
+        "url": "http-service-payload-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Path parameter",
         "url": "http-path-param",
         "verifyBuild": true,
@@ -1461,6 +1469,14 @@
         "url": "http-client-data-binding",
         "verifyBuild": false,
         "verifyOutput": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Payload constraint validation",
+        "url": "http-client-payload-constraint-validation",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disablePlayground": true,
         "isLearnByExample": false
       }
     ]
@@ -2030,6 +2046,14 @@
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "graphql-client-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
@@ -2148,6 +2172,15 @@
         "disableVerificationReason": "Service cannot be stopped",
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Payload constraint validation",
+        "url": "websocket-service-payload-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
@@ -2159,6 +2192,14 @@
       {
         "name": "Send/Receive message",
         "url": "websocket-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Payload constraint validation",
+        "url": "websocket-client-payload-constraint-validation",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2314,7 +2355,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "WebSub subscriber service",
+        "name": "Subscriber service",
         "url": "websub-webhook-sample",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3219,7 +3260,7 @@
     ]
   },
   {
-    "title": "MySQL client",
+    "title": "Database Access",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -3280,67 +3321,6 @@
       {
         "name": "Call stored procedures",
         "url": "mysql-call-stored-procedures",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "JDBC client",
-    "column": 3,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Simple query",
-        "url": "jdbc-query-operation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Query with one result",
-        "url": "jdbc-query-row-operation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Query with advanced mapping",
-        "url": "jdbc-query-column-mapping",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "DML and DDL operations",
-        "url": "jdbc-execute-operation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Batch execution",
-        "url": "jdbc-batch-execute-operation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Atomic transactions",
-        "url": "jdbc-atomic-transaction",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

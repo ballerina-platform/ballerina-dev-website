@@ -259,7 +259,7 @@ export default function GraphqlServiceSslTls() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#1121-ssltls">
+            <a href="/spec/graphql/#11311-ssltls">
               <code>graphql</code> SSL/TLS - Specification
             </a>
           </span>
@@ -269,8 +269,8 @@ export default function GraphqlServiceSslTls() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Query GraphQL endpoint"
-            href="/learn/by-example/graphql-client-query-endpoint"
+            title="Error handling"
+            href="/learn/by-example/graphql-client-error-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -297,7 +297,7 @@ export default function GraphqlServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Query GraphQL endpoint
+                  Error handling
                 </span>
               </div>
             </div>

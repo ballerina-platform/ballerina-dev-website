@@ -27,11 +27,15 @@ public function main() returns error? {
 
     transaction {
         // Publishes the message using the routing key named "OrderQueue".
-        check newClient->publishMessage({content: {orderId: 1,
-                                                   productName: "Sport shoe",
-                                                   price: 27.5,
-                                                   isValid: true},
-                                         routingKey: "OrderQueue"});
+        check newClient->publishMessage({
+            content: {
+                orderId: 1,
+                productName: "Sport shoe",
+                price: 27.5,
+                isValid: true
+            },
+            routingKey: "OrderQueue"
+        });
         check commit;
     }
 }

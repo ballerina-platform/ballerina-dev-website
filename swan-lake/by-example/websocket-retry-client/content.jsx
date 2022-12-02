@@ -237,8 +237,8 @@ export default function WebsocketRetryClient() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send/Receive message"
-            href="/learn/by-example/websocket-client"
+            title="Payload constraint validation"
+            href="/learn/by-example/websocket-client-payload-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -265,7 +265,7 @@ export default function WebsocketRetryClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive message
+                  Payload constraint validation
                 </span>
               </div>
             </div>

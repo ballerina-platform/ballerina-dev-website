@@ -308,7 +308,7 @@ export default function WebsocketClientOauth2JwtBearerGrantType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="WebSub subscriber service"
+            title="Subscriber service"
             href="/learn/by-example/websub-webhook-sample"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -319,7 +319,7 @@ export default function WebsocketClientOauth2JwtBearerGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  WebSub subscriber service
+                  Subscriber service
                 </span>
               </div>
               <svg

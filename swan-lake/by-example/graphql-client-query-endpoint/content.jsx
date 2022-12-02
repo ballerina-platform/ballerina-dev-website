@@ -310,8 +310,8 @@ export default function GraphqlClientQueryEndpoint() {
         </Col>
         <Col sm={6}>
           <Link
-            title="SSL/TLS"
-            href="/learn/by-example/graphql-service-ssl-tls"
+            title="Error handling"
+            href="/learn/by-example/graphql-client-error-handling"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -321,7 +321,7 @@ export default function GraphqlClientQueryEndpoint() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Error handling
                 </span>
               </div>
               <svg

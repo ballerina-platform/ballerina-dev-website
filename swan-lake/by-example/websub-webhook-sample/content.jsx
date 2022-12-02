@@ -29,26 +29,22 @@ import ballerina/websub;
         }
     }
 }
-service /JuApTOXq19 on new websub:Listener(9090) {
+service on new websub:Listener(9090) {
     // Defines the remote function that accepts the event notification request for the WebHook.
     remote function onEventNotification(websub:ContentDistributionMessage event) returns error? {
-        var retrievedContent = event.content;
-        if retrievedContent is json {
-            if retrievedContent.zen is string {
-                int hookId = check retrievedContent.hook_id;
-                json sender = check retrievedContent.sender;
-                int senderId = check sender.id;
-                io:println(string\`PingEvent received for webhook [\${hookId}]\`);
-                io:println(string\`Event sender [\${senderId}]\`);
-            } else if retrievedContent.ref is string {
-                json repository = check retrievedContent.repository;
-                string repositoryName =  check repository.name;
-                string lastUpdatedTime =  check repository.updated_at;
-                io:println(string\`PushEvent received for [\${repositoryName}]\`);
-                io:println(string\`Last updated at \${lastUpdatedTime}\`);
-            }
-        } else {
-            io:println("Unrecognized content type, hence ignoring");
+        json retrievedContent = check event.content.ensureType();
+        if retrievedContent.zen is string {
+            int hookId = check retrievedContent.hook_id;
+            json sender = check retrievedContent.sender;
+            int senderId = check sender.id;
+            io:println(string \`PingEvent received for webhook [\${hookId}]\`);
+            io:println(string \`Event sender [\${senderId}]\`);
+        } else if retrievedContent.ref is string {
+            json repository = check retrievedContent.repository;
+            string repositoryName = check repository.name;
+            string lastUpdatedTime = check repository.updated_at;
+            io:println(string \`PushEvent received for [\${repositoryName}]\`);
+            io:println(string \`Last updated at \${lastUpdatedTime}\`);
         }
     }
 }
@@ -76,7 +72,7 @@ export default function WebsubWebhookSample() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSub service - Subscriber</h1>
+      <h1>WebSub service - Subscriber service</h1>
 
       <p>
         Ballerina provides the capability to easily introduce subscriber
@@ -248,8 +244,19 @@ export default function WebsubWebhookSample() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/websub/latest/">
-              <code>websub</code> package - API documentation
+            <a href="https://lib.ballerina.io/ballerina/websub/latest/listeners/Listener">
+              <code>websub:Listener</code> object - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websub/latest/annotations#SubscriberServiceConfig">
+              <code>websub:SubscriberServiceConfig</code> annotation - API
+              documentation
             </a>
           </span>
         </li>
@@ -259,7 +266,7 @@ export default function WebsubWebhookSample() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://ballerina.io/spec/websub/#22-subscriber-service">
-              <code>Subscriber service</code> - specification
+              <code>websub:SubscriberService</code> - specification
             </a>
           </span>
         </li>

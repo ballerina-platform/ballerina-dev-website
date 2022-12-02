@@ -21,29 +21,30 @@ type NewProfile record {|
 |};
 
 // Define the \`Profile\` record type to use as an output object.
-type Profile record {|
+type Profile readonly & record {|
     *NewProfile;
     int id;
 |};
 
-service /graphql on new graphql:Listener(9090) {
+// Define an in-memory table to store the Profiles.
+table<Profile> key(id) profiles = table [];
 
-    // Define an in-memory array to store the Profiles.
-    private final Profile[] profiles = [];
+service /graphql on new graphql:Listener(9090) {
 
     // This remote method (\`addProfile\`) has an input argument \`newProfile\` of type \`NewProfile!\`.
     // This \`NewProfile\` record type will be mapped to an \`INPUT_OBJECT\` type in the generated
-    // GraphQL schema.
+    // GraphQL schema. This method will take the next ID from the table and adds it to the \`Profile\`
+    // record.
     remote function addProfile(NewProfile newProfile) returns Profile {
-        int id = self.profiles.length();
-        Profile profile = {id: id, ...newProfile};
-        self.profiles.push(profile);
+        Profile profile = {id: profiles.nextKey(), ...newProfile};
+        profiles.add(profile);
         return profile;
     }
 
-    // Query resolver to retrive all the profiles
-    resource function get profiles() returns Profile[] {
-        return self.profiles;
+    // Query resolver to retrive all the profiles. A Ballerina GraphQL resolver can return a table
+    // directly.
+    resource function get profiles() returns table<Profile> {
+        return profiles;
     }
 }
 `,

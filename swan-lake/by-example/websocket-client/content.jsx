@@ -252,8 +252,8 @@ export default function WebsocketClient() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send/Receive message"
-            href="/learn/by-example/websocket-basic-sample"
+            title="Payload constraint validation"
+            href="/learn/by-example/websocket-service-payload-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -280,7 +280,7 @@ export default function WebsocketClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive message
+                  Payload constraint validation
                 </span>
               </div>
             </div>
@@ -288,8 +288,8 @@ export default function WebsocketClient() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Retry on failure"
-            href="/learn/by-example/websocket-retry-client"
+            title="Payload constraint validation"
+            href="/learn/by-example/websocket-client-payload-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -299,7 +299,7 @@ export default function WebsocketClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Retry on failure
+                  Payload constraint validation
                 </span>
               </div>
               <svg

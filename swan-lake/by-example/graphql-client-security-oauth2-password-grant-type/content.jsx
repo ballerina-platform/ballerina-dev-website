@@ -273,7 +273,8 @@ export default function GraphqlClientSecurityOauth2PasswordGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/OAuth2PasswordGrantConfig">
-              <code>graphql:OAuth2PasswordGrantConfig</code> - API documentation
+              <code>graphql:OAuth2PasswordGrantConfig</code> record - API
+              documentation
             </a>
           </span>
         </li>
@@ -284,6 +285,16 @@ export default function GraphqlClientSecurityOauth2PasswordGrantType() {
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
               <code>oauth2</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#11242-password-grant-type">
+              <code>graphql</code> OAuth2 password grant type - Specification
             </a>
           </span>
         </li>

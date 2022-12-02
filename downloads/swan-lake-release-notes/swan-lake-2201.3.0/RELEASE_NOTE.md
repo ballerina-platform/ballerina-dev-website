@@ -96,11 +96,11 @@ public function main() {
     Employee e = {id: 2, department: "HR"};
     e.id = (); // Remove the optional field `id`
     e = {id: 3};
-    var {id: _, department} = e; // Even if the optional field `department` is absent in `e`, nil value can be assigned to `department`
+    var {id: _, department} = e; // If `department` is absent in `e`, its value becomes nil.
     io:println(department is ()); // true
 
     int? idOrNil = ();
-    e = {id: idOrNil, department: "Engineering"}; // nil value can be used to represent the absence of optional field `id`
+    e = {id: idOrNil, department: "Engineering"}; // absence of `id` is represented by nil 
     io:println(e.hasKey("id")); // false
 }
 ```

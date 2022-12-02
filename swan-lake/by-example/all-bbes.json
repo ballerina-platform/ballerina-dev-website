@@ -2395,7 +2395,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Subscriber service",
+        "name": "Websub service",
         "url": "websub-webhook-sample",
         "verifyBuild": true,
         "verifyOutput": false,

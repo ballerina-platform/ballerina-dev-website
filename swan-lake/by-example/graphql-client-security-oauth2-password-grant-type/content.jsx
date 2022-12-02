@@ -294,7 +294,7 @@ export default function GraphqlClientSecurityOauth2PasswordGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#11242-password-grant-type">
-              <code>graphql</code> OAuth2 password grant type - Specification
+              GraphQL client OAuth2 password grant type - Specification
             </a>
           </span>
         </li>

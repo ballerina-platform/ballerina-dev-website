@@ -269,7 +269,7 @@ export default function KafkaClientProducerSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#322-secure-client">
-              Secure client - Specification
+              Kafka secure client - Specification
             </a>
           </span>
         </li>

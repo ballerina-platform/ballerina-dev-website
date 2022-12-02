@@ -296,7 +296,7 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package API documentation
+              <code>auth</code> package - API documentation
             </a>
           </span>
         </li>
@@ -305,9 +305,9 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#9112-listener---basic-auth---ldap-user-store">
-              <code>Listener basic authentication LDAP user store</code> -
-              specification
+            <a href="/spec/http/#9112-listener---basic-auth---ldap-user-store">
+              HTTP service listener basic authentication LDAP user store -
+              Specification
             </a>
           </span>
         </li>

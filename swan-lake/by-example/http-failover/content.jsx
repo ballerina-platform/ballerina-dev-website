@@ -247,8 +247,8 @@ export default function HttpFailover() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2418-failover">
-              <code>Failover</code> - specification
+            <a href="/spec/http/#2418-failover">
+              HTTP client failover - Specification
             </a>
           </span>
         </li>

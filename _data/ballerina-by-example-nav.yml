@@ -622,6 +622,15 @@ sublinks:
           - title: Payload constraint validation
             id: 3
             url: http-client-payload-constraint-validation
+          - title: Path parameter
+            id: 4
+            url: http-client-path-parameter
+          - title: Query parameter
+            id: 5
+            url: http-client-query-parameter
+          - title: Header parameter
+            id: 6
+            url: http-client-header-parameter
       - title: REST service security
         id: 3
         sublinks:
@@ -739,6 +748,9 @@ sublinks:
           - title: Passthrough
             id: 15
             url: http-passthrough
+          - title: HTTP/2 to HTTP/1.1 downgrade
+            id: 16
+            url: http-2-to-1-1-downgrade-service
       - title: HTTP client advanced
         id: 7
         sublinks:
@@ -757,6 +769,12 @@ sublinks:
           - title: Request with multiparts
             id: 5
             url: http-request-with-multiparts
+          - title: HTTP/2 to HTTP/1.1 downgrade
+            id: 6
+            url: http-2-to-1-1-downgrade-client
+          - title: HTTP/2 prior knowledge
+            id: 7
+            url: http-2-prior-knowledge-client
       - title: HTTP service interceptors
         id: 8
         sublinks:
@@ -775,11 +793,8 @@ sublinks:
       - title: HTTP2
         id: 9
         sublinks:
-          - title: HTTP 1.1 to 2.0 protocol switch
-            id: 1
-            url: http-1-1-to-2-0-protocol-switch
           - title: HTTP 2.0 server push
-            id: 2
+            id: 1
             url: http-2-0-server-push
       - title: GraphQL service
         id: 10

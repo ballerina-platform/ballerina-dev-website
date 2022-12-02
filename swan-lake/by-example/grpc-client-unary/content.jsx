@@ -458,7 +458,9 @@ export default function GrpcClientUnary() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/grpc/#41-simple-rpc">Unary RPC - Specification</a>
+            <a href="/spec/grpc/#41-simple-rpc">
+              gRPC client unary RPC - Specification
+            </a>
           </span>
         </li>
       </ul>

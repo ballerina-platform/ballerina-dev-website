@@ -187,7 +187,7 @@ export default function HttpClientSelfSignedJwtAuthentication() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/records/JwtIssuerConfig">
-              <code>http:JwtIssuerConfig</code> - API documentation
+              <code>http:JwtIssuerConfig</code> record - API documentation
             </a>
           </span>
         </li>
@@ -197,7 +197,7 @@ export default function HttpClientSelfSignedJwtAuthentication() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-              <code>jwt</code> package API documentation
+              <code>jwt</code> package - API documentation
             </a>
           </span>
         </li>
@@ -206,8 +206,8 @@ export default function HttpClientSelfSignedJwtAuthentication() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#9127-client---self-signed-jwt">
-              <code>Client self signed JWT authentication</code> - specification
+            <a href="/spec/http/#9127-client---self-signed-jwt">
+              HTTP client self signed JWT authentication - Specification
             </a>
           </span>
         </li>

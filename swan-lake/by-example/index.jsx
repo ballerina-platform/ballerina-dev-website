@@ -168,6 +168,9 @@ import HttpSendDifferentStatusCodes from "./http-send-different-status-codes/con
 import HttpClientSendRequestReceiveResponse from "./http-client-send-request-receive-response/content.jsx";
 import HttpClientDataBinding from "./http-client-data-binding/content.jsx";
 import HttpClientPayloadConstraintValidation from "./http-client-payload-constraint-validation/content.jsx";
+import HttpClientPathParameter from "./http-client-path-parameter/content.jsx";
+import HttpClientQueryParameter from "./http-client-query-parameter/content.jsx";
+import HttpClientHeaderParameter from "./http-client-header-parameter/content.jsx";
 import HttpServiceSslTls from "./http-service-ssl-tls/content.jsx";
 import HttpServiceMutualSsl from "./http-service-mutual-ssl/content.jsx";
 import HttpServiceBasicAuthenticationFileUserStore from "./http-service-basic-authentication-file-user-store/content.jsx";
@@ -203,16 +206,18 @@ import HttpServiceChunking from "./http-service-chunking/content.jsx";
 import HttpServiceCacheResponse from "./http-service-cache-response/content.jsx";
 import HttpResponseWithMultiparts from "./http-response-with-multiparts/content.jsx";
 import HttpPassthrough from "./http-passthrough/content.jsx";
+import Http2To11DowngradeService from "./http-2-to-1-1-downgrade-service/content.jsx";
 import HttpClientRedirects from "./http-client-redirects/content.jsx";
 import HttpClientFileUpload from "./http-client-file-upload/content.jsx";
 import HttpClientChunking from "./http-client-chunking/content.jsx";
 import HttpCachingClient from "./http-caching-client/content.jsx";
 import HttpRequestWithMultiparts from "./http-request-with-multiparts/content.jsx";
+import Http2To11DowngradeClient from "./http-2-to-1-1-downgrade-client/content.jsx";
+import Http2PriorKnowledgeClient from "./http-2-prior-knowledge-client/content.jsx";
 import HttpRequestInterceptors from "./http-request-interceptors/content.jsx";
 import HttpResponseInterceptors from "./http-response-interceptors/content.jsx";
 import HttpErrorHandling from "./http-error-handling/content.jsx";
 import HttpInterceptorErrorHandling from "./http-interceptor-error-handling/content.jsx";
-import Http11To20ProtocolSwitch from "./http-1-1-to-2-0-protocol-switch/content.jsx";
 import Http20ServerPush from "./http-2-0-server-push/content.jsx";
 import GraphqlHelloWorld from "./graphql-hello-world/content.jsx";
 import GraphqlReturningRecordValues from "./graphql-returning-record-values/content.jsx";
@@ -566,6 +571,9 @@ const BBEs = {
   HttpClientSendRequestReceiveResponse,
   HttpClientDataBinding,
   HttpClientPayloadConstraintValidation,
+  HttpClientPathParameter,
+  HttpClientQueryParameter,
+  HttpClientHeaderParameter,
   HttpServiceSslTls,
   HttpServiceMutualSsl,
   HttpServiceBasicAuthenticationFileUserStore,
@@ -601,16 +609,18 @@ const BBEs = {
   HttpServiceCacheResponse,
   HttpResponseWithMultiparts,
   HttpPassthrough,
+  Http2To11DowngradeService,
   HttpClientRedirects,
   HttpClientFileUpload,
   HttpClientChunking,
   HttpCachingClient,
   HttpRequestWithMultiparts,
+  Http2To11DowngradeClient,
+  Http2PriorKnowledgeClient,
   HttpRequestInterceptors,
   HttpResponseInterceptors,
   HttpErrorHandling,
   HttpInterceptorErrorHandling,
-  Http11To20ProtocolSwitch,
   Http20ServerPush,
   GraphqlHelloWorld,
   GraphqlReturningRecordValues,

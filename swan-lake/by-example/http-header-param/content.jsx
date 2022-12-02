@@ -309,8 +309,8 @@ export default function HttpHeaderParam() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2345-header-parameter">
-              <code>Header parameter</code> - specification
+            <a href="/spec/http/#2345-header-parameter">
+              HTTP service header parameter - Specification
             </a>
           </span>
         </li>

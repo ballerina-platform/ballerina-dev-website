@@ -433,7 +433,7 @@ export default function GraphqlInputObjects() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#452-input-objects">
-              <code>graphql</code> input objects - Specification
+              GraphQL input objects - Specification
             </a>
           </span>
         </li>

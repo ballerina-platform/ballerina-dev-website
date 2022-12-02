@@ -451,8 +451,8 @@ export default function HttpCookies() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2416-cookie">
-              <code>Cookie</code> - specification
+            <a href="/spec/http/#2416-cookie">
+              HTTP service cookie - Specification
             </a>
           </span>
         </li>

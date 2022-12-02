@@ -436,8 +436,8 @@ export default function GraphqlReturningServiceObjects() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#422-record-type-as-object">
-              <code>graphql</code> service type as object - Specification
+            <a href="/spec/graphql/#422-service-type-as-object">
+              GraphQL service type as object - Specification
             </a>
           </span>
         </li>

@@ -287,7 +287,7 @@ export default function HttpServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package API documentation
+              <code>oauth2</code> package - API documentation
             </a>
           </span>
         </li>
@@ -296,8 +296,8 @@ export default function HttpServiceOauth2() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#9114-listener---oauth2">
-              <code>Listener oauth2</code> - specification
+            <a href="/spec/http/#9114-listener---oauth2">
+              HTTP service oauth2 - Specification
             </a>
           </span>
         </li>

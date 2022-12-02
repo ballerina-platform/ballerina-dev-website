@@ -310,7 +310,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#11112-basic-authentication---ldap-user-store">
-              <code>graphql</code> basic authentication - LDAP user store -
+              GraphQL service basic authentication - LDAP user store -
               Specification
             </a>
           </span>

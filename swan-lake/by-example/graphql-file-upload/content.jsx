@@ -357,7 +357,7 @@ export default function GraphqlFileUpload() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#6-file-upload">
-              <code>graphql</code> file upload - Specification
+              GraphQL file upload - Specification
             </a>
           </span>
         </li>

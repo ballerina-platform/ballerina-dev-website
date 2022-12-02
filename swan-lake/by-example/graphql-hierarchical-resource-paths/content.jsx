@@ -423,7 +423,7 @@ export default function GraphqlHierarchicalResourcePaths() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#333-hierarchical-resource-path">
-              <code>graphql</code> hierarchical resource paths - Specification
+              GraphQL hierarchical resource paths - Specification
             </a>
           </span>
         </li>

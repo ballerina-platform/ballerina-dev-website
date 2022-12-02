@@ -260,7 +260,7 @@ export default function GraphqlClientSecuritySslTls() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#11321-ssltls">
-              <code>graphql</code> SSL/TLS - Specification
+              GraphQL client SSL/TLS - Specification
             </a>
           </span>
         </li>

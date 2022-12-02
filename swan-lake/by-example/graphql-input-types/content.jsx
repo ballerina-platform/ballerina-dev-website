@@ -404,7 +404,7 @@ export default function GraphqlInputTypes() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#45-input-types">
-              <code>graphql</code> input types - Specification
+              GraphQL input types - Specification
             </a>
           </span>
         </li>

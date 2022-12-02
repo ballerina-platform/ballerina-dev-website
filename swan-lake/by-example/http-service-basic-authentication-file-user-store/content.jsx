@@ -288,7 +288,7 @@ export default function HttpServiceBasicAuthenticationFileUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package API documentation
+              <code>auth</code> package - API documentation
             </a>
           </span>
         </li>
@@ -297,9 +297,9 @@ export default function HttpServiceBasicAuthenticationFileUserStore() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#9111-listener---basic-auth---file-user-store">
-              <code>Listener basic authentication file user store</code> -
-              specification
+            <a href="/spec/http/#9111-listener---basic-auth---file-user-store">
+              HTTP service listener basic authentication file user store -
+              Specification
             </a>
           </span>
         </li>

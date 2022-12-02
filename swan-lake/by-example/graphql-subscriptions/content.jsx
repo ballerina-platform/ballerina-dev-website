@@ -422,7 +422,7 @@ export default function GraphqlSubscriptions() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#313-the-subscription-type">
-              <code>graphql</code> subscription type - Specification
+              GraphQL <code>Subscription</code> type - Specification
             </a>
           </span>
         </li>

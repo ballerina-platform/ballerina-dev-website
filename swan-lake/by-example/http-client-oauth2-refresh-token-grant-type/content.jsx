@@ -263,6 +263,16 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
           </span>
         </li>
       </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#9129-client---grant-types-oauth2">
+              HTTP client grant types - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

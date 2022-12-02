@@ -273,7 +273,7 @@ export default function KafkaClientConsumerRecordDataBinding() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#422-consume-messages">
-              Consume messages - Specification
+              Kafka client consume messages - Specification
             </a>
           </span>
         </li>

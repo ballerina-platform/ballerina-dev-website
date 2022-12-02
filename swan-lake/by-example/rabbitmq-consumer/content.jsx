@@ -249,7 +249,7 @@ export default function RabbitmqConsumer() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#6-subscribing">
-              <code>rabbitmq</code> subscribing - Specification
+              RabbitMQ subscribing - Specification
             </a>
           </span>
         </li>

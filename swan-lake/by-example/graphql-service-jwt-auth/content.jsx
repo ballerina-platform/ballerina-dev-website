@@ -296,7 +296,7 @@ export default function GraphqlServiceJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#11113-jwt-authentication">
-              <code>graphql</code> JWT authentication - Specification
+              GraphQL service JWT authentication - Specification
             </a>
           </span>
         </li>

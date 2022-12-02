@@ -329,8 +329,8 @@ export default function HttpServiceRedirects() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2341-httpcaller">
-              <code>http:Caller</code> - specification
+            <a href="/spec/http/#2341-httpcaller">
+              HTTP service caller - specification
             </a>
           </span>
         </li>

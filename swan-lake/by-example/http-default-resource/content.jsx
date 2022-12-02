@@ -289,8 +289,8 @@ export default function HttpDefaultResource() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#233-path-parameter">
-              <code>Default resource</code> - specification
+            <a href="/spec/http/#233-path-parameter">
+              HTTP service default resource - Specification
             </a>
           </span>
         </li>

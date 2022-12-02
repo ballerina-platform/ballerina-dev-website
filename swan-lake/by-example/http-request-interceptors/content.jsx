@@ -347,8 +347,8 @@ export default function HttpRequestInterceptors() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#811-request-interceptor">
-              <code>Request interceptor</code> - specification
+            <a href="/spec/http/#811-request-interceptor">
+              HTTP service request interceptor - Specification
             </a>
           </span>
         </li>
@@ -357,8 +357,8 @@ export default function HttpRequestInterceptors() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Request with multiparts"
-            href="/learn/by-example/http-request-with-multiparts"
+            title="HTTP/2 prior knowledge"
+            href="/learn/by-example/http-2-prior-knowledge-client"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -385,7 +385,7 @@ export default function HttpRequestInterceptors() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request with multiparts
+                  HTTP/2 prior knowledge
                 </span>
               </div>
             </div>

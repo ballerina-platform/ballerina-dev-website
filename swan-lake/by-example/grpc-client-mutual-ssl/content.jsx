@@ -254,7 +254,7 @@ export default function GrpcClientMutualSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#52-ssltls-and-mutual-ssl">
-              Mutual SSL - Specification
+              gRPC client mutual SSL - Specification
             </a>
           </span>
         </li>

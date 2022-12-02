@@ -270,8 +270,8 @@ export default function HttpCircuitBreaker() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2415-circuit-breaker">
-              <code>Circuit breaker</code> - specification
+            <a href="/spec/http/#2415-circuit-breaker">
+              HTTP client circuit breaker - Specification
             </a>
           </span>
         </li>

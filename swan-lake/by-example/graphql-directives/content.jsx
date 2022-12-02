@@ -794,7 +794,7 @@ export default function GraphqlDirectives() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#5-directives">
-              <code>graphql</code> directives - Specification
+              GraphQL directives - Specification
             </a>
           </span>
         </li>

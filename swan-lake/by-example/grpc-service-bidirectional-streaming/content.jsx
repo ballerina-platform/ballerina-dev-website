@@ -503,7 +503,7 @@ export default function GrpcServiceBidirectionalStreaming() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#44-bidirectional-streaming-rpc">
-              Bidirectional streaming - Specification
+              gRPC service bidirectional streaming - Specification
             </a>
           </span>
         </li>

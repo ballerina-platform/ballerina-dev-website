@@ -434,7 +434,7 @@ export default function GraphqlDocumentation() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#35-documentation">
-              <code>graphql</code> documentations - Specification
+              GraphQL documentation - Specification
             </a>
           </span>
         </li>

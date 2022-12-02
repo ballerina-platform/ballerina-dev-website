@@ -486,8 +486,8 @@ export default function Http20ServerPush() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#1011-push-promise-and-promise-response">
-              <code>Server push</code> - specification
+            <a href="/spec/http/#1011-push-promise-and-promise-response">
+              HTTP service Server push - Specification
             </a>
           </span>
         </li>
@@ -496,8 +496,8 @@ export default function Http20ServerPush() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="HTTP 1.1 to 2.0 protocol switch"
-            href="/learn/by-example/http-1-1-to-2-0-protocol-switch"
+            title="Interceptor error handling"
+            href="/learn/by-example/http-interceptor-error-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -524,7 +524,7 @@ export default function Http20ServerPush() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  HTTP 1.1 to 2.0 protocol switch
+                  Interceptor error handling
                 </span>
               </div>
             </div>

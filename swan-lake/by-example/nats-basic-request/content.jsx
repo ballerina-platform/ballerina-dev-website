@@ -271,7 +271,7 @@ export default function NatsBasicRequest() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#3-publishing">
-              <code>nats</code> publishing - Specification
+              NATS publishing - Specification
             </a>
           </span>
         </li>

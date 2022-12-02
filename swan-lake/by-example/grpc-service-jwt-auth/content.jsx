@@ -281,7 +281,7 @@ export default function GrpcServiceJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5113-service---jwt-auth">
-              JWT authentication - Specification
+              gRPC service JWT authentication - Specification
             </a>
           </span>
         </li>

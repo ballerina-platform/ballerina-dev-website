@@ -259,7 +259,7 @@ export default function GraphqlClientErrorHandling() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/1.4.4/errors#ClientError">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/errors#ClientError">
               <code>graphql:ClientError</code> error - API documentation
             </a>
           </span>
@@ -270,7 +270,7 @@ export default function GraphqlClientErrorHandling() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#255-client-error-handling">
-              <code>graphql:Client</code> error handling - Specification
+              GraphQL client error handling - Specification
             </a>
           </span>
         </li>

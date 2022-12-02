@@ -234,7 +234,7 @@ export default function RabbitmqClientBasicAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#2-connection">
-              <code>rabbitmq</code> connecting to server - Specification
+              RabbitMQ connection - Specification
             </a>
           </span>
         </li>

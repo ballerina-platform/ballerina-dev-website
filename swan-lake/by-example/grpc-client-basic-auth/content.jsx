@@ -263,7 +263,7 @@ export default function GrpcClientBasicAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#5115-client---basic-auth">
-              Basic authentication - Specification
+              gRPC client basic authentication - Specification
             </a>
           </span>
         </li>

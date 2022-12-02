@@ -247,7 +247,8 @@ export default function HttpClientOauth2JwtBearerGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/records/OAuth2JwtBearerGrantConfig">
-              <code>http:OAuth2JwtBearerGrantConfig</code> - API documentation
+              <code>http:OAuth2JwtBearerGrantConfig</code> record - API
+              documentation
             </a>
           </span>
         </li>
@@ -258,6 +259,16 @@ export default function HttpClientOauth2JwtBearerGrantType() {
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
               <code>oauth2</code> package API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#9129-client---grant-types-oauth2">
+              HTTP client grant types - Specification
             </a>
           </span>
         </li>

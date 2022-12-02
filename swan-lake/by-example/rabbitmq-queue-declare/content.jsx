@@ -231,7 +231,7 @@ export default function RabbitmqQueueDeclare() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#3-exchanges-and-queues">
-              <code>rabbitmq</code> exchanges and queues - Specification
+              RabbitMQ exchanges and queues - Specification
             </a>
           </span>
         </li>

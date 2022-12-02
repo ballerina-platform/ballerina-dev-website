@@ -274,7 +274,7 @@ export default function KafkaServiceSasl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4312-secure-listener">
-              SASL authentication - Specification
+              Kafka service SASL authentication - Specification
             </a>
           </span>
         </li>

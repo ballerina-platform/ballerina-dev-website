@@ -246,7 +246,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/records/OAuth2ClientCredentialsGrantConfig">
-              <code>http:OAuth2ClientCredentialsGrantConfig</code> - API
+              <code>http:OAuth2ClientCredentialsGrantConfig</code> record - API
               documentation
             </a>
           </span>
@@ -257,7 +257,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package API documentation
+              <code>oauth2</code> package - API documentation
             </a>
           </span>
         </li>
@@ -266,8 +266,8 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#9119-client---grant-types-oauth2">
-              <code>OAuth2 client credentials grant type</code> - specification
+            <a href="/spec/http/#9119-client---grant-types-oauth2">
+              HTTP client OAuth2 client credentials grant type - Specification
             </a>
           </span>
         </li>

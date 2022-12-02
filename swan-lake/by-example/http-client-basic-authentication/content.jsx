@@ -251,7 +251,7 @@ export default function HttpClientBasicAuthentication() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package API documentation
+              <code>auth</code> package - API documentation
             </a>
           </span>
         </li>
@@ -260,8 +260,8 @@ export default function HttpClientBasicAuthentication() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#9115-client---basic-auth">
-              <code>Client basic authentication</code> - specification
+            <a href="/spec/http/#9115-client---basic-auth">
+              HTTP client basic authentication - Specification
             </a>
           </span>
         </li>

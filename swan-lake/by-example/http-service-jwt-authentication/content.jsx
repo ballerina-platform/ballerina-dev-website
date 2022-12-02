@@ -264,7 +264,7 @@ export default function HttpServiceJwtAuthentication() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/records/JwtValidatorConfig">
-              <code>http:JwtValidatorConfig</code> - API documentation
+              <code>http:JwtValidatorConfig</code> record - API documentation
             </a>
           </span>
         </li>
@@ -274,7 +274,7 @@ export default function HttpServiceJwtAuthentication() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-              <code>jwt</code> package API documentation
+              <code>jwt</code> package - API documentation
             </a>
           </span>
         </li>
@@ -283,8 +283,8 @@ export default function HttpServiceJwtAuthentication() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#9113-listener---jwt-auth">
-              <code>Listener JWT authentication</code> - specification
+            <a href="/spec/http/#9113-listener---jwt-auth">
+              HTTP service JWT authentication - Specification
             </a>
           </span>
         </li>

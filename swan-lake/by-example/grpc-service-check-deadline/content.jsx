@@ -250,7 +250,7 @@ export default function GrpcServiceCheckDeadline() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#61-grpc-deadline">
-              Check deadline - Specification
+              gRPC service check deadline - Specification
             </a>
           </span>
         </li>

@@ -255,7 +255,7 @@ export default function NatsBasicReply() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-nats/blob/master/docs/spec/spec.md#4-subscribing">
-              <code>nats</code> subscribing - Specification
+              NATS subscribing - Specification
             </a>
           </span>
         </li>

@@ -296,8 +296,8 @@ export default function HttpServiceDataBinding() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/http/#2344-payload-parameter">
-              <code>Payload parameter</code> - specification
+            <a href="/spec/http/#2344-payload-parameter">
+              HTTP service payload parameter - Specification
             </a>
           </span>
         </li>

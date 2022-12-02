@@ -76,23 +76,13 @@ public type RefreshTokenGrantConfig record {|
 
 ### Improvements
 
-#### More improvements on working with optional fields
+#### Improved handling of optional field values
 
-Previously, there is no way to represent the absence of an optional field. Therefore, the following case does not work.
+With this new feature,
 
-```ballerina
-type Topt record {
-   int x?;
-   int y?;
-};
-
-function foo() {    
-    Topt t = {x: 2};
-    var { x, y } = t;
-}
-```
-
-However, with this new feature, the absence of an optional field can be represented by nil as shown below.
+- a record that contains optional fields can be destructured. If the optional field is not available, the type of the variable becomes nil.
+- a variable of type `T?` can be used to construct an optional field. If the value is `()`, it effectively means that that the field is not there.
+- the optional field value can be removed from the record by assigning `()` to the optional field.
 
 ```ballerina
 import ballerina/io;
@@ -228,7 +218,7 @@ Updated the `NodeFactory` methods to allow optional terminating semicolons for m
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+is%3Aclosed+label%3ATeam%2FCompilerFETools+).
+To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+is%3Aclosed+label%3ATeam%2FCompilerFETools).
 
 ## Runtime updates
 
@@ -463,7 +453,6 @@ To view bug fixes, see the GitHub milestone for 2201.3.0 (Swan Lake) of the repo
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+label%3ATeam%2FLanguageServer)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.3.0%22+label%3AType%2FBug+is%3Aclosed)
-- [Semantic API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AArea%2FSemanticAPI+)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3AType%2FBug+label%3AArea%2FDebugger)
 
 ## Code to Cloud updates

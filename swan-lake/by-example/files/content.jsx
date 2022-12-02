@@ -102,7 +102,7 @@ export default function Files() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1e224ddd602742611a7a088b8d84975a&file=files.bal",
+                "https://play.ballerina.io/?gist=600d73a7363b288e07e175aaf58ab079&file=files.bal",
                 "_blank"
               );
             }}

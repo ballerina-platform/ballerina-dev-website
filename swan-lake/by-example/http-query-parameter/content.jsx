@@ -73,7 +73,6 @@ export default function HttpQueryParameter() {
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      
       "
         style={{ marginLeft: "0px" }}
       >
@@ -159,9 +158,7 @@ export default function HttpQueryParameter() {
       <p>Run the service as follows.</p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
@@ -225,9 +222,7 @@ export default function HttpQueryParameter() {
       </p>
 
       <Row
-        className="bbeOutput mx-0 py-0 rounded 
-        
-        "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
@@ -288,7 +283,7 @@ export default function HttpQueryParameter() {
 
       <h2>Related links</h2>
 
-      <ul style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
@@ -298,7 +293,7 @@ export default function HttpQueryParameter() {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
@@ -308,6 +303,7 @@ export default function HttpQueryParameter() {
           </span>
         </li>
       </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

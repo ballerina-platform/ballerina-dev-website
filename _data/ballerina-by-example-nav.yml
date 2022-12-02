@@ -970,7 +970,7 @@ sublinks:
       - title: WebSub
         id: 18
         sublinks:
-          - title: Subscriber service
+          - title: Websub service
             id: 1
             url: websub-webhook-sample
       - title: Listeners and StopHandlers

@@ -318,8 +318,8 @@ export default function HttpServiceSslTls() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Payload data binding"
-            href="/learn/by-example/http-client-data-binding"
+            title="Payload constraint validation"
+            href="/learn/by-example/http-client-payload-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -346,7 +346,7 @@ export default function HttpServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Payload data binding
+                  Payload constraint validation
                 </span>
               </div>
             </div>

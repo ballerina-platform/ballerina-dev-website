@@ -84,7 +84,7 @@ export default function ConvertingToUserDefinedType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e2a0b02887e579f55786855786eb48f6&file=converting_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=8b1b42ced4ea87c1940e90a7603bc8e9&file=converting_to_user_defined_type.bal",
                 "_blank"
               );
             }}

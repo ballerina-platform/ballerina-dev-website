@@ -73,7 +73,7 @@ export default function FloatingPointNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1509e76f39889f5c8f657c7962a2a610&file=floating_point_numbers.bal",
+                "https://play.ballerina.io/?gist=8fe885a87004dd7595b2040f57a6bfc3&file=floating_point_numbers.bal",
                 "_blank"
               );
             }}

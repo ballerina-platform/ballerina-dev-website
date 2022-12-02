@@ -25,12 +25,12 @@ public function main() returns error? {
     // To secure a client using HTTPS, the client needs to be configured with
     // a certificate file of the listener. The \`http:ClientSecureSocket\` record
     // provides the SSL-related configurations of the client.
-    http:Client securedEP = check new("localhost:9090",
+    http:Client albumClient = check new("localhost:9090",
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }
     );
-    Album[] payload = check securedEP->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }
 `,

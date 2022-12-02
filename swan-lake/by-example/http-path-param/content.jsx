@@ -313,8 +313,8 @@ export default function HttpPathParam() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Payload data binding"
-            href="/learn/by-example/http-service-data-binding"
+            title="Payload constraint validation"
+            href="/learn/by-example/http-service-payload-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -341,7 +341,7 @@ export default function HttpPathParam() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Payload data binding
+                  Payload constraint validation
                 </span>
               </div>
             </div>

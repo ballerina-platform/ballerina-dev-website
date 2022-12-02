@@ -159,10 +159,15 @@ a {
 
 .mdContent h3,
 .policyContent h3,
-.downloads h3,
 .archiveContent h3 {
   margin-top: 40px;
   /* margin-top: 20px; */
+  color: #585a5e;
+  font-size: 1.3rem;
+  scroll-margin-top: 60px;
+}
+
+.downloads h3 {
   color: #585a5e;
   font-size: 1.3rem;
   scroll-margin-top: 60px;
@@ -1190,6 +1195,10 @@ table.cTopControlsContainer tbody {
 
 .bbeTable li:hover > .categoryButton {
   visibility: visible;
+}
+
+.bbeBody .relatedLinks {
+  margin-bottom: 0 !important;
 }
 
 /* CSS for hard coded html content in mds. */

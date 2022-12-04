@@ -12,8 +12,8 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `// The host of the database server.
-configurable string dbHost = "localhost";
+  `// Port on which to run the service.
+configurable int port = 8080;
 
 //\`configurable string password = ?;\`
 //

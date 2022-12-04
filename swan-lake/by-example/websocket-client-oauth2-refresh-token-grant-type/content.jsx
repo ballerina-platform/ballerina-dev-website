@@ -15,32 +15,30 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerina/websocket;
 
-// Defines the WebSocket client to call the OAuth2 secured APIs.
-// The client is enriched with the \`Authorization: Bearer <token>\` header by
-// passing the \`websocket:OAuth2RefreshTokenGrantConfig\` for the \`auth\` configuration of the client.
-// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2RefreshTokenGrantConfig.
-websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
-    auth = {
-        refreshUrl: "https://localhost:9445/oauth2/token",
-        refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: ["admin"],
-        clientConfig: {
-            secureSocket: {
-                cert: "../resource/path/to/public.crt"
-            }
-        }
-    },
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
-    check securedEP->writeMessage("Hello, World!");
-    string textMessage = check securedEP->readMessage();
-    io:println(textMessage);
+    // Defines the WebSocket client to call the OAuth2 secured APIs.
+    // The client is enriched with the \`Authorization: Bearer <token>\` header by
+    // passing the \`websocket:OAuth2RefreshTokenGrantConfig\` for the \`auth\` configuration of the client.
+    websocket:Client chatClient = check new("wss://localhost:9090/chat",
+        auth = {
+            refreshUrl: "https://localhost:9445/oauth2/token",
+            refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
+            clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+            clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+            scopes: ["admin"],
+            clientConfig: {
+                secureSocket: {
+                    cert: "../resource/path/to/public.crt"
+                }
+            }
+        },
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
+    check chatClient->writeMessage("Hello, John!");
+    string chatMessage = check chatClient->readMessage();
+    io:println(chatMessage);
 }
 `,
 ];
@@ -66,34 +64,15 @@ export default function WebsocketClientOauth2RefreshTokenGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - OAuth2 Refresh Token grant type</h1>
+      <h1>WebSocket client - OAuth2 refresh token grant type</h1>
 
       <p>
         A client, which is secured with an OAuth2 refresh token grant type can
-        be used to connect to a secured service.
-      </p>
-
-      <p>
-        The client is enriched with the{" "}
+        be used to connect to a secured service. The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:OAuth2RefreshTokenGrantConfig</code> to the{" "}
         <code>auth</code> configuration of the client.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-          <code>oauth2</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -157,18 +136,20 @@ export default function WebsocketClientOauth2RefreshTokenGrantType() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the command below.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          the{" "}
-          <a href="/learn/by-example/websocket-service-oauth2/">
-            OAuth2 service
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the WebSocket service given in the{" "}
+            <a href="/learn/by-example/websocket-service-oauth2/">OAuth2</a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -224,16 +205,49 @@ export default function WebsocketClientOauth2RefreshTokenGrantType() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run websocket_client_oauth2_refresh_token_grant_type.bal`}</span>
-              <span>{`Hello, World!`}</span>
+              <span>{`Hello, How are you?`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+              <code>oauth2</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/websocket/#52-authentication-and-authorization">
+              WebSocket authentication - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 Password grant type"
+            title="OAuth2 Password grant type"
             href="/learn/by-example/websocket-client-oauth2-password-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -261,7 +275,7 @@ export default function WebsocketClientOauth2RefreshTokenGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 Password grant type
+                  OAuth2 Password grant type
                 </span>
               </div>
             </div>
@@ -269,7 +283,7 @@ export default function WebsocketClientOauth2RefreshTokenGrantType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - OAuth2 JWT Bearer grant type"
+            title="OAuth2 JWT bearer grant type"
             href="/learn/by-example/websocket-client-oauth2-jwt-bearer-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -280,7 +294,7 @@ export default function WebsocketClientOauth2RefreshTokenGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - OAuth2 JWT Bearer grant type
+                  OAuth2 JWT bearer grant type
                 </span>
               </div>
               <svg

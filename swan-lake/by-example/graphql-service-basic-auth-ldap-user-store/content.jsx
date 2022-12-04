@@ -14,7 +14,12 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-listener graphql:Listener securedEP = new(4000,
+type Profile record {|
+    string name;
+    int age;
+|};
+
+listener graphql:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -56,8 +61,11 @@ listener graphql:Listener securedEP = new(4000,
     ]
 }
 service /graphql on securedEP {
-    resource function get greeting() returns string {
-        return "Hello, World!";
+    resource function get profile() returns Profile {
+        return {
+            name: "Walter White",
+            age: 50
+        };
     }
 }
 `,
@@ -84,14 +92,15 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Basic Auth LDAP user store</h1>
+      <h1>GraphQL service - Basic authentication LDAP user store</h1>
 
       <p>
-        A GraphQL service can be secured with Basic Auth and by enforcing
-        authorization optionally. Then, it validates the Basic Auth token sent
-        in the <code>Authorization</code> header against the provided
-        configurations. This reads data from the configured LDAP. This stores
-        usernames, passwords for authentication, and scopes for authorization.
+        A GraphQL service can be secured with Basic authentication and by
+        enforcing authorization optionally. Then, it validates the Basic
+        authentication token sent in the <code>Authorization</code> header
+        against the provided configurations. This reads data from the configured
+        LDAP. This stores usernames, passwords for authentication, and scopes
+        for authorization.
       </p>
 
       <p>
@@ -104,21 +113,6 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
         against the scope included in the user store for at least one match
         between the two sets.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          <code>auth</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -245,15 +239,64 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client-security-basic-auth/">
+            GraphQL client - Basic authentication
+          </a>{" "}
+          example.
         </p>
       </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
+              <code>graphql:ServiceConfig</code> annotation - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/LdapUserStoreConfigWithScopes">
+              <code>graphql:LdapUserStoreConfigWithScopes</code> record - API
+              documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+              <code>auth</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#11112-basic-authentication---ldap-user-store">
+              GraphQL service basic authentication - LDAP user store -
+              Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth file user store"
+            title="Basic authentication file user store"
             href="/learn/by-example/graphql-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -281,7 +324,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth file user store
+                  Basic authentication file user store
                 </span>
               </div>
             </div>
@@ -289,7 +332,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - JWT Auth"
+            title="JWT authentication"
             href="/learn/by-example/graphql-service-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -300,7 +343,7 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - JWT Auth
+                  JWT authentication
                 </span>
               </div>
               <svg

@@ -87,7 +87,7 @@ export default function HttpErrorHandling() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Error Handling</h1>
+      <h1>HTTP service - Error handling</h1>
 
       <p>
         Error handling is an integral part of any network program. Errors can be
@@ -98,14 +98,6 @@ export default function HttpErrorHandling() {
         errors and handle them as you wish. These error interceptors can be
         placed anywhere in the interceptor pipeline. When there is an error, the
         execution jumps to the closest error interceptor.
-      </p>
-
-      <p>
-        For more information, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -311,10 +303,34 @@ export default function HttpErrorHandling() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#82-error-handling">
+              HTTP service error handling - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Response Interceptors"
+            title="Response interceptors"
             href="/learn/by-example/http-response-interceptors"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -342,7 +358,7 @@ export default function HttpErrorHandling() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Response Interceptors
+                  Response interceptors
                 </span>
               </div>
             </div>

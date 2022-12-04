@@ -14,17 +14,27 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerinax/rabbitmq;
 
+public type Order record {|
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+|};
+
 public function main() returns error? {
     // Creates a ballerina RabbitMQ client.
     rabbitmq:Client newClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
-    // Declares the queue, MyQueue.
-    check newClient->queueDeclare("MyQueue");
-
-    // Publishing messages to an exchange using a routing key.
-    // Publishes the message using newClient and the routing key named MyQueue.
-    string message = "Hello from Ballerina";
-    check newClient->publishMessage({content: message.toBytes(), routingKey: "MyQueue"});
+    // Publishes the message using newClient and the routing key named OrderQueue.
+    check newClient->publishMessage({
+        content: {
+            orderId: 1,
+            productName: "Sport shoe",
+            price: 27.5,
+            isValid: true
+        },
+        routingKey: "OrderQueue"
+    });
 }
 `,
 ];
@@ -50,19 +60,13 @@ export default function RabbitmqProducer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Producer</h1>
+      <h1>RabbitMQ client - Produce message</h1>
 
       <p>
-        The messages are sent to two different queues, to one queue using the
-        same channel and to the other using two different channels.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          <code>rabbitmq</code> module
-        </a>
-        .
+        In this example, the producer is sending a single message to the
+        pre-declared queue, MyQueue. See{" "}
+        <code>RabbitMQ client - Declare a queue</code> sample for more details
+        on declaring the queue.
       </p>
 
       <Row
@@ -127,6 +131,45 @@ export default function RabbitmqProducer() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://www.rabbitmq.com/download.html">RabbitMQ server</a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Declare the queue as given in the{" "}
+            <a href="/learn/by-example/rabbitmq-queue-declare/">
+              RabbitMQ client - Declare queue
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the RabbitMQ service given in the{" "}
+            <a href="/learn/by-example/rabbitmq-consumer/">
+              RabbitMQ service - Consume message
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -186,11 +229,35 @@ export default function RabbitmqProducer() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Client">
+              <code>rabbitmq:Client</code> client object - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#5-publishing">
+              RabbitMQ publishing - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="SASL authentication - producer"
-            href="/learn/by-example/kafka-authentication-sasl-plain-producer"
+            title="Declare a queue"
+            href="/learn/by-example/rabbitmq-queue-declare"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -217,14 +284,17 @@ export default function RabbitmqProducer() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SASL authentication - producer
+                  Declare a queue
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Consumer" href="/learn/by-example/rabbitmq-consumer">
+          <Link
+            title="Consume message"
+            href="/learn/by-example/rabbitmq-sync-consumer"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -233,7 +303,7 @@ export default function RabbitmqProducer() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consumer
+                  Consume message
                 </span>
               </div>
               <svg

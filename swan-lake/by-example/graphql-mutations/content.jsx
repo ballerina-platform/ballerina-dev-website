@@ -14,62 +14,47 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-service /graphql on new graphql:Listener(4000) {
+// Define a record type to use as an object in the GraphQL service.
+type Profile readonly & record {|
+    int id;
+    string name;
+    int age;
+|};
 
-    // Define a \`Person\` object in the service.
-    private Person person;
+// Define an in-memory table to store the profiles.
+table<Profile> key(id) profiles = table [
+        {id: 1, name: "Walter White", age: 50},
+        {id: 2, name: "Jesse Pinkman", age: 25}
+    ];
 
-    function init() {
-        // Initializes the \`person\` value.
-        self.person = new("Walter White", 51);
+service /graphql on new graphql:Listener(9090) {
+    // A resource method represents a field in the root \`Query\` operation.
+    resource function get profile(int id) returns Profile {
+        return profiles.get(id);
     }
 
-    // A resource function represents a field in the root \`Query\` operation.
-    resource function get profile() returns Person {
-
-        return self.person;
-    }
-
-    // A remote function represents a field in the root \`Mutation\` operation. After updating the
-    // name, the \`person\` object will be returned.
-    remote function updateName(string name) returns Person {
-        self.person.setName(name);
-        return self.person;
-    }
-
-    // Remote function to update the age.
-    remote function updateAge(int age) returns Person {
-        self.person.setAge(age);
-        return self.person;
+    // A remote method represents a field in the root \`Mutation\` operation. This remote method will
+    // update the name for the given profile ID, and returns the updated \`Profile\` value. If the ID
+    // is not found, this will return an error.
+    remote function updateName(int id, string name) returns Profile|error {
+        if profiles.hasKey(id) {
+            Profile profile = profiles.remove(id);
+            Profile updatedProfile = {
+                id: profile.id,
+                name: name,
+                age: profile.age
+            };
+            profiles.put(updatedProfile);
+            return updatedProfile;
+        }
+        return error(string \`Profile with ID "\${id}" not found\`);
     }
 }
-
-// Define a service class to use as an object in the GraphQL service.
-public service class Person {
-
-    private string name;
-    private int age;
-
-    function init(string name, int age) {
-        self.name = name;
-        self.age = age;
-    }
-
-    resource function get name() returns string {
-        return self.name;
-    }
-    resource function get age() returns int {
-        return self.age;
-    }
-    resource function get isAdult() returns boolean {
-        return self.age > 21;
-    }
-
-    function setName(string name) {
-        self.name = name;
-    }
-    function setAge(int age) {
-        self.age = age;
+`,
+  `mutation {
+    updateName(id: 1, name: "Mr. Lambert") {
+        id
+        name
     }
 }
 `,
@@ -77,6 +62,7 @@ public service class Person {
 
 export default function GraphqlMutations() {
   const [codeClick1, updateCodeClick1] = useState(false);
+  const [codeClick2, updateCodeClick2] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
@@ -98,24 +84,22 @@ export default function GraphqlMutations() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Mutations</h1>
+      <h1>GraphQL service - Mutations</h1>
 
       <p>
-        A remote function inside a GraphQL service represents a field in the
-        root <code>Mutation</code> object type. Therefore, if a remote function
-        is present inside the Ballerina GraphQL service, the auto-generated
-        schema will have a <code>Mutation</code> type. Each remote function in
-        the service will be added as a field of the <code>Mutation</code> type.
-        The field name will be the remote function name and the field type will
-        be the return type of the remote function.
+        A remote method inside a GraphQL service represents a field in the root{" "}
+        <code>Mutation</code> object type. Therefore, if a remote method is
+        present inside the Ballerina GraphQL service, the auto-generated schema
+        will have the <code>Mutation</code> type. Each remote method in the
+        service will be added as a field of the <code>Mutation</code> type. The
+        field name will be the remote method name and the field type will be the
+        return type of the remote method.
       </p>
 
       <p>
-        For more information on the underlying package, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
-        </a>
-        .
+        This example shows a GraphQL endpoint, which has a field named{" "}
+        <code>updateName</code> in the root <code>Mutation</code> type. The type
+        of the field is of type <code>Profile!</code>.
       </p>
 
       <Row
@@ -241,7 +225,71 @@ export default function GraphqlMutations() {
         </Col>
       </Row>
 
-      <p>Invoke the service as follows.</p>
+      <p>Then, send the following document to update the name.</p>
+
+      <Row
+        className="bbeCode mx-0 py-0 rounded 
+      "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col className="d-flex align-items-start" sm={12}>
+          {codeClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              disabled
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateCodeClick2(true);
+                copyToClipboard(codeSnippetData[1]);
+                setTimeout(() => {
+                  updateCodeClick2(false);
+                }, 3000);
+              }}
+              aria-label="Copy to Clipboard"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#000"
+                className="bi bi-clipboard"
+                viewBox="0 0 16 16"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          {codeSnippets[1] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[1]),
+              }}
+            />
+          )}
+        </Col>
+      </Row>
+
+      <p>To send the document, use the following cURL command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -296,26 +344,46 @@ export default function GraphqlMutations() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Send a query to the GraphQL endpoint using a cURL command.`}</span>
-              <span>{`# The query used: { profile { name isAdult } }`}</span>
-              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ profile { name age } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"profile":{"name":"Walter White", "age":51}}}`}</span>
-              <span>{`
-`}</span>
-              <span>{`# Now send a mutation to update the name.`}</span>
-              <span>{`# The document used for this: mutation { updateName(name: \\"Mr. Lambert\\") { name age } }`}</span>
-              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation { updateName(name: \\"Mr. Lambert\\") { name age } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"updateName":{"name":"Mr. Lambert", "age":51}}}`}</span>
-              <span>{`
-`}</span>
-              <span>{`# Then send a mutation to update the age.`}</span>
-              <span>{`# The document used for this: mutation { updateAge(age: 52) { name age } }`}</span>
-              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation { updateAge(age: 52) { name age } }" }' 'http://localhost:4000/graphql'`}</span>
-              <span>{`{"data":{"updateAge":{"name":"Mr. Lambert", "age":52}}}`}</span>
+              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "mutation { updateName(id: 1, name: \\"Mr. Lambert\\") { id name } }" }' 'http://localhost:9090/graphql'`}</span>
+              <span>{`{"data":{"updateName":{"id":1, "name":"Mr. Lambert"}}}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client-query-endpoint/">
+            GraphQL client
+          </a>
+          .
+        </p>
+      </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest">
+              <code>graphql</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#312-the-mutation-type">
+              GraphQL <code>Mutation</code> type - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

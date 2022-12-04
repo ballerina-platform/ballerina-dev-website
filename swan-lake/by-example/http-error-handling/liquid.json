@@ -1,5 +1,5 @@
 {
-  "title": "Error Handling",
+  "title": "Error handling",
   "description": "This BBE demonstrates how HTTP error handling is done in Ballerina.",
   "keywords": [
     "ballerina",

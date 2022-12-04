@@ -21,16 +21,14 @@ public function main() returns error? {
     // Creates a new connection-oriented UDP client by providing the
     // \`remoteHost\` and the \`remotePort\`.
     // Optionally, you can provide the interface that the socket needs to bind 
-    // and the timeout in milliseconds, which specifies the read timeout value.
-    // E.g.: \`udp:Client client = new ("www.ballerina.com", 80,
+    // and the timeout in seconds, which specifies the read timeout value.
+    // E.g.: \`udp:ConnectClient socketClient = new ("www.ballerina.com", 80,
     // localHost = "localhost", timeout = 5);\`
-    udp:ConnectClient socketClient = check new("localhost", 8080);
-
-    string msg = "Hello Ballerina echo";
+    udp:ConnectClient socketClient = check new("localhost", 9090);
 
     // Sends the data to the connected remote host.
     // The parameter is a \`byte[]\`, which contains the data to be sent.
-    check socketClient->writeBytes(msg.toBytes());
+    check socketClient->writeBytes("Hello Ballerina echo".toBytes());
     io:println("Data was sent to the remote host.");
 
     // Waits until the data is received from the connected host.
@@ -39,7 +37,6 @@ public function main() returns error? {
 
     // Closes the client and releases the bound port.
     check socketClient->close();
-
 }
 `,
 ];
@@ -65,7 +62,7 @@ export default function UdpConnectClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Connection-oriented client</h1>
+      <h1>UDP client - Send/Receive datagram with connection</h1>
 
       <p>
         The ConnectClient is configured so that it only receives data from, and
@@ -77,14 +74,6 @@ export default function UdpConnectClient() {
         The client remains connected until it is explicitly disconnected or
         until it is closed. This sample demonstrates how to send data to a
         connected server and print the echoed response.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/udp/latest">
-          <code>udp</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -149,6 +138,21 @@ export default function UdpConnectClient() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the UDP service given in the{" "}
+            <a href="/learn/by-example/udp-listener/">Send/Receive datagram</a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -203,21 +207,39 @@ export default function UdpConnectClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_connect_client.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`# This will print the output below upon a successful write.`}</span>
               <span>{`Data was sent to the remote host.`}</span>
-              <span>{`# Print the response that is returned from the server as an echo.`}</span>
               <span>{`Received: Hello Ballerina echo`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/udp/latest/clients/Client">
+              <code>udp:Client</code> client object - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/udp/#3-client">UDP Client - Specification</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Connectionless client"
+            title="Send/Receive datagram"
             href="/learn/by-example/udp-client"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -245,14 +267,17 @@ export default function UdpConnectClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Connectionless client
+                  Send/Receive datagram
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Listener" href="/learn/by-example/udp-listener">
+          <Link
+            title="Receive email"
+            href="/learn/by-example/receive-email-using-service"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -261,7 +286,7 @@ export default function UdpConnectClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Listener
+                  Receive email
                 </span>
               </div>
               <svg

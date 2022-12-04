@@ -1,0 +1,18 @@
+{
+  "title": "Header parameter",
+  "description": "BBE on how to call a client resource with a header parameter.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "http",
+    "client",
+    "header parameter"
+  ],
+  "permalink": "/learn/by-example/http-client-header-parameter",
+  "active": "http-client-header-parameter",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-client-header-parameter",
+    "/swan-lake/learn/by-example/http-client-header-parameter.html"
+  ]
+}

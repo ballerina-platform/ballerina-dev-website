@@ -88,7 +88,7 @@ export default function HttpRequestInterceptors() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Request interceptors</h1>
+      <h1>HTTP service - Request interceptors</h1>
 
       <p>
         Interceptors are used to execute some common logic such as logging,
@@ -98,14 +98,6 @@ export default function HttpRequestInterceptors() {
         <code>RequestInterceptors</code> have a resource method, which will be
         executed before dispatching the request to the actual resource in the
         target service.
-      </p>
-
-      <p>
-        For more information, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -312,9 +304,36 @@ export default function HttpRequestInterceptors() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#811-request-interceptor">
+              HTTP service request interceptor - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Passthrough" href="/learn/by-example/http-passthrough">
+          <Link
+            title="HTTP/2 prior knowledge"
+            href="/learn/by-example/http-2-prior-knowledge-client"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -340,7 +359,7 @@ export default function HttpRequestInterceptors() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Passthrough
+                  HTTP/2 prior knowledge
                 </span>
               </div>
             </div>
@@ -348,7 +367,7 @@ export default function HttpRequestInterceptors() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Response Interceptors"
+            title="Response interceptors"
             href="/learn/by-example/http-response-interceptors"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -359,7 +378,7 @@ export default function HttpRequestInterceptors() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Response Interceptors
+                  Response interceptors
                 </span>
               </div>
               <svg

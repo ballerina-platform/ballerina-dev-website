@@ -1,0 +1,18 @@
+{
+  "title": "Bidirectional streaming RPC",
+  "description": "This Ballerina by Example has a gRPC streaming client for bidirectional streaming RPC.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "bidirectional streaming",
+    "client"
+  ],
+  "permalink": "/learn/by-example/grpc-client-bidirectional-streaming",
+  "active": "grpc-client-bidirectional-streaming",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-client-bidirectional-streaming",
+    "/swan-lake/learn/by-example/grpc-client-bidirectional-streaming.html"
+  ]
+}

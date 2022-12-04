@@ -1,7 +1,14 @@
 {
-  "title": "Caching client",
+  "title": "Caching",
   "description": "BBE on how the HTTP caching is configured and performed in Ballerina.",
-  "keywords": ["ballerina", "ballerina by example", "bbe", "http", "caching"],
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "client",
+    "caching"
+  ],
   "permalink": "/learn/by-example/http-caching-client",
   "active": "http-caching-client",
   "redirect_from": [

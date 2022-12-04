@@ -1,0 +1,11 @@
+{
+  "title": "Kubernetes",
+  "description": "Ballerina supports generating Kubernetes artifacts from code without any additional configuration. This simplifies the experience of developing and deploying Ballerina code in the cloud. Code to Cloud builds the containers and required artifacts by deriving the required values from the code. If you want to override the default values taken by the compiler, you can use a `Cloud.toml` file.",
+  "keywords": [],
+  "permalink": "/learn/by-example/c2c-k8s-deployment",
+  "active": "c2c-k8s-deployment",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/c2c-k8s-deployment",
+    "/swan-lake/learn/by-example/c2c-k8s-deployment.html"
+  ]
+}

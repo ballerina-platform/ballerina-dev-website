@@ -1,5 +1,5 @@
 {
-  "title": "Service - Basic Auth file user store",
+  "title": "Basic authentication file user store",
   "description": "BBE on how to secure gRPC service with Basic Auth in Ballerina.",
   "keywords": [
     "ballerina",

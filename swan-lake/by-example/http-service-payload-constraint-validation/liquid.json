@@ -1,0 +1,18 @@
+{
+  "title": "Payload constraint validation",
+  "description": "BBE on how constraint validation can be done in the service.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "constraint",
+    "validation"
+  ],
+  "permalink": "/learn/by-example/http-service-payload-constraint-validation",
+  "active": "http-service-payload-constraint-validation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-service-payload-constraint-validation",
+    "/swan-lake/learn/by-example/http-service-payload-constraint-validation.html"
+  ]
+}

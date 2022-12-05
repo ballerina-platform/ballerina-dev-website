@@ -2,11 +2,6 @@ name: Deploy Nextjs app to gh-pages
 
 on:
   workflow_dispatch:
-    inputs:
-      source_branch:
-        description: ballerina-dev-website repo branch
-        required: true
-        default: master
 
 jobs:
   build:
@@ -22,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.inputs.source_branch }}
+          ref: master
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3

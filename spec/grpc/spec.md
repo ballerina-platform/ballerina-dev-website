@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @daneshk @BuddhiWathsala @MadhukaHarith92 @dilanSachi  
 _Reviewers_: @shafreenAnfar @daneshk @dilanSachi  
 _Created_: 2021/12/05   
-_Updated_: 2022/10/14  
+_Updated_: 2022/02/17  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -11,7 +11,7 @@ This is the specification for the gRPC standard library of [Ballerina language](
 
 The gRPC library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 
-If you have any feedback or suggestions about the library, start a discussion via a GitHub issue or in the [Discord server](https://discord.gg/ballerinalang). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in GitHub.
+If you have any feedback or suggestions about the library, start a discussion via a GitHub issue or in the [Slack channel](https://ballerina.io/community/). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in GitHub.
 
 The conforming implementation of the specification is released and included in the distribution. Any deviation from the specification is considered a bug.
 
@@ -49,7 +49,6 @@ The conforming implementation of the specification is released and included in t
    * 6.2. [gRPC compression](#62-grpc-compression)
    * 6.3. [gRPC access and trace logs](#63-grpc-access-and-trace-logs)
    * 6.4. [gRPC retry](#64-grpc-retry)
-7. [gRPC Server Reflection](#7-grpc-server-reflection)
 
 
 ## 1. Overview
@@ -1030,18 +1029,3 @@ public type RetryConfiguration record {|
    ErrorType[] errorTypes = defaultErrorTypes;
 |};
 ```
-
-## 7. gRPC Server Reflection
-Server reflection is a gRPC feature for servers to assist clients in runtime construction of requests without having stub information precompiled into the client. With the user defined service, a predefined standard service is started to provide service information to the clients.
-This can be enabled by enabling the `reflectionEnabled` flag in the `grpc:ListenerConfiguration`.
-```ballerina
-# Configurations for managing the gRPC server endpoint.
-
-# + reflectionEnabled - Support reflection
-public type ListenerConfiguration record {|
-    ...
-    boolean reflectionEnabled = false;
-|};
-```
-The dynamic service `ServerReflection` will handle all the reflection requests. The related proto definition can be found [here](https://github.com/grpc/grpc/blob/master/src/proto/grpc/reflection/v1alpha/reflection.proto).
-This service contains a bidirectional function `ServerReflectionInfo` which accepts `ServerReflectionRequest`s and responds with `ServerReflectionResponse`s.

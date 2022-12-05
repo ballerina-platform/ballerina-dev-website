@@ -12,8 +12,8 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `// Port on which to run the service.
-configurable int port = 8080;
+  `// The host of the database server.
+configurable string dbHost = "localhost";
 
 //\`configurable string password = ?;\`
 //
@@ -71,7 +71,7 @@ export default function ConfigurableVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/configurable-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/configurable-variables",
                 "_blank"
               );
             }}

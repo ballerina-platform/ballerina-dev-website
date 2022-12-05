@@ -234,7 +234,7 @@ export default function TesterinaMockingObjects() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-mocking-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/testerina-mocking-objects",
                 "_blank"
               );
             }}
@@ -318,7 +318,7 @@ export default function TesterinaMockingObjects() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/testerina-mocking-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/testerina-mocking-objects",
                 "_blank"
               );
             }}
@@ -523,8 +523,8 @@ export default function TesterinaMockingObjects() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic REST service"
-            href="/learn/by-example/http-basic-rest-service"
+            title="Service path and resource path"
+            href="/learn/by-example/http-absolute-path-and-path"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -534,7 +534,7 @@ export default function TesterinaMockingObjects() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic REST service
+                  Service path and resource path
                 </span>
               </div>
               <svg

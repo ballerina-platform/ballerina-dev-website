@@ -87,7 +87,7 @@ export default function StreamType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/stream-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/stream-type",
                 "_blank"
               );
             }}

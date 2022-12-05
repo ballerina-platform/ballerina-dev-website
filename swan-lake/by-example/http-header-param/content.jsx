@@ -13,26 +13,16 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/http;
-import ballerina/mime;
-
-type Album readonly & record {|
-    string title;
-    string artist;
-|};
-
-table<Album> key(title) albums = table [
-    {title: "Blue Train", artist: "John Coltrane"},
-    {title: "Jeru", artist: "Gerry Mulligan"}
-];
+import ballerina/log;
 
 service / on new http:Listener(9090) {
+    // The \`clientKey\` method argument is considered as the value for the
+    // \`X-Client-Key\` HTTP header.
+    resource function get hello(@http:Header {name: "X-Client-Key"} string clientKey)
+            returns string {
 
-    // The \`accept\` argument with \`@http:Header\` annotation takes the value of the \`Accept\` request header.
-    resource function get albums(@http:Header string accept) returns Album[]|http:NotAcceptable {
-        if !string:equalsIgnoreCaseAscii(accept, mime:APPLICATION_JSON) {
-            return http:NOT_ACCEPTABLE;
-        }
-        return albums.toArray();
+        log:printInfo("Received header value: " + clientKey);
+        return clientKey;
     }
 }
 `,
@@ -61,7 +51,7 @@ export default function HttpHeaderParam() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>REST service - Header parameter</h1>
+      <h1>Header parameter</h1>
 
       <p>
         The <code>http</code> module provides support for accessing inbound
@@ -78,6 +68,14 @@ export default function HttpHeaderParam() {
         resource method argument without using the annotation.
       </p>
 
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
+      </p>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -88,7 +86,7 @@ export default function HttpHeaderParam() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-header-param",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-header-param",
                 "_blank"
               );
             }}
@@ -218,6 +216,7 @@ export default function HttpHeaderParam() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_headers.bal`}</span>
+              <span>{`time = 2021-06-25T11:56:13.746+05:30 level = INFO module = "" message = "Received header value 0987654321"`}</span>
             </code>
           </pre>
         </Col>
@@ -281,42 +280,18 @@ export default function HttpHeaderParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/albums" -H "Accept:application/json"`}</span>
-              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
+              <span>{`\$ curl http://localhost:9090/hello -H "X-Client-Key: 0987654321"`}</span>
+              <span>{`0987654321`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#2345-header-parameter">
-              HTTP service header parameter - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Query parameter"
-            href="/learn/by-example/http-query-parameter"
+            title="Matrix parameter"
+            href="/learn/by-example/http-matrix-param"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -343,7 +318,7 @@ export default function HttpHeaderParam() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Query parameter
+                  Matrix parameter
                 </span>
               </div>
             </div>
@@ -351,8 +326,8 @@ export default function HttpHeaderParam() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Send response"
-            href="/learn/by-example/http-send-response"
+            title="Typed resource responses"
+            href="/learn/by-example/http-resource-returns"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -362,7 +337,7 @@ export default function HttpHeaderParam() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send response
+                  Typed resource responses
                 </span>
               </div>
               <svg

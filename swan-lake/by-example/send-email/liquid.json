@@ -1,5 +1,5 @@
 {
-  "title": "Send email",
+  "title": "Send emails",
   "description": "This BBE is about sending emails.",
   "keywords": ["ballerina", "ballerina by example", "bbe", "email", "SMTP"],
   "permalink": "/learn/by-example/send-email",

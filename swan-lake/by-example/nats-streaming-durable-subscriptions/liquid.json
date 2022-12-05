@@ -1,0 +1,20 @@
+{
+  "title": "Durable subscriptions",
+  "description": "BBE on creating a durable subscription in the NATS Streaming server using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "nats",
+    "streaming",
+    "server",
+    "subscriber",
+    "durable"
+  ],
+  "permalink": "/learn/by-example/nats-streaming-durable-subscriptions",
+  "active": "nats-streaming-durable-subscriptions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/nats-streaming-durable-subscriptions",
+    "/swan-lake/learn/by-example/nats-streaming-durable-subscriptions.html"
+  ]
+}

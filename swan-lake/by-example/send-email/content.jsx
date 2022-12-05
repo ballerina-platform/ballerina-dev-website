@@ -22,15 +22,24 @@ public function main() returns error? {
 
     // Defines the email that is required to be sent.
     email:Message email = {
-        // "TO", "CC", and "BCC" addresses can be added as follows.
-        // Only the "TO" address is mandatory out of these three.
-        to: "receiver1@email.com",
-        cc: "receiver2@email.com",
-        bcc: "receiver3@email.com",
+        // "TO", "CC", and "BCC" address lists are added as follows.
+        // Only the "TO" address list is mandatory out of these three.
+        to: ["receiver1@email.com", "receiver2@email.com"],
+        cc: ["receiver3@email.com", "receiver4@email.com"],
+        bcc: ["receiver5@email.com"],
         // Subject of the email is added as follows. This field is mandatory.
         subject: "Sample Email",
         // Body content (text) of the email is added as follows. This field is optional.
-        body: "This is a sample email."
+        body: "This is a sample email.",
+        // Email author's address is added as follows. This field is mandatory.
+        'from: "author@email.com",
+        // Email sender service address is added as follows. This field is optional. \`Sender\` is 
+        // the same as the \`from\` when the email author himself sends the email.
+        sender: "sender@email.com",
+        // List of recipients when replying to the email is added as follows. This field is 
+        // optional. These addresses are required when the emails are to be replied to some other 
+        // address(es) other than the sender or the author.
+        replyTo: ["replyTo1@email.com", "replyTo2@email.com"]
     };
 
     // Sends the email message with the client. The \`send\` method can be used instead if the 
@@ -62,12 +71,20 @@ export default function SendEmail() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Email client - Send email</h1>
+      <h1>Send emails</h1>
 
       <p>
-        The email connector is used to send (with SMTP) emails using the SSL or
+        The Email Connector is used to send (with SMTP) emails using the SSL or
         STARTTLS protocols. This sample includes sending emails with default
         configurations over SSL using the default ports.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/email/latest/">
+          <code>email</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -76,31 +93,9 @@ export default function SendEmail() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/send-email",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -118,7 +113,7 @@ export default function SendEmail() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -153,15 +148,6 @@ export default function SendEmail() {
           )}
         </Col>
       </Row>
-
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>SMTP server should be up and running.</span>
-        </li>
-      </ul>
 
       <p>Run the SMTP client by executing the following command.</p>
 
@@ -227,46 +213,9 @@ export default function SendEmail() {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/clients/SmtpClient">
-              <code>email:SmtpClient</code> client object - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/records/Message">
-              <code>email:Message</code> record - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://ballerina.io/spec/email/#31-smtp-client">
-              <code>email:SmtpClient</code> functions - specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Receive email"
-            href="/learn/by-example/receive-email-using-service"
-          >
+          <Link title="Listener" href="/learn/by-example/udp-listener">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -292,7 +241,7 @@ export default function SendEmail() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive email
+                  Listener
                 </span>
               </div>
             </div>
@@ -300,7 +249,7 @@ export default function SendEmail() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Receive email"
+            title="Receive emails using a client"
             href="/learn/by-example/receive-email-using-client"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -311,7 +260,7 @@ export default function SendEmail() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive email
+                  Receive emails using a client
                 </span>
               </div>
               <svg

@@ -36,6 +36,29 @@ public function main() returns error? {
 
     // Closes the POP3 store, which would close the TCP connection.
     check popClient->close();
+
+    // Creates the client with the connection parameters, host, username, and password. 
+    // An error is received in a failure. The default port number \`993\` is used over SSL with 
+    // these configurations.
+    email:ImapClient imapClient = check new ("imap.email.com",
+        "reader@email.com", "pass456");
+
+    // Reads the first unseen email received by the IMAP4 server. \`()\` is returned when there are 
+    // no new unseen emails. In error cases, an error is returned.
+    emailResponse = check imapClient->receiveMessage();
+
+    if emailResponse is email:Message {
+        io:println("IMAP client received an email.");
+        io:println("Email Subject: ", emailResponse.subject);
+        io:println("Email Body: ", emailResponse?.body);
+    // When no emails are available in the server, \`()\` is returned.
+    } else {
+        io:println("There are no emails in the INBOX.");
+    }
+
+    // Closes the IMAP store which would close the TCP connection.
+    check imapClient->close();
+
 }
 `,
 ];
@@ -61,14 +84,20 @@ export default function ReceiveEmailUsingClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Email client - Receive email</h1>
+      <h1>Receive emails using a client</h1>
 
       <p>
         The email client is used to receive (with POP3 or IMAP4) emails using
         the SSL or STARTTLS protocols. This sample includes receiving emails
-        with default configurations over SSL using the default ports via POP3.
-        Since, IMAP4 has similar syntax we could replace{" "}
-        <code>POP3 client</code> with <code>IMAP client</code>.
+        with default configurations over SSL using the default ports.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/email/latest/">
+          <code>email</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -77,31 +106,9 @@ export default function ReceiveEmailUsingClient() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/receive-email-using-client",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -119,7 +126,7 @@ export default function ReceiveEmailUsingClient() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -154,15 +161,6 @@ export default function ReceiveEmailUsingClient() {
           )}
         </Col>
       </Row>
-
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>Email server should be up and running.</span>
-        </li>
-      </ul>
 
       <p>Run the sample code by executing the following command.</p>
 
@@ -228,53 +226,9 @@ export default function ReceiveEmailUsingClient() {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/clients/PopClient">
-              <code>email:PopClient</code> client object - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/clients/ImapClient">
-              <code>email:ImapClient</code> client object - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://ballerina.io/spec/email/#32-pop3-client">
-              <code>email:PopClient</code> functions - specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://ballerina.io/spec/email/#33-imap-client">
-              <code>email:ImapClient</code> functions - specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Send email" href="/learn/by-example/send-email">
+          <Link title="Send emails" href="/learn/by-example/send-email">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -300,14 +254,17 @@ export default function ReceiveEmailUsingClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send email
+                  Send emails
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Read file" href="/learn/by-example/ftp-service-read">
+          <Link
+            title="Receive emails using a listener"
+            href="/learn/by-example/receive-email-using-listener"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -316,7 +273,7 @@ export default function ReceiveEmailUsingClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read file
+                  Receive emails using a listener
                 </span>
               </div>
               <svg

@@ -1,5 +1,5 @@
 {
-  "title": "SSL/TLS",
+  "title": "Service - SSL/TLS",
   "description": "BBE on how to secure gRPC listener with SSL.",
   "keywords": [
     "ballerina",

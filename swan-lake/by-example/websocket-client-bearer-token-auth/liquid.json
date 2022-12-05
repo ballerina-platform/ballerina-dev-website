@@ -1,5 +1,5 @@
 {
-  "title": "Bearer token authentication",
+  "title": "Client - Bearer Token Auth",
   "description": "BBE on how to secure WebSocket client with Bearer token auth in Ballerina.",
   "keywords": [
     "ballerina",

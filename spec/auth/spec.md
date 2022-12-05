@@ -489,7 +489,7 @@ service /foo on new http:Listener(9090) {
             return authz;
         }
         // business logic
-}
+    }
 }
 ```
 

@@ -49,11 +49,6 @@ redirect_from:
 					<a id="packWindows" href="{{ dist_server }}/downloads/{{ version }}/{{ windows-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ windows-installer }}">
 						<div class="cSize">msi <span id="packWindowsName">{{ windows-installer-size }}</span></div>
 					</a>
-					<!-- <ul class="cDiwnloadSubLinks">
-						<li><a id="packWindowsMd5" href="{{ dist_server }}/downloads/{{ version }}/{{ windows-installer }}.md5">md5</a></li>
-						<li><a id="packWindowsSha1" href="{{ dist_server }}/downloads/{{ version }}/{{ windows-installer }}.sha1">SHA-1</a></li>
-						<li><a id="packWindowsAsc" href="{{ dist_server }}/downloads/{{ version }}/{{ windows-installer }}.asc">asc</a></li>
-					</ul> -->
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
 					<p class="cLinux">Linux </p>
@@ -62,21 +57,11 @@ redirect_from:
               <a id="packLinux" href="{{ dist_server }}/downloads/{{ version }}/{{ linux-installer }}" class="cGTMDownload cDownload cLinuxPKGs  cDownloadNew" data-download="downloads" data-pack="{{ linux-installer }}">
                 <div class="cSize">deb <span id="packLinuxName">{{ linux-installer-size }}</span></div>
               </a>
-              <!-- <ul class="cDiwnloadSubLinks">
-                <li><a id="packLinuxMd5" href="{{ dist_server }}/downloads/{{ version }}/{{ linux-installer }}.md5">md5</a></li>
-                <li><a id="packLinuxSha1" href="{{ dist_server }}/downloads/{{ version }}/{{ linux-installer }}.sha1">SHA-1</a></li>
-                <li><a id="packLinuxAsc" href="{{ dist_server }}/downloads/{{ version }}/{{ linux-installer }}.asc">asc</a></li>
-              </ul> -->
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cMarginSmall">
               <a id="packLinux" href="{{ dist_server }}/downloads/{{ version }}/{{ rpm-installer }}" class="cGTMDownload cDownload cLinuxPKGs cDownloadNew" data-download="downloads" data-pack="{{ rpm-installer }}">
                 <div class="cSize">rpm <span id="packLinuxName">{{ rpm-installer-size }}</span></div>
               </a>
-              <!-- <ul class="cDiwnloadSubLinks">
-                <li><a id="packLinuxMd5" href="{{ dist_server }}/downloads/{{ version }}/{{ rpm-installer }}.md5">md5</a></li>
-                <li><a id="packLinuxSha1" href="{{ dist_server }}/downloads/{{ version }}/{{ rpm-installer }}.sha1">SHA-1</a></li>
-                <li><a id="packLinuxAsc" href="{{ dist_server }}/downloads/{{ version }}/{{ rpm-installer }}.asc">asc</a></li>
-              </ul> -->
             </div>
           </div>
 				</div>
@@ -85,11 +70,6 @@ redirect_from:
 					<a id="packMac" href="{{ dist_server }}/downloads/{{ version }}/{{ macos-installer }}" class="cGTMDownload cDownload cDownloadNew" data-download="downloads" data-pack="{{ macos-installer }}">
 						<div class="cSize">pkg <span id="packWindowsName">{{ macos-installer-size }}</span></div>
 					</a>
-					<!-- <ul class="cDiwnloadSubLinks">
-						<li><a id="packMacMd5" href="{{ dist_server }}/downloads/{{ version }}/{{ macos-installer }}.md5">md5</a></li>
-						<li><a id="packMacSha1" href="{{ dist_server }}/downloads/{{ version }}/{{ macos-installer }}.sha1">SHA-1</a></li>
-						<li><a id="packMacAsc" href="{{ dist_server }}/downloads/{{ version }}/{{ macos-installer }}.asc">asc</a></li>
-					</ul> -->
 				</div>
       <!-- </div> -->
    </div>

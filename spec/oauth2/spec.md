@@ -11,7 +11,7 @@ This is the specification for the OAuth2 standard library of [Ballerina language
 
 The OAuth2 library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 
-If you have any feedback or suggestions about the library, start a discussion via a [GitHub issue](https://github.com/ballerina-platform/ballerina-standard-library/issues) or in the [Slack channel](https://ballerina.io/community/). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal, which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in GitHub.
+If you have any feedback or suggestions about the library, start a discussion via a [GitHub issue](https://github.com/ballerina-platform/ballerina-standard-library/issues) or in the [Discord server](https://discord.gg/ballerinalang). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal, which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in GitHub.
 
 The conforming implementation of the specification is released and included in the distribution. Any deviation from the specification is considered a bug.
 
@@ -38,7 +38,7 @@ The conforming implementation of the specification is released and included in t
     * 5.2. [Client Auth](#52-client-auth)
         * 5.2.1. [Declarative Approach (HTTP Client)](#521-declarative-approach-http-client)
             * 5.2.1.1. [Bearer Token](#5211-bearer-token)
-            * 5.2.1.2. [Grant TypesT](#5212-grant-types)
+            * 5.2.1.2. [Grant Types](#5212-grant-types)
         * 5.2.2. [Imperative Approach (HTTP Client)](#522-imperative-approach-http-client)
             * 5.2.2.1. [Bearer Token](#5221-bearer-token)
             * 5.2.2.2. [Grant Types](#5222-grant-types)

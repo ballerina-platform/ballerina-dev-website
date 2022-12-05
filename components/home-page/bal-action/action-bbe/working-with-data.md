@@ -13,7 +13,7 @@ type Country record {
 // Prints the top 10 countries having the highest case-fatality ratio.
 public function main() returns error? {
     http:Client diseaseEp = check new ("https://disease.sh/v3");
-    Country[] countries = check diseaseEp->get("/covid-19/countries");
+    Country[] countries = check diseaseEp->/covid\-19/countries;
 
     json summary =
         from var {country, continent, population, cases, deaths} in countries

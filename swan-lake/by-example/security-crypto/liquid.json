@@ -1,0 +1,20 @@
+{
+  "title": "Cryptographic operations",
+  "description": "BBE on how to perform different cryptographic operations in Ballerina such as hashing, HMAC generation, checksum generation, encryption, decryption, digitally signing data and verifying digitally signed data.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "crypto",
+    "hash",
+    "hmac",
+    "sign",
+    "encrypt decrypt"
+  ],
+  "permalink": "/learn/by-example/security-crypto",
+  "active": "security-crypto",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/security-crypto",
+    "/swan-lake/learn/by-example/security-crypto.html"
+  ]
+}

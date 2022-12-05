@@ -1,0 +1,16 @@
+{
+  "title": "URL encode/decode operations",
+  "description": "BBE on how to perform encoding/decoding a URL or part of a URL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "url encoding",
+    "url decoding"
+  ],
+  "permalink": "/learn/by-example/url-encode-decode",
+  "active": "url-encode-decode",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/url-encode-decode",
+    "/swan-lake/learn/by-example/url-encode-decode.html"
+  ]
+}

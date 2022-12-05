@@ -14,36 +14,25 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 import ballerina/lang.runtime;
-import ballerina/log;
 
-final http:Listener httpListener = check new (9090);
+http:Listener httpListener = check new (9090);
 
 http:Service helloService =  service object {
 
-    resource function get sayHello(http:Caller caller, http:Request req) {
+    resource function get greeting() returns string {
         // Send a response back to the caller.
-        var respondResult = caller->respond("Hello, World!");
-        if respondResult is error {
-            log:printError("Error occurred when responding.", 'error = respondResult);
-        }
+        return "Hello, World!";
     }
 
     // The resource function that will shutdown the server.
-    resource function get shutDownServer(http:Caller caller, http:Request req) {
+    resource function post shutdown(http:Caller caller) returns error? {
         // Send a response back to the caller.
-        var respondResult = caller->respond("Shutting down the server");
+        check caller->respond("Shutting down the server");
         // Stop the listener.
         // This will be called automatically if the program exits by means of a system call.
-        var stopResult = httpListener.gracefulStop();
+        check httpListener.gracefulStop();
         // Deregister the listener dynamically.
         runtime:deregisterListener(httpListener);
-        // Handle the errors at the end.
-        if respondResult is error {
-            log:printError("Error occurred when responding.", 'error = respondResult);
-        } 
-        if stopResult is error {
-            log:printError("Error occurred when stopping the listener. ", 'error = stopResult);
-        }
     }
 };
 
@@ -95,9 +84,31 @@ export default function DynamicListener() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/dynamic-listener",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -115,7 +126,7 @@ export default function DynamicListener() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -270,12 +281,12 @@ export default function DynamicListener() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/foo/bar/sayHello`}</span>
+              <span>{`\$ curl http://localhost:9090/foo/bar/greeting`}</span>
               <span>{`Hello, World!`}</span>
               <span>{`
 `}</span>
               <span>{`# Invoke the shutdown resource to deregister the listener.`}</span>
-              <span>{`\$ curl http://localhost:9090/foo/bar/shutDownServer`}</span>
+              <span>{`\$ curl http://localhost:9090/foo/bar/shutdown -X POST`}</span>
               <span>{`Shutting down the server`}</span>
             </code>
           </pre>
@@ -284,7 +295,10 @@ export default function DynamicListener() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Timeout" href="/learn/by-example/http-timeout">
+          <Link
+            title="Websub service"
+            href="/learn/by-example/websub-webhook-sample"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -310,7 +324,7 @@ export default function DynamicListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Timeout
+                  Websub service
                 </span>
               </div>
             </div>

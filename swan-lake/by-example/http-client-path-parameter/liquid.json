@@ -1,0 +1,18 @@
+{
+  "title": "Path parameter",
+  "description": "BBE on how to call a client resource with a path parameter.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "http",
+    "client",
+    "path parameter"
+  ],
+  "permalink": "/learn/by-example/http-client-path-parameter",
+  "active": "http-client-path-parameter",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-client-path-parameter",
+    "/swan-lake/learn/by-example/http-client-path-parameter.html"
+  ]
+}

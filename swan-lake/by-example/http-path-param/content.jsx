@@ -14,16 +14,26 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-service /company on new http:Listener(9090) {
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-    // The path param is defined as a part of the resource path along with the type and it is extracted from the
-    // request URI.
-    resource function get empId/[int id]() returns json {
-        return {empId: id};
-    }
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
-    resource function get empName/[string first]/[string last]() returns json {
-        return {firstName: first, lastName: last};
+service / on new http:Listener(9090) {
+
+    // The path param is defined as a part of the resource path within brackets along with the type and it is
+    // extracted from the request URI.
+    resource function get albums/[string title]() returns Album|http:NotFound {
+        Album? album = albums[title];
+        if album is () {
+            return http:NOT_FOUND;
+        }
+        return album;
     }
 }
 `,
@@ -52,21 +62,14 @@ export default function HttpPathParam() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Path parameter</h1>
+      <h1>REST service - Path parameter</h1>
 
       <p>
         The <code>http</code> module provides first class support for specifying{" "}
         <code>Path parameters</code> in the resource path along with the type.
-        The supported types are string, int, float, boolean, and decimal (e.g.,
-        path/[string foo]).
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
+        The supported types are <code>string</code>, <code>int</code>,{" "}
+        <code>float</code>, <code>boolean</code>, and <code>decimal</code>{" "}
+        (e.g., path/[string foo]).
       </p>
 
       <Row
@@ -208,7 +211,7 @@ export default function HttpPathParam() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run http_path_param.bal`}</span>
+              <span>{`\$ bal run path_param.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -272,22 +275,42 @@ export default function HttpPathParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/company/empId/23"`}</span>
-              <span>{`{"empId":23}`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl "http://localhost:9090/company/empName/Adele/Ferguson"`}</span>
-              <span>{`{"firstName":"Adele", "lastName":"Ferguson"}`}</span>
+              <span>{`\$ curl "http://localhost:9090/albums/Jeru"`}</span>
+              <span>{`{"title":"Jeru", "artist":"Gerry Mulligan"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#233-path-parameter">
+              HTTP service path parameter - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Default resource"
-            href="/learn/by-example/http-default-resource"
+            title="Payload constraint validation"
+            href="/learn/by-example/http-service-payload-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -314,7 +337,7 @@ export default function HttpPathParam() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Default resource
+                  Payload constraint validation
                 </span>
               </div>
             </div>

@@ -1,0 +1,19 @@
+{
+  "title": "Consume message",
+  "description": "BBE on consuming messages using a secured connection.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "rabbitmq",
+    "pull",
+    "consumer",
+    "client",
+    "bbe"
+  ],
+  "permalink": "/learn/by-example/rabbitmq-sync-consumer",
+  "active": "rabbitmq-sync-consumer",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/rabbitmq-sync-consumer",
+    "/swan-lake/learn/by-example/rabbitmq-sync-consumer.html"
+  ]
+}

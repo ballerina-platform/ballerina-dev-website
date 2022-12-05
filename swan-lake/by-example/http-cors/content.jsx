@@ -15,7 +15,6 @@ const codeSnippetData = [
   `import ballerina/http;
 
 // The service-level CORS config applies globally to each \`resource\`.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig.
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["http://www.m3.com", "http://www.hello.com"],
@@ -28,7 +27,6 @@ const codeSnippetData = [
 service /crossOriginService on new http:Listener(9092) {
 
     // The resource-level CORS config overrides the service-level CORS headers.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig.
     @http:ResourceConfig {
         cors: {
             allowOrigins: ["http://www.bbc.com"],
@@ -36,14 +34,14 @@ service /crossOriginService on new http:Listener(9092) {
             allowHeaders: ["X-Content-Type-Options", "X-PINGOTHER"]
         }
     }
-    resource function get company() returns json {
-        return {"type": "middleware"};
+    resource function get company() returns string {
+        return "middleware";
     }
 
     // Since there are no resource-level CORS configs defined here, the global
     // service-level CORS configs will be applied to this resource.
-    resource function post lang() returns json {
-        return {"lang": "Ballerina"};
+    resource function post lang(@http:Payload string lang) returns string {
+        return lang;
     }
 }
 `,
@@ -72,7 +70,7 @@ export default function HttpCors() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>CORS</h1>
+      <h1>HTTP service - CORS (Cross-Origin Resource Sharing)</h1>
 
       <p>
         The CORS headers can be applied in both the service-level and the
@@ -81,23 +79,37 @@ export default function HttpCors() {
         CORS supports both simple and pre-flight requests.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
-      </p>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-cors",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -115,7 +127,7 @@ export default function HttpCors() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -279,14 +291,15 @@ export default function HttpCors() {
               <span>{`> Origin:http://www.bbc.com`}</span>
               <span>{`>`}</span>
               <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: application/json`}</span>
+              <span>{`< content-type: text/plain`}</span>
               <span>{`< access-control-allow-origin: http://www.bbc.com`}</span>
               <span>{`< access-control-allow-credentials: true`}</span>
-              <span>{`< content-length: 21`}</span>
+              <span>{`< content-length: 10`}</span>
               <span>{`< server: ballerina`}</span>
+              <span>{`< date: Sat, 22 Oct 2022 20:51:49 +0530`}</span>
               <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact.`}</span>
-              <span>{`{"type":"middleware"}* Closing connection 0`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`middleware* Closing connection 0`}</span>
               <span>{`
 `}</span>
               <span>{`# To send a CORS preflight request.`}</span>
@@ -302,8 +315,8 @@ export default function HttpCors() {
               <span>{`< access-control-allow-origin: http://www.m3.com`}</span>
               <span>{`< access-control-max-age: 84900`}</span>
               <span>{`< access-control-allow-methods: POST`}</span>
-              <span>{`< content-length: 0`}</span>
               <span>{`< server: ballerina`}</span>
+              <span>{`< date: Sat, 22 Oct 2022 20:53:12 +0530`}</span>
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`* Closing connection 0`}</span>
@@ -312,9 +325,37 @@ export default function HttpCors() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig">
+              <code>http:CorsConfig</code> record - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#41-service-configuration">
+              HTTP service configuration - Specification
+            </a>
+            ;
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Redirects" href="/learn/by-example/http-redirects">
+          <Link
+            title="Redirects"
+            href="/learn/by-example/http-service-redirects"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

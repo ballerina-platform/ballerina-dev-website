@@ -13,64 +13,26 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/http;
+import ballerina/io;
 
-// Caching can be enabled by setting \`enabled:true\` in the \`cache\` config of the client.
-// In this example, the \`isShared\` field of the \`cacheConfig\` is set
-// to true, as the cache will be a public cache in this particular scenario.
-//
-// The default caching policy is to cache a response only if it contains a
-// \`cache-control\` header and either an \`etag\` header, or a \`last-modified\`
-// header. The user can control this behaviour by setting the \`policy\` field of
-// the \`cacheConfig\`. Currently, there are only 2 policies:
-// \`CACHE_CONTROL_AND_VALIDATORS\` (the default policy) and \`RFC_7234\`.
-
-final http:Client cachingEP = checkpanic new ("http://localhost:8080", 
-    cache = {enabled: true, isShared: true});
-
-service / on new http:Listener(9090) {
-
-    resource function get cache(http:Request req)
-            returns http:Response|error? {
-        http:Response response = check cachingEP->forward("/hello", req);
-        // If the request was successful, an HTTP response will be returned.
-        return response;
-    }
-}
-
-service / on new http:Listener(8080) {
-
-    resource function 'default hello() returns http:Response {
-        http:Response res = new;
-        // The \`http:ResponseCacheControl\` object in the \`http:Response\` object can be
-        // used for setting the cache control directives associated with the response. 
-        // In this example, \`max-age\` directive is set to 15 seconds indicating that the response 
-        // will be fresh for 15 seconds. The \`must-revalidate\` directive instructs that 
-        // the cache should not serve a stale response without validating it with the origin server
-        // first. The \`public\` directive is set by setting \`isPrivate=false\`. This indicates that 
-        // the response can be cached even by intermediary caches which serve multiple users.
-        http:ResponseCacheControl resCC = new;
-
-        resCC.maxAge = 15;
-        resCC.mustRevalidate = true;
-        resCC.isPrivate = false;
-        res.cacheControl = resCC;
-        json payload = {"message": "Hello, World!"};
-
-        // The \`setETag()\` function can be used for generating ETags for
-        // \`string\`, \`json\`, and \`xml\` types. This uses the \`getCRC32()\`
-        // function from the \`ballerina/crypto\` module for generating the ETag.
-        res.setETag(payload);
-
-        // The \`setLastModified()\` function sets the current time as the \`last-modified\` header.
-        res.setLastModified();
-
-        res.setPayload(payload);
-        // When sending the response, if the \`cacheControl\` field of the response is set, 
-        // and the user has not already set a \`cache-control\` header, a \`cache-control\` header 
-        // will be set using the directives set in the \`cacheControl\` object.
-        return res;
-
-    }
+public function main() returns error? {
+    // Caching can be enabled by setting \`enabled:true\` in the \`cache\` config of the client.
+    // In this example, the \`isShared\` field of the \`cacheConfig\` is set
+    // to true, as the cache will be a public cache in this particular scenario.
+    //
+    // The default caching policy is to cache a response only if it contains a
+    // \`cache-control\` header and either an \`etag\` header, or a \`last-modified\`
+    // header. The user can control this behaviour by setting the \`policy\` field of
+    // the \`cacheConfig\`. Currently, there are only 2 policies:
+    // \`CACHE_CONTROL_AND_VALIDATORS\` (the default policy) and \`RFC_7234\`.
+    http:Client httpClient = check new ("localhost:9090",
+        cache = {
+            enabled: true,
+            isShared: true
+        }
+    );
+    string payload = check httpClient->get("/greeting");
+    io:println(payload);
 }
 `,
 ];
@@ -80,8 +42,6 @@ export default function HttpCachingClient() {
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
-  const [outputClick2, updateOutputClick2] = useState(false);
-  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -98,20 +58,12 @@ export default function HttpCachingClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Caching client</h1>
+      <h1>HTTP client - Caching</h1>
 
       <p>
         HTTP caching is enabled by default in HTTP client endpoints. Users can
         configure caching using the <code>cache</code> field in the client
         configurations.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
       </p>
 
       <Row
@@ -198,7 +150,22 @@ export default function HttpCachingClient() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the following command.</p>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the HTTP service given in the{" "}
+            <a href="learn/by-example/http-service-cache-response/">
+              Sending cache response service
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -253,14 +220,12 @@ export default function HttpCachingClient() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# The two services have to be run separately to observe the following output.`}</span>
-              <span>{`# For clarity, only the relevant parts of the HTTP trace logs have been included here.`}</span>
               <span>{`\$ bal run http_caching_client.bal -- -Cballerina.http.traceLogConsole=true`}</span>
               <span>{`
 `}</span>
               <span>{`# The caching proxy receives a request from a client.`}</span>
               <span>{`[2021-11-26 09:52:32,588] TRACE {http.tracelog.downstream} - [id: 0x6c720951, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50902] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
-              <span>{`GET /cache HTTP/1.1`}</span>
+              <span>{`GET /greeting HTTP/1.1`}</span>
               <span>{`Host: localhost:9090`}</span>
               <span>{`User-Agent: curl/7.64.1`}</span>
               <span>{`Accept: */*`}</span>
@@ -303,7 +268,7 @@ export default function HttpCachingClient() {
 `}</span>
               <span>{`# Subsequent requests to the proxy within the next 15 seconds are served from the proxy's cache. As seen here, the backend service is not contacted.`}</span>
               <span>{`[2021-11-26 09:52:40,143] TRACE {http.tracelog.downstream} - [id: 0xc79f9038, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50915] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
-              <span>{`GET /cache HTTP/1.1`}</span>
+              <span>{`GET /greeting HTTP/1.1`}</span>
               <span>{`Host: localhost:9090`}</span>
               <span>{`User-Agent: curl/7.64.1`}</span>
               <span>{`Accept: */*`}</span>
@@ -325,7 +290,7 @@ export default function HttpCachingClient() {
 `}</span>
               <span>{`# Another request is sent after remaining idle for a while.`}</span>
               <span>{`[2021-11-26 09:52:54,648] TRACE {http.tracelog.downstream} - [id: 0x083aeb7c, correlatedSource: n/a, host:/0:0:0:0:0:0:0:1:9090 - remote:/0:0:0:0:0:0:0:1:50916] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)`}</span>
-              <span>{`GET /cache HTTP/1.1`}</span>
+              <span>{`GET /greeting HTTP/1.1`}</span>
               <span>{`Host: localhost:9090`}</span>
               <span>{`User-Agent: curl/7.64.1`}</span>
               <span>{`Accept: */*`}</span>
@@ -420,126 +385,33 @@ export default function HttpCachingClient() {
         </Col>
       </Row>
 
-      <p>Invoke the service as follows.</p>
+      <h2>Related links</h2>
 
-      <Row
-        className="bbeOutput mx-0 py-0 rounded "
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={12} className="d-flex align-items-start">
-          {outputClick2 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="output-btn bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              onClick={() => {
-                updateOutputClick2(true);
-                const extractedText = extractOutput(ref2.current.innerText);
-                copyToClipboard(extractedText);
-                setTimeout(() => {
-                  updateOutputClick2(false);
-                }, 3000);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#EEEEEE"
-                className="output-btn bi bi-clipboard"
-                viewBox="0 0 16 16"
-                aria-label="Copy to Clipboard"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          <pre ref={ref2}>
-            <code className="d-flex flex-column">
-              <span>{`\$ curl -v http://localhost:9090/cache`}</span>
-              <span>{`> GET /cache HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< etag: 620328e8`}</span>
-              <span>{`< last-modified: Fri, 26 Nov 2021 04:22:32 GMT`}</span>
-              <span>{`< content-type: application/json`}</span>
-              <span>{`< cache-control: must-revalidate,public,max-age=15`}</span>
-              <span>{`< date: Fri, 26 Nov 2021 09:52:32 +0530`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< content-length: 27`}</span>
-              <span>{`<`}</span>
-              <span>{`{"message":"Hello, World!"}`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl -v http://localhost:9090/cache`}</span>
-              <span>{`> GET /cache HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< etag: 620328e8`}</span>
-              <span>{`< last-modified: Fri, 26 Nov 2021 04:22:32 GMT`}</span>
-              <span>{`< content-type: application/json`}</span>
-              <span>{`< cache-control: must-revalidate,public,max-age=15`}</span>
-              <span>{`< date: Fri, 26 Nov 2021 09:52:32 +0530`}</span>
-              <span>{`< age: 8`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< content-length: 27`}</span>
-              <span>{`<`}</span>
-              <span>{`{"message":"Hello, World!"}`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl -v http://localhost:9090/cache`}</span>
-              <span>{`> GET /cache HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: application/json`}</span>
-              <span>{`< cache-control: must-revalidate,public,max-age=15`}</span>
-              <span>{`< date: Fri, 26 Nov 2021 09:52:54 +0530`}</span>
-              <span>{`< etag: 620328e8`}</span>
-              <span>{`< last-modified: Fri, 26 Nov 2021 04:22:54 GMT`}</span>
-              <span>{`< age: 0`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< content-length: 27`}</span>
-              <span>{`<`}</span>
-              <span>{`{"message":"Hello, World!"}`}</span>
-            </code>
-          </pre>
-        </Col>
-      </Row>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#2412-caching">
+              HTTP client caching - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Client data binding"
-            href="/learn/by-example/http-client-data-binding"
-          >
+          <Link title="Chunking" href="/learn/by-example/http-client-chunking">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -565,7 +437,7 @@ export default function HttpCachingClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client data binding
+                  Chunking
                 </span>
               </div>
             </div>
@@ -573,8 +445,8 @@ export default function HttpCachingClient() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - SSL/TLS"
-            href="/learn/by-example/http-service-ssl-tls"
+            title="Request with multiparts"
+            href="/learn/by-example/http-request-with-multiparts"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -584,7 +456,7 @@ export default function HttpCachingClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  Request with multiparts
                 </span>
               </div>
               <svg

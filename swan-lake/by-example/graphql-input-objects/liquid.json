@@ -1,0 +1,17 @@
+{
+  "title": "Input objects",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "input objects"
+  ],
+  "permalink": "/learn/by-example/graphql-input-objects",
+  "active": "graphql-input-objects",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-input-objects",
+    "/swan-lake/learn/by-example/graphql-input-objects.html"
+  ]
+}

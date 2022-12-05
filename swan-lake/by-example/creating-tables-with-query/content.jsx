@@ -77,7 +77,7 @@ export default function CreatingTablesWithQuery() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/creating-tables-with-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/creating-tables-with-query",
                 "_blank"
               );
             }}

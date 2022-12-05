@@ -160,7 +160,10 @@ const nextConfig = {
         source: `/${redirectBase}learn/style-guide/coding-conventions/:slug`,
         destination: `/${redirectBase}learn/references/style-guide/coding-conventions/:slug`,
       },
-
+      {
+        source: `/${redirectBase}learn/build-a-native-executable`,
+        destination: `/${redirectBase}learn/learn-the-platform/native-support/build-a-native-executable`,
+      },
       {
         source: `/${redirectBase}downloads/swan-lake-release-notes`,
         destination: `/${redirectBase}downloads/swan-lake-release-notes/2201.0.2`,

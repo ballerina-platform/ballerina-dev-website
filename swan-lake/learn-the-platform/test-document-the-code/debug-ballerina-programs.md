@@ -222,6 +222,9 @@ The following attributes are supported for all Ballerina `launch` configurations
 
 - `env` - Any environment variables you need to configure for launching the Ballerina program can be passed as a map of strings (name and value).
 - `debugTests` - Indicates whether to debug the tests for the given script.
+- `terminal` - By setting this attribute value to `integrated`, you can launch the Ballerina program in a separate integrated VSCode terminal. The program evaluations can be carried out on the `Debug Console`, as usual.
+
+    ![Debug Run Program in Terminal](/learn/images/debugger-run-in-terminal.gif)
 
 The following attributes are supported for all Ballerina `attach` configurations.
 

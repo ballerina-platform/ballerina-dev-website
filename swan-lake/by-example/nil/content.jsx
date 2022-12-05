@@ -59,12 +59,11 @@ export default function Nil() {
       <h1>Nil</h1>
 
       <p>
-        Ballerina's version of <code>null</code> is called <code>nil</code> and
-        written as <code>()</code>. Ballerina types do not implicitly allow{" "}
-        <code>nil</code>. Type <code>T?</code> means <code>T</code> or{" "}
-        <code>nil</code>. You can use <code>==</code> and <code>!=</code> to
-        test whether a value is <code>nil</code>: no implicit conversion to{" "}
-        <code>boolean</code>.
+        Ballerina's version of <code>null</code> is called nil and written as{" "}
+        <code>()</code>. Ballerina types do not implicitly allow nil. Type{" "}
+        <code>T?</code> means <code>T</code> or nil. You can use <code>==</code>{" "}
+        and <code>!=</code> to test whether a value is nil: no implicit
+        conversion to <code>boolean</code>.
       </p>
 
       <Row
@@ -77,7 +76,7 @@ export default function Nil() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.3/examples/nil",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/nil",
                 "_blank"
               );
             }}

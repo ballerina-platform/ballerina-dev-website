@@ -232,11 +232,11 @@ public type WSServiceConfig record {|
 
 ### 3.2. [WebSocket Service](#32-websocket-service)
 
-Once the WebSocket upgrade is accepted by the UpgradeService, it returns a `websocket:Service`. This service has a fixed set of remote functions that do not have any configs. Receiving messages will get dispatched to the relevant remote function. Each remote function is explained below.
+Once the WebSocket upgrade is accepted by the UpgradeService, it returns a `websocket:Service`. This service has a fixed set of remote methods that do not have any configs. Receiving messages will get dispatched to the relevant remote method. Each remote method is explained below.
 
 ```ballerina
 service /ws on new websocket:Listener(21003) {
-    resource function get .(http:Request req) returns websocket:Service|websocket:UpgradeError {
+    resource method get .(http:Request req) returns websocket:Service|websocket:UpgradeError {
         return new WsService();
     }    
 }
@@ -256,7 +256,7 @@ service class WsService {
 As soon as the WebSocket handshake is completed and the connection is established, the `onOpen` remote method is dispatched.
 
 ```ballerina
-remote function onOpen(websocket:Caller caller) returns error? {
+remote method onOpen(websocket:Caller caller) returns error? {
     io:println("Opened a WebSocket connection"`);
 }
 ```
@@ -296,12 +296,12 @@ remote isolated function onMessage(websocket:Caller caller, json data) returns w
 The received ping and pong messages are dispatched to these remote methods respectively. You do not need to explicitly control these messages as they are handled automatically by the services and clients.
 
 ```ballerina
-remote function onPing(websocket:Caller caller, byte[] data) returns error? {
+remote method onPing(websocket:Caller caller, byte[] data) returns error? {
     io:println(string `Ping received with data: ${data.toBase64()}`);
     check caller->pong(data);
 }
  
-remote function onPong(websocket:Caller caller, byte[] data) {
+remote method onPong(websocket:Caller caller, byte[] data) {
     io:println(string `Pong received with data: ${data.toBase64()}`);
 }
 ```
@@ -311,7 +311,7 @@ remote function onPong(websocket:Caller caller, byte[] data) {
 This remote method is dispatched when the idle timeout is reached. The idleTimeout has to be configured either in the WebSocket service or the client configuration.
 
 ```ballerina
-remote function onIdleTimeout(websocket:Client caller) {
+remote method onIdleTimeout(websocket:Client caller) {
     io:println("Connection timed out");
 }
 ```
@@ -321,7 +321,7 @@ remote function onIdleTimeout(websocket:Client caller) {
 This remote method is dispatched when a close frame with a statusCode and a reason is received.
 
 ```ballerina
-remote function onClose(websocket:Caller caller, int statusCode, string reason) {
+remote method onClose(websocket:Caller caller, int statusCode, string reason) {
     io:println(string `Client closed connection with ${statusCode} because of ${reason}`);
 }
 ```
@@ -331,7 +331,7 @@ remote function onClose(websocket:Caller caller, int statusCode, string reason) 
 This remote method is dispatched when an error occurs in the WebSocket connection. This will always be preceded by a connection closure with an appropriate close frame.
 
 ```ballerina
-remote function onError(websocket:Caller caller, error err) {
+remote method onError(websocket:Caller caller, error err) {
     io:println(err.message());
 }
 ```
@@ -547,11 +547,11 @@ remote isolated function pong(byte[] data) returns Error? {}
 
 #### [onPing and onPong remote methods](#onping-and-onpong-remote-methods)
 
-To receive ping/pong messages, users have to register a `websocket:PingPongService` when creating the client. If the service is registered, receiving ping/pong messages will get dispatched to the `onPing` and `onPong` remote functions respectively.
+To receive ping/pong messages, users have to register a `websocket:PingPongService` when creating the client. If the service is registered, receiving ping/pong messages will get dispatched to the `onPing` and `onPong` remote methods respectively.
 ```ballerina
 service class PingPongService {
    *websocket:PingPongService;
-   remote function onPong(websocket:Caller wsEp, byte[] data) {
+   remote method onPong(websocket:Caller wsEp, byte[] data) {
        io:println("Pong received", data);
    }
    
@@ -562,7 +562,7 @@ service class PingPongService {
 
 websocket:Client wsClient = check new ("ws://localhost:21020", {pingPongHandler : new PingPongService()});
 ```
-If the user has implemented `onPing` on their service, it's user's responsibility to send the `pong` frame. It can be done simply by returning the data from the remote function, or else can be done using the `pong` API of websocket:Caller. If the user hasn't implemented the `onPing` remote function, `pong` will be sent automatically.
+If the user has implemented `onPing` on their service, it's user's responsibility to send the `pong` frame. It can be done simply by returning the data from the remote method, or else can be done using the `pong` API of websocket:Caller. If the user hasn't implemented the `onPing` remote method, `pong` will be sent automatically.
 
 ## 5. [Securing the WebSocket Connections](#5-securing-the-websocket-connections)
 
@@ -640,7 +640,7 @@ listener websocket:Listener wsListener = new(9090,
     ]
 }
 service /ws on wsListener {
-    resource function get .() returns websocket:Service|websocket:UpgradeError {
+    resource method get .() returns websocket:Service|websocket:UpgradeError {
         // ....
     }
 }

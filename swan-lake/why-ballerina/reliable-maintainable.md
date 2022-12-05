@@ -34,10 +34,10 @@ public client class TcpClient {
    function init(string host, int port) returns error? {}
  
    # Reads bytes from the connected remote host.
-   remote function read() returns byte[] | error {}
+   remote method read() returns byte[] | error {}
  
    # Writes bytes to the connected remote host.
-   remote function write(byte[] bytes) returns error? {}
+   remote method write(byte[] bytes) returns error? {}
 }
 ```
 
@@ -45,14 +45,14 @@ When the `read` method is completed successfully, it returns a `byte[]` value. I
 
 ```ballerina
 # Reads bytes from the connected remote host.
-remote function read() returns byte[] | error {}
+remote method read() returns byte[] | error {}
 ```
 
 The `write` method does not return anything if it completes successfully. However, it returns an error otherwise. Optional types in Ballerina can be used to describe this behavior. Options types are syntactic sugar for union types containing the nil type, which is written as `()`. The `error?` is sugar for `error | ()`. The examples below show how you can check whether a function returns the expected value or an error.
 
 ```ballerina
 # Writes bytes to the connected remote host.
-remote function write(byte[] bytes) returns error? {}
+remote method write(byte[] bytes) returns error? {}
 ```
 
 ### Error checking 

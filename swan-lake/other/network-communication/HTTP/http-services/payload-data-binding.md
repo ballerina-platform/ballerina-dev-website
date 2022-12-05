@@ -1,11 +1,11 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Payload data binding
-description: The HTTP service resource payloads can be directly data bound to the resource function parameters. 
+description: The HTTP service resource payloads can be directly data bound to the resource method parameters. 
 keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-services/payload-data-binding/
 active: payload-data-binding
-intro: The HTTP service resource payloads can be directly data bound to the resource function parameters.
+intro: The HTTP service resource payloads can be directly data bound to the resource method parameters.
 redirect_from:
   - /learn/network-communication/http/http-services/payload-data-binding
   - /swan-lake/learn/network-communication/http/http-services/payload-data-binding/
@@ -30,7 +30,7 @@ import ballerina/http;
  
 service / on new http:Listener(8080) {
  
-   resource function post upload/[string name](
+   resource method post upload/[string name](
                                   @http:Payload byte[] payload)
                                   returns string {
        return string `'${name}' uploaded with ${payload.length()} bytes`;

@@ -46,7 +46,7 @@ import ballerina/http;
  
 service / on new http:Listener(8080) {
  
-   resource function get greeting() returns string {
+   resource method get greeting() returns string {
        return "Hello!";
    }
  
@@ -77,7 +77,7 @@ import ballerina/http;
  
 service /base on new http:Listener(8080) {
  
-   resource function get foo/bar() returns string {
+   resource method get foo/bar() returns string {
        return "Hi!";
    }
  
@@ -104,7 +104,7 @@ import ballerina/http;
  
 service / on new http:Listener(8080) {
  
-   resource function get person/[int id]() returns string {
+   resource method get person/[int id]() returns string {
        return string `Person with id ${id}`;
    }
  
@@ -133,7 +133,7 @@ import ballerina/http;
  
 service / on new http:Listener(8080) {
  
-   resource function get person/[int... ids]() returns string {
+   resource method get person/[int... ids]() returns string {
        return string `Persons with ids ${ids.toString()}`;
    }
  
@@ -159,7 +159,7 @@ import ballerina/http;
  
 service / on new http:Listener(8080) {
  
-   resource function get log/[string... paths]() returns string {
+   resource method get log/[string... paths]() returns string {
        return string `Path: ${paths.toString()}`;
    }
  
@@ -185,14 +185,14 @@ Path: ["1","2","3"]
 
 ## Defining query parameters
 
-In a resource function, the query parameters are represented using the resource function parameters. The parameter type must be one of the types: `int`, `string`, `float`, `boolean`, and `decimal`. The name of the parameter represents the query parameter name. An example of this functionality is shown below.
+In a resource method, the query parameters are represented using the resource method parameters. The parameter type must be one of the types: `int`, `string`, `float`, `boolean`, and `decimal`. The name of the parameter represents the query parameter name. An example of this functionality is shown below.
 
 ```ballerina
 import ballerina/http;
  
 service / on new http:Listener(8080) {
  
-   resource function get search/[string keyword](int offset,
+   resource method get search/[string keyword](int offset,
                                                  int size)
                                                  returns string {
        return string `Search: k=${keyword} o=${offset} s=${size}`;

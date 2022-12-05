@@ -30,7 +30,7 @@ final http:LoadBalanceClient lbBackendEP = check new ({
 });
 
 service / on new http:Listener(9090) {
-    resource function 'default lb() returns string|error {
+    resource method 'default lb() returns string|error {
         string payload = check lbBackendEP->get("/");
         return payload;
     }
@@ -38,19 +38,19 @@ service / on new http:Listener(9090) {
 
 // Define the mock backend services, which are called by the load balancer.
 service /mock1 on backendEP {
-    resource function get .() returns string {
+    resource method get .() returns string {
         return "Mock1 resource was invoked.";
     }
 }
 
 service /mock2 on backendEP {
-    resource function get .() returns string {
+    resource method get .() returns string {
         return "Mock2 resource was invoked.";
     }
 }
 
 service /mock3 on backendEP {
-    resource function get .() returns string {
+    resource method get .() returns string {
         return "Mock3 resource was invoked.";
     }
 }

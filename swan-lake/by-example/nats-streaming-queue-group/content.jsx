@@ -49,7 +49,7 @@ listener stan:Listener lis = new (stan:DEFAULT_URL);
     queueGroup: "sample-queue-group"
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) returns error? {
+    remote method onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
         string messageData = check string:fromBytes(message.content);
         log:printInfo("Message Received to first queue group member: " + messageData);
@@ -62,7 +62,7 @@ service stan:Service on lis {
     queueGroup: "sample-queue-group"
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) returns error? {
+    remote method onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
         string messageData = check string:fromBytes(message.content);
         log:printInfo("Message Received to second queue group member: " + messageData);
@@ -75,7 +75,7 @@ service stan:Service on lis {
     queueGroup: "sample-queue-group"
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) returns error? {
+    remote method onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
         string messageData = check string:fromBytes(message.content);
         log:printInfo("Message Received to third queue group member: " + messageData);

@@ -24,13 +24,13 @@ import ballerina/graphql;
  
 service graphql:Service /query on new graphql:Listener(8080) {
  
-   resource function get 'order(int id) 
+   resource method get 'order(int id) 
                           returns Order|error => loadOrder(id);
  
 }
 ```
 
-This example code includes a single resource function `order`, which takes in the `id` parameter and returns an instance of the `Order` service class. The `loadOrder` function and the `Order` service class are implemented in the following way. 
+This example code includes a single resource method `order`, which takes in the `id` parameter and returns an instance of the `Order` service class. The `loadOrder` function and the `Order` service class are implemented in the following way. 
 
 ```ballerina
 function loadOrder(int id) returns Order|error {
@@ -55,19 +55,19 @@ service class Order {
        self.data = data;
    }
  
-   resource function get notes() returns string {
+   resource method get notes() returns string {
        return self.data.notes;
    }
  
-   resource function get date() returns string {
+   resource method get date() returns string {
        return self.data.date;
    }
  
-   resource function get customer() returns Customer|error {
+   resource method get customer() returns Customer|error {
        return check loadCustomer(self.data.customerId);
    }
  
-   resource function get shipper() returns Shipper|error {
+   resource method get shipper() returns Shipper|error {
        return check loadShipper(self.data.shipperId);
    }
 }
@@ -77,7 +77,7 @@ Here, you execute the required SQL query to load the `Order` table data and popu
 
 >**Note:"** You do not load the `customer` and `shipper` information right away. Rather, these are loaded lazily if and when it’s required as expressed through the incoming GraphQL query. 
 
-The `loadCustomer` function shown below is used in the `customer` resource function to load the customer information from the database and populate a `Customer` object. 
+The `loadCustomer` function shown below is used in the `customer` resource method to load the customer information from the database and populate a `Customer` object. 
 
 ```ballerina
 function loadCustomer(int id) returns Customer|error {
@@ -101,17 +101,17 @@ service class Customer {
        self.data = data;
    }
  
-   resource function get name() returns string {
+   resource method get name() returns string {
        return self.data.name;
    }
  
-   resource function get address() returns string {
+   resource method get address() returns string {
        return self.data.address;
    }
 }
 ```
 
-Similarly, the `shipper` resource function is implemented to query the corresponding GraphQL object field. 
+Similarly, the `shipper` resource method is implemented to query the corresponding GraphQL object field. 
 
 The complete Ballerina source code for our scenario is shown below.
 
@@ -149,11 +149,11 @@ service class Customer {
        self.data = data;
    }
  
-   resource function get name() returns string {
+   resource method get name() returns string {
        return self.data.name;
    }
  
-   resource function get address() returns string {
+   resource method get address() returns string {
        return self.data.address;
    }
 }
@@ -166,11 +166,11 @@ service class Shipper {
        self.data = data;
    }
  
-   resource function get name() returns string {
+   resource method get name() returns string {
        return self.data.name;
    }
  
-   resource function get phone() returns string {
+   resource method get phone() returns string {
        return self.data.phone;
    }
 }
@@ -183,26 +183,26 @@ service class Order {
        self.data = data;
    }
  
-   resource function get notes() returns string {
+   resource method get notes() returns string {
        return self.data.notes;
    }
  
-   resource function get date() returns string {
+   resource method get date() returns string {
        return self.data.date;
    }
  
-   resource function get customer() returns Customer|error {
+   resource method get customer() returns Customer|error {
        return check loadCustomer(self.data.customerId);
    }
  
-   resource function get shipper() returns Shipper|error {
+   resource method get shipper() returns Shipper|error {
        return check loadShipper(self.data.shipperId);
    }
 }
  
 service graphql:Service /query on new graphql:Listener(8080) {
  
-   resource function get 'order(int id) returns Order|error => loadOrder(id);
+   resource method get 'order(int id) returns Order|error => loadOrder(id);
  
 }
  

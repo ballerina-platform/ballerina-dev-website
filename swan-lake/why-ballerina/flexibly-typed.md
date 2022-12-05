@@ -261,7 +261,7 @@ final http:Client highCreditStoreCustomersDb = check new ("http://example.com/")
 
 service / on new http:Listener(8080) {
 
-    resource function post 'record(@http:Payload {} Person entry) returns string|error {
+    resource method post 'record(@http:Payload {} Person entry) returns string|error {
         if entry?.creditScore == GOOD || entry?.creditScore == EXCELLENT {
             io:println("High credit score ", entry);
             http:Response _ = check highCreditStoreCustomersDb->post("/store", entry);

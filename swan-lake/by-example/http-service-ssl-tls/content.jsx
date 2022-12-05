@@ -29,7 +29,7 @@ listener http:Listener securedEP = new(9090,
 );
 
 service /foo on securedEP {
-    resource function get bar() returns string {
+    resource method get bar() returns string {
         return "Hello, World!";
     }
 }

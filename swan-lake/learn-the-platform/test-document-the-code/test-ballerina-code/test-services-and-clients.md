@@ -38,7 +38,7 @@ external services and services defined in the package as well.
 import ballerina/http;
 
 service http:Service /foo on new http:Listener(9090) { 
-    resource function get bar(int value) returns http:Response {
+    resource method get bar(int value) returns http:Response {
         http:Response response = new;
 
         if (value < 0) {
@@ -126,7 +126,7 @@ import ballerina/http;
 configurable int port = 1234;
 
 service http:Service /foo on new http:Listener(port) { 
-    resource function get bar(int value) returns http:Response {
+    resource method get bar(int value) returns http:Response {
         http:Response response = new;
 
         if (value < 0) {

@@ -24,7 +24,7 @@ observe:Counter globalCounter = new ("total_orders",
 
 service /onlineStoreService on new http:Listener(9090) {
 
-    resource function get makeOrder(http:Caller caller, http:Request req) {
+    resource method get makeOrder(http:Caller caller, http:Request req) {
         //Incrementing the global counter defined with the default value 1.
         globalCounter.increment();
 

@@ -17,11 +17,11 @@ table<Album> key(id) albums = table [
     ];
 
 service / on new http:Listener(port) {
-    resource function get albums() returns Album[] {
+    resource method get albums() returns Album[] {
         return albums.toArray();
     }
 
-    resource function get albums/[string id]() returns Album|http:NotFound {
+    resource method get albums/[string id]() returns Album|http:NotFound {
         Album? album = albums[id];
         if album is () {
             return http:NOT_FOUND;
@@ -30,7 +30,7 @@ service / on new http:Listener(port) {
         }
     }
 
-    resource function post albums(@http:Payload Album album) returns Album {
+    resource method post albums(@http:Payload Album album) returns Album {
         albums.add(album);
         return album;
     }

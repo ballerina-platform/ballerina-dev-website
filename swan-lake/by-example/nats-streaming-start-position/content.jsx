@@ -48,7 +48,7 @@ listener stan:Listener lis = new (stan:DEFAULT_URL);
     subject: "demo"
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) returns error? {
+    remote method onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
         string messageData = check string:fromBytes(message.content);
         log:printInfo("Message Received to service receiveNewOnly: " + messageData);
@@ -62,7 +62,7 @@ service stan:Service on lis {
     startPosition: stan:FIRST
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) returns error? {
+    remote method onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
         string messageData = check string:fromBytes(message.content);
         log:printInfo("Message Received to service receiveFromBegining: " + messageData);
@@ -76,7 +76,7 @@ service stan:Service on lis {
     startPosition: stan:LAST_RECEIVED
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) returns error? {
+    remote method onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
         string messageData = check string:fromBytes(message.content);
         log:printInfo("Message Received to service " + "receiveFromLastReceived: " + messageData);
@@ -92,7 +92,7 @@ service stan:Service on lis {
     startPosition: sequenceNo
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) returns error? {
+    remote method onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
         string messageData = check string:fromBytes(message.content);
         log:printInfo("Message Received to service receiveFromGivenIndex: " + messageData);
@@ -108,7 +108,7 @@ service stan:Service on lis {
     startPosition: timeDelta
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) returns error? {
+    remote method onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
         string messageData = check string:fromBytes(message.content);
         log:printInfo("Message Received to service receiveSinceTimeDelta: " + messageData);

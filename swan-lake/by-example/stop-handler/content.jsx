@@ -33,7 +33,7 @@ public function clearBasket() returns error? {
 
 service / on new http:Listener(9090) {
     
-    resource function post addToBasket(@http:Payload string fruit) 
+    resource method post addToBasket(@http:Payload string fruit) 
             returns string[] {
 
         // Add an element to the array.

@@ -36,13 +36,13 @@ service /crossOriginService on new http:Listener(9092) {
             allowHeaders: ["X-Content-Type-Options", "X-PINGOTHER"]
         }
     }
-    resource function get company() returns json {
+    resource method get company() returns json {
         return {"type": "middleware"};
     }
 
     // Since there are no resource-level CORS configs defined here, the global
     // service-level CORS configs will be applied to this resource.
-    resource function post lang() returns json {
+    resource method post lang() returns json {
         return {"lang": "Ballerina"};
     }
 }

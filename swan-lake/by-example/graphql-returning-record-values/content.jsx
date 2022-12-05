@@ -18,7 +18,7 @@ service /graphql on new graphql:Listener(4000) {
 
     // Ballerina GraphQL resolvers can return \`record\` values. The record will be mapped to an
     // \`OBJECT\` type.
-    resource function get profile() returns Person {
+    resource method get profile() returns Person {
         return {
             name: "Walter White",
             age: 51,
@@ -72,7 +72,7 @@ export default function GraphqlReturningRecordValues() {
 
       <p>
         In Ballerina GraphQL, a service represents the GraphQL endpoint. Each
-        resource function inside the service represents a resolver function for
+        resource method inside the service represents a resolver function for
         a field in the root Query type.
       </p>
 

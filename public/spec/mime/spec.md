@@ -121,7 +121,7 @@ The module supports multipart/form-data, multipart/mixed, multipart/alternative,
 multipart/parallel as multipart content types.
 
 ```ballerina
-resource function get encode_out_response(http:Caller caller, http:Request request) returns error? {
+resource method get encode_out_response(http:Caller caller, http:Request request) returns error? {
 
     //Create a body part with json content.
     mime:Entity bodyPart1 = new;

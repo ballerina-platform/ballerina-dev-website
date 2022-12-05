@@ -215,7 +215,7 @@ Client generated successfully. The following files were created.
 ```
 ### Generate with boiler-plate tests
 
-Use the `--with-tests` flag in the client mode to generate a Ballerina client with boilerplate test cases for all the remote functions available in it.
+Use the `--with-tests` flag in the client mode to generate a Ballerina client with boilerplate test cases for all the remote methods available in it.
 ```
 $ bal openapi -i <openapi-contract> [--mode client] [--with-tests]
 ```

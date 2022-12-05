@@ -151,7 +151,7 @@ public client class ListenerOAuth2Handler {
         self.provider = new (config);
     }
 
-    remote function authorize(Request|Headers|string data, string|string[]? expectedScopes = (), 
+    remote method authorize(Request|Headers|string data, string|string[]? expectedScopes = (), 
                   map<string>? optionalParams = ()) returns oauth2:IntrospectionResponse|Unauthorized|Forbidden {
         // extract the credential from data
         oauth2:IntrospectionResponse|oauth2:Error response = self.provider.authorize(credential, optionalParams);
@@ -335,7 +335,7 @@ public client class ClientOAuth2Handler {
         self.provider = new (config);
     }
 
-    remote function enrich(Request req) returns Request|Error {
+    remote method enrich(Request req) returns Request|Error {
         string|oauth2:Error token = self.provider.generateToken();
         // set the token as the `Authorization: Bearer <token>` header
     }
@@ -384,7 +384,7 @@ import ballerina/http;
     ]
 }
 service /foo on new http:Listener(9090) {
-    resource function get bar() returns string {
+    resource method get bar() returns string {
         return "Hello, World!";
     }
 }
@@ -403,7 +403,7 @@ http:OAuth2IntrospectionConfig config = {
 http:ListenerOAuth2Handler handler = new (config);
 
 service /foo on new http:Listener(9090) {
-    resource function post bar(@http:Header string authorization) returns string|http:Unauthorized|http:Forbidden {
+    resource method post bar(@http:Header string authorization) returns string|http:Unauthorized|http:Forbidden {
         oauth2:IntrospectionResponse|http:Unauthorized|http:Forbidden auth = handler->authorize(authorization, "admin");
         if (auth is http:Unauthorized || auth is http:Forbidden) {
             return auth;

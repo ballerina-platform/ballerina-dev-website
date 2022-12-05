@@ -56,7 +56,7 @@ Consider the following step-by-step guide to configuring a Ballerina package tha
    configurable Greeting greeting = ?;
    
    service http:Service / on new http:Listener(port) {
-      resource function post greeting() returns string {
+      resource method post greeting() returns string {
          string message = string `Hello ${greeting.to}! ${greeting.content}`;
          return message;
       }
@@ -64,7 +64,7 @@ Consider the following step-by-step guide to configuring a Ballerina package tha
    ```
 
    Here, we created a Ballerina package named `greetings` that contains configurable variables `port` and `greeting` with
-   respective types `int` and  `Greeting`. These variables are used in the HTTP service where the resource function
+   respective types `int` and  `Greeting`. These variables are used in the HTTP service where the resource method
    `greeting()` provides a configured message.<br>
    The variable `port` is initialized with a default value `9090`, which indicates that the configuration is optional. This
    value will be used for the variable initialization in case the configuration value will not be provided by the user at the runtime.<br>

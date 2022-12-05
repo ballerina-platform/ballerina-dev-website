@@ -393,31 +393,31 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
-### Create the resource functions
+### Create the resource methods
 
-Within this service, you can define resource functions to provide access to the database. The code snippet below 
-demonstrates a resource function that can be used to create a new employee via a `POST` request.
+Within this service, you can define resource methods to provide access to the database. The code snippet below 
+demonstrates a resource method that can be used to create a new employee via a `POST` request.
 
 ```ballerina
 service /employees on new http:Listener(8080) {
 
-    isolated resource function post .(@http:Payload Employee emp) returns int|error? {
+    isolated resource method post .(@http:Payload Employee emp) returns int|error? {
         return addEmployee(emp);
     }
 
-    isolated resource function get [int id]() returns Employee|error? {
+    isolated resource method get [int id]() returns Employee|error? {
         return getEmployee(id);
     }
 
-    isolated resource function get .() returns Employee[]|error? {
+    isolated resource method get .() returns Employee[]|error? {
         return getAllEmployees();
     }
 
-    isolated resource function put .(@http:Payload Employee emp) returns int|error? {
+    isolated resource method put .(@http:Payload Employee emp) returns int|error? {
         return updateEmployee(emp);
     }
 
-    isolated resource function delete [int id]() returns int|error? {
+    isolated resource method delete [int id]() returns int|error? {
         return removeEmployee(id);       
     }
     
@@ -433,23 +433,23 @@ import ballerina/http;
 
 service /employees on new http:Listener(8080) {
 
-    isolated resource function post .(@http:Payload Employee emp) returns int|error? {
+    isolated resource method post .(@http:Payload Employee emp) returns int|error? {
         return addEmployee(emp);
     }
     
-    isolated resource function get [int id]() returns Employee|error? {
+    isolated resource method get [int id]() returns Employee|error? {
         return getEmployee(id);
     }
     
-    isolated resource function get .() returns Employee[]|error? {
+    isolated resource method get .() returns Employee[]|error? {
         return getAllEmployees();
     }
     
-    isolated resource function put .(@http:Payload Employee emp) returns int|error? {
+    isolated resource method put .(@http:Payload Employee emp) returns int|error? {
         return updateEmployee(emp);
     }
     
-    isolated resource function delete [int id]() returns int|error? {
+    isolated resource method delete [int id]() returns int|error? {
         return removeEmployee(id);       
     }
 
@@ -471,7 +471,7 @@ be accessed via a browser by visiting `http://locahost:8080/employees`.
 
 ## Try the service
 
-Invoke the defined resource function by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
+Invoke the defined resource method by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
 
 ```
 curl -X POST http://localhost:8080/employees/

@@ -392,7 +392,7 @@ After initializing the listener, a service must be attached to the listener. The
 1. Attach the service to the listener directly.
 ```ballerina
 service ftp:Service on ftpListener {
-    remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) {
+    remote method onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) {
         // process event
     }
 }
@@ -401,12 +401,12 @@ service ftp:Service on ftpListener {
 ```ballerina
 // Create a service object
 ftp:Service ftpListener = service object {
-    remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) {
+    remote method onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) {
         // process event
     }
 };
 ```
-The remote function `onFileChange()` is invoked when the listener notices a file change in the FTP server. This function supports
+The remote method `onFileChange()` is invoked when the listener notices a file change in the FTP server. This function supports
 having both `ftp:WatchEvent` and `ftp:Caller` parameters or having only `ftp:WatchEvent` parameter.
 
 The Listener has following functions to manage a service.
@@ -686,7 +686,7 @@ listener ftp:Listener remoteServer = check new({
 
 service on remoteServer {
 
-    remote function onFileChange(ftp:Caller caller, ftp:WatchEvent & readonly event) {
+    remote method onFileChange(ftp:Caller caller, ftp:WatchEvent & readonly event) {
         foreach ftp:FileInfo addedFile in event.addedFiles {
             io:println("Added file path: " + addedFile.path);
             check caller->delete(addedFile.path);

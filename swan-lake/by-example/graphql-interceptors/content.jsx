@@ -23,11 +23,11 @@ readonly service class LogInterceptor {
     // package.
     *graphql:Interceptor;
 
-    // Implement the \`execute()\` remote function provided by the
+    // Implement the \`execute()\` remote method provided by the
     // \`graphql:Interceptor\` object. Within the function, the \`graphql:Context\`
     // and the \`graphql:Field\` object can be accessed to get the request and
     // field related information.
-    isolated remote function execute(graphql:Context context,
+    isolated remote method execute(graphql:Context context,
                                      graphql:Field 'field)
                                      returns anydata|error {
 
@@ -65,7 +65,7 @@ readonly service class LogInterceptor {
 
 }
 service /graphql on new graphql:Listener(4000) {
-    isolated resource function get name() returns string {
+    isolated resource method get name() returns string {
         log:printInfo("Executing the field \\"name\\"");
         return "GraphQL Interceptors";
     }

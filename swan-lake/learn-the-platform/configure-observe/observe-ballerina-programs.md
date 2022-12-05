@@ -81,7 +81,7 @@ import ballerinax/jaeger as _;
 
 service /hello on new http:Listener(9090) {
     
-    resource function get sayHello(http:Caller caller, http:Request req) returns error? {
+    resource method get sayHello(http:Caller caller, http:Request req) returns error? {
         log:printInfo("This is a test Info log");
         log:printError("This is a test Error log");
         http:Response res = new;

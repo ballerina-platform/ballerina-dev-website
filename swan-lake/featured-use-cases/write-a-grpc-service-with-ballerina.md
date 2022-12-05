@@ -150,7 +150,7 @@ To add the business logic to the remote method (in this case, you only need to u
     @grpc:Descriptor {value: HELLOWORLD_DESC}
     service "Greeter" on grpcListener {
 
-        remote function sayHello(HelloRequest value) returns HelloReply|error {
+        remote method sayHello(HelloRequest value) returns HelloReply|error {
             return {message: "Hello " + value.name};
         }
     }
@@ -258,7 +258,7 @@ public function main() returns error? {
 In this code:
 
 - The client declaration creates a connection to the remote server which is listening on port 9090. The generated client has remote methods that can use to talk to a remote server.
-- The `main` function contains the statements that call the `sayHello` remote function and prints the response to the console.
+- The `main` function contains the statements that call the `sayHello` remote method and prints the response to the console.
 
 ## Run the gRPC client
 

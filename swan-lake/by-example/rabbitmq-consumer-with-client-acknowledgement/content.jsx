@@ -26,7 +26,7 @@ listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitm
 }
 // Attaches the service to the listener.
 service rabbitmq:Service on channelListener {
-    remote function onMessage(StringMessage message, rabbitmq:Caller caller) returns error? {
+    remote method onMessage(StringMessage message, rabbitmq:Caller caller) returns error? {
         log:printInfo("Received message: " + message.content);
         // Positively acknowledges a single message.
         check caller->basicAck();

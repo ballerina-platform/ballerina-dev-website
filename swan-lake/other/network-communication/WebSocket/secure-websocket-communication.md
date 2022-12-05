@@ -44,14 +44,14 @@ var ws = new WebSocket("wss://localhost:8443/ws");
     );
     
     service /ws on securedEP {
-        resource function get .(http:Request req) returns websocket:Service|websocket:UpgradeError {
+        resource method get .(http:Request req) returns websocket:Service|websocket:UpgradeError {
             return new WsService();
         }
     }
        
     service class WsService {
         *websocket:Service;
-        remote function onTextMessage(websocket:Caller caller, string text) returns websocket:Error? {
+        remote method onTextMessage(websocket:Caller caller, string text) returns websocket:Error? {
             check caller->writeTextMessage("Echo: " + text);
         }
     }

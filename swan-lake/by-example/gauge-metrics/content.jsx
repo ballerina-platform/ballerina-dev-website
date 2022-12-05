@@ -25,7 +25,7 @@ observe:Gauge globalGauge = new ("global_gauge", "Global gauge defined");
 
 service /onlineStoreService on new http:Listener(9090) {
 
-    resource function get makeOrder(http:Caller caller, http:Request req) {
+    resource method get makeOrder(http:Caller caller, http:Request req) {
         io:println("------------------------------------------");
         //Incrementing the global gauge defined by 15.0.
         globalGauge.increment(15.0);

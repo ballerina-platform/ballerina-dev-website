@@ -130,7 +130,7 @@ import ballerina/udp;
 
 service on new udp:Listener(8080) {
 
-    remote function onDatagram(udp:Datagram & readonly dg) {
+    remote method onDatagram(udp:Datagram & readonly dg) {
         io:println("bytes received: ", dg.data.length());
     }
 }
@@ -149,7 +149,7 @@ import ballerina/udp;
 listener udp:Listener u = new (8080);
 
 udp:Service obj = service object {
-    remote function onDatagram(udp:Datagram & readonly dg) {
+    remote method onDatagram(udp:Datagram & readonly dg) {
         io:println("bytes received: ", dg.data.length());
     }
 };
@@ -184,7 +184,7 @@ import ballerina/http;
 
 service on new http:Listener(8080) {
 
-    resource function get hello(string name) returns string {
+    resource method get hello(string name) returns string {
         return "Hello, " + name;
     }
 }
@@ -203,7 +203,7 @@ import ballerina/http;
 
 service /demo on new http:Listener(8080) {
 
-    resource function get greeting/hello(string name) returns string {
+    resource method get greeting/hello(string name) returns string {
         return "Hello, " + name;
     }
 }
@@ -223,7 +223,7 @@ import ballerina/http;
 service /demo on new http:Listener(8080) {
 
     // GET /demo/greeting/James would return "Hello, James"
-    resource function get greeting/[string name]() returns string {
+    resource method get greeting/[string name]() returns string {
         return "Hello, " + name;
     }
 }
@@ -241,7 +241,7 @@ A resource of a service object is accessed by a listener object provided by a li
 import ballerina/io;
 
 var clinetObj = client object {
-    resource function get greeting/[string name]() returns string {
+    resource method get greeting/[string name]() returns string {
         return "Hello, " + name;
     }
 };
@@ -263,7 +263,7 @@ The resource access action can specify the query parameters as arguments.
 import ballerina/io;
 
 var clinetObj = client object {
-    resource function get greeting(string name) returns string {
+    resource method get greeting(string name) returns string {
         return "Hello, " + name;
     }
 };
@@ -285,11 +285,11 @@ The resource access path segments can also be assigned dynamically using compute
 import ballerina/io;
 
 var clinetObj = client object {
-    resource function get greeting/[string name]() returns string {
+    resource method get greeting/[string name]() returns string {
         return "Hello, " + name;
     }
 
-    resource function post game/[string name]/[int players]() returns string {
+    resource method post game/[string name]/[int players]() returns string {
         return name + ": " + players.toString();
     }
 };

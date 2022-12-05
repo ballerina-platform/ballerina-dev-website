@@ -183,16 +183,16 @@ Both POP3 and IMAP services can be defined as follows.
 ```ballerina
 email:Service emailObserver = service object {
 
-   remote function onMessage(email:Message emailMessage) {
+   remote method onMessage(email:Message emailMessage) {
       io:println("Email Body: ", emailMessage?.body);
    }
 
-   remote function onError(email:Error emailError) {
+   remote method onError(email:Error emailError) {
       io:println("Error while polling for the emails: "
             + emailError.message());
    }
 
-   remote function onClose(email:Error? closeError) {
+   remote method onClose(email:Error? closeError) {
    }
 
 };
@@ -269,17 +269,17 @@ listener email:PopListener emailListener = check new ({
 
 service "emailObserver" on emailListener {
 
-    remote function onMessage(email:Message emailMessage) {
+    remote method onMessage(email:Message emailMessage) {
         io:println("POP Listener received an email.");
         io:println("Email Subject: ", emailMessage.subject);
         io:println("Email Body: ", emailMessage?.body);
     }
 
-    remote function onError(email:Error emailError) {
+    remote method onError(email:Error emailError) {
         io:println("Error while polling for the emails: " + emailError.message());
     }
 
-    remote function onClose(email:Error? closeError) {
+    remote method onClose(email:Error? closeError) {
         io:println("Closed the listener.");
     }
 
@@ -301,17 +301,17 @@ listener email:ImapListener emailListener = check new ({
 
 service "emailObserver" on emailListener {
 
-    remote function onMessage(email:Message emailMessage) {
+    remote method onMessage(email:Message emailMessage) {
         io:println("IMAP Listener received an email.");
         io:println("Email Subject: ", emailMessage.subject);
         io:println("Email Body: ", emailMessage?.body);
     }
 
-    remote function onError(email:Error emailError) {
+    remote method onError(email:Error emailError) {
         io:println("Error while polling for the emails: " + emailError.message());
     }
 
-    remote function onClose(email:Error? closeError) {
+    remote method onClose(email:Error? closeError) {
         io:println("Closed the listener.");
     }
 

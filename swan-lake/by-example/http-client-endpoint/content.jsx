@@ -34,7 +34,7 @@ public function main() returns error? {
     resp = check clientEndpoint->post("/post", "POST: Hello World");
     io:println(resp.toJsonString());
 
-    // Uses the \`execute()\` remote function for custom HTTP verbs.
+    // Uses the \`execute()\` remote method for custom HTTP verbs.
     io:println("\\nUse custom HTTP verbs:");
     http:Response response = check clientEndpoint->execute("COPY", "/get", "CUSTOM: Hello World");
 

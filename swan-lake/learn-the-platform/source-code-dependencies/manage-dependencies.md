@@ -95,7 +95,7 @@ listener gmailListener:Listener gmailEventListener =
                             new (port, gmailConfig, project, pushEndpoint);
 
 service / on gmailEventListener {
-    remote function onNewEmail(gmail:Message message) returns error? {
+    remote method onNewEmail(gmail:Message message) returns error? {
         log:printInfo("New Email : ", message = message);
     }
 }

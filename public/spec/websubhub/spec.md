@@ -176,40 +176,40 @@ Following is the type-definition for `websubhub:Service`.
 public type Service distinct service object {
     // Sample POST request hub.mode=register&hub.topic=http://foo.com/bar
     // Sample 200 OK response hub.mode=accepted or 200 OK hub.mode=denied&hub.reason=unauthorized
-    remote function onRegisterTopic(websubhub:TopicRegistration msg)
+    remote method onRegisterTopic(websubhub:TopicRegistration msg)
         returns websubhub:TopicRegistrationSuccess|websubhub:TopicRegistrationError|error;
 
     // Sample POST request hub.mode=unregister&hub.topic=http://foo.com/bar
     // Sample 200 OK response hub.mode=accepted or 200 OK hub.mode=denied&hub.reason=unauthorized 
-    remote function onDeregisterTopic(websubhub:TopicDeregistration msg)
+    remote method onDeregisterTopic(websubhub:TopicDeregistration msg)
         returns websubhub:TopicDeregistrationSuccess|websubhub:TopicDeregistrationError|error;
 
     // Sample POST request with content type x-www-form-urlencoded hub.mode=publish&hub.topic=http://foo.com/bar
     // for other content types such as xml, json and octect-stream hub.mode=publish should be in query string.
     // Sample 200 OK response hub.mode=accepted or 200 OK hub.mode=denied&hub.reason=unauthorized 
-    remote function onUpdateMessage(websubhub:UpdateMessage msg)
+    remote method onUpdateMessage(websubhub:UpdateMessage msg)
         returns websubhub:Acknowledgement|websubhub:UpdateMessageError|error;
 
     // Sample POST request hub.mode=subscribe&hub.topic=http://foo.com/bar 
-    remote function onSubscription(websubhub:Subscription msg)
+    remote method onSubscription(websubhub:Subscription msg)
         returns websubhub:SubscriptionAccepted|websubhub:SubscriptionPermanentRedirect|
         websubhub:SubscriptionTemporaryRedirect|websubhub:BadSubscriptionError|
         websubhub:InternalSubscriptionError|error;
         
-    remote function onSubscriptionValidation(websubhub:Subscription msg)
+    remote method onSubscriptionValidation(websubhub:Subscription msg)
         returns websubhub:SubscriptionDeniedError|error?;
 
-    remote function onSubscriptionIntentVerified(websubhub:VerifiedSubscription msg) returns error?;
+    remote method onSubscriptionIntentVerified(websubhub:VerifiedSubscription msg) returns error?;
 
     // Sample POST request hub.mode=unsubscribe&hub.topic=http://foo.com/bar
-    remote function onUnsubscription(websubhub:Unsubscription msg)
+    remote method onUnsubscription(websubhub:Unsubscription msg)
         returns websubhub:UnsubscriptionAccepted|websubhub:BadUnsubscriptionError|
         websubhub:InternalUnsubscriptionError|error;
 
-    remote function onUnsubscriptionValidation(websubhub:Unsubscription msg)
+    remote method onUnsubscriptionValidation(websubhub:Unsubscription msg)
         returns websubhub:UnsubscriptionDeniedError|error?;
 
-    remote function onUnsubscriptionIntentVerified(websubhub:VerifiedUnsubscription msg) returns error?;
+    remote method onUnsubscriptionIntentVerified(websubhub:VerifiedUnsubscription msg) returns error?;
 };
 ```
 
@@ -224,7 +224,7 @@ This remote method is invoked when the `publisher` sends a request to register a
 # + msg - Details related to the topic-registration
 # + return - `websubhub:TopicRegistrationSuccess` if topic registration is successful, `websubhub:TopicRegistrationError`
 #            if topic registration failed or `error` if there is any unexpected error
-remote function onRegisterTopic(websubhub:TopicRegistration msg)
+remote method onRegisterTopic(websubhub:TopicRegistration msg)
     returns websubhub:TopicRegistrationSuccess|websubhub:TopicRegistrationError|error;
 ```
 
@@ -237,7 +237,7 @@ This remote method is invoked when the `publisher` sends a request to remove a `
 # + msg - Details related to the topic-deregistration
 # + return - `websubhub:TopicDeregistrationSuccess` if topic deregistration is successful, `websubhub:TopicDeregistrationError`
 #            if topic deregistration failed or `error` if there is any unexpected error
-remote function onDeregisterTopic(websubhub:TopicDeregistration msg)
+remote method onDeregisterTopic(websubhub:TopicDeregistration msg)
     returns websubhub:TopicDeregistrationSuccess|websubhub:TopicDeregistrationError|error;
 ```
 
@@ -251,7 +251,7 @@ This remote method is invoked when the `publisher` sends a request to notify the
 # + msg - Details of the published content
 # + return - `websubhub:Acknowledgement` if publish content is successful, `websubhub:UpdateMessageError`
 #            if publish content failed or `error` if there is any unexpected error
-remote function onUpdateMessage(websubhub:UpdateMessage msg)
+remote method onUpdateMessage(websubhub:UpdateMessage msg)
     returns websubhub:Acknowledgement|websubhub:UpdateMessageError|error;
 ```
 
@@ -267,7 +267,7 @@ optional remote method.)
 #            if subscription is denied from the hub, `websubhub:SubscriptionPermanentRedirect` or a `websubhub:SubscriptionTemporaryRedirect`
 #            if the subscription request is redirected from the `hub`, `websubhub:InternalSubscriptionError` if there is an internal error 
 #            while processing the subscription request or `error` if there is any unexpected error
-remote function onSubscription(websubhub:Subscription msg)
+remote method onSubscription(websubhub:Subscription msg)
     returns websubhub:SubscriptionAccepted|websubhub:SubscriptionPermanentRedirect|
         websubhub:SubscriptionTemporaryRedirect|websubhub:BadSubscriptionError|
         websubhub:InternalSubscriptionError|error;
@@ -284,7 +284,7 @@ optional remote method.)
 # 
 # + msg - Details of the subscription
 # + return - `websubhub:SubscriptionDeniedError` if the subscription is denied by the hub, `error` if there is any unexpected error or else `()`
-remote function onSubscriptionValidation(websubhub:Subscription msg) 
+remote method onSubscriptionValidation(websubhub:Subscription msg) 
     returns websubhub:SubscriptionDeniedError|error?;
 ```
 
@@ -296,7 +296,7 @@ This remote method is invoked after the `hub` verifies the subscription request.
 # 
 # + msg - Details of the subscription
 # + return - `error` if there is any unexpected error or else `()`
-remote function onSubscriptionIntentVerified(websubhub:VerifiedSubscription msg) returns error?;
+remote method onSubscriptionIntentVerified(websubhub:VerifiedSubscription msg) returns error?;
 ```
 
 ##### 2.2.1.7. onUnsubscritpion
@@ -310,7 +310,7 @@ an optional remote method.)
 # + return - `websubhub:UnsubscriptionAccepted` if unsubscription is accepted from the hub, `websubhub:BadUnsubscriptionError`
 #            if unsubscription is denied from the hub, `websubhub:InternalUnsubscriptionError` if there is any internal error while processing the 
 #             unsubscription request or `error` if there is any unexpected error
-remote function onUnsubscription(websubhub:Unsubscription msg)
+remote method onUnsubscription(websubhub:Unsubscription msg)
     returns websubhub:UnsubscriptionAccepted|websubhub:BadUnsubscriptionError|
         websubhub:InternalUnsubscriptionError|error;
 ```
@@ -326,7 +326,7 @@ optional remote method.)
 # 
 # + msg - Details of the unsubscription
 # + return - `websubhub:UnsubscriptionDeniedError` if the unsubscription is denied by the hub or else `()`
-remote function onUnsubscriptionValidation(websubhub:Unsubscription msg) 
+remote method onUnsubscriptionValidation(websubhub:Unsubscription msg) 
     returns websubhub:UnsubscriptionDeniedError|error?;
 ```
 
@@ -337,7 +337,7 @@ This remote method is invoked after the `hub` verifies the unsubscription reques
 # Processes a verified unsubscription request.
 # 
 # + msg - Details of the unsubscription
-remote function onUnsubscriptionIntentVerified(websubhub:VerifiedUnsubscription msg) returns error?;
+remote method onUnsubscriptionIntentVerified(websubhub:VerifiedUnsubscription msg) returns error?;
 ```
 
 While the below remote methods are strictly WebSub compliant,
@@ -348,7 +348,7 @@ While the below remote methods are strictly WebSub compliant,
 - onUnsubscriptionValidation
 - onUnsubscriptionIntenVerified
 
-The below remote functions are not, 
+The below remote methods are not, 
 - onEventMessage
 - onRegisterTopic
 - onUnregisterTopic
@@ -430,7 +430,7 @@ type HubClient client object {
     # + msg - Content to be distributed to the topic subscriber 
     # + return - An `websubhub:Error` if an exception occurred, a `websubhub:SubscriptionDeletedError` if the subscriber responded with `HTTP 410`,
     #            or else a `websubhub:ContentDistributionSuccess` for successful content delivery
-    remote function notifyContentDistribution(websubhub:ContentDistributionMessage msg) 
+    remote method notifyContentDistribution(websubhub:ContentDistributionMessage msg) 
             returns websubhub:ContentDistributionSuccess|websubhub:SubscriptionDeletedError|websubhub:Error;
 };
 ```
@@ -471,7 +471,7 @@ This remote method is invoked when the `publisher` tries to register a `topic` i
 #
 # + topic - The topic to register
 # + return - A `websubhub:TopicRegistrationError` if an error occurred registering the topic or else `websubhub:TopicRegistrationSuccess`
-remote function registerTopic(string topic) returns websubhub:TopicRegistrationSuccess|websubhub:TopicRegistrationError
+remote method registerTopic(string topic) returns websubhub:TopicRegistrationSuccess|websubhub:TopicRegistrationError
 ```
 
 **deregisterTopic**
@@ -485,7 +485,7 @@ This remote method is invoked when the `publisher` tries to deregister a `topic`
 #
 # + topic - The topic to deregister
 # + return - A `websubhub:TopicDeregistrationError` if an error occurred un registering the topic or else `websubhub:TopicDeregistrationSuccess`
-remote function deregisterTopic(string topic) returns websubhub:TopicDeregistrationSuccess|websubhub:TopicDeregistrationError
+remote method deregisterTopic(string topic) returns websubhub:TopicDeregistrationSuccess|websubhub:TopicDeregistrationError
 ```
 
 ### 3.2. Update Content
@@ -506,7 +506,7 @@ This remote method is used to directly send the content-update for a `topic` to 
 # + payload - The update payload
 # + contentType - The type of the update content to set as the `ContentType` header
 # + return - A `websubhub:UpdateMessageError`if an error occurred with the update or else `websubhub:Acknowledgement`
-remote function publishUpdate(string topic, map<string>|string|xml|json|byte[] payload, string? contentType = ()) 
+remote method publishUpdate(string topic, map<string>|string|xml|json|byte[] payload, string? contentType = ()) 
     returns websubhub:Acknowledgement|websubhub:UpdateMessageError
 ```
 
@@ -521,7 +521,7 @@ This remote method is used to notify the `hub`, that the `topic` has been update
 #
 # + topic - The topic for which the update occurred
 # + return - A `websubhub:UpdateMessageError` if an error occurred with the notification or else `websubhub:Acknowledgement`
-remote function notifyUpdate(string topic) returns websubhub:Acknowledgement|websubhub:UpdateMessageError
+remote method notifyUpdate(string topic) returns websubhub:Acknowledgement|websubhub:UpdateMessageError
 ```
 
 ### 4. Common Client Configuration

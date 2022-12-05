@@ -29,7 +29,7 @@ final http:Client cachingEP = checkpanic new ("http://localhost:8080",
 
 service / on new http:Listener(9090) {
 
-    resource function get cache(http:Request req)
+    resource method get cache(http:Request req)
             returns http:Response|error? {
         http:Response response = check cachingEP->forward("/hello", req);
         // If the request was successful, an HTTP response will be returned.
@@ -39,7 +39,7 @@ service / on new http:Listener(9090) {
 
 service / on new http:Listener(8080) {
 
-    resource function 'default hello() returns http:Response {
+    resource method 'default hello() returns http:Response {
         http:Response res = new;
         // The \`http:ResponseCacheControl\` object in the \`http:Response\` object can be
         // used for setting the cache control directives associated with the response. 

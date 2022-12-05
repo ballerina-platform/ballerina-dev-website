@@ -24,21 +24,21 @@ service /graphql on new graphql:Listener(4000) {
         self.person = new("Walter White", 51);
     }
 
-    // A resource function represents a field in the root \`Query\` operation.
-    resource function get profile() returns Person {
+    // A resource method represents a field in the root \`Query\` operation.
+    resource method get profile() returns Person {
 
         return self.person;
     }
 
-    // A remote function represents a field in the root \`Mutation\` operation. After updating the
+    // A remote method represents a field in the root \`Mutation\` operation. After updating the
     // name, the \`person\` object will be returned.
-    remote function updateName(string name) returns Person {
+    remote method updateName(string name) returns Person {
         self.person.setName(name);
         return self.person;
     }
 
-    // Remote function to update the age.
-    remote function updateAge(int age) returns Person {
+    // remote method to update the age.
+    remote method updateAge(int age) returns Person {
         self.person.setAge(age);
         return self.person;
     }
@@ -55,13 +55,13 @@ public service class Person {
         self.age = age;
     }
 
-    resource function get name() returns string {
+    resource method get name() returns string {
         return self.name;
     }
-    resource function get age() returns int {
+    resource method get age() returns int {
         return self.age;
     }
-    resource function get isAdult() returns boolean {
+    resource method get isAdult() returns boolean {
         return self.age > 21;
     }
 
@@ -101,13 +101,13 @@ export default function GraphqlMutations() {
       <h1>Mutations</h1>
 
       <p>
-        A remote function inside a GraphQL service represents a field in the
-        root <code>Mutation</code> object type. Therefore, if a remote function
+        A remote method inside a GraphQL service represents a field in the
+        root <code>Mutation</code> object type. Therefore, if a remote method
         is present inside the Ballerina GraphQL service, the auto-generated
-        schema will have a <code>Mutation</code> type. Each remote function in
+        schema will have a <code>Mutation</code> type. Each remote method in
         the service will be added as a field of the <code>Mutation</code> type.
-        The field name will be the remote function name and the field type will
-        be the return type of the remote function.
+        The field name will be the remote method name and the field type will
+        be the return type of the remote method.
       </p>
 
       <p>

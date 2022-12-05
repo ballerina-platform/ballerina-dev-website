@@ -54,7 +54,7 @@ listener grpc:Listener securedEP = new(9090,
     descriptor: GRPC_SERVICE_DESC
 }
 service "HelloWorld" on securedEP {
-    remote function hello() returns string {
+    remote method hello() returns string {
         return "Hello, World!";
     }
 }

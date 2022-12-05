@@ -490,7 +490,7 @@ This feature is also useful in service resource methods whose parameters are map
 service on hl {
     // With URL file/x/y/z
     // `path` will be ["x", "y", "z"].
-    resource function get file/[string... path]()
+    resource method get file/[string... path]()
             returns string|error {
         // ...
     }

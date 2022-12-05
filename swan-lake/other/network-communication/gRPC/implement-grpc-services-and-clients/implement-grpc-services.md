@@ -34,10 +34,10 @@ Successfully generated ballerina file.
 
 The `AdminService_sample_service.bal` file, which contains the service skeleton will be automatically generated in the default module directory of the service. 
 
-You can simply fill in the implementation of the service functions that are defined in it. For example, the following is the remote function generated for the `add` gRPC method. 
+You can simply fill in the implementation of the service functions that are defined in it. For example, the following is the remote method generated for the `add` gRPC method. 
 
 ```ballerina
-remote function add(AddRequest value) returns AddResponse|error {
+remote method add(AddRequest value) returns AddResponse|error {
     // Implementation goes here.
 }
 ```
@@ -45,7 +45,7 @@ remote function add(AddRequest value) returns AddResponse|error {
 The implementation of the `add` service function can be completed as follows.
 
 ```ballerina
-remote function add(AddRequest value) returns AddResponse|error {
+remote method add(AddRequest value) returns AddResponse|error {
     int result = value.numbers.reduce(function(int n, int i) returns int => n + i, 0);
     return {result: result};
 }
@@ -66,19 +66,19 @@ map<Person> personMap = {};
 }
 service "AdminService" on ep {
  
-    remote function add(AddRequest value) returns AddResponse|error {
+    remote method add(AddRequest value) returns AddResponse|error {
         int result = value.numbers.reduce(function(int n, int i) returns int => n + i, 0);
         return {result: result};
     }
-    remote function multiply(MultiplyRequest value) returns MultiplyResponse|error {
+    remote method multiply(MultiplyRequest value) returns MultiplyResponse|error {
         return {result: value.v1 * value.v2};
     }
-    remote function addPerson(Person value) returns AddPersonResponse|error {
+    remote method addPerson(Person value) returns AddPersonResponse|error {
         value.id = uuid:createType1AsString();
         personMap[value.id] = value;
         return {id: value.id};
     }
-    remote function getPerson(GetPersonRequest value) returns Person|error {
+    remote method getPerson(GetPersonRequest value) returns Person|error {
         Person? person = personMap[value.id];
         if person is Person {
             return person;

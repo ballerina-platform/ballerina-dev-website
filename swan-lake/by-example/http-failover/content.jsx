@@ -30,7 +30,7 @@ http:FailoverClient foBackendEP = check new ({
 });
 
 service / on new http:Listener(9090) {
-    resource function 'default fo() returns string|error {
+    resource method 'default fo() returns string|error {
         string payload = check foBackendEP->get("/");
         return payload;
     }
@@ -38,7 +38,7 @@ service / on new http:Listener(9090) {
 
 // Define the sample service to mock connection timeouts and service outages.
 service / on new http:Listener(8080) {
-    resource function 'default echo() returns string {
+    resource method 'default echo() returns string {
 
         // Delay the response for 30 seconds to mimic network level delays.
         runtime:sleep(30);
@@ -46,7 +46,7 @@ service / on new http:Listener(8080) {
     }
 
     // Define the sample resource to mock a healthy service.
-    resource function 'default mock() returns string {
+    resource method 'default mock() returns string {
         return "The mock resource is invoked.";
     }
 }

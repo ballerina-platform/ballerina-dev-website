@@ -46,7 +46,7 @@ listener graphql:Listener securedEP = new(4000,
     ]
 }
 service /graphql on securedEP {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }

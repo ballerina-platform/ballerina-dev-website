@@ -20,7 +20,7 @@ listener http:Listener http2ServiceEP = new (7090);
 
 service /http2Service on http2ServiceEP {
 
-    resource function 'default .(http:Caller caller) {
+    resource method 'default .(http:Caller caller) {
 
         // Send a push promise. 
         // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Caller#promise.

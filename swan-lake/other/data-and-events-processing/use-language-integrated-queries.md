@@ -365,7 +365,7 @@ import ballerina/http;
  
 service /emart on new http:Listener(9090) {
  
-   resource function post orderProduct(@http:Payload {} Product[] products) {
+   resource method post orderProduct(@http:Payload {} Product[] products) {
     …
    }
  
@@ -433,7 +433,7 @@ table<PriceInfo> priceInfoTable = loadPriceInfo();
  
 service /emart on new http:Listener(9090) {
  
-   resource function post orderProduct(@http:Payload {} Product[] products) returns string {
+   resource method post orderProduct(@http:Payload {} Product[] products) returns string {
        ProductAmount[] output = from var product in products
                                where product.Category == "Grocery"
                                join var priceInfo in priceInfoTable

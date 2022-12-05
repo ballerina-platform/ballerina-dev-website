@@ -22,13 +22,13 @@ final string interceptor_header_value = "ResponseInterceptor";
 
 // A \`ResponseInterceptor\` service class implementation. It intercepts the response 
 // and adds a header before it is dispatched to the client. A \`ResponseInterceptor\`
-// service class can have only one remote function: \`interceptResponse\`.
+// service class can have only one remote method: \`interceptResponse\`.
 service class ResponseInterceptor {
     *http:ResponseInterceptor;
 
-    // The \`interceptResponse\` remote function will be executed for all the
+    // The \`interceptResponse\` remote method will be executed for all the
     // responses. A \`RequestContext\` is used to share data between interceptors.
-    remote function interceptResponse(http:RequestContext ctx, 
+    remote method interceptResponse(http:RequestContext ctx, 
                         http:Response res) returns http:NextService|error? {
         // Sets a header to the response inside the interceptor service.
         res.setHeader(interceptor_header, interceptor_header_value);
@@ -49,7 +49,7 @@ listener http:Listener interceptorListener = new http:Listener(9090,
 
 service /user on interceptorListener {
 
-    resource function get greeting(http:Request req) returns string {
+    resource method get greeting(http:Request req) returns string {
         return "Greetings!";
     }
 }

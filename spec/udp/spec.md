@@ -80,11 +80,11 @@ public isolated client class Client {
 
     public isolated function init(*ClientConfiguration config) returns udp:Error? {}
 
-    isolated remote function sendDatagram(udp:Datagram datagram) returns udp:Error? {}
+    isolated remote method sendDatagram(udp:Datagram datagram) returns udp:Error? {}
 
-    isolated remote function receiveDatagram() returns (readonly & udp:Datagram)|udp:Error {}
+    isolated remote method receiveDatagram() returns (readonly & udp:Datagram)|udp:Error {}
 
-    isolated remote function close() returns udp:Error? {}
+    isolated remote method close() returns udp:Error? {}
 }
 ```
 
@@ -118,11 +118,11 @@ public isolated client class ConnectClient {
 
     public isolated function init(string remoteHost, int remotePort, *ConnectClientConfiguration config) returns upd:Error? {}
 
-    isolated remote function writeBytes(byte[] data) returns udp:Error? {}
+    isolated remote method writeBytes(byte[] data) returns udp:Error? {}
 
-    isolated remote function readBytes() returns (readonly & byte[])|udp:Error {}
+    isolated remote method readBytes() returns (readonly & byte[])|udp:Error {}
 
-    isolated remote function close() returns udp:Error? {}
+    isolated remote method close() returns udp:Error? {}
 }
 ```
 
@@ -227,18 +227,18 @@ public function main() returns error? {
 ```ballerina
 service on new udp:Listener(8080) {
 
-    remote function onBytes(readonly & byte[] data) returns byte[]|udp:Error? {
+    remote method onBytes(readonly & byte[] data) returns byte[]|udp:Error? {
         //echo back
         return data;
     }
 
-    remote function onDatagram(readonly & udp:Datagram datagram, udp:Caller caller) returns udp:Datagram|udp:Error? {
+    remote method onDatagram(readonly & udp:Datagram datagram, udp:Caller caller) returns udp:Datagram|udp:Error? {
         check caller->sendDatagram(datagram);
         // instead we can directly return datagram too, to echo back
         // return datagram;
     }
 
-    remote function onError(udp:Error err) {
+    remote method onError(udp:Error err) {
         io:println(err);
     }
 }

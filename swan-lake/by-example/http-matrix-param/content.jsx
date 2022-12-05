@@ -18,7 +18,7 @@ service /sample on new http:Listener(9090) {
 
     // The path param is defined as a part of the resource path along with the type and it is extracted from the
     // request URI.
-    resource function get path/[string foo](http:Request req) returns json {
+    resource method get path/[string foo](http:Request req) returns json {
 
         // Gets the \`MatrixParams\`.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams.

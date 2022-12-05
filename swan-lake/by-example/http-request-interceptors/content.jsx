@@ -22,15 +22,15 @@ final string interceptor_header_value = "RequestInterceptor";
 
 // A \`Requestinterceptorservice\` class implementation. It intercepts the request
 // and adds a header before it is dispatched to the target service. A \`RequestInterceptorService\`
-// class can have only one resource function. 
+// class can have only one resource method. 
 service class RequestInterceptor {
     *http:RequestInterceptor;
 
-    // A default resource function, which will be executed for all the requests. 
+    // A default resource method, which will be executed for all the requests. 
     // A \`RequestContext\` is used to share data between the interceptors.
     // An accessor and a path can also be specified. In that case, the interceptor will be
     // executed only for the requests, which match the accessor and path.
-    resource function 'default [string... path](http:RequestContext ctx, 
+    resource method 'default [string... path](http:RequestContext ctx, 
                         http:Request req) returns http:NextService|error? {
         // Sets a header to the request inside the interceptor service.
         req.setHeader(interceptor_header, interceptor_header_value);
@@ -53,7 +53,7 @@ listener http:Listener interceptorListener = new http:Listener(9090);
 }
 service /user on interceptorListener {
 
-    resource function get greeting(http:Request req) returns http:Ok|error {
+    resource method get greeting(http:Request req) returns http:Ok|error {
         return {
             headers: { 
                 "requestHeader": check req.getHeader(interceptor_header) 

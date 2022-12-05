@@ -23,19 +23,19 @@ const codeSnippetData = [
 service /graphql on new graphql:Listener(4000) {
 
     // This resource represents the \`quote\` field under the \`profile\` object.
-    resource function get profile/quote() returns string {
+    resource method get profile/quote() returns string {
         return "I am the one who knocks!";
     }
 
     // This resource represents the \`first\` field under the \`name\` object type. The \`name\` field
     // in the \`profile\` object is of type \`name\`.
-    resource function get profile/name/first() returns string {
+    resource method get profile/name/first() returns string {
         return "Walter";
     }
 
     // This resource represents the \`last\` field under the \`name\` object type. The \`name\` field in
     // the \`profile\` object is of type \`name\`.
-    resource function get profile/name/last() returns string {
+    resource method get profile/name/last() returns string {
         return "White";
     }
 }

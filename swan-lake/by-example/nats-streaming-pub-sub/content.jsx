@@ -41,7 +41,7 @@ listener stan:Listener lis = new (stan:DEFAULT_URL);
     subject: "demo"
 }
 service stan:Service on lis {
-    remote function onMessage(stan:Message message) returns error? {
+    remote method onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
         string messageData = check string:fromBytes(message.content);
         log:printInfo("Received message: " + messageData);

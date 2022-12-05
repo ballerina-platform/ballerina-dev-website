@@ -16,9 +16,9 @@ const codeSnippetData = [
 
 service /graphql on new graphql:Listener(4000) {
 
-    // Resource functions can return service objects. The returning service object is mapped to an
-    // \`OBJECT\` type in GraphQL. Each resource function is mapped to a field in the \`OBJECT\`.
-    resource function get profile() returns Person {
+    // resource methods can return service objects. The returning service object is mapped to an
+    // \`OBJECT\` type in GraphQL. Each resource method is mapped to a field in the \`OBJECT\`.
+    resource method get profile() returns Person {
         return new("Walter White", 51);
     }
 }
@@ -33,14 +33,14 @@ service class Person {
         self.age = age;
     }
 
-    // Each resource function becomes a field of the \`Person\` type.
-    resource function get name() returns string {
+    // Each resource method becomes a field of the \`Person\` type.
+    resource method get name() returns string {
         return self.name;
     }
-    resource function get age() returns int {
+    resource method get age() returns int {
         return self.age;
     }
-    resource function get isAdult() returns boolean {
+    resource method get isAdult() returns boolean {
         return self.age > 21;
     }
 }
@@ -73,9 +73,9 @@ export default function GraphqlReturningServiceObjects() {
       <h1>Returning service objects</h1>
 
       <p>
-        A GraphQL resource function can return service objects. The returning
+        A GraphQL resource method can return service objects. The returning
         service objects are mapped to the <code>OBJECT</code> type in the
-        GraphQL schema. Each resource function in the returned service object
+        GraphQL schema. Each resource method in the returned service object
         becomes a field in the created <code>OBJECT</code> type.
       </p>
 

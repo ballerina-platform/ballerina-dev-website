@@ -30,7 +30,7 @@ const codeSnippetData = [
 service / on new http:Listener(9090) {
 
     // The response entity body is always compressed since MIME type has matched.
-    resource function 'default alwaysCompress() returns string {
+    resource method 'default alwaysCompress() returns string {
         return "Type : This is a string.";
     }
 }

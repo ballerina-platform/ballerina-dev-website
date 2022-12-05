@@ -248,7 +248,7 @@ A service can be instantiated using the service object. This approach provides f
 
 ```ballerina
 graphql:Service graphqlService = service object {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, world!";
     }
 }
@@ -273,7 +273,7 @@ This is similar to the [service class declaration](#224-service-class-declaratio
 listener graphql:Listener graphqlListener = new (4000);
 
 graphql:Service graphqlService = @graphql:ServiceConfig {} service object {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, world!";
     }
 }
@@ -493,7 +493,7 @@ The `Query` type is the main root type in a GraphQL schema. It is used to query 
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -509,7 +509,7 @@ The `Mutation` type in a GraphQL schema is used to mutate the data. In Ballerina
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    remote function setName(string name) returns string {
+    remote method setName(string name) returns string {
         //...
     }
 }
@@ -525,7 +525,7 @@ The `Subscription` type in a GraphQL schema is used to continuously fetch data f
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function subscribe greetings() returns stream<stream> {
+    resource method subscribe greetings() returns stream<stream> {
         return ["Hello", "Hi", "Hello World!"].toStream();
     }
 }
@@ -549,7 +549,7 @@ In the following example, the type of the `name` field is `String!`, which means
 ###### Example: NON_NULL Type
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get name returns string {
+    resource method get name returns string {
         return "Walter White";
     }
 }
@@ -560,7 +560,7 @@ To make it a nullable type, it should be unionized with `?`. The following examp
 ###### Example: Nullable Type
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get name returns string? {
+    resource method get name returns string? {
         return "Walter White";
     }
 }
@@ -575,7 +575,7 @@ The list type represents a list of values of another type. Therefore, `LIST` is 
 ###### Example: LIST Type
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get names() returns string[] {
+    resource method get names() returns string[] {
         return ["Walter White", "Jesse Pinkman"];
     }
 }
@@ -592,7 +592,7 @@ The only allowed accessors in Ballerina GraphQL resource are `get` and `subscrib
 ###### Example: Resource Accessor
 
 ```ballerina
-resource function get greeting() returns string {
+resource method get greeting() returns string {
     // ...
 }
 ```
@@ -600,7 +600,7 @@ resource function get greeting() returns string {
 ###### Counter Example: Resource Accessor
 
 ```ballerina
-resource function post greeting() returns string {
+resource method post greeting() returns string {
     // ...
 }
 ```
@@ -612,7 +612,7 @@ As the `resource` methods are mapped to a field of a GraphQL `Object` type, the 
 ###### Example: Resource Name
 
 ```ballerina
-resource function get greeting() returns string {
+resource method get greeting() returns string {
     // ...
 }
 ```
@@ -629,23 +629,23 @@ The path of a resource can be defined hierarchically so that the schema generati
 
 ```ballerina
 service graphql:Service on new graphql:Listener(4000) {
-    resource function get profile/address/number() returns int {
+    resource method get profile/address/number() returns int {
         return 308;
     }
 
-    resource function get profile/address/street() returns string {
+    resource method get profile/address/street() returns string {
         return "Negra Arroyo Lane";
     }
 
-    resource function get profile/address/city() returns string {
+    resource method get profile/address/city() returns string {
         return "Albuquerque";
     }
 
-    resource function get profile/name() returns string {
+    resource method get profile/name() returns string {
         return "Walter White";
     }
 
-    resource function get profile/age() returns int {
+    resource method get profile/age() returns int {
         return 52;
     }
 }
@@ -679,7 +679,7 @@ service on new graphql:Listener(9090) {
     #
     # + id - The ID of the person
     # + return - The person with the given ID
-    resource function get person(int id) returns Person {
+    resource method get person(int id) returns Person {
         // ...
     }
 
@@ -703,11 +703,11 @@ This will generate the documentation for all the fields of the `Query` type incl
 ###### Example: Escaping Characters
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get 'type(string 'version) returns string {
+    resource method get 'type(string 'version) returns string {
         return "";
     }
     
-    resource function get name(string \u{0076}ersion) returns string {
+    resource method get name(string \u{0076}ersion) returns string {
         return "";
     }
 }
@@ -759,7 +759,7 @@ A Ballerina record type can be used as an Object type in GraphQL. Each record fi
 ###### Example: Record Type as Object
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get profile() returns Person {
+    resource method get profile() returns Person {
         return {name: "Walter White", age: 52};
     }
 }
@@ -789,7 +789,7 @@ The `resource` methods in these service types can have input parameters. These i
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get profile() returns Person {
+    resource method get profile() returns Person {
         return new ("Walter White", 52);
     }
 }
@@ -803,11 +803,11 @@ service class Person {
         self.age = age;
     }
 
-    resource function get name() returns string {
+    resource method get name() returns string {
         return self.name;
     }
 
-    resource function get age() returns int {
+    resource method get age() returns int {
         return self.age;
     }
 }
@@ -821,11 +821,11 @@ GraphQL `Union` type represent an object that could be one of a list of GraphQL 
 > **Note:** Only `distinct` service types are supported as members of a union type in the Ballerina GraphQL package. If one or more members in a union type do not follow this rule, a compilation error will be thrown.
 
 ###### Example: Union Types
-In the following example, two `distinct` service types are defined first, `Teacher` and `Student`. Then a `Union` type is defined using Ballerina syntax for defining union types. The resource function in the GraphQL service is returning the union type.
+In the following example, two `distinct` service types are defined first, `Teacher` and `Student`. Then a `Union` type is defined using Ballerina syntax for defining union types. The resource method in the GraphQL service is returning the union type.
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get profile() returns Person {
+    resource method get profile() returns Person {
         return new Teacher("Walter White", "Chemistry");
     }
 }
@@ -839,11 +839,11 @@ distinct service class Teacher {
         self.subject = subject;
     }
 
-    resource function get name() returns string {
+    resource method get name() returns string {
         return self.name;
     }
 
-    resource function get subject() returns string {
+    resource method get subject() returns string {
         return self.subject;
     }
 }
@@ -857,11 +857,11 @@ distinct service class Student {
         self.gpa = gpa;
     }
 
-    resource function get name() returns string {
+    resource method get name() returns string {
         return self.name;
     }
 
-    resource function get gpa() returns float {
+    resource method get gpa() returns float {
         return self.gpa;
     }
 }
@@ -877,7 +877,7 @@ In GraphQL, the `Enum` type represents leaf values in the GraphQL schema, simila
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get direction() returns Direction {
+    resource method get direction() returns Direction {
         return NORTH;
     }
 }
@@ -902,7 +902,7 @@ An input type can be a Ballerina union type, if and only if the union consists o
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get greet(string? name) returns string {
+    resource method get greet(string? name) returns string {
         if name is string {
             return string `Hello, ${name}`;
         }
@@ -915,7 +915,7 @@ service on new graphql:Listener(4000) {
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get greeting(string|error name) returns string { // Results in a compilation error
+    resource method get greeting(string|error name) returns string { // Results in a compilation error
         return "Hello, World!"
     }
 }
@@ -933,7 +933,7 @@ In Ballerina, a `record` type can be used as an input object. When a `record` ty
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get author(Book book) returns string {
+    resource method get author(Book book) returns string {
         return book.author;
     }
 }
@@ -953,7 +953,7 @@ In Ballerina, `distinct` `service` objects can be used to define GraphQL interfa
 ###### Example: Interfaces
 ```ballerina
 public type Person distinct service object {
-    isolated resource function get name() returns string;
+    isolated resource method get name() returns string;
 };
 
 # Represents a Student as a class.
@@ -967,11 +967,11 @@ public isolated distinct service class Student {
         self.id = id;
     }
 
-    isolated resource function get name() returns string {
+    isolated resource method get name() returns string {
         return self.name;
     }
 
-    isolated resource function get id() returns int {
+    isolated resource method get id() returns int {
         return self.id;
     }
 }
@@ -987,11 +987,11 @@ public isolated distinct service class Teacher {
         self.subject = subject;
     }
 
-    isolated resource function get name() returns string {
+    isolated resource method get name() returns string {
         return self.name;
     }
 
-    isolated resource function get subject() returns string {
+    isolated resource method get subject() returns string {
         return self.subject;
     }
 }
@@ -1010,18 +1010,18 @@ An `Object` type which implements an interface must implement all the fields fro
 ###### Example: Interfaces Implementing Interfaces
 ```ballerina
 service on new graphql:Listener(9000) {
-    resource function get node() returns Node {
+    resource method get node() returns Node {
         return new Image("001", "https://ballerina.io/images/ballerina-logo-white.svg", "logo");
     }
 }
 
 public type Node distinct service object {
-    resource function get id() returns string;
+    resource method get id() returns string;
 };
 
 public type Resource distinct service object {
     *Node;
-    resource function get url() returns string;
+    resource method get url() returns string;
 };
 
 public isolated distinct service class Image {
@@ -1037,15 +1037,15 @@ public isolated distinct service class Image {
         self.thumbnail = thumbnail;
     }
 
-    isolated resource function get id() returns string {
+    isolated resource method get id() returns string {
         return self.id;
     }
 
-    isolated resource function get url() returns string {
+    isolated resource method get url() returns string {
         return self.url;
     }
 
-    isolated resource function get thumbnail() returns string {
+    isolated resource method get thumbnail() returns string {
         return self.thumbnail;
     }
 }
@@ -1103,7 +1103,7 @@ The `@deprecated` directive is used to indicate a deprecated field on a type or 
 
 The `@deprecated` directive has one argument, `reason`, which is of type `String`.
 
-The Ballerina GraphQL package uses the Ballerina's in-built `@deprecated` annotation to deprecate a field (resource/remote functions) or an enum value. The deprecation reason can be provided as a part of the doc comment of the particular schema member.
+The Ballerina GraphQL package uses the Ballerina's in-built `@deprecated` annotation to deprecate a field (resource/remote methods) or an enum value. The deprecation reason can be provided as a part of the doc comment of the particular schema member.
 
 ###### Example: @deprecated
 
@@ -1120,20 +1120,20 @@ service on new graphql:Listener(4000) {
     # # Deprecated
     # The `hello` field is deprecated. Use the `greeting` field instead of this.
     @deprecated
-    resource function get hello(string name) returns string {
+    resource method get hello(string name) returns string {
         return "Hello, " + name;
     }
 
     # Greets back with a customized greeting with the provided name.
     # + name - The name of the person to greet
     # + return - The customized greeting message
-    resource function get greeting(string name = "Stranger") returns string {
+    resource method get greeting(string name = "Stranger") returns string {
         return "Hello, " + name;
     }
 
     # Returns the current admission status of the pub.
     # + return - The current admission status of the pub
-    resource function get status() returns Status {
+    resource method get status() returns Status {
         return OPEN;
     }
 }
@@ -1194,7 +1194,7 @@ Uploading a file is considered a mutation operation. Therefore, `remote` methods
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    remote function fileUpload(graphql:Upload fileUpload) returns boolean {
+    remote method fileUpload(graphql:Upload fileUpload) returns boolean {
         string fileName = fileUpload.fileName;
         string mimeType = fileUpload.mimeType;
         string encoding = fileUpload.encoding;
@@ -1209,7 +1209,7 @@ service on new graphql:Listener(4000) {
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    remote function fileUpload(graphql:Upload[] fileUploads) returns boolean {
+    remote method fileUpload(graphql:Upload[] fileUploads) returns boolean {
         foreach graphql:Upload fileUpload in fileUploads {
             string fileName = fileUpload.fileName;
             string mimeType = fileUpload.mimeType;
@@ -1269,7 +1269,7 @@ A Ballerina `resource` or `remote` method representing an object field can retur
 ###### Example: Returning Errors
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get greeting(string name) returns string|error {
+    resource method get greeting(string name) returns string|error {
         if name == "" {
             return error("Invalid name provided");
         }
@@ -1390,7 +1390,7 @@ The `graphql:Context` can be accessed inside any resolver function. When needed,
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get profile(graphql:Context context) returns Person|error {
+    resource method get profile(graphql:Context context) returns Person|error {
         value:Cloneable|isolated object {} attribute = check context.get("key");
         // ...
     }
@@ -1406,11 +1406,11 @@ type Person record {|
 
 ###### Example: Accessing the Context from an Object
 
-The following example shows how to access the context from an Object. When a Ballerina service type is used as an `Object` type in GraphQL, the resource functions in the service can also access the context when needed.
+The following example shows how to access the context from an Object. When a Ballerina service type is used as an `Object` type in GraphQL, the resource methods in the service can also access the context when needed.
 
 ```ballerina
 service on new graphql:Listener(4000) {
-    resource function get profile() returns Person {
+    resource method get profile() returns Person {
     }
 }
 
@@ -1423,12 +1423,12 @@ service class Person {
         self.age = age;
     }
 
-    resource function get name() returns string {
+    resource method get name() returns string {
         return self.name;
     }
 
     // Access the context inside a GraphQL object
-    resource function get age(graphql:Context context) returns int {
+    resource method get age(graphql:Context context) returns int {
         value:Cloneable|isolated object {} attribute = check context.get("key");
         // ...
         return self.age;
@@ -1634,11 +1634,11 @@ The GraphQL interceptors can be used to execute a custom code before and after t
 
 ### 10.1 Interceptor Service Object
 
-The interceptor service object is defined in the Ballerina GraphQL package. It includes a single remote function named execute that accepts `Context` and `Field` as the parameters. The function's return type is a union of `anydata` and `error`.
+The interceptor service object is defined in the Ballerina GraphQL package. It includes a single remote method named execute that accepts `Context` and `Field` as the parameters. The function's return type is a union of `anydata` and `error`.
 
 ```ballerina
 public type Interceptor distinct service object {
-    isolated remote function execute(Context context, Field 'field) returns anydata|error;
+    isolated remote method execute(Context context, Field 'field) returns anydata|error;
 };
 ```
 
@@ -1664,7 +1664,7 @@ Interceptors can be defined as a readonly service class that infers the Intercep
 readonly service class InterceptorName {
    *graphql:Interceptor;
 
-    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+    isolated remote method execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
         // Do some work
         var output = context.resolve('field);
         // Do some work
@@ -1672,7 +1672,7 @@ readonly service class InterceptorName {
 }
 ```
 
-The Interceptor service class should have the implementation of the `execute()` remote function that infers from the interceptor service object. Code needed to be included in the interceptor should be kept inside the `execute()` function. Interceptors can not have any other `resource/remote` methods inside the interceptor. However, the users are able to define the usual functions inside the interceptors.
+The Interceptor service class should have the implementation of the `execute()` remote method that infers from the interceptor service object. Code needed to be included in the interceptor should be kept inside the `execute()` function. Interceptors can not have any other `resource/remote` methods inside the interceptor. However, the users are able to define the usual functions inside the interceptors.
 
 ### 10.4 Execution
 
@@ -1688,7 +1688,7 @@ import ballerina/log;
 
 readonly service class ServiceInterceptor {
   *graphql:Interceptor;
-  isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+  isolated remote method execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
      log:printInfo(string `Service Interceptor execution!`);
      var output = context.resolve('field);
      log:printInfo("Connection closed!");
@@ -1700,7 +1700,7 @@ readonly service class ServiceInterceptor {
    interceptors: [new ServiceInterceptor()]
 }
 service /graphql on new graphql:Listener(9000) {
-   resource function get name(int id) returns string {
+   resource method get name(int id) returns string {
       log:printInfo("Resolver: name");
       return "Ballerina";
    }
@@ -1752,7 +1752,7 @@ When configured, it validates the `Authorization` header in the HTTP request tha
     ]
 }
 service on new graphql:Listener(4000) {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -1811,7 +1811,7 @@ When configured, it validates the `Authorization` header in the HTTP request tha
     ]
 }
 service /graphql on securedEP {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -1842,7 +1842,7 @@ When configured, it validates the JWT sent in the `Authorization` header in the 
     ]
 }
 service /graphql on securedEP {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -1876,7 +1876,7 @@ When configured, it validates the OAuth2 token sent in the `Authorization` heade
     ]
 }
 service /graphql on securedEP {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -1909,7 +1909,7 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     contextInit: contextInit
 }
 service on new graphql:Listener(4000) {
-    resource function get greeting(graphql:Context context) returns string|error {
+    resource method get greeting(graphql:Context context) returns string|error {
         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
@@ -1983,7 +1983,7 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     contextInit: contextInit
 }
 service on new graphql:Listener(4000) {
-    resource function get greeting(graphql:Context context) returns string|error {
+    resource method get greeting(graphql:Context context) returns string|error {
         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
@@ -2030,7 +2030,7 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     contextInit: contextInit
 }
 service on new graphql:Listener(4000) {
-    resource function get greeting(graphql:Context context) returns string|error {
+    resource method get greeting(graphql:Context context) returns string|error {
         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
@@ -2072,7 +2072,7 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     contextInit: contextInit
 }
 service on new graphql:Listener(4000) {
-    resource function get greeting(graphql:Context context) returns string|error {
+    resource method get greeting(graphql:Context context) returns string|error {
         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
@@ -2274,7 +2274,7 @@ listener graphql:Listener securedGraphqlListener = new(4000,
 );
 
 service on securedGraphqlListener {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -2294,7 +2294,7 @@ listener http:Listener securedHttpListener = new(4000,
 listener graphql:Listener securedGraphqlListener = new (securedHttpListener);
 
 service on securedGraphqlListener {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -2330,7 +2330,7 @@ listener graphql:Listener securedGraphqlListener = new(4000,
 );
 
 service on securedGraphqlListener {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -2359,7 +2359,7 @@ listener http:Listener securedHttpListener = new(4000,
 listener graphql:Listener securedGraphqlListener = new (securedHttpListener);
 
 service on securedGraphqlListener {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -2431,7 +2431,7 @@ If the configurations are provided correctly, the GraphiQL client tool will be s
     }
 }
 service on new graphql:Listener(4000) {
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }

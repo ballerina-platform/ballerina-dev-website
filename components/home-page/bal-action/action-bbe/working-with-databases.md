@@ -24,14 +24,14 @@ service / on new http:Listener(8080) {
         self.db = check new (host, user, password, database, port);
     }
 
-    resource function get albums() returns Album[]|error? {
+    resource method get albums() returns Album[]|error? {
         stream<Album, sql:Error?> albumStream = self.db->query(`SELECT * FROM Albums`);
         Album[]? albums = check from Album album in albumStream select album;
         check albumStream.close();
         return albums;
     }
 
-    resource function get albums/[string id]() returns Album|http:NotFound|error {
+    resource method get albums/[string id]() returns Album|http:NotFound|error {
         Album|sql:Error result = self.db->queryRow(`SELECT * FROM Albums WHERE id = ${id}`);
         if result is sql:NoRowsError {
             return http:NOT_FOUND;
@@ -40,7 +40,7 @@ service / on new http:Listener(8080) {
         }
     }
 
-    resource function post album(@http:Payload Album album) returns Album|error {
+    resource method post album(@http:Payload Album album) returns Album|error {
         _ = check self.db->execute(`
             INSERT INTO Albums (id, title, artist, price)
             VALUES (${album.id}, ${album.title}, ${album.artist}, ${album.price});`);

@@ -25,17 +25,17 @@ listener file:Listener inFolder = new ({
 service "localObserver" on inFolder {
 
     // This function is invoked once a new file is created in the listening directory.
-    remote function onCreate(file:FileEvent m) {
+    remote method onCreate(file:FileEvent m) {
         log:printInfo("Create: " + m.name);
     }
 
     // This function is invoked once an existing file is deleted from the listening directory.
-    remote function onDelete(file:FileEvent m) {
+    remote method onDelete(file:FileEvent m) {
         log:printInfo("Delete: " + m.name);
     }
 
     // This function is invoked once an existing file is modified in the listening directory.
-    remote function onModify(file:FileEvent m) {
+    remote method onModify(file:FileEvent m) {
         log:printInfo("Modify: " + m.name);
     }
 }

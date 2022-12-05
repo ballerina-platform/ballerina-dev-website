@@ -19,7 +19,7 @@ service /graphql on new graphql:Listener(4000) {
     # Returns a person using the provided ID.
     # + id - The ID of the person
     # + return - The person with the requested ID
-    resource function get profile(int id) returns Person? {
+    resource method get profile(int id) returns Person? {
         if id == 1 {
             return {name: "Walter White", age: 52};
         } else if id == 2 {

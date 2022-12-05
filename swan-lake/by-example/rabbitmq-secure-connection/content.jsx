@@ -38,7 +38,7 @@ listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
 }
 // Attaches the service to the listener.
 service rabbitmq:Service on securedEP {
-    remote function onMessage(StringMessage message) returns error? {
+    remote method onMessage(StringMessage message) returns error? {
         log:printInfo("Received message: " + message.content);
     }
 }

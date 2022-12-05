@@ -334,7 +334,7 @@ import ballerina/http;
     ]
 }
 service /foo on new http:Listener(9090) {
-    resource function get bar() returns string {
+    resource method get bar() returns string {
         return "Hello, World!";
     }
 }
@@ -358,7 +358,7 @@ http:JwtValidatorConfig config = {
 http:ListenerJwtAuthHandler handler = new (config);
 
 service /foo on new http:Listener(9090) {
-    resource function post bar(@http:Header string Authorization) returns string|http:Unauthorized|http:Forbidden {
+    resource method post bar(@http:Header string Authorization) returns string|http:Unauthorized|http:Forbidden {
         jwt:Payload|http:Unauthorized authn = handler.authenticate(Authorization);
         if authn is http:Unauthorized {
             return authn;

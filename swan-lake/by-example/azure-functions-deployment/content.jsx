@@ -16,7 +16,7 @@ const codeSnippetData = [
 
 // This function gets triggered by an HTTP call with the name query parameter and returns a processed HTTP output to the caller.
 service / on new af:HttpListener() {
-    resource function get hello(string name) returns string {
+    resource method get hello(string name) returns string {
         return "Hello, " + name + "!";
     }
 }
@@ -27,7 +27,7 @@ service / on new af:HttpListener() {
 listener af:TimerListener timerListener = new af:TimerListener();
 
 service "timer" on timerListener {
-    remote function onTrigger(af:TimerMetadata metadata) returns @af:QueueOutput {queueName: "queue3"} string|error {
+    remote method onTrigger(af:TimerMetadata metadata) returns @af:QueueOutput {queueName: "queue3"} string|error {
         return "Message Status, " + metadata.IsPastDue.toString();
     }
 }

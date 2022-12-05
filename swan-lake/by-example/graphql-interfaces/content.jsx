@@ -17,7 +17,7 @@ const codeSnippetData = [
 service /graphql on new graphql:Listener(4000) {
 
     // Returning the \`Animal\` type from a GraphQL resolver will idenitify it as an interface
-    resource function get animals() returns Animal[] {
+    resource method get animals() returns Animal[] {
         return [new Leopard(), new Elephant()];
     }
 }
@@ -25,8 +25,8 @@ service /graphql on new graphql:Listener(4000) {
 // Define the interface \`Animal\` using a \`distinct\` \`service\` object
 public type Animal distinct service object {
 
-    // Define the field \`name\` as a resource function definition
-    resource function get name() returns string;
+    // Define the field \`name\` as a resource method definition
+    resource method get name() returns string;
 };
 
 // Define another interface \`Mammal\`, that implements \`Animal\` interface
@@ -36,7 +36,7 @@ public type Mammal distinct service object {
     *Animal;
 
     // Add an additional field to the \`Mammal\` interface
-    resource function get call() returns string;
+    resource method get call() returns string;
 };
 
 // Define the \`Leopard\` class implementing the \`Mammal\` interface
@@ -47,17 +47,17 @@ public distinct service class Leopard {
 
     // Since this object implements the \`Mammal\` interface and the \`Mammal\` interface implements the
     // \`Animal\` interface, this object must implement the fields from the \`Animal\` interface
-    resource function get name() returns string {
+    resource method get name() returns string {
         return "Panthera pardus kotiya";
     }
 
     // Implement the \`call\` field from the \`Mammal\` interface
-    resource function get call() returns string {
+    resource method get call() returns string {
         return "Growl";
     }
 
     // Add an additional field \`location\` to the \`Leopard\` class
-    resource function get location() returns string {
+    resource method get location() returns string {
         return "Wilpaththu";
     }
 }
@@ -66,11 +66,11 @@ public distinct service class Leopard {
 public distinct service class Elephant {
     *Mammal;
 
-    resource function get name() returns string {
+    resource method get name() returns string {
         return "Elephas maximus maximus";
     }
 
-    resource function get call() returns string {
+    resource method get call() returns string {
         return "Trumpet";
     }
 }
@@ -110,7 +110,7 @@ export default function GraphqlInterfaces() {
       <p>
         In Ballerina, interfaces are defined as <code>distinct</code>{" "}
         <code>service</code> objects, and the fields of the interfaces are
-        defined as resource function definitions. Objects that are implementing
+        defined as resource method definitions. Objects that are implementing
         the interfaces must implement the <code>resource</code> methods defined
         in the service objects.
       </p>

@@ -187,22 +187,22 @@ Following is the type-definition for `websub:SubscriberService`.
 public type SubscriberService distinct service object {
     // Sample GET request hub.mode=denied&hub.reason=unauthorized
     // Sample 200 OK response
-    remote function onSubscriptionValidationDenied(websub:SubscriptionDeniedError msg)
+    remote method onSubscriptionValidationDenied(websub:SubscriptionDeniedError msg)
         returns websub:Acknowledgement|error?;
 
     // Sample GET request hub.mode=subscribe&hub.topic=test&hub.challenge=1234
     // Sample 200 OK response with text payload containing received `hub.challenge` parameter or 404 NOT FOUND
-    remote function onSubscriptionVerification(websub:SubscriptionVerification msg)
+    remote method onSubscriptionVerification(websub:SubscriptionVerification msg)
         returns websub:SubscriptionVerificationSuccess|websub:SubscriptionVerificationError|error;
 
     // Sample GET request hub.mode=unsubscribe&hub.topic=test&hub.challenge=1234
     // Sample 200 OK response with text payload containing received `hub.challenge` parameter or 404 NOT FOUND
-    remote function onUnsubscriptionVerification(websub:UnsubscriptionVerification msg)
+    remote method onUnsubscriptionVerification(websub:UnsubscriptionVerification msg)
         returns websub:UnsubscriptionVerificationSuccess|websub:UnsubscriptionVerificationError|error;
 
     // Sample POST request with string/json/xml payload
     // Sample 202 ACCEPTED response or 410 GONE
-    remote function onEventNotification(websub:ContentDistributionMessage event)
+    remote method onEventNotification(websub:ContentDistributionMessage event)
         returns websub:Acknowledgement|websub:SubscriptionDeletedError|error?;
 };
 ```
@@ -217,7 +217,7 @@ This remote method is invoked when the `hub` sends a request to notify that the 
 # 
 # + msg - Details related to the subscription denial
 # + return - `error` if there is any error when processing the reuqest or else `websub:Acknowledgement` or `()`
-remote function onSubscriptionValidationDenied(websub:SubscriptionDeniedError msg) returns websub:Acknowledgement|error?;
+remote method onSubscriptionValidationDenied(websub:SubscriptionDeniedError msg) returns websub:Acknowledgement|error?;
 ```
 
 ##### 2.2.1.2. onSubscriptionVerification
@@ -230,7 +230,7 @@ This remote method is invoked when the `hub` sends a subscription verification r
 # + return - `websub:SubscriptionVerificationSuccess` if the subscription is verified successfully, 
 #           `websub:SubscriptionVerificationError` if the subscription verification is unsuccessful or else `error` if 
 #           there is an exception while executing the method
-remote function onSubscriptionVerification(websub:SubscriptionVerification msg) 
+remote method onSubscriptionVerification(websub:SubscriptionVerification msg) 
     returns websub:SubscriptionVerificationSuccess|websub:SubscriptionVerificationError|error;
 ```
 
@@ -244,7 +244,7 @@ This remote method is invoked when the `hub` sends a unsubscription verification
 # + return - `websub:UnsubscriptionVerificationSuccess` if the unsubscription is verified successfully, 
 #           `websub:UnsubscriptionVerificationError` if the unsubscription verification is unsuccessful or else `error` if 
 #           there is an exception while executing the method
-remote function onUnsubscriptionVerification(websub:UnsubscriptionVerification msg) 
+remote method onUnsubscriptionVerification(websub:UnsubscriptionVerification msg) 
     returns websub:UnsubscriptionVerificationSuccess|websub:UnsubscriptionVerificationError|error;
 ```
 
@@ -258,7 +258,7 @@ This remote method is invoked when the `hub` sends a content-distribution reques
 # + return - `websub:Acknowledgement` if the content received successfully, `websub:SubscriptionDeletedError` if the 
 #           subscriber does not need any content updates in the future, `error` if  there is an exception while 
 #           executing the method or else `()`
-remote function onEventNotification(websub:ContentDistributionMessage event) 
+remote method onEventNotification(websub:ContentDistributionMessage event) 
     returns websub:Acknowledgement|websub:SubscriptionDeletedError|error?;
 ```
 

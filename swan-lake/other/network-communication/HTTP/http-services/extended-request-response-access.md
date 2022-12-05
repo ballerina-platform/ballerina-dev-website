@@ -32,7 +32,7 @@ import ballerina/http;
  
 service / on new http:Listener(8080) {
  
-   resource function post greeting(http:Caller caller,
+   resource method post greeting(http:Caller caller,
                                    http:Request request) returns error? {
        string name = check request.getTextPayload();
        check caller->respond(string `Hello, ${name}!`);
@@ -69,7 +69,7 @@ import ballerina/http;
  
 service / on new http:Listener(8080) {
  
-   resource function post greeting(http:Caller caller,
+   resource method post greeting(http:Caller caller,
                                   http:Request request) returns error? {
        string name = check request.getTextPayload();
        http:Response resp = new;

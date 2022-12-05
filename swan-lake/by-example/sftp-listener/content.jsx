@@ -42,7 +42,7 @@ listener ftp:Listener remoteServer = check new ({
 // periodically-polled file related events.
 service on remoteServer {
     // When a file event is successfully received, the \`onFileChange\` method is called.
-    remote function onFileChange(ftp:WatchEvent event) {
+    remote method onFileChange(ftp:WatchEvent event) {
         // \`addedFiles\` contains the paths of the newly-added files/directories
         // after the last polling was called.
         foreach ftp:FileInfo addedFile in event.addedFiles {

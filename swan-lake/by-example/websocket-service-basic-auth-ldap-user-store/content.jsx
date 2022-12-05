@@ -59,14 +59,14 @@ listener websocket:Listener securedEP = new(9090,
     ]
 }
 service /foo on securedEP {
-    resource function get bar() returns websocket:Service {
+    resource method get bar() returns websocket:Service {
         return new WsService();
    }
 }
 
 service class WsService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
+    remote method onMessage(websocket:Caller caller, string text) returns websocket:Error? {
         check caller->writeMessage(text);
     }
 }

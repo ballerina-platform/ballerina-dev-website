@@ -141,7 +141,7 @@ Ballerina CLI generates the relevant service skeleton, and the implementation of
 ```ballerina
 service "RouteGuide" on new grpc:Listener(8980) {
 
-    remote function GetFeature(Point point) returns Feature|error {
+    remote method GetFeature(Point point) returns Feature|error {
         foreach Feature feature in FEATURES {
             if feature.location == point {
                 return feature;
@@ -161,7 +161,7 @@ The Ballerina implementation of the same simple RPC using a caller is as follows
 ```ballerina
 service "RouteGuide" on new grpc:Listener(8980) {
 
-    remote function GetFeature(RouteGuideFeatureCaller caller, Point point) returns error? {
+    remote method GetFeature(RouteGuideFeatureCaller caller, Point point) returns error? {
         Feature?|error feature = featureFromPoint(point);
         if feature is Feature {
             check caller->sendFeature(feature);
@@ -201,7 +201,7 @@ The Ballerina implementation of the server streaming RPC using a direct return i
 ```ballerina
 service "RouteGuide" on new grpc:Listener(8980) {
 
-    remote function ListFeatures(Rectangle rectangle) returns stream<Feature, grpc:Error?>|error {
+    remote method ListFeatures(Rectangle rectangle) returns stream<Feature, grpc:Error?>|error {
 
         Feature[] selectedFeatures = [];
         foreach Feature feature in FEATURES {
@@ -221,7 +221,7 @@ The Ballerina implementation of the server streaming RPC using a caller return i
 ```ballerina
 service "RouteGuide" on new grpc:Listener(8980) {
 
-    remote function ListFeatures(RouteGuideFeatureCaller caller, Rectangle rectangle) returns error? {
+    remote method ListFeatures(RouteGuideFeatureCaller caller, Rectangle rectangle) returns error? {
 
         foreach Feature feature in FEATURES {
             if inRange(feature.location, rectangle) {
@@ -265,7 +265,7 @@ The Ballerina implementation of the client streaming RPC using a direct return i
 ```ballerina
 service "RouteGuide" on new grpc:Listener(8980) {
 
-    remote function RecordRoute(stream<Point, grpc:Error?> clientStream) returns RouteSummary|error {
+    remote method RecordRoute(stream<Point, grpc:Error?> clientStream) returns RouteSummary|error {
         Point? lastPoint = ();
         int pointCount = 0;
         int featureCount = 0;
@@ -297,7 +297,7 @@ The Ballerina implementation of the client streaming RPC using a caller return i
 ```ballerina
 service "RouteGuide" on new grpc:Listener(8980) {
 
-    remote function RecordRoute(RouteGuideRouteSummaryCaller caller, stream<Point, grpc:Error?> clientStream) returns error? {
+    remote method RecordRoute(RouteGuideRouteSummaryCaller caller, stream<Point, grpc:Error?> clientStream) returns error? {
         Point? lastPoint = ();
         int pointCount = 0;
         int featureCount = 0;
@@ -360,7 +360,7 @@ The Ballerina implementation of the bidirectional streaming RPC using a direct r
 ```ballerina
 service "RouteGuide" on new grpc:Listener(8980) {
 
-    remote function RouteChat(stream<RouteNote, grpc:Error?> clientNotesStream) returns stream<RouteNote, grpc:Error?>|error {
+    remote method RouteChat(stream<RouteNote, grpc:Error?> clientNotesStream) returns stream<RouteNote, grpc:Error?>|error {
         RouteNote[] routeNotes = [];
         check clientNotesStream.forEach(function(RouteNote note) {
             ROUTE_NOTES.push(note);
@@ -384,7 +384,7 @@ The Ballerina implementation of the bidirectional streaming RPC using a caller r
 ```ballerina
 service "RouteGuide" on new grpc:Listener(8980) {
 
-    remote function RouteChat(RouteGuideRouteNoteCaller caller, stream<RouteNote, grpc:Error?> clientNotesStream) returns error? {
+    remote method RouteChat(RouteGuideRouteNoteCaller caller, stream<RouteNote, grpc:Error?> clientNotesStream) returns error? {
         check clientNotesStream.forEach(function(RouteNote note) {
             future<error?> f1 = start sendRouteNotesFromLocation(caller, note.location);
             lock {
@@ -454,7 +454,7 @@ Ballerina gRPC services enable authentication and authorization using a file use
     value: ROOT_DESCRIPTOR_GRPC_SERVICE
 }
 service "HelloWorld" on new grpc:Listener(9090) {
-    remote function hello() returns string {
+    remote method hello() returns string {
         return "Hello, World!";
     }
 }
@@ -515,7 +515,7 @@ Ballerina gRPC services enable authentication and authorization using an LDAP us
     value: ROOT_DESCRIPTOR_GRPC_SERVICE
 }
 service "HelloWorld" on new grpc:Listener(9090) {
-    remote function hello() returns string {
+    remote method hello() returns string {
         return "Hello, World!";
     }
 }
@@ -545,7 +545,7 @@ Ballerina gRPC services enable authentication and authorization using JWTs by se
     value: ROOT_DESCRIPTOR_GRPC_SERVICE
 }
 service "HelloWorld" on new grpc:Listener(9090) {
-    remote function hello() returns string {
+    remote method hello() returns string {
         return "Hello, World!";
     }
 }
@@ -578,7 +578,7 @@ Ballerina gRPC services enable authentication and authorization using OAuth2 by 
     value: ROOT_DESCRIPTOR_GRPC_SERVICE
 }
 service "HelloWorld" on securedEP {
-    remote function hello() returns string {
+    remote method hello() returns string {
         return "Hello, World!";
     }
 }
@@ -729,7 +729,7 @@ Ballerina gRPC services enable authentication and authorization using a file use
 
 ```ballerina
 service "HelloWorld" on new grpc:Listener(9090) {
-    remote function sayHello(ContextString request) returns string|error {
+    remote method sayHello(ContextString request) returns string|error {
         grpc:ListenerFileUserStoreBasicAuthHandler handler = new;
         auth:UserDetails|grpc:UnauthenticatedError authnResult = handler.authenticate(request.headers);
     }
@@ -750,7 +750,7 @@ Ballerina gRPC services enable authentication and authorization using an LDAP us
 
 ```ballerina
 service "HelloWorld" on new grpc:Listener(9090) {
-    remote function sayHello(ContextString request) returns string|error {
+    remote method sayHello(ContextString request) returns string|error {
         grpc:LdapUserStoreConfig config = {
             domainName: "avix.lk",
             connectionUrl: "ldap://localhost:389",
@@ -783,7 +783,7 @@ Ballerina gRPC services enable authentication and authorization using JWTs by em
 
 ```ballerina
 service "HelloWorld" on new grpc:Listener(9090) {
-    remote function sayHello(ContextString request) returns string|error {
+    remote method sayHello(ContextString request) returns string|error {
         grpc:JwtValidatorConfig config = {
             issuer: "wso2",
             audience: "ballerina",
@@ -809,7 +809,7 @@ Ballerina gRPC services enable authentication and authorization using OAuth2 by 
 
 ```ballerina
 service "HelloWorld" on new grpc:Listener(9090) {
-    remote function sayHello(ContextString request) returns string|error {
+    remote method sayHello(ContextString request) returns string|error {
         grpc:OAuth2IntrospectionConfig config = {
             url: "https://localhost:" + oauth2AuthorizationServerPort.toString() + "/oauth2/token/introspect",
             tokenTypeHint: "access_token",
@@ -919,7 +919,7 @@ listener grpc:Listener securedEp = new(9090,
     value: ROOT_DESCRIPTOR_GRPC_SERVICE
 }
 service "HelloWorld" on securedEp {
-    remote function hello() returns string {
+    remote method hello() returns string {
         return "Hello, World!";
     }
 }

@@ -24,17 +24,17 @@ service /graphql on new graphql:Listener(4000) {
         self.names = ["Walter White", "Jesse Pinkman", "Skyler White"];
     }
 
-    // The mandatory resource function with the \`get\` accessor
+    // The mandatory resource method with the \`get\` accessor
     // represents a field in the root \`Query\` operation.
-    resource function get names() returns string[] {
+    resource method get names() returns string[] {
         return self.names;
     }
 
-    // A resource function with the \`subscribe\` accessor 
+    // A resource method with the \`subscribe\` accessor 
     // represents a field in the root \`Subscription\` operation.
     // It must always return a stream. 
     // Each name will be returned in the \`string\` type as GraphQL responses.
-    resource function subscribe names() returns stream<string, error?> {
+    resource method subscribe names() returns stream<string, error?> {
         return self.names.toStream();
     }
 }
@@ -67,18 +67,18 @@ export default function GraphqlSubscriptions() {
       <h1>Subscriptions</h1>
 
       <p>
-        A resource function with the <code>subscribe</code> accessor inside a
+        A resource method with the <code>subscribe</code> accessor inside a
         GraphQL service represents a field in the root <code>Subscription</code>{" "}
-        object type. Therefore, if a resource function with the{" "}
+        object type. Therefore, if a resource method with the{" "}
         <code>subscribe</code> accessor is present inside the Ballerina GraphQL
         service, the auto-generated schema will have a <code>Subscription</code>{" "}
         type.
       </p>
 
       <p>
-        Each resource function with the <code>subscribe</code> accessor in the
+        Each resource method with the <code>subscribe</code> accessor in the
         service will be added as a field of the <code>Subscription</code> type.
-        The field name will be the resource function name and the field type
+        The field name will be the resource method name and the field type
         will be the constraint type of the stream returned from the resource
         function.
       </p>

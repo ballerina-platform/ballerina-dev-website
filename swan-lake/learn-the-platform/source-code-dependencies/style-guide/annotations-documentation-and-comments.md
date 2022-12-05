@@ -180,7 +180,7 @@ service / on new http:Listener(8080) {
     #
     # + caller - Parameter description.
     # + request - Parameter description.
-    resource function get greeting(http:Caller caller, http:Request request) {
+    resource method get greeting(http:Caller caller, http:Request request) {
         ...
     }
 }

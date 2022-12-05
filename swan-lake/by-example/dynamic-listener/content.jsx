@@ -20,7 +20,7 @@ final http:Listener httpListener = check new (9090);
 
 http:Service helloService =  service object {
 
-    resource function get sayHello(http:Caller caller, http:Request req) {
+    resource method get sayHello(http:Caller caller, http:Request req) {
         // Send a response back to the caller.
         var respondResult = caller->respond("Hello, World!");
         if respondResult is error {
@@ -28,8 +28,8 @@ http:Service helloService =  service object {
         }
     }
 
-    // The resource function that will shutdown the server.
-    resource function get shutDownServer(http:Caller caller, http:Request req) {
+    // The resource method that will shutdown the server.
+    resource method get shutDownServer(http:Caller caller, http:Request req) {
         // Send a response back to the caller.
         var respondResult = caller->respond("Shutting down the server");
         // Stop the listener.

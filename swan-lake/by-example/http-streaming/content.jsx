@@ -22,7 +22,7 @@ http:Client clientEndpoint = check new ("http://localhost:9090");
 
 service /'stream on new http:Listener(9090) {
 
-    resource function get fileupload() returns string|error {
+    resource method get fileupload() returns string|error {
         http:Request request = new;
 
         // Sets the file as the request payload.
@@ -37,7 +37,7 @@ service /'stream on new http:Listener(9090) {
         return clientResponse;
     }
 
-    resource function post receiver(http:Caller caller,
+    resource method post receiver(http:Caller caller,
                                     http:Request request) returns error? {
         // Retrieve the byte stream.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getByteStream.

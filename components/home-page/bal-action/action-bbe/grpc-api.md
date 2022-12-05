@@ -14,7 +14,7 @@ Album[] albums = [
     descMap: getDescriptorMapRecordStore()
 }
 service "Albums" on new grpc:Listener(port) {
-    remote function getAlbum(string id) returns Album|error {
+    remote method getAlbum(string id) returns Album|error {
         Album[] filteredAlbums = albums.filter(album => album.id == id);
         if filteredAlbums.length() > 0 {
             return filteredAlbums.pop();
@@ -23,12 +23,12 @@ service "Albums" on new grpc:Listener(port) {
         return error grpc:NotFoundError(string `Cannot find the album for ID ${id}`);
     }
 
-    remote function addAlbum(Album album) returns Album|error {
+    remote method addAlbum(Album album) returns Album|error {
         albums.push(album);
         return album;
     }
 
-    remote function listAlbums() returns stream<Album, error?>|error {
+    remote method listAlbums() returns stream<Album, error?>|error {
         return albums.toStream();
     }
 }

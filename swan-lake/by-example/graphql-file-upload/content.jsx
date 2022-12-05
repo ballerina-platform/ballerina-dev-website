@@ -17,11 +17,11 @@ import ballerina/io;
 
 service /fileUpload on new graphql:Listener(4000) {
 
-    // Store the file information that need to be shared between the remote and resource functions.
+    // Store the file information that need to be shared between the remote and resource methods.
     string[] uploadedFiles = [];
 
-    // Remote functions can use the \`graphql:Upload\` type as an input parameter type.
-    remote function singleFileUpload(graphql:Upload file)
+    // remote methods can use the \`graphql:Upload\` type as an input parameter type.
+    remote method singleFileUpload(graphql:Upload file)
         returns string|error {
 
         // Access the file name from the \`graphql:Upload\` type parameter. Similarly, it can access
@@ -42,10 +42,10 @@ service /fileUpload on new graphql:Listener(4000) {
         return "Successfully Uploaded";
     }
 
-    // Remote functions in GraphQL services can use the \`graphql:Upload[]\` as an input parameter
-    // type. Therefore, remote functions can accept an array of \`graphql:Upload\` values. This can
+    // remote methods in GraphQL services can use the \`graphql:Upload[]\` as an input parameter
+    // type. Therefore, remote methods can accept an array of \`graphql:Upload\` values. This can
     // be used to store multiple files via a single request.
-    remote function multipleFileUpload(graphql:Upload[] files)
+    remote method multipleFileUpload(graphql:Upload[] files)
         returns string[]|error {
 
         // Iterates the \`graphql:Upload\` type array to store the files.
@@ -60,7 +60,7 @@ service /fileUpload on new graphql:Listener(4000) {
         return self.uploadedFiles;
     }
 
-    resource function get getUploadedFileNames() returns string[] {
+    resource method get getUploadedFileNames() returns string[] {
         return self.uploadedFiles;
     }
 }

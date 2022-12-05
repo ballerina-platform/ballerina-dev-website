@@ -44,14 +44,14 @@ service /graphql on new graphql:Listener(4000) {
         self.person = new("Walter White", 51, 737000.00);
     }
 
-    // Resource functions can be defined without a context parameter.
-    resource function get greet() returns string {
+    // resource methods can be defined without a context parameter.
+    resource method get greet() returns string {
         return "Hello, world";
     }
 
     // If the context is needed, it should be defined as the first parameter of the resolver
     // function.
-    resource function get profile(graphql:Context context)
+    resource method get profile(graphql:Context context)
     returns Person|error {
 
         // Retrieve the \`scope\` attribute from the context. This will return a \`graphql:Error\` if
@@ -83,15 +83,15 @@ public service class Person {
         self.salary = salary;
     }
 
-    resource function get name() returns string {
+    resource method get name() returns string {
         return self.name;
     }
 
-    resource function get age() returns int {
+    resource method get age() returns int {
         return self.age;
     }
 
-    resource function get salary(graphql:Context context) returns float|error {
+    resource method get salary(graphql:Context context) returns float|error {
 
         // Retrieve the \`scope\` attribute from the context.
         value:Cloneable|isolated object {} scope = check context.get("scope");

@@ -62,7 +62,7 @@ listener http:Listener securedEP = new(9090,
     ]
 }
 service /foo on securedEP {
-    resource function get bar() returns string {
+    resource method get bar() returns string {
         return "Hello, World!";
     }
 }
@@ -91,7 +91,7 @@ service /foo on securedEP {
             // ...
         ]
     }
-    resource function get bar() returns string {
+    resource method get bar() returns string {
         return "Hello, World!";
     }
 }
@@ -147,7 +147,7 @@ listener http:Listener securedEP = new(9090,
     ]
 }
 service /foo on securedEP {
-    resource function get bar() returns string {
+    resource method get bar() returns string {
         return "Hello, World!";
     }
 }
@@ -226,7 +226,7 @@ listener http:Listener securedEP = new(9090,
 http:ListenerFileUserStoreBasicAuthHandler handler = new;
 
 service /foo on securedEP {
-    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+    resource method get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
         auth:UserDetails|http:Unauthorized authn = handler.authenticate(header);
         if (authn is http:Unauthorized) {
             return authn;
@@ -309,7 +309,7 @@ listener http:Listener securedEP = new(9090,
     ]
 }
 service /foo on securedEP {
-    resource function get bar() returns string {
+    resource method get bar() returns string {
         return "Hello, World!";
     }
 }
@@ -408,7 +408,7 @@ http:ListenerLdapUserStoreBasicAuthHandler handler = new({
 });
 
 service /foo on securedEP {
-    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+    resource method get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
         auth:UserDetails|http:Unauthorized authn = handler.authenticate(header);
         if (authn is http:Unauthorized) {
             return authn;
@@ -470,7 +470,7 @@ listener http:Listener securedEP = new(9090,
     ]
 }
 service /foo on securedEP {
-    resource function get bar() returns string {
+    resource method get bar() returns string {
         return "Hello, World!";
     }
 }
@@ -556,7 +556,7 @@ http:ListenerJwtAuthHandler handler = new({
 });
 
 service /foo on securedEP {
-    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+    resource method get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
         jwt:Payload|http:Unauthorized authn = handler.authenticate(header);
         if (authn is http:Unauthorized) {
             return authn;
@@ -621,7 +621,7 @@ listener http:Listener securedEP = new(9090,
     ]
 }
 service /foo on securedEP {
-    resource function get bar() returns string {
+    resource method get bar() returns string {
         return "Hello, World!";
     }
 }
@@ -709,7 +709,7 @@ http:ListenerOAuth2Handler handler = new({
 });
 
 service /foo on securedEP {
-    resource function get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
+    resource method get bar(@http:Header { name: "Authorization" } string header) returns string|http:Unauthorized|http:Forbidden {
         oauth2:IntrospectionResponse|http:Unauthorized|http:Forbidden auth = handler->authorize(header, ["write", "update"]);
         if (auth is http:Unauthorized || auth is http:Forbidden) {
             return auth;

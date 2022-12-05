@@ -121,36 +121,36 @@ public distinct service class CovidData {
         self.entryRecord = entryRecord.cloneReadOnly();
     }
 
-    resource function get isoCode() returns string {
+    resource method get isoCode() returns string {
         return self.entryRecord.isoCode;
     }
 
-    resource function get country() returns string {
+    resource method get country() returns string {
         return self.entryRecord.country;
     }
 
-    resource function get cases() returns decimal? {
+    resource method get cases() returns decimal? {
         if self.entryRecord.cases is decimal {
             return self.entryRecord.cases / 1000;
         }
         return;
     }
 
-    resource function get deaths() returns decimal? {
+    resource method get deaths() returns decimal? {
         if self.entryRecord.deaths is decimal {
             return self.entryRecord.deaths / 1000;
         }
         return;
     }
 
-    resource function get recovered() returns decimal? {
+    resource method get recovered() returns decimal? {
         if self.entryRecord.recovered is decimal {
             return self.entryRecord.recovered / 1000;
         }
         return;
     }
 
-    resource function get active() returns decimal? {
+    resource method get active() returns decimal? {
         if self.entryRecord.active is decimal {
             return self.entryRecord.active / 1000;
         }
@@ -160,7 +160,7 @@ public distinct service class CovidData {
 ```
 
 In this code:
-- The endpoint returns the number of cases in thousands. Therefore, a service type is used to define the output object type, and inside the service type, each resource function will return the original value
+- The endpoint returns the number of cases in thousands. Therefore, a service type is used to define the output object type, and inside the service type, each resource method will return the original value
 divided by `1000`.
 - The `CovidData` service type represents the GraphQL `Object` type, which represents an entry in
 the data set. 
@@ -215,12 +215,12 @@ As per the design, there are two fields in the `Query` type and one field in the
 
 #### Create `Query` type 
 
-##### Create the `all` field resource function
+##### Create the `all` field resource method
 
 To create the `all` field, which returns an array of `CovidData` type, add the code below to the `service.bal` file.
 
 ```ballerina
-resource function get all() returns CovidData[] {
+resource method get all() returns CovidData[] {
     CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
     return covidEntries.map(entry => new CovidData(entry));
 }
@@ -233,12 +233,12 @@ In this code:
 - Then comes the name of the field. The return type is the type of the field.
 - The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, and then, returns an array of `CovidData` service type array as the result using the built-in `map` function.
 
-##### Create the `filter` field resource function
+##### Create the `filter` field resource method
 
 To add the `filter` field, which is another resource method with an input `isoCode` to filter the data, add the code below to the `service.bal` file.
 
 ```ballerina
-resource function get filter(string isoCode) returns CovidData? {
+resource method get filter(string isoCode) returns CovidData? {
     CovidEntry? covidEntry = covidEntriesTable[isoCode];
     if covidEntry is CovidEntry {
         return new (covidEntry);
@@ -253,14 +253,14 @@ In this code:
 
 #### Create `Mutation` type 
 
-##### Create the `add` field remote function
+##### Create the `add` field remote method
 
 As the `Query` type is completed now, define the `Mutation` type using remote methods.
 
 To define a remote method to add an entry to the data source, add the code below to the `service.bal` file.
 
 ```ballerina
-remote function add(CovidEntry entry) returns CovidData {
+remote method add(CovidEntry entry) returns CovidData {
     covidEntriesTable.add(entry);
     return new CovidData(entry);
 }
@@ -299,36 +299,36 @@ public distinct service class CovidData {
         self.entryRecord = entryRecord.cloneReadOnly();
     }
 
-    resource function get isoCode() returns string {
+    resource method get isoCode() returns string {
         return self.entryRecord.isoCode;
     }
 
-    resource function get country() returns string {
+    resource method get country() returns string {
         return self.entryRecord.country;
     }
 
-    resource function get cases() returns decimal? {
+    resource method get cases() returns decimal? {
         if self.entryRecord.cases is decimal {
             return self.entryRecord.cases / 1000;
         }
         return;
     }
 
-    resource function get deaths() returns decimal? {
+    resource method get deaths() returns decimal? {
         if self.entryRecord.deaths is decimal {
             return self.entryRecord.deaths / 1000;
         }
         return;
     }
 
-    resource function get recovered() returns decimal? {
+    resource method get recovered() returns decimal? {
         if self.entryRecord.recovered is decimal {
             return self.entryRecord.recovered / 1000;
         }
         return;
     }
 
-    resource function get active() returns decimal? {
+    resource method get active() returns decimal? {
         if self.entryRecord.active is decimal {
             return self.entryRecord.active / 1000;
         }
@@ -337,12 +337,12 @@ public distinct service class CovidData {
 }
 
 service /covid19 on new graphql:Listener(9000) {
-    resource function get all() returns CovidData[] {
+    resource method get all() returns CovidData[] {
         CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
         return covidEntries.map(entry => new CovidData(entry));
     }
 
-    resource function get filter(string isoCode) returns CovidData? {
+    resource method get filter(string isoCode) returns CovidData? {
         CovidEntry? covidEntry = covidEntriesTable[isoCode];
         if covidEntry is CovidEntry {
             return new (covidEntry);
@@ -350,7 +350,7 @@ service /covid19 on new graphql:Listener(9000) {
         return;
     }
 
-    remote function add(CovidEntry entry) returns CovidData {
+    remote method add(CovidEntry entry) returns CovidData {
         covidEntriesTable.add(entry);
         return new CovidData(entry);
     }

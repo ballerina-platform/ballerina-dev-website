@@ -17,7 +17,7 @@ import ballerina/log;
 
 service / on new http:Listener(9090) {
 
-    resource function 'default hello(http:Caller caller, http:Request request)
+    resource method 'default hello(http:Caller caller, http:Request request)
             returns error? {
         // Check if the client expects a 100-continue response.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue.

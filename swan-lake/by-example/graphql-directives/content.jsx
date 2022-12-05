@@ -54,11 +54,11 @@ service /graphql on new graphql:Listener(4000) {
     # # Deprecated
     # The \`person\` field is deprecated. Use \`profile\` instead.
     @deprecated
-    resource function get person() returns Person {
+    resource method get person() returns Person {
         return person;
     }
 
-    resource function get profile() returns Person {
+    resource method get profile() returns Person {
         return person;
     }
 }

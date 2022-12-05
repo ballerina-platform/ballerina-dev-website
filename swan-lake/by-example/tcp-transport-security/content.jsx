@@ -53,7 +53,7 @@ listener tcp:Listener securedListnerEP = check new(3000,
 );
 
 service "tcp" on securedListnerEP {
-     remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
+     remote method onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println("Client connected on server port: ", caller.remotePort);
         return new EchoService();
     }
@@ -62,7 +62,7 @@ service "tcp" on securedListnerEP {
 service class EchoService {
     *tcp:ConnectionService;
 
-    remote function onBytes(readonly & byte[] data) returns byte[] {
+    remote method onBytes(readonly & byte[] data) returns byte[] {
         io:println("Received message: ", string:fromBytes(data));
         return data;
     }

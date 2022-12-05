@@ -21,7 +21,7 @@ http:Client clientEP = check new ("http://localhost:9090");
 //Binds the listener to the service.
 service /multiparts on new http:Listener(9090) {
 
-    resource function post decode(http:Request request)
+    resource method post decode(http:Request request)
             returns http:Response|http:InternalServerError {
         http:Response response = new;
         // Extracts bodyparts from the request.
@@ -40,7 +40,7 @@ service /multiparts on new http:Listener(9090) {
         }
     }
 
-    resource function get encode(http:Request req)
+    resource method get encode(http:Request req)
             returns http:Response|http:InternalServerError {
         //Create a \`json\` body part.
         mime:Entity jsonBodyPart = new;

@@ -110,7 +110,7 @@ import ballerina/http;
 
 service on new http:Listener(9090) {
 
-    resource function get greeting() returns string {
+    resource method get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -217,7 +217,7 @@ The following code snippet shows how the Ballerina compiler can generate YAML fi
 import ballerina/http;
 
 service /hello on new http:Listener(9090) {
-    resource function get sayHello() returns string {
+    resource method get sayHello() returns string {
         return "Hello, World!";
     }
 }

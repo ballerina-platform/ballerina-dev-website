@@ -86,14 +86,14 @@ Follow the steps below to create separate service and client packages, and gener
     }
     service "StreamingCalcService" on ep {
         
-        remote function sum(stream<int, grpc:Error?> clientStream) returns int|error {
+        remote method sum(stream<int, grpc:Error?> clientStream) returns int|error {
            int sum = 0;
            error? e = clientStream.forEach(function (int value) {
                sum += value;
            });
            return sum;
         }
-        remote function incrementalSum(StreamingCalcServiceIntCaller caller, stream<int, grpc:Error?> clientStream) returns error? {
+        remote method incrementalSum(StreamingCalcServiceIntCaller caller, stream<int, grpc:Error?> clientStream) returns error? {
            int sum = 0;
            error? e = clientStream.forEach(function (int value) {
                sum += value;

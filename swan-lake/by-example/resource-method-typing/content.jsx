@@ -25,7 +25,7 @@ service /calc on h {
     // Resource method arguments can use user-defined types.
     // Annotations can be used to refine the mapping between the Ballerina-declared
     // type and wire format.
-    resource function post add(@http:Payload Args args) 
+    resource method post add(@http:Payload Args args) 
             returns decimal {
         return args.x + args.y;
     }

@@ -24,7 +24,7 @@ service http:Service /foo on new http:Listener(9090) {
     // instance, only \`POST\` requests are allowed. The \`default\` accessor can be used to match with all methods
     // including standard HTTP methods and custom methods.
     // The \`resource path\` associates the relative path to the service object's path. E.g., \`bar\`.
-    resource function post bar(@http:Payload json payload) returns json {
+    resource method post bar(@http:Payload json payload) returns json {
         return payload;
     }
 }
@@ -59,9 +59,9 @@ export default function HttpAbsolutePathAndPath() {
       <p>
         Ballerina supports writing RESTful services according to the JAX-RS
         specification. You can use the <code>absolute-resource-path</code> and{" "}
-        <code>resource-name</code> to access a resource function while the{" "}
+        <code>resource-name</code> to access a resource method while the{" "}
         <code>accessor-name</code>, which is an HTTP verb as <code>post</code>{" "}
-        and <code>get</code> to constrain your resource function in a RESTful
+        and <code>get</code> to constrain your resource method in a RESTful
         manner.
       </p>
 

@@ -32,7 +32,7 @@ service on new kafka:Listener(kafkaEndpoint, consumerConfigs) {
         self.orderProducer = check new (kafkaEndpoint);
     }
 
-    remote function onConsumerRecord(Order[] orders) returns error? {
+    remote method onConsumerRecord(Order[] orders) returns error? {
         check from Order 'order in orders
             where 'order.paymentStatus == SUCCESS
             do {

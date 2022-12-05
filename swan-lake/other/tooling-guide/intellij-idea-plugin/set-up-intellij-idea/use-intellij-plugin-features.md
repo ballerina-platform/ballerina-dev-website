@@ -108,7 +108,7 @@ You can reformat the Ballerina codes by pressing the **Ctrl+Alt+L** keys.
 
 ## Viewing documentation
 
-You can view the documentation of a function, remote function, etc., by pressing the **Ctrl+Q** keys or by hovering over the element while pressing the **Ctrl** key.
+You can view the documentation of a function, remote method, etc., by pressing the **Ctrl+Q** keys or by hovering over the element while pressing the **Ctrl** key.
 
 ![Viewing documentation](/learn/images/view-documentation.gif)
 

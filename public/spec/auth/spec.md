@@ -250,7 +250,7 @@ public client class ListenerLdapUserStoreBasicAuthHandler {
         self.provider = new (config);
     }
     
-    remote function authenticate(Request|Headers|string data) returns auth:UserDetails|Unauthorized {
+    remote method authenticate(Request|Headers|string data) returns auth:UserDetails|Unauthorized {
         // extract the credential from data
         auth:UserDetails|auth:Error details = self.provider.authenticate(credential);
         if details is auth:Error {
@@ -259,7 +259,7 @@ public client class ListenerLdapUserStoreBasicAuthHandler {
         return <auth:UserDetails>details;
     }
     
-    remote function authorize(auth:UserDetails details, string|string[] expectedScopes) returns Forbidden? {
+    remote method authorize(auth:UserDetails details, string|string[] expectedScopes) returns Forbidden? {
         // match the scopes with the provided `expectedScopes`
         // if not matched return `Forbidden`
     }
@@ -377,7 +377,7 @@ import ballerina/http;
     ]
 }
 service /foo on new http:Listener(9090) {
-    resource function get bar() returns string {
+    resource method get bar() returns string {
         return "Hello, World!";
     }
 }
@@ -417,7 +417,7 @@ import ballerina/http;
     ]
 }
 service /foo on new http:Listener(9090) {
-    resource function get bar() returns string {
+    resource method get bar() returns string {
         return "Hello, World!";
     }
 }
@@ -435,7 +435,7 @@ http:FileUserStoreConfig config = {};
 http:ListenerFileUserStoreBasicAuthHandler handler = new (config);
 
 service /foo on new http:Listener(9090) {
-    resource function post bar(@http:Header string Authorization) returns string|http:Unauthorized|http:Forbidden {
+    resource method post bar(@http:Header string Authorization) returns string|http:Unauthorized|http:Forbidden {
         auth:UserDetails|http:Unauthorized authn = handler.authenticate(Authorization);
         if authn is http:Unauthorized {
             return authn;
@@ -479,7 +479,7 @@ http:LdapUserStoreConfig config = {
 http:ListenerLdapUserStoreBasicAuthHandler handler = new (config);
 
 service /foo on new http:Listener(9090) {
-    resource function post bar(@http:Header string Authorization) returns string|http:Unauthorized|http:Forbidden {
+    resource method post bar(@http:Header string Authorization) returns string|http:Unauthorized|http:Forbidden {
         auth:UserDetails|http:Unauthorized authn = handler->authenticate(Authorization);
         if authn is http:Unauthorized {
             return authn;

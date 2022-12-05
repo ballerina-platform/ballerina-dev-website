@@ -77,7 +77,7 @@ listener stan:Listener securedEP = new(stan:DEFAULT_URL,
     subject: "security.demo"
 }
 service stan:Service on securedEP {
-    remote function onMessage(stan:Message message) returns error? {
+    remote method onMessage(stan:Message message) returns error? {
         // Prints the incoming message in the console.
         string messageData = check string:fromBytes(message.content);
         log:printInfo("Received message: " + messageData);

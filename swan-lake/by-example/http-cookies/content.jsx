@@ -18,7 +18,7 @@ listener http:Listener serverEP = new (9095);
 
 service /cookieDemo on serverEP {
 
-    resource function post login(@http:Payload json details) returns http:Response|http:Unauthorized|error {
+    resource method post login(@http:Payload json details) returns http:Response|http:Unauthorized|error {
 
         // Retrieve the username and password.
         json name = check details.name;
@@ -47,7 +47,7 @@ service /cookieDemo on serverEP {
         return http:UNAUTHORIZED;
     }
 
-    resource function get welcome(http:Request req) returns string {
+    resource method get welcome(http:Request req) returns string {
         // Retrieve cookies from the request.
         // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getCookies.
         http:Cookie[] cookies = req.getCookies();

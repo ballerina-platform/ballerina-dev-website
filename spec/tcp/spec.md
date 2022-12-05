@@ -102,17 +102,17 @@ public isolated function init(int localPort, *ListenerConfiguration config) retu
 
 ### 3.1. [Service](#31-service)
 
-This service has a single `onConnect` remote function which gets invoked when a new client is connected. The new client is represented using the `tcp:Caller`. The `onConnect(tcp:Caller)` method may return `tcp:ConnectionService|tcp:Error`.
+This service has a single `onConnect` remote method which gets invoked when a new client is connected. The new client is represented using the `tcp:Caller`. The `onConnect(tcp:Caller)` method may return `tcp:ConnectionService|tcp:Error`.
 
 ### 3.2. [Connection Service](#32-connection-service)
 
-Once the TCP connection is established, it returns a `tcp:ConnectionService`. This service has a fixed set of remote functions that do not have any configs. Receiving messages will get dispatched to the relevant remote function. Each remote function is explained below.
+Once the TCP connection is established, it returns a `tcp:ConnectionService`. This service has a fixed set of remote methods that do not have any configs. Receiving messages will get dispatched to the relevant remote method. Each remote method is explained below.
 
 ```ballerina
 import ballerina/tcp;
 
 service on new tcp:Listener(3000) {
-    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
+    remote method onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         return new EchoService();
     }
 }
@@ -121,7 +121,7 @@ service class EchoService {
 
     *tcp:ConnectionService;
     
-    remote function onBytes(readonly & byte[] data) returns byte[]|tcp:Error? {
+    remote method onBytes(readonly & byte[] data) returns byte[]|tcp:Error? {
         // echo back the data to the client
         return data;
     }
@@ -135,7 +135,7 @@ service class EchoService {
 This remote method is invoked once the data is received from the client.
 
 ```ballerina
-remote function onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
+remote method onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
     io:println("Received: ", string:fromBytes(data));
 }
 ```
@@ -145,7 +145,7 @@ remote function onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:E
 This remote method is invoked in an error situation.
 
 ```ballerina
-remote function onError(tcp:Error err) {
+remote method onError(tcp:Error err) {
     io:println("An error occurred" + err.message());
 }
 ```
@@ -155,7 +155,7 @@ remote function onError(tcp:Error err) {
 This remote method is invoked when the connection gets closed.
 
 ```ballerina
-remote function onClose() {
+remote method onClose() {
     io:println("Client left");
 }
 ```
@@ -215,7 +215,7 @@ public isolated function init(string remoteHost, int remotePort, *ClientConfigur
 #
 # + data - The data that need to be sent to the connected remote host
 # + return - `()` or else a `tcp:Error` if the given data cannot be sent
-remote function writeBytes(byte[] data) returns Error? = @java:Method {}
+remote method writeBytes(byte[] data) returns Error? = @java:Method {}
 ```
 
 #### [readBytes](#readbytes)
@@ -230,7 +230,7 @@ remote function writeBytes(byte[] data) returns Error? = @java:Method {}
 #
 # + return - The `readonly & byte[]` or else a `tcp:Error` if the data
 #            cannot be read from the remote host
-remote function readBytes() returns (readonly & byte[])|Error = @java:Method {}
+remote method readBytes() returns (readonly & byte[])|Error = @java:Method {}
 ```
 
 #### [close](#close)
@@ -244,7 +244,7 @@ remote function readBytes() returns (readonly & byte[])|Error = @java:Method {}
 # ```
 #
 # + return - A `tcp:Error` if it cannot close the connection or else `()`
-isolated remote function close() returns Error? = @java:Method {}
+isolated remote method close() returns Error? = @java:Method {}
 ```
 
 ## 5. [Securing the TCP Connections](#5-securing-the-tcp-connections)
@@ -266,7 +266,7 @@ tcp:ListenerSecureSocket listenerSecureSocket = {
 };
 
 service on new tcp:Listener(9002, secureSocket = listenerSecureSocket) {
-    isolated remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
+    isolated remote method onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         return new EchoService();
     }
 }
@@ -290,7 +290,7 @@ import ballerina/log;
 import ballerina/tcp;
 
 service on new tcp:Listener(3000) {
-    remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
+    remote method onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println("Client connected to echo server: ", caller.remotePort);
         return new EchoService();
     }
@@ -300,16 +300,16 @@ service class EchoService {
 
     *tcp:ConnectionService;
     
-    remote function onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
+    remote method onBytes(tcp:Caller caller, readonly & byte[] data) returns tcp:Error? {
         io:println("Echo: ", string:fromBytes(data));
         return caller->writeBytes(data);
     }
 
-    remote function onError(tcp:Error err) {
+    remote method onError(tcp:Error err) {
         log:printError("An error occurred", 'error = err);
     }
 
-    remote function onClose() {
+    remote method onClose() {
         io:println("Client left");
     }
 }

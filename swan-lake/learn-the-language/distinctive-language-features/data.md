@@ -416,7 +416,7 @@ type Args record {|
 listener http:Listener h = new (9090);
 
 service /calc on h {
-    resource function post add(@http:Payload Args args) returns decimal {
+    resource method post add(@http:Payload Args args) returns decimal {
         return args.x + args.y;
     }
 }

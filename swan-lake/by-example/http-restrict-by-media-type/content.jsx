@@ -25,7 +25,7 @@ service on new http:Listener(9092) {
         consumes: ["text/json", "application/json"],
         produces: ["application/xml"]
     }
-    resource function post infoService(@http:Payload json msg)
+    resource method post infoService(@http:Payload json msg)
             returns xml|http:InternalServerError {
         json|error nameString = msg.name;
         if nameString is json {

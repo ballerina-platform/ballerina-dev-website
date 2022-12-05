@@ -35,7 +35,7 @@ import ballerina/http;
  
 service / on new http:Listener(8080) {
  
-   resource function get greeting(http:Caller caller) returns error? {
+   resource method get greeting(http:Caller caller) returns error? {
        mime:Entity entity = new;
        entity.setText("Hello!", "text/plain");
        http:Response resp = new;

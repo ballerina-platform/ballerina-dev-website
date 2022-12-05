@@ -44,7 +44,7 @@ http:Client backendClientEP = check new ("http://localhost:8080", {
 
 
 service / on new http:Listener(9090) {
-    resource function 'default 'retry() returns string|error {
+    resource method 'default 'retry() returns string|error {
         string payload = check backendClientEP->get("/hello");
         return payload;
     }
@@ -57,7 +57,7 @@ service / on new http:Listener(9090) {
 service / on new http:Listener(8080) {
     private int counter = 0;
 
-    resource function get hello() returns string {
+    resource method get hello() returns string {
         self.counter += 1;
         // Delay the response by 5 seconds to mimic network-level delays.
         if self.counter % 4 != 0 {

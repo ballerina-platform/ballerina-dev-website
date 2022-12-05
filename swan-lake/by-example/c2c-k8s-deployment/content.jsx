@@ -18,7 +18,7 @@ const codeSnippetData = [
 listener http:Listener helloEP = new(9090);
 
 service http:Service /helloWorld on helloEP {
-    resource function get sayHello() returns string {
+    resource method get sayHello() returns string {
         return "Hello from Kubernetes!";
     }
 }

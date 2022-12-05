@@ -57,13 +57,13 @@ Replace the contents of the generated BAL file with the following content.
 import ballerinax/azure_functions as af;
 
 service / on new af:HttpListener() {
-    resource function get hello(string name) returns string {
+    resource method get hello(string name) returns string {
         return "Hello, " + name + "!";
     }
 }
 
 ```
-In Ballerina, `triggers` are represented by `listeners`. When the `af:HttpListener` gets attached to the service, it implies that the function is an HTTP Trigger. The resource function behaves exactly the same as a service written from `ballerina/http`. It supports `http:Payload, http:Header` annotations for parameters. Input binding annotations can be used to annotate parameters to make use of external services in Azure. If no annotations are specified for a parameter, it is identified as a query parameter.
+In Ballerina, `triggers` are represented by `listeners`. When the `af:HttpListener` gets attached to the service, it implies that the function is an HTTP Trigger. The resource method behaves exactly the same as a service written from `ballerina/http`. It supports `http:Payload, http:Header` annotations for parameters. Input binding annotations can be used to annotate parameters to make use of external services in Azure. If no annotations are specified for a parameter, it is identified as a query parameter.
 
 Output bindings are defined in the return type definition. For services with the `HttpListener` attachment, `HttpOutput` is the default output binding. You can override the default behavior by specifying them explicitly in the return type. For example, see [HTTP Trigger -> Queue Output](#http-trigger---queue-output).
 
@@ -138,7 +138,7 @@ public type Person record {
 };
 
 service / on new af:HttpListener() {
-    resource function post queue(@http:Payload Person person) returns @af:QueueOutput {queueName: "people"} string {
+    resource method post queue(@http:Payload Person person) returns @af:QueueOutput {queueName: "people"} string {
         return person.name + " is " + person.age.toString() + " years old.";
     }
 }
@@ -194,7 +194,7 @@ public type DBEntry record {
 listener af:CosmosDBListener cosmosEp = new ();
 
 service "cosmos" on cosmosEp {
-    remote function onUpdated(DBEntry[] entries) returns @af:QueueOutput {queueName: "people"} string {
+    remote method onUpdated(DBEntry[] entries) returns @af:QueueOutput {queueName: "people"} string {
         string name = entries[0].name;
         log:printInfo(entries.toJsonString());
         return "Hello, " + name;

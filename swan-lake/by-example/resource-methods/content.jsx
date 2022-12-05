@@ -19,7 +19,7 @@ service / on new http:Listener(8080) {
     // Resource method is associated with combination of accessor (\`get\`) and resource name (\`hello\`). 
     // Accessors are determined by the network protocol.
     // In HTTP resources, function parameters come from query parameters.
-    resource function get hello(string name) returns string {
+    resource method get hello(string name) returns string {
         return "Hello, " + name;
     }
 }

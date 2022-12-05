@@ -36,7 +36,7 @@ service / on new graphql:Listener(9000) {
         self.forex = check new (apiEndpoint);
     }
 
-    resource function get album(string id, Currency currency = USD) returns Album|error {
+    resource method get album(string id, Currency currency = USD) returns Album|error {
         Album album = check self.db->queryRow(`SELECT * FROM Albums WHERE id=${id}`);
         if currency != self.baseCurrency {
             string query = string `from=${self.baseCurrency}&to=${currency}`;

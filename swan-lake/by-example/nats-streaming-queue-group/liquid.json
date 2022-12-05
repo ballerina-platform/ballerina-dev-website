@@ -1,0 +1,18 @@
+{
+  "title": "Queue groups",
+  "description": "BBE on leveraging the NATS built-in load balancing feature called \"distributed queues\" using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "nats",
+    "distributed",
+    "queues"
+  ],
+  "permalink": "/learn/by-example/nats-streaming-queue-group",
+  "active": "nats-streaming-queue-group",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/nats-streaming-queue-group",
+    "/swan-lake/learn/by-example/nats-streaming-queue-group.html"
+  ]
+}

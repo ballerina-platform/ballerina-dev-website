@@ -15,15 +15,11 @@ const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/http;
 
-type Profile record {|
-    string name;
-    int age;
-|};
-
 // An GraphQL listener can be configured to accept new connections that are
 // secured via mutual SSL.
-// The \`graphql:ListenerSecureSocket\` record provides the SSL-related listener configurations.
-listener graphql:Listener securedEP = new (9090,
+// The \`graphql:ListenerSecureSocket\` record provides the SSL-related listener configurations. 
+// For details, see https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket.
+listener graphql:Listener securedEP = new(4000,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -33,16 +29,20 @@ listener graphql:Listener securedEP = new (9090,
         mutualSsl: {
             verifyClient: http:REQUIRE,
             cert: "../resource/path/to/public.crt"
-        }
+        },
+        // Enables the preferred SSL protocol and its versions.
+        protocol: {
+            name: http:TLS,
+            versions: ["TLSv1.2", "TLSv1.1"]
+        },
+        // Configures the preferred ciphers.
+        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
     }
 );
 
 service /graphql on securedEP {
-    resource function get profile() returns Profile {
-        return {
-            name: "Walter White",
-            age: 50
-        };
+    resource function get greeting() returns string {
+        return "Hello, World!";
     }
 }
 `,
@@ -69,7 +69,7 @@ export default function GraphqlServiceMutualSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL service - Mutual SSL</h1>
+      <h1>Service - Mutual SSL</h1>
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
@@ -77,6 +77,21 @@ export default function GraphqlServiceMutualSsl() {
         authenticate each other by verifying the digital certificates. It
         ensures that both parties are assured of each other's identity.
       </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
+          <code>graphql</code> module
+        </a>
+        .
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file
+          path, private key file path, and trusted certificate file path.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -88,7 +103,7 @@ export default function GraphqlServiceMutualSsl() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/graphql-service-mutual-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-service-mutual-ssl",
                 "_blank"
               );
             }}
@@ -225,54 +240,15 @@ export default function GraphqlServiceMutualSsl() {
 
       <blockquote>
         <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client-security-mutual-ssl/">
-            GraphQL client - Mutual SSL
-          </a>{" "}
-          example.
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
         </p>
       </blockquote>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerConfiguration">
-              <code>graphql:ListenerConfiguration</code> record - API
-              documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket">
-              <code>graphql:ListenerSecureSocket</code> record - API
-              documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/graphql/#11312-mutual-ssl">
-              GraphQL service mutual SSL - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="SSL/TLS"
+            title="Service - SSL/TLS"
             href="/learn/by-example/graphql-service-ssl-tls"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -300,7 +276,7 @@ export default function GraphqlServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Service - SSL/TLS
                 </span>
               </div>
             </div>
@@ -308,7 +284,7 @@ export default function GraphqlServiceMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic authentication file user store"
+            title="Service - Basic Auth file user store"
             href="/learn/by-example/graphql-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -319,7 +295,7 @@ export default function GraphqlServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication file user store
+                  Service - Basic Auth file user store
                 </span>
               </div>
               <svg

@@ -87,7 +87,7 @@ export default function HttpErrorHandling() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - Error handling</h1>
+      <h1>Error Handling</h1>
 
       <p>
         Error handling is an integral part of any network program. Errors can be
@@ -100,6 +100,14 @@ export default function HttpErrorHandling() {
         execution jumps to the closest error interceptor.
       </p>
 
+      <p>
+        For more information, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
+      </p>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -110,7 +118,7 @@ export default function HttpErrorHandling() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-error-handling",
                 "_blank"
               );
             }}
@@ -325,34 +333,10 @@ export default function HttpErrorHandling() {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#82-error-handling">
-              HTTP service error handling - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Response interceptors"
+            title="Response Interceptors"
             href="/learn/by-example/http-response-interceptors"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -380,7 +364,7 @@ export default function HttpErrorHandling() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Response interceptors
+                  Response Interceptors
                 </span>
               </div>
             </div>

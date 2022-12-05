@@ -21,10 +21,12 @@ public function main() returns error? {
     // Optionally, you can provide the interface that the socket needs to bind 
     // and the timeout in seconds, which specifies the read timeout value.
     // tcp:Client client = check new ("localhost", 3000, localHost = "localhost", timeout = 5);
-    tcp:Client socketClient = check new ("localhost", 9090);
+    tcp:Client socketClient = check new ("localhost", 3000);
 
     // Send the desired content to the server.
-    check socketClient->writeBytes("Hello Ballerina".toBytes());
+    string msg = "Hello Ballerina Echo from client";
+    byte[] msgByteArray = msg.toBytes();
+    check socketClient->writeBytes(msgByteArray);
 
     // Read the response from the server.
     readonly & byte[] receivedData = check socketClient->readBytes();
@@ -57,11 +59,19 @@ export default function TcpClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>TCP client - Send/Receive bytes</h1>
+      <h1>Client</h1>
 
       <p>
         The TCP Client is used to connect to a remote TCP server. This sample
         demonstrates how the TCP client interacts with the TCP server.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/tcp/latest">
+          <code>tcp</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -74,7 +84,7 @@ export default function TcpClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/tcp-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/tcp-client",
                 "_blank"
               );
             }}
@@ -148,21 +158,6 @@ export default function TcpClient() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the TCP service given in the{" "}
-            <a href="/learn/by-example/tcp-listener/">Send/Receive bytes</a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
-
-      <p>Run the client program by executing the command below.</p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -216,40 +211,19 @@ export default function TcpClient() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
+              <span>{`# As a prerequisite, start a sample TCP service.`}</span>
               <span>{`\$ bal run tcp_client.bal`}</span>
-              <span>{`Received: Hello Ballerina`}</span>
+              <span>{`Received: Hello Ballerina Echo from client`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/tcp/latest/clients/Client">
-              <code>tcp:Client</code> client object - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/tcp/#4-client">TCP Client - Specification</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send/Receive bytes"
-            href="/learn/by-example/tcp-listener"
+            title="Secured connection"
+            href="/learn/by-example/rabbitmq-secure-connection"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -276,14 +250,14 @@ export default function TcpClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive bytes
+                  Secured connection
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/tcp-service-ssl-tls">
+          <Link title="Listener" href="/learn/by-example/tcp-listener">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -292,7 +266,7 @@ export default function TcpClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Listener
                 </span>
               </div>
               <svg

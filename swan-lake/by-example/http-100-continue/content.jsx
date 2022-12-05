@@ -17,10 +17,11 @@ import ballerina/log;
 
 service / on new http:Listener(9090) {
 
-    resource function post greeting(http:Caller caller, http:Request request)
+    resource function 'default hello(http:Caller caller, http:Request request)
             returns error? {
         // Check if the client expects a 100-continue response.
-        if request.expects100Continue() {
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue.
+        if (request.expects100Continue()) {
             string mediaType = request.getContentType();
             if mediaType.toLowerAscii() == "text/plain" {
 
@@ -74,13 +75,21 @@ export default function Http100Continue() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - 100 continue</h1>
+      <h1>100 continue</h1>
 
       <p>
         Convenience functions are provided in the HTTP library for ease of use
         when handling <code>100-continue</code> scenarios.{" "}
         <code>100-continue</code> indicates that the server has received the
         request headers and the client can proceed with sending the request.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -93,7 +102,7 @@ export default function Http100Continue() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-100-continue",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-100-continue",
                 "_blank"
               );
             }}
@@ -287,10 +296,10 @@ export default function Http100Continue() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v -d "TEST 100 CONTINUE" http://localhost:9090/greeting -H 'Expect:100-continue' -H 'Content-Type: text/plain'`}</span>
+              <span>{`\$ curl -v -d "TEST 100 CONTINUE" http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: text/plain'`}</span>
               <span>{`*   Trying 127.0.0.1...`}</span>
               <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> POST /greeting HTTP/1.1`}</span>
+              <span>{`> POST /hello HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.58.0`}</span>
               <span>{`> Accept: */*`}</span>
@@ -314,9 +323,9 @@ export default function Http100Continue() {
 `}</span>
               <span>{`# Use the following client to invoke the service using an unsupported media type. The service is supposed to ignore`}</span>
               <span>{`# the payload if the content type does not match.`}</span>
-              <span>{`\$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/greeting -H 'Expect:100-continue' -H 'Content-Type: application/json'`}</span>
+              <span>{`\$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: application/json'`}</span>
               <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> POST /greeting HTTP/1.1`}</span>
+              <span>{`> POST /hello HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.58.0`}</span>
               <span>{`> Accept: */*`}</span>
@@ -337,20 +346,6 @@ export default function Http100Continue() {
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue">
-              <code>expects100Continue()</code> - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -387,10 +382,7 @@ export default function Http100Continue() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Matrix parameter"
-            href="/learn/by-example/http-matrix-param"
-          >
+          <Link title="Streaming" href="/learn/by-example/http-streaming">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -399,7 +391,7 @@ export default function Http100Continue() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Matrix parameter
+                  Streaming
                 </span>
               </div>
               <svg

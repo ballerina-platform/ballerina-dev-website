@@ -15,21 +15,22 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerina/websocket;
 
-service /chat on new websocket:Listener(9090) {
+service /echo on new websocket:Listener(9090) {
    resource function get .() returns websocket:Service|websocket:Error {
        // Accept the WebSocket upgrade by returning a \`websocket:Service\`.
-       return new ChatService();
+       return new WsService();
    }
 }
 
-service class ChatService {
+service class WsService {
     *websocket:Service;
     // This \`remote function\` is triggered when a new message is received
     // from a client. It accepts \`anydata\` as the function argument. The received data 
     // will be converted to the data type stated as the function argument.
-    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
-        io:println(chatMessage);
-        check caller->writeMessage("Hello!, How are you?");
+    // For more information on data binding, see https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md.
+    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
+        io:println("\\ntext message: " + text);
+        return caller->writeMessage("You said: " + text);
     }
 }
 `,
@@ -56,21 +57,16 @@ export default function WebsocketBasicSample() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket service - Send/Receive message</h1>
+      <h1>Service</h1>
+
+      <p>This explains the basic functions of a WebSocket server.</p>
 
       <p>
-        This explains how the Ballerina WebSocket server interacts with a
-        WebSocket client. Apart from the <code>onMessage</code> remote function
-        given in the example, there are few other remote functions to receive
-        different types of WebSocket messages. The <code>onOpen</code> remote
-        function is dispatched as soon as the WebSocket handshake is completed
-        and the connection is established, <code>onPing</code> and{" "}
-        <code>onPong</code> remote methods are dispatched upon receiving ping
-        and pong messages respectively, <code>onIdleTimeout</code> remote method
-        is dispatched when the idle timeout is reached, <code>onClose</code> is
-        dispatched when a close frame with a statusCode and a reason is received
-        and <code>onError</code> is dispatched when an error occurs in the
-        WebSocket connection.
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
+          <code>websocket</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -83,7 +79,7 @@ export default function WebsocketBasicSample() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-basic-sample",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/websocket-basic-sample",
                 "_blank"
               );
             }}
@@ -157,8 +153,6 @@ export default function WebsocketBasicSample() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the command below.</p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -218,42 +212,11 @@ export default function WebsocketBasicSample() {
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/websocket-client/">WebSocket client</a>.
-        </p>
-      </blockquote>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/websocket/#3-service-types">
-              WebSocket service - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="OAuth2 password grant type"
-            href="/learn/by-example/graphql-client-security-oauth2-password-grant-type"
+            title="Client - Retry"
+            href="/learn/by-example/websocket-retry-client"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -280,7 +243,7 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 password grant type
+                  Client - Retry
                 </span>
               </div>
             </div>
@@ -288,8 +251,8 @@ export default function WebsocketBasicSample() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Payload constraint validation"
-            href="/learn/by-example/websocket-service-payload-constraint-validation"
+            title="Service - SSL/TLS"
+            href="/learn/by-example/websocket-service-ssl-tls"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -299,7 +262,7 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Payload constraint validation
+                  Service - SSL/TLS
                 </span>
               </div>
               <svg

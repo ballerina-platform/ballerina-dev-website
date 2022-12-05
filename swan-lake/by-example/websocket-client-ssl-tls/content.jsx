@@ -15,19 +15,21 @@ const codeSnippetData = [
   `import ballerina/websocket;
 import ballerina/io;
 
+// A WebSocket client can be configured to communicate through WSS as well.
+// To secure a client using TLS/SSL, the client needs to be configured with
+// a certificate file of the listener.
+// The \`websocket:ClientSecureSocket\` record provides the SSL-related configurations of the client.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket.
+websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
+    secureSocket = {
+        cert: "../resource/path/to/public.crt"
+    }
+);
+
 public function main() returns error? {
-    // A WebSocket client can be configured to communicate through WSS as well.
-    // To secure a client using TLS/SSL, the client needs to be configured with
-    // a certificate file of the listener.
-    // The \`websocket:ClientSecureSocket\` record provides the SSL-related configurations of the client.
-    websocket:Client chatClient = check new("wss://localhost:9090/chat",
-        secureSocket = {
-            cert: "../resource/path/to/public.crt"
-        }
-    );
-    check chatClient->writeMessage("Hello, John!");
-    string chatMessage = check chatClient->readMessage();
-    io:println(chatMessage);
+    check securedEP->writeMessage("Hello, World!");
+    string textMessage = check securedEP->readMessage();
+    io:println(textMessage);
 }
 `,
 ];
@@ -53,13 +55,28 @@ export default function WebsocketClientSslTls() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket client - SSL/TLS</h1>
+      <h1>Client - SSL/TLS</h1>
 
       <p>
         You can use the WSS client to connect or interact with an WSS listener.
         Provide the <code>websocket:ClientSecureSocket</code> configurations to
         the client to initiate an WSS connection.
       </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
+          <code>websocket</code> module
+        </a>
+        .
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -71,7 +88,7 @@ export default function WebsocketClientSslTls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-client-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/websocket-client-ssl-tls",
                 "_blank"
               );
             }}
@@ -145,20 +162,18 @@ export default function WebsocketClientSslTls() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the WebSocket service given in the{" "}
-            <a href="/learn/by-example/websocket-service-ssl-tls/">SSL/TLS</a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
-
       <p>Run the client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          a{" "}
+          <a href="/learn/by-example/websocket-service-ssl-tls/">
+            sample service secured with SSL/TLS
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -214,39 +229,16 @@ export default function WebsocketClientSslTls() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_client_ssl_tls.bal`}</span>
-              <span>{`Hello, How are you?`}</span>
+              <span>{`Hello, World!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/websocket/#5-securing-the-websocket-connections">
-              WebSocket SSL/TLS - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="OAuth2"
+            title="Service - OAuth2"
             href="/learn/by-example/websocket-service-oauth2"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -274,7 +266,7 @@ export default function WebsocketClientSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2
+                  Service - OAuth2
                 </span>
               </div>
             </div>
@@ -282,7 +274,7 @@ export default function WebsocketClientSslTls() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Mutual SSL"
+            title="Client - Mutual SSL"
             href="/learn/by-example/websocket-client-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -293,7 +285,7 @@ export default function WebsocketClientSslTls() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Mutual SSL
+                  Client - Mutual SSL
                 </span>
               </div>
               <svg

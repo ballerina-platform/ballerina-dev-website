@@ -15,44 +15,41 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
-    string title;
-    string artist;
-|};
-
-public function main() returns error? {
-    // Defines the HTTP client to call the OAuth2 secured APIs.
-    // The client is enriched with the \`Authorization: Bearer <token>\` header by
-    // passing the \`http:OAuth2PasswordGrantConfig\` to the \`auth\` configuration of the client.
-    http:Client albumClient = check new("localhost:9090",
-        auth = {
-            tokenUrl: "https://localhost:9445/oauth2/token",
-            username: "admin",
-            password: "admin",
-            clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-            clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
-            refreshConfig: {
-                refreshUrl: "https://localhost:9445/oauth2/token",
-                scopes: ["hello"],
-                clientConfig: {
-                    secureSocket: {
-                        cert: "../resource/path/to/public.crt"
-                    }
-                }
-            },
+// Defines the HTTP client to call the OAuth2 secured APIs.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by
+// passing the \`http:OAuth2PasswordGrantConfig\` to the \`auth\` configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/http/latest/records/OAuth2PasswordGrantConfig.
+http:Client securedEP = check new("https://localhost:9090",
+    auth = {
+        tokenUrl: "https://localhost:9445/oauth2/token",
+        username: "admin",
+        password: "admin",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
+        refreshConfig: {
+            refreshUrl: "https://localhost:9445/oauth2/token",
+            scopes: ["hello"],
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
                 }
             }
         },
-        secureSocket = {
-            cert: "../resource/path/to/public.crt"
+        clientConfig: {
+            secureSocket: {
+                cert: "../resource/path/to/public.crt"
+            }
         }
-    );
-    Album[] payload = check albumClient->/albums;
-    io:println(payload);
+    },
+    secureSocket = {
+        cert: "../resource/path/to/public.crt"
+    }
+);
+
+public function main() returns error? {
+    string response = check securedEP->get("/foo/bar");
+    io:println(response);
 }
 `,
 ];
@@ -78,15 +75,34 @@ export default function HttpClientOauth2PasswordGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP client - OAuth2 password grant type</h1>
+      <h1>Client - OAuth2 Password grant type</h1>
 
       <p>
         A client, which is secured with OAuth2 password grant type can be used
-        to connect to a secured service. The client is enriched with the{" "}
+        to connect to a secured service.
+      </p>
+
+      <p>
+        The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>http:OAuth2PasswordGrantConfig</code> to the <code>auth</code>{" "}
         configuration of the client.
       </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+          <code>oauth2</code> module
+        </a>
+        .
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -98,7 +114,7 @@ export default function HttpClientOauth2PasswordGrantType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-client-oauth2-password-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-client-oauth2-password-grant-type",
                 "_blank"
               );
             }}
@@ -172,20 +188,15 @@ export default function HttpClientOauth2PasswordGrantType() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the HTTP service given in the{" "}
-            <a href="/learn/by-example/http-service-oauth2/">OAuth2 service</a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
-
       <p>Run the client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          the{" "}
+          <a href="/learn/by-example/http-service-oauth2/">OAuth2 service</a>.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -241,50 +252,16 @@ export default function HttpClientOauth2PasswordGrantType() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_client_oauth2_password_grant_type.bal`}</span>
-              <span>{`[{"title":"Blue Train","artist":"John Coltrane"},{"title":"Jeru","artist":"Gerry Mulligan"}]`}</span>
+              <span>{`Hello, World!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/OAuth2PasswordGrantConfig">
-              <code>http:OAuth2PasswordGrantConfig</code> - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#9129-client---grant-types-oauth2">
-              HTTP client grant types - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="OAuth2 client credentials grant type"
+            title="Client - OAuth2 Client Credentials grant type"
             href="/learn/by-example/http-client-oauth2-client-credentials-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -312,7 +289,7 @@ export default function HttpClientOauth2PasswordGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 client credentials grant type
+                  Client - OAuth2 Client Credentials grant type
                 </span>
               </div>
             </div>
@@ -320,7 +297,7 @@ export default function HttpClientOauth2PasswordGrantType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="OAuth2 refresh token grant type"
+            title="Client - OAuth2 Refresh Token grant type"
             href="/learn/by-example/http-client-oauth2-refresh-token-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -331,7 +308,7 @@ export default function HttpClientOauth2PasswordGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 refresh token grant type
+                  Client - OAuth2 Refresh Token grant type
                 </span>
               </div>
               <svg

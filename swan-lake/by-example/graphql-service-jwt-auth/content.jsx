@@ -14,12 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-type Profile record {|
-    string name;
-    int age;
-|};
-
-listener graphql:Listener securedEP = new (9090,
+listener graphql:Listener securedEP = new(4000,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -48,11 +43,8 @@ listener graphql:Listener securedEP = new (9090,
     ]
 }
 service /graphql on securedEP {
-    resource function get profile() returns Profile {
-        return {
-            name: "Walter White",
-            age: 50
-        };
+    resource function get greeting() returns string {
+        return "Hello, World!";
     }
 }
 `,
@@ -79,7 +71,7 @@ export default function GraphqlServiceJwtAuth() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL service - JWT authentication</h1>
+      <h1>Service - JWT Auth</h1>
 
       <p>
         A GraphQL service can be secured with JWT and by enforcing authorization
@@ -100,6 +92,21 @@ export default function GraphqlServiceJwtAuth() {
         two sets.
       </p>
 
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
+          <code>jwt</code> module
+        </a>
+        .
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -110,7 +117,7 @@ export default function GraphqlServiceJwtAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/graphql-service-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-service-jwt-auth",
                 "_blank"
               );
             }}
@@ -247,63 +254,15 @@ export default function GraphqlServiceJwtAuth() {
 
       <blockquote>
         <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client-security-self-signed-jwt-authentication/">
-            GraphQL client - Self-signed JWT authentication
-          </a>{" "}
-          example.
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
         </p>
       </blockquote>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
-              <code>graphql:ServiceConfig</code> annotation - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/JwtValidatorConfigWithScopes">
-              <code>graphql:JwtValidatorConfigWithScopes</code> record - API
-              documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-              <code>jwt</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/graphql/#11113-jwt-authentication">
-              GraphQL service JWT authentication - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic authentication LDAP user store"
+            title="Service - Basic Auth LDAP user store"
             href="/learn/by-example/graphql-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -331,14 +290,17 @@ export default function GraphqlServiceJwtAuth() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication LDAP user store
+                  Service - Basic Auth LDAP user store
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="OAuth2" href="/learn/by-example/graphql-service-oauth2">
+          <Link
+            title="Service - OAuth2"
+            href="/learn/by-example/graphql-service-oauth2"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -347,7 +309,7 @@ export default function GraphqlServiceJwtAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2
+                  Service - OAuth2
                 </span>
               </div>
               <svg

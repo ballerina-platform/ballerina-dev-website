@@ -16,7 +16,7 @@ const codeSnippetData = [
 
 service / on new http:Listener(9095) {
 
-    resource function get accesslog() returns string {
+    resource function get hello() returns string {
         return "Successful";
     }
 }
@@ -46,7 +46,7 @@ export default function HttpAccessLogs() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - Access logs</h1>
+      <h1>Access logs</h1>
 
       <p>
         Ballerina supports HTTP access logs for HTTP services. The access log
@@ -55,6 +55,14 @@ export default function HttpAccessLogs() {
         <code>ballerina.http.accessLogConfig</code> in the{" "}
         <code>Config.toml</code> file. Also, the <code>path</code> field can be
         used to specify the file path to save the access logs.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -67,7 +75,7 @@ export default function HttpAccessLogs() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-access-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-access-logs",
                 "_blank"
               );
             }}
@@ -202,7 +210,7 @@ export default function HttpAccessLogs() {
 `}</span>
               <span>{`\$ bal run http_access_logs.bal`}</span>
               <span>{`ballerina: HTTP access log enabled`}</span>
-              <span>{`0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /accesslog HTTP/1.1" 200 10 "-" "curl/7.64.1"`}</span>
+              <span>{`0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /hello HTTP/1.1" 200 10 "-" "curl/7.64.1"`}</span>
               <span>{`
 `}</span>
               <span>{`# Else, change the \`Config.toml\` file as follows to direct the log to the specified file.`}</span>
@@ -274,36 +282,12 @@ export default function HttpAccessLogs() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9095/accesslog`}</span>
+              <span>{`\$ curl http://localhost:9095/hello`}</span>
               <span>{`Successful`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#824-access-log">
-              HTTP service access log - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

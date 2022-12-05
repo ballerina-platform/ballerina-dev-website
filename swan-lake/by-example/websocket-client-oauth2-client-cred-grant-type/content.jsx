@@ -15,29 +15,31 @@ const codeSnippetData = [
   `import ballerina/io;
 import ballerina/websocket;
 
-public function main() returns error? {
-    // Defines the WebSocket client to call the OAuth2 secured APIs.
-    // The client is enriched with the \`Authorization: Bearer <token>\` header by
-    // passing the \`websocket:OAuth2ClientCredentialsGrantConfig\` for the \`auth\` configuration of the client.
-    websocket:Client chatClient = check new("wss://localhost:9090/chat",
-        auth = {
-            tokenUrl: "https://localhost:9445/oauth2/token",
-            clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-            clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
-            clientConfig: {
-                secureSocket: {
-                    cert: "../resource/path/to/public.crt"
-                }
+// Defines the WebSocket client to call the OAuth2 secured APIs.
+// The client is enriched with the \`Authorization: Bearer <token>\` header by
+// passing the \`websocket:OAuth2ClientCredentialsGrantConfig\` for the \`auth\` configuration of the client.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/OAuth2ClientCredentialsGrantConfig.
+websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
+    auth = {
+        tokenUrl: "https://localhost:9445/oauth2/token",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
+        clientConfig: {
+            secureSocket: {
+                cert: "../resource/path/to/public.crt"
             }
-        },
-        secureSocket = {
-            cert: "../resource/path/to/public.crt"
         }
-    );
-    check chatClient->writeMessage("Hello, John!");
-    string chatMessage = check chatClient->readMessage();
-    io:println(chatMessage);
+    },
+    secureSocket = {
+        cert: "../resource/path/to/public.crt"
+    }
+);
+
+public function main() returns error? {
+    check securedEP->writeMessage("Hello, World!");
+    string textMessage = check securedEP->readMessage();
+    io:println(textMessage);
 }
 `,
 ];
@@ -63,15 +65,34 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket client - OAuth2 client credentials grant type</h1>
+      <h1>Client - OAuth2 Client Credentials grant type</h1>
 
       <p>
         A client, which is secured with OAuth2 client credentials grant typecan
-        be used to connect to a secured service. The client is enriched with the{" "}
+        be used to connect to a secured service.
+      </p>
+
+      <p>
+        The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:OAuth2ClientCredentialsGrantConfig</code> for the{" "}
         <code>auth</code> configuration of the client.
       </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+          <code>oauth2</code> module
+        </a>
+        .
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the trusted certificate
+          file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -83,7 +104,7 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-client-oauth2-client-cred-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/websocket-client-oauth2-client-cred-grant-type",
                 "_blank"
               );
             }}
@@ -157,20 +178,18 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the WebSocket service given in the{" "}
-            <a href="/learn/by-example/websocket-service-oauth2/">OAuth2</a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
-
       <p>Run the client program by executing the command below.</p>
+
+      <blockquote>
+        <p>
+          <strong>Info:</strong> As a prerequisite to running the client, start
+          the{" "}
+          <a href="/learn/by-example/websocket-service-oauth2/">
+            OAuth2 service
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -226,49 +245,16 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run websocket_client_oauth2_client_credentials_grant_type.bal`}</span>
-              <span>{`Hello, How are you?`}</span>
+              <span>{`Hello, World!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/websocket/#52-authentication-and-authorization">
-              WebSocket authentication - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Client - self signed JWT Auth"
             href="/learn/by-example/websocket-client-self-signed-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -296,7 +282,7 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Client - self signed JWT Auth
                 </span>
               </div>
             </div>
@@ -304,7 +290,7 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
         </Col>
         <Col sm={6}>
           <Link
-            title="OAuth2 Password grant type"
+            title="Client - OAuth2 Password grant type"
             href="/learn/by-example/websocket-client-oauth2-password-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -315,7 +301,7 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 Password grant type
+                  Client - OAuth2 Password grant type
                 </span>
               </div>
               <svg

@@ -14,12 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-type Profile record {|
-    string name;
-    int age;
-|};
-
-listener graphql:Listener securedEP = new (9090,
+listener graphql:Listener securedEP = new(4000,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -51,11 +46,8 @@ listener graphql:Listener securedEP = new (9090,
     ]
 }
 service /graphql on securedEP {
-    resource function get profile() returns Profile {
-        return {
-            name: "Walter White",
-            age: 50
-        };
+    resource function get greeting() returns string {
+        return "Hello, World!";
     }
 }
 `,
@@ -82,7 +74,7 @@ export default function GraphqlServiceOauth2() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL service - OAuth2</h1>
+      <h1>Service - OAuth2</h1>
 
       <p>
         A GraphQL service can be secured with OAuth2 and by enforcing
@@ -106,6 +98,21 @@ export default function GraphqlServiceOauth2() {
         one match between the two sets.
       </p>
 
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
+          <code>oauth2</code> module
+        </a>
+        .
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -116,7 +123,7 @@ export default function GraphqlServiceOauth2() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/graphql-service-oauth2",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-service-oauth2",
                 "_blank"
               );
             }}
@@ -190,15 +197,6 @@ export default function GraphqlServiceOauth2() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>Run a Ballerina STS server for OAuth2 introspection.</span>
-        </li>
-      </ul>
-
       <p>Run the service by executing the command below.</p>
 
       <Row
@@ -262,63 +260,15 @@ export default function GraphqlServiceOauth2() {
 
       <blockquote>
         <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client-security-oauth2-password-grant-type/">
-            GraphQL client - OAuth2 password grant type
-          </a>{" "}
-          example.
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client/">GraphQL client</a>.
         </p>
       </blockquote>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
-              <code>graphql:ServiceConfig</code> annotation - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/OAuth2IntrospectionConfigWithScopes">
-              <code>graphql:OAuth2IntrospectionConfigWithScopes</code> record -
-              API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/graphql/#11114-oauth2">
-              GraphQL service OAuth2 - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="JWT authentication"
+            title="Service - JWT Auth"
             href="/learn/by-example/graphql-service-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -346,17 +296,14 @@ export default function GraphqlServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  JWT authentication
+                  Service - JWT Auth
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="SSL/TLS"
-            href="/learn/by-example/graphql-client-security-ssl-tls"
-          >
+          <Link title="Client" href="/learn/by-example/websocket-client">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -365,7 +312,7 @@ export default function GraphqlServiceOauth2() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Client
                 </span>
               </div>
               <svg

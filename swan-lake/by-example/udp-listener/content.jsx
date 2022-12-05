@@ -19,7 +19,7 @@ import ballerina/udp;
 // Optionally, you can provide the \`remoteHost\` and \`remotePort\` to configure the listener
 // as a connected listener, which only reads and writes to the configured remote host.
 // E.g.: \`udp:Listener(8080, remoteHost = "www.remote-clinet.com", remotePort = 9090)\`
-service on new udp:Listener(9090) {
+service on new udp:Listener(8080) {
 
     // This remote method is invoked once the content is received from the
     // client. You may replace the \`onBytes\` method with \`onDatagram\`, which
@@ -27,7 +27,7 @@ service on new udp:Listener(9090) {
     remote function onDatagram(readonly & udp:Datagram datagram) returns udp:Datagram|udp:Error? {
         io:println("Received by listener: ", string:fromBytes(datagram.data));
         // Echoes back the data to the same client.
-        // This is similar to calling \`caller->sendDatagram(datagram);\`.
+        // This is similar to calling \`caller->sendDatagram(data);\`.
         return datagram;
     }
 }
@@ -55,13 +55,21 @@ export default function UdpListener() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>UDP service - Send/Receive datagram</h1>
+      <h1>Listener</h1>
 
       <p>
         The UDP Listener is used to expose a UDP service over the UDP protocol.
         The UDP <code>Client</code>/<code>ConnectClient</code> is used to send
         data to a remote UDP server. This sample demonstrates the UDP socket
         listener.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/udp/latest">
+          <code>udp</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -74,7 +82,7 @@ export default function UdpListener() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/udp-listener",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/udp-listener",
                 "_blank"
               );
             }}
@@ -148,8 +156,6 @@ export default function UdpListener() {
         </Col>
       </Row>
 
-      <p>Run the service by executing the command below.</p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -204,44 +210,21 @@ export default function UdpListener() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_listener.bal`}</span>
+              <span>{`
+`}</span>
+              <span>{`# This will print the output below upon a successful read by the listener.`}</span>
               <span>{`Received by listener: Hello Ballerina echo`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/udp-client/">UDP client</a>.
-        </p>
-      </blockquote>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/udp/latest">
-              <code>udp</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/udp/#4-service">UDP service - Specification</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="SSL/TLS" href="/learn/by-example/tcp-client-ssl-tls">
+          <Link
+            title="Connection-oriented client"
+            href="/learn/by-example/udp-connect-client"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -267,17 +250,14 @@ export default function UdpListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Connection-oriented client
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Send/Receive datagram"
-            href="/learn/by-example/udp-client"
-          >
+          <Link title="Send emails" href="/learn/by-example/send-email">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -286,7 +266,7 @@ export default function UdpListener() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive datagram
+                  Send emails
                 </span>
               </div>
               <svg

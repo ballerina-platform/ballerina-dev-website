@@ -13,22 +13,46 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/http;
-import ballerina/io;
 
-public function main() returns error? {
-    // Define the load balance client endpoint to call the backend services.
-    http:LoadBalanceClient httpClient = check new ({
+// Create an endpoint with port 8080 for the mock backend services.
+listener http:Listener backendEP = check new (8080);
+
+// Define the load balance client endpoint to call the backend services.
+final http:LoadBalanceClient lbBackendEP = check new ({
         // Define the set of HTTP clients that need to be load balanced.
         targets: [
-            {url: "http://localhost:9090"},
-            {url: "http://localhost:9091"},
-            {url: "http://localhost:9092"}
+            {url: "http://localhost:8080/mock1"},
+            {url: "http://localhost:8080/mock2"},
+            {url: "http://localhost:8080/mock3"}
         ],
 
         timeout: 5
-    });
-    string payload = check httpClient->/albums;
-    io:println(payload);
+});
+
+service / on new http:Listener(9090) {
+    resource function 'default lb() returns string|error {
+        string payload = check lbBackendEP->get("/");
+        return payload;
+    }
+}
+
+// Define the mock backend services, which are called by the load balancer.
+service /mock1 on backendEP {
+    resource function get .() returns string {
+        return "Mock1 resource was invoked.";
+    }
+}
+
+service /mock2 on backendEP {
+    resource function get .() returns string {
+        return "Mock2 resource was invoked.";
+    }
+}
+
+service /mock3 on backendEP {
+    resource function get .() returns string {
+        return "Mock3 resource was invoked.";
+    }
 }
 `,
 ];
@@ -38,6 +62,8 @@ export default function HttpLoadBalancer() {
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -54,11 +80,19 @@ export default function HttpLoadBalancer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP client - Load balancer</h1>
+      <h1>Load balancer</h1>
 
       <p>
         An HTTP load balancing endpoint is used when the request load needs to
         be load balanced across a given set of target endpoints.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -71,7 +105,7 @@ export default function HttpLoadBalancer() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-load-balancer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-load-balancer",
                 "_blank"
               );
             }}
@@ -145,22 +179,7 @@ export default function HttpLoadBalancer() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run multiple instances of the HTTP service given in{" "}
-            <a href="/learn/by-example/http-basic-rest-service/">
-              Basic REST services
-            </a>{" "}
-            example by changing the ports accordingly.
-          </span>
-        </li>
-      </ul>
-
-      <p>Run the program by executing the following command.</p>
+      <p>Run the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -221,29 +240,85 @@ export default function HttpLoadBalancer() {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#2417-load-balance">
-              HTTP service load balance - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`\$ curl  http://localhost:9090/lb`}</span>
+              <span>{`Mock1 resource was invoked.`}</span>
+              <span>{`
+`}</span>
+              <span>{`# Repeat the same cURL command to invoke the service again and it will be load balanced to the second mock service.`}</span>
+              <span>{`\$ curl http://localhost:9090/lb`}</span>
+              <span>{`Mock2 resource was invoked.`}</span>
+              <span>{`
+`}</span>
+              <span>{`# The following request will be load balanced to the third mock service.`}</span>
+              <span>{`\$ curl http://localhost:9090/lb`}</span>
+              <span>{`Mock3 resource was invoked.`}</span>
+              <span>{`
+`}</span>
+              <span>{`# The following request will be load balanced to the first mock service again.`}</span>
+              <span>{`\$ curl http://localhost:9090/lb`}</span>
+              <span>{`Mock1 resource was invoked.`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

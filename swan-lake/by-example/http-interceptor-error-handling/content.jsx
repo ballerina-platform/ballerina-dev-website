@@ -104,7 +104,7 @@ export default function HttpInterceptorErrorHandling() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - Interceptor error handling</h1>
+      <h1>Interceptor Error Handling</h1>
 
       <p>
         Errors that occurred in the request-response pipeline can be intercepted
@@ -117,6 +117,14 @@ export default function HttpInterceptorErrorHandling() {
         service.
       </p>
 
+      <p>
+        For more information, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
+      </p>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -127,7 +135,7 @@ export default function HttpInterceptorErrorHandling() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-interceptor-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-interceptor-error-handling",
                 "_blank"
               );
             }}
@@ -343,34 +351,10 @@ export default function HttpInterceptorErrorHandling() {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#82-error-handling">
-              HTTP service error handling - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Error handling"
+            title="Error Handling"
             href="/learn/by-example/http-error-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -398,7 +382,7 @@ export default function HttpInterceptorErrorHandling() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error handling
+                  Error Handling
                 </span>
               </div>
             </div>
@@ -406,8 +390,8 @@ export default function HttpInterceptorErrorHandling() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Hello world"
-            href="/learn/by-example/graphql-hello-world"
+            title="HTTP 1.1 to 2.0 protocol switch"
+            href="/learn/by-example/http-1-1-to-2-0-protocol-switch"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -417,7 +401,7 @@ export default function HttpInterceptorErrorHandling() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hello world
+                  HTTP 1.1 to 2.0 protocol switch
                 </span>
               </div>
               <svg

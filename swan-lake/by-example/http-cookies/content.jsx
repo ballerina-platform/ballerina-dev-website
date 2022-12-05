@@ -27,13 +27,17 @@ service /cookieDemo on serverEP {
         // Check the password value.
         if password == "p@ssw0rd" {
 
-            // Create a new cookie by setting \`name\` as the \`username\` and \`value\` as the logged-in user's name.
-            // Set the cookies path as \`/\` to apply it to all the resources in the service.
-            http:Cookie cookie = new("username", name.toString(), path = "/");
+                    // Create a new cookie by setting \`name\` as the \`username\` and \`value\` as the logged-in user's name. 
+                    // Set the cookies path as \`/\` to apply it to all the resources in the service.
+                    // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Cookie.
+                    http:Cookie cookie = new("username", name.toString(),
+                                                path = "/");
+
             http:Response response = new;
 
-            // Add the created cookie to the response.
-            response.addCookie(cookie);
+                    // Add the created cookie to the response.
+                    // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Response#addCookie.
+                    response.addCookie(cookie);
 
             // Set a message payload to inform that the login has
             // been succeeded.
@@ -45,6 +49,7 @@ service /cookieDemo on serverEP {
 
     resource function get welcome(http:Request req) returns string {
         // Retrieve cookies from the request.
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getCookies.
         http:Cookie[] cookies = req.getCookies();
 
         // Get the cookie value of the \`username\`.
@@ -72,6 +77,7 @@ service /cookieDemo on serverEP {
 import ballerina/log;
 
 // HTTP client configurations associated with enabling cookies.
+// For detauils, see https://lib.ballerina.io/ballerina/http/latest/records/CookieConfig.
 http:ClientConfiguration clientEPConfig = {
     cookieConfig: {
         enabled: true
@@ -80,7 +86,7 @@ http:ClientConfiguration clientEPConfig = {
 
 public function main() returns error? {
     // Create a new HTTP client by giving the URL and the client configuration.
-    http:Client httpClient = check new("localhost:9095/cookieDemo", clientEPConfig);
+    http:Client httpClient = check new("http://localhost:9095/cookieDemo", clientEPConfig);
 
     // Send a username and password as a JSON payload to the backend.
     json payload = {
@@ -94,8 +100,11 @@ public function main() returns error? {
     if loginResp.statusCode != 200 {
         log:printError("Login failed");
     } else {
-        // When the login is successful, make another request to the \`/welcome\` resource of the backend service.
-        // As cookies are enabled in the HTTP client, it automatically handles cookies received with the login response and sends the relevant cookies to the \`welcome\` service resource.
+        // When the login is successful, make another request to the
+        // \`/welcome\` resource of the backend service.
+        // As cookies are enabled in the HTTP client, it automatically handles cookies
+        // received with the login response and sends the relevant cookies
+        // to the \`welcome\` service resource.
         string welcomeResp = check httpClient->get("/welcome");
 
         // A welcome message with the sent username will get printed.
@@ -129,11 +138,19 @@ export default function HttpCookies() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - Cookies</h1>
+      <h1>Cookies</h1>
 
       <p>
         HTTP cookies can track, personalize, and manage the session in the
         service and client.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -146,7 +163,7 @@ export default function HttpCookies() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-cookies",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-cookies",
                 "_blank"
               );
             }}
@@ -293,7 +310,7 @@ export default function HttpCookies() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-cookies",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-cookies",
                 "_blank"
               );
             }}
@@ -429,30 +446,6 @@ export default function HttpCookies() {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Cookie">
-              <code>http:Cookie</code> - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#2416-cookie">
-              HTTP service cookie - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link title="Access logs" href="/learn/by-example/http-access-logs">
@@ -488,7 +481,7 @@ export default function HttpCookies() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Chunking" href="/learn/by-example/http-service-chunking">
+          <Link title="Chunking" href="/learn/by-example/http-disable-chunking">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>

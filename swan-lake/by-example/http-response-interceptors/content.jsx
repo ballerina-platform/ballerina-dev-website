@@ -79,7 +79,7 @@ export default function HttpResponseInterceptors() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - Response interceptors</h1>
+      <h1>Response Interceptors</h1>
 
       <p>
         In addition to <code>RequestInterceptors</code>, a{" "}
@@ -88,6 +88,14 @@ export default function HttpResponseInterceptors() {
         executed before dispatching the response to the client. A collection of
         these request and response interceptors can be configured as a pipeline
         at the listener level or service level.
+      </p>
+
+      <p>
+        For more information, see the{" "}
+        <a href="https://docs.central.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -100,7 +108,7 @@ export default function HttpResponseInterceptors() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-response-interceptors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-response-interceptors",
                 "_blank"
               );
             }}
@@ -316,34 +324,10 @@ export default function HttpResponseInterceptors() {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#812-response-interceptor">
-              HTTP service response interceptor - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Request interceptors"
+            title="Request Interceptors"
             href="/learn/by-example/http-request-interceptors"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -371,7 +355,7 @@ export default function HttpResponseInterceptors() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request interceptors
+                  Request Interceptors
                 </span>
               </div>
             </div>
@@ -379,7 +363,7 @@ export default function HttpResponseInterceptors() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Error handling"
+            title="Error Handling"
             href="/learn/by-example/http-error-handling"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -390,7 +374,7 @@ export default function HttpResponseInterceptors() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error handling
+                  Error Handling
                 </span>
               </div>
               <svg

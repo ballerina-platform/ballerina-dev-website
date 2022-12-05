@@ -15,28 +15,33 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
-public type StringMessage record {|
-    *rabbitmq:AnydataMessage;
-    string content;
-|};
-
 // The consumer service listens to the "MyQueue" queue.
 @rabbitmq:ServiceConfig {
-    queueName: "OrderQueue",
+    queueName: "MyQueue",
     autoAck: false
 }
+// Attaches the service to the listener.
 service on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
+    // Gets triggered when a message is received by the queue.
     remote function onMessage(StringMessage message, rabbitmq:Caller caller) returns error? {
+        log:printInfo("The message received: " + message.content);
         // Acknowledges a single message positively.
+        // The acknowledgement gets committed upon successful execution of the transaction,
+        // or will rollback otherwise.
         transaction {
-            log:printInfo("Received message: " + message.content);
-
-            // Positively acknowledges a single message.
-            check caller->basicAck();
+            rabbitmq:Error? result = caller->basicAck();
+            if result is error {
+                log:printError("Error occurred while acknowledging the message.");
+            }
             check commit;
         }
     }
 }
+
+public type StringMessage record {|
+    *rabbitmq:AnydataMessage;
+    string content;
+|};
 `,
 ];
 
@@ -61,15 +66,26 @@ export default function RabbitmqTransactionConsumer() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>RabbitMQ service - Transactional consumer</h1>
+      <h1>Transactional consumer</h1>
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
         RabbitMQ message listener and Ballerina transactions. Upon successful
         execution of the transaction block, the acknowledgement will commit or
-        rollback in the case of any error. Messages will not be re-queued in the
-        case of a rollback automatically unless negatively acknowledged by the
-        user.
+        rollback in the case of any error.
+      </p>
+
+      <p>
+        Messages will not be re-queued in the case of a rollback automatically
+        unless negatively acknowledged by the user.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
+          <code>rabbitmq</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -82,7 +98,7 @@ export default function RabbitmqTransactionConsumer() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/rabbitmq-transaction-consumer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/rabbitmq-transaction-consumer",
                 "_blank"
               );
             }}
@@ -156,21 +172,6 @@ export default function RabbitmqTransactionConsumer() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Start an instance of the{" "}
-            <a href="https://www.rabbitmq.com/download.html">RabbitMQ server</a>
-            .
-          </span>
-        </li>
-      </ul>
-
-      <p>Run the service by executing the following command.</p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -231,45 +232,11 @@ export default function RabbitmqTransactionConsumer() {
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/rabbitmq-transaction-producer//">
-            RabbitMQ client - Transactional producer
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-              <code>rabbitmq</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#8-client-acknowledgements">
-              RabbitMQ client acknowledgments - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Consume message with acknowledgement"
-            href="/learn/by-example/rabbitmq-consumer-with-client-acknowledgement"
+            title="Transactional producer"
+            href="/learn/by-example/rabbitmq-transaction-producer"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -296,7 +263,7 @@ export default function RabbitmqTransactionConsumer() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consume message with acknowledgement
+                  Transactional producer
                 </span>
               </div>
             </div>
@@ -304,8 +271,8 @@ export default function RabbitmqTransactionConsumer() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Declare a queue"
-            href="/learn/by-example/rabbitmq-queue-declare"
+            title="Secured connection"
+            href="/learn/by-example/rabbitmq-secure-connection"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -315,7 +282,7 @@ export default function RabbitmqTransactionConsumer() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Declare a queue
+                  Secured connection
                 </span>
               </div>
               <svg

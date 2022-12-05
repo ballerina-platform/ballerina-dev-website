@@ -13,21 +13,70 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/http;
-import ballerina/io;
+import ballerina/log;
 
-type Album readonly & record {|
-    string title;
-    string artist;
+type Person record {|
+    string name;
+    int age;
 |};
 
-public function main() returns error? {
-    // Creates a new client with the Basic REST service URL.
-    http:Client albumClient = check new("localhost:9090");
+http:Client backendClient = check new("http://localhost:9092");
 
-    // Binding the payload to a \`record\` array type.
-    // The contextually expected type is inferred from the LHS variable type.
-    Album[] albums = check albumClient->/albums;
-    io:println("First artist name: " + albums[0].artist);
+service /call on new http:Listener(9090) {
+
+    resource function get all() returns json|error {
+        // Binding the payload to a string type. The \`targetType\` is inferred from the LHS variable type.
+        string result = check backendClient->get("/backend/string");
+        log:printInfo("String payload: " + result);
+
+        // A \`record\` and \`record[]\` are also possible types for data binding.
+        Person person = check backendClient->get("/backend/person");
+        log:printInfo("Person name: " + person.name);
+        return person;
+    }
+
+    // When the data binding is expected to happen and if the \`post\` remote function gets a 5XX response from the
+    // backend, the response will be returned as an \`http:RemoteServerError\`
+    // including the error payload, headers, and status code.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/errors#RemoteServerError.
+    resource function get '5xx() returns json {
+        json|error res = backendClient->post("/backend/5XX", "want 500");
+        if (res is http:RemoteServerError) {
+            http:Detail detail = res.detail();
+            return { code:detail.statusCode, payload:<string>detail.body};
+        } else {
+            return { code: "invalid" };
+        }
+    }
+
+    // When the data binding is expected to happen and if the client remote function gets a 4XX response from the
+    // backend, the response will be returned as an \`http:ClientRequestError\`
+    // including the error payload, headers, and status code.
+    // For details, see https://lib.ballerina.io/ballerina/http/latest/errors#ClientRequestError.
+    resource function get '4xx() returns json {
+        json|error res = backendClient->post("/backend/err", "want 400");
+        if (res is http:ClientRequestError) {
+            http:Detail detail = res.detail();
+            return { code:detail.statusCode, payload:<string>detail.body};
+        } else {
+            return { code: "invalid" };
+        }
+    }
+}
+
+service /backend on new http:Listener(9092) {
+
+    resource function get 'string() returns string {
+        return "Hello ballerina!!!!";
+    }
+
+    resource function get person() returns record {|*http:Ok; Person body;|} {
+        return {body: {name: "Smith", age: 15}};
+    }
+
+    resource function post '5XX() returns http:NotImplemented {
+        return {body:"data-binding-failed-with-501"};
+    }
 }
 `,
 ];
@@ -37,6 +86,8 @@ export default function HttpClientDataBinding() {
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -53,18 +104,29 @@ export default function HttpClientDataBinding() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP client - Payload data binding</h1>
+      <h1>Client data binding</h1>
 
       <p>
-        Through client payload data binding, the response payload can be
-        accessed directly. The payload type is inferred from the
-        contextually-expected type or from the <code>targetType</code> argument.
-        An <code>anydata</code> type or <code>http:Response</code> is expected
-        as the return value type along with the error. When the user expects
-        client data binding to happen, the HTTP error responses (
-        <code>4XX</code>, <code>5XX</code>) will be categorized as an{" "}
+        Through client data binding, the response payload can be accessed
+        directly. The payload type is inferred from the contextually-expected
+        type or from the <code>targetType</code> argument. An{" "}
+        <code>anydata</code> type or <code>http:Response</code> is expected as
+        the return value type along with the error.
+      </p>
+
+      <p>
+        When the user expects client data binding to happen, the HTTP error
+        responses (<code>4XX</code>, <code>5XX</code>) will be categorized as an{" "}
         <code>error</code> (<code>http:ClientRequestError</code>,{" "}
         <code>http:RemoteServerError</code>) of the client remote operation.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -77,7 +139,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-client-data-binding",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-client-data-binding",
                 "_blank"
               );
             }}
@@ -151,22 +213,7 @@ export default function HttpClientDataBinding() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the HTTP service given in the{" "}
-            <a href="/learn/by-example/http-basic-rest-service/">
-              Basic REST service
-            </a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
-
-      <p>Run the client program by executing the following command.</p>
+      <p>Run the service by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -222,42 +269,89 @@ export default function HttpClientDataBinding() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_client_data_binding.bal`}</span>
-              <span>{`First artist name: John Coltrane`}</span>
+              <span>{`time = 2021-01-21 19:29:10,007 level = INFO  module = "" message = "String payload: Hello ballerina!!!!"`}</span>
+              <span>{`time = 2021-01-21 19:29:10,092 level = INFO  module = "" message = "Person name: Smith"`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
+      <p>Invoke the service as follows.</p>
 
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#243-client-action-return-types">
-              HTTP client return types - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`# To invoke the \`/call/all\` resource, use the cURL command below.`}</span>
+              <span>{`\$ curl "http://localhost:9090/call/all"`}</span>
+              <span>{`{"name":"Smith", "age":15}`}</span>
+              <span>{`
+`}</span>
+              <span>{`# To invoke the \`/call/5xx\` resource, use the cURL command below.`}</span>
+              <span>{`\$ curl "http://localhost:9090/call/5xx"`}</span>
+              <span>{`{"code":501, "payload":"data-binding-failed-with-501"}`}</span>
+              <span>{`
+`}</span>
+              <span>{`# To invoke the \`/call/4xx\` resource, use the cURL command below.`}</span>
+              <span>{`\$ curl "http://localhost:9090/call/4xx"`}</span>
+              <span>{`{"code":404, "payload":"no matching resource found for path : /backend/err , method : POST"}`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Send request/Receive response"
-            href="/learn/by-example/http-client-send-request-receive-response"
-          >
+          <Link title="Client" href="/learn/by-example/http-client-endpoint">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -283,7 +377,7 @@ export default function HttpClientDataBinding() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send request/Receive response
+                  Client
                 </span>
               </div>
             </div>
@@ -291,8 +385,8 @@ export default function HttpClientDataBinding() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Payload constraint validation"
-            href="/learn/by-example/http-client-payload-constraint-validation"
+            title="Caching client"
+            href="/learn/by-example/http-caching-client"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -302,7 +396,7 @@ export default function HttpClientDataBinding() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Payload constraint validation
+                  Caching client
                 </span>
               </div>
               <svg

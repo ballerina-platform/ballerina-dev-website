@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/websocket;
 
-listener websocket:Listener chatListener = new(9090,
+listener websocket:Listener securedEP = new(9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -23,9 +23,10 @@ listener websocket:Listener chatListener = new(9090,
     }
 );
 
-// The service can be secured with Basic authentication and can be authorized optionally.
-// Using Basic authentication with the file user store can be enabled by setting the
+// The service can be secured with Basic Auth and can be authorized optionally.
+// Using Basic Auth with the file user store can be enabled by setting the
 // \`websocket:FileUserStoreConfig\` configurations.
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/FileUserStoreConfig
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -37,16 +38,16 @@ listener websocket:Listener chatListener = new(9090,
         }
     ]
 }
-service /chat on chatListener {
-    resource function get .() returns websocket:Service {
-        return new ChatService();
+service /foo on securedEP {
+    resource function get bar() returns websocket:Service {
+        return new WsService();
    }
 }
 
-service class ChatService {
+service class WsService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
-        check caller->writeMessage("Hello, How are you?");
+    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
+        check caller->writeMessage(text);
     }
 }
 `,
@@ -73,26 +74,48 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket service - Basic authentication file user store</h1>
+      <h1>Service - Basic Auth File user store</h1>
 
       <p>
-        A WebSocket service can be secured with Basic authentication and
-        optionally by enforcing authorization. Then, it validates the Basic
-        authentication token sent in the <code>Authorization</code> header
-        against the provided configurations. This reads data from a file, which
-        has a TOML format. This stores the usernames, passwords for
-        authentication, and scopes for authorization.
+        A WebSocket service can be secured with Basic Auth and optionally by
+        enforcing authorization. Then, it validates the Basic Auth token sent in
+        the <code>Authorization</code> header against the provided
+        configurations. This reads data from a file, which has a TOML format.
+        This stores the usernames, passwords for authentication, and scopes for
+        authorization.
       </p>
 
       <p>
         Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s). In the
-        authorization phase, the scopes of the service are compared against the
-        scope included in the user store for at least one match between the two
-        sets. The <code>Config.toml</code> file is used to store the usernames,
+        declared in a service can be bound to one/more scope(s).
+      </p>
+
+      <p>
+        In the authorization phase, the scopes of the service are compared
+        against the scope included in the user store for at least one match
+        between the two sets.
+      </p>
+
+      <p>
+        The <code>Config.toml</code> file is used to store the usernames,
         passwords, and scopes. Each user can have a password and optionally
         assigned scopes as an array.
       </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+          <code>auth</code> module
+        </a>
+        .
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file path
+          and private key file path in the code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -104,7 +127,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-service-basic-auth-file-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/websocket-service-basic-auth-file-user-store",
                 "_blank"
               );
             }}
@@ -193,7 +216,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
           password="password2" scopes=["scope2", "scope3"]
         </code>
       </pre>
-      <p>Run the service by executing the command below.</p>
+      <p>Run the service by executing the cURL command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -256,51 +279,19 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
 
       <blockquote>
         <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <strong>Info:</strong> Alternatively, you can invoke the above service
+          via the{" "}
           <a href="/learn/by-example/websocket-client-basic-auth">
-            Basic authentication client
+            Basic Auth client
           </a>
           .
         </p>
       </blockquote>
 
-      <h2>Related Links</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/websocket/#52-authentication-and-authorization">
-              WebSocket authentication - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Mutual SSL"
+            title="Service - Mutual SSL"
             href="/learn/by-example/websocket-service-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -328,7 +319,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Mutual SSL
+                  Service - Mutual SSL
                 </span>
               </div>
             </div>
@@ -336,7 +327,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic authentication LDAP user store"
+            title="Service - Basic Auth LDAP user store"
             href="/learn/by-example/websocket-service-basic-auth-ldap-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -347,7 +338,7 @@ export default function WebsocketServiceBasicAuthFileUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication LDAP user store
+                  Service - Basic Auth LDAP user store
                 </span>
               </div>
               <svg

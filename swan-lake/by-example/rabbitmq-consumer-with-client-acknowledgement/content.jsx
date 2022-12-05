@@ -15,27 +15,28 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
-public type StringMessage record {|
-    *rabbitmq:AnydataMessage;
-    string content;
-|};
+listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
 
-// The consumer service listens to the "OrderQueue" queue.
+// The consumer service listens to the "MyQueue" queue.
 // The \`ackMode\` is by default rabbitmq:AUTO_ACK where messages are acknowledged
 // immediately after consuming.
 @rabbitmq:ServiceConfig {
-    queueName: "OrderQueue",
+    queueName: "MyQueue",
     autoAck: false
 }
-service rabbitmq:Service on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
-
+// Attaches the service to the listener.
+service rabbitmq:Service on channelListener {
     remote function onMessage(StringMessage message, rabbitmq:Caller caller) returns error? {
         log:printInfo("Received message: " + message.content);
-
         // Positively acknowledges a single message.
         check caller->basicAck();
     }
 }
+
+public type StringMessage record {|
+    *rabbitmq:AnydataMessage;
+    string content;
+|};
 `,
 ];
 
@@ -60,13 +61,25 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>RabbitMQ service - Consumer with acknowledgement</h1>
+      <h1>Client acknowledgements</h1>
 
       <p>
         The messages are consumed from an existing queue using the Ballerina
         RabbitMQ message listener. The received messages are acknowledged
-        manually. By default, the ackMode is <code>rabbitmq:AUTO_ACK</code>,
-        which will automatically acknowledge all messages once consumed.
+        manually.
+      </p>
+
+      <p>
+        By default, the ackMode is rabbitmq:AUTO_ACK, which will automatically
+        acknowledge all messages once consumed.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
+          <code>rabbitmq</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -79,7 +92,7 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/rabbitmq-consumer-with-client-acknowledgement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/rabbitmq-consumer-with-client-acknowledgement",
                 "_blank"
               );
             }}
@@ -153,21 +166,6 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Start an instance of the{" "}
-            <a href="https://www.rabbitmq.com/download.html">RabbitMQ server</a>
-            .
-          </span>
-        </li>
-      </ul>
-
-      <p>Run the service by executing the following command.</p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -228,43 +226,9 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/rabbitmq-producer/">RabbitMQ client</a>.
-        </p>
-      </blockquote>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Caller">
-              <code>rabbitmq:Caller</code> client object - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#8-client-acknowledgements">
-              RabbitMQ client acknowledgements - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Consume message"
-            href="/learn/by-example/rabbitmq-consumer"
-          >
+          <Link title="Consumer" href="/learn/by-example/rabbitmq-consumer">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -290,7 +254,7 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consume message
+                  Consumer
                 </span>
               </div>
             </div>
@@ -298,8 +262,8 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Transactional consumer"
-            href="/learn/by-example/rabbitmq-transaction-consumer"
+            title="Transactional producer"
+            href="/learn/by-example/rabbitmq-transaction-producer"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -309,7 +273,7 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Transactional consumer
+                  Transactional producer
                 </span>
               </div>
               <svg

@@ -14,25 +14,36 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 import ballerina/lang.runtime;
+import ballerina/log;
 
-http:Listener httpListener = check new (9090);
+final http:Listener httpListener = check new (9090);
 
 http:Service helloService =  service object {
 
-    resource function get greeting() returns string {
+    resource function get sayHello(http:Caller caller, http:Request req) {
         // Send a response back to the caller.
-        return "Hello, World!";
+        var respondResult = caller->respond("Hello, World!");
+        if respondResult is error {
+            log:printError("Error occurred when responding.", 'error = respondResult);
+        }
     }
 
     // The resource function that will shutdown the server.
-    resource function post shutdown(http:Caller caller) returns error? {
+    resource function get shutDownServer(http:Caller caller, http:Request req) {
         // Send a response back to the caller.
-        check caller->respond("Shutting down the server");
+        var respondResult = caller->respond("Shutting down the server");
         // Stop the listener.
         // This will be called automatically if the program exits by means of a system call.
-        check httpListener.gracefulStop();
+        var stopResult = httpListener.gracefulStop();
         // Deregister the listener dynamically.
         runtime:deregisterListener(httpListener);
+        // Handle the errors at the end.
+        if respondResult is error {
+            log:printError("Error occurred when responding.", 'error = respondResult);
+        } 
+        if stopResult is error {
+            log:printError("Error occurred when stopping the listener. ", 'error = stopResult);
+        }
     }
 };
 
@@ -88,7 +99,7 @@ export default function DynamicListener() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/dynamic-listener",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/dynamic-listener",
                 "_blank"
               );
             }}
@@ -281,12 +292,12 @@ export default function DynamicListener() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/foo/bar/greeting`}</span>
+              <span>{`\$ curl http://localhost:9090/foo/bar/sayHello`}</span>
               <span>{`Hello, World!`}</span>
               <span>{`
 `}</span>
               <span>{`# Invoke the shutdown resource to deregister the listener.`}</span>
-              <span>{`\$ curl http://localhost:9090/foo/bar/shutdown -X POST`}</span>
+              <span>{`\$ curl http://localhost:9090/foo/bar/shutDownServer`}</span>
               <span>{`Shutting down the server`}</span>
             </code>
           </pre>
@@ -295,10 +306,7 @@ export default function DynamicListener() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Websub service"
-            href="/learn/by-example/websub-webhook-sample"
-          >
+          <Link title="Timeout" href="/learn/by-example/http-timeout">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -324,7 +332,7 @@ export default function DynamicListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Websub service
+                  Timeout
                 </span>
               </div>
             </div>

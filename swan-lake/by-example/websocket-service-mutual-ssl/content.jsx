@@ -18,7 +18,8 @@ import ballerina/websocket;
 // A WebSocket listener can be configured to accept new connections that are
 // secured via mutual SSL.
 // The \`websocket:ListenerSecureSocket\` record provides the SSL-related listener configurations.
-listener websocket:Listener chatListener = new(9090,
+// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ListenerSecureSocket.
+listener websocket:Listener securedEP = new(9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -28,20 +29,29 @@ listener websocket:Listener chatListener = new(9090,
         mutualSsl: {
             verifyClient: http:REQUIRE,
             cert: "../resource/path/to/public.crt"
-        }
+        },
+        // Enables the preferred SSL protocol and its versions.
+        protocol: {
+            name: http:TLS,
+            versions: ["TLSv1.2", "TLSv1.1"]
+        },
+        // Configures the preferred ciphers.
+        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+
     }
 );
 
-service /chat on chatListener {
-    resource function get .() returns websocket:Service {
-        return new ChatService();
+service /foo on securedEP {
+    resource function get bar() returns websocket:Service {
+        return new WsService();
    }
 }
 
-service class ChatService {
+service class WsService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
-        check caller->writeMessage("Hello, How are you?");
+    remote function onMessage(websocket:Caller caller,
+                             string text) returns websocket:Error? {
+        check caller->writeMessage(text);
     }
 }
 `,
@@ -68,7 +78,7 @@ export default function WebsocketServiceMutualSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>WebSocket service - Mutual SSL</h1>
+      <h1>Service - Mutual SSL</h1>
 
       <p>
         Ballerina supports mutual SSL, which is a certificate-based
@@ -76,6 +86,22 @@ export default function WebsocketServiceMutualSsl() {
         authenticate each other by verifying the digital certificates. It
         ensures that both parties are assured of each other's identity.
       </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
+          <code>websocket</code> module
+        </a>
+        .
+      </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may need to change the certificate file
+          path, private key file path, and trusted certificate file path in the
+          code below.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -87,7 +113,7 @@ export default function WebsocketServiceMutualSsl() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/websocket-service-mutual-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/websocket-service-mutual-ssl",
                 "_blank"
               );
             }}
@@ -222,43 +248,10 @@ export default function WebsocketServiceMutualSsl() {
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/websocket-client-mutual-ssl/">
-            Mutual SSL/TLS client
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <h2>Related Links</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/websocket/#5-securing-the-websocket-connections">
-              WebSocket SSL/TLS - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="SSL/TLS"
+            title="Service - SSL/TLS"
             href="/learn/by-example/websocket-service-ssl-tls"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -286,7 +279,7 @@ export default function WebsocketServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Service - SSL/TLS
                 </span>
               </div>
             </div>
@@ -294,7 +287,7 @@ export default function WebsocketServiceMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Basic authentication file user store"
+            title="Service - Basic Auth File user store"
             href="/learn/by-example/websocket-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -305,7 +298,7 @@ export default function WebsocketServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication file user store
+                  Service - Basic Auth File user store
                 </span>
               </div>
               <svg

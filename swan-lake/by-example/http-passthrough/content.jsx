@@ -14,19 +14,20 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-http:Client clientEP = check new ("postman-echo.com");
+http:Client clientEP = check new ("http://postman-echo.com");
 
 service / on new http:Listener(9090) {
 
-    // The passthrough resource allows all HTTP methods as the accessor is \`default\`. The rest parameter in the
-    // resource path, allows any request URI to get dispatched
-    resource function 'default [string... path](http:Request req) returns json|error {
+    // The passthrough resource allows all HTTP methods as the accessor is \`default\`.
+    resource function 'default passthrough(http:Request req)
+            returns http:Response|error? {
         // When forward()\` is called on the backend client endpoint, it forwards the request that the passthrough
         // resource received to the backend. When forwarding, the request is made using the same HTTP method that was
         // used to invoke the passthrough resource. The \`forward()\` function returns the response from the backend if
         // there are no errors.
-        json payload = check clientEP->forward("/get", req);
-        return payload;
+        // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Client#forward.
+        http:Response response = check clientEP->forward("/get", req);
+        return response;
     }
 }
 `,
@@ -55,11 +56,19 @@ export default function HttpPassthrough() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - Passthrough</h1>
+      <h1>Passthrough</h1>
 
       <p>
         The passthrough sample exhibits the process of an HTTP client connector.
         The 'Echo Service' is used as a sample backend.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -72,7 +81,7 @@ export default function HttpPassthrough() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-passthrough",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-passthrough",
                 "_blank"
               );
             }}
@@ -272,35 +281,11 @@ export default function HttpPassthrough() {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/clients/Client#forward">
-              <code>forward()</code> - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#2424-forwardexecute-methods">
-              HTTP service forward method - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Response with multiparts"
-            href="/learn/by-example/http-response-with-multiparts"
+            title="Request With multiparts"
+            href="/learn/by-example/http-request-with-multiparts"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -327,7 +312,7 @@ export default function HttpPassthrough() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Response with multiparts
+                  Request With multiparts
                 </span>
               </div>
             </div>
@@ -335,8 +320,8 @@ export default function HttpPassthrough() {
         </Col>
         <Col sm={6}>
           <Link
-            title="HTTP/2 to HTTP/1.1 downgrade"
-            href="/learn/by-example/http-2-to-1-1-downgrade-service"
+            title="Request Interceptors"
+            href="/learn/by-example/http-request-interceptors"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -346,7 +331,7 @@ export default function HttpPassthrough() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  HTTP/2 to HTTP/1.1 downgrade
+                  Request Interceptors
                 </span>
               </div>
               <svg

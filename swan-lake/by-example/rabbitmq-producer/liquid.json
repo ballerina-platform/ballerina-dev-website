@@ -1,5 +1,5 @@
 {
-  "title": "Produce message",
+  "title": "Producer",
   "description": "BBE on producing messages to a RabbitMQ queue using Ballerina.",
   "keywords": [
     "ballerina",

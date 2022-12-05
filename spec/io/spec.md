@@ -11,7 +11,7 @@ This is the specification for the I/O standard library of [Ballerina language](h
 
 The I/O library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag. 
 
-If you have any feedback or suggestions about the library, start a discussion via a GitHub issue or in the [Discord server](https://discord.gg/ballerinalang). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in GitHub.
+If you have any feedback or suggestions about the library, start a discussion via a GitHub issue or in the [Slack channel](https://ballerina.io/community/). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in GitHub.
 
 The conforming implementation of the specification is released and included in the distribution. Any deviation from the specification is considered a bug.
 
@@ -293,11 +293,10 @@ The following API reads the content of a given CSV file as a string array of arr
 public isolated function fileReadCsv(string path, int skipHeaders = 0) returns string[][]|Error;
 ```
 
-The following API writes given CSV content to a given file. When writing a `Record[]` content to a CSV file in `OVERWRITE`, by default, headers will be written to the CSV file as unlike `string[][],` the order of record fields is not guaranteed. For `APPEND`, order of the existing csv file is inferred using the headers and used as the order.
+The following API writes given CSV content to a given file.
 
 ```ballerina
-# Write CSV content to a file. 
-# If the input is a `Record[]` the headers are automatically written to the file.
+# Write CSV content to a file.
 # ```ballerina
 # type Coord record {int x;int y;};
 # Coord[] contentRecord = [{x: 1,y: 2},{x: 1,y: 2}]

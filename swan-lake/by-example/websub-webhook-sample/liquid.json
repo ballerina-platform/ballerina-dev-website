@@ -1,5 +1,5 @@
 {
-  "title": "Websub service",
+  "title": "WebSub subscriber service",
   "description": "This BBE demonstrates how a WebSub Subscriber service could be registered as a WebHook Service for GitHub.",
   "keywords": [
     "ballerina",

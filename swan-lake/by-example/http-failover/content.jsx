@@ -13,23 +13,42 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/http;
-import ballerina/io;
+import ballerina/lang.runtime;
 
-public function main() returns error? {
-    // Define the failover client endpoint to call the backend services.
-    http:FailoverClient httpClient = check new ({
+// Define the failover client endpoint to call the backend services.
+http:FailoverClient foBackendEP = check new ({
 
-        timeout: 5,
-        failoverCodes: [501, 502, 503],
-        interval: 5,
-        // Define a set of HTTP Clients that are targeted for failover.
-        targets: [
-                {url: "http://nonexistentEP/albums"},
-                {url: "http://localhost:9090/albums"}
-            ]
-    });
-    string payload = check httpClient->/greeting;
-    io:println(payload);
+    timeout: 5,
+    failoverCodes: [501, 502, 503],
+    interval: 5,
+    // Define a set of HTTP Clients that are targeted for failover.
+    targets: [
+            {url: "http://nonexistentEP/mock1"},
+            {url: "http://localhost:8080/echo"},
+            {url: "http://localhost:8080/mock"}
+        ]
+});
+
+service / on new http:Listener(9090) {
+    resource function 'default fo() returns string|error {
+        string payload = check foBackendEP->get("/");
+        return payload;
+    }
+}
+
+// Define the sample service to mock connection timeouts and service outages.
+service / on new http:Listener(8080) {
+    resource function 'default echo() returns string {
+
+        // Delay the response for 30 seconds to mimic network level delays.
+        runtime:sleep(30);
+        return "The echo resource is invoked";
+    }
+
+    // Define the sample resource to mock a healthy service.
+    resource function 'default mock() returns string {
+        return "The mock resource is invoked.";
+    }
 }
 `,
 ];
@@ -39,6 +58,8 @@ export default function HttpFailover() {
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -55,7 +76,7 @@ export default function HttpFailover() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP client - Failover</h1>
+      <h1>Failover</h1>
 
       <p>
         Ballerina users can configure multiple HTTP clients in a given failover
@@ -68,37 +89,23 @@ export default function HttpFailover() {
         the client will get the immediate response for subsequent calls.
       </p>
 
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
+      </p>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-failover",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -116,7 +123,7 @@ export default function HttpFailover() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -152,22 +159,7 @@ export default function HttpFailover() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the HTTP service given in the{" "}
-            <a href="/learn/by-example/http-basic-rest-service/">
-              Basic REST service
-            </a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
-
-      <p>Run the program by executing the following command.</p>
+      <p>Run the service as follows.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -228,29 +220,71 @@ export default function HttpFailover() {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
+      </p>
 
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#2418-failover">
-              HTTP client failover - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`# The first invocation will take a while but the subsequent invocations will be faster.`}</span>
+              <span>{`\$ curl http://localhost:9090/fo`}</span>
+              <span>{`Mock Resource is Invoked.`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -290,10 +324,7 @@ export default function HttpFailover() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Default resource"
-            href="/learn/by-example/http-default-resource"
-          >
+          <Link title="Retry" href="/learn/by-example/http-retry">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -302,7 +333,7 @@ export default function HttpFailover() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Default resource
+                  Retry
                 </span>
               </div>
               <svg

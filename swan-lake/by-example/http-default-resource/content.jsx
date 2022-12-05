@@ -17,11 +17,11 @@ const codeSnippetData = [
 // The \`absolute resource path\` can be omitted. Then, it defaults to \`/\`.
 service on new http:Listener(9090) {
 
-    // The \`default\` accessor can be used to match with all methods including the standard HTTP methods
+    // The \`default\` accessor name can be used to match with all methods including the standard HTTP methods
     // and custom methods. The rest param is used to represent the wildcard of the \`resource path\` in which any path
     // segment will get dispatched to the resource in the absence of an exact path match.
-    resource function 'default [string... paths](http:Request req) returns string {
-        return string \`method: \${req.method}, path: \${paths.toString()}\`;
+    resource function 'default [string... paths](http:Request req) returns json {
+        return {method: req.method, path: paths};
     }
 }
 `,
@@ -50,12 +50,20 @@ export default function HttpDefaultResource() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP service - Default resource</h1>
+      <h1>Default resource</h1>
 
       <p>
         Ballerina provides rest params in the resource path and the default
         resource method to help designing proxy services and default resources.
         It can be used to handle unmatched requests.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/http/latest/">
+          <code>http</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -68,7 +76,7 @@ export default function HttpDefaultResource() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/http-default-resource",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-default-resource",
                 "_blank"
               );
             }}
@@ -261,40 +269,19 @@ export default function HttpDefaultResource() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/foo/bar"`}</span>
-              <span>{`method: GET, path: ["foo","bar"]`}</span>
+              <span>{`\$ curl "http://localhost:9090/foo/bar" -X POST`}</span>
+              <span>{`{"method":"POST", "path":["foo", "bar"]}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/http/#233-path-parameter">
-              HTTP service default resource - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Failover" href="/learn/by-example/http-failover">
+          <Link
+            title="Service data binding"
+            href="/learn/by-example/http-data-binding"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -320,17 +307,14 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Failover
+                  Service data binding
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Redirects"
-            href="/learn/by-example/http-service-redirects"
-          >
+          <Link title="Path parameter" href="/learn/by-example/http-path-param">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -339,7 +323,7 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Redirects
+                  Path parameter
                 </span>
               </div>
               <svg

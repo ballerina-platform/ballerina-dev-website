@@ -1,5 +1,5 @@
 {
-  "title": "Mutual SSL",
+  "title": "Client - Mutual SSL",
   "description": "BBE on how to secure gRPC client with mutual SSL.",
   "keywords": [
     "ballerina",

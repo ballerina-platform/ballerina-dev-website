@@ -19,14 +19,15 @@ public function main() returns error? {
   
     // Creates a new connectionless UDP client.
     // Optionally, you can provide the address that the socket needs to bind 
-    // and the timeout in seconds, which specifies the read timeout value.
+    // and the timeout in milliseconds, which specifies the read timeout value.
     // E.g.: \`udp:Client client = new (localHost = "localhost", timeout = 5);\`
     udp:Client socketClient = check new;
 
+    string msg = "Hello Ballerina echo";
     udp:Datagram datagram = {
         remoteHost: "localhost",
-        remotePort : 9090,
-        data : "Hello Ballerina echo".toBytes()
+        remotePort : 8080,
+        data : msg.toBytes()
     };
 
     // Sends the data to the remote host.
@@ -41,6 +42,7 @@ public function main() returns error? {
 
     // Closes the client and releases the bound port.
     check socketClient->close();
+
 }
 `,
 ];
@@ -66,12 +68,20 @@ export default function UdpClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>UDP client - Send/Receive datagram</h1>
+      <h1>Connectionless client</h1>
 
       <p>
         The UDP Client is used to send data to a specific remote host using the
         UDP protocol. This sample demonstrates how to send a datagram to a
         remote server and print the echoed response.
+      </p>
+
+      <p>
+        For more information on the underlying module, see the{" "}
+        <a href="https://lib.ballerina.io/ballerina/udp/latest">
+          <code>udp</code> module
+        </a>
+        .
       </p>
 
       <Row
@@ -80,31 +90,9 @@ export default function UdpClient() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.0/examples/udp-client",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -122,7 +110,7 @@ export default function UdpClient() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -157,21 +145,6 @@ export default function UdpClient() {
           )}
         </Col>
       </Row>
-
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the UDP service given in the{" "}
-            <a href="/learn/by-example/udp-listener/">Send/Receive datagram</a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
-
-      <p>Run the client program by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -227,40 +200,22 @@ export default function UdpClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_client.bal`}</span>
+              <span>{`
+`}</span>
+              <span>{`# This will print the output below upon a successful write.`}</span>
               <span>{`Datagram was sent to the remote host.`}</span>
+              <span>{`# Print the response that is returned from the server as an echo.`}</span>
               <span>{`Received: Hello Ballerina echo`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/udp/latest/clients/Client">
-              <code>udp:Client</code> client object - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/udp/#3-client">UDP Client - Specification</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send/Receive datagram"
-            href="/learn/by-example/udp-listener"
+            title="Transport security"
+            href="/learn/by-example/tcp-transport-security"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -287,7 +242,7 @@ export default function UdpClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive datagram
+                  Transport security
                 </span>
               </div>
             </div>
@@ -295,7 +250,7 @@ export default function UdpClient() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Send/Receive datagram with connection"
+            title="Connection-oriented client"
             href="/learn/by-example/udp-connect-client"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -306,7 +261,7 @@ export default function UdpClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive datagram with connection
+                  Connection-oriented client
                 </span>
               </div>
               <svg

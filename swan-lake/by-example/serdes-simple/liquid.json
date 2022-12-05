@@ -1,5 +1,5 @@
 {
-  "title": "Serialization/Deserialization",
+  "title": "Serialization and Deserialization",
   "description": "This Ballerina sample demonstrates how to perform serialization and deserialization using the serdes module.",
   "keywords": [
     "ballerina",

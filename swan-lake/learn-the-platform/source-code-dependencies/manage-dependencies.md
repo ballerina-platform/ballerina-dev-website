@@ -103,18 +103,27 @@ service / on gmailEventListener {
 
 ## Specify dependency versions
 
-When building a package, the compiler figures out the dependency versions automatically. Ballerina searches the latest compatible versions of the package dependencies in the distribution repository, Ballerina Central repository, and the local repository(if specified).
+When building a package, the compiler figures out the dependency versions automatically. Ballerina searches the latest compatible versions of the package dependencies in the distribution repository, Ballerina Central repository, and the local repository (if specified).
 
-When you execute `bal build` for the first time on the package, the CLI operation will auto-generate the `Dependencies.toml` in the package root. 
-This will contain the resolved dependency versions. From thereon, the versions locked in the `Dependencies.toml` are considered as the minimum required versions for the subsequent builds.
+When you execute `bal build` for the first time on the package, the CLI operation will generate the `Dependencies.toml` in the package root. 
+This will contain the latest compatible dependency versions. From thereon, the versions locked in the `Dependencies.toml` are considered as the minimum required versions for the subsequent builds. The `Dependencies.toml` file is generated and managed by the Ballerina CLI and does not need user intervention.
 
-In the subsequent builds, the compiler will automatically update the versions of the dependencies at the patch level. Therefore, if any patch release is available for a dependency, the compiler will intelligently pick the latest patch version during package build.
+### Update dependency versions
 
->**Note:** Automatic updates for minor and major versions are not supported by the compiler yet, but you can achieve it by deleting the `Dependencies.toml` file if it is absolutely necessary.
+The `Dependencies.toml` file generated during the compiler will automatically update the versions of the dependencies at the patch level. Therefore, if any patch release is available for a dependency, the compiler will pick the latest patch version.
 
-The `Dependencies.toml` file is auto-generated and managed by the Ballerina CLI and does not need user intervention. 
-Updating the versions of the existing dependencies, adding dependency entries related to a newly-added import statement, and deleting entries 
-of a removed import statement are handled by the CLI itself. 
+>**Note:** The automatic update runs only once a day to optimize the time taken during frequent builds. Run the `bal clean` command if you want to enable automatic updates for the next build.
+
+To update the minor or the major version of a dependency, specify the dependency version in the `Ballerina.toml` file. The provided version is considered as the minimum required version for compiling the package, which will update the dependency to the latest version that is compatible with the version provided in the `Ballerina.toml` as well as the version locked in the`Dependencies.toml`.
+
+For example, the minimum version of the `ballerinax/mysql` dependency can be specified in the following way.
+
+```toml
+[[dependency]]
+org = "ballerinax"
+name = "mysql"
+version = "1.5.0”
+```
 
 ## Use dependencies from the local repository
 
@@ -167,14 +176,14 @@ In other words, the CLI disables the automatic-update feature when you provide t
 bal build --sticky
 ```
 
+>**Note:** The automatic update runs only once a day to optimize the time taken during frequent builds.
+
 ### The offline mode
 
 Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. 
 This will save build time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository.
 
 Using the `--offline` flag along with the `--sticky` flag will ensure a predictable build with optimal time for compilation. 
-
->**Note:** The automatic update runs only once a day to optimize the time taken during frequent builds. The `target/build` file is used for this purpose.
 
 ## Version compatibility
 

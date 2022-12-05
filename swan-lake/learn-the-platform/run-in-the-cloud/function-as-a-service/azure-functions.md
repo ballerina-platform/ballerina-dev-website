@@ -36,7 +36,7 @@ redirect_from:
 An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows outputting data from the function to an external resource. For more information, go to <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings" target="_blank">Azure Functions triggers and bindings concepts</a>.
 
 The following Azure Functions triggers and bindings are currently supported in Ballerina:
-- HTTP <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HTTPTrigger" target="_blank">trigger</a> and <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HTTPOutput" target="_blank">ouput</a> binding
+- HTTP <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HttpTrigger" target="_blank">trigger</a> and <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#HttpOutput" target="_blank">ouput</a> binding
 - Queue <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#QueueTrigger" target="_blank">trigger</a> and <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#QueueOutput" target="_blank">ouput</a> binding
 - Blob <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobTrigger" target="_blank">trigger</a>, <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobInput" target="_blank">input</a> binding, and <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#BlobOutput" target="_blank">output</a> binding
 - Twilio SMS <a href="https://docs.central.ballerina.io/ballerinax/azure_functions/latest/annotations#TwilioSmsOutput" target="_blank">output</a> binding
@@ -45,7 +45,7 @@ The following Azure Functions triggers and bindings are currently supported in B
 
 ## Write the function
 
-The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and an HTTP output binding to respond to the caller with a message. 
+The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and an HTTP output binding to respond to the caller with a message based on the query parameter sent from the request. 
 
 Create a Ballerina package.
 ```
@@ -56,18 +56,18 @@ Replace the contents of the generated BAL file with the following content.
 ```ballerina
 import ballerinax/azure_functions as af;
 
-@af:Function
-public function hello(@af:HTTPTrigger { authLevel: "anonymous" }
-                      string payload)
-                      returns @af:HTTPOutput string|error {
-    return "Hello, " + payload + "!";
+service / on new af:HttpListener() {
+    resource function get hello(string name) returns string {
+        return "Hello, " + name + "!";
+    }
 }
+
 ```
-The first parameter with the <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest/classes/Context" target="_blank">context</a> object contains the information and operations related to the current function execution in Azure Functions such as the execution metadata and logging actions to be used by the function. This parameter is optional and can exist at any position in the function's parameter list.
+In Ballerina, `triggers` are represented by `listeners`. When the `af:HttpListener` gets attached to the service, it implies that the function is an HTTP Trigger. The resource function behaves exactly the same as a service written from `ballerina/http`. It supports `http:Payload, http:Header` annotations for parameters. Input binding annotations can be used to annotate parameters to make use of external services in Azure. If no annotations are specified for a parameter, it is identified as a query parameter.
 
-The second parameter with the `HTTPTrigger` annotation signals that this function is going to have an HTTP trigger and that its details should be stored in the given `HTTPRequest` value. Then, you declare an HTTP output binding by annotating the `HTTPBinding` return type with the `HTTPOutput` annotation.
+Output bindings are defined in the return type definition. For services with the `HttpListener` attachment, `HttpOutput` is the default output binding. You can override the default behavior by specifying them explicitly in the return type. For example, see [HTTP Trigger -> Queue Output](#http-trigger---queue-output).
 
-This HTTP output binding can also be defined as a parameter with the same annotation. In this manner, you can mix and match any combination of triggers and input/output bindings with or without the execution context object when defining an Azure Function. You can find an example in the [HTTP Trigger -> Queue Output](#http-trigger---queue-output) output example.
+In the code sample shown above, it has an empty service path and resource path named `hello`. The accessor is `get`. It expects a request with a query parameter for the field `name`. The required artifact generation and data binding will be handled by the `ballerinax/azure_functions` package automatically.
 
 ### Build the function
 
@@ -76,51 +76,37 @@ The Azure Functions functionality is implemented as a compiler extension. Thus, 
 ```
 $ bal build
 Compiling source
-	wso2/azure_functions_deployment:0.1.0
+        wso2/azure_functions_deployment:0.1.0
 
-Generating executables
-	@azure.functions:Function: hello
+Generating executable
+        @azure_functions:Function: get-hello
 
-	Run the following command to deploy Ballerina Azure Functions:
-	az functionapp deployment source config-zip -g <resource_group> -n <function_app_name> --src <package_dir>/target/bin/azure-functions.zip
+        Execute the command below to deploy the function locally.
+        func start --script-root target/azure_functions --java
+
+        Execute the command below to deploy Ballerina Azure Functions.
+        func azure functionapp publish <function_app_name> --script-root target/azure_functions 
+
+        target/bin/azure_functions_deployment.jar
 ```
-
->**Note:** A custom <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-host-json" target="_blank">`host.json`</a> file for the Azure Functions deployment can be provided optionally by placing a `host.json` file in the current working directory in which the Ballerina build is done. The required `host.json` properties are provided/overridden by the values derived from the source code by the compiler extension. 
-
 
 ### Deploy the function
 
-The created resource group and the function app name should be provided to the placeholders shown in the above-generated usage instructions from the compiler. 
+The created function app name should be provided to the placeholders shown in the above-generated usage instructions from the compiler. 
 
 A sample execution to deploy the functions to Azure Functions is shown below. 
 
-```
-$ az functionapp deployment source config-zip -g <function_app_name> -n <function_app_name> --src <package_dir>/target/bin/azure-functions.zip
-Getting scm site credentials for zip deployment
-Starting zip deployment. This operation can take a while to complete ...
-Deployment endpoint responded with status code 202
-{
-  "active": false,
-  "author": "N/A",
-  "author_email": "N/A",
-  "complete": true,
-  "deployer": "ZipDeploy",
-  "end_time": "2020-07-15T07:32:35.5311903Z",
-  "id": "e56a20038b864c5c8432aa7d1c26bfbd",
-  "is_readonly": true,
-  "is_temp": false,
-  "last_success_end_time": "2020-07-15T07:32:35.5311903Z",
-  "log_url": "https://<function_app_name>.scm.azurewebsites.net/api/deployments/latest/log",
-  "message": "Created via a push deployment",
-  "progress": "",
-  "provisioningState": null,
-  "received_time": "2020-07-15T07:32:21.9780071Z",
-  "site_name": "<function_app_name>",
-  "start_time": "2020-07-15T07:32:23.2044517Z",
-  "status": 4,
-  "status_text": "",
-  "url": "https://<function_app_name>.scm.azurewebsites.net/api/deployments/latest"
-}
+```bash
+$ func azure functionapp publish <function_app_name> --script-root target/azure_functions 
+Getting site publishing info...
+Creating archive for current directory...
+Uploading 28.64 MB [##############################################################################]
+Upload completed successfully.
+Deployment completed successfully.
+Syncing triggers...
+Functions in bal-learn-1:
+    get-hello - [httpTrigger]
+        Invoke url: https://bal-learn-1.azurewebsites.net/hello
 ```
 
 ### Invoke the function
@@ -128,8 +114,8 @@ Deployment endpoint responded with status code 202
 The deployed Azure Function can be tested by invoking it using an HTTP client such as cURL:
 
 ```
-$ curl -d "Hello!" https://<function_app_name>.azurewebsites.net/api/hello 
-Hello, Hello!%
+$ curl https://<function_app_name>.azurewebsites.net/hello\?name\=Jack
+Hello, Jack!
 ```
 
 ## More samples
@@ -138,30 +124,35 @@ This section uses different types of triggers and bindings to build Azure functi
 
 ### HTTP Trigger -> queue output
 
-The following Ballerina code gives an example of using an HTTP trigger to invoke the function, a queue output binding to write an entry to a queue, and also an HTTP output binding to respond to the caller with a message. 
+The following Ballerina code gives an example of using an HTTP trigger to invoke the function and a queue output binding to write an entry to a queue.
 
 First, create a queue to hold the outputs of the function by accessing the storage account that was created alongside the function app in the prerequisites. Select **Queues** in the sidebar in the storage accounts. Click the **Add queue** button, and enter the same value as the value of the `queueName` property in the below `QueueOutput` annotation.
 
 ```ballerina
+import ballerina/http;
 import ballerinax/azure_functions as af;
 
-@af:Function
-public function fromHttpToQueue(af:Context ctx, 
-                                @af:HTTPTrigger { authLevel: "anonymous" } af:HTTPRequest req, 
-                                @af:QueueOutput { queueName: "queue1" } af:StringOutputBinding msg) 
-                                returns @af:HTTPOutput af:HTTPBinding {
-    msg.value = req.body;
-    return { statusCode: 200, payload: "Request: " + req.toString() };
+public type Person record {
+    string name;
+    int age;
+};
+
+service / on new af:HttpListener() {
+    resource function post queue(@http:Payload Person person) returns @af:QueueOutput {queueName: "people"} string {
+        return person.name + " is " + person.age.toString() + " years old.";
+    }
 }
 ```
 
-Build the package by executing the `bal build` command on the package directory, and then, deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
+Execute the `bal build` command on the package directory to build the package. Then, execute the `func azure functionapp publish <function_app_name> --script-root target/azure_functions ` command shown in the Ballerina build output to deploy it.
 
 Now, the deployed Azure Function can be tested by invoking it using an HTTP client such as cURL. 
 
-```
-$ curl -d "Hello!" https://<function_app_name>.azurewebsites.net/api/fromHttpToQueue 
-Request: url=https://<function_app_name>.azurewebsites.net/api/fromHttpToQueue method=POST query= headers=Accept=*/* Connection=Keep-Alive Content-Length=6 Content-Type=application/x-www-form-urlencoded Host=<function_app_name>.azurewebsites.net Max-Forwards=9 User-Agent=curl/7.64.0 X-WAWS-Unencoded-URL=/api/fromHttpToQueue CLIENT-IP=10.0.128.31:47794 X-ARR-LOG-ID=c905b483-af19-4cf2-9ce0-0741e5998a98 X-SITE-DEPLOYMENT-ID=<function_app_name> WAS-DEFAULT-HOSTNAME=<function_app_name>.azurewebsites.net X-Original-URL=/api/fromHttpToQueue X-Forwarded-For=45.30.94.9:47450 X-ARR-SSL=2048|256|C=US, S=Washington, L=Redmond, O=Microsoft Corporation, OU=Microsoft IT, CN=Microsoft IT TLS CA 5|CN=*.azurewebsites.net X-Forwarded-Proto=https X-AppService-Proto=https X-Forwarded-TlsVersion=1.2 DISGUISED-HOST=<function_app_name>.azurewebsites.net params= identities=[{"AuthenticationType":null,"IsAuthenticated":false,"Actor":null,"BootstrapContext":null,"Claims":[],"Label":null,"Name":null,"NameClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","RoleClaimType":"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"}] body=Hello!
+```bash
+$ curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"name":"Jack","age":21}' \   
+  https://<function_app_name>.azurewebsites.net/queue
 ```
 
 Refresh the queue page in the portal and view the added entry.
@@ -194,22 +185,28 @@ Now, as all the infrastructure required are up and running and configured, start
 import ballerina/log;
 import ballerinax/azure_functions as af;
 
-@af:Function
-public function cosmosDBToQueue2(@af:CosmosDBTrigger { 
-        connectionStringSetting: "CosmosDBConnection", databaseName: "db1", 
-        collectionName: "c1" } json req,
-        @af:QueueOutput { queueName: "queue2" } af:StringOutputBinding outMsg) returns error?{
-    json[] entryList = <json[]> req;
-    string name = check entryList[0].name;
-    log:printInfo(name);
-    outMsg.value = name;
+public type DBEntry record {
+    string id;
+    string name;
+};
+
+@af:CosmosDBTrigger {connectionStringSetting: "CosmosDBConnection", databaseName: "db1", collectionName: "c1"}
+listener af:CosmosDBListener cosmosEp = new ();
+
+service "cosmos" on cosmosEp {
+    remote function onUpdated(DBEntry[] entries) returns @af:QueueOutput {queueName: "people"} string {
+        string name = entries[0].name;
+        log:printInfo(entries.toJsonString());
+        return "Hello, " + name;
+    }
 }
+
 ```
 
-Build the package by executing the `bal build` command on the package directory, and then deploy it using the `az cli` command shown in the Ballerina build output as in the previous section.
+Execute the `bal build` command on the package directory to build the package. Then, execute the `func azure functionapp publish <function_app_name> --script-root target/azure_functions ` command shown in the Ballerina build output to deploy it.
 
-Once the function is deployed, You need to add an item to the collection.
-1. Go to the created collection in the **Data Explorer**.
+Once the function is deployed, add an item to the collection.
+1. Navigate to the collection created in the **Data Explorer**.
 2. Click **New Item** to add a new item to the collection.
 3. Go to the queue page and observe the added new entry.
 

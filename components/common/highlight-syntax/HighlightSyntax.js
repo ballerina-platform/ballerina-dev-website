@@ -27,6 +27,7 @@ export default function HighlightSyntax(props) {
 
     const codeSnippet = props.codeSnippet;
     const lang = props.lang;
+    const languages = props.languages;
 
     // Apply shiki theming
     const ApplyShiki = (code, language) => {
@@ -43,18 +44,7 @@ export default function HighlightSyntax(props) {
             async function fetchData() {
                 getHighlighter({
                     theme: "github-light",
-                    langs: [
-                        "bash",
-                        "ballerina",
-                        "toml",
-                        "yaml",
-                        "sh",
-                        "json",
-                        "graphql",
-                        "sql",
-                        "java",
-                        "groovy"
-                    ],
+                    langs: languages,
 
                 }).then((highlighter) => {
                     if (isMounted) {

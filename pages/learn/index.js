@@ -28,6 +28,25 @@ import New from "../../components/learn/new/New";
 import Head from "next/head";
 
 export default function Learn() {
+
+  const getLink = (element, id) => {
+    if (element.tagName.toLowerCase() === "path")
+      element = element.parentElement;
+
+    const elementNodeList = document.querySelectorAll(`#${id}`);
+    const elementArray = Array.prototype.slice.call(elementNodeList);
+    const count = elementArray.indexOf(element.parentElement);
+
+    if (count === 0) {
+      location.hash = `#${id}`;
+    } else {
+      location.hash = `#${id}-${count}`;
+    }
+
+    navigator.clipboard.writeText(window.location.href);
+    element.parentElement.scrollIntoView();
+  };
+
   return (
     <>
       <Head>
@@ -113,10 +132,10 @@ export default function Learn() {
           </Row>
 
           <Intro />
-          <LearnTheLanguage />
-          <UseCases />
-          <Platform />
-          {/* <New /> */}
+          <LearnTheLanguage getLink={getLink}/>
+          <UseCases getLink={getLink}/>
+          <Platform getLink={getLink}/>
+          {/* <New getLink={getLink}/> */}
         </Col>
       </Layout>
     </>

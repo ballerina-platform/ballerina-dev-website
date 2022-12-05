@@ -292,7 +292,7 @@ $ bal run sample.bal
                                        </span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode"><code>curl -d '{ "name": "John Little",  "birthYear": 1855 }' http://localhost:8080/record</code></span>
+                                       <span class="cTableCode"><code>curl -d '{ "name": "John Little", "birthYear": 1855 }' http://localhost:8080/record -H 'Content-Type: application/json'</code></span>
                                     </td>
                                     <td>
                                         <span class="cTableCode"><code>Low credit score {"name":"John Little","birthYear":1855,"married":false}</code></span>
@@ -301,17 +301,17 @@ $ bal run sample.bal
                                  <tr>
                                     <td>A request is sent with a string value given for the integer field <code>birthYear</code>. The service validates the value for the field and the request fails.</td>
                                    <td>
-                                       <span class="cTableCode"><code>curl -d '{ "name": "John Little",  "birthYear": "1855" }' http://localhost:8080/record</code></span>
+                                       <span class="cTableCode"><code>curl -d '{ "name": "John Little",  "birthYear": "1855" }' http://localhost:8080/record -H 'Content-Type: application/json'</code></span>
                                     </td>
                                     <td>
-                                        <span class="cTableCode"><code>data binding failed: error("{ballerina/lang.value}ConversionError",message="'map&lt;json&gt;' value cannot be converted to 'Person': 
-                field 'birthYear' in record 'Person' should be of type 'int', found '"1855"'")</code></span>
+                                        <span class="cTableCode"><code>data binding failed: {ballerina/lang.value}ConversionError, {"message":"'map&lt;json&gt;' value cannot be converted to 'Person': 
+                field 'birthYear' in record 'Person' should be of type 'int', found '"1855"'"}</code></span>
                                     </td>
                                  </tr> 
                               <tr>
                                     <td>A request is sent with the optional <code>creditScore</code> field also set. </td>
                                     <td>
-                                       <span class="cTableCode"><code>curl -d '{ "name": "Sunil Perera",  "birthYear": 1950, "married": true, "creditScore": "GOOD" }' http://localhost:8080/record</code></span>
+                                       <span class="cTableCode"><code>curl -d '{ "name": "Sunil Perera",  "birthYear": 1950, "married": true, "creditScore": "GOOD" }' http://localhost:8080/record -H 'Content-Type: application/json'</code></span>
                                     </td>
                                     <td>
                                        <span class="cTableCode"><code>High credit score {"name":"Sunil Perera","birthYear":1950,"married":true,"creditScore":"GOOD"}</code>
@@ -321,20 +321,20 @@ $ bal run sample.bal
                                    <tr>
                                     <td>A request is sent with a non-existing value of the <code>CreditScore</code> enum. This is validated by the service and the request fails.</td>
                                     <td>
-                                       <span class="cTableCode"><code>curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "HIGH", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</code></span>
+                                       <span class="cTableCode"><code>curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "HIGH", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record -H 'Content-Type: application/json'</code></span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode"><code>data binding failed: error("{ballerina/lang.value}ConversionError",message="'map&lt;json&gt;' value cannot be converted to 'Person': 
-                field 'creditScore' in record 'Person' should be of type 'CreditScore', found '"HIGH"'")</code></span>
+                                       <span class="cTableCode"><code>data binding failed: {ballerina/lang.value}ConversionError, {"message":"'map&lt;json&gt;' value cannot be converted to 'Person': 
+                field 'creditScore' in record 'Person' should be of type 'CreditScore', found '"HIGH"'"}</code></span>
 </td>
                                  </tr>
                                   <tr>
                                     <td>A request is sent with additional fields not explicitly mentioned in the <code>Person</code> type. Since <code>Person</code> is an open record type, the service accepts and makes these extra fields available to be passed through to other systems, e.g. a forwarding service.</td>
                                     <td>
-                                       <span class="cTableCode"><code>curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "EXCELLENT", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record</code></span>
+                                       <span class="cTableCode"><code>curl -d '{ "name": "Tim Kern",  "birthYear": 1995, "creditScore": "EXCELLENT", "country": "Japan", "zipcode": "98101" }' http://localhost:8080/record -H 'Content-Type: application/json'</code></span>
                                     </td>
                                     <td>
-                                       <span class="cTableCode"><code>High credit score {"name":"Tim Kern","birthYear":1995,"married":false,"creditScore":"EXCELLENT","country":"Japan","zipcode":"98101"}</code></span>
+                                       <span class="cTableCode"><code>High credit score {"name":"Tim Kern","birthYear":1995,"married":false,"creditScore":"EXCELLENT","zipcode":"98101","country":"Japan"}</code></span>
                                     </td>
                                  </tr> 
 </table>

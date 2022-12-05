@@ -111,6 +111,7 @@ export default function RunStrandsSafelyOnSeparateThreads() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+<<<<<<< HEAD
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
@@ -136,6 +137,11 @@ export default function RunStrandsSafelyOnSeparateThreads() {
           {codeClick1 ? (
             <button
               className="bg-transparent border-0 m-0 p-2"
+=======
+          {codeClick1 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+>>>>>>> b5b4f7859eaf418635f36843af259e8daed2423c
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -153,7 +159,11 @@ export default function RunStrandsSafelyOnSeparateThreads() {
             </button>
           ) : (
             <button
+<<<<<<< HEAD
               className="bg-transparent border-0 m-0 p-2"
+=======
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+>>>>>>> b5b4f7859eaf418635f36843af259e8daed2423c
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);

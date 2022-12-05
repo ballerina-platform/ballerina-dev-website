@@ -1,6 +1,6 @@
 ---
 layout: ballerina-observing-programs-left-nav-pages-swanlake
-title: Observe Ballerina Programs
+title: Observe Ballerina programs
 description: See how Ballerina supports observability by exposing itself via metrics, tracing, and logs to external systems.
 keywords: ballerina, observability, metrics, tracing, logs, prometheus, grafana, jaeger, elastic
 permalink: /learn/observe-ballerina-programs/
@@ -62,7 +62,7 @@ Follow the steps below to observe a sample Ballerina service.
 Install <a href="https://www.docker.com/" target="_blank">Docker</a> to set up external systems such as Jaeger,
 Prometheus, etc. For instructions, go to the <a href="https://docs.docker.com/install/" target="_blank">Docker documentation</a> to install Docker.
 
-### Step 2 - install and configuring the external systems
+### Step 2 - install and configure the external systems
 
 * [Set up Prometheus](#set-up-prometheus) for collecting metrics information.
 * [Set up Grafana](#set-up-grafana) to visualize metrics.

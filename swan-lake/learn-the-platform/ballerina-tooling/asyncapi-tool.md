@@ -32,66 +32,66 @@ This guide uses only a part of the <a href="https://github.com/ballerina-platfor
 ```yaml
 asyncapi: 2.1.0
 x-ballerina-event-identifier:
- type: "body"
- path: "event.type"
+  type: "body"
+  path: "event.type"
 components:
- schemas:
-   GenericEventWrapper:
-     additionalProperties: true
-     description: Adapted from auto-generated content
-     properties:
-       event:
-         additionalProperties: true
-         properties:
-           event_ts:
-             title: When the event was dispatched
-             type: string
-           type:
-             title: The specific name of the event
-             type: string
-           text:
-             title: The message content
-             type: string
-         required:
-           - type
-           - event_ts
-         title: "The actual event, an object, which happened"
-         type: object
-     required:
-       - event
-     title: Standard event wrapper for the Events API
-     type: object
+  schemas:
+    GenericEventWrapper:
+      additionalProperties: true
+      description: Adapted from auto-generated content
+      properties:
+        event:
+          additionalProperties: true
+          properties:
+            event_ts:
+              title: When the event was dispatched
+              type: string
+            type:
+              title: The specific name of the event
+              type: string
+            text:
+              title: The message content
+              type: string
+          required:
+            - type
+            - event_ts
+          title: "The actual event, an object, which happened"
+          type: object
+      required:
+        - event
+      title: Standard event wrapper for the Events API
+      type: object
 channels:
- app:
-   subscribe:
-     message:
-       oneOf:
-         - x-ballerina-event-type: "app_mention"
-           externalDocs:
-             description: Event documentation for `app_mention`
-           payload:
-             $ref: "#/components/schemas/GenericEventWrapper"
-           summary: Subscribe to only the message events that mention your app or bot
-           tags:
-             - name: allows_user_tokens
-             - name: app_event
-           x-scopes-required: []
-           x-tokens-allowed:
-             - user
-	   - x-ballerina-event-type: "app_rate_limited"
-           externalDocs:
-             description: Event documentation for `app_rate_limited`
-           payload:
-             $ref: "#/components/schemas/GenericEventWrapper"
-           summary: Indicates that your app's event subscriptions are being rate limited
-           tags:
-             - name: allows_user_tokens
-             - name: app_event
-             - name: allows_workspace_tokens
-           x-scopes-required: []
-           x-tokens-allowed:
-             - user
-             - workspace
+  app:
+    subscribe:
+      message:
+        oneOf:
+          - x-ballerina-event-type: "app_mention"
+            externalDocs:
+              description: Event documentation for `app_mention`
+            payload:
+              $ref: "#/components/schemas/GenericEventWrapper"
+            summary: Subscribe to only the message events that mention your app or bot
+            tags:
+              - name: allows_user_tokens
+              - name: app_event
+            x-scopes-required: []
+            x-tokens-allowed:
+              - user
+          - x-ballerina-event-type: "app_rate_limited"
+            externalDocs:
+              description: Event documentation for `app_rate_limited`
+            payload:
+              $ref: "#/components/schemas/GenericEventWrapper"
+            summary: Indicates that your app's event subscriptions are being rate limited
+            tags:
+              - name: allows_user_tokens
+              - name: app_event
+              - name: allows_workspace_tokens
+            x-scopes-required: []
+            x-tokens-allowed:
+              - user
+              - workspace
 ```
 
 There are custom tags in this YAML starting with `x-ballerina`. It is very important that these tags must be added to the AsyncAPI contract before using the tool. The usage of those tags are as follows.
@@ -160,6 +160,10 @@ service AppService on webhookListener {
    remote function onAppMention(GenericEventWrapper event) returns error? {
        //Implement the logic to use the received `event` here.
    }
+
+    remote function onAppRateLimited(GenericEventWrapper event) returns error? {
+       //Implement the logic to use the received `event` here.
+    }
 }
 ```
 

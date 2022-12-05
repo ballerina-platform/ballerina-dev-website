@@ -20,7 +20,7 @@ redirect_from:
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2202.0.0 (Swan Lake) ](/learn/install-ballerina/set-up-ballerina/) or greater
+1. [Ballerina 2201.0.0 (Swan Lake) ](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
     >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
 3. A command terminal
@@ -63,6 +63,8 @@ This creates a directory named `covid19` with the default module along with a sa
 ```
 .
 ├── covid19
+│   ├── tests
+│   │   └── service_test.bal
 │   ├── Ballerina.toml
 │   └── service.bal
 ```
@@ -218,10 +220,9 @@ As per the design, there are two fields in the `Query` type and one field in the
 To create the `all` field, which returns an array of `CovidData` type, add the code below to the `service.bal` file.
 
 ```ballerina
-    resource function get all() returns CovidData[] {
-        CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
-        return covidEntries.map(entry => new CovidData(entry));
-    }
+resource function get all() returns CovidData[] {
+    CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
+    return covidEntries.map(entry => new CovidData(entry));
 }
 ```
 

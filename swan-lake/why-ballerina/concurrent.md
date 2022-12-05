@@ -61,7 +61,10 @@ function process(Person[] members, int[] quantities) {
 
 Worker message passing (via Ballerina’s `send (->)` and `receive (<-)` actions) is used for communication between workers. The compiler also explicitly verifies that the `send` and `receive` actions are in a consistent state to avoid any deadlock scenarios at runtime.
 
-The `@strand` annotation can be used on a named worker or start action to make the corresponding strand run on a separate thread.
+A strand in Ballerina runs on a separate thread if it is safe. The isolated feature is used to identify such cases. 
+A call to an isolated function is concurrency-safe if it is called with arguments that are safe at least until the 
+call returns. The strand created in a `start` action for an isolated function may run on a separate thread. The strand 
+of a named worker may run on a separate thread from the default worker if the function is isolated.
 
 ```ballerina
 import ballerina/io;
@@ -71,22 +74,33 @@ type Person record {|
     boolean employed;
 |};
 
-function process(Person[] members, int[] quantities) {
-
-    @strand {
-        thread: "any"
-    }
+isolated function process(Person[] & readonly members, int[] & readonly quantities) {
     worker w1 {
         Person[] employedMembers = from Person p in members
             where p.employed
             select p;
-        employedMembers.length() -> function;
+        int count = employedMembers.length();
+        count -> function;
     }
 
-    int quantitiesSum = int:sum(...quantities);
-    int employedMemCount = <- w1;
+    int totalMemberCount = members.length();
 
-    io:println("Average: ", employedMemCount == 0 ? 0 : quantitiesSum / employedMemCount);
+    int memberCount = <- w1;
+    io:println(string `Employed Members: ${memberCount}`);
+
+    future<int> avgFuture = start get_average(quantities, memberCount);
+
+    int unemployedCount = totalMemberCount - memberCount;
+    io:println(string `Unemployed Members: ${unemployedCount}`);
+
+    int avg = checkpanic wait avgFuture;
+    io:println(string `Average: ${avg}`);
+}
+
+isolated function get_average(int[] & readonly quantities, int employedCount) returns int {
+    int total = int:sum(...quantities);
+    int avg = employedCount == 0 ? 0 : total / employedCount;
+    return avg;
 }
 ```
 

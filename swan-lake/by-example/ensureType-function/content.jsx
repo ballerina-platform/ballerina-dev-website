@@ -72,7 +72,7 @@ export default function EnsureTypeFunction() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f59e72223976b614517fa471bcb5b655&file=ensureType_function.bal",
+                "https://play.ballerina.io/?gist=5d1e5e86d7a4110853812421e837b1f4&file=ensureType_function.bal",
                 "_blank"
               );
             }}

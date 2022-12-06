@@ -1,0 +1,19 @@
+{
+  "title": "Mutual SSL",
+  "description": "BBE on how to secure WebSocket client with mutual SSL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "mutual ssl",
+    "ssl protocols",
+    "ciphers"
+  ],
+  "permalink": "/learn/by-example/websocket-client-mutual-ssl",
+  "active": "websocket-client-mutual-ssl",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-client-mutual-ssl",
+    "/swan-lake/learn/by-example/websocket-client-mutual-ssl.html"
+  ]
+}

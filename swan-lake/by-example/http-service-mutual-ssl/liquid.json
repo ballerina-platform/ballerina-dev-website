@@ -1,0 +1,19 @@
+{
+  "title": "Mutual SSL",
+  "description": "BBE on how to secure HTTP listener with mutual SSL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "mutual ssl",
+    "ssl protocols",
+    "ciphers"
+  ],
+  "permalink": "/learn/by-example/http-service-mutual-ssl",
+  "active": "http-service-mutual-ssl",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-service-mutual-ssl",
+    "/swan-lake/learn/by-example/http-service-mutual-ssl.html"
+  ]
+}

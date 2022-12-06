@@ -1,0 +1,19 @@
+{
+  "title": "Counter-based metrics",
+  "description": "BBE on how to use the default Counter Metrics Observability feature in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "observability",
+    "tracing",
+    "opentracing",
+    "counter"
+  ],
+  "permalink": "/learn/by-example/counter-metrics",
+  "active": "counter-metrics",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/counter-metrics",
+    "/swan-lake/learn/by-example/counter-metrics.html"
+  ]
+}

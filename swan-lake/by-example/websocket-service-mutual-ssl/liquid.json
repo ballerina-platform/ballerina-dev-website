@@ -1,0 +1,19 @@
+{
+  "title": "Mutual SSL",
+  "description": "BBE on how to secure WebSocket listener with mutual SSL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "mutual ssl",
+    "ssl protocols",
+    "ciphers"
+  ],
+  "permalink": "/learn/by-example/websocket-service-mutual-ssl",
+  "active": "websocket-service-mutual-ssl",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-service-mutual-ssl",
+    "/swan-lake/learn/by-example/websocket-service-mutual-ssl.html"
+  ]
+}

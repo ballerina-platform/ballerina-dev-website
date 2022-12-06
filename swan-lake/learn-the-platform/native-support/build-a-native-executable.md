@@ -27,9 +27,7 @@ When compiling a  Ballerina application using the `bal build` command the output
 
 On the other hand, when compiling a Ballerina application using `bal build --native`, the output is the native executable local to the host machine. In order to build the native executable, GraalVM uses Ahead Of Time compilation (AOT), which requires the generated uber JAR as the input to produce the native executable. Native Image generation performs aggressive optimizations such as unused code elimination in the JDK and its dependencies, heap snapshotting, and static code initializations.
 
-The difference between both approaches result in different pros and cons as depicted in the spider graph diagram.
-
-The following spider graph illustrates the key differences:
+The difference between both approaches result in different pros and cons as depicted in the spider graph below.
 
 <img src="/learn/images/aot-vs-jit.png" alt="AOT vs JIT" height="520" style="width: auto !important; padding-top: 20px; padding-bottom: 20px">
 

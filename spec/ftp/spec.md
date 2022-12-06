@@ -406,7 +406,7 @@ ftp:Service ftpListener = service object {
     }
 };
 ```
-The remote function `onFileChange()` is invoked when the listener notices a file change in the FTP server. This function supports
+The remote method `onFileChange()` is invoked when the listener notices a file change in the FTP server. This function supports
 having both `ftp:WatchEvent` and `ftp:Caller` parameters or having only `ftp:WatchEvent` parameter.
 
 The Listener has following functions to manage a service.

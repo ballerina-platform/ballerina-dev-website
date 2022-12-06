@@ -232,7 +232,7 @@ public type WSServiceConfig record {|
 
 ### 3.2. [WebSocket Service](#32-websocket-service)
 
-Once the WebSocket upgrade is accepted by the UpgradeService, it returns a `websocket:Service`. This service has a fixed set of remote functions that do not have any configs. Receiving messages will get dispatched to the relevant remote function. Each remote function is explained below.
+Once the WebSocket upgrade is accepted by the UpgradeService, it returns a `websocket:Service`. This service has a fixed set of remote methods that do not have any configs. Receiving messages will get dispatched to the relevant remote method. Each remote method is explained below.
 
 ```ballerina
 service /ws on new websocket:Listener(21003) {
@@ -562,7 +562,7 @@ service class PingPongService {
 
 websocket:Client wsClient = check new ("ws://localhost:21020", {pingPongHandler : new PingPongService()});
 ```
-If the user has implemented `onPing` on their service, it's user's responsibility to send the `pong` frame. It can be done simply by returning the data from the remote function, or else can be done using the `pong` API of websocket:Caller. If the user hasn't implemented the `onPing` remote function, `pong` will be sent automatically.
+If the user has implemented `onPing` on their service, it's user's responsibility to send the `pong` frame. It can be done simply by returning the data from the remote method, or else can be done using the `pong` API of websocket:Caller. If the user hasn't implemented the `onPing` remote method, `pong` will be sent automatically.
 
 ## 5. [Securing the WebSocket Connections](#5-securing-the-websocket-connections)
 

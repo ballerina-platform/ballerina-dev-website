@@ -41,21 +41,21 @@ service /ws on new websocket:Listener(8080) {
 }
 ```
 
-In the example above, `/ws` is the configured upgrade path, and the `WsService` instance should have functions defined in the [`websocket:Service`](/learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/abstractObjects/Service) abstract object. These remote functions correspond to the events generated for the WebSocket communication. The sections below describe how these are implemented. 
+In the example above, `/ws` is the configured upgrade path, and the `WsService` instance should have functions defined in the [`websocket:Service`](/learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/abstractObjects/Service) abstract object. These remote methods correspond to the events generated for the WebSocket communication. The sections below describe how these are implemented. 
 
 ## Using primary events
 
-These individual events are notified to the user through their own remote functions in the WebSocket Ballerina service.
+These individual events are notified to the user through their own remote methods in the WebSocket Ballerina service.
 
 ### Connection creation
 
-The connection creation state is achieved when the WebSocket client establishes a connection after a successful handshake operation. At this moment, the remote function below is called if it is available in the service.
+The connection creation state is achieved when the WebSocket client establishes a connection after a successful handshake operation. At this moment, the remote method below is called if it is available in the service.
 
 ```ballerina
 remote function onOpen(websocket:Caller caller);
 ```
 
-This remote function provides an instance of a [`websocket:Caller`](/learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/clients/Caller) object, which can be used to communicate back with the WebSocket client. This saves the caller object when the connection is created so whenever the application wants to send messages to the connected clients, it can use the stored caller objects to do so.
+This remote method provides an instance of a [`websocket:Caller`](/learn/api-docs/ballerina/#/ballerina/websocket/1.1.2/websocket/clients/Caller) object, which can be used to communicate back with the WebSocket client. This saves the caller object when the connection is created so whenever the application wants to send messages to the connected clients, it can use the stored caller objects to do so.
 
 #### Connection creation example
 
@@ -199,7 +199,7 @@ The example below shows the usage of this by updating the [`/ws` service](#conne
 
 ### Data message
 
-A data message is received when a WebSocket client either sends a text or a binary message to a WebSocket service. If available, the remote functions below are called in the service to handle text and binary messages respectively. 
+A data message is received when a WebSocket client either sends a text or a binary message to a WebSocket service. If available, the remote methods below are called in the service to handle text and binary messages respectively. 
 
 ```ballerina
 remote function onTextMessage(websocket:Caller caller, string text);
@@ -270,7 +270,7 @@ The example below demonstrates the data message functionality via a simple WebSo
 
 A WebSocket contains two control messages: `ping` and `pong`. A WebSocket server or a client can send a `ping` message, and the opposite side should respond with a corresponding `pong` message by returning the same payload sent with the `ping` message. These `ping/pong` sequences are used as a heartbeat mechanism to check if the connection is healthy.
 
-You not need to explicitly control these messages as they are handled automatically by the services and clients. However, if required, you can override the default implementations of the `ping/pong` messages. This is done by providing implementations to the remote functions below in a WebSocket service. 
+You not need to explicitly control these messages as they are handled automatically by the services and clients. However, if required, you can override the default implementations of the `ping/pong` messages. This is done by providing implementations to the remote methods below in a WebSocket service. 
 
 ```ballerina
 remote function onPing(websocket:Caller caller, byte[] data);
@@ -297,7 +297,7 @@ remote function onPong(websocket:Caller caller,
 
 ### Connection error
 
-In the event of an error in the WebSocket connection, the connection will be closed automatically by generating the required connection close frame. The remote function below can be implemented in the service to receive the notification that this is going to happen and perform any possible cleanup or custom logging operations. 
+In the event of an error in the WebSocket connection, the connection will be closed automatically by generating the required connection close frame. The remote method below can be implemented in the service to receive the notification that this is going to happen and perform any possible cleanup or custom logging operations. 
 
 ```ballerina
 remote function onError(websocket:Caller caller, error err);
@@ -314,7 +314,7 @@ remote function onClose(websocket:Caller caller, int statusCode,
 
 #### Connection close example
 
-An example implementation of this remote function, which logs the information about the connection closure is shown below. 
+An example implementation of this remote method, which logs the information about the connection closure is shown below. 
 
 ```ballerina
 remote function onClose(websocket:Caller caller, int statusCode,

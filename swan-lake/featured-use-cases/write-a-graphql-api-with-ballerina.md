@@ -253,7 +253,7 @@ In this code:
 
 #### Create `Mutation` type 
 
-##### Create the `add` field remote function
+##### Create the `add` field remote method
 
 As the `Query` type is completed now, define the `Mutation` type using remote methods.
 

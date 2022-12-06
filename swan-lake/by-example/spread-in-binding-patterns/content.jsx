@@ -73,7 +73,7 @@ export default function SpreadInBindingPatterns() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=327aae1d0a1a68bb11005f8487569402&file=spread_in_binding_patterns.bal",
+                "https://play.ballerina.io/?gist=bacbbce88b058a19caebb4a279d654d1&file=spread_in_binding_patterns.bal",
                 "_blank"
               );
             }}

@@ -33,7 +33,7 @@ The below are the most stable versions of the lanuguage specification, which are
 
 | Version | Release Date | Description |
 | ------- | ------------ | ----------- |
-| <a target="_blank" href="/spec/lang/2022R3/">2022R3</a> | 2022-12-06 | Third release of 2022. This is the basis for Ballerina 2201.2.0 (Swan Lake Update 2). | 
+| <a target="_blank" href="/spec/lang/2022R3/">2022R3</a> | 2022-08-12 | Third release of 2022. This is the basis for Ballerina 2201.2.0 (Swan Lake Update 2). | 
 | <a target="_blank" href="/spec/lang/2022R2/">2022R2</a> | 2022-06-02 | Second release of 2022. This is the basis for Ballerina 2201.1.0 (Swan Lake Update 1). |
 | <a target="_blank" href="/spec/lang/2022R1/">2022R1</a> | 2022-01-31 | First release of 2022. This is the basis for Ballerina 2201.0.0 (Swan Lake). |
 | <a target="_blank" href="/spec/lang/2021R1/">2021R1</a> | 2021-06-02 | First release of 2021. This is the basis for Ballerina Swan Lake Beta1. |

@@ -250,7 +250,7 @@ export default function GraphqlClientHandlePartialResponse() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/graphql/#25-client">
-              GrapHQL client - Specification
+              GraphQL client - Specification
             </a>
           </span>
         </li>

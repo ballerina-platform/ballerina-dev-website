@@ -1,0 +1,18 @@
+{
+  "title": "SSL/TLS",
+  "description": "BBE on how to secure HTTP client with SSL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "ssl",
+    "tls"
+  ],
+  "permalink": "/learn/by-example/http-client-ssl-tls",
+  "active": "http-client-ssl-tls",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-client-ssl-tls",
+    "/swan-lake/learn/by-example/http-client-ssl-tls.html"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Send/Receive datagram",
+  "description": "This Ballerina sample demonstrates how to send data to a remote UDP server.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "socket", "udp"],
+  "permalink": "/learn/by-example/udp-client",
+  "active": "udp-client",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/udp-client",
+    "/swan-lake/learn/by-example/udp-client.html"
+  ]
+}

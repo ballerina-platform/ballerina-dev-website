@@ -1,0 +1,17 @@
+{
+  "title": "Service as output object",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql service"
+  ],
+  "permalink": "/learn/by-example/graphql-returning-service-objects",
+  "active": "graphql-returning-service-objects",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-returning-service-objects",
+    "/swan-lake/learn/by-example/graphql-returning-service-objects.html"
+  ]
+}

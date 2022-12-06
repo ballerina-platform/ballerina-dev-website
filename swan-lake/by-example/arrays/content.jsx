@@ -74,7 +74,7 @@ export default function Arrays() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1c49174ec8923ea342b392275eeb65f3&file=arrays.bal",
+                "https://play.ballerina.io/?gist=da97844d6882f79c1e186455bac8f592&file=arrays.bal",
                 "_blank"
               );
             }}

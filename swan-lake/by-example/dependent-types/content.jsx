@@ -76,7 +76,7 @@ export default function DependentTypes() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=99fe75e9c7529dc36e3067524dea19c5&file=dependent_types.bal",
+                "https://play.ballerina.io/?gist=10279c6a1cc0d10d84408f95698b1369&file=dependent_types.bal",
                 "_blank"
               );
             }}

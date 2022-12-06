@@ -77,7 +77,7 @@ export default function CreatingTablesWithQuery() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7dbd1452df90203366b40207b9245bc6&file=creating_tables_with_query.bal",
+                "https://play.ballerina.io/?gist=899e75ed5d015fb55598b67883258146&file=creating_tables_with_query.bal",
                 "_blank"
               );
             }}

@@ -84,7 +84,7 @@ export default function TransactionStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=123bd02c1a48c828e7747ee82407e400&file=transaction_statement.bal",
+                "https://play.ballerina.io/?gist=b0fa13a9fb236ca79b02564c8deccace&file=transaction_statement.bal",
                 "_blank"
               );
             }}

@@ -81,7 +81,7 @@ public type RefreshTokenGrantConfig record {|
 With this new feature,
 
 - a record that contains optional fields can be destructured. If the optional field is not available, the type of the variable becomes nil.
-- a variable of type `T?` can be used to construct an optional field. If the value is `()`, it effectively means that that the field is not there.
+- a variable of type `T?` can be used to construct an optional field. If the value is `()`, it effectively means that the field is not there.
 - the optional field value can be removed from the record by assigning `()` to the optional field.
 
 ```ballerina
@@ -440,7 +440,7 @@ Introduced the `run-in-terminal` feature, which provides the capability to debug
 
 #### OpenAPI Tool
 
-Improved CLI client generation to generate the Ballerina client resource methods by default. (However, the users can use `--client-methods=remote` command option to switch back to client remote functions instead.)
+Improved the CLI client generation to generate the Ballerina client resource methods by default. (Now, the `--client-methods=remote` command option can be used to switch back to client remote functions instead.)
 
 #### GraphQL Tool
 

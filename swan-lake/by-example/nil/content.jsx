@@ -59,12 +59,11 @@ export default function Nil() {
       <h1>Nil</h1>
 
       <p>
-        Ballerina's version of <code>null</code> is called <code>nil</code> and
-        written as <code>()</code>. Ballerina types do not implicitly allow{" "}
-        <code>nil</code>. Type <code>T?</code> means <code>T</code> or{" "}
-        <code>nil</code>. You can use <code>==</code> and <code>!=</code> to
-        test whether a value is <code>nil</code>: no implicit conversion to{" "}
-        <code>boolean</code>.
+        Ballerina's version of <code>null</code> is called nil and written as{" "}
+        <code>()</code>. Ballerina types do not implicitly allow nil. Type{" "}
+        <code>T?</code> means <code>T</code> or nil. You can use <code>==</code>{" "}
+        and <code>!=</code> to test whether a value is nil: no implicit
+        conversion to <code>boolean</code>.
       </p>
 
       <Row
@@ -75,6 +74,31 @@ export default function Nil() {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=03ab9d65bb85b80bc6e9ab7af24e1b0f&file=nil.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/nil",

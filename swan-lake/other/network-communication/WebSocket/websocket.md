@@ -21,7 +21,7 @@ redirect_to:
 
 The first step in WebSocket communication is the HTTP upgrade operation that is carried out in order to switch to WebSocket communication. 
 
-In an HTTP Ballerina service, you switch to the WebSocket protocol using an HTTP upgrade operation. This is done by defining a specific HTTP service resource function at the HTTP upgrade path, which returns a WebSocket service implementation.
+In an HTTP Ballerina service, you switch to the WebSocket protocol using an HTTP upgrade operation. This is done by defining a specific HTTP service resource method at the HTTP upgrade path, which returns a WebSocket service implementation.
 
 The example below demonstrates this operation. 
 

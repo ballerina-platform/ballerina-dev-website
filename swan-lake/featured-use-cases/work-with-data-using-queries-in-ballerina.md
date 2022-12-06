@@ -79,9 +79,9 @@ In this code:
 
 ## Filter the data
 
-### Create the `filterCountriesByCases` function
+### Create the `filterCountriesByCases` method
 
-To define a function, which will filter out the records, which have values higher than 100,000 for the `cases` field, add the code below to the `main.bal` file.
+To define a method, which will filter out the records, which have values higher than 100,000 for the `cases` field, add the code below to the `main.bal` file.
 
 ```ballerina
 public function filterCountriesByCases(table<CovidEntry> dataTable, decimal noOfCases) returns string[] {

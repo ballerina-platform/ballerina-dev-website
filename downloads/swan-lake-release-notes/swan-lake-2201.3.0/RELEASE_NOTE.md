@@ -419,7 +419,7 @@ To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://g
 
 ##### Native-image build (Experimental)
 
-Introduced the `--native` flag, which generates a GraalVM native executable when building a Ballerina project.
+Introduced the `--native` flag, which generates a GraalVM native executable when building a Ballerina project. For more information on how to build a native executable, see [[Experimental] Build a native executable](/learn/build-a-native-executable/#pack-the-native-executable-in-a-container).
 
 - The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK.
 
@@ -459,4 +459,4 @@ To view bug fixes, see the GitHub milestone for 2201.3.0 (Swan Lake) of the repo
 
 ### New features
 
-Introduced the native executable Docker image creation for cloud-enabled projects by executing the `bal build --native` command.
+Introduced the native executable Docker image creation for cloud-enabled projects by executing the `bal build --native` command. For more information on how to build a native executable in a container, see [[Experimental] Build a native executable](/learn/build-a-native-executable/#pack-the-native-executable-in-a-container).

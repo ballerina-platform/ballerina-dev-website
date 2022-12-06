@@ -440,7 +440,7 @@ Introduced the `run-in-terminal` feature, which provides the capability to debug
 
 #### OpenAPI Tool
 
-Improvedthe CLI client generation to generate the Ballerina client resource methods by default. (Now, the `--client-methods=remote` command option can be used to switch back to client remote functions instead.)
+Improved the CLI client generation to generate the Ballerina client resource methods by default. (Now, the `--client-methods=remote` command option can be used to switch back to client remote functions instead.)
 
 #### GraphQL Tool
 

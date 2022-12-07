@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R4 preview 2022-12-06</h1>
+<h1>Ballerina Language Specification, 2022R4 preview 2022-12-07</h1>
 <p>
 Primary contributors:
 </p>
@@ -46,6 +46,10 @@ Language and document status
 <p>
 The language described in this specification is now stable. We do not plan to
 make changes that introduce significant incompatibilities.
+</p>
+<p>
+This release contains a preview of the regular expression feature. Minor
+changes may be made before it becomes stable.
 </p>
 <p>
 Comments on this document are welcome and should be made by creating an issue in
@@ -567,7 +571,7 @@ GitHub repository where this specification is maintained.
 </li>
 </ul>
 </li>
-<li>10. <a href="#data_tags">Data tags</a><ul><li>10.1 <a href="#section_10.1">Regular expressions</a>
+<li>10. <a href="#data_tags">Data tags</a><ul><li>10.1 <a href="#section_10.1">Regular expressions (preview)</a>
 </li></ul>
 </li>
 <li>11. <a href="#lang_library">Lang library</a><ul>
@@ -596,7 +600,7 @@ GitHub repository where this specification is maintained.
 </li>
 <li>11.3.10 <a href="#lang.object"><code>lang.object</code> module</a>
 </li>
-<li>11.3.11 <a href="#lang.regexp"><code>lang.regexp</code> module</a>
+<li>11.3.11 <a href="#lang.regexp"><code>lang.regexp</code> module (preview)</a>
 </li>
 <li>11.3.12 <a href="#lang.stream"><code>lang.stream</code> module</a>
 </li>
@@ -11323,7 +11327,7 @@ of the name to which the documentation string is attached.
 <section>
 <h2 id="data_tags">10. Data tags</h2>
 <section>
-<h3 id="section_10.1">10.1 Regular expressions</h3>
+<h3 id="section_10.1">10.1 Regular expressions (preview)</h3>
 
 <p>
 The <code>re</code> data tag is used for regular expressions. The lang library
@@ -12803,7 +12807,7 @@ public type RawTemplate distinct object {
 </section>
 
 <section>
-<h4 id="lang.regexp">11.3.11 <code>lang.regexp</code> module</h4>
+<h4 id="lang.regexp">11.3.11 <code>lang.regexp</code> module (preview)</h4>
 
 <p>The <code>lang.regexp</code> module corresponds to the basic type for the
 tagged data type with tag <code>re</code>.</p>
@@ -14145,7 +14149,8 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <section>
 <h3 id="section_B.1">B.1 Summary of changes from 2022R3 to 2022R4</h3>
 <ol>
-<li>Regular expressions have been added as a new data type.</li>
+<li>Regular expressions have been added as a new data type. This
+feature has preview status in this release.</li>
 <li>A <code>byte-array-literal</code> can construct a read-only value.</li>
 <li>An optional semi-colon is now allowed after top-level definitions and
 method definitions that are currentlty terminated by <code>}</code>.</li>

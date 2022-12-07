@@ -291,6 +291,20 @@ remote isolated function onMessage(websocket:Caller caller, json data) returns w
 }
 ```
 
+Data deserialization for text messages happens similar to the following,
+
+- If the contextually-expected data type is string, received data will be directly presented to the API without doing any deserialization.
+- If the contextually-expected data type is xml, received text data will be deserialized to xml.
+- All the other data types are treated as json and received text data will be deserialized to json.
+
+Data deserialization for binary messages happens similar to the following,
+
+- If the contextually-expected data type is byte[], received data will be directly presented to the API without doing any deserialization.
+- If the contextually-expected data type is xml, received binary data will be first converted to the string representation of the byte[] and then deserialized to xml.
+- All the other data types are treated as json and received binary data will be first converted to the string representation of the byte[] and then will be deserialized to json.
+
+If the data binding fails, the connection will get terminated by sending a close frame with the 1003 error code(1003 indicates that an endpoint is terminating the connection because it has received a type of data it cannot accept ) and will print an error log at the listener side.
+
 ##### [onPing and onPong](#onping-and-onpong)
 
 The received ping and pong messages are dispatched to these remote methods respectively. You do not need to explicitly control these messages as they are handled automatically by the services and clients.
@@ -492,6 +506,19 @@ The contextually-expected data type is inferred from the LHS variable type. If t
 # + return - The data sent by the server or a `websocket:Error` if an error occurs when receiving
 remote isolated function readMessage(typedesc<anydata> targetType = <>) returns targetType|Error
 ```
+When the receiving data are of the text frame type, data will be deserialized to the expected data type. If the incoming data is of binary frames, and if the LHS type is some other data type apart from byte[], incoming data will first be converted to the string representation of the binary data and then be converted to the expected data type.
+
+Data deserialization for text messages happens similar to the following,
+
+- If the contextually-expected data type is string, received data will be directly presented to the API without doing any deserialization.
+- If the contextually-expected data type is xml, received text data will be deserialized to xml.
+- All the other data types are treated as json and received text data will be deserialized to json.
+
+Data deserialization for binary messages happens similar to the following,
+
+- If the contextually-expected data type is byte[], received data will be directly presented to the API without doing any deserialization.
+- If the contextually-expected data type is xml, received binary data will be first converted to the string representation of the byte[] and then deserialized to xml.
+- All the other data types are treated as json and received binary data will be first converted to the string representation of the byte[] and then will be deserialized to json.
 
 #### [close](#close)
 

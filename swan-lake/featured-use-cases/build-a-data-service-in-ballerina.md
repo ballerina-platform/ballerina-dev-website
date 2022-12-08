@@ -396,7 +396,7 @@ service /employees on new http:Listener(8080) {
 ### Create the resource methods
 
 Within this service, you can define resource methods to provide access to the database. The code snippet below 
-demonstrates a resource methods that can be used to create a new employee via a `POST` request.
+demonstrates a resource method that can be used to create a new employee via a `POST` request.
 
 ```ballerina
 service /employees on new http:Listener(8080) {

@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2022R4 preview 2022-12-07</h1>
+<h1>Ballerina Language Specification, 2022R4 preview 2022-12-08</h1>
 <p>
 Primary contributors:
 </p>
@@ -4461,9 +4461,15 @@ if each field-binding-pattern f<sub>i</sub>: p<sub>i</sub> matches m for each i
 in 1 to n; if r is <code>...v</code> then a successful match causes a new
 mapping value consisting of all fields other than f<sub>1</sub> to f<sub>n</sub>
 to be assigned to <code>v</code>;</li>
-<li>a field-binding-pattern f: p matches a mapping value m if either m contains
-a field f and p matches its value or m does not have a field f and p matches
-nil; a field-binding-pattern consisting of just a variable-name <code>x</code>
+<li>a field-binding-pattern f: p matches a mapping value m if
+<ul>
+<li>m contains a field f and p matches its value; or</li>
+<li>m does not have a field f and p matches nil; this case is applied only when
+the field-binding-pattern is used in a context where it is known at compile-time
+that the field f is optional and cannot have the value nil;</li>
+</ul>
+</li>
+<li>a field-binding-pattern consisting of just a variable-name <code>x</code>
 is equivalent to a field-binding-pattern <code>x: x</code>;</li>
 <li>an error-binding-pattern error ET(p<sub>m</sub>, p<sub>c</sub>,
 f<sub>1</sub> = p<sub>1</sub>, f<sub>2</sub> = p<sub>2</sub>, ..., f<sub>n</sub>

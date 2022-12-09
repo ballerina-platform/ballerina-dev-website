@@ -2019,7 +2019,8 @@ work such as the below.
  - Validating
  - Securing
 
-Interceptors are designed for both request and response flows. There are just service objects which will be executed in a configured order to intercept request and response. These interceptor services can only have either a resource method 
+Interceptors are designed for both request and response flows. There are just service objects which 
+will be executed in a configured order to intercept request and response. These interceptor services can only have either a resource method 
 or a remote method depends on the interceptor type. Moreover, they do not support `ServiceConfig`, `ResourceConfig`
 and `Cache` annotations.
 

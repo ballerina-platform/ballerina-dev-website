@@ -79,7 +79,7 @@ In this code:
 
 ## Filter the data
 
-### Create the `filterCountriesByCases` method
+### Create the `filterCountriesByCases` function
 
 To define a method, which will filter out the records, which have values higher than 100,000 for the `cases` field, add the code below to the `main.bal` file.
 

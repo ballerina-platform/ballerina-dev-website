@@ -68,7 +68,7 @@ export default function TypeDefinitions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=60b830077d704f67eaad4a39299c9e7b&file=type_definitions.bal",
+                "https://play.ballerina.io/?gist=03047ff476343ac8d1f439506fe1dd1c&file=type_definitions.bal",
                 "_blank"
               );
             }}

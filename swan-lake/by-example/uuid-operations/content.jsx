@@ -110,7 +110,7 @@ export default function UuidOperations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2adef3140aa0f5e82300146149227218&file=uuid_operations.bal",
+                "https://play.ballerina.io/?gist=a8fcbdc26851d81361858f51d1d5a108&file=uuid_operations.bal",
                 "_blank"
               );
             }}

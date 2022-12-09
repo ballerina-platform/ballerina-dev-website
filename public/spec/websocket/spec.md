@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @bhashinee  
 _Reviewers_: @shafreenAnfar  
 _Created_: 2021/12/09  
-_Updated_: 2022/05/05  
+_Updated_: 2022/12/08  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -232,7 +232,7 @@ public type WSServiceConfig record {|
 
 ### 3.2. [WebSocket Service](#32-websocket-service)
 
-Once the WebSocket upgrade is accepted by the UpgradeService, it returns a `websocket:Service`. This service has a fixed set of remote functions that do not have any configs. Receiving messages will get dispatched to the relevant remote function. Each remote function is explained below.
+Once the WebSocket upgrade is accepted by the UpgradeService, it returns a `websocket:Service`. This service has a fixed set of remote methods that do not have any configs. Receiving messages will get dispatched to the relevant remote method. Each remote method is explained below.
 
 ```ballerina
 service /ws on new websocket:Listener(21003) {
@@ -290,6 +290,20 @@ remote isolated function onMessage(websocket:Caller caller, json data) returns w
     io:println(data);
 }
 ```
+
+Data deserialization for text messages happens similar to the following,
+
+- If the contextually-expected data type is string, received data will be directly presented to the API without doing any deserialization.
+- If the contextually-expected data type is xml, received text data will be deserialized to xml.
+- All the other data types are treated as json and received text data will be deserialized to json.
+
+Data deserialization for binary messages happens similar to the following,
+
+- If the contextually-expected data type is byte[], received data will be directly presented to the API without doing any deserialization.
+- If the contextually-expected data type is xml, received binary data will be first converted to the string representation of the byte[] and then deserialized to xml.
+- All the other data types are treated as json and received binary data will be first converted to the string representation of the byte[] and then will be deserialized to json.
+
+If the data binding fails, the connection will get terminated by sending a close frame with the 1003 error code(1003 indicates that an endpoint is terminating the connection because it has received a type of data it cannot accept ) and will print an error log at the listener side.
 
 ##### [onPing and onPong](#onping-and-onpong)
 
@@ -492,6 +506,19 @@ The contextually-expected data type is inferred from the LHS variable type. If t
 # + return - The data sent by the server or a `websocket:Error` if an error occurs when receiving
 remote isolated function readMessage(typedesc<anydata> targetType = <>) returns targetType|Error
 ```
+When the receiving data are of the text frame type, data will be deserialized to the expected data type. If the incoming data is of binary frames, and if the LHS type is some other data type apart from byte[], incoming data will first be converted to the string representation of the binary data and then be converted to the expected data type.
+
+Data deserialization for text messages happens similar to the following,
+
+- If the contextually-expected data type is string, received data will be directly presented to the API without doing any deserialization.
+- If the contextually-expected data type is xml, received text data will be deserialized to xml.
+- All the other data types are treated as json and received text data will be deserialized to json.
+
+Data deserialization for binary messages happens similar to the following,
+
+- If the contextually-expected data type is byte[], received data will be directly presented to the API without doing any deserialization.
+- If the contextually-expected data type is xml, received binary data will be first converted to the string representation of the byte[] and then deserialized to xml.
+- All the other data types are treated as json and received binary data will be first converted to the string representation of the byte[] and then will be deserialized to json.
 
 #### [close](#close)
 
@@ -547,7 +574,7 @@ remote isolated function pong(byte[] data) returns Error? {}
 
 #### [onPing and onPong remote methods](#onping-and-onpong-remote-methods)
 
-To receive ping/pong messages, users have to register a `websocket:PingPongService` when creating the client. If the service is registered, receiving ping/pong messages will get dispatched to the `onPing` and `onPong` remote functions respectively.
+To receive ping/pong messages, users have to register a `websocket:PingPongService` when creating the client. If the service is registered, receiving ping/pong messages will get dispatched to the `onPing` and `onPong` remote methods respectively.
 ```ballerina
 service class PingPongService {
    *websocket:PingPongService;
@@ -562,7 +589,7 @@ service class PingPongService {
 
 websocket:Client wsClient = check new ("ws://localhost:21020", {pingPongHandler : new PingPongService()});
 ```
-If the user has implemented `onPing` on their service, it's user's responsibility to send the `pong` frame. It can be done simply by returning the data from the remote function, or else can be done using the `pong` API of websocket:Caller. If the user hasn't implemented the `onPing` remote function, `pong` will be sent automatically.
+If the user has implemented `onPing` on their service, it's user's responsibility to send the `pong` frame. It can be done simply by returning the data from the remote method, or else can be done using the `pong` API of websocket:Caller. If the user hasn't implemented the `onPing` remote method, `pong` will be sent automatically.
 
 ## 5. [Securing the WebSocket Connections](#5-securing-the-websocket-connections)
 

@@ -102,7 +102,7 @@ public isolated function init(int localPort, *ListenerConfiguration config) retu
 
 ### 3.1. [Service](#31-service)
 
-This service has a single `onConnect` remote method, which gets invoked when a new client is connected. The new client is represented using the `tcp:Caller`. The `onConnect(tcp:Caller)` method may return `tcp:ConnectionService|tcp:Error`.
+This service has a single `onConnect` remote method which gets invoked when a new client is connected. The new client is represented using the `tcp:Caller`. The `onConnect(tcp:Caller)` method may return `tcp:ConnectionService|tcp:Error`.
 
 ### 3.2. [Connection Service](#32-connection-service)
 

@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2022/04/08   
+_Updated_: 2022/12/05   
 _Edition_: Swan Lake
 
 
@@ -177,7 +177,7 @@ attach() and start() methods. HTTP listener can be declared as follows honoring 
 listener http:Listener serviceListener = new(9090);
 
 // Service attaches to the Listener
-service http:Service /foo/bar on serviceListener {
+service /foo/bar on serviceListener {
     resource function get sayHello(http:Caller caller) {}
 }
 ```
@@ -229,7 +229,7 @@ service /hello\-world on new http:Listener(9090) {
    }
 }
 
-service http:Service "hello-world" on new http:Listener(9090) {
+service "hello-world" on new http:Listener(9090) {
    resource function get foo() {
    }
 }
@@ -243,7 +243,7 @@ service and it is the mostly used approach for creating a service. The declarati
 listener object, creating a service object, attaching the service object to the listener object.
 
 ```ballerina
-service http:Service /foo/bar on new http:Listener(9090) {
+service /foo/bar on new http:Listener(9090) {
   resource function get greeting() returns string {
       return "hello world";
   }
@@ -1246,7 +1246,6 @@ string response = check httpClient->post("/some/endpoint",
 GET, HEAD, OPTIONS methods are considered as non entity body methods. These remote methods do not contain 
 RequestMessage, but the header map an optional param.
 
-
 ```ballerina
 # The head() function can be used to send HTTP HEAD requests to HTTP endpoints.
 remote isolated function head(string path, map<string|string[]>? headers = ()) returns Response|ClientError;
@@ -1304,33 +1303,80 @@ resource function options [string ...path](map<string|string[]>? headers = (), T
             *QueryParams params) returns targetType|ClientError;                                               
 ```
 
-The query parameter is passed as field-value pair in the resource method call. The following are examples of such 
-resource method calls :
+* Path parameter
+
+Path parameters can be specified in the resource invocation along with the type.
+The supported types are `string`, `int`, `float`, `boolean`, and `decimal`.
 
 ```ballerina
 // Making a GET request
+string 'from = "2022-10-31";
+string to = "2023-10-29";
 http:Client httpClient = check new ("https://www.example.com");
-map<string|string[]> headers = {
-   "my-header": "my-header-value",
-   "header-2": ["foo", "bar"]
-};
-string resp = check httpClient->/date.get(headers, id = 123);
+string resp = check httpClient->/date/['from]/[to];
 // Same as the following :
-// string response = check httpClient->get("/date?id&123", headers);
+// string response = check httpClient->get("/date/2022-10-31/2023-10-29");
 ```
 
 ```ballerina
 // Making a POST request
-http:Client httpClient = check new ("https://www.example.com");
+string profession = "chemist";
 json payload = {
-   name: "foo",
-   age: 25,
-   address: "area 51"
+   name: "Jesse Pinkman",
+   age: 25
+};
+string response = check httpClient->/addPerson/[profession].post(payload);
+// Same as the following :
+// string response = check httpClient->post("/addPerson/chemist", payload);
+```
+
+* Query parameter
+
+A query parameter is passed as a key-value pair in the resource method call.
+The supported types are `string`, `int`, `float`, `boolean`, `decimal`, and the `array` types of the aforementioned types.
+The query param type can be nil as well.
+```ballerina
+// Making a GET request
+string resp = check httpClient->/date(id = 123);
+// Same as the following :
+// string response = check httpClient->get("/date?id=123");
+```
+```ballerina
+// Making a POST request
+json payload = {
+   name: "Jesse Pinkman",
+   age: 25
+};
+string response = check httpClient->/addPerson.post(payload, profession = "chemist", id = 123);
+// Same as the following :
+// string response = check httpClient->post("/addPerson?profession=chemist&id=123", payload);
+```
+
+* Header parameter
+
+The headers to a resource method can be provided as `map<string|string[]>`.
+
+```ballerina
+// Making a GET request
+map<string|string[]> headers = {
+   "my-header": "my-header-value",
+   "header-2": ["foo", "bar"]
+};
+string resp = check httpClient->/date(headers);
+// Same as the following :
+// string response = check httpClient->get("/date", headers);
+```
+
+```ballerina
+// Making a POST request
+json payload = {
+   name: "Jesse Pinkman",
+   age: 25
 };
 map<string> headers = { "my-header": "my-header-value" };
-string response = check httpClient->/some/endpoint(payload, headers, "application/json", name = "foo", id = 123);
+string response = check httpClient->/addPerson.post(payload, headers, "application/json");
 // Same as the following :
-// string response = check httpClient->post("/some/endpoint?name=foo&id=123", payload, headers, "application/json");
+// string response = check httpClient->post("/addPerson", payload, headers, "application/json");
 ```
 
 ###### 2.4.2.4 Forward/Execute methods
@@ -1465,7 +1511,7 @@ is the response phrase.
 
 ```ballerina
 json|error result = httpClient->post("/backend/5XX", "payload");
-if (result is http:RemoteServerError) {
+if result is http:RemoteServerError {
     int statusCode = result.detail().statusCode;
     anydata payload = result.detail().body;
     map<string[]> headers = result.detail().headers;
@@ -1490,8 +1536,9 @@ Ballerina dispatching logic is implemented to uniquely identify a resource based
 
 ### 3.1. URI and HTTP method match
 
-The ballerina dispatcher considers the absolute-resource-path of the service as the base path and the resource 
-function name as the path of the resource method for the URI path match.
+The ballerina dispatcher considers the absolute-resource-path of the service as the base path and the resource
+method name as the path of the resource method for the URI path match.
+
 Ballerina dispatching logic depends on the HTTP method of the request in addition to the URI. Therefore, matching only 
 the request path will not be sufficient. Once the dispatcher finds a resource, it checks for the method compatibility 
 as well. The accessor name of the resource describes the HTTP method where the name of the remote method implicitly 
@@ -1509,7 +1556,7 @@ get requests dispatched without any failure.
 
 ### 3.4. Path parameter template match
 PathParam is a parameter which allows you to map variable URI path segments into your resource call. Only the 
-resource functions allow this functionality where the resource name can have path templates as a path segment with 
+resource methods allow this functionality where the resource name can have path templates as a path segment with 
 variable type and the identifier within curly braces.
 ```ballerina
 resource function /foo/[string bar]() {
@@ -1578,7 +1625,7 @@ resource function post test() {
 ```
 
 ### 4.3. Payload annotation
-The payload annotation has two usages. It is used to decorate the resource function payload parameter and to decorate 
+The payload annotation has two usages. It is used to decorate the resource method payload parameter and to decorate 
 the resource return type. 
 
 ```ballerina
@@ -1690,7 +1737,6 @@ values cache configuration will not be added through this annotation)
 // last-modified header will not be set
 resource function get cachingBackEnd(http:Request req) returns @http:Cache{maxAge : 5, 
     setLastModified : false} string {
-
     return "Hello, World!!"
 }
 ```
@@ -1973,8 +2019,7 @@ work such as the below.
  - Validating
  - Securing
 
-Interceptors are designed for both request and response flows. There are just service objects which will be executed in
-a configured order to intercept request and response. These interceptor services can only have either a resource method
+Interceptors are designed for both request and response flows. There are just service objects which will be executed in a configured order to intercept request and response. These interceptor services can only have either a resource method 
 or a remote method depends on the interceptor type. Moreover, they do not support `ServiceConfig`, `ResourceConfig`
 and `Cache` annotations.
 
@@ -2069,7 +2114,8 @@ response to the client similar to any HTTP service resource.
 
 #### 8.1.2 Response interceptor
 
-Following is an example of `ResponseInterceptor` written in Ballerina swan-lake. `ResponseInterceptor` can only have one remote method : `interceptResponse()`.
+Following is an example of `ResponseInterceptor` written in Ballerina swan-lake. `ResponseInterceptor` can only have one
+remote method : `interceptResponse()`.
 
 ```ballerina
 service class ResponseInterceptor {
@@ -2082,7 +2128,8 @@ service class ResponseInterceptor {
 }
 ```
 
-`ResponseInterceptor` is different from `RequestInterceptor`. Since it has nothing to do with HTTP methods and paths, a remote method is used instead of resource method.
+`ResponseInterceptor` is different from `RequestInterceptor`. Since it has nothing to do with HTTP methods and paths, 
+remote method is used instead of resource method.
 
 ##### 8.1.2.1 Return to respond
 The remote method : `interceptResposne()` allows returning values other than `NextService|error?`. Anyway this will
@@ -2965,7 +3012,6 @@ listener http:Listener http2ServiceEP = new (7090, config = {httpVersion: "2.0"}
 // Client declaration
 http:Client clientEP = check new ("http://localhost:7090", {httpVersion: "2.0"});
 ```
-
 
 There are few API level additions when it comes to the HTTP/2 design such as Push promise and promise response.
 #### 10.1.1. Push Promise and Promise Response

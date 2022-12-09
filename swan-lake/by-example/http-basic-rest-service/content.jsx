@@ -266,10 +266,11 @@ export default function HttpBasicRestService() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
           </a>
+          .
         </p>
       </blockquote>
 
@@ -336,8 +337,8 @@ export default function HttpBasicRestService() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service path and resource name"
-            href="/learn/by-example/http-service-path-and-resource-name"
+            title="Service and resource paths"
+            href="/learn/by-example/http-service-and-resource-paths"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -347,7 +348,7 @@ export default function HttpBasicRestService() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service path and resource name
+                  Service and resource paths
                 </span>
               </div>
               <svg

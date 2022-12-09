@@ -261,10 +261,11 @@ export default function Http2To11DowngradeService() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
           </a>
+          .
         </p>
       </blockquote>
 

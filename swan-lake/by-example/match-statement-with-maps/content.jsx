@@ -89,7 +89,7 @@ export default function MatchStatementWithMaps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=96d3eab99d855df73f7d2310bff79830&file=match_statement_with_maps.bal",
+                "https://play.ballerina.io/?gist=7069ed3c4f17ae5b2fb186b8e0991360&file=match_statement_with_maps.bal",
                 "_blank"
               );
             }}

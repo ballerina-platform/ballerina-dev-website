@@ -58,7 +58,7 @@ export default function HttpCachingClient() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP client - Caching</h1>
+      <h1>HTTP client - Enable Caching</h1>
 
       <p>
         HTTP caching is enabled by default in HTTP client endpoints. Users can

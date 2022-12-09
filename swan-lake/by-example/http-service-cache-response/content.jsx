@@ -129,13 +129,6 @@ export default function HttpServiceCacheResponse() {
 
       <p>Run the service by executing the following command.</p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may enable the trace logs to observe the in
-          and out traffic.
-        </p>
-      </blockquote>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -195,10 +188,15 @@ export default function HttpServiceCacheResponse() {
         </Col>
       </Row>
 
-      <p>
-        Invoke the service via the{" "}
-        <a href="/learn/by-example/http-caching-client">Caching client</a>.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-caching-client">Caching client</a>. In
+          addition to that{" "}
+          <a href="/learn/by-example/http-trace-logs/">trace logs</a> can be
+          enabled to observe the in and out traffic.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 

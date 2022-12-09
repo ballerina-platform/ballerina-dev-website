@@ -281,6 +281,17 @@ export default function HttpQueryParameter() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the client
+          given in the{" "}
+          <a href="/learn/by-example/http-client-query-parameter/">
+            HTTP client - Query parameter
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">

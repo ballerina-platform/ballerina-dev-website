@@ -157,7 +157,7 @@ import TesterinaGroupTests from "./testerina-group-tests/content.jsx";
 import TesterinaMockingFunctions from "./testerina-mocking-functions/content.jsx";
 import TesterinaMockingObjects from "./testerina-mocking-objects/content.jsx";
 import HttpBasicRestService from "./http-basic-rest-service/content.jsx";
-import HttpServicePathAndResourceName from "./http-service-path-and-resource-name/content.jsx";
+import HttpServiceAndResourcePaths from "./http-service-and-resource-paths/content.jsx";
 import HttpServiceDataBinding from "./http-service-data-binding/content.jsx";
 import HttpServicePayloadConstraintValidation from "./http-service-payload-constraint-validation/content.jsx";
 import HttpPathParam from "./http-path-param/content.jsx";
@@ -218,8 +218,8 @@ import HttpRequestWithMultiparts from "./http-request-with-multiparts/content.js
 import Http2To11DowngradeClient from "./http-2-to-1-1-downgrade-client/content.jsx";
 import Http2PriorKnowledgeClient from "./http-2-prior-knowledge-client/content.jsx";
 import Http20ClientServerPush from "./http-2-0-client-server-push/content.jsx";
-import HttpRequestInterceptors from "./http-request-interceptors/content.jsx";
-import HttpResponseInterceptors from "./http-response-interceptors/content.jsx";
+import HttpRequestInterceptor from "./http-request-interceptor/content.jsx";
+import HttpResponseInterceptor from "./http-response-interceptor/content.jsx";
 import HttpErrorHandling from "./http-error-handling/content.jsx";
 import HttpInterceptorErrorHandling from "./http-interceptor-error-handling/content.jsx";
 import GraphqlHelloWorld from "./graphql-hello-world/content.jsx";
@@ -568,7 +568,7 @@ const BBEs = {
   TesterinaMockingFunctions,
   TesterinaMockingObjects,
   HttpBasicRestService,
-  HttpServicePathAndResourceName,
+  HttpServiceAndResourcePaths,
   HttpServiceDataBinding,
   HttpServicePayloadConstraintValidation,
   HttpPathParam,
@@ -629,8 +629,8 @@ const BBEs = {
   Http2To11DowngradeClient,
   Http2PriorKnowledgeClient,
   Http20ClientServerPush,
-  HttpRequestInterceptors,
-  HttpResponseInterceptors,
+  HttpRequestInterceptor,
+  HttpResponseInterceptor,
   HttpErrorHandling,
   HttpInterceptorErrorHandling,
   GraphqlHelloWorld,

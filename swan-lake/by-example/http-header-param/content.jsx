@@ -288,6 +288,17 @@ export default function HttpHeaderParam() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the client
+          given in the{" "}
+          <a href="/learn/by-example/http-client-header-parameter/">
+            HTTP client - Header parameter
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">

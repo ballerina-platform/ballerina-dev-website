@@ -261,6 +261,16 @@ export default function HttpServicePayloadConstraintValidation() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-send-request-receive-response/">
+            Send request/Receive response client
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -287,7 +297,7 @@ export default function HttpServicePayloadConstraintValidation() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/by-example/constraint-validations/">
+            <a href="/learn/by-example/constraint-validations/">
               Constraint validation example
             </a>
           </span>

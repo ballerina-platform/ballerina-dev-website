@@ -265,12 +265,21 @@ export default function HttpSendDifferentStatusCodes() {
               <span>{`< content-length: 0`}</span>
               <span>{`< server: ballerina`}</span>
               <span>{`< date: Mon, 5 Dec 2022 16:23:51 +0530`}</span>
-              <span>{`< `}</span>
-              <span>{`{"message":"album already exists"}`}</span>
+              <span>{`<`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-send-request-receive-response/">
+            Send request/Receive response client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 

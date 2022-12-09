@@ -269,6 +269,16 @@ export default function HttpSendResponse() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-data-binding/">
+            Payload data binding client
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">

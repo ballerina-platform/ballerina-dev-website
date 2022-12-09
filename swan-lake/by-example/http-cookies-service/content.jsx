@@ -220,8 +220,8 @@ export default function HttpCookiesService() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/http-cookies-client/">Cookies client</a>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-cookies-client/">Cookies client</a>.
         </p>
       </blockquote>
 

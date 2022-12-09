@@ -259,7 +259,7 @@ export default function HttpServiceOauth2() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type">
             OAuth2 JWT Bearer grant type client
           </a>

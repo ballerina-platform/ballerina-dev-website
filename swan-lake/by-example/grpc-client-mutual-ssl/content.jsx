@@ -12,8 +12,7 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/grpc;
-import ballerina/io;
+  `import ballerina/io;
 
 public function main() returns error? {
     // A gRPC client can be configured to initiate new connections that are secured via mutual SSL.

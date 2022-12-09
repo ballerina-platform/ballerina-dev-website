@@ -1387,8 +1387,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service path and resource name",
-        "url": "http-service-path-and-resource-name",
+        "name": "Service and resource paths",
+        "url": "http-service-and-resource-paths",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1506,7 +1506,7 @@
       {
         "name": "Query parameter",
         "url": "http-client-query-parameter",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -1514,13 +1514,13 @@
       {
         "name": "Header parameter",
         "url": "http-client-header-parameter",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Caching",
+        "name": "Enable caching",
         "url": "http-caching-client",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1922,16 +1922,16 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Request interceptors",
-        "url": "http-request-interceptors",
+        "name": "Request interceptor",
+        "url": "http-request-interceptor",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Response interceptors",
-        "url": "http-response-interceptors",
+        "name": "Response interceptor",
+        "url": "http-response-interceptor",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,

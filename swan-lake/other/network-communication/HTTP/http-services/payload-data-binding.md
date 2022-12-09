@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages-swanlake
 title: Payload data binding
-description: The HTTP service resource payloads can be directly data bound to the resource mehod parameters. 
+description: The HTTP service resource payloads can be directly data bound to the resource method parameters. 
 keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-services/payload-data-binding/
 active: payload-data-binding

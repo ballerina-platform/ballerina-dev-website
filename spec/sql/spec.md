@@ -301,7 +301,7 @@ Here the returned stream can consist of following types of records,
    
 2. Typed record  
    A ballerina record type is created to represent the returned result set. the `SELECT` query is executed
-   via the `query` remote function of the client. Once the query is executed, each data record can be retrieved by looping
+   via the `query` remote method of the client. Once the query is executed, each data record can be retrieved by looping
    the result set. The `stream` returned by the select operation holds a pointer to the actual data in the database, and it
    loads data from the table only when it is accessed. This stream can be iterated only once.
 
@@ -447,7 +447,7 @@ public type ExecutionResult record {
 };
 ```
 
-This sample demonstrates modifying data by executing an `UPDATE` statement via the `execute` remote function of
+This sample demonstrates modifying data by executing an `UPDATE` statement via the `execute` remote method of
 the client.
 
 ```ballerina
@@ -472,7 +472,7 @@ remote isolated function batchExecute(ParameterizedQuery[] sqlQueries) returns E
 ```
 
 This sample demonstrates how to insert multiple records with a single `INSERT` statement that is executed via the
-`batchExecute` remote function of the client. This is done by creating a `table` with multiple records and
+`batchExecute` remote method of the client. This is done by creating a `table` with multiple records and
 parameterized SQL query as same as the above `execute` operations.
 
 ```ballerina
@@ -531,7 +531,7 @@ public class ProcedureCallResult {
 Here `getNextQueryResult()` can be used to update the pointer to iterate through the returned result sets.
 
 This sample demonstrates how to execute a stored procedure with a single `INSERT` statement that is executed via the
-`call` remote function of the client.
+`call` remote method of the client.
 
 ```ballerina
 int uid = 10;

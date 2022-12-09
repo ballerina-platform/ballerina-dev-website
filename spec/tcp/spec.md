@@ -102,11 +102,11 @@ public isolated function init(int localPort, *ListenerConfiguration config) retu
 
 ### 3.1. [Service](#31-service)
 
-This service has a single `onConnect` remote function which gets invoked when a new client is connected. The new client is represented using the `tcp:Caller`. The `onConnect(tcp:Caller)` method may return `tcp:ConnectionService|tcp:Error`.
+This service has a single `onConnect` remote method which gets invoked when a new client is connected. The new client is represented using the `tcp:Caller`. The `onConnect(tcp:Caller)` method may return `tcp:ConnectionService|tcp:Error`.
 
 ### 3.2. [Connection Service](#32-connection-service)
 
-Once the TCP connection is established, it returns a `tcp:ConnectionService`. This service has a fixed set of remote functions that do not have any configs. Receiving messages will get dispatched to the relevant remote function. Each remote function is explained below.
+Once the TCP connection is established, it returns a `tcp:ConnectionService`. This service has a fixed set of remote methods that do not have any configs. Receiving messages will get dispatched to the relevant remote method. Each remote method is explained below.
 
 ```ballerina
 import ballerina/tcp;

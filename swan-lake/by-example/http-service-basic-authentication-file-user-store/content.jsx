@@ -158,13 +158,17 @@ export default function HttpServiceBasicAuthenticationFileUserStore() {
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the service,
-          populate the <code>Config.toml</code> file correctly with the user
-          information as shown below.
-        </p>
-      </blockquote>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Populate the <code>Config.toml</code> file correctly with the user
+            information as shown below.
+          </span>
+        </li>
+      </ul>
 
       <pre style={{ marginLeft: "32px" }} className="p-3 rounded toml">
         <code>
@@ -238,7 +242,7 @@ export default function HttpServiceBasicAuthenticationFileUserStore() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-basic-authentication">
             Basic authentication client
           </a>

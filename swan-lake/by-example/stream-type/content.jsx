@@ -87,7 +87,7 @@ export default function StreamType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1ccd286d84e9809f08210f4c7e38f913&file=stream_type.bal",
+                "https://play.ballerina.io/?gist=058a295ac48747cc9a867fd60d37c101&file=stream_type.bal",
                 "_blank"
               );
             }}

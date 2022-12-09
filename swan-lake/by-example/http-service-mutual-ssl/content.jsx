@@ -288,7 +288,7 @@ export default function HttpServiceMutualSsl() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-mutual-ssl/">
             Mutual SSL/TLS client
           </a>

@@ -282,7 +282,7 @@ export default function HttpServiceSslTls() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-ssl-tls/">SSL/TLS client</a>.
         </p>
       </blockquote>
@@ -313,7 +313,10 @@ export default function HttpServiceSslTls() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Caching" href="/learn/by-example/http-caching-client">
+          <Link
+            title="Enable caching"
+            href="/learn/by-example/http-caching-client"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -339,7 +342,7 @@ export default function HttpServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Caching
+                  Enable caching
                 </span>
               </div>
             </div>

@@ -224,7 +224,7 @@ export default function HttpServiceJwtAuthentication() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-self-signed-jwt-authentication">
             self-signed JWT authentication client
           </a>

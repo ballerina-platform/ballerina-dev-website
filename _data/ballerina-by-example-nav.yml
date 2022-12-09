@@ -586,9 +586,9 @@ sublinks:
           - title: Basic REST service
             id: 1
             url: http-basic-rest-service
-          - title: Service path and resource name
+          - title: Service and resource paths
             id: 2
-            url: http-service-path-and-resource-name
+            url: http-service-and-resource-paths
           - title: Payload data binding
             id: 3
             url: http-service-data-binding
@@ -637,7 +637,7 @@ sublinks:
           - title: Header parameter
             id: 6
             url: http-client-header-parameter
-          - title: Caching
+          - title: Enable caching
             id: 7
             url: http-caching-client
       - title: REST service security
@@ -790,12 +790,12 @@ sublinks:
       - title: HTTP service interceptors
         id: 8
         sublinks:
-          - title: Request interceptors
+          - title: Request interceptor
             id: 1
-            url: http-request-interceptors
-          - title: Response interceptors
+            url: http-request-interceptor
+          - title: Response interceptor
             id: 2
-            url: http-response-interceptors
+            url: http-response-interceptor
           - title: Error handling
             id: 3
             url: http-error-handling

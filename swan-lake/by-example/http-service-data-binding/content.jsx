@@ -253,6 +253,16 @@ export default function HttpServiceDataBinding() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-send-request-receive-response/">
+            Send request/Receive response client
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -280,8 +290,8 @@ export default function HttpServiceDataBinding() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service path and resource name"
-            href="/learn/by-example/http-service-path-and-resource-name"
+            title="Service and resource paths"
+            href="/learn/by-example/http-service-and-resource-paths"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -308,7 +318,7 @@ export default function HttpServiceDataBinding() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service path and resource name
+                  Service and resource paths
                 </span>
               </div>
             </div>

@@ -29,7 +29,7 @@ table<Album> key(title) albums = table [
 // It can be represented by both identifiers and string literals. E.g., \`/music\\-info\`, \`"/music-info"\`.
 service /info on new http:Listener(9090) {
 
-    // The \`resource name\` is \`albums\` and the \`resource accessor\` is \`get\`.
+    // The \`resource path\` is \`albums\` and the \`resource accessor\` is \`get\`.
     // The \`.\` represents the current resource that is \`/info\`.
     resource function get albums() returns Album[] {
         return albums.toArray();
@@ -38,7 +38,7 @@ service /info on new http:Listener(9090) {
 `,
 ];
 
-export default function HttpServicePathAndResourceName() {
+export default function HttpServiceAndResourcePaths() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,11 +61,11 @@ export default function HttpServicePathAndResourceName() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>REST service - Service path and resource name</h1>
+      <h1>REST service - Service and resource paths</h1>
 
       <p>
         Ballerina supports writing RESTful services. Each resource method can be
-        invoked via <code>service-path</code> and <code>resource-name</code>.
+        invoked via <code>service-path</code> and <code>resource-path</code>.
         The <code>resource accessor</code> confines the resource to the
         specified HTTP method.
       </p>

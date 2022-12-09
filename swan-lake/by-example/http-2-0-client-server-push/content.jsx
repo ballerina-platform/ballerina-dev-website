@@ -320,8 +320,8 @@ export default function Http20ClientServerPush() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Request interceptors"
-            href="/learn/by-example/http-request-interceptors"
+            title="Request interceptor"
+            href="/learn/by-example/http-request-interceptor"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -331,7 +331,7 @@ export default function Http20ClientServerPush() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request interceptors
+                  Request interceptor
                 </span>
               </div>
               <svg

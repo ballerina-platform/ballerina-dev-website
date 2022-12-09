@@ -24,7 +24,7 @@ service HelloWorld {
   `import ballerina/grpc;
 
 @grpc:Descriptor {
-    value: GRPC_SIMPLE_DESC
+    value: GRPC_SERVICE_UNARY_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
 

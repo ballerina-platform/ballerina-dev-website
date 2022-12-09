@@ -42,7 +42,7 @@ permalink: /community/active-proposals
 |[Proposal: GraphQL Resource-Level Interceptors](https://github.com/ballerina-platform/ballerina-standard-library/issues/3528)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|0|2022-10-19|Active|
 |[Proposal:  Ballerina GraphQL Federation Support](https://github.com/ballerina-platform/ballerina-standard-library/issues/3504)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2022-10-13|Draft|
 |[Proposal: Introduce DataLoader for Ballerina](https://github.com/ballerina-platform/ballerina-standard-library/issues/3391)|[ThisaruGuruge](https://github.com/ThisaruGuruge)|1|2022-09-22|Active|
-|[Proposal: Write GraphQL Schema to a File](https://github.com/ballerina-platform/ballerina-standard-library/issues/3286)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|12|2022-08-26|Active|
+|[Proposal: Write GraphQL Schema to a File](https://github.com/ballerina-platform/ballerina-standard-library/issues/3286)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|12|2022-08-26|Accepted|
 |[Proposal: Proto file generation for Protocol Buffers SerDes](https://github.com/ballerina-platform/ballerina-standard-library/issues/3217)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2022-08-04|Draft|
 |[Proposal: Introduce a new API to wait until a given scheduled job is completed ](https://github.com/ballerina-platform/ballerina-standard-library/issues/3018)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|0|2022-06-20|Active|
 |[Proposal: Ballerina Constraint Package](https://github.com/ballerina-platform/ballerina-standard-library/issues/2850)|[ldclakmal](https://github.com/ldclakmal)|22|2022-04-20|Accepted|

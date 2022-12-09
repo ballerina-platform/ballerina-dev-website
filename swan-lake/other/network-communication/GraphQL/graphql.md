@@ -151,7 +151,7 @@ curl -X POST -H "Content-type: application/json" -d '{"query":"{name}"}' http://
 {"data":{"name":"Jack"}}
 ```
 
-The resource functions here can be provided with parameters to correlate with the GraphQL field parameters as well. Also, in the case of returning objects in fields, the resource method can return a service object to represent this. 
+The resource methods here can be provided with parameters to correlate with the GraphQL field parameters as well. Also, in the case of returning objects in fields, the resource method can return a service object to represent this. 
 
 
 Now, that you know the basics of how GraphQL works, for an actual implementation using Ballerina, which has GraphQL as part of its built-in language-level services support, see [Implementing GraphQL Services](/learn/user-guide/network-communication/graphql/implementing-graphql-services/).

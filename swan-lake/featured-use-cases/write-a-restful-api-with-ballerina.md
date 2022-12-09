@@ -132,7 +132,7 @@ service /covid/status on new http:Listener(9000){
 
 In this code:
 
-- Unlike normal functions, resource functions can have accessors. In this case, the accessor is set to `get`, which means only HTTP `GET` requests could hit this resource. Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. 
+- Unlike normal functions, resource methods can have accessors. In this case, the accessor is set to `get`, which means only HTTP `GET` requests could hit this resource. Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. 
 - The default HTTP response status code for a resource method other than `post` is `200 OK`. For an HTTP `POST` resource, the default HTTP response status code is `201 Creted`. 
 
 ### Create the second resource to add data
@@ -209,7 +209,7 @@ resource function get countries/[string iso_code]() returns CovidEntry|InvalidIs
 ```
 
 In this code:
-- This resource is a bit more different than the first two resources. As explained earlier, resource functions have accessors.
+- This resource is a bit more different than the first two resources. As explained earlier, resource methods have accessors.
 - In addition, it also supports hierarchical paths making it ideal for implementing RESTful APIs. Hierarchical paths can have path params.
 -  In this case, `iso_code` is used as the path param, which in turn, becomes a string variable.
 

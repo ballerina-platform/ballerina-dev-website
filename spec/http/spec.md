@@ -1538,6 +1538,7 @@ Ballerina dispatching logic is implemented to uniquely identify a resource based
 
 The ballerina dispatcher considers the absolute-resource-path of the service as the base path and the resource
 method name as the path of the resource method for the URI path match.
+
 Ballerina dispatching logic depends on the HTTP method of the request in addition to the URI. Therefore, matching only 
 the request path will not be sufficient. Once the dispatcher finds a resource, it checks for the method compatibility 
 as well. The accessor name of the resource describes the HTTP method where the name of the remote method implicitly 
@@ -2018,8 +2019,8 @@ work such as the below.
  - Validating
  - Securing
 
-Interceptors are designed for both request and response flows. There are just service objects which will be executed in
-a configured order to intercept request and response. These interceptor services can only have either a resource method 
+Interceptors are designed for both request and response flows. There are just service objects which 
+will be executed in a configured order to intercept request and response. These interceptor services can only have either a resource method 
 or a remote method depends on the interceptor type. Moreover, they do not support `ServiceConfig`, `ResourceConfig`
 and `Cache` annotations.
 

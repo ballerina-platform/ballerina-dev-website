@@ -393,10 +393,10 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
-### Create the resource functions
+### Create the resource methods
 
-Within this service, you can define resource functions to provide access to the database. The code snippet below 
-demonstrates a resource function that can be used to create a new employee via a `POST` request.
+Within this service, you can define resource methods to provide access to the database. The code snippet below 
+demonstrates a resource method that can be used to create a new employee via a `POST` request.
 
 ```ballerina
 service /employees on new http:Listener(8080) {
@@ -471,7 +471,7 @@ be accessed via a browser by visiting `http://locahost:8080/employees`.
 
 ## Try the service
 
-Invoke the defined resource function by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
+Invoke the defined resource method by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
 
 ```
 curl -X POST http://localhost:8080/employees/

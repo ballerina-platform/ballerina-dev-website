@@ -348,7 +348,7 @@ While the below remote methods are strictly WebSub compliant,
 - onUnsubscriptionValidation
 - onUnsubscriptionIntenVerified
 
-The below remote functions are not, 
+The below remote methods are not, 
 - onEventMessage
 - onRegisterTopic
 - onUnregisterTopic

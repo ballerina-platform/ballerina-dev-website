@@ -138,7 +138,7 @@ bal asyncapi -i hello.yaml -o ./output_path
 
 Then, the generated files can be modified according to the custom requirements. When modifying the generated code segments, it is easier to consider the below facts.
 
-- All the incoming requests are received by the resource function in the `dispatcher_service.bal` file. Hence, if there is a necessity to add an authentication logic for the incoming calls, that logic can be included there before processing the incoming HTTP request.
+- All the incoming requests are received by the resource method in the `dispatcher_service.bal` file. Hence, if there is a necessity to add an authentication logic for the incoming calls, that logic can be included there before processing the incoming HTTP request.
 - If more information is needed when initializing the listener such as secrets, endpoint URLs, tokens, refresh tokens, etc., update the `init` function in the `listener.bal` file.
 
 ## Execute the generated sources

@@ -258,7 +258,7 @@ public function main() returns error? {
 In this code:
 
 - The client declaration creates a connection to the remote server which is listening on port 9090. The generated client has remote methods that can use to talk to a remote server.
-- The `main` function contains the statements that call the `sayHello` remote function and prints the response to the console.
+- The `main` function contains the statements that call the `sayHello` remote method and prints the response to the console.
 
 ## Run the gRPC client
 

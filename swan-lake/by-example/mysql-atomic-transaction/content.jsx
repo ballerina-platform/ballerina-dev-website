@@ -12,33 +12,60 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerina/log;
+  `import ballerina/http;
+import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-public function main() returns error? {
+// The \`Order\` record to load records from \`sales_order\` table.
+type Order record {|
+    string id;
+    string orderDate;
+    string productId;
+    int quantity;
+|};
 
-    // Initializes the MySQL client. The \`mysqlClient\` can be reused to access the database throughout the application execution.
-    mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root",
-                                          password = "Test@123", database = "CUSTOMER");
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
 
-    // The transaction block can be used to roll back if any error occurred.
-    transaction {
-        _ = check mysqlClient->execute(\`INSERT INTO Customers (firstName, lastName, registrationID, creditLimit,
-                                        country) VALUES ('Linda', 'Jones', 4, 10000.75, 'USA')\`);
-
-        _ = check mysqlClient->execute(\`INSERT INTO Customers (firstName, lastName, registrationID, creditLimit,
-                                        country) VALUES ('Peter', 'Stuart', 4, 5000.75, 'USA')\`);
-
-        check commit;
-    } on fail error e {
-        log:printError(e.message());
-        log:printInfo("One of the queries failed. Rollback transaction.");
+    function init() returns error? {
+        // Initiate the mysql client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.db = check new (host = "localhost", port = 3306, user = "root",
+                            password = "Test@123", database = "MUSIC_STORE");
     }
 
-    // Closes the MySQL client.
-    check mysqlClient.close();
+    resource function post 'order(@http:Payload Order salesOrder) returns http:Created|error {
+        transaction {
+            // Insert into \`sales_order\` table.
+            _ = check self.db->execute(\`INSERT INTO MUSIC_STORE.sales_order VALUES 
+                                        (\${salesOrder.id}, \${salesOrder.orderDate},
+                                         \${salesOrder.productId}, \${salesOrder.quantity});\`);
 
+            // Update product quantity as per the order.
+            sql:ExecutionResult inventoryUpdate = check self.db->execute(
+                                        \`UPDATE inventory 
+                                        SET quantity = quantity - \${salesOrder.quantity} 
+                                        WHERE id = \${salesOrder.productId}\`);
+
+            // If the product is not found, rollback or commit transaction.
+            if inventoryUpdate.affectedRowCount == 0 {
+                rollback;
+                return error(string \`Product \${salesOrder.productId} not found.\`);
+            } else {
+                check commit;
+                return http:CREATED;
+            }
+        } on fail error e {
+            // In case of error, the transaction block is rolled back automatically.
+            if e is sql:DatabaseError {
+                if e.detail().errorCode == 3819 {
+                    return error(string \`Product \${salesOrder.productId} is out of stock.\`);
+                }
+            }
+            return e;
+        }
+    }
 }
 `,
   `mysql:Client mysqlClient = check new (user = "root", password = "Test@123", database = "CUSTOMER",
@@ -52,6 +79,8 @@ export default function MysqlAtomicTransaction() {
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
 
   const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
@@ -188,16 +217,16 @@ export default function MysqlAtomicTransaction() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Set up the MySQL database - Run the{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-atomic-transaction/prerequisites/prerequisite.bal">
-              prerequisite.bal
-            </a>{" "}
-            file by executing the command <code>bal run</code>.
+            Refer{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md">
+              <code>mysql-prerequisite</code>
+            </a>
+            .
           </span>
         </li>
       </ul>
 
-      <p>Run the sample by executing the following command.</p>
+      <p>Run the service.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -252,11 +281,72 @@ export default function MysqlAtomicTransaction() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run`}</span>
-              <span>{`
-`}</span>
-              <span>{`time = 2022-06-22T13:48:36.244+05:30 level = ERROR module = "" message = "Error while executing SQL query: INSERT INTO Customers (firstName, lastName, registrationID, creditLimit,\\n                                        country) VALUES (\\'Peter\\', \\'Stuart\\', 4, 5000.75, \\'USA\\'). Duplicate entry \\'4\\' for key \\'customers.registrationID\\'."`}</span>
-              <span>{`time = 2022-06-22T13:48:36.245+05:30 level = INFO module = "" message = "One of the queries failed. Rollback transaction."`}</span>
+              <span>{`\$ bal run mysql_atomic_transaction.bal`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal to post a new order.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`\$ curl http://localhost:8080/order -d "{\\"id\\":\\"S-123\\", \\"orderDate\\":\\"2022-12-08\\", \\"productId\\":\\"A-123\\", \\"quantity\\":11}" -H "Content-Type: application/json"`}</span>
+              <span>{`Product  A-123  is out of stock.`}</span>
             </code>
           </pre>
         </Col>

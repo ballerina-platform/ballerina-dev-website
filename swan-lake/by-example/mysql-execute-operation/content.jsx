@@ -16,7 +16,6 @@ const codeSnippetData = [
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-// Defines a record to load the query result.
 type Album record {|
     string id;
     string title;
@@ -188,11 +187,11 @@ export default function MysqlExecuteOperation() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Set up the MySQL database - Run the{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-execute-operation/prerequisites/prerequisite.bal">
-              prerequisite.bal
-            </a>{" "}
-            file by executing the command <code>bal run</code>.
+            Refer{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md">
+              <code>mysql-prerequisite</code>
+            </a>
+            .
           </span>
         </li>
       </ul>

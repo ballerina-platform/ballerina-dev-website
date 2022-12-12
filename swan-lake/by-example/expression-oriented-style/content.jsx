@@ -90,7 +90,7 @@ export default function ExpressionOrientedStyle() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ac25b857020d5c54b954e8693895b9c1&file=expression_oriented_style.bal",
+                "https://play.ballerina.io/?gist=485c60ae7e8c9c5c970652d6c4c0ccd2&file=expression_oriented_style.bal",
                 "_blank"
               );
             }}

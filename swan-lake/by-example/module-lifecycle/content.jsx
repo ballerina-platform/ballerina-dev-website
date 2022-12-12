@@ -78,7 +78,7 @@ export default function ModuleLifecycle() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c468e32ac2c4b68b58991c682615f14c&file=module_lifecycle.bal",
+                "https://play.ballerina.io/?gist=fdf28072b095a4c11ade727737e8290a&file=module_lifecycle.bal",
                 "_blank"
               );
             }}

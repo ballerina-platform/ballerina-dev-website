@@ -76,9 +76,9 @@ To complete this part of the guide, you need:
     - For additional information, see [Get Started with GraalVM](https://www.graalvm.org/22.3/docs/getting-started).
 2. Configure the runtime environment. Set the `GRAALVM_HOME` environment variable to the GraalVM installation directory as directed at the end of the execution of the above command.
 
-> **Note:** On Windows, the native image requires Visual Studio Code and Microsoft Visual C++(MSVC). For instructions on installing Visual Studio Code with the Windows 10 SDK, go to [Using GraalVM and Native Image on Windows 10](https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311) to install Visual Studio Code with the Windows 10 SDK.
-
-> **Note:** GraalVM native-image tool support for Apple M1(darwin-aarch64) is still experimental. For more updates, see [Support for Apple M1](https://github.com/oracle/graal/issues/2666).
+> **Note:** 
+> - On Windows, the native image requires Visual Studio Code and Microsoft Visual C++(MSVC). For instructions on installing Visual Studio Code with the Windows 10 SDK, go to [Using GraalVM and Native Image on Windows 10](https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311) to install Visual Studio Code with the Windows 10 SDK.
+> - GraalVM native-image tool support for Apple M1(darwin-aarch64) is still experimental. For more updates, see [Support for Apple M1](https://github.com/oracle/graal/issues/2666).
 
 After the environment is set up, follow the steps below to build a native executable for a simple Ballerina HTTP server application.
 

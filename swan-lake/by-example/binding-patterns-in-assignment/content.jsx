@@ -117,7 +117,7 @@ export default function BindingPatternsInAssignment() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4416ee72f94d8318d9e54e04de9f7ba6&file=binding_patterns_in_assignment.bal",
+                "https://play.ballerina.io/?gist=3e67c03db97373f31f671a24fa5026db&file=binding_patterns_in_assignment.bal",
                 "_blank"
               );
             }}

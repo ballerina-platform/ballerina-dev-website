@@ -76,18 +76,13 @@ To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://g
 
 ## Developer tools updates
 
-### New features
-
-#### Language Server
-
 ### Improvements
 
-#### OpenAPI Tool
+To view improvements, see the GitHub milestone for Swan Lake 2201.2.4 of the repositories below.
+- [Application Architecture Model Generator](https://github.com/ballerina-platform/ballerina-lang/issues?q=label%3AArea%2FProjectDesignTool+milestone%3A2201.2.4+is%3Aclosed)
 
 ### Bug Fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.2.4 of the repositories below.
-
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.2.4+label%3AType%2FBug+label%3ATeam%2FLanguageServer)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.2.4%22+label%3AType%2FBug+is%3Aclosed)
-- [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.2.4+label%3AType%2FBug+label%3AArea%2FDebugger)
+- [JSON to Record Converter](https://github.com/ballerina-platform/ballerina-lang/issues?q=label%3AArea%2FJSONToRecordConverter+milestone%3A2201.2.4+is%3Aclosed)

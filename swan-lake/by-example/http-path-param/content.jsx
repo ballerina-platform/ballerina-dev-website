@@ -65,11 +65,14 @@ export default function HttpPathParam() {
       <h1>REST service - Path parameter</h1>
 
       <p>
-        The <code>http</code> module provides first class support for specifying{" "}
-        <code>Path parameters</code> in the resource path along with the type.
-        The supported types are <code>string</code>, <code>int</code>,{" "}
-        <code>float</code>, <code>boolean</code>, and <code>decimal</code>{" "}
-        (e.g., path/[string foo]).
+        The <code>path parameter</code> is a mandatory but variable part of a
+        resource URL. <code>path parameters</code> can be added to a resource
+        method by specifying the parameter type and name in the resource path
+        (eg: <code>albums/[string name]</code>). The <code>http</code> module
+        supports <code>string</code>, <code>int</code>, <code>float</code>,{" "}
+        <code>boolean</code>, and <code>decimal</code> types as path parameter
+        types. Use it when designing REST API endpoints that require dynamic
+        path segments.
       </p>
 
       <Row
@@ -300,7 +303,7 @@ export default function HttpPathParam() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

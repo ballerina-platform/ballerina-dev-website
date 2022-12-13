@@ -81,7 +81,7 @@ export default function ComputedFieldKey() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c2815b9b6e8245c75138f1b30f3ab427&file=computed_field_key.bal",
+                "https://play.ballerina.io/?gist=dc1615bf4ae3bb997c11ae638db784ee&file=computed_field_key.bal",
                 "_blank"
               );
             }}

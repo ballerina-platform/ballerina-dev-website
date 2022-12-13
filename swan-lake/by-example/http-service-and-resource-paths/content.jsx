@@ -64,10 +64,13 @@ export default function HttpServiceAndResourcePaths() {
       <h1>REST service - Service and resource paths</h1>
 
       <p>
-        Ballerina supports writing RESTful services. Each resource method can be
-        invoked via <code>service-path</code> and <code>resource-path</code>.
-        The <code>resource accessor</code> confines the resource to the
-        specified HTTP method.
+        The <code>service path</code> is defined in the service declaration and
+        the <code>resource path</code> is defined in the resource method
+        definition. Each resource can be invoked by using the{" "}
+        <code>service path</code>, <code>resource path</code>, and{" "}
+        <code>resource accessor</code>. In an HTTP resource, the{" "}
+        <code>resource accessor</code> confines the resource to a specific HTTP
+        method.
       </p>
 
       <Row
@@ -265,7 +268,7 @@ export default function HttpServiceAndResourcePaths() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

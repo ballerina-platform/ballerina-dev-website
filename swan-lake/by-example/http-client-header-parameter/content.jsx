@@ -150,7 +150,7 @@ export default function HttpClientHeaderParameter() {
           <span>&#8226;&nbsp;</span>
           <span>
             Run the HTTP service given in the{" "}
-            <a href="/learn/by-example/http-header-parameter/">
+            <a href="/learn/by-example/http-header-param/">
               REST service - Header parameter
             </a>{" "}
             example.

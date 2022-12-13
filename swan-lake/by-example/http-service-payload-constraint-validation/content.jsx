@@ -69,20 +69,12 @@ export default function HttpServicePayloadConstraintValidation() {
         resource method uses the <code>constraint</code> module to validate the
         payload against the given constraints. This validation happens soon
         after the successful data-binding of the request payload before
-        executing the resource method.
-      </p>
-
-      <p>
-        The constraints can be added to a given data type using different
-        annotations. If the validation fails, a <code>400 Bad Request</code>{" "}
-        response will be returned to the client with the validation error
-        message.
-      </p>
-
-      <p>
-        Use this to validate the request payload as the application receives it,
-        which allows you to guard against unnecessary resource method processing
-        and malicious payloads.
+        executing the resource method. The constraints can be added to a given
+        data type using different annotations. If the validation fails, a{" "}
+        <code>400 Bad Request</code> response will be returned to the client
+        with the validation error message. Use this to validate the request
+        payload as the application receives it, which allows you to guard
+        against unnecessary resource method processing and malicious payloads.
       </p>
 
       <Row

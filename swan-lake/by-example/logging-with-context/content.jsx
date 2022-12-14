@@ -77,7 +77,7 @@ export default function LoggingWithContext() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=19d3ee96a01e547d129b04345782120a&file=logging_with_context.bal",
+                "https://play.ballerina.io/?gist=72917bb5f01b506b95ac5fca25256829&file=logging_with_context.bal",
                 "_blank"
               );
             }}

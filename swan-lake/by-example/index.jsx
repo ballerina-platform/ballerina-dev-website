@@ -315,16 +315,16 @@ import NatsClientSecureConnection from "./nats-client-secure-connection/content.
 import NatsClientBasicAuth from "./nats-client-basic-auth/content.jsx";
 import KafkaServiceConsumeMessage from "./kafka-service-consume-message/content.jsx";
 import KafkaServiceConstraintValidation from "./kafka-service-constraint-validation/content.jsx";
-import KafkaClientProduceMessage from "./kafka-client-produce-message/content.jsx";
-import KafkaClientPayloadDataBinding from "./kafka-client-payload-data-binding/content.jsx";
-import KafkaClientConsumerRecordDataBinding from "./kafka-client-consumer-record-data-binding/content.jsx";
-import KafkaClientConstraintValidation from "./kafka-client-constraint-validation/content.jsx";
+import KafkaProducerProduceMessage from "./kafka-producer-produce-message/content.jsx";
+import KafkaConsumerPayloadDataBinding from "./kafka-consumer-payload-data-binding/content.jsx";
+import KafkaConsumerConsumerRecordDataBinding from "./kafka-consumer-consumer-record-data-binding/content.jsx";
+import KafkaConsumerConstraintValidation from "./kafka-consumer-constraint-validation/content.jsx";
 import KafkaServiceSsl from "./kafka-service-ssl/content.jsx";
 import KafkaServiceSasl from "./kafka-service-sasl/content.jsx";
-import KafkaClientProducerSsl from "./kafka-client-producer-ssl/content.jsx";
-import KafkaClientConsumerSsl from "./kafka-client-consumer-ssl/content.jsx";
-import KafkaClientProducerSasl from "./kafka-client-producer-sasl/content.jsx";
-import KafkaClientConsumerSasl from "./kafka-client-consumer-sasl/content.jsx";
+import KafkaProducerSsl from "./kafka-producer-ssl/content.jsx";
+import KafkaProducerSasl from "./kafka-producer-sasl/content.jsx";
+import KafkaConsumerSsl from "./kafka-consumer-ssl/content.jsx";
+import KafkaConsumerSasl from "./kafka-consumer-sasl/content.jsx";
 import RabbitmqConsumer from "./rabbitmq-consumer/content.jsx";
 import RabbitmqConsumerWithClientAcknowledgement from "./rabbitmq-consumer-with-client-acknowledgement/content.jsx";
 import RabbitmqTransactionConsumer from "./rabbitmq-transaction-consumer/content.jsx";
@@ -726,16 +726,16 @@ const BBEs = {
   NatsClientBasicAuth,
   KafkaServiceConsumeMessage,
   KafkaServiceConstraintValidation,
-  KafkaClientProduceMessage,
-  KafkaClientPayloadDataBinding,
-  KafkaClientConsumerRecordDataBinding,
-  KafkaClientConstraintValidation,
+  KafkaProducerProduceMessage,
+  KafkaConsumerPayloadDataBinding,
+  KafkaConsumerConsumerRecordDataBinding,
+  KafkaConsumerConstraintValidation,
   KafkaServiceSsl,
   KafkaServiceSasl,
-  KafkaClientProducerSsl,
-  KafkaClientConsumerSsl,
-  KafkaClientProducerSasl,
-  KafkaClientConsumerSasl,
+  KafkaProducerSsl,
+  KafkaProducerSasl,
+  KafkaConsumerSsl,
+  KafkaConsumerSasl,
   RabbitmqConsumer,
   RabbitmqConsumerWithClientAcknowledgement,
   RabbitmqTransactionConsumer,

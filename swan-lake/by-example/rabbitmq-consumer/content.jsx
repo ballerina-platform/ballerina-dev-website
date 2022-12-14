@@ -256,8 +256,8 @@ export default function RabbitmqConsumer() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Consumer SASL authentication"
-            href="/learn/by-example/kafka-client-consumer-sasl"
+            title="SASL authentication"
+            href="/learn/by-example/kafka-consumer-sasl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -284,7 +284,7 @@ export default function RabbitmqConsumer() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consumer SASL authentication
+                  SASL authentication
                 </span>
               </div>
             </div>

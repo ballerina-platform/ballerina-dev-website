@@ -395,7 +395,7 @@ export default function GrpcServiceUnary() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> package - API documentation
+              <code>grpc</code> module - API documentation
             </a>
           </span>
         </li>

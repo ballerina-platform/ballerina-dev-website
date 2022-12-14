@@ -78,18 +78,12 @@ export default function GraphqlHierarchicalResourcePaths() {
       <h1>GraphQL service - Hierarchical resource paths</h1>
 
       <p>
-        The resources in Ballerina GraphQL services can have hierarchical
-        resource paths. When a hierarchical path is present, an{" "}
+        The Ballerina GraphQL package allows using hierarchical resource paths
+        in the GraphQL resources. When hierarchical resource paths are used, an{" "}
         <code>OBJECT</code> type is created for each intermediate path segment
-        with the same name. Every sub path under a path segment will be added as
-        a field of the created type.
-      </p>
-
-      <p>
-        This example shows a GraphQL endpoint, which has a <code>profile</code>{" "}
-        field of type <code>profile!</code>. A GraphQL client can query this
-        service to retrieve specific fields or subfields of the{" "}
-        <code>Profile</code> object.
+        with the same name. Every sub-path under a path segment will be added as
+        a field of the created type. Hierarchical paths can be used when there
+        is no need to define the <code>OBJECT</code> types explicitly.
       </p>
 
       <Row

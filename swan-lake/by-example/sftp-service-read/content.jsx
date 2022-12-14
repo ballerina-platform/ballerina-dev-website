@@ -81,10 +81,14 @@ export default function SftpServiceRead() {
       <h1>SFTP service - Read file</h1>
 
       <p>
-        The SFTP service is used to receive file/directory changes that occur in
-        a remote location using the SFTP protocol. This sample includes
-        receiving file/directory related change events from a listener with
-        default configurations using the default port.
+        The <code>ftp:Service</code> connects to a given SFTP server via the{" "}
+        <code>ftp:Listener</code>. A <code>ftp:Listener</code> with SFTP
+        protocol is created by providing the protocol, host-name, required
+        credentials, and the private key. Once connected, the{" "}
+        <code>onFileChange</code> remote method of the service starts receiving
+        events as a <code>ftp:WatchEvent</code> every time a file is deleted or
+        added to the server. Use this to listen to file changes occurring in a
+        remote file system.
       </p>
 
       <Row

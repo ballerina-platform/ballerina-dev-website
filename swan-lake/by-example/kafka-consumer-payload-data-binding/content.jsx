@@ -28,19 +28,37 @@ public function main() returns error? {
         topics: "order-topic"
     });
 
-    // Polls the consumer for payload.
-    Order[] orders = check orderConsumer->pollPayload(1);
-
-    check from Order 'order in orders
-        where 'order.isValid
+    while true {
         do {
-            io:println(string \`Received valid order for \${'order.productName}\`);
-        };
+            // Polls the consumer for payload.
+            Order[] orders = check orderConsumer->pollPayload(15);
+            check from Order 'order in orders
+                where 'order.isValid
+                do {
+                    io:println(string \`Received valid order for \${'order.productName}\`);
+                };
+        } on fail error orderError {
+            // Check whether the \`error\` is a \`kafka:PayloadBindingError\` and seek pass the
+            // erroneous record.
+            if orderError is kafka:PayloadBindingError {
+                io:println("Payload binding failed", orderError);
+                // The \`kafka:PartitionOffset\` related to the erroneous record is provided inside
+                // the \`kafka:PayloadBindingError\`.
+                check orderConsumer->seek({
+                    partition: orderError.detail().partition,
+                    offset: orderError.detail().offset + 1
+                });
+            } else {
+                check orderConsumer->close();
+                return orderError;
+            }
+        }
+    }
 }
 `,
 ];
 
-export default function KafkaClientPayloadDataBinding() {
+export default function KafkaConsumerPayloadDataBinding() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,13 +79,23 @@ export default function KafkaClientPayloadDataBinding() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka client - Payload data binding</h1>
+      <h1>Kafka consumer - Payload data binding</h1>
 
       <p>
-        This shows how to use a <code>kafka:Consumer</code> as a simple payload
-        consumer for the instances where the metadata related to the message is
-        not needed. This consumer uses the builtin byte array deserializer for
-        the value and converts the value to the user defined type.
+        The payload data-binding allows you to directly bind Kafka messages to
+        subtypes of <code>anydata</code>. It does this by using the built-in
+        bytes deserializer for both the key and the value. To use this, directly
+        assign the <code>pollPayload</code> method’s return value to the
+        declared variable, which is a subtype of <code>anydata[]</code>. If the
+        payload does not match with the defined type, a{" "}
+        <code>kafka:PayloadBindingError</code> is returned. The{" "}
+        <code>seek</code> method of the <code>kafka:Consumer</code> can be used
+        to seek past the erroneous record and read the new records. Use this to
+        receive messages from a Kafka server without the metadata of the
+        messages like <code>kafka:PartitionOffset</code> and{" "}
+        <code>timestamp</code>. It is important to note that this only works
+        when <code>kafka:Producer</code> also uses the built-in bytes serializer
+        for Ballerina.
       </p>
 
       <Row
@@ -144,18 +172,6 @@ export default function KafkaClientPayloadDataBinding() {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the Kafka client given in the{" "}
-            <a href="/learn/by-example/kafka-client-produce-message">
-              Kafka client - Produce message
-            </a>{" "}
-            example to produce some messages to the topic.
-          </span>
-        </li>
-      </ul>
 
       <p>Run the program by executing the following command.</p>
 
@@ -219,6 +235,16 @@ export default function KafkaClientPayloadDataBinding() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Run the Kafka client given in the{" "}
+          <a href="/learn/by-example/kafka-producer-produce-message">
+            Kafka producer - Produce message
+          </a>{" "}
+          example to produce some messages to the topic.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -248,7 +274,7 @@ export default function KafkaClientPayloadDataBinding() {
         <Col sm={6}>
           <Link
             title="Produce message"
-            href="/learn/by-example/kafka-client-produce-message"
+            href="/learn/by-example/kafka-producer-produce-message"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -284,7 +310,7 @@ export default function KafkaClientPayloadDataBinding() {
         <Col sm={6}>
           <Link
             title="Consumer record data binding"
-            href="/learn/by-example/kafka-client-consumer-record-data-binding"
+            href="/learn/by-example/kafka-consumer-consumer-record-data-binding"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

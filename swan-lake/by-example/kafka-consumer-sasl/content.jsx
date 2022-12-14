@@ -42,6 +42,7 @@ public function main() returns error? {
     Order[] orders = check orderConsumer->pollPayload(1);
 
     check from Order 'order in orders
+        where 'order.isValid
         do {
             io:println(string \`Received valid order for \${'order.productName}\`);
         };
@@ -49,7 +50,7 @@ public function main() returns error? {
 `,
 ];
 
-export default function KafkaClientConsumerSasl() {
+export default function KafkaConsumerSasl() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -70,11 +71,17 @@ export default function KafkaClientConsumerSasl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka client - Consumer SASL authentication</h1>
+      <h1>Kafka consumer - SASL authentication</h1>
 
       <p>
-        This shows how the SASL/PLAIN authentication is done in the{" "}
-        <code>kafka:Consumer</code>.
+        The <code>kafka:Consumer</code> connects to a Kafka server via
+        SASL/PLAIN authentication and then, receives the payloads from the
+        server. SASL/PLAIN authentication can be enabled by configuring the{" "}
+        <code>auth</code>, which requires the authentication mechanism,
+        username, and password. Further, the mode of security must be configured
+        by setting the <code>securityProtocol</code> to{" "}
+        <code>kafka:PROTOCOL_SASL_PLAINTEXT</code>. Use this to connect to a
+        Kafka server secured with SASL/PLAIN.
       </p>
 
       <Row
@@ -155,18 +162,6 @@ export default function KafkaClientConsumerSasl() {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the Kafka client given in the{" "}
-            <a href="/learn/by-example/kafka-client-producer-sasl">
-              Kafka client - Producer SASL authentication
-            </a>{" "}
-            example to produce some messages to the topic.
-          </span>
-        </li>
-      </ul>
 
       <p>Run the program by executing the following command.</p>
 
@@ -230,6 +225,16 @@ export default function KafkaClientConsumerSasl() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Run the Kafka client given in the{" "}
+          <a href="/learn/by-example/kafka-producer-sasl">
+            Kafka producer - SASL authentication
+          </a>{" "}
+          example to produce some messages to the topic.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -257,10 +262,7 @@ export default function KafkaClientConsumerSasl() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Producer SASL authentication"
-            href="/learn/by-example/kafka-client-producer-sasl"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/kafka-consumer-ssl">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -286,7 +288,7 @@ export default function KafkaClientConsumerSasl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer SASL authentication
+                  SSL/TLS
                 </span>
               </div>
             </div>

@@ -42,6 +42,7 @@ public function main() returns error? {
     Order[] orders = check orderConsumer->pollPayload(1);
 
     check from Order 'order in orders
+        where 'order.isValid
         do {
             io:println(string \`Received valid order for \${'order.productName}\`);
         };
@@ -49,7 +50,7 @@ public function main() returns error? {
 `,
 ];
 
-export default function KafkaClientConsumerSsl() {
+export default function KafkaConsumerSsl() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -70,11 +71,16 @@ export default function KafkaClientConsumerSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka client - Consumer SSL/TLS</h1>
+      <h1>Kafka consumer - SSL/TLS</h1>
 
       <p>
-        This shows how the SSL encryption is done in the{" "}
-        <code>kafka:Consumer</code>.
+        The <code>kafka:Consumer</code> connects to a Kafka server via SSL/TLS
+        and then, receives payloads from the server. SSL/TLS can be enabled by
+        configuring the <code>secureSocket</code>, which requires a certificate
+        and the protocol name. Further, the mode of security must be configured
+        by setting the <code>securityProtocol</code> to{" "}
+        <code>kafka:PROTOCOL_SSL</code>. Use this to connect to a Kafka server
+        secured with SSL/TLS.
       </p>
 
       <Row
@@ -155,18 +161,6 @@ export default function KafkaClientConsumerSsl() {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the Kafka client given in the{" "}
-            <a href="/learn/by-example/kafka-client-producer-ssl">
-              Kafka client - Producer SSL/TLS
-            </a>{" "}
-            example to produce some messages to the topic.
-          </span>
-        </li>
-      </ul>
 
       <p>Run the program by executing the following command.</p>
 
@@ -230,6 +224,16 @@ export default function KafkaClientConsumerSsl() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Run the Kafka client given in the{" "}
+          <a href="/learn/by-example/kafka-producer-ssl">
+            Kafka producer - SSL/TLS
+          </a>{" "}
+          example to produce some messages to the topic.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -257,8 +261,8 @@ export default function KafkaClientConsumerSsl() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Producer SSL/TLS"
-            href="/learn/by-example/kafka-client-producer-ssl"
+            title="SASL authentication"
+            href="/learn/by-example/kafka-producer-sasl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -285,7 +289,7 @@ export default function KafkaClientConsumerSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer SSL/TLS
+                  SASL authentication
                 </span>
               </div>
             </div>
@@ -293,8 +297,8 @@ export default function KafkaClientConsumerSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Producer SASL authentication"
-            href="/learn/by-example/kafka-client-producer-sasl"
+            title="SASL authentication"
+            href="/learn/by-example/kafka-consumer-sasl"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -304,7 +308,7 @@ export default function KafkaClientConsumerSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer SASL authentication
+                  SASL authentication
                 </span>
               </div>
               <svg

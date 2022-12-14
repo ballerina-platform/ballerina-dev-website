@@ -12,21 +12,18 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerinax/kafka;
+  `import ballerina/constraint;
+import ballerinax/kafka;
 import ballerina/io;
 
-public type Order readonly & record {
+public type Order record {
     int orderId;
+    // Add a constraint to only allow string values of length between 30 and 1.
+    @constraint:String {maxLength: 30, minLength: 1}
     string productName;
     decimal price;
     boolean isValid;
 };
-
-// Create a subtype of \`kafka:AnydataConsumerRecord\`.
-public type OrderConsumerRecord record {|
-    *kafka:AnydataConsumerRecord;
-    Order value;
-|};
 
 public function main() returns error? {
     kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, {
@@ -34,19 +31,36 @@ public function main() returns error? {
         topics: "order-topic"
     });
 
-    // Polls the consumer for order records.
-    OrderConsumerRecord[] records = check orderConsumer->poll(1);
-
-    check from OrderConsumerRecord orderRecord in records
-        where orderRecord.value.isValid
+    while true {
         do {
-            io:println(string \`Received valid order for \${orderRecord.value.productName}\`);
-        };
+            Order[] orders = check orderConsumer->pollPayload(15);
+            check from Order 'order in orders
+                where 'order.isValid
+                do {
+                    io:println(string \`Received valid order for \${'order.productName}\`);
+                };
+        } on fail error orderError {
+            // Check whether the \`error\` is a \`kafka:PayloadValidationError\` and seek pass the
+            // erroneous record.
+            if orderError is kafka:PayloadValidationError {
+                io:println("Payload validation failed", orderError);
+                // The \`kafka:PartitionOffset\` related to the erroneous record is provided inside
+                // the \`kafka:PayloadValidationError\`.
+                check orderConsumer->seek({
+                    partition: orderError.detail().partition,
+                    offset: orderError.detail().offset + 1
+                });
+            } else {
+                check orderConsumer->close();
+                return orderError;
+            }
+        }
+    }
 }
 `,
 ];
 
-export default function KafkaClientConsumerRecordDataBinding() {
+export default function KafkaConsumerConstraintValidation() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -67,19 +81,20 @@ export default function KafkaClientConsumerRecordDataBinding() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka client - Consumer record data binding</h1>
+      <h1>Kafka consumer - Constraint validation</h1>
 
       <p>
-        This shows how to use a <code>kafka:Consumer</code> as a simple record
-        consumer. The records from a subscribed topic can be retrieved using the{" "}
-        <code>poll()</code> function. This consumer uses the builtin byte array
-        deserializer for both the key and the value, which is the default
-        deserializer in the <code>kafka:Consumer</code>.
-      </p>
-
-      <p>
-        The received records are converted to the user defined type using
-        data-binding.
+        The <code>kafka:Consumer</code> connects to a given Kafka server, and
+        then validates the received payloads by the defined constraints. The
+        constraints are added as annotations to the payload record and when the
+        payload is received from the broker, it is validated internally and if
+        validation fails, a <code>kafka:PayloadValidationError</code> is
+        returned. The <code>seek</code> method of the{" "}
+        <code>kafka:Consumer</code> is used to seek past the erroneous record
+        and read the new records. The <code>validation</code> flag of the
+        <code>kafka:ConsumerConfiguration</code> can be set to{" "}
+        <code>false</code> to stop validating the payloads. Use this to validate
+        the messages received from a Kafka server implicitly.
       </p>
 
       <Row
@@ -156,18 +171,6 @@ export default function KafkaClientConsumerRecordDataBinding() {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the Kafka client given in the{" "}
-            <a href="/learn/by-example/kafka-client-produce-message">
-              Kafka client - Produce message
-            </a>{" "}
-            example to produce some messages to the topic.
-          </span>
-        </li>
-      </ul>
 
       <p>Run the program by executing the following command.</p>
 
@@ -224,12 +227,25 @@ export default function KafkaClientConsumerRecordDataBinding() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run kafka_client_consumer_poll_consumer_record.bal`}</span>
-              <span>{`Received valid order for Sport shoe`}</span>
+              <span>{`\$ bal run kafka_client_constraint_validation.bal`}</span>
+              <span>{`time = 2022-11-28T13:56:56.502+05:30 level = INFO module = "" message = "Received valid order for Sport"`}</span>
+              <span>{`time = 2022-11-28T14:19:43.346+05:30 level = ERROR module = "" message = "Payload validation failed" error = "Failed to validate payload. If needed, please seek past the record to continue consumption."`}</span>
+              <span>{`time = 2022-11-28T13:56:56.502+05:30 level = INFO module = "" message = "Received valid order for Sport"`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Run the Kafka client given in the{" "}
+          <a href="/learn/by-example/kafka-producer-produce-message">
+            Kafka producer - Produce message
+          </a>{" "}
+          example with a valid product name (0 &lt; length &lt;= 30), then with
+          an invalid product name and again with a valid product name.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -237,8 +253,9 @@ export default function KafkaClientConsumerRecordDataBinding() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/clients/Consumer#poll">
-              <code>kafka:Consumer-&gt;poll</code> function - API documentation
+            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/errors#PayloadValidationError">
+              <code>kafka:PayloadValidationError</code> error type - API
+              documentation
             </a>
           </span>
         </li>
@@ -247,8 +264,28 @@ export default function KafkaClientConsumerRecordDataBinding() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#422-consume-messages">
-              Kafka client consume messages - Specification
+            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Consumer#seek">
+              <code>kafka:Consumer-&gt;seek</code> function - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md">
+              <code>kafka</code> module - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/constraint/latest">
+              <code>constraint</code> module - API documentation
             </a>
           </span>
         </li>
@@ -258,8 +295,8 @@ export default function KafkaClientConsumerRecordDataBinding() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Payload data binding"
-            href="/learn/by-example/kafka-client-payload-data-binding"
+            title="Consumer record data binding"
+            href="/learn/by-example/kafka-consumer-consumer-record-data-binding"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -286,17 +323,14 @@ export default function KafkaClientConsumerRecordDataBinding() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Payload data binding
+                  Consumer record data binding
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Constraint validation"
-            href="/learn/by-example/kafka-client-constraint-validation"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/kafka-service-ssl">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -305,7 +339,7 @@ export default function KafkaClientConsumerRecordDataBinding() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validation
+                  SSL/TLS
                 </span>
               </div>
               <svg

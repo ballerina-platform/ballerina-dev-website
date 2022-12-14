@@ -195,7 +195,7 @@ export default function GrpcServiceOauth2() {
         to implement the service used below.
       </p>
 
-      <p>Execute the command below to run the service.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
@@ -332,7 +332,7 @@ export default function GrpcServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package - API documentation
+              <code>oauth2</code> module - API documentation
             </a>
           </span>
         </li>

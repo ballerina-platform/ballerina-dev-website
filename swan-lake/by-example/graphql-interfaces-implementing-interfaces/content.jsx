@@ -113,11 +113,13 @@ export default function GraphqlInterfacesImplementingInterfaces() {
       <h1>GraphQL service - Interfaces implementing interfaces</h1>
 
       <p>
-        A GraphQL schema can have interfaces that can be implemented using other
-        interfaces. In Ballerina, interfaces are defined as{" "}
-        <code>distinct</code> <code>service</code> objects. The Ballerina type
-        inclusion is used to include the interface type to another interface
-        type.
+        The Ballerina GraphQL service allows to define GraphQL interface types
+        that can implement other interfaces. A <code>distinct</code>{" "}
+        <code>service</code> object must be used to define an interface. The
+        Ballerina type-inclusion is used to define interfaces that implement
+        other interfaces. This can be used in GraphQL schemas to define
+        higher-order interfaces that share common functionalities in the
+        application logic.
       </p>
 
       <p>

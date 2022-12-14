@@ -27,18 +27,19 @@ public type Order record {
 
 listener kafka:Listener orderListener = check new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
-    topics: ["order-topic"]
+    topics: "order-topic"
 });
 
 service on orderListener {
     remote function onConsumerRecord(Order[] orders) returns error? {
         check from Order 'order in orders
+            where 'order.isValid
             do {
                 log:printInfo(string \`Received valid order for \${'order.productName}\`);
             };
     }
 
-    // When an error occurs in the before the \`onConsumerRecord\` invoke,
+    // When an error occurs before the \`onConsumerRecord\` gets invoked,
     // \`onError\` function will get invoked.
     remote function onError(kafka:Error 'error, kafka:Caller caller) returns error? {
         // Check whether the \`error\` is a \`kafka:PayloadValidationError\` and seek pass the
@@ -83,10 +84,18 @@ export default function KafkaServiceConstraintValidation() {
       <h1>Kafka service - Constraint validation</h1>
 
       <p>
-        This example shows how the payload is validated related to the
-        constraints added to the payload record. When a payload is not valid,{" "}
-        <code>seek</code> method of <code>kafka:Caller</code> can be used to
-        seek pass the erroneous record and read the new records.
+        The <code>kafka:Service</code> connects to a given Kafka server via the{" "}
+        <code>kafka:Listener</code>, and then validates the received payloads by
+        the defined constraints. The constraints are added as annotations to the
+        payload record and when the payload is received from the broker, it is
+        validated internally and if validation fails, the <code>onError</code>{" "}
+        remote method will be invoked with a{" "}
+        <code>kafka:PayloadValidationError</code>. The <code>seek</code> method
+        of the <code>kafka:Caller</code> is used to seek past the erroneous
+        record and read the new records. The <code>validation</code> flag of the
+        <code>kafka:ConsumerConfiguration</code> can be set to{" "}
+        <code>false</code> to stop validating the payloads. Use this to validate
+        the messages received from a Kafka server implicitly.
       </p>
 
       <Row
@@ -231,8 +240,8 @@ export default function KafkaServiceConstraintValidation() {
       <blockquote>
         <p>
           <strong>Tip:</strong> Run the Kafka client given in the{" "}
-          <a href="/learn/by-example/kafka-client-produce-message">
-            Kafka client - Produce message
+          <a href="/learn/by-example/kafka-producer-produce-message">
+            Kafka producer - Produce message
           </a>{" "}
           example with a valid product name (0 &lt; length &lt;= 30), then with
           an invalid product name and again with a valid product name.
@@ -267,7 +276,7 @@ export default function KafkaServiceConstraintValidation() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md">
-              <code>kafka</code> package - Specification
+              <code>kafka</code> module - Specification
             </a>
           </span>
         </li>
@@ -277,7 +286,7 @@ export default function KafkaServiceConstraintValidation() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/constraint/latest">
-              <code>constraint</code> package - API documentation
+              <code>constraint</code> module - API documentation
             </a>
           </span>
         </li>
@@ -324,7 +333,7 @@ export default function KafkaServiceConstraintValidation() {
         <Col sm={6}>
           <Link
             title="Produce message"
-            href="/learn/by-example/kafka-client-produce-message"
+            href="/learn/by-example/kafka-producer-produce-message"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

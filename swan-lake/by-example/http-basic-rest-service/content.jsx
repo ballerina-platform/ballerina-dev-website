@@ -196,7 +196,7 @@ export default function HttpBasicRestService() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run http_basic_rest_api.bal`}</span>
+              <span>{`\$ bal run http_basic_rest_service.bal`}</span>
             </code>
           </pre>
         </Col>

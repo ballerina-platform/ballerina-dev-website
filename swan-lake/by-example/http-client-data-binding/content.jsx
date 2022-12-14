@@ -56,20 +56,21 @@ export default function HttpClientDataBinding() {
       <h1>HTTP client - Payload data binding</h1>
 
       <p>
-        HTTP client payload data binding feature allows accessing the response
-        payload directly without manipulating the <code>http:Response</code>{" "}
-        object. The response payload type is inferred from the contextually
-        expected type or the <code>targetType</code> argument.{" "}
-        <code>anydata</code> type or <code>http:Response</code> is expected as
-        the expected-type or the <code>targetType</code> along with{" "}
-        <code>error</code> type. When the client payload data binding is
-        expected, the HTTP error responses (4xx, 5xx) are categorized as an{" "}
-        <code>error</code> (<code>http:ClientRequestError</code>,{" "}
-        <code>http:RemoteServerError</code>) of the client's remote operation.
-        If the expected payload type is not compatible with the response payload
-        type an <code>http:ClientError</code> is returned. Use this to access
-        the response payload directly when the response payload type is known
-        beforehand.
+        The <code>http:Client</code> payload data-binding allows directly
+        binding the response payload to a given subtype of <code>anydata</code>.
+        It does this by mapping a given HTTP content-type to one or more
+        Ballerina types. For instance, <code>text/plain</code> is mapped to{" "}
+        <code>string</code>, whereas <code>application/json</code> is mapped to{" "}
+        <code>json</code>, <code>record</code>, etc. The client data-binding can
+        be used by simply assigning the resource method’s returned value to the
+        declared variable. If the response is anything other than 2xx, an{" "}
+        <code>error</code> is returned and no data-binding is performed. If
+        there is no mapping between the given Ballerina type and the response
+        content-type, again an <code>error</code> is returned. Use this when the
+        application is only interested in the response payload but not the
+        headers. When the response payload is JSON, the <code>record</code> type
+        is preferred to the <code>json</code> type as it provides compile-time
+        validations, better readability, and improved tooling support.
       </p>
 
       <Row
@@ -82,7 +83,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1f7f3c12cdfc5de8dc23107297286595&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=084b0355995756aca97a7594e34c6c24&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}

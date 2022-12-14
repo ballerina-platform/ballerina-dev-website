@@ -1,0 +1,21 @@
+{
+  "title": "Constraint validation",
+  "description": "BBE on validating a payload according to the constraints defined in the payload record.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "kafka",
+    "consumer",
+    "listener",
+    "service",
+    "constraint",
+    "validation"
+  ],
+  "permalink": "/learn/by-example/kafka-consumer-constraint-validation",
+  "active": "kafka-consumer-constraint-validation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/kafka-consumer-constraint-validation",
+    "/swan-lake/learn/by-example/kafka-consumer-constraint-validation.html"
+  ]
+}

@@ -224,7 +224,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">graphql</td>
-<td class="cDescription">This is the GraphQL client generation tool. For more information, see <a href="/learn/graphql-client-tool/">Ballerina GraphQL client tool support</a>.</td>
+<td class="cDescription">This is the GraphQL client/schema generation tool. For more information, see <a href="/learn/graphql-tool/">Ballerina GraphQL tool support</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">openapi</td>

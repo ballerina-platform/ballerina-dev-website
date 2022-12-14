@@ -636,7 +636,7 @@ Introduced the AsyncAPI tool, which will make it easy for you to start the devel
 
 #### GraphQL client tool
 
-Introduced the GraphQL client tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](/learn/graphql-client-tool/) and [GraphQL CLI documentation](/learn/cli-documentation/graphql/#graphql-to-ballerina).
+Introduced the GraphQL client tool, which will make it easy for you to generate a client in Ballerina given the GraphQL schema (SDL) and GraphQL queries. Ballerina Swan Lake supports the GraphQL specification [October 2021 edition](https://spec.graphql.org/October2021/). For more information, see [Ballerina GraphQL support](/learn/graphql-tool/) and [GraphQL CLI documentation](/learn/cli-documentation/graphql/#graphql-to-ballerina).
 
 #### Language server
 

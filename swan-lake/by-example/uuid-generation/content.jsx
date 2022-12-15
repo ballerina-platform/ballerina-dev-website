@@ -109,7 +109,7 @@ export default function UuidGeneration() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e1a7b37b8bfbf04766d04365fdc9f1f4&file=uuid_generation.bal",
+                "https://play.ballerina.io/?gist=18a37b2e7ef3a3426abcf55220fbfe9e&file=uuid_generation.bal",
                 "_blank"
               );
             }}

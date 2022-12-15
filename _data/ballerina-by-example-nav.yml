@@ -1456,7 +1456,7 @@ sublinks:
           - title: Schedule one time job
             id: 2
             url: task-one-time-job-execution
-          - title: Manage sheduled jobs
+          - title: Manage scheduled jobs
             id: 3
             url: manage-scheduled-jobs
       - title: UUID

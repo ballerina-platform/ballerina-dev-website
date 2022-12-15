@@ -23,14 +23,12 @@ import ballerina/io;
 // the meta information on protocol extensions from the GraphQL server.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
-    record {|Profile profile;|} data;
+    record {|Profile profile?;|} data;
 |};
 
-// The following record type defines the shape of the response from a GraphQL service which allows
-// the \`name\` and \`age\` fields to have a \`null\` value.
 type Profile record {|
-    string? name;
-    int? age;
+    string name;
+    int age;
 |};
 
 public function main() returns error? {
@@ -76,12 +74,8 @@ export default function GraphqlClientHandlePartialResponse() {
 
       <p>
         A GraphQL service can return a partial response having both errors and
-        data fields when there are errors occurred during the execution of a
-        field on the service side. If a field is allowed to have a null value in
-        the GraphQL schema, then when defining the user-defined types on the
-        client side, that field needs to be specified as a nullable field.
-        Otherwise a <code>graphql:PayloadBindingError</code> may be returned
-        when calling the client <code>execute()</code> method.
+        data fields when there are <code>Field errors</code> raised at the
+        service side during the execution of an operation.
       </p>
 
       <p>
@@ -247,16 +241,6 @@ export default function GraphqlClientHandlePartialResponse() {
             <a href="https://lib.ballerina.io/ballerina/graphql/1.4.4/records/GenericResponseWithErrors">
               <code>graphql:GenericResponseWithErrors</code> record - API
               documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/1.5.0/errors#PayloadBindingError">
-              <code>graphql:PayloadBindingError</code> error - API documentation
             </a>
           </span>
         </li>

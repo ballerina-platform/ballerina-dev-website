@@ -13,11 +13,11 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/http;
-import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
+import ballerina/sql;
 
-// The \`Album\` record to load records from \`albums\` table.
+// Defines a record to load the query result.
 type Album record {|
     string id;
     string title;
@@ -41,7 +41,7 @@ service / on new http:Listener(8080) {
             select \`INSERT INTO albums (id, title, artist, price)
                     VALUES (\${album.id}, \${album.title}, \${album.artist}, \${album.price})\`;
 
-        // Insert records in a batch.
+        // Inserts records in a batch.
         _ = check self.db->batchExecute(insertQueries);
         return http:CREATED;
     }
@@ -193,11 +193,11 @@ export default function MysqlBatchExecuteOperation() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Refer{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md">
-              <code>mysql-prerequisite</code>
-            </a>
-            .
+            Set up the MySQL database - Run the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-batch-execute-operation/prerequisites/prerequisite.bal">
+              prerequisite.bal
+            </a>{" "}
+            file by executing the command <code>bal run</code>.
           </span>
         </li>
       </ul>

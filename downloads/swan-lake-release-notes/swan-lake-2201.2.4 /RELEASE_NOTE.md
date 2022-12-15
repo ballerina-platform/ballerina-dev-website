@@ -1,9 +1,9 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: 2201.2.4 (Swan Lake) 
+title: 2201.2.4 (Swan Lake)
 permalink: /downloads/swan-lake-release-notes/2201.2.4/
 active: 2201.2.4
-redirect_from: 
+redirect_from:
     - /downloads/swan-lake-release-notes/2201.2.4
     - /downloads/swan-lake-release-notes/2201.2.4/
     - /downloads/swan-lake-release-notes/2201.2.4-swan-lake/
@@ -14,7 +14,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.2.4
 
-<em>Swan Lake 2201.2.4 is the fourth patch release of Ballerina 2201.2.0 (Swan Lake Update 2) and it includes a new set of bug fixes to the language, language server, and developer tooling.</em> 
+<em>Swan Lake 2201.2.4 is the fourth patch release of Ballerina 2201.2.0 (Swan Lake Update 2) and it includes a new set of bug fixes to the language, language server, and developer tooling.</em>
 
 ## Update Ballerina
 
@@ -73,6 +73,12 @@ To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://g
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+milestone%3A2201.2.4+label%3AType%2FBug+is%3Aclosed).
+
+## Code to Cloud updates
+
+### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+milestone%3A2201.2.4+label%3AType%2FBug+is%3Aclosed).
 
 ## Developer tools updates
 

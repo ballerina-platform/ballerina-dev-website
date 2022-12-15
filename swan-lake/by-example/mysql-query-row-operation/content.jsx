@@ -17,7 +17,7 @@ import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-// The \`Album\` record to load records from \`albums\` table.
+// Defines a record to load the query result.
 type Album record {|
     string id;
     string title;
@@ -194,11 +194,11 @@ export default function MysqlQueryRowOperation() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Refer{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md">
-              <code>mysql-prerequisite</code>
-            </a>
-            .
+            Set up the MySQL database - Run the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-query-row-operation/prerequisites/prerequisite.bal">
+              prerequisite.bal
+            </a>{" "}
+            file by executing the command <code>bal run</code>.
           </span>
         </li>
       </ul>

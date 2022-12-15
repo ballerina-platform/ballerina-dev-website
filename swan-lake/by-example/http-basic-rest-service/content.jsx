@@ -64,19 +64,12 @@ export default function HttpBasicRestService() {
       <h1>REST service - Basic</h1>
 
       <p>
-        Ballerina language has first-class abstractions for service and resource
-        concepts in the form of <code>service</code> and{" "}
-        <code>resource functions</code>. A resource function consists of an
-        accessor and path. A service can have a collection of resource
-        functions. These abstractions allow mapping REST concepts such as
-        operations, resource paths and resource representations cleanly into
-        your program. <code>http:Service</code> can be used to write RESTful
-        services. A service is defined with a base path, the path common to all
-        resource paths. Each resource function is defined with the required
-        operation such as <code>get</code>, <code>put</code>, <code>post</code>,
-        etc and the path. Similar to regular functions resource functions have
-        input parameters and return types that are mapped to the HTTP request
-        and response.
+        Ballerina supports writing RESTful with its first class service and
+        resource concepts. The <code>accessor-name</code>,{" "}
+        <code>service/resource name</code>, <code>data binding</code>,{" "}
+        <code>path</code> and <code>query</code> parameter support helps to
+        write meaningful APIs. The sample depicts the way of writing{" "}
+        <code>GET</code> and <code>POST</code> resources.
       </p>
 
       <Row
@@ -288,7 +281,7 @@ export default function HttpBasicRestService() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

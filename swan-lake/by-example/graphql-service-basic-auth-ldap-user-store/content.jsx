@@ -198,6 +198,15 @@ export default function GraphqlServiceBasicAuthLdapUserStore() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>LDAP server should be up and running.</span>
+        </li>
+      </ul>
+
       <p>Run the service by executing the command below.</p>
 
       <Row

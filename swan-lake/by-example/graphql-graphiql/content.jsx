@@ -241,8 +241,8 @@ export default function GraphqlGraphiql() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Interfaces implementing interfaces"
-            href="/learn/by-example/graphql-interfaces-implementing-interfaces"
+            title="Union Types"
+            href="/learn/by-example/graphql-service-union-types"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -269,7 +269,7 @@ export default function GraphqlGraphiql() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interfaces implementing interfaces
+                  Union Types
                 </span>
               </div>
             </div>

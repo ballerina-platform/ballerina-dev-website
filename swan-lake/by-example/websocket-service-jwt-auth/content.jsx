@@ -259,7 +259,7 @@ export default function WebsocketServiceJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
+              <code>websocket</code> module - API documentation
             </a>
           </span>
         </li>
@@ -269,7 +269,7 @@ export default function WebsocketServiceJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-              <code>jwt</code> package - API documentation
+              <code>jwt</code> module - API documentation
             </a>
           </span>
         </li>

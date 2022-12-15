@@ -66,27 +66,22 @@ export default function GraphqlSubscriptions() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Subscriptions</h1>
+      <h1>GraphQL service - Subscriptions</h1>
 
       <p>
         A resource method with the <code>subscribe</code> accessor inside a
         GraphQL service represents a field in the root <code>Subscription</code>{" "}
-        type. Therefore, if a resource method with the <code>subscribe</code>{" "}
+        type. Therefore, If a resource method with the <code>subscribe</code>{" "}
         accessor is present inside the Ballerina GraphQL service, the
-        auto-generated schema will have a <code>Subscription</code> type.
-      </p>
-
-      <p>
-        A resource method with <code>subscribe</code> accessor must return a{" "}
-        <code>stream</code> type. Not returning a <code>stream</code> type will
-        result in a compilation error.
-      </p>
-
-      <p>
-        Each resource method with the <code>subscribe</code> accessor in the
-        service will be added as a field of the <code>Subscription</code> type.
-        The field name will be the resource method name and the field type will
-        be the constraint type of the stream returned from the resource method.
+        auto-generated schema will have a <code>Subscription</code> type. Each
+        resource method with a <code>subscribe</code> accessor in the service
+        will be added as a field of the <code>Subscription</code> type. The
+        field name will be the resource method name and the field type will be
+        the constraint type of the stream returned from the resource method. Not
+        returning a <code>stream</code> type from a resource method having a{" "}
+        <code>subscribe</code> accessor results in a compilation error. Use a
+        subscription operation to monitor small, incremental changes to large
+        objects or to obtain low-latency, real-time updates.
       </p>
 
       <p>

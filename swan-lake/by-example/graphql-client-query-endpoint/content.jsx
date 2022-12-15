@@ -66,14 +66,16 @@ export default function GraphqlClientQueryEndpoint() {
       <h1>GraphQL client - Query GraphQL endpoint</h1>
 
       <p>
-        The GraphQL Client can be used to connect and interact with a GraphQL
-        server. It can be used to do <code>Query</code> and{" "}
-        <code>Mutation</code> operations on a GraphQL service.
-      </p>
-
-      <p>
-        This example shows how to send a GraphQL request and retrieve the
-        response in a user-defined type.
+        The GraphQL client can be used to connect and interact with a GraphQL
+        server. A GraphQL client is created by passing the URL of a GraphQL
+        service endpoint. The <code>execute</code> method is used to execute a
+        GraphQL operation. This method requires the GraphQL{" "}
+        <code>document</code> as a required argument and takes a map of{" "}
+        <code>variables</code> and an <code>operationName</code> as arguments
+        optionally in case the document contains any variables or contains more
+        than one operation. Use the GraphQL client to execute the{" "}
+        <code>Query</code> and <code>Mutation</code> operations on a GraphQL
+        service.
       </p>
 
       <Row
@@ -137,12 +139,6 @@ export default function GraphqlClientQueryEndpoint() {
           )}
         </Col>
       </Row>
-
-      <p>
-        Further, the execute method optionally takes a map of variables and an
-        operationName in case the document contains any variables or contains
-        more than one operation.
-      </p>
 
       <h2>Prerequisites</h2>
 

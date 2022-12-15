@@ -221,11 +221,11 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/graphql-client-tool`} className={styles.titleLink}>
-                  GraphQL client tool
+                <a href={`${prefix}/learn/graphql-tool`} className={styles.titleLink}>
+                  GraphQL tool
                 </a>
               </p>
-              <p className={styles.description}>Details of the Ballerina GraphQL client tool.</p>
+              <p className={styles.description}>Details of the Ballerina GraphQL tool.</p>
             </div>
 
             <div className={styles.content}>

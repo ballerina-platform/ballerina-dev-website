@@ -76,8 +76,8 @@ const nextConfig = {
         destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/openapi-tool`,
       },
       {
-        source: `/${redirectBase}learn/graphql-client-tool`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/graphql-client-tool`,
+        source: `/${redirectBase}learn/graphql-tool`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/graphql-tool`,
       },
       {
         source: `/${redirectBase}learn/asyncapi-tool`,

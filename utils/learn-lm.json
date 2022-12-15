@@ -235,12 +235,12 @@
                             ]
                         },
                         {
-                            "dirName": "GraphQL client tool",
+                            "dirName": "GraphQL tool",
                             "level": 3,
                             "position": 3,
                             "isDir": false,
-                            "url": "/learn/graphql-client-tool",
-                            "id": "graphql-client-tool"
+                            "url": "/learn/graphql-tool",
+                            "id": "graphql-tool"
                         },
                         {
                             "dirName": "AsyncAPI tool",

@@ -45,7 +45,7 @@ To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://g
 ### Improvements
 
 #### `FTP` package
-- Updated `commons-net` version to 3.9.0.
+Updated `commons-net` version to 3.9.0.
 
 ### Bug fixes
 
@@ -63,7 +63,7 @@ To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://g
 
 ### Improvements
 
-To view improvements, see the [GitHub milestone for Swan Lake 2201.2.4](https://github.com/ballerina-platform/ballerina-lang/issues?q=label%3AArea%2FProjectDesignTool+milestone%3A2201.2.4+is%3Aclosed).
+To view improvements, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=label%3AArea%2FProjectDesignTool+milestone%3A2201.2.4+is%3Aclosed).
 
 ### Bug Fixes
 

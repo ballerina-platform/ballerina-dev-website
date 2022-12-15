@@ -61,7 +61,7 @@ export default function HttpSendResponse() {
 
       <p>
         Returning an <code>anydata</code> type from the resource method results
-        in an HTTP response where the returned value becomes the body. If the
+        in an HTTP response, where the returned value becomes the body. If the
         returned type is <code>nil</code>, then a <code>202 Accepted</code>{" "}
         response is returned to the client without the body. Otherwise, the
         response contains the returned value as the payload, and the{" "}

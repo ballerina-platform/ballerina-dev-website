@@ -169,7 +169,7 @@ export default function GrpcClientBearerTokenAuth() {
         </li>
       </ul>
 
-      <p>Execute the command below to run the client.</p>
+      <p>Run the client by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
@@ -258,7 +258,7 @@ export default function GrpcClientBearerTokenAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package - API documentation
+              <code>auth</code> module - API documentation
             </a>
           </span>
         </li>

@@ -134,7 +134,7 @@ export default function GrpcServerReflection() {
         to implement the service used below.
       </p>
 
-      <p>Execute the command below to run the service.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"

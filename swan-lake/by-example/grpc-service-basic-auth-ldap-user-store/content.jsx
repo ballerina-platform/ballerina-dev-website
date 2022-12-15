@@ -302,7 +302,7 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package - API documentation
+              <code>auth</code> module - API documentation
             </a>
           </span>
         </li>

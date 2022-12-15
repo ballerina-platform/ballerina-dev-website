@@ -162,7 +162,7 @@ export default function HttpCachingClient() {
           <span>&#8226;&nbsp;</span>
           <span>
             Run the HTTP service given in the{" "}
-            <a href="learn/by-example/http-service-cache-response/">
+            <a href="/learn/by-example/http-service-cache-response/">
               Sending cache response service
             </a>{" "}
             example.

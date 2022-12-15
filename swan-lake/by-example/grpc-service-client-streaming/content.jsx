@@ -329,7 +329,7 @@ export default function GrpcServiceClientStreaming() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
-          <span>Execute the command below to run the service.</span>
+          <span>Run the service by executing the command below.</span>
         </li>
       </ul>
 
@@ -412,7 +412,7 @@ export default function GrpcServiceClientStreaming() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> package - API documentation
+              <code>grpc</code> module - API documentation
             </a>
           </span>
         </li>

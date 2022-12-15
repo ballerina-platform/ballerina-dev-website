@@ -169,7 +169,7 @@ export default function GrpcClientSslTls() {
         </li>
       </ul>
 
-      <p>Execute the command below to run the client.</p>
+      <p>Run the client by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"

@@ -328,7 +328,7 @@ export default function GrpcClientUnary() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
-          <span>Execute the command below to run the client.</span>
+          <span>Run the client by executing the command below.</span>
         </li>
       </ul>
 
@@ -399,7 +399,7 @@ export default function GrpcClientUnary() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> package - API documentation
+              <code>grpc</code> module - API documentation
             </a>
           </span>
         </li>

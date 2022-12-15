@@ -84,9 +84,10 @@ export default function GraphqlClientErrorHandling() {
 
       <p>
         The execute method of <code>graphql:Client</code> can fail and return a{" "}
-        <code>graphql:ClientError</code>. This example demonstrates{" "}
-        <code>graphql:Client</code> error handling and shows how to obtain
-        GraphQL-specific errors returned by the graphql server.
+        <code>graphql:ClientError</code>. The <code>graphql:ClientError</code>{" "}
+        has different subtypes that can be handled differently based on the use
+        case. Use the subtypes of <code>graphql:ClientError</code> to handle
+        different types of errors differently.
       </p>
 
       <Row
@@ -222,7 +223,7 @@ export default function GraphqlClientErrorHandling() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run graphql_client_error_handling.bal`}</span>
-              <span>{`InvalidDocumentError: [{"message":"String cannot represent non String value: 1","locations":[{"line":1,"column":29}]}]`}</span>
+              <span>{`InvalidDocumentError: [{"message":"String cannot represent non String value: 1","locations":[{"line":1,"column":29}]},{"message":"Field "updateName" argument "id" of type "Int!" is required, but it was not provided.","locations":[{"line":1,"column":12}]}]`}</span>
             </code>
           </pre>
         </Col>

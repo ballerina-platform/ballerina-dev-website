@@ -29,7 +29,7 @@ service / on new http:Listener(9090) {
     final Album[] albums = [];
 
     // The \`album\` parameter in the payload annotation will get validated according to the constraints
-    // added. If the validation fails, a \`400 Bad Request\` response will be sent to the client.
+    // added.
     resource function post albums(@http:Payload Album album) returns http:Created {
         self.albums.push(album);
         return http:CREATED;
@@ -71,10 +71,10 @@ export default function HttpServicePayloadConstraintValidation() {
         after the successful data-binding of the request payload before
         executing the resource method. The constraints can be added to a given
         data type using different annotations. If the validation fails, a{" "}
-        <code>400 Bad Request</code> response will be returned to the client
-        with the validation error message. Use this to validate the request
-        payload as the application receives it, which allows you to guard
-        against unnecessary resource method processing and malicious payloads.
+        <code>400 Bad Request</code> response is returned to the client with the
+        validation error message. Use this to validate the request payload as
+        the application receives it, which allows you to guard against
+        unnecessary resource method processing and malicious payloads.
       </p>
 
       <Row

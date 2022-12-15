@@ -71,7 +71,7 @@ export default function HttpQueryParameter() {
         <code>decimal</code>, and <code>array</code> types of the aforementioned
         types. The query parameter type can be nilable (e.g., (
         <code>string? bar</code>)) and defaultable (e.g., (
-        <code>string? bar = &quot;hello&quot;</code>)). When a request contains
+        <code>string bar = &quot;hello&quot;</code>)). When a request contains
         query segments, retrieving them as resource arguments is much simpler
         and well-recommended. Alternatively, the <code>http:Request</code> also
         provides related methods to retrieve query parameters.

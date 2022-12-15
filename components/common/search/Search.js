@@ -21,7 +21,6 @@ import * as React from 'react';
 // import algoliasearch from "algoliasearch/lite";
 // import { Container, Nav, Navbar, NavDropdown, Form, FormControl, Button, Modal} from 'react-bootstrap';
 // import { InstantSearch } from "react-instantsearch-dom";
-
 // import SearchBox from "./search-box/SearchBox";
 // import Hits from "./search-hits/SearchHits";
 

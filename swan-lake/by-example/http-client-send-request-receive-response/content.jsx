@@ -63,17 +63,16 @@ export default function HttpClientSendRequestReceiveResponse() {
       <h1>HTTP client - Send request/Receive response</h1>
 
       <p>
-        The <code>http:Client</code> interacts with an HTTP server. The client
-        is instantiated with the service URL and it uses resource methods to
-        send requests and receive responses from the backend service. The
-        standard HTTP methods <code>get</code>, <code>post</code>,{" "}
-        <code>put</code>, <code>patch</code>, <code>delete</code>,{" "}
-        <code>head</code>, and <code>options</code> are available as resource
-        accessors. A resource method invocation is done by providing the{" "}
-        <code>resource path</code>, relevant <code>resource accessor</code>, and
-        required arguments after the <code>-&gt;</code>. Since HTTP{" "}
-        <code>get</code> is the default resource method, the accessor is not
-        mandatory when invoking an HTTP <code>GET</code> resource.
+        The HTTP client can be used to connect to and interact with an HTTP
+        server. The client is instantiated with URL and uses resource method to
+        make the network calls. The standard HTTP methods <code>get</code>,{" "}
+        <code>post</code>, <code>put</code>, <code>patch</code>,{" "}
+        <code>delete</code>, <code>head</code>, <code>options</code> are
+        available as resource methods and can be invoked as same as invoking a
+        remote method. To invoke an HTTP method, the relevant verb and the
+        required arguments can be provided after the <code>-&gt;</code>. For{" "}
+        <code>get</code> method, the verb is not explicitly needed since it will
+        be defaulted.
       </p>
 
       <Row
@@ -86,7 +85,7 @@ export default function HttpClientSendRequestReceiveResponse() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dda8f649b87f6cd9ada82c2ed7e15bea&file=http_client_send_request_receive_response.bal",
+                "https://play.ballerina.io/?gist=17ec458621d2b4c76ec46726c31c7977&file=http_client_send_request_receive_response.bal",
                 "_blank"
               );
             }}
@@ -250,7 +249,7 @@ export default function HttpClientSendRequestReceiveResponse() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

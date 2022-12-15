@@ -31,13 +31,13 @@ public function main() returns error? {
 
     // Request the server for the album. If the constraint validation fails,
     // an \`http:PayloadValidationError\` will be returned.
-    Album album = check albumClient->/albums.post({
+    Album album = check albumClient->post("/albums", {
         // Here, an album which exceeds the constraints are sent to a server
         // which returns the same record again to the client.
         title: "Blue Train",
         artist: "John Coltrane"
     });
-    io:println("Received album: " + album.toJsonString());
+    io:println("Received albums: " + album.toJsonString());
 }
 `,
 ];
@@ -66,17 +66,11 @@ export default function HttpClientPayloadConstraintValidation() {
       <h1>HTTP client - Payload constraint validation</h1>
 
       <p>
-        The Ballerina <code>constraint</code> module allows you to add
-        additional constraints to the response payload. The{" "}
-        <code>http:Client</code> uses the <code>constraint</code> module to
-        validate the payload against the given constraints. This validation
-        happens soon after the successful data-binding of the response payload.
-        The constraints can be added to a given data type using different
-        annotations. If the validation fails,{" "}
-        <code>http:PayloadValidationError</code> will be returned with the
-        validation error message. Use this to validate the response payload as
-        the application program receives it, which allows you to guard against
-        unnecessary processing and malicious payloads.
+        Through client payload constraint validation, the response payload can
+        be validated according to the defined constraints. The constraint
+        validation happens along with the data binding step. If the validation
+        fails, a <code>http:PayloadValidationError</code> will be returned with
+        the validation details.
       </p>
 
       <Row
@@ -225,7 +219,7 @@ export default function HttpClientPayloadConstraintValidation() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>
@@ -235,7 +229,7 @@ export default function HttpClientPayloadConstraintValidation() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/http/">
-              <code>http</code> module - Specification
+              <code>http</code> package - Specification
             </a>
           </span>
         </li>
@@ -244,7 +238,7 @@ export default function HttpClientPayloadConstraintValidation() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/constraint-validations/">
+            <a href="/by-example/constraint-validations/">
               Constraint validation example
             </a>
           </span>

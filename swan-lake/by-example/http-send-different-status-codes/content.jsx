@@ -27,7 +27,7 @@ table<Album> key(title) albums = table [
 service / on new http:Listener(9090) {
 
     // The resource returns \`409 Conflict\` status code as the error response status code using 
-    // \`StatusCodeResponse\` constants. This constant does not have a body or headers.
+    // \`StatusCodeResponse\` constants. This constant does not have a body or headers
     resource function post albums(@http:Payload Album album) returns Album|http:Conflict {
         if albums.hasKey(album.title) {
             return http:CONFLICT;
@@ -65,14 +65,10 @@ export default function HttpSendDifferentStatusCodes() {
       <h1>REST service - Send different status codes</h1>
 
       <p>
-        The subtypes of the <code>http:StatusCodeResponse</code> record type
-        represent different HTTP status code responses. Returning them from the
-        resource function results in the relevant HTTP status code response. To
-        send a non-entity body response, use the relevant constant value
-        declared in the <code>http</code> module. These constant values can be
-        directly returned from the resource method by specifying the relevant
-        return type in the resource function signature. Use this when different
-        status code responses need to be sent without a body and headers.
+        The resource method can return <code>StatusCodeResponse</code> record.
+        Ballerina provides built in records for each HTTP status codes. The{" "}
+        <code>StatusCodeResponse</code> constants are available to send the a
+        response without a body or headers.
       </p>
 
       <Row
@@ -292,7 +288,7 @@ export default function HttpSendDifferentStatusCodes() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

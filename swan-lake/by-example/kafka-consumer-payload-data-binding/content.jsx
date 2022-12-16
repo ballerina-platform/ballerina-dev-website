@@ -23,33 +23,42 @@ public type Order readonly & record {
 };
 
 public function main() returns error? {
-    kafka:Consumer orderConsumer = check new ("localhost:9094", {
+    kafka:Consumer orderConsumer = check new (kafka:DEFAULT_URL, {
         groupId: "order-group-id",
-        topics: ["order-topic"],
-        // Provide the relevant secure socket configurations by using \`kafka:SecureSocket\`.
-        secureSocket: {
-            cert: "./resources/path/to/public.crt",
-            protocol: {
-                // Provide the relevant security protocol.
-                name: kafka:SSL
-            }
-        },
-        // Provide the type of the security protocol to use in the broker connection.
-        securityProtocol: kafka:PROTOCOL_SSL
+        topics: "order-topic"
     });
 
-    // Polls the consumer for payload.
-    Order[] orders = check orderConsumer->pollPayload(1);
-
-    check from Order 'order in orders
+    while true {
         do {
-            io:println(string \`Received valid order for \${'order.productName}\`);
-        };
+            // Polls the consumer for payload.
+            Order[] orders = check orderConsumer->pollPayload(15);
+            check from Order 'order in orders
+                where 'order.isValid
+                do {
+                    io:println(string \`Received valid order for \${'order.productName}\`);
+                };
+        } on fail error orderError {
+            // Check whether the \`error\` is a \`kafka:PayloadBindingError\` and seek pass the
+            // erroneous record.
+            if orderError is kafka:PayloadBindingError {
+                io:println("Payload binding failed", orderError);
+                // The \`kafka:PartitionOffset\` related to the erroneous record is provided inside
+                // the \`kafka:PayloadBindingError\`.
+                check orderConsumer->seek({
+                    partition: orderError.detail().partition,
+                    offset: orderError.detail().offset + 1
+                });
+            } else {
+                check orderConsumer->close();
+                return orderError;
+            }
+        }
+    }
 }
 `,
 ];
 
-export default function KafkaClientConsumerSsl() {
+export default function KafkaConsumerPayloadDataBinding() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -70,11 +79,23 @@ export default function KafkaClientConsumerSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka client - Consumer SSL/TLS</h1>
+      <h1>Kafka consumer - Payload data binding</h1>
 
       <p>
-        This shows how the SSL encryption is done in the{" "}
-        <code>kafka:Consumer</code>.
+        The payload data-binding allows you to directly bind Kafka messages to
+        subtypes of <code>anydata</code>. It does this by using the built-in
+        bytes deserializer for both the key and the value. To use this, directly
+        assign the <code>pollPayload</code> method’s return value to the
+        declared variable, which is a subtype of <code>anydata[]</code>. If the
+        payload does not match with the defined type, a{" "}
+        <code>kafka:PayloadBindingError</code> is returned. The{" "}
+        <code>seek</code> method of the <code>kafka:Consumer</code> can be used
+        to seek past the erroneous record and read the new records. Use this to
+        receive messages from a Kafka server without the metadata of the
+        messages like <code>kafka:PartitionOffset</code> and{" "}
+        <code>timestamp</code>. It is important to note that this only works
+        when <code>kafka:Producer</code> also uses the built-in bytes serializer
+        for Ballerina.
       </p>
 
       <Row
@@ -147,23 +168,7 @@ export default function KafkaClientConsumerSsl() {
           <span>
             Start a{" "}
             <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
-            instance configured to use{" "}
-            <a href="https://docs.confluent.io/3.0.0/kafka/ssl.html#configuring-kafka-brokers">
-              SSL/TLS
-            </a>
-            .
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the Kafka client given in the{" "}
-            <a href="/learn/by-example/kafka-client-producer-ssl">
-              Kafka client - Producer SSL/TLS
-            </a>{" "}
-            example to produce some messages to the topic.
+            instance.
           </span>
         </li>
       </ul>
@@ -223,12 +228,22 @@ export default function KafkaClientConsumerSsl() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run kafka_client_consumer_sasl.bal`}</span>
+              <span>{`\$ bal run kafka_client_consumer_poll_payload.bal`}</span>
               <span>{`Received valid order for Sport shoe`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Run the Kafka client given in the{" "}
+          <a href="/learn/by-example/kafka-producer-produce-message">
+            Kafka producer - Produce message
+          </a>{" "}
+          example to produce some messages to the topic.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -236,8 +251,9 @@ export default function KafkaClientConsumerSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket">
-              <code>kafka:SecureSocket</code> record - API documentation
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/clients/Consumer#pollPayload">
+              <code>kafka:Consumer-&gt;pollPayload</code> function - API
+              documentation
             </a>
           </span>
         </li>
@@ -246,8 +262,8 @@ export default function KafkaClientConsumerSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4212-secure-client">
-              Kafka secure client - Specification
+            <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#422-consume-messages">
+              Kafka client consume messages - Specification
             </a>
           </span>
         </li>
@@ -257,8 +273,8 @@ export default function KafkaClientConsumerSsl() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Producer SSL/TLS"
-            href="/learn/by-example/kafka-client-producer-ssl"
+            title="Produce message"
+            href="/learn/by-example/kafka-producer-produce-message"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -285,7 +301,7 @@ export default function KafkaClientConsumerSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer SSL/TLS
+                  Produce message
                 </span>
               </div>
             </div>
@@ -293,8 +309,8 @@ export default function KafkaClientConsumerSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Producer SASL authentication"
-            href="/learn/by-example/kafka-client-producer-sasl"
+            title="Consumer record data binding"
+            href="/learn/by-example/kafka-consumer-consumer-record-data-binding"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -304,7 +320,7 @@ export default function KafkaClientConsumerSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer SASL authentication
+                  Consumer record data binding
                 </span>
               </div>
               <svg

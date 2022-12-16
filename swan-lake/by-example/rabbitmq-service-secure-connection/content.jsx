@@ -16,7 +16,6 @@ const codeSnippetData = [
 import ballerinax/rabbitmq;
 
 listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
-
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     secureSocket = {

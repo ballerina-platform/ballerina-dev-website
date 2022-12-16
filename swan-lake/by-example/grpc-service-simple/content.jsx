@@ -12,8 +12,7 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `// This is the service definition of the simple scenario.
-syntax = "proto3";
+  `syntax = "proto3";
 
 import "google/protobuf/wrappers.proto";
 
@@ -24,7 +23,7 @@ service HelloWorld {
   `import ballerina/grpc;
 
 @grpc:Descriptor {
-    value: GRPC_SERVICE_UNARY_DESC
+    value: GRPC_SIMPLE_SERVICE_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
 
@@ -36,7 +35,7 @@ service "HelloWorld" on new grpc:Listener(9090) {
 `,
 ];
 
-export default function GrpcServiceUnary() {
+export default function GrpcServiceSimple() {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -60,12 +59,15 @@ export default function GrpcServiceUnary() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>gRPC service - Unary RPC</h1>
+      <h1>gRPC service - Simple RPC</h1>
 
       <p>
-        The gRPC Server Connector exposes the gRPC service over HTTP2. In a
-        unary RPC call, a client sends a request to a remote service and waits
-        for the response.
+        A <code>grpc:Listener</code> is created by providing the port and a{" "}
+        <code>grpc:Service</code> is attached to it. In the simple RPC scenario,
+        once a client is connected to the service and sends a request message,
+        the service sends a single response message to the client. Use this to
+        receive a single request message from a client and send a single
+        response message back.
       </p>
 
       <h2>Generate the service definition</h2>
@@ -75,7 +77,7 @@ export default function GrpcServiceUnary() {
           <span>1.</span>
           <span>
             Create a new Protocol Buffers definition file named{" "}
-            <code>grpc_unary.proto</code> and add the service definition below.
+            <code>grpc_simple.proto</code> and add the service definition below.
           </span>
         </li>
       </ul>
@@ -205,14 +207,14 @@ export default function GrpcServiceUnary() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal grpc --input grpc_unary.proto  --output stubs`}</span>
+              <span>{`\$ bal grpc --input grpc_simple.proto  --output stubs`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
       <p>
-        Once you run the command, the <code>grpc_unary_pb.bal</code> file gets
+        Once you run the command, the <code>grpc_simple_pb.bal</code> file gets
         generated inside the <code>stubs</code> directory.
       </p>
 
@@ -233,8 +235,9 @@ export default function GrpcServiceUnary() {
         <li>
           <span>2.</span>
           <span>
-            Copy the generated <code>grpc_unary_pb.bal</code> stub file from the{" "}
-            <code>stubs</code> directory to the <code>service</code> package.
+            Copy the generated <code>grpc_simple_pb.bal</code> stub file from
+            the <code>stubs</code> directory to the <code>service</code>{" "}
+            package.
           </span>
         </li>
       </ul>
@@ -243,7 +246,7 @@ export default function GrpcServiceUnary() {
         <li>
           <span>3.</span>
           <span>
-            Create a new <code>grpc_unary_service.bal</code> file inside the{" "}
+            Create a new <code>grpc_simple_service.bal</code> file inside the{" "}
             <code>service</code> package and add the service implementation
             below.
           </span>
@@ -381,8 +384,8 @@ export default function GrpcServiceUnary() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/grpc-client-unary/">
-            gRPC client - Unary RPC
+          <a href="/learn/by-example/grpc-client-simple/">
+            gRPC client - Simple RPC
           </a>
           .
         </p>
@@ -395,7 +398,7 @@ export default function GrpcServiceUnary() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> package - API documentation
+              <code>grpc</code> module - API documentation
             </a>
           </span>
         </li>
@@ -405,7 +408,7 @@ export default function GrpcServiceUnary() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/#41-simple-rpc">
-              gRPC service unary RPC - Specification
+              gRPC service simple RPC - Specification
             </a>
           </span>
         </li>

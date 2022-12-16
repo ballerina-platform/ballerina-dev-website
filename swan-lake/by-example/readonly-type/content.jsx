@@ -79,7 +79,7 @@ export default function ReadonlyType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0b810ab223d318b60829f824054decaa&file=readonly_type.bal",
+                "https://play.ballerina.io/?gist=0d4b6d1d355702b40447aa7d5922e025&file=readonly_type.bal",
                 "_blank"
               );
             }}

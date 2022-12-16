@@ -138,7 +138,7 @@ export default function ArrayMapSymmetry() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ea73873d3455a5cb29758a2d13546bdd&file=array_map_symmetry.bal",
+                "https://play.ballerina.io/?gist=84422b84a48c2240d6b08231edfd99b7&file=array_map_symmetry.bal",
                 "_blank"
               );
             }}

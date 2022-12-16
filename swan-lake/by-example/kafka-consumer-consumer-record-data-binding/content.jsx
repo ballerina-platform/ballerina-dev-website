@@ -34,19 +34,37 @@ public function main() returns error? {
         topics: "order-topic"
     });
 
-    // Polls the consumer for order records.
-    OrderConsumerRecord[] records = check orderConsumer->poll(1);
-
-    check from OrderConsumerRecord orderRecord in records
-        where orderRecord.value.isValid
+    while true {
         do {
-            io:println(string \`Received valid order for \${orderRecord.value.productName}\`);
-        };
+            // Polls the consumer for order records.
+            OrderConsumerRecord[] records = check orderConsumer->poll(15);
+            check from OrderConsumerRecord orderRecord in records
+                where orderRecord.value.isValid
+                do {
+                    io:println(string \`Received valid order for \${orderRecord.value.productName}\`);
+                };
+        } on fail error orderError {
+            // Check whether the \`error\` is a \`kafka:PayloadBindingError\` and seek pass the
+            // erroneous record.
+            if orderError is kafka:PayloadBindingError {
+                io:println("Payload binding failed", orderError);
+                // The \`kafka:PartitionOffset\` related to the erroneous record is provided inside
+                // the \`kafka:PayloadBindingError\`.
+                check orderConsumer->seek({
+                    partition: orderError.detail().partition,
+                    offset: orderError.detail().offset + 1
+                });
+            } else {
+                check orderConsumer->close();
+                return orderError;
+            }
+        }
+    }
 }
 `,
 ];
 
-export default function KafkaClientConsumerRecordDataBinding() {
+export default function KafkaConsumerConsumerRecordDataBinding() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -67,19 +85,25 @@ export default function KafkaClientConsumerRecordDataBinding() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka client - Consumer record data binding</h1>
+      <h1>Kafka consumer - Consumer record data binding</h1>
 
       <p>
-        This shows how to use a <code>kafka:Consumer</code> as a simple record
-        consumer. The records from a subscribed topic can be retrieved using the{" "}
-        <code>poll()</code> function. This consumer uses the builtin byte array
-        deserializer for both the key and the value, which is the default
-        deserializer in the <code>kafka:Consumer</code>.
-      </p>
-
-      <p>
-        The received records are converted to the user defined type using
-        data-binding.
+        The consumer record data-binding allows you to directly bind Kafka
+        messages to subtypes of <code>kafka:AnydataConsumerRecord</code>. It
+        does this by using the built-in bytes deserializer for both the key and
+        the value. To use this, directly assign the <code>poll</code> method’s
+        return value to the declared variable, which is a subtype of{" "}
+        <code>kafka:AnydataConsumerRecord[]</code>. A subtype of{" "}
+        <code>kafka:AnydataConsumerRecord</code> can be created by specifying a
+        user defined type for the value field. If the record does not match with
+        the defined type, a <code>kafka:PayloadBindingError</code> is returned.
+        The <code>seek</code> method of the <code>kafka:Consumer</code> can be
+        used to seek past the erroneous record and read the new records. Use
+        this to receive messages from a Kafka server with the metadata of the
+        messages like <code>kafka:PartitionOffset</code> and{" "}
+        <code>timestamp</code>. It is important to note that this only works
+        when <code>kafka:Producer</code> also uses the built-in bytes serializer
+        for Ballerina.
       </p>
 
       <Row
@@ -156,18 +180,6 @@ export default function KafkaClientConsumerRecordDataBinding() {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the Kafka client given in the{" "}
-            <a href="/learn/by-example/kafka-client-produce-message">
-              Kafka client - Produce message
-            </a>{" "}
-            example to produce some messages to the topic.
-          </span>
-        </li>
-      </ul>
 
       <p>Run the program by executing the following command.</p>
 
@@ -231,6 +243,16 @@ export default function KafkaClientConsumerRecordDataBinding() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Run the Kafka client given in the{" "}
+          <a href="/learn/by-example/kafka-producer-produce-message">
+            Kafka producer - Produce message
+          </a>{" "}
+          example to produce some messages to the topic.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -259,7 +281,7 @@ export default function KafkaClientConsumerRecordDataBinding() {
         <Col sm={6}>
           <Link
             title="Payload data binding"
-            href="/learn/by-example/kafka-client-payload-data-binding"
+            href="/learn/by-example/kafka-consumer-payload-data-binding"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -295,7 +317,7 @@ export default function KafkaClientConsumerRecordDataBinding() {
         <Col sm={6}>
           <Link
             title="Constraint validation"
-            href="/learn/by-example/kafka-client-constraint-validation"
+            href="/learn/by-example/kafka-consumer-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

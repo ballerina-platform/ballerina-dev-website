@@ -19,7 +19,6 @@ import ballerina/log;
 // configuration. The listener listens to the files
 // with the given file name pattern located in the specified path.
 listener ftp:Listener fileListener = check new ({
-    protocol: ftp:FTP,
     host: "ftp.example.com",
     auth: {
         credentials: {
@@ -76,10 +75,13 @@ export default function FtpServiceRead() {
       <h1>FTP service - Read file</h1>
 
       <p>
-        The FTP listener is used to receive file/directory changes that occur in
-        a remote location using the FTP protocol. This sample includes receiving
-        file/directory related change events from a listener with default
-        configurations using the default port.
+        The <code>ftp:Service</code> connects to a given FTP server via the{" "}
+        <code>ftp:Listener</code>. An <code>ftp:Listener</code> is created by
+        providing the host-name and required credentials. Once connected, the{" "}
+        <code>onFileChange</code> remote method of the service starts receiving
+        events as a <code>ftp:WatchEvent</code> every time a file is deleted or
+        added to the server. Use this to listen to file changes occurring in a
+        remote file system.
       </p>
 
       <Row

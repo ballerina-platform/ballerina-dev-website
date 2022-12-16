@@ -87,13 +87,16 @@ export default function GraphqlMutations() {
       <h1>GraphQL service - Mutations</h1>
 
       <p>
-        A remote method inside a GraphQL service represents a field in the root{" "}
+        A <code>Mutation</code> is a GraphQL operation, which allows you to
+        insert new data or modify the existing data on the server side. A remote
+        method inside a GraphQL service represents a field in the root{" "}
         <code>Mutation</code> object type. Therefore, if a remote method is
         present inside the Ballerina GraphQL service, the auto-generated schema
         will have the <code>Mutation</code> type. Each remote method in the
         service will be added as a field of the <code>Mutation</code> type. The
         field name will be the remote method name and the field type will be the
-        return type of the remote method.
+        return type of the remote method. Use the mutation operation when
+        performing any side-effects on the underlying data system.
       </p>
 
       <p>

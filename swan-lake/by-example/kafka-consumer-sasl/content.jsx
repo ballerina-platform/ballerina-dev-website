@@ -13,41 +13,44 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerinax/kafka;
+import ballerina/io;
 
-public type Order readonly & record {|
+public type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
-public function main() returns kafka:Error? {
-    kafka:Producer orderProducer = check new ("localhost:9094", {
-        // Provide the relevant secure socket configurations by using \`kafka:SecureSocket\`.
-        secureSocket: {
-            cert: "./resources/path/to/public.crt",
-            protocol: {
-                // Provide the relevant security protocol.
-                name: kafka:SSL
-            }
+public function main() returns error? {
+    kafka:Consumer orderConsumer = check new ("localhost:9093", {
+        groupId: "order-group-id",
+        topics: "order-topic",
+        // Provide the relevant authentication configurations to authenticate the consumer
+        // by the \`kafka:AuthenticationConfiguration\`.
+        auth: {
+            // Provide the authentication mechanism used by the Kafka server.
+            mechanism: kafka:AUTH_SASL_PLAIN,
+            // Username and password should be set here in order to authenticate the consumer.
+            username: "alice",
+            password: "alice@123"
         },
-        // Provide the type of the security protocol to use in the broker connection.
-        securityProtocol: kafka:PROTOCOL_SSL
+        securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
     });
-    check orderProducer->send({
-        topic: "order-topic",
-        value: {
-            orderId: 1,
-            productName: "Sport shoe",
-            price: 27.5,
-            isValid: true
-        }
-    });
+
+    // Polls the consumer for payload.
+    Order[] orders = check orderConsumer->pollPayload(1);
+
+    check from Order 'order in orders
+        where 'order.isValid
+        do {
+            io:println(string \`Received valid order for \${'order.productName}\`);
+        };
 }
 `,
 ];
 
-export default function KafkaClientProducerSsl() {
+export default function KafkaConsumerSasl() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -68,23 +71,18 @@ export default function KafkaClientProducerSsl() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Kafka client - Producer SSL/TLS</h1>
+      <h1>Kafka consumer - SASL authentication</h1>
 
       <p>
-        This shows how the SSL encryption is done in the{" "}
-        <code>kafka:Producer</code>.
+        The <code>kafka:Consumer</code> connects to a Kafka server via
+        SASL/PLAIN authentication and then, receives the payloads from the
+        server. SASL/PLAIN authentication can be enabled by configuring the{" "}
+        <code>auth</code>, which requires the authentication mechanism,
+        username, and password. Further, the mode of security must be configured
+        by setting the <code>securityProtocol</code> to{" "}
+        <code>kafka:PROTOCOL_SASL_PLAINTEXT</code>. Use this to connect to a
+        Kafka server secured with SASL/PLAIN.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerinax/kafka/latest">
-            <code>kafka</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -156,9 +154,9 @@ export default function KafkaClientProducerSsl() {
           <span>
             Start a{" "}
             <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
-            instance configured to use{" "}
-            <a href="https://docs.confluent.io/3.0.0/kafka/ssl.html#configuring-kafka-brokers">
-              SSL/TLS
+            instance configured to use the{" "}
+            <a href="https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html#sasl-plain-overview">
+              SASL/PLAIN authentication mechanism
             </a>
             .
           </span>
@@ -220,12 +218,22 @@ export default function KafkaClientProducerSsl() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run kafka_client_producer_ssl.bal`}</span>
-              <span>{`Message published successfully.`}</span>
+              <span>{`\$ bal run kafka_client_consumer_sasl.bal`}</span>
+              <span>{`Received valid order for Sport shoe`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Run the Kafka client given in the{" "}
+          <a href="/learn/by-example/kafka-producer-sasl">
+            Kafka producer - SASL authentication
+          </a>{" "}
+          example to produce some messages to the topic.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -233,8 +241,9 @@ export default function KafkaClientProducerSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket">
-              <code>kafka:SecureSocket</code> record - API documentation
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration">
+              <code>kafka:AuthenticationConfiguration</code> record - API
+              documentation
             </a>
           </span>
         </li>
@@ -243,8 +252,8 @@ export default function KafkaClientProducerSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#322-secure-client">
-              Kafka secure client - Specification
+            <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#4212-secure-client">
+              Kafka client consumer SASL authentication - Specification
             </a>
           </span>
         </li>
@@ -253,10 +262,7 @@ export default function KafkaClientProducerSsl() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="SASL authentication"
-            href="/learn/by-example/kafka-service-sasl"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/kafka-consumer-ssl">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -282,7 +288,7 @@ export default function KafkaClientProducerSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SASL authentication
+                  SSL/TLS
                 </span>
               </div>
             </div>
@@ -290,8 +296,8 @@ export default function KafkaClientProducerSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Consumer SSL/TLS"
-            href="/learn/by-example/kafka-client-consumer-ssl"
+            title="Consume message"
+            href="/learn/by-example/rabbitmq-consumer"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -301,7 +307,7 @@ export default function KafkaClientProducerSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consumer SSL/TLS
+                  Consume message
                 </span>
               </div>
               <svg

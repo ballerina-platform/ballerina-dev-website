@@ -231,6 +231,7 @@ import GraphqlSubscriptions from "./graphql-subscriptions/content.jsx";
 import GraphqlInputObjects from "./graphql-input-objects/content.jsx";
 import GraphqlInterfaces from "./graphql-interfaces/content.jsx";
 import GraphqlInterfacesImplementingInterfaces from "./graphql-interfaces-implementing-interfaces/content.jsx";
+import GraphqlServiceUnionTypes from "./graphql-service-union-types/content.jsx";
 import GraphqlGraphiql from "./graphql-graphiql/content.jsx";
 import GraphqlDocumentation from "./graphql-documentation/content.jsx";
 import GraphqlDirectives from "./graphql-directives/content.jsx";
@@ -276,14 +277,14 @@ import WebsocketRetryClient from "./websocket-retry-client/content.jsx";
 import WebsubWebhookSample from "./websub-webhook-sample/content.jsx";
 import DynamicListener from "./dynamic-listener/content.jsx";
 import StopHandler from "./stop-handler/content.jsx";
-import GrpcServiceUnary from "./grpc-service-unary/content.jsx";
+import GrpcServiceSimple from "./grpc-service-simple/content.jsx";
 import GrpcServiceServerStreaming from "./grpc-service-server-streaming/content.jsx";
 import GrpcServiceClientStreaming from "./grpc-service-client-streaming/content.jsx";
 import GrpcServiceBidirectionalStreaming from "./grpc-service-bidirectional-streaming/content.jsx";
 import GrpcServiceHeaders from "./grpc-service-headers/content.jsx";
 import GrpcServerReflection from "./grpc-server-reflection/content.jsx";
 import GrpcServiceCheckDeadline from "./grpc-service-check-deadline/content.jsx";
-import GrpcClientUnary from "./grpc-client-unary/content.jsx";
+import GrpcClientSimple from "./grpc-client-simple/content.jsx";
 import GrpcClientServerStreaming from "./grpc-client-server-streaming/content.jsx";
 import GrpcClientClientStreaming from "./grpc-client-client-streaming/content.jsx";
 import GrpcClientBidirectionalStreaming from "./grpc-client-bidirectional-streaming/content.jsx";
@@ -315,16 +316,16 @@ import NatsClientSecureConnection from "./nats-client-secure-connection/content.
 import NatsClientBasicAuth from "./nats-client-basic-auth/content.jsx";
 import KafkaServiceConsumeMessage from "./kafka-service-consume-message/content.jsx";
 import KafkaServiceConstraintValidation from "./kafka-service-constraint-validation/content.jsx";
-import KafkaClientProduceMessage from "./kafka-client-produce-message/content.jsx";
-import KafkaClientPayloadDataBinding from "./kafka-client-payload-data-binding/content.jsx";
-import KafkaClientConsumerRecordDataBinding from "./kafka-client-consumer-record-data-binding/content.jsx";
-import KafkaClientConstraintValidation from "./kafka-client-constraint-validation/content.jsx";
+import KafkaProducerProduceMessage from "./kafka-producer-produce-message/content.jsx";
+import KafkaConsumerPayloadDataBinding from "./kafka-consumer-payload-data-binding/content.jsx";
+import KafkaConsumerConsumerRecordDataBinding from "./kafka-consumer-consumer-record-data-binding/content.jsx";
+import KafkaConsumerConstraintValidation from "./kafka-consumer-constraint-validation/content.jsx";
 import KafkaServiceSsl from "./kafka-service-ssl/content.jsx";
 import KafkaServiceSasl from "./kafka-service-sasl/content.jsx";
-import KafkaClientProducerSsl from "./kafka-client-producer-ssl/content.jsx";
-import KafkaClientConsumerSsl from "./kafka-client-consumer-ssl/content.jsx";
-import KafkaClientProducerSasl from "./kafka-client-producer-sasl/content.jsx";
-import KafkaClientConsumerSasl from "./kafka-client-consumer-sasl/content.jsx";
+import KafkaProducerSsl from "./kafka-producer-ssl/content.jsx";
+import KafkaProducerSasl from "./kafka-producer-sasl/content.jsx";
+import KafkaConsumerSsl from "./kafka-consumer-ssl/content.jsx";
+import KafkaConsumerSasl from "./kafka-consumer-sasl/content.jsx";
 import RabbitmqConsumer from "./rabbitmq-consumer/content.jsx";
 import RabbitmqConsumerWithClientAcknowledgement from "./rabbitmq-consumer-with-client-acknowledgement/content.jsx";
 import RabbitmqTransactionConsumer from "./rabbitmq-transaction-consumer/content.jsx";
@@ -642,6 +643,7 @@ const BBEs = {
   GraphqlInputObjects,
   GraphqlInterfaces,
   GraphqlInterfacesImplementingInterfaces,
+  GraphqlServiceUnionTypes,
   GraphqlGraphiql,
   GraphqlDocumentation,
   GraphqlDirectives,
@@ -687,14 +689,14 @@ const BBEs = {
   WebsubWebhookSample,
   DynamicListener,
   StopHandler,
-  GrpcServiceUnary,
+  GrpcServiceSimple,
   GrpcServiceServerStreaming,
   GrpcServiceClientStreaming,
   GrpcServiceBidirectionalStreaming,
   GrpcServiceHeaders,
   GrpcServerReflection,
   GrpcServiceCheckDeadline,
-  GrpcClientUnary,
+  GrpcClientSimple,
   GrpcClientServerStreaming,
   GrpcClientClientStreaming,
   GrpcClientBidirectionalStreaming,
@@ -726,16 +728,16 @@ const BBEs = {
   NatsClientBasicAuth,
   KafkaServiceConsumeMessage,
   KafkaServiceConstraintValidation,
-  KafkaClientProduceMessage,
-  KafkaClientPayloadDataBinding,
-  KafkaClientConsumerRecordDataBinding,
-  KafkaClientConstraintValidation,
+  KafkaProducerProduceMessage,
+  KafkaConsumerPayloadDataBinding,
+  KafkaConsumerConsumerRecordDataBinding,
+  KafkaConsumerConstraintValidation,
   KafkaServiceSsl,
   KafkaServiceSasl,
-  KafkaClientProducerSsl,
-  KafkaClientConsumerSsl,
-  KafkaClientProducerSasl,
-  KafkaClientConsumerSasl,
+  KafkaProducerSsl,
+  KafkaProducerSasl,
+  KafkaConsumerSsl,
+  KafkaConsumerSasl,
   RabbitmqConsumer,
   RabbitmqConsumerWithClientAcknowledgement,
   RabbitmqTransactionConsumer,

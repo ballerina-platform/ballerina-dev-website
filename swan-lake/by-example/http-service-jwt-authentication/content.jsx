@@ -28,11 +28,10 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with JWT Auth and can be authorized
-// optionally. JWT Auth can be enabled by setting the \`http:JwtValidatorConfig\` configurations.
+// The service can be secured with JWT authentication and can be authorized optionally.
+// JWT authentication can be enabled by setting the \`http:JwtValidatorConfig\` configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type
-// configurations for \`scopes\` field.
+// Authorization can be enabled by setting the \`string|string[]\` type configurations for the \`scopes\` field.
 @http:ServiceConfig {
     auth: [
         {
@@ -50,9 +49,8 @@ listener http:Listener securedEP = new(9090,
 }
 service / on securedEP {
 
-    // It is optional to override the authentication and authorization
-    // configurations at the resource levels. Otherwise, the service auth
-    // configurations will be applied automatically to the resources as well.
+    // It is optional to override the authentication and authorization configurations at the resource levels.
+    // Otherwise, the service auth configurations are applied automatically to the resources as well.
     resource function get albums() returns Album[] {
         return [
             {title: "Blue Train", artist: "John Coltrane"},
@@ -227,8 +225,8 @@ export default function HttpServiceJwtAuthentication() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-self-signed-jwt-authentication">
             self-signed JWT authentication client
-          </a>
-          .
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -249,7 +247,7 @@ export default function HttpServiceJwtAuthentication() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-              <code>jwt</code> package - API documentation
+              <code>jwt</code> module - API documentation
             </a>
           </span>
         </li>

@@ -250,7 +250,7 @@ export default function WebsocketClientOauth2PasswordGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
+              <code>websocket</code> module - API documentation
             </a>
           </span>
         </li>
@@ -260,7 +260,7 @@ export default function WebsocketClientOauth2PasswordGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package - API documentation
+              <code>oauth2</code> module - API documentation
             </a>
           </span>
         </li>

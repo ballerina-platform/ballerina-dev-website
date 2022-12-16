@@ -24,7 +24,10 @@ public function main() returns error? {
         host: "sftp.example.com",
         port: 22,
         auth: {
-            credentials: {username: "user1", password: "pass456"},
+            credentials: {
+                username: "user1",
+                password: "pass456"
+            },
             // Private key file location and its password (if encrypted) is
             // given corresponding to the SSH key file used in the SFTP client.
             privateKey: {
@@ -39,11 +42,8 @@ public function main() returns error? {
     // \`io:Block\` in which 1024 is the block size.
     stream<io:Block, io:Error?> fileStream
         = check io:fileReadBlocksAsStream("./local/logFile.txt", 1024);
-    do {
-        check fileClient->put("/server/logFile.txt", fileStream);
-    } on fail {
-        check fileStream.close();
-    }
+    check fileClient->put("/server/logFile.txt", fileStream);
+    check fileStream.close();
 }
 `,
 ];
@@ -72,9 +72,12 @@ export default function SftpClientWrite() {
       <h1>SFTP client - Write file</h1>
 
       <p>
-        The SFTP client is used to perform CRUD operation on remote
-        files/directories using the SFTP protocol. This sample includes putting
-        file content with default configurations using the default port number.
+        The <code>ftp:Client</code> connects to a given SFTP server, and then
+        sends and receives files as byte streams. A <code>ftp:Client</code> with
+        SFTP protocol is created by giving the protocol, host-name, required
+        credentials and the private key. Once connected, <code>put</code> method
+        is used to write files as byte streams to the SFTP server. Use this to
+        transfer files from a local file system to a remote file system.
       </p>
 
       <Row

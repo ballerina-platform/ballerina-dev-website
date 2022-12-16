@@ -19,7 +19,6 @@ import ballerina/io;
 // configuration. The listener listens to the files
 // with the given file name pattern located in the specified path.
 listener ftp:Listener fileListener = check new ({
-    protocol: ftp:FTP,
     host: "ftp.example.com",
     auth: {
         credentials: {
@@ -39,11 +38,8 @@ service on fileListener {
         foreach ftp:FileInfo addedFile in event.addedFiles {
             // The \`ftp:Caller\` can be used to append another file to the added files in the server.
             stream<io:Block, io:Error?> fileStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
-            do {
-                check caller->append(addedFile.path, fileStream);
-            } on fail {
-                check fileStream.close();
-            }
+            check caller->append(addedFile.path, fileStream);
+            check fileStream.close();
         }
     }
 }
@@ -74,11 +70,16 @@ export default function FtpServiceReadWrite() {
       <h1>FTP service - Read/Write file</h1>
 
       <p>
-        The FTP service is used to receive file/directory changes that occur in
-        a remote location using the FTP protocol. This sample includes receiving
-        file/directory related change events from a listener and using the{" "}
-        <code>append</code> api of the <code>ftp:Caller</code> to interact with
-        the FTP server.
+        The <code>ftp:Service</code> connects to a given FTP server via the{" "}
+        <code>ftp:Listener</code>. Once connected, the service starts receiving
+        events every time a file is deleted or added to the server. To take
+        action for these events <code>ftp:Caller</code> is used. The{" "}
+        <code>ftp:Caller</code> can be specified as a parameter of{" "}
+        <code>onFileChange</code> remote method. The <code>ftp:Caller</code>{" "}
+        allows interacting with the server via <code>get</code>,{" "}
+        <code>append</code>, <code>delete</code>, etc remote methods. Use this
+        to listen to file changes occurring in a remote file system and take
+        action for those changes.
       </p>
 
       <Row
@@ -160,7 +161,7 @@ export default function FtpServiceReadWrite() {
 
       <p>
         Run the program by executing the following command. Each newly added
-        file in the SFTP server will be appended with the content in the
+        file in the FTP server will be appended with the content in the
         appending file.
       </p>
 

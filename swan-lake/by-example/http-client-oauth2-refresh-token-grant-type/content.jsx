@@ -22,8 +22,6 @@ type Album readonly & record {|
 
 public function main() returns error? {
     // Defines the HTTP client to call the OAuth2 secured APIs.
-    // The client is enriched with the \`Authorization: Bearer <token>\` header by
-    // passing the \`http:OAuth2RefreshTokenGrantConfig\` for the \`auth\` configuration of the client.
     http:Client albumClient = check new("localhost:9090",
         auth = {
             refreshUrl: "https://localhost:9445/oauth2/token",
@@ -71,11 +69,12 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
       <h1>HTTP client - OAuth2 refresh token grant type</h1>
 
       <p>
-        A client, which is secured with an OAuth2 refresh token grant type can
-        be used to connect to a secured service. The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>http:OAuth2RefreshTokenGrantConfig</code> to the <code>auth</code>{" "}
-        configuration of the client.
+        The <code>http:Client</code> can connect to a service that is secured
+        with the OAuth2 refresh token grant type by adding the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header to each request.
+        The required configurations for this grant type can be specified in the{" "}
+        <code>auth</code> field of the client configuration. Use this to
+        automatically retrieve an access token when it is expired.
       </p>
 
       <Row
@@ -255,7 +254,7 @@ export default function HttpClientOauth2RefreshTokenGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package API documentation
+              <code>oauth2</code> module - API documentation
             </a>
           </span>
         </li>

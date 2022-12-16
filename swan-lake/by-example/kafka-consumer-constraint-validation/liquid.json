@@ -12,10 +12,10 @@
     "constraint",
     "validation"
   ],
-  "permalink": "/learn/by-example/kafka-client-constraint-validation",
-  "active": "kafka-client-constraint-validation",
+  "permalink": "/learn/by-example/kafka-consumer-constraint-validation",
+  "active": "kafka-consumer-constraint-validation",
   "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-client-constraint-validation",
-    "/swan-lake/learn/by-example/kafka-client-constraint-validation.html"
+    "/swan-lake/learn/by-example/kafka-consumer-constraint-validation",
+    "/swan-lake/learn/by-example/kafka-consumer-constraint-validation.html"
   ]
 }

@@ -198,8 +198,8 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
       <p>
         Setting up the service is the same as setting up the unary RPC service
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-service-unary/">
-          gRPC service - Unary RPC
+        <a href="/learn/by-example/grpc-service-simple/">
+          gRPC service - Simple RPC
         </a>{" "}
         to implement the service used below.
       </p>
@@ -302,7 +302,7 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package - API documentation
+              <code>auth</code> module - API documentation
             </a>
           </span>
         </li>

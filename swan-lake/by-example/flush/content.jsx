@@ -85,7 +85,7 @@ export default function Flush() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=89d0b6f844a51a30bbf3e06d84e2fc5f&file=flush.bal",
+                "https://play.ballerina.io/?gist=f46a4ec2bb0638aa84b14e5e6005bde8&file=flush.bal",
                 "_blank"
               );
             }}

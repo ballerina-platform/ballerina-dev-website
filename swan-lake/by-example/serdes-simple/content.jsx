@@ -71,10 +71,18 @@ export default function SerdesSimple() {
       <h1>SerDes - Serialization/Deserialization</h1>
 
       <p>
-        The <code>serdes</code> module helps to serialize and deserialize
-        subtypes of Ballerina <code>anydata</code>. This example demonstrates
-        how to serialize and deserialize a user defined <code>record</code>{" "}
-        type.
+        The <code>serdes</code> module allows serializing and deserializing the
+        subtypes of Ballerina <code>anydata</code>. The{" "}
+        <code>serdes:Proto3Schema</code> object takes <code>typedesc</code> as
+        an argument when instantiating, and maps the given type to a Protocol
+        Buffer schema. The <code>serialize</code> and <code>deserialize</code>{" "}
+        methods of the <code>serdes:Proto3Schema</code> object serialize and
+        deserialize data using the generated Protocol Buffer schema. The{" "}
+        <code>serialize</code> method takes a value of the given type as an
+        argument whereas the <code>deserialize</code> method takes{" "}
+        <code>byte[]</code> as an argument and tries to bind the deserialized
+        value to the <code>typedesc</code> inferred from the
+        contextually-expected type.
       </p>
 
       <Row
@@ -87,7 +95,7 @@ export default function SerdesSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=82148ad059f5365ea01b1f414c6a0209&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=6eaa5fc256f226d6d1f3cf1127e53e80&file=serdes_simple.bal",
                 "_blank"
               );
             }}

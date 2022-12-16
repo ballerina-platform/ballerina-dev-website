@@ -59,14 +59,14 @@ export default function RabbitmqSyncConsumer() {
       <h1>RabbitMQ client - Consume message</h1>
 
       <p>
-        The RabbitMQ client allows fetching individual messages one by one from
-        the server. A RabbitMQ client is created by passing the host and port of
-        the RabbitMQ broker. To pull messages, use the{" "}
-        <code>consumePayload</code> or <code>consumeMessage</code> method, which
-        requires the queue name as the argument. Messages are fetched in the
-        FIFO order. It is possible to use automatic or manual acknowledgments
-        similar to consumer services. Use it to pull messages one by one from a
-        queue in the RabbitMQ server.
+        The <code>rabbitmq:Client</code> allows fetching individual messages one
+        by one from the server. A <code>rabbitmq:Client</code> is created by
+        passing the host and port of the RabbitMQ broker. To pull messages, use
+        the <code>consumePayload</code> or <code>consumeMessage</code> method,
+        which requires the queue name as the argument. Messages are fetched in
+        the FIFO order. It is possible to use automatic or manual
+        acknowledgments similar to consumer services. Use it to pull messages
+        one by one from a queue in the RabbitMQ server.
       </p>
 
       <Row

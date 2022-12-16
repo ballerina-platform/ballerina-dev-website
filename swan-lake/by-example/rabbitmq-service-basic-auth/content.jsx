@@ -70,11 +70,11 @@ export default function RabbitmqServiceBasicAuth() {
         with the server. After an application connects to RabbitMQ and before it
         can perform operations, it must authenticate (i.e., present and prove
         its identity). In this example, the underlying connection of the
-        listener is secured with Basic Authentication. A secured RabbitMQ
-        listener is created by using the default host and port or custom
-        configurations and by providing the authentication details using the{" "}
-        <code>rabbitmq:Credentials</code> record. Use it to authenticate client
-        connections using a username and password.
+        listener is secured with Basic Authentication. A secured{" "}
+        <code>rabbitmq:Listener</code> is created by using the default host and
+        port or custom configurations and by providing the authentication
+        details using the <code>rabbitmq:Credentials</code> record. Use it to
+        authenticate client connections using a username and password.
       </p>
 
       <Row

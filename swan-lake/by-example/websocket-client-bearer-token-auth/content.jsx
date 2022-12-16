@@ -58,11 +58,11 @@ export default function WebsocketClientBearerTokenAuth() {
       <h1>WebSocket client - Bearer token authentication</h1>
 
       <p>
-        A client, which is secured with Bearer token authentication can be used
-        to connect to a secured service. The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>websocket:BearerTokenConfig</code> for the <code>auth</code>{" "}
-        configuration of the client.
+        The <code>websocket:Client</code> can connect to a service that is
+        secured with bearer token authentication by adding the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header to the initial
+        HTTP request. The bearer token can be specified in the <code>auth</code>{" "}
+        field of the client configuration.
       </p>
 
       <Row

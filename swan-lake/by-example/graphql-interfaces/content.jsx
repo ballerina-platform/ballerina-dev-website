@@ -107,21 +107,16 @@ export default function GraphqlInterfaces() {
       <h1>GraphQL service - Interfaces</h1>
 
       <p>
-        A GraphQL schema can have interfaces. An interface specifies a set of
-        fields that multiple object types can include. In Ballerina, interfaces
-        are defined using <code>distinct</code> <code>service</code> objects,
-        and the fields of the interfaces are defined as resource method
-        definitions. Objects that are implementing the interfaces must implement
-        the <code>resource</code> methods defined in the service objects. The
-        Ballerina type inclusion includes the interface type to an object type.
-        Use an interface to return a type that consists of a set of possible
-        types with common fields.
-      </p>
-
-      <p>
-        This example shows how to define an interface <code>Profile</code> and
-        then implement the <code>Teacher</code> and <code>Student</code> classes
-        using that interface.
+        The Ballerina <code>graphql</code> module allows defining GraphQL
+        interface types. An interface specifies a set of fields that multiple
+        object types can include. In Ballerina, interfaces are defined using{" "}
+        <code>distinct</code> <code>service</code> objects and the fields of the
+        interfaces are defined as resource method definitions. Objects that are
+        implementing the interfaces must implement the <code>resource</code>{" "}
+        methods defined in the <code>service</code> objects. The Ballerina type
+        inclusion includes the interface type to an object type. Use an
+        interface to return a type that consists of a set of possible types with
+        common fields.
       </p>
 
       <Row
@@ -439,7 +434,7 @@ export default function GraphqlInterfaces() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> package - API documentation
+              <code>graphql</code> module - API documentation
             </a>
           </span>
         </li>

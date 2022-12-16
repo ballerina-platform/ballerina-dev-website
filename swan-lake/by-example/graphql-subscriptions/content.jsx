@@ -69,24 +69,21 @@ export default function GraphqlSubscriptions() {
       <h1>GraphQL service - Subscriptions</h1>
 
       <p>
-        A resource method with the <code>subscribe</code> accessor inside a
-        GraphQL service represents a field in the root <code>Subscription</code>{" "}
-        type. Therefore, If a resource method with the <code>subscribe</code>{" "}
-        accessor is present inside the Ballerina GraphQL service, the
-        auto-generated schema will have a <code>Subscription</code> type. Each
-        resource method with a <code>subscribe</code> accessor in the service
-        will be added as a field of the <code>Subscription</code> type. The
-        field name will be the resource method name and the field type will be
-        the constraint type of the stream returned from the resource method. Not
-        returning a <code>stream</code> type from a resource method having a{" "}
+        The Ballerina <code>graphql</code> module allows defining GraphQL{" "}
+        <code>Subscription</code> operations. A resource method with the{" "}
+        <code>subscribe</code> accessor inside a GraphQL service represents a
+        field in the root <code>Subscription</code> type. Therefore, If a
+        resource method with the <code>subscribe</code> accessor is present
+        inside the Ballerina GraphQL service, the auto-generated schema will
+        have a <code>Subscription</code> type. Each resource method with a{" "}
+        <code>subscribe</code> accessor in the service is added as a field of
+        the <code>Subscription</code> type. The field name will be the resource
+        method name and the field type will be the constraint type of the{" "}
+        <code>stream</code> returned from the resource method. Not returning a{" "}
+        <code>stream</code> type from a resource method having a{" "}
         <code>subscribe</code> accessor results in a compilation error. Use a
         subscription operation to monitor small, incremental changes to large
         objects or to obtain low-latency, real-time updates.
-      </p>
-
-      <p>
-        This example shows a GraphQL endpoint, which has a field{" "}
-        <code>names</code> in the root <code>Subscription</code> type.
       </p>
 
       <Row
@@ -401,7 +398,7 @@ export default function GraphqlSubscriptions() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> package - API documentation
+              <code>graphql</code> module - API documentation
             </a>
           </span>
         </li>

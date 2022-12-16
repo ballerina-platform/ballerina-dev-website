@@ -66,11 +66,11 @@ export default function WebsocketClientOauth2ClientCredGrantType() {
       <h1>WebSocket client - OAuth2 client credentials grant type</h1>
 
       <p>
-        A client, which is secured with OAuth2 client credentials grant typecan
-        be used to connect to a secured service. The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>websocket:OAuth2ClientCredentialsGrantConfig</code> for the{" "}
-        <code>auth</code> configuration of the client.
+        The <code>websocket:Client</code> can connect to a service that is
+        secured with the OAuth2 client credentials grant type by adding the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header to the initial
+        HTTP request. The required configurations for this grant type can be
+        specified in the <code>auth</code> field of the client configuration.
       </p>
 
       <Row

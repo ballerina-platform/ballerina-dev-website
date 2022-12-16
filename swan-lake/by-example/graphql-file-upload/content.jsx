@@ -69,23 +69,14 @@ export default function GraphqlFileUpload() {
       <h1>GraphQL service - File upload</h1>
 
       <p>
-        GraphQL package provides a way to upload files through the GraphQL
-        endpoints with GraphQL mutations. To define an endpoint with the file
-        upload capability, the <code>graphql:Upload</code> type can be used as
-        the input parameter of resolver functions.
-      </p>
-
-      <p>
-        The in-built <code>graphql:Upload</code> type can represent the details
-        of the file that needs to be uploaded and that can be used only with the
-        mutation operations, i.e. remote methods. The value of{" "}
-        <code>graphql:Upload</code> type is extracted from the HTTP multipart
-        request, which will be received by the GraphQL endpoints.
-      </p>
-
-      <p>
-        This example shows how to implement a GraphQL endpoint that can be used
-        to upload files.
+        The Ballerina <code>graphql</code> module allows uploading files to a
+        GraphQL schema. To enable file uploading in a GraphQL service, add the{" "}
+        <code>graphql:Upload</code> record as an input parameter of a{" "}
+        <code>remote</code> method inside a <code>graphql:Service</code>. The{" "}
+        <code>graphql:Upload</code> record includes the details of the file that
+        is being uploaded. The GraphQL file upload follows the{" "}
+        <em>Graphql Multipart Request Spec</em> to upload the files. Use this to
+        create a GraphQL API where users can upload files.
       </p>
 
       <Row
@@ -340,6 +331,16 @@ export default function GraphqlFileUpload() {
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/Upload">
               <code>graphql:Upload</code> record - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/jaydenseric/graphql-multipart-request-spec">
+              GraphQL multipart request specification
             </a>
           </span>
         </li>

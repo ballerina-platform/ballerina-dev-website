@@ -74,10 +74,10 @@ export default function RabbitmqClientConstraintValidation() {
         received from the RabbitMQ server, it is validated internally. This
         validation happens soon after the successful data-binding of the message
         content before returning the message record. If the validation fails,
-        the <code>nats:PayloadValidationError</code> error is returned. Use this
-        to validate the message content as the application receives it, which
-        allows you to guard against unnecessary message content processing and
-        malicious content.
+        the <code>rabbitmq:PayloadValidationError</code> error is returned. Use
+        this to validate the message content as the application receives it,
+        which allows you to guard against unnecessary message content processing
+        and malicious content.
       </p>
 
       <Row

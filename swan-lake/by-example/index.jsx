@@ -223,8 +223,8 @@ import HttpResponseInterceptor from "./http-response-interceptor/content.jsx";
 import HttpErrorHandling from "./http-error-handling/content.jsx";
 import HttpInterceptorErrorHandling from "./http-interceptor-error-handling/content.jsx";
 import GraphqlHelloWorld from "./graphql-hello-world/content.jsx";
-import GraphqlReturningRecordValues from "./graphql-returning-record-values/content.jsx";
 import GraphqlReturningServiceObjects from "./graphql-returning-service-objects/content.jsx";
+import GraphqlReturningRecordValues from "./graphql-returning-record-values/content.jsx";
 import GraphqlInputTypes from "./graphql-input-types/content.jsx";
 import GraphqlMutations from "./graphql-mutations/content.jsx";
 import GraphqlSubscriptions from "./graphql-subscriptions/content.jsx";
@@ -635,8 +635,8 @@ const BBEs = {
   HttpErrorHandling,
   HttpInterceptorErrorHandling,
   GraphqlHelloWorld,
-  GraphqlReturningRecordValues,
   GraphqlReturningServiceObjects,
+  GraphqlReturningRecordValues,
   GraphqlInputTypes,
   GraphqlMutations,
   GraphqlSubscriptions,

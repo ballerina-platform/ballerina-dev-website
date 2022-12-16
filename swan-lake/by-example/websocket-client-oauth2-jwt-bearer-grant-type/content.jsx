@@ -67,11 +67,11 @@ export default function WebsocketClientOauth2JwtBearerGrantType() {
       <h1>WebSocket client - OAuth2 JWT bearer grant type</h1>
 
       <p>
-        A client, which is secured with an OAuth2 JWT bearer grant type can be
-        used to connect to a secured service. The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>websocket:OAuth2JwtBearerGrantConfig</code> to the{" "}
-        <code>auth</code> configuration of the client.
+        The <code>websocket:Client</code> can connect to a service that is
+        secured with the OAuth2 JWT bearer grant type by adding the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header to the initial
+        HTTP request. The required configurations for this grant type can be
+        specified in the <code>auth</code> field of the client configuration.
       </p>
 
       <Row

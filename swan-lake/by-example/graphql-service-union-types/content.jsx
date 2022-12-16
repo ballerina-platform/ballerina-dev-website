@@ -115,14 +115,15 @@ export default function GraphqlServiceUnionTypes() {
       <h1>GraphQL service - Union Types</h1>
 
       <p>
-        The Ballerina GraphQL package allows defining union types as defined in
-        the GraphQL specification. However, the Ballerina union type that
-        represent a GraphQL union type can only consist of <code>distinct</code>{" "}
-        <code>service</code> classes. This is because the Ballerina type system
-        is structurally-typed, whereas the GraphQL type system is
-        nominally-typed. The <code>distinct</code> types are the only types in
-        Ballerina which have the similar behavior to nominal-types. Use union
-        types when an API requires a type that consists more than one type.
+        The Ballerina <code>graphql</code> module allows defining union types as
+        defined in the GraphQL specification. However, the Ballerina union type
+        that represents a GraphQL union type can only consist of{" "}
+        <code>distinct</code> <code>service</code> classes. This is because the
+        Ballerina type system is structurally-typed, whereas, the GraphQL type
+        system is nominally-typed. The <code>distinct</code> types are the only
+        types of Ballerina, which have the similar behavior to nominal types.
+        Use union types when an API requires a type that consists of more than
+        one type.
       </p>
 
       <Row

@@ -65,9 +65,7 @@ export default function HttpClientBasicAuthentication() {
         with basic authentication by adding the{" "}
         <code>Authorization: Basic &lt;token&gt;</code> header to each request.
         The username and password for basic authentication can be specified in
-        the <code>auth</code> field of the client configuration. Use this to
-        communicate with the service, which is secured with basic
-        authentication.
+        the <code>auth</code> field of the client configuration.
       </p>
 
       <Row

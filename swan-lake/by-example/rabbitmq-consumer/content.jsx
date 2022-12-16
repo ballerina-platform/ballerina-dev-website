@@ -57,15 +57,16 @@ export default function RabbitmqConsumer() {
       <h1>RabbitMQ service - Consume message</h1>
 
       <p>
-        The RabbitMQ service listens to the given queue for incoming messages.
-        When a publisher sends a message on a queue, any active service
-        listening on that queue receives the message. A RabbitMQ listener is
-        created by passing the host and port of the RabbiMQ broker. A{" "}
-        <code>rabbitmq:Service</code> attached to the listener is used to listen
-        to a specific queue and consume incoming messages. The queue to listen
-        to should be given as the service name or in the <code>queueName</code>{" "}
-        field of the <code>rabbitmq:ServiceConfig</code>. Use it to listen to
-        messages sent to a particular queue.
+        The <code>rabbitmq:Service</code> listens to the given queue for
+        incoming messages. When a publisher sends a message on a queue, any
+        active service listening on that queue receives the message. A{" "}
+        <code>rabbitmq:Listener</code> is created by passing the host and port
+        of the RabbiMQ broker. A <code>rabbitmq:Service</code> attached to the
+        listener is used to listen to a specific queue and consume incoming
+        messages. The queue to listen to should be given as the service name or
+        in the <code>queueName</code> field of the{" "}
+        <code>rabbitmq:ServiceConfig</code>. Use it to listen to messages sent
+        to a particular queue.
       </p>
 
       <Row

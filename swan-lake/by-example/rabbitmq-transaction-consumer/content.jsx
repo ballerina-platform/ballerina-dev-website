@@ -64,17 +64,17 @@ export default function RabbitmqTransactionConsumer() {
       <h1>RabbitMQ service - Transactional consumer</h1>
 
       <p>
-        The RabbitMQ service can become a transactional consumer by
-        acknowledging messages within a Ballerina transaction block. A RabbitMQ
-        listener can be created by passing the host and port of the RabbitMQ
-        broker. A RabbitMQ service attached to the listener can be used to
-        listen to a specific queue. The queue to listen to should be given as
-        the service name or in the <code>queueName</code> field of the{" "}
-        <code>rabbitmq:ServiceConfig</code>. The <code>rabbitmq:Caller</code>,
-        which is passed as an argument in the <code>onMessage</code> remote
-        method is used to acknowledge the message inside a transaction block.
-        Use it to consume messages with ensured acknowledgment to the RabbitMQ
-        server.
+        The <code>rabbitmq:Service</code> can become a transactional consumer by
+        acknowledging messages within a Ballerina transaction block. A{" "}
+        <code>rabbitmq:Listener</code> can be created by passing the host and
+        port of the RabbitMQ broker. A <code>rabbitmq:Service</code> attached to
+        the listener can be used to listen to a specific queue. The queue to
+        listen to should be given as the service name or in the{" "}
+        <code>queueName</code> field of the <code>rabbitmq:ServiceConfig</code>.
+        The <code>rabbitmq:Caller</code>, which is passed as an argument in the{" "}
+        <code>onMessage</code> remote method is used to acknowledge the message
+        inside a transaction block. Use it to consume messages with ensured
+        acknowledgment to the RabbitMQ server.
       </p>
 
       <Row

@@ -62,21 +62,17 @@ export default function RabbitmqConsumerWithClientAcknowledgement() {
       <h1>RabbitMQ service - Consumer with acknowledgement</h1>
 
       <p>
-        In this example, a RabbitMQ service is consuming messages from the
-        pre-declared queue (i.e., <code>OrderQueue</code>). A{" "}
-        <code>rabbitmq:Listener</code> can be created with the default host and
-        port or with custom configurations. A <code>rabbitmq:Service</code>{" "}
-        attached to the <code>rabbitmq:Listener</code> can be used to listen to
-        a specific subject and consume incoming messages. The queue to listen to
-        should be given as the service name or in the <code>queueName</code>{" "}
-        field of the <code>rabbitmq:ServiceConfig</code>. The received messages
-        are acknowledged manually. By default, the <code>autoAck </code> mode is
-        enabled, which will automatically acknowledge all messages once
-        consumed. To enable manual acknowlegments, set the <code>autoAck</code>{" "}
-        mode in <code>rabbitmq:ServiceConfig</code> to <code>false</code>. The{" "}
-        <code>rabbitmq:Caller</code> can be used to acknowledge the message
-        positively or negatively using the <code>basicAck</code> and{" "}
-        <code>basicNack</code> functions.
+        The <code>rabbitmq:Caller</code> allows manual acknowledgments for the
+        consumed messages. A <code>rabbitmq:Listener</code> is created by
+        passing the host and port of the RabbiMQ broker. A{" "}
+        <code>rabbitmq:Service</code> attached to the{" "}
+        <code>rabbitmq:Listener</code> can be used to listen to a specific
+        subject and consume incoming messages. To enable manual acknowledgments,
+        set the <code>autoAck</code> mode in <code>rabbitmq:ServiceConfig</code>{" "}
+        to <code>false</code>. The <code>rabbitmq:Caller</code> can be used to
+        acknowledge the message positively or negatively using the{" "}
+        <code>basicAck</code> and <code>basicNack</code> functions. Use it to
+        manually acknowledge the consumed messages.
       </p>
 
       <Row

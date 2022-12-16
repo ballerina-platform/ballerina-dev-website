@@ -91,15 +91,12 @@ export default function GraphqlDocumentation() {
       <h1>GraphQL service - Documentation</h1>
 
       <p>
-        A GraphQL schema can include documentation for the schema. These
-        documentation can help you to understand the schema. In Ballerina, the
-        Ballerina doc comments can be used to add documentation to various
-        schema members.
-      </p>
-
-      <p>
-        This example shows how to add doc comments to the GraphQL service so
-        that the generated schema will include them as the documentation.
+        The Ballerina <code>graphql</code> module allows adding documentation to
+        the <code>graphql:Service</code> and its subsequent types. To add
+        documentation, use the Ballerina doc comments for the{" "}
+        <code>graphql:Service</code>, <code>resource</code>/<code>remote</code>{" "}
+        methods, types, and <code>enum</code>s. Add the documentation to include
+        the descriptions to the generated GraphQL schema.
       </p>
 
       <Row
@@ -418,7 +415,7 @@ export default function GraphqlDocumentation() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> package - API documentation
+              <code>graphql</code> module - API documentation
             </a>
           </span>
         </li>

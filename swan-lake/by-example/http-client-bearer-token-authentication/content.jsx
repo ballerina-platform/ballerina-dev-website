@@ -64,8 +64,7 @@ export default function HttpClientBearerTokenAuthentication() {
         with bearer token authentication by adding the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header to each request.
         The bearer token can be specified in the <code>auth</code> field of the
-        client configuration. Use this to communicate with the service, which is
-        secured with bearer token authentication.
+        client configuration.
       </p>
 
       <Row

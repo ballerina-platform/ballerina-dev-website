@@ -70,8 +70,8 @@ export default function WebsocketClientSelfSignedJwtAuth() {
       <h1>WebSocket client - Self signed JWT authentication</h1>
 
       <p>
-        A client, which is secured with self-signed JWT can be used to connect
-        to a secured service. The client is enriched with the{" "}
+        The <code>websocket:Client</code> can connect to a service that is
+        secured with self-signed JWT by adding the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:JwtIssuerConfig</code> to the <code>auth</code>{" "}
         configuration of the client. A self-signed JWT is issued before the

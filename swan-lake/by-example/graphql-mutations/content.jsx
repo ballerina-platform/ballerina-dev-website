@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// Define a record type to use as an object in the GraphQL service.
+// Define a \`record\` type to use as an object in the GraphQL service.
 type Profile readonly & record {|
     int id;
     string name;
@@ -33,8 +33,8 @@ service /graphql on new graphql:Listener(9090) {
         return profiles.get(id);
     }
 
-    // A remote method represents a field in the root \`Mutation\` operation. This remote method will
-    // update the name for the given profile ID, and returns the updated \`Profile\` value. If the ID
+    // A \`remote\` method represents a field in the root \`Mutation\` operation. This \`remote\` method will
+    // update the name for the given profile ID and returns the updated \`Profile\` value. If the ID
     // is not found, this will return an error.
     remote function updateName(int id, string name) returns Profile|error {
         if profiles.hasKey(id) {
@@ -87,22 +87,18 @@ export default function GraphqlMutations() {
       <h1>GraphQL service - Mutations</h1>
 
       <p>
-        A <code>Mutation</code> is a GraphQL operation, which allows you to
-        insert new data or modify the existing data on the server side. A remote
-        method inside a GraphQL service represents a field in the root{" "}
-        <code>Mutation</code> object type. Therefore, if a remote method is
-        present inside the Ballerina GraphQL service, the auto-generated schema
-        will have the <code>Mutation</code> type. Each remote method in the
-        service will be added as a field of the <code>Mutation</code> type. The
-        field name will be the remote method name and the field type will be the
-        return type of the remote method. Use the mutation operation when
-        performing any side-effects on the underlying data system.
-      </p>
-
-      <p>
-        This example shows a GraphQL endpoint, which has a field named{" "}
-        <code>updateName</code> in the root <code>Mutation</code> type. The type
-        of the field is of type <code>Profile!</code>.
+        The Ballerina <code>graphql</code> module allows defining GraphQL{" "}
+        <code>Mutation</code> operations. A <code>remote</code> method inside a{" "}
+        <code>graphql:Service</code> represents a field in the root{" "}
+        <code>Mutation</code> object type. Therefore, if a <code>remote</code>{" "}
+        method is present inside the <code>graphql:Service</code>, the
+        auto-generated schema will have the <code>Mutation</code> type. Each{" "}
+        <code>remote</code> method in the service will be added as a field of
+        the <code>Mutation</code> type. The field name will be the{" "}
+        <code>remote</code> method name and the field type will be the return
+        type of the <code>remote</code> method. Use the <code>Mutation</code>{" "}
+        operation when performing any side-effects on the underlying data
+        system.
       </p>
 
       <Row
@@ -415,7 +411,7 @@ export default function GraphqlMutations() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> package - API documentation
+              <code>graphql</code> module - API documentation
             </a>
           </span>
         </li>

@@ -72,10 +72,12 @@ export default function NatsClientBasicAuth() {
       <h1>NATS client - Basic authentication</h1>
 
       <p>
-        NATS client connections can be authenticated in many ways. One of them
-        is by using the username and password credentials. In this example, the
-        underlying connection of the publisher is secured with basic
-        authentication.
+        The NATS authentication allows securing the client communication with
+        the server. In this example, the underlying connection of the client is
+        secured with Basic Authentication. A secured NATS client can be created
+        by passing the URL of the NATS broker and providing the authentication
+        details using the <code>nats:Credentials</code> record. Use it to
+        authenticate client connections using a username and password.
       </p>
 
       <Row

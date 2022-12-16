@@ -72,8 +72,15 @@ export default function RabbitmqClientBasicAuth() {
       <h1>RabbitMQ client - Basic authentication</h1>
 
       <p>
-        The underlying connection of the producer is secured with basic
-        authentication.
+        The RabbitMQ authentication allows securing the client communication
+        with the server. After an application connects to RabbitMQ and before it
+        can perform operations, it must authenticate (i.e., present and prove
+        its identity). In this example, the underlying connection of the client
+        is secured with Basic Authentication. A secured RabbitMQ client is
+        created by using the default host and port or custom configurations and
+        by providing the authentication details using the{" "}
+        <code>rabbitmq:Credentials</code> record. Use it to authenticate client
+        connections using a username and password.
       </p>
 
       <Row

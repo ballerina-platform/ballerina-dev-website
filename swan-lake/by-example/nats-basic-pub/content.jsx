@@ -65,10 +65,11 @@ export default function NatsBasicPub() {
       <h1>NATS client - Publish message</h1>
 
       <p>
-        NATS implements a publish-subscribe message distribution model. A
-        publisher sends a message to a subject and any active subscriber
-        listening to that subject can consume the message. In this example, the
-        NATS client is used to produce a message to a subject.
+        The NATS client allows publishing messages to a given subject. A NATS
+        client is created by passing the URL of the NATS broker. To publish
+        messages, the <code>publishMessage</code> method, which requires the
+        message and subject as arguments, is used. Use it to publish messages
+        that can be received by one or more subscribers.
       </p>
 
       <Row

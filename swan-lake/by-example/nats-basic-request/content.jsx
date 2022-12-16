@@ -73,11 +73,13 @@ export default function NatsBasicRequest() {
       <h1>NATS client - Send request message</h1>
 
       <p>
-        NATS supports the Request-Reply pattern using its core message
-        distribution model, publish, and subscribe. A request is sent to a given
-        subject and consumers listening to that subject can send responses to
-        the reply subject. In this example, the NATS client is used to send a
-        request to a subject.
+        The NATS client allows sending request messages to a given subject. A
+        NATS client is created by passing the URL of the NATS broker. The{" "}
+        <code>requestMessage</code> method can be used to send requests to the
+        NATS server by providing a target subject, an optional reply subject,
+        the message content, and an optional duration for the timeout. After the
+        request is sent, the application waits on the response with the given
+        timeout. Use it to send request messages, which expect a reply back.
       </p>
 
       <Row

@@ -73,7 +73,7 @@ export default function Booleans() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c5a4c7872fd5411d0d466d8b08cb749b&file=booleans.bal",
+                "https://play.ballerina.io/?gist=8b255c0f7b15b229e244e677db9eb41d&file=booleans.bal",
                 "_blank"
               );
             }}

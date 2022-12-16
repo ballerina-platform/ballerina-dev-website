@@ -24,11 +24,11 @@ public function main() returns error? {
         interval: 5,
         // Define a set of HTTP Clients that are targeted for failover.
         targets: [
-                {url: "http://nonexistentEP/albums"},
-                {url: "http://localhost:9090/albums"}
-            ]
+            {url: "http://nonexistentEP"},
+            {url: "http://localhost:9090"}
+        ]
     });
-    string payload = check httpClient->/greeting;
+    string payload = check httpClient->/albums;
     io:println(payload);
 }
 `,
@@ -58,14 +58,11 @@ export default function HttpFailover() {
       <h1>HTTP client - Failover</h1>
 
       <p>
-        Ballerina users can configure multiple HTTP clients in a given failover
-        group. If one of the HTTP clients (dependencies) fails, Ballerina
-        automatically fails over to another endpoint. The following example
-        depicts the <code>FailoverClient</code> behaviour with three target
-        services. The first two targets are configured to mimic failure
-        backends. After the first invocation the client resumes the failover
-        from the last successful target. In this case it is the third target and
-        the client will get the immediate response for subsequent calls.
+        A failover client is used to preserve the continuity of the requests
+        flow even if the endpoint fails. The endpoints are defined in the{" "}
+        <code>targets</code> field of the failover client configuration. If one
+        of the endpoints fails, the client automatically fails over to another
+        endpoint.
       </p>
 
       <Row
@@ -235,7 +232,7 @@ export default function HttpFailover() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

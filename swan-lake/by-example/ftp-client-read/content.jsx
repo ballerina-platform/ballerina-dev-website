@@ -20,23 +20,23 @@ public function main() returns error? {
     // password. An error is returned in a failure. The default port number
     // \`21\` is used with these configurations.
     ftp:Client fileClient = check new ({
-        protocol: ftp:FTP,
         host: "ftp.example.com",
-        auth: {credentials: {username: "user1", password: "pass456"}}
+        auth: {
+            credentials: {
+                username: "user1",
+                password: "pass456"
+            }
+        }
     });
 
     // Reads a file from an FTP server for a given file path. In error cases,
     // an error is returned.
     stream<byte[] & readonly, io:Error?> fileStream = check fileClient->get("/server/logFile.txt");
 
-    do {
-        // Write the content to a file.
-        check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
-        // Closes the file stream to finish the \`get\` operation.
-        check fileStream.close();
-    } on fail {
-        check fileStream.close();
-    }
+    // Write the content to a file.
+    check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
+    // Closes the file stream to finish the \`get\` operation.
+    check fileStream.close();
 }
 `,
 ];
@@ -65,9 +65,12 @@ export default function FtpClientRead() {
       <h1>FTP client - Read file</h1>
 
       <p>
-        The FTP client is used to perform CRUD operation on remote
-        files/directories using the FTP protocol. This sample includes getting
-        file content with default configurations using the default port number.
+        The <code>ftp:Client</code> connects to a given FTP server, and then
+        sends and receives files as byte streams. An <code>ftp:Client</code> is
+        created by giving the host-name and required credentials. Once
+        connected, <code>get</code> method is used to read files as byte streams
+        from the FTP server. Use this to transfer files from a remote file
+        system to a local file system.
       </p>
 
       <Row

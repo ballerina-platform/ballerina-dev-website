@@ -218,7 +218,7 @@ export default function WebsocketClientBearerTokenAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
+              <code>websocket</code> module - API documentation
             </a>
           </span>
         </li>

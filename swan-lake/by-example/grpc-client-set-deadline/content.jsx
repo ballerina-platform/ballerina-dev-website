@@ -58,12 +58,12 @@ export default function GrpcClientSetDeadline() {
       <h1>gRPC client - Set deadline</h1>
 
       <p>
-        Deadlines allow gRPC clients to specify how long they are willing to
-        wait for an RPC to complete before the RPC is terminated with the error{" "}
-        <code>DEADLINE_EXCEEDED</code>.
+        The <code>grpc:Client</code> allows setting deadlines to specify how
+        long they are willing to wait for an RPC to complete before the RPC is
+        terminated with an error. The deadline is set as a header using the{" "}
+        <code>setDeadline</code> method. Use this to set an upper limit on how
+        long a call can run.
       </p>
-
-      <p>You can set the deadline as a header as follows.</p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -130,8 +130,8 @@ export default function GrpcClientSetDeadline() {
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">
-          gRPC client - Unary RPC
+        <a href="/learn/by-example/grpc-client-simple/">
+          gRPC client - Simple RPC
         </a>{" "}
         to implement the client used here.
       </p>
@@ -151,7 +151,7 @@ export default function GrpcClientSetDeadline() {
         </li>
       </ul>
 
-      <p>Execute the command below to run the client.</p>
+      <p>Run the client by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "

@@ -40,7 +40,7 @@ distinct service class Teacher {
         return self.name;
     }
 
-    // Add an additional field \`subject\` to the \`Teacher\` class
+    // Add an additional field \`subject\` to the \`Teacher\` class.
     resource function get subject() returns string {
         return self.subject;
     }
@@ -107,13 +107,15 @@ export default function GraphqlInterfaces() {
       <h1>GraphQL service - Interfaces</h1>
 
       <p>
-        A GraphQL schema can have interfaces. In Ballerina, interfaces are
-        defined using <code>distinct</code> <code>service</code> objects and the
-        fields of the interfaces are defined as resource method definitions.
-        Objects that are implementing the interfaces must implement the{" "}
-        <code>resource</code> methods defined in the service objects. The
-        Ballerina type inclusion is used to include the interface type to an
-        object type.
+        A GraphQL schema can have interfaces. An interface specifies a set of
+        fields that multiple object types can include. In Ballerina, interfaces
+        are defined using <code>distinct</code> <code>service</code> objects,
+        and the fields of the interfaces are defined as resource method
+        definitions. Objects that are implementing the interfaces must implement
+        the <code>resource</code> methods defined in the service objects. The
+        Ballerina type inclusion includes the interface type to an object type.
+        Use an interface to return a type that consists of a set of possible
+        types with common fields.
       </p>
 
       <p>

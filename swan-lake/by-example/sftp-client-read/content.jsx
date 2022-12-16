@@ -24,7 +24,10 @@ public function main() returns error? {
         host: "sftp.example.com",
         port: 22,
         auth: {
-            credentials: {username: "user1", password: "pass456"},
+            credentials: {
+                username: "user1",
+                password: "pass456"
+            },
             // Private key file location and its password (if encrypted) is
             // given corresponding to the SSH key file used in the SFTP client.
             privateKey: {
@@ -38,15 +41,11 @@ public function main() returns error? {
     // an error is returned.
     stream<byte[] & readonly, io:Error?> fileStream = check fileClient->get("/server/logFile.txt");
 
-    do {
-        // Write the content to a file.
-        check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
+    // Write the content to a file.
+    check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
 
-        // Closes the file stream to finish the \`get\` operation.
-        check fileStream.close();
-    } on fail {
-        check fileStream.close();
-    }
+    // Closes the file stream to finish the \`get\` operation.
+    check fileStream.close();
 }
 `,
 ];
@@ -75,10 +74,13 @@ export default function SftpClientRead() {
       <h1>SFTP client - Read file</h1>
 
       <p>
-        The SFTP client is used to perform CRUD operation on remote
-        files/directories using the SFTP protocol. This sample includes getting
-        a file content with default configurations using the default port
-        number.
+        The <code>ftp:Client</code> connects to a given SFTP server, and then
+        sends and receives files as byte streams. An <code>ftp:Client</code>{" "}
+        with SFTP protocol is created by giving the protocol, host-name and
+        required credentials and the private key. Once connected,{" "}
+        <code>get</code> method is used to read files as byte streams from the
+        SFTP server. Use this to transfer files from a remote file system to a
+        local file system.
       </p>
 
       <Row

@@ -27,7 +27,7 @@ public function main() returns error? {
     // Sends a \`GET\` request to the "/albums" resource.
     // The query parameter can be provided as parameters in the \`get\` method invocation.
     Album[] albums = check albumClient->/albums({
-        "Accept": mime:APPLICATION_JSON
+        Accept: mime:APPLICATION_JSON
     });
     io:println("Received albums: " + albums.toJsonString());
 }
@@ -38,8 +38,9 @@ string albumId = check albumClient->/album.post({
         title: "Blue Train",
         artist: "John Coltrane"
     },
-    headers = {
-        "Accept": mime:APPLICATION_JSON
+    // Headers can be specified as a \`map<string|string[]>\`
+    {
+        Accept: mime:APPLICATION_JSON
     }
 );
 io:println("Added album with id: " + albumId);
@@ -71,9 +72,13 @@ export default function HttpClientHeaderParameter() {
       <h1>HTTP client - Header parameter</h1>
 
       <p>
-        The http module provides support for sending outbound request headers as
-        resource method arguments. The headers can be provided as{" "}
-        <code>map&lt;string|string[]&gt;</code> to the resource method.
+        The <code>http:Client</code> supports sending outbound request headers
+        along with the request payload. These headers can be passed as an
+        argument in the client resource method call. The headers should be
+        provided as a <code>map</code>, where the keys represent the header
+        names and the entries represent the header values. The header values can
+        be <code>string</code> or <code>string[]</code>. Use this when you want
+        to send additional headers as part of the request.
       </p>
 
       <Row
@@ -145,7 +150,7 @@ export default function HttpClientHeaderParameter() {
           <span>&#8226;&nbsp;</span>
           <span>
             Run the HTTP service given in the{" "}
-            <a href="/learn/by-example/http-header-parameter/">
+            <a href="/learn/by-example/http-header-param/">
               REST service - Header parameter
             </a>{" "}
             example.
@@ -216,7 +221,7 @@ export default function HttpClientHeaderParameter() {
       </Row>
 
       <p>
-        Furthermore, a <code>post</code> request with header parameter can be
+        Furthermore, a <code>post</code> request with additional headers can be
         sent as shown below.
       </p>
 
@@ -289,7 +294,7 @@ export default function HttpClientHeaderParameter() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

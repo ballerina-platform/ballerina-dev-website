@@ -56,15 +56,21 @@ export default function HttpClientDataBinding() {
       <h1>HTTP client - Payload data binding</h1>
 
       <p>
-        Through client payload data binding, the response payload can be
-        accessed directly. The payload type is inferred from the
-        contextually-expected type or from the <code>targetType</code> argument.
-        An <code>anydata</code> type or <code>http:Response</code> is expected
-        as the return value type along with the error. When the user expects
-        client data binding to happen, the HTTP error responses (
-        <code>4XX</code>, <code>5XX</code>) will be categorized as an{" "}
-        <code>error</code> (<code>http:ClientRequestError</code>,{" "}
-        <code>http:RemoteServerError</code>) of the client remote operation.
+        The <code>http:Client</code> payload data-binding allows directly
+        binding the response payload to a given subtype of <code>anydata</code>.
+        It does this by mapping a given HTTP content-type to one or more
+        Ballerina types. For instance, <code>text/plain</code> is mapped to{" "}
+        <code>string</code>, whereas <code>application/json</code> is mapped to{" "}
+        <code>json</code>, <code>record</code>, etc. The client data-binding can
+        be used by simply assigning the resource method’s returned value to the
+        declared variable. If the response is anything other than 2xx, an{" "}
+        <code>error</code> is returned and no data-binding is performed. If
+        there is no mapping between the given Ballerina type and the response
+        content-type, again an <code>error</code> is returned. Use this when the
+        application is only interested in the response payload but not the
+        headers. When the response payload is JSON, the <code>record</code> type
+        is preferred to the <code>json</code> type as it provides compile-time
+        validations, better readability, and improved tooling support.
       </p>
 
       <Row
@@ -77,7 +83,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3525874e28a778aa85fba09782b2faf5&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=82be6b2e03abe920d3d96457e92e7e5b&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}
@@ -260,7 +266,7 @@ export default function HttpClientDataBinding() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

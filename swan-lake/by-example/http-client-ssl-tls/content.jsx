@@ -21,10 +21,6 @@ type Album readonly & record {|
 |};
 
 public function main() returns error? {
-    // An HTTP client can be configured to communicate through HTTPS as well.
-    // To secure a client using HTTPS, the client needs to be configured with
-    // a certificate file of the listener. The \`http:ClientSecureSocket\` record
-    // provides the SSL-related configurations of the client.
     http:Client albumClient = check new("localhost:9090",
         secureSocket = {
             cert: "../resource/path/to/public.crt"
@@ -60,9 +56,10 @@ export default function HttpClientSslTls() {
       <h1>HTTP client - SSL/TLS</h1>
 
       <p>
-        You can use the HTTPS client to connect or interact with an HTTPS
-        listener. Provide the <code>http:ClientSecureSocket</code>{" "}
-        configurations to the client to initiate an HTTPS connection.
+        The <code>http:Client</code> can be configured to communicate through
+        HTTPS by providing a certificate file. The certificate can be provided
+        through the <code>secureSocket</code> field of the client configuration.
+        Use this to secure the communication between the client and the server.
       </p>
 
       <Row

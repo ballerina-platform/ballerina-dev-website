@@ -58,10 +58,14 @@ export default function UdpListener() {
       <h1>UDP service - Send/Receive datagram</h1>
 
       <p>
-        The UDP Listener is used to expose a UDP service over the UDP protocol.
-        The UDP <code>Client</code>/<code>ConnectClient</code> is used to send
-        data to a remote UDP server. This sample demonstrates the UDP socket
-        listener.
+        The <code>udp:Service</code> allows opening up a UDP socket via a{" "}
+        <code>udp:Listener</code>. A <code>udp:Listener</code> is created by
+        giving the port number, to which <code>udp:Service</code> is attached.
+        The listener accepts and serves connections from UDP clients. The{" "}
+        <code>onDatagram</code> remote method is invoked once the content is
+        received from the client. Use a UDP service to establish connections and
+        communicate over UDP protocol or implement low latency connections for
+        time-critical transmissions where data loss is acceptable.
       </p>
 
       <Row
@@ -224,7 +228,7 @@ export default function UdpListener() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/udp/latest">
-              <code>udp</code> package - API documentation
+              <code>udp</code> module - API documentation
             </a>
           </span>
         </li>

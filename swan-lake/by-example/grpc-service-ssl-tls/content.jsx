@@ -155,8 +155,8 @@ export default function GrpcServiceSslTls() {
       <p>
         Setting up the service is the same as setting up the unary RPC service
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-service-unary/">
-          gRPC service - Unary RPC
+        <a href="/learn/by-example/grpc-service-simple/">
+          gRPC service - Simple RPC
         </a>{" "}
         to implement the service used below.
       </p>

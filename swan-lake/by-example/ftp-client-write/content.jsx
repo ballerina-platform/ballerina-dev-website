@@ -20,9 +20,13 @@ public function main() returns error? {
     // password. An error is returned in a failure. The default port number
     // \`21\` is used with these configurations.
     ftp:Client fileClient = check new ({
-        protocol: ftp:FTP,
         host: "ftp.example.com",
-        auth: {credentials: {username: "user1", password: "pass456"}}
+        auth: {
+            credentials: {
+                username: "user1",
+                password: "pass456"
+            }
+        }
     });
 
     // Add a new file to the given file location. In error cases,
@@ -30,11 +34,8 @@ public function main() returns error? {
     // \`io:Block\` in which 1024 is the block size.
     stream<io:Block, io:Error?> fileStream
         = check io:fileReadBlocksAsStream("./local/logFile.txt", 1024);
-    do {
-        check fileClient->put("/server/logFile.txt", fileStream);
-    } on fail {
-        check fileStream.close();
-    }
+    check fileClient->put("/server/logFile.txt", fileStream);
+    check fileStream.close();
 }
 `,
 ];
@@ -63,9 +64,12 @@ export default function FtpClientWrite() {
       <h1>FTP client - Write file</h1>
 
       <p>
-        The FTP client is used to perform CRUD operation on remote
-        files/directories using the FTP protocol. This sample includes putting
-        file content with default configurations using the default port number.
+        The <code>ftp:Client</code> connects to a given FTP server, and then
+        sends and receives files as byte streams. An <code>ftp:Client</code> is
+        created by giving the host-name and required credentials. Once
+        connected, <code>put</code> method is used to write files as byte
+        streams to the FTP server. Use this to transfer files from a local file
+        system to a remote file system.
       </p>
 
       <Row

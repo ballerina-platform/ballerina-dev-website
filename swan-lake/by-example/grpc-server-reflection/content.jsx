@@ -52,14 +52,11 @@ export default function GrpcServerReflection() {
       <h1>gRPC service - Server reflection</h1>
 
       <p>
-        Server reflection is a gRPC feature that allows dynamic clients, such as
-        command-line tools for debugging, to discover the protocol used by a
-        gRPC server at run time.
-      </p>
-
-      <p>
-        After implementing the service, you can enable server reflection by
-        providing the <code>reflectionEnabled</code> configuration to the{" "}
+        The <code>grpc:Listener</code> provides the server reflection
+        capability, which allows dynamic clients such as command-line tools for
+        debugging to discover the protocol used by a gRPC server at run time.
+        Server reflection is enabled by providing the{" "}
+        <code>reflectionEnabled</code> configuration in the{" "}
         <code>grpc:ListenerConfiguration</code>.
       </p>
 
@@ -128,13 +125,13 @@ export default function GrpcServerReflection() {
       <p>
         Setting up the service is the same as setting up the unary RPC service
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-service-unary/">
-          gRPC service - Unary RPC
+        <a href="/learn/by-example/grpc-service-simple/">
+          gRPC service - Simple RPC
         </a>{" "}
         to implement the service used below.
       </p>
 
-      <p>Execute the command below to run the service.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"

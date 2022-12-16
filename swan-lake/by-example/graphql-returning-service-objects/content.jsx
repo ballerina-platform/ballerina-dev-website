@@ -85,24 +85,28 @@ export default function GraphqlReturningServiceObjects() {
         A GraphQL resource method can return service objects. The returning
         service objects are mapped to an <code>OBJECT</code> type in the GraphQL
         schema. Each resource method in the returned service object becomes a
-        field in the created <code>OBJECT</code> type.
+        field in the created <code>OBJECT</code> type. The resource methods in
+        these service types can have input parameters. These input parameters
+        are mapped to arguments in the corresponding field. Use a service type
+        to represent an <code>OBJECT</code> type when a field of that{" "}
+        <code>OBJECT</code> type has any input arguments. Further, using a
+        service type to represent an <code>OBJECT</code> type offers the
+        flexibility of organizing complex logic.
       </p>
 
       <p>
-        This example shows a GraphQL endpoint, which has a field{" "}
-        <code>profile</code> of type <code>Profile!</code> in the root{" "}
-        <code>Query</code> type. A GraphQL client can query on this service to
-        retrieve specific fields or subfields of the <code>Profile</code>{" "}
-        object.
+        This example shows a GraphQL endpoint, which has a <code>profile</code>{" "}
+        field of type <code>Profile!</code> in the root <code>Query</code> type.
+        A GraphQL client can query this service to retrieve specific fields or
+        subfields of the <code>Profile</code> object.
       </p>
 
       <blockquote>
         <p>
-          <strong>Note:</strong> Although both the record and service types can
-          be used to represent an Object type, using a record type as an Object
-          has limitations. For example, a field represented as a record field
-          can not have an input argument, as opposed to a field represented
-          using a resource method in a service class.
+          <strong>Note:</strong> A record type can also be used to represent an{" "}
+          <code>OBJECT</code> type when all fields of that object type do not
+          have any input arguments or the field resolution does not require any
+          complex logic execution.
         </p>
       </blockquote>
 

@@ -12,32 +12,43 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `// This is the service definition of the simple scenario.
-syntax = "proto3";
+  `import ballerina/http;
+import ballerinax/kafka;
 
-import "google/protobuf/wrappers.proto";
+public type Order readonly & record {
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+};
 
-service HelloWorld {
-    rpc hello (google.protobuf.StringValue) returns (google.protobuf.StringValue);
-}
-`,
-  `import ballerina/io;
+final kafka:Producer orderProducer = check new ("localhost:9093", {
+    // Provide the relevant authentication configurations to authenticate the producer by
+    // \`kafka:AuthenticationConfiguration\`.
+    auth: {
+        // Provide the authentication mechanism used by the Kafka server.
+        mechanism: kafka:AUTH_SASL_PLAIN,
+        // Username and password should be set here in order to authenticate the producer.
+        username: "alice",
+        password: "alice@123"
+    },
+    securityProtocol: kafka:PROTOCOL_SASL_PLAINTEXT
+});
 
-public function main() returns error? {
-    // Creates a gRPC client to interact with the remote server.
-    HelloWorldClient ep = check new ("http://localhost:9090");
-
-    // Executes a simple remote call.
-    string result = check ep->hello("WSO2");
-    // Prints the received result.
-    io:println(result);
+service / on new http:Listener(9090) {
+    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|kafka:Error {
+        check orderProducer->send({
+            topic: "order-topic",
+            value: newOrder
+        });
+        return http:ACCEPTED;
+    }
 }
 `,
 ];
 
-export default function GrpcClientUnary() {
+export default function KafkaProducerSasl() {
   const [codeClick1, updateCodeClick1] = useState(false);
-  const [codeClick2, updateCodeClick2] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
@@ -59,30 +70,23 @@ export default function GrpcClientUnary() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>gRPC client - Unary RPC</h1>
+      <h1>Kafka producer - SASL authentication</h1>
 
       <p>
-        The gRPC Server Connector exposes the gRPC service over HTTP2. In a
-        unary RPC call, a client sends a request to a remote service and waits
-        for the response.
+        The <code>kafka:Producer</code> connects to a Kafka server via
+        SASL/PLAIN authentication and then, sends messages to the server.
+        SASL/PLAIN authentication can be enabled by configuring the{" "}
+        <code>auth</code>, which requires the authentication mechanism,
+        username, and password. Further, the mode of security must be configured
+        by setting the <code>securityProtocol</code> to{" "}
+        <code>kafka:PROTOCOL_SASL_PLAINTEXT</code>. Use this to connect to a
+        Kafka server secured with SASL/PLAIN.
       </p>
-
-      <h2>Generate the service definition</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            Create a new Protocol Buffers definition file named{" "}
-            <code>grpc_unary.proto</code> and add the service definition below.
-          </span>
-        </li>
-      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
-      indent"
-        style={{ marginLeft: "32px" }}
+      "
+        style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
           {codeClick1 ? (
@@ -141,19 +145,28 @@ export default function GrpcClientUnary() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>2.</span>
+          <span>&#8226;&nbsp;</span>
           <span>
-            Run the command below from the Ballerina tools distribution for stub
-            generation.
+            Start a{" "}
+            <a href="https://kafka.apache.org/quickstart">Kafka broker</a>{" "}
+            instance configured to use the{" "}
+            <a href="https://docs.confluent.io/platform/current/kafka/authentication_sasl/authentication_sasl_plain.html#sasl-plain-overview">
+              SASL/PLAIN authentication mechanism
+            </a>
+            .
           </span>
         </li>
       </ul>
 
+      <p>Run the program by executing the following command.</p>
+
       <Row
-        className="bbeOutput mx-0 py-0 rounded indent"
-        style={{ marginLeft: "24px" }}
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
@@ -204,137 +217,20 @@ export default function GrpcClientUnary() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal grpc --input grpc_unary.proto  --output stubs`}</span>
+              <span>{`\$ bal run kafka_client_producer_sasl.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
       <p>
-        Once you run the command, the <code>grpc_unary_pb.bal</code> file gets
-        generated inside the <code>stubs</code> directory.
+        Invoke the service by executing the following cURL command in a new
+        terminal.
       </p>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the gRPC service given in the{" "}
-            <a href="/learn/by-example/grpc-service-unary/">
-              gRPC service - Unary RPC
-            </a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
-
-      <h2>Implement and run the client</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            Create a Ballerina package (e.g., <code>client</code>). Delete the{" "}
-            <code>main.bal</code> file created by default as it is not required
-            for this example.
-          </span>
-        </li>
-      </ul>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>2.</span>
-          <span>
-            Copy the generated <code>grpc_unary_pb.bal</code> file from the{" "}
-            <code>stubs</code> directory to the <code>client</code> package.
-          </span>
-        </li>
-      </ul>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>3.</span>
-          <span>
-            Create a new <code>grpc_unary_client.bal</code> file inside the{" "}
-            <code>client</code> package and add the client implementation below.
-          </span>
-        </li>
-      </ul>
-
       <Row
-        className="bbeCode mx-0 py-0 rounded 
-      indent"
-        style={{ marginLeft: "24px" }}
-      >
-        <Col className="d-flex align-items-start" sm={12}>
-          {codeClick2 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              disabled
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              onClick={() => {
-                updateCodeClick2(true);
-                copyToClipboard(codeSnippetData[1]);
-                setTimeout(() => {
-                  updateCodeClick2(false);
-                }, 3000);
-              }}
-              aria-label="Copy to Clipboard"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#000"
-                className="bi bi-clipboard"
-                viewBox="0 0 16 16"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          {codeSnippets[1] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[1]),
-              }}
-            />
-          )}
-        </Col>
-      </Row>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>4.</span>
-          <span>Execute the command below to run the client.</span>
-        </li>
-      </ul>
-
-      <Row
-        className="bbeOutput mx-0 py-0 rounded indent"
-        style={{ marginLeft: "24px" }}
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick2 ? (
@@ -385,8 +281,7 @@ export default function GrpcClientUnary() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run client`}</span>
-              <span>{`Hello WSO2`}</span>
+              <span>{`\$ curl http://localhost:9091/orders -H "Content-type:application/json" -d "{\\"orderId\\": 1, \\"productName\\": \\"Sport shoe\\", \\"price\\": 27.5, \\"isValid\\": true}"`}</span>
             </code>
           </pre>
         </Col>
@@ -398,8 +293,9 @@ export default function GrpcClientUnary() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> package - API documentation
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration">
+              <code>kafka:AuthenticationConfiguration</code> record - API
+              documentation
             </a>
           </span>
         </li>
@@ -408,18 +304,8 @@ export default function GrpcClientUnary() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/grpc/#41-simple-rpc">
-              gRPC client unary RPC - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/cli-documentation/grpc/">
-              Ballerina protocol buffers guide
+            <a href="https://github.com/ballerina-platform/module-ballerinax-kafka/blob/master/docs/spec/spec.md#322-secure-client">
+              Kafka client producer SASL authentication - Specification
             </a>
           </span>
         </li>
@@ -428,10 +314,7 @@ export default function GrpcClientUnary() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Check deadline"
-            href="/learn/by-example/grpc-service-check-deadline"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/kafka-producer-ssl">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -457,17 +340,14 @@ export default function GrpcClientUnary() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Check deadline
+                  SSL/TLS
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Server-side streaming RPC"
-            href="/learn/by-example/grpc-client-server-streaming"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/kafka-consumer-ssl">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -476,7 +356,7 @@ export default function GrpcClientUnary() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Server-side streaming RPC
+                  SSL/TLS
                 </span>
               </div>
               <svg

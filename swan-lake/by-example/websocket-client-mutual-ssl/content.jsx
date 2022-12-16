@@ -59,10 +59,17 @@ export default function WebsocketClientMutualSsl() {
       <h1>WebSocket client - Mutual SSL</h1>
 
       <p>
-        Ballerina supports mutual SSL, which is a certificate-based
+        The <code>websocket:Client</code> allows you to open up a connection
+        secured with mutual SSL (mTLS), which is a certificate-based
         authentication process in which two parties (the client and server)
         authenticate each other by verifying the digital certificates. It
-        ensures that both parties are assured of each other's identity.
+        ensures that both parties are assured of each other's identity. A{" "}
+        <code>websocket:Client</code> secured with mutual SSL is created by
+        providing the <code>secureSocket</code> configurations which require the
+        client's public certificate as the <code>certFile</code>, the client's
+        private key as the <code>keyFile</code>, and the server's certificate as
+        the <code>cert</code>. Use this to interact with mTLS-encrypted
+        WebSocket servers.
       </p>
 
       <Row
@@ -233,7 +240,7 @@ export default function WebsocketClientMutualSsl() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
+              <code>websocket</code> module - API documentation
             </a>
           </span>
         </li>

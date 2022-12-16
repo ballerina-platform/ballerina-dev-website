@@ -17,7 +17,7 @@ import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-// Defines a record to load the query result.
+// The \`Album\` record to load records from \`albums\` table.
 type Album record {|
     string id;
     string title;
@@ -76,11 +76,11 @@ export default function MysqlQueryRowOperation() {
       <h1>Database Access - Query with one result</h1>
 
       <p>
-        This BBE demonstrates how to use the MySQL client select query row
-        operations.
+        The <code>mysql:Client</code> allows querying the database for utmost
+        one result with the use of <code>queryRow</code> method. This method
+        requires a <code>sql:ParameterizedQuery</code>-typed SQL statement as
+        the argument.
       </p>
-
-      <p>This BBE is written in the context of an album microservice.</p>
 
       <blockquote>
         <p>
@@ -194,11 +194,11 @@ export default function MysqlQueryRowOperation() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Set up the MySQL database - Run the{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-query-row-operation/prerequisites/prerequisite.bal">
-              prerequisite.bal
-            </a>{" "}
-            file by executing the command <code>bal run</code>.
+            To set up the database, see the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite">
+              Database Access Ballerina By Example - Prerequisites
+            </a>
+            .
           </span>
         </li>
       </ul>

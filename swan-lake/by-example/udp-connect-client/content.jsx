@@ -65,15 +65,17 @@ export default function UdpConnectClient() {
       <h1>UDP client - Send/Receive datagram with connection</h1>
 
       <p>
-        The ConnectClient is configured so that it only receives data from, and
-        sends data to, the given remote peer address. Once connected, data may
-        not be received from or sent to any other address.
-      </p>
-
-      <p>
-        The client remains connected until it is explicitly disconnected or
-        until it is closed. This sample demonstrates how to send data to a
-        connected server and print the echoed response.
+        The <code>udp:ConnectClient</code> connects to a UDP socket, and then
+        sends and receives datagrams. When connected, data may not be received
+        from or sent to any other address. A <code>udp:ConnectClient</code> is
+        created by giving the <code>remoteHost</code> and{" "}
+        <code>remotePort</code>. Once connected, <code>writeBytes</code> and{" "}
+        <code>readBytes</code> synchronous methods are used to send and receive
+        byte streams. Since they are synchronous methods often used in two
+        different strands. The client remains connected until it is explicitly
+        disconnected or until it is closed. Use this to interact with UDP
+        servers or implement low latency connections for time-critical
+        transmissions where data loss is acceptable.
       </p>
 
       <Row

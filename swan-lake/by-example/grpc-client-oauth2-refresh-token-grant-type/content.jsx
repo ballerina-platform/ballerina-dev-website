@@ -165,8 +165,8 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
       <p>
         Setting up the client is the same as setting up the unary RPC client
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">
-          gRPC client - Unary RPC
+        <a href="/learn/by-example/grpc-client-simple/">
+          gRPC client - Simple RPC
         </a>{" "}
         to implement the client used here.
       </p>
@@ -186,7 +186,7 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
         </li>
       </ul>
 
-      <p>Execute the command below to run the client.</p>
+      <p>Run the client by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
@@ -277,7 +277,7 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package - API documentation
+              <code>oauth2</code> module - API documentation
             </a>
           </span>
         </li>

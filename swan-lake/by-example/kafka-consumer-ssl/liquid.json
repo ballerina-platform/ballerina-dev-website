@@ -1,5 +1,5 @@
 {
-  "title": "Consumer SSL/TLS",
+  "title": "SSL/TLS",
   "description": "BBE on how to configure a Kafka consumer to use SASL/PLAIN authentication.",
   "keywords": [
     "ballerina",
@@ -10,10 +10,10 @@
     "authentication",
     "SASL"
   ],
-  "permalink": "/learn/by-example/kafka-client-consumer-ssl",
-  "active": "kafka-client-consumer-ssl",
+  "permalink": "/learn/by-example/kafka-consumer-ssl",
+  "active": "kafka-consumer-ssl",
   "redirect_from": [
-    "/swan-lake/learn/by-example/kafka-client-consumer-ssl",
-    "/swan-lake/learn/by-example/kafka-client-consumer-ssl.html"
+    "/swan-lake/learn/by-example/kafka-consumer-ssl",
+    "/swan-lake/learn/by-example/kafka-consumer-ssl.html"
   ]
 }

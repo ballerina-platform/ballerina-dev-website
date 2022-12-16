@@ -56,11 +56,12 @@ export default function HttpClientPathParameter() {
       <h1>HTTP client - Path parameter</h1>
 
       <p>
-        The <code>http</code> module provides first class support for specifying{" "}
-        <code>Path parameters</code> in the resource invocation along with the
-        type. The supported types are <code>string</code>, <code>int</code>,{" "}
-        <code>float</code>, <code>boolean</code>, and <code>decimal</code>{" "}
-        (e.g., path/[string foo]).
+        The <code>http:Client</code> supports specifying{" "}
+        <code>path parameters</code> when invoking a backend resource. Declare
+        the required <code>path parameter</code> inside a square bracket along
+        with the resource path (eg: <code>/albums/[album]</code>) and invoke the
+        resource method. Use this when invoking backend resources with variable
+        resource paths.
       </p>
 
       <Row
@@ -209,7 +210,7 @@ export default function HttpClientPathParameter() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

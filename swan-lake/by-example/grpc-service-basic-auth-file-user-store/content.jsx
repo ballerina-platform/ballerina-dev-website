@@ -197,13 +197,13 @@ export default function GrpcServiceBasicAuthFileUserStore() {
       <p>
         Setting up the service is the same as setting up the unary RPC service
         with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-service-unary/">
-          gRPC service - Unary RPC
+        <a href="/learn/by-example/grpc-service-simple/">
+          gRPC service - Simple RPC
         </a>{" "}
         to implement the service used below.
       </p>
 
-      <p>Execute the command below to run the service.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
@@ -301,7 +301,7 @@ export default function GrpcServiceBasicAuthFileUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package - API documentation
+              <code>auth</code> module - API documentation
             </a>
           </span>
         </li>

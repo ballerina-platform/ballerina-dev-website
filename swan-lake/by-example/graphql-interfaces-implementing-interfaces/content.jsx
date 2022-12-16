@@ -113,18 +113,13 @@ export default function GraphqlInterfacesImplementingInterfaces() {
       <h1>GraphQL service - Interfaces implementing interfaces</h1>
 
       <p>
-        The Ballerina GraphQL service allows to define GraphQL interface types
-        that can implement other interfaces. A <code>distinct</code>{" "}
-        <code>service</code> object must be used to define an interface. The
-        Ballerina type-inclusion is used to define interfaces that implement
-        other interfaces. This can be used in GraphQL schemas to define
-        higher-order interfaces that share common functionalities in the
+        The Ballerina <code>graphql</code> module allows defining GraphQL
+        interface types that can implement other interfaces. A{" "}
+        <code>distinct</code> <code>service</code> object must be used to define
+        an interface. The Ballerina type-inclusion is used to define interfaces
+        that implement other interfaces. This can be used in GraphQL schemas to
+        define higher-order interfaces that share common functionalities in the
         application logic.
-      </p>
-
-      <p>
-        This example shows how to define interfaces that implement other
-        interfaces in Ballerina.
       </p>
 
       <Row
@@ -398,7 +393,7 @@ export default function GraphqlInterfacesImplementingInterfaces() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> package - API documentation
+              <code>graphql</code> module - API documentation
             </a>
           </span>
         </li>

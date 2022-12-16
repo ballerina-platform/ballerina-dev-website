@@ -65,13 +65,14 @@ export default function RabbitmqProducer() {
       <h1>RabbitMQ client - Produce message</h1>
 
       <p>
-        RabbitMQ allows sending messages to a given pre-declared queue. A
-        RabbitMQ client is created by passing the host and port of the RabbitMQ
-        broker. For more details on declaring the queue, see the{" "}
-        <code>RabbitMQ client - Declare a queue</code> sample. The{" "}
-        <code>publishMessage</code> method, which requires the queue name as the
-        routing key and the message content is used to publish messages. Use it
-        to publish messages that can be received by one or more consumers.
+        The <code>rabbitmq:Client</code> allows sending messages to a given
+        pre-declared queue. A <code>rabbitmq:Client</code> is created by passing
+        the host and port of the RabbitMQ broker. For more details on declaring
+        the queue, see the <code>RabbitMQ client - Declare a queue</code>{" "}
+        sample. The <code>publishMessage</code> method, which requires the queue
+        name as the routing key and the message content is used to publish
+        messages. Use it to publish messages that can be received by one or more
+        consumers.
       </p>
 
       <Row

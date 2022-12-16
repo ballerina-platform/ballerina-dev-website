@@ -73,13 +73,14 @@ export default function NatsBasicRequest() {
       <h1>NATS client - Send request message</h1>
 
       <p>
-        The NATS client allows sending request messages to a given subject. A
-        NATS client is created by passing the URL of the NATS broker. The{" "}
-        <code>requestMessage</code> method can be used to send requests to the
-        NATS server by providing a target subject, an optional reply subject,
-        the message content, and an optional duration for the timeout. After the
-        request is sent, the application waits on the response with the given
-        timeout. Use it to send request messages, which expect a reply back.
+        The <code>nats:Client</code> allows sending request messages to a given
+        subject. A <code>nats:Client</code> is created by passing the URL of the
+        NATS broker. The <code>requestMessage</code> method can be used to send
+        requests to the NATS server by providing a target subject, an optional
+        reply subject, the message content, and an optional duration for the
+        timeout. After the request is sent, the application waits on the
+        response with the given timeout. Use it to send request messages, which
+        expect a reply back.
       </p>
 
       <Row

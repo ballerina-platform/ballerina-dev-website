@@ -96,31 +96,22 @@ export default function GraphqlInterceptors() {
       <h1>GraphQL service - Interceptors</h1>
 
       <p>
-        The GraphQL <code>interceptors</code> can be used to execute custom
-        logic before and after the resolver function gets invoked. It can be
-        defined as a read-only service class, which includes the{" "}
-        <code>graphql:Interceptor</code> service object.
+        The <code>graphql:Service</code> allows adding interceptors for GraphQL
+        requests to execute custom logic. A interceptor can be defined using a{" "}
+        <code>readonly</code> class that includes the{" "}
+        <code>graphql:Interceptor</code> type. The interceptor class must
+        implement the <code>execute</code> remote method, which is defined in
+        the <code>graphql:Interceptor</code> service object type. They can be
+        passed as an array using the <code>interceptors</code> field in the{" "}
+        <code>graphql:ServiceConfig</code> annotation. The provided interceptors
+        will be executed using the <em>onion principle</em>. Use the
+        interceptors to execute custom logic before and after executing the{" "}
+        <code>resource</code> and <code>remote</code> methods that needs to be
+        separated from the business logic.
       </p>
 
       <p>
-        The interceptor service class should implement the{" "}
-        <code>execute(graphql:Context context, graphql:Field 'field)</code>{" "}
-        remote method, which is provided by the interceptor service object. The
-        custom logic can be included in this remote method. The interceptors
-        should be provided using the <code>graphql:ServiceConfig</code>{" "}
-        parameter named <code>interceptors</code>, which accepts an array of
-        interceptor instances.
-      </p>
-
-      <p>
-        Interceptors follow the <em>onion principle</em> when executing. Also,
-        the inserting order of the interceptor instances into the array will be
-        the execution order of the interceptors.
-      </p>
-
-      <p>
-        This example shows how to define an interceptor to print a log before
-        and after a resolver is executed.
+        <strong>Note:</strong> A service can have zero or more interceptors.
       </p>
 
       <Row

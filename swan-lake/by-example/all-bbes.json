@@ -1969,16 +1969,16 @@
         "isLearnByExample": false
       },
       {
-        "name": "Record as output object",
-        "url": "graphql-returning-record-values",
+        "name": "Service as output object",
+        "url": "graphql-returning-service-objects",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Service as output object",
-        "url": "graphql-returning-service-objects",
+        "name": "Record as output object",
+        "url": "graphql-returning-record-values",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,

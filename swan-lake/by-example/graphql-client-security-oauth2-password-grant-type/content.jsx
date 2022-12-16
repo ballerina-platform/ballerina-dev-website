@@ -15,7 +15,7 @@ const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/io;
 
-// User defined data types to retrive data from the service.
+// User-defined data types to retrive data from the service.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
     record {|Profile profile;|} data;
@@ -27,7 +27,7 @@ type Profile record {|
 |};
 
 public function main() returns error? {
-    // Create a GraphQL client with OAuth2 configurations.
+    // Defines the GraphQL client to call the OAuth2-secured APIs.
     graphql:Client graphqlClient = check new("localhost:9090/graphql",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
@@ -56,7 +56,7 @@ public function main() returns error? {
         }
     );
 
-    // Define the GraphQL document to be sent to the GraphQL service.
+    // Defines the GraphQL document to be sent to the GraphQL service.
     string document = "{ profile { name, age } }";
 
     // Execute the document and retrieve the response from the GraphQL service.
@@ -90,16 +90,13 @@ export default function GraphqlClientSecurityOauth2PasswordGrantType() {
       <h1>GraphQL client - OAuth2 password grant type</h1>
 
       <p>
-        A GraphQL client, which is secured with OAuth2 password grant type can
-        be used to connect to a secured GraphQL service. The client is enriched
-        with the <code>Authorization: Bearer &lt;token&gt;</code> header by
-        passing the <code>graphql:OAuth2PasswordGrantConfig</code> to the{" "}
-        <code>auth</code> configuration of the client.
-      </p>
-
-      <p>
-        This example shows how to send a GraphQL request with OAuth2
-        Authentication.
+        The <code>graphQL:Client</code> can connect to a service that is secured
+        with the OAuth2 password grant type by adding the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header to each request.
+        The required configurations for this grant type can be specified in the{" "}
+        <code>auth</code> field of the <code>graphql:ClientConfiguration</code>.
+        Use this grant type when you need to exchange the user's credentials for
+        an access token.
       </p>
 
       <Row
@@ -259,7 +256,7 @@ export default function GraphqlClientSecurityOauth2PasswordGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package API documentation
+              <code>oauth2</code> module - API documentation
             </a>
           </span>
         </li>

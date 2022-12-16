@@ -808,12 +808,12 @@ sublinks:
           - title: Hello world
             id: 1
             url: graphql-hello-world
-          - title: Record as output object
-            id: 2
-            url: graphql-returning-record-values
           - title: Service as output object
-            id: 3
+            id: 2
             url: graphql-returning-service-objects
+          - title: Record as output object
+            id: 3
+            url: graphql-returning-record-values
           - title: Input types
             id: 4
             url: graphql-input-types

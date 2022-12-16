@@ -57,15 +57,16 @@ export default function NatsBasicSub() {
       <h1>NATS service - Consume message</h1>
 
       <p>
-        The NATS service listens to the given subject for incoming messages.
-        When a publisher sends a message on a subject, any active service
-        listening on that subject receives the message. A NATS listener is
-        created by passing the URL of the NATS broker. A{" "}
-        <code>nats:Service</code> attached to the <code>nats:Listener</code> can
-        be used to listen to a specific subject and consume incoming messages.
-        The subject to listen to should be given as the service name or in the{" "}
-        <code>subject</code> field of the <code>nats:ServiceConfig</code>. Use
-        it to listen to messages sent to a particular subject.
+        The <code>nats:Service</code> listens to the given subject for incoming
+        messages. When a publisher sends a message on a subject, any active
+        service listening on that subject receives the message. A{" "}
+        <code>nats:Listener</code> is created by passing the URL of the NATS
+        broker. A <code>nats:Service</code> attached to the{" "}
+        <code>nats:Listener</code> can be used to listen to a specific subject
+        and consume incoming messages. The subject to listen to should be given
+        as the service name or in the <code>subject</code> field of the{" "}
+        <code>nats:ServiceConfig</code>. Use it to listen to messages sent to a
+        particular subject.
       </p>
 
       <Row

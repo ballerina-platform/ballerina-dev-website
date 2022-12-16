@@ -96,20 +96,22 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
       <h1>WebSocket service - Basic authentication LDAP user store</h1>
 
       <p>
-        A WebSocket service can be secured with Basic authentication and by
-        enforcing authorization optionally. Then, it validates the Basic
-        authentication token sent in the <code>Authorization</code> header
-        against the provided configurations. This reads data from the configured
-        LDAP. This stores usernames, passwords for authentication, and scopes
-        for authorization.
+        The <code>websocket:Service</code> can be secured with basic
+        authentication and additionally, scopes can be added to enforce
+        authorization. It validates the basic authentication token sent in the{" "}
+        <code>Authorization</code> header with the LDAP server. This server
+        stores the usernames and passwords for the authentication and the scopes
+        for the authorization. To engage authentication, set the LDAP related
+        configurations to the <code>ldapUserStoreConfig</code> field. To engage
+        authorization, set scopes to the <code>scopes</code> field. Both
+        configurations must be given as part of the service configuration.
       </p>
 
       <p>
-        Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s). In the
-        authorization phase, the scopes of the service are compared against the
-        scope included in the user store for at least one match between the two
-        sets.
+        A <code>401 Unauthorized</code> response is sent to the client when the
+        authentication fails, and a <code>403 Forbidden</code> response is sent
+        to the client when the authorization fails. Use this to authenticate and
+        authorize requests based on LDAP user stores.
       </p>
 
       <Row
@@ -195,6 +197,15 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
           )}
         </Col>
       </Row>
+
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Run the LDAP server.</span>
+        </li>
+      </ul>
 
       <p>Run the service by executing the command below.</p>
 

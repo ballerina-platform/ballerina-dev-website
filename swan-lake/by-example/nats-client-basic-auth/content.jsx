@@ -74,10 +74,10 @@ export default function NatsClientBasicAuth() {
       <p>
         The NATS authentication allows securing the client communication with
         the server. In this example, the underlying connection of the client is
-        secured with Basic Authentication. A secured NATS client can be created
-        by passing the URL of the NATS broker and providing the authentication
-        details using the <code>nats:Credentials</code> record. Use it to
-        authenticate client connections using a username and password.
+        secured with Basic Authentication. A secured <code>nats:Client</code>{" "}
+        can be created by passing the URL of the NATS broker and providing the
+        authentication details using the <code>nats:Credentials</code> record.
+        Use it to authenticate client connections using a username and password.
       </p>
 
       <Row

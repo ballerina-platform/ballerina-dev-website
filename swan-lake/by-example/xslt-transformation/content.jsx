@@ -124,7 +124,7 @@ export default function XsltTransformation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2f85d1c9c4c0810cd5bb063594ffd6dc&file=xslt_transformation.bal",
+                "https://play.ballerina.io/?gist=e1b865a8b23860899d04ac4be378b62f&file=xslt_transformation.bal",
                 "_blank"
               );
             }}

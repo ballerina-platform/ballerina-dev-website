@@ -89,7 +89,7 @@ export default function Panics() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=75d85b3237dafa45c5283af0323c9a3c&file=panics.bal",
+                "https://play.ballerina.io/?gist=5b01da206a4194cb25e4997cabbb440b&file=panics.bal",
                 "_blank"
               );
             }}

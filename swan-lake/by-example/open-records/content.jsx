@@ -88,7 +88,7 @@ export default function OpenRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ba447dda96ef8a4075f52da1458eb163&file=open_records.bal",
+                "https://play.ballerina.io/?gist=1e5e40d3624bece6de1106d0495eb420&file=open_records.bal",
                 "_blank"
               );
             }}

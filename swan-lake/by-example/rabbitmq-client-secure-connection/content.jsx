@@ -70,7 +70,13 @@ export default function RabbitmqClientSecureConnection() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>RabbitMQ client - SSL/TLS</h1>
 
-      <p>The underlying connection of the producer is secured with TLS/SSL.</p>
+      <p>
+        The <code>rabbitmq:Client</code> can be configured to communicate
+        through HTTPS by providing a certificate file. The certificate can be
+        provided through the <code>secureSocket</code> field of the connection
+        configuration. Use this to secure the communication between the client
+        and the server.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 

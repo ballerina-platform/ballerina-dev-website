@@ -15,8 +15,15 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
+public type Order record {
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+};
+
 listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
-    // To secure the listener connections using username/password authentication, provide the credentials
+    // Provide the credentials to secure the listener connections using username/password authentication.
     // with the \`rabbitmq:Credentials\` record.
     auth = {
         username: "alice",
@@ -24,10 +31,12 @@ listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
     }
 );
 
-// Attaches the service to the listener.
-service "Secured" on securedEP {
-    remote function onMessage(string message) returns error? {
-        log:printInfo("Received message: " + message);
+// The consumer service listens to the \`OrderQueue\` queue.
+service "OrderQueue" on securedEP {
+    remote function onMessage(Order 'order) returns error? {
+        if 'order.isValid {
+            log:printInfo(string \`Received valid order for \${'order.productName}\`);
+        }
     }
 }
 `,
@@ -57,8 +66,15 @@ export default function RabbitmqServiceBasicAuth() {
       <h1>RabbitMQ service - Basic authentication</h1>
 
       <p>
-        The underlying connection of the consumer service is secured with basic
-        authentication.
+        The RabbitMQ authentication allows securing the client communication
+        with the server. After an application connects to RabbitMQ and before it
+        can perform operations, it must authenticate (i.e., present and prove
+        its identity). In this example, the underlying connection of the
+        listener is secured with Basic Authentication. A secured RabbitMQ
+        listener is created by using the default host and port or custom
+        configurations and by providing the authentication details using the{" "}
+        <code>rabbitmq:Credentials</code> record. Use it to authenticate client
+        connections using a username and password.
       </p>
 
       <Row

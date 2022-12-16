@@ -15,6 +15,13 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/nats;
 
+public type Order record {
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+};
+
 // Initializes a NATS listener with TLS/SSL and username/password authentication.
 listener nats:Listener securedEP = new(nats:DEFAULT_URL,
     // To secure the client connections using username/password authentication, provide the credentials
@@ -25,10 +32,12 @@ listener nats:Listener securedEP = new(nats:DEFAULT_URL,
     }
 );
 
-// Binds the consumer to listen to the messages published to the 'security.demo' subject.
-service "security.demo" on securedEP {
-    remote function onMessage(string message) returns error? {
-        log:printInfo("Received message: " + message);
+// Binds the consumer to listen to the messages published to the 'orders.valid' subject.
+service "orders.valid" on securedEP {
+    remote function onMessage(Order 'order) returns error? {
+        if 'order.isValid {
+            log:printInfo(string \`Received valid order for \${'order.productName}\`);
+        }
     }
 }
 `,
@@ -58,10 +67,12 @@ export default function NatsServiceBasicAuth() {
       <h1>NATS service - Basic authentication</h1>
 
       <p>
-        NATS client connections can be authenticated in many ways. One of them
-        is by using the username and password credentials. In this example, the
-        underlying connection of the listener is secured with basic
-        authentication.
+        The NATS authentication allows securing the client communication with
+        the server. In this example, the underlying connection of the listener
+        is secured with Basic Authentication. A secured NATS listener can be
+        created by passing the URL of the NATS broker and providing the
+        authentication details using the <code>nats:Credentials</code> record.
+        Use it to authenticate client connections using a username and password.
       </p>
 
       <Row

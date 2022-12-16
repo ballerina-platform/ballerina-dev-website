@@ -65,10 +65,13 @@ export default function RabbitmqProducer() {
       <h1>RabbitMQ client - Produce message</h1>
 
       <p>
-        In this example, the producer is sending a single message to the
-        pre-declared queue, MyQueue. See{" "}
-        <code>RabbitMQ client - Declare a queue</code> sample for more details
-        on declaring the queue.
+        RabbitMQ allows sending messages to a given pre-declared queue. A
+        RabbitMQ client is created by passing the host and port of the RabbitMQ
+        broker. For more details on declaring the queue, see the{" "}
+        <code>RabbitMQ client - Declare a queue</code> sample. The{" "}
+        <code>publishMessage</code> method, which requires the queue name as the
+        routing key and the message content is used to publish messages. Use it
+        to publish messages that can be received by one or more consumers.
       </p>
 
       <Row

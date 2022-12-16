@@ -71,14 +71,11 @@ export default function NatsClientSecureConnection() {
       <h1>NATS client - SSL/TLS</h1>
 
       <p>
-        The NATS client connections can be secured by encrypting with TLS. In
-        this example, the underlying connection of the listener is secured with
-        basic authentication.
-      </p>
-
-      <p>
-        In this example, the underlying connection of the publisher is secured
-        with TLS/SSL.
+        The <code>nats:Client</code> can be configured to communicate through
+        HTTPS by providing a certificate file. The certificate can be provided
+        through the <code>secureSocket</code> field of the connection
+        configuration. Use this to secure the communication between the client
+        and the server.
       </p>
 
       <Row

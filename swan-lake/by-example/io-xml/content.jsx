@@ -75,7 +75,7 @@ export default function IoXml() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=66f62f05ae8e3c58c53a573c230c3425&file=io_xml.bal",
+                "https://play.ballerina.io/?gist=96780159eaf2078012c1fad550fa1a97&file=io_xml.bal",
                 "_blank"
               );
             }}

@@ -88,17 +88,18 @@ export default function HttpServiceOauth2() {
       <h1>HTTP service - OAuth2</h1>
 
       <p>
-        An HTTP service/resource can be secured with OAuth2 and by enforcing
-        authorization optionally. Then, it validates the OAuth2 token sent in
-        the <code>Authorization</code> header against the provided
-        configurations. This calls the configured introspection endpoint to
-        validate. Ballerina uses the concept of scopes for authorization. A
-        resource declared in a service can be bound to one/more scope(s). The
-        scope can be included in the introspection response using a custom claim
-        attribute. That custom claim attribute also can be configured as the{" "}
-        <code>scopeKey</code>. In the authorization phase, the scopes of the
-        service/resource are compared against the scope included in the
-        introspection response for at least one match between the two sets.
+        The <code>http:Service</code> and resource function can be secured with
+        OAuth2 and additionally, scopes can be added to enforce fine-grained
+        authorization. It validates the OAuth2 token sent in the{" "}
+        <code>Authorization</code> header against the provided configurations.
+        This calls the configured introspection endpoint to validate. Ballerina
+        uses the concept of scopes for authorization. A resource declared in a
+        service can be bound to one/more scope(s). The scope can be included in
+        the introspection response using a custom claim attribute. That custom
+        claim attribute also can be configured as the <code>scopeKey</code>. In
+        the authorization phase, the scopes of the service/resource are compared
+        against the scope included in the introspection response for at least
+        one match between the two sets.
       </p>
 
       <Row

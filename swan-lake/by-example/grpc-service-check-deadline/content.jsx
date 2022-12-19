@@ -127,12 +127,13 @@ export default function GrpcServiceCheckDeadline() {
       </Row>
 
       <p>
-        Setting up the service is the same as setting up the unary RPC service
-        with additional configurations. You can refer to the{" "}
+        Setting up the service is the same as setting up the simple RPC service
+        with additional configurations. For information on implementing the
+        service, see{" "}
         <a href="/learn/by-example/grpc-service-simple/">
           gRPC service - Simple RPC
-        </a>{" "}
-        to implement the service used below.
+        </a>
+        .
       </p>
 
       <p>Run the service by executing the command below.</p>

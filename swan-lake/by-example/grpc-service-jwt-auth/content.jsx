@@ -23,12 +23,6 @@ listener grpc:Listener securedEP = new (9090,
     }
 );
 
-// The service can be secured with JWT Auth and can be authorized
-// optionally. JWT Auth can be enabled by setting the
-// \`grpc:JwtValidatorConfig\` configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type
-// configurations for \`scopes\` field.
 @grpc:ServiceConfig {
     auth: [
         {
@@ -79,22 +73,15 @@ export default function GrpcServiceJwtAuth() {
       <h1>gRPC service - JWT authentication</h1>
 
       <p>
-        A gRPC service/resource can be secured with JWT and by enforcing
-        authorization optionally. Then, it validates the JWT sent in the{" "}
-        <code>Authorization</code> metadata against the provided configurations.
-      </p>
-
-      <p>
-        Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s). The scope can
-        be included in the JWT using a custom claim attribute. That custom claim
-        attribute also can be configured as the <code>scopeKey</code>.
-      </p>
-
-      <p>
-        In the authorization phase, the scopes of the service/resource are
-        compared against the scope included in the JWT for at least one match
-        between the two sets.
+        The <code>grpc:Service</code> can be secured with JWT and additionally,
+        scopes can be added to enforce authorization. It validates the JWT sent
+        in the <code>Authorization</code> metadata against the provided
+        configurations. Ballerina uses the concept of scopes for authorization.
+        The scope can be included in the JWT using a custom claim attribute.
+        That custom claim attribute also can be configured as the{" "}
+        <code>scopeKey</code>. In the authorization phase, the scopes of the
+        service are compared against the scope included in the JWT for at least
+        one match between the two sets.
       </p>
 
       <Row
@@ -182,12 +169,13 @@ export default function GrpcServiceJwtAuth() {
       </Row>
 
       <p>
-        Setting up the service is the same as setting up the unary RPC service
-        with additional configurations. You can refer to the{" "}
+        Setting up the service is the same as setting up the simple RPC service
+        with additional configurations. For information on implementing the
+        service, see{" "}
         <a href="/learn/by-example/grpc-service-simple/">
           gRPC service - Simple RPC
-        </a>{" "}
-        to implement the service used below.
+        </a>
+        .
       </p>
 
       <p>Run the service by executing the command below.</p>

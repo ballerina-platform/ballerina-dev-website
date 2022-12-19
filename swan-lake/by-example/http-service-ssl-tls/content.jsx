@@ -274,6 +274,7 @@ export default function HttpServiceSslTls() {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ curl https://localhost:9090/albums --cacert /path/to/server-public.crt`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>

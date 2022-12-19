@@ -131,7 +131,7 @@ export default function HttpClientBearerTokenAuthentication() {
 
       <h2>Prerequisites</h2>
 
-      <ul style={{ marginLeft: "8px" }}>
+      <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
           <span>

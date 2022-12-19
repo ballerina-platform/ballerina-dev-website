@@ -121,7 +121,7 @@ export default function GraphqlDirectives() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <code>@depricated</code> - The <code>@deprecated</code> annotation
+            <code>@deprecated</code> - The <code>@deprecated</code> annotation
             can be used as the <code>deprecated</code> directive on the{" "}
             <code>resource</code>/<code>remote</code> methods and{" "}
             <code>enum</code> values. Use this to mark a field or an enum value

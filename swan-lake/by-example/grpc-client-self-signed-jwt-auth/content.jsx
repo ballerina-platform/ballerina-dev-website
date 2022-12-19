@@ -15,10 +15,7 @@ const codeSnippetData = [
   `import ballerina/io;
 
 public function main() returns error? {
-    // Defines the gRPC client to call the JWT Auth secured APIs.
-    // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-    // header by passing the \`grpc:JwtIssuerConfig\`for the \`auth\` configuration
-    // of the client. A self-signed JWT is issued before the request is sent.
+    // Defines the gRPC client to call the JWT-secured APIs.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             username: "ballerina",
@@ -69,15 +66,11 @@ export default function GrpcClientSelfSignedJwtAuth() {
       <h1>gRPC client - Self signed JWT authentication</h1>
 
       <p>
-        A client, which is secured with self-signed JWT can be used to connect
-        to a secured service.
-      </p>
-
-      <p>
-        The client metadata is enriched with the{" "}
+        The <code>grpc:Client</code> can connect to a service that is secured
+        with self-signed JWT by enriching the client metadata with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>http:JwtIssuerConfig</code> to the <code>auth</code> configuration
-        of the client. A self-signed JWT is issued before the request is sent.
+        <code>grpc:JwtIssuerConfig</code> to the auth configuration of the
+        client. A self-signed JWT is issued before the request is sent.
       </p>
 
       <Row
@@ -165,12 +158,13 @@ export default function GrpcClientSelfSignedJwtAuth() {
       </Row>
 
       <p>
-        Setting up the client is the same as setting up the unary RPC client
-        with additional configurations. You can refer to the{" "}
+        Setting up the client is the same as setting up the simple RPC client
+        with additional configurations. For information on implementing the
+        client, see{" "}
         <a href="/learn/by-example/grpc-client-simple/">
           gRPC client - Simple RPC
-        </a>{" "}
-        to implement the client used here.
+        </a>
+        .
       </p>
 
       <h2>Prerequisites</h2>

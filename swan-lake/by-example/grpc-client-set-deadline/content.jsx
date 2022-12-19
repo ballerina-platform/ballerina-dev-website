@@ -128,12 +128,13 @@ export default function GrpcClientSetDeadline() {
       </Row>
 
       <p>
-        Setting up the client is the same as setting up the unary RPC client
-        with additional configurations. You can refer to the{" "}
+        Setting up the client is the same as setting up the simple RPC client
+        with additional configurations. For information on implementing the
+        client, see{" "}
         <a href="/learn/by-example/grpc-client-simple/">
           gRPC client - Simple RPC
-        </a>{" "}
-        to implement the client used here.
+        </a>
+        .
       </p>
 
       <h2>Prerequisites</h2>

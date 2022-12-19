@@ -49,7 +49,7 @@ export default function HttpTimeout() {
       <h1>HTTP client - Timeout</h1>
 
       <p>
-        The <code>timeout</code>filed is used to gracefully handle response
+        The <code>timeout</code> field is used to gracefully handle response
         delays that could occur due to network problems or the back-end. The
         client timeout is configured in the <code>timeout</code> field of the
         client configuration in seconds.

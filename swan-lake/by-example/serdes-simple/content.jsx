@@ -95,7 +95,7 @@ export default function SerdesSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2d862738add9c494921336facaac9a6c&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=bd4179b110aa80af899b429ce6e006ff&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -256,9 +256,9 @@ export default function SerdesSimple() {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
-      <ul style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
@@ -268,7 +268,7 @@ export default function SerdesSimple() {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
@@ -278,6 +278,7 @@ export default function SerdesSimple() {
           </span>
         </li>
       </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

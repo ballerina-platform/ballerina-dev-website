@@ -285,8 +285,8 @@ export default function HttpServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl https://localhost:9090/albums --cert /path/to/client-public.crt`}</span>
-              <span>{`    --key /path/to/client-private.key --cacert /path/to/server-public.crt`}</span>
+              <span>{`\$ curl https://localhost:9090/albums --cert /path/to/client-public.crt --key /path/to/client-private.key --cacert /path/to/server-public.crt`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>

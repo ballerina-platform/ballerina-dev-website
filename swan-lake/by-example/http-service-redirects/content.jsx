@@ -57,9 +57,12 @@ export default function HttpServiceRedirects() {
       <h1>HTTP service - Redirects</h1>
 
       <p>
-        The HTTP service provides redirection through <code>redirect()</code>{" "}
-        method of <code>http:Caller</code>. The response contains the specified
-        status code and the <code>Location</code> header.
+        The <code>http:Request</code> is redirected by sending a redirect
+        response with the <code>Location</code> header by the{" "}
+        <code>http:Service</code>. This is done by invoking the{" "}
+        <code>redirect</code> method of <code>http:Caller</code> which results
+        in the response containing the specified status code and the{" "}
+        <code>Location</code> header.
       </p>
 
       <Row
@@ -123,6 +126,21 @@ export default function HttpServiceRedirects() {
           )}
         </Col>
       </Row>
+
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the HTTP service given in the{" "}
+            <a href="/learn/by-example/http-path-param/">
+              REST service - Path parameter
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
 
       <p>Run the service as follows.</p>
 

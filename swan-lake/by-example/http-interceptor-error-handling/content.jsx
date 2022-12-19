@@ -43,8 +43,8 @@ service class RequestInterceptor {
 
 RequestInterceptor requestInterceptor = new;
 
-// A \`RequestErrorInterceptor\` service class implementation. It allows you to 
-// intercept the error that occurred in the request path and handle it accordingly.
+// A \`RequestErrorInterceptor\` service class implementation. It allows intercepting
+// the error that occurred in the request path and handle it accordingly.
 // A \`RequestErrorInterceptor\` service class can have only one resource function.
 service class RequestErrorInterceptor {
     *http:RequestErrorInterceptor;

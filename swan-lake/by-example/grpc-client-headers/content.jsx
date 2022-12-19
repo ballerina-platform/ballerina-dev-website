@@ -139,12 +139,13 @@ export default function GrpcClientHeaders() {
       </Row>
 
       <p>
-        Setting up the client is the same as setting up the unary RPC client
-        with input and output parameter change. You can refer to the{" "}
+        Setting up the client is the same as setting up the simple RPC client
+        with input and output parameter change. For information on implementing
+        the client, see{" "}
         <a href="/learn/by-example/grpc-client-simple/">
           gRPC client - Simple RPC
-        </a>{" "}
-        to implement the client used here.
+        </a>
+        .
       </p>
 
       <h2>Prerequisites</h2>

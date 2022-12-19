@@ -99,7 +99,7 @@ export default function OuterJoinClause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=374837adbefe45104207d5c05f830fab&file=outer_join_clause.bal",
+                "https://play.ballerina.io/?gist=27f9da160a9788e8288ec2dd3a5f7839&file=outer_join_clause.bal",
                 "_blank"
               );
             }}

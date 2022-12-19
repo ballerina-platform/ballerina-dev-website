@@ -15,10 +15,7 @@ const codeSnippetData = [
   `import ballerina/io;
 
 public function main() returns error? {
-    // Defines the gRPC client to call the OAuth2 secured APIs.
-    // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-    // header by passing the \`grpc:OAuth2RefreshTokenGrantConfig\` for the \`auth\`
-    // configuration of the client.
+    // Defines the gRPC client to call the OAuth2-secured APIs.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             refreshUrl: "https://localhost:9445/oauth2/token",
@@ -67,15 +64,12 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
       <h1>gRPC client - OAuth2 refresh token grant type</h1>
 
       <p>
-        A client, which is secured with an OAuth2 refresh token grant type can
-        be used to connect to a secured service.
-      </p>
-
-      <p>
-        The client metadata is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>grpc:OAuth2RefreshTokenGrantConfig</code> to the <code>auth</code>{" "}
-        configuration of the client.
+        The <code>grpc:Client</code> can connect to a service that is secured
+        with the OAuth2 refresh token grant type by enriching the client
+        metadata with the <code>Authorization: Bearer &lt;token&gt;</code>{" "}
+        header. The required configurations for this grant type can be specified
+        in the <code>auth</code> field of the client configuration. Use this to
+        retrieve an access token automatically when it is expired.
       </p>
 
       <Row
@@ -163,12 +157,13 @@ export default function GrpcClientOauth2RefreshTokenGrantType() {
       </Row>
 
       <p>
-        Setting up the client is the same as setting up the unary RPC client
-        with additional configurations. You can refer to the{" "}
+        Setting up the client is the same as setting up the simple RPC client
+        with additional configurations. For information on implementing the
+        client, see{" "}
         <a href="/learn/by-example/grpc-client-simple/">
           gRPC client - Simple RPC
-        </a>{" "}
-        to implement the client used here.
+        </a>
+        .
       </p>
 
       <h2>Prerequisites</h2>

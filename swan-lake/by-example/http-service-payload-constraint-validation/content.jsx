@@ -64,16 +64,16 @@ export default function HttpServicePayloadConstraintValidation() {
       <h1>REST service - Payload constraint validation</h1>
 
       <p>
-        The Ballerina <code>constraint</code> module allows you to add
-        additional constraints to the response payload. The <code>http</code>{" "}
-        resource method uses the <code>constraint</code> module to validate the
-        payload against the given constraints. This validation happens soon
-        after the successful data-binding of the request payload before
-        executing the resource method. The constraints can be added to a given
-        data type using different annotations. If the validation fails, a{" "}
+        The Ballerina <code>constraint</code> module allows adding additional
+        constraints to the response payload. The <code>http</code> resource
+        method uses the <code>constraint</code> module to validate the payload
+        against the given constraints. This validation happens soon after the
+        successful data-binding of the request payload before executing the
+        resource method. The constraints can be added to a given data type using
+        different annotations. If the validation fails, a{" "}
         <code>400 Bad Request</code> response is returned to the client with the
         validation error message. Use this to validate the request payload as
-        the application receives it, which allows you to guard against
+        the application receives it, which protects the server against
         unnecessary resource method processing and malicious payloads.
       </p>
 
@@ -299,7 +299,7 @@ export default function HttpServicePayloadConstraintValidation() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>
@@ -309,7 +309,7 @@ export default function HttpServicePayloadConstraintValidation() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/http/">
-              <code>http</code> package - Specification
+              <code>http</code> module - Specification
             </a>
           </span>
         </li>

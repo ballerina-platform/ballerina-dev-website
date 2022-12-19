@@ -23,12 +23,9 @@ listener grpc:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with Basic Auth and can be authorized optionally.
-// Basic Auth using the LDAP user store can be enabled by setting the
-// \`grpc:LdapUserStoreConfig\` configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type configurations
-// for \`scopes\` field.
+// Basic authentication with the LDAP user store can be enabled by setting
+// the \`grpc:LdapUserStoreConfig\` configuration.
+// Authorization is based on scopes, which can be specified in the \`scopes\` field.
 @grpc:ServiceConfig {
     auth: [
         {
@@ -92,23 +89,22 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
       <h1>gRPC service - Basic authentication LDAP user store</h1>
 
       <p>
-        A gRPC service/resource can be secured with Basic authentication and by
-        enforcing authorization optionally. Then, it validates the Basic Auth
-        token sent in the <code>Authorization</code> metadata against the
-        provided configurations. This reads data from the configured LDAP. This
-        stores usernames, passwords for authentication, and scopes for
-        authorization.
+        The <code>grpc:Service</code> can be secured with basic authentication
+        and additionally, scopes can be added to enforce authorization. It
+        validates the basic authentication token sent in the{" "}
+        <code>Authorization</code> metadata with the LDAP server. This server
+        stores the usernames and passwords for the authentication and the scopes
+        for the authorization. To engage authentication, set the LDAP-related
+        configurations to the <code>ldapUserStoreConfig</code> field. To engage
+        authorization, set the scopes to the <code>scopes</code> field. Both
+        configurations must be given as part of the service configuration.
       </p>
 
       <p>
-        Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s).
-      </p>
-
-      <p>
-        In the authorization phase, the scopes of the service/resource are
-        compared against the scope included in the user store for at least one
-        match between the two sets.
+        A <code>grpc:UnauthenticatedError</code> is sent to the client when the
+        authentication fails, and a <code>grpc:PermissionDeniedError</code> is
+        sent to the client when the authorization fails. Use this to
+        authenticate and authorize requests based on LDAP user stores.
       </p>
 
       <Row
@@ -196,15 +192,25 @@ export default function GrpcServiceBasicAuthLdapUserStore() {
       </Row>
 
       <p>
-        Setting up the service is the same as setting up the unary RPC service
-        with additional configurations. You can refer to the{" "}
+        Setting up the service is the same as setting up the simple RPC service
+        with additional configurations. For information on implementing the
+        service, see{" "}
         <a href="/learn/by-example/grpc-service-simple/">
           gRPC service - Simple RPC
-        </a>{" "}
-        to implement the service used below.
+        </a>
+        .
       </p>
 
-      <p>Execute the command below to run the service.</p>
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Run the LDAP server.</span>
+        </li>
+      </ul>
+
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"

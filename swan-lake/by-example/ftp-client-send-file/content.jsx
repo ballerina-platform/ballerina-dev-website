@@ -15,46 +15,32 @@ const codeSnippetData = [
   `import ballerina/ftp;
 import ballerina/io;
 
-// Creates the listener with the connection parameters and the protocol-related
-// configuration. The listener listens to the files
-// with the given file name pattern located in the specified path.
-listener ftp:Listener fileListener = check new ({
-    protocol: ftp:SFTP,
-    host: "sftp.example.com",
-    auth: {
-        credentials: {
-            username: "user1",
-            password: "pass456"
-        },
-        privateKey: {
-            path: "../resource/path/to/private.key",
-            password: "keyPass123"
+public function main() returns error? {
+    // Creates the client with the connection parameters, host, username, and
+    // password. An error is returned in a failure. The default port number
+    // \`21\` is used with these configurations.
+    ftp:Client fileClient = check new ({
+        host: "ftp.example.com",
+        auth: {
+            credentials: {
+                username: "user1",
+                password: "pass456"
+            }
         }
-    },
-    port: 22,
-    path: "/home/in",
-    fileNamePattern: "(.*).txt"
-});
+    });
 
-// One or many services can listen to the SFTP listener for the
-// periodically-polled file related events.
-service on fileListener {
-    // When a file event is successfully received, the \`onFileChange\` method is called.
-    remote function onFileChange(ftp:WatchEvent event, ftp:Caller caller) returns error? {
-        // \`addedFiles\` contains the paths of the newly-added files/directories
-        // after the last polling was called.
-        foreach ftp:FileInfo addedFile in event.addedFiles {
-            // The \`ftp:Caller\` can be used to append another file to the added files in the server.
-            stream<io:Block, io:Error?> fileStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
-            check caller->append(addedFile.path, fileStream);
-            check fileStream.close();
-        }
-    }
+    // Add a new file to the given file location. In error cases,
+    // an error is returned. The local file is provided as a stream of
+    // \`io:Block\` in which 1024 is the block size.
+    stream<io:Block, io:Error?> fileStream
+        = check io:fileReadBlocksAsStream("./local/logFile.txt", 1024);
+    check fileClient->put("/server/logFile.txt", fileStream);
+    check fileStream.close();
 }
 `,
 ];
 
-export default function SftpServiceReadWrite() {
+export default function FtpClientSendFile() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -75,19 +61,15 @@ export default function SftpServiceReadWrite() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>SFTP service - Read/Write file</h1>
+      <h1>FTP client - Send file</h1>
 
       <p>
-        The <code>ftp:Service</code> connects to a given SFTP server via the{" "}
-        <code>ftp:Listener</code>. Once connected, service starts receiving
-        events every time a file is deleted or added to the server. To take
-        action for these events <code>ftp:Caller</code> is used. The{" "}
-        <code>ftp:Caller</code> can be specified as a parameter of{" "}
-        <code>onFileChange</code> remote method. The <code>ftp:Caller</code>{" "}
-        allows interacting with the server via <code>get</code>,{" "}
-        <code>append</code>, <code>delete</code>, etc remote methods. Use this
-        to listen to file changes occurring in a remote file system and take
-        action for those changes.
+        The <code>ftp:Client</code> connects to a given FTP server, and then
+        sends and receives files as byte streams. An <code>ftp:Client</code> is
+        created by giving the host-name and required credentials. Once
+        connected, <code>put</code> method is used to write files as byte
+        streams to the FTP server. Use this to transfer files from a local file
+        system to a remote file system.
       </p>
 
       <Row
@@ -159,16 +141,17 @@ export default function SftpServiceReadWrite() {
           <span>&#8226;&nbsp;</span>
           <span>
             Start a{" "}
-            <a href="https://hub.docker.com/r/atmoz/sftp/">SFTP server</a>{" "}
+            <a href="https://hub.docker.com/r/stilliard/pure-ftpd/">
+              FTP server
+            </a>{" "}
             instance.
           </span>
         </li>
       </ul>
 
       <p>
-        Run the program by executing the following command. Each newly added
-        file in the SFTP server will be appended with the content in the
-        appending file.
+        Run the program by executing the following command. The newly-added file
+        will appear in the FTP server.
       </p>
 
       <Row
@@ -224,21 +207,11 @@ export default function SftpServiceReadWrite() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run sftp_service_read_write.bal`}</span>
+              <span>{`\$ bal run ftp_client_write.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> Run the SFTP client given in the{" "}
-          <a href="/learn/by-example/sftp-client-write">
-            SFTP client - Write file
-          </a>{" "}
-          example to put a file in the SFTP server.
-        </p>
-      </blockquote>
 
       <h2>Related links</h2>
 
@@ -246,8 +219,8 @@ export default function SftpServiceReadWrite() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller">
-              <code>ftp:Caller</code> client object - API documentation
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#put">
+              <code>ftp:Client-&gt;put</code> method - API documentation
             </a>
           </span>
         </li>
@@ -256,8 +229,8 @@ export default function SftpServiceReadWrite() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/ftp/#52-functions">
-              <code>ftp:Caller</code> functions - Specification
+            <a href="/spec/ftp/#321-insecure-client">
+              FTP client - Specification
             </a>
           </span>
         </li>
@@ -266,7 +239,10 @@ export default function SftpServiceReadWrite() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Read file" href="/learn/by-example/sftp-service-read">
+          <Link
+            title="Receive file"
+            href="/learn/by-example/ftp-client-receive-file"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -292,14 +268,17 @@ export default function SftpServiceReadWrite() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read file
+                  Receive file
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Read file" href="/learn/by-example/sftp-client-read">
+          <Link
+            title="Receive file"
+            href="/learn/by-example/sftp-service-receive-file"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -308,7 +287,7 @@ export default function SftpServiceReadWrite() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read file
+                  Receive file
                 </span>
               </div>
               <svg

@@ -1297,39 +1297,39 @@ sublinks:
       - title: FTP Service
         id: 46
         sublinks:
-          - title: Read file
+          - title: Receive file
             id: 1
-            url: ftp-service-read
-          - title: Read/Write file
+            url: ftp-service-receive-file
+          - title: Send file
             id: 2
-            url: ftp-service-read-write
+            url: ftp-service-send-file
       - title: FTP Client
         id: 47
         sublinks:
-          - title: Read file
+          - title: Receive file
             id: 1
-            url: ftp-client-read
-          - title: Write file
+            url: ftp-client-receive-file
+          - title: Send file
             id: 2
-            url: ftp-client-write
+            url: ftp-client-send-file
       - title: SFTP Service
         id: 48
         sublinks:
-          - title: Read file
+          - title: Receive file
             id: 1
-            url: sftp-service-read
-          - title: Read/Write file
+            url: sftp-service-receive-file
+          - title: Send file
             id: 2
-            url: sftp-service-read-write
+            url: sftp-service-send-file
       - title: SFTP Client
         id: 49
         sublinks:
-          - title: Read file
+          - title: Receive file
             id: 1
-            url: sftp-client-read
-          - title: Write file
+            url: sftp-client-receive-file
+          - title: Send file
             id: 2
-            url: sftp-client-write
+            url: sftp-client-send-file
       - title: Database Access
         id: 50
         sublinks:

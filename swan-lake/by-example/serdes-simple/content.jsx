@@ -23,7 +23,6 @@ type Student record {
 };
 
 public function main() returns error? {
-
     // Assign the value to the variable.
     Student studentValue = {
         id: 7894,
@@ -95,7 +94,7 @@ export default function SerdesSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bd4179b110aa80af899b429ce6e006ff&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=fe78e75b04df9bb62ae8cae5e0d39f1f&file=serdes_simple.bal",
                 "_blank"
               );
             }}

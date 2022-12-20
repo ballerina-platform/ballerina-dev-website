@@ -1,5 +1,5 @@
 {
-  "title": "Read/Write file",
+  "title": "Send file",
   "description": "This BBE is about receiving file/directory changes that occur in a remote SFTP server and using the `ftp:Caller` to interact with the SFTP server.",
   "keywords": [
     "ballerina",
@@ -10,10 +10,10 @@
     "listener",
     "FTP security"
   ],
-  "permalink": "/learn/by-example/sftp-service-read-write",
-  "active": "sftp-service-read-write",
+  "permalink": "/learn/by-example/sftp-service-send-file",
+  "active": "sftp-service-send-file",
   "redirect_from": [
-    "/swan-lake/learn/by-example/sftp-service-read-write",
-    "/swan-lake/learn/by-example/sftp-service-read-write.html"
+    "/swan-lake/learn/by-example/sftp-service-send-file",
+    "/swan-lake/learn/by-example/sftp-service-send-file.html"
   ]
 }

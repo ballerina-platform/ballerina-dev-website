@@ -88,7 +88,7 @@ export default function NamedWorkerReturnValues() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=33a25a9cc45997aa75c98d42ec55b8db&file=named_worker_return_values.bal",
+                "https://play.ballerina.io/?gist=c41076ff83dcd638babf7f2388aaebd3&file=named_worker_return_values.bal",
                 "_blank"
               );
             }}

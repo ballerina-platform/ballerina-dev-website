@@ -14,14 +14,14 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// Define the interface \`Profile\` using a \`distinct\` \`service\` object.
+// Defines the interface \`Profile\` using a \`distinct\` \`service\` object.
 type Profile distinct service object {
 
-    // Define the field \`name\` as a resource method definition.
+    // Defines the field \`name\` as a resource method definition.
     resource function get name() returns string;
 };
 
-// Define the \`Teacher\` class implementing the \`Profile\` interface.
+// Defines the \`Teacher\` class implementing the \`Profile\` interface.
 distinct service class Teacher {
     // This denotes that this object implements the \`Profile\` interface.
     *Profile;
@@ -40,13 +40,13 @@ distinct service class Teacher {
         return self.name;
     }
 
-    // Add an additional field \`subject\` to the \`Teacher\` class.
+    // Adds an additional field \`subject\` to the \`Teacher\` class.
     resource function get subject() returns string {
         return self.subject;
     }
 }
 
-// Another class implementing the \`Profile\` interface.
+// Defines another class implementing the \`Profile\` interface.
 distinct service class Student {
     *Profile;
 
@@ -63,7 +63,8 @@ distinct service class Student {
 
 service /graphql on new graphql:Listener(9090) {
 
-    // Returning the \`Profile[]\` type from a GraphQL resolver will identify it as an interface.
+    // Returns the \`Profile[]\` type from a GraphQL resolver. The \`Profile\` type is identified as an
+    // interface.
     resource function get profiles() returns Profile[] {
         return [new Teacher("Walter White", "Chemistry"), new Student("Jesse Pinkman")];
     }

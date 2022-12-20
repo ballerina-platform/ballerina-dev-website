@@ -103,7 +103,7 @@ export default function XmlNavigation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fa255979ebc7f4391fb0bc5f1b2c6e1c&file=xml_navigation.bal",
+                "https://play.ballerina.io/?gist=1da27663ae08da686536664c747139a3&file=xml_navigation.bal",
                 "_blank"
               );
             }}

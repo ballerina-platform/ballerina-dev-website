@@ -72,7 +72,7 @@ export default function ProvideFunctionArgumentsByName() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6f2f54d1c5801049a47a4f324f467ef3&file=provide_function_arguments_by_name.bal",
+                "https://play.ballerina.io/?gist=7b82ce52a6c67200cd70124d494d8416&file=provide_function_arguments_by_name.bal",
                 "_blank"
               );
             }}

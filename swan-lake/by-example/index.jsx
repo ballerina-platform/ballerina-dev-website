@@ -349,14 +349,14 @@ import UdpConnectClient from "./udp-connect-client/content.jsx";
 import ReceiveEmailUsingService from "./receive-email-using-service/content.jsx";
 import SendEmail from "./send-email/content.jsx";
 import ReceiveEmailUsingClient from "./receive-email-using-client/content.jsx";
-import FtpServiceRead from "./ftp-service-read/content.jsx";
-import FtpServiceReadWrite from "./ftp-service-read-write/content.jsx";
-import FtpClientRead from "./ftp-client-read/content.jsx";
-import FtpClientWrite from "./ftp-client-write/content.jsx";
-import SftpServiceRead from "./sftp-service-read/content.jsx";
-import SftpServiceReadWrite from "./sftp-service-read-write/content.jsx";
-import SftpClientRead from "./sftp-client-read/content.jsx";
-import SftpClientWrite from "./sftp-client-write/content.jsx";
+import FtpServiceReceiveFile from "./ftp-service-receive-file/content.jsx";
+import FtpServiceSendFile from "./ftp-service-send-file/content.jsx";
+import FtpClientReceiveFile from "./ftp-client-receive-file/content.jsx";
+import FtpClientSendFile from "./ftp-client-send-file/content.jsx";
+import SftpServiceReceiveFile from "./sftp-service-receive-file/content.jsx";
+import SftpServiceSendFile from "./sftp-service-send-file/content.jsx";
+import SftpClientReceiveFile from "./sftp-client-receive-file/content.jsx";
+import SftpClientSendFile from "./sftp-client-send-file/content.jsx";
 import MysqlQueryOperation from "./mysql-query-operation/content.jsx";
 import MysqlQueryRowOperation from "./mysql-query-row-operation/content.jsx";
 import MysqlQueryColumnMapping from "./mysql-query-column-mapping/content.jsx";
@@ -761,14 +761,14 @@ const BBEs = {
   ReceiveEmailUsingService,
   SendEmail,
   ReceiveEmailUsingClient,
-  FtpServiceRead,
-  FtpServiceReadWrite,
-  FtpClientRead,
-  FtpClientWrite,
-  SftpServiceRead,
-  SftpServiceReadWrite,
-  SftpClientRead,
-  SftpClientWrite,
+  FtpServiceReceiveFile,
+  FtpServiceSendFile,
+  FtpClientReceiveFile,
+  FtpClientSendFile,
+  SftpServiceReceiveFile,
+  SftpServiceSendFile,
+  SftpClientReceiveFile,
+  SftpClientSendFile,
   MysqlQueryOperation,
   MysqlQueryRowOperation,
   MysqlQueryColumnMapping,

@@ -15,8 +15,7 @@ const codeSnippetData = [
   `import ballerina/graphql;
 
 service /graphql on new graphql:Listener(9090) {
-
-    // Define a \`string\` array in the service.
+    // Defines a \`string\` array in the service.
     private string[] names;
 
     function init() {

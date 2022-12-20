@@ -46,6 +46,7 @@ listener websocket:Listener chatListener = new(9090,
     ]
 }
 service /chat on chatListener {
+
     resource function get .() returns websocket:Service {
         return new ChatService();
    }
@@ -53,6 +54,7 @@ service /chat on chatListener {
 
 service class ChatService {
     *websocket:Service;
+
     remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
         check caller->writeMessage("Hello, How are you?");
     }

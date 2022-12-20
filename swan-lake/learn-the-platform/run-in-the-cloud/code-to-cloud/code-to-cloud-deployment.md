@@ -280,7 +280,7 @@ Below sample describes a Ballerina application that reads a greeting string from
         }
     }
     ```
-3. Create `Config.toml` in the package directory and paste the following contents inside.
+3. Create the `Config.toml` file in the package directory and paste the following content into it.
 
     ***Config.toml***
     ```toml

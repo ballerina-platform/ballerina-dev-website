@@ -223,7 +223,9 @@ Follow the steps below to execute the Docker image separately.
     wso2inc/hello                 v0.1.0              60d95f0928b2        About a minute ago   228MB
     ```
 
-2. Execute the `docker run -d -v <path/to/config>/Config.toml:/home/ballerina/Config.toml -p 9090:9090 wso2inc/hello:v0.1.0` command to run the generated Docker image. You need to make sure to set the correct path of the created `Config.toml`. Using volume mount is just one way of providing the `Config.toml` file into the runtime. Other ways of loading providing Configurable values can be found on the [Configurable specification.](https://github.com/ballerina-platform/ballerina-spec/blob/master/configurable/spec.md#locating-toml-files)
+2. Execute the `docker run -d -v <path/to/config>/Config.toml:/home/ballerina/Config.toml -p 9090:9090 wso2inc/hello:v0.1.0` command to run the generated Docker image. 
+
+>**Info:** Make sure to set the correct path of the created `Config.toml`. Using volume mount is one way of providing the `Config.toml` file into the runtime. For other ways of providing configurable values, see the [Ballerina specification](https://github.com/ballerina-platform/ballerina-spec/blob/master/configurable/spec.md#locating-toml-files).
 
     ```
     $> docker run -d -v /home/wso2/c2c-guide/hello_docker/Config.toml:/home/ballerina/Config.toml -p 9090:9090 wso2inc/hello:v0.1.0

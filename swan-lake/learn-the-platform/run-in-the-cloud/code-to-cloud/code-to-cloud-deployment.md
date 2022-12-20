@@ -317,7 +317,7 @@ Below sample describes a Ballerina application that reads a greeting string from
     max_replicas=5 # Maximum number of replicas of the container can scale up to
     cpu=60 # Average CPU utilization of pods
 
-    [[cloud.config.files]] # Mounts Config.toml file as a Config Map in kubernetes
+    [[cloud.config.files]] # Mounts the `Config.toml` file as a config map in Kubernetes.
     file="./Config.toml"
 
     [cloud.deployment.probes.liveness]

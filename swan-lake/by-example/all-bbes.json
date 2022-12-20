@@ -3294,7 +3294,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
+        "name": "Receive file",
         "url": "ftp-service-read",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3303,7 +3303,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Read/Write file",
+        "name": "Send file",
         "url": "ftp-service-read-write",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3319,7 +3319,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
+        "name": "Receive file",
         "url": "ftp-client-read",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3328,7 +3328,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write file",
+        "name": "Send file",
         "url": "ftp-client-write",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3344,7 +3344,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
+        "name": "Receive file",
         "url": "sftp-service-read",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3353,7 +3353,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Read/Write file",
+        "name": "Send file",
         "url": "sftp-service-read-write",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3369,7 +3369,7 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
+        "name": "Receive file",
         "url": "sftp-client-read",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3378,7 +3378,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write file",
+        "name": "Send file",
         "url": "sftp-client-write",
         "verifyBuild": true,
         "verifyOutput": false,

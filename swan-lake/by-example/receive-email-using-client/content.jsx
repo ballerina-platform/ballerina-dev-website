@@ -307,7 +307,7 @@ export default function ReceiveEmailUsingClient() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Read file" href="/learn/by-example/ftp-service-read">
+          <Link title="Receive file" href="/learn/by-example/ftp-service-read">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -316,7 +316,7 @@ export default function ReceiveEmailUsingClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read file
+                  Receive file
                 </span>
               </div>
               <svg

@@ -67,10 +67,9 @@ export default function NatsBasicPub() {
       <p>
         The <code>nats:Client</code> allows publishing messages to a given
         subject. A <code>nats:Client</code> is created by passing the URL of the
-        NATS broker. To publish messages, the <code>publishMessage</code>{" "}
-        method, which requires the message and subject as arguments, is used.
-        Use it to publish messages that can be received by one or more
-        subscribers.
+        NATS broker. To publish messages, the <code>publishMessage</code> method
+        is used, which requires the message and subject as arguments. Use it to
+        publish messages that can be received by one or more subscribers.
       </p>
 
       <Row

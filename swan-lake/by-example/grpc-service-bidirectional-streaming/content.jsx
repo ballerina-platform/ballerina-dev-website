@@ -35,9 +35,10 @@ import ballerina/log;
     value: GRPC_BIDIRECTIONAL_STREAMING_DESC
 }
 service "Chat" on new grpc:Listener(9090) {
+
     // The generated code of the Ballerina gRPC command does not contain ChatStringCaller.
     // To show the usage of a caller, this RPC call uses a caller to send messages to the client.
-    isolated remote function chat(ChatStringCaller caller,
+    remote function chat(ChatStringCaller caller,
                     stream<ChatMessage, error?> clientStream) {
         // Reads and processes each message in the client stream.
         do {

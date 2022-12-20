@@ -39,6 +39,7 @@ listener kafka:Listener orderListener = check new ("localhost:9093", {
 });
 
 service on orderListener {
+
     remote function onConsumerRecord(Order[] orders) returns error? {
         check from Order 'order in orders
             where 'order.isValid

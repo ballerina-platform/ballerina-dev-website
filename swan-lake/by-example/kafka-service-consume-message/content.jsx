@@ -28,6 +28,7 @@ listener kafka:Listener orderListener = check new (kafka:DEFAULT_URL, {
 });
 
 service on orderListener {
+
     remote function onConsumerRecord(Order[] orders) returns error? {
         // The set of orders received by the service are processed one by one.
         check from Order 'order in orders

@@ -38,6 +38,7 @@ listener grpc:Listener securedEP = new(9090,
     value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
+
     remote function hello(string request) returns string {
         return "Hello " + request;
     }

@@ -23,12 +23,23 @@ import rehypeRaw from 'rehype-raw';
 
 import HighlightSyntax from '../highlight-syntax/HighlightSyntax';
 
+String.prototype.hashCode = function () {
+  var hash = 0,
+    i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+    chr = this.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0;
+  }
+  return hash;
+}
 
 export default function MainContent(props) {
 
   const content = props.content;
   const languages = props.languages;
-
+  const codes = new Map(JSON.parse(props.codes));
   // Add id attributes to headings
   const extractText = (value) => {
     if (typeof value === "string") {
@@ -67,7 +78,7 @@ export default function MainContent(props) {
   };
 
   const toc = (show) => {
-      props.handleToc(show)
+    props.handleToc(show)
   }
 
   return (
@@ -225,16 +236,22 @@ export default function MainContent(props) {
           );
         },
         code({ node, inline, className, children, ...props }) {
+          const key = (children[0]).trim().split(/\r?\n/).map(row => row.trim()).join('\n');
+          const highlightedCode = codes.get(key.hashCode());
+          if (highlightedCode) {
+            return <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+          }
+
           const match = /language-(\w+)/.exec(className || '')
           return inline ?
             <code className={className} {...props}>
               {children}
             </code>
             : match ?
-              <HighlightSyntax 
-                codeSnippet={String(children).replace(/\n$/, '')} 
+              <HighlightSyntax
+                codeSnippet={String(children).replace(/\n$/, '')}
                 lang={match[1].toLowerCase()}
-                languages={languages}/>
+                languages={languages} />
               : <pre className='default'>
                 <code className={className} {...props}>
                   {children}

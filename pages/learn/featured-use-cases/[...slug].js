@@ -22,6 +22,7 @@ import React from "react";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
+import { getHighlighter } from "shiki";
 
 import Layout from "../../../layouts/LayoutDocs";
 import LeftNav from "../../../components/common/left-nav/LeftNav";
@@ -29,6 +30,18 @@ import MainContent from "../../../components/common/main-content/MainContent";
 import { prefix } from "../../../utils/prefix";
 import LearnToc from "../../../utils/learn-lm.json";
 import Toc from "../../../components/common/pg-toc/Toc";
+
+String.prototype.hashCode = function () {
+  var hash = 0,
+    i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+    chr = this.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0;
+  }
+  return hash;
+}
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -82,6 +95,23 @@ export async function getStaticProps({ params: { slug } }) {
   );
   const { data: frontmatter, content } = matter(fileName);
 
+  const highlighter = await getHighlighter({
+    theme: 'github-light'
+  });
+  let codes = new Map();
+  const regex = /```(\w+)([\s\S]*?)```/g;
+  let match = [];
+  while (match = regex.exec(content)) {
+    let code = match[2];
+    const firstLine = code.split('/n')[0];
+    const indent = firstLine.length - firstLine.trimStart().length;
+    const key = code.trim().split(/\r?\n/).map(row => row.trim()).join('\n');
+    code = code.split(/\r?\n/).map(row => row.substring(indent - 1)).join('\n');
+
+    codes.set(key.hashCode(), highlighter.codeToHtml(code.trim(), { lang: 'ballerina' }))
+  }
+  codes = JSON.stringify([...codes]);
+
   return {
     props: {
       frontmatter,
@@ -90,6 +120,7 @@ export async function getStaticProps({ params: { slug } }) {
       sub,
       third,
       slug,
+      codes
     },
   };
 }
@@ -101,6 +132,7 @@ export default function PostPage({
   sub,
   third,
   slug,
+  codes
 }) {
 
   // Show mobile left nav
@@ -116,7 +148,7 @@ export default function PostPage({
   }
 
   // Languages used in Featured use case section
-  const languages = ["bash","ballerina", "graphql", "json", "toml", "sql"];
+  const languages = ["bash", "ballerina", "graphql", "json", "toml", "sql"];
 
   return (
     <>
@@ -207,7 +239,8 @@ export default function PostPage({
             <MainContent
               content={content}
               handleToc={handleToc}
-              languages={languages} />
+              languages={languages}
+              codes={codes} />
 
           </Container>
         </Col>

@@ -28,7 +28,7 @@ import styles from '../styles/Home.module.css';
 
 import fs from "fs";
 import matter from "gray-matter";
-import * as shiki from 'shiki'
+import { getHighlighter } from "shiki";
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -41,7 +41,7 @@ var traverseFolder = function (dir) {
 };
 
 export async function getStaticProps() {
-  const highlighter = await shiki.getHighlighter({
+  const highlighter = await getHighlighter({
     theme: 'github-light'
   });
   const files = traverseFolder("components/home-page/bal-action/action-bbe");

@@ -7,7 +7,7 @@ import {
 } from "../../../utils/bbe";
 import Link from "next/link";
 
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 import ballerinax/kafka;
 

@@ -21,8 +21,6 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
-import HighlightSyntax from '../highlight-syntax/HighlightSyntax';
-
 String.prototype.hashCode = function () {
   var hash = 0,
     i, chr;
@@ -39,7 +37,8 @@ export default function MainContent(props) {
 
   const content = props.content;
   const languages = props.languages;
-  const codes = new Map(JSON.parse(props.codes));
+  const codes = props.codes ? new Map(JSON.parse(props.codes)) : new Map();
+
   // Add id attributes to headings
   const extractText = (value) => {
     if (typeof value === "string") {
@@ -248,10 +247,7 @@ export default function MainContent(props) {
               {children}
             </code>
             : match ?
-              <HighlightSyntax
-                codeSnippet={String(children).replace(/\n$/, '')}
-                lang={match[1].toLowerCase()}
-                languages={languages} />
+              <div dangerouslySetInnerHTML={{ __html: String(children).replace(/\n$/, '') }} />
               : <pre className='default'>
                 <code className={className} {...props}>
                   {children}

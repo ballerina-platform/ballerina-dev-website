@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge  
 _Reviewers_: @shafreenAnfar @DimuthuMadushan @ldclakmal  
 _Created_: 2022/01/06  
-_Updated_: 2022/12/06  
+_Updated_: 2022/12/20  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -1927,7 +1927,7 @@ A file user store can be used to validate the `Authorization` header in the HTTP
 
 ```ballerina
 graphql:FileUserStoreConfig config = {};
-http:ListenerFileUserStoreBasicAuthHandler handler = new (config);
+final http:ListenerFileUserStoreBasicAuthHandler handler = new (config);
 
 isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
     string authorization = check request.getHeader("Authorization");
@@ -1936,11 +1936,10 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     return context;
 }
 
-@graphql:ServiceConfig {
-    contextInit: contextInit
-}
-service on new graphql:Listener(9090) {
-    resource function get greeting(graphql:Context context) returns string|error {
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
@@ -1953,7 +1952,18 @@ service on new graphql:Listener(9090) {
         if authz is http:Forbidden {
             return error("Forbidden");
         }
-        // ...
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: [new AuthInterceptor()]
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
     }
 }
 ```
@@ -2001,7 +2011,7 @@ graphql:LdapUserStoreConfig config = {
     connectionTimeout: 5,
     readTimeout: 60
 };
-http:ListenerLdapUserStoreBasicAuthHandler handler = new (config);
+final http:ListenerLdapUserStoreBasicAuthHandler handler = new (config);
 
 isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
     string authorization = check request.getHeader("Authorization");
@@ -2010,11 +2020,10 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     return context;
 }
 
-@graphql:ServiceConfig {
-    contextInit: contextInit
-}
-service on new graphql:Listener(9090) {
-    resource function get greeting(graphql:Context context) returns string|error {
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
@@ -2027,7 +2036,18 @@ service on new graphql:Listener(9090) {
         if authz is http:Forbidden {
             return error("Forbidden");
         }
-        // ...
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: [new AuthInterceptor()]
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
     }
 }
 ```
@@ -2048,7 +2068,7 @@ graphql:JwtValidatorConfig config = {
         }
     }
 };
-http:ListenerJwtAuthHandler handler = new (config);
+final http:ListenerJwtAuthHandler handler = new (config);
 
 isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
     string authorization = check request.getHeader("Authorization");
@@ -2057,11 +2077,10 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     return context;
 }
 
-@graphql:ServiceConfig {
-    contextInit: contextInit
-}
-service on new graphql:Listener(9090) {
-    resource function get greeting(graphql:Context context) returns string|error {
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
@@ -2070,11 +2089,24 @@ service on new graphql:Listener(9090) {
         if authn is http:Unauthorized {
             return error("Unauthorized");
         }
-        http:Forbidden? authz = handler.authorize(authn, "admin");
-        if authz is http:Forbidden {
-            return error("Forbidden");
+        if authn is jwt:Payload {
+            http:Forbidden? authz = handler.authorize(authn, "admin");
+            if authz is http:Forbidden {
+                return error("Forbidden");
+            }
         }
-        // ...
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: [new AuthInterceptor()]
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
     }
 }
 ```
@@ -2090,7 +2122,7 @@ graphql:OAuth2IntrospectionConfig config = {
     url: "https://localhost:8080/oauth2/introspect",
     tokenTypeHint: "access_token"
 };
-http:ListenerOAuth2Handler handler = new (config);
+final http:ListenerOAuth2Handler handler = new (config);
 
 isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
     string authorization = check request.getHeader("Authorization");
@@ -2099,22 +2131,33 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     return context;
 }
 
-@graphql:ServiceConfig {
-    contextInit: contextInit
-}
-service on new graphql:Listener(9090) {
-    resource function get greeting(graphql:Context context) returns string|error {
-        value:Cloneable|isolated object {} authorization = check context.get("Authorization");
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
         }
         oauth2:IntrospectionResponse|http:Unauthorized|http:Forbidden auth = handler->authorize(authorization, "admin");
         if auth is http:Unauthorized {
             return error("Unauthorized");
-        } else if auth is http:Forbidden {
+        }
+        if auth is http:Forbidden {
             return error("Forbidden");
         }
-        // ...
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: [new AuthInterceptor()]
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
     }
 }
 ```

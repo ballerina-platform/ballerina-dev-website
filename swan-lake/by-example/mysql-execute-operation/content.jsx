@@ -12,7 +12,6 @@ export const codeSnippetData = [
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-// Defines a record to load the query result.
 type Album record {|
     string id;
     string title;
@@ -55,11 +54,11 @@ export function MysqlExecuteOperation({codeSnippets}) {
       <h1>Database Access - DML and DDL operations</h1>
 
       <p>
-        This BBE demonstrates how to use the MySQL client with the DDL and DML
-        operations.
+        The <code>mysql:Client</code> allows executing a DDL/DML statement with
+        the use of <code>execute</code> method. This method requires a{" "}
+        <code>sql:ParameterizedQuery</code>-typed SQL DDL/DML statement as the
+        argument.
       </p>
-
-      <p>This BBE is written in the context of an album microservice.</p>
 
       <blockquote>
         <p>
@@ -173,11 +172,11 @@ export function MysqlExecuteOperation({codeSnippets}) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Set up the MySQL database - Run the{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-execute-operation/prerequisites/prerequisite.bal">
-              prerequisite.bal
-            </a>{" "}
-            file by executing the command <code>bal run</code>.
+            To set up the database, see the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite">
+              Database Access Ballerina By Example - Prerequisites
+            </a>
+            .
           </span>
         </li>
       </ul>

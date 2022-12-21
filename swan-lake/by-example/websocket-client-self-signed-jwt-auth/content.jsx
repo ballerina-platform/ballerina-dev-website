@@ -16,7 +16,7 @@ public function main() returns error? {
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`websocket:JwtIssuerConfig\` for the \`auth\` configuration of the
     // client. A self-signed JWT is issued before the request is sent.
-    websocket:Client chatClient = check new("wss://localhost:9090/chat",
+    websocket:Client chatClient = check new ("wss://localhost:9090/chat",
         auth = {
             username: "ballerina",
             issuer: "wso2",
@@ -55,8 +55,8 @@ export function WebsocketClientSelfSignedJwtAuth({codeSnippets}) {
       <h1>WebSocket client - Self signed JWT authentication</h1>
 
       <p>
-        A client, which is secured with self-signed JWT can be used to connect
-        to a secured service. The client is enriched with the{" "}
+        The <code>websocket:Client</code> can connect to a service that is
+        secured with self-signed JWT by adding the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>websocket:JwtIssuerConfig</code> to the <code>auth</code>{" "}
         configuration of the client. A self-signed JWT is issued before the
@@ -231,7 +231,7 @@ export function WebsocketClientSelfSignedJwtAuth({codeSnippets}) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
+              <code>websocket</code> module - API documentation
             </a>
           </span>
         </li>
@@ -241,7 +241,7 @@ export function WebsocketClientSelfSignedJwtAuth({codeSnippets}) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package - API documentation
+              <code>oauth2</code> module - API documentation
             </a>
           </span>
         </li>

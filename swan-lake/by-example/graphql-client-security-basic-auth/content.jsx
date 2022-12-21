@@ -11,7 +11,7 @@ export const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/io;
 
-// User defined data types to retrive data from the service.
+// User-defined data types to retrieve data from the service.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
     record {|Profile profile;|} data;
@@ -23,7 +23,7 @@ type Profile record {|
 |};
 
 public function main() returns error? {
-    // Create a new client with the Basic Authentication configurations.
+    // Defines the GraphQL client to call the APIs secured with basic authentication.
     graphql:Client graphqlClient = check new ("localhost:9090/graphql",
         auth = {
             username: "ldclakmal",
@@ -34,7 +34,7 @@ public function main() returns error? {
         }
     );
 
-    // Define the GraphQL document to be sent to the GraphQL service.
+    // Defines the GraphQL document to be sent to the GraphQL service.
     string document = "{ profile { name, age } }";
 
     // Execute the document and retrieve the response from the GraphQL service.
@@ -57,16 +57,13 @@ export function GraphqlClientSecurityBasicAuth({codeSnippets}) {
       <h1>GraphQL client - Basic authentication</h1>
 
       <p>
-        A GraphQL client, which is secured with basic authentication can be used
-        to connect to a secured GraphQL service. The client is enriched with the{" "}
-        <code>Authorization: Basic &lt;token&gt;</code> header by passing the{" "}
-        <code>graphql:CredentialsConfig</code> for the <code>auth</code>{" "}
-        configuration of the client.
-      </p>
-
-      <p>
-        This example shows how to send a GraphQL request with Basic
-        Authentication.
+        The <code>graphql:Client</code> can connect to a service that is secured
+        with basic authentication by adding the{" "}
+        <code>Authorization: Basic &lt;token&gt;</code> header to each request.
+        The username and password for basic authentication can be specified in
+        the <code>auth</code> field of the{" "}
+        <code>graphql:ClientConfiguration</code>. Use this to communicate with
+        the service, which is secured with basic authentication.
       </p>
 
       <Row
@@ -225,7 +222,7 @@ export function GraphqlClientSecurityBasicAuth({codeSnippets}) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package API documentation
+              <code>auth</code> module - API documentation
             </a>
           </span>
         </li>

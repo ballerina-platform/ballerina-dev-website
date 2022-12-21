@@ -80,7 +80,7 @@ export function QueryActions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c1901cf297f61efb7f5a62acef41f627&file=query_actions.bal",
+                "https://play.ballerina.io/?gist=63732bdd60e4ae0c7cdfbfbc3cebc8ad&file=query_actions.bal",
                 "_blank"
               );
             }}

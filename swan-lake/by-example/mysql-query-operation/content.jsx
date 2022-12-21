@@ -13,7 +13,7 @@ import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-// Defines a record to load the query result.
+// The \`Album\` record to load records from \`albums\` table.
 type Album record {|
     string id;
     string title;
@@ -58,11 +58,10 @@ export function MysqlQueryOperation({codeSnippets}) {
       <h1>Database Access - Simple query</h1>
 
       <p>
-        This BBE demonstrates how to use the MySQL client select query
-        operations with the stream return type.
+        The <code>mysql:Client</code> allows querying the database with the use
+        of <code>query</code> method. This method requires a{" "}
+        <code>sql:ParameterizedQuery</code>-typed SQL statement as the argument.
       </p>
-
-      <p>This BBE is written in the context of an album microservice.</p>
 
       <blockquote>
         <p>
@@ -176,11 +175,11 @@ export function MysqlQueryOperation({codeSnippets}) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Set up the MySQL database - Run the{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-query-operation/prerequisites/prerequisite.bal">
-              prerequisite.bal
-            </a>{" "}
-            file by executing the command <code>bal run</code>.
+            To set up the database, see the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite">
+              Database Access Ballerina By Example - Prerequisites
+            </a>
+            .
           </span>
         </li>
       </ul>
@@ -337,7 +336,10 @@ export function MysqlQueryOperation({codeSnippets}) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Write file" href="/learn/by-example/sftp-client-write">
+          <Link
+            title="Send file"
+            href="/learn/by-example/sftp-client-send-file"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -363,7 +365,7 @@ export function MysqlQueryOperation({codeSnippets}) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Write file
+                  Send file
                 </span>
               </div>
             </div>

@@ -10,17 +10,34 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/http;
 
-service / on new http:Listener(9095) {
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-    resource function get accesslog() returns string {
-        return "Successful";
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
+
+service / on new http:Listener(9090) {
+
+    resource function get albums() returns Album[] {
+        return albums.toArray();
     }
 }
+`,
+  `[ballerina.http.accessLogConfig]
+# Enable printing access logs on the Console. The default value is \`false\`.
+console = true
+# Specify the file path to save the access logs. This is optional.  
+path = "testAccessLog.txt"
 `,
 ];
 
 export function HttpAccessLogs({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
+  const [codeClick2, updateCodeClick2] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
@@ -34,12 +51,13 @@ export function HttpAccessLogs({codeSnippets}) {
       <h1>HTTP service - Access logs</h1>
 
       <p>
-        Ballerina supports HTTP access logs for HTTP services. The access log
-        format used is the combined log format. To enable access logs, set{" "}
-        <code>console=true</code> under the{" "}
+        Ballerina allows enabling HTTP access logs, which can be used to record
+        the HTTP requests handled by the application. HTTP access logs are
+        disabled by default. Set <code>console=true</code> under{" "}
         <code>ballerina.http.accessLogConfig</code> in the{" "}
-        <code>Config.toml</code> file. Also, the <code>path</code> field can be
-        used to specify the file path to save the access logs.
+        <code>Config.toml</code> file to enable them. Additionally, the{" "}
+        <code>path</code> field can be used to specify the file path to save the
+        access logs.
       </p>
 
       <Row
@@ -126,6 +144,102 @@ export function HttpAccessLogs({codeSnippets}) {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Populate the <code>Config.toml</code> file with the access log
+            configurations.
+          </span>
+        </li>
+      </ul>
+
+      <Row
+        className="bbeCode mx-0 py-0 rounded 
+      "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-access-logs",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
+          {codeClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2"
+              disabled
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2"
+              onClick={() => {
+                updateCodeClick2(true);
+                copyToClipboard(codeSnippetData[1]);
+                setTimeout(() => {
+                  updateCodeClick2(false);
+                }, 3000);
+              }}
+              aria-label="Copy to Clipboard"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#000"
+                className="bi bi-clipboard"
+                viewBox="0 0 16 16"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          {codeSnippets[1] != undefined && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(codeSnippets[1]),
+              }}
+            />
+          )}
+        </Col>
+      </Row>
+
       <p>Run the service as follows.</p>
 
       <Row
@@ -181,21 +295,9 @@ export function HttpAccessLogs({codeSnippets}) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Run the service by setting the configurations in the \`Config.toml\` file as follows to have logs in the console.`}</span>
-              <span>{`\$ echo '[ballerina.http.accessLogConfig] console = true' > Config.toml`}</span>
-              <span>{`
-`}</span>
               <span>{`\$ bal run http_access_logs.bal`}</span>
               <span>{`ballerina: HTTP access log enabled`}</span>
-              <span>{`0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:54:32 +0530] "GET /accesslog HTTP/1.1" 200 10 "-" "curl/7.64.1"`}</span>
-              <span>{`
-`}</span>
-              <span>{`# Else, change the \`Config.toml\` file as follows to direct the log to the specified file.`}</span>
-              <span>{`\$ echo '[ballerina.http.accessLogConfig] path = "testAccessLog.txt"' > Config.toml`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ bal run http_access_logs.bal`}</span>
-              <span>{`ballerina: HTTP access log enabled`}</span>
+              <span>{`127.0.0.1 - - [15/Dec/2022:11:39:42 +0530] "GET /albums HTTP/1.1" 200 95 "-" "curl/7.79.1"`}</span>
             </code>
           </pre>
         </Col>
@@ -259,12 +361,22 @@ export function HttpAccessLogs({codeSnippets}) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9095/accesslog`}</span>
-              <span>{`Successful`}</span>
+              <span>{`\$ curl http://localhost:9090/albums`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-send-request-receive-response/">
+            Send request/Receive response client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -272,8 +384,9 @@ export function HttpAccessLogs({codeSnippets}) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/AccessLogConfiguration">
+              <code>http:AccessLogConfiguration</code> record - API
+              documentation
             </a>
           </span>
         </li>

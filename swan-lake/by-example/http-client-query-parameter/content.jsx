@@ -51,12 +51,14 @@ export function HttpClientQueryParameter({codeSnippets}) {
       <h1>HTTP client - Query parameter</h1>
 
       <p>
-        The <code>http</code> module provides first class support for specifying
-        URL query parameters as resource method argument. The supported types
-        are <code>string</code>, <code>int</code>, <code>float</code>,{" "}
-        <code>boolean</code>, <code>decimal</code>, and the <code>array</code>{" "}
-        types of the aforementioned types. The query param type can be{" "}
-        <code>nil</code> as well.
+        The <code>http:Client</code> supports specifying query parameters as
+        resource method arguments. Each query parameter can be stated as a
+        key-value pair. When the request is sent, the key-value pairs are
+        appended to the request path (e.g., <code>?foo=bar</code>). The
+        supported types are <code>string</code>, <code>int</code>,{" "}
+        <code>float</code>, <code>boolean</code>, <code>decimal</code>, and{" "}
+        <code>array</code> types of the aforementioned types. Use this when
+        invoking endpoints that expect query parameters.
       </p>
 
       <Row
@@ -199,7 +201,7 @@ export function HttpClientQueryParameter({codeSnippets}) {
       </Row>
 
       <p>
-        Furthermore, a <code>post</code> request with query parameter can be
+        Furthermore, a <code>post</code> request with a query parameter can be
         sent as shown below.
       </p>
 
@@ -272,7 +274,7 @@ export function HttpClientQueryParameter({codeSnippets}) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

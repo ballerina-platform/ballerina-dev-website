@@ -179,9 +179,6 @@ export default function AllArchived() {
                                                                         <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['linux-installer']} />
                                                                     </a>
                                                                 </td>
-                                                                <td style={{ width: "10%" }}><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.md5`}>md5</a></td>
-                                                                <td style={{ width: "10%" }}><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td style={{ width: "10%" }}><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.asc`}>asc</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td >{item['windows-installer']}</td>
@@ -190,9 +187,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['windows-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.asc`}>asc</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>{item['macos-installer']}</td>
@@ -201,9 +195,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['macos-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.asc`}>asc</a></td>
                                                             </tr>
 
                                                             {
@@ -215,9 +206,6 @@ export default function AllArchived() {
                                                                             <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={ot} />
                                                                         </a>
                                                                         </td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.md5`}>md5</a></td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.sha1`}>SHA-1</a></td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.asc`}>asc</a></td>
                                                                     </tr>
                                                                 ))
                                                             }
@@ -259,9 +247,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['linux-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.asc`}>asc</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td >{item['windows-installer']}</td>
@@ -270,9 +255,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['windows-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.asc`}>asc</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td >{item['macos-installer']}</td>
@@ -281,9 +263,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['macos-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.asc`}>asc</a></td>
                                                             </tr>
 
                                                             {
@@ -295,9 +274,6 @@ export default function AllArchived() {
                                                                             <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={ot} />
                                                                         </a>
                                                                         </td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.md5`}>md5</a></td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.sha1`}>SHA-1</a></td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.asc`}>asc</a></td>
                                                                     </tr>
                                                                 ))
                                                             }
@@ -334,9 +310,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['linux-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.asc`}>asc</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td >{item['windows-installer']}</td>
@@ -345,9 +318,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['windows-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.asc`}>asc</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td >{item['macos-installer']}</td>
@@ -356,9 +326,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['macos-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.asc`}>asc</a></td>
                                                             </tr>
                                                             {
                                                                 item['other-artefacts'].map((ot, index) => (
@@ -369,9 +336,6 @@ export default function AllArchived() {
                                                                             <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={ot} />
                                                                         </a>
                                                                         </td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.md5`}>md5</a></td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.sha1`}>SHA-1</a></td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.asc`}>asc</a></td>
                                                                     </tr>
                                                                 ))
                                                             }
@@ -407,9 +371,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['linux-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.asc`}>asc</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td >{item['windows-installer']}</td>
@@ -418,9 +379,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['windows-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.asc`}>asc</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td >{item['macos-installer']}</td>
@@ -429,9 +387,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['macos-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.asc`}>asc</a></td>
                                                             </tr>
 
                                                             {
@@ -443,9 +398,6 @@ export default function AllArchived() {
                                                                             <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={ot} />
                                                                         </a>
                                                                         </td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.md5`}>md5</a></td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.sha1`}>SHA-1</a></td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.asc`}>asc</a></td>
                                                                     </tr>
                                                                 ))
                                                             }
@@ -481,9 +433,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['linux-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['linux-installer']}.asc`}>asc</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td >{item['windows-installer']}</td>
@@ -492,9 +441,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['windows-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['windows-installer']}.asc`}>asc</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td >{item['macos-installer']}</td>
@@ -503,9 +449,6 @@ export default function AllArchived() {
                                                                     <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['macos-installer']} />
                                                                 </a>
                                                                 </td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.md5`}>md5</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.sha1`}>SHA-1</a></td>
-                                                                <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}.asc`}>asc</a></td>
                                                             </tr>
 
                                                             {
@@ -517,9 +460,6 @@ export default function AllArchived() {
                                                                             <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={ot} />
                                                                         </a>
                                                                         </td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.md5`}>md5</a></td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.sha1`}>SHA-1</a></td>
-                                                                        <td><a href={`${process.env.distServer}/downloads/${item.version}/${ot}.asc`}>asc</a></td>
                                                                     </tr>
                                                                 ))
                                                             }

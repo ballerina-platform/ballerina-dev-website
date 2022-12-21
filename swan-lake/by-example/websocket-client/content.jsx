@@ -12,19 +12,19 @@ export const codeSnippetData = [
 import ballerina/websocket;
 
 public function main() returns error? {
-   // Create a new WebSocket client.
-   websocket:Client chatClient = check new("ws://localhost:9090/chat");
+    // Create a new WebSocket client.
+    websocket:Client chatClient = check new ("ws://localhost:9090/chat");
 
-   // Write a message to the server using \`writeMessage\`.
-   // This function accepts \`anydata\`. If the given type is a \`byte[]\`, the message will be sent as
-   // binary frames and the rest of the data types will be sent as text frames.
-   check chatClient->writeMessage("Hello John!");
+    // Write a message to the server using \`writeMessage\`.
+    // This function accepts \`anydata\`. If the given type is a \`byte[]\`, the message will be sent as
+    // binary frames and the rest of the data types will be sent as text frames.
+    check chatClient->writeMessage("Hello John!");
 
-   // Read a message sent from the server using \`readMessage\`.
-   // The contextually-expected data type is inferred from the LHS variable type. The received data
-   // will be converted to that particular data type.
-   string message = check chatClient->readMessage();
-   io:println(message);
+    // Read a message sent from the server using \`readMessage\`.
+    // The contextually-expected data type is inferred from the LHS variable type. The received data
+    // will be converted to that particular data type.
+    string message = check chatClient->readMessage();
+    io:println(message);
 }
 `,
 ];
@@ -42,9 +42,14 @@ export function WebsocketClient({codeSnippets}) {
       <h1>WebSocket client - Send/Receive message</h1>
 
       <p>
-        The WebSocket client can be used to connect to and interact with a
-        WebSocket server in a synchronous manner. This example demonstrates how
-        to read and write messages using a Ballerina WebSocket client.
+        The <code>websocket:Client</code> connects to a given WebSocket server,
+        and then sends and receives WebSocket frames. A{" "}
+        <code>websocket:Client</code> is created by giving the URL of the
+        server. Once connected, <code>writeMessage</code> and{" "}
+        <code>readMessage</code> synchronous methods are used to send and
+        receive messages. Since they are synchronous methods often used in two
+        different strands. Use this to interact with WebSocket servers or
+        implement user applications based on WebSocket.
       </p>
 
       <Row

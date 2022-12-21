@@ -53,7 +53,7 @@ export function TypeDefinitions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1f1876774e487525d9930964fded8ec8&file=type_definitions.bal",
+                "https://play.ballerina.io/?gist=aa4a0ef3da592dbc4e05ae511973c1d6&file=type_definitions.bal",
                 "_blank"
               );
             }}

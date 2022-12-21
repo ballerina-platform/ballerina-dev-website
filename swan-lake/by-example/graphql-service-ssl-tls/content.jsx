@@ -15,11 +15,6 @@ type Profile record {|
     int age;
 |};
 
-// A GraphQL listener can be configured to communicate through HTTPS as well.
-// To secure a listener using HTTPS, the listener needs to be configured with
-// a certificate file and a private key file for the listener.
-// The \`graphql:ListenerSecureSocket\` record provides the
-// SSL-related listener configurations of the listener.
 listener graphql:Listener securedEP = new (9090,
     secureSocket = {
         key: {
@@ -30,6 +25,7 @@ listener graphql:Listener securedEP = new (9090,
 );
 
 service /graphql on securedEP {
+    
     resource function get profile() returns Profile {
         return {
             name: "Walter White",
@@ -53,9 +49,12 @@ export function GraphqlServiceSslTls({codeSnippets}) {
       <h1>GraphQL service - SSL/TLS</h1>
 
       <p>
-        You can use the GraphQL listener to connect to or interact with an HTTPS
-        client. Provide the <code>graphql:ListenerSecureSocket</code>{" "}
-        configurations to the server to expose an HTTPS connection.
+        The <code>graphql:Listener</code> can be configured to communicate
+        through HTTPS by providing a certificate file and a private key file.
+        The certificate and the key can be provided through the{" "}
+        <code>secureSocket</code> field of the{" "}
+        <code>graphql:ListenerConfiguration</code>. Use this to secure the
+        communication and data transfer between the server and the client.
       </p>
 
       <Row

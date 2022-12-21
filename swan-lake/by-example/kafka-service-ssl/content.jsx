@@ -18,7 +18,7 @@ public type Order readonly & record {
     boolean isValid;
 };
 
-listener kafka:Listener orderListener = check new ("localhost:9094", {
+listener kafka:Listener orderListener = new ("localhost:9094", {
     groupId: "order-group-id",
     topics: "order-topic",
     // Provide the relevant secure socket configurations by using \`kafka:SecureSocket\`.
@@ -34,6 +34,7 @@ listener kafka:Listener orderListener = check new ("localhost:9094", {
 });
 
 service on orderListener {
+
     remote function onConsumerRecord(Order[] orders) returns error? {
         check from Order 'order in orders
             where 'order.isValid
@@ -58,8 +59,13 @@ export function KafkaServiceSsl({codeSnippets}) {
       <h1>Kafka service - SSL/TLS</h1>
 
       <p>
-        This shows how the SSL encryption is done in the{" "}
-        <code>kafka:Listener</code>.
+        The <code>kafka:Service</code> receives messages from the Kafka server
+        using the <code>kafka:Listener</code> via SSL/TLS. SSL/TLS can be
+        enabled by configuring the <code>secureSocket</code>, which requires a
+        certificate and the protocol name. Further, the mode of security must be
+        configured by setting the <code>securityProtocol</code> to{" "}
+        <code>kafka:PROTOCOL_SSL</code>. Use this to connect to a Kafka server
+        secured with SSL.
       </p>
 
       <Row
@@ -140,18 +146,6 @@ export function KafkaServiceSsl({codeSnippets}) {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the Kafka client given in the{" "}
-            <a href="/learn/by-example/kafka-client-producer-ssl">
-              Kafka client - Producer SSL/TLS
-            </a>{" "}
-            example to produce some messages to the topic.
-          </span>
-        </li>
-      </ul>
 
       <p>Run the program by executing the following command.</p>
 
@@ -215,6 +209,16 @@ export function KafkaServiceSsl({codeSnippets}) {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Run the Kafka client given in the{" "}
+          <a href="/learn/by-example/kafka-producer-ssl">
+            Kafka producer - SSL/TLS
+          </a>{" "}
+          example to produce some messages to the topic.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -243,7 +247,7 @@ export function KafkaServiceSsl({codeSnippets}) {
         <Col sm={6}>
           <Link
             title="Constraint validation"
-            href="/learn/by-example/kafka-client-constraint-validation"
+            href="/learn/by-example/kafka-consumer-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg

@@ -13,7 +13,7 @@ import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-// Defines a record to load the query result.
+// The \`Album\` record to load records from \`albums\` table.
 type Artist record {|
     @sql:Column {name: "artist_id"}
     int artistId;
@@ -60,11 +60,11 @@ export function MysqlQueryColumnMapping({codeSnippets}) {
       <h1>Database Access - Query with advanced mapping</h1>
 
       <p>
-        This BBE demonstrates how to use the MySQL client for query operations
-        with advanced mapping for column names.
+        The <code>mysql:Client</code> allows querying the database with the use
+        of <code>query</code> method. To map the table column name with a
+        different Ballerina record field use the <code>sql:Column</code>{" "}
+        annotation.
       </p>
-
-      <p>This BBE is written in the context of an artist microservice.</p>
 
       <blockquote>
         <p>
@@ -178,11 +178,11 @@ export function MysqlQueryColumnMapping({codeSnippets}) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Set up the MySQL database - Run the{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-query-coloumn-mapping/prerequisites/prerequisite.bal">
-              prerequisite.bal
-            </a>{" "}
-            file by executing the command <code>bal run</code>.
+            To set up the database, see the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite">
+              Database Access Ballerina By Example - Prerequisites
+            </a>
+            .
           </span>
         </li>
       </ul>

@@ -24,10 +24,9 @@ listener graphql:Listener securedEP = new (9090,
     }
 );
 
-// The service can be secured with Basic Auth and can be authorized optionally. Basic Auth using
-// the LDAP user store can be enabled by setting the \`graphql:LdapUserStoreConfig\` configurations.
-// Authorization is based on scopes. A scope maps to one or more groups. Authorization can be
-// enabled by setting the \`string|string[]\` type configurations for the \`scopes\` field.
+// Basic authentication with the LDAP user store can be enabled by setting
+// the \`graphql:LdapUserStoreConfig\` configuration.
+// Authorization is based on scopes, which can be specified in the \`scopes\` field.
 @graphql:ServiceConfig {
     auth: [
         {
@@ -57,6 +56,7 @@ listener graphql:Listener securedEP = new (9090,
     ]
 }
 service /graphql on securedEP {
+    
     resource function get profile() returns Profile {
         return {
             name: "Walter White",
@@ -80,23 +80,22 @@ export function GraphqlServiceBasicAuthLdapUserStore({codeSnippets}) {
       <h1>GraphQL service - Basic authentication LDAP user store</h1>
 
       <p>
-        A GraphQL service can be secured with Basic authentication and by
-        enforcing authorization optionally. Then, it validates the Basic
-        authentication token sent in the <code>Authorization</code> header
-        against the provided configurations. This reads data from the configured
-        LDAP. This stores usernames, passwords for authentication, and scopes
-        for authorization.
+        The <code>graphql:Service</code> can be secured with basic
+        authentication and additionally, scopes can be added to enforce
+        authorization. It validates the basic authentication token sent in the{" "}
+        <code>Authorization</code> header with the LDAP server. This server
+        stores the usernames and passwords for the authentication and the scopes
+        for the authorization. To engage authentication, set the LDAP server
+        configurations to the <code>ldapUserStoreConfig</code> field. To enable
+        authorization, set the scopes to the <code>scopes</code> field. Both
+        configurations must be given as part of the{" "}
+        <code>@graphql:ServiceConfig</code> annotation.
       </p>
 
       <p>
-        Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s).
-      </p>
-
-      <p>
-        In the authorization phase, the scopes of the service are compared
-        against the scope included in the user store for at least one match
-        between the two sets.
+        A <code>graphql:Error</code> response is sent to the client when the
+        authentication or authorization fails. Use this to authenticate and
+        authorize requests based on LDAP user stores.
       </p>
 
       <Row
@@ -182,6 +181,15 @@ export function GraphqlServiceBasicAuthLdapUserStore({codeSnippets}) {
           )}
         </Col>
       </Row>
+
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>LDAP server should be up and running.</span>
+        </li>
+      </ul>
 
       <p>Run the service by executing the command below.</p>
 
@@ -282,7 +290,7 @@ export function GraphqlServiceBasicAuthLdapUserStore({codeSnippets}) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> package - API documentation
+              <code>auth</code> module - API documentation
             </a>
           </span>
         </li>

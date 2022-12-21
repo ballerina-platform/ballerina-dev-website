@@ -16,7 +16,7 @@ import ballerina/tcp;
 // a certificate file and a private key file for the listener.
 // The \`tcp:ListenerSecureSocket\` record provides the
 // SSL-related listener configurations of the listener.
-listener tcp:Listener securedListnerEP = check new(3000,
+listener tcp:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -25,7 +25,8 @@ listener tcp:Listener securedListnerEP = check new(3000,
     }
 );
 
-service "tcp" on securedListnerEP {
+service "tcp" on securedEP {
+
      remote function onConnect(tcp:Caller caller) returns tcp:ConnectionService {
         io:println("Client connected on server port: ", caller.remotePort);
         return new EchoService();
@@ -56,8 +57,14 @@ export function TcpServiceSslTls({codeSnippets}) {
       <h1>TCP service - SSL/TLS</h1>
 
       <p>
-        This demonstrates how the Ballerina TCP service can be configured to
-        secure the connection over SSL/TLS.
+        The <code>tcp:Listener</code> configured with allows you to expose a
+        connection secured with one-way SSL/TLS. A <code>tcp:Listener</code>{" "}
+        secured with SSL/TLS is created by providing the{" "}
+        <code>secureSocket</code> configurations which require the server's
+        certificate as the <code>certFile</code> and the server's private key as
+        the <code>keyFile</code>. Use this to interact with TCP clients or
+        implement high-level protocols based on TLS-encrypted secured TCP
+        connection.
       </p>
 
       <Row
@@ -200,7 +207,7 @@ export function TcpServiceSslTls({codeSnippets}) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/tcp/latest">
-              <code>tcp</code> package - API documentation
+              <code>tcp</code> module - API documentation
             </a>
           </span>
         </li>

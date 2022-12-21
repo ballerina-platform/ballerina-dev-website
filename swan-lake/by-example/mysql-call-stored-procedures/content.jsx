@@ -7,76 +7,79 @@ import {
 } from "../../../utils/bbe";
 import Link from "next/link";
 
-export const codeSnippetData = [
+setCDN("https://unpkg.com/shiki/");
+
+const codeSnippetData = [
   `import ballerina/http;
 import ballerina/sql;
 import ballerinax/mysql;
-import ballerina/sql;
 import ballerinax/mysql.driver as _;
 
-// The \`Student\` record to represent the database table.
-type Student record {
-    int id;
-    int age;
-    string name;
-};
+// The \`Order\` record to load records from \`sales_order\` table.
+type Order record {|
+    string id;
+    @sql:Column {name: "order_date"}
+    string orderDate;
+    @sql:Column {name: "product_id"}
+    string productId;
+    int quantity;
+|};
 
-public function main() returns error? {
+type Orders record {|
+    int total;
+    Order[] orders;
+|};
 
-    // Initializes the MySQL client. The \`mysqlClient\` can be reused to access the database throughout the application execution.
-    mysql:Client mysqlClient = check new (host = "localhost", port = 3306, user = "root",
-                                          password = "Test@123", database = "STUDENT");
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
 
-    // Initializes the \`INOUT\` and \`OUT\` parameters for the procedure call.
-    sql:InOutParameter id = new (1);
-    sql:IntegerOutParameter totalCount = new;
+    function init() returns error? {
+        // Initiate the mysql client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.db = check new (host = "localhost", port = 3306, user = "root",
+                            password = "Test@123", database = "MUSIC_STORE");
+    }
 
-    // The stored procedure is invoked.
-    sql:ProcedureCallResult result = check mysqlClient->call(\`{CALL GetCount(\${id}, \${totalCount})}\`);
+    resource function get orders/[string orderDate]() returns Orders|error {
+        // Initializes the \`INOUT\` and \`OUT\` parameters for the procedure call.
+        sql:DateValue filterDate = new (orderDate);
+        sql:IntegerOutParameter total = new ();
 
-    // Process procedure-call parameters.
-    int studentId = check id.get();
-    int total = check totalCount.get();
+        // Call the \`get_sales_order\` stored procedure.
+        sql:ProcedureCallResult result =
+            check self.db->call(\`{CALL get_sales_order(\${filterDate}, \${total})}\`, [Order]);
 
-    io:println(\`Age of the student with id '1' : \${studentId}\`);
-    io:println(\`Total student count: \${total}\`);
+        // Process procedure-call parameters.
+        int totalCount = check total.get();
 
-    // Closes the procedure call result to release the resources.
-    check result.close();
+        Order[] orders = [];
+        // Process procedure-call query results.
+        stream<record {}, error?>? resultStream = result.queryResult;
+        if resultStream !is () {
+            stream<Order, error?> orderStream = <stream<Order, error?>>resultStream;
+            orders = check from Order 'order in orderStream
+                select 'order;
+        }
 
-    // Closes the MySQL client.
-    check mysqlClient.close();
+        // Cleans up the resources.
+        check result.close();
 
-}
-`,
-  `stream<record {}, error?>? resultStream = result.queryResult;
-if resultStream !is () {
-    _ = check from var student in resultStream
-        do {
-            io:println(\`Student: \${student}\`);
+        return {
+            total: totalCount,
+            orders: orders
         };
-}
-`,
-  `sql:ProcedureCallResult result = check mysqlClient->call(\`{CALL GetCount(\${id}, \${totalCount})}\`, [Student]);
-
-stream<record {}, error?>? resultStream = result.queryResult;
-if resultStream!is () {
-    stream<Student, error?> studentStream = <stream<Student, error?>>resultStream;
-    _ = check from Student student in studentStream
-        do {
-            io:println(\`Student: \${student}\`);
-        };
+    }
 }
 `,
 ];
 
 export function MysqlCallStoredProcedures({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
-  const [codeClick2, updateCodeClick2] = useState(false);
-  const [codeClick3, updateCodeClick3] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
@@ -85,8 +88,10 @@ export function MysqlCallStoredProcedures({codeSnippets}) {
       <h1>Database Access - Call stored procedures</h1>
 
       <p>
-        This BBE demonstrates how to use the MySQL client to execute a stored
-        procedure.
+        The <code>mysql:Client</code> allows executing a stored procedure with
+        the use of <code>call</code> method. This method requires a{" "}
+        <code>sql:ParameterizedQuery</code>-typed SQL CALL statement as the
+        argument.
       </p>
 
       <blockquote>
@@ -201,16 +206,16 @@ export function MysqlCallStoredProcedures({codeSnippets}) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Set up the MySQL database - Run the{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-call-stored-procedures/prerequisites/prerequisite.bal">
-              prerequisite.bal
-            </a>{" "}
-            file by executing the command <code>bal run</code>.
+            To set up the database, see the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite">
+              Database Access Ballerina By Example - Prerequisites
+            </a>
+            .
           </span>
         </li>
       </ul>
 
-      <p>Run the sample by executing the following command.</p>
+      <p>Run the service.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -265,54 +270,25 @@ export function MysqlCallStoredProcedures({codeSnippets}) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run`}</span>
-              <span>{`
-`}</span>
-              <span>{`Age of the student with id '1' : 24`}</span>
-              <span>{`Total student count: 1`}</span>
+              <span>{`\$ bal run mysql_call_stored_procedures.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
       <p>
-        The result set returned from the stored procedure can be accessed using{" "}
-        <code>queryResult</code> variable in{" "}
-        <code>sql:ProcedureCallResult</code>.
+        Invoke the service by executing the following cURL command in a new
+        terminal to post a new order.
       </p>
 
       <Row
-        className="bbeCode mx-0 py-0 rounded 
-      "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
-        <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/mysql-call-stored-procedures",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
-          {codeClick2 ? (
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
-              disabled
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -320,7 +296,7 @@ export function MysqlCallStoredProcedures({codeSnippets}) {
                 width="16"
                 height="16"
                 fill="#20b6b0"
-                className="bi bi-check"
+                className="output-btn bi bi-check"
                 viewBox="0 0 16 16"
               >
                 <title>Copied</title>
@@ -329,23 +305,24 @@ export function MysqlCallStoredProcedures({codeSnippets}) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
-                updateCodeClick2(true);
-                copyToClipboard(codeSnippetData[1]);
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
                 setTimeout(() => {
-                  updateCodeClick2(false);
+                  updateOutputClick2(false);
                 }, 3000);
               }}
-              aria-label="Copy to Clipboard"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
-                fill="#000"
-                className="bi bi-clipboard"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
                 viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
               >
                 <title>Copy to Clipboard</title>
                 <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
@@ -355,101 +332,12 @@ export function MysqlCallStoredProcedures({codeSnippets}) {
           )}
         </Col>
         <Col sm={12}>
-          {codeSnippets[1] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[1]),
-              }}
-            />
-          )}
-        </Col>
-      </Row>
-
-      <p>
-        Further the result set can be mapped directly to a Ballerina record,
-      </p>
-
-      <Row
-        className="bbeCode mx-0 py-0 rounded 
-      "
-        style={{ marginLeft: "0px" }}
-      >
-        <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/mysql-call-stored-procedures",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
-          {codeClick3 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2"
-              disabled
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2"
-              onClick={() => {
-                updateCodeClick3(true);
-                copyToClipboard(codeSnippetData[2]);
-                setTimeout(() => {
-                  updateCodeClick3(false);
-                }, 3000);
-              }}
-              aria-label="Copy to Clipboard"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#000"
-                className="bi bi-clipboard"
-                viewBox="0 0 16 16"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          {codeSnippets[2] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[2]),
-              }}
-            />
-          )}
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`\$ curl http://localhost:8080/orders/2022-12-09`}</span>
+              <span>{`{"total":2, "orders":[{"id":"S-123", "orderDate":"2022-12-09", "productId":"A-123", "quantity":2}, {"id":"S-321", "orderDate":"2022-12-09", "productId":"A-321", "quantity":1}]}`}</span>
+            </code>
+          </pre>
         </Col>
       </Row>
 

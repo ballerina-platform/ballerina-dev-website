@@ -10,27 +10,30 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/http;
 
-// Header name to be set to the response in the response interceptor.
-final string interceptor_header = "responseHeader";
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-// Header value to be set to the response in the response interceptor.
-final string interceptor_header_value = "ResponseInterceptor";
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
 // A \`ResponseInterceptor\` service class implementation. It intercepts the response 
-// and adds a header before it is dispatched to the client. A \`ResponseInterceptor\`
-// service class can have only one remote function: \`interceptResponse\`.
+// and adds a header before it is dispatched to the client.
 service class ResponseInterceptor {
     *http:ResponseInterceptor;
 
     // The \`interceptResponse\` remote function will be executed for all the
     // responses. A \`RequestContext\` is used to share data between interceptors.
-    remote function interceptResponse(http:RequestContext ctx, 
-                        http:Response res) returns http:NextService|error? {
+    remote function interceptResponse(http:RequestContext ctx,
+            http:Response res) returns http:NextService|error? {
         // Sets a header to the response inside the interceptor service.
-        res.setHeader(interceptor_header, interceptor_header_value);
+        res.setHeader("x-api-version", "v2");
         // Returns the next interceptor in the pipeline or \`nil\` if there is no 
         // more interceptors to be returned. In case a \`nil\` value is returned, then,
-        // the modified response will be returned to the client. In addtion to these
+        // the modified response will be returned to the client. In addition to these
         // return values, an error is returned when the call fails.
         return ctx.next();
     }
@@ -38,15 +41,15 @@ service class ResponseInterceptor {
 
 // Engage interceptors at the listener level. Response interceptor services will be executed from
 // tail to head.
-listener http:Listener interceptorListener = new http:Listener(9090,
+listener http:Listener interceptorListener = new (9090,
     // This interceptor pipeline will be executed for all of the services attached to this listener.
     interceptors = [new ResponseInterceptor()]
 );
 
-service /user on interceptorListener {
+service / on interceptorListener {
 
-    resource function get greeting(http:Request req) returns string {
-        return "Greetings!";
+    resource function get albums() returns Album[] {
+        return albums.toArray();
     }
 }
 `,
@@ -67,12 +70,21 @@ export function HttpResponseInterceptor({codeSnippets}) {
       <h1>HTTP service - Response interceptor</h1>
 
       <p>
-        In addition to <code>RequestInterceptors</code>, a{" "}
-        <code>ResponseInterceptor</code> can be used to intercept the response.{" "}
-        <code>ResponseInterceptors</code> have a remote method, which will be
-        executed before dispatching the response to the client. A collection of
-        these request and response interceptors can be configured as a pipeline
-        at the listener level or service level.
+        The <code>http:ResponseInterceptor</code> is used to intercept the
+        response and execute some custom logic. A{" "}
+        <code>ResponseInterceptor</code> is a service object with a remote
+        method called <code>interceptResponse</code>, which is executed before
+        dispatching the response to the client. A{" "}
+        <code>ResponseInterceptor</code> can be created from a service class,
+        which includes the <code>http:ResponseInterceptor</code> service type.
+        Then, this service object can be engaged at the listener level or
+        service level by using the <code>interceptors</code> field in the
+        configurations. This field accepts an array of interceptor service
+        objects as an interceptor pipeline, and the interceptors are executed in
+        the order in which they are placed in the pipeline. Use{" "}
+        <code>ResponseInterceptors</code> to execute some common logic such as
+        logging, header manipulation, state publishing, etc., for all outbound
+        responses.
       </p>
 
       <Row
@@ -256,28 +268,37 @@ export function HttpResponseInterceptor({codeSnippets}) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v http://localhost:9090/user/greeting`}</span>
+              <span>{`\$ curl -v http://localhost:9090/albums`}</span>
               <span>{`*   Trying 127.0.0.1:9090...`}</span>
               <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> GET /user/greeting HTTP/1.1`}</span>
+              <span>{`> GET /albums HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.79.1`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`> `}</span>
               <span>{`* Mark bundle as not supporting multiuse`}</span>
               <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< responseHeader: ResponseInterceptor`}</span>
-              <span>{`< content-length: 10`}</span>
+              <span>{`< content-type: application/json`}</span>
+              <span>{`< x-api-version: v2`}</span>
+              <span>{`< content-length: 95`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Mon, 1 Aug 2022 16:10:29 +0530`}</span>
+              <span>{`< date: Wed, 14 Dec 2022 11:51:35 +0530`}</span>
               <span>{`< `}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`Greetings!`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-send-request-receive-response/">
+            Send request/Receive response client
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -286,7 +307,7 @@ export function HttpResponseInterceptor({codeSnippets}) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

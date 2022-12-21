@@ -27,11 +27,11 @@ public function main() returns error? {
 
     string document = "{ profile { name, age } }";
 
-    // The \`execute()\` remote method of the graphql:Client takes a GraphQL document as the
+    // The \`execute\` remote method of the \`graphql:Client\` takes a GraphQL document as the
     // required argument and sends a request to the specified backend URL seeking a response. On the
     // retrieval of a successful response, the client tries to perform data binding for the
     // user-defined data type. On failure to retrieve a successful response or when the client fails
-    // to perform data binding, a graphql:ClientError will be returned.
+    // to perform data binding, a \`graphql:ClientError\` will be returned.
     ProfileResponse response = check graphqlClient->execute(document);
     io:println(response.data.profile);
 }
@@ -51,14 +51,16 @@ export function GraphqlClientQueryEndpoint({codeSnippets}) {
       <h1>GraphQL client - Query GraphQL endpoint</h1>
 
       <p>
-        The GraphQL Client can be used to connect and interact with a GraphQL
-        server. It can be used to do <code>Query</code> and{" "}
-        <code>Mutation</code> operations on a GraphQL service.
-      </p>
-
-      <p>
-        This example shows how to send a GraphQL request and retrieve the
-        response in a user-defined type.
+        The <code>graphql:Client</code> allows connecting and interacting with a
+        GraphQL server. A <code>graphql:Client</code> is created by passing the
+        URL of a GraphQL service endpoint. The <code>execute</code> method is
+        used to execute a GraphQL operation. This method requires the GraphQL{" "}
+        <code>document</code> as a required argument and takes a map of{" "}
+        <code>variables</code> and an <code>operationName</code> as arguments
+        optionally, in case the document contains any variables or contains more
+        than one operation. Use the GraphQL client to execute the{" "}
+        <code>Query</code> and <code>Mutation</code> operations on a GraphQL
+        service.
       </p>
 
       <Row
@@ -122,12 +124,6 @@ export function GraphqlClientQueryEndpoint({codeSnippets}) {
           )}
         </Col>
       </Row>
-
-      <p>
-        Further, the execute method optionally takes a map of variables and an
-        operationName in case the document contains any variables or contains
-        more than one operation.
-      </p>
 
       <h2>Prerequisites</h2>
 

@@ -18,7 +18,7 @@ public type Order readonly & record {
     boolean isValid;
 };
 
-listener kafka:Listener orderListener = check new ("localhost:9093", {
+listener kafka:Listener orderListener = new ("localhost:9093", {
     groupId: "order-group-id",
     // Subscribes to the topic \`test-kafka-topic\`.
     topics: ["order-topic"],
@@ -35,6 +35,7 @@ listener kafka:Listener orderListener = check new ("localhost:9093", {
 });
 
 service on orderListener {
+
     remote function onConsumerRecord(Order[] orders) returns error? {
         check from Order 'order in orders
             where 'order.isValid
@@ -59,8 +60,14 @@ export function KafkaServiceSasl({codeSnippets}) {
       <h1>Kafka service - SASL authentication</h1>
 
       <p>
-        This shows how the SASL/PLAIN authentication is used in the{" "}
-        <code>kafka:Listener</code>.
+        The <code>kafka:Service</code> receives messages from the Kafka server
+        using the <code>kafka:Listener</code> via SASL/PLAIN authentication.
+        SASL/PLAIN authentication can be enabled by configuring the{" "}
+        <code>auth</code>, which requires the authentication mechanism,
+        username, and password. Further, the mode of security must be configured
+        by setting the <code>securityProtocol</code> to{" "}
+        <code>kafka:PROTOCOL_SASL_PLAINTEXT</code>. Use this to connect to a
+        Kafka server secured with SASL/PLAIN.
       </p>
 
       <Row
@@ -141,18 +148,6 @@ export function KafkaServiceSasl({codeSnippets}) {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the Kafka client given in the{" "}
-            <a href="/learn/by-example/kafka-client-producer-ssl">
-              Kafka client - Producer SSL/TLS
-            </a>{" "}
-            example to produce some messages to the topic.
-          </span>
-        </li>
-      </ul>
 
       <p>Run the program by executing the following command.</p>
 
@@ -216,6 +211,16 @@ export function KafkaServiceSasl({codeSnippets}) {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Run the Kafka client given in the{" "}
+          <a href="/learn/by-example/kafka-producer-sasl">
+            Kafka producer - SASL authentication
+          </a>{" "}
+          example to produce some messages to the topic.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -276,10 +281,7 @@ export function KafkaServiceSasl({codeSnippets}) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Producer SSL/TLS"
-            href="/learn/by-example/kafka-client-producer-ssl"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/kafka-producer-ssl">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -288,7 +290,7 @@ export function KafkaServiceSasl({codeSnippets}) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
               <svg

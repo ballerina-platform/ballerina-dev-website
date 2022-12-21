@@ -26,7 +26,7 @@ public function main() returns error? {
     io:println("GET request:" + albums.toJsonString());
 
     // Sends a \`POST\` request to the "/albums" resource.
-    Album album  = check albumClient->/albums.post({
+    Album album = check albumClient->/albums.post({
         title: "Sarah Vaughan and Clifford Brown",
         artist: "Sarah Vaughan"
     });
@@ -48,16 +48,17 @@ export function HttpClientSendRequestReceiveResponse({codeSnippets}) {
       <h1>HTTP client - Send request/Receive response</h1>
 
       <p>
-        The HTTP client can be used to connect to and interact with an HTTP
-        server. The client is instantiated with URL and uses resource method to
-        make the network calls. The standard HTTP methods <code>get</code>,{" "}
-        <code>post</code>, <code>put</code>, <code>patch</code>,{" "}
-        <code>delete</code>, <code>head</code>, <code>options</code> are
-        available as resource methods and can be invoked as same as invoking a
-        remote method. To invoke an HTTP method, the relevant verb and the
-        required arguments can be provided after the <code>-&gt;</code>. For{" "}
-        <code>get</code> method, the verb is not explicitly needed since it will
-        be defaulted.
+        The <code>http:Client</code> interacts with an HTTP server. The client
+        is instantiated with the service URL and it uses resource methods to
+        send requests and receive responses from the backend service. The
+        standard HTTP methods <code>get</code>, <code>post</code>,{" "}
+        <code>put</code>, <code>patch</code>, <code>delete</code>,{" "}
+        <code>head</code>, and <code>options</code> are available as resource
+        accessors. A resource method invocation is done by providing the{" "}
+        <code>resource path</code>, relevant <code>resource accessor</code>, and
+        required arguments after the <code>-&gt;</code>. Since HTTP{" "}
+        <code>get</code> is the default resource method, the accessor is not
+        mandatory when invoking an HTTP <code>GET</code> resource.
       </p>
 
       <Row
@@ -70,7 +71,7 @@ export function HttpClientSendRequestReceiveResponse({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=66f641a5c11aacbcfe16526e2a43b154&file=http_client_send_request_receive_response.bal",
+                "https://play.ballerina.io/?gist=92e6f26a94e9580660b51acb345304e0&file=http_client_send_request_receive_response.bal",
                 "_blank"
               );
             }}
@@ -234,7 +235,7 @@ export function HttpClientSendRequestReceiveResponse({codeSnippets}) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

@@ -70,7 +70,7 @@ export function MultipleWait({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7fa6a9c163379d09f9ca9a7e55757d6a&file=multiple_wait.bal",
+                "https://play.ballerina.io/?gist=8acbcdce2b41e29c23f71afc503340b6&file=multiple_wait.bal",
                 "_blank"
               );
             }}

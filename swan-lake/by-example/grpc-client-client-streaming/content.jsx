@@ -59,11 +59,12 @@ export function GrpcClientClientStreaming({codeSnippets}) {
       <h1>gRPC client - Client-side streaming RPC</h1>
 
       <p>
-        The gRPC Server Connector is used to expose gRPC services over HTTP/2.
-        In a gRPC client streaming scenario, the client writes a sequence of
-        messages and sends them to the server. Once the client has finished
-        writing the messages, it waits for the server to read them and return a
-        response.
+        A <code>grpc:Client</code> is created by providing the endpoint URL of a
+        gRPC server. In the client streaming scenario, once connected, the
+        client sends a sequence of messages to the remote service and waits for
+        the server to read them and returns a single response message. Use this
+        to send multiple request messages and get a single response message
+        back.
       </p>
 
       <h2>Generate the service definition</h2>
@@ -330,7 +331,7 @@ export function GrpcClientClientStreaming({codeSnippets}) {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
-          <span>Execute the command below to run the client.</span>
+          <span>Run the client by executing the command below.</span>
         </li>
       </ul>
 
@@ -401,7 +402,7 @@ export function GrpcClientClientStreaming({codeSnippets}) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> package - API documentation
+              <code>grpc</code> module - API documentation
             </a>
           </span>
         </li>

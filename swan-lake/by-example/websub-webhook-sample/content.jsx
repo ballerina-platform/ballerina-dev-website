@@ -58,14 +58,14 @@ export function WebsubWebhookSample({codeSnippets}) {
       <h1>WebSub service - Consume github events</h1>
 
       <p>
-        Ballerina provides the capability to easily introduce subscriber
-        services that are WebSub-compliant. Ballerina WebSub subscribers can
-        specify the topic and hub to which they wish to subscribe to receive
-        notifications. If not specified WebSub Subscriber Services will auto
-        generate a unique random service path segment. Ballerina WebSub
-        Subscriber Services could thus be registered as WebHooks to receive
-        event notifications. In this example, a WebSub Subscriber service is
-        used to implement a GitHub-based WebHook service.
+        GitHub webhooks provide the capability to receive notifications based on
+        the events in a GitHub repository. The Ballerina <code>websub</code>{" "}
+        module can be used to define websub-compliant webhooks which are used to
+        receive notifications from any websub-compliant <code>hub</code>{" "}
+        implementation. Specify the GitHub pubsubhub API URL and the relevant
+        event URL as the <code>target</code> parameter in{" "}
+        <code>@websub:SubscriberServiceConfig</code> annotation. Start the{" "}
+        <code>websub:SubscriberService</code> to receive event notifications.
       </p>
 
       <Row
@@ -239,19 +239,8 @@ export function WebsubWebhookSample({codeSnippets}) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/websub/latest/listeners/Listener">
-              <code>websub:Listener</code> object - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/websub/latest/annotations#SubscriberServiceConfig">
-              <code>websub:SubscriberServiceConfig</code> annotation - API
-              documentation
+            <a href="https://lib.ballerina.io/ballerina/websub/latest/">
+              <code>websub</code> module - API documentation
             </a>
           </span>
         </li>
@@ -261,7 +250,7 @@ export function WebsubWebhookSample({codeSnippets}) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://ballerina.io/spec/websub/#22-subscriber-service">
-              <code>websub:SubscriberService</code> - Specification
+              Websub subscriber service - Specification
             </a>
           </span>
         </li>

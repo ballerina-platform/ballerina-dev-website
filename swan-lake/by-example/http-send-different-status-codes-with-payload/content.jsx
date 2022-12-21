@@ -15,7 +15,7 @@ type Album readonly & record {|
     string artist;
 |};
 
-// Represents the subtype of http:Conflict status code record
+// Represents the subtype of http:Conflict status code record.
 type AlbumConflict record {|
     *http:Conflict;
     record {
@@ -30,7 +30,7 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The resource returns \`409 Conflict\` status code as the error response status code using build in StatusCodeResponse
+    // The resource returns \`409 Conflict\` status code as the error response status code using build in StatusCodeResponse.
     resource function post albums(@http:Payload Album album) returns Album|AlbumConflict {
         if albums.hasKey(album.title) {
             return {body: { message: "album already exists" }};
@@ -57,12 +57,18 @@ export function HttpSendDifferentStatusCodesWithPayload({codeSnippets}) {
       <h1>REST service - Send different status codes with payload</h1>
 
       <p>
-        In addition to returning <code>StatusCodeResponse</code> constants, the
-        resource method can return <code>StatusCodeResponse</code> record that
-        contains response headers and payload. Defining a custom record type
-        including the <code>StatusCodeResponse</code> can produce a better
-        representation of the response in the OpenAPI specification. In addition
-        to that, using typed records provides compiler validations and better
+        The resource method can return a subtype of the{" "}
+        <code>http:StatusCodeResponse</code> record type with a body and
+        headers. This type can be created by including a subtype of the{" "}
+        <code>http:StatusCodeResponse</code> record type. The <code>body</code>{" "}
+        field represents the response payload, while the <code>headers</code>{" "}
+        field represents a <code>map</code> of the response headers. In
+        addition, the <code>body</code> field type can be overridden by a custom
+        record type. Use these custom subtypes if different status code
+        responses need to be sent with custom payload types and headers.
+        Furthermore, defining such records can produce a better representation
+        of the responses in the OpenAPI specification, and using typed records
+        for the <code>body</code> field provides compiler validations and better
         tooling support.
       </p>
 
@@ -272,8 +278,8 @@ export function HttpSendDifferentStatusCodesWithPayload({codeSnippets}) {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
-          </a>
-          .
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 

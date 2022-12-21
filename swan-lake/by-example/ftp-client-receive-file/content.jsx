@@ -15,38 +15,33 @@ const codeSnippetData = [
   `import ballerina/ftp;
 import ballerina/io;
 
-// Creates the listener with the connection parameters and the protocol-related
-// configuration. The listener listens to the files
-// with the given file name pattern located in the specified path.
-listener ftp:Listener fileListener = check new ({
-    host: "ftp.example.com",
-    auth: {
-        credentials: {
-            username: "user1",
-            password: "pass456"
+public function main() returns error? {
+    // Creates the client with the connection parameters, host, username, and
+    // password. An error is returned in a failure. The default port number
+    // \`21\` is used with these configurations.
+    ftp:Client fileClient = check new ({
+        host: "ftp.example.com",
+        auth: {
+            credentials: {
+                username: "user1",
+                password: "pass456"
+            }
         }
-    },
-    path: "/home/in",
-    fileNamePattern: "(.*).txt"
-});
+    });
 
-// One or many services can listen to the FTP listener for the periodically-polled
-// file related events.
-service on fileListener {
-    // When a file event is successfully received, the \`onFileChange\` method is called.
-    remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) returns error? {
-        foreach ftp:FileInfo addedFile in event.addedFiles {
-            // The \`ftp:Caller\` can be used to append another file to the added files in the server.
-            stream<io:Block, io:Error?> fileStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
-            check caller->append(addedFile.path, fileStream);
-            check fileStream.close();
-        }
-    }
+    // Reads a file from an FTP server for a given file path. In error cases,
+    // an error is returned.
+    stream<byte[] & readonly, io:Error?> fileStream = check fileClient->get("/server/logFile.txt");
+
+    // Write the content to a file.
+    check io:fileWriteBlocksFromStream("./local/newLogFile.txt", fileStream);
+    // Closes the file stream to finish the \`get\` operation.
+    check fileStream.close();
 }
 `,
 ];
 
-export default function FtpServiceReadWrite() {
+export default function FtpClientReceiveFile() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -67,19 +62,15 @@ export default function FtpServiceReadWrite() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>FTP service - Read/Write file</h1>
+      <h1>FTP client - Receive file</h1>
 
       <p>
-        The <code>ftp:Service</code> connects to a given FTP server via the{" "}
-        <code>ftp:Listener</code>. Once connected, the service starts receiving
-        events every time a file is deleted or added to the server. To take
-        action for these events <code>ftp:Caller</code> is used. The{" "}
-        <code>ftp:Caller</code> can be specified as a parameter of{" "}
-        <code>onFileChange</code> remote method. The <code>ftp:Caller</code>{" "}
-        allows interacting with the server via <code>get</code>,{" "}
-        <code>append</code>, <code>delete</code>, etc remote methods. Use this
-        to listen to file changes occurring in a remote file system and take
-        action for those changes.
+        The <code>ftp:Client</code> connects to a given FTP server, and then
+        sends and receives files as byte streams. An <code>ftp:Client</code> is
+        created by giving the host-name and required credentials. Once
+        connected, <code>get</code> method is used to read files as byte streams
+        from the FTP server. Use this to transfer files from a remote file
+        system to a local file system.
       </p>
 
       <Row
@@ -158,11 +149,22 @@ export default function FtpServiceReadWrite() {
           </span>
         </li>
       </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the FTP client given in the{" "}
+            <a href="/learn/by-example/ftp-client-send-file">
+              FTP client - Send file
+            </a>{" "}
+            example to put a file in the FTP server.
+          </span>
+        </li>
+      </ul>
 
       <p>
-        Run the program by executing the following command. Each newly added
-        file in the FTP server will be appended with the content in the
-        appending file.
+        Run the program by executing the following command. The newly-added file
+        will appear in the local directory.
       </p>
 
       <Row
@@ -218,21 +220,11 @@ export default function FtpServiceReadWrite() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run ftp_service_read_write.bal`}</span>
+              <span>{`\$ bal run ftp_client_read.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> Run the FTP client given in the{" "}
-          <a href="/learn/by-example/ftp-client-write">
-            FTP client - Write file
-          </a>{" "}
-          example to put a file in the FTP server.
-        </p>
-      </blockquote>
 
       <h2>Related links</h2>
 
@@ -240,8 +232,8 @@ export default function FtpServiceReadWrite() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller">
-              <code>ftp:Caller</code> client object - API documentation
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#get">
+              <code>ftp:Client-&gt;get</code> method - API documentation
             </a>
           </span>
         </li>
@@ -250,8 +242,8 @@ export default function FtpServiceReadWrite() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/ftp/#52-functions">
-              <code>ftp:Caller</code> functions - Specification
+            <a href="/spec/ftp/#321-insecure-client">
+              FTP client - Specification
             </a>
           </span>
         </li>
@@ -260,7 +252,10 @@ export default function FtpServiceReadWrite() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Read file" href="/learn/by-example/ftp-service-read">
+          <Link
+            title="Send file"
+            href="/learn/by-example/ftp-service-send-file"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -286,14 +281,14 @@ export default function FtpServiceReadWrite() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read file
+                  Send file
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Read file" href="/learn/by-example/ftp-client-read">
+          <Link title="Send file" href="/learn/by-example/ftp-client-send-file">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -302,7 +297,7 @@ export default function FtpServiceReadWrite() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read file
+                  Send file
                 </span>
               </div>
               <svg

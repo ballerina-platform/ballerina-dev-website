@@ -28,7 +28,7 @@ type Profile record {|
 
 public function main() returns error? {
     // Defines the GraphQL client to call the OAuth2-secured APIs.
-    graphql:Client graphqlClient = check new("localhost:9090/graphql",
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
             username: "admin",

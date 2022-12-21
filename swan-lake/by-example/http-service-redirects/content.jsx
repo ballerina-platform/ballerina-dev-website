@@ -15,6 +15,7 @@ const codeSnippetData = [
   `import ballerina/http;
 
 service / on new http:Listener(9090) {
+
     resource function get redirect(http:Caller caller) returns error? {
         http:Response res = new;
         // Sends a redirect response with a location header.
@@ -24,6 +25,7 @@ service / on new http:Listener(9090) {
 }
 
 service / on new http:Listener(9092) {
+
     resource function get greeting() returns string {
         return "Hello World!";
     }
@@ -127,21 +129,6 @@ export default function HttpServiceRedirects() {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the HTTP service given in the{" "}
-            <a href="/learn/by-example/http-path-param/">
-              REST service - Path parameter
-            </a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
-
       <p>Run the service as follows.</p>
 
       <Row
@@ -211,7 +198,7 @@ export default function HttpServiceRedirects() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You may invoke the service via{" "}
-          <a href="../http-client-redirects/">Redirect client</a>.
+          <a href="../http-client-redirects/">Redirect client</a> example.
         </p>
       </blockquote>
 
@@ -311,7 +298,7 @@ export default function HttpServiceRedirects() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

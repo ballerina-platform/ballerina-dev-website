@@ -19,7 +19,7 @@ public function main() returns error? {
     // Defines the WebSocket client to call the OAuth2 secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`websocket:OAuth2JwtBearerGrantConfig\` for the \`auth\` configuration of the client.
-    websocket:Client chatClient = check new("wss://localhost:9090/foo/bar",
+    websocket:Client chatClient = check new ("wss://localhost:9090/foo/bar",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
             assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",

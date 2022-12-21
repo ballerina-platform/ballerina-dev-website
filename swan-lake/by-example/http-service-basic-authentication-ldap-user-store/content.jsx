@@ -19,7 +19,7 @@ type Album readonly & record {|
     string artist;
 |};
 
-listener http:Listener securedEP = new(9090,
+listener http:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -256,8 +256,8 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-basic-authentication">
             Basic authentication client
-          </a>
-          .
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 

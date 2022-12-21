@@ -22,13 +22,18 @@ type Order readonly & record {
     boolean isValid;
 };
 
-// Initializes a NATS client.
-final nats:Client orderClient = check new (nats:DEFAULT_URL);
-
 service / on new http:Listener(9092) {
+    private final nats:Client orderClient;
+
+    function init() returns error? {
+        // Initiate the NATS client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.orderClient = check new (nats:DEFAULT_URL);
+    }
+
     resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
         // Produces a message to the specified subject.
-        check orderClient->publishMessage({
+        check self.orderClient->publishMessage({
             content: newOrder,
             subject: "orders.valid"
         });
@@ -67,10 +72,9 @@ export default function NatsBasicPub() {
       <p>
         The <code>nats:Client</code> allows publishing messages to a given
         subject. A <code>nats:Client</code> is created by passing the URL of the
-        NATS broker. To publish messages, the <code>publishMessage</code>{" "}
-        method, which requires the message and subject as arguments, is used.
-        Use it to publish messages that can be received by one or more
-        subscribers.
+        NATS broker. To publish messages, the <code>publishMessage</code> method
+        is used, which requires the message and subject as arguments. Use it to
+        publish messages that can be received by one or more subscribers.
       </p>
 
       <Row

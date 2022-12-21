@@ -17,14 +17,13 @@ import ballerina/io;
 import ballerina/udp;
 
 public function main() returns error? {
-  
     // Creates a new connection-oriented UDP client by providing the
     // \`remoteHost\` and the \`remotePort\`.
-    // Optionally, you can provide the interface that the socket needs to bind 
+    // Optionally, you can provide the interface that the socket needs to bind
     // and the timeout in seconds, which specifies the read timeout value.
     // E.g.: \`udp:ConnectClient socketClient = new ("www.ballerina.com", 80,
     // localHost = "localhost", timeout = 5);\`
-    udp:ConnectClient socketClient = check new("localhost", 9090);
+    udp:ConnectClient socketClient = check new ("localhost", 9090);
 
     // Sends the data to the connected remote host.
     // The parameter is a \`byte[]\`, which contains the data to be sent.

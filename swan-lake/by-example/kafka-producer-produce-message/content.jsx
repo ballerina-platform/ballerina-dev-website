@@ -22,11 +22,15 @@ public type Order readonly & record {
     boolean isValid;
 };
 
-final kafka:Producer orderProducer = check new (kafka:DEFAULT_URL);
-
 service / on new http:Listener(9090) {
-    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|kafka:Error {
-        check orderProducer->send({
+    private final kafka:Producer orderProducer;
+
+    function init() returns error? {
+        self.orderProducer = check new (kafka:DEFAULT_URL);
+    }
+
+    resource function post orders(@http:Payload anydata newOrder) returns http:Accepted|error {
+        check self.orderProducer->send({
             topic: "order-topic",
             value: newOrder
         });

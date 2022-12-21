@@ -26,22 +26,19 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The path param is defined as a part of the resource path along with the type and it is extracted from the
-    // request URI.
     resource function get albums/[string title](http:Request req) returns Album|http:NotFound|http:BadRequest {
         Album? album = albums[title];
         if album is () {
             return http:NOT_FOUND;
         }
 
-        // Gets the \`MatrixParams\`.
+        // Gets the \`MatrixParams\` of the path \`/albums\`.
         map<any> pathMParams = req.getMatrixParams("/albums");
         string artist = <string>pathMParams["artist"];
 
         if album.artist != artist {
             return http:BAD_REQUEST;
         }
-
         return album;
     }
 }
@@ -74,8 +71,9 @@ export default function HttpMatrixParam() {
       <h1>HTTP service - Matrix parameter</h1>
 
       <p>
-        Ballerina supports extracting <code>MatrixParam</code> values using{" "}
-        <code>http:Request</code> support method.
+        The matrix parameter enhances the hierarchical structure of HTTP URIs.
+        The <code>http:Request</code> has the <code>getMatrixParams</code>{" "}
+        method to extract the matrix parameter map from the given path segment.
       </p>
 
       <Row

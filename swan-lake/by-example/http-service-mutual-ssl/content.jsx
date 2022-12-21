@@ -20,7 +20,7 @@ type Album readonly & record {|
 |};
 
 // An HTTP listener can be configured to accept new connections that are secured via mutual SSL.
-listener http:Listener securedEP = new(9090,
+listener http:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -35,6 +35,7 @@ listener http:Listener securedEP = new(9090,
 );
 
 service / on securedEP {
+
     resource function get albums() returns Album[] {
         return [
             {title: "Blue Train", artist: "John Coltrane"},

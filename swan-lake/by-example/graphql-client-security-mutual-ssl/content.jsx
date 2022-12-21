@@ -28,7 +28,7 @@ type Profile record {|
 
 public function main() returns error? {
     // The GraphQL client can be configured to initiate new connections that are secured via mutual SSL.
-    graphql:Client graphqlClient = check new("localhost:9090/graphql",
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
         secureSocket = {
             key: {
                 certFile: "../resource/path/to/public.crt",

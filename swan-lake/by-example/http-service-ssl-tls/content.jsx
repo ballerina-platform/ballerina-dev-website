@@ -19,7 +19,7 @@ type Album readonly & record {|
     string artist;
 |};
 
-listener http:Listener securedEP = new(9090,
+listener http:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -29,6 +29,7 @@ listener http:Listener securedEP = new(9090,
 );
 
 service / on securedEP {
+
     resource function get albums() returns Album[] {
         return [
             {title: "Blue Train", artist: "John Coltrane"},
@@ -283,7 +284,8 @@ export default function HttpServiceSslTls() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/http-client-ssl-tls/">SSL/TLS client</a>.
+          <a href="/learn/by-example/http-client-ssl-tls/">SSL/TLS client</a>{" "}
+          example.
         </p>
       </blockquote>
 

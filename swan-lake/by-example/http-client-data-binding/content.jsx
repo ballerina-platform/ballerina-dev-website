@@ -22,7 +22,7 @@ type Album readonly & record {|
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
-    http:Client albumClient = check new("localhost:9090");
+    http:Client albumClient = check new ("localhost:9090");
 
     // Binding the payload to a \`record\` array type.
     // The contextually expected type is inferred from the LHS variable type.
@@ -83,7 +83,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a8d8ce61fc99aabf28ad0eb254af4ccc&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=6f7f2f532a212f25956f601138756b5e&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}

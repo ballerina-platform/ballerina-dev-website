@@ -22,19 +22,24 @@ type Order readonly & record {
     boolean isValid;
 };
 
-// Creates a ballerina RabbitMQ client with TLS/SSL.
-final rabbitmq:Client orderClient = check new(rabbitmq:DEFAULT_HOST, 5671,
-    // To secure the client connection using TLS/SSL, the client needs to be configured with
-    // a certificate file of the server.
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 service / on new http:Listener(9092) {
+    private final rabbitmq:Client orderClient;
+
+    function init() returns error? {
+        // Initiate the RabbitMQ client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.orderClient = check new (rabbitmq:DEFAULT_HOST, 5671,
+            // To secure the client connection using TLS/SSL, the client needs to be configured with
+            // a certificate file of the server.
+            secureSocket = {
+                cert: "../resource/path/to/public.crt"
+            }
+        );
+    }
+
     resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
         // Publishes the message using newClient and the routing key named OrderQueue.
-        check orderClient->publishMessage({
+        check self.orderClient->publishMessage({
             content: newOrder,
             routingKey: "OrderQueue"
         });
@@ -71,11 +76,11 @@ export default function RabbitmqClientSecureConnection() {
       <h1>RabbitMQ client - SSL/TLS</h1>
 
       <p>
-        The <code>rabbitmq:Client</code> can be configured to communicate
-        through HTTPS by providing a certificate file. The certificate can be
-        provided through the <code>secureSocket</code> field of the connection
-        configuration. Use this to secure the communication between the client
-        and the server.
+        The <code>rabbitmq:Client</code> can be configured to connect to the
+        server via SSL/TLS by providing a certificate file. The certificate can
+        be provided through the <code>secureSocket</code> field of the{" "}
+        <code>rabbitmq:ConnectionConfiguration</code>. Use this to secure the
+        communication between the client and the server.
       </p>
 
       <Row

@@ -22,7 +22,7 @@ public type Order readonly & record {
     boolean isValid;
 };
 
-listener kafka:Listener orderListener = check new ("localhost:9093", {
+listener kafka:Listener orderListener = new ("localhost:9093", {
     groupId: "order-group-id",
     // Subscribes to the topic \`test-kafka-topic\`.
     topics: ["order-topic"],
@@ -39,6 +39,7 @@ listener kafka:Listener orderListener = check new ("localhost:9093", {
 });
 
 service on orderListener {
+
     remote function onConsumerRecord(Order[] orders) returns error? {
         check from Order 'order in orders
             where 'order.isValid

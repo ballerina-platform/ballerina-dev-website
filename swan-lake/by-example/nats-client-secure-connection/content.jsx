@@ -22,19 +22,24 @@ type Order readonly & record {
     boolean isValid;
 };
 
-// Initializes a NATS client with TLS/SSL.
-final nats:Client orderClient = check new(nats:DEFAULT_URL,
-    // To secure the client connection using TLS/SSL, the client needs to be configured with
-    // a certificate file of the server.
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 service / on new http:Listener(9092) {
+    private final nats:Client orderClient;
+
+    function init() returns error? {
+        // Initiate the NATS client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.orderClient = check new (nats:DEFAULT_URL,
+            // To secure the client connection using TLS/SSL, the client needs to be configured with
+            // a certificate file of the server.
+            secureSocket = {
+                cert: "../resource/path/to/public.crt"
+            }
+        );
+    }
+
     resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
         // Produces a message to the specified subject.
-        check orderClient->publishMessage({
+        check self.orderClient->publishMessage({
             content: newOrder,
             subject: "orders.valid"
         });
@@ -71,11 +76,11 @@ export default function NatsClientSecureConnection() {
       <h1>NATS client - SSL/TLS</h1>
 
       <p>
-        The <code>nats:Client</code> can be configured to communicate through
-        HTTPS by providing a certificate file. The certificate can be provided
-        through the <code>secureSocket</code> field of the connection
-        configuration. Use this to secure the communication between the client
-        and the server.
+        The <code>nats:Client</code> can be configured to connect to the server
+        via SSL/TLS by providing a certificate file. The certificate can be
+        provided through the <code>secureSocket</code> field of the{" "}
+        <code>nats:ConnectionConfiguration</code>. Use this to secure the
+        communication between the client and the server.
       </p>
 
       <Row

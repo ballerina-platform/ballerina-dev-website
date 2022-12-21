@@ -21,7 +21,7 @@ type Album readonly & record {|
 |};
 
 public function main() returns error? {
-    http:Client albumClient = check new("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }

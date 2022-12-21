@@ -37,7 +37,7 @@ service class ResponseInterceptor {
         res.setHeader("x-api-version", "v2");
         // Returns the next interceptor in the pipeline or \`nil\` if there is no 
         // more interceptors to be returned. In case a \`nil\` value is returned, then,
-        // the modified response will be returned to the client. In addtion to these
+        // the modified response will be returned to the client. In addition to these
         // return values, an error is returned when the call fails.
         return ctx.next();
     }
@@ -45,7 +45,7 @@ service class ResponseInterceptor {
 
 // Engage interceptors at the listener level. Response interceptor services will be executed from
 // tail to head.
-listener http:Listener interceptorListener = new http:Listener(9090,
+listener http:Listener interceptorListener = new (9090,
     // This interceptor pipeline will be executed for all of the services attached to this listener.
     interceptors = [new ResponseInterceptor()]
 );

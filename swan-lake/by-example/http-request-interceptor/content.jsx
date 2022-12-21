@@ -50,7 +50,7 @@ service class RequestInterceptor {
 
 // Interceptors can also be engaged at the listener level. In this case, the \`RequestInterceptors\`
 // can have only the default path.
-listener http:Listener interceptorListener = new http:Listener(9090);
+listener http:Listener interceptorListener = new (9090);
 
 // Engage interceptors at the service level. Request interceptor services will be executed from
 // head to tail.
@@ -317,7 +317,7 @@ export default function HttpRequestInterceptor() {
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
           </a>{" "}
-          by adding the required header to the request.
+          example by adding the required header to the request.
         </p>
       </blockquote>
 

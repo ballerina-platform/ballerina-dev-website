@@ -14,19 +14,19 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// Define the \`NewProfile\` record type to use as an input object.
+// Defines the \`NewProfile\` record type to use as an input object.
 type NewProfile record {|
     string name;
     int age;
 |};
 
-// Define the \`Profile\` record type to use as an output object.
+// Defines the \`Profile\` record type to use as an output object.
 type Profile readonly & record {|
     *NewProfile;
     int id;
 |};
 
-// Define an in-memory table to store the Profiles.
+// Defines an in-memory table to store the Profiles.
 table<Profile> key(id) profiles = table [];
 
 service /graphql on new graphql:Listener(9090) {

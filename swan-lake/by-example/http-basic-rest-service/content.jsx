@@ -339,8 +339,8 @@ export default function HttpBasicRestService() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
-          </a>
-          .
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 

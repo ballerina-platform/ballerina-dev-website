@@ -18,21 +18,13 @@ import ballerina/io;
 public function main() returns error? {
     // Creates the client with the connection parameters, host, username, and
     // password. An error is returned in a failure. The default port number
-    // \`22\` for SSH is used with these configurations.
+    // \`21\` is used with these configurations.
     ftp:Client fileClient = check new ({
-        protocol: ftp:SFTP,
-        host: "sftp.example.com",
-        port: 22,
+        host: "ftp.example.com",
         auth: {
             credentials: {
                 username: "user1",
                 password: "pass456"
-            },
-            // Private key file location and its password (if encrypted) is
-            // given corresponding to the SSH key file used in the SFTP client.
-            privateKey: {
-                path: "../resource/path/to/private.key",
-                password: "keyPass123"
             }
         }
     });
@@ -48,7 +40,7 @@ public function main() returns error? {
 `,
 ];
 
-export default function SftpClientWrite() {
+export default function FtpClientSendFile() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -69,15 +61,15 @@ export default function SftpClientWrite() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>SFTP client - Write file</h1>
+      <h1>FTP client - Send file</h1>
 
       <p>
-        The <code>ftp:Client</code> connects to a given SFTP server, and then
-        sends and receives files as byte streams. A <code>ftp:Client</code> with
-        SFTP protocol is created by giving the protocol, host-name, required
-        credentials and the private key. Once connected, <code>put</code> method
-        is used to write files as byte streams to the SFTP server. Use this to
-        transfer files from a local file system to a remote file system.
+        The <code>ftp:Client</code> connects to a given FTP server, and then
+        sends and receives files as byte streams. An <code>ftp:Client</code> is
+        created by giving the host-name and required credentials. Once
+        connected, <code>put</code> method is used to write files as byte
+        streams to the FTP server. Use this to transfer files from a local file
+        system to a remote file system.
       </p>
 
       <Row
@@ -149,7 +141,9 @@ export default function SftpClientWrite() {
           <span>&#8226;&nbsp;</span>
           <span>
             Start a{" "}
-            <a href="https://hub.docker.com/r/atmoz/sftp/">SFTP server</a>{" "}
+            <a href="https://hub.docker.com/r/stilliard/pure-ftpd/">
+              FTP server
+            </a>{" "}
             instance.
           </span>
         </li>
@@ -157,7 +151,7 @@ export default function SftpClientWrite() {
 
       <p>
         Run the program by executing the following command. The newly-added file
-        will appear in the SFTP server.
+        will appear in the FTP server.
       </p>
 
       <Row
@@ -213,7 +207,7 @@ export default function SftpClientWrite() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run sftp_client.bal`}</span>
+              <span>{`\$ bal run ftp_client_write.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -235,8 +229,8 @@ export default function SftpClientWrite() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/ftp/#322-secure-client">
-              SFTP client - Specification
+            <a href="/spec/ftp/#321-insecure-client">
+              FTP client - Specification
             </a>
           </span>
         </li>
@@ -245,7 +239,10 @@ export default function SftpClientWrite() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Read file" href="/learn/by-example/sftp-client-read">
+          <Link
+            title="Receive file"
+            href="/learn/by-example/ftp-client-receive-file"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -271,7 +268,7 @@ export default function SftpClientWrite() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read file
+                  Receive file
                 </span>
               </div>
             </div>
@@ -279,8 +276,8 @@ export default function SftpClientWrite() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Simple query"
-            href="/learn/by-example/mysql-query-operation"
+            title="Receive file"
+            href="/learn/by-example/sftp-service-receive-file"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -290,7 +287,7 @@ export default function SftpClientWrite() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Simple query
+                  Receive file
                 </span>
               </div>
               <svg

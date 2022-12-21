@@ -257,7 +257,7 @@ As soon as the WebSocket handshake is completed and the connection is establishe
 
 ```ballerina
 remote function onOpen(websocket:Caller caller) returns error? {
-    io:println("Opened a WebSocket connection"`);
+    io:println("Opened a WebSocket connection");
 }
 ```
 
@@ -325,7 +325,7 @@ remote function onPong(websocket:Caller caller, byte[] data) {
 This remote method is dispatched when the idle timeout is reached. The idleTimeout has to be configured either in the WebSocket service or the client configuration.
 
 ```ballerina
-remote function onIdleTimeout(websocket:Client caller) {
+remote function onIdleTimeout(websocket:Caller caller) {
     io:println("Connection timed out");
 }
 ```
@@ -452,7 +452,6 @@ The input data is internally converted to relevant frame type as follows,
 #
 # + data - Data to be sent
 # + return  - A `websocket:Error` if an error occurs when sending
-remote isolated function writeBinaryMessage(byte[] data) returns Error? {}
 remote isolated function writeMessage(anydata data) returns Error? {
 ```
 

@@ -25,7 +25,7 @@ import Head from "next/head";
 import Layout from "../../../layouts/LayoutDocs";
 import LeftNavYaml from "../../../components/common/left-nav/LeftNavYaml";
 import Link from "next/link";
-import * as shiki from 'shiki'
+import { getHighlighter } from "shiki";
 
 export async function getStaticPaths() {
   const bbes = fs.readdirSync("swan-lake/by-example");
@@ -59,7 +59,7 @@ export async function getStaticProps({ params: { bbe } }) {
   const navContent = load(navContentString);
   const frontmatter = JSON.parse(frontmatterString);
 
-  const highlighter = await shiki.getHighlighter({
+  const highlighter = await getHighlighter({
     theme: 'github-light'
   });
 

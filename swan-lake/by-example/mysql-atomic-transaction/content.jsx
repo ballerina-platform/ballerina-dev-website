@@ -7,9 +7,7 @@ import {
 } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/sql;
 import ballerinax/mysql;

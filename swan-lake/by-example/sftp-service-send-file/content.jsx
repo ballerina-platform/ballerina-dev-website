@@ -51,7 +51,7 @@ service on fileListener {
 `,
 ];
 
-export default function SftpServiceSendFile({codeSnippets}) {
+export function SftpServiceSendFile({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);

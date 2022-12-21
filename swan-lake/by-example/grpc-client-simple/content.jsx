@@ -7,9 +7,7 @@ import {
 } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `syntax = "proto3";
 
 import "google/protobuf/wrappers.proto";
@@ -32,7 +30,7 @@ public function main() returns error? {
 `,
 ];
 
-export default function GrpcClientSimple({codeSnippets}) {
+export function GrpcClientSimple({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 

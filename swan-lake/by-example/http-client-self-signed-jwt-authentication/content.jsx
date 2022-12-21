@@ -52,7 +52,6 @@ export function HttpClientSelfSignedJwtAuthentication({codeSnippets}) {
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
 
   return (

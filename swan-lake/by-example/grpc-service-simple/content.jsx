@@ -7,9 +7,7 @@ import {
 } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `syntax = "proto3";
 
 import "google/protobuf/wrappers.proto";
@@ -33,7 +31,7 @@ service "HelloWorld" on new grpc:Listener(9090) {
 `,
 ];
 
-export default function GrpcServiceSimple({codeSnippets}) {
+export function GrpcServiceSimple({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 

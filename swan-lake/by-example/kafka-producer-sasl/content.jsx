@@ -7,8 +7,6 @@ import {
 } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
 const codeSnippetData = [
   `import ballerina/http;
 import ballerinax/kafka;
@@ -49,7 +47,7 @@ service / on new http:Listener(9090) {
 `,
 ];
 
-export default function KafkaProducerSasl({codeSnippets}) {
+export function KafkaProducerSasl({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);

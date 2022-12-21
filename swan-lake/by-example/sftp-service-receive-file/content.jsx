@@ -53,7 +53,7 @@ service on fileListener {
 `,
 ];
 
-export default function SftpServiceReceiveFile({codeSnippets}) {
+export function SftpServiceReceiveFile({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);

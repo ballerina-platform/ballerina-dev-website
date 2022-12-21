@@ -87,15 +87,12 @@ export default function GraphqlReturningRecordValues() {
         <code>remote</code> methods of the <code>graphql:Service</code>. These{" "}
         <code>record</code> types are mapped to GraphQL output object types in
         the GraphQL schema in which the type name and the field names are mapped
-        one-to-one from Ballerina to GraphQL.
-      </p>
-
-      <p>
-        Use a <code>record</code> type to represent a GraphQL output object type
-        only when all fields of that object type do not have any input arguments
-        or the field resolution does not require any complex logic execution.
-        The <code>record</code> type is preferred over the <code>service</code>{" "}
-        object type in this case as it makes the code more concise.
+        one-to-one from Ballerina to GraphQL. Use a <code>record</code> type to
+        represent a GraphQL output object type only when all fields of that
+        object type do not have any input arguments or the field resolution does
+        not require any complex logic execution. The <code>record</code> type is
+        preferred over the <code>service</code> object type in this case as it
+        makes the code more concise.
       </p>
 
       <Row

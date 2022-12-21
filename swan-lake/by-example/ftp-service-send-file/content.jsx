@@ -13,7 +13,7 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/ftp;
-import ballerina/log;
+import ballerina/io;
 
 // Creates the listener with the connection parameters and the protocol-related
 // configuration. The listener listens to the files
@@ -33,25 +33,21 @@ listener ftp:Listener fileListener = check new ({
 // One or many services can listen to the FTP listener for the periodically-polled
 // file related events.
 service on fileListener {
-    // When a file event is successfully received, the \`onFileChange\` method is called.
-    remote function onFileChange(ftp:WatchEvent & readonly event) {
-        // \`addedFiles\` contains the paths of the newly-added files/directories
-        // after the last polling was called.
-        foreach ftp:FileInfo addedFile in event.addedFiles {
-            log:printInfo("Added file path: " + addedFile.path);
-        }
 
-        // \`deletedFiles\` contains the paths of the deleted files/directories
-        // after the last polling was called.
-        foreach string deletedFile in event.deletedFiles {
-            log:printInfo("Deleted file path: " + deletedFile);
+    // When a file event is successfully received, the \`onFileChange\` method is called.
+    remote function onFileChange(ftp:WatchEvent & readonly event, ftp:Caller caller) returns error? {
+        foreach ftp:FileInfo addedFile in event.addedFiles {
+            // The \`ftp:Caller\` can be used to append another file to the added files in the server.
+            stream<io:Block, io:Error?> fileStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
+            check caller->append(addedFile.path, fileStream);
+            check fileStream.close();
         }
     }
 }
 `,
 ];
 
-export default function FtpServiceRead() {
+export default function FtpServiceSendFile() {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -72,16 +68,19 @@ export default function FtpServiceRead() {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>FTP service - Read file</h1>
+      <h1>FTP service - Send file</h1>
 
       <p>
         The <code>ftp:Service</code> connects to a given FTP server via the{" "}
-        <code>ftp:Listener</code>. An <code>ftp:Listener</code> is created by
-        providing the host-name and required credentials. Once connected, the{" "}
-        <code>onFileChange</code> remote method of the service starts receiving
-        events as a <code>ftp:WatchEvent</code> every time a file is deleted or
-        added to the server. Use this to listen to file changes occurring in a
-        remote file system.
+        <code>ftp:Listener</code>. Once connected, the service starts receiving
+        events every time a file is deleted or added to the server. To take
+        action for these events <code>ftp:Caller</code> is used. The{" "}
+        <code>ftp:Caller</code> can be specified as a parameter of{" "}
+        <code>onFileChange</code> remote method. The <code>ftp:Caller</code>{" "}
+        allows interacting with the server via <code>get</code>,{" "}
+        <code>append</code>, <code>delete</code>, etc remote methods. Use this
+        to listen to file changes occurring in a remote file system and take
+        action for those changes.
       </p>
 
       <Row
@@ -162,9 +161,9 @@ export default function FtpServiceRead() {
       </ul>
 
       <p>
-        Run the program by executing the following command. Paths of the
-        newly-added and newly-deleted files/directories during the latest
-        polling will be printed for each of the polled events.
+        Run the program by executing the following command. Each newly added
+        file in the FTP server will be appended with the content in the
+        appending file.
       </p>
 
       <Row
@@ -220,7 +219,7 @@ export default function FtpServiceRead() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run ftp_service_read.bal`}</span>
+              <span>{`\$ bal run ftp_service_read_write.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -229,8 +228,8 @@ export default function FtpServiceRead() {
       <blockquote>
         <p>
           <strong>Tip:</strong> Run the FTP client given in the{" "}
-          <a href="/learn/by-example/ftp-client-write">
-            FTP client - Write file
+          <a href="/learn/by-example/ftp-client-send-file">
+            FTP client - Send file
           </a>{" "}
           example to put a file in the FTP server.
         </p>
@@ -242,8 +241,8 @@ export default function FtpServiceRead() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener">
-              <code>ftp:Listener</code> client object - API documentation
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller">
+              <code>ftp:Caller</code> client object - API documentation
             </a>
           </span>
         </li>
@@ -252,8 +251,8 @@ export default function FtpServiceRead() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/ftp/#422-secure-listener">
-              FTP service - Specification
+            <a href="/spec/ftp/#52-functions">
+              <code>ftp:Caller</code> functions - Specification
             </a>
           </span>
         </li>
@@ -263,8 +262,8 @@ export default function FtpServiceRead() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Receive email"
-            href="/learn/by-example/receive-email-using-client"
+            title="Receive file"
+            href="/learn/by-example/ftp-service-receive-file"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -291,7 +290,7 @@ export default function FtpServiceRead() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive email
+                  Receive file
                 </span>
               </div>
             </div>
@@ -299,8 +298,8 @@ export default function FtpServiceRead() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Read/Write file"
-            href="/learn/by-example/ftp-service-read-write"
+            title="Receive file"
+            href="/learn/by-example/ftp-client-receive-file"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -310,7 +309,7 @@ export default function FtpServiceRead() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/Write file
+                  Receive file
                 </span>
               </div>
               <svg

@@ -22,7 +22,7 @@ type Album readonly & record {|
 
 public function main() returns error? {
     // Defines the HTTP client to call the APIs secured with basic authentication.
-    http:Client albumClient = check new("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         auth = {
             username: "ldclakmal",
             password: "ldclakmal@123"

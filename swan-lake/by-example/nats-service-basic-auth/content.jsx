@@ -23,7 +23,7 @@ public type Order record {
 };
 
 // Initializes a NATS listener with TLS/SSL and username/password authentication.
-listener nats:Listener securedEP = new(nats:DEFAULT_URL,
+listener nats:Listener orderListener = new (nats:DEFAULT_URL,
     // To secure the client connections using username/password authentication, provide the credentials
     // with the \`nats:Credentials\` record.
     auth = {
@@ -33,7 +33,8 @@ listener nats:Listener securedEP = new(nats:DEFAULT_URL,
 );
 
 // Binds the consumer to listen to the messages published to the 'orders.valid' subject.
-service "orders.valid" on securedEP {
+service "orders.valid" on orderListener {
+
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {
             log:printInfo(string \`Received valid order for \${'order.productName}\`);

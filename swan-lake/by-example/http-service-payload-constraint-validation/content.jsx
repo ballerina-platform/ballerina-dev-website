@@ -25,11 +25,9 @@ type Album record {
 };
 
 service / on new http:Listener(9090) {
+    private Album[] albums = [];
 
-    final Album[] albums = [];
-
-    // The \`album\` parameter in the payload annotation will get validated according to the constraints
-    // added.
+    // The \`album\` parameter in the payload annotation will get validated according to the constraints added.
     resource function post albums(@http:Payload Album album) returns http:Created {
         self.albums.push(album);
         return http:CREATED;
@@ -287,8 +285,8 @@ export default function HttpServicePayloadConstraintValidation() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
-          </a>
-          .
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 

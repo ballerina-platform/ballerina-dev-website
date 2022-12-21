@@ -23,13 +23,15 @@ import ballerina/websocket;
 public type Chat string;
 
 service /chat on new websocket:Listener(9090) {
-   resource function get .() returns websocket:Service|websocket:Error {
-       return new ChatService();
-   }
+
+    resource function get .() returns websocket:Service|websocket:Error {
+        return new ChatService();
+    }
 }
 
 service class ChatService {
     *websocket:Service;
+
     remote function onMessage(websocket:Caller caller, Chat chatMessage) returns websocket:Error? {
         io:println(chatMessage);
         check caller->writeMessage("Hello!, How are you?");

@@ -3294,8 +3294,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "ftp-service-read",
+        "name": "Receive file",
+        "url": "ftp-service-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3303,8 +3303,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Read/Write file",
-        "url": "ftp-service-read-write",
+        "name": "Send file",
+        "url": "ftp-service-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3319,8 +3319,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "ftp-client-read",
+        "name": "Receive file",
+        "url": "ftp-client-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3328,8 +3328,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write file",
-        "url": "ftp-client-write",
+        "name": "Send file",
+        "url": "ftp-client-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3344,8 +3344,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "sftp-service-read",
+        "name": "Receive file",
+        "url": "sftp-service-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3353,8 +3353,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Read/Write file",
-        "url": "sftp-service-read-write",
+        "name": "Send file",
+        "url": "sftp-service-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3369,8 +3369,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "sftp-client-read",
+        "name": "Receive file",
+        "url": "sftp-client-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3378,8 +3378,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write file",
-        "url": "sftp-client-write",
+        "name": "Send file",
+        "url": "sftp-client-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",

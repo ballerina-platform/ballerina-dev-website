@@ -20,7 +20,7 @@ public function main() returns error? {
     // a certificate file of the listener.
     // The \`tcp:ClientSecureSocket\` record provides the
     // SSL-related configurations of the client.
-    tcp:Client securedClientEP = check new("localhost", 3000,
+    tcp:Client securedClientEP = check new ("localhost", 9090,
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }

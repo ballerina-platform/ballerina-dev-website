@@ -109,7 +109,7 @@ export default function ObjectTypeInclusion() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=01a53964e87b50a873beef8786501df6&file=object_type_inclusion.bal",
+                "https://play.ballerina.io/?gist=64cde2868a29c928e4ec011a03f07fc7&file=object_type_inclusion.bal",
                 "_blank"
               );
             }}

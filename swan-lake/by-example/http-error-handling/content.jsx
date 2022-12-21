@@ -37,7 +37,7 @@ service class ResponseErrorInterceptor {
         // the error type.        
         return {
             mediaType: "application/org+json",
-            body: { message : err.message() }
+            body: {message: err.message()}
         };
     }
 }
@@ -45,21 +45,21 @@ service class ResponseErrorInterceptor {
 // Creates a new \`ResponseErrorInterceptor\`.
 ResponseErrorInterceptor responseErrorInterceptor = new;
 
-// A \`ResponseErrorInterceptor\` can be configured at the listener level or 
-// service level. Listener-level error interceptors can handle any error associated 
+// A \`ResponseErrorInterceptor\` can be configured at the listener level or
+// service level. Listener-level error interceptors can handle any error associated
 // with the listener, whereas, service-level error interceptors can only handle
 // errors occurred during the service execution.
-listener http:Listener interceptorListener = new http:Listener(9090, config = { 
+listener http:Listener interceptorListener = new (9090, config = {
     // To handle all of the errors, the \`ResponseErrorInterceptor\` is added as a first
     // interceptor as it has to be executed last.
-    interceptors: [responseErrorInterceptor] 
+    interceptors: [responseErrorInterceptor]
 });
 
 service / on interceptorListener {
 
     // If the request does not have an\`x-api-version\` header, then an error will be returned
     // and the execution will jump to the nearest \`ResponseErrorInterceptor\`.
-    resource function get albums(@http:Header {name:"x-api-version"} string xApiVersion) 
+    resource function get albums(@http:Header {name: "x-api-version"} string xApiVersion)
             returns Album[]|http:NotImplemented {
         if xApiVersion != "v1" {
             return http:NOT_IMPLEMENTED;
@@ -338,8 +338,8 @@ export default function HttpErrorHandling() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
-          </a>
-          .
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 

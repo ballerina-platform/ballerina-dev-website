@@ -15,10 +15,9 @@ const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/log;
 
-// Define an interceptor \`LogInterceptor\` using a service class. It cannot have any
+// Defines an interceptor \`LogInterceptor\` using a service class. It cannot have any
 // \`resource\`/\`remote\` methods except the \`execute()\` remote method. Other methods are allowed.
 readonly service class LogInterceptor {
-
     // Includes the \`graphql:Interceptors\` service object from the GraphQL package.
     *graphql:Interceptor;
 
@@ -26,8 +25,7 @@ readonly service class LogInterceptor {
     // Within the function, the \`graphql:Context\` and the \`graphql:Field\` object can be accessed to
     // get the request and field related information.
     isolated remote function execute(graphql:Context context, graphql:Field 'field)
-    returns anydata|error {
-
+        returns anydata|error {
         // Access the current execution field name using the \`graphql:Field\` object.
         string fieldName = 'field.getName();
 
@@ -46,7 +44,6 @@ readonly service class LogInterceptor {
 
         // Returns the execution result of the next interceptor or the resolver.
         return data;
-
     }
 }
 
@@ -54,9 +51,9 @@ readonly service class LogInterceptor {
     // Interceptor instances should be inserted to the \`interceptors\` array according to the
     // desired execution order.
     interceptors: [new LogInterceptor()]
-
 }
 service /graphql on new graphql:Listener(9090) {
+
     isolated resource function get name() returns string {
         log:printInfo("Executing the field \\"name\\"");
         return "GraphQL Interceptors";

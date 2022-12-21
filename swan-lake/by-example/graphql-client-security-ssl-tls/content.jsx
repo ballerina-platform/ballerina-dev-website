@@ -28,7 +28,7 @@ type Profile record {|
 
 public function main() returns error? {
     // Defines the GraphQL client with secure socket configurations.
-    graphql:Client graphqlClient = check new("localhost:9090/graphql",
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }

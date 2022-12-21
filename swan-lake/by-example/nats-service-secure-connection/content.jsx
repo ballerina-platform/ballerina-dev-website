@@ -23,7 +23,7 @@ public type Order record {
 };
 
 // Initializes a NATS listener with TLS/SSL and username/password authentication.
-listener nats:Listener securedEP = new(nats:DEFAULT_URL,
+listener nats:Listener orderListener = new (nats:DEFAULT_URL,
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     secureSocket = {
@@ -32,7 +32,8 @@ listener nats:Listener securedEP = new(nats:DEFAULT_URL,
 );
 
 // Binds the consumer to listen to the messages published to the 'orders.valid' subject.
-service "orders.valid" on securedEP {
+service "orders.valid" on orderListener {
+
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {
             log:printInfo(string \`Received valid order for \${'order.productName}\`);
@@ -66,11 +67,11 @@ export default function NatsServiceSecureConnection() {
       <h1>NATS service - SSL/TLS</h1>
 
       <p>
-        The <code>nats:Listener</code> can be configured to communicate through
-        HTTPS by providing a certificate file. The certificate can be provided
-        through the <code>secureSocket</code> field of the connection
-        configuration. Use this to secure the communication between the client
-        and the server.
+        The <code>nats:Listener</code> can be configured to connect to the
+        server via SSL/TLS by providing a certificate file. The certificate can
+        be provided through the <code>secureSocket</code> field of the{" "}
+        <code>nats:ConnectionConfiguration</code>. Use this to secure the
+        communication between the client and the server.
       </p>
 
       <Row

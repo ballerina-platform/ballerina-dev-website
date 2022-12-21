@@ -20,7 +20,7 @@ public function main() returns error? {
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`websocket:JwtIssuerConfig\` for the \`auth\` configuration of the
     // client. A self-signed JWT is issued before the request is sent.
-    websocket:Client chatClient = check new("wss://localhost:9090/chat",
+    websocket:Client chatClient = check new ("wss://localhost:9090/chat",
         auth = {
             username: "ballerina",
             issuer: "wso2",

@@ -279,8 +279,8 @@ export default function HttpSendResponse() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-data-binding/">
             Payload data binding client
-          </a>
-          .
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 

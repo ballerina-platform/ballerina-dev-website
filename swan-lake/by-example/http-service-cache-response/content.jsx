@@ -28,8 +28,7 @@ service / on new http:Listener(9090) {
 
     // In this example, \`max-age\` directive is set to 15 seconds, indicating that the response
     // will be fresh for 15 seconds. By default, \`must-revalidate\` directive is true and instructs that
-    // the cache should not serve a stale response without validating it with the origin server
-    // first.
+    // the cache should not serve a stale response without validating it with the origin server first.
     resource function get albums/[string title]() returns @http:Cache {maxAge: 15} Album|http:NotFound {
         return albums[title] ?: http:NOT_FOUND;
     }
@@ -200,8 +199,8 @@ export default function HttpServiceCacheResponse() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/http-caching-client">Caching client</a>. In
-          addition to that the{" "}
+          <a href="/learn/by-example/http-caching-client">Caching client</a>{" "}
+          example. In addition to that the{" "}
           <a href="/learn/by-example/http-trace-logs/">trace logs</a> can be
           enabled to observe the in and out traffic.
         </p>

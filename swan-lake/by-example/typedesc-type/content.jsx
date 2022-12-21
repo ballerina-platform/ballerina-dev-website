@@ -79,7 +79,7 @@ export default function TypedescType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8c8096c05aaf73c12a69d2d49a71e78c&file=typedesc_type.bal",
+                "https://play.ballerina.io/?gist=993aae719a25fc45b952e4d0933b5a88&file=typedesc_type.bal",
                 "_blank"
               );
             }}

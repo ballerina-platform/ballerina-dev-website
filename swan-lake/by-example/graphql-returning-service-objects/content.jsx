@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// Define a service class to use as an object in the GraphQL service.
+// Defines a service class to use as an object in the GraphQL service.
 service class Profile {
     private final string name;
     private final int age;
@@ -96,15 +96,6 @@ export default function GraphqlReturningServiceObjects() {
         Further, using a <code>service</code> type to represent a GraphQL output
         object type offers the flexibility of organizing complex logic.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Note:</strong> A <code>record</code> type can also be used to
-          represent a GraphQL output object type when all fields of that object
-          type do not have any input arguments or the field resolution does not
-          require any complex logic execution.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 

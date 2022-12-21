@@ -19,6 +19,7 @@ import ballerina/protobuf.types.wrappers;
     value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
+
     remote function hello(wrappers:ContextString request) returns string|error {
         // Check if the deadline has been exceeded and response accordingly.
         boolean isCancelled = check grpc:isCancelled(request.headers);

@@ -20,7 +20,7 @@ public function main() returns error? {
     // To secure a client using TLS/SSL, the client needs to be configured with
     // a certificate file of the listener.
     // The \`websocket:ClientSecureSocket\` record provides the SSL-related configurations of the client.
-    websocket:Client chatClient = check new("wss://localhost:9090/chat",
+    websocket:Client chatClient = check new ("wss://localhost:9090/chat",
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }

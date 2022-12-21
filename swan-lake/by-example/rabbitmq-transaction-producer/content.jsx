@@ -12,31 +12,35 @@ import Link from "next/link";
 setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
-  `import ballerinax/rabbitmq;
+  `import ballerina/http;
+import ballerinax/rabbitmq;
 
-public type Order record {|
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
-public function main() returns error? {
-    // Creates a ballerina RabbitMQ Client.
-    rabbitmq:Client newClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+service / on new http:Listener(9092) {
+    private final rabbitmq:Client orderClient;
 
-    transaction {
-        // Publishes the message using the routing key named "OrderQueue".
-        check newClient->publishMessage({
-            content: {
-                orderId: 1,
-                productName: "Sport shoe",
-                price: 27.5,
-                isValid: true
-            },
-            routingKey: "OrderQueue"
-        });
-        check commit;
+    function init() returns error? {
+        // Initiate the RabbitMQ client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.orderClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+    }
+
+    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
+        transaction {
+            // Publishes the message using newClient and the routing key named OrderQueue.
+            check self.orderClient->publishMessage({
+                content: newOrder,
+                routingKey: "OrderQueue"
+            });
+            check commit;
+        }
+        return http:ACCEPTED;
     }
 }
 `,

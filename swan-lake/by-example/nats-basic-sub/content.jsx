@@ -24,6 +24,7 @@ public type Order record {
 
 // Binds the consumer to listen to the messages published to the 'orders.valid' subject.
 service "orders.valid" on new nats:Listener(nats:DEFAULT_URL) {
+
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {
             log:printInfo(string \`Received valid order for \${'order.productName}\`);
@@ -58,8 +59,8 @@ export default function NatsBasicSub() {
 
       <p>
         The <code>nats:Service</code> listens to the given subject for incoming
-        messages. When a publisher sends a message on a subject, any active
-        service listening on that subject receives the message. A{" "}
+        messages. When a publisher sends a message to a subject, any active
+        service listening to that subject receives the message. A{" "}
         <code>nats:Listener</code> is created by passing the URL of the NATS
         broker. A <code>nats:Service</code> attached to the{" "}
         <code>nats:Listener</code> can be used to listen to a specific subject
@@ -130,11 +131,6 @@ export default function NatsBasicSub() {
           )}
         </Col>
       </Row>
-
-      <p>
-        To run the sample, start an instance of the NATS server and execute the
-        following command.
-      </p>
 
       <h2>Prerequisites</h2>
 

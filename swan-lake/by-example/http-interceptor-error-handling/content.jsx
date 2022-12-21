@@ -67,10 +67,10 @@ service class RequestErrorInterceptor {
 // Creates a new \`RequestErrorInterceptor\`.
 RequestErrorInterceptor requestErrorInterceptor = new;
 
-listener http:Listener interceptorListener = new http:Listener(9090, config = {
+listener http:Listener interceptorListener = new (9090, config = {
     // To handle all of the errors in the request path, the \`RequestErrorInterceptor\`
-    // is added as the last interceptor as it has to be executed last. 
-    interceptors: [requestInterceptor, requestErrorInterceptor] 
+    // is added as the last interceptor as it has to be executed last.
+    interceptors: [requestInterceptor, requestErrorInterceptor]
 });
 
 service / on interceptorListener {
@@ -349,8 +349,8 @@ export default function HttpInterceptorErrorHandling() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
-          </a>
-          .
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 

@@ -22,7 +22,7 @@ type Album readonly & record {|
 
 public function main() returns error? {
     // Defines the HTTP client to call the OAuth2 secured APIs.
-    http:Client albumClient = check new("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
             assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",

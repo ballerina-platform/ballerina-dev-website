@@ -29,7 +29,7 @@ type Profile record {|
 
 public function main() returns error? {
     // Defines the GraphQL client to call the JWT Auth secured APIs.
-    graphql:Client graphqlClient = check new("localhost:9090/graphql",
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
         auth = {
             username: "ballerina",
             issuer: "wso2",

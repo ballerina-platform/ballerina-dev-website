@@ -26,7 +26,7 @@ service / on new http:Listener(8080) {
 
     resource function get albums() returns Album[]|error {
         stream<Album, sql:Error?> albumStream = self.db->query(`SELECT * FROM Albums`);
-        return check from Album album in albumStream select album;
+        return from Album album in albumStream select album;
     }
 
     resource function get albums/[string id]() returns Album|http:NotFound|error {
@@ -45,4 +45,5 @@ service / on new http:Listener(8080) {
         return album;
     }
 }
+
 ```

@@ -1,11 +1,9 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
 import {
   copyToClipboard,
   extractOutput,
-  shikiTokenizer,
 } from "../../../utils/bbe";
 import Link from "next/link";
 

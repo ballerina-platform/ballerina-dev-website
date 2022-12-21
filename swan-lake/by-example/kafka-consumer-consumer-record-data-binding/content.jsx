@@ -60,7 +60,7 @@ public function main() returns error? {
 `,
 ];
 
-export default function KafkaConsumerConsumerRecordDataBinding() {
+export default function KafkaConsumerConsumerRecordDataBinding({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);

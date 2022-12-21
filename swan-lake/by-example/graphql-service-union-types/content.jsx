@@ -86,7 +86,7 @@ service /graphql on new graphql:Listener(9090) {
 `,
 ];
 
-export default function GraphqlServiceUnionTypes() {
+export default function GraphqlServiceUnionTypes({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 

@@ -32,7 +32,7 @@ public function main() returns error? {
 `,
 ];
 
-export default function GrpcClientSimple() {
+export default function GrpcClientSimple({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 

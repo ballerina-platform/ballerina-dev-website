@@ -36,7 +36,7 @@ service / on new http:Listener(9090) {
 `,
 ];
 
-export default function KafkaProducerProduceMessage() {
+export default function KafkaProducerProduceMessage({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);

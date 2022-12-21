@@ -44,7 +44,7 @@ public function main() returns error? {
 `,
 ];
 
-export default function SftpClientSendFile() {
+export default function SftpClientSendFile({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);

@@ -33,7 +33,7 @@ service "HelloWorld" on new grpc:Listener(9090) {
 `,
 ];
 
-export default function GrpcServiceSimple() {
+export default function GrpcServiceSimple({codeSnippets}) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 

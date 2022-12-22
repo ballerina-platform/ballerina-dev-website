@@ -715,7 +715,7 @@ sublinks:
           - title: Default resource
             id: 1
             url: http-default-resource
-          - title: Default error handling
+          - title: Error handling
             id: 2
             url: http-default-error-handling
           - title: Redirects
@@ -1153,6 +1153,9 @@ sublinks:
           - title: Constraint validation
             id: 2
             url: kafka-service-constraint-validation
+          - title: Error handling
+            id: 3
+            url: kafka-service-error-handling
       - title: Kafka producer
         id: 29
         sublinks:

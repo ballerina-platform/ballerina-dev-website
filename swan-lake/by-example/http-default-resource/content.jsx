@@ -334,7 +334,7 @@ export default function HttpDefaultResource() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Default error handling"
+            title="Error handling"
             href="/learn/by-example/http-default-error-handling"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -345,7 +345,7 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Default error handling
+                  Error handling
                 </span>
               </div>
               <svg

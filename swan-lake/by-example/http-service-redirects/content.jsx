@@ -318,7 +318,7 @@ export default function HttpServiceRedirects() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Default error handling"
+            title="Error handling"
             href="/learn/by-example/http-default-error-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -346,7 +346,7 @@ export default function HttpServiceRedirects() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Default error handling
+                  Error handling
                 </span>
               </div>
             </div>

@@ -82,7 +82,7 @@ export default function DefaultValuesForRecordFields() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=059def9a2776ff9bcddada0e5ea8e503&file=default_values_for_record_fields.bal",
+                "https://play.ballerina.io/?gist=73c66d85da85b190ee84ec889c1ddd9b&file=default_values_for_record_fields.bal",
                 "_blank"
               );
             }}

@@ -51,8 +51,6 @@ Updated `commons-net` version to 3.9.0.
 
 To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+milestone%3A2201.2.4+label%3AType%2FBug+is%3Aclosed).
 
-### Bug fixes
-
 ## Code to Cloud updates
 
 ### Bug fixes
@@ -61,11 +59,10 @@ To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://g
 
 ## Developer tools updates
 
-### Improvements
+### New features
 
-To view improvements, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=label%3AArea%2FProjectDesignTool+milestone%3A2201.2.4+is%3Aclosed).
+To view new features, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=milestone%3A2201.2.4+is%3Aclosed+label%3ATeam%2FDevTools+label%3AType%2FNewFeature).
 
 ### Bug Fixes
 
-To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=label%3AArea%2FJSONToRecordConverter+milestone%3A2201.2.4+is%3Aclosed).
-
+To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=milestone%3A2201.2.4+is%3Aclosed+label%3ATeam%2FDevTools+label%3AType%2FBug).

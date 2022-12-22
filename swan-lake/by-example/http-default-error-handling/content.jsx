@@ -201,7 +201,7 @@ export default function HttpDefaultErrorHandling() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run http_resource_error_handling.bal`}</span>
+              <span>{`\$ bal run http_default_error_handling.bal`}</span>
               <span>{`
 `}</span>
               <span>{`error: Something wrong with the connection`}</span>

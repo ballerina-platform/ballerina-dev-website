@@ -148,7 +148,7 @@ export default function XmlDataModel() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=73305af230e7b4117cee309a6a6bf1e2&file=xml_data_model.bal",
+                "https://play.ballerina.io/?gist=477f072294a7f725d357a4841ff037db&file=xml_data_model.bal",
                 "_blank"
               );
             }}

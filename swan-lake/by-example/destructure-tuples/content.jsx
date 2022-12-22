@@ -79,7 +79,7 @@ export default function DestructureTuples() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=29389edef3d964043f26f1f6c8deda00&file=destructure_tuples.bal",
+                "https://play.ballerina.io/?gist=d73a9abf6028d5f0ed3c5255bdb2833f&file=destructure_tuples.bal",
                 "_blank"
               );
             }}

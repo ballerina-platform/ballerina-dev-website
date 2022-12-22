@@ -78,7 +78,7 @@ export default function ErrorCause() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=829bac8992a5833e3c5bba68029cdafd&file=error_cause.bal",
+                "https://play.ballerina.io/?gist=7e1d94877dd20dd99062498d7b03d5e9&file=error_cause.bal",
                 "_blank"
               );
             }}

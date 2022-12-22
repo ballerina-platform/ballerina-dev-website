@@ -76,7 +76,7 @@ export default function AsynchronousFunctionCalls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=13b221f18dbee74c3af048886c149582&file=asynchronous_function_calls.bal",
+                "https://play.ballerina.io/?gist=b7081b71ad104330a9fa85095358fa21&file=asynchronous_function_calls.bal",
                 "_blank"
               );
             }}

@@ -42,9 +42,6 @@ To view bug fixes, see the [GitHub milestone for 2201.3.1 (Swan Lake)](https://g
 
 ### Improvements
 
-#### `FTP` package
-- Updated `commons-net` version to 3.9.0.
-
 #### `gRPC` package
 - Updated `netty` version to 4.1.86.Final.
 

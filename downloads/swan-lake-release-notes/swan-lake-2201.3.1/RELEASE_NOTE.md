@@ -36,30 +36,30 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ### Bug fixes
 
-- [https://github.com/ballerina-platform/ballerina-lang/issues/38583](https://github.com/ballerina-platform/ballerina-lang/issues/38583)
-- [https://github.com/ballerina-platform/ballerina-lang/issues/38518](https://github.com/ballerina-platform/ballerina-lang/issues/38518)
-- [https://github.com/ballerina-platform/ballerina-lang/issues/36270](https://github.com/ballerina-platform/ballerina-lang/issues/36270)
+- [JSON to Record converter does not generate parent record with user defined name](https://github.com/ballerina-platform/ballerina-lang/issues/38583)
+- [Config-schema is generated with unused configurables](https://github.com/ballerina-platform/ballerina-lang/issues/38518)
+- [Config schema generator maps byte values to float instead of integer](https://github.com/ballerina-platform/ballerina-lang/issues/36270)
 
 ## Standard library updates
 
 ### Bug fixes
 
-- [https://github.com/ballerina-platform/ballerina-standard-library/issues/3850](https://github.com/ballerina-platform/ballerina-standard-library/issues/3850)
-- [https://github.com/ballerina-platform/ballerina-standard-library/issues/3763](https://github.com/ballerina-platform/ballerina-standard-library/issues/3763)
-- [https://github.com/ballerina-platform/ballerina-standard-library/issues/3662](https://github.com/ballerina-platform/ballerina-standard-library/issues/3662)
+- [Fix trivy vulnerability scan failure in email module](https://github.com/ballerina-platform/ballerina-standard-library/issues/3850)
+- [HTTP trace logs are not working with a mysql client](https://github.com/ballerina-platform/ballerina-standard-library/issues/3763)
+- [Binary payload retrieved from the http:Request has different content-length than the original payload](https://github.com/ballerina-platform/ballerina-standard-library/issues/3662)
 
 ## Developer tools updates
 
 ### New features
 
-- [https://github.com/ballerina-platform/ballerina-lang/issues/38612](https://github.com/ballerina-platform/ballerina-lang/issues/38612)
+- [New LS extension endpoint for fetching type information of parameters and the return type desc of a given function](https://github.com/ballerina-platform/ballerina-lang/issues/38612)
 
 ### Improvements
 
-- [https://github.com/ballerina-platform/ballerina-lang/issues/38793](https://github.com/ballerina-platform/ballerina-lang/issues/38793)
+- [Implement a compiler plugin to generate component model](https://github.com/ballerina-platform/ballerina-lang/issues/38793)
 
 ### Bug fixes
 
-- [https://github.com/ballerina-platform/ballerina-lang/issues/38583](https://github.com/ballerina-platform/ballerina-lang/issues/38583)
-- [https://github.com/ballerina-platform/ballerina-lang/issues/38518](https://github.com/ballerina-platform/ballerina-lang/issues/38518)
-- [https://github.com/ballerina-platform/ballerina-lang/issues/36270](https://github.com/ballerina-platform/ballerina-lang/issues/36270)
+- [JSON to Record converter does not generate parent record with user defined name](https://github.com/ballerina-platform/ballerina-lang/issues/38583)
+- [Config-schema is generated with unused configurables](https://github.com/ballerina-platform/ballerina-lang/issues/38518)
+- [Config schema generator maps byte values to float instead of integer](https://github.com/ballerina-platform/ballerina-lang/issues/36270)

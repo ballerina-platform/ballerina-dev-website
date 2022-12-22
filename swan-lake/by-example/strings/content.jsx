@@ -76,7 +76,7 @@ export default function Strings() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cf2b3c06030cac2f1508801cc86344bc&file=strings.bal",
+                "https://play.ballerina.io/?gist=14dc381545af0d29152297ed8792b8ae&file=strings.bal",
                 "_blank"
               );
             }}

@@ -24,7 +24,7 @@ public type Chat string;
 
 service /chat on new websocket:Listener(9090) {
 
-    resource function get .() returns websocket:Service|websocket:Error {
+    resource function get .() returns websocket:Service {
         return new ChatService();
     }
 }
@@ -32,7 +32,7 @@ service /chat on new websocket:Listener(9090) {
 service class ChatService {
     *websocket:Service;
 
-    remote function onMessage(websocket:Caller caller, Chat chatMessage) returns websocket:Error? {
+    remote function onMessage(websocket:Caller caller, Chat chatMessage) returns error? {
         io:println(chatMessage);
         check caller->writeMessage("Hello!, How are you?");
     }
@@ -280,8 +280,8 @@ export default function WebsocketServicePayloadConstraintValidation() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Send/Receive message"
-            href="/learn/by-example/websocket-client"
+            title="Error handling"
+            href="/learn/by-example/websocket-service-error-handling"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -291,7 +291,7 @@ export default function WebsocketServicePayloadConstraintValidation() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive message
+                  Error handling
                 </span>
               </div>
               <svg

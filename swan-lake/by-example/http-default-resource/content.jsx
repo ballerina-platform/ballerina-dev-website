@@ -334,8 +334,8 @@ export default function HttpDefaultResource() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Redirects"
-            href="/learn/by-example/http-service-redirects"
+            title="Default error handling"
+            href="/learn/by-example/http-default-error-handling"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -345,7 +345,7 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Redirects
+                  Default error handling
                 </span>
               </div>
               <svg

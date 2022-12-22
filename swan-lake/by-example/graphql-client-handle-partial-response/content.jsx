@@ -26,10 +26,10 @@ type ProfileResponse record {|
     record {|Profile profile;|} data;
 |};
 
-// The following record type defines the shape of the response from a GraphQL service which allows
-// the \`name\` and \`age\` fields to have a \`null\` value.
+// The following record type defines the shape of the response from a GraphQL service, which allows
+// the \`age\` field to have a \`null\` value.
 type Profile record {|
-    string? name;
+    string name;
     int? age;
 |};
 
@@ -37,9 +37,9 @@ public function main() returns error? {
     // Creates a new client with the backend URL.
     graphql:Client graphqlClient = check new ("localhost:9090/graphql");
 
-    string document = "{ profile { name, age } }";
+    string document = "{ profile(id: 1) { name, age } }";
     ProfileResponse response = check graphqlClient->execute(document);
-    
+
     // Access the data from the response.
     io:println(response.data);
 
@@ -159,8 +159,8 @@ export default function GraphqlClientHandlePartialResponse() {
           <span>&#8226;&nbsp;</span>
           <span>
             Run the GraphQL service given in the{" "}
-            <a href="https://ballerina.io/learn/by-example/graphql-returning-record-values">
-              Record as output object
+            <a href="https://ballerina.io/learn/by-example/graphql-service-error-handling">
+              Error handling
             </a>{" "}
             example.
           </span>
@@ -223,7 +223,8 @@ export default function GraphqlClientHandlePartialResponse() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run graphql_client_handle_partial_response.bal`}</span>
-              <span>{`{"name":"Walter White","age":51}`}</span>
+              <span>{`{"profile":{"name":"Walter White","age":null}}`}</span>
+              <span>{`[{"message":"Error occurred while retrieving age","locations":[{"line":1,"column":26}],"path":["profile","age"]}]`}</span>
             </code>
           </pre>
         </Col>

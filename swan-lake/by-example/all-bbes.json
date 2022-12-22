@@ -1724,6 +1724,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "Default error handling",
+        "url": "http-default-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Redirects",
         "url": "http-service-redirects",
         "verifyBuild": true,
@@ -2041,6 +2049,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "Error handling",
+        "url": "graphql-service-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "GraphiQL client",
         "url": "graphql-graphiql",
         "verifyBuild": true,
@@ -2249,6 +2265,15 @@
       {
         "name": "Payload constraint validation",
         "url": "websocket-service-payload-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "websocket-service-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Service cannot be stopped",

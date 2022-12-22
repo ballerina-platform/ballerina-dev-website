@@ -53,6 +53,9 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 ### New features
 
 - [https://github.com/ballerina-platform/ballerina-lang/issues/38612](https://github.com/ballerina-platform/ballerina-lang/issues/38612)
+
+### Improvements
+
 - [https://github.com/ballerina-platform/ballerina-lang/issues/38793](https://github.com/ballerina-platform/ballerina-lang/issues/38793)
 
 ### Bug fixes

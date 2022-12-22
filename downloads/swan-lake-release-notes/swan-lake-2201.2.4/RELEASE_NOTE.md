@@ -63,6 +63,10 @@ To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://g
 
 To view new features, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=milestone%3A2201.2.4+is%3Aclosed+label%3ATeam%2FDevTools+label%3AType%2FNewFeature).
 
+### Improvements
+
+To view improvements, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=milestone%3A2201.2.4+is%3Aclosed+label%3ATeam%2FDevTools+label%3AType%2FImprovement).
+
 ### Bug Fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.2.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=milestone%3A2201.2.4+is%3Aclosed+label%3ATeam%2FDevTools+label%3AType%2FBug).

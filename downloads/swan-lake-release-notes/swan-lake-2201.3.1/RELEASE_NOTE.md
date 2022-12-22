@@ -30,40 +30,31 @@ However, if you are using a version below 2201.0.0 (Swan Lake) and if you alread
 
 ## Install Ballerina
 
-If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
+If you have not installed Ballerina, then, download the [installers](/downloads/#swanlake) to install.
 
 ## Language updates
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for 2201.3.1 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.1+label%3AType%2FBug+is%3Aclosed).
+- [https://github.com/ballerina-platform/ballerina-lang/issues/38583](https://github.com/ballerina-platform/ballerina-lang/issues/38583)
+- [https://github.com/ballerina-platform/ballerina-lang/issues/38518](https://github.com/ballerina-platform/ballerina-lang/issues/38518)
+- [https://github.com/ballerina-platform/ballerina-lang/issues/36270](https://github.com/ballerina-platform/ballerina-lang/issues/36270)
 
 ## Standard library updates
-
-### Improvements
-
-#### `FTP` package
-- Updated `commons-net` version to 3.9.0.
 
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.3.1 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+milestone%3A2201.3.1+label%3AType%2FBug+is%3Aclosed).
 
-### Bug fixes
-
-## Code to Cloud updates
-
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for 2201.3.1 (Swan Lake)](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+milestone%3A2201.3.1+label%3AType%2FBug+is%3Aclosed).
-
 ## Developer tools updates
 
-### Improvements
+### New features
 
-To view improvements, see the [GitHub milestone for Swan Lake 2201.3.1](https://github.com/ballerina-platform/ballerina-lang/issues?q=label%3AArea%2FProjectDesignTool+milestone%3A2201.3.1+is%3Aclosed).
+- [https://github.com/ballerina-platform/ballerina-lang/issues/38612](https://github.com/ballerina-platform/ballerina-lang/issues/38612)
+- [https://github.com/ballerina-platform/ballerina-lang/issues/38793](https://github.com/ballerina-platform/ballerina-lang/issues/38793)
 
-### Bug Fixes
+### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for 2201.3.1 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=label%3AArea%2FJSONToRecordConverter+milestone%3A2201.3.1+is%3Aclosed).
-
+- [https://github.com/ballerina-platform/ballerina-lang/issues/38583](https://github.com/ballerina-platform/ballerina-lang/issues/38583)
+- [https://github.com/ballerina-platform/ballerina-lang/issues/38518](https://github.com/ballerina-platform/ballerina-lang/issues/38518)
+- [https://github.com/ballerina-platform/ballerina-lang/issues/36270](https://github.com/ballerina-platform/ballerina-lang/issues/36270)

@@ -86,7 +86,7 @@ export default function HttpClientSendRequestReceiveResponse() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=92e6f26a94e9580660b51acb345304e0&file=http_client_send_request_receive_response.bal",
+                "https://play.ballerina.io/?gist=4482018d062fd451cfd6a8f2cfb1efdf&file=http_client_send_request_receive_response.bal",
                 "_blank"
               );
             }}

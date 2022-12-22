@@ -53,7 +53,7 @@ service /chat on chatListener {
 service class ChatService {
     *websocket:Service;
 
-    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
+    remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
         check caller->writeMessage("Hello, How are you?");
     }
 }

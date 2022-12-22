@@ -195,6 +195,7 @@ import HttpCircuitBreaker from "./http-circuit-breaker/content.jsx";
 import HttpLoadBalancer from "./http-load-balancer/content.jsx";
 import HttpFailover from "./http-failover/content.jsx";
 import HttpDefaultResource from "./http-default-resource/content.jsx";
+import HttpDefaultErrorHandling from "./http-default-error-handling/content.jsx";
 import HttpServiceRedirects from "./http-service-redirects/content.jsx";
 import HttpCors from "./http-cors/content.jsx";
 import Http100Continue from "./http-100-continue/content.jsx";
@@ -232,6 +233,7 @@ import GraphqlInputObjects from "./graphql-input-objects/content.jsx";
 import GraphqlInterfaces from "./graphql-interfaces/content.jsx";
 import GraphqlInterfacesImplementingInterfaces from "./graphql-interfaces-implementing-interfaces/content.jsx";
 import GraphqlServiceUnionTypes from "./graphql-service-union-types/content.jsx";
+import GraphqlServiceErrorHandling from "./graphql-service-error-handling/content.jsx";
 import GraphqlGraphiql from "./graphql-graphiql/content.jsx";
 import GraphqlDocumentation from "./graphql-documentation/content.jsx";
 import GraphqlDirectives from "./graphql-directives/content.jsx";
@@ -255,6 +257,7 @@ import GraphqlClientSecuritySelfSignedJwtAuthentication from "./graphql-client-s
 import GraphqlClientSecurityOauth2PasswordGrantType from "./graphql-client-security-oauth2-password-grant-type/content.jsx";
 import WebsocketBasicSample from "./websocket-basic-sample/content.jsx";
 import WebsocketServicePayloadConstraintValidation from "./websocket-service-payload-constraint-validation/content.jsx";
+import WebsocketServiceErrorHandling from "./websocket-service-error-handling/content.jsx";
 import WebsocketClient from "./websocket-client/content.jsx";
 import WebsocketClientPayloadConstraintValidation from "./websocket-client-payload-constraint-validation/content.jsx";
 import WebsocketServiceSslTls from "./websocket-service-ssl-tls/content.jsx";
@@ -607,6 +610,7 @@ const BBEs = {
   HttpLoadBalancer,
   HttpFailover,
   HttpDefaultResource,
+  HttpDefaultErrorHandling,
   HttpServiceRedirects,
   HttpCors,
   Http100Continue,
@@ -644,6 +648,7 @@ const BBEs = {
   GraphqlInterfaces,
   GraphqlInterfacesImplementingInterfaces,
   GraphqlServiceUnionTypes,
+  GraphqlServiceErrorHandling,
   GraphqlGraphiql,
   GraphqlDocumentation,
   GraphqlDirectives,
@@ -667,6 +672,7 @@ const BBEs = {
   GraphqlClientSecurityOauth2PasswordGrantType,
   WebsocketBasicSample,
   WebsocketServicePayloadConstraintValidation,
+  WebsocketServiceErrorHandling,
   WebsocketClient,
   WebsocketClientPayloadConstraintValidation,
   WebsocketServiceSslTls,

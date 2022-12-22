@@ -715,50 +715,53 @@ sublinks:
           - title: Default resource
             id: 1
             url: http-default-resource
-          - title: Redirects
+          - title: Default error handling
             id: 2
+            url: http-default-error-handling
+          - title: Redirects
+            id: 3
             url: http-service-redirects
           - title: CORS
-            id: 3
+            id: 4
             url: http-cors
           - title: 100 continue
-            id: 4
+            id: 5
             url: http-100-continue
           - title: Matrix parameter
-            id: 5
+            id: 6
             url: http-matrix-param
           - title: Restrict by media type
-            id: 6
+            id: 7
             url: http-restrict-by-media-type
           - title: File upload
-            id: 7
+            id: 8
             url: http-service-file-upload
           - title: Compression
-            id: 8
+            id: 9
             url: http-compression
           - title: Trace logs
-            id: 9
+            id: 10
             url: http-trace-logs
           - title: Access logs
-            id: 10
+            id: 11
             url: http-access-logs
           - title: Cookies
-            id: 11
+            id: 12
             url: http-cookies-service
           - title: Chunking
-            id: 12
+            id: 13
             url: http-service-chunking
           - title: Response with multiparts
-            id: 13
+            id: 14
             url: http-response-with-multiparts
           - title: Passthrough
-            id: 14
+            id: 15
             url: http-passthrough
           - title: HTTP/2 to HTTP/1.1 downgrade
-            id: 15
+            id: 16
             url: http-2-to-1-1-downgrade-service
           - title: HTTP/2 server push
-            id: 16
+            id: 17
             url: http-2-0-server-push
       - title: HTTP client advanced
         id: 7
@@ -835,26 +838,29 @@ sublinks:
           - title: Union Types
             id: 10
             url: graphql-service-union-types
-          - title: GraphiQL client
+          - title: Error handling
             id: 11
+            url: graphql-service-error-handling
+          - title: GraphiQL client
+            id: 12
             url: graphql-graphiql
           - title: Documentation
-            id: 12
+            id: 13
             url: graphql-documentation
           - title: Directives
-            id: 13
+            id: 14
             url: graphql-directives
           - title: Context
-            id: 14
+            id: 15
             url: graphql-context
           - title: Interceptors
-            id: 15
+            id: 16
             url: graphql-interceptors
           - title: File upload
-            id: 16
+            id: 17
             url: graphql-file-upload
           - title: Hierarchical resource paths
-            id: 17
+            id: 18
             url: graphql-hierarchical-resource-paths
       - title: GraphQL client
         id: 10
@@ -916,6 +922,9 @@ sublinks:
           - title: Payload constraint validation
             id: 2
             url: websocket-service-payload-constraint-validation
+          - title: Error handling
+            id: 3
+            url: websocket-service-error-handling
       - title: WebSocket client
         id: 14
         sublinks:

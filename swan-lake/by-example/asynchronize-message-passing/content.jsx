@@ -81,7 +81,7 @@ export default function AsynchronizeMessagePassing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=223c30f12d29f1a2f475aec9847643ec&file=asynchronize_message_passing.bal",
+                "https://play.ballerina.io/?gist=75453bea67e135f38d3db7d6b34c2aca&file=asynchronize_message_passing.bal",
                 "_blank"
               );
             }}

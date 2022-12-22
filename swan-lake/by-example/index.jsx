@@ -319,6 +319,7 @@ import NatsClientSecureConnection from "./nats-client-secure-connection/content.
 import NatsClientBasicAuth from "./nats-client-basic-auth/content.jsx";
 import KafkaServiceConsumeMessage from "./kafka-service-consume-message/content.jsx";
 import KafkaServiceConstraintValidation from "./kafka-service-constraint-validation/content.jsx";
+import KafkaServiceErrorHandling from "./kafka-service-error-handling/content.jsx";
 import KafkaProducerProduceMessage from "./kafka-producer-produce-message/content.jsx";
 import KafkaConsumerPayloadDataBinding from "./kafka-consumer-payload-data-binding/content.jsx";
 import KafkaConsumerConsumerRecordDataBinding from "./kafka-consumer-consumer-record-data-binding/content.jsx";
@@ -734,6 +735,7 @@ const BBEs = {
   NatsClientBasicAuth,
   KafkaServiceConsumeMessage,
   KafkaServiceConstraintValidation,
+  KafkaServiceErrorHandling,
   KafkaProducerProduceMessage,
   KafkaConsumerPayloadDataBinding,
   KafkaConsumerConsumerRecordDataBinding,

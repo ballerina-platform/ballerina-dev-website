@@ -64,6 +64,17 @@ export default function GraphqlHelloWorld() {
         method will be the type of field represented by that resource method.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Note:</strong> GraphQL queries are expected to be read-only
+          operations that are usually executed against entities such as{" "}
+          <code>Person</code>, <code>Profile</code>, <code>Address</code>, etc.
+          Ballerina uses <code>resource</code> methods to handle such cases.
+          Therefore, these <code>resource</code> methods are usually named using
+          nouns with <code>get</code> accessor.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "

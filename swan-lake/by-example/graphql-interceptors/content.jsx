@@ -107,9 +107,11 @@ export default function GraphqlInterceptors() {
         separated from the business logic.
       </p>
 
-      <p>
-        <strong>Note:</strong> A service can have zero or more interceptors.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> A service can have zero or more interceptors.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 

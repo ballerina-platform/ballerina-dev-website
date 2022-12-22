@@ -84,7 +84,7 @@ export default function NamedWorkersAndFutures() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=50890e4739b06ab95398149d827f5432&file=named_workers_and_futures.bal",
+                "https://play.ballerina.io/?gist=87564d324761093ff8c397d0eac78b9c&file=named_workers_and_futures.bal",
                 "_blank"
               );
             }}

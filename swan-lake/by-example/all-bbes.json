@@ -1724,7 +1724,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Default error handling",
+        "name": "Error handling",
         "url": "http-default-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2891,6 +2891,15 @@
       {
         "name": "Constraint validation",
         "url": "kafka-service-constraint-validation",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "kafka-service-error-handling",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

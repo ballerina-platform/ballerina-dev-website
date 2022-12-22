@@ -333,8 +333,8 @@ export default function KafkaServiceConstraintValidation() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Produce message"
-            href="/learn/by-example/kafka-producer-produce-message"
+            title="Error handling"
+            href="/learn/by-example/kafka-service-error-handling"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -344,7 +344,7 @@ export default function KafkaServiceConstraintValidation() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Produce message
+                  Error handling
                 </span>
               </div>
               <svg

@@ -14,6 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
+// The \`absolute resource path\` can be omitted. Then, it defaults to \`/\`.
 service on new http:Listener(9090) {
 
     // The \`default\` accessor can be used to match with all methods including the standard HTTP methods
@@ -52,16 +53,9 @@ export default function HttpDefaultResource() {
       <h1>HTTP service - Default resource</h1>
 
       <p>
-        The default resource slightly varies from the usual resource function as
-        it uses <code>rest parameters</code> as the <code>resource path</code>{" "}
-        and the <code>default</code> identifier as the{" "}
-        <code>resource accessor</code>. The <code>rest parameters</code> allow
-        any of the URL paths to be matched, and it supports <code>string</code>,{" "}
-        <code>int</code>, <code>float</code>, <code>boolean</code>, and{" "}
-        <code>decimal</code> as types. The <code>default</code> identifier also
-        allows any HTTP methods to be dispatched to the resource function. Use
-        it when designing a REST API to handle proxy services or as a default
-        location to get dispatched if none of the other resources are matched.
+        Ballerina provides rest params in the resource path and the default
+        resource method to help designing proxy services and default resources.
+        It can be used to handle unmatched requests.
       </p>
 
       <Row
@@ -281,7 +275,7 @@ export default function HttpDefaultResource() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>
@@ -334,8 +328,8 @@ export default function HttpDefaultResource() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Error handling"
-            href="/learn/by-example/http-default-error-handling"
+            title="Redirects"
+            href="/learn/by-example/http-service-redirects"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -345,7 +339,7 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error handling
+                  Redirects
                 </span>
               </div>
               <svg

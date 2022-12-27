@@ -16,6 +16,7 @@ const codeSnippetData = [
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
+// Defines a record to load the query result.
 type Album record {|
     string id;
     string title;
@@ -29,7 +30,8 @@ service / on new http:Listener(8080) {
     function init() returns error? {
         // Initiate the mysql client at the start of the service. This will be used
         // throughout the lifetime of the service.
-        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
+        self.db = check new (host = "localhost", port = 3306, user = "root",
+                            password = "Test@123", database = "MUSIC_STORE");
     }
 
     resource function post album(@http:Payload Album album) returns Album|error {
@@ -68,11 +70,11 @@ export default function MysqlExecuteOperation() {
       <h1>Database Access - DML and DDL operations</h1>
 
       <p>
-        The <code>mysql:Client</code> allows executing a DDL/DML statement with
-        the use of <code>execute</code> method. This method requires a{" "}
-        <code>sql:ParameterizedQuery</code>-typed SQL DDL/DML statement as the
-        argument.
+        This BBE demonstrates how to use the MySQL client with the DDL and DML
+        operations.
       </p>
+
+      <p>This BBE is written in the context of an album microservice.</p>
 
       <blockquote>
         <p>
@@ -186,11 +188,11 @@ export default function MysqlExecuteOperation() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            To set up the database, see the{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite">
-              Database Access Ballerina By Example - Prerequisites
-            </a>
-            .
+            Set up the MySQL database - Run the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-execute-operation/prerequisites/prerequisite.bal">
+              prerequisite.bal
+            </a>{" "}
+            file by executing the command <code>bal run</code>.
           </span>
         </li>
       </ul>

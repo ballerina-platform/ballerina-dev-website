@@ -73,7 +73,7 @@ export default function RandomNumbers() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a78905b6f80010727c2bd1ccfbaecee7&file=random_numbers.bal",
+                "https://play.ballerina.io/?gist=46135a8ed40a9ec2fe688dabcba3afbd&file=random_numbers.bal",
                 "_blank"
               );
             }}

@@ -74,16 +74,9 @@ export default function TcpListener() {
       <h1>TCP service - Send/Receive bytes</h1>
 
       <p>
-        The <code>tcp:Service</code> allows opening up a TCP socket via a{" "}
-        <code>tcp:Listener</code>. A <code>tcp:Listener</code> is created by
-        giving the port number, to which <code>tcp:Service</code> is attached.
-        The listener accepts and serves connections from TCP clients. The{" "}
-        <code>onBytes</code> remote method is invoked once the content is
-        received from the client. The <code>onError</code> and{" "}
-        <code>onClose</code> remote methods get invoked in an erroneous
-        situation and when the connection is closed respectively. Use a TCP
-        service to establish connections and communicate over TCP protocol or
-        implement high level protocols based on TCP.
+        The TCP Listener is used to expose a TCP service over the TCP protocol.
+        This sample demonstrates how the TCP socket listener service interacts
+        with the TCP client.
       </p>
 
       <Row
@@ -248,7 +241,7 @@ export default function TcpListener() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/tcp/latest">
-              <code>tcp</code> module - API documentation
+              <code>tcp</code> package - API documentation
             </a>
           </span>
         </li>

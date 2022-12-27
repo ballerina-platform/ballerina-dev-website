@@ -15,9 +15,9 @@ const codeSnippetData = [
   `import ballerina/websocket;
 
 public function main() returns error? {
-    // Set the handshake timeout for 5 seconds.
-    websocket:Client chatClient = check new ("ws://localhost:9090/chat", handShakeTimeout = 5);
-    check chatClient->writeMessage("Hello John!");
+   // Set the handshake timeout for 5 seconds.
+   websocket:Client chatClient = check new("ws://localhost:9090/chat", handShakeTimeout = 5);
+   check chatClient->writeMessage("Hello John!");
 }
 `,
 ];
@@ -46,20 +46,17 @@ export default function WebsocketTimeoutClient() {
       <h1>WebSocket client - Timeout</h1>
 
       <p>
-        The <code>websocket:Client</code> configured with timeouts can
-        gracefully handle timeouts that happen in the running applications.
-        Handshake timeout is the time (in seconds) that a connection waits to
-        get the response of the WebSocket handshake. If the timeout exceeds,
-        then, the connection is terminated with a <code>HandshakeTimedOut</code>{" "}
-        error. If the configuration value <code>&lt; 0</code>, then the value
-        sets to the default value(300). Apart from the{" "}
-        <code>handShakeTimeout</code>, the WebSocket client also has{" "}
+        The WebSocket client handshake timeout is used to gracefully handle
+        response delays which could occur due to network problems or the
+        back-end. Handshake timeout is the time (in seconds) that a connection
+        waits to get the response of the WebSocket handshake. If the timeout
+        exceeds, then the connection is terminated with a{" "}
+        <code>HandshakeTimedOut</code> error. If the configuration value &lt; 0,
+        then the value sets to the default value(300). Apart from the{" "}
+        <code>handShakeTimeout</code> WebSocket client also has{" "}
         <code>readTimeout</code> and <code>writeTimeout</code> configurations to
         configure idle time to wait to receive a message and to write a message
-        respectively. To enable handshake timeout, provide the{" "}
-        <code>handShakeTimeout</code> configuration to the client. Use the
-        handshake timeout to gracefully handle response delays that could occur
-        due to network problems or problems in the back end.
+        respectively.
       </p>
 
       <Row
@@ -207,7 +204,7 @@ export default function WebsocketTimeoutClient() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> module - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>

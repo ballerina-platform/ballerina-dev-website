@@ -17,34 +17,32 @@ import ballerina/io;
 
 // The \`ProfileResponse\` is a sub-type of \`graphql:GenericResponseWithErrors\`.
 // The \`graphql:GenericResponseWithErrors\` record represents the generic shape of the GraphQL
-// response. The \`graphql:GenericResponseWithErrors\` record contains \`data\`, \`errors\`,
-// and \`extensions\` fields of which \`data\` represents the requested data from the GraphQL server,
-// \`errors\` represents the field errors raised during the execution, and \`extensions\` represents
-// the meta information on the protocol extensions from the GraphQL server.
+// response. The \`graphql:GenericResponseWithErrors\` record contains \`data\`, \`errors\`
+// and \`extension\`s fields where \`data\` represents the requested data from the GraphQL server,
+// \`errors\` represents the \`Field Errors\` raised during the execution and \`extensions\` represents
+// the meta information on protocol extensions from the GraphQL server.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
-    record {|Profile profile;|} data;
+    record {|Profile profile?;|} data;
 |};
 
-// The following record type defines the shape of the response from a GraphQL service, which allows
-// the \`age\` field to have a \`null\` value.
 type Profile record {|
     string name;
-    int? age;
+    int age;
 |};
 
 public function main() returns error? {
     // Creates a new client with the backend URL.
     graphql:Client graphqlClient = check new ("localhost:9090/graphql");
 
-    string document = "{ profile(id: 1) { name, age } }";
+    string document = "{ profile { name, age } }";
     ProfileResponse response = check graphqlClient->execute(document);
-
+    
     // Access the data from the response.
     io:println(response.data);
 
     if response.errors !is () {
-        // Access the field errors from the response.
+        // Access the \`Field errors\` from the response.
         io:println(response.errors);
     }
 }
@@ -75,20 +73,15 @@ export default function GraphqlClientHandlePartialResponse() {
       <h1>GraphQL client - Handle partial response</h1>
 
       <p>
-        The <code>graphql:Client</code> allows handling cases where a GraphQL
-        service responds with partial data along with errors. To retrieve the
-        partial data, define the fields as nilable types in the expected
-        response type where applicable. Use this approach when the response with
-        partial data is considered to be valid or the partial data needs to be
-        retrieved.
+        A GraphQL service can return a partial response having both errors and
+        data fields when there are <code>Field errors</code> raised at the
+        service side during the execution of an operation.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Hint:</strong> When defining field types as nilable, check the
-          corresponding GraphQL schema to check the nilable fields.
-        </p>
-      </blockquote>
+      <p>
+        This example shows how to retrieve the partial data and graphql{" "}
+        <code>Field errors</code> in a user-defined type.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -159,8 +152,8 @@ export default function GraphqlClientHandlePartialResponse() {
           <span>&#8226;&nbsp;</span>
           <span>
             Run the GraphQL service given in the{" "}
-            <a href="https://ballerina.io/learn/by-example/graphql-service-error-handling">
-              Error handling
+            <a href="https://ballerina.io/learn/by-example/graphql-returning-record-values">
+              Record as output object
             </a>{" "}
             example.
           </span>
@@ -223,8 +216,7 @@ export default function GraphqlClientHandlePartialResponse() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run graphql_client_handle_partial_response.bal`}</span>
-              <span>{`{"profile":{"name":"Walter White","age":null}}`}</span>
-              <span>{`[{"message":"Error occurred while retrieving age","locations":[{"line":1,"column":26}],"path":["profile","age"]}]`}</span>
+              <span>{`{"name":"Walter White","age":51}`}</span>
             </code>
           </pre>
         </Col>
@@ -249,16 +241,6 @@ export default function GraphqlClientHandlePartialResponse() {
             <a href="https://lib.ballerina.io/ballerina/graphql/1.4.4/records/GenericResponseWithErrors">
               <code>graphql:GenericResponseWithErrors</code> record - API
               documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/1.5.0/errors#PayloadBindingError">
-              <code>graphql:PayloadBindingError</code> error - API documentation
             </a>
           </span>
         </li>

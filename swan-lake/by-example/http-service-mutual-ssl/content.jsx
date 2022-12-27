@@ -19,8 +19,10 @@ type Album readonly & record {|
     string artist;
 |};
 
-// An HTTP listener can be configured to accept new connections that are secured via mutual SSL.
-listener http:Listener securedEP = new (9090,
+// An HTTP listener can be configured to accept new connections that are
+// secured via mutual SSL.
+// The \`http:ListenerSecureSocket\` record provides the SSL-related listener configurations.
+listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -35,7 +37,6 @@ listener http:Listener securedEP = new (9090,
 );
 
 service / on securedEP {
-
     resource function get albums() returns Album[] {
         return [
             {title: "Blue Train", artist: "John Coltrane"},
@@ -72,18 +73,10 @@ export default function HttpServiceMutualSsl() {
       <h1>HTTP service - Mutual SSL</h1>
 
       <p>
-        The <code>http:Listener</code> with mutual SSL (mTLS) enabled in it
-        allows exposing a connection secured with mutual SSL, which is a
-        certificate-based authentication process in which two parties (the
-        client and server) authenticate each other by verifying the digital
-        certificates. It ensures that both parties are assured of each other's
-        identity. The <code>http:Listener</code> secured with mutual SSL is
-        created by providing the <code>secureSocket</code> configurations, which
-        require the word <code>require</code> as the <code>verifyClient</code>,
-        the server's public certificate as the <code>certFile</code>, the
-        server's private key as the <code>keyFile</code>, and the client's
-        certificate as the <code>cert</code>. Use this to secure the HTTP
-        connection over mutual SSL.
+        Ballerina supports mutual SSL, which is a certificate-based
+        authentication process in which two parties (the client and server)
+        authenticate each other by verifying the digital certificates. It
+        ensures that both parties are assured of each other's identity.
       </p>
 
       <Row
@@ -286,8 +279,8 @@ export default function HttpServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl https://localhost:9090/albums --cert /path/to/client-public.crt --key /path/to/client-private.key --cacert /path/to/server-public.crt`}</span>
-              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
+              <span>{`\$ curl https://localhost:9090/albums --cert /path/to/client-public.crt`}</span>
+              <span>{`    --key /path/to/client-private.key --cacert /path/to/server-public.crt`}</span>
             </code>
           </pre>
         </Col>
@@ -298,8 +291,8 @@ export default function HttpServiceMutualSsl() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-mutual-ssl/">
             Mutual SSL/TLS client
-          </a>{" "}
-          example.
+          </a>
+          .
         </p>
       </blockquote>
 

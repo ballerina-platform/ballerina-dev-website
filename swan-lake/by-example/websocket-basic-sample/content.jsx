@@ -16,20 +16,18 @@ const codeSnippetData = [
 import ballerina/websocket;
 
 service /chat on new websocket:Listener(9090) {
-
-    resource function get .() returns websocket:Service {
-        // Accept the WebSocket upgrade by returning a \`websocket:Service\`.
-        return new ChatService();
-    }
+   resource function get .() returns websocket:Service|websocket:Error {
+       // Accept the WebSocket upgrade by returning a \`websocket:Service\`.
+       return new ChatService();
+   }
 }
 
 service class ChatService {
     *websocket:Service;
-
     // This \`remote function\` is triggered when a new message is received
     // from a client. It accepts \`anydata\` as the function argument. The received data 
     // will be converted to the data type stated as the function argument.
-    remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
+    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
         io:println(chatMessage);
         check caller->writeMessage("Hello!, How are you?");
     }
@@ -61,24 +59,18 @@ export default function WebsocketBasicSample() {
       <h1>WebSocket service - Send/Receive message</h1>
 
       <p>
-        The <code>websocket:Service</code> allows opening up a port via a{" "}
-        <code>websocket:Listener</code>. A <code>websocket:Listener</code> is
-        created by giving the port number, to which{" "}
-        <code>websocket:Service</code> is attached. The listener accepts and
-        serves connections from WebSocket clients. The <code>onMessage</code>{" "}
-        remote method receives incoming WebSocket messages. There are a few
-        other remote methods to receive other types of WebSocket messages. The{" "}
-        <code>onOpen</code> remote method is dispatched as soon as the WebSocket
-        handshake is completed and the connection is established,{" "}
-        <code>onPing</code> and <code>onPong</code> remote methods are
-        dispatched upon receiving ping and pong messages respectively,{" "}
-        <code>onIdleTimeout</code> remote method is dispatched when the idle
-        timeout is reached, <code>onClose</code> is dispatched when a close
-        frame with a <code>statusCode</code> and a <code>reason</code> is
-        received and finally the <code>onError</code> is dispatched when an
-        error occurs in the WebSocket connection. Use this service to implement
-        user applications where you need to establish two-way communication over
-        the WebSocket protocol.
+        This explains how the Ballerina WebSocket server interacts with a
+        WebSocket client. Apart from the <code>onMessage</code> remote function
+        given in the example, there are few other remote functions to receive
+        different types of WebSocket messages. The <code>onOpen</code> remote
+        function is dispatched as soon as the WebSocket handshake is completed
+        and the connection is established, <code>onPing</code> and{" "}
+        <code>onPong</code> remote methods are dispatched upon receiving ping
+        and pong messages respectively, <code>onIdleTimeout</code> remote method
+        is dispatched when the idle timeout is reached, <code>onClose</code> is
+        dispatched when a close frame with a statusCode and a reason is received
+        and <code>onError</code> is dispatched when an error occurs in the
+        WebSocket connection.
       </p>
 
       <Row
@@ -240,7 +232,7 @@ export default function WebsocketBasicSample() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> module - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>

@@ -14,14 +14,14 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// Defines the interface \`Profile\` using a \`distinct\` \`service\` object.
+// Define the interface \`Profile\` using a \`distinct\` \`service\` object.
 type Profile distinct service object {
 
-    // Defines the field \`name\` as a resource method definition.
+    // Define the field \`name\` as a resource method definition.
     resource function get name() returns string;
 };
 
-// Defines the \`Teacher\` class implementing the \`Profile\` interface.
+// Define the \`Teacher\` class implementing the \`Profile\` interface.
 distinct service class Teacher {
     // This denotes that this object implements the \`Profile\` interface.
     *Profile;
@@ -40,13 +40,13 @@ distinct service class Teacher {
         return self.name;
     }
 
-    // Adds an additional field \`subject\` to the \`Teacher\` class.
+    // Add an additional field \`subject\` to the \`Teacher\` class
     resource function get subject() returns string {
         return self.subject;
     }
 }
 
-// Defines another class implementing the \`Profile\` interface.
+// Another class implementing the \`Profile\` interface.
 distinct service class Student {
     *Profile;
 
@@ -63,8 +63,7 @@ distinct service class Student {
 
 service /graphql on new graphql:Listener(9090) {
 
-    // Returns the \`Profile[]\` type from a GraphQL resolver. The \`Profile\` type is identified as an
-    // interface.
+    // Returning the \`Profile[]\` type from a GraphQL resolver will identify it as an interface.
     resource function get profiles() returns Profile[] {
         return [new Teacher("Walter White", "Chemistry"), new Student("Jesse Pinkman")];
     }
@@ -108,16 +107,19 @@ export default function GraphqlInterfaces() {
       <h1>GraphQL service - Interfaces</h1>
 
       <p>
-        The Ballerina <code>graphql</code> module allows defining GraphQL
-        interface types. An interface specifies a set of fields that multiple
-        object types can include. In Ballerina, interfaces are defined using{" "}
-        <code>distinct</code> <code>service</code> objects and the fields of the
-        interfaces are defined as resource method definitions. Objects that are
-        implementing the interfaces must implement the <code>resource</code>{" "}
-        methods defined in the <code>service</code> objects. The Ballerina type
-        inclusion includes the interface type to an object type. Use an
-        interface to return a type that consists of a set of possible types with
-        common fields.
+        A GraphQL schema can have interfaces. In Ballerina, interfaces are
+        defined using <code>distinct</code> <code>service</code> objects and the
+        fields of the interfaces are defined as resource method definitions.
+        Objects that are implementing the interfaces must implement the{" "}
+        <code>resource</code> methods defined in the service objects. The
+        Ballerina type inclusion is used to include the interface type to an
+        object type.
+      </p>
+
+      <p>
+        This example shows how to define an interface <code>Profile</code> and
+        then implement the <code>Teacher</code> and <code>Student</code> classes
+        using that interface.
       </p>
 
       <Row
@@ -435,7 +437,7 @@ export default function GraphqlInterfaces() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> module - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>

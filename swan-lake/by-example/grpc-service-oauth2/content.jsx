@@ -23,6 +23,11 @@ listener grpc:Listener securedEP = new (9090,
     }
 );
 
+// The service can be secured with OAuth2 and by enforcing authorization
+// optionally. It can be enabled by setting the \`grpc:OAuth2IntrospectionConfig\` configurations.
+// Authorization is based on scopes. A scope maps to one or more groups.
+// Authorization can be enabled by setting the \`string|string[]\` type
+// configurations for \`scopes\` field.
 @grpc:ServiceConfig {
     auth: [
         {
@@ -45,7 +50,6 @@ listener grpc:Listener securedEP = new (9090,
     value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
-
     remote function hello(string request) returns string {
         return "Hello " + request;
     }
@@ -77,20 +81,25 @@ export default function GrpcServiceOauth2() {
       <h1>gRPC service - OAuth2</h1>
 
       <p>
-        A gRPC service can be secured with OAuth2 and additionally, scopes can
-        be added to enforce fine-grained authorization. It validates the OAuth2
-        token sent in the <code>Authorization</code> metadata against the
-        provided configurations. This calls the configured introspection
-        endpoint to validate.
+        A gRPC service/resource can be secured with OAuth2 and by enforcing
+        authorization optionally. Then, it validates the OAuth2 token sent in
+        the <code>Authorization</code> metadata against the provided
+        configurations. This calls the configured introspection endpoint to
+        validate.
       </p>
 
       <p>
-        Ballerina uses the concept of scopes for authorization. The scope can be
-        included in the introspection response using a custom claim attribute.
-        That custom claim attribute also can be configured as the{" "}
-        <code>scopeKey</code>. In the authorization phase, the scopes of the
-        service are compared against the scope included in the introspection
-        response for at least one match between the two sets.
+        Ballerina uses the concept of scopes for authorization. A resource
+        declared in a service can be bound to one/more scope(s). The scope can
+        be included in the introspection response using a custom claim
+        attribute. That custom claim attribute also can be configured as the{" "}
+        <code>scopeKey</code>.
+      </p>
+
+      <p>
+        In the authorization phase, the scopes of the service/resource are
+        compared against the scope included in the introspection response for at
+        least one match between the two sets.
       </p>
 
       <Row
@@ -178,16 +187,15 @@ export default function GrpcServiceOauth2() {
       </Row>
 
       <p>
-        Setting up the service is the same as setting up the simple RPC service
-        with additional configurations. For information on implementing the
-        service, see{" "}
-        <a href="/learn/by-example/grpc-service-simple/">
-          gRPC service - Simple RPC
-        </a>
-        .
+        Setting up the service is the same as setting up the unary RPC service
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-service-unary/">
+          gRPC service - Unary RPC
+        </a>{" "}
+        to implement the service used below.
       </p>
 
-      <p>Run the service by executing the command below.</p>
+      <p>Execute the command below to run the service.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
@@ -324,7 +332,7 @@ export default function GrpcServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> module - API documentation
+              <code>oauth2</code> package - API documentation
             </a>
           </span>
         </li>

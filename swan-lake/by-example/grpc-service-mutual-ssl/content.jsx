@@ -14,8 +14,9 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/grpc;
 
-// The gRPC listener can be configured to accept new connections that are secured via mutual SSL.
-listener grpc:Listener securedEP = new (9090,
+// A gRPC listener can be configured to accept new connections that are secured via mutual SSL.
+// The \`grpc:ListenerSecureSocket\` record provides the SSL-related listener configurations.
+listener grpc:Listener securedEP = new(9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -33,7 +34,6 @@ listener grpc:Listener securedEP = new (9090,
     value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
-
     remote function hello(string request) returns string {
         return "Hello " + request;
     }
@@ -65,18 +65,10 @@ export default function GrpcServiceMutualSsl() {
       <h1>gRPC service - Mutual SSL</h1>
 
       <p>
-        The <code>grpc:Listener</code> with mutual SSL (mTLS) enabled in it
-        allows exposing a connection secured with mutual SSL, which is a
-        certificate-based authentication process in which two parties (the
-        client and server) authenticate each other by verifying the digital
-        certificates. It ensures that both parties are assured of each other's
-        identity. The <code>grpc:Listener</code> secured with mutual SSL is
-        created by providing the <code>secureSocket</code> configurations, which
-        require <code>grpc:REQUIRE</code> as the <code>verifyClient</code>, the
-        server's public certificate as the <code>certFile</code>, the server's
-        private key as the <code>keyFile</code>, and the client's certificate as
-        the <code>cert</code>. Use this to secure the gRPC connection with
-        mutual SSL.
+        Ballerina supports mutual SSL, which is a certificate-based
+        authentication process in which two parties (the client and server)
+        authenticate each other by verifying the digital certificates. It
+        ensures that both parties are assured of each other's identity.
       </p>
 
       <Row
@@ -164,16 +156,15 @@ export default function GrpcServiceMutualSsl() {
       </Row>
 
       <p>
-        Setting up the service is the same as setting up the simple RPC service
-        with additional configurations. For information on implementing the
-        service, see{" "}
-        <a href="/learn/by-example/grpc-service-simple/">
-          gRPC service - Simple RPC
-        </a>
-        .
+        Setting up the service is the same as setting up the unary RPC service
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-service-unary/">
+          gRPC service - Unary RPC
+        </a>{" "}
+        to implement the service used below.
       </p>
 
-      <p>Run the service by executing the command below.</p>
+      <p>Execute the command below to run the service.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"

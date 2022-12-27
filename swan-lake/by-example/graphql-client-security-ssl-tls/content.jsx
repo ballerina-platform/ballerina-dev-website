@@ -15,7 +15,7 @@ const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/io;
 
-// User-defined data types to retrive data from the service.
+// User defined data types to retrive data from the service.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
     record {|Profile profile;|} data;
@@ -27,14 +27,15 @@ type Profile record {|
 |};
 
 public function main() returns error? {
-    // Defines the GraphQL client with secure socket configurations.
-    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
+    // Create a GraphQL client with secure socket configurations. To secure a client using
+    // HTTPS, the client needs to be configured with a certificate file of the listener.
+    graphql:Client graphqlClient = check new("localhost:9090/graphql",
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }
     );
 
-    // Defines the GraphQL document to be sent to the GraphQL service.
+    // Define the GraphQL document to be sent to the GraphQL service.
     string document = "{ profile { name, age } }";
 
     // Execute the document and retrieve the response from the GraphQL service.
@@ -68,11 +69,14 @@ export default function GraphqlClientSecuritySslTls() {
       <h1>GraphQL client - SSL/TLS</h1>
 
       <p>
-        The <code>graphql:Client</code> can be configured to communicate through
-        HTTPS by providing a certificate file. The certificate can be provided
-        through the <code>secureSocket</code> field of the{" "}
-        <code>graphql:ClientConfiguration</code>. Use this to secure the
-        communication between the client and the server.
+        A GraphQL client can securely communicate with a GraphQL service via
+        HTTPS connection using SSL. Provide the{" "}
+        <code>graphql:ClientSecureSocket</code> configurations to the client to
+        initiate an HTTPS connection.
+      </p>
+
+      <p>
+        This example shows how to send a GraphQL request securely using SSL/TLS.
       </p>
 
       <Row

@@ -21,8 +21,10 @@ type Album readonly & record {|
 |};
 
 public function main() returns error? {
-    // Defines the HTTP client to call the APIs secured with bearer token authentication.
-    http:Client albumClient = check new ("localhost:9090",
+    // Defines the HTTP client to call the secured APIs.
+    // The client is enriched with the \`Authorization: Bearer <token>\` header by
+    // passing the \`http:BearerTokenConfig\` for the \`auth\` configuration of the client.
+    http:Client albumClient = check new("localhost:9090",
         auth = {
             token: "56ede317-4511-44b4-8579-a08f094ee8c5"
         },
@@ -60,11 +62,11 @@ export default function HttpClientBearerTokenAuthentication() {
       <h1>HTTP client - Bearer token authentication</h1>
 
       <p>
-        The <code>http:Client</code> can connect to a service that is secured
-        with bearer token authentication by adding the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header to each request.
-        The bearer token can be specified in the <code>auth</code> field of the
-        client configuration.
+        A client, which is secured with Bearer token auth can be used to connect
+        to a secured service. The client is enriched with the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
+        <code>http:BearerTokenConfig</code> for the <code>auth</code>{" "}
+        configuration of the client.
       </p>
 
       <Row
@@ -131,12 +133,10 @@ export default function HttpClientBearerTokenAuthentication() {
 
       <h2>Prerequisites</h2>
 
-      <ul style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "8px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>
-            Run a sample secured service with bearer token authentication.
-          </span>
+          <span>Run a sample secured service.</span>
         </li>
       </ul>
 
@@ -219,7 +219,7 @@ export default function HttpClientBearerTokenAuthentication() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> module - API documentation
+              <code>auth</code> package API documentation
             </a>
           </span>
         </li>

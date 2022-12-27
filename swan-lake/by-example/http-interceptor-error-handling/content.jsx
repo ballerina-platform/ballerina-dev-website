@@ -13,38 +13,30 @@ setCDN("https://unpkg.com/shiki/");
 
 const codeSnippetData = [
   `import ballerina/http;
+import ballerina/io;
 
-type Album readonly & record {|
-    string title;
-    string artist;
-|};
+// Header name checked by the request interceptor.
+final string check_header = "checkHeader";
 
-table<Album> key(title) albums = table [
-    {title: "Blue Train", artist: "John Coltrane"},
-    {title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"}
-];
+// Header value to be set to the request in the request error interceptor.
+final string request_check_header_value = "RequestErrorInterceptor";
 
 service class RequestInterceptor {
     *http:RequestInterceptor;
 
-    // This will return a \`HeaderNotFoundError\` if you do not set the \`x-api-version\` header. 
+    // This will return a \`HeaderNotFoundError\` if you do not set this header. 
     // Then, the execution will jump to the nearest \`RequestErrorInterceptor\`.
-    resource function 'default [string... path](
-            http:RequestContext ctx,
-            @http:Header {name: "x-api-version"} string xApiVersion)
-        returns http:NotImplemented|http:NextService|error? {
-        // Checks the API version header.    
-        if xApiVersion != "v1" {
-            return http:NOT_IMPLEMENTED;
-        }
+    resource function 'default [string... path](http:RequestContext ctx,
+            @http:Header string checkHeader) returns http:NextService|error? {
+        io:println("Check Header Value : ", checkHeader);
         return ctx.next();
     }
 }
 
 RequestInterceptor requestInterceptor = new;
 
-// A \`RequestErrorInterceptor\` service class implementation. It allows intercepting
-// the error that occurred in the request path and handle it accordingly.
+// A \`RequestErrorInterceptor\` service class implementation. It allows you to 
+// intercept the error that occurred in the request path and handle it accordingly.
 // A \`RequestErrorInterceptor\` service class can have only one resource function.
 service class RequestErrorInterceptor {
     *http:RequestErrorInterceptor;
@@ -52,31 +44,38 @@ service class RequestErrorInterceptor {
     // The resource function inside a \`RequestErrorInterceptor\` is only allowed 
     // to have the default method and path. The error occurred in the interceptor
     // execution can be accessed by the mandatory argument: \`error\`.
-    resource function 'default [string... path](error err) returns http:BadRequest {
-        // In this case, all of the errors are sent as \`400 BadRequest\` responses with a customized
-        // media type and body. You can also send different status code responses according to
-        // the error type. Furthermore, you can also call \`ctx.next()\` if you want to continue the 
-        // request flow after fixing the error.
-        return {
-            mediaType: "application/org+json",
-            body: {message: err.message()}
-        };
+    resource function 'default [string... path](error err, http:Request req,
+            http:RequestContext ctx) returns http:NextService|error? {
+        // In this case, a header is set to the request, and then, the modified request
+        // is dispatched to the target service. Moreover, you can send different 
+        // responses according to the error type.
+        req.setHeader(check_header, request_check_header_value);
+        return ctx.next();
     }
 }
 
 // Creates a new \`RequestErrorInterceptor\`.
 RequestErrorInterceptor requestErrorInterceptor = new;
 
-listener http:Listener interceptorListener = new (9090, config = {
+
+listener http:Listener interceptorListener = new http:Listener(9090, config = {
     // To handle all of the errors in the request path, the \`RequestErrorInterceptor\`
-    // is added as the last interceptor as it has to be executed last.
-    interceptors: [requestInterceptor, requestErrorInterceptor]
+    // is added as the last interceptor as it has to be executed last. 
+    interceptors: [requestInterceptor, requestErrorInterceptor] 
 });
 
 service / on interceptorListener {
 
-    resource function get albums() returns Album[] {
-        return albums.toArray();
+    resource function get greeting(@http:Header string checkHeader) returns http:Ok {
+        return {
+            headers: {
+                "checkedHeader": checkHeader
+            },
+            mediaType: "application/org+json",
+            body: {
+                message: "Greetings!"
+            }
+        };
     }
 }
 `,
@@ -108,16 +107,14 @@ export default function HttpInterceptorErrorHandling() {
       <h1>HTTP service - Interceptor error handling</h1>
 
       <p>
-        Errors that occurred in the request-response flow can be intercepted and
-        handled by the <code>ResponseErrorInterceptors</code>. In addition, the{" "}
-        <code>http:RequestErrorInterceptor</code> can be used to handle errors
-        that occurred while executing the <code>RequestInterceptors</code>. This
-        error interceptor can send a response according to the error similar to
-        a <code>ResponseErrorInterceptor</code>. Moreover, it can modify the
-        request and dispatch it to the target service. Use{" "}
-        <code>RequestErrorInterceptors</code> along with{" "}
-        <code>RequestInterceptors</code> to validate the request beforehand and
-        handle any errors during this validation.
+        Errors that occurred in the request-response pipeline can be intercepted
+        and handled by <code>ResponseErrorInterceptors</code>. In addition, a{" "}
+        <code>RequestErrorInterceptor</code> can be used to handle the errors
+        that occurred in the request interceptor execution path. The{" "}
+        <code>RequestErrorInterceptor</code> can send a response message
+        according to the error just like a <code>ResponseErrorInterceptor</code>
+        . Moreover, it can modify the request and dipatch it to the target
+        service.
       </p>
 
       <Row
@@ -323,36 +320,28 @@ export default function HttpInterceptorErrorHandling() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v http://localhost:9090/albums`}</span>
-              <span>{`*   Trying 127.0.0.1:9090...`}</span>
-              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> GET /albums HTTP/1.1`}</span>
+              <span>{`\$ curl -v http://localhost:9090/greeting`}</span>
+              <span>{`*   Trying ::1:9090...`}</span>
+              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
+              <span>{`> GET /greeting HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.79.1`}</span>
+              <span>{`> User-Agent: curl/7.77.0`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`> `}</span>
-              <span>{`* Mark bundle as not supporting multiuse`}</span>
-              <span>{`< HTTP/1.1 400 Bad Request`}</span>
+              <span>{`* Mark bundle as not supporting multiuse.`}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< checkedHeader: RequestErrorInterceptor`}</span>
               <span>{`< content-type: application/org+json`}</span>
-              <span>{`< content-length: 55`}</span>
+              <span>{`< content-length: 24`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Wed, 14 Dec 2022 15:33:27 +0530`}</span>
+              <span>{`< date: Tue, 19 Apr 2022 12:37:21 +0530`}</span>
               <span>{`< `}</span>
-              <span>{`{"message":"no header value found for 'x-api-version'"}`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`{"message":"Greetings!"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/http-client-send-request-receive-response/">
-            Send request/Receive response client
-          </a>{" "}
-          example.
-        </p>
-      </blockquote>
 
       <h2>Related links</h2>
 
@@ -361,7 +350,7 @@ export default function HttpInterceptorErrorHandling() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

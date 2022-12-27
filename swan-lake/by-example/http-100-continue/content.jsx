@@ -77,14 +77,10 @@ export default function Http100Continue() {
       <h1>HTTP service - 100 continue</h1>
 
       <p>
-        Convenience functions are provided in the <code>http</code> module for
-        ease of use when handling <code>100-continue</code> scenarios.{" "}
+        Convenience functions are provided in the HTTP library for ease of use
+        when handling <code>100-continue</code> scenarios.{" "}
         <code>100-continue</code> indicates that the server has received the
-        request headers and the client can proceed with sending the request. It
-        is done by invoking the <code>continue</code> method of the{" "}
-        <code>http:Caller</code> which results in an interim response containing
-        the <code>100 Continue</code> status code if allowed. This is useful
-        when handling multipart or large request payloads.
+        request headers and the client can proceed with sending the request.
       </p>
 
       <Row

@@ -15,7 +15,9 @@ const codeSnippetData = [
   `import ballerina/io;
 
 public function main() returns error? {
-    // Defines the gRPC client to call the APIs secured with bearer token authentication.
+    // Defines the gRPC client to call the secured APIs.
+    // The client metadata is enriched with the \`Authorization: Bearer <token>\`
+    // header by passing the \`grpc:BearerTokenConfig\` for the \`auth\` configuration of the client.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             token: "56ede317-4511-44b4-8579-a08f094ee8c5"
@@ -55,11 +57,15 @@ export default function GrpcClientBearerTokenAuth() {
       <h1>gRPC client - Bearer token authentication</h1>
 
       <p>
-        The <code>grpc:Client</code> can connect to a service that is secured
-        with bearer token authentication by enriching the client metadata with
-        the <code>Authorization: Bearer &lt;token&gt;</code> header. The bearer
-        token can be specified in the <code>auth</code> field of the client
-        configuration.
+        A client, which is secured with Bearer token authentication can be used
+        to connect to a secured service.
+      </p>
+
+      <p>
+        The client metadata is enriched with the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
+        <code>grpc:BearerTokenConfig</code> for the <code>auth</code>{" "}
+        configuration of the client.
       </p>
 
       <Row
@@ -147,13 +153,11 @@ export default function GrpcClientBearerTokenAuth() {
       </Row>
 
       <p>
-        Setting up the client is the same as setting up the simple RPC client
-        with additional configurations. For information on implementing the
-        client, see{" "}
-        <a href="/learn/by-example/grpc-client-simple/">
-          gRPC client - Simple RPC
-        </a>
-        .
+        You can refer to the{" "}
+        <a href="/learn/by-example/grpc-client-unary/">
+          gRPC client - Unary RPC
+        </a>{" "}
+        to implement the client used here.
       </p>
 
       <h2>Prerequisites</h2>
@@ -161,13 +165,11 @@ export default function GrpcClientBearerTokenAuth() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>
-            Run a sample secured service with bearer token authentication.
-          </span>
+          <span>Start a secured service.</span>
         </li>
       </ul>
 
-      <p>Run the client by executing the command below.</p>
+      <p>Execute the command below to run the client.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
@@ -256,7 +258,7 @@ export default function GrpcClientBearerTokenAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> module - API documentation
+              <code>auth</code> package - API documentation
             </a>
           </span>
         </li>

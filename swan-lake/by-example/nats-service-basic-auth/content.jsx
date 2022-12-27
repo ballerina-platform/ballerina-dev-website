@@ -15,15 +15,9 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/nats;
 
-public type Order record {
-    int orderId;
-    string productName;
-    decimal price;
-    boolean isValid;
-};
-
 // Initializes a NATS listener with TLS/SSL and username/password authentication.
-listener nats:Listener orderListener = new (nats:DEFAULT_URL,
+listener nats:Listener securedEP = new(nats:DEFAULT_URL,
+
     // To secure the client connections using username/password authentication, provide the credentials
     // with the \`nats:Credentials\` record.
     auth = {
@@ -32,13 +26,10 @@ listener nats:Listener orderListener = new (nats:DEFAULT_URL,
     }
 );
 
-// Binds the consumer to listen to the messages published to the 'orders.valid' subject.
-service "orders.valid" on orderListener {
-
-    remote function onMessage(Order 'order) returns error? {
-        if 'order.isValid {
-            log:printInfo(string \`Received valid order for \${'order.productName}\`);
-        }
+// Binds the consumer to listen to the messages published to the 'security.demo' subject.
+service "security.demo" on securedEP {
+    remote function onMessage(string message) returns error? {
+        log:printInfo("Received message: " + message);
     }
 }
 `,
@@ -68,13 +59,10 @@ export default function NatsServiceBasicAuth() {
       <h1>NATS service - Basic authentication</h1>
 
       <p>
-        The NATS authentication allows securing the client communication with
-        the server. In this example, the underlying connection of the listener
-        is secured with Basic Authentication. A secured{" "}
-        <code>nats:Listener</code> can be created by passing the URL of the NATS
-        broker and providing the authentication details using the{" "}
-        <code>nats:Credentials</code> record. Use it to authenticate client
-        connections using a username and password.
+        NATS client connections can be authenticated in many ways. One of them
+        is by using the username and password credentials. In this example, the
+        underlying connection of the listener is secured with basic
+        authentication.
       </p>
 
       <Row

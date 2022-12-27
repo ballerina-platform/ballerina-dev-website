@@ -58,13 +58,11 @@ export default function HttpServiceDataBinding() {
       <h1>REST service - Payload data binding</h1>
 
       <p>
-        HTTP service payload data binding allows accessing the request payload
-        using a resource signature parameter. The resource parameter which is
-        bound to the request payload should be annotated with{" "}
-        <code>@http:Payload</code> annotation. The resource parameter type
-        should be <code>anydata</code>. If the data binding fails, a{" "}
-        <code>400 Bad Request</code> response is sent to the client. Use this to
-        access the request payload directly from the resource.
+        HTTP service payload data binding helps to access the request payload
+        through a resource signature parameter. The payload parameter should be
+        declared with the <code>@Payload</code> annotation and the parameter
+        type can be <code>anydata</code>. Binding failures will be responded
+        with a 400 Bad Request response.
       </p>
 
       <Row
@@ -260,8 +258,8 @@ export default function HttpServiceDataBinding() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
-          </a>{" "}
-          example.
+          </a>
+          .
         </p>
       </blockquote>
 
@@ -272,7 +270,7 @@ export default function HttpServiceDataBinding() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/annotations#Payload">
-              <code>@http:Payload</code> annotation - API documentation
+              <code>http:Payload</code> annotation - API documentation
             </a>
           </span>
         </li>

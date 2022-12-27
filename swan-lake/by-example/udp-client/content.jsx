@@ -16,16 +16,17 @@ const codeSnippetData = [
 import ballerina/udp;
 
 public function main() returns error? {
+  
     // Creates a new connectionless UDP client.
-    // Optionally, you can provide the address that the socket needs to bind
+    // Optionally, you can provide the address that the socket needs to bind 
     // and the timeout in seconds, which specifies the read timeout value.
     // E.g.: \`udp:Client client = new (localHost = "localhost", timeout = 5);\`
     udp:Client socketClient = check new;
 
     udp:Datagram datagram = {
         remoteHost: "localhost",
-        remotePort: 9090,
-        data: "Hello Ballerina echo".toBytes()
+        remotePort : 9090,
+        data : "Hello Ballerina echo".toBytes()
     };
 
     // Sends the data to the remote host.
@@ -36,7 +37,7 @@ public function main() returns error? {
 
     // Waits until the data is received from the remote host.
     readonly & udp:Datagram result = check socketClient->receiveDatagram();
-    io:println("Received: ", string:fromBytes(result.data));
+    io:println("Received: ", string:fromBytes(result.data));        
 
     // Closes the client and releases the bound port.
     check socketClient->close();
@@ -68,15 +69,9 @@ export default function UdpClient() {
       <h1>UDP client - Send/Receive datagram</h1>
 
       <p>
-        The <code>udp:Client</code> sends and receives datagrams. A{" "}
-        <code>udp:Client</code> is created by optionally giving the address that
-        the socket needs to bind and the timeout in seconds, which specifies the
-        read timeout value. Once connected, <code>sendDatagram</code> and{" "}
-        <code>receiveDatagram</code> synchronous methods are used to send and
-        receive datagrams. Since they are synchronous methods often used in two
-        different strands. Use this to interact with UDP servers or implement
-        low latency connections for time-critical transmissions where data loss
-        is acceptable.
+        The UDP Client is used to send data to a specific remote host using the
+        UDP protocol. This sample demonstrates how to send a datagram to a
+        remote server and print the echoed response.
       </p>
 
       <Row

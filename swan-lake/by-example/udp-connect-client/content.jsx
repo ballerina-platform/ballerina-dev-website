@@ -17,13 +17,14 @@ import ballerina/io;
 import ballerina/udp;
 
 public function main() returns error? {
+  
     // Creates a new connection-oriented UDP client by providing the
     // \`remoteHost\` and the \`remotePort\`.
-    // Optionally, you can provide the interface that the socket needs to bind
+    // Optionally, you can provide the interface that the socket needs to bind 
     // and the timeout in seconds, which specifies the read timeout value.
     // E.g.: \`udp:ConnectClient socketClient = new ("www.ballerina.com", 80,
     // localHost = "localhost", timeout = 5);\`
-    udp:ConnectClient socketClient = check new ("localhost", 9090);
+    udp:ConnectClient socketClient = check new("localhost", 9090);
 
     // Sends the data to the connected remote host.
     // The parameter is a \`byte[]\`, which contains the data to be sent.
@@ -64,17 +65,15 @@ export default function UdpConnectClient() {
       <h1>UDP client - Send/Receive datagram with connection</h1>
 
       <p>
-        The <code>udp:ConnectClient</code> connects to a UDP socket, and then
-        sends and receives datagrams. When connected, data may not be received
-        from or sent to any other address. A <code>udp:ConnectClient</code> is
-        created by giving the <code>remoteHost</code> and{" "}
-        <code>remotePort</code>. Once connected, <code>writeBytes</code> and{" "}
-        <code>readBytes</code> synchronous methods are used to send and receive
-        byte streams. Since they are synchronous methods often used in two
-        different strands. The client remains connected until it is explicitly
-        disconnected or until it is closed. Use this to interact with UDP
-        servers or implement low latency connections for time-critical
-        transmissions where data loss is acceptable.
+        The ConnectClient is configured so that it only receives data from, and
+        sends data to, the given remote peer address. Once connected, data may
+        not be received from or sent to any other address.
+      </p>
+
+      <p>
+        The client remains connected until it is explicitly disconnected or
+        until it is closed. This sample demonstrates how to send data to a
+        connected server and print the echoed response.
       </p>
 
       <Row

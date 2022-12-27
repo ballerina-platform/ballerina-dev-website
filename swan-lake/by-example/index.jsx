@@ -195,7 +195,6 @@ import HttpCircuitBreaker from "./http-circuit-breaker/content.jsx";
 import HttpLoadBalancer from "./http-load-balancer/content.jsx";
 import HttpFailover from "./http-failover/content.jsx";
 import HttpDefaultResource from "./http-default-resource/content.jsx";
-import HttpDefaultErrorHandling from "./http-default-error-handling/content.jsx";
 import HttpServiceRedirects from "./http-service-redirects/content.jsx";
 import HttpCors from "./http-cors/content.jsx";
 import Http100Continue from "./http-100-continue/content.jsx";
@@ -224,16 +223,14 @@ import HttpResponseInterceptor from "./http-response-interceptor/content.jsx";
 import HttpErrorHandling from "./http-error-handling/content.jsx";
 import HttpInterceptorErrorHandling from "./http-interceptor-error-handling/content.jsx";
 import GraphqlHelloWorld from "./graphql-hello-world/content.jsx";
-import GraphqlReturningServiceObjects from "./graphql-returning-service-objects/content.jsx";
 import GraphqlReturningRecordValues from "./graphql-returning-record-values/content.jsx";
+import GraphqlReturningServiceObjects from "./graphql-returning-service-objects/content.jsx";
 import GraphqlInputTypes from "./graphql-input-types/content.jsx";
 import GraphqlMutations from "./graphql-mutations/content.jsx";
 import GraphqlSubscriptions from "./graphql-subscriptions/content.jsx";
 import GraphqlInputObjects from "./graphql-input-objects/content.jsx";
 import GraphqlInterfaces from "./graphql-interfaces/content.jsx";
 import GraphqlInterfacesImplementingInterfaces from "./graphql-interfaces-implementing-interfaces/content.jsx";
-import GraphqlServiceUnionTypes from "./graphql-service-union-types/content.jsx";
-import GraphqlServiceErrorHandling from "./graphql-service-error-handling/content.jsx";
 import GraphqlGraphiql from "./graphql-graphiql/content.jsx";
 import GraphqlDocumentation from "./graphql-documentation/content.jsx";
 import GraphqlDirectives from "./graphql-directives/content.jsx";
@@ -257,7 +254,6 @@ import GraphqlClientSecuritySelfSignedJwtAuthentication from "./graphql-client-s
 import GraphqlClientSecurityOauth2PasswordGrantType from "./graphql-client-security-oauth2-password-grant-type/content.jsx";
 import WebsocketBasicSample from "./websocket-basic-sample/content.jsx";
 import WebsocketServicePayloadConstraintValidation from "./websocket-service-payload-constraint-validation/content.jsx";
-import WebsocketServiceErrorHandling from "./websocket-service-error-handling/content.jsx";
 import WebsocketClient from "./websocket-client/content.jsx";
 import WebsocketClientPayloadConstraintValidation from "./websocket-client-payload-constraint-validation/content.jsx";
 import WebsocketServiceSslTls from "./websocket-service-ssl-tls/content.jsx";
@@ -280,14 +276,14 @@ import WebsocketRetryClient from "./websocket-retry-client/content.jsx";
 import WebsubWebhookSample from "./websub-webhook-sample/content.jsx";
 import DynamicListener from "./dynamic-listener/content.jsx";
 import StopHandler from "./stop-handler/content.jsx";
-import GrpcServiceSimple from "./grpc-service-simple/content.jsx";
+import GrpcServiceUnary from "./grpc-service-unary/content.jsx";
 import GrpcServiceServerStreaming from "./grpc-service-server-streaming/content.jsx";
 import GrpcServiceClientStreaming from "./grpc-service-client-streaming/content.jsx";
 import GrpcServiceBidirectionalStreaming from "./grpc-service-bidirectional-streaming/content.jsx";
 import GrpcServiceHeaders from "./grpc-service-headers/content.jsx";
 import GrpcServerReflection from "./grpc-server-reflection/content.jsx";
 import GrpcServiceCheckDeadline from "./grpc-service-check-deadline/content.jsx";
-import GrpcClientSimple from "./grpc-client-simple/content.jsx";
+import GrpcClientUnary from "./grpc-client-unary/content.jsx";
 import GrpcClientServerStreaming from "./grpc-client-server-streaming/content.jsx";
 import GrpcClientClientStreaming from "./grpc-client-client-streaming/content.jsx";
 import GrpcClientBidirectionalStreaming from "./grpc-client-bidirectional-streaming/content.jsx";
@@ -319,17 +315,16 @@ import NatsClientSecureConnection from "./nats-client-secure-connection/content.
 import NatsClientBasicAuth from "./nats-client-basic-auth/content.jsx";
 import KafkaServiceConsumeMessage from "./kafka-service-consume-message/content.jsx";
 import KafkaServiceConstraintValidation from "./kafka-service-constraint-validation/content.jsx";
-import KafkaServiceErrorHandling from "./kafka-service-error-handling/content.jsx";
-import KafkaProducerProduceMessage from "./kafka-producer-produce-message/content.jsx";
-import KafkaConsumerPayloadDataBinding from "./kafka-consumer-payload-data-binding/content.jsx";
-import KafkaConsumerConsumerRecordDataBinding from "./kafka-consumer-consumer-record-data-binding/content.jsx";
-import KafkaConsumerConstraintValidation from "./kafka-consumer-constraint-validation/content.jsx";
+import KafkaClientProduceMessage from "./kafka-client-produce-message/content.jsx";
+import KafkaClientPayloadDataBinding from "./kafka-client-payload-data-binding/content.jsx";
+import KafkaClientConsumerRecordDataBinding from "./kafka-client-consumer-record-data-binding/content.jsx";
+import KafkaClientConstraintValidation from "./kafka-client-constraint-validation/content.jsx";
 import KafkaServiceSsl from "./kafka-service-ssl/content.jsx";
 import KafkaServiceSasl from "./kafka-service-sasl/content.jsx";
-import KafkaProducerSsl from "./kafka-producer-ssl/content.jsx";
-import KafkaProducerSasl from "./kafka-producer-sasl/content.jsx";
-import KafkaConsumerSsl from "./kafka-consumer-ssl/content.jsx";
-import KafkaConsumerSasl from "./kafka-consumer-sasl/content.jsx";
+import KafkaClientProducerSsl from "./kafka-client-producer-ssl/content.jsx";
+import KafkaClientConsumerSsl from "./kafka-client-consumer-ssl/content.jsx";
+import KafkaClientProducerSasl from "./kafka-client-producer-sasl/content.jsx";
+import KafkaClientConsumerSasl from "./kafka-client-consumer-sasl/content.jsx";
 import RabbitmqConsumer from "./rabbitmq-consumer/content.jsx";
 import RabbitmqConsumerWithClientAcknowledgement from "./rabbitmq-consumer-with-client-acknowledgement/content.jsx";
 import RabbitmqTransactionConsumer from "./rabbitmq-transaction-consumer/content.jsx";
@@ -353,14 +348,14 @@ import UdpConnectClient from "./udp-connect-client/content.jsx";
 import ReceiveEmailUsingService from "./receive-email-using-service/content.jsx";
 import SendEmail from "./send-email/content.jsx";
 import ReceiveEmailUsingClient from "./receive-email-using-client/content.jsx";
-import FtpServiceReceiveFile from "./ftp-service-receive-file/content.jsx";
-import FtpServiceSendFile from "./ftp-service-send-file/content.jsx";
-import FtpClientReceiveFile from "./ftp-client-receive-file/content.jsx";
-import FtpClientSendFile from "./ftp-client-send-file/content.jsx";
-import SftpServiceReceiveFile from "./sftp-service-receive-file/content.jsx";
-import SftpServiceSendFile from "./sftp-service-send-file/content.jsx";
-import SftpClientReceiveFile from "./sftp-client-receive-file/content.jsx";
-import SftpClientSendFile from "./sftp-client-send-file/content.jsx";
+import FtpServiceRead from "./ftp-service-read/content.jsx";
+import FtpServiceReadWrite from "./ftp-service-read-write/content.jsx";
+import FtpClientRead from "./ftp-client-read/content.jsx";
+import FtpClientWrite from "./ftp-client-write/content.jsx";
+import SftpServiceRead from "./sftp-service-read/content.jsx";
+import SftpServiceReadWrite from "./sftp-service-read-write/content.jsx";
+import SftpClientRead from "./sftp-client-read/content.jsx";
+import SftpClientWrite from "./sftp-client-write/content.jsx";
 import MysqlQueryOperation from "./mysql-query-operation/content.jsx";
 import MysqlQueryRowOperation from "./mysql-query-row-operation/content.jsx";
 import MysqlQueryColumnMapping from "./mysql-query-column-mapping/content.jsx";
@@ -611,7 +606,6 @@ const BBEs = {
   HttpLoadBalancer,
   HttpFailover,
   HttpDefaultResource,
-  HttpDefaultErrorHandling,
   HttpServiceRedirects,
   HttpCors,
   Http100Continue,
@@ -640,16 +634,14 @@ const BBEs = {
   HttpErrorHandling,
   HttpInterceptorErrorHandling,
   GraphqlHelloWorld,
-  GraphqlReturningServiceObjects,
   GraphqlReturningRecordValues,
+  GraphqlReturningServiceObjects,
   GraphqlInputTypes,
   GraphqlMutations,
   GraphqlSubscriptions,
   GraphqlInputObjects,
   GraphqlInterfaces,
   GraphqlInterfacesImplementingInterfaces,
-  GraphqlServiceUnionTypes,
-  GraphqlServiceErrorHandling,
   GraphqlGraphiql,
   GraphqlDocumentation,
   GraphqlDirectives,
@@ -673,7 +665,6 @@ const BBEs = {
   GraphqlClientSecurityOauth2PasswordGrantType,
   WebsocketBasicSample,
   WebsocketServicePayloadConstraintValidation,
-  WebsocketServiceErrorHandling,
   WebsocketClient,
   WebsocketClientPayloadConstraintValidation,
   WebsocketServiceSslTls,
@@ -696,14 +687,14 @@ const BBEs = {
   WebsubWebhookSample,
   DynamicListener,
   StopHandler,
-  GrpcServiceSimple,
+  GrpcServiceUnary,
   GrpcServiceServerStreaming,
   GrpcServiceClientStreaming,
   GrpcServiceBidirectionalStreaming,
   GrpcServiceHeaders,
   GrpcServerReflection,
   GrpcServiceCheckDeadline,
-  GrpcClientSimple,
+  GrpcClientUnary,
   GrpcClientServerStreaming,
   GrpcClientClientStreaming,
   GrpcClientBidirectionalStreaming,
@@ -735,17 +726,16 @@ const BBEs = {
   NatsClientBasicAuth,
   KafkaServiceConsumeMessage,
   KafkaServiceConstraintValidation,
-  KafkaServiceErrorHandling,
-  KafkaProducerProduceMessage,
-  KafkaConsumerPayloadDataBinding,
-  KafkaConsumerConsumerRecordDataBinding,
-  KafkaConsumerConstraintValidation,
+  KafkaClientProduceMessage,
+  KafkaClientPayloadDataBinding,
+  KafkaClientConsumerRecordDataBinding,
+  KafkaClientConstraintValidation,
   KafkaServiceSsl,
   KafkaServiceSasl,
-  KafkaProducerSsl,
-  KafkaProducerSasl,
-  KafkaConsumerSsl,
-  KafkaConsumerSasl,
+  KafkaClientProducerSsl,
+  KafkaClientConsumerSsl,
+  KafkaClientProducerSasl,
+  KafkaClientConsumerSasl,
   RabbitmqConsumer,
   RabbitmqConsumerWithClientAcknowledgement,
   RabbitmqTransactionConsumer,
@@ -769,14 +759,14 @@ const BBEs = {
   ReceiveEmailUsingService,
   SendEmail,
   ReceiveEmailUsingClient,
-  FtpServiceReceiveFile,
-  FtpServiceSendFile,
-  FtpClientReceiveFile,
-  FtpClientSendFile,
-  SftpServiceReceiveFile,
-  SftpServiceSendFile,
-  SftpClientReceiveFile,
-  SftpClientSendFile,
+  FtpServiceRead,
+  FtpServiceReadWrite,
+  FtpClientRead,
+  FtpClientWrite,
+  SftpServiceRead,
+  SftpServiceReadWrite,
+  SftpClientRead,
+  SftpClientWrite,
   MysqlQueryOperation,
   MysqlQueryRowOperation,
   MysqlQueryColumnMapping,

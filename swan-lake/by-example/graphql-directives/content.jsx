@@ -20,7 +20,7 @@ type Profile record {
     Gender gender;
 };
 
-// Marks enum value as deprecated.
+// Marking enum value as deprecated.
 enum Gender {
     MALE,
     FEMALE,
@@ -32,8 +32,7 @@ enum Gender {
 }
 
 service /graphql on new graphql:Listener(9090) {
-
-    // Marks a field as deprecated.
+    // Marking a field as deprecated.
     # # Deprecated
     # The \`profile\` field is deprecated. Use \`profile\` instead.
     @deprecated
@@ -113,20 +112,14 @@ export default function GraphqlDirectives() {
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>GraphQL service - Directives</h1>
 
-      <p>
-        The Ballerina <code>graphql</code> module allows using the following set
-        of pre-defined directives.
-      </p>
+      <p>The Ballerina GraphQL supports the following GraphQL directives.</p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <code>@deprecated</code> - The <code>@deprecated</code> annotation
-            can be used as the <code>deprecated</code> directive on the{" "}
-            <code>resource</code>/<code>remote</code> methods and{" "}
-            <code>enum</code> values. Use this to mark a field or an enum value
-            as deprecated.
+            <code>@depricated</code> - Marks the schema definition of a field or
+            enum value as deprecated with an optional reason.
           </span>
         </li>
       </ul>
@@ -134,9 +127,8 @@ export default function GraphqlDirectives() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <code>@skip(if: Boolean!)</code> - The <code>@skip</code> directive
-            can be used on fields or fragments in GraphQL documents. Use this to
-            skip a field execution based on the given condition.
+            <code>@skip(if: Boolean!)</code> - If true, the decorated field or
+            fragment in an operation is not resolved by the GraphQL server.
           </span>
         </li>
       </ul>
@@ -144,12 +136,16 @@ export default function GraphqlDirectives() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <code>@include(if: Boolean!)</code> - The <code>@include</code>{" "}
-            directive can be used on fields or fragments in GraphQL documents.
-            Use this to include a field execution based on the given condition.
+            <code>@include(if: Boolean!)</code> - If false, the decorated field
+            or fragment in an operation is not resolved by the GraphQL server.
           </span>
         </li>
       </ul>
+
+      <p>
+        This example shows how to use GraphQL directives in Ballerina GraphQL
+        services.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -298,9 +294,10 @@ export default function GraphqlDirectives() {
 
       <p>
         The requests below demonstrate the usage of the <code>@skip</code> and{" "}
-        <code>@include</code> directives. Invoke the service using the following
-        cURL command to inspect the result.
+        <code>@include</code> directives. Invoke the service using the
       </p>
+
+      <p>following cURL command to inspect the result.</p>
 
       <p>
         Send the following document containing the <code>@skip</code> directive
@@ -775,7 +772,7 @@ export default function GraphqlDirectives() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> module - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>

@@ -109,7 +109,7 @@ export default function UuidGeneration() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a2becb39583dbf7aa6a51dede6ab998f&file=uuid_generation.bal",
+                "https://play.ballerina.io/?gist=c3b5ab5abbe91d7ea059446e3f7fba1d&file=uuid_generation.bal",
                 "_blank"
               );
             }}
@@ -284,7 +284,7 @@ export default function UuidGeneration() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Manage sheduled jobs"
+            title="Manage scheduled jobs"
             href="/learn/by-example/manage-scheduled-jobs"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -312,7 +312,7 @@ export default function UuidGeneration() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Manage sheduled jobs
+                  Manage scheduled jobs
                 </span>
               </div>
             </div>

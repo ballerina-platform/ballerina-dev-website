@@ -14,19 +14,19 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// Defines the \`NewProfile\` record type to use as an input object.
+// Define the \`NewProfile\` record type to use as an input object.
 type NewProfile record {|
     string name;
     int age;
 |};
 
-// Defines the \`Profile\` record type to use as an output object.
+// Define the \`Profile\` record type to use as an output object.
 type Profile readonly & record {|
     *NewProfile;
     int id;
 |};
 
-// Defines an in-memory table to store the Profiles.
+// Define an in-memory table to store the Profiles.
 table<Profile> key(id) profiles = table [];
 
 service /graphql on new graphql:Listener(9090) {
@@ -83,12 +83,23 @@ export default function GraphqlInputObjects() {
       <h1>GraphQL service - Input objects</h1>
 
       <p>
-        The Ballerina <code>graphql</code> module allows defining GraphQL input
-        objects in a <code>graphql:Service</code> using Ballerina records. To
-        define a GraphQL input object, define a record type in Ballerina and use
-        it as an input type in a <code>resource</code> or a <code>remote</code>{" "}
-        method inside a <code>graphql:Service</code>. Use GraphQL input objects
-        to define non-primitive, structured input arguments in a GraphQL API.
+        GraphQL resolvers can have record types as input parameters, which will
+        be mapped to an <code>INPUT_OBJECT</code> in the generated GraphQL
+        schema. The input parameters of the resolver function will be added as
+        input arguments of the corresponding field in the generated GraphQL
+        schema.
+      </p>
+
+      <p>
+        According to the GraphQL specification, an input type cannot be used as
+        an output type. Therefore, using the same type as an input and an output
+        will result is a compilation error.
+      </p>
+
+      <p>
+        This example shows a GraphQL endpoint, which has a field{" "}
+        <code>addProfile</code> with an input of type <code>NewProfile!</code>{" "}
+        in the root <code>Mutation</code> type.
       </p>
 
       <Row
@@ -362,7 +373,7 @@ export default function GraphqlInputObjects() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> module - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>

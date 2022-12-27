@@ -335,7 +335,7 @@ export default function StopHandler() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-service-simple">
+          <Link title="Unary RPC" href="/learn/by-example/grpc-service-unary">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -344,7 +344,7 @@ export default function StopHandler() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Simple RPC
+                  Unary RPC
                 </span>
               </div>
               <svg

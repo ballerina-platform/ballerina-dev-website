@@ -19,7 +19,7 @@ public function main() returns error? {
     // Defines the WebSocket client to call the Basic authentication secured APIs.
     // The client is enriched with the \`Authorization: Basic <token>\` header by
     // passing the \`websocket:CredentialsConfig\` for the \`auth\` configuration of the client.
-    websocket:Client chatClient = check new ("wss://localhost:9090/chat",
+    websocket:Client chatClient = check new("wss://localhost:9090/chat",
         auth = {
             username: "ldclakmal",
             password: "ldclakmal@123"
@@ -59,11 +59,11 @@ export default function WebsocketClientBasicAuth() {
       <h1>WebSocket client - Basic authentication</h1>
 
       <p>
-        The <code>websocket:Client</code> can connect to a service that is
-        secured with basic authentication by adding the{" "}
-        <code>Authorization: Basic &lt;token&gt;</code> header to the initial
-        HTTP request. The username and password for basic authentication can be
-        specified in the <code>auth</code> field of the client configuration.
+        A client, which is secured with Basic authentication can be used to
+        connect to a secured service. The client is enriched with the{" "}
+        <code>Authorization: Basic &lt;token&gt;</code> header by passing the{" "}
+        <code>websocket:CredentialsConfig</code> for the <code>auth</code>{" "}
+        configuration of the client.
       </p>
 
       <Row
@@ -234,7 +234,7 @@ export default function WebsocketClientBasicAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> module - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>
@@ -244,7 +244,7 @@ export default function WebsocketClientBasicAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> module - API documentation
+              <code>auth</code> package - API documentation
             </a>
           </span>
         </li>

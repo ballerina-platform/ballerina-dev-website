@@ -35,10 +35,9 @@ import ballerina/log;
     value: GRPC_BIDIRECTIONAL_STREAMING_DESC
 }
 service "Chat" on new grpc:Listener(9090) {
-
     // The generated code of the Ballerina gRPC command does not contain ChatStringCaller.
     // To show the usage of a caller, this RPC call uses a caller to send messages to the client.
-    remote function chat(ChatStringCaller caller,
+    isolated remote function chat(ChatStringCaller caller,
                     stream<ChatMessage, error?> clientStream) {
         // Reads and processes each message in the client stream.
         do {
@@ -83,14 +82,11 @@ export default function GrpcServiceBidirectionalStreaming() {
       <h1>gRPC service - Bidirectional streaming RPC</h1>
 
       <p>
-        A <code>grpc:Listener</code> is created by providing the port and a{" "}
-        <code>grpc:Service</code> is attached to it. In the bidirectional
-        streaming scenario, once a client is connected to the service, the
-        client and the service send message streams to each other. In this
-        scenario, the two streams operate independently, and therefore, the
-        clients and servers can read and write in any order. Use this to receive
-        multiple request messages from a client and send multiple response
-        messages back.
+        The gRPC server connector exposes the gRPC service over HTTP2. In a gRPC
+        bidirectional streaming scenario, the gRPC service and the client
+        operate when each other sends a sequence of messages using a read-write
+        stream. In such scenarios, the two streams operate independently.
+        Therefore, clients and servers can read and write in any order.
       </p>
 
       <h2>Generate the service definition</h2>
@@ -346,7 +342,7 @@ export default function GrpcServiceBidirectionalStreaming() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
-          <span>Run the service by executing the command below.</span>
+          <span>Execute the command below to run the service.</span>
         </li>
       </ul>
 
@@ -426,7 +422,7 @@ export default function GrpcServiceBidirectionalStreaming() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> module - API documentation
+              <code>grpc</code> package - API documentation
             </a>
           </span>
         </li>

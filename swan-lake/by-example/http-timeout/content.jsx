@@ -17,6 +17,7 @@ import ballerina/io;
 
 public function main() returns error? {
     http:Client albumClient = check new ("localhost:9090", {
+        // Timeout configuration.
         timeout: 10
     });
     string payload = check albumClient->/albums;
@@ -49,10 +50,8 @@ export default function HttpTimeout() {
       <h1>HTTP client - Timeout</h1>
 
       <p>
-        The <code>timeout</code> field is used to gracefully handle response
-        delays that could occur due to network problems or the back-end. The
-        client timeout is configured in the <code>timeout</code> field of the
-        client configuration in seconds.
+        The timeout is used to gracefully handle response delays which could
+        occur due to network problems or the back-end.
       </p>
 
       <Row
@@ -222,7 +221,7 @@ export default function HttpTimeout() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>
@@ -232,7 +231,7 @@ export default function HttpTimeout() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="spec/http/">
-              <code>http</code> module - Specification
+              <code>http</code> package - Specification
             </a>
           </span>
         </li>

@@ -65,11 +65,10 @@ export default function GrpcClientServerStreaming() {
       <h1>gRPC client - Server-side streaming RPC</h1>
 
       <p>
-        A <code>grpc:Client</code> is created by providing the endpoint URL of a
-        gRPC server. In the server streaming scenario, once connected, the
-        client sends a request message to the remote service and gets a message
-        stream as the response, which contains multiple messages. Use this to
-        send a single request message and get multiple response messages back.
+        The gRPC Server Connector is used to expose gRPC services over HTTP/2.
+        In a gRPC server streaming scenario, a client sends a request to the
+        server and gets a stream to read the messages until all the messages are
+        read.
       </p>
 
       <h2>Generate the service definition</h2>
@@ -336,7 +335,7 @@ export default function GrpcClientServerStreaming() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
-          <span>Run the client by executing the command below.</span>
+          <span>Execute the command below to run the client.</span>
         </li>
       </ul>
 
@@ -409,7 +408,7 @@ export default function GrpcClientServerStreaming() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> module - API documentation
+              <code>grpc</code> package - API documentation
             </a>
           </span>
         </li>
@@ -438,7 +437,7 @@ export default function GrpcClientServerStreaming() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-client-simple">
+          <Link title="Unary RPC" href="/learn/by-example/grpc-client-unary">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -464,7 +463,7 @@ export default function GrpcClientServerStreaming() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Simple RPC
+                  Unary RPC
                 </span>
               </div>
             </div>

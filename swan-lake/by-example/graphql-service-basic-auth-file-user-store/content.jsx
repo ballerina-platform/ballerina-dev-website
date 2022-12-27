@@ -28,9 +28,11 @@ listener graphql:Listener securedEP = new (9090,
     }
 );
 
-// Basic authentication with the file user store can be enabled by setting
-// the \`graphql:FileUserStoreConfig\` configuration.
-// Authorization is based on scopes, which can be specified in the \`scopes\` field.
+// The service can be secured with Basic Auth and can be authorized optionally. Using Basic Auth
+// with the file user store can be enabled by setting the \`graphql:FileUserStoreConfig\`
+// configurations. Authorization is based on scopes. A scope maps to one or more groups.
+// Authorization can be enabled by setting the \`string|string[]\` type configurations for the
+// \`scopes\` field.
 @graphql:ServiceConfig {
     auth: [
         {
@@ -40,7 +42,6 @@ listener graphql:Listener securedEP = new (9090,
     ]
 }
 service /graphql on securedEP {
-    
     resource function get profile() returns Profile {
         return {
             name: "Walter White",
@@ -90,24 +91,22 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
       <h1>GraphQL service - Basic authentication file user store</h1>
 
       <p>
-        The <code>graphql:Service</code> can be secured with basic
-        authentication and additionally, scopes can be added to enforce
-        authorization. It validates the basic authentication token sent in the{" "}
-        <code>Authorization</code> header against the provided configurations in
-        the <code>Config.toml</code> file. The file stores the usernames and
-        passwords for the authentication and the scopes for the authorization.
-        To engage authentication set the default values to the{" "}
-        <code>fileUserStoreConfig</code> field and add the{" "}
-        <code>Config.toml</code> file next to the service file. To enable
-        authorization, set the scopes to the <code>scopes</code> field. Both
-        configurations must be given as part of the{" "}
-        <code>@graphql:ServiceConfig</code> annotation.
+        A GraphQL service can be secured with Basic authentication and
+        optionally by enforcing authorization. Then, it validates the Basic
+        authentication token sent in the <code>Authorization</code> header
+        against the provided configurations. This reads data from a file, which
+        has a TOML format. This stores the usernames, passwords for
+        authentication, and scopes for authorization.
       </p>
 
       <p>
-        A <code>graphql:Error</code> response is sent to the client when the
-        authentication or authorization fails. Use this to authenticate and
-        authorize requests based on user stores.
+        Ballerina uses the concept of scopes for authorization. A resource
+        declared in a service can be bound to one/more scope(s). In the
+        authorization phase, the scopes of the service are compared against the
+        scope included in the user store for at least one match between the two
+        sets. The <code>Config.toml</code> file is used to store the usernames,
+        passwords, and scopes. Each user can have a password and optionally
+        assigned scopes as an array.
       </p>
 
       <Row
@@ -385,7 +384,7 @@ export default function GraphqlServiceBasicAuthFileUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> module - API documentation
+              <code>auth</code> package - API documentation
             </a>
           </span>
         </li>

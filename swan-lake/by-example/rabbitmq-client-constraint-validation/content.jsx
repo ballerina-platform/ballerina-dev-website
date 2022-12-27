@@ -18,7 +18,7 @@ import ballerina/log;
 
 public type Order record {
     int orderId;
-    // Add a constraint to allow only string values of length between 1 and 30.
+    // Add a constraint to only allow string values of length between 30 and 1.
     @constraint:String {maxLength: 30, minLength: 1}
     string productName;
     decimal price;
@@ -36,7 +36,7 @@ public function main() returns error? {
             log:printInfo(string \`Received valid order for \${'order.productName}\`);
         } 
     } else if 'order is rabbitmq:PayloadValidationError {
-        log:printError("Payload validation failed", 'order);
+            log:printError("Payload validation failed", 'order);
     } else {
         log:printError("Error occurred while consuming");    
     }
@@ -68,16 +68,9 @@ export default function RabbitmqClientConstraintValidation() {
       <h1>RabbitMQ client - Constraint validation</h1>
 
       <p>
-        The Ballerina constraint module allows you to add additional constraints
-        to the message content. The constraints can be added to a given data
-        type using different annotations. When a message with a constraint is
-        received from the RabbitMQ server, it is validated internally. This
-        validation happens soon after the successful data-binding of the message
-        content before returning the message record. If the validation fails,
-        the <code>rabbitmq:PayloadValidationError</code> error is returned. Use
-        this to validate the message content as the application receives it,
-        which allows you to guard against unnecessary message content processing
-        and malicious content.
+        This example shows how the payload is validated related to the
+        constraints added to the payload record. When a payload is not valid, an
+        error of type <code>rabbitmq:PayloadValidationError</code> is returned.
       </p>
 
       <Row

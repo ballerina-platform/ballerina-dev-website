@@ -72,7 +72,7 @@ export default function DefaultValuesForFunctionParameters() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=75254e38fb4a72fc299f494ad843623e&file=default_values_for_function_parameters.bal",
+                "https://play.ballerina.io/?gist=35e7501ce85deac3ebf608e1d5b89a55&file=default_values_for_function_parameters.bal",
                 "_blank"
               );
             }}

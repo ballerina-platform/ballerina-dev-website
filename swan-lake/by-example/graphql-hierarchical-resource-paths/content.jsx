@@ -16,25 +16,25 @@ const codeSnippetData = [
 
 // This service has multiple resources with hierarchical resource paths. Since all the resource
 // paths starts with \`profile\`, the root \`Query\` operation will have a single field named \`profile\`.
-// The type of this field is \`profile!\`. (For hierarchical paths, the field name and the
+// The type of this field will also be \`profile\`. (For hierarchical paths, the field name and the
 // type name will be the same). The \`profile\` type has two fields: \`quote\` and \`name\`. The type of
 // the \`quote\` field is \`String!\` and the type of the \`name\` field is \`name!\`. The \`name\` type has
 // two fields: \`first\` and the \`last\`. Both of the fields are of type \`String!\`.
 service /graphql on new graphql:Listener(9090) {
 
-    // This resource method represents the \`quote\` field under the \`profile\` object.
+    // This resource represents the \`quote\` field under the \`profile\` object.
     resource function get profile/quote() returns string {
         return "I am the one who knocks!";
     }
 
-    // This resource method represents the \`first\` field under the \`name\` object type. The \`name\`
-    // field in the \`profile\` object is of type \`name!\`.
+    // This resource represents the \`first\` field under the \`name\` object type. The \`name\` field
+    // in the \`profile\` object is of type \`name\`.
     resource function get profile/name/first() returns string {
         return "Walter";
     }
 
-    // This resource method represents the \`last\` field under the \`name\` object type. The \`name\`
-    // field in the \`profile\` object is of type \`name!\`.
+    // This resource represents the \`last\` field under the \`name\` object type. The \`name\` field in
+    // the \`profile\` object is of type \`name\`.
     resource function get profile/name/last() returns string {
         return "White";
     }
@@ -78,13 +78,18 @@ export default function GraphqlHierarchicalResourcePaths() {
       <h1>GraphQL service - Hierarchical resource paths</h1>
 
       <p>
-        The Ballerina <code>graphql</code> module allows using hierarchical
-        resource paths in the GraphQL resources. When hierarchical resource
-        paths are used, a GraphQL output object type is created for each
-        intermediate path segment with the same name. Every sub-path under a
-        path segment is added as a field of the created type. Hierarchical paths
-        can be used when there is no need to define the GraphQL output object
-        types explicitly.
+        The resources in Ballerina GraphQL services can have hierarchical
+        resource paths. When a hierarchical path is present, an{" "}
+        <code>OBJECT</code> type is created for each intermediate path segment
+        with the same name. Every sub path under a path segment will be added as
+        a field of the created type.
+      </p>
+
+      <p>
+        This example shows a GraphQL endpoint, which has a <code>profile</code>{" "}
+        field of type <code>profile!</code>. A GraphQL client can query this
+        service to retrieve specific fields or subfields of the{" "}
+        <code>Profile</code> object.
       </p>
 
       <Row
@@ -402,7 +407,7 @@ export default function GraphqlHierarchicalResourcePaths() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> module - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>

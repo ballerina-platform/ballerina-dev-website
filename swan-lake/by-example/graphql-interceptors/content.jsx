@@ -15,28 +15,30 @@ const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/log;
 
-// Defines an interceptor \`LogInterceptor\` using a service class. It cannot have any
+// Define an interceptor \`LogInterceptor\` using a service class. It cannot have any
 // \`resource\`/\`remote\` methods except the \`execute()\` remote method. Other methods are allowed.
 readonly service class LogInterceptor {
-    // Includes the \`graphql:Interceptor\` service object from the GraphQL package.
+
+    // Includes the \`graphql:Interceptors\` service object from the GraphQL package.
     *graphql:Interceptor;
 
     // Implement the \`execute()\` remote method provided by the \`graphql:Interceptor\` object.
     // Within the function, the \`graphql:Context\` and the \`graphql:Field\` object can be accessed to
-    // get the request and field-related information.
+    // get the request and field related information.
     isolated remote function execute(graphql:Context context, graphql:Field 'field)
-        returns anydata|error {
+    returns anydata|error {
+
         // Access the current execution field name using the \`graphql:Field\` object.
         string fieldName = 'field.getName();
 
-        // This log statement executes before the resolver execution.
+        // This log statement executes begore the resolver execution.
         log:printInfo(string \`Field "\${fieldName}" execution started!\`);
 
         // The \`context.resolve()\` function can be used to invoke the next interceptor. If all the
-        // interceptors were executed, and it invokes the actual resolver function. The function
-        // returns an \`anydata\` type value that includes the execution result of the next
-        // interceptor or the actual resolver. To call the \`context.resolve()\` function, the
-        // \`graphql:Field\` value should be provided as the argument.
+        // interceptors were executed, it invokes the actual resolver function. The function returns
+        // an \`anydata\` type value that includes the execution result of the next interceptor or the
+        //  actual resolver. To call the \`context.resolve()\` function, the \`graphql:Field\` value
+        // should be provided as the argument.
         var data = context.resolve('field);
 
         // This log statement executes after the resolver execution.
@@ -44,16 +46,17 @@ readonly service class LogInterceptor {
 
         // Returns the execution result of the next interceptor or the resolver.
         return data;
+
     }
 }
 
 @graphql:ServiceConfig {
-    // Interceptor instances should be inserted into the \`interceptors\` array according to the
+    // Interceptor instances should be inserted to the \`interceptors\` array according to the
     // desired execution order.
     interceptors: [new LogInterceptor()]
+
 }
 service /graphql on new graphql:Listener(9090) {
-
     isolated resource function get name() returns string {
         log:printInfo("Executing the field \\"name\\"");
         return "GraphQL Interceptors";
@@ -93,25 +96,32 @@ export default function GraphqlInterceptors() {
       <h1>GraphQL service - Interceptors</h1>
 
       <p>
-        The <code>graphql:Service</code> allows adding interceptors for GraphQL
-        requests to execute custom logic. A interceptor can be defined using a{" "}
-        <code>readonly</code> class that includes the{" "}
-        <code>graphql:Interceptor</code> type. The interceptor class must
-        implement the <code>execute</code> remote method, which is defined in
-        the <code>graphql:Interceptor</code> service object type. They can be
-        passed as an array using the <code>interceptors</code> field in the{" "}
-        <code>graphql:ServiceConfig</code> annotation. The provided interceptors
-        will be executed using the <em>onion principle</em>. Use the
-        interceptors to execute custom logic before and after executing the{" "}
-        <code>resource</code> and <code>remote</code> methods that needs to be
-        separated from the business logic.
+        The GraphQL <code>interceptors</code> can be used to execute custom
+        logic before and after the resolver function gets invoked. It can be
+        defined as a read-only service class, which includes the{" "}
+        <code>graphql:Interceptor</code> service object.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Note:</strong> A service can have zero or more interceptors.
-        </p>
-      </blockquote>
+      <p>
+        The interceptor service class should implement the{" "}
+        <code>execute(graphql:Context context, graphql:Field 'field)</code>{" "}
+        remote method, which is provided by the interceptor service object. The
+        custom logic can be included in this remote method. The interceptors
+        should be provided using the <code>graphql:ServiceConfig</code>{" "}
+        parameter named <code>interceptors</code>, which accepts an array of
+        interceptor instances.
+      </p>
+
+      <p>
+        Interceptors follow the <em>onion principle</em> when executing. Also,
+        the inserting order of the interceptor instances into the array will be
+        the execution order of the interceptors.
+      </p>
+
+      <p>
+        This example shows how to define an interceptor to print a log before
+        and after a resolver is executed.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 

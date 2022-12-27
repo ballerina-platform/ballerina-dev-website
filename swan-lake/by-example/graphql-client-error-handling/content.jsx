@@ -46,12 +46,12 @@ function handleErrors(graphql:ClientError clientError) {
     } else if clientError is graphql:InvalidDocumentError {
         // This error represents GraphQL errors due to GraphQL server-side document 
         // validation. The GraphQL errors returned from the server-side can be obtained by 
-        // calling the \`detail\` method on the \`graphql:InvalidDocumentError\`.
+        // calling the \`detail()\` method on \`graphql:InvalidDocumentError\`.
         graphql:ErrorDetail[]? errorDetails = clientError.detail().errors;
         io:println("InvalidDocumentError: ", errorDetails);
     } else if clientError is graphql:HttpError {
         // This error represents network-level errors. If the response from the server contains 
-        // a body then, it can be obtained by calling the \`detail\` method on the \`graphql:HttpError\`.
+        // a body then, it can be obtained by calling the \`detail()\` method on \`graphql:HttpError\`.
         anydata body = clientError.detail().body;
         io:println("HttpError: ", body, clientError.message());
     }
@@ -83,12 +83,10 @@ export default function GraphqlClientErrorHandling() {
       <h1>GraphQL client - Handle error response</h1>
 
       <p>
-        The <code>graphql:Client</code> allows handling different errors
-        occurred when executing the <code>execute</code> method. It returns a{" "}
-        <code>graphql:ClientError</code> error, which has different subtypes
-        that can be handled differently based on the use case. Use the subtypes
-        of the <code>graphql:ClientError</code> to handle different types of
-        errors based on the use case.
+        The execute method of <code>graphql:Client</code> can fail and return a{" "}
+        <code>graphql:ClientError</code>. This example demonstrates{" "}
+        <code>graphql:Client</code> error handling and shows how to obtain
+        GraphQL-specific errors returned by the graphql server.
       </p>
 
       <Row
@@ -224,7 +222,7 @@ export default function GraphqlClientErrorHandling() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run graphql_client_error_handling.bal`}</span>
-              <span>{`InvalidDocumentError: [{"message":"String cannot represent non String value: 1","locations":[{"line":1,"column":29}]},{"message":"Field "updateName" argument "id" of type "Int!" is required, but it was not provided.","locations":[{"line":1,"column":12}]}]`}</span>
+              <span>{`InvalidDocumentError: [{"message":"String cannot represent non String value: 1","locations":[{"line":1,"column":29}]}]`}</span>
             </code>
           </pre>
         </Col>

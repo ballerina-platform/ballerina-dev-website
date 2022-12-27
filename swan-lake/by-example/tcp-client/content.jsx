@@ -31,7 +31,7 @@ public function main() returns error? {
     io:println("Received: ", string:fromBytes(receivedData));
 
     // Close the connection between the server and the client.
-    check socketClient->close();
+    return socketClient->close();
 }
 `,
 ];
@@ -60,13 +60,8 @@ export default function TcpClient() {
       <h1>TCP client - Send/Receive bytes</h1>
 
       <p>
-        The <code>tcp:Client</code> connects to a given TCP server socket, and
-        then sends and receives byte streams. A <code>tcp:Client</code> is
-        created by giving the IP and port number. Once connected,{" "}
-        <code>writeBytes</code> and <code>readBytes</code> synchronous methods
-        are used to send and receive byte streams. Since, they are synchronous
-        methods often used in two different strands. Use this to interact with
-        TCP servers or implement high level protocols based on TCP.
+        The TCP Client is used to connect to a remote TCP server. This sample
+        demonstrates how the TCP client interacts with the TCP server.
       </p>
 
       <Row

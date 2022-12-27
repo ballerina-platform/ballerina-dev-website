@@ -60,16 +60,11 @@ export default function HttpRestrictByMediaType() {
       <h1>HTTP service - Restrict by media type</h1>
 
       <p>
-        The content negotiation for the REST API design is achieved via the{" "}
-        <code>consumes</code> and <code>produces</code> configurations. The
-        resource accepting request content type is defined under the{" "}
-        <code>consumes</code> and the resource producing response content type
-        is defined under the <code>produces</code> in the resource
-        configuration. Each configuration is checked against the{" "}
-        <code>Accept</code> header and the <code>Content-type</code> header of
-        the request. If the negotiation fails, the error response is returned
-        with <code>406 Not Acceptable</code> or <code>415 Unsupported</code>{" "}
-        status codes respectively.
+        You can configure resources of HTTP services to restrict the types of
+        media they consume and produce. This is done through the{" "}
+        <code>consumes</code> and <code>produces</code> annotation attributes of
+        the <code>ResourceConfig</code> annotation, which is used with
+        resources.
       </p>
 
       <Row

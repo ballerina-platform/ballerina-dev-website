@@ -19,7 +19,7 @@ type Album readonly & record {|
     string artist;
 |};
 
-listener http:Listener securedEP = new (9090,
+listener http:Listener securedEP = new(9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -28,9 +28,11 @@ listener http:Listener securedEP = new (9090,
     }
 );
 
-// Basic authentication with the LDAP user store can be enabled by setting 
-// the \`http:LdapUserStoreConfig\` configuration.
-// Authorization is based on scopes, which can be specified in the \`scopes\` field.
+// The service can be secured with Basic Auth and can be authorized  optionally.
+// Basic Auth using the LDAP user store can be enabled by setting the \`http:LdapUserStoreConfig\` configurations.
+// Authorization is based on scopes. A scope maps to one or more groups.
+// Authorization can be enabled by setting the \`string|string[]\` type
+// configurations for \`scopes\` field.
 @http:ServiceConfig {
     auth: [
         {
@@ -61,9 +63,9 @@ listener http:Listener securedEP = new (9090,
 }
 service / on securedEP {
 
-    // The authentication and authorization configurations can be overwritten at 
-    // the resource level. Otherwise, the service-level configurations will be 
-    // applied automatically to the resource.
+    // It is optional to override the authentication and authorization
+    // configurations at the resource levels. Otherwise, the service auth
+    // configurations will be applied automatically to the resources as well.
     resource function get albums() returns Album[] {
         return [
             {title: "Blue Train", artist: "John Coltrane"},
@@ -98,25 +100,16 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
       <h1>HTTP service - Basic authentication LDAP user store</h1>
 
       <p>
-        The <code>http:Service</code> can be secured with basic authentication
-        and additionally, scopes can be added to enforce authorization. It
-        validates the basic authentication token sent in the{" "}
-        <code>Authorization</code> header with the LDAP server. This server
-        stores the usernames and passwords for the authentication and the scopes
-        for the authorization. To engage authentication, set the LDAP related
-        configurations to the <code>ldapUserStoreConfig</code> field. To engage
-        authorization, set scopes to the <code>scopes</code> field. Both
-        configurations must be given as part of the service configuration.
-      </p>
-
-      <p>
-        A <code>401 Unauthorized</code> response is sent to the client when the
-        authentication fails, and a <code>403 Forbidden</code> response is sent
-        to the client when the authorization fails. Use this to authenticate and
-        authorize requests based on LDAP user stores. Furthermore, the
-        authentication and authorization configurations can be overwritten at
-        the resource level using the <code>@http:ResourceConfig</code>{" "}
-        annotation.
+        An HTTP service/resource can be secured with basic authentication and by
+        enforcing authorization optionally. Then, it validates the Basic Auth
+        token sent in the <code>Authorization</code> header against the provided
+        configurations. This reads data from the configured LDAP. This stores
+        usernames, passwords for authentication, and scopes for authorization.
+        Ballerina uses the concept of scopes for authorization. A resource
+        declared in a service can be bound to one/more scope(s). In the
+        authorization phase, the scopes of the service/resource are compared
+        against the scope included in the user store for at least one match
+        between the two sets.
       </p>
 
       <Row
@@ -186,7 +179,7 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>Run the LDAP server.</span>
+          <span>LDAP server should be up and running</span>
         </li>
       </ul>
 
@@ -256,8 +249,8 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-basic-authentication">
             Basic authentication client
-          </a>{" "}
-          example.
+          </a>
+          .
         </p>
       </blockquote>
 
@@ -278,7 +271,7 @@ export default function HttpServiceBasicAuthenticationLdapUserStore() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> module - API documentation
+              <code>auth</code> package - API documentation
             </a>
           </span>
         </li>

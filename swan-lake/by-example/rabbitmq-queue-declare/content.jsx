@@ -48,14 +48,9 @@ export default function RabbitmqQueueDeclare() {
       <h1>RabbitMQ client - Declare queue</h1>
 
       <p>
-        A RabbitMQ queue is a buffer that stores messages. The queue takes
-        messages from the publisher and sends them to the consumer. A{" "}
-        <code>rabbitmq:Client</code> is created with the host and port of the
-        RabbitMQ broker. A queue with a specific name and custom configurations
-        can be declared by using the <code>queueDeclare</code> method. To create
-        a queue with a server-generated name, the <code>queueAutoGenerate</code>{" "}
-        method can be used. Use this to declare the queue before publishing
-        messages.
+        In this example, the RabbitMQ client is declaring a queue. Queues in
+        RabbitMQ are ordered collections of messages. Messages are enqueued and
+        dequeued in the FIFO manner.
       </p>
 
       <Row

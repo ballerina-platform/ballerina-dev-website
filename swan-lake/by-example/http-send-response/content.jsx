@@ -26,7 +26,7 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The resource returns the \`Album\` typed array value.
+    // The resource returns the \`Album\` typed array value
     resource function get albums() returns Album[] {
         return albums.toArray();
     }
@@ -60,19 +60,14 @@ export default function HttpSendResponse() {
       <h1>REST service - Send response</h1>
 
       <p>
-        Returning an <code>anydata</code> type from the resource method results
-        in an HTTP response, where the returned value becomes the body. If the
-        returned type is <code>nil</code>, then a <code>202 Accepted</code>{" "}
-        response is returned to the client without the body. Otherwise, the
-        response contains the returned value as the payload, and the{" "}
-        <code>Content-type</code> header is inferred from the return type. In
-        addition, the response status code is <code>201 Created</code> for{" "}
-        <code>POST</code> resources and <code>200 Ok</code> for other resources.
-        Furthermore, the <code>@http:Payload</code> annotation on the return
-        type can be used to override the <code>Content-type</code> header.
-        Returning an <code>anydata</code> type from the resource method is
-        useful when the desired payload with the default status code and headers
-        needs to be sent as the response.
+        The resource method can return the <code>anydata</code> type. In that
+        case, the <code>Content-type</code> header of the response is inferred
+        automatically from the return type. Additionally, the{" "}
+        <code>@http:Payload</code> annotation on the return type can be used to
+        overwrite the <code>Content-type</code>. The resource function can also
+        return an <code>error</code>. In that case, a{" "}
+        <code>500 Internal Server</code> error will be returned with the error
+        message in the body.
       </p>
 
       <Row
@@ -279,8 +274,8 @@ export default function HttpSendResponse() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-data-binding/">
             Payload data binding client
-          </a>{" "}
-          example.
+          </a>
+          .
         </p>
       </blockquote>
 
@@ -291,7 +286,7 @@ export default function HttpSendResponse() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

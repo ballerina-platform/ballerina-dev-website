@@ -14,15 +14,18 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// Header names to be set to the request in the request interceptor.
-final string interceptor_header = "requestHeader";
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-// Header values to be set to the request in the request interceptor.
-final string interceptor_header_value = "RequestInterceptor";
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
 // A \`Requestinterceptorservice\` class implementation. It intercepts the request
-// and adds a header before it is dispatched to the target service. A \`RequestInterceptorService\`
-// class can have only one resource function. 
+// and adds a header before it is dispatched to the target service.
 service class RequestInterceptor {
     *http:RequestInterceptor;
 
@@ -30,10 +33,15 @@ service class RequestInterceptor {
     // A \`RequestContext\` is used to share data between the interceptors.
     // An accessor and a path can also be specified. In that case, the interceptor will be
     // executed only for the requests, which match the accessor and path.
-    resource function 'default [string... path](http:RequestContext ctx, 
-                        http:Request req) returns http:NextService|error? {
-        // Sets a header to the request inside the interceptor service.
-        req.setHeader(interceptor_header, interceptor_header_value);
+    resource function 'default [string... path](
+            http:RequestContext ctx,
+            @http:Header {name: "x-api-version"} string xApiVersion)
+        returns http:NotImplemented|http:NextService|error? {
+        // Checks the API version header.
+        if xApiVersion != "v1" {
+            // Returns a \`501 NotImplemented\` response if the version is not supported.
+            return http:NOT_IMPLEMENTED;
+        }
         // Returns the next interceptor or the target service in the pipeline. 
         // An error is returned when the call fails.
         return ctx.next();
@@ -42,7 +50,7 @@ service class RequestInterceptor {
 
 // Interceptors can also be engaged at the listener level. In this case, the \`RequestInterceptors\`
 // can have only the default path.
-listener http:Listener interceptorListener = new http:Listener(9090);
+listener http:Listener interceptorListener = new (9090);
 
 // Engage interceptors at the service level. Request interceptor services will be executed from
 // head to tail.
@@ -51,15 +59,10 @@ listener http:Listener interceptorListener = new http:Listener(9090);
     // the target service. Hence, they will be executed only for this particular service.
     interceptors: [new RequestInterceptor()]
 }
-service /user on interceptorListener {
+service / on interceptorListener {
 
-    resource function get greeting(http:Request req) returns http:Ok|error {
-        return {
-            headers: { 
-                "requestHeader": check req.getHeader(interceptor_header) 
-            },
-            body: "Greetings!"
-        };
+    resource function get albums(http:Request req) returns Album[] {
+        return albums.toArray();
     }
 }
 `,
@@ -91,13 +94,20 @@ export default function HttpRequestInterceptor() {
       <h1>HTTP service - Request interceptor</h1>
 
       <p>
-        Interceptors are used to execute some common logic such as logging,
-        header manipulation, state publishing, etc. for all the inbound requests
-        and outbound responses. A <code>RequestInterceptor</code> can be used to
-        intercept the request and execute some custom logic.{" "}
-        <code>RequestInterceptors</code> have a resource method, which will be
-        executed before dispatching the request to the actual resource in the
-        target service.
+        The <code>http:RequestInterceptor</code> is used to intercept the
+        request and execute some custom logic. A <code>RequestInterceptor</code>{" "}
+        is a service object with only one resource method, which is executed
+        before dispatching the request to the actual resource in the target
+        service. A <code>RequestInterceptor</code> can be created from a service
+        class, which includes the <code>http:RequestInterceptor</code> service
+        type. Then, this service object can be engaged at the listener level or
+        service level by using the <code>interceptors</code> field in the
+        configurations. This field accepts an array of interceptor service
+        objects as an interceptor pipeline, and the interceptors are executed in
+        the order in which they are placed in the pipeline. Use{" "}
+        <code>RequestInterceptors</code> to execute some common logic such as
+        logging, header manipulation, state publishing, etc., for inbound
+        requests.
       </p>
 
       <Row
@@ -281,28 +291,35 @@ export default function HttpRequestInterceptor() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v http://localhost:9090/user/greeting`}</span>
+              <span>{`\$ curl -v http://localhost:9090/albums -H "x-api-version: v2"`}</span>
               <span>{`*   Trying 127.0.0.1:9090...`}</span>
               <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> GET /user/greeting HTTP/1.1`}</span>
+              <span>{`> GET /albums HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.79.1`}</span>
               <span>{`> Accept: */*`}</span>
+              <span>{`> x-api-version: v2`}</span>
               <span>{`> `}</span>
               <span>{`* Mark bundle as not supporting multiuse`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< requestHeader: RequestInterceptor`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 10`}</span>
+              <span>{`< HTTP/1.1 501 Not Implemented`}</span>
+              <span>{`< content-length: 0`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Mon, 1 Aug 2022 16:06:46 +0530`}</span>
-              <span>{`< `}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`Greetings!`}</span>
+              <span>{`< date: Wed, 14 Dec 2022 15:38:41 +0530`}</span>
+              <span>{`<`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-send-request-receive-response/">
+            Send request/Receive response client
+          </a>{" "}
+          example by adding the required header to the request.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -311,7 +328,7 @@ export default function HttpRequestInterceptor() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

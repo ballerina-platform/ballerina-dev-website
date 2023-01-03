@@ -14,26 +14,28 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// Define the \`Profile\` interface using a \`distinct\` \`service\` object.
+// Defines the \`Profile\` interface using a \`distinct\` \`service\` object.
 type Profile distinct service object {
 
-    // Define the \`name\` field as a resource method definition.
+    // Defines the \`name\` field as a resource method definition.
     resource function get name() returns string;
 };
 
-// Define another \`Teacher\` interface, which implements the \`Profile\` interface.
+// Defines another \`Teacher\` interface, which implements the \`Profile\` interface.
 type Teacher distinct service object {
 
-    // This denotes that this interface implements the \`Profile\` interface.
+    // Denotes that this interface implements the \`Profile\` interface.
     *Profile;
 
-    // Add an additional field to the \`Teacher\` interface.
+    // Adds an additional field to the \`Teacher\` interface.
     resource function get school() returns string;
 };
 
-// Define the \`HighSchoolTeacher\` class implementing the \`Teacher\` interface.
+// Defines the \`HighSchoolTeacher\` class implementing the \`Teacher\` interface.
 distinct service class HighSchoolTeacher {
-    // This denotes that this object implements the \`Teacher\` interface.
+    // Denotes that this object implements the \`Teacher\` interface. Since this object implements
+    // the \`Teacher\` interface and the \`Teacher\` interface implements the \`Profile\` interface, this
+    // object must implement the fields from both interfaces.
     *Teacher;
 
     private final string name;
@@ -46,19 +48,17 @@ distinct service class HighSchoolTeacher {
         self.subject = subject;
     }
 
-    // Since this object implements the \`Teacher\` interface and the \`Teacher\` interface implements
-    // the \`Profile\` interface, this object must implement the fields from both interfaces.
-    // Implement the \`name\` field from the \`Profile\` interface.
+    // Implements the \`name\` field from the \`Profile\` interface.
     resource function get name() returns string {
         return self.name;
     }
 
-    // Implement the \`school\` field from the \`Teacher\` interface.
+    // Implements the \`school\` field from the \`Teacher\` interface.
     resource function get school() returns string {
         return self.school;
     }
 
-    // Add an additional \`subject\` field to the \`HighSchoolTeacher\` class.
+    // Adds an additional \`subject\` field to the \`HighSchoolTeacher\` class.
     resource function get subject() returns string {
         return self.subject;
     }
@@ -66,7 +66,8 @@ distinct service class HighSchoolTeacher {
 
 service /graphql on new graphql:Listener(9090) {
 
-    // Returning the \`Profile\` type from a GraphQL resolver will identify it as an interface.
+    // Returns the \`Profile\` type from a GraphQL resolver. The \`Profile\` type is identified as an
+    // interface.
     resource function get profile() returns Profile {
         return new HighSchoolTeacher("Walter White", "J. P. Wynne", "Chemistry");
     }
@@ -113,16 +114,13 @@ export default function GraphqlInterfacesImplementingInterfaces() {
       <h1>GraphQL service - Interfaces implementing interfaces</h1>
 
       <p>
-        A GraphQL schema can have interfaces that can be implemented using other
-        interfaces. In Ballerina, interfaces are defined as{" "}
-        <code>distinct</code> <code>service</code> objects. The Ballerina type
-        inclusion is used to include the interface type to another interface
-        type.
-      </p>
-
-      <p>
-        This example shows how to define interfaces that implement other
-        interfaces in Ballerina.
+        The Ballerina <code>graphql</code> module allows defining GraphQL
+        interface types that can implement other interfaces. A{" "}
+        <code>distinct</code> <code>service</code> object must be used to define
+        an interface. The Ballerina type-inclusion is used to define interfaces
+        that implement other interfaces. This can be used in GraphQL schemas to
+        define higher-order interfaces that share common functionalities in the
+        application logic.
       </p>
 
       <Row
@@ -396,7 +394,7 @@ export default function GraphqlInterfacesImplementingInterfaces() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> package - API documentation
+              <code>graphql</code> module - API documentation
             </a>
           </span>
         </li>
@@ -449,8 +447,8 @@ export default function GraphqlInterfacesImplementingInterfaces() {
         </Col>
         <Col sm={6}>
           <Link
-            title="GraphiQL client"
-            href="/learn/by-example/graphql-graphiql"
+            title="Union Types"
+            href="/learn/by-example/graphql-service-union-types"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -460,7 +458,7 @@ export default function GraphqlInterfacesImplementingInterfaces() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  GraphiQL client
+                  Union Types
                 </span>
               </div>
               <svg

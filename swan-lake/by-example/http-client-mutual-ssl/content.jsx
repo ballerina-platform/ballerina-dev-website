@@ -15,15 +15,14 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
-    // An HTTP client can be configured to initiate new connections that are secured via mutual SSL.
-    // The \`http:ClientSecureSocket\` record provides the SSL-related configurations.
-    http:Client albumClient = check new("localhost:9090",
+    // The HTTP client can be configured to initiate new connections that are secured via mutual SSL.
+    http:Client albumClient = check new ("localhost:9090",
         secureSocket = {
             key: {
                 certFile: "../resource/path/to/public.crt",
@@ -62,10 +61,17 @@ export default function HttpClientMutualSsl() {
       <h1>HTTP client - Mutual SSL</h1>
 
       <p>
-        Ballerina supports mutual SSL, which is a certificate-based
-        authentication process in which two parties (the client and server)
-        authenticate each other by verifying the digital certificates. It
-        ensures that both parties are assured of each other's identity.
+        The <code>http:Client</code> allows opening up a connection secured with
+        mutual SSL (mTLS), which is a certificate-based authentication process
+        in which two parties (the client and server) authenticate each other by
+        verifying the digital certificates. It ensures that both parties are
+        assured of each other's identity. The <code>http:Client</code> secured
+        with mutual SSL is created by providing the <code>secureSocket</code>{" "}
+        configurations, which require the client's public certificate as the{" "}
+        <code>certFile</code>, the client's private key as the{" "}
+        <code>keyFile</code>, and the server's certificate as the{" "}
+        <code>cert</code>. Use this to interact with mTLS-encrypted HTTP
+        servers.
       </p>
 
       <Row
@@ -161,8 +167,8 @@ export default function HttpClientMutualSsl() {
             Run the HTTP service given in the{" "}
             <a href="/learn/by-example/http-service-mutual-ssl/">
               Mutual SSL service
-            </a>
-            .
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

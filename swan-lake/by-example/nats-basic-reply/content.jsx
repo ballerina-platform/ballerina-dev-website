@@ -22,8 +22,9 @@ public type Order record {
     boolean isValid;
 };
 
-// Binds the consumer to listen to the messages published to the 'demo.bbe' subject.
+// Binds the consumer to listen to the messages published to the 'orders.valid' subject.
 service "orders.valid" on new nats:Listener(nats:DEFAULT_URL) {
+
     remote function onRequest(Order 'order) returns string|error {
         if 'order.isValid {
             log:printInfo(string \`Received valid order for \${'order.productName}\`);
@@ -60,11 +61,15 @@ export default function NatsBasicReply() {
       <h1>NATS service - Send reply to request message</h1>
 
       <p>
-        NATS supports the Request-Reply pattern using its core message
-        distribution model, publish, and subscribe. A request is sent to a given
-        subject and consumers listening to that subject can send responses to
-        the reply subject. In this example, the NATS service is used to send
-        replies to incoming request messages.
+        The <code>nats:Service</code> allows listening to a given subject for
+        incoming messages and sending responses. A <code>nats:Listener</code> is
+        created by passing the URL of the NATS broker. A{" "}
+        <code>nats:Service</code> attached to the listener can be used to send
+        replies to incoming request messages using the <code>onRequest</code>{" "}
+        remote method. The subject to listen to should be given as the service
+        name or in the <code>subject</code> field of the{" "}
+        <code>nats:ServiceConfig</code>. Use it to send reply messages to the
+        request messages consumed by the subscriber.
       </p>
 
       <Row

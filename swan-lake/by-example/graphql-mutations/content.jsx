@@ -14,28 +14,29 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/graphql;
 
-// Define a record type to use as an object in the GraphQL service.
+// Defines a \`record\` type to use as an object in the GraphQL service.
 type Profile readonly & record {|
     int id;
     string name;
     int age;
 |};
 
-// Define an in-memory table to store the profiles.
+// Defines an in-memory table to store the profiles.
 table<Profile> key(id) profiles = table [
         {id: 1, name: "Walter White", age: 50},
         {id: 2, name: "Jesse Pinkman", age: 25}
     ];
 
 service /graphql on new graphql:Listener(9090) {
+
     // A resource method represents a field in the root \`Query\` operation.
     resource function get profile(int id) returns Profile {
         return profiles.get(id);
     }
 
-    // A remote method represents a field in the root \`Mutation\` operation. This remote method will
-    // update the name for the given profile ID, and returns the updated \`Profile\` value. If the ID
-    // is not found, this will return an error.
+    // A \`remote\` method represents a field in the root \`Mutation\` operation. This \`remote\` method
+    // is used to update the name for the given profile ID and returns the updated \`Profile\` value.
+    // If the ID is not found, this will return an error.
     remote function updateName(int id, string name) returns Profile|error {
         if profiles.hasKey(id) {
             Profile profile = profiles.remove(id);
@@ -87,20 +88,28 @@ export default function GraphqlMutations() {
       <h1>GraphQL service - Mutations</h1>
 
       <p>
-        A remote method inside a GraphQL service represents a field in the root{" "}
-        <code>Mutation</code> object type. Therefore, if a remote method is
-        present inside the Ballerina GraphQL service, the auto-generated schema
-        will have the <code>Mutation</code> type. Each remote method in the
-        service will be added as a field of the <code>Mutation</code> type. The
-        field name will be the remote method name and the field type will be the
-        return type of the remote method.
+        The Ballerina <code>graphql</code> module allows defining GraphQL{" "}
+        <code>Mutation</code> operations. A <code>remote</code> method inside a{" "}
+        <code>graphql:Service</code> represents a field in the root{" "}
+        <code>Mutation</code> object type. Therefore, if a <code>remote</code>{" "}
+        method is present inside the <code>graphql:Service</code>, the
+        auto-generated schema will have the <code>Mutation</code> type. Each{" "}
+        <code>remote</code> method in the service will be added as a field of
+        the <code>Mutation</code> type. The field name will be the{" "}
+        <code>remote</code> method name and the field type will be the return
+        type of the <code>remote</code> method. Use the <code>Mutation</code>{" "}
+        operation when performing any side-effects on the underlying data
+        system.
       </p>
 
-      <p>
-        This example shows a GraphQL endpoint, which has a field named{" "}
-        <code>updateName</code> in the root <code>Mutation</code> type. The type
-        of the field is of type <code>Profile!</code>.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> GraphQL mutations are actions that are expected
+          to mutate the state of the server. Ballerina uses <code>remote</code>{" "}
+          methods to handle such cases. Therefore, these <code>remote</code>{" "}
+          methods are usually named using verbs.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -412,7 +421,7 @@ export default function GraphqlMutations() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> package - API documentation
+              <code>graphql</code> module - API documentation
             </a>
           </span>
         </li>

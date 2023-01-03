@@ -19,7 +19,7 @@ type Album readonly & record {|
     string artist;
 |};
 
-listener http:Listener securedEP = new(9090,
+listener http:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -28,11 +28,10 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with OAuth2 and by enforcing authorization
-// optionally. It can be enabled by setting the \`http:OAuth2IntrospectionConfig\` configurations.
+// The service can be secured with OAuth2 and by enforcing authorization optionally.
+// It can be enabled by setting the \`http:OAuth2IntrospectionConfig\` configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type
-// configurations for \`scopes\` field.
+// Authorization can be enabled by setting the \`string|string[]\` type configurations for the \`scopes\` field.
 @http:ServiceConfig {
     auth: [
         {
@@ -53,9 +52,8 @@ listener http:Listener securedEP = new(9090,
 }
 service / on securedEP {
 
-    // It is optional to override the authentication and authorization
-    // configurations at the resource levels. Otherwise, the service auth
-    // configurations will be applied automatically to the resources as well.
+    // It is optional to override the authentication and authorization configurations at the resource levels.
+    // Otherwise, the service auth configurations are applied automatically to the resources as well.
     resource function get albums() returns Album[] {
         return [
             {title: "Blue Train", artist: "John Coltrane"},
@@ -90,17 +88,18 @@ export default function HttpServiceOauth2() {
       <h1>HTTP service - OAuth2</h1>
 
       <p>
-        An HTTP service/resource can be secured with OAuth2 and by enforcing
-        authorization optionally. Then, it validates the OAuth2 token sent in
-        the <code>Authorization</code> header against the provided
-        configurations. This calls the configured introspection endpoint to
-        validate. Ballerina uses the concept of scopes for authorization. A
-        resource declared in a service can be bound to one/more scope(s). The
-        scope can be included in the introspection response using a custom claim
-        attribute. That custom claim attribute also can be configured as the{" "}
-        <code>scopeKey</code>. In the authorization phase, the scopes of the
-        service/resource are compared against the scope included in the
-        introspection response for at least one match between the two sets.
+        The <code>http:Service</code> and resource function can be secured with
+        OAuth2 and additionally, scopes can be added to enforce fine-grained
+        authorization. It validates the OAuth2 token sent in the{" "}
+        <code>Authorization</code> header against the provided configurations.
+        This calls the configured introspection endpoint to validate. Ballerina
+        uses the concept of scopes for authorization. A resource declared in a
+        service can be bound to one/more scope(s). The scope can be included in
+        the introspection response using a custom claim attribute. That custom
+        claim attribute also can be configured as the <code>scopeKey</code>. In
+        the authorization phase, the scopes of the service/resource are compared
+        against the scope included in the introspection response for at least
+        one match between the two sets.
       </p>
 
       <Row
@@ -192,7 +191,7 @@ export default function HttpServiceOauth2() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>STS endpoint should be up and running</span>
+          <span>An STS endpoint should be up and running.</span>
         </li>
       </ul>
 
@@ -262,8 +261,8 @@ export default function HttpServiceOauth2() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-oauth2-jwt-bearer-grant-type">
             OAuth2 JWT Bearer grant type client
-          </a>
-          .
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -284,7 +283,7 @@ export default function HttpServiceOauth2() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package - API documentation
+              <code>oauth2</code> module - API documentation
             </a>
           </span>
         </li>

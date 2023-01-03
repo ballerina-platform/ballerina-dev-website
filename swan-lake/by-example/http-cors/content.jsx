@@ -73,10 +73,14 @@ export default function HttpCors() {
       <h1>HTTP service - CORS (Cross-Origin Resource Sharing)</h1>
 
       <p>
-        The CORS headers can be applied in both the service-level and the
-        resource-level. Service-level CORS headers apply to all the resources
-        unless there are headers configured at the resource-level. Ballerina
-        CORS supports both simple and pre-flight requests.
+        Cross-Origin Resource Sharing (CORS) is an HTTP-header-based mechanism
+        that allows a server to indicate any origins other than its own from
+        which a browser should permit. The CORS headers can be applied at both
+        the service level and the resource level. Each configuration has the{" "}
+        <code>cors</code> field to specify the CORS config. Service-level CORS
+        headers apply to all the resources unless there are headers configured
+        at the resource level. Ballerina CORS supports both simple and
+        pre-flight requests.
       </p>
 
       <Row

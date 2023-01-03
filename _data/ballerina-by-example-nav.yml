@@ -613,8 +613,11 @@ sublinks:
           - title: Send different status codes with payload
             id: 10
             url: http-send-different-status-codes-with-payload
-          - title: Send cache response
+          - title: Error handling
             id: 11
+            url: http-default-error-handling
+          - title: Send cache response
+            id: 12
             url: http-service-cache-response
       - title: HTTP client
         id: 2
@@ -808,12 +811,12 @@ sublinks:
           - title: Hello world
             id: 1
             url: graphql-hello-world
-          - title: Record as output object
-            id: 2
-            url: graphql-returning-record-values
           - title: Service as output object
-            id: 3
+            id: 2
             url: graphql-returning-service-objects
+          - title: Record as output object
+            id: 3
+            url: graphql-returning-record-values
           - title: Input types
             id: 4
             url: graphql-input-types
@@ -832,26 +835,32 @@ sublinks:
           - title: Interfaces implementing interfaces
             id: 9
             url: graphql-interfaces-implementing-interfaces
-          - title: GraphiQL client
+          - title: Union Types
             id: 10
+            url: graphql-service-union-types
+          - title: Error handling
+            id: 11
+            url: graphql-service-error-handling
+          - title: GraphiQL client
+            id: 12
             url: graphql-graphiql
           - title: Documentation
-            id: 11
+            id: 13
             url: graphql-documentation
           - title: Directives
-            id: 12
+            id: 14
             url: graphql-directives
           - title: Context
-            id: 13
+            id: 15
             url: graphql-context
           - title: Interceptors
-            id: 14
+            id: 16
             url: graphql-interceptors
           - title: File upload
-            id: 15
+            id: 17
             url: graphql-file-upload
           - title: Hierarchical resource paths
-            id: 16
+            id: 18
             url: graphql-hierarchical-resource-paths
       - title: GraphQL client
         id: 10
@@ -913,6 +922,9 @@ sublinks:
           - title: Payload constraint validation
             id: 2
             url: websocket-service-payload-constraint-validation
+          - title: Error handling
+            id: 3
+            url: websocket-service-error-handling
       - title: WebSocket client
         id: 14
         sublinks:
@@ -1000,9 +1012,9 @@ sublinks:
       - title: gRPC service
         id: 20
         sublinks:
-          - title: Unary RPC
+          - title: Simple RPC
             id: 1
-            url: grpc-service-unary
+            url: grpc-service-simple
           - title: Server-side streaming RPC
             id: 2
             url: grpc-service-server-streaming
@@ -1024,9 +1036,9 @@ sublinks:
       - title: gRPC client
         id: 21
         sublinks:
-          - title: Unary RPC
+          - title: Simple RPC
             id: 1
-            url: grpc-client-unary
+            url: grpc-client-simple
           - title: Server-side streaming RPC
             id: 2
             url: grpc-client-server-streaming
@@ -1141,23 +1153,29 @@ sublinks:
           - title: Constraint validation
             id: 2
             url: kafka-service-constraint-validation
-      - title: Kafka client
+          - title: Error handling
+            id: 3
+            url: kafka-service-error-handling
+      - title: Kafka producer
         id: 29
         sublinks:
           - title: Produce message
             id: 1
-            url: kafka-client-produce-message
-          - title: Payload data binding
-            id: 2
-            url: kafka-client-payload-data-binding
-          - title: Consumer record data binding
-            id: 3
-            url: kafka-client-consumer-record-data-binding
-          - title: Constraint validation
-            id: 4
-            url: kafka-client-constraint-validation
-      - title: Kafka service security
+            url: kafka-producer-produce-message
+      - title: Kafka consumer
         id: 30
+        sublinks:
+          - title: Payload data binding
+            id: 1
+            url: kafka-consumer-payload-data-binding
+          - title: Consumer record data binding
+            id: 2
+            url: kafka-consumer-consumer-record-data-binding
+          - title: Constraint validation
+            id: 3
+            url: kafka-consumer-constraint-validation
+      - title: Kafka service security
+        id: 31
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1165,23 +1183,26 @@ sublinks:
           - title: SASL authentication
             id: 2
             url: kafka-service-sasl
-      - title: Kafka client security
-        id: 31
-        sublinks:
-          - title: Producer SSL/TLS
-            id: 1
-            url: kafka-client-producer-ssl
-          - title: Consumer SSL/TLS
-            id: 2
-            url: kafka-client-consumer-ssl
-          - title: Producer SASL authentication
-            id: 3
-            url: kafka-client-producer-sasl
-          - title: Consumer SASL authentication
-            id: 4
-            url: kafka-client-consumer-sasl
-      - title: RabbitMQ service
+      - title: Kafka producer security
         id: 32
+        sublinks:
+          - title: SSL/TLS
+            id: 1
+            url: kafka-producer-ssl
+          - title: SASL authentication
+            id: 2
+            url: kafka-producer-sasl
+      - title: Kafka consumer security
+        id: 33
+        sublinks:
+          - title: SSL/TLS
+            id: 1
+            url: kafka-consumer-ssl
+          - title: SASL authentication
+            id: 2
+            url: kafka-consumer-sasl
+      - title: RabbitMQ service
+        id: 34
         sublinks:
           - title: Consume message
             id: 1
@@ -1196,7 +1217,7 @@ sublinks:
             id: 4
             url: rabbitmq-service-constraint-validation
       - title: RabbitMQ client
-        id: 33
+        id: 35
         sublinks:
           - title: Declare a queue
             id: 1
@@ -1214,7 +1235,7 @@ sublinks:
             id: 5
             url: rabbitmq-client-constraint-validation
       - title: RabbitMQ service security
-        id: 34
+        id: 36
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1223,7 +1244,7 @@ sublinks:
             id: 2
             url: rabbitmq-service-basic-auth
       - title: RabbitMQ client security
-        id: 35
+        id: 37
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1232,37 +1253,37 @@ sublinks:
             id: 2
             url: rabbitmq-client-basic-auth
       - title: TCP service
-        id: 36
+        id: 38
         sublinks:
           - title: Send/Receive bytes
             id: 1
             url: tcp-listener
       - title: TCP client
-        id: 37
+        id: 39
         sublinks:
           - title: Send/Receive bytes
             id: 1
             url: tcp-client
       - title: TCP service security
-        id: 38
+        id: 40
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-service-ssl-tls
       - title: TCP client security
-        id: 39
+        id: 41
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-client-ssl-tls
       - title: UDP service
-        id: 40
+        id: 42
         sublinks:
           - title: Send/Receive datagram
             id: 1
             url: udp-listener
       - title: UDP client
-        id: 41
+        id: 43
         sublinks:
           - title: Send/Receive datagram
             id: 1
@@ -1271,13 +1292,13 @@ sublinks:
             id: 2
             url: udp-connect-client
       - title: Email service
-        id: 42
+        id: 44
         sublinks:
           - title: Receive email
             id: 1
             url: receive-email-using-service
       - title: Email client
-        id: 43
+        id: 45
         sublinks:
           - title: Send email
             id: 1
@@ -1286,43 +1307,43 @@ sublinks:
             id: 2
             url: receive-email-using-client
       - title: FTP Service
-        id: 44
-        sublinks:
-          - title: Read file
-            id: 1
-            url: ftp-service-read
-          - title: Read/Write file
-            id: 2
-            url: ftp-service-read-write
-      - title: FTP Client
-        id: 45
-        sublinks:
-          - title: Read file
-            id: 1
-            url: ftp-client-read
-          - title: Write file
-            id: 2
-            url: ftp-client-write
-      - title: SFTP Service
         id: 46
         sublinks:
-          - title: Read file
+          - title: Receive file
             id: 1
-            url: sftp-service-read
-          - title: Read/Write file
+            url: ftp-service-receive-file
+          - title: Send file
             id: 2
-            url: sftp-service-read-write
-      - title: SFTP Client
+            url: ftp-service-send-file
+      - title: FTP Client
         id: 47
         sublinks:
-          - title: Read file
+          - title: Receive file
             id: 1
-            url: sftp-client-read
-          - title: Write file
+            url: ftp-client-receive-file
+          - title: Send file
             id: 2
-            url: sftp-client-write
-      - title: Database Access
+            url: ftp-client-send-file
+      - title: SFTP Service
         id: 48
+        sublinks:
+          - title: Receive file
+            id: 1
+            url: sftp-service-receive-file
+          - title: Send file
+            id: 2
+            url: sftp-service-send-file
+      - title: SFTP Client
+        id: 49
+        sublinks:
+          - title: Receive file
+            id: 1
+            url: sftp-client-receive-file
+          - title: Send file
+            id: 2
+            url: sftp-client-send-file
+      - title: Database Access
+        id: 50
         sublinks:
           - title: Simple query
             id: 1
@@ -1346,7 +1367,7 @@ sublinks:
             id: 7
             url: mysql-call-stored-procedures
       - title: SerDes
-        id: 49
+        id: 51
         sublinks:
           - title: Serialization/Deserialization
             id: 1
@@ -1456,7 +1477,7 @@ sublinks:
           - title: Schedule one time job
             id: 2
             url: task-one-time-job-execution
-          - title: Manage sheduled jobs
+          - title: Manage scheduled jobs
             id: 3
             url: manage-scheduled-jobs
       - title: UUID

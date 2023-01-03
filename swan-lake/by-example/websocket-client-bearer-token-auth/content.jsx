@@ -19,7 +19,7 @@ public function main() returns error? {
     // Defines the WebSocket client to call the secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`websocket:BearerTokenConfig\` for the \`auth\` configuration of the client.
-    websocket:Client chatClient = check new("wss://localhost:9090/chat",
+    websocket:Client chatClient = check new ("wss://localhost:9090/chat",
         auth = {
             token: "56ede317-4511-44b4-8579-a08f094ee8c5"
         },
@@ -58,11 +58,11 @@ export default function WebsocketClientBearerTokenAuth() {
       <h1>WebSocket client - Bearer token authentication</h1>
 
       <p>
-        A client, which is secured with Bearer token authentication can be used
-        to connect to a secured service. The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>websocket:BearerTokenConfig</code> for the <code>auth</code>{" "}
-        configuration of the client.
+        The <code>websocket:Client</code> can connect to a service that is
+        secured with bearer token authentication by adding the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header to the initial
+        HTTP request. The bearer token can be specified in the <code>auth</code>{" "}
+        field of the client configuration.
       </p>
 
       <Row
@@ -218,7 +218,7 @@ export default function WebsocketClientBearerTokenAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
+              <code>websocket</code> module - API documentation
             </a>
           </span>
         </li>

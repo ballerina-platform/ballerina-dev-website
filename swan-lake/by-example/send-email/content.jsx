@@ -65,9 +65,16 @@ export default function SendEmail() {
       <h1>Email client - Send email</h1>
 
       <p>
-        The email connector is used to send (with SMTP) emails using the SSL or
-        STARTTLS protocols. This sample includes sending emails with default
-        configurations over SSL using the default ports.
+        The <code>email:SmtpClient</code> connects to a given SMTP server to
+        send emails. An <code>email:SmtpClient</code> is created by providing
+        the hostname and required credentials. Once connected, the{" "}
+        <code>sendMessage</code> or the <code>send</code> methods are used to
+        send emails. An <code>email:Message</code> record, which contains the
+        required information about the email can be passed to the{" "}
+        <code>sendMessage</code> method. If additional information is not
+        required, the <code>send</code> method can be used only with mandatory
+        parameters such as <code>to</code>, <code>from</code>,{" "}
+        <code>subject</code>, and <code>body</code>.
       </p>
 
       <Row
@@ -254,7 +261,7 @@ export default function SendEmail() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://ballerina.io/spec/email/#31-smtp-client">
-              <code>email:SmtpClient</code> functions - Specification
+              SMTP client - Specification
             </a>
           </span>
         </li>

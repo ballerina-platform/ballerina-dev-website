@@ -60,12 +60,20 @@ export default function GrpcClientHeaders() {
       <h1>gRPC client - Send/Receive headers</h1>
 
       <p>
-        The gRPC module provides support for sending/receiving headers as a part
-        of inbound/output messages. gRPC/Protobuf tool generates Context record
-        for each protobuf message type which contains the protobuf message and
-        header map. The header map supports string, string[] types. The string[]
-        type returns all the values for a given header key. gRPC also provides
-        set of Utility apis to manipulate header values.
+        The <code>grpc:Client</code> allows sending headers and receiving
+        headers to/from a gRPC server. The gRPC - Protobuf CLI tool generates a{" "}
+        <code>Context</code> record for each Protobuf message type, which
+        contains the Protobuf message and the header map. The header map
+        supports <code>string</code>and <code>string[]</code> types. A Context
+        record value is created with the required headers and sent using the{" "}
+        <code>context</code> method of the client (<code>helloContext()</code>).
+        The{" "}
+        <code>
+          Contex type of the required record is provided as the target type of
+          the response to receive headers. The{" "}
+        </code>
+        getHeader<code>and</code>getHeaders` methods are also available to
+        manipulate the header values.
       </p>
 
       <Row
@@ -131,12 +139,13 @@ export default function GrpcClientHeaders() {
       </Row>
 
       <p>
-        Setting up the client is the same as setting up the unary RPC client
-        with input and output parameter change. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">
-          gRPC client - Unary RPC
-        </a>{" "}
-        to implement the client used here.
+        Setting up the client is the same as setting up the simple RPC client
+        with input and output parameter change. For information on implementing
+        the client, see{" "}
+        <a href="/learn/by-example/grpc-client-simple/">
+          gRPC client - Simple RPC
+        </a>
+        .
       </p>
 
       <h2>Prerequisites</h2>
@@ -154,7 +163,7 @@ export default function GrpcClientHeaders() {
         </li>
       </ul>
 
-      <p>Execute the command below to run the client.</p>
+      <p>Run the client by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
@@ -224,7 +233,7 @@ export default function GrpcClientHeaders() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> package - API documentation
+              <code>grpc</code> module - API documentation
             </a>
           </span>
         </li>
@@ -234,7 +243,7 @@ export default function GrpcClientHeaders() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/grpc/">
-              <code>grpc</code> package - Specification
+              <code>grpc</code> module - Specification
             </a>
           </span>
         </li>

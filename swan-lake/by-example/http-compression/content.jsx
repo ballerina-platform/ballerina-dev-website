@@ -14,12 +14,12 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-// \`COMPRESSION_ALWAYS\` guarantees a compressed response entity body. Compression scheme is set to the
-// value indicated in Accept-Encoding request header. When a particular header is not present or the header
-// value is "identity", encoding is done using the "gzip" scheme.
+// \`COMPRESSION_ALWAYS\` guarantees a compressed response entity body. The compression scheme is set to the
+// value indicated in \`Accept-Encoding\` request header. When a particular header is not present or the header
+// value is \`identity\`, encoding is done using the "gzip" scheme.
 // By default, Ballerina compresses any MIME type unless they are mentioned under \`contentTypes\`.
 // Compression can be constrained to certain MIME types by specifying them as an array of MIME types.
-// In this example encoding is applied to "text/plain" responses only.
+// In this example encoding is applied to \`text/plain\` responses only.
 @http:ServiceConfig {
     compression: {
         enable: http:COMPRESSION_ALWAYS,
@@ -62,14 +62,15 @@ export default function HttpCompression() {
       <h1>HTTP service - Compression</h1>
 
       <p>
-        The HTTP service can be configured to change the compression behaviour.
-        By default, the server compresses the response entity body with the
-        scheme(gzip, deflate) that is specified in the Accept-Encoding request
-        header. When the particular header is not present or the header value is
-        &quot;identity&quot;, the server does not perform any compression.
-        Compression is disabled when the option is set to{" "}
-        <code>COMPRESSION_NEVER</code> and always enabled when the option is set
-        to <code>COMPRESSION_ALWAYS</code>. In the same way{" "}
+        The <code>http:Service</code> can be configured to change the
+        compression behaviour of the <code>http:Response</code> payload. By
+        default, the server compresses the response entity body with the
+        scheme(gzip, deflate) that is specified in the{" "}
+        <code>Accept-Encoding</code> request header. When the particular header
+        is not present, or the header value is <code>identity</code>, the server
+        does not perform any compression. Compression is disabled when the
+        option is set to <code>COMPRESSION_NEVER</code> and always enabled when
+        the option is set to <code>COMPRESSION_ALWAYS</code>. In the same way{" "}
         <code>http:Client</code> can be configured as well.
       </p>
 

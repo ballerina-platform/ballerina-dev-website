@@ -56,21 +56,11 @@ export default function GraphqlInputTypes() {
       <h1>GraphQL service - Input types</h1>
 
       <p>
-        GraphQL resources can have input parameters, which will be mapped to
-        input values in the generated GraphQL schema.
-      </p>
-
-      <p>
-        Inputs can be optional and/or defaultable types. If an input is
-        optional, it will be mapped to a nullable type in the GraphQL schema. If
-        an input has a default value, it will be added as a default value in the
-        GraphQL schema.
-      </p>
-
-      <p>
-        This example shows a GraphQL endpoint, which has field{" "}
-        <code>greeting</code> in the root <code>Query</code> type, with an input
-        argument <code>name</code> of type <code>String!</code>.
+        The Ballerina <code>graphql</code> module allows defining input
+        parameters for the GraphQL fields. To define input parameters, add the
+        desired input parameters in the <code>resource</code> and{" "}
+        <code>remote</code> methods in a <code>graphql:Service</code> and the
+        subsequent service types.
       </p>
 
       <Row
@@ -388,7 +378,7 @@ export default function GraphqlInputTypes() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> package - API documentation
+              <code>graphql</code> module - API documentation
             </a>
           </span>
         </li>
@@ -408,8 +398,8 @@ export default function GraphqlInputTypes() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service as output object"
-            href="/learn/by-example/graphql-returning-service-objects"
+            title="Record as output object"
+            href="/learn/by-example/graphql-returning-record-values"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -436,7 +426,7 @@ export default function GraphqlInputTypes() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service as output object
+                  Record as output object
                 </span>
               </div>
             </div>

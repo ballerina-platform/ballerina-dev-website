@@ -3,12 +3,12 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge  
 _Reviewers_: @shafreenAnfar @DimuthuMadushan @ldclakmal  
 _Created_: 2022/01/06  
-_Updated_: 2022/12/06  
+_Updated_: 2022/12/22  
 _Edition_: Swan Lake  
 
 ## Introduction
 
-This is the specification for the GraphQL standard library of [Ballerina language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
+This is the specification for the GraphQL standard library of the [Ballerina](https://ballerina.io)[ language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
 
 The GraphQL library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 
@@ -88,6 +88,7 @@ The conforming implementation of the specification is released and included in t
         * 7.1.2 [Locations](#712-locations)
         * 7.1.3 [Path](#713-path)
     * 7.2 [Service Error Handling](#72-service-error-handling)
+        * 7.2.1 [Returning Errors and Nil Values](#721-returning-errors-and-nil-values)
     * 7.3 [Client Error Handling](#73-client-error-handling)
         * 7.3.1 [Request Error](#731-request-error)
             * 7.3.1.1 [HTTP Error](#7311-http-error)
@@ -171,9 +172,9 @@ Since the GraphQL spec does not mandate an underlying client-server protocol, a 
 #### 2.1.2 WebSocket Listener
 If the schema contains the `Subscription` type (as described in [Subscription Type](#313-the-subscription-type)), The GraphQL listener will establish a new WebSocket listener to listen to incoming subscription requests.
 
-In Ballerina, WebSocket is used as the communication protocol for GraphQL subscriptions as it is capable of dispatching data continuously while maintaining a persistent connection. Additionally, Ballerina GraphQL supports `graphql-transport-ws` and `graphql-ws` websocket sub-protocols in subscriptions. If a WebSocket connection is established with one of these underlying sub-protocols, all the subscription responses will be wrapped in a standard message structure defined in their [specification](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md). 
+In Ballerina, WebSocket is used as the communication protocol for GraphQL subscriptions as it is capable of dispatching data continuously while maintaining a persistent connection. Additionally, Ballerina GraphQL supports `graphql-transport-ws` and `graphql-ws` websocket sub-protocols in subscriptions. If a WebSocket connection is established with one of these underlying sub-protocols, all the subscription responses will be wrapped in a standard message structure defined in their [specification](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md).
 
-In a standard response, it includes JSON fields for `type`, `id`, and `payload`. The `type` field specifies the message type of the response. The `id` field is used to uniquely identify the client. The `payload` field includes the GraphQL response returned from the GraphQL engine. If a subscription request occurs without a sub-protocol, only the GraphQL response will be dispatched. All the responses are in json format, and they will be converted to string before sending through WebSocket connections.
+A standard response includes JSON fields for `type`, `id`, and `payload`. The `type` field specifies the message type of the response. The `id` field is used to uniquely identify the client. The `payload` field includes the GraphQL response returned from the GraphQL engine. If a subscription request occurs without a sub-protocol, only the GraphQL response will be dispatched. All the responses are in JSON format, and they will be converted to a string before sending through a WebSocket connection.
 
 A Ballerina GraphQL listener can be declared as described below, honoring the Ballerina generic [listener declaration](https://ballerina.io/spec/lang/2021R1/#section_9.2.1).
 
@@ -292,7 +293,7 @@ The Ballerina GraphQL parser is responsible for parsing the incoming GraphQL doc
 
 The GraphQL engine acts as the main processing unit in the Ballerina GraphQL package. It connects all the other components in the Ballerina GraphQL service together.
 
-When a request is received to the GraphQL Listener, it dispatches the request to the GraphQL engine, where it extracts the document from the request, then passes it to the parser. Then the parser will parse the document and return an error (if there is any) or the syntax tree to the engine. Then the engine will validate the document against the generated schema, and then if the document is valid, the engine will execute the document.
+When a request is received by the GraphQL Listener, it dispatches the request to the GraphQL engine, where it extracts the document from the request, then passes it to the parser. Then the parser will parse the document and return an error (if there is any) or the syntax tree to the engine. Then the engine will validate the document against the generated schema, and then if the document is valid, the engine will execute the document.
 
 ### 2.5 Client
 
@@ -300,34 +301,34 @@ The GraphQL client can be used to connect to a GraphQL service and retrieve data
 
 #### 2.5.1 Initializing the Client
 
-The `graphql:Client` init method requires a valid URL and optional configuration to initialize the client. 
+The `graphql:Client` init method requires a valid URL and optional configuration to initialize the client.
 
 ```ballerina
 graphql:Client graphqlClient = check new (“http://localhost:9090/graphql”, {timeout: 10});
 ```
 #### 2.5.2 Executing Operations
 
-The graphql client provides `execute` API to execute graphql query and mutation operations. The `execute` method of `graphql:Client` takes a GraphQL document as the required argument and sends a request to the specified backend URL seeking for a response. Further, the execute method could take the following optional arguments.
+The graphql client provides `execute` API to execute graphql query and mutation operations. The `execute` method of `graphql:Client` takes a GraphQL document as the required argument and sends a request to the specified backend URL seeking a response. Further, the execute method could take the following optional arguments.
 
 - `variables` - A map containing the GraphQL variables. All the variables that may be required by the graphql document can be set via this `variables` argument.
-- `operationName` - The GraphQL operation name. If the document has more than one operation, then each operation must have a name. Single GraphQL request can only execute one operation; the operation name must be set if the document has more than one operation. Otherwise, the GraphQL server responds back with an error.
+- `operationName` - The GraphQL operation name. If the document has more than one operation, then each operation must have a name. A single GraphQL request can only execute one operation; the operation name must be set if the document has more than one operation. Otherwise, the GraphQL server responds with an error.
 - `headers` - A map containing headers that may be required by the graphql server to execute each operation.
 
 The method definition of the `execute` API is given below.
 
 ```ballerina
-remote isolated function execute(string document, map<anydata>? variables = (), string? operationName = (), 
+remote isolated function execute(string document, map<anydata>? variables = (), string? operationName = (),
     map<string|string[]>? headers = (), typedesc<GenericResponseWithErrors|record {}|json> targetType = <>)
     returns targetType|ClientError ;
 ```
 
 #### 2.5.3 Client Data Binding
 
-When sending a GraphQL request to a GraphQL server using the Ballerina GraphQL client, the response can be data-bound. That means the user can define the expected shape of the GraphQL response by defining a type. The data type defined by the user should be a subtype of  `graphql:GenericResponseWithErrors|record{}|json`. Otherwise, the data binding fails with an error.
+When sending a GraphQL request to a GraphQL server using the Ballerina GraphQL client, the response can be data-bound. That means the user can define the expected shape of the GraphQL response by defining a type. The data type defined by the user should be a subtype of `graphql:GenericResponseWithErrors|record{}|json`. Otherwise, the data binding fails with an error.
 
 >**Note:** It is recommended to use the `graphql:GenericResponseWithErrors` or any subtype of it when retrieving a response using the `graphql:Client` using the `execute` method.
 
-When defining the expected type, nullable fields should be defined as a union of the field type and nil (`()`). A [Payload Binding Error](#732-payload-binding-error) can be occurred otherwise.
+When defining the expected type, nullable fields should be defined as a union of the field type and nil (`()`). A [Payload Binding Error](#732-payload-binding-error) can occur otherwise.
 
 ###### Example: Handle Response with Data Binding
 
@@ -357,7 +358,7 @@ The `execute` method can return errors when retrieving a response from a GraphQL
 
 #### 2.5.4 Client Configuration
 
-The `graphql:Client` uses `http:Client` as its underlying implementation; this `http:Client` can be configured by providing the `graphql:ClientConfiguaration` as an optional parameter via `graphql:Client` init method.
+The `graphql:Client` uses `http:Client` as its underlying implementation; this `http:Client` can be configured by providing the `graphql:ClientConfiguration` as an optional parameter via the `graphql:Client` init method.
 
 ## 3. Schema Generation
 
@@ -406,7 +407,7 @@ As per the [GraphQL specification](https://spec.graphql.org/June2018/#sec-Mutati
 
 #### 3.1.3 The `Subscription` Type
 
-The `Subscription` type in a GraphQL schema is used to continuously fetch data from a GraphQL service. In Ballerina, each `resource` method with the `subscribe` accessor inside a GraphQL service is mapped to a field in the root `Subscription` type. If the `resource` method has the `subscribe` accessor, it must return a `stream`. Otherwise, the compilation error will be occurred.
+The `Subscription` type in a GraphQL schema is used to continuously fetch data from a GraphQL service. In Ballerina, each `resource` method with the `subscribe` accessor inside a GraphQL service is mapped to a field in the root `Subscription` type. If the `resource` method has the `subscribe` accessor, it must return a `stream`. Otherwise, the compilation error will occur.
 
 ###### Example: Adding a Field to the `Subscription` Type
 
@@ -418,8 +419,6 @@ service on new graphql:Listener(9090) {
 }
 ```
 
->**Note:**: The current implementation does not support multiplexing between multiple subscription operations using a client.
-
 ### 3.2 Wrapping Types
 
 Wrapping types are used to wrap the named types in GraphQL. A wrapping type has an underlying named type. There are two wrapping types defined in the GraphQL schema.
@@ -430,7 +429,7 @@ Wrapping types are used to wrap the named types in GraphQL. A wrapping type has 
 
 >**Note:** `nil` (represented by `()`) is the Ballerina's version of `null`.
 
-In the following example, the type of the `name` field is `String!`, which means a `NON_NULL`, `String` type.
+In the following example, the type of the `name` field is `String!`. This means the `String` type is wrapped by the `NON_NULL` type.
 
 ###### Example: NON_NULL Type
 ```ballerina
@@ -441,7 +440,7 @@ service on new graphql:Listener(9090) {
 }
 ```
 
-To make it a nullable type, it should be unionized with `?`. The following example shows the field `name` of the type `String`.
+To make it a nullable type, it should be unionized with `?`. The following example shows the field `name` of the type `String`. This means the `name` field can have a `null` value.
 
 ###### Example: Nullable Type
 ```ballerina
@@ -473,7 +472,7 @@ Resource methods are a special kind of method in Ballerina. In the Ballerina Gra
 
 #### 3.3.1 Resource Accessor
 
-The only allowed accessors in Ballerina GraphQL resource are `get` and `subscribe`. Any other accessor usage will result in a compilation error.
+The only allowed accessors in Ballerina GraphQL resource are, `get` and `subscribe`. Any other accessor usage will result in a compilation error.
 
 ###### Example: Resource Accessor
 
@@ -537,7 +536,7 @@ service graphql:Service on new graphql:Listener(9090) {
 }
 ```
 
-The above example shows how to use hierarchical resource paths to create a hierarchical data model. When the schema is generated using this service, the root `Query` operation has a single field, `profile`, as it is the only path segment at the top level. The type of this field is also `profile`, which is an `Object` type. This object type has three fields: `address`, `name`, and `age`. The type of the `address` field is also `Object` as it is an intermediate path segment (i.e. has child path segments). The name of this object type is `address`. It has three fields: the `number` (type `Int!`), the `street` (type `String!`), and the `city` (type `String!`). The `name` field is of type `String!`, and the `age` field is of type `Int!`. Check [Types Section](#4-types) for more information on types and fields.
+In the above example shows how to use hierarchical resource paths to create a hierarchical data model. When the schema is generated using this service, the root `Query` operation has a single field, `profile`, as it is the only path segment at the top level. The type of this field is also `profile`, which is an `Object` type. This object type has three fields: `address`, `name`, and `age`. The type of the `address` field is also `Object` as it is an intermediate path segment (i.e. has child path segments). The name of this object type is `address`. It has three fields: the `number` (type `Int!`), the `street` (type `String!`), and the `city` (type `String!`). The `name` field is of type `String!`, and the `age` field is of type `Int!`. Check [Types Section](#4-types) for more information on types and fields.
 
 ### 3.4 Remote Methods
 
@@ -553,7 +552,7 @@ The name of the `remote` method is the name of the corresponding GraphQL field i
 
 A GraphQL schema can have documentation for the types, fields, enums, schema, etc.
 
-In Ballerina, the Ballerina doc comments can be used to add documentation for the generated schema. Each comment belong to a field, argument, or an enum will be applied to the particular GraphQL schema member.
+In Ballerina, the Ballerina doc comments can be used to add documentation for the generated schema. Each comment belonging to a field, argument, or enum will be applied to the particular GraphQL schema member.
 
 ###### Example: Documentation
 
@@ -561,20 +560,20 @@ In Ballerina, the Ballerina doc comments can be used to add documentation for th
 # Service to query people database.
 service on new graphql:Listener(9090) {
 
-    # Returns a person with the given ID.
+    # Returns a profile with the given ID.
     #
-    # + id - The ID of the person
-    # + return - The person with the given ID
-    resource function get person(int id) returns Person {
+    # + id - The ID of the profile
+    # + return - The profile with the given ID
+    resource function get profile(int id) returns Profile {
         // ...
     }
 
-    # Represents a person.
+    # Represents a profile.
     #
-    # + id - The ID of the person
-    # + name - The name of the person
-    # + age - The age of the person
-    public type Person record {|
+    # + id - The ID of the profile
+    # + name - The name of the profile
+    # + age - The age of the profile
+    public type Profile record {|
         int id;
         string name;
         int age;
@@ -582,9 +581,9 @@ service on new graphql:Listener(9090) {
 }
 ```
 
-This will generate the documentation for all the fields of the `Query` type including the field descriptions of the `Person` type.
+This will generate the documentation for all the fields of the `Query` type including the field descriptions of the `Profile` type.
 
->**Note:** When a field or an argument name contains Unicode characters or any other escape characters, they are unescaped when generating the schema.   
+>**Note:** When a field or an argument name contains Unicode characters or any other escape characters, they are unescaped when generating the schema.
 
 ###### Example: Escaping Characters
 ```ballerina
@@ -592,7 +591,7 @@ service on new graphql:Listener(9090) {
     resource function get 'type(string 'version) returns string {
         return "";
     }
-    
+
     resource function get name(string \u{0076}ersion) returns string {
         return "";
     }
@@ -645,12 +644,12 @@ A Ballerina record type can be used as an Object type in GraphQL. Each record fi
 ###### Example: Record Type as Object
 ```ballerina
 service on new graphql:Listener(9090) {
-    resource function get profile() returns Person {
+    resource function get profile() returns Profile {
         return {name: "Walter White", age: 52};
     }
 }
 
-type Person record {|
+type Profile record {|
     string name;
     int age;
 |};
@@ -678,12 +677,12 @@ The `resource` methods in these service types can have input parameters. These i
 
 ```ballerina
 service on new graphql:Listener(9090) {
-    resource function get profile() returns Person {
+    resource function get profile() returns Profile {
         return new ("Walter White", 52);
     }
 }
 
-service class Person {
+service class Profile {
     private final string name;
     private final int age;
 
@@ -705,16 +704,16 @@ service class Person {
 
 ### 4.3 Unions
 
-GraphQL `Union` type represent an object that could be one of a list of GraphQL `Object` types but provides no guarantee for common fields in the member types. Ballerina has first-class support for union types. The Ballerina GraphQL package uses this feature to define `Union` types in a schema.
+GraphQL `Union` type represents an object that could be one of a list of possible GraphQL `Object` types but provides no guarantee for common fields in the member types. Ballerina has first-class support for union types. The Ballerina GraphQL package uses this feature to define `Union` types in a schema.
 
->**Note:** Only `distinct` service types are supported as members of a union type in the Ballerina GraphQL package. If one or more members in a union type do not follow this rule, a compilation error will be thrown.
+In Ballerina, only `distinct` `service` classes are supported as union-type members. The reason behind this is the difference between GraphQL and the Ballerina type systems. The Ballerina is a structurally-typed language whereas GraphQL is a nominally-typed language. The `distinct` types of Ballerina have similar behavior to nominal types. If one or more member type in a union type is not `distinct` `service` class, a compilation error will occur.
 
 ###### Example: Union Types
 In the following example, two `distinct` service types are defined first, `Teacher` and `Student`. Then a `Union` type is defined using Ballerina syntax for defining union types. The resource method in the GraphQL service is returning the union type.
 
 ```ballerina
 service on new graphql:Listener(9090) {
-    resource function get profile() returns Person {
+    resource function get profile() returns Profile {
         return new Teacher("Walter White", "Chemistry");
     }
 }
@@ -755,7 +754,7 @@ distinct service class Student {
     }
 }
 
-type Person Teacher|Student; // Defining the union type
+type Profile Teacher|Student; // Defining the union type
 ```
 
 ### 4.4 Enums
@@ -785,7 +784,7 @@ In GraphQL, a field can have zero or more input arguments. These arguments can b
 
 #### 4.5.1 Input Union Types
 
-An input type can be a Ballerina union type, if and only if the union consists of one of the supported types and the other member type is `nil`. A union with nil means the input type is a nullable type. Any other union type will be resulting in a compilation error.
+An input type can be a Ballerina union type, if and only if the union consists of one of the supported types and the other member type is `nil`. A union with nil means the input type is nullable. Any other union type will be resulting in a compilation error.
 
 ###### Example: Input Union Types
 
@@ -812,7 +811,7 @@ service on new graphql:Listener(9090) {
 
 #### 4.5.2 Input Objects
 
-Although `Scalar` and `enum` types can be used as input and output types without a limitation, an object type can not be used as an input type and an output type. Therefore, separate kinds of objects are used to define input objects.
+Although `Scalar` and `enum` types can be used as input and output types without a limitation, an object type can not be used as an input type and an output type at the same time. Therefore, separate kinds of objects are used to define input objects.
 
 In Ballerina, a `record` type can be used as an input object. When a `record` type is used as the type of the input argument of a `resource` or `remote` method in a GraphQL service (or in a `resource` method in a `service` type returned from the GraphQL service), it is mapped to an `INPUT_OBJECT` type in GraphQL.
 
@@ -837,17 +836,17 @@ type Book record {|
 
 In GraphQL, an interface can be used to define a set of common fields for objects. Then the `Object` types can implement the interface with the common fields and optionally, additional fields.
 
-In Ballerina, `distinct` `service` objects can be used to define GraphQL interfaces. Then other `distinct` `service` classes can be used to implement the interface. All the service classes that are implementing the interface must provide the implementation for all resource methods declared in the interface, and they can define additional resource methods.
+In Ballerina, `distinct` `service` objects can be used to define GraphQL interfaces. The other `distinct`` `service` classes can be used to implement the interface. All the service classes that are implementing the interface must provide the implementation for all resource methods declared in the interface, and they can define additional resource methods.
 
 ###### Example: Interfaces
 ```ballerina
-public type Person distinct service object {
+public type Profile distinct service object {
     isolated resource function get name() returns string;
 };
 
 # Represents a Student as a class.
 public isolated distinct service class Student {
-    *Person;
+    *Profile;
     final string name;
     final int id;
 
@@ -867,7 +866,7 @@ public isolated distinct service class Student {
 
 # Represents a Teacher as a class.
 public isolated distinct service class Teacher {
-    *Person;
+    *Profile;
     final string name;
     final string subject;
 
@@ -886,15 +885,15 @@ public isolated distinct service class Teacher {
 }
 ```
 
-In the above example, the `Person` object is an interface. The `Student` and `Teacher` classes are `Object` types that implement the `Person` interface.
+In the above example, the `Profile` object is an interface. The `Student` and `Teacher` classes are `Object` types that implement the `Profile` interface.
 
 #### 4.6.1 Interfaces Implementing Interfaces
 
 In GraphQL, an interface can implement another interface. The implementing interface must define each field that is specified by the implemented interface. Interface definitions must not contain cyclic references nor implement themselves.
 
-In Ballerina, `distinct` `service` objects can be included in other `distinct` `service` objects to achieve interface implementing interface functionality. Including these interface objects, to itself or cyclically within other interface objects results in a compilation error.
+In Ballerina, `distinct` `service` objects can be included in other `distinct` `service` objects to achieve interface-implementing interface functionality. Including these interface objects, to itself or cyclically within other interface objects results in a compilation error.
 
-An `Object` type which implements an interface must implement all the fields from that interface and its parent interfaces.
+An `Object` type that implements an interface must implement all the fields from that interface and its parent interfaces.
 
 ###### Example: Interfaces Implementing Interfaces
 ```ballerina
@@ -948,7 +947,7 @@ Ballerina GraphQL services support three default directives.
 
 ### 5.1 @skip
 
-The `@skip` directive is used to skip a field execution depending on a given condition. It can be used on a field, fragment spread, or on an inline fragment. The directive expects exactly one argument `if`, which is of type `Boolean!`.
+The `@skip` directive is used to skip a field execution depending on a given condition. It can be used on a field, fragment spread, or inline fragment. The directive expects exactly one argument `if`, which is of type `Boolean!`.
 
 The field is skipped if the value of the `if` argument is `true`.
 
@@ -967,7 +966,7 @@ query getProfile ($skipName: Boolean!) {
 
 ### 5.2 @include
 
-The `@include` directive is used to include a field execution depending on a given condition. It can be used on a field, fragment spread, or on an inline fragment. The directive expects exactly one argument `if`, which is of type `Boolean!`.
+The `@include` directive is used to include a field execution depending on a given condition. It can be used on a field, fragment spread, or inline fragment. The directive expects exactly one argument `if`, which is of type `Boolean!`.
 
 The field is included if the value of the `if` argument is `true`.
 
@@ -1045,11 +1044,11 @@ public enum Status {
 }
 ```
 
-In the above service, the generated schema will indicate that the `hello` field of the `Query` type and the `PRIVATE_PARTY` value of the `Status` enum type are deprecated, with the reasons provided in the doc comments. (The reason will be the line after the `# # Deprecated` line.)
+In the above service, the generated schema will indicate that the `hello` field of the `Query` type, and the `PRIVATE_PARTY` value of the `Status` enum type are deprecated, with the reasons provided in the doc comments. (The reason will be the line after the `# # Deprecated` line.)
 
 ## 6. File Upload
 
-A Ballerina GraphQL service can be used to upload files. This section describes how the file uploading in Ballerina GraphQL works.
+A Ballerina GraphQL service can be used to upload files. This section describes how file uploading in Ballerina GraphQL works.
 
 ### 6.1 File Upload Endpoint
 
@@ -1061,15 +1060,15 @@ The `graphql:Upload` type is a record type that consists of the following fields
 
 ##### 6.1.1.1 `fileName` Field
 
-This field contains the name of the file that is being uploaded. The type of the field is `string`.
+This field contains the name of the file that is being uploaded. The type of field is `string``.
 
 ##### 6.1.1.2 `mimeType` Field
 
-This field contains the mime type of the file being uploaded. The type of the field is `string`.
+This field contains the mime type of the file being uploaded. The type of field is `string`.
 
 ##### 6.1.1.3 `encoding` Field
 
-This field contains the encoding used to serialize the file. The type of the field is `string`.
+This field contains the encoding used to serialize the file. The type of field is `string`.
 
 ##### 6.1.1.4 `byteStream` Field
 
@@ -1157,7 +1156,7 @@ The `graphql:ErrorDetail` is used to describe an error (according to the [GraphQ
 
 #### 7.1.1 Message
 
-The `message` contains the error messages from the particular error. 
+The `message` contains the error message from the particular error.
 
 #### 7.1.2 Locations
 
@@ -1173,7 +1172,7 @@ The `extensions` field is an optional field containing a map with `string` keys.
 
 ### 7.2 Service Error Handling
 
-A Ballerina `resource` or `remote` method representing an object field can return an error. When an error is returned, it will be added to the `errors` field in the GraphQL response. The shape of the error object is described in the [Error Detail Record](#71-error-detail-record) section.
+A Ballerina `resource` or `remote` method representing a GraphQL object field can return an error. When an error is returned, it will be added to the `errors` field in the GraphQL response. The shape of the error object is described in the [Error Detail Record](#71-error-detail-record) section.
 
 When an error is returned from a GraphQL resolver, the error message is added as the message of the error, and the location of the document that caused the error will be added to the `locations` field. The path of the error (from the root of the document) will be added as the path in the error response. Currently, the Ballerina GraphQL service __will not add__ any metadata in the `extensions` field.
 
@@ -1225,9 +1224,87 @@ The result of the above document is the following.
 }
 ```
 
+#### 7.2.1 Returning Errors and Nil Values
+
+If a `resource` or `remote` method representing a field of a GraphQL object returns an `error`, the corresponding field value under the `data` field will be `null` in the response, in addition to adding an entry in the `errors` field. In this case, if the [field type is `NON_NULL`](#321-non_null-type), the `null` value will be propagated to the upper levels until the `null` value is allowed. This might cause the whole `data` field to become `null`.
+
+To avoid this, a method can optionally include `nil` type (denoted by `()` in Ballerina). When the method return type includes `nil`, the response is allowed to add `null` as the field value, thus it stops propagating the `null` value to upper levels.
+
+>**Note:** Making a field nullable should be a conscious decision made by the developer. This usually comes to the point on what is considered an error. In some use cases, partial data is considered valid. For example, when retrieving profile, the receiving the `name` field and not receiving the `age` field can be considered valid based on the use case. Similarly, receiving the `age` field, but not receiving the `name` field can be considered an `error`. In that case, the `age` field can be nullable, while the `name` field can be `NON_NULL` type.
+
+###### Example: Returning Errors with Nil Values
+
+```ballerina
+service on new graphql:Listener(9090) {
+
+    resource function get profile(int id) returns Profile {
+        return new ("Walter White", 50);
+    }
+}
+
+service class Profile {
+    resource function get name() returns string|error {
+        // Implementation
+    }
+
+    resource function get age() returns int|error? {
+        // Implementation
+    }
+}
+```
+
+In the above example, the `name` field of the `Profile` object can return an `error`. But the return type does not include the `nil` type. Therefore, if this field returns an `error`, first, the `name` field will become `null`. Since the `name` field is `NON_NULL`, the value is propagated to the upper level, making the `profile` field `null` in the `data` field of the response. But the `profile` field is also wrapped with the `NON_NULL` type as the `profile` resource method does not include `nil` as the return type. Hence, the `null` value will be propagated further, making the whole `data` field `null`.
+
+Similarly, the `age` field of the `Profile` object can return an `error` too. But it has `nil` as one of the possible return types (denoted by `?`: a syntactic sugar for `|()`). In this case, if an `error` is returned from the method, the `age` field of the `Profile` object will become `null`. Since it does allow `null` values (i.e. the type is not wrapped by `NON_NULL` type), the `null` value will not be propagated further. In such cases, the response can contain the `error` as well as the part of the `data` field.
+
+###### Example: Sample Response for Error Returned from a NON_NULL field
+
+```json
+{
+    "errors": [
+        {
+            "message":"Error occurred while retrieving name",
+            "locations": [
+                {
+                    "line": 1,
+                    "column": 20
+                }
+            ],
+            "path": ["profile", "name"]
+        }
+    ],
+    "data":null
+}
+```
+
+###### Example: Sample Response for Error Returned from a Nullable field
+
+```json
+{
+    "errors": [
+        {
+            "message":"Error occurred while retrieving age",
+            "locations": [
+                {
+                    "line":1,
+                    "column":25
+                }
+            ],
+            "path": ["profile", "age"]
+        }
+    ],
+    "data": {
+        "profile": {
+            "name":"Walter White",
+            "age":null
+        }
+    }
+}
+```
+
 ### 7.3 Client Error Handling
 
-The response returned from the `execute` method of the GraphQL client can include errors. This section describes how to handle those errors in the Ballerina client side. All the errors occurred during a GraphQL client operation are categorized as `graphql:ClientError` error type. All the other errors are subtypes of this error type.
+The response returned from the `execute` method of the GraphQL client can include errors. This section describes how to handle those errors on the Ballerina client side. All the errors that occurred during a GraphQL client operation are categorized as `graphql:ClientError` error type. All the other errors are subtypes of this error type.
 
 ###### Example: Handle Client Error
 ```ballerina
@@ -1247,17 +1324,7 @@ The above example shows how to capture the `graphql:ClientError`. This way all t
 There can be errors occurred during sending and validating a GraphQL request. These errors are categorized under the `graphql:RequestError` error type, which is a subtype of the `graphql:ClientError`.
 
 ###### Example: Handle Request Error
-```ballerina
-graphql:Client graphqlClient = check new ("localhost:9090/graphql");
-string document = "{ profile { name } }";
-ProfileResponse|graphql:ClientError response = graphqlClient->execute(document);
-
-if response is graphql:RequestError {
-    // Handle error
-}
-```
-
-The above example, the `graphql:RequestError`s are handled separately.
+In the above example, the `graphql:RequestError`s are handled separately.
 
 ##### 7.3.1.1 HTTP Error
 
@@ -1276,7 +1343,7 @@ if response is graphql:HttpError {
 }
 ```
 
-The above example, the `graphql:HttpError`s are handled separately.
+The above example shows how the `graphql:HttpError`s are handled separately.
 
 ##### 7.3.1.2 Invalid Document Error
 
@@ -1295,7 +1362,7 @@ if response is graphql:InvalidDocumentError {
 }
 ```
 
-The above example, the `graphql:InvalidDocumentError`s are handled separately.
+The above example shows how the `graphql:InvalidDocumentError`s are handled separately.
 
 ##### 7.3.2 Payload Binding Error
 
@@ -1315,7 +1382,7 @@ if response is graphql:PayloadBindingError {
 }
 ```
 
-The above example, the `graphql:PayloadBindingError`s are handled separately.
+The above example shows how the `graphql:PayloadBindingError`s are handled separately.
 
 ###### Example: GraphQL Client Error Handling
 
@@ -1421,13 +1488,13 @@ The `graphql:Context` can be accessed inside any resolver. When needed, the `gra
 
 ```ballerina
 service on new graphql:Listener(9090) {
-    resource function get profile(graphql:Context context) returns Person|error {
+    resource function get profile(graphql:Context context) returns Profile|error {
         value:Cloneable|isolated object {} attribute = check context.get("key");
         // ...
     }
 }
 
-type Person record {|
+type Profile record {|
     string name;
     int age;
 |};
@@ -1441,11 +1508,11 @@ The following example shows how to access the context from an Object. When a Bal
 
 ```ballerina
 service on new graphql:Listener(9090) {
-    resource function get profile() returns Person {
+    resource function get profile() returns Profile {
     }
 }
 
-service class Person {
+service class Profile {
     private final string name;
     private final int age;
 
@@ -1689,7 +1756,7 @@ public class Field {
 * The `getAlias()` method returns an alias if the current execution filed has an alias. If not, it returns the field name.
 
 ### 10.3 Writing an Interceptor
-Interceptors can be defined as a readonly service class that infers the Interceptor object provided by the GraphQL package. User-specific name can be used as the service class name.
+Interceptors can be defined as a readonly service class that infers the Interceptor object provided by the GraphQL package. A user-specific name can be used as the service class name.
 
 ```ballerina
 readonly service class InterceptorName {
@@ -1703,11 +1770,11 @@ readonly service class InterceptorName {
 }
 ```
 
-The Interceptor service class should have the implementation of the `execute()` remote method that infers from the interceptor service object. Code needed to be included in the interceptor should be kept inside the `execute()` method. Interceptors can not have any other `resource/remote` methods inside the interceptor. However, the users are able to define the general methods inside the interceptors.
+The Interceptor service class should have the implementation of the `execute()` remote method that infers from the interceptor service object. The code needed to be included in the interceptor should be kept inside the `execute()` method. Interceptors can not have any other `resource/remote` methods inside the interceptor. However, the users can define the general methods inside the interceptors.
 
 ### 10.4 Execution
 
-When it comes to interceptor execution, it follows the `onion principle`. Basically, each interceptor adds a layer before and after the actual resolver invocation. Therefore, the order of the interceptor array in the configuration will be important. In an Interceptor `execute()` method, all the code lines placed before the `context.resolve()` will be executed before the resolver execution, and the code lines placed after the `context.resolve()` will be executed after the resolver execution. The [`context.resolve()`](#85-resolving-field-value) method invoke the next interceptor.
+When it comes to interceptor execution, it follows the `onion principle`. Each interceptor adds a layer before and after the actual resolver invocation. Therefore, the order of the interceptor array in the configuration will be important. In an Interceptor `execute()` method, all the code lines that are placed before the `context.resolve()` will be executed before the resolver execution, and the code lines placed after the `context.resolve()` will be executed after the resolver execution. The [`context.resolve()`](#85-resolving-field-value) method invokes the next interceptor.
 
 >**Note:** The inserting order of the interceptors into the array, will be the execution order of Interceptors.
 
@@ -1927,7 +1994,7 @@ A file user store can be used to validate the `Authorization` header in the HTTP
 
 ```ballerina
 graphql:FileUserStoreConfig config = {};
-http:ListenerFileUserStoreBasicAuthHandler handler = new (config);
+final http:ListenerFileUserStoreBasicAuthHandler handler = new (config);
 
 isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
     string authorization = check request.getHeader("Authorization");
@@ -1936,11 +2003,10 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     return context;
 }
 
-@graphql:ServiceConfig {
-    contextInit: contextInit
-}
-service on new graphql:Listener(9090) {
-    resource function get greeting(graphql:Context context) returns string|error {
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
@@ -1953,7 +2019,18 @@ service on new graphql:Listener(9090) {
         if authz is http:Forbidden {
             return error("Forbidden");
         }
-        // ...
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: [new AuthInterceptor()]
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
     }
 }
 ```
@@ -2001,7 +2078,7 @@ graphql:LdapUserStoreConfig config = {
     connectionTimeout: 5,
     readTimeout: 60
 };
-http:ListenerLdapUserStoreBasicAuthHandler handler = new (config);
+final http:ListenerLdapUserStoreBasicAuthHandler handler = new (config);
 
 isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
     string authorization = check request.getHeader("Authorization");
@@ -2010,11 +2087,10 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     return context;
 }
 
-@graphql:ServiceConfig {
-    contextInit: contextInit
-}
-service on new graphql:Listener(9090) {
-    resource function get greeting(graphql:Context context) returns string|error {
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
@@ -2027,7 +2103,18 @@ service on new graphql:Listener(9090) {
         if authz is http:Forbidden {
             return error("Forbidden");
         }
-        // ...
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: [new AuthInterceptor()]
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
     }
 }
 ```
@@ -2048,7 +2135,7 @@ graphql:JwtValidatorConfig config = {
         }
     }
 };
-http:ListenerJwtAuthHandler handler = new (config);
+final http:ListenerJwtAuthHandler handler = new (config);
 
 isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
     string authorization = check request.getHeader("Authorization");
@@ -2057,11 +2144,10 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     return context;
 }
 
-@graphql:ServiceConfig {
-    contextInit: contextInit
-}
-service on new graphql:Listener(9090) {
-    resource function get greeting(graphql:Context context) returns string|error {
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
@@ -2070,11 +2156,24 @@ service on new graphql:Listener(9090) {
         if authn is http:Unauthorized {
             return error("Unauthorized");
         }
-        http:Forbidden? authz = handler.authorize(authn, "admin");
-        if authz is http:Forbidden {
-            return error("Forbidden");
+        if authn is jwt:Payload {
+            http:Forbidden? authz = handler.authorize(authn, "admin");
+            if authz is http:Forbidden {
+                return error("Forbidden");
+            }
         }
-        // ...
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: [new AuthInterceptor()]
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
     }
 }
 ```
@@ -2090,7 +2189,7 @@ graphql:OAuth2IntrospectionConfig config = {
     url: "https://localhost:8080/oauth2/introspect",
     tokenTypeHint: "access_token"
 };
-http:ListenerOAuth2Handler handler = new (config);
+final http:ListenerOAuth2Handler handler = new (config);
 
 isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
     string authorization = check request.getHeader("Authorization");
@@ -2099,22 +2198,33 @@ isolated function contextInit(http:RequestContext reqCtx, http:Request request) 
     return context;
 }
 
-@graphql:ServiceConfig {
-    contextInit: contextInit
-}
-service on new graphql:Listener(9090) {
-    resource function get greeting(graphql:Context context) returns string|error {
-        value:Cloneable|isolated object {} authorization = check context.get("Authorization");
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
         if authorization !is string {
             return error("Failed to authorize");
         }
         oauth2:IntrospectionResponse|http:Unauthorized|http:Forbidden auth = handler->authorize(authorization, "admin");
         if auth is http:Unauthorized {
             return error("Unauthorized");
-        } else if auth is http:Forbidden {
+        }
+        if auth is http:Forbidden {
             return error("Forbidden");
         }
-        // ...
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: [new AuthInterceptor()]
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
     }
 }
 ```

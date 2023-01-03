@@ -38,8 +38,7 @@ service / on new http:Listener(8080) {
     function init() returns error? {
         // Initiate the mysql client at the start of the service. This will be used
         // throughout the lifetime of the service.
-        self.db = check new (host = "localhost", port = 3306, user = "root",
-                            password = "Test@123", database = "MUSIC_STORE");
+        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
 
     resource function get orders/[string orderDate]() returns Orders|error {
@@ -101,8 +100,10 @@ export default function MysqlCallStoredProcedures() {
       <h1>Database Access - Call stored procedures</h1>
 
       <p>
-        This BBE demonstrates how to use the MySQL client to execute a stored
-        procedure.
+        The <code>mysql:Client</code> allows executing a stored procedure with
+        the use of <code>call</code> method. This method requires a{" "}
+        <code>sql:ParameterizedQuery</code>-typed SQL CALL statement as the
+        argument.
       </p>
 
       <blockquote>
@@ -217,9 +218,9 @@ export default function MysqlCallStoredProcedures() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Refer{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md">
-              <code>mysql-prerequisite</code>
+            To set up the database, see the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite">
+              Database Access Ballerina By Example - Prerequisites
             </a>
             .
           </span>

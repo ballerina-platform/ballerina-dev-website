@@ -15,10 +15,10 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // In this example, the \`isShared\` field of the \`cacheConfig\` is set
@@ -162,7 +162,7 @@ export default function HttpCachingClient() {
           <span>&#8226;&nbsp;</span>
           <span>
             Run the HTTP service given in the{" "}
-            <a href="learn/by-example/http-service-cache-response/">
+            <a href="/learn/by-example/http-service-cache-response/">
               Sending cache response service
             </a>{" "}
             example.

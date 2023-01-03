@@ -15,16 +15,14 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Defines the HTTP client to call the OAuth2 secured APIs.
-    // The client is enriched with the \`Authorization: Bearer <token>\` header by
-    // passing the \`http:OAuth2JwtBearerGrantConfig\` for the \`auth\` configuration of the client.
-    http:Client albumClient = check new("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
             assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
@@ -71,11 +69,11 @@ export default function HttpClientOauth2JwtBearerGrantType() {
       <h1>HTTP client - OAuth2 JWT bearer grant type</h1>
 
       <p>
-        A client, which is secured with an OAuth2 JWT bearer grant type can be
-        used to connect to a secured service. The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>http:OAuth2JwtBearerGrantConfig</code> to the <code>auth</code>{" "}
-        configuration of the client.
+        The <code>http:Client</code> can connect to a service that is secured
+        with the OAuth2 JWT bearer grant type by adding the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header to each request.
+        The required configurations for this grant type can be specified in the{" "}
+        <code>auth</code> field of the client configuration.
       </p>
 
       <Row
@@ -255,7 +253,7 @@ export default function HttpClientOauth2JwtBearerGrantType() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package API documentation
+              <code>oauth2</code> module - API documentation
             </a>
           </span>
         </li>

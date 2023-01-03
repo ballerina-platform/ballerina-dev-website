@@ -21,7 +21,6 @@ import * as React from 'react';
 // import algoliasearch from "algoliasearch/lite";
 // import { Container, Nav, Navbar, NavDropdown, Form, FormControl, Button, Modal} from 'react-bootstrap';
 // import { InstantSearch } from "react-instantsearch-dom";
-
 // import SearchBox from "./search-box/SearchBox";
 // import Hits from "./search-hits/SearchHits";
 
@@ -41,6 +40,9 @@ export default function Search() {
                 appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
                 apiKey: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
                 indexName: 'ballerina_pre', // it does not change
+                searchParameters: {
+                    hitsPerPage: 1000
+                },
             });
         }
         fetchData();

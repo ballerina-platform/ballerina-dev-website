@@ -18,7 +18,7 @@ import ballerinax/rabbitmq;
 
 public type Order record {
     int orderId;
-    // Add a constraint to only allow string values of length between 30 and 1.
+    // Add a constraint to allow only string values of length between 1 and 30.
     @constraint:String {maxLength: 30, minLength: 1}
     string productName;
     decimal price;
@@ -27,14 +27,14 @@ public type Order record {
 
 // The consumer service listens to the "OrderQueue" queue.
 service "OrderQueue" on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
+
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {
             log:printInfo(string \`Received valid order for \${'order.productName}\`);
         }
     }
 
-    // When an error occurs in the before the \`onMessage\` invoke,
-    // \`onError\` function will get invoked.
+    // When an error occurs, \`onError\` gets invoked.
     remote function onError(rabbitmq:AnydataMessage message, rabbitmq:Error err) {
         if err is rabbitmq:PayloadValidationError {
             log:printError("Payload validation failed", err);
@@ -68,10 +68,17 @@ export default function RabbitmqServiceConstraintValidation() {
       <h1>RabbitMQ service - Constraint validation</h1>
 
       <p>
-        This example shows how the payload is validated related to the
-        constraints added to the payload record. When a payload is not valid the{" "}
-        <code>onError</code> remote method of the service is invoked and an
-        error of type <code>rabbitmq:PayloadValidationError</code> is returned.
+        The Ballerina constraint module allows you to add additional constraints
+        to the message content. The constraints can be added to a given data
+        type using different annotations. When a message with a constraint is
+        received from the RabbitMQ server, it is validated internally. This
+        validation happens soon after the successful data-binding of the message
+        content before executing the <code>onMessage</code> remote method. If
+        the validation fails, the <code>onError</code> remote method is invoked
+        with the error type <code>nats:PayloadValidationError</code>. Use this
+        to validate the message content as the application receives it, which
+        allows you to guard against unnecessary remote method processing and
+        malicious content.
       </p>
 
       <Row

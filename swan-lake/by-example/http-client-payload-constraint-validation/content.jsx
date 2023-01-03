@@ -66,16 +66,15 @@ export default function HttpClientPayloadConstraintValidation() {
       <h1>HTTP client - Payload constraint validation</h1>
 
       <p>
-        The Ballerina <code>constraint</code> module allows you to add
-        additional constraints to the response payload. The{" "}
-        <code>http:Client</code> uses the <code>constraint</code> module to
-        validate the payload against the given constraints. This validation
-        happens soon after the successful data-binding of the response payload.
-        The constraints can be added to a given data type using different
-        annotations. If the validation fails,{" "}
-        <code>http:PayloadValidationError</code> will be returned with the
-        validation error message. Use this to validate the response payload as
-        the application program receives it, which allows you to guard against
+        The Ballerina <code>constraint</code> module allows adding additional
+        constraints to the response payload. The <code>http:Client</code> uses
+        the <code>constraint</code> module to validate the payload against the
+        given constraints. This validation happens soon after the successful
+        data-binding of the response payload. The constraints can be added to a
+        given data type using different annotations. If the validation fails, an{" "}
+        <code>http:PayloadValidationError</code> is returned with the validation
+        error message. Use this to validate the response payload as the
+        application program receives it, which protects the client against
         unnecessary processing and malicious payloads.
       </p>
 

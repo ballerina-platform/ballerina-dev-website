@@ -14,7 +14,7 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/websocket;
 
-listener websocket:Listener chatListener = new(9090,
+listener websocket:Listener chatListener = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -44,14 +44,16 @@ listener websocket:Listener chatListener = new(9090,
     ]
 }
 service /chat on chatListener {
+
     resource function get .() returns websocket:Service {
         return new ChatService();
-   }
+    }
 }
 
 service class ChatService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
+
+    remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
         check caller->writeMessage("Hello, How are you?");
     }
 }
@@ -82,19 +84,15 @@ export default function WebsocketServiceJwtAuth() {
       <h1>WebSocket service - JWT authentication</h1>
 
       <p>
-        A WebSocket service can be secured with JWT and by
-        enforcingauthorization optionally. Then, it validates the JWT sent in
-        the <code>Authorization</code> header against the provided
-        configurations.
-      </p>
-
-      <p>
-        Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s). The scope can
-        be included in the JWT using a custom claim attribute. That custom claim
-        attribute also can be configured as the <code>scopeKey</code>. In the
-        authorization phase, the scopes of the service are compared against the
-        scope included in the JWT for at least one match between the two sets.
+        The <code>websocket:Service</code> and resource function can be secured
+        with JWT and additionally, scopes can be added to enforce authorization.
+        It validates the JWT sent in the <code>Authorization</code> header
+        against the provided configurations. Ballerina uses the concept of
+        scopes for authorization. The scope can be included in the JWT using a
+        custom claim attribute. That custom claim attribute also can be
+        configured as the <code>scopeKey</code>. In the authorization phase, the
+        scopes of the service/resource are compared against the scope included
+        in the JWT for at least one match between the two sets.
       </p>
 
       <Row
@@ -259,7 +257,7 @@ export default function WebsocketServiceJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
+              <code>websocket</code> module - API documentation
             </a>
           </span>
         </li>
@@ -269,7 +267,7 @@ export default function WebsocketServiceJwtAuth() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-              <code>jwt</code> package - API documentation
+              <code>jwt</code> module - API documentation
             </a>
           </span>
         </li>

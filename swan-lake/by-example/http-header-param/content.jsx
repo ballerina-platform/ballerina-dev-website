@@ -69,7 +69,7 @@ export default function HttpHeaderParam() {
         resource parameter. The name of the parameter must match the name of the
         header. If there is a mismatch, then the header name must be given in
         the annotation configuration. The resource parameter can be a simple
-        type or array type (i.e., <code>string version</code> or{" "}
+        type or an array type (i.e., <code>string version</code> or{" "}
         <code>string[] versions</code>). If there are many headers to read, a
         record type can be used as the parameter. Unless the parameter is
         optional (i.e., <code>string? version</code>), a{" "}
@@ -305,7 +305,7 @@ export default function HttpHeaderParam() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

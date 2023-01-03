@@ -19,7 +19,7 @@ type Album readonly & record {|
     string artist;
 |};
 
-listener http:Listener securedEP = new(9090,
+listener http:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -28,11 +28,10 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with JWT Auth and can be authorized
-// optionally. JWT Auth can be enabled by setting the \`http:JwtValidatorConfig\` configurations.
+// The service can be secured with JWT authentication and can be authorized optionally.
+// JWT authentication can be enabled by setting the \`http:JwtValidatorConfig\` configurations.
 // Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type
-// configurations for \`scopes\` field.
+// Authorization can be enabled by setting the \`string|string[]\` type configurations for the \`scopes\` field.
 @http:ServiceConfig {
     auth: [
         {
@@ -50,9 +49,8 @@ listener http:Listener securedEP = new(9090,
 }
 service / on securedEP {
 
-    // It is optional to override the authentication and authorization
-    // configurations at the resource levels. Otherwise, the service auth
-    // configurations will be applied automatically to the resources as well.
+    // It is optional to override the authentication and authorization configurations at the resource levels.
+    // Otherwise, the service auth configurations are applied automatically to the resources as well.
     resource function get albums() returns Album[] {
         return [
             {title: "Blue Train", artist: "John Coltrane"},
@@ -87,16 +85,16 @@ export default function HttpServiceJwtAuthentication() {
       <h1>HTTP service - JWT authentication</h1>
 
       <p>
-        An HTTP service/resource can be secured with JWT and by enforcing
-        authorization optionally. Then, it validates the JWT sent in the{" "}
-        <code>Authorization</code> header against the provided configurations.
-        Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s). The scope can
-        be included in the JWT using a custom claim attribute. That custom claim
-        attribute also can be configured as the <code>scopeKey</code>. In the
-        authorization phase, the scopes of the service/resource are compared
-        against the scope included in the JWT for at least one match between the
-        two sets.
+        The <code>http:Service</code> and resource function can be secured with
+        JWT and additionally, scopes can be added to enforce authorization. It
+        validates the JWT sent in the <code>Authorization</code> header against
+        the provided configurations. Ballerina uses the concept of scopes for
+        authorization. A resource declared in a service can be bound to one/more
+        scope(s). The scope can be included in the JWT using a custom claim
+        attribute. That custom claim attribute also can be configured as the{" "}
+        <code>scopeKey</code>. In the authorization phase, the scopes of the
+        service/resource are compared against the scope included in the JWT for
+        at least one match between the two sets.
       </p>
 
       <Row
@@ -227,8 +225,8 @@ export default function HttpServiceJwtAuthentication() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-self-signed-jwt-authentication">
             self-signed JWT authentication client
-          </a>
-          .
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -249,7 +247,7 @@ export default function HttpServiceJwtAuthentication() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-              <code>jwt</code> package - API documentation
+              <code>jwt</code> module - API documentation
             </a>
           </span>
         </li>

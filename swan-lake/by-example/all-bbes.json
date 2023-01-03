@@ -1459,6 +1459,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "Error handling",
+        "url": "http-default-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Send cache response",
         "url": "http-service-cache-response",
         "verifyBuild": true,
@@ -1782,7 +1790,7 @@
       {
         "name": "Trace logs",
         "url": "http-trace-logs",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -1790,7 +1798,7 @@
       {
         "name": "Access logs",
         "url": "http-access-logs",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -1969,16 +1977,16 @@
         "isLearnByExample": false
       },
       {
-        "name": "Record as output object",
-        "url": "graphql-returning-record-values",
+        "name": "Service as output object",
+        "url": "graphql-returning-service-objects",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Service as output object",
-        "url": "graphql-returning-service-objects",
+        "name": "Record as output object",
+        "url": "graphql-returning-record-values",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2027,6 +2035,22 @@
       {
         "name": "Interfaces implementing interfaces",
         "url": "graphql-interfaces-implementing-interfaces",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Union Types",
+        "url": "graphql-service-union-types",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "graphql-service-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2241,6 +2265,15 @@
       {
         "name": "Payload constraint validation",
         "url": "websocket-service-payload-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "websocket-service-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Service cannot be stopped",
@@ -2473,8 +2506,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Unary RPC",
-        "url": "grpc-service-unary",
+        "name": "Simple RPC",
+        "url": "grpc-service-simple",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
@@ -2543,8 +2576,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Unary RPC",
-        "url": "grpc-client-unary",
+        "name": "Simple RPC",
+        "url": "grpc-client-simple",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
@@ -2863,26 +2896,42 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Kafka client",
-    "column": 2,
-    "category": "Network libraries",
-    "samples": [
+      },
       {
-        "name": "Produce message",
-        "url": "kafka-client-produce-message",
+        "name": "Error handling",
+        "url": "kafka-service-error-handling",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "Kafka producer",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Produce message",
+        "url": "kafka-producer-produce-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kafka consumer",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
       {
         "name": "Payload data binding",
-        "url": "kafka-client-payload-data-binding",
+        "url": "kafka-consumer-payload-data-binding",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2891,7 +2940,7 @@
       },
       {
         "name": "Consumer record data binding",
-        "url": "kafka-client-consumer-record-data-binding",
+        "url": "kafka-consumer-consumer-record-data-binding",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2900,7 +2949,7 @@
       },
       {
         "name": "Constraint validation",
-        "url": "kafka-client-constraint-validation",
+        "url": "kafka-consumer-constraint-validation",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2935,13 +2984,13 @@
     ]
   },
   {
-    "title": "Kafka client security",
+    "title": "Kafka producer security",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Producer SSL/TLS",
-        "url": "kafka-client-producer-ssl",
+        "name": "SSL/TLS",
+        "url": "kafka-producer-ssl",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2949,8 +2998,24 @@
         "isLearnByExample": false
       },
       {
-        "name": "Consumer SSL/TLS",
-        "url": "kafka-client-consumer-ssl",
+        "name": "SASL authentication",
+        "url": "kafka-producer-sasl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kafka consumer security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "kafka-consumer-ssl",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2958,17 +3023,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Producer SASL authentication",
-        "url": "kafka-client-producer-sasl",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Consumer SASL authentication",
-        "url": "kafka-client-consumer-sasl",
+        "name": "SASL authentication",
+        "url": "kafka-consumer-sasl",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3272,8 +3328,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "ftp-service-read",
+        "name": "Receive file",
+        "url": "ftp-service-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3281,8 +3337,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Read/Write file",
-        "url": "ftp-service-read-write",
+        "name": "Send file",
+        "url": "ftp-service-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3297,8 +3353,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "ftp-client-read",
+        "name": "Receive file",
+        "url": "ftp-client-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3306,8 +3362,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write file",
-        "url": "ftp-client-write",
+        "name": "Send file",
+        "url": "ftp-client-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3322,8 +3378,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "sftp-service-read",
+        "name": "Receive file",
+        "url": "sftp-service-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3331,8 +3387,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Read/Write file",
-        "url": "sftp-service-read-write",
+        "name": "Send file",
+        "url": "sftp-service-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3347,8 +3403,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "sftp-client-read",
+        "name": "Receive file",
+        "url": "sftp-client-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3356,8 +3412,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write file",
-        "url": "sftp-client-write",
+        "name": "Send file",
+        "url": "sftp-client-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3705,7 +3761,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Manage sheduled jobs",
+        "name": "Manage scheduled jobs",
         "url": "manage-scheduled-jobs",
         "verifyBuild": true,
         "verifyOutput": true,

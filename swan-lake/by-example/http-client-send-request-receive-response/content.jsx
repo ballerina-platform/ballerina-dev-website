@@ -15,10 +15,10 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
@@ -30,7 +30,7 @@ public function main() returns error? {
     io:println("GET request:" + albums.toJsonString());
 
     // Sends a \`POST\` request to the "/albums" resource.
-    Album album  = check albumClient->/albums.post({
+    Album album = check albumClient->/albums.post({
         title: "Sarah Vaughan and Clifford Brown",
         artist: "Sarah Vaughan"
     });
@@ -86,7 +86,7 @@ export default function HttpClientSendRequestReceiveResponse() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dda8f649b87f6cd9ada82c2ed7e15bea&file=http_client_send_request_receive_response.bal",
+                "https://play.ballerina.io/?gist=0278b0b7257d845be6751dcb4bb61977&file=http_client_send_request_receive_response.bal",
                 "_blank"
               );
             }}

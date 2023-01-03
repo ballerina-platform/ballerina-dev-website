@@ -23,6 +23,7 @@ const codeSnippetData = [
     }
 }
 service /graphql on new graphql:Listener(9090) {
+    
     resource function get greeting() returns string {
         return "Hello, World";
     }
@@ -54,12 +55,11 @@ export default function GraphqlGraphiql() {
       <h1>GraphQL service - GraphiQL client</h1>
 
       <p>
-        The Ballerina GraphQL includes a built-in GraphiQL client for testing
-        the GraphQL endpoint. To enable the GraphiQL client, you can use the{" "}
-        <code>graphql:ServiceConfig</code> annotation on a GraphQL service.
-        There is a field named <code>graphiql</code> in the{" "}
-        <code>graphql:ServiceConfig</code>, where you can enable/disable the
-        GraphiQL client and provide a path to the GraphiQL client.
+        The Ballerina <code>graphql</code> module includes a built-in GraphiQL
+        client. To enable the GraphiQL client, use the <code>graphiql</code>{" "}
+        field in the <code>graphql:ServiceConfig</code> annotation on a{" "}
+        <code>graphql:Service</code>. The GraphiQL client can be used to test
+        the GraphQL APIs using the GraphiQL IDE.
       </p>
 
       <p>
@@ -241,8 +241,8 @@ export default function GraphqlGraphiql() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Interfaces implementing interfaces"
-            href="/learn/by-example/graphql-interfaces-implementing-interfaces"
+            title="Error handling"
+            href="/learn/by-example/graphql-service-error-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -269,7 +269,7 @@ export default function GraphqlGraphiql() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interfaces implementing interfaces
+                  Error handling
                 </span>
               </div>
             </div>

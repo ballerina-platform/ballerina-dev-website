@@ -15,8 +15,14 @@ const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
-listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
+public type Order record {
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+};
 
+listener rabbitmq:Listener orderListener = new (rabbitmq:DEFAULT_HOST, 5671,
     // To secure the client connection using TLS/SSL, the client needs to be configured with
     // a certificate file of the server.
     secureSocket = {
@@ -24,10 +30,13 @@ listener rabbitmq:Listener securedEP = new(rabbitmq:DEFAULT_HOST, 5671,
     }
 );
 
-// Attaches the service to the listener.
-service "Secured" on securedEP {
-    remote function onMessage(string message) returns error? {
-        log:printInfo("Received message: " + message);
+// The consumer service listens to the \`OrderQueue\` queue.
+service "OrderQueue" on orderListener {
+
+    remote function onMessage(Order 'order) returns error? {
+        if 'order.isValid {
+            log:printInfo(string \`Received valid order for \${'order.productName}\`);
+        }
     }
 }
 `,
@@ -57,8 +66,11 @@ export default function RabbitmqServiceSecureConnection() {
       <h1>RabbitMQ service - SSL/TLS</h1>
 
       <p>
-        The underlying connection of the consumer service is secured with
-        TLS/SSL.
+        The <code>rabbitmq:Listener</code> can be configured to connect to the
+        server via SSL/TLS by providing a certificate file. The certificate can
+        be provided through the <code>secureSocket</code> field of the
+        connection configuration. Use this to secure the communication between
+        the client and the server.
       </p>
 
       <Row

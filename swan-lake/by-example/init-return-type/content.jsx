@@ -81,7 +81,7 @@ export default function InitReturnType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4fc01c54af220d95368e12e3089cc9e8&file=init_return_type.bal",
+                "https://play.ballerina.io/?gist=5d5ad0c4cbbe108cc2e386d0b5682b38&file=init_return_type.bal",
                 "_blank"
               );
             }}

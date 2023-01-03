@@ -318,8 +318,8 @@ export default function HttpServiceRedirects() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Error handling"
-            href="/learn/by-example/http-default-error-handling"
+            title="Default resource"
+            href="/learn/by-example/http-default-resource"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -346,7 +346,7 @@ export default function HttpServiceRedirects() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error handling
+                  Default resource
                 </span>
               </div>
             </div>

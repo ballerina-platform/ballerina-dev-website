@@ -14,10 +14,10 @@ setCDN("https://unpkg.com/shiki/");
 const codeSnippetData = [
   `import ballerina/http;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 service / on new http:Listener(9090) {
 
@@ -318,8 +318,8 @@ export default function HttpDefaultErrorHandling() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Default resource"
-            href="/learn/by-example/http-default-resource"
+            title="Send different status codes with payload"
+            href="/learn/by-example/http-send-different-status-codes-with-payload"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -346,7 +346,7 @@ export default function HttpDefaultErrorHandling() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Default resource
+                  Send different status codes with payload
                 </span>
               </div>
             </div>
@@ -354,8 +354,8 @@ export default function HttpDefaultErrorHandling() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Redirects"
-            href="/learn/by-example/http-service-redirects"
+            title="Send cache response"
+            href="/learn/by-example/http-service-cache-response"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -365,7 +365,7 @@ export default function HttpDefaultErrorHandling() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Redirects
+                  Send cache response
                 </span>
               </div>
               <svg

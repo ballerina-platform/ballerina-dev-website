@@ -166,6 +166,7 @@ import HttpHeaderParam from "./http-header-param/content.jsx";
 import HttpSendResponse from "./http-send-response/content.jsx";
 import HttpSendDifferentStatusCodes from "./http-send-different-status-codes/content.jsx";
 import HttpSendDifferentStatusCodesWithPayload from "./http-send-different-status-codes-with-payload/content.jsx";
+import HttpDefaultErrorHandling from "./http-default-error-handling/content.jsx";
 import HttpServiceCacheResponse from "./http-service-cache-response/content.jsx";
 import HttpClientSendRequestReceiveResponse from "./http-client-send-request-receive-response/content.jsx";
 import HttpClientDataBinding from "./http-client-data-binding/content.jsx";
@@ -195,7 +196,6 @@ import HttpCircuitBreaker from "./http-circuit-breaker/content.jsx";
 import HttpLoadBalancer from "./http-load-balancer/content.jsx";
 import HttpFailover from "./http-failover/content.jsx";
 import HttpDefaultResource from "./http-default-resource/content.jsx";
-import HttpDefaultErrorHandling from "./http-default-error-handling/content.jsx";
 import HttpServiceRedirects from "./http-service-redirects/content.jsx";
 import HttpCors from "./http-cors/content.jsx";
 import Http100Continue from "./http-100-continue/content.jsx";
@@ -582,6 +582,7 @@ const BBEs = {
   HttpSendResponse,
   HttpSendDifferentStatusCodes,
   HttpSendDifferentStatusCodesWithPayload,
+  HttpDefaultErrorHandling,
   HttpServiceCacheResponse,
   HttpClientSendRequestReceiveResponse,
   HttpClientDataBinding,
@@ -611,7 +612,6 @@ const BBEs = {
   HttpLoadBalancer,
   HttpFailover,
   HttpDefaultResource,
-  HttpDefaultErrorHandling,
   HttpServiceRedirects,
   HttpCors,
   Http100Continue,

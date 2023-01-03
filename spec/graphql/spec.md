@@ -419,8 +419,6 @@ service on new graphql:Listener(9090) {
 }
 ```
 
->**Note:**: The current implementation does not support multiplexing between multiple subscription operations using a client.
-
 ### 3.2 Wrapping Types
 
 Wrapping types are used to wrap the named types in GraphQL. A wrapping type has an underlying named type. There are two wrapping types defined in the GraphQL schema.

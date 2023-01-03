@@ -1459,6 +1459,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "Error handling",
+        "url": "http-default-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Send cache response",
         "url": "http-service-cache-response",
         "verifyBuild": true,
@@ -1718,14 +1726,6 @@
       {
         "name": "Default resource",
         "url": "http-default-resource",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Error handling",
-        "url": "http-default-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -3761,7 +3761,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Manage sheduled jobs",
+        "name": "Manage scheduled jobs",
         "url": "manage-scheduled-jobs",
         "verifyBuild": true,
         "verifyOutput": true,

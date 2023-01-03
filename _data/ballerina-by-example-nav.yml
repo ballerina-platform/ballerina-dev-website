@@ -613,8 +613,11 @@ sublinks:
           - title: Send different status codes with payload
             id: 10
             url: http-send-different-status-codes-with-payload
-          - title: Send cache response
+          - title: Error handling
             id: 11
+            url: http-default-error-handling
+          - title: Send cache response
+            id: 12
             url: http-service-cache-response
       - title: HTTP client
         id: 2
@@ -715,53 +718,50 @@ sublinks:
           - title: Default resource
             id: 1
             url: http-default-resource
-          - title: Error handling
-            id: 2
-            url: http-default-error-handling
           - title: Redirects
-            id: 3
+            id: 2
             url: http-service-redirects
           - title: CORS
-            id: 4
+            id: 3
             url: http-cors
           - title: 100 continue
-            id: 5
+            id: 4
             url: http-100-continue
           - title: Matrix parameter
-            id: 6
+            id: 5
             url: http-matrix-param
           - title: Restrict by media type
-            id: 7
+            id: 6
             url: http-restrict-by-media-type
           - title: File upload
-            id: 8
+            id: 7
             url: http-service-file-upload
           - title: Compression
-            id: 9
+            id: 8
             url: http-compression
           - title: Trace logs
-            id: 10
+            id: 9
             url: http-trace-logs
           - title: Access logs
-            id: 11
+            id: 10
             url: http-access-logs
           - title: Cookies
-            id: 12
+            id: 11
             url: http-cookies-service
           - title: Chunking
-            id: 13
+            id: 12
             url: http-service-chunking
           - title: Response with multiparts
-            id: 14
+            id: 13
             url: http-response-with-multiparts
           - title: Passthrough
-            id: 15
+            id: 14
             url: http-passthrough
           - title: HTTP/2 to HTTP/1.1 downgrade
-            id: 16
+            id: 15
             url: http-2-to-1-1-downgrade-service
           - title: HTTP/2 server push
-            id: 17
+            id: 16
             url: http-2-0-server-push
       - title: HTTP client advanced
         id: 7
@@ -1477,7 +1477,7 @@ sublinks:
           - title: Schedule one time job
             id: 2
             url: task-one-time-job-execution
-          - title: Manage sheduled jobs
+          - title: Manage scheduled jobs
             id: 3
             url: manage-scheduled-jobs
       - title: UUID

@@ -15,10 +15,10 @@ const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
@@ -83,7 +83,7 @@ export default function HttpClientDataBinding() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=207a96c2f3d6272624e55b27cf61f1a7&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=b28a834281ed9690d22dbfcc883f1677&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}

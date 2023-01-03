@@ -20,8 +20,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.BALLERINA_BOT_TOKEN }}
 
     - name: Install jq for json manipulation
       run: sudo apt-get install jq

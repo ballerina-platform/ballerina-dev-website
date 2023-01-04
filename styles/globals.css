@@ -733,9 +733,9 @@ ul.eventsTabs {
   padding: 15px 0px;
 }
 
-.releasesRow table {
+/* .releasesRow table {
   width: 100%;
-}
+} */
 
 .installers table tr td {
   padding: 3px 7px 3px 7px !important;

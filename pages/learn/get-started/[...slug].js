@@ -244,7 +244,7 @@ export default function PostPage({
             <p className="intro">{frontmatter.intro}</p>
 
             <MainContent
-              content={content}
+              content={AddLiquid(content)}
               handleToc={handleToc}
               codes={codes} />
 

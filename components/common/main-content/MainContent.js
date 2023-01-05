@@ -36,7 +36,6 @@ String.prototype.hashCode = function () {
 export default function MainContent(props) {
 
   const content = props.content;
-  const languages = props.languages;
   const codes = props.codes ? new Map(JSON.parse(props.codes)) : new Map();
 
   // Add id attributes to headings
@@ -235,10 +234,12 @@ export default function MainContent(props) {
           );
         },
         code({ node, inline, className, children, ...props }) {
-          const key = (children[0]).trim().split(/\r?\n/).map(row => row.trim()).join('\n');
-          const highlightedCode = codes.get(key.hashCode());
-          if (highlightedCode) {
-            return <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+          if (typeof children[0] === 'string') {
+            const key = (children[0]).trim().split(/\r?\n/).map(row => row.trim()).join('\n');
+            const highlightedCode = codes.get(key.hashCode());
+            if (highlightedCode) {
+              return <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+            }
           }
 
           const match = /language-(\w+)/.exec(className || '')

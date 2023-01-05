@@ -31,7 +31,7 @@ import LeftNav from "../../../components/common/left-nav/LeftNav";
 import { prefix } from "../../../utils/prefix";
 import RNToc from "../../../utils/rl.json";
 import Toc from "../../../components/common/pg-toc/Toc";
-import {highlight} from "../../highlighter";
+import { highlight } from "../../../utils/highlighter";
 
 String.prototype.hashCode = function () {
   var hash = 0,

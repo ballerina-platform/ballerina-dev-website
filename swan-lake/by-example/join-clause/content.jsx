@@ -73,7 +73,7 @@ export function JoinClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=969e9a2be3086b2336bcee3fb4868123&file=join_clause.bal",
+                "https://play.ballerina.io/?gist=b6081e49ef2049cd64ad448ef14b0dcc&file=join_clause.bal",
                 "_blank"
               );
             }}

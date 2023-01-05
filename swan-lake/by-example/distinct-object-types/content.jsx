@@ -80,7 +80,7 @@ export function DistinctObjectTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3317a6da11816684a2bf04f35490afe4&file=distinct_object_types.bal",
+                "https://play.ballerina.io/?gist=51800115cec490b3ad5b4e1873332616&file=distinct_object_types.bal",
                 "_blank"
               );
             }}

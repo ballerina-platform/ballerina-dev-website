@@ -48,7 +48,7 @@ export function VariablesAndTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0699ecff0e2cc00cb98336c486f1393f&file=variables_and_types.bal",
+                "https://play.ballerina.io/?gist=a10f194d9f51aa13650cf597c2ddf29d&file=variables_and_types.bal",
                 "_blank"
               );
             }}

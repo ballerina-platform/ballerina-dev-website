@@ -56,7 +56,7 @@ export function Arrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=14c6f9e16db70b9222c31d8a0d022582&file=arrays.bal",
+                "https://play.ballerina.io/?gist=04fa127cec14f70a8734aa4ad4b790b4&file=arrays.bal",
                 "_blank"
               );
             }}

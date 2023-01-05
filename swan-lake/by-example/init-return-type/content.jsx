@@ -63,7 +63,7 @@ export function InitReturnType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=40b2528b703dd2ecc76e004e00775582&file=init_return_type.bal",
+                "https://play.ballerina.io/?gist=321aa48429cf39dea73e6298b9d9962e&file=init_return_type.bal",
                 "_blank"
               );
             }}

@@ -57,7 +57,7 @@ export function LanglibFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=16f426359a2d3b3381799f92cd08a078&file=langlib_functions.bal",
+                "https://play.ballerina.io/?gist=7e1c8e722e8d50485a061c49460431f9&file=langlib_functions.bal",
                 "_blank"
               );
             }}

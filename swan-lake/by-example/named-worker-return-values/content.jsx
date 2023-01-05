@@ -70,7 +70,7 @@ export function NamedWorkerReturnValues({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a0ed398f93690c7a564055e8c3c35471&file=named_worker_return_values.bal",
+                "https://play.ballerina.io/?gist=59786b9d4007fdf5661090c5429cf285&file=named_worker_return_values.bal",
                 "_blank"
               );
             }}

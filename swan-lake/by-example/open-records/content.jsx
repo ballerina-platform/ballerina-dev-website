@@ -70,7 +70,7 @@ export function OpenRecords({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dad5113e2eaa7895c43cbb9ea376b4c7&file=open_records.bal",
+                "https://play.ballerina.io/?gist=99d38cbd5a5fadc4f203184a7ad98155&file=open_records.bal",
                 "_blank"
               );
             }}

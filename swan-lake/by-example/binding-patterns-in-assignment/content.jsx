@@ -99,7 +99,7 @@ export function BindingPatternsInAssignment({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c71845d36958ccfb0c102bd2d1ff3090&file=binding_patterns_in_assignment.bal",
+                "https://play.ballerina.io/?gist=995e7f1f841d1e50c4c4161d35962783&file=binding_patterns_in_assignment.bal",
                 "_blank"
               );
             }}

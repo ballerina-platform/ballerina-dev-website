@@ -28,7 +28,7 @@ import rehypeRaw from "rehype-raw";
 import Head from "next/head";
 import Layout from "../../layouts/LayoutOther";
 import { prefix } from "../../utils/prefix";
-import { highlight } from "../highlighter";
+import { highlight } from "../../utils/highlighter";
 
 String.prototype.hashCode = function () {
   var hash = 0,

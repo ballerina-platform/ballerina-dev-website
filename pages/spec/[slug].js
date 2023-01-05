@@ -28,7 +28,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../layouts/LayoutSpec';
 import { prefix } from '../../utils/prefix';
-import { highlight } from "../highlighter";
+import { highlight } from "../../utils/highlighter";
 
 String.prototype.hashCode = function () {
   var hash = 0,

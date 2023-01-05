@@ -29,7 +29,7 @@ import MainContent from "../../../components/common/main-content/MainContent";
 import { prefix } from "../../../utils/prefix";
 import LearnToc from "../../../utils/learn-lm.json";
 import Toc from "../../../components/common/pg-toc/Toc";
-import {highlight} from "../../highlighter";
+import { highlight } from "../../../utils/highlighter";
 
 String.prototype.hashCode = function () {
   var hash = 0,
@@ -132,9 +132,6 @@ export default function PostPage({
     setShowToc(data)
   }
 
-  // Languages used in Featured use case section
-  const languages = ["bash", "ballerina", "graphql", "json", "toml", "sql"];
-
   return (
     <>
       <Head>
@@ -224,7 +221,6 @@ export default function PostPage({
             <MainContent
               content={content}
               handleToc={handleToc}
-              languages={languages}
               codes={codes} />
 
           </Container>

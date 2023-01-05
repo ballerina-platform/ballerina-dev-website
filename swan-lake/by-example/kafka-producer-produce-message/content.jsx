@@ -256,7 +256,7 @@ export function KafkaProducerProduceMessage({codeSnippets}) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9091/orders -H "Content-type:application/json" -d "{\\"orderId\\": 1, \\"productName\\": \\"Sport shoe\\", \\"price\\": 27.5, \\"isValid\\": true}"`}</span>
+              <span>{`\$ curl http://localhost:9090/orders -H "Content-type:application/json" -d "{\\"orderId\\": 1, \\"productName\\": \\"Sport shoe\\", \\"price\\": 27.5, \\"isValid\\": true}"`}</span>
             </code>
           </pre>
         </Col>
@@ -289,8 +289,8 @@ export function KafkaProducerProduceMessage({codeSnippets}) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Constraint validation"
-            href="/learn/by-example/kafka-service-constraint-validation"
+            title="Error handling"
+            href="/learn/by-example/kafka-service-error-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -317,7 +317,7 @@ export function KafkaProducerProduceMessage({codeSnippets}) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validation
+                  Error handling
                 </span>
               </div>
             </div>

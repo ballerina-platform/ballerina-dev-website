@@ -70,6 +70,19 @@ export function GraphqlSubscriptions({codeSnippets}) {
         objects or to obtain low-latency, real-time updates.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Note:</strong> GraphQL subscriptions are read-only operations
+          that are used to continuously fetch data from a GraphQL server. They
+          are usually executed against information such as{" "}
+          <code>PersonStatus</code>, <code>CurrentLocation</code>,{" "}
+          <code>TotalDonations</code>, etc. Ballerina uses <code>resource</code>{" "}
+          methods to handle such cases. Therefore, these <code>resource</code>{" "}
+          methods are usually named using nouns with <code>subscription</code>{" "}
+          accessor.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "

@@ -1459,6 +1459,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "Error handling",
+        "url": "http-default-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Send cache response",
         "url": "http-service-cache-response",
         "verifyBuild": true,
@@ -2041,6 +2049,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "Error handling",
+        "url": "graphql-service-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "GraphiQL client",
         "url": "graphql-graphiql",
         "verifyBuild": true,
@@ -2249,6 +2265,15 @@
       {
         "name": "Payload constraint validation",
         "url": "websocket-service-payload-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "websocket-service-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Service cannot be stopped",
@@ -2866,6 +2891,15 @@
       {
         "name": "Constraint validation",
         "url": "kafka-service-constraint-validation",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "kafka-service-error-handling",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3727,7 +3761,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Manage sheduled jobs",
+        "name": "Manage scheduled jobs",
         "url": "manage-scheduled-jobs",
         "verifyBuild": true,
         "verifyOutput": true,

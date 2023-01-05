@@ -218,8 +218,8 @@ export function HttpServiceCacheResponse({codeSnippets}) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send different status codes with payload"
-            href="/learn/by-example/http-send-different-status-codes-with-payload"
+            title="Error handling"
+            href="/learn/by-example/http-default-error-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -246,7 +246,7 @@ export function HttpServiceCacheResponse({codeSnippets}) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send different status codes with payload
+                  Error handling
                 </span>
               </div>
             </div>

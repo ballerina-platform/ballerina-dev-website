@@ -27,8 +27,7 @@ service / on new http:Listener(8080) {
     function init() returns error? {
         // Initiate the mysql client at the start of the service. This will be used
         // throughout the lifetime of the service.
-        self.db = check new (host = "localhost", port = 3306, user = "root",
-                            password = "Test@123", database = "MUSIC_STORE");
+        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
 
     resource function post 'order(@http:Payload Order salesOrder) returns http:Created|error {

@@ -50,7 +50,7 @@ export function ProgramsAndModules({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2193d1432e338a9366184141f6ec4ce9&file=programs_and_modules.bal",
+                "https://play.ballerina.io/?gist=d411a81e7bd64bf31451249f4a089621&file=programs_and_modules.bal",
                 "_blank"
               );
             }}

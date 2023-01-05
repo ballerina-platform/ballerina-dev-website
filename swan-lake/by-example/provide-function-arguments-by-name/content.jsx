@@ -57,7 +57,7 @@ export function ProvideFunctionArgumentsByName({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b35ec38a4a4e4e5c13c64632c5ff7f03&file=provide_function_arguments_by_name.bal",
+                "https://play.ballerina.io/?gist=1398fd2c9ad500f615b666190fe6849a&file=provide_function_arguments_by_name.bal",
                 "_blank"
               );
             }}

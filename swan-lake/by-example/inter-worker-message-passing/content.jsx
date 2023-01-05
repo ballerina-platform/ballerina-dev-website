@@ -75,7 +75,7 @@ export function InterWorkerMessagePassing({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1377fadf78e49211f6dac3e4d3c5b3cc&file=inter_worker_message_passing.bal",
+                "https://play.ballerina.io/?gist=e34dd2d10ef792c78fc0cbbd5b9867ad&file=inter_worker_message_passing.bal",
                 "_blank"
               );
             }}

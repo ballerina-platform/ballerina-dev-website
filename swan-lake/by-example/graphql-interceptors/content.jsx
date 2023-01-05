@@ -14,25 +14,25 @@ import ballerina/log;
 // Defines an interceptor \`LogInterceptor\` using a service class. It cannot have any
 // \`resource\`/\`remote\` methods except the \`execute()\` remote method. Other methods are allowed.
 readonly service class LogInterceptor {
-    // Includes the \`graphql:Interceptors\` service object from the GraphQL package.
+    // Includes the \`graphql:Interceptor\` service object from the GraphQL package.
     *graphql:Interceptor;
 
     // Implement the \`execute()\` remote method provided by the \`graphql:Interceptor\` object.
     // Within the function, the \`graphql:Context\` and the \`graphql:Field\` object can be accessed to
-    // get the request and field related information.
+    // get the request and field-related information.
     isolated remote function execute(graphql:Context context, graphql:Field 'field)
         returns anydata|error {
         // Access the current execution field name using the \`graphql:Field\` object.
         string fieldName = 'field.getName();
 
-        // This log statement executes begore the resolver execution.
+        // This log statement executes before the resolver execution.
         log:printInfo(string \`Field "\${fieldName}" execution started!\`);
 
         // The \`context.resolve()\` function can be used to invoke the next interceptor. If all the
-        // interceptors were executed, it invokes the actual resolver function. The function returns
-        // an \`anydata\` type value that includes the execution result of the next interceptor or the
-        //  actual resolver. To call the \`context.resolve()\` function, the \`graphql:Field\` value
-        // should be provided as the argument.
+        // interceptors were executed, and it invokes the actual resolver function. The function
+        // returns an \`anydata\` type value that includes the execution result of the next
+        // interceptor or the actual resolver. To call the \`context.resolve()\` function, the
+        // \`graphql:Field\` value should be provided as the argument.
         var data = context.resolve('field);
 
         // This log statement executes after the resolver execution.
@@ -44,7 +44,7 @@ readonly service class LogInterceptor {
 }
 
 @graphql:ServiceConfig {
-    // Interceptor instances should be inserted to the \`interceptors\` array according to the
+    // Interceptor instances should be inserted into the \`interceptors\` array according to the
     // desired execution order.
     interceptors: [new LogInterceptor()]
 }
@@ -92,9 +92,11 @@ export function GraphqlInterceptors({codeSnippets}) {
         separated from the business logic.
       </p>
 
-      <p>
-        <strong>Note:</strong> A service can have zero or more interceptors.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> A service can have zero or more interceptors.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 

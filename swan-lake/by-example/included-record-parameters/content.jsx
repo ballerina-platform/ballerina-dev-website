@@ -62,7 +62,7 @@ export function IncludedRecordParameters({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a28c36f710ebb9b3ac8b3a33afab1887&file=included_record_parameters.bal",
+                "https://play.ballerina.io/?gist=3c6b6d9f41b2b31249054508c8cdd92d&file=included_record_parameters.bal",
                 "_blank"
               );
             }}

@@ -240,8 +240,8 @@ export function WebsocketClient({codeSnippets}) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Payload constraint validation"
-            href="/learn/by-example/websocket-service-payload-constraint-validation"
+            title="Error handling"
+            href="/learn/by-example/websocket-service-error-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -268,7 +268,7 @@ export function WebsocketClient({codeSnippets}) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Payload constraint validation
+                  Error handling
                 </span>
               </div>
             </div>

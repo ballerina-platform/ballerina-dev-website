@@ -11,10 +11,10 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // The HTTP client can be configured to initiate new connections that are secured via mutual SSL.

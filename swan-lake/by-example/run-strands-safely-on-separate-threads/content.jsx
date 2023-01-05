@@ -100,7 +100,7 @@ export function RunStrandsSafelyOnSeparateThreads({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bb4f09c53eb9b87a9887416913ec7983&file=run_strands_safely_on_separate_threads.bal",
+                "https://play.ballerina.io/?gist=6c9f00690f163fb8ee460c0c9f29fbe1&file=run_strands_safely_on_separate_threads.bal",
                 "_blank"
               );
             }}

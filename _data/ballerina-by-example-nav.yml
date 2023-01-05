@@ -613,8 +613,11 @@ sublinks:
           - title: Send different status codes with payload
             id: 10
             url: http-send-different-status-codes-with-payload
-          - title: Send cache response
+          - title: Error handling
             id: 11
+            url: http-default-error-handling
+          - title: Send cache response
+            id: 12
             url: http-service-cache-response
       - title: HTTP client
         id: 2
@@ -835,26 +838,29 @@ sublinks:
           - title: Union Types
             id: 10
             url: graphql-service-union-types
-          - title: GraphiQL client
+          - title: Error handling
             id: 11
+            url: graphql-service-error-handling
+          - title: GraphiQL client
+            id: 12
             url: graphql-graphiql
           - title: Documentation
-            id: 12
+            id: 13
             url: graphql-documentation
           - title: Directives
-            id: 13
+            id: 14
             url: graphql-directives
           - title: Context
-            id: 14
+            id: 15
             url: graphql-context
           - title: Interceptors
-            id: 15
+            id: 16
             url: graphql-interceptors
           - title: File upload
-            id: 16
+            id: 17
             url: graphql-file-upload
           - title: Hierarchical resource paths
-            id: 17
+            id: 18
             url: graphql-hierarchical-resource-paths
       - title: GraphQL client
         id: 10
@@ -916,6 +922,9 @@ sublinks:
           - title: Payload constraint validation
             id: 2
             url: websocket-service-payload-constraint-validation
+          - title: Error handling
+            id: 3
+            url: websocket-service-error-handling
       - title: WebSocket client
         id: 14
         sublinks:
@@ -1144,6 +1153,9 @@ sublinks:
           - title: Constraint validation
             id: 2
             url: kafka-service-constraint-validation
+          - title: Error handling
+            id: 3
+            url: kafka-service-error-handling
       - title: Kafka producer
         id: 29
         sublinks:
@@ -1465,7 +1477,7 @@ sublinks:
           - title: Schedule one time job
             id: 2
             url: task-one-time-job-execution
-          - title: Manage sheduled jobs
+          - title: Manage scheduled jobs
             id: 3
             url: manage-scheduled-jobs
       - title: UUID

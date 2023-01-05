@@ -346,8 +346,8 @@ export function HttpSendDifferentStatusCodesWithPayload({codeSnippets}) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Send cache response"
-            href="/learn/by-example/http-service-cache-response"
+            title="Error handling"
+            href="/learn/by-example/http-default-error-handling"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -357,7 +357,7 @@ export function HttpSendDifferentStatusCodesWithPayload({codeSnippets}) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send cache response
+                  Error handling
                 </span>
               </div>
               <svg

@@ -63,7 +63,7 @@ export function ModuleLifecycle({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=67d1d68833d3b9dd42012e799bd27e06&file=module_lifecycle.bal",
+                "https://play.ballerina.io/?gist=40d60e720807806ed2fbb417f4604681&file=module_lifecycle.bal",
                 "_blank"
               );
             }}

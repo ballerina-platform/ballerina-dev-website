@@ -166,6 +166,7 @@ import { HttpHeaderParam, codeSnippetData as HttpHeaderParamCodeSnippetData } fr
 import { HttpSendResponse, codeSnippetData as HttpSendResponseCodeSnippetData } from "./http-send-response/content.jsx";
 import { HttpSendDifferentStatusCodes, codeSnippetData as HttpSendDifferentStatusCodesCodeSnippetData } from "./http-send-different-status-codes/content.jsx";
 import { HttpSendDifferentStatusCodesWithPayload, codeSnippetData as HttpSendDifferentStatusCodesWithPayloadCodeSnippetData } from "./http-send-different-status-codes-with-payload/content.jsx";
+import { HttpDefaultErrorHandling, codeSnippetData as HttpDefaultErrorHandlingCodeSnippetData } from "./http-default-error-handling/content.jsx";
 import { HttpServiceCacheResponse, codeSnippetData as HttpServiceCacheResponseCodeSnippetData } from "./http-service-cache-response/content.jsx";
 import { HttpClientSendRequestReceiveResponse, codeSnippetData as HttpClientSendRequestReceiveResponseCodeSnippetData } from "./http-client-send-request-receive-response/content.jsx";
 import { HttpClientDataBinding, codeSnippetData as HttpClientDataBindingCodeSnippetData } from "./http-client-data-binding/content.jsx";
@@ -232,6 +233,7 @@ import { GraphqlInputObjects, codeSnippetData as GraphqlInputObjectsCodeSnippetD
 import { GraphqlInterfaces, codeSnippetData as GraphqlInterfacesCodeSnippetData } from "./graphql-interfaces/content.jsx";
 import { GraphqlInterfacesImplementingInterfaces, codeSnippetData as GraphqlInterfacesImplementingInterfacesCodeSnippetData } from "./graphql-interfaces-implementing-interfaces/content.jsx";
 import { GraphqlServiceUnionTypes, codeSnippetData as GraphqlServiceUnionTypesCodeSnippetData } from "./graphql-service-union-types/content.jsx";
+import { GraphqlServiceErrorHandling, codeSnippetData as GraphqlServiceErrorHandlingCodeSnippetData } from "./graphql-service-error-handling/content.jsx";
 import { GraphqlGraphiql, codeSnippetData as GraphqlGraphiqlCodeSnippetData } from "./graphql-graphiql/content.jsx";
 import { GraphqlDocumentation, codeSnippetData as GraphqlDocumentationCodeSnippetData } from "./graphql-documentation/content.jsx";
 import { GraphqlDirectives, codeSnippetData as GraphqlDirectivesCodeSnippetData } from "./graphql-directives/content.jsx";
@@ -255,6 +257,7 @@ import { GraphqlClientSecuritySelfSignedJwtAuthentication, codeSnippetData as Gr
 import { GraphqlClientSecurityOauth2PasswordGrantType, codeSnippetData as GraphqlClientSecurityOauth2PasswordGrantTypeCodeSnippetData } from "./graphql-client-security-oauth2-password-grant-type/content.jsx";
 import { WebsocketBasicSample, codeSnippetData as WebsocketBasicSampleCodeSnippetData } from "./websocket-basic-sample/content.jsx";
 import { WebsocketServicePayloadConstraintValidation, codeSnippetData as WebsocketServicePayloadConstraintValidationCodeSnippetData } from "./websocket-service-payload-constraint-validation/content.jsx";
+import { WebsocketServiceErrorHandling, codeSnippetData as WebsocketServiceErrorHandlingCodeSnippetData } from "./websocket-service-error-handling/content.jsx";
 import { WebsocketClient, codeSnippetData as WebsocketClientCodeSnippetData } from "./websocket-client/content.jsx";
 import { WebsocketClientPayloadConstraintValidation, codeSnippetData as WebsocketClientPayloadConstraintValidationCodeSnippetData } from "./websocket-client-payload-constraint-validation/content.jsx";
 import { WebsocketServiceSslTls, codeSnippetData as WebsocketServiceSslTlsCodeSnippetData } from "./websocket-service-ssl-tls/content.jsx";
@@ -316,6 +319,7 @@ import { NatsClientSecureConnection, codeSnippetData as NatsClientSecureConnecti
 import { NatsClientBasicAuth, codeSnippetData as NatsClientBasicAuthCodeSnippetData } from "./nats-client-basic-auth/content.jsx";
 import { KafkaServiceConsumeMessage, codeSnippetData as KafkaServiceConsumeMessageCodeSnippetData } from "./kafka-service-consume-message/content.jsx";
 import { KafkaServiceConstraintValidation, codeSnippetData as KafkaServiceConstraintValidationCodeSnippetData } from "./kafka-service-constraint-validation/content.jsx";
+import { KafkaServiceErrorHandling, codeSnippetData as KafkaServiceErrorHandlingCodeSnippetData } from "./kafka-service-error-handling/content.jsx";
 import { KafkaProducerProduceMessage, codeSnippetData as KafkaProducerProduceMessageCodeSnippetData } from "./kafka-producer-produce-message/content.jsx";
 import { KafkaConsumerPayloadDataBinding, codeSnippetData as KafkaConsumerPayloadDataBindingCodeSnippetData } from "./kafka-consumer-payload-data-binding/content.jsx";
 import { KafkaConsumerConsumerRecordDataBinding, codeSnippetData as KafkaConsumerConsumerRecordDataBindingCodeSnippetData } from "./kafka-consumer-consumer-record-data-binding/content.jsx";
@@ -578,6 +582,7 @@ const BBEs = {
   HttpSendResponse, HttpSendResponseCodeSnippetData,
   HttpSendDifferentStatusCodes, HttpSendDifferentStatusCodesCodeSnippetData,
   HttpSendDifferentStatusCodesWithPayload, HttpSendDifferentStatusCodesWithPayloadCodeSnippetData,
+  HttpDefaultErrorHandling, HttpDefaultErrorHandlingCodeSnippetData,
   HttpServiceCacheResponse, HttpServiceCacheResponseCodeSnippetData,
   HttpClientSendRequestReceiveResponse, HttpClientSendRequestReceiveResponseCodeSnippetData,
   HttpClientDataBinding, HttpClientDataBindingCodeSnippetData,
@@ -644,6 +649,7 @@ const BBEs = {
   GraphqlInterfaces, GraphqlInterfacesCodeSnippetData,
   GraphqlInterfacesImplementingInterfaces, GraphqlInterfacesImplementingInterfacesCodeSnippetData,
   GraphqlServiceUnionTypes, GraphqlServiceUnionTypesCodeSnippetData,
+  GraphqlServiceErrorHandling, GraphqlServiceErrorHandlingCodeSnippetData,
   GraphqlGraphiql, GraphqlGraphiqlCodeSnippetData,
   GraphqlDocumentation, GraphqlDocumentationCodeSnippetData,
   GraphqlDirectives, GraphqlDirectivesCodeSnippetData,
@@ -667,6 +673,7 @@ const BBEs = {
   GraphqlClientSecurityOauth2PasswordGrantType, GraphqlClientSecurityOauth2PasswordGrantTypeCodeSnippetData,
   WebsocketBasicSample, WebsocketBasicSampleCodeSnippetData,
   WebsocketServicePayloadConstraintValidation, WebsocketServicePayloadConstraintValidationCodeSnippetData,
+  WebsocketServiceErrorHandling, WebsocketServiceErrorHandlingCodeSnippetData,
   WebsocketClient, WebsocketClientCodeSnippetData,
   WebsocketClientPayloadConstraintValidation, WebsocketClientPayloadConstraintValidationCodeSnippetData,
   WebsocketServiceSslTls, WebsocketServiceSslTlsCodeSnippetData,
@@ -728,6 +735,7 @@ const BBEs = {
   NatsClientBasicAuth, NatsClientBasicAuthCodeSnippetData,
   KafkaServiceConsumeMessage, KafkaServiceConsumeMessageCodeSnippetData,
   KafkaServiceConstraintValidation, KafkaServiceConstraintValidationCodeSnippetData,
+  KafkaServiceErrorHandling, KafkaServiceErrorHandlingCodeSnippetData,
   KafkaProducerProduceMessage, KafkaProducerProduceMessageCodeSnippetData,
   KafkaConsumerPayloadDataBinding, KafkaConsumerPayloadDataBindingCodeSnippetData,
   KafkaConsumerConsumerRecordDataBinding, KafkaConsumerConsumerRecordDataBindingCodeSnippetData,

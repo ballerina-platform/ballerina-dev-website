@@ -11,7 +11,7 @@ export const codeSnippetData = [
   `import ballerina/io;
 import ballerina/tcp;
 
-// An HTTP listener can be configured to communicate through SSL/TLS as well.
+// An TCP listener can be configured to communicate through SSL/TLS as well.
 // To secure a listener using SSL/TLS, the listener needs to be configured with
 // a certificate file and a private key file for the listener.
 // The \`tcp:ListenerSecureSocket\` record provides the

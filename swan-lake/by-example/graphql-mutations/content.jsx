@@ -87,6 +87,15 @@ export function GraphqlMutations({codeSnippets}) {
         system.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Note:</strong> GraphQL mutations are actions that are expected
+          to mutate the state of the server. Ballerina uses <code>remote</code>{" "}
+          methods to handle such cases. Therefore, these <code>remote</code>{" "}
+          methods are usually named using verbs.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "

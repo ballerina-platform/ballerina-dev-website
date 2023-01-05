@@ -40,6 +40,9 @@ export default function Search() {
                 appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
                 apiKey: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
                 indexName: 'ballerina_pre', // it does not change
+                searchParameters: {
+                    hitsPerPage: 1000
+                },
             });
         }
         fetchData();

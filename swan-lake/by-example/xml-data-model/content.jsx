@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -35,7 +32,7 @@ public function main() {
 `,
 ];
 
-export function XmlDataModel({codeSnippets}) {
+export function XmlDataModel({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -133,7 +130,7 @@ export function XmlDataModel({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bda2bb6e6b6e2ba7b8da0da1f7caabe8&file=xml_data_model.bal",
+                "https://play.ballerina.io/?gist=7875b0d6b8062381b84f3ea06787c434&file=xml_data_model.bal",
                 "_blank"
               );
             }}
@@ -158,7 +155,7 @@ export function XmlDataModel({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/xml-data-model",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/xml-data-model",
                 "_blank"
               );
             }}

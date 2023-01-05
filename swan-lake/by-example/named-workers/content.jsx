@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -32,7 +29,7 @@ public function main() {
 `,
 ];
 
-export function NamedWorkers({codeSnippets}) {
+export function NamedWorkers({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -67,7 +64,7 @@ export function NamedWorkers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0b461f5f893a649013ade537075daddd&file=named_workers.bal",
+                "https://play.ballerina.io/?gist=f01bc2ca752a29761cc050196a61c4dd&file=named_workers.bal",
                 "_blank"
               );
             }}
@@ -92,7 +89,7 @@ export function NamedWorkers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/named-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/named-workers",
                 "_blank"
               );
             }}

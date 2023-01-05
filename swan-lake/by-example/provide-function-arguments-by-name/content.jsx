@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -30,7 +27,7 @@ public function main() {
 `,
 ];
 
-export function ProvideFunctionArgumentsByName({codeSnippets}) {
+export function ProvideFunctionArgumentsByName({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -57,7 +54,7 @@ export function ProvideFunctionArgumentsByName({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1398fd2c9ad500f615b666190fe6849a&file=provide_function_arguments_by_name.bal",
+                "https://play.ballerina.io/?gist=c76d70e57a515875196da5ad39b815a8&file=provide_function_arguments_by_name.bal",
                 "_blank"
               );
             }}
@@ -82,7 +79,7 @@ export function ProvideFunctionArgumentsByName({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/provide-function-arguments-by-name",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/provide-function-arguments-by-name",
                 "_blank"
               );
             }}

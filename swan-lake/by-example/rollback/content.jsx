@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -85,7 +82,7 @@ function incrementSalary(int[] salaryList) returns error? {
 `,
 ];
 
-export function Rollback({codeSnippets}) {
+export function Rollback({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -120,7 +117,7 @@ export function Rollback({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e2733be35400a6efbc446f12d391f684&file=rollback.bal",
+                "https://play.ballerina.io/?gist=19ba7ba0cb9e59b9b3c203a3631d1f03&file=rollback.bal",
                 "_blank"
               );
             }}
@@ -145,7 +142,7 @@ export function Rollback({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/rollback",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/rollback",
                 "_blank"
               );
             }}

@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -33,7 +30,7 @@ public function main() returns error? {
 `,
 ];
 
-export function IoJson({codeSnippets}) {
+export function IoJson({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -68,7 +65,7 @@ export function IoJson({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7ff3593d47c087eff3c1c2f76fe11c08&file=io_json.bal",
+                "https://play.ballerina.io/?gist=97102aae7e8fdb981d341db88877853c&file=io_json.bal",
                 "_blank"
               );
             }}
@@ -93,7 +90,7 @@ export function IoJson({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/io-json",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/io-json",
                 "_blank"
               );
             }}

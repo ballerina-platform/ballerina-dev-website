@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -70,7 +67,7 @@ service class ChatService {
 `,
 ];
 
-export function WebsocketServiceBasicAuthLdapUserStore({codeSnippets}) {
+export function WebsocketServiceBasicAuthLdapUserStore({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -111,7 +108,7 @@ export function WebsocketServiceBasicAuthLdapUserStore({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/websocket-service-basic-auth-ldap-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/websocket-service-basic-auth-ldap-user-store",
                 "_blank"
               );
             }}

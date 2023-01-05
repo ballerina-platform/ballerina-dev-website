@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -23,7 +20,7 @@ public function main() returns error? {
 `,
 ];
 
-export function RandomNumbers({codeSnippets}) {
+export function RandomNumbers({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -58,7 +55,7 @@ export function RandomNumbers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4072d1f6c8880bf147441f35c83f81af&file=random_numbers.bal",
+                "https://play.ballerina.io/?gist=17835a0f03049b2436666842f61f99f7&file=random_numbers.bal",
                 "_blank"
               );
             }}
@@ -83,7 +80,7 @@ export function RandomNumbers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/random-numbers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/random-numbers",
                 "_blank"
               );
             }}

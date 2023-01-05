@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -22,7 +19,7 @@ function init() {
 `,
 ];
 
-export function ModuleLifecycle({codeSnippets}) {
+export function ModuleLifecycle({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -63,7 +60,7 @@ export function ModuleLifecycle({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=40d60e720807806ed2fbb417f4604681&file=module_lifecycle.bal",
+                "https://play.ballerina.io/?gist=02474a9d14393f31d8428c407d159cc9&file=module_lifecycle.bal",
                 "_blank"
               );
             }}
@@ -88,7 +85,7 @@ export function ModuleLifecycle({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/module-lifecycle",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/module-lifecycle",
                 "_blank"
               );
             }}

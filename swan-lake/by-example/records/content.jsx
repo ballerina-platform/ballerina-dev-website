@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -38,7 +35,7 @@ public function main() {
 `,
 ];
 
-export function Records({codeSnippets}) {
+export function Records({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -74,7 +71,7 @@ export function Records({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=78cf94646b2424816adbc1bac4bd3dcc&file=records.bal",
+                "https://play.ballerina.io/?gist=a221d210fb3b37c72c803e57afb62069&file=records.bal",
                 "_blank"
               );
             }}
@@ -99,7 +96,7 @@ export function Records({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/records",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/records",
                 "_blank"
               );
             }}

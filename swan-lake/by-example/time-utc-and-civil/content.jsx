@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -40,7 +37,7 @@ public function main() returns error? {
 `,
 ];
 
-export function TimeUtcAndCivil({codeSnippets}) {
+export function TimeUtcAndCivil({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -75,7 +72,7 @@ export function TimeUtcAndCivil({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6fc015a355146608bb23ec6117887d31&file=time_utc_and_civil.bal",
+                "https://play.ballerina.io/?gist=30c6c87cd0f5be95050b0d6501fc47ef&file=time_utc_and_civil.bal",
                 "_blank"
               );
             }}
@@ -100,7 +97,7 @@ export function TimeUtcAndCivil({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/time-utc-and-civil",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/time-utc-and-civil",
                 "_blank"
               );
             }}

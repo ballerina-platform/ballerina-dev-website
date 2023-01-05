@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -40,7 +37,7 @@ public function main() {
 `,
 ];
 
-export function TableSyntax({codeSnippets}) {
+export function TableSyntax({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -104,7 +101,7 @@ export function TableSyntax({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d48c17589e035826d63cccb921710d88&file=table_syntax.bal",
+                "https://play.ballerina.io/?gist=cf0f596434f926fa01c72af83c92634a&file=table_syntax.bal",
                 "_blank"
               );
             }}
@@ -129,7 +126,7 @@ export function TableSyntax({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/table-syntax",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/table-syntax",
                 "_blank"
               );
             }}

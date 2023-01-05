@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -28,7 +25,7 @@ public function main() returns error? {
 `,
 ];
 
-export function SequenceDiagrams({codeSnippets}) {
+export function SequenceDiagrams({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -70,7 +67,7 @@ export function SequenceDiagrams({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=611a55e4343b989d58c206cf0845ece4&file=sequence_diagrams.bal",
+                "https://play.ballerina.io/?gist=21ab8201cec6eb3e13bb75bb7e9c9088&file=sequence_diagrams.bal",
                 "_blank"
               );
             }}
@@ -95,7 +92,7 @@ export function SequenceDiagrams({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/sequence-diagrams",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/sequence-diagrams",
                 "_blank"
               );
             }}

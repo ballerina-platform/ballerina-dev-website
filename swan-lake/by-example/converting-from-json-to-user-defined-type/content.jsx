@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -32,7 +29,7 @@ public function main() {
 `,
 ];
 
-export function ConvertingFromJsonToUserDefinedType({codeSnippets}) {
+export function ConvertingFromJsonToUserDefinedType({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -66,7 +63,7 @@ export function ConvertingFromJsonToUserDefinedType({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6f1caeaf2b70298565722dac8852e770&file=converting_from_json_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=24c0fcbe7d6dfb79a443f5b39f3373ad&file=converting_from_json_to_user_defined_type.bal",
                 "_blank"
               );
             }}
@@ -91,7 +88,7 @@ export function ConvertingFromJsonToUserDefinedType({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/converting-from-json-to-user-defined-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/converting-from-json-to-user-defined-type",
                 "_blank"
               );
             }}

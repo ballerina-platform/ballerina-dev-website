@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -42,7 +39,7 @@ public function main() returns error? {
 `,
 ];
 
-export function SerdesSimple({codeSnippets}) {
+export function SerdesSimple({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -79,7 +76,7 @@ export function SerdesSimple({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dd9a3011e1998c878fffc5a76ea29adb&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=4b52e8f5477b972e6b978df76fdd90c8&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -104,7 +101,7 @@ export function SerdesSimple({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/serdes-simple",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/serdes-simple",
                 "_blank"
               );
             }}

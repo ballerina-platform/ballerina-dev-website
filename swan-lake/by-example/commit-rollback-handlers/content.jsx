@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -40,7 +37,7 @@ isolated function logError(transaction:Info info, error? cause, boolean willRetr
 `,
 ];
 
-export function CommitRollbackHandlers({codeSnippets}) {
+export function CommitRollbackHandlers({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -77,7 +74,7 @@ export function CommitRollbackHandlers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d8982a1f311434b38d990c8e4b9ea45e&file=commit_rollback_handlers.bal",
+                "https://play.ballerina.io/?gist=f8caa4c4d89f8545fa9149631362cb9c&file=commit_rollback_handlers.bal",
                 "_blank"
               );
             }}
@@ -102,7 +99,7 @@ export function CommitRollbackHandlers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/commit-rollback-handlers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/commit-rollback-handlers",
                 "_blank"
               );
             }}

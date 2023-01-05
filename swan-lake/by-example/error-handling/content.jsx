@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -40,7 +37,7 @@ public function main() returns error? {
 `,
 ];
 
-export function ErrorHandling({codeSnippets}) {
+export function ErrorHandling({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -67,7 +64,7 @@ export function ErrorHandling({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b5db405858502f8fa866dfd47a1ddc68&file=error_handling.bal",
+                "https://play.ballerina.io/?gist=5a5f5494717f647c62abd1b2ffa3d734&file=error_handling.bal",
                 "_blank"
               );
             }}
@@ -92,7 +89,7 @@ export function ErrorHandling({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/error-handling",
                 "_blank"
               );
             }}

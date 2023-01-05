@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -77,7 +74,7 @@ service /graphql on new graphql:Listener(9090) {
 `,
 ];
 
-export function GraphqlDirectives({codeSnippets}) {
+export function GraphqlDirectives({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
   const [codeClick3, updateCodeClick3] = useState(false);
@@ -146,7 +143,7 @@ export function GraphqlDirectives({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/graphql-directives",
                 "_blank"
               );
             }}
@@ -302,7 +299,7 @@ export function GraphqlDirectives({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/graphql-directives",
                 "_blank"
               );
             }}
@@ -456,7 +453,7 @@ export function GraphqlDirectives({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/graphql-directives",
                 "_blank"
               );
             }}
@@ -607,7 +604,7 @@ export function GraphqlDirectives({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/graphql-directives",
                 "_blank"
               );
             }}

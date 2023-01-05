@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -31,7 +28,7 @@ public function main() returns error? {
 `,
 ];
 
-export function ConvertingToUserDefinedType({codeSnippets}) {
+export function ConvertingToUserDefinedType({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -68,7 +65,7 @@ export function ConvertingToUserDefinedType({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2fc64061aa2291d80513b325493900e7&file=converting_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=caf9d44157c1921cb63c3ce8aaa7a0a8&file=converting_to_user_defined_type.bal",
                 "_blank"
               );
             }}
@@ -93,7 +90,7 @@ export function ConvertingToUserDefinedType({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/converting-to-user-defined-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/converting-to-user-defined-type",
                 "_blank"
               );
             }}

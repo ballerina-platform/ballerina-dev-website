@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -17,7 +14,7 @@ configurable string dbHost = "localhost";
 `,
 ];
 
-export function ConfigurableVariables({codeSnippets}) {
+export function ConfigurableVariables({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -56,7 +53,7 @@ export function ConfigurableVariables({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f5b8cf54261aebcf3059c08374cb756b&file=configurable_variables.bal",
+                "https://play.ballerina.io/?gist=b63c91396bf784dca118aa4a8b128e54&file=configurable_variables.bal",
                 "_blank"
               );
             }}
@@ -81,7 +78,7 @@ export function ConfigurableVariables({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/configurable-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/configurable-variables",
                 "_blank"
               );
             }}

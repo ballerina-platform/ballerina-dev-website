@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -40,7 +37,7 @@ public function main() {
 `,
 ];
 
-export function Flush({codeSnippets}) {
+export function Flush({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -70,7 +67,7 @@ export function Flush({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f1fcedbc400f50f183c0476d1c1a3838&file=flush.bal",
+                "https://play.ballerina.io/?gist=c636333c16c57eac28d2b3b24d7b9c53&file=flush.bal",
                 "_blank"
               );
             }}
@@ -95,7 +92,7 @@ export function Flush({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/flush",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/flush",
                 "_blank"
               );
             }}

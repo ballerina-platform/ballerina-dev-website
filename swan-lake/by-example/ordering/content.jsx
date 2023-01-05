@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -42,7 +39,7 @@ public function main() {
 `,
 ];
 
-export function Ordering({codeSnippets}) {
+export function Ordering({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -77,7 +74,7 @@ export function Ordering({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=34796f1819a3510cea5759450e2dbb3a&file=ordering.bal",
+                "https://play.ballerina.io/?gist=b2d32153b935143a5df0d9cb8bed2ca7&file=ordering.bal",
                 "_blank"
               );
             }}
@@ -102,7 +99,7 @@ export function Ordering({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/ordering",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/ordering",
                 "_blank"
               );
             }}

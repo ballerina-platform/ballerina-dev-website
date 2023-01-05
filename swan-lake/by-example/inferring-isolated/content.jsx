@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -35,7 +32,7 @@ function sayHello(string name) returns string {
 `,
 ];
 
-export function InferringIsolated({codeSnippets}) {
+export function InferringIsolated({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -88,7 +85,7 @@ export function InferringIsolated({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f442e21187fce02439b1cf6612b8bca3&file=inferring_isolated.bal",
+                "https://play.ballerina.io/?gist=ae607c8779e970509b78f7126c9b440a&file=inferring_isolated.bal",
                 "_blank"
               );
             }}
@@ -113,7 +110,7 @@ export function InferringIsolated({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/inferring-isolated",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/inferring-isolated",
                 "_blank"
               );
             }}

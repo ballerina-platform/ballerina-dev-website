@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -59,7 +56,7 @@ public function main() returns error? {
 `,
 ];
 
-export function UuidGeneration({codeSnippets}) {
+export function UuidGeneration({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -94,7 +91,7 @@ export function UuidGeneration({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3f161a11a0be5475168e30519085df14&file=uuid_generation.bal",
+                "https://play.ballerina.io/?gist=e35282b2231ab7c27fa33dfbbfab9f55&file=uuid_generation.bal",
                 "_blank"
               );
             }}
@@ -119,7 +116,7 @@ export function UuidGeneration({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/uuid-generation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/uuid-generation",
                 "_blank"
               );
             }}

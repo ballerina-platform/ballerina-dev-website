@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -49,7 +46,7 @@ public function main() returns error? {
 `,
 ];
 
-export function IoCsvDatamapping({codeSnippets}) {
+export function IoCsvDatamapping({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -85,7 +82,7 @@ export function IoCsvDatamapping({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f96691b08199e30e2a105d7205b14533&file=io_csv_datamapping.bal",
+                "https://play.ballerina.io/?gist=3bd5fdbb3098847c1339e766086f1566&file=io_csv_datamapping.bal",
                 "_blank"
               );
             }}
@@ -110,7 +107,7 @@ export function IoCsvDatamapping({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/io-csv-datamapping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/io-csv-datamapping",
                 "_blank"
               );
             }}

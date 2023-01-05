@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -45,7 +42,7 @@ public function main() {
 `,
 ];
 
-export function JoinClause({codeSnippets}) {
+export function JoinClause({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -76,7 +73,7 @@ export function JoinClause({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c2f43f9569045cb6647aaed700244f36&file=join_clause.bal",
+                "https://play.ballerina.io/?gist=969e9a2be3086b2336bcee3fb4868123&file=join_clause.bal",
                 "_blank"
               );
             }}
@@ -101,7 +98,7 @@ export function JoinClause({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/join-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/join-clause",
                 "_blank"
               );
             }}

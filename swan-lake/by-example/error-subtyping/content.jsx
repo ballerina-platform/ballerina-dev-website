@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -32,7 +29,7 @@ public function main() {
 `,
 ];
 
-export function ErrorSubtyping({codeSnippets}) {
+export function ErrorSubtyping({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -67,7 +64,7 @@ export function ErrorSubtyping({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5219ed33a1d05426fd03ecb40da9ecfb&file=error_subtyping.bal",
+                "https://play.ballerina.io/?gist=840e5fa37330d2f210846fdbbdd7c59f&file=error_subtyping.bal",
                 "_blank"
               );
             }}
@@ -92,7 +89,7 @@ export function ErrorSubtyping({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/error-subtyping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/error-subtyping",
                 "_blank"
               );
             }}

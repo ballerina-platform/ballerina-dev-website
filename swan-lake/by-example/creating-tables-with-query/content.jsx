@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -35,7 +32,7 @@ public function main() {
 `,
 ];
 
-export function CreatingTablesWithQuery({codeSnippets}) {
+export function CreatingTablesWithQuery({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -62,7 +59,7 @@ export function CreatingTablesWithQuery({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a5d510996767454382c680b54887881e&file=creating_tables_with_query.bal",
+                "https://play.ballerina.io/?gist=ec12fada702be7b15f695f7fe0ffae32&file=creating_tables_with_query.bal",
                 "_blank"
               );
             }}
@@ -87,7 +84,7 @@ export function CreatingTablesWithQuery({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/creating-tables-with-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/creating-tables-with-query",
                 "_blank"
               );
             }}

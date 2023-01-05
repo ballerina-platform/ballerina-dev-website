@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -38,7 +35,7 @@ public function main() {
 `,
 ];
 
-export function ObjectTypes({codeSnippets}) {
+export function ObjectTypes({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -67,7 +64,7 @@ export function ObjectTypes({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7719c4a373afa75d79cb6b9a4dd1891c&file=object_types.bal",
+                "https://play.ballerina.io/?gist=13c6c4d2f82127016dce6108ebf496a9&file=object_types.bal",
                 "_blank"
               );
             }}
@@ -92,7 +89,7 @@ export function ObjectTypes({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/object-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/object-types",
                 "_blank"
               );
             }}

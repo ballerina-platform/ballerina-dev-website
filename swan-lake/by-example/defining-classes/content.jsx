@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -39,7 +36,7 @@ public function main() {
 `,
 ];
 
-export function DefiningClasses({codeSnippets}) {
+export function DefiningClasses({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -69,7 +66,7 @@ export function DefiningClasses({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=af433ba53bb86746439f896de36dfdc6&file=defining_classes.bal",
+                "https://play.ballerina.io/?gist=e6803f73ae4d552edd97eceac405d4f3&file=defining_classes.bal",
                 "_blank"
               );
             }}
@@ -94,7 +91,7 @@ export function DefiningClasses({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/defining-classes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/defining-classes",
                 "_blank"
               );
             }}

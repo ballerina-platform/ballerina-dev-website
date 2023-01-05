@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -42,7 +39,7 @@ class MyClass {
 `,
 ];
 
-export function TypeInference({codeSnippets}) {
+export function TypeInference({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -69,7 +66,7 @@ export function TypeInference({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e3b5b4e3014fdbf8afde7e57bb9345a2&file=type_inference.bal",
+                "https://play.ballerina.io/?gist=42f40256c018725f8e05d9ab5c80c438&file=type_inference.bal",
                 "_blank"
               );
             }}
@@ -94,7 +91,7 @@ export function TypeInference({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/type-inference",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/type-inference",
                 "_blank"
               );
             }}

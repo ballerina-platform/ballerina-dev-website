@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -34,7 +31,7 @@ public function main() {
 `,
 ];
 
-export function ComputedFieldKey({codeSnippets}) {
+export function ComputedFieldKey({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -66,7 +63,7 @@ export function ComputedFieldKey({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=94b4086bd40381a1cc9b354e8caed382&file=computed_field_key.bal",
+                "https://play.ballerina.io/?gist=8e40425cf66a494fd090fea3e9c9bab6&file=computed_field_key.bal",
                 "_blank"
               );
             }}
@@ -91,7 +88,7 @@ export function ComputedFieldKey({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/computed-field-key",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/computed-field-key",
                 "_blank"
               );
             }}

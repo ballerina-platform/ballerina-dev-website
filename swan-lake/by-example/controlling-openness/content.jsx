@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -40,7 +37,7 @@ public function main() {
 `,
 ];
 
-export function ControllingOpenness({codeSnippets}) {
+export function ControllingOpenness({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -70,7 +67,7 @@ export function ControllingOpenness({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0e389fd855b81d56a505fdd7ae81ed21&file=controlling_openness.bal",
+                "https://play.ballerina.io/?gist=458540ded7d7a72337f2ebd1b5c852eb&file=controlling_openness.bal",
                 "_blank"
               );
             }}
@@ -95,7 +92,7 @@ export function ControllingOpenness({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/controlling-openness",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/controlling-openness",
                 "_blank"
               );
             }}

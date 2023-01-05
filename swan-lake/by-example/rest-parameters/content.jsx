@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -26,7 +23,7 @@ public function main() {
 `,
 ];
 
-export function RestParameters({codeSnippets}) {
+export function RestParameters({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -63,7 +60,7 @@ export function RestParameters({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3106f9e1df9f6be2af1aeb96dbaa50f7&file=rest_parameters.bal",
+                "https://play.ballerina.io/?gist=b642309f0ad9ff9b55aea530d7718596&file=rest_parameters.bal",
                 "_blank"
               );
             }}
@@ -88,7 +85,7 @@ export function RestParameters({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/rest-parameters",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/rest-parameters",
                 "_blank"
               );
             }}

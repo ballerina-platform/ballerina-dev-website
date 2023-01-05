@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -51,7 +48,7 @@ public function main() returns error? {
 `,
 ];
 
-export function Files({codeSnippets}) {
+export function Files({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -86,7 +83,7 @@ export function Files({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1d5d1525fb2dc491c0c062bf5aefc7cd&file=files.bal",
+                "https://play.ballerina.io/?gist=b9b24913812719d02c8000c8d03fba5a&file=files.bal",
                 "_blank"
               );
             }}
@@ -111,7 +108,7 @@ export function Files({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/files",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/files",
                 "_blank"
               );
             }}

@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -30,7 +27,7 @@ public function main() returns error? {
 `,
 ];
 
-export function XmlToJsonConversion({codeSnippets}) {
+export function XmlToJsonConversion({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -65,7 +62,7 @@ export function XmlToJsonConversion({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ceebc829240ecb6a99eb4376a4ac371e&file=xml_to_json_conversion.bal",
+                "https://play.ballerina.io/?gist=4b134a4fe9775ac56d003306906710e4&file=xml_to_json_conversion.bal",
                 "_blank"
               );
             }}
@@ -90,7 +87,7 @@ export function XmlToJsonConversion({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/xml-to-json-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/xml-to-json-conversion",
                 "_blank"
               );
             }}

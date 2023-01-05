@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -34,7 +31,7 @@ public function main() returns error? {
 `,
 ];
 
-export function DefaultValuesForRecordFields({codeSnippets}) {
+export function DefaultValuesForRecordFields({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -67,7 +64,7 @@ export function DefaultValuesForRecordFields({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d61831c0794e52887061ee2a855c0c89&file=default_values_for_record_fields.bal",
+                "https://play.ballerina.io/?gist=6bf73ea9255f42d4ab14b425a4314155&file=default_values_for_record_fields.bal",
                 "_blank"
               );
             }}
@@ -92,7 +89,7 @@ export function DefaultValuesForRecordFields({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/default-values-for-record-fields",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/default-values-for-record-fields",
                 "_blank"
               );
             }}

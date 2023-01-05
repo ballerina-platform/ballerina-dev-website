@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -26,7 +23,7 @@ public function main() {
 `,
 ];
 
-export function LanglibFunctions({codeSnippets}) {
+export function LanglibFunctions({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -60,7 +57,7 @@ export function LanglibFunctions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=edd7c533268f6fb0985ebe002b0ad00c&file=langlib_functions.bal",
+                "https://play.ballerina.io/?gist=16f426359a2d3b3381799f92cd08a078&file=langlib_functions.bal",
                 "_blank"
               );
             }}
@@ -85,7 +82,7 @@ export function LanglibFunctions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/langlib-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/langlib-functions",
                 "_blank"
               );
             }}

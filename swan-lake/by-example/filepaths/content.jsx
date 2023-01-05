@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -47,7 +44,7 @@ public function main() returns error? {
 `,
 ];
 
-export function Filepaths({codeSnippets}) {
+export function Filepaths({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -82,7 +79,7 @@ export function Filepaths({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=132fe45edcf38413cfa328c6d4be4704&file=filepaths.bal",
+                "https://play.ballerina.io/?gist=c37c1f7d03f79c084041efcba96553a0&file=filepaths.bal",
                 "_blank"
               );
             }}
@@ -107,7 +104,7 @@ export function Filepaths({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/filepaths",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/filepaths",
                 "_blank"
               );
             }}

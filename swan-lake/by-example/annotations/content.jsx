@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -46,7 +43,7 @@ public function main() {
 `,
 ];
 
-export function Annotations({codeSnippets}) {
+export function Annotations({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -75,7 +72,7 @@ export function Annotations({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=86a8053cd7b981da6bebf04fee04a336&file=annotations.bal",
+                "https://play.ballerina.io/?gist=69e50bcef730b72701461f5b0254c23f&file=annotations.bal",
                 "_blank"
               );
             }}
@@ -100,7 +97,7 @@ export function Annotations({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/annotations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/annotations",
                 "_blank"
               );
             }}

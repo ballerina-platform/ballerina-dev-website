@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -63,7 +60,7 @@ public function main() {
 `,
 ];
 
-export function BindingPatternsInMatchStatement({codeSnippets}) {
+export function BindingPatternsInMatchStatement({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -99,7 +96,7 @@ export function BindingPatternsInMatchStatement({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=439e69e6a18c3c9ffe54c27a1804596f&file=binding_patterns_in_match_statement.bal",
+                "https://play.ballerina.io/?gist=d382eb24c5072ffaa95eba1c5269f2bb&file=binding_patterns_in_match_statement.bal",
                 "_blank"
               );
             }}
@@ -124,7 +121,7 @@ export function BindingPatternsInMatchStatement({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/binding-patterns-in-match-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/binding-patterns-in-match-statement",
                 "_blank"
               );
             }}

@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -35,7 +32,7 @@ public function main() {
 `,
 ];
 
-export function Enumerations({codeSnippets}) {
+export function Enumerations({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -64,7 +61,7 @@ export function Enumerations({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f2981db2f2f1acb466daa1a37eaa5bf&file=enumerations.bal",
+                "https://play.ballerina.io/?gist=c16909c6ac98ff5419bd10fd8344e70b&file=enumerations.bal",
                 "_blank"
               );
             }}
@@ -89,7 +86,7 @@ export function Enumerations({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/enumerations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/enumerations",
                 "_blank"
               );
             }}

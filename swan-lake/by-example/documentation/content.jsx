@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -21,7 +18,7 @@ public function add(int x, int y) returns int {
 `,
 ];
 
-export function Documentation({codeSnippets}) {
+export function Documentation({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -50,7 +47,7 @@ export function Documentation({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1a301f34e833f89de567327bd8d6f5af&file=documentation.bal",
+                "https://play.ballerina.io/?gist=9742158e308026f485b4b2685519ee01&file=documentation.bal",
                 "_blank"
               );
             }}
@@ -75,7 +72,7 @@ export function Documentation({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/documentation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/documentation",
                 "_blank"
               );
             }}

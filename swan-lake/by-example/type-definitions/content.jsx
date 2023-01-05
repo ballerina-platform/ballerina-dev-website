@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -26,7 +23,7 @@ public function main() {
 `,
 ];
 
-export function TypeDefinitions({codeSnippets}) {
+export function TypeDefinitions({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -53,7 +50,7 @@ export function TypeDefinitions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cfcf48e16d4ec9885f7a0d8f8ad742d8&file=type_definitions.bal",
+                "https://play.ballerina.io/?gist=cf09e5b4a2c98b0acafc75c65773425d&file=type_definitions.bal",
                 "_blank"
               );
             }}
@@ -78,7 +75,7 @@ export function TypeDefinitions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/type-definitions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/type-definitions",
                 "_blank"
               );
             }}

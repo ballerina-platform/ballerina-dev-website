@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -29,7 +26,7 @@ function loadMessage() returns string {
 `,
 ];
 
-export function ConstAndFinal({codeSnippets}) {
+export function ConstAndFinal({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -58,7 +55,7 @@ export function ConstAndFinal({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9cb9c831b79ac75ab2006b6f0481679f&file=const_and_final.bal",
+                "https://play.ballerina.io/?gist=b500da4455bd609119bebdb88a00ccf5&file=const_and_final.bal",
                 "_blank"
               );
             }}
@@ -83,7 +80,7 @@ export function ConstAndFinal({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/const-and-final",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/const-and-final",
                 "_blank"
               );
             }}

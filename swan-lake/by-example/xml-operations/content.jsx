@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -72,7 +69,7 @@ public function main() returns error? {
 `,
 ];
 
-export function XmlOperations({codeSnippets}) {
+export function XmlOperations({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -155,7 +152,7 @@ export function XmlOperations({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0a7299a5459f3e2993df39faea536b4f&file=xml_operations.bal",
+                "https://play.ballerina.io/?gist=07cbe537d5a2a8e3249bf697d63923b5&file=xml_operations.bal",
                 "_blank"
               );
             }}
@@ -180,7 +177,7 @@ export function XmlOperations({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/xml-operations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/xml-operations",
                 "_blank"
               );
             }}

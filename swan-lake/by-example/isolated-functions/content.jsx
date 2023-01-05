@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -44,7 +41,7 @@ public function main() {
 `,
 ];
 
-export function IsolatedFunctions({codeSnippets}) {
+export function IsolatedFunctions({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -101,7 +98,7 @@ export function IsolatedFunctions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=12e8bc8e6000d848660b49cb402b2898&file=isolated_functions.bal",
+                "https://play.ballerina.io/?gist=be80c5444d3debb6923f40377992e937&file=isolated_functions.bal",
                 "_blank"
               );
             }}
@@ -126,7 +123,7 @@ export function IsolatedFunctions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/isolated-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/isolated-functions",
                 "_blank"
               );
             }}

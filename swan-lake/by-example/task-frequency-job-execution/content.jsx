@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -43,7 +40,7 @@ public function main() returns error? {
 `,
 ];
 
-export function TaskFrequencyJobExecution({codeSnippets}) {
+export function TaskFrequencyJobExecution({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -78,7 +75,7 @@ export function TaskFrequencyJobExecution({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=255868ce4a9d4557f3be0259d52387c7&file=task_frequency_job_execution.bal",
+                "https://play.ballerina.io/?gist=396bc90ee6198efaa4464a9d3f3d760a&file=task_frequency_job_execution.bal",
                 "_blank"
               );
             }}
@@ -103,7 +100,7 @@ export function TaskFrequencyJobExecution({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/task-frequency-job-execution",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/task-frequency-job-execution",
                 "_blank"
               );
             }}

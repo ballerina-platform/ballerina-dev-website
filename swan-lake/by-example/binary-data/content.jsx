@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -21,7 +18,7 @@ export const codeSnippetData = [
 `,
 ];
 
-export function BinaryData({codeSnippets}) {
+export function BinaryData({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -60,7 +57,7 @@ export function BinaryData({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b1c106afb7958d7b58ccc767f226dc5f&file=binary_data.bal",
+                "https://play.ballerina.io/?gist=d01746b4c6fcfcdce198cf3b0717fea9&file=binary_data.bal",
                 "_blank"
               );
             }}
@@ -85,7 +82,7 @@ export function BinaryData({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/binary-data",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/binary-data",
                 "_blank"
               );
             }}

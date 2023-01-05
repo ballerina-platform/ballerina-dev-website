@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -38,7 +35,7 @@ public function main() {
 `,
 ];
 
-export function DestructuringRecords({codeSnippets}) {
+export function DestructuringRecords({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -69,7 +66,7 @@ export function DestructuringRecords({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2208f7ace8e40a91dec134504094fde1&file=destructuring_records.bal",
+                "https://play.ballerina.io/?gist=09941726b710dac6c15b07cd0a46fb10&file=destructuring_records.bal",
                 "_blank"
               );
             }}
@@ -94,7 +91,7 @@ export function DestructuringRecords({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/destructuring-records",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/destructuring-records",
                 "_blank"
               );
             }}

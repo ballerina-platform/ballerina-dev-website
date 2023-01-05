@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -47,7 +44,7 @@ public function main() {
 `,
 ];
 
-export function DistinctObjectTypes({codeSnippets}) {
+export function DistinctObjectTypes({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -83,7 +80,7 @@ export function DistinctObjectTypes({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1f87d20aabe49d429ee29762643c310c&file=distinct_object_types.bal",
+                "https://play.ballerina.io/?gist=3317a6da11816684a2bf04f35490afe4&file=distinct_object_types.bal",
                 "_blank"
               );
             }}
@@ -108,7 +105,7 @@ export function DistinctObjectTypes({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/distinct-object-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/distinct-object-types",
                 "_blank"
               );
             }}

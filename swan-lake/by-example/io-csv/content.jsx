@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -36,7 +33,7 @@ public function main() returns error? {
 }`,
 ];
 
-export function IoCsv({codeSnippets}) {
+export function IoCsv({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -71,7 +68,7 @@ export function IoCsv({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=745ce6413440fbdbdc1286e5b41cbfb1&file=io_csv.bal",
+                "https://play.ballerina.io/?gist=b08b41c7fca3adcb2b4671005660d81b&file=io_csv.bal",
                 "_blank"
               );
             }}
@@ -96,7 +93,7 @@ export function IoCsv({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/io-csv",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/io-csv",
                 "_blank"
               );
             }}

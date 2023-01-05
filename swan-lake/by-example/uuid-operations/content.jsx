@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -60,7 +57,7 @@ public function main() returns error? {
 `,
 ];
 
-export function UuidOperations({codeSnippets}) {
+export function UuidOperations({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -95,7 +92,7 @@ export function UuidOperations({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8fc56133498c599d3708036f4b10ccef&file=uuid_operations.bal",
+                "https://play.ballerina.io/?gist=acb010b0a33b92af5eefef7653a2a677&file=uuid_operations.bal",
                 "_blank"
               );
             }}
@@ -120,7 +117,7 @@ export function UuidOperations({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/uuid-operations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/uuid-operations",
                 "_blank"
               );
             }}

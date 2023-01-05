@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -77,7 +74,7 @@ public function main() {
 `,
 ];
 
-export function ArrayMapSymmetry({codeSnippets}) {
+export function ArrayMapSymmetry({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -123,7 +120,7 @@ export function ArrayMapSymmetry({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=415eb29f0396e61c25ffbb8cc54890c8&file=array_map_symmetry.bal",
+                "https://play.ballerina.io/?gist=4b8a5d2aae5684202be0ecb86e056fb2&file=array_map_symmetry.bal",
                 "_blank"
               );
             }}
@@ -148,7 +145,7 @@ export function ArrayMapSymmetry({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/array-map-symmetry",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/array-map-symmetry",
                 "_blank"
               );
             }}

@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -34,7 +31,7 @@ function doStage2() {
 `,
 ];
 
-export function TransactionStatement({codeSnippets}) {
+export function TransactionStatement({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -69,7 +66,7 @@ export function TransactionStatement({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d37ba146a72f115f9fd0fc0e5fe88e1e&file=transaction_statement.bal",
+                "https://play.ballerina.io/?gist=cf7e58883f8a4a1272d49a09952216d3&file=transaction_statement.bal",
                 "_blank"
               );
             }}
@@ -94,7 +91,7 @@ export function TransactionStatement({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/transaction-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/transaction-statement",
                 "_blank"
               );
             }}

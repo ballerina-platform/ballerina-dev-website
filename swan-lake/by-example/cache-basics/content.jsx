@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -36,7 +33,7 @@ public function main() returns error? {
 `,
 ];
 
-export function CacheBasics({codeSnippets}) {
+export function CacheBasics({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -77,7 +74,7 @@ export function CacheBasics({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=49ec71bdf9a40ab483772b7645808d29&file=cache_basics.bal",
+                "https://play.ballerina.io/?gist=4c497f0d79164720af06f201379aa4ba&file=cache_basics.bal",
                 "_blank"
               );
             }}
@@ -102,7 +99,7 @@ export function CacheBasics({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/cache-basics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/cache-basics",
                 "_blank"
               );
             }}

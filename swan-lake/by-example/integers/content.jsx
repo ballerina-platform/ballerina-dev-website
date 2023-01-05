@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -24,7 +21,7 @@ public function main() {
 `,
 ];
 
-export function Integers({codeSnippets}) {
+export function Integers({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -53,7 +50,7 @@ export function Integers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1e9b94791a870959a113033f1d01b894&file=integers.bal",
+                "https://play.ballerina.io/?gist=ecc8b77b1302dbc1eaaf3adadd677c59&file=integers.bal",
                 "_blank"
               );
             }}
@@ -78,7 +75,7 @@ export function Integers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/integers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/integers",
                 "_blank"
               );
             }}

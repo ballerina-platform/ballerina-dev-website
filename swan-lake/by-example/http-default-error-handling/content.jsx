@@ -1,13 +1,10 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
 type Album readonly & record {
@@ -27,7 +24,7 @@ service / on new http:Listener(9090) {
 `,
 ];
 
-export default function HttpDefaultErrorHandling({codeSnippets}) {
+export function HttpDefaultErrorHandling({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);

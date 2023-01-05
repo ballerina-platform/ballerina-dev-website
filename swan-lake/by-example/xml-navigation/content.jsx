@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -61,7 +58,7 @@ public function main() {
 `,
 ];
 
-export function XmlNavigation({codeSnippets}) {
+export function XmlNavigation({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -88,7 +85,7 @@ export function XmlNavigation({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ee67cdc18d2bc23d8e726c4e87bc12a7&file=xml_navigation.bal",
+                "https://play.ballerina.io/?gist=6d9bf247e429b4e3b323371df18872f7&file=xml_navigation.bal",
                 "_blank"
               );
             }}
@@ -113,7 +110,7 @@ export function XmlNavigation({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/xml-navigation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/xml-navigation",
                 "_blank"
               );
             }}

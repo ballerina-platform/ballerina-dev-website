@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -25,7 +22,7 @@ public function main() returns error? {
 `,
 ];
 
-export function UrlEncodeDecode({codeSnippets}) {
+export function UrlEncodeDecode({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -59,7 +56,7 @@ export function UrlEncodeDecode({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=292c7e234051b478428ba88678f2f19f&file=url_encode_decode.bal",
+                "https://play.ballerina.io/?gist=5141ac23604138dccc2b8be1f06af39f&file=url_encode_decode.bal",
                 "_blank"
               );
             }}
@@ -84,7 +81,7 @@ export function UrlEncodeDecode({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/url-encode-decode",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/url-encode-decode",
                 "_blank"
               );
             }}

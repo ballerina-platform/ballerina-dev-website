@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -58,7 +55,7 @@ public function main() {
 `,
 ];
 
-export function ObjectTypeInclusion({codeSnippets}) {
+export function ObjectTypeInclusion({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -94,7 +91,7 @@ export function ObjectTypeInclusion({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3abd2f5b20774f75e9b485746266916e&file=object_type_inclusion.bal",
+                "https://play.ballerina.io/?gist=9958a8183beefb6c0035ea1ec47c076d&file=object_type_inclusion.bal",
                 "_blank"
               );
             }}
@@ -119,7 +116,7 @@ export function ObjectTypeInclusion({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/object-type-inclusion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/object-type-inclusion",
                 "_blank"
               );
             }}

@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -47,7 +44,7 @@ public function main() returns error? {
 `,
 ];
 
-export function TaskOneTimeJobExecution({codeSnippets}) {
+export function TaskOneTimeJobExecution({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -82,7 +79,7 @@ export function TaskOneTimeJobExecution({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=427dad83170c34a44630b2fe54195361&file=task_one_time_job_execution.bal",
+                "https://play.ballerina.io/?gist=2b49b1badaa15624840e825f70680f37&file=task_one_time_job_execution.bal",
                 "_blank"
               );
             }}
@@ -107,7 +104,7 @@ export function TaskOneTimeJobExecution({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/task-one-time-job-execution",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/task-one-time-job-execution",
                 "_blank"
               );
             }}

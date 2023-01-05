@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -27,7 +24,7 @@ public function main() {
 `,
 ];
 
-export function LoggingWithContext({codeSnippets}) {
+export function LoggingWithContext({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -62,7 +59,7 @@ export function LoggingWithContext({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5ed18fe86886a4b89bcbd784af52bef4&file=logging_with_context.bal",
+                "https://play.ballerina.io/?gist=4cfb28f8736a29de298a79db09f8fd0d&file=logging_with_context.bal",
                 "_blank"
               );
             }}
@@ -87,7 +84,7 @@ export function LoggingWithContext({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/logging-with-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/logging-with-context",
                 "_blank"
               );
             }}

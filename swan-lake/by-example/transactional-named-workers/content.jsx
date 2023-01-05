@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -40,7 +37,7 @@ transactional function bar() {
 `,
 ];
 
-export function TransactionalNamedWorkers({codeSnippets}) {
+export function TransactionalNamedWorkers({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -68,7 +65,7 @@ export function TransactionalNamedWorkers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ea671063eec800767fa89221df807e55&file=transactional_named_workers.bal",
+                "https://play.ballerina.io/?gist=c13d4040205745f3ee0229fa61dedb4b&file=transactional_named_workers.bal",
                 "_blank"
               );
             }}
@@ -93,7 +90,7 @@ export function TransactionalNamedWorkers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/transactional-named-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/transactional-named-workers",
                 "_blank"
               );
             }}

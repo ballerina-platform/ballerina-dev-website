@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -31,7 +28,7 @@ public function main() {
 `,
 ];
 
-export function XmlTemplatesAndQuery({codeSnippets}) {
+export function XmlTemplatesAndQuery({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -58,7 +55,7 @@ export function XmlTemplatesAndQuery({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6eec1a4eb504880b504d367720685efa&file=xml_templates_and_query.bal",
+                "https://play.ballerina.io/?gist=47735b7e689a46ef435c9af60fcdba5d&file=xml_templates_and_query.bal",
                 "_blank"
               );
             }}
@@ -83,7 +80,7 @@ export function XmlTemplatesAndQuery({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/xml-templates-and-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/xml-templates-and-query",
                 "_blank"
               );
             }}

@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -80,7 +77,7 @@ public function main() returns error? {
 `,
 ];
 
-export function ManageScheduledJobs({codeSnippets}) {
+export function ManageScheduledJobs({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -115,7 +112,7 @@ export function ManageScheduledJobs({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ba1c415209ecf153ec86c6091029e098&file=manage_scheduled_jobs.bal",
+                "https://play.ballerina.io/?gist=52f28b9c3f99a00ebdd3949da1af65f9&file=manage_scheduled_jobs.bal",
                 "_blank"
               );
             }}
@@ -140,7 +137,7 @@ export function ManageScheduledJobs({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/manage-scheduled-jobs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/manage-scheduled-jobs",
                 "_blank"
               );
             }}

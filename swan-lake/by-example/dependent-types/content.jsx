@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -29,7 +26,7 @@ public function main() returns error? {
 `,
 ];
 
-export function DependentTypes({codeSnippets}) {
+export function DependentTypes({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,7 +58,7 @@ export function DependentTypes({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=39b4f2a4d07bdfaef878e06e595cadc6&file=dependent_types.bal",
+                "https://play.ballerina.io/?gist=318f28caae68ea1ff5bafc8320eca0b4&file=dependent_types.bal",
                 "_blank"
               );
             }}
@@ -86,7 +83,7 @@ export function DependentTypes({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/dependent-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/dependent-types",
                 "_blank"
               );
             }}

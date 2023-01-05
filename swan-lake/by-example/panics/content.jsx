@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -40,7 +37,7 @@ public function main() {
 `,
 ];
 
-export function Panics({codeSnippets}) {
+export function Panics({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -74,7 +71,7 @@ export function Panics({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=87f61f23447eb66990eb64a78b4c0aeb&file=panics.bal",
+                "https://play.ballerina.io/?gist=e071892a535ae20d8cac964970416438&file=panics.bal",
                 "_blank"
               );
             }}
@@ -99,7 +96,7 @@ export function Panics({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/panics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/panics",
                 "_blank"
               );
             }}

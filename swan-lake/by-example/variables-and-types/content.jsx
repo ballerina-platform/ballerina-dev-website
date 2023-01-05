@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -23,7 +20,7 @@ public function main() {
 `,
 ];
 
-export function VariablesAndTypes({codeSnippets}) {
+export function VariablesAndTypes({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -51,7 +48,7 @@ export function VariablesAndTypes({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b3231b3205748d4c5af7077fe6a2e4be&file=variables_and_types.bal",
+                "https://play.ballerina.io/?gist=0699ecff0e2cc00cb98336c486f1393f&file=variables_and_types.bal",
                 "_blank"
               );
             }}
@@ -76,7 +73,7 @@ export function VariablesAndTypes({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/variables-and-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/variables-and-types",
                 "_blank"
               );
             }}

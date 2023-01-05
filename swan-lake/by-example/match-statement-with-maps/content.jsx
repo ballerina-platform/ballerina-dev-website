@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -45,7 +42,7 @@ public function main() returns error? {
 `,
 ];
 
-export function MatchStatementWithMaps({codeSnippets}) {
+export function MatchStatementWithMaps({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -74,7 +71,7 @@ export function MatchStatementWithMaps({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3f87407295b64373b622b8b166564e2f&file=match_statement_with_maps.bal",
+                "https://play.ballerina.io/?gist=040ddc3a47b9f0f98532964c10269dec&file=match_statement_with_maps.bal",
                 "_blank"
               );
             }}
@@ -99,7 +96,7 @@ export function MatchStatementWithMaps({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/match-statement-with-maps",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/match-statement-with-maps",
                 "_blank"
               );
             }}

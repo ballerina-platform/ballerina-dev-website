@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -31,7 +28,7 @@ public function main() {
 `,
 ];
 
-export function QueryExpressions({codeSnippets}) {
+export function QueryExpressions({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -59,7 +56,7 @@ export function QueryExpressions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9b5b7692230ababd9b28f01c5377aac4&file=query_expressions.bal",
+                "https://play.ballerina.io/?gist=7c095b8d4911462ec289aaa24e10fc7b&file=query_expressions.bal",
                 "_blank"
               );
             }}
@@ -84,7 +81,7 @@ export function QueryExpressions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/query-expressions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/query-expressions",
                 "_blank"
               );
             }}

@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -26,7 +23,7 @@ function foo() returns int {
 `,
 ];
 
-export function AsynchronousFunctionCalls({codeSnippets}) {
+export function AsynchronousFunctionCalls({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,7 +58,7 @@ export function AsynchronousFunctionCalls({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ed0ca6f9d08ddfed13acb57e4cb30f1a&file=asynchronous_function_calls.bal",
+                "https://play.ballerina.io/?gist=9f769f8501807df6a5ef99a340f5d0a4&file=asynchronous_function_calls.bal",
                 "_blank"
               );
             }}
@@ -86,7 +83,7 @@ export function AsynchronousFunctionCalls({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/asynchronous-function-calls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/asynchronous-function-calls",
                 "_blank"
               );
             }}

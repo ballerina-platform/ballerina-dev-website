@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -26,7 +23,7 @@ public function main() {
 `,
 ];
 
-export function TimeUtc({codeSnippets}) {
+export function TimeUtc({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,7 +58,7 @@ export function TimeUtc({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8d33987c2258c53023cdbeb9cfa4f6f8&file=time_utc.bal",
+                "https://play.ballerina.io/?gist=627e92fd760cf333baa237130c3388eb&file=time_utc.bal",
                 "_blank"
               );
             }}
@@ -86,7 +83,7 @@ export function TimeUtc({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/time-utc",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/time-utc",
                 "_blank"
               );
             }}

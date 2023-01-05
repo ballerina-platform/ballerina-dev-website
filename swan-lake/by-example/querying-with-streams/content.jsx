@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -78,7 +75,7 @@ public function main() {
 `,
 ];
 
-export function QueryingWithStreams({codeSnippets}) {
+export function QueryingWithStreams({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -112,7 +109,7 @@ export function QueryingWithStreams({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8c958aa982a676fe7399413f7b4da383&file=querying_with_streams.bal",
+                "https://play.ballerina.io/?gist=9ee75cd10e5166abb722a34c282d680a&file=querying_with_streams.bal",
                 "_blank"
               );
             }}
@@ -137,7 +134,7 @@ export function QueryingWithStreams({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/querying-with-streams",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/querying-with-streams",
                 "_blank"
               );
             }}

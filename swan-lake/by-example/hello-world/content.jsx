@@ -1,11 +1,9 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
+
 export const codeSnippetData = [
   `import ballerina/io;
 
@@ -15,7 +13,7 @@ public function main() {
 `,
 ];
 
-export function HelloWorld({codeSnippets}) {
+export function HelloWorld({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -41,7 +39,7 @@ export function HelloWorld({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8d86550c0d4fdcee5f9fb1f51200d421&file=hello_world.bal",
+                "https://play.ballerina.io/?gist=20a3d98c8367bf01f602383b3913f6f7&file=hello_world.bal",
                 "_blank"
               );
             }}
@@ -66,7 +64,7 @@ export function HelloWorld({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/hello-world",
                 "_blank"
               );
             }}

@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -44,7 +41,7 @@ public function main() {
 `,
 ];
 
-export function ErrorTypeIntersection({codeSnippets}) {
+export function ErrorTypeIntersection({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -72,7 +69,7 @@ export function ErrorTypeIntersection({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=82aafc89fac6be5d6b375956215b5cb0&file=error_type_intersection.bal",
+                "https://play.ballerina.io/?gist=29e05f63a480cf02b4ca8dcbf80b557d&file=error_type_intersection.bal",
                 "_blank"
               );
             }}
@@ -97,7 +94,7 @@ export function ErrorTypeIntersection({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/error-type-intersection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/error-type-intersection",
                 "_blank"
               );
             }}

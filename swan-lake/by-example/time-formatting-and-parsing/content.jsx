@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -53,7 +50,7 @@ public function main() returns error? {
 `,
 ];
 
-export function TimeFormattingAndParsing({codeSnippets}) {
+export function TimeFormattingAndParsing({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -89,7 +86,7 @@ export function TimeFormattingAndParsing({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9d93196c06302bf176c7ac57e54db220&file=time_formatting_and_parsing.bal",
+                "https://play.ballerina.io/?gist=d9d0e0142fd250e0b12084df320267b6&file=time_formatting_and_parsing.bal",
                 "_blank"
               );
             }}
@@ -114,7 +111,7 @@ export function TimeFormattingAndParsing({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/time-formatting-and-parsing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/time-formatting-and-parsing",
                 "_blank"
               );
             }}

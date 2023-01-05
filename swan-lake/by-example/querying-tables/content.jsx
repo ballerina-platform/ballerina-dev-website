@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -46,7 +43,7 @@ public function main() {
 `,
 ];
 
-export function QueryingTables({codeSnippets}) {
+export function QueryingTables({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -75,7 +72,7 @@ export function QueryingTables({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c6700811ee300e566eba6f9cc74dcd35&file=querying_tables.bal",
+                "https://play.ballerina.io/?gist=3797e8805e0037c35d9bdba20db9ff61&file=querying_tables.bal",
                 "_blank"
               );
             }}
@@ -100,7 +97,7 @@ export function QueryingTables({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/querying-tables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/querying-tables",
                 "_blank"
               );
             }}

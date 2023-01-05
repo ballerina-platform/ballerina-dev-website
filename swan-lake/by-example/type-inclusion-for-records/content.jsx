@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -44,7 +41,7 @@ public function main() {
 `,
 ];
 
-export function TypeInclusionForRecords({codeSnippets}) {
+export function TypeInclusionForRecords({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -74,7 +71,7 @@ export function TypeInclusionForRecords({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6b515bd0017c919d95484beb8f3ebcbf&file=type_inclusion_for_records.bal",
+                "https://play.ballerina.io/?gist=7f29af916619250fa13de0e49b8a536b&file=type_inclusion_for_records.bal",
                 "_blank"
               );
             }}
@@ -99,7 +96,7 @@ export function TypeInclusionForRecords({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/type-inclusion-for-records",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/type-inclusion-for-records",
                 "_blank"
               );
             }}

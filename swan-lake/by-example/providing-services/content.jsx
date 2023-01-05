@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -17,7 +14,7 @@ listener http:Listener h = new (8080);
 `,
 ];
 
-export function ProvidingServices({codeSnippets}) {
+export function ProvidingServices({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -76,7 +73,7 @@ export function ProvidingServices({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/providing-services",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/providing-services",
                 "_blank"
               );
             }}

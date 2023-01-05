@@ -1,13 +1,10 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 
 service class Profile {
@@ -73,7 +70,7 @@ service /graphql on new graphql:Listener(9090) {
 `,
 ];
 
-export default function GraphqlServiceErrorHandling({codeSnippets}) {
+export function GraphqlServiceErrorHandling({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
   const [codeClick3, updateCodeClick3] = useState(false);

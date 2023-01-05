@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -27,7 +24,7 @@ public function main() {
 `,
 ];
 
-export function EnvironmentVariables({codeSnippets}) {
+export function EnvironmentVariables({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -62,7 +59,7 @@ export function EnvironmentVariables({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f247b4fa7c1268ebaf7259786deb4d84&file=environment_variables.bal",
+                "https://play.ballerina.io/?gist=47e53282e3de0e19f1051191120d5354&file=environment_variables.bal",
                 "_blank"
               );
             }}
@@ -87,7 +84,7 @@ export function EnvironmentVariables({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/environment-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/environment-variables",
                 "_blank"
               );
             }}

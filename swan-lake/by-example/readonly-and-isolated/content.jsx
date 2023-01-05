@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -40,7 +37,7 @@ public function main() {
 `,
 ];
 
-export function ReadonlyAndIsolated({codeSnippets}) {
+export function ReadonlyAndIsolated({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -69,7 +66,7 @@ export function ReadonlyAndIsolated({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d43332637d0f9ac1fd3c59856d407102&file=readonly_and_isolated.bal",
+                "https://play.ballerina.io/?gist=cb443668d746b4caa56ac0af93e7d994&file=readonly_and_isolated.bal",
                 "_blank"
               );
             }}
@@ -94,7 +91,7 @@ export function ReadonlyAndIsolated({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/readonly-and-isolated",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/readonly-and-isolated",
                 "_blank"
               );
             }}

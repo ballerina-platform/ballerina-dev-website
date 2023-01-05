@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -28,7 +25,7 @@ public function main() returns error? {
 `,
 ];
 
-export function TempFilesDirectories({codeSnippets}) {
+export function TempFilesDirectories({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -63,7 +60,7 @@ export function TempFilesDirectories({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ac043d41b375dd70930eec03cfaf5184&file=temp_files_directories.bal",
+                "https://play.ballerina.io/?gist=3ee83ce0b7590e50b60cc6b10bb8dba8&file=temp_files_directories.bal",
                 "_blank"
               );
             }}
@@ -88,7 +85,7 @@ export function TempFilesDirectories({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/temp-files-directories",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/temp-files-directories",
                 "_blank"
               );
             }}

@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -54,7 +51,7 @@ public function main() {
 `,
 ];
 
-export function OuterJoinClause({codeSnippets}) {
+export function OuterJoinClause({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -84,7 +81,7 @@ export function OuterJoinClause({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=edb3dbae84529283a3af3a247142c3a8&file=outer_join_clause.bal",
+                "https://play.ballerina.io/?gist=b4161872c1a28bc048bef31b53614668&file=outer_join_clause.bal",
                 "_blank"
               );
             }}
@@ -109,7 +106,7 @@ export function OuterJoinClause({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/outer-join-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/outer-join-clause",
                 "_blank"
               );
             }}

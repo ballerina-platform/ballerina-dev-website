@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -34,7 +31,7 @@ public function main() returns error? {
 `,
 ];
 
-export function InitReturnType({codeSnippets}) {
+export function InitReturnType({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -66,7 +63,7 @@ export function InitReturnType({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5d5ad0c4cbbe108cc2e386d0b5682b38&file=init_return_type.bal",
+                "https://play.ballerina.io/?gist=40b2528b703dd2ecc76e004e00775582&file=init_return_type.bal",
                 "_blank"
               );
             }}
@@ -91,7 +88,7 @@ export function InitReturnType({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/init-return-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/init-return-type",
                 "_blank"
               );
             }}

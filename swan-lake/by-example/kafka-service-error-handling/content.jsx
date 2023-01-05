@@ -1,13 +1,10 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/log;
 
@@ -44,7 +41,7 @@ service on orderListener {
 `,
 ];
 
-export default function KafkaServiceErrorHandling({codeSnippets}) {
+export function KafkaServiceErrorHandling({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);

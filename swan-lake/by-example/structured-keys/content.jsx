@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -31,7 +28,7 @@ public function main() {
 `,
 ];
 
-export function StructuredKeys({codeSnippets}) {
+export function StructuredKeys({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,7 +58,7 @@ export function StructuredKeys({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=29300cd93a9b6a5dd2b2b339f0de879d&file=structured_keys.bal",
+                "https://play.ballerina.io/?gist=289154b01f63f6eb45616a1590203461&file=structured_keys.bal",
                 "_blank"
               );
             }}
@@ -86,7 +83,7 @@ export function StructuredKeys({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/structured-keys",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/structured-keys",
                 "_blank"
               );
             }}

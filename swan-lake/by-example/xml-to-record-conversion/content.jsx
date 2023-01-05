@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -54,7 +51,7 @@ public function main() returns error? {
 `,
 ];
 
-export function XmlToRecordConversion({codeSnippets}) {
+export function XmlToRecordConversion({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -89,7 +86,7 @@ export function XmlToRecordConversion({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4dfc23b3c8f8779ac78ab96c3494a5bb&file=xml_to_record_conversion.bal",
+                "https://play.ballerina.io/?gist=8db23501a2270583264cbf7213d2e8eb&file=xml_to_record_conversion.bal",
                 "_blank"
               );
             }}
@@ -114,7 +111,7 @@ export function XmlToRecordConversion({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/xml-to-record-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/xml-to-record-conversion",
                 "_blank"
               );
             }}

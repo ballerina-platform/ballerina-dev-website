@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -42,7 +39,7 @@ function tryX(boolean x) returns error? {
 `,
 ];
 
-export function IgnoringReturnValuesAndErrors({codeSnippets}) {
+export function IgnoringReturnValuesAndErrors({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -77,7 +74,7 @@ export function IgnoringReturnValuesAndErrors({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c77c151f4d9dfb6bce1f14b8deaef8f2&file=ignoring_return_values_and_errors.bal",
+                "https://play.ballerina.io/?gist=09852cd78c613803dc30d1ac7bfc434f&file=ignoring_return_values_and_errors.bal",
                 "_blank"
               );
             }}
@@ -102,7 +99,7 @@ export function IgnoringReturnValuesAndErrors({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/ignoring-return-values-and-errors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/ignoring-return-values-and-errors",
                 "_blank"
               );
             }}

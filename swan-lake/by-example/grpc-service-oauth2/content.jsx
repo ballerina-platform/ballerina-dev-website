@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -49,7 +46,7 @@ service "HelloWorld" on securedEP {
 `,
 ];
 
-export function GrpcServiceOauth2({codeSnippets}) {
+export function GrpcServiceOauth2({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -88,7 +85,7 @@ export function GrpcServiceOauth2({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/grpc-service-oauth2",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/grpc-service-oauth2",
                 "_blank"
               );
             }}

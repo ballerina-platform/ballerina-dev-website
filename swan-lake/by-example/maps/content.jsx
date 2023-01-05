@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -32,7 +29,7 @@ public function main() {
 `,
 ];
 
-export function Maps({codeSnippets}) {
+export function Maps({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -67,7 +64,7 @@ export function Maps({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=22decb7bd0ae98aff507d45e3314fd27&file=maps.bal",
+                "https://play.ballerina.io/?gist=41c78d06d457be1a2fcc4a7a07d163fa&file=maps.bal",
                 "_blank"
               );
             }}
@@ -92,7 +89,7 @@ export function Maps({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/maps",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/maps",
                 "_blank"
               );
             }}

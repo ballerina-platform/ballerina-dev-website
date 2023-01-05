@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -70,7 +67,7 @@ function testCall() {
 `,
 ];
 
-export function TesterinaMockingFunctions({codeSnippets}) {
+export function TesterinaMockingFunctions({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -117,7 +114,7 @@ export function TesterinaMockingFunctions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/testerina-mocking-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/testerina-mocking-functions",
                 "_blank"
               );
             }}
@@ -201,7 +198,7 @@ export function TesterinaMockingFunctions({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/testerina-mocking-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/testerina-mocking-functions",
                 "_blank"
               );
             }}

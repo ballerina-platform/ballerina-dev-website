@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -35,7 +32,7 @@ public function main() {
 `,
 ];
 
-export function WorkingDirectlyWithJson({codeSnippets}) {
+export function WorkingDirectlyWithJson({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -71,7 +68,7 @@ export function WorkingDirectlyWithJson({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6b1a5a0060321802c1d21167a0d27513&file=working_directly_with_json.bal",
+                "https://play.ballerina.io/?gist=eba40964a154b9d05172986b7c248cf9&file=working_directly_with_json.bal",
                 "_blank"
               );
             }}
@@ -96,7 +93,7 @@ export function WorkingDirectlyWithJson({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/working-directly-with-json",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/working-directly-with-json",
                 "_blank"
               );
             }}

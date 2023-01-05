@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -56,7 +53,7 @@ public function main() {
 `,
 ];
 
-export function RunStrandsSafelyOnSeparateThreads({codeSnippets}) {
+export function RunStrandsSafelyOnSeparateThreads({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -100,7 +97,7 @@ export function RunStrandsSafelyOnSeparateThreads({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6c9f00690f163fb8ee460c0c9f29fbe1&file=run_strands_safely_on_separate_threads.bal",
+                "https://play.ballerina.io/?gist=2d4f142f84b5217712768e65fe9cb366&file=run_strands_safely_on_separate_threads.bal",
                 "_blank"
               );
             }}
@@ -125,7 +122,7 @@ export function RunStrandsSafelyOnSeparateThreads({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/run-strands-safely-on-separate-threads",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/run-strands-safely-on-separate-threads",
                 "_blank"
               );
             }}

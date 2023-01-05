@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -37,7 +34,7 @@ public function main() {
 `,
 ];
 
-export function AsynchronizeMessagePassing({codeSnippets}) {
+export function AsynchronizeMessagePassing({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -66,7 +63,7 @@ export function AsynchronizeMessagePassing({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5cd50209b5dfd0e07e2f806d87051d15&file=asynchronize_message_passing.bal",
+                "https://play.ballerina.io/?gist=4ecd3566af129be672263d9b3133efbb&file=asynchronize_message_passing.bal",
                 "_blank"
               );
             }}
@@ -91,7 +88,7 @@ export function AsynchronizeMessagePassing({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/asynchronize-message-passing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/asynchronize-message-passing",
                 "_blank"
               );
             }}

@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -48,7 +45,7 @@ public function main() returns error? {
 `,
 ];
 
-export function InterWorkerFailurePropagation({codeSnippets}) {
+export function InterWorkerFailurePropagation({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -78,7 +75,7 @@ export function InterWorkerFailurePropagation({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2183ec7b61f34498b4167291a69513bb&file=inter_worker_failure_propagation.bal",
+                "https://play.ballerina.io/?gist=f75664ddc1ddb703ab37653886959ef5&file=inter_worker_failure_propagation.bal",
                 "_blank"
               );
             }}
@@ -103,7 +100,7 @@ export function InterWorkerFailurePropagation({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/inter-worker-failure-propagation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/inter-worker-failure-propagation",
                 "_blank"
               );
             }}

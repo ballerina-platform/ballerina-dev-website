@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -36,7 +33,7 @@ public function main() {
 `,
 ];
 
-export function XmlnsDeclarations({codeSnippets}) {
+export function XmlnsDeclarations({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -72,7 +69,7 @@ export function XmlnsDeclarations({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0bf6c53d0f9ae8dfa128779ac3aa9be1&file=xmlns_declarations.bal",
+                "https://play.ballerina.io/?gist=444839fce0661beae78cf759b88c7c8a&file=xmlns_declarations.bal",
                 "_blank"
               );
             }}
@@ -97,7 +94,7 @@ export function XmlnsDeclarations({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/xmlns-declarations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/xmlns-declarations",
                 "_blank"
               );
             }}

@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -29,7 +26,7 @@ public function main() {
 `,
 ];
 
-export function CheckExpression({codeSnippets}) {
+export function CheckExpression({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -63,7 +60,7 @@ export function CheckExpression({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ced3e438d50ebc61810e4280022794ba&file=check_expression.bal",
+                "https://play.ballerina.io/?gist=f82ef86b92a5e01e73872ad31868c7bb&file=check_expression.bal",
                 "_blank"
               );
             }}
@@ -88,7 +85,7 @@ export function CheckExpression({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/check-expression",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/check-expression",
                 "_blank"
               );
             }}

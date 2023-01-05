@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -40,7 +37,7 @@ public function main() {
 `,
 ];
 
-export function FunctionValues({codeSnippets}) {
+export function FunctionValues({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -68,7 +65,7 @@ export function FunctionValues({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c9bde67b0bb683403238eb0226c42ea5&file=function_values.bal",
+                "https://play.ballerina.io/?gist=df7a4430e6507dca76bc0cd4cb076d21&file=function_values.bal",
                 "_blank"
               );
             }}
@@ -93,7 +90,7 @@ export function FunctionValues({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/function-values",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/function-values",
                 "_blank"
               );
             }}

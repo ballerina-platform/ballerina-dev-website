@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -30,7 +27,7 @@ public function main() {
 `,
 ];
 
-export function DecimalType({codeSnippets}) {
+export function DecimalType({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -66,7 +63,7 @@ export function DecimalType({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d1468435d5e736ef17bcb3fdab31f409&file=decimal_type.bal",
+                "https://play.ballerina.io/?gist=6b4b9e5f90ccf7402d04292b90949098&file=decimal_type.bal",
                 "_blank"
               );
             }}
@@ -91,7 +88,7 @@ export function DecimalType({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/decimal-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/decimal-type",
                 "_blank"
               );
             }}

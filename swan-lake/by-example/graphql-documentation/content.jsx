@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -60,7 +57,7 @@ service /graphql on new graphql:Listener(9090) {
 `,
 ];
 
-export function GraphqlDocumentation({codeSnippets}) {
+export function GraphqlDocumentation({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -94,7 +91,7 @@ export function GraphqlDocumentation({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-documentation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/graphql-documentation",
                 "_blank"
               );
             }}
@@ -244,7 +241,7 @@ export function GraphqlDocumentation({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-documentation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/graphql-documentation",
                 "_blank"
               );
             }}

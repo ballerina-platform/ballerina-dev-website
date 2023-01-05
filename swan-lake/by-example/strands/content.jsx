@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -38,7 +35,7 @@ public function main() {
 `,
 ];
 
-export function Strands({codeSnippets}) {
+export function Strands({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -74,7 +71,7 @@ export function Strands({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8612a3a31dd9f93cecb885530724e3b3&file=strands.bal",
+                "https://play.ballerina.io/?gist=2cc926738e9adcee3857fa7ec28d144d&file=strands.bal",
                 "_blank"
               );
             }}
@@ -99,7 +96,7 @@ export function Strands({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/strands",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/strands",
                 "_blank"
               );
             }}

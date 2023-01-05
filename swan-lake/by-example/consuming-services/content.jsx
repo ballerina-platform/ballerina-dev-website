@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -23,7 +20,7 @@ public function main() returns error? {
 `,
 ];
 
-export function ConsumingServices({codeSnippets}) {
+export function ConsumingServices({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -57,7 +54,7 @@ export function ConsumingServices({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=52050c6f0faf55ff71606b15c4a163d0&file=consuming_services.bal",
+                "https://play.ballerina.io/?gist=83838edc55b62de894280c50bec2e07c&file=consuming_services.bal",
                 "_blank"
               );
             }}
@@ -82,7 +79,7 @@ export function ConsumingServices({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/consuming-services",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/consuming-services",
                 "_blank"
               );
             }}

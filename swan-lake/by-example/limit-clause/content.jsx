@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -37,7 +34,7 @@ public function main() {
 `,
 ];
 
-export function LimitClause({codeSnippets}) {
+export function LimitClause({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -64,7 +61,7 @@ export function LimitClause({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8815666d3a92ea054bdc03bc1b8b8cfc&file=limit_clause.bal",
+                "https://play.ballerina.io/?gist=9d0edea49d1401275c79cdec81d0d48d&file=limit_clause.bal",
                 "_blank"
               );
             }}
@@ -89,7 +86,7 @@ export function LimitClause({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/limit-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/limit-clause",
                 "_blank"
               );
             }}

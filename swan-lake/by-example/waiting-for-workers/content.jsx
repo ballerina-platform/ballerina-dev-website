@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -27,7 +24,7 @@ public function main() {
 `,
 ];
 
-export function WaitingForWorkers({codeSnippets}) {
+export function WaitingForWorkers({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -59,7 +56,7 @@ export function WaitingForWorkers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=aa8cf7b8ccfe3855048fa687ac7c7e23&file=waiting_for_workers.bal",
+                "https://play.ballerina.io/?gist=d54651c4b305d836810f10f64e2f5c4b&file=waiting_for_workers.bal",
                 "_blank"
               );
             }}
@@ -84,7 +81,7 @@ export function WaitingForWorkers({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/waiting-for-workers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/waiting-for-workers",
                 "_blank"
               );
             }}

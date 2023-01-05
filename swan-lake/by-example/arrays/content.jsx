@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -28,7 +25,7 @@ public function main() {
 `,
 ];
 
-export function Arrays({codeSnippets}) {
+export function Arrays({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -59,7 +56,7 @@ export function Arrays({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a3f7182cd21f106c11274996dbe7a0e2&file=arrays.bal",
+                "https://play.ballerina.io/?gist=14c6f9e16db70b9222c31d8a0d022582&file=arrays.bal",
                 "_blank"
               );
             }}
@@ -84,7 +81,7 @@ export function Arrays({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/arrays",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/arrays",
                 "_blank"
               );
             }}

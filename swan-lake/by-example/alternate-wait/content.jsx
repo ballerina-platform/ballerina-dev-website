@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -44,7 +41,7 @@ function fetch(string url) returns string|error {
 `,
 ];
 
-export function AlternateWait({codeSnippets}) {
+export function AlternateWait({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -71,7 +68,7 @@ export function AlternateWait({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7e6b3c591eed43e6f010285369d9e3e2&file=alternate_wait.bal",
+                "https://play.ballerina.io/?gist=93d935007b40e5afdda34ce41483e0e1&file=alternate_wait.bal",
                 "_blank"
               );
             }}
@@ -96,7 +93,7 @@ export function AlternateWait({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/alternate-wait",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/alternate-wait",
                 "_blank"
               );
             }}

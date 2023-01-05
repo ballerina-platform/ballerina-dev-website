@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -38,7 +35,7 @@ public function main() {
 `,
 ];
 
-export function CombiningIsolatedFunctionsAndLock({codeSnippets}) {
+export function CombiningIsolatedFunctionsAndLock({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -104,7 +101,7 @@ export function CombiningIsolatedFunctionsAndLock({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0d5d06c9d30e4f932004f4d45d13974f&file=combining_isolated_functions_and_lock.bal",
+                "https://play.ballerina.io/?gist=bca15b15e45064994c871c9608194045&file=combining_isolated_functions_and_lock.bal",
                 "_blank"
               );
             }}
@@ -129,7 +126,7 @@ export function CombiningIsolatedFunctionsAndLock({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/combining-isolated-functions-and-lock",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/combining-isolated-functions-and-lock",
                 "_blank"
               );
             }}

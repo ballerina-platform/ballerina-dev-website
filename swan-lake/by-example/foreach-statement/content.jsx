@@ -1,10 +1,7 @@
 import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
@@ -40,7 +37,7 @@ function sum2(float[] v) returns float {
 `,
 ];
 
-export function ForeachStatement({codeSnippets}) {
+export function ForeachStatement({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -69,7 +66,7 @@ export function ForeachStatement({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c6752851f5654ebced97789efcd38b39&file=foreach_statement.bal",
+                "https://play.ballerina.io/?gist=a5c91451ea438816eefc5e629ac65335&file=foreach_statement.bal",
                 "_blank"
               );
             }}
@@ -94,7 +91,7 @@ export function ForeachStatement({codeSnippets}) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/foreach-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/foreach-statement",
                 "_blank"
               );
             }}

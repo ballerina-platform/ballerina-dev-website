@@ -7,27 +7,23 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-function add(int x, int y, int z) {
-    io:println("Sum of x, y and z:", x + y + z);
-}
-
 public function main() {
-    // Calls the \`add\` function using the positional arguments.
-    add(1, 2, 3);
+    string[] names = ["Ana", "Alice", "Bob"];
 
-    // Calls the \`add\` function using the named arguments in the same order as the parameters of the function definition.
-    add(x = 1, y = 2, z = 3);
+    // Define a function to modify and return the variable 'names' that are declared outside the scope.
+    var addName = function(string value) returns string[] {
+        // Access the variable \`names\` as closure within the \`addName\` inner function.
+        names.push(value);
+        return names;
+    };
 
-    // Calls the \`add\` function using the named arguments in a different order from the order of the parameters in the function definition.
-    add(z = 3, y = 2, x = 1);
-
-    // Calls the \`add\` function using a combination of named arguments and positional arguments.
-    add(1, z = 3, y = 2);
+    io:println(addName("James"));
+    io:println(names);
 }
 `,
 ];
 
-export function ProvideFunctionArgumentsByName({ codeSnippets }) {
+export function FunctionClosure({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -37,11 +33,12 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Provide function arguments by name</h1>
+      <h1>Function closure</h1>
 
       <p>
-        Ballerina allows you to call functions with named arguments, which do
-        not have to be in the same order as the parameters.
+        The object constructor and function can work as a closure, that can
+        access variables outside of its own scope. It is a compile-time error to
+        have parameter names similar to the outer-scope variable names.
       </p>
 
       <Row
@@ -54,7 +51,7 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=262a2a381c5ae3dbeb0a23cb20c61c04&file=provide_function_arguments_by_name.bal",
+                "https://play.ballerina.io/?gist=5115c21219022c95e308fef362beb2d5&file=function_closure.bal",
                 "_blank"
               );
             }}
@@ -75,31 +72,9 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
             </svg>
           </button>
 
-          <button
-            className="bg-transparent border-0 m-0 p-2"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/provide-function-arguments-by-name",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -206,11 +181,9 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run provide_function_arguments_by_name.bal`}</span>
-              <span>{`Sum of x, y and z:6`}</span>
-              <span>{`Sum of x, y and z:6`}</span>
-              <span>{`Sum of x, y and z:6`}</span>
-              <span>{`Sum of x, y and z:6`}</span>
+              <span>{`\$ bal run function_closure.bal`}</span>
+              <span>{`["Ana","Alice","Bob","James"]`}</span>
+              <span>{`["Ana","Alice","Bob","James"]`}</span>
             </code>
           </pre>
         </Col>
@@ -222,7 +195,7 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/functions/">Functions</a>
+            <a href="/learn/by-example/function-values/">Function values</a>
           </span>
         </li>
       </ul>
@@ -230,8 +203,8 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/included-record-parameters/">
-              Included record parameters
+            <a href="/learn/by-example/anonymous-function/">
+              Anonymous function
             </a>
           </span>
         </li>
@@ -241,8 +214,8 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Default values for function parameters"
-            href="/learn/by-example/default-values-for-function-parameters"
+            title="Anonymous function"
+            href="/learn/by-example/anonymous-function"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -269,7 +242,7 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Default values for function parameters
+                  Anonymous function
                 </span>
               </div>
             </div>
@@ -277,8 +250,8 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Function pointers"
-            href="/learn/by-example/function-pointers"
+            title="Foreach statement"
+            href="/learn/by-example/foreach-statement"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -288,7 +261,7 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Function pointers
+                  Foreach statement
                 </span>
               </div>
               <svg

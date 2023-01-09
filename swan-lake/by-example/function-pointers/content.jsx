@@ -11,30 +11,26 @@ function add(int v1, int v2) returns int {
     return v1 + v2;
 }
 
-function multiply(int v1, int v2) returns int {
-    return v1 * v2;
-}
-
 int num1 = 10;
 int num2 = 100;
 
-// Here, the function pointer with default values for function pointer parameters is used as a parameter. 
+// In this example, the function pointer with default values for function pointer parameters is used 
+// as a parameter. 
 function executeWithDefaultValues(function (int a = num1, int b = num2) returns int func) returns int {
     return func();
 }
 
-// Here, the function pointer without default values for function pointer parameters is used as a parameter. 
+//  In this example, the function pointer without default values for the function pointer parameters is used 
+// as a parameter. 
 function execute(function (int, int) returns int func, int v1, int v2) returns int {
     return func(v1, v2);
 }
 
 public function main() {
-    // The \`add\` and \`multiply\` function names serve as a function pointer argument in the
+    // The \`add\` function names serve as a function pointer argument in the
     // call to the \`executeWithDefaultValues\` and \`execute\` functions.
     io:println("Add num1 & num2: ", executeWithDefaultValues(add));
-    io:println("Multiply num1 & num2: ", executeWithDefaultValues(multiply));
     io:println("Add 1 & 2: ", execute(add, 1, 2));
-    io:println("Multiply 3 & 4: ", execute(multiply, 3, 4)); 
 }
 `,
 ];
@@ -68,7 +64,7 @@ export function FunctionPointers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cbef1b7a6086f379e776d87d71d9030c&file=function_pointers.bal",
+                "https://play.ballerina.io/?gist=a56420d2bc6f8ab71b0d599030a75c9d&file=function_pointers.bal",
                 "_blank"
               );
             }}
@@ -222,13 +218,41 @@ export function FunctionPointers({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run function_pointers.bal`}</span>
               <span>{`Add num1 & num2: 110`}</span>
-              <span>{`Multiply num1 & num2: 1000`}</span>
               <span>{`Add 1 & 2: 3`}</span>
-              <span>{`Multiply 3 & 4: 12`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/function-values/">Functions values</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/default-values-for-function-parameters/">
+              Default values for function parameters
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/function-types/">Function types</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -269,8 +293,8 @@ export function FunctionPointers({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Foreach statement"
-            href="/learn/by-example/foreach-statement"
+            title="Function values"
+            href="/learn/by-example/function-values"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -280,7 +304,7 @@ export function FunctionPointers({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Foreach statement
+                  Function values
                 </span>
               </div>
               <svg

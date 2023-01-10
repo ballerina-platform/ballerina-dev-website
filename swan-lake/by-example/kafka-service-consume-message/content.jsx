@@ -15,13 +15,12 @@ public type Order readonly & record {
     boolean isValid;
 };
 
-listener kafka:Listener orderListener = new (kafka:DEFAULT_URL, {
+listener kafka:Listener orderListener = check new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
     topics: "order-topic"
 });
 
 service on orderListener {
-
     remote function onConsumerRecord(Order[] orders) returns error? {
         // The set of orders received by the service are processed one by one.
         check from Order 'order in orders
@@ -29,24 +28,6 @@ service on orderListener {
             do {
                 log:printInfo(string \`Received valid order for \${'order.productName}\`);
             };
-    }
-
-    // When an error occurs before the \`onConsumerRecord\` gets invoked,
-    // \`onError\` function will get invoked.
-    remote function onError(kafka:Error 'error, kafka:Caller caller) returns error? {
-        // Check whether the \`error\` is a \`kafka:PayloadBindingError\` and seek pass the
-        // erroneous record.
-        if 'error is kafka:PayloadBindingError {
-            log:printError("Payload binding failed", 'error);
-            // The \`kafka:PartitionOffset\` related to the erroneous record is provided inside
-            // the \`kafka:PayloadBindingError\`.
-            check caller->seek({
-                partition: 'error.detail().partition,
-                offset: 'error.detail().offset + 1
-            });
-        } else {
-            log:printError("An error occured", 'error);
-        }
     }
 }
 `,
@@ -65,20 +46,8 @@ export function KafkaServiceConsumeMessage({ codeSnippets }) {
       <h1>Kafka service - Consume message</h1>
 
       <p>
-        The <code>kafka:Service</code> connects to a given Kafka server via the{" "}
-        <code>kafka:Listener</code>, and allows to directly bind Kafka messages
-        to subtypes of <code>anydata</code>. It does this by using the built-in
-        bytes deserializer for both the key and the value. To use this, provide
-        the required payload type as the argument type to the{" "}
-        <code>onConsumerRecord</code> method, which is a subtype of{" "}
-        <code>anydata[]</code>. When new messages are received, the{" "}
-        <code>onConsumerRecord</code> method gets invoked. If the payload does
-        not match the defined type, the <code>onError</code> remote method will
-        be invoked with a <code>kafka:PayloadBindingError</code>. Then, the{" "}
-        <code>seek</code> method of the <code>kafka:Caller</code> can be used to
-        seek past the erroneous record and read the new records. Use this to
-        listen to a set of topics in a Kafka server and receive messages
-        implicitly.
+        Here, a Kafka consumer is used as a listener to a service with automatic
+        offset commits.
       </p>
 
       <Row
@@ -177,6 +146,18 @@ export function KafkaServiceConsumeMessage({ codeSnippets }) {
           </span>
         </li>
       </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the Kafka client given in the{" "}
+            <a href="/learn/by-example/kafka-client-produce-message">
+              Kafka client - Produce message
+            </a>{" "}
+            example to produce some messages to the topic.
+          </span>
+        </li>
+      </ul>
 
       <p>Run the program by executing the following command.</p>
 
@@ -239,16 +220,6 @@ export function KafkaServiceConsumeMessage({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> Run the Kafka client given in the{" "}
-          <a href="/learn/by-example/kafka-producer-produce-message">
-            Kafka producer - Produce message
-          </a>{" "}
-          example to produce some messages to the topic.
-        </p>
-      </blockquote>
 
       <h2>Related links</h2>
 

@@ -74,7 +74,7 @@ export function Ordering({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=558c98154f808be40bc4498712b61cfd&file=ordering.bal",
+                "https://play.ballerina.io/?gist=7a3a57582033e111a1013645f1a8c0b0&file=ordering.bal",
                 "_blank"
               );
             }}

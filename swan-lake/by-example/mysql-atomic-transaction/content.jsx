@@ -24,7 +24,8 @@ service / on new http:Listener(8080) {
     function init() returns error? {
         // Initiate the mysql client at the start of the service. This will be used
         // throughout the lifetime of the service.
-        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
+        self.db = check new (host = "localhost", port = 3306, user = "root",
+                            password = "Test@123", database = "MUSIC_STORE");
     }
 
     resource function post 'order(@http:Payload Order salesOrder) returns http:Created|error {
@@ -81,12 +82,9 @@ export function MysqlAtomicTransaction({ codeSnippets }) {
       <h1>Database Access - Atomic transactions</h1>
 
       <p>
-        The <code>mysql:Client</code> supports atomic units of work with
-        multiple SQL statements. To achieve atomic database transactions use the
-        Ballerina <code>transaction</code> package with the{" "}
-        <code>mysql:Client</code>. The database makes all changes permanent when
-        the transaction is committed or undoes all changes when the transaction
-        is rolled back.
+        This BBE demonstrates how to use the MySQL client to execute a batch of
+        DDL/DML operations with the help of a <code>transaction</code> to
+        achieve the atomic behaviour.
       </p>
 
       <blockquote>
@@ -201,9 +199,9 @@ export function MysqlAtomicTransaction({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            To set up the database, see the{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite">
-              Database Access Ballerina By Example - Prerequisites
+            Refer{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md">
+              <code>mysql-prerequisite</code>
             </a>
             .
           </span>

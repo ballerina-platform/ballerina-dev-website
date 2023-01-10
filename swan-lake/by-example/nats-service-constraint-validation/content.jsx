@@ -11,23 +11,23 @@ import ballerinax/nats;
 
 public type Order record {
     int orderId;
-    // Add a constraint to allow only string values of length between 1 and 30.
+    // Add a constraint to only allow string values of length between 30 and 1.
     @constraint:String {maxLength: 30, minLength: 1}
     string productName;
     decimal price;
     boolean isValid;
 };
 
-// Binds the consumer to listen to the messages published to the 'orders.valid' subject.
+// Binds the consumer to listen to the messages published to the 'demo.bbe' subject.
 service "orders.valid" on new nats:Listener(nats:DEFAULT_URL) {
-
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {
             log:printInfo(string \`Received valid order for \${'order.productName}\`);
         }
     }
 
-    // When an error occurs, \`onError\` gets invoked.
+    // When an error occurs in the before the \`onMessage\` invoke,
+    // \`onError\` function will get invoked.
     remote function onError(nats:AnydataMessage message, nats:Error err) {
         if err is nats:PayloadValidationError {
             log:printError("Payload validation failed", err);
@@ -50,17 +50,10 @@ export function NatsServiceConstraintValidation({ codeSnippets }) {
       <h1>NATS service - Constraint validation</h1>
 
       <p>
-        The Ballerina constraint module allows you to add additional constraints
-        to the message content. The constraints can be added to a given data
-        type using different annotations. When a message with a constraint is
-        received from the NATS server, it is validated internally. This
-        validation happens soon after the successful data-binding of the message
-        content before executing the <code>onMessage</code> remote method. If
-        the validation fails, the <code>onError</code> remote method is invoked
-        with the error type <code>nats:PayloadValidationError</code>. Use this
-        to validate the message content as the application receives it, which
-        allows you to guard against unnecessary remote method processing and
-        malicious content.
+        This example shows how the payload is validated related to the
+        constraints added to the payload record. When a payload is not valid,
+        the <code>onError</code> remote method of the service is invoked and an
+        error of type <code>nats:PayloadValidationError</code> is returned.
       </p>
 
       <Row

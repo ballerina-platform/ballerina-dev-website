@@ -224,8 +224,8 @@ export function HttpCookiesService({ codeSnippets }) {
 
       <blockquote>
         <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/http-cookies-client/">Cookies client</a>.
+          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-cookies-client/">Cookies client</a>
         </p>
       </blockquote>
 

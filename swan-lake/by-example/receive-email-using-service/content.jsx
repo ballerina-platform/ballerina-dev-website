@@ -9,30 +9,32 @@ export const codeSnippetData = [
 import ballerina/log;
 
 // Creates the listener with the connection parameters and the protocol-related configuration. 
-listener email:ImapListener emailListener = new ({
-    host: "imap.email.com",
+// The \`pollingInterval\` specifies the duration between each poll in seconds.
+listener email:PopListener emailListener = check new ({
+    host: "pop.email.com",
     username: "reader@email.com",
-    password: "pass456"
+    password: "pass456",
+    pollingInterval: 2,
+    port: 995
 });
 
 // One or many services can listen to the email listener for the periodically-polled emails.
-service "observer" on emailListener {
+service "emailObserver" on emailListener {
 
     // When an email is successfully received, the \`onMessage\` method is called.
-    remote function onMessage(email:Message email) {
-        log:printInfo("Received an email", subject = email.subject, content = email?.body);
+    remote function onMessage(email:Message emailMessage) {
+        log:printInfo("POP Listener received an email", subject = emailMessage.subject,
+            content = emailMessage?.body);
     }
 
     // When an error occurs during the email poll operations, the \`onError\` method is called.
     remote function onError(email:Error emailError) {
-        log:printError(emailError.message(), stackTrace = emailError.stackTrace());
+        log:printError("Error while polling for the emails", 'error = emailError);
     }
 
     // When the listener is closed, the \`onClose\` method is called.
     remote function onClose(email:Error? closeError) {
-        if closeError is email:Error {
-            log:printInfo(closeError.message(), stackTrace = closeError.stackTrace());
-        }
+        log:printInfo("Closed the listener");
     }
 }
 `,
@@ -51,27 +53,12 @@ export function ReceiveEmailUsingService({ codeSnippets }) {
       <h1>Email service - Receive email</h1>
 
       <p>
-        The <code>email:Service</code> receives messages from an email server
-        via IMAP using the <code>email:ImapListener</code>. An{" "}
-        <code>email:ImapListener</code> can be initialized by providing the
-        hostname, username, and password. Once connected, <code>onMessage</code>{" "}
-        method is invoked whenever an email is read from the email server. If
-        there is an error while reading the data from the server,{" "}
-        <code>onError</code> method is invoked with relevant error details. When
-        the email server supports both POP3 and IMAP, it is recommended to use
-        the IMAP as it provides the ability to manage emails using multiple
-        devices or email clients, while allowing access to emails that are
-        already read.
+        The email service is used to receive (with POP3 or IMAP4) emails using
+        the SSL or STARTTLS protocols. This sample includes receiving emails
+        service attached to a POP3 listener with default configurations over SSL
+        using the default ports. To use IMAP4 the user can use{" "}
+        <code>IMAP listener</code>.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Note:</strong> The Ballerina <code>email</code> module also
-          provides an <code>email:PopListener</code> which can be used likewise.
-          The only difference is that the <code>email:PopListener</code> uses
-          POP3 protocol for communication.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -233,17 +220,6 @@ export function ReceiveEmailUsingService({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/classes/ImapListener">
-              <code>email:ImapListener</code> listener object - API
-              documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
             <a href="https://lib.ballerina.io/ballerina/email/latest/classes/PopListener">
               <code>email:PopListener</code> listener object - API documentation
             </a>
@@ -254,8 +230,18 @@ export function ReceiveEmailUsingService({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+            <a href="https://lib.ballerina.io/ballerina/email/latest/classes/ImapListener">
+              <code>email:PopListener</code> listener object - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
             <a href="https://ballerina.io/spec/email/#4-service">
-              Email service - Specification
+              <code>email</code> service - Specification
             </a>
           </span>
         </li>

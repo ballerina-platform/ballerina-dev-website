@@ -16,11 +16,11 @@ import ballerina/websocket;
 public type Chat string;
 
 public function main() returns error? {
-    websocket:Client chatClient = check new ("ws://localhost:9090/chat");
-    check chatClient->writeMessage("Hello John!");
-    // Run \`readMessage()\` in a loop in a separate strand to continuously read messages.
-    Chat message = check chatClient->readMessage();
-    io:println(message);
+   websocket:Client chatClient = check new("ws://localhost:9090/chat");
+   check chatClient->writeMessage("Hello John!");
+   // Run \`readMessage()\` in a loop in a separate strand to continuously read messages.
+   Chat message = check chatClient->readMessage();
+   io:println(message);
 }
 `,
 ];
@@ -38,16 +38,11 @@ export function WebsocketClientPayloadConstraintValidation({ codeSnippets }) {
       <h1>WebSocket client - Payload constraint validation</h1>
 
       <p>
-        The Ballerina constraint package allows you to add additional
-        constraints to the received payload. Through client payload constraint
-        validation, the payload can be validated according to the defined
-        constraints. The constraint validation happens along with the data
-        binding step in the <code>readMessage</code> remote method. Constraints
-        can be added to a given data type using different annotations. If the
-        validation fails, a <code>PayloadBindingError</code> will be returned
-        with the validation details. Use this to validate the receiving payload,
-        which allows you to guard against unnecessary processing and malicious
-        payloads.
+        Through client payload constraint validation, the receiving message can
+        be validated according to the defined constraints. The constraint
+        validation happens along with the data binding step. If the validation
+        fails, a <code>PayloadBindingError</code> will be returned with the
+        validation details.
       </p>
 
       <Row

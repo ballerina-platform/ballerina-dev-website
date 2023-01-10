@@ -13,7 +13,7 @@ public function main() returns error? {
     // a certificate file of the listener.
     // The \`tcp:ClientSecureSocket\` record provides the
     // SSL-related configurations of the client.
-    tcp:Client securedClientEP = check new ("localhost", 9090,
+    tcp:Client securedClientEP = check new("localhost", 3000,
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }
@@ -37,16 +37,9 @@ export function TcpClientSslTls({ codeSnippets }) {
       <h1>TCP client - SSL/TLS</h1>
 
       <p>
-        The <code>tcp:Client</code> secured with SSL/TLS connects to a given
-        SSL/TLS-secured TCP server socket, and then sends and receives byte
-        streams. A <code>tcp:Client</code> secured with SSL/TLS is created by
-        additionally giving <code>secureSocket</code> configurations which
-        require the server's certificate as the <code>cert</code>. Once
-        connected, <code>writeBytes</code> and <code>readBytes</code>{" "}
-        synchronous methods are used to send and receive byte streams over an
-        encrypted TLS connection. Use this to interact with TCP servers or
-        implement high-level protocols based on TLS-encrypted secured TCP
-        connection.
+        This demonstrates how the Ballerina TCP client can be configured to
+        connect to an SSL/TLS listener through a one-way SSL/TLS connection
+        (i.e., the server is verified by the client).
       </p>
 
       <Row
@@ -214,7 +207,7 @@ export function TcpClientSslTls({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/tcp/latest">
-              <code>tcp</code> module - API documentation
+              <code>tcp</code> package - API documentation
             </a>
           </span>
         </li>

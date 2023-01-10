@@ -7,27 +7,27 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-public function main() returns error? {
+public function main() {
     int[] nums = [1, 2, 3, 4];
     int[] numsTimes10 = [];
 
     // The \`from\` clause works similar to a \`foreach\` statement.
-    check from var i in nums
-        // The \`do\` statement block is evaluated for each iteration.
-        do {
-            numsTimes10.push(i * 10);
-        };
+    from var i in nums
+    // The \`do\` statement block is evaluated for each iteration.
+    do {
+        numsTimes10.push(i * 10);
+    };
 
     io:println(numsTimes10);
 
     // Print only the even numbers in the \`nums\` array.
     // Intermediate clauses such as \`let\` clause, \`join\` clause, \`order by\` clause, \`where clause\` and \`limit\` clause
     // can also be used.
-    check from var i in nums
-        where i % 2 == 0
-        do {
-            io:println(i);
-        };
+    from var i in nums
+    where i % 2 == 0
+    do {
+        io:println(i);
+    };
 }
 `,
 ];
@@ -77,7 +77,7 @@ export function QueryActions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0be22a2f18416c5252996b05ff049119&file=query_actions.bal",
+                "https://play.ballerina.io/?gist=37f482be6330ed1c7da499386b677fd5&file=query_actions.bal",
                 "_blank"
               );
             }}

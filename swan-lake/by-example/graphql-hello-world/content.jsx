@@ -39,23 +39,18 @@ export function GraphqlHelloWorld({ codeSnippets }) {
       <h1>GraphQL service - Hello world</h1>
 
       <p>
-        A <code>graphql:Service</code> in Ballerina represents a GraphQL schema.
-        Each resource method of the <code>graphql:Service</code> with the{" "}
+        A GraphQL service in Ballerina represents a GraphQL schema. Each
+        resource method of the <code>graphql:Service</code> with the{" "}
         <code>get</code> accessor represents a resolver function in the root{" "}
-        <code>Query</code> type. The return type of the <code>resource</code>{" "}
-        method will be the type of field represented by that resource method.
+        <code>Query</code> type. The return type of each resource method will be
+        the type of each field represented by the resource method.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Note:</strong> GraphQL queries are expected to be read-only
-          operations that are usually executed against entities such as{" "}
-          <code>Person</code>, <code>Profile</code>, <code>Address</code>, etc.
-          Ballerina uses <code>resource</code> methods to handle such cases.
-          Therefore, these <code>resource</code> methods are usually named using
-          nouns with <code>get</code> accessor.
-        </p>
-      </blockquote>
+      <p>
+        This example shows a GraphQL endpoint that has a field named{" "}
+        <code>greeting</code> in the root <code>Query</code> type which is of
+        type <code>String!</code>.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -372,7 +367,7 @@ export function GraphqlHelloWorld({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> module - API documentation
+              <code>graphql</code> package - API documentation
             </a>
           </span>
         </li>
@@ -428,8 +423,8 @@ export function GraphqlHelloWorld({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service as output object"
-            href="/learn/by-example/graphql-returning-service-objects"
+            title="Record as output object"
+            href="/learn/by-example/graphql-returning-record-values"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -439,7 +434,7 @@ export function GraphqlHelloWorld({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service as output object
+                  Record as output object
                 </span>
               </div>
               <svg

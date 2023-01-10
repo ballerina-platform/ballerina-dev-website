@@ -5,15 +5,16 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `public function main() {
+  `import ballerina/io;
+ 
+public function main() {
+    // Creates a \`byte\` array using the \`base16\` byte array literal.
+    byte[] arr1 = base16 \`55 EE 66 FF 77 AB\`;
+    io:println(arr1);
+    
     // Creates a \`byte\` array using the \`base64\` byte array literal.
-    byte[] _ = base64 \`yPHaytRgJPg+QjjylUHakEwz1fWPx/wXCW41JSmqYW8=\`;
-
-    // Creates a \`byte\` using a hexadecimal numeral.
-    byte x = 0xA;
-
-    // \`byte & int\` will be \`byte\`.
-    byte _ = x & 0xFF;
+    byte[] arr2 = base64 \`ABCD pqrs 5678 +/12\`;
+    io:println(arr2);
 }
 `,
 ];
@@ -31,20 +32,10 @@ export function BinaryData({ codeSnippets }) {
       <h1>Binary data</h1>
 
       <p>
-        Binary data is represented by arrays of <code>byte</code> values. It is
-        a special syntax for <code>byte</code> arrays in <code>base 64</code>{" "}
-        and <code>base 16</code>. The relationship between <code>byte</code> and{" "}
-        <code>int</code> is not the same as what you are used to. A{" "}
-        <code>byte</code> is an <code>int</code> in the range <code>0</code> to{" "}
-        <code>0xFF</code>. <code>byte</code> is a subtype of int.
-      </p>
-
-      <p>
-        The <code>int</code> type supports normal bitwise operators:{" "}
-        <code>&amp;</code> <code>|</code> <code>^</code> <code>~</code>{" "}
-        <code>&lt;&lt;</code> <code>&gt;&gt;</code> <code>&gt;&gt;&gt;</code>.
-        Ballerina knows the obvious rules about when bitwise operations produce
-        a <code>byte</code>.
+        Binary data is represented by arrays of byte values. It is a special
+        syntax for byte arrays in Base16 and Base64. The encoding tables of both
+        Base16 and Base64 are the same as RFC 4648. A byte is an int in the
+        range 0 to 0xFF and it is a subtype of int.
       </p>
 
       <Row
@@ -57,7 +48,7 @@ export function BinaryData({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4713fe0606dcf14805226840a654ead2&file=binary_data.bal",
+                "https://play.ballerina.io/?gist=5fcd1f8a87df7c3889086c193af3e4d9&file=binary_data.bal",
                 "_blank"
               );
             }}
@@ -210,17 +201,39 @@ export function BinaryData({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run binary_data.bal`}</span>
+              <span>{`[85,238,102,255,119,171]`}</span>
+              <span>{`[0,16,131,166,170,236,231,174,252,251,253,118]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/arrays">Arrays - Ballerina by example</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/integers">
+              Integers - Ballerina by example
+            </a>
+          </span>
+        </li>
+      </ul>
+
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Rest type in tuples"
-            href="/learn/by-example/rest-type-in-tuples"
-          >
+          <Link title="List equality" href="/learn/by-example/list-equality">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -246,7 +259,7 @@ export function BinaryData({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Rest type in tuples
+                  List equality
                 </span>
               </div>
             </div>

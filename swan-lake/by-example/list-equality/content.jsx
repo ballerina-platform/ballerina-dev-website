@@ -67,7 +67,7 @@ export function ListEquality({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d4c1a6caa57aa4620b3a6560486e237c&file=list_equality.bal",
+                "https://play.ballerina.io/?gist=582ad9c7cb946aef73d798addf29f2fa&file=list_equality.bal",
                 "_blank"
               );
             }}
@@ -217,7 +217,7 @@ export function ListEquality({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/tuples">Tuples - Ballerina by example</a>
+            <a href="/learn/by-example/tuples">Tuples</a>
           </span>
         </li>
       </ul>
@@ -225,7 +225,7 @@ export function ListEquality({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/arrays">Arrays - Ballerina by example</a>
+            <a href="/learn/by-example/arrays">Arrays</a>
           </span>
         </li>
       </ul>
@@ -233,9 +233,7 @@ export function ListEquality({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/list-subtyping">
-              List sub typing - Ballerina by example
-            </a>
+            <a href="/learn/by-example/list-subtyping">List sub typing</a>
           </span>
         </li>
       </ul>

@@ -65,7 +65,7 @@ export function NestedArrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=92cfcb10a953a0252d35a2410088b42b&file=nested_arrays.bal",
+                "https://play.ballerina.io/?gist=c6d31b01993c0f9867e2a59d24d5fa6c&file=nested_arrays.bal",
                 "_blank"
               );
             }}
@@ -212,7 +212,7 @@ export function NestedArrays({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/arrays">Arrays - Ballerina by example</a>
+            <a href="/learn/by-example/arrays">Arrays</a>
           </span>
         </li>
       </ul>
@@ -230,7 +230,7 @@ export function NestedArrays({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/tuples">Tuples - Ballerina by example</a>
+            <a href="/learn/by-example/tuples">Tuples</a>
           </span>
         </li>
       </ul>
@@ -239,7 +239,7 @@ export function NestedArrays({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/filler-values-of-a-list">
-              Filler values of a list - Ballerina by example
+              Filler values of a list
             </a>
           </span>
         </li>
@@ -248,9 +248,7 @@ export function NestedArrays({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/list-subtyping">
-              List sub typing - Ballerina by example
-            </a>
+            <a href="/learn/by-example/list-subtyping">List sub typing</a>
           </span>
         </li>
       </ul>
@@ -258,9 +256,7 @@ export function NestedArrays({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/list-equality">
-              List equality - Ballerina by example
-            </a>
+            <a href="/learn/by-example/list-equality">List equality</a>
           </span>
         </li>
       </ul>

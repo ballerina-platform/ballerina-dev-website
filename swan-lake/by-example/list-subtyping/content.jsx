@@ -62,7 +62,7 @@ export function ListSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cf5bf0d07c2a8cd8742d431eb8481f93&file=list_subtyping.bal",
+                "https://play.ballerina.io/?gist=14358012368b13aba86ab5581010e57d&file=list_subtyping.bal",
                 "_blank"
               );
             }}
@@ -208,7 +208,7 @@ export function ListSubtyping({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/tuples">Tuples - Ballerina by example</a>
+            <a href="/learn/by-example/tuples">Tuples</a>
           </span>
         </li>
       </ul>
@@ -216,7 +216,7 @@ export function ListSubtyping({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/arrays">Arrays - Ballerina by example</a>
+            <a href="/learn/by-example/arrays">Arrays</a>
           </span>
         </li>
       </ul>
@@ -224,9 +224,7 @@ export function ListSubtyping({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/list-equality">
-              List equality - Ballerina by example
-            </a>
+            <a href="/learn/by-example/list-equality">List equality</a>
           </span>
         </li>
       </ul>

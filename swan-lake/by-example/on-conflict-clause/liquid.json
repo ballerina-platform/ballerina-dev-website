@@ -1,0 +1,20 @@
+{
+  "title": "On conflict clause",
+  "description": "This BBE demonstrates handling duplicate keys when constructing a map or a table.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "duplicate",
+    "key",
+    "map",
+    "table",
+    "query"
+  ],
+  "permalink": "/learn/by-example/on-conflict-clause",
+  "active": "on-conflict-clause",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/on-conflict-clause",
+    "/swan-lake/learn/by-example/on-conflict-clause.html"
+  ]
+}

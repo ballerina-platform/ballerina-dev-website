@@ -344,6 +344,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Stream type",
+        "url": "stream-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Never type",
         "url": "never-type",
         "verifyBuild": true,
@@ -568,22 +575,57 @@
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Binding patterns in assignment",
-        "url": "binding-patterns-in-assignment",
+        "name": "Mapping binding pattern",
+        "url": "mapping-binding-pattern",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Spread in binding patterns",
-        "url": "spread-in-binding-patterns",
+        "name": "Rest binding pattern in mapping binding pattern",
+        "url": "rest-binding-pattern-in-mapping-binding-pattern",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Binding patterns in match statement",
-        "url": "binding-patterns-in-match-statement",
+        "name": "Error binding pattern",
+        "url": "error-binding-pattern",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Rest binding pattern in error binding pattern",
+        "url": "rest-binding-pattern-in-error-binding-pattern",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Single use of typed binding patterns",
+        "url": "single-use-of-typed-binding",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Single use of typed binding patterns with on fail clause",
+        "url": "single-use-with-on-fail-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Iterative use of typed binding patterns",
+        "url": "iterative-use-of-typed-binding",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Error binding pattern in match statement",
+        "url": "error-binding-pattern-in-match-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -709,8 +751,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "Work directly with JSON",
-        "url": "working-directly-with-json",
+        "name": "Access JSON elements",
+        "url": "access-json-elements",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -730,15 +772,22 @@
         "isLearnByExample": true
       },
       {
-        "name": "Convert from JSON to user-defined type",
-        "url": "converting-from-json-to-user-defined-type",
+        "name": "Converting from table and XML to JSON",
+        "url": "converting-from-table-and-xml-to-json",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Convert to user-defined type",
-        "url": "converting-to-user-defined-type",
+        "name": "Converting JSON with langlib functions",
+        "url": "converting-json-with-langlib-functions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Casting JSON to user-defined type",
+        "url": "casting-json-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -801,8 +850,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructure records",
-        "url": "destructuring-records",
+        "name": "Sort iterable objects",
+        "url": "sort-iterable-objects",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -815,15 +864,15 @@
         "isLearnByExample": true
       },
       {
-        "name": "Ordering",
-        "url": "ordering",
+        "name": "Limit clause",
+        "url": "limit-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Limit clause",
-        "url": "limit-clause",
+        "name": "Joining iterable objects",
+        "url": "joining-iterable-objects",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -837,28 +886,49 @@
       },
       {
         "name": "Create tables with query",
-        "url": "creating-tables-with-query",
+        "url": "create-tables-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Join clause",
-        "url": "join-clause",
+        "name": "Create maps with query",
+        "url": "create-maps-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Outer Join clause",
-        "url": "outer-join-clause",
+        "name": "Create streams with query",
+        "url": "create-streams-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Stream type",
-        "url": "stream-type",
+        "name": "On conflict clause",
+        "url": "on-conflict-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Iterating over xml with query",
+        "url": "iterating-over-xml-with-query",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Nested query expressions",
+        "url": "nested-query-expressions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Destructure records using queries",
+        "url": "destructure-records-using-queries",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

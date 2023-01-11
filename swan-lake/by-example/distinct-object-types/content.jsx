@@ -80,7 +80,7 @@ export function DistinctObjectTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d7b284a0eb711f5bca34e7fda393c7d3&file=distinct_object_types.bal",
+                "https://play.ballerina.io/?gist=637dbb1080afd1fc6fb821e333f76fad&file=distinct_object_types.bal",
                 "_blank"
               );
             }}
@@ -278,8 +278,8 @@ export function DistinctObjectTypes({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Binding patterns in assignment"
-            href="/learn/by-example/binding-patterns-in-assignment"
+            title="Mapping binding pattern"
+            href="/learn/by-example/mapping-binding-pattern"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -289,7 +289,7 @@ export function DistinctObjectTypes({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Binding patterns in assignment
+                  Mapping binding pattern
                 </span>
               </div>
               <svg

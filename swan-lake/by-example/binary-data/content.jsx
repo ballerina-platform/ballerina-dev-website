@@ -48,7 +48,7 @@ export function BinaryData({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5fcd1f8a87df7c3889086c193af3e4d9&file=binary_data.bal",
+                "https://play.ballerina.io/?gist=59cc8bcd5ed3408b4a6341aa2d090409&file=binary_data.bal",
                 "_blank"
               );
             }}
@@ -214,7 +214,7 @@ export function BinaryData({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/arrays">Arrays - Ballerina by example</a>
+            <a href="/learn/by-example/arrays">Arrays</a>
           </span>
         </li>
       </ul>
@@ -222,9 +222,7 @@ export function BinaryData({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/integers">
-              Integers - Ballerina by example
-            </a>
+            <a href="/learn/by-example/integers">Integers</a>
           </span>
         </li>
       </ul>

@@ -266,8 +266,8 @@ export function ResourceMethodTyping({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Convert to user-defined type"
-            href="/learn/by-example/converting-to-user-defined-type"
+            title="Casting JSON to user-defined type"
+            href="/learn/by-example/casting-json-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -294,7 +294,7 @@ export function ResourceMethodTyping({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Convert to user-defined type
+                  Casting JSON to user-defined type
                 </span>
               </div>
             </div>

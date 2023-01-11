@@ -1,0 +1,23 @@
+{
+  "title": "Rest binding pattern in error binding pattern",
+  "description": "This BBE demonstrates the rest binding pattern in the error binding pattern, rest parameter in error binding, rest binding, error binding pattern, error typed binding, and error destructuring with binding patterns.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binding pattern",
+    "rest binding",
+    "rest parameter",
+    "error binding pattern",
+    "error binding",
+    "error typed binding",
+    "error binding",
+    "error destructuring"
+  ],
+  "permalink": "/learn/by-example/rest-binding-pattern-in-error-binding-pattern",
+  "active": "rest-binding-pattern-in-error-binding-pattern",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/rest-binding-pattern-in-error-binding-pattern",
+    "/swan-lake/learn/by-example/rest-binding-pattern-in-error-binding-pattern.html"
+  ]
+}

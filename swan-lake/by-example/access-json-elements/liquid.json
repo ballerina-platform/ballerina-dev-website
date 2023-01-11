@@ -1,0 +1,21 @@
+{
+  "title": "Access JSON elements",
+  "description": "This BBE demonstrates how to get elements in JSON, check whether a given element is available in JSON, handle errors when a member is not available, get members in JSON array, and access a JSON value in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "json type",
+    "json",
+    "check",
+    "ensureType",
+    "lax",
+    "access"
+  ],
+  "permalink": "/learn/by-example/access-json-elements",
+  "active": "access-json-elements",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/access-json-elements",
+    "/swan-lake/learn/by-example/access-json-elements.html"
+  ]
+}

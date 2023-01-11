@@ -98,7 +98,7 @@ export function Arrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2661020a98bbbb2a8e19e001f017ff62&file=arrays.bal",
+                "https://play.ballerina.io/?gist=e7ff08a8e154a3616b6d36204ec64960&file=arrays.bal",
                 "_blank"
               );
             }}
@@ -274,7 +274,7 @@ export function Arrays({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/lang.array">
-              Manipulating an array <code>(lang.array)</code> - Language library
+              Manipulating an array <code>(lang.array)</code>
             </a>
           </span>
         </li>
@@ -283,7 +283,7 @@ export function Arrays({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/tuples">Tuples - Ballerina by example</a>
+            <a href="/learn/by-example/tuples">Tuples</a>
           </span>
         </li>
       </ul>
@@ -291,9 +291,7 @@ export function Arrays({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/nested-arrays">
-              Nested arrays - Ballerina by example
-            </a>
+            <a href="/learn/by-example/nested-arrays">Nested arrays</a>
           </span>
         </li>
       </ul>
@@ -302,7 +300,7 @@ export function Arrays({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/filler-values-of-a-list">
-              Filler values of a list - Ballerina by example
+              Filler values of a list
             </a>
           </span>
         </li>
@@ -311,9 +309,7 @@ export function Arrays({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/list-subtyping">
-              List sub typing - Ballerina by example
-            </a>
+            <a href="/learn/by-example/list-subtyping">List sub typing</a>
           </span>
         </li>
       </ul>
@@ -321,9 +317,7 @@ export function Arrays({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/list-equality">
-              List equality - Ballerina by example
-            </a>
+            <a href="/learn/by-example/list-equality">List equality</a>
           </span>
         </li>
       </ul>

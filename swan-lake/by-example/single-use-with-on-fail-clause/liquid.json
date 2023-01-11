@@ -1,0 +1,19 @@
+{
+  "title": "Single use of typed binding patterns with on fail clause",
+  "description": "This BBE demonstrates the single use of typed binding patterns, single use of typed binding with the `on fail` clause, and use of capture binding with the `on fail` clause.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binding pattern",
+    "typed binding",
+    "single use",
+    "on fail"
+  ],
+  "permalink": "/learn/by-example/single-use-with-on-fail-clause",
+  "active": "single-use-with-on-fail-clause",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/single-use-with-on-fail-clause",
+    "/swan-lake/learn/by-example/single-use-with-on-fail-clause.html"
+  ]
+}

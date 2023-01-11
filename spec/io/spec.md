@@ -279,25 +279,26 @@ public isolated function fileWriteLinesFromStream(string path, stream<string, Er
 
 **Non-Streaming APIs**
 
-The following API reads the content of a given CSV file as a string array of arrays. Here, each CSV record represents as a string array.
+The following API reads the content of a given CSV file as a string array of arrays or array of ballerina records. Here, each CSV record represents as a string array or a record.
 
 ```ballerina
 # Read file content as a CSV.
 # ```ballerina
 # string[][]|io:Error content = io:fileReadCsv("./resources/myfile.csv");
-# map<anydata>[]|io:Error content = io:fileReadCsv("./resources/myfile.csv");
+# record[]|io:Error content = io:fileReadCsv("./resources/myfile.csv");
 # ```
 # + path - The CSV file path
 # + skipHeaders - Number of headers, which should be skipped prior to reading records
-# + return - The entire CSV content in the channel as an array of string arrays or an `io:Error`
+# + return - The entire CSV content in the channel as an array of string arrays, array of Ballerina records or an `io:Error`
 public isolated function fileReadCsv(string path, int skipHeaders = 0) returns string[][]|Error;
 ```
 
-The following API writes given CSV content to a given file. When writing a `Record[]` content to a CSV file in `OVERWRITE`, by default, headers will be written to the CSV file as unlike `string[][],` the order of record fields is not guaranteed. For `APPEND`, order of the existing csv file is inferred using the headers and used as the order.
+The following API writes given CSV content to a given file. When writing a `Record[]` content to a CSV file in `OVERWRITE`, by default, headers will be written to the CSV file as unlike `string[][],` the order of ballerina record fields is not guaranteed. For `APPEND`, order of the existing csv file is inferred using the headers and used as the order.
 
 ```ballerina
 # Write CSV content to a file. 
-# If the input is a `Record[]` the headers are automatically written to the file.
+# When the input is a record[] type in `OVERWRITE`,  headers will be written to the CSV file by default.
+# For `APPEND`, order of the existing csv file is inferred using the headers and used as the order.
 # ```ballerina
 # type Coord record {int x;int y;};
 # Coord[] contentRecord = [{x: 1,y: 2},{x: 1,y: 2}]
@@ -306,30 +307,32 @@ The following API writes given CSV content to a given file. When writing a `Reco
 # io:Error? resultRecord = io:fileWriteCsv("./resources/myfileRecord.csv", contentRecord);
 # ```
 # + path - The CSV file path
-# + content - CSV content as an array of string arrays
+# + content - CSV content as an array of string arrays or a array of Ballerina records.
 # + option - To indicate whether to overwrite or append the given content
 # + return - An `io:Error` or `()` when the writing was successful
 public isolated function fileWriteCsv(string path, string[][] content, FileWriteOption option = OVERWRITE) returns
 Error?;
 ```
 
-The following API reads the content of a given CSV file as a stream of string arrays. Here, each CSV record represents as a string array.
+The following API reads the content of a given CSV file as a stream of string arrays or ballerina records. Here, each CSV record represents as a string array or a ballerina record.
 
 ```ballerina
 # Read file content as a CSV.
 # ```ballerina
 # stream<string[], io:Error?>|io:Error content = io:fileReadCsvAsStream("./resources/myfile.csv");
-# stream<map<anydata>, io:Error?>|io:Error content = io:fileReadCsvAsStream("./resources/myfile.csv");
+# stream<record{}, io:Error?>|io:Error content = io:fileReadCsvAsStream("./resources/myfile.csv");
 # ```
 # + path - The CSV file path
-# + return - The entire CSV content in the channel a stream of string arrays or an `io:Error`
+# + return - The entire CSV content in the channel a stream of string arrays, Ballerina records or an `io:Error`
 public isolated function fileReadCsvAsStream(string path) returns stream<string[], Error?>|Error;
 ```
 
-The following API writes a given CSV stream to a given file.
+The following API writes a given CSV stream to a given file. When writing a `Record[]` content to a CSV file in `OVERWRITE`, by default, headers will be written to the CSV file as unlike `string[]` the order of record fields is not guaranteed. For `APPEND`, order of the existing csv file is inferred using the headers and used as the order
 
 ```ballerina
-# Write CSV record stream to a file.
+# Write CSV record stream to a file. 
+# When the input is a `stream<record, io:Error?>` in `OVERWRITE`,  headers will be written to the CSV file by default.
+# For `APPEND`, order of the existing csv file is inferred using the headers and used as the order.
 # ```ballerina
 # type Coord record {int x;int y;};
 # Coord[] contentRecord = [{x: 1,y: 2},{x: 1,y: 2}]

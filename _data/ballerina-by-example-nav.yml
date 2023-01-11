@@ -103,6 +103,12 @@ sublinks:
           - title: While statement
             id: 2
             url: while-statement
+          - title: Break statement
+            id: 3
+            url: break-statement
+          - title: Continue statement
+            id: 4
+            url: continue-statement
       - title: Lang library
         id: 8
         sublinks:
@@ -400,9 +406,9 @@ sublinks:
           - title: Nested query expressions
             id: 12
             url: nested-query-expressions
-          - title: Destructure records using queries
+          - title: Destructure records using query
             id: 13
-            url: destructure-records-using-queries
+            url: destructure-records-using-query
           - title: Querying with streams
             id: 14
             url: querying-with-streams

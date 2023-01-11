@@ -1,0 +1,19 @@
+{
+  "title": "Circuit breaker",
+  "description": "BBE on how to use an HTTP circuit breaker in Ballerina. This will allow to handle requests when a backend is failing.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "http",
+    "resiliency",
+    "circuit breaker",
+    "circuit break"
+  ],
+  "permalink": "/learn/by-example/http-circuit-breaker",
+  "active": "http-circuit-breaker",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-circuit-breaker",
+    "/swan-lake/learn/by-example/http-circuit-breaker.html"
+  ]
+}

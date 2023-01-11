@@ -89,7 +89,7 @@ export function LanglibFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7d3d3b91f681e46737b11624b5fa325d&file=langlib_functions.bal",
+                "https://play.ballerina.io/?gist=18fc8b399f894aa36c12a539bdc2decc&file=langlib_functions.bal",
                 "_blank"
               );
             }}
@@ -258,8 +258,8 @@ export function LanglibFunctions({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="While statement"
-            href="/learn/by-example/while-statement"
+            title="Continue statement"
+            href="/learn/by-example/continue-statement"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -286,7 +286,7 @@ export function LanglibFunctions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  While statement
+                  Continue statement
                 </span>
               </div>
             </div>

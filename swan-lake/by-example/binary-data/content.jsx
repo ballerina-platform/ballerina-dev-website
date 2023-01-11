@@ -48,7 +48,7 @@ export function BinaryData({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=59cc8bcd5ed3408b4a6341aa2d090409&file=binary_data.bal",
+                "https://play.ballerina.io/?gist=d68ac038df273a80bac7f524ba3cec89&file=binary_data.bal",
                 "_blank"
               );
             }}

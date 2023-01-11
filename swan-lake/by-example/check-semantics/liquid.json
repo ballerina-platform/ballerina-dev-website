@@ -1,0 +1,20 @@
+{
+  "title": "Check semantics",
+  "description": "This BBE explains the `check` semantics in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "check",
+    "fail",
+    "exceptions",
+    "on fail",
+    "error"
+  ],
+  "permalink": "/learn/by-example/check-semantics",
+  "active": "check-semantics",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/check-semantics",
+    "/swan-lake/learn/by-example/check-semantics.html"
+  ]
+}

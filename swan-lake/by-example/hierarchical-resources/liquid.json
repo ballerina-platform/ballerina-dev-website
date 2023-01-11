@@ -1,0 +1,18 @@
+{
+  "title": "Hierarchical resources",
+  "description": "This BBE introduces hierarchical resources concept.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "resources",
+    "hierarchical resources",
+    "services"
+  ],
+  "permalink": "/learn/by-example/hierarchical-resources",
+  "active": "hierarchical-resources",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/hierarchical-resources",
+    "/swan-lake/learn/by-example/hierarchical-resources.html"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Payload constraint validation",
+  "description": "BBE demonstrates the constraint validation capability of the WebSocket client.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "data binding",
+    "client",
+    "constraint",
+    "validation"
+  ],
+  "permalink": "/learn/by-example/websocket-client-payload-constraint-validation",
+  "active": "websocket-client-payload-constraint-validation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-client-payload-constraint-validation",
+    "/swan-lake/learn/by-example/websocket-client-payload-constraint-validation.html"
+  ]
+}

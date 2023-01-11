@@ -1,0 +1,19 @@
+{
+  "title": "OAuth2 JWT bearer grant type",
+  "description": "BBE on how to secure HTTP client with OAuth2 JWT bearer grant type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "auth",
+    "oauth2",
+    "jwt bearer grant type"
+  ],
+  "permalink": "/learn/by-example/http-client-oauth2-jwt-bearer-grant-type",
+  "active": "http-client-oauth2-jwt-bearer-grant-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-client-oauth2-jwt-bearer-grant-type",
+    "/swan-lake/learn/by-example/http-client-oauth2-jwt-bearer-grant-type.html"
+  ]
+}

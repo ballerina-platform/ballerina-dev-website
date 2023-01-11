@@ -52,7 +52,7 @@ export function MainFunction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fa2df28ed3d8b8c3754ed94968946b28&file=main_function.bal",
+                "https://play.ballerina.io/?gist=f416d5be6cd8005198cac5503bb4ee68&file=main_function.bal",
                 "_blank"
               );
             }}

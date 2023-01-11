@@ -6,28 +6,28 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
-
+ 
 // Closed type.
 type ClosedCoord record {|
-    float x;
-    float y;
+    string name;
+    [float, float] cords;
 |};
-
-// Open type, can have additional \`anydata\` fields.
+ 
+// Open type can have additional \`anydata\` fields.
 type OpenCoord record {
-    float x;
-    float y;
+    string name;
+    [float, float] cords;
 };
-
+ 
 public function main() {
-    ClosedCoord a = {x: 1.0, y: 2.0};
-    // Nothing to do.
+    ClosedCoord a = {name: "Colombo", cords: [6.95, 79.84]};
+    // The conversion happens automatically because \`a\` is a subtype of \`anydata\`.
     json j = a;
     io:println(j);
-
-    OpenCoord b = {x: 1.0, y: 2.0, "z": "city"};
+    
+    OpenCoord b = {name: "Colombo", cords: [6.94, 79.83], "area": "03"};
     // Use \`toJson()\` to convert \`anydata\` to \`json\`.
-    // Usually happens automatically.
+    // Usually happens automatically with closed records.
     json k = b.toJson();
     io:println(k);
 }
@@ -47,17 +47,18 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
       <h1>Converting from user-defined type to JSON</h1>
 
       <p>
-        Conversion from <code>json</code> value to JSON format is
-        straightforward. Converting from application-specific, user-defined
+        Conversion of a <code>json</code> value to JSON format is
+        straightforward. Converting from an application-specific, user-defined
         subtype of <code>anydata</code> to <code>json</code> is also possible.
       </p>
 
       <p>
-        In many cases, this is a no-op: user-defined type will be a subtype of{" "}
-        <code>json</code> as well as of <code>anydata</code>. With tables, XML
-        or records open to <code>anydata</code>, use <code>toJson()</code> to
-        convert <code>anydata</code> to <code>json</code>. APIs that generate
-        JSON typically accept <code>anydata</code> and automatically apply{" "}
+        In many cases, the conversion happens automatically when the
+        user-defined type is a subtype of JSON as well as of{" "}
+        <code>anydata</code>. With tables, XML or records that are open to{" "}
+        <code>anydata</code> use <code>toJson()</code> to convert{" "}
+        <code>anydata</code> to <code>json</code>. APIs that generate JSON
+        typically accept <code>anydata</code> and automatically apply{" "}
         <code>toJson()</code>.
       </p>
 
@@ -71,7 +72,7 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f1d291af1bfa486f0dfe9de81697160&file=converting_from_user_defined_type_to_json.bal",
+                "https://play.ballerina.io/?gist=6c8d24f6467758cba645821019cb00d7&file=converting_from_user_defined_type_to_json.bal",
                 "_blank"
               );
             }}
@@ -224,12 +225,40 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run converting_from_user_defined_type_to_json.bal`}</span>
-              <span>{`{"x":1.0,"y":2.0}`}</span>
-              <span>{`{"x":1.0,"y":2.0,"z":"city"}`}</span>
+              <span>{`{"name":"Colombo","cords":[6.95,79.84]}`}</span>
+              <span>{`{"name":"Colombo","cords":[6.94,79.83],"area":"03"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/json-type/">JSON type</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/open-records/">Open records</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/controlling-openness">Control openess</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -270,8 +299,8 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Convert from JSON to user-defined type"
-            href="/learn/by-example/converting-from-json-to-user-defined-type"
+            title="Converting from table and XML to JSON"
+            href="/learn/by-example/converting-from-table-and-xml-to-json"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -281,7 +310,7 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Convert from JSON to user-defined type
+                  Converting from table and XML to JSON
                 </span>
               </div>
               <svg

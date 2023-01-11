@@ -60,7 +60,7 @@ export function RestTypeInTuples({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b77981a65527d1ff9d3a149178cd2c8a&file=rest_type_in_tuples.bal",
+                "https://play.ballerina.io/?gist=25f338399480251731b650c1eae3e8e9&file=rest_type_in_tuples.bal",
                 "_blank"
               );
             }}
@@ -229,7 +229,7 @@ export function RestTypeInTuples({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/tuples">Tuples - Ballerina by example</a>
+            <a href="/learn/by-example/tuples">Tuples</a>
           </span>
         </li>
       </ul>
@@ -237,7 +237,7 @@ export function RestTypeInTuples({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/arrays">Arrays - Ballerina by example</a>
+            <a href="/learn/by-example/arrays">Arrays</a>
           </span>
         </li>
       </ul>
@@ -246,7 +246,7 @@ export function RestTypeInTuples({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/lang.array">
-              Manipulating an array <code>(lang.array)</code> - Language library
+              Manipulating an array <code>(lang.array)</code>
             </a>
           </span>
         </li>
@@ -256,7 +256,7 @@ export function RestTypeInTuples({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/learn/by-example/filler-values-of-a-list">
-              Filler values of a list - Ballerina by example
+              Filler values of a list
             </a>
           </span>
         </li>
@@ -265,9 +265,7 @@ export function RestTypeInTuples({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/list-subtyping">
-              List sub typing - Ballerina by example
-            </a>
+            <a href="/learn/by-example/list-subtyping">List sub typing</a>
           </span>
         </li>
       </ul>
@@ -275,9 +273,7 @@ export function RestTypeInTuples({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/list-equality">
-              List equality - Ballerina by example
-            </a>
+            <a href="/learn/by-example/list-equality">List equality</a>
           </span>
         </li>
       </ul>

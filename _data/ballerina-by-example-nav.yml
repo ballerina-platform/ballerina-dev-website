@@ -151,8 +151,11 @@ sublinks:
           - title: Dependent types
             id: 13
             url: dependent-types
-          - title: Never type
+          - title: Stream type
             id: 14
+            url: stream-type
+          - title: Never type
+            id: 15
             url: never-type
       - title: Expression-oriented style
         id: 10
@@ -247,15 +250,30 @@ sublinks:
       - title: Binding patterns
         id: 16
         sublinks:
-          - title: Binding patterns in assignment
+          - title: Mapping binding pattern
             id: 1
-            url: binding-patterns-in-assignment
-          - title: Spread in binding patterns
+            url: mapping-binding-pattern
+          - title: Rest binding pattern in mapping binding pattern
             id: 2
-            url: spread-in-binding-patterns
-          - title: Binding patterns in match statement
+            url: rest-binding-pattern-in-mapping-binding-pattern
+          - title: Error binding pattern
             id: 3
-            url: binding-patterns-in-match-statement
+            url: error-binding-pattern
+          - title: Rest binding pattern in error binding pattern
+            id: 4
+            url: rest-binding-pattern-in-error-binding-pattern
+          - title: Single use of typed binding patterns
+            id: 5
+            url: single-use-of-typed-binding
+          - title: Single use of typed binding patterns with on fail clause
+            id: 6
+            url: single-use-with-on-fail-clause
+          - title: Iterative use of typed binding patterns
+            id: 7
+            url: iterative-use-of-typed-binding
+          - title: Error binding pattern in match statement
+            id: 8
+            url: error-binding-pattern-in-match-statement
       - title: Error handling
         id: 17
         sublinks:
@@ -307,26 +325,29 @@ sublinks:
           - title: JSON type
             id: 1
             url: json-type
-          - title: Work directly with JSON
+          - title: Access JSON elements
             id: 2
-            url: working-directly-with-json
+            url: access-json-elements
           - title: Match statement with maps
             id: 3
             url: match-statement-with-maps
           - title: Convert from user-defined type to JSON
             id: 4
             url: converting-from-user-defined-type-to-json
-          - title: Convert from JSON to user-defined type
+          - title: Converting from table and XML to JSON
             id: 5
-            url: converting-from-json-to-user-defined-type
-          - title: Convert to user-defined type
+            url: converting-from-table-and-xml-to-json
+          - title: Converting JSON with langlib functions
             id: 6
-            url: converting-to-user-defined-type
-          - title: Resource method typing
+            url: converting-json-with-langlib-functions
+          - title: Casting JSON to user-defined type
             id: 7
+            url: casting-json-to-user-defined-type
+          - title: Resource method typing
+            id: 8
             url: resource-method-typing
           - title: JSON numbers
-            id: 8
+            id: 9
             url: json-numbers
       - title: Tables
         id: 21
@@ -346,35 +367,44 @@ sublinks:
           - title: Query expressions
             id: 1
             url: query-expressions
-          - title: Destructure records
+          - title: Sort iterable objects
             id: 2
-            url: destructuring-records
+            url: sort-iterable-objects
           - title: Let clause
             id: 3
             url: let-clause
-          - title: Ordering
-            id: 4
-            url: ordering
           - title: Limit clause
-            id: 5
+            id: 4
             url: limit-clause
+          - title: Joining iterable objects
+            id: 5
+            url: joining-iterable-objects
           - title: Querying tables
             id: 6
             url: querying-tables
           - title: Create tables with query
             id: 7
-            url: creating-tables-with-query
-          - title: Join clause
+            url: create-tables-with-query
+          - title: Create maps with query
             id: 8
-            url: join-clause
-          - title: Outer Join clause
+            url: create-maps-with-query
+          - title: Create streams with query
             id: 9
-            url: outer-join-clause
-          - title: Stream type
+            url: create-streams-with-query
+          - title: On conflict clause
             id: 10
-            url: stream-type
-          - title: Querying with streams
+            url: on-conflict-clause
+          - title: Iterating over xml with query
             id: 11
+            url: iterating-over-xml-with-query
+          - title: Nested query expressions
+            id: 12
+            url: nested-query-expressions
+          - title: Destructure records using queries
+            id: 13
+            url: destructure-records-using-queries
+          - title: Querying with streams
+            id: 14
             url: querying-with-streams
       - title: Query actions
         id: 23

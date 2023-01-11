@@ -101,7 +101,7 @@ export function TableSyntax({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5da002e3bf357fc08c4380da8709950d&file=table_syntax.bal",
+                "https://play.ballerina.io/?gist=0c42466df884bcb13a3b2a19112f1326&file=table_syntax.bal",
                 "_blank"
               );
             }}

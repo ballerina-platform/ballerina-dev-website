@@ -60,7 +60,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=28006db249abcd24a77fd829084c7729&file=filler_values_of_a_list.bal",
+                "https://play.ballerina.io/?gist=66822852ca48283a2c1e5b112d5fe864&file=filler_values_of_a_list.bal",
                 "_blank"
               );
             }}
@@ -473,7 +473,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/tuples">Tuples - Ballerina by example</a>
+            <a href="/learn/by-example/tuples">Tuples</a>
           </span>
         </li>
       </ul>
@@ -481,7 +481,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/arrays">Arrays - Ballerina by example</a>
+            <a href="/learn/by-example/arrays">Arrays</a>
           </span>
         </li>
       </ul>
@@ -489,9 +489,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/nested-arrays">
-              Nested arrays - Ballerina by example
-            </a>
+            <a href="/learn/by-example/nested-arrays">Nested arrays</a>
           </span>
         </li>
       </ul>

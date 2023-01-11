@@ -152,7 +152,7 @@ export function XmlOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8e285d44456c016a4a17825e0fe9423b&file=xml_operations.bal",
+                "https://play.ballerina.io/?gist=34c88fff24966950b5d2db13a42f03dc&file=xml_operations.bal",
                 "_blank"
               );
             }}

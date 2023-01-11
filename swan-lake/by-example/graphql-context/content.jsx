@@ -9,7 +9,7 @@ export const codeSnippetData = [
 import ballerina/http;
 import ballerina/lang.value;
 
-// Defines a record type to use as an object in the GraphQL service.
+// Define a record type to use as an object in the GraphQL service.
 type Profile record {|
     string name;
     int age;
@@ -24,7 +24,7 @@ type Profile record {|
         // Initialize the \`graphql:Context\` object.
         graphql:Context context = new;
 
-        // Retrieves the header named \`scope\` from the \`http:request\` and set it to the context with
+        // Retrieve the header named \`scope\` from the \`http:request\` and set it to the context with
         // the \`scope\` key. If the header does not exist, this will return an \`error\`, and thereby,
         // the request will not be processed.
         context.set("scope", check request.getHeader("scope"));
@@ -34,18 +34,19 @@ type Profile record {|
     }
 }
 service /graphql on new graphql:Listener(9090) {
-    // Defines a \`Profile\` field inside the service.
+
+    // Define a \`Profile\` field inside the service.
     private final Profile profile;
 
     function init() {
-        // Initializes the \`profile\` value.
+        // Initialize the \`profile\` value.
         self.profile = {name: "Walter White", age: 51, salary: 737000.00};
     }
 
     // If the context is needed, it should be defined as the first parameter of the resolver
     // function.
     resource function get profile(graphql:Context context) returns Profile|error {
-        // Retrieves the \`scope\` attribute from the context. This will return a \`graphql:Error\` if
+        // Retrieve the \`scope\` attribute from the context. This will return a \`graphql:Error\` if
         // the \`scope\` is not found in the context.
         value:Cloneable|isolated object {} scope = check context.get("scope");
 
@@ -54,7 +55,7 @@ service /graphql on new graphql:Listener(9090) {
             return self.profile;
         }
 
-        // Returns an \`error\` if the required scope is not found.
+        // Return an \`error\` if the required scope is not found.
         return error("Permission denied");
     }
 }
@@ -86,16 +87,21 @@ export function GraphqlContext({ codeSnippets }) {
       <h1>GraphQL service - Context</h1>
 
       <p>
-        The Ballerina <code>graphql</code> module allows defining and using a{" "}
-        <code>graphql:Context</code> object. The <code>contextInit</code> field
-        in the <code>graphql:ServiceConfig</code> annotation can be used to pass
-        the context initialization function. If it is not provided, a default,
-        empty <code>context</code> object will be created per request. When the{" "}
-        <code>graphql:Context</code> is needed to be accessed, define it as the
-        first parameter of the <code>resource</code>/<code>remote</code> method.
-        Use the <code>graphql:Context</code> to pass meta information between
-        the <code>resource</code>/<code>remote</code> methods used as GraphQL
-        object fields.
+        The <code>graphql:Context</code> object can be used to pass meta
+        information between the resolver functions. A context object is created
+        per request. An init function should be provided using the{" "}
+        <code>graphql:ServiceConfig</code> parameter named{" "}
+        <code>contextInit</code>. Inside this function, the{" "}
+        <code>graphql:Context</code> can be initialized. The corresponding{" "}
+        <code>http:RequestContext</code> and <code>http:Request</code> can be
+        accessed from the init function.
+      </p>
+
+      <p>
+        You can add attributes to the <code>graphql:Context</code> as key-value
+        pairs. The key is a <code>string</code> and the value can be any{" "}
+        <code>readonly</code> value or an <code>isolated</code> object. If the
+        init function is not provided, an empty context object will be created.
       </p>
 
       <blockquote>

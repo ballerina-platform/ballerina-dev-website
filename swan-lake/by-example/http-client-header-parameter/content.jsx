@@ -20,7 +20,7 @@ public function main() returns error? {
     // Sends a \`GET\` request to the "/albums" resource.
     // The query parameter can be provided as parameters in the \`get\` method invocation.
     Album[] albums = check albumClient->/albums({
-        Accept: mime:APPLICATION_JSON
+        "Accept": mime:APPLICATION_JSON
     });
     io:println("Received albums: " + albums.toJsonString());
 }
@@ -31,9 +31,8 @@ string albumId = check albumClient->/album.post({
         title: "Blue Train",
         artist: "John Coltrane"
     },
-    // Headers can be specified as a \`map<string|string[]>\`
-    {
-        Accept: mime:APPLICATION_JSON
+    headers = {
+        "Accept": mime:APPLICATION_JSON
     }
 );
 io:println("Added album with id: " + albumId);
@@ -54,13 +53,9 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
       <h1>HTTP client - Header parameter</h1>
 
       <p>
-        The <code>http:Client</code> supports sending outbound request headers
-        along with the request payload. These headers can be passed as an
-        argument in the client resource method call. The headers should be
-        provided as a <code>map</code>, where the keys represent the header
-        names and the entries represent the header values. The header values can
-        be <code>string</code> or <code>string[]</code>. Use this when you want
-        to send additional headers as part of the request.
+        The http module provides support for sending outbound request headers as
+        resource method arguments. The headers can be provided as{" "}
+        <code>map&lt;string|string[]&gt;</code> to the resource method.
       </p>
 
       <Row
@@ -154,7 +149,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             Run the HTTP service given in the{" "}
-            <a href="/learn/by-example/http-header-param/">
+            <a href="/learn/by-example/http-header-parameter/">
               REST service - Header parameter
             </a>{" "}
             example.
@@ -225,7 +220,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
       </Row>
 
       <p>
-        Furthermore, a <code>post</code> request with additional headers can be
+        Furthermore, a <code>post</code> request with header parameter can be
         sent as shown below.
       </p>
 
@@ -320,7 +315,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>
@@ -375,10 +370,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Enable caching"
-            href="/learn/by-example/http-caching-client"
-          >
+          <Link title="Caching" href="/learn/by-example/http-caching-client">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -387,7 +379,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Enable caching
+                  Caching
                 </span>
               </div>
               <svg

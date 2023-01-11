@@ -11,6 +11,7 @@ import ballerina/io;
 service / on new http:Listener(9090) {
 
     resource function post receiver(http:Request request) returns string|error {
+        // Retrieve the byte stream.
         stream<byte[], io:Error?> streamer = check request.getByteStream();
 
         // Writes the incoming stream to a file using the \`io:fileWriteBlocksFromStream\` API
@@ -36,10 +37,9 @@ export function HttpServiceFileUpload({ codeSnippets }) {
       <h1>HTTP service - File upload</h1>
 
       <p>
-        The input streaming is handled through the Ballerina <code>stream</code>{" "}
-        type. The resource can access the byte stream of the payload using the{" "}
-        <code>getByteStream</code> method of the <code>http:Request</code>. This
-        is useful when handling continuous payload, file uploads, etc.
+        Ballerina supports HTTP input and output streaming capability based on
+        the Ballerina <code>stream</code> type. The example depicts a file
+        upload through streaming.
       </p>
 
       <Row
@@ -187,15 +187,13 @@ export function HttpServiceFileUpload({ codeSnippets }) {
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the service via the{" "}
-          <a href="/learn/by-example/http-client-file-upload">
-            Client file upload
-          </a>{" "}
-          example.
-        </p>
-      </blockquote>
+      <p>
+        Invoke the service via the{" "}
+        <a href="/learn/by-example/http-client-file-upload">
+          Client file upload
+        </a>
+        .
+      </p>
 
       <h2>Related links</h2>
 
@@ -214,7 +212,7 @@ export function HttpServiceFileUpload({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/http/#41-service-configuration">
-              <code>http</code> module - Specification
+              <code>http</code> package - Specification
             </a>
           </span>
         </li>

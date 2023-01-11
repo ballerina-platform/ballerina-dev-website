@@ -52,6 +52,21 @@ export function HttpCookiesClient({ codeSnippets }) {
         <code>http:ClientConfiguration</code>.
       </p>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the HTTP service given in the{" "}
+            <a href="/learn/by-example/http-cookies-service/">
+              Cookies service
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -135,21 +150,6 @@ export function HttpCookiesClient({ codeSnippets }) {
           )}
         </Col>
       </Row>
-
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the HTTP service given in the{" "}
-            <a href="/learn/by-example/http-cookies-service/">
-              Cookies service
-            </a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
 
       <p>Run the client program by executing the following command.</p>
 

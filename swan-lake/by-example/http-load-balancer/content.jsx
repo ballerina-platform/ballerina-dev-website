@@ -17,6 +17,7 @@ public function main() returns error? {
             {url: "http://localhost:9091"},
             {url: "http://localhost:9092"}
         ],
+
         timeout: 5
     });
     string payload = check httpClient->/albums;
@@ -38,10 +39,8 @@ export function HttpLoadBalancer({ codeSnippets }) {
       <h1>HTTP client - Load balancer</h1>
 
       <p>
-        A load-balancing client is used when the request load needs to be load
-        balanced across a given set of target endpoints. These endpoints are
-        defined in the <code>targets</code> field of the load-balancing client
-        configuration.
+        An HTTP load balancing endpoint is used when the request load needs to
+        be load balanced across a given set of target endpoints.
       </p>
 
       <Row
@@ -211,7 +210,7 @@ export function HttpLoadBalancer({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

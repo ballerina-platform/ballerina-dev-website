@@ -66,7 +66,7 @@ export function ForeachStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=48e76bb85203efc66309db766775f5d8&file=foreach_statement.bal",
+                "https://play.ballerina.io/?gist=aae525003b4f425fb1036d58390e7b15&file=foreach_statement.bal",
                 "_blank"
               );
             }}
@@ -228,8 +228,8 @@ export function ForeachStatement({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Function pointers"
-            href="/learn/by-example/function-pointers"
+            title="Function closure"
+            href="/learn/by-example/function-closure"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -256,7 +256,7 @@ export function ForeachStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Function pointers
+                  Function closure
                 </span>
               </div>
             </div>

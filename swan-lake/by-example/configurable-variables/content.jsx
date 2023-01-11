@@ -53,7 +53,7 @@ export function ConfigurableVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ac70f948638bcb3273e3c76f706cc864&file=configurable_variables.bal",
+                "https://play.ballerina.io/?gist=f627465034188b537598763b2bd556cc&file=configurable_variables.bal",
                 "_blank"
               );
             }}

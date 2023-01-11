@@ -7,22 +7,24 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-// Tuple type with zero or more strings.
-type Names [string...];
-
-// Tuple type with an integer followed by zero or more strings.
-type Id [int, string...];
-
 public function main() {
-    Names name = ["John", "Michal", "Carl"];
-    io:println(name);
+    // declare a tuple with zero or more \`int\` members after the first member of type \`string\`.
+    [string, int...] scoreList = ["John", 55, 43, 65, 65];
+    io:println(scoreList);
 
-    Id id = [1, "id 1", "0026"];
+    [string, int...] secondScoreList = ["Amy"];
+    io:println(secondScoreList);
 
-    // The individual elements of this tuple can be accessed using the \`id[index]\` 
-    // member access expression.
-    // Tuple indexing starts with zero.
-    io:println(id[2]);
+    // [T...] is equivalent to array T[].
+    [int...] scores = [];
+    io:println(scores);
+
+    scores = [23, 53];
+    io:println(scores);
+
+    // New members can be pushed to a tuple with rest type by using \`array:push()\` method
+    scores.push(43);
+    io:println(scores);
 }
 `,
 ];
@@ -40,13 +42,12 @@ export function RestTypeInTuples({ codeSnippets }) {
       <h1>Rest type in tuples</h1>
 
       <p>
-        Similar to how maps can be described as record types, arrays can also be
-        defined as tuple types using <code>...</code>. The <code>rest</code>{" "}
-        type in tuples can be described as <code>[T...]</code>, which is a tuple
-        containing zero or more members of type <code>T</code>. Tuples are not
-        open by default. A tuple type descriptor may or may not contain a rest
-        descriptor but if present, it should be the last member type descriptor
-        in the tuple.
+        A Tuple type descriptor can optionally contain a tuple rest descriptor.
+        It can be described as <code>[R...]</code>. This implies that the tuple
+        can contain zero or more members after the <code>n</code>th member where
+        the type of those members are <code>R</code>. Rest type descriptor
+        should be the last member type descriptor in the tuple. Tuples are not
+        open by default.
       </p>
 
       <Row
@@ -59,7 +60,7 @@ export function RestTypeInTuples({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=be6f32c94af0d7acf4e514003664a44d&file=rest_type_in_tuples.bal",
+                "https://play.ballerina.io/?gist=b77981a65527d1ff9d3a149178cd2c8a&file=rest_type_in_tuples.bal",
                 "_blank"
               );
             }}
@@ -212,19 +213,79 @@ export function RestTypeInTuples({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run rest_type_in_tuples.bal`}</span>
-              <span>{`["John","Michal","Carl"]`}</span>
-              <span>{`0026`}</span>
+              <span>{`["John",55,43,65,65]`}</span>
+              <span>{`["Amy"]`}</span>
+              <span>{`[]`}</span>
+              <span>{`[23,53]`}</span>
+              <span>{`[23,53,43]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/tuples">Tuples - Ballerina by example</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/arrays">Arrays - Ballerina by example</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/lang.array">
+              Manipulating an array <code>(lang.array)</code> - Language library
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/filler-values-of-a-list">
+              Filler values of a list - Ballerina by example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/list-subtyping">
+              List sub typing - Ballerina by example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/list-equality">
+              List equality - Ballerina by example
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Destructure tuples"
-            href="/learn/by-example/destructure-tuples"
-          >
+          <Link title="Tuples" href="/learn/by-example/tuples">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -250,14 +311,17 @@ export function RestTypeInTuples({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructure tuples
+                  Tuples
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Binary data" href="/learn/by-example/binary-data">
+          <Link
+            title="Filler values of a list"
+            href="/learn/by-example/filler-values-of-a-list"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -266,7 +330,7 @@ export function RestTypeInTuples({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Binary data
+                  Filler values of a list
                 </span>
               </div>
               <svg

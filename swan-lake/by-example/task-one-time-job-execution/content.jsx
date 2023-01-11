@@ -79,7 +79,7 @@ export function TaskOneTimeJobExecution({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2027836653006664154dddabcec56bbe&file=task_one_time_job_execution.bal",
+                "https://play.ballerina.io/?gist=9780d7795f58ed410bab91eddeaac666&file=task_one_time_job_execution.bal",
                 "_blank"
               );
             }}
@@ -281,7 +281,7 @@ export function TaskOneTimeJobExecution({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Manage scheduled jobs"
+            title="Manage sheduled jobs"
             href="/learn/by-example/manage-scheduled-jobs"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -292,7 +292,7 @@ export function TaskOneTimeJobExecution({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Manage scheduled jobs
+                  Manage sheduled jobs
                 </span>
               </div>
               <svg

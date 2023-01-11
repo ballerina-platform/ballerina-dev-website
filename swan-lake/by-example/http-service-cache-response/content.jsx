@@ -19,9 +19,10 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // In this example, \`max-age\` directive is set to 15 seconds, indicating that the response
-    // will be fresh for 15 seconds. By default, \`must-revalidate\` directive is true and instructs that
-    // the cache should not serve a stale response without validating it with the origin server first.
+    // In this example, \`max-age\` directive is set to 15 seconds indicating that the response
+    // will be fresh for 15 seconds. By default \`must-revalidate\` directive is true and instructs that
+    // the cache should not serve a stale response without validating it with the origin server
+    // first. In addition to that, e-tag and last-modified headers are added by default to the response
     resource function get albums/[string title]() returns @http:Cache {maxAge: 15} Album|http:NotFound {
         return albums[title] ?: http:NOT_FOUND;
     }
@@ -42,17 +43,8 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
       <h1>REST service - Send cache response</h1>
 
       <p>
-        The <code>http:Service</code> can cache a response associated with a
-        request and reuse the cached response for subsequent requests. This can
-        be achieved by adding the <code>http:Cache</code> annotation to the
-        return type. By default, this annotation adds the{" "}
-        <code>must-revalidate</code>, <code>public</code>, and{" "}
-        <code>max-age=3600</code> directives to the <code>Cache-Control</code>{" "}
-        header of the response, along with the <code>ETag</code> and{" "}
-        <code>Last-Modified</code> headers. These default settings can be
-        changed by adding the configurations to the annotation. Furthermore, the
-        response is only cached when the return type is <code>anydata</code> or
-        a subtype of <code>http:SuccessStatusCodeResponse</code>.
+        HTTP service can send cache response by adding <code>http:Cache</code>{" "}
+        annotation to the return type.
       </p>
 
       <Row
@@ -141,6 +133,13 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
 
       <p>Run the service by executing the following command.</p>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You may enable the trace logs to observe the in
+          and out traffic.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -200,15 +199,10 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/http-caching-client">Caching client</a>{" "}
-          example. In addition to that the{" "}
-          <a href="/learn/by-example/http-trace-logs/">trace logs</a> can be
-          enabled to observe the in and out traffic.
-        </p>
-      </blockquote>
+      <p>
+        Invoke the service via the{" "}
+        <a href="/learn/by-example/http-caching-client">Caching client</a>.
+      </p>
 
       <h2>Related links</h2>
 
@@ -226,8 +220,8 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/http/#46-cache-annotation">
-              <code>http:Cache</code> annotation - Specification
+            <a href="/spec/http/#53-matrix">
+              <code>http</code> package - Specification
             </a>
           </span>
         </li>
@@ -237,8 +231,8 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Error handling"
-            href="/learn/by-example/http-default-error-handling"
+            title="Send different status codes with payload"
+            href="/learn/by-example/http-send-different-status-codes-with-payload"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -265,7 +259,7 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error handling
+                  Send different status codes with payload
                 </span>
               </div>
             </div>

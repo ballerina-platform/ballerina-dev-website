@@ -64,7 +64,7 @@ export function ErrorSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bc9c2b0c90f8bcefba9d704547eca6cc&file=error_subtyping.bal",
+                "https://play.ballerina.io/?gist=fb90d3507c742bb7d4955267c7b5d446&file=error_subtyping.bal",
                 "_blank"
               );
             }}

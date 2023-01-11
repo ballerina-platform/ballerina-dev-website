@@ -10,21 +10,26 @@ import ballerina/io;
 
 public function main() returns error? {
     http:Client httpClient = check new ("localhost:9090",
+        // Retry configuration options.
         retryConfig = {
-            // The initial retry interval in seconds.
+
+            // Initial retry interval in seconds.
             interval: 3,
 
-            // The number of retry attempts before stopping.
+            // Number of retry attempts before giving up.
             count: 3,
 
-            // The multiplier of the retry interval exponentially increases the retry interval.
+            // Multiplier of the retry interval to exponentially increase
+            // the retry interval.
             backOffFactor: 2.0,
 
-            // The upper limit of the retry interval is in seconds. If the \`interval\` into the \`backOffFactor\`
-            // value exceeded the \`maxWaitInterval\` interval value, \`maxWaitInterval\` is considered as the retry interval.
+            // Upper limit of the retry interval in seconds. If
+            // \`interval\` into \`backOffFactor\` value exceeded
+            // \`maxWaitInterval\` interval value,
+            // \`maxWaitInterval\` will be considered as the retry
+            // interval.
             maxWaitInterval: 20
-        }
-    );
+        });
     string payload = check httpClient->/albums;
     io:println(payload);
 }
@@ -45,8 +50,7 @@ export function HttpRetry({ codeSnippets }) {
 
       <p>
         The HTTP retry client tries sending over the same request to the backend
-        service when there is a network-level failure. The retry is configured
-        in the <code>retryConfig</code> field of the client configuration.
+        service when there is a network level failure.
       </p>
 
       <Row
@@ -203,7 +207,7 @@ export function HttpRetry({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run http_retry.bal`}</span>
+              <span>{`\$ bal run http_retry.bal.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -216,7 +220,7 @@ export function HttpRetry({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

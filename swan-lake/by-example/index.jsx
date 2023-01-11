@@ -11,6 +11,14 @@ import {
   codeSnippetData as ProgramsAndModulesCodeSnippetData,
 } from "./programs-and-modules/content.jsx";
 import {
+  MainFunction,
+  codeSnippetData as MainFunctionCodeSnippetData,
+} from "./main-function/content.jsx";
+import {
+  InitFunction,
+  codeSnippetData as InitFunctionCodeSnippetData,
+} from "./init-function/content.jsx";
+import {
   VariablesAndTypes,
   codeSnippetData as VariablesAndTypesCodeSnippetData,
 } from "./variables-and-types/content.jsx";
@@ -48,10 +56,6 @@ import {
   codeSnippetData as FunctionsCodeSnippetData,
 } from "./functions/content.jsx";
 import {
-  FunctionValues,
-  codeSnippetData as FunctionValuesCodeSnippetData,
-} from "./function-values/content.jsx";
-import {
   IncludedRecordParameters,
   codeSnippetData as IncludedRecordParametersCodeSnippetData,
 } from "./included-record-parameters/content.jsx";
@@ -71,6 +75,22 @@ import {
   FunctionPointers,
   codeSnippetData as FunctionPointersCodeSnippetData,
 } from "./function-pointers/content.jsx";
+import {
+  FunctionValues,
+  codeSnippetData as FunctionValuesCodeSnippetData,
+} from "./function-values/content.jsx";
+import {
+  FunctionTypes,
+  codeSnippetData as FunctionTypesCodeSnippetData,
+} from "./function-types/content.jsx";
+import {
+  AnonymousFunction,
+  codeSnippetData as AnonymousFunctionCodeSnippetData,
+} from "./anonymous-function/content.jsx";
+import {
+  FunctionClosure,
+  codeSnippetData as FunctionClosureCodeSnippetData,
+} from "./function-closure/content.jsx";
 import {
   ForeachStatement,
   codeSnippetData as ForeachStatementCodeSnippetData,
@@ -148,17 +168,29 @@ import {
   codeSnippetData as ArraysCodeSnippetData,
 } from "./arrays/content.jsx";
 import {
+  NestedArrays,
+  codeSnippetData as NestedArraysCodeSnippetData,
+} from "./nested-arrays/content.jsx";
+import {
   Tuples,
   codeSnippetData as TuplesCodeSnippetData,
 } from "./tuples/content.jsx";
 import {
-  DestructureTuples,
-  codeSnippetData as DestructureTuplesCodeSnippetData,
-} from "./destructure-tuples/content.jsx";
-import {
   RestTypeInTuples,
   codeSnippetData as RestTypeInTuplesCodeSnippetData,
 } from "./rest-type-in-tuples/content.jsx";
+import {
+  FillerValuesOfAList,
+  codeSnippetData as FillerValuesOfAListCodeSnippetData,
+} from "./filler-values-of-a-list/content.jsx";
+import {
+  ListSubtyping,
+  codeSnippetData as ListSubtypingCodeSnippetData,
+} from "./list-subtyping/content.jsx";
+import {
+  ListEquality,
+  codeSnippetData as ListEqualityCodeSnippetData,
+} from "./list-equality/content.jsx";
 import {
   BinaryData,
   codeSnippetData as BinaryDataCodeSnippetData,
@@ -632,9 +664,9 @@ import {
   codeSnippetData as HttpBasicRestServiceCodeSnippetData,
 } from "./http-basic-rest-service/content.jsx";
 import {
-  HttpServiceAndResourcePaths,
-  codeSnippetData as HttpServiceAndResourcePathsCodeSnippetData,
-} from "./http-service-and-resource-paths/content.jsx";
+  HttpServicePathAndResourceName,
+  codeSnippetData as HttpServicePathAndResourceNameCodeSnippetData,
+} from "./http-service-path-and-resource-name/content.jsx";
 import {
   HttpServiceDataBinding,
   codeSnippetData as HttpServiceDataBindingCodeSnippetData,
@@ -667,10 +699,6 @@ import {
   HttpSendDifferentStatusCodesWithPayload,
   codeSnippetData as HttpSendDifferentStatusCodesWithPayloadCodeSnippetData,
 } from "./http-send-different-status-codes-with-payload/content.jsx";
-import {
-  HttpDefaultErrorHandling,
-  codeSnippetData as HttpDefaultErrorHandlingCodeSnippetData,
-} from "./http-default-error-handling/content.jsx";
 import {
   HttpServiceCacheResponse,
   codeSnippetData as HttpServiceCacheResponseCodeSnippetData,
@@ -880,13 +908,13 @@ import {
   codeSnippetData as Http20ClientServerPushCodeSnippetData,
 } from "./http-2-0-client-server-push/content.jsx";
 import {
-  HttpRequestInterceptor,
-  codeSnippetData as HttpRequestInterceptorCodeSnippetData,
-} from "./http-request-interceptor/content.jsx";
+  HttpRequestInterceptors,
+  codeSnippetData as HttpRequestInterceptorsCodeSnippetData,
+} from "./http-request-interceptors/content.jsx";
 import {
-  HttpResponseInterceptor,
-  codeSnippetData as HttpResponseInterceptorCodeSnippetData,
-} from "./http-response-interceptor/content.jsx";
+  HttpResponseInterceptors,
+  codeSnippetData as HttpResponseInterceptorsCodeSnippetData,
+} from "./http-response-interceptors/content.jsx";
 import {
   HttpErrorHandling,
   codeSnippetData as HttpErrorHandlingCodeSnippetData,
@@ -900,13 +928,13 @@ import {
   codeSnippetData as GraphqlHelloWorldCodeSnippetData,
 } from "./graphql-hello-world/content.jsx";
 import {
-  GraphqlReturningServiceObjects,
-  codeSnippetData as GraphqlReturningServiceObjectsCodeSnippetData,
-} from "./graphql-returning-service-objects/content.jsx";
-import {
   GraphqlReturningRecordValues,
   codeSnippetData as GraphqlReturningRecordValuesCodeSnippetData,
 } from "./graphql-returning-record-values/content.jsx";
+import {
+  GraphqlReturningServiceObjects,
+  codeSnippetData as GraphqlReturningServiceObjectsCodeSnippetData,
+} from "./graphql-returning-service-objects/content.jsx";
 import {
   GraphqlInputTypes,
   codeSnippetData as GraphqlInputTypesCodeSnippetData,
@@ -931,14 +959,6 @@ import {
   GraphqlInterfacesImplementingInterfaces,
   codeSnippetData as GraphqlInterfacesImplementingInterfacesCodeSnippetData,
 } from "./graphql-interfaces-implementing-interfaces/content.jsx";
-import {
-  GraphqlServiceUnionTypes,
-  codeSnippetData as GraphqlServiceUnionTypesCodeSnippetData,
-} from "./graphql-service-union-types/content.jsx";
-import {
-  GraphqlServiceErrorHandling,
-  codeSnippetData as GraphqlServiceErrorHandlingCodeSnippetData,
-} from "./graphql-service-error-handling/content.jsx";
 import {
   GraphqlGraphiql,
   codeSnippetData as GraphqlGraphiqlCodeSnippetData,
@@ -1032,10 +1052,6 @@ import {
   codeSnippetData as WebsocketServicePayloadConstraintValidationCodeSnippetData,
 } from "./websocket-service-payload-constraint-validation/content.jsx";
 import {
-  WebsocketServiceErrorHandling,
-  codeSnippetData as WebsocketServiceErrorHandlingCodeSnippetData,
-} from "./websocket-service-error-handling/content.jsx";
-import {
   WebsocketClient,
   codeSnippetData as WebsocketClientCodeSnippetData,
 } from "./websocket-client/content.jsx";
@@ -1124,9 +1140,9 @@ import {
   codeSnippetData as StopHandlerCodeSnippetData,
 } from "./stop-handler/content.jsx";
 import {
-  GrpcServiceSimple,
-  codeSnippetData as GrpcServiceSimpleCodeSnippetData,
-} from "./grpc-service-simple/content.jsx";
+  GrpcServiceUnary,
+  codeSnippetData as GrpcServiceUnaryCodeSnippetData,
+} from "./grpc-service-unary/content.jsx";
 import {
   GrpcServiceServerStreaming,
   codeSnippetData as GrpcServiceServerStreamingCodeSnippetData,
@@ -1152,9 +1168,9 @@ import {
   codeSnippetData as GrpcServiceCheckDeadlineCodeSnippetData,
 } from "./grpc-service-check-deadline/content.jsx";
 import {
-  GrpcClientSimple,
-  codeSnippetData as GrpcClientSimpleCodeSnippetData,
-} from "./grpc-client-simple/content.jsx";
+  GrpcClientUnary,
+  codeSnippetData as GrpcClientUnaryCodeSnippetData,
+} from "./grpc-client-unary/content.jsx";
 import {
   GrpcClientServerStreaming,
   codeSnippetData as GrpcClientServerStreamingCodeSnippetData,
@@ -1280,25 +1296,21 @@ import {
   codeSnippetData as KafkaServiceConstraintValidationCodeSnippetData,
 } from "./kafka-service-constraint-validation/content.jsx";
 import {
-  KafkaServiceErrorHandling,
-  codeSnippetData as KafkaServiceErrorHandlingCodeSnippetData,
-} from "./kafka-service-error-handling/content.jsx";
+  KafkaClientProduceMessage,
+  codeSnippetData as KafkaClientProduceMessageCodeSnippetData,
+} from "./kafka-client-produce-message/content.jsx";
 import {
-  KafkaProducerProduceMessage,
-  codeSnippetData as KafkaProducerProduceMessageCodeSnippetData,
-} from "./kafka-producer-produce-message/content.jsx";
+  KafkaClientPayloadDataBinding,
+  codeSnippetData as KafkaClientPayloadDataBindingCodeSnippetData,
+} from "./kafka-client-payload-data-binding/content.jsx";
 import {
-  KafkaConsumerPayloadDataBinding,
-  codeSnippetData as KafkaConsumerPayloadDataBindingCodeSnippetData,
-} from "./kafka-consumer-payload-data-binding/content.jsx";
+  KafkaClientConsumerRecordDataBinding,
+  codeSnippetData as KafkaClientConsumerRecordDataBindingCodeSnippetData,
+} from "./kafka-client-consumer-record-data-binding/content.jsx";
 import {
-  KafkaConsumerConsumerRecordDataBinding,
-  codeSnippetData as KafkaConsumerConsumerRecordDataBindingCodeSnippetData,
-} from "./kafka-consumer-consumer-record-data-binding/content.jsx";
-import {
-  KafkaConsumerConstraintValidation,
-  codeSnippetData as KafkaConsumerConstraintValidationCodeSnippetData,
-} from "./kafka-consumer-constraint-validation/content.jsx";
+  KafkaClientConstraintValidation,
+  codeSnippetData as KafkaClientConstraintValidationCodeSnippetData,
+} from "./kafka-client-constraint-validation/content.jsx";
 import {
   KafkaServiceSsl,
   codeSnippetData as KafkaServiceSslCodeSnippetData,
@@ -1308,21 +1320,21 @@ import {
   codeSnippetData as KafkaServiceSaslCodeSnippetData,
 } from "./kafka-service-sasl/content.jsx";
 import {
-  KafkaProducerSsl,
-  codeSnippetData as KafkaProducerSslCodeSnippetData,
-} from "./kafka-producer-ssl/content.jsx";
+  KafkaClientProducerSsl,
+  codeSnippetData as KafkaClientProducerSslCodeSnippetData,
+} from "./kafka-client-producer-ssl/content.jsx";
 import {
-  KafkaProducerSasl,
-  codeSnippetData as KafkaProducerSaslCodeSnippetData,
-} from "./kafka-producer-sasl/content.jsx";
+  KafkaClientConsumerSsl,
+  codeSnippetData as KafkaClientConsumerSslCodeSnippetData,
+} from "./kafka-client-consumer-ssl/content.jsx";
 import {
-  KafkaConsumerSsl,
-  codeSnippetData as KafkaConsumerSslCodeSnippetData,
-} from "./kafka-consumer-ssl/content.jsx";
+  KafkaClientProducerSasl,
+  codeSnippetData as KafkaClientProducerSaslCodeSnippetData,
+} from "./kafka-client-producer-sasl/content.jsx";
 import {
-  KafkaConsumerSasl,
-  codeSnippetData as KafkaConsumerSaslCodeSnippetData,
-} from "./kafka-consumer-sasl/content.jsx";
+  KafkaClientConsumerSasl,
+  codeSnippetData as KafkaClientConsumerSaslCodeSnippetData,
+} from "./kafka-client-consumer-sasl/content.jsx";
 import {
   RabbitmqConsumer,
   codeSnippetData as RabbitmqConsumerCodeSnippetData,
@@ -1416,37 +1428,37 @@ import {
   codeSnippetData as ReceiveEmailUsingClientCodeSnippetData,
 } from "./receive-email-using-client/content.jsx";
 import {
-  FtpServiceReceiveFile,
-  codeSnippetData as FtpServiceReceiveFileCodeSnippetData,
-} from "./ftp-service-receive-file/content.jsx";
+  FtpServiceRead,
+  codeSnippetData as FtpServiceReadCodeSnippetData,
+} from "./ftp-service-read/content.jsx";
 import {
-  FtpServiceSendFile,
-  codeSnippetData as FtpServiceSendFileCodeSnippetData,
-} from "./ftp-service-send-file/content.jsx";
+  FtpServiceReadWrite,
+  codeSnippetData as FtpServiceReadWriteCodeSnippetData,
+} from "./ftp-service-read-write/content.jsx";
 import {
-  FtpClientReceiveFile,
-  codeSnippetData as FtpClientReceiveFileCodeSnippetData,
-} from "./ftp-client-receive-file/content.jsx";
+  FtpClientRead,
+  codeSnippetData as FtpClientReadCodeSnippetData,
+} from "./ftp-client-read/content.jsx";
 import {
-  FtpClientSendFile,
-  codeSnippetData as FtpClientSendFileCodeSnippetData,
-} from "./ftp-client-send-file/content.jsx";
+  FtpClientWrite,
+  codeSnippetData as FtpClientWriteCodeSnippetData,
+} from "./ftp-client-write/content.jsx";
 import {
-  SftpServiceReceiveFile,
-  codeSnippetData as SftpServiceReceiveFileCodeSnippetData,
-} from "./sftp-service-receive-file/content.jsx";
+  SftpServiceRead,
+  codeSnippetData as SftpServiceReadCodeSnippetData,
+} from "./sftp-service-read/content.jsx";
 import {
-  SftpServiceSendFile,
-  codeSnippetData as SftpServiceSendFileCodeSnippetData,
-} from "./sftp-service-send-file/content.jsx";
+  SftpServiceReadWrite,
+  codeSnippetData as SftpServiceReadWriteCodeSnippetData,
+} from "./sftp-service-read-write/content.jsx";
 import {
-  SftpClientReceiveFile,
-  codeSnippetData as SftpClientReceiveFileCodeSnippetData,
-} from "./sftp-client-receive-file/content.jsx";
+  SftpClientRead,
+  codeSnippetData as SftpClientReadCodeSnippetData,
+} from "./sftp-client-read/content.jsx";
 import {
-  SftpClientSendFile,
-  codeSnippetData as SftpClientSendFileCodeSnippetData,
-} from "./sftp-client-send-file/content.jsx";
+  SftpClientWrite,
+  codeSnippetData as SftpClientWriteCodeSnippetData,
+} from "./sftp-client-write/content.jsx";
 import {
   MysqlQueryOperation,
   codeSnippetData as MysqlQueryOperationCodeSnippetData,
@@ -1659,6 +1671,10 @@ const BBEs = {
   HelloWorldServiceCodeSnippetData,
   ProgramsAndModules,
   ProgramsAndModulesCodeSnippetData,
+  MainFunction,
+  MainFunctionCodeSnippetData,
+  InitFunction,
+  InitFunctionCodeSnippetData,
   VariablesAndTypes,
   VariablesAndTypesCodeSnippetData,
   Identifiers,
@@ -1679,8 +1695,6 @@ const BBEs = {
   MatchStatementCodeSnippetData,
   Functions,
   FunctionsCodeSnippetData,
-  FunctionValues,
-  FunctionValuesCodeSnippetData,
   IncludedRecordParameters,
   IncludedRecordParametersCodeSnippetData,
   RestParameters,
@@ -1691,6 +1705,14 @@ const BBEs = {
   ProvideFunctionArgumentsByNameCodeSnippetData,
   FunctionPointers,
   FunctionPointersCodeSnippetData,
+  FunctionValues,
+  FunctionValuesCodeSnippetData,
+  FunctionTypes,
+  FunctionTypesCodeSnippetData,
+  AnonymousFunction,
+  AnonymousFunctionCodeSnippetData,
+  FunctionClosure,
+  FunctionClosureCodeSnippetData,
   ForeachStatement,
   ForeachStatementCodeSnippetData,
   WhileStatement,
@@ -1729,12 +1751,18 @@ const BBEs = {
   ExpressionOrientedStyleCodeSnippetData,
   Arrays,
   ArraysCodeSnippetData,
+  NestedArrays,
+  NestedArraysCodeSnippetData,
   Tuples,
   TuplesCodeSnippetData,
-  DestructureTuples,
-  DestructureTuplesCodeSnippetData,
   RestTypeInTuples,
   RestTypeInTuplesCodeSnippetData,
+  FillerValuesOfAList,
+  FillerValuesOfAListCodeSnippetData,
+  ListSubtyping,
+  ListSubtypingCodeSnippetData,
+  ListEquality,
+  ListEqualityCodeSnippetData,
   BinaryData,
   BinaryDataCodeSnippetData,
   Maps,
@@ -1971,8 +1999,8 @@ const BBEs = {
   TesterinaMockingObjectsCodeSnippetData,
   HttpBasicRestService,
   HttpBasicRestServiceCodeSnippetData,
-  HttpServiceAndResourcePaths,
-  HttpServiceAndResourcePathsCodeSnippetData,
+  HttpServicePathAndResourceName,
+  HttpServicePathAndResourceNameCodeSnippetData,
   HttpServiceDataBinding,
   HttpServiceDataBindingCodeSnippetData,
   HttpServicePayloadConstraintValidation,
@@ -1989,8 +2017,6 @@ const BBEs = {
   HttpSendDifferentStatusCodesCodeSnippetData,
   HttpSendDifferentStatusCodesWithPayload,
   HttpSendDifferentStatusCodesWithPayloadCodeSnippetData,
-  HttpDefaultErrorHandling,
-  HttpDefaultErrorHandlingCodeSnippetData,
   HttpServiceCacheResponse,
   HttpServiceCacheResponseCodeSnippetData,
   HttpClientSendRequestReceiveResponse,
@@ -2095,20 +2121,20 @@ const BBEs = {
   Http2PriorKnowledgeClientCodeSnippetData,
   Http20ClientServerPush,
   Http20ClientServerPushCodeSnippetData,
-  HttpRequestInterceptor,
-  HttpRequestInterceptorCodeSnippetData,
-  HttpResponseInterceptor,
-  HttpResponseInterceptorCodeSnippetData,
+  HttpRequestInterceptors,
+  HttpRequestInterceptorsCodeSnippetData,
+  HttpResponseInterceptors,
+  HttpResponseInterceptorsCodeSnippetData,
   HttpErrorHandling,
   HttpErrorHandlingCodeSnippetData,
   HttpInterceptorErrorHandling,
   HttpInterceptorErrorHandlingCodeSnippetData,
   GraphqlHelloWorld,
   GraphqlHelloWorldCodeSnippetData,
-  GraphqlReturningServiceObjects,
-  GraphqlReturningServiceObjectsCodeSnippetData,
   GraphqlReturningRecordValues,
   GraphqlReturningRecordValuesCodeSnippetData,
+  GraphqlReturningServiceObjects,
+  GraphqlReturningServiceObjectsCodeSnippetData,
   GraphqlInputTypes,
   GraphqlInputTypesCodeSnippetData,
   GraphqlMutations,
@@ -2121,10 +2147,6 @@ const BBEs = {
   GraphqlInterfacesCodeSnippetData,
   GraphqlInterfacesImplementingInterfaces,
   GraphqlInterfacesImplementingInterfacesCodeSnippetData,
-  GraphqlServiceUnionTypes,
-  GraphqlServiceUnionTypesCodeSnippetData,
-  GraphqlServiceErrorHandling,
-  GraphqlServiceErrorHandlingCodeSnippetData,
   GraphqlGraphiql,
   GraphqlGraphiqlCodeSnippetData,
   GraphqlDocumentation,
@@ -2171,8 +2193,6 @@ const BBEs = {
   WebsocketBasicSampleCodeSnippetData,
   WebsocketServicePayloadConstraintValidation,
   WebsocketServicePayloadConstraintValidationCodeSnippetData,
-  WebsocketServiceErrorHandling,
-  WebsocketServiceErrorHandlingCodeSnippetData,
   WebsocketClient,
   WebsocketClientCodeSnippetData,
   WebsocketClientPayloadConstraintValidation,
@@ -2217,8 +2237,8 @@ const BBEs = {
   DynamicListenerCodeSnippetData,
   StopHandler,
   StopHandlerCodeSnippetData,
-  GrpcServiceSimple,
-  GrpcServiceSimpleCodeSnippetData,
+  GrpcServiceUnary,
+  GrpcServiceUnaryCodeSnippetData,
   GrpcServiceServerStreaming,
   GrpcServiceServerStreamingCodeSnippetData,
   GrpcServiceClientStreaming,
@@ -2231,8 +2251,8 @@ const BBEs = {
   GrpcServerReflectionCodeSnippetData,
   GrpcServiceCheckDeadline,
   GrpcServiceCheckDeadlineCodeSnippetData,
-  GrpcClientSimple,
-  GrpcClientSimpleCodeSnippetData,
+  GrpcClientUnary,
+  GrpcClientUnaryCodeSnippetData,
   GrpcClientServerStreaming,
   GrpcClientServerStreamingCodeSnippetData,
   GrpcClientClientStreaming,
@@ -2295,28 +2315,26 @@ const BBEs = {
   KafkaServiceConsumeMessageCodeSnippetData,
   KafkaServiceConstraintValidation,
   KafkaServiceConstraintValidationCodeSnippetData,
-  KafkaServiceErrorHandling,
-  KafkaServiceErrorHandlingCodeSnippetData,
-  KafkaProducerProduceMessage,
-  KafkaProducerProduceMessageCodeSnippetData,
-  KafkaConsumerPayloadDataBinding,
-  KafkaConsumerPayloadDataBindingCodeSnippetData,
-  KafkaConsumerConsumerRecordDataBinding,
-  KafkaConsumerConsumerRecordDataBindingCodeSnippetData,
-  KafkaConsumerConstraintValidation,
-  KafkaConsumerConstraintValidationCodeSnippetData,
+  KafkaClientProduceMessage,
+  KafkaClientProduceMessageCodeSnippetData,
+  KafkaClientPayloadDataBinding,
+  KafkaClientPayloadDataBindingCodeSnippetData,
+  KafkaClientConsumerRecordDataBinding,
+  KafkaClientConsumerRecordDataBindingCodeSnippetData,
+  KafkaClientConstraintValidation,
+  KafkaClientConstraintValidationCodeSnippetData,
   KafkaServiceSsl,
   KafkaServiceSslCodeSnippetData,
   KafkaServiceSasl,
   KafkaServiceSaslCodeSnippetData,
-  KafkaProducerSsl,
-  KafkaProducerSslCodeSnippetData,
-  KafkaProducerSasl,
-  KafkaProducerSaslCodeSnippetData,
-  KafkaConsumerSsl,
-  KafkaConsumerSslCodeSnippetData,
-  KafkaConsumerSasl,
-  KafkaConsumerSaslCodeSnippetData,
+  KafkaClientProducerSsl,
+  KafkaClientProducerSslCodeSnippetData,
+  KafkaClientConsumerSsl,
+  KafkaClientConsumerSslCodeSnippetData,
+  KafkaClientProducerSasl,
+  KafkaClientProducerSaslCodeSnippetData,
+  KafkaClientConsumerSasl,
+  KafkaClientConsumerSaslCodeSnippetData,
   RabbitmqConsumer,
   RabbitmqConsumerCodeSnippetData,
   RabbitmqConsumerWithClientAcknowledgement,
@@ -2363,22 +2381,22 @@ const BBEs = {
   SendEmailCodeSnippetData,
   ReceiveEmailUsingClient,
   ReceiveEmailUsingClientCodeSnippetData,
-  FtpServiceReceiveFile,
-  FtpServiceReceiveFileCodeSnippetData,
-  FtpServiceSendFile,
-  FtpServiceSendFileCodeSnippetData,
-  FtpClientReceiveFile,
-  FtpClientReceiveFileCodeSnippetData,
-  FtpClientSendFile,
-  FtpClientSendFileCodeSnippetData,
-  SftpServiceReceiveFile,
-  SftpServiceReceiveFileCodeSnippetData,
-  SftpServiceSendFile,
-  SftpServiceSendFileCodeSnippetData,
-  SftpClientReceiveFile,
-  SftpClientReceiveFileCodeSnippetData,
-  SftpClientSendFile,
-  SftpClientSendFileCodeSnippetData,
+  FtpServiceRead,
+  FtpServiceReadCodeSnippetData,
+  FtpServiceReadWrite,
+  FtpServiceReadWriteCodeSnippetData,
+  FtpClientRead,
+  FtpClientReadCodeSnippetData,
+  FtpClientWrite,
+  FtpClientWriteCodeSnippetData,
+  SftpServiceRead,
+  SftpServiceReadCodeSnippetData,
+  SftpServiceReadWrite,
+  SftpServiceReadWriteCodeSnippetData,
+  SftpClientRead,
+  SftpClientReadCodeSnippetData,
+  SftpClientWrite,
+  SftpClientWriteCodeSnippetData,
   MysqlQueryOperation,
   MysqlQueryOperationCodeSnippetData,
   MysqlQueryRowOperation,

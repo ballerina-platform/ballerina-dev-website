@@ -1,0 +1,18 @@
+{
+  "title": "Timeout",
+  "description": "BBE on how to use a timeout in Ballerina WebSocket client.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "ws",
+    "timeout"
+  ],
+  "permalink": "/learn/by-example/websocket-timeout-client",
+  "active": "websocket-timeout-client",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-timeout-client",
+    "/swan-lake/learn/by-example/websocket-timeout-client.html"
+  ]
+}

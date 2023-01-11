@@ -1,0 +1,18 @@
+{
+  "title": "HTTP/2 server push",
+  "description": "This BBE demonstrates sending and receiving HTTP/2 Server Push messages in Ballerina HTTP Library.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "http",
+    "http/2.0",
+    "http/2"
+  ],
+  "permalink": "/learn/by-example/http-2-0-server-push",
+  "active": "http-2-0-server-push",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-2-0-server-push",
+    "/swan-lake/learn/by-example/http-2-0-server-push.html"
+  ]
+}

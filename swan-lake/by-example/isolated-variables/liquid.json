@@ -1,0 +1,16 @@
+{
+  "title": "Isolated variables",
+  "description": "This BBE introduces isolated variables in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "isolated variables"
+  ],
+  "permalink": "/learn/by-example/isolated-variables",
+  "active": "isolated-variables",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/isolated-variables",
+    "/swan-lake/learn/by-example/isolated-variables.html"
+  ]
+}

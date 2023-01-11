@@ -54,7 +54,7 @@ export function NestedQueryExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cb4e674a70ae76e8422e1e9af7b0fda0&file=nested_query_expressions.bal",
+                "https://play.ballerina.io/?gist=dc0825efec2fc94f3ff466b68bbf453d&file=nested_query_expressions.bal",
                 "_blank"
               );
             }}
@@ -330,8 +330,8 @@ export function NestedQueryExpressions({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Destructure records using queries"
-            href="/learn/by-example/destructure-records-using-queries"
+            title="Destructure records using query"
+            href="/learn/by-example/destructure-records-using-query"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -341,7 +341,7 @@ export function NestedQueryExpressions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructure records using queries
+                  Destructure records using query
                 </span>
               </div>
               <svg

@@ -229,6 +229,22 @@
         "verifyOutput": true,
         "disablePlayground": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Break statement",
+        "url": "break-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Continue statement",
+        "url": "continue-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -927,8 +943,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructure records using queries",
-        "url": "destructure-records-using-queries",
+        "name": "Destructure records using query",
+        "url": "destructure-records-using-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

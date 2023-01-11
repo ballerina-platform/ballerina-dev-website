@@ -1,0 +1,23 @@
+{
+  "title": "Break statement",
+  "description": "This BBE demonstrates how to terminate a loop using the `break` statement in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "foreach",
+    "loops",
+    "iterate",
+    "iterable",
+    "break",
+    "terminate loop",
+    "while",
+    "repeat"
+  ],
+  "permalink": "/learn/by-example/break-statement",
+  "active": "break-statement",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/break-statement",
+    "/swan-lake/learn/by-example/break-statement.html"
+  ]
+}

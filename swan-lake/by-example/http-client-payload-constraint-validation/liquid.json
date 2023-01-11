@@ -1,0 +1,20 @@
+{
+  "title": "Payload constraint validation",
+  "description": "BBE demonstrates the constraint validation capability of an HTTP client.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "client",
+    "data binding",
+    "constraint",
+    "validation"
+  ],
+  "permalink": "/learn/by-example/http-client-payload-constraint-validation",
+  "active": "http-client-payload-constraint-validation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-client-payload-constraint-validation",
+    "/swan-lake/learn/by-example/http-client-payload-constraint-validation.html"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Payload data binding",
+  "description": "BBE on how data binding helps to access the payload through the resource signature parameter.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "data binding"
+  ],
+  "permalink": "/learn/by-example/http-service-data-binding",
+  "active": "http-service-data-binding",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-service-data-binding",
+    "/swan-lake/learn/by-example/http-service-data-binding.html"
+  ]
+}

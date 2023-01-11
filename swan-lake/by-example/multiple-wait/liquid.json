@@ -1,0 +1,17 @@
+{
+  "title": "Multiple wait",
+  "description": "This BBE demonstrates the multiple wait action",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "multiple wait",
+    "worker"
+  ],
+  "permalink": "/learn/by-example/multiple-wait",
+  "active": "multiple-wait",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/multiple-wait",
+    "/swan-lake/learn/by-example/multiple-wait.html"
+  ]
+}

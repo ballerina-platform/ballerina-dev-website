@@ -1,0 +1,19 @@
+{
+  "title": "Handle error response",
+  "description": "A GraphQL client written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "client",
+    "error handling",
+    "graphql client errors"
+  ],
+  "permalink": "/learn/by-example/graphql-client-error-handling",
+  "active": "graphql-client-error-handling",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-client-error-handling",
+    "/swan-lake/learn/by-example/graphql-client-error-handling.html"
+  ]
+}

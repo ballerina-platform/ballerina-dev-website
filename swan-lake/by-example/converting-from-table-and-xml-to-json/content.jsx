@@ -53,7 +53,7 @@ export function ConvertingFromTableAndXmlToJson({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8e940e16c9e87758a7b7de01bc2cd3de&file=converting_from_table_and_xml_to_json.bal",
+                "https://play.ballerina.io/?gist=d9dd43cc9ce22cd2beef0d916b4d5c12&file=converting_from_table_and_xml_to_json.bal",
                 "_blank"
               );
             }}

@@ -1,0 +1,11 @@
+{
+  "title": "Azure Functions",
+  "description": "Azure Functions is an event driven, serverless computing platform. Azure Functions can be written from Ballerina using the listeners and services provided by Azure Functions package. You can view the code examples below.",
+  "keywords": [],
+  "permalink": "/learn/by-example/azure-functions-deployment",
+  "active": "azure-functions-deployment",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/azure-functions-deployment",
+    "/swan-lake/learn/by-example/azure-functions-deployment.html"
+  ]
+}

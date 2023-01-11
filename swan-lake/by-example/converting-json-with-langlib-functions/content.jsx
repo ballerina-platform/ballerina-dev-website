@@ -83,7 +83,7 @@ export function ConvertingJsonWithLanglibFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f2000abea5fe386a66842199a8d760dd&file=converting_json_with_langlib_functions.bal",
+                "https://play.ballerina.io/?gist=4eb55485e0670e2d8a7287077bcbea92&file=converting_json_with_langlib_functions.bal",
                 "_blank"
               );
             }}

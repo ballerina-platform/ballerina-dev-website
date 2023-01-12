@@ -1,0 +1,19 @@
+{
+  "title": "OAuth2 refresh token grant type",
+  "description": "BBE on how to secure gRPC client with OAuth2 refresh token grant type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "auth",
+    "oauth2",
+    "refresh token grant type"
+  ],
+  "permalink": "/learn/by-example/grpc-client-oauth2-refresh-token-grant-type",
+  "active": "grpc-client-oauth2-refresh-token-grant-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-client-oauth2-refresh-token-grant-type",
+    "/swan-lake/learn/by-example/grpc-client-oauth2-refresh-token-grant-type.html"
+  ]
+}

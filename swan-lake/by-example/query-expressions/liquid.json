@@ -1,0 +1,22 @@
+{
+  "title": "Query expressions",
+  "description": "This BBE demonstrates query expressions in Ballerina, creating a list value from a query expression, creating a string value from a query expression, iterating a list, iterating an array, iterating a sequence value, filtering an iterable value, filtering a list, and the `where` clause.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "query",
+    "iterate",
+    "from",
+    "select",
+    "language integrated queries",
+    "where",
+    "condition"
+  ],
+  "permalink": "/learn/by-example/query-expressions",
+  "active": "query-expressions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/query-expressions",
+    "/swan-lake/learn/by-example/query-expressions.html"
+  ]
+}

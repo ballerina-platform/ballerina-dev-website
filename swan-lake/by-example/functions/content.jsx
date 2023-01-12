@@ -31,7 +31,7 @@ public function main() {
     // A function with no return type does not need a variable assignment.
     print(sum);
 
-    // Invoke the \`calculateWeight\` function with the default arguments.
+    // Invoke the \`sub\` function with the default arguments.
     print(calculateWeight(5));
 
     // Invoke the \`add\` function with the named arguments.
@@ -77,7 +77,7 @@ export function Functions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=98100cf8cce18e481282128521aab991&file=functions.bal",
+                "https://play.ballerina.io/?gist=a6b2487e8d7da5e6df6d005314438eeb&file=functions.bal",
                 "_blank"
               );
             }}
@@ -325,8 +325,8 @@ export function Functions({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Binding patterns in match statement"
-            href="/learn/by-example/binding-patterns-in-match-statement"
+            title="Match statement"
+            href="/learn/by-example/match-statement"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -353,7 +353,7 @@ export function Functions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Binding patterns in match statement
+                  Match statement
                 </span>
               </div>
             </div>

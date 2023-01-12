@@ -1,0 +1,19 @@
+{
+  "title": "OAuth2 client credentials grant type",
+  "description": "BBE on how to secure WebSocket client with OAuth2 client credentials grant type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "auth",
+    "oauth2",
+    "client credentials grant type"
+  ],
+  "permalink": "/learn/by-example/websocket-client-oauth2-client-cred-grant-type",
+  "active": "websocket-client-oauth2-client-cred-grant-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-client-oauth2-client-cred-grant-type",
+    "/swan-lake/learn/by-example/websocket-client-oauth2-client-cred-grant-type.html"
+  ]
+}

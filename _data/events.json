@@ -1,6 +1,22 @@
 {
     "events": [
         {
+            "date": "Jan 11, 2023",
+            "day": "Wed.",
+            "time": "6.00 p.m. GMT",
+            "expire": "2023-01-11T00:00:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.eventbrite.co.uk/e/the-role-of-modern-programming-languages-in-cloud-native-app-development-registration-496232694347",
+            "eventType": "Webinar",
+            "eventName": "The Role of Modern Programming Languages in Cloud Native App Development",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "Dec 11, 2022",
             "day": "Sun.",
             "time": "9.00 a.m. IST",

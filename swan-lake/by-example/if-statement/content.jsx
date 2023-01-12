@@ -7,24 +7,41 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-function demo(anydata v) returns float|error {
-    // \`v\` is cast to the \`float\` type by calling \`ensureType()\`.
-    // \`ensureType()\` returns an error if the cast is not possible unlike the usual cast operation,
-    // which panics.
-    return v.ensureType(float);
+function getGrades(int score) returns string {
+    // Parentheses are optional in conditions.
+    // However, curly braces are required in \`if/else\` statements.
+    if 0 < score && score < 55 {
+        return "F";
+    } else if 55 <= score && score < 65 {
+        return "C";
+    } else if 65 <= score && score < 75  {
+        return "B";
+    } else if 75 <= score && score <= 100 {
+        return "A";
+    } else {
+        return "Invalid grade";
+    }
 }
 
 public function main() {
-    float|error f1 = demo(12.5d);
-    io:println(f1);
+    int score = 66;
+    string grade = getGrades(score);
+    io:println(grade);
 
-    float|error f2 = demo("12.5");
-    io:println(f2);
+    int|string newScore = 77;
+
+    // The \`if\` statement can be used for type narrowing.
+    if newScore is int {
+        io:println(getGrades(newScore));
+    } else {
+        io:println("Score is not an integer");
+    }
+
 }
 `,
 ];
 
-export function EnsureTypeFunction({ codeSnippets }) {
+export function IfStatement({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -34,14 +51,16 @@ export function EnsureTypeFunction({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>
-        <code>ensureType</code> function
-      </h1>
+      <h1>If statements</h1>
 
       <p>
-        The <code>ensureType()</code> function is a lang library function that
-        is similar to a cast. It takes a <code>typedesc</code> value as an
-        argument. It returns an error if the cast is not possible.
+        <code>if</code> statements are used for conditional execution.
+        Conditions following <code>if</code> must be boolean and if the
+        condition is true, then, the corresponding statement block is executed.
+        If the condition of the <code>if</code> statement is false, then, one of
+        the following <code>else if</code> blocks executes if the particular{" "}
+        <code>else if</code> statement condition is true. If none of the
+        conditions are true, then, the <code>else</code> block executes.
       </p>
 
       <Row
@@ -54,7 +73,7 @@ export function EnsureTypeFunction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=db47a4af3814c7f07290867db3692ddb&file=ensureType_function.bal",
+                "https://play.ballerina.io/?gist=c2d8f0962a7104f4ff789f82a7e6a2b0&file=if_statement.bal",
                 "_blank"
               );
             }}
@@ -75,31 +94,9 @@ export function EnsureTypeFunction({ codeSnippets }) {
             </svg>
           </button>
 
-          <button
-            className="bg-transparent border-0 m-0 p-2"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/ensureType-function",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -206,19 +203,31 @@ export function EnsureTypeFunction({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run ensureType_function.bal`}</span>
-              <span>{`12.5`}</span>
-              <span>{`error("{ballerina}TypeCastError",message="incompatible types: 'string' cannot be cast to 'float'")`}</span>
+              <span>{`\$ bal run if_statement.bal`}</span>
+              <span>{`Grade: B`}</span>
+              <span>{`Grade: A`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/booleans/">Booleans</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Built-in string subtype"
-            href="/learn/by-example/built-in-string-subtype"
+            title="Booleans and conditionals"
+            href="/learn/by-example/booleans"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -245,7 +254,7 @@ export function EnsureTypeFunction({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Built-in string subtype
+                  Booleans and conditionals
                 </span>
               </div>
             </div>
@@ -253,8 +262,8 @@ export function EnsureTypeFunction({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Dependent types"
-            href="/learn/by-example/dependent-types"
+            title="Match statement"
+            href="/learn/by-example/match-statement"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -264,7 +273,7 @@ export function EnsureTypeFunction({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dependent types
+                  Match statement
                 </span>
               </div>
               <svg

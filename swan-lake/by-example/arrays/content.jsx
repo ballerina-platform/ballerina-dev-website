@@ -56,6 +56,7 @@ public function main() {
     foreach string name in names {
         fullNames.push(string \`\${name} Johnson\`);
     }
+
     io:println(fullNames);
 }
 `,
@@ -77,9 +78,9 @@ export function Arrays({ codeSnippets }) {
         An array can be used to hold a set of values of the same type. The array
         type can be defined as <code>T[n]</code> in which <code>T</code> is the
         element type and <code>n</code> is the length of the array.{" "}
-        <code>n</code> must be an integer literal or constant reference of type
-        int. Optionally, you can create a variable-length array by defining an
-        array without <code>n</code> as <code>T[]</code>.
+        <code>n</code> must be an integer literal or constant reference of type{" "}
+        <code>int</code>. Optionally, you can create a variable-length array by
+        defining an array without <code>n</code> as <code>T[]</code>.
       </p>
 
       <p>
@@ -98,7 +99,7 @@ export function Arrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2b740c44ee6af6fc95c82cf54bd463d7&file=arrays.bal",
+                "https://play.ballerina.io/?gist=5daeb959424a3e5d2cfbb606a8040545&file=arrays.bal",
                 "_blank"
               );
             }}

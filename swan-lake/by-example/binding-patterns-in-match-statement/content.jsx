@@ -7,24 +7,61 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-function demo(anydata v) returns float|error {
-    // \`v\` is cast to the \`float\` type by calling \`ensureType()\`.
-    // \`ensureType()\` returns an error if the cast is not possible unlike the usual cast operation,
-    // which panics.
-    return v.ensureType(float);
+type Position record {
+    int x;
+    int y;
+};
+
+type PositionRecord record {
+    Position p;
+};
+
+function matchFn1(Position position) {
+    match position {
+        // The binding pattern below matches mappings that contain at least the fields with the \`x\` and \`y\` keys.
+        // The values of these fields can be accessed via the \`x\` and \`y\` variables within this block.
+        var {x, y} => {
+            io:println(x, ", ", y);
+        }
+    }
+}
+
+function matchFn2(Position position) {
+    match position {
+        // The binding pattern below also has a rest binding pattern to capture the additional fields
+        // that may be specified in the open record value assigned to the \`position\` variable.
+        // Type of the \`rest\` variable can be considered a map of \`anydata\`. However, it cannot contain the
+        // \`x\` or \`y\` keys. This can be represented using the \`never\` type as explained in the example for
+        // the \`never\` type.
+        var {x, y, ...rest} => {
+            io:println(x, ", ", y, ", ", rest);
+        }
+    }
+}
+
+function matchFn3(PositionRecord r) {
+    match r {
+        // The pattern below matches a mapping that has a field with the \`p\` key and a value that is another
+        // mapping that contains at least the fields with \`x\` and \`y\` keys.
+        var {p: {x, y}} => {
+            io:println(x, ", ", y);
+        }
+    }
 }
 
 public function main() {
-    float|error f1 = demo(12.5d);
-    io:println(f1);
+    Position position = {x: 1, y: 2, "u": 3 , "v": 4};
+    matchFn1(position);
+    matchFn2(position);
 
-    float|error f2 = demo("12.5");
-    io:println(f2);
+    PositionRecord r = {p: position};
+    matchFn3(r);
+
 }
 `,
 ];
 
-export function EnsureTypeFunction({ codeSnippets }) {
+export function BindingPatternsInMatchStatement({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -35,13 +72,19 @@ export function EnsureTypeFunction({ codeSnippets }) {
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>
-        <code>ensureType</code> function
+        Binding patterns in the <code>match</code> statement
       </h1>
 
       <p>
-        The <code>ensureType()</code> function is a lang library function that
-        is similar to a cast. It takes a <code>typedesc</code> value as an
-        argument. It returns an error if the cast is not possible.
+        Binding patterns can be used in a match statement to bind parts of a
+        successful match to variables.
+      </p>
+
+      <p>
+        You can use the rest binding pattern (<code>...r</code>) in a binding
+        pattern of a <code>match</code> statement to bind the fields that are
+        not explicitly bound in the binding pattern. This is particularly useful
+        when working with open records.
       </p>
 
       <Row
@@ -54,7 +97,7 @@ export function EnsureTypeFunction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=db47a4af3814c7f07290867db3692ddb&file=ensureType_function.bal",
+                "https://play.ballerina.io/?gist=85eec120e7582d3cbc956068c565ae02&file=binding_patterns_in_match_statement.bal",
                 "_blank"
               );
             }}
@@ -79,7 +122,7 @@ export function EnsureTypeFunction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/ensureType-function",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/binding-patterns-in-match-statement",
                 "_blank"
               );
             }}
@@ -206,19 +249,50 @@ export function EnsureTypeFunction({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run ensureType_function.bal`}</span>
-              <span>{`12.5`}</span>
-              <span>{`error("{ballerina}TypeCastError",message="incompatible types: 'string' cannot be cast to 'float'")`}</span>
+              <span>{`\$ bal run binding_patterns_in_match_statement.bal`}</span>
+              <span>{`1, 2`}</span>
+              <span>{`1, 2, {"u":3,"v":4}`}</span>
+              <span>{`1, 2`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/match-statement/">Match statement</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/if-statement/">If statement</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/typed-binding-pattern">
+              Typed binding pattern
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Built-in string subtype"
-            href="/learn/by-example/built-in-string-subtype"
+            title="Match guard in match statement"
+            href="/learn/by-example/match-guard-in-match-statement"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -245,17 +319,14 @@ export function EnsureTypeFunction({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Built-in string subtype
+                  Match guard in match statement
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Dependent types"
-            href="/learn/by-example/dependent-types"
-          >
+          <Link title="Functions" href="/learn/by-example/functions">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -264,7 +335,7 @@ export function EnsureTypeFunction({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dependent types
+                  Functions
                 </span>
               </div>
               <svg

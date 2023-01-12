@@ -12,10 +12,13 @@ public function main() {
     int[1] b = [1];
     // Output will be \`true\` as the values are the same.
     io:println(a == b);
+    
     // Output will be \`false\` as the references are different.
     io:println(a === b);
+    
     // Output will be \`true\` as the references are the same.
     io:println(a === a);
+    
     // This will assign the reference \`a\` to \`c\`.
     int[] c = a;
     // Output will be \`true\` as the references are the same.
@@ -25,8 +28,10 @@ public function main() {
     string[3][2] orderItems2 = [["carrot", "apple"], ["avacado", "egg"], ["fish", "banana"]];
     // Output will be \`true\` as the order items are the same.
     io:println(orderItems == orderItems2);
+    
     // Output will be \`false\` as the order items are the same.
     io:println(orderItems != orderItems2);
+    
     // Output will be \`true\` as the references are different.
     io:println(orderItems !== orderItems2);
 
@@ -47,7 +52,7 @@ export function ListEquality({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Filler values of a list</h1>
+      <h1>List equality</h1>
 
       <p>
         You can use <code>==</code> and <code>!=</code> on lists to check the
@@ -67,7 +72,7 @@ export function ListEquality({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b9945e8d3b3f37c107c0dda0a585e4d0&file=list_equality.bal",
+                "https://play.ballerina.io/?gist=bc9f10db7d6722fc9496a6fb7d94684b&file=list_equality.bal",
                 "_blank"
               );
             }}

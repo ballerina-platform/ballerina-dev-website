@@ -58,9 +58,18 @@ sublinks:
           - title: Booleans and conditionals
             id: 1
             url: booleans
-          - title: Match statement
+          - title: If statement
             id: 2
+            url: if-statement
+          - title: Match statement
+            id: 3
             url: match-statement
+          - title: Match guard in match statement
+            id: 4
+            url: match-guard-in-match-statement
+          - title: Binding patterns in match statement
+            id: 5
+            url: binding-patterns-in-match-statement
       - title: Functions
         id: 6
         sublinks:
@@ -343,9 +352,9 @@ sublinks:
           - title: Converting from table and XML to JSON
             id: 5
             url: converting-from-table-and-xml-to-json
-          - title: Converting JSON with langlib functions
+          - title: Converting from JSON to user defined type with langlib functions
             id: 6
-            url: converting-json-with-langlib-functions
+            url: converting-from-json-to-user-defined-type-with-langlib-functions
           - title: Casting JSON to user-defined type
             id: 7
             url: casting-json-to-user-defined-type

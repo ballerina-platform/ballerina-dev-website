@@ -40,6 +40,8 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ### Bug fixes
 
+- [Get Invalid mutation error in table](https://github.com/ballerina-platform/ballerina-lang/issues/39169)
+
 ## Standard library updates
 
 ### New features

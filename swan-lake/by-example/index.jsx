@@ -48,9 +48,21 @@ import {
   codeSnippetData as BooleansCodeSnippetData,
 } from "./booleans/content.jsx";
 import {
+  IfStatement,
+  codeSnippetData as IfStatementCodeSnippetData,
+} from "./if-statement/content.jsx";
+import {
   MatchStatement,
   codeSnippetData as MatchStatementCodeSnippetData,
 } from "./match-statement/content.jsx";
+import {
+  MatchGuardInMatchStatement,
+  codeSnippetData as MatchGuardInMatchStatementCodeSnippetData,
+} from "./match-guard-in-match-statement/content.jsx";
+import {
+  BindingPatternsInMatchStatement,
+  codeSnippetData as BindingPatternsInMatchStatementCodeSnippetData,
+} from "./binding-patterns-in-match-statement/content.jsx";
 import {
   Functions,
   codeSnippetData as FunctionsCodeSnippetData,
@@ -368,9 +380,9 @@ import {
   codeSnippetData as ConvertingFromTableAndXmlToJsonCodeSnippetData,
 } from "./converting-from-table-and-xml-to-json/content.jsx";
 import {
-  ConvertingJsonWithLanglibFunctions,
-  codeSnippetData as ConvertingJsonWithLanglibFunctionsCodeSnippetData,
-} from "./converting-json-with-langlib-functions/content.jsx";
+  ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions,
+  codeSnippetData as ConvertingFromJsonToUserDefinedTypeWithLanglibFunctionsCodeSnippetData,
+} from "./converting-from-json-to-user-defined-type-with-langlib-functions/content.jsx";
 import {
   CastingJsonToUserDefinedType,
   codeSnippetData as CastingJsonToUserDefinedTypeCodeSnippetData,
@@ -1739,8 +1751,14 @@ const BBEs = {
   StringsCodeSnippetData,
   Booleans,
   BooleansCodeSnippetData,
+  IfStatement,
+  IfStatementCodeSnippetData,
   MatchStatement,
   MatchStatementCodeSnippetData,
+  MatchGuardInMatchStatement,
+  MatchGuardInMatchStatementCodeSnippetData,
+  BindingPatternsInMatchStatement,
+  BindingPatternsInMatchStatementCodeSnippetData,
   Functions,
   FunctionsCodeSnippetData,
   IncludedRecordParameters,
@@ -1899,8 +1917,8 @@ const BBEs = {
   ConvertingFromUserDefinedTypeToJsonCodeSnippetData,
   ConvertingFromTableAndXmlToJson,
   ConvertingFromTableAndXmlToJsonCodeSnippetData,
-  ConvertingJsonWithLanglibFunctions,
-  ConvertingJsonWithLanglibFunctionsCodeSnippetData,
+  ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions,
+  ConvertingFromJsonToUserDefinedTypeWithLanglibFunctionsCodeSnippetData,
   CastingJsonToUserDefinedType,
   CastingJsonToUserDefinedTypeCodeSnippetData,
   ResourceMethodTyping,

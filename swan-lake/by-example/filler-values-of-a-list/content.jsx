@@ -60,7 +60,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5f3da65a03c87f33c4079038a2d856dd&file=filler_values_of_a_list.bal",
+                "https://play.ballerina.io/?gist=db293e9ab80ce9dc0a04ba7e89f88ec3&file=filler_values_of_a_list.bal",
                 "_blank"
               );
             }}
@@ -202,270 +202,112 @@ export function FillerValuesOfAList({ codeSnippets }) {
 
       <h2>Filler values table</h2>
 
-      <p>&lt;table&gt;</p>
+      <p>Type descriptor | Filler value | When available</p>
 
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;th&gt;Type descriptor&lt;/th&gt;</p>
-
-      <p>&lt;th&gt;Filler value&lt;/th&gt;</p>
-
-      <p>&lt;th&gt;When available&lt;/th&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;()&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;()&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;boolean&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;float&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;+0.0f&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;decimal&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;+0d&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;&quot;&quot;&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;array or tuple type descriptor&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;[]&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;if that is a valid constructor for the type&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;map or record type descriptor&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;&#123; &#125;&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;if that is a valid constructor for the type&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;readonly &amp; T&lt;/code&gt;&lt;/td&gt;</p>
-
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>-------------- | ------------ | ---------------</span>
+        </li>
+      </ul>
       <p>
-        &lt;td&gt;the filler value for T constructed as read-only&lt;/td&gt;
-      </p>
-
-      <p>&lt;td&gt;if that belongs to the type&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;table&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;empty table (with no rows)&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;object&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;new T()&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>
-        &lt;td&gt;if T is a class, where T is the type descriptor for the
-        object, and the
+        <code>()</code> | <code>()</code> |
       </p>
 
       <p>
-        static type of T's init method allows no arguments and does not include
-        error&lt;/td&gt;
+        <code>boolean</code> | <code>false</code> |
       </p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;stream&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;empty stream&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;xml&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;xml``&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
 
       <p>
-        &lt;td&gt;built-in subtype of &lt;code&gt;xml&lt;/code&gt;&lt;/td&gt;
+        <code>int</code> | <code>0</code> |
       </p>
-
-      <p>&lt;td&gt;&lt;code&gt;xml``&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;if this belongs to the subtype, i.e. if the subtype is</p>
-
-      <p>&lt;code&gt;xml:Text&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;singleton&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;the single value used to specify the type&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td rowspan=&quot;2&quot;&gt;union&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;()&lt;/code&gt;&lt;/td&gt;</p>
 
       <p>
-        &lt;td&gt;if &lt;code&gt;()&lt;/code&gt; is a member of the
-        union&lt;/td&gt;
+        <code>float</code> | <code>+0.0f</code> |
       </p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;the filler value for basic type B&lt;/td&gt;</p>
 
       <p>
-        &lt;td&gt;if all members of the union belong to a single basic type B,
+        <code>decimal</code> | <code>+0d</code> |
       </p>
-
-      <p>and the filler value for B also belongs to the union&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;T?&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;()&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;any&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;()&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;anydata&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;()&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;byte&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;</p>
-
-      <p>&lt;td&gt;&lt;/td&gt;</p>
-
-      <p>&lt;/tr&gt;</p>
-
-      <p>&lt;tr&gt;</p>
 
       <p>
-        &lt;td&gt;built-in subtype of &lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+        <code>string</code> | <code>&quot;&quot;</code> |
       </p>
 
-      <p>&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;</p>
+      <p>
+        array or tuple type descriptor | <code>[]</code> | if that is a valid
+        constructor for the type
+      </p>
 
-      <p>&lt;td&gt;&lt;/td&gt;</p>
+      <p>
+        map or record type descriptor | <code>&#123;&#125;</code> | if that is a
+        valid constructor for the type
+      </p>
 
-      <p>&lt;/tr&gt;</p>
+      <p>
+        <code>readonly &amp; T</code> | the filler value for <code>T</code>{" "}
+        constructed as read-only | if that belongs to the type
+      </p>
 
-      <p>&lt;tr&gt;</p>
+      <p>
+        <code>table</code> | empty table (with no rows) |
+      </p>
 
-      <p>&lt;td&gt;&lt;code&gt;json&lt;/code&gt;&lt;/td&gt;</p>
+      <p>
+        <code>object</code> | <code>new T()</code> | if <code>T</code> is a
+        class, where <code>T</code> is the type descriptor for the object, and
+        the static type of <code>T</code>'s init method allows no arguments and
+        does not include error
+      </p>
 
-      <p>&lt;td&gt;&lt;code&gt;()&lt;/code&gt;&lt;/td&gt;</p>
+      <p>
+        <code>stream</code> | empty stream |
+      </p>
 
-      <p>&lt;td&gt;&lt;/td&gt;</p>
+      <p>
+        <code>xml</code> | <code>xml``</code> |
+      </p>
 
-      <p>&lt;/tr&gt;</p>
+      <p>
+        built-in subtype of xml | <code>xml``</code> | if this belongs to the
+        subtype, i.e. if the subtype is <code>xml:Text</code>
+      </p>
 
-      <p>&lt;/table&gt;</p>
+      <p>singleton | the single value used to specify the type |</p>
+
+      <p>
+        union | <code>()</code> | if <code>()</code> is a member of the union |
+      </p>
+
+      <p>
+        union | the filler value for basic type <code>B</code> | if all members
+        of the union belong to a single basic type <code>B</code>, and the
+        filler value for <code>B</code> also belongs to the union
+      </p>
+
+      <p>
+        <code>T?</code> | <code>()</code> |
+      </p>
+
+      <p>
+        <code>any</code> | <code>()</code> |
+      </p>
+
+      <p>
+        <code>anydata</code> | <code>()</code> |
+      </p>
+
+      <p>
+        <code>byte</code> | <code>0</code> |
+      </p>
+
+      <p>
+        built-in subtype of int | <code>0</code> |
+      </p>
+
+      <p>
+        <code>json</code> | <code>()</code> |
+      </p>
 
       <h2>Related links</h2>
 

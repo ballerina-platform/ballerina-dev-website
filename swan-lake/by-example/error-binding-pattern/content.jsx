@@ -75,7 +75,7 @@ export function ErrorBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=55f1551270bca26a63ea722e5f6a58bd&file=error_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=3df9eaa193a6315a70a5ad2b49315066&file=error_binding_pattern.bal",
                 "_blank"
               );
             }}
@@ -223,7 +223,7 @@ export function ErrorBindingPattern({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/binding-pattern/">Binding pattern</a>
+            <a href="/learn/by-example/binding-patterns/">Binding patterns</a>
           </span>
         </li>
       </ul>

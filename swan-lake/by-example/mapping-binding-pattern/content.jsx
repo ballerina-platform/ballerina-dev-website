@@ -79,7 +79,7 @@ export function MappingBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4d5643991fbb4ba780f914b8b110ba58&file=mapping_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=047e6464628d9e40cd16f4c43a69a701&file=mapping_binding_pattern.bal",
                 "_blank"
               );
             }}
@@ -224,7 +224,7 @@ export function MappingBindingPattern({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/binding-pattern/">Binding pattern</a>
+            <a href="/learn/by-example/binding-patterns/">Binding patterns</a>
           </span>
         </li>
       </ul>

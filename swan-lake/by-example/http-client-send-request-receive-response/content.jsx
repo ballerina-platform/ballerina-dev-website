@@ -67,7 +67,7 @@ export function HttpClientSendRequestReceiveResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=47bf8a790ecf34b399f1ecc524d94a79&file=http_client_send_request_receive_response.bal",
+                "https://play.ballerina.io/?gist=767899882e57bc018af7262daaa66128&file=http_client_send_request_receive_response.bal",
                 "_blank"
               );
             }}

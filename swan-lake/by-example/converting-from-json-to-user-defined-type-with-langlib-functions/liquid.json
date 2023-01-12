@@ -1,0 +1,20 @@
+{
+  "title": "Converting from JSON to user defined type with langlib functions",
+  "description": "This BBE demonstrates how to convert JSON to a user-defined type, do the numeric conversion on JSON elements, convert JSON to record, access JSON data, and manipulate JSON data in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "json",
+    "record",
+    "cast",
+    "access",
+    "manipulate"
+  ],
+  "permalink": "/learn/by-example/converting-from-json-to-user-defined-type-with-langlib-functions",
+  "active": "converting-from-json-to-user-defined-type-with-langlib-functions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/converting-from-json-to-user-defined-type-with-langlib-functions",
+    "/swan-lake/learn/by-example/converting-from-json-to-user-defined-type-with-langlib-functions.html"
+  ]
+}

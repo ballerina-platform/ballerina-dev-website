@@ -6,48 +6,47 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
- 
-type Coord record {
-    float x;
-    float y;
-};
- 
-type Book record {
-    xml book;
-    float price;
-};
- 
-public function main() returns error? {
-    json j = {x: 1, y: 2};
-    
-    // Argument is a \`typedesc\` value.
-    // The static return type depends on the argument.
-    // Even if \`x\` and \`y\` are \`int\` in \`j\` they will automatically convert to \`float\`
-    Coord c = check j.cloneWithType(Coord);
-    io:println(c.x);
-    
-    // Argument defaulted from the context.
-    Coord d = check j.cloneWithType();
-    io:println(d.x);
-    
-    Book book = {book: xml \`<book> The Treasure Island </book>\`, price: 200.0};
-    
-    json bookJson = book.toJson();
-    io:println(bookJson);
-    
-    // \`fromJsonWithType()\` can be used to reverse conversions done by \`toJson()\`.
-    book = check bookJson.fromJsonWithType();
-    io:println(book);
-    
-    // Below will result in an error, because the type of the field \`book\` in \`bookJson\` is \`string\`.
-    Book|error result = bookJson.cloneWithType();
-    io:println(result);
+
+const switchStatus = "ON";
+
+function matchValue(any val, boolean isObstructed, float powerPercentage) returns string {
+    // The value of the \`val\` variable is matched against the given value match patterns.
+    match val {
+        // The \`if !isObstructed\` match guard is used.
+        1 if !isObstructed => {
+            // This block will execute if \`!isObstructed\` is true.
+            return "Move forward";
+        }
+        // Use \`|\` to match more than one value.
+        2|3 => {
+            return "Turn";
+        }
+        //The \`if 25.0 < powerPercentage\` match guard is used.
+        4 if 25.0 < powerPercentage => {
+            // This block will execute if \`25.0 < powerPercentage\` is true.
+            return  "Increase speed";
+        }
+        "STOP" => {
+            return "STOP";
+        }
+        switchStatus => {
+            return "Switch ON";
+        }
+        // Use \`_\` to match type \`any\`.
+        _ => {
+            return "Invalid instruction";
+        }
+    }
 }
 
+public function main() {
+    io:println(matchValue(1, false, 36.0));
+    io:println(matchValue(4, false, 36.0));
+}
 `,
 ];
 
-export function ConvertingJsonWithLanglibFunctions({ codeSnippets }) {
+export function MatchGuardInMatchStatement({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -57,20 +56,20 @@ export function ConvertingJsonWithLanglibFunctions({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Converting JSON with langlib functions</h1>
+      <h1>
+        Match guard in <code>match</code> statement
+      </h1>
 
       <p>
-        The <code>cloneWithType()</code> langlib function can be used to convert
-        a value to a user-defined type. Result recursively uses specified type
-        as inherent type of new value. Automatically performs numeric
-        conversions as necessary.
+        A match-guard is an expression that is used in a <code>match</code>{" "}
+        clause to determine whether the clause should be executed. A{" "}
+        <code>match</code> clause will only be executed if its match-guard
+        evaluates to true.
       </p>
 
       <p>
-        Every part of the value is cloned including immutable structural values.
-        Also <code>fromJsonWithType()</code> langlib function can be used for
-        the same purpose and it also does the reverse of conversions done by
-        toJson.
+        A function call is only allowed with an expression in a match-guard when
+        there is no possibility that it can mutate the value being matched.
       </p>
 
       <Row
@@ -83,7 +82,7 @@ export function ConvertingJsonWithLanglibFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4eb55485e0670e2d8a7287077bcbea92&file=converting_json_with_langlib_functions.bal",
+                "https://play.ballerina.io/?gist=e34ba83e3f14a313214a0e1adb0fd441&file=match_guard_in_match_statement.bal",
                 "_blank"
               );
             }}
@@ -213,15 +212,9 @@ export function ConvertingJsonWithLanglibFunctions({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run converting_json_with_langlib_functions.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`1.0`}</span>
-              <span>{`1.0`}</span>
-              <span>{`{"book":"<book> The Treasure Island </book>","price":200.0}`}</span>
-              <span>{`{"book":\`<book> The Treasure Island </book>\`,"price":200.0}`}</span>
-              <span>{`error("{ballerina/lang.value}ConversionError",message="'map<json>' value cannot be converted to 'Book': `}</span>
-              <span>{`		field 'book' in record 'Book' should be of type 'xml<(lang.xml:Element|lang.xml:Comment|lang.xml:ProcessingInstruction|lang.xml:Text)>', found '"<book> The Treasure...'")`}</span>
+              <span>{`\$ bal run match_guard_in_match_statement.bal`}</span>
+              <span>{`Move forward`}</span>
+              <span>{`Increase speed`}</span>
             </code>
           </pre>
         </Col>
@@ -233,7 +226,7 @@ export function ConvertingJsonWithLanglibFunctions({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/json-type/">JSON type</a>
+            <a href="/learn/by-example/if-statement/">If statement</a>
           </span>
         </li>
       </ul>
@@ -241,33 +234,7 @@ export function ConvertingJsonWithLanglibFunctions({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/open-records/">Open records</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/controlling-openness">Control openess</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/check">Check</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/casting-json-to-user-defined-type">
-              Casting JSON to user-defined type
-            </a>
+            <a href="/learn/by-example/match-statement/">Match statement</a>
           </span>
         </li>
       </ul>
@@ -276,8 +243,8 @@ export function ConvertingJsonWithLanglibFunctions({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Converting from table and XML to JSON"
-            href="/learn/by-example/converting-from-table-and-xml-to-json"
+            title="Match statement"
+            href="/learn/by-example/match-statement"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -304,7 +271,7 @@ export function ConvertingJsonWithLanglibFunctions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Converting from table and XML to JSON
+                  Match statement
                 </span>
               </div>
             </div>
@@ -312,8 +279,8 @@ export function ConvertingJsonWithLanglibFunctions({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Casting JSON to user-defined type"
-            href="/learn/by-example/casting-json-to-user-defined-type"
+            title="Binding patterns in match statement"
+            href="/learn/by-example/binding-patterns-in-match-statement"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -323,7 +290,7 @@ export function ConvertingJsonWithLanglibFunctions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Casting JSON to user-defined type
+                  Binding patterns in match statement
                 </span>
               </div>
               <svg

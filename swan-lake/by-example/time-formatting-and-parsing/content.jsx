@@ -86,7 +86,7 @@ export function TimeFormattingAndParsing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=60816170edd26bbe9df51f6ad7088bde&file=time_formatting_and_parsing.bal",
+                "https://play.ballerina.io/?gist=438a3cf0c10b092682bb6666aa74b0d4&file=time_formatting_and_parsing.bal",
                 "_blank"
               );
             }}

@@ -19,7 +19,12 @@ display:none;
 
 }
 </style>
-
+<style>
+	.cVideoThumb{border:#a4a4a4 solid 1px !important;}
+	.cVideoThumb:hover{border:1px solid #1eb5ae !important; transform: scale(1.05); transition: 0.3s;}
+	.VideoIframe{border:#a4a4a4 solid 1px !important;}
+	.VideoIframe:hover{border:1px solid #1eb5ae !important; }
+</style>
 The resources below will walk you through the Ballerina language.
 
 ## Watch the videos
@@ -28,9 +33,41 @@ The video series below explores the language concepts of Ballerina Swan Lake. Th
 
 <br/>
 
-<iframe width="1150" height="515" src="https://www.youtube.com/embed/videoseries?list=PL7JOecNWBb0KX8RGAjF-oRknb_YIYN-dR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 <br/>
+<div class="row">
+<div class="col-sm-12 col-md-12 col-12">
+<iframe width="830" height="515" class="VideoIframe" style="margin-bottom: 15px;" src="https://www.youtube.com/embed/videoseries?list=PL7JOecNWBb0KX8RGAjF-oRknb_YIYN-dR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+
+
+
+</div>
+<div class="row">
+<div class="col-sm-12 col-md-12 col-lg-3">
+<a href="https://youtube.com/watch?v=leFnR6xh100&feature=shares" target="_blank" >
+<img class="cVideoThumb" alt="Network and Data - Ballerina Language Swan Lake: Part 2a" src="/images/lang-w-2a.png" decoding="async" data-nimg="intrinsic" style="">
+</a>
+</div>
+<div class="col-sm-12 col-md-12 col-lg-3">
+<a href="https://youtube.com/watch?v=BvU9fB-x8eE&feature=shares" target="_blank">
+<img class="cVideoThumb" alt="Query, Tables, and XML - Ballerina Language Swan Lake: Part 2b" src="/images/lang-w-2b.png" decoding="async" data-nimg="intrinsic" style="">
+</a>
+</div>
+<div class="col-sm-12 col-md-12 col-lg-3">
+<a href="https://youtube.com/watch?v=C1kj3Lc9MP8&feature=shares" target="_blank">
+<img class="cVideoThumb" alt="Concurrency - Ballerina Language Swan Lake: Part 2c" src="/images/lang-w-2c.png" decoding="async" data-nimg="intrinsic" style="">
+</a>
+</div>
+<div class="col-sm-12 col-md-12 col-lg-3">
+<a href="https://youtube.com/watch?v=dAQs8_jAyGU&feature=shares" target="_blank" >
+<img class="cVideoThumb" alt="Completing the Picture - Ballerina Language Swan Lake: Part 3" src="/images/lang-w-3.png" decoding="async" data-nimg="intrinsic" style="">
+</a>
+</div>
+</div>
+</div>
 
 <br/>
 
@@ -44,7 +81,7 @@ You can also find the [slide deck](/learn/slides/language-walkthrough/Ballerina_
 
 <!--<embed width="191" height="207" name="lang-guide-slides" src="/learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf" type="application/pdf">-->
 
-<iframe width="1150" height="515" src="/learn/slides/language-walkthrough/Ballerina_Language_Presentation-2021-03-08.pdf" frameborder="0" allowfullscreen>
+<iframe width="840" height="515" src="/learn/slides/language-walkthrough/Ballerina_Language_Presentation-2021-03-08.pdf" frameborder="0" allowfullscreen>
 </iframe>
 
 <!--<style>

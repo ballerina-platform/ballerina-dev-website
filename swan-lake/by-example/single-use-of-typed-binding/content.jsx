@@ -67,7 +67,7 @@ export function SingleUseOfTypedBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fcc164e8880005ade7fb1e1aefbe3fba&file=single_use_of_typed_binding.bal",
+                "https://play.ballerina.io/?gist=5aa9856f7c8153c9d1b5dff500d95afd&file=single_use_of_typed_binding.bal",
                 "_blank"
               );
             }}
@@ -212,7 +212,7 @@ export function SingleUseOfTypedBinding({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/binding-pattern/">Binding pattern</a>
+            <a href="/learn/by-example/binding-patterns/">Binding patterns</a>
           </span>
         </li>
       </ul>

@@ -33,9 +33,11 @@ export function BinaryData({ codeSnippets }) {
 
       <p>
         Binary data is represented by arrays of byte values. It is a special
-        syntax for byte arrays in Base16 and Base64. The encoding tables of both
-        Base16 and Base64 are the same as RFC 4648. A byte is an int in the
-        range 0 to 0xFF and it is a subtype of int.
+        syntax for byte arrays in <code>Base16</code> and <code>Base64</code>.
+        The encoding tables of both <code>Base16</code> and <code>Base64</code>{" "}
+        are the same as <code>RFC 4648</code>. A byte is an int in the range{" "}
+        <code>0</code> to <code>0xFF</code> and it is a subtype of{" "}
+        <code>int</code>.
       </p>
 
       <Row
@@ -48,7 +50,7 @@ export function BinaryData({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d68ac038df273a80bac7f524ba3cec89&file=binary_data.bal",
+                "https://play.ballerina.io/?gist=189a386abc3ab720b04694585d17dc6a&file=binary_data.bal",
                 "_blank"
               );
             }}

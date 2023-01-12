@@ -15,6 +15,7 @@ public function main() {
     // \`numbers2\` will be a subtype of \`int[3]\` 
     // since \`byte\` is a subtype of \`int\` and lengths are the same
     io:println(numbers2 is int[3]);
+    
     // \`numbers2\` will be a subtype of \`int[]\` 
     // since \`byte\` is a subtype of \`int\` and \`T[n]\` is a sub type of \`T[]\`
     io:println(numbers2 is int[]);
@@ -22,8 +23,10 @@ public function main() {
     [byte, string] person = [1, "Mike"];
     // \`[byte, string]\` is a sub type of \`[int, anydata]\`
     io:println(person is [int, anydata]);
+    
     // \`[byte, string]\` is a sub type of \`[int, anydata...]\`
     io:println(person is [int, anydata...]);
+    
     // \`int[3]\` is a sub type of \`[int, anydata...]\`
     io:println(numbers is [int, anydata...]);
 }
@@ -62,7 +65,7 @@ export function ListSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=35e66ff75e9e95458828d484d0b5367d&file=list_subtyping.bal",
+                "https://play.ballerina.io/?gist=0574ad401ed533f9af6736444e03e16e&file=list_subtyping.bal",
                 "_blank"
               );
             }}

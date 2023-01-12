@@ -38,6 +38,7 @@
         "url": "main-function",
         "verifyBuild": true,
         "verifyOutput": true,
+        "disablePlayground": true,
         "isLearnByExample": true
       },
       {
@@ -125,8 +126,29 @@
         "isLearnByExample": true
       },
       {
+        "name": "If statement",
+        "url": "if-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Match statement",
         "url": "match-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Match guard in match statement",
+        "url": "match-guard-in-match-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Binding patterns in match statement",
+        "url": "binding-patterns-in-match-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -795,8 +817,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "Converting JSON with langlib functions",
-        "url": "converting-json-with-langlib-functions",
+        "name": "Converting from JSON to user defined type with langlib functions",
+        "url": "converting-from-json-to-user-defined-type-with-langlib-functions",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

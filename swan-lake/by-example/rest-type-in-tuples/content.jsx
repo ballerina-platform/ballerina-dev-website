@@ -44,7 +44,7 @@ export function RestTypeInTuples({ codeSnippets }) {
       <p>
         A Tuple type descriptor can optionally contain a tuple rest descriptor.
         It can be described as <code>[R...]</code>. This implies that the tuple
-        can contain zero or more members after the <code>n</code>th member where
+        can contain zero or more members after the <code>nth</code> member where
         the type of those members are <code>R</code>. Rest type descriptor
         should be the last member type descriptor in the tuple. Tuples are not
         open by default.
@@ -60,7 +60,7 @@ export function RestTypeInTuples({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9b2109abc71e6f498046e573151994c2&file=rest_type_in_tuples.bal",
+                "https://play.ballerina.io/?gist=bee0d81e968008f21366e92ba6a320c4&file=rest_type_in_tuples.bal",
                 "_blank"
               );
             }}

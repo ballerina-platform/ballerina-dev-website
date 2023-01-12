@@ -1,0 +1,11 @@
+{
+  "title": "Send/Receive datagram",
+  "description": "This Ballerina sample demonstrates read an reply to UDP clients using the UDP Listener.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "socket", "udp"],
+  "permalink": "/learn/by-example/udp-listener",
+  "active": "udp-listener",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/udp-listener",
+    "/swan-lake/learn/by-example/udp-listener.html"
+  ]
+}

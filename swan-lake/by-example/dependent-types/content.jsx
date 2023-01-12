@@ -58,7 +58,7 @@ export function DependentTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3c3a14970865f10682f78be1c8991ab9&file=dependent_types.bal",
+                "https://play.ballerina.io/?gist=2b2a34bcb29470d85c50dfd19fcb042d&file=dependent_types.bal",
                 "_blank"
               );
             }}

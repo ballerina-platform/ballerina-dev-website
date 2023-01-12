@@ -50,7 +50,7 @@ export function SingleUseWithOnFailClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6cb61ee2c6a22e4b6d3408130bcf5688&file=single_use_with_on_fail_clause.bal",
+                "https://play.ballerina.io/?gist=c6df5b94b4169dfd97c52dcb3d91b364&file=single_use_with_on_fail_clause.bal",
                 "_blank"
               );
             }}
@@ -193,7 +193,7 @@ export function SingleUseWithOnFailClause({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/binding-patterns/">Binding patterns</a>
+            <a href="/learn/by-example/binding-pattern/">Binding pattern</a>
           </span>
         </li>
       </ul>

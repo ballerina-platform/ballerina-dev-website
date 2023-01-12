@@ -1,0 +1,11 @@
+{
+  "title": "Named worker return values",
+  "description": "This BBE demonstrates named workers with return values",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "worker", "return"],
+  "permalink": "/learn/by-example/named-worker-return-values",
+  "active": "named-worker-return-values",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/named-worker-return-values",
+    "/swan-lake/learn/by-example/named-worker-return-values.html"
+  ]
+}

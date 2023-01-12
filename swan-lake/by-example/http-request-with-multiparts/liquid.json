@@ -1,0 +1,18 @@
+{
+  "title": "Request with multiparts",
+  "description": "BBE on how Ballerina supports encoding and decoding multipart content in HTTP requests along with nested parts.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "mime",
+    "multiparts",
+    "entity"
+  ],
+  "permalink": "/learn/by-example/http-request-with-multiparts",
+  "active": "http-request-with-multiparts",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-request-with-multiparts",
+    "/swan-lake/learn/by-example/http-request-with-multiparts.html"
+  ]
+}

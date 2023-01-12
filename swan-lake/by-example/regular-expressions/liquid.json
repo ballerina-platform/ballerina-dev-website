@@ -1,0 +1,11 @@
+{
+  "title": "Regular expressions",
+  "description": "This BBE shows how to manipulate Strings with regex expression in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "BBE", "string", "regex"],
+  "permalink": "/learn/by-example/regular-expressions",
+  "active": "regular-expressions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/regular-expressions",
+    "/swan-lake/learn/by-example/regular-expressions.html"
+  ]
+}

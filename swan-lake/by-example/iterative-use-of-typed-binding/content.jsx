@@ -78,7 +78,7 @@ export function IterativeUseOfTypedBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bae4bf418c07520065eb76fe8ec95cef&file=iterative_use_of_typed_binding.bal",
+                "https://play.ballerina.io/?gist=d19fe1ea04c98513d0c27b5a34197c84&file=iterative_use_of_typed_binding.bal",
                 "_blank"
               );
             }}
@@ -222,7 +222,7 @@ export function IterativeUseOfTypedBinding({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/binding-patterns/">Binding patterns</a>
+            <a href="/learn/by-example/binding-pattern/">Binding pattern</a>
           </span>
         </li>
       </ul>
@@ -240,8 +240,8 @@ export function IterativeUseOfTypedBinding({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/single-use-of-typed-binding/">
-              Single use of typed binding patterns
+            <a href="/learn/by-example/single-use-of-typed-binding-pattern/">
+              Single use of typed binding pattern
             </a>
           </span>
         </li>
@@ -250,7 +250,7 @@ export function IterativeUseOfTypedBinding({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/query-expressions/">Query expressions</a>
+            <a href="/learn/by-example/query-expression/">Query expression</a>
           </span>
         </li>
       </ul>

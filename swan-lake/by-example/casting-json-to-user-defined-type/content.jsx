@@ -73,7 +73,7 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=12380bd4fef8902a75e64ec20111e660&file=casting_json_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=414ef35582c4708f1ea659ad2294e9d9&file=casting_json_to_user_defined_type.bal",
                 "_blank"
               );
             }}
@@ -270,8 +270,8 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Converting JSON with langlib functions"
-            href="/learn/by-example/converting-json-with-langlib-functions"
+            title="Converting from JSON to user defined type with langlib functions"
+            href="/learn/by-example/converting-from-json-to-user-defined-type-with-langlib-functions"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -298,7 +298,8 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Converting JSON with langlib functions
+                  Converting from JSON to user defined type with langlib
+                  functions
                 </span>
               </div>
             </div>

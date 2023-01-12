@@ -7,19 +7,15 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-boolean flag = true;
-
-// Here's a conditional expression. Uses C syntax.
-int n = flag ? 1 : 2;
-
 public function main() {
-    // Parentheses are optional in conditions
-    // but curly braces are required in \`if/else\` and other compound statements.
-    if flag {
-        io:println(1);
-    } else {
-        io:println(2);
-    }
+    boolean flag = true;
+    io:println(flag);
+
+    int x1 = 3;
+    int x2 = 2;
+
+    // The example below will output \`false\`.
+    io:println(x1 < x2);
 }
 `,
 ];
@@ -55,7 +51,7 @@ export function Booleans({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c41c2b8d91f5e86ac214a1ffb4f2f6a8&file=booleans.bal",
+                "https://play.ballerina.io/?gist=377da0abf8928b59fe7ca474b73911fa&file=booleans.bal",
                 "_blank"
               );
             }}
@@ -208,11 +204,34 @@ export function Booleans({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run booleans.bal`}</span>
-              <span>{`1`}</span>
+              <span>{`true`}</span>
+              <span>{`false`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/if-statement/">If statement</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/match-guard-in-match-statements/">
+              Match guard in match statements
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -249,10 +268,7 @@ export function Booleans({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Match statement"
-            href="/learn/by-example/match-statement"
-          >
+          <Link title="If statement" href="/learn/by-example/if-statement">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -261,7 +277,7 @@ export function Booleans({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Match statement
+                  If statement
                 </span>
               </div>
               <svg

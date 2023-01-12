@@ -11,6 +11,7 @@ public function main() {
     // Declare an array of length 3, where the members are arrays of length 2.
     string[3][2] orderItems = [["carrot", "apple"], ["avocado", "egg"], ["fish", "banana"]];
     io:println(orderItems);
+
     // Declare an array of length 2, where the element type is an array of variable length.
     string[2][] orderItems2 = [["carrot", "apple"], ["avocado", "egg", "fish", "banana"]];
     io:println(orderItems2);
@@ -47,8 +48,8 @@ export function NestedArrays({ codeSnippets }) {
       <p>
         Ballerina supports nested arrays where the element type is also an array
         type <code>T[p][q][r]</code>. Specifically, <code>T[p][q][r]</code> is
-        interpreted as ( (T[r])[q])[p]. Hence, <code>T[p][q]</code> will
-        construct an array of size <code>p</code> where the element type is{" "}
+        interpreted as <code>((T[r])[q])[p]</code>. Hence, <code>T[p][q]</code>{" "}
+        will construct an array of size <code>p</code> where the element type is{" "}
         <code>T[q]</code>. This is to be aligned with the member access
         expression where <code>v[i][j]</code> will evaluate to a value of type{" "}
         <code>T</code> if and only if <code>0 ≤ i ≤ p</code> and{" "}
@@ -65,7 +66,7 @@ export function NestedArrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6d31a3298a779b3ef01e250dc35766f7&file=nested_arrays.bal",
+                "https://play.ballerina.io/?gist=fff1959f21d60aaf6b2a7282a362f7fd&file=nested_arrays.bal",
                 "_blank"
               );
             }}
@@ -221,7 +222,7 @@ export function NestedArrays({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/lang.array">
-              Manipulating an array <code>(lang.array)</code> - Language library
+              Manipulating an array <code>(lang.array)</code>
             </a>
           </span>
         </li>

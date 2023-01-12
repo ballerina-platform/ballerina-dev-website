@@ -86,7 +86,7 @@ export function JsonType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8365eed30bb49145918476aa623950ff&file=json_type.bal",
+                "https://play.ballerina.io/?gist=339f5b44560807eb747239c561bea3df&file=json_type.bal",
                 "_blank"
               );
             }}
@@ -266,8 +266,8 @@ export function JsonType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/converting-to-user-defined-type/">
-              Converting to user-defined type
+            <a href="/learn/by-example/converting-from-json-to-user-defined-type-with-langlib-functions/">
+              Converting from JSON to user defined type with langlib functions
             </a>
           </span>
         </li>

@@ -52,7 +52,7 @@ export function FunctionValues({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d768a6baea75afb465ed3158ee5ff044&file=function_values.bal",
+                "https://play.ballerina.io/?gist=582541c766c6efc34aa0eb095dc54ffd&file=function_values.bal",
                 "_blank"
               );
             }}
@@ -234,7 +234,7 @@ export function FunctionValues({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/function-types/">Function values</a>
+            <a href="/learn/by-example/function-types/">Function types</a>
           </span>
         </li>
       </ul>

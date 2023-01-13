@@ -3,7 +3,7 @@
 _Owners_: @ldclakmal @shafreenAnfar  
 _Reviewers_: @shafreenAnfar  
 _Created_: 2021/10/01  
-_Updated_: 2023/01/05  
+_Updated_: 2022/02/17  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -199,7 +199,7 @@ public type ClientCredentialsGrantConfig record {|
     string tokenUrl;
     string clientId;
     string clientSecret;
-    string|string[] scopes?;
+    string[] scopes?;
     decimal defaultTokenExpTime = 3600;
     decimal clockSkew = 0;
     map<string> optionalParams?;
@@ -213,8 +213,14 @@ public type PasswordGrantConfig record {|
     string password;
     string clientId?;
     string clientSecret?;
-    string|string[] scopes?;
-    RefreshConfig|INFER_REFRESH_CONFIG refreshConfig?;
+    string[] scopes?;
+    record {|
+        string refreshUrl;
+        string[] scopes?;
+        map<string> optionalParams?;
+        CredentialBearer credentialBearer = AUTH_HEADER_BEARER;
+        ClientConfiguration clientConfig = {};
+    |} refreshConfig?;
     decimal defaultTokenExpTime = 3600;
     decimal clockSkew = 0;
     map<string> optionalParams?;
@@ -227,7 +233,7 @@ public type RefreshTokenGrantConfig record {|
     string refreshToken;
     string clientId;
     string clientSecret;
-    string|string[] scopes?;
+    string[] scopes?;
     decimal defaultTokenExpTime = 3600;
     decimal clockSkew = 0;
     map<string> optionalParams?;
@@ -240,7 +246,7 @@ public type JwtBearerGrantConfig record {|
     string assertion;
     string clientId?;
     string clientSecret?;
-    string|string[] scopes?;
+    string[] scopes?;
     decimal defaultTokenExpTime = 3600;
     decimal clockSkew = 0;
     map<string> optionalParams?;
@@ -373,7 +379,7 @@ import ballerina/http;
                     }
                 }
             },
-            scopes: "admin"
+            scopes: ["admin"]
         }
     ]
 }

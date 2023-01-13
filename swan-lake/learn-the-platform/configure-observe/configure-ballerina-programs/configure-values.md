@@ -64,7 +64,7 @@ The module information requirement can be explained in the following table accor
 
 The format of providing module information in each configuration syntax is described below.
 
-#### Command line argument syntax
+#### Command-line argument syntax
 
 The key of a CLI parameter can be specified as,
 

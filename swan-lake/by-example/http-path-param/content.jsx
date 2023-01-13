@@ -19,8 +19,8 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The path param is defined as a part of the resource path within brackets along with the type and it is
-    // extracted from the request URI.
+    // The path param is defined as a part of the resource path within brackets
+    // along with the type and it is extracted from the request URI.
     resource function get albums/[string title]() returns Album|http:NotFound {
         Album? album = albums[title];
         if album is () {
@@ -47,11 +47,14 @@ export function HttpPathParam({ codeSnippets }) {
       <h1>REST service - Path parameter</h1>
 
       <p>
-        The <code>http</code> module provides first class support for specifying{" "}
-        <code>Path parameters</code> in the resource path along with the type.
-        The supported types are <code>string</code>, <code>int</code>,{" "}
-        <code>float</code>, <code>boolean</code>, and <code>decimal</code>{" "}
-        (e.g., path/[string foo]).
+        The <code>path parameter</code> is a mandatory but variable part of a
+        resource URL. <code>path parameters</code> can be added to a resource
+        method by specifying the parameter type and name in the resource path
+        (eg: <code>albums/[string name]</code>). The <code>http</code> module
+        supports <code>string</code>, <code>int</code>, <code>float</code>,{" "}
+        <code>boolean</code>, and <code>decimal</code> types as path parameter
+        types. Use it when designing REST API endpoints that require dynamic
+        path segments.
       </p>
 
       <Row
@@ -62,6 +65,31 @@ export function HttpPathParam({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=bb1952f605cb790761a399b882722557&file=http_path_param.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/http-path-param",
@@ -264,6 +292,17 @@ export function HttpPathParam({ codeSnippets }) {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the client
+          given in the{" "}
+          <a href="/learn/by-example/http-client-path-parameter/">
+            HTTP client - Path parameter
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -271,7 +310,7 @@ export function HttpPathParam({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

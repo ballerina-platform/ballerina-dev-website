@@ -10,26 +10,21 @@ import ballerina/io;
 
 public function main() returns error? {
     http:Client httpClient = check new ("localhost:9090",
-        // Retry configuration options.
         retryConfig = {
-
-            // Initial retry interval in seconds.
+            // The initial retry interval in seconds.
             interval: 3,
 
-            // Number of retry attempts before giving up.
+            // The number of retry attempts before stopping.
             count: 3,
 
-            // Multiplier of the retry interval to exponentially increase
-            // the retry interval.
+            // The multiplier of the retry interval exponentially increases the retry interval.
             backOffFactor: 2.0,
 
-            // Upper limit of the retry interval in seconds. If
-            // \`interval\` into \`backOffFactor\` value exceeded
-            // \`maxWaitInterval\` interval value,
-            // \`maxWaitInterval\` will be considered as the retry
-            // interval.
+            // The upper limit of the retry interval is in seconds. If the \`interval\` into the \`backOffFactor\`
+            // value exceeded the \`maxWaitInterval\` interval value, \`maxWaitInterval\` is considered as the retry interval.
             maxWaitInterval: 20
-        });
+        }
+    );
     string payload = check httpClient->/albums;
     io:println(payload);
 }
@@ -50,7 +45,8 @@ export function HttpRetry({ codeSnippets }) {
 
       <p>
         The HTTP retry client tries sending over the same request to the backend
-        service when there is a network level failure.
+        service when there is a network-level failure. The retry is configured
+        in the <code>retryConfig</code> field of the client configuration.
       </p>
 
       <Row
@@ -61,6 +57,31 @@ export function HttpRetry({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=6b6c7c0d73054a6a5d49ac90332ba82d&file=http_retry.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/http-retry",
@@ -207,7 +228,7 @@ export function HttpRetry({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run http_retry.bal.bal`}</span>
+              <span>{`\$ bal run http_retry.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -220,7 +241,7 @@ export function HttpRetry({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

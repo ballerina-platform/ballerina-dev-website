@@ -55,7 +55,7 @@ export function ConstAndFinal({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9e8c544c88a9e1845e2854f7c77e3438&file=const_and_final.bal",
+                "https://play.ballerina.io/?gist=5fa3fc5aac4df947966c41b4378304d3&file=const_and_final.bal",
                 "_blank"
               );
             }}

@@ -7,38 +7,16 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-// This function definition has two parameters of type \`int\`.
-// The \`returns\` clause specifies the type of the return value.
+// This function definition has two parameters of type \`int\`. 
+// \`returns\` clause specifies type of return value.
 function add(int x, int y) returns int {
     int sum = x + y;
-    // The \`return\` statement returns a value.
+    // \`return\` statement returns a value.
     return sum;
 }
 
-// The function parameters can have default values.
-function calculateWeight(decimal mass, decimal gForce = 9.8) returns decimal {
-    return mass * gForce;
-}
-
-// The function returns \`nil\`.
-function print(anydata data) {
-    io:println(data);
-}
-
 public function main() {
-    // Invoke the function \`add\` by passing the arguments.
-    int sum = add(5, 11);
-    // A function with no return type does not need a variable assignment.
-    print(sum);
-
-    // Invoke the \`calculateWeight\` function with the default arguments.
-    print(calculateWeight(5));
-
-    // Invoke the \`add\` function with the named arguments.
-    print(add(x = 5, y = 6));
-
-    // The return value of the function can be ignored by assigning it to \`_\`.
-    _ = calculateWeight(mass = 5, gForce = 10);
+    io:println(add(5, 11));
 }
 `,
 ];
@@ -56,15 +34,9 @@ export function Functions({ codeSnippets }) {
       <h1>Functions</h1>
 
       <p>
-        Functions are declared using the <code>function</code> keyword. It
-        accepts zero or more arguments and returns a single value. The{" "}
-        <code>returns</code> keyword is used to indicate the return type of the
-        function.
-      </p>
-
-      <p>
-        Function parameters are final variables and cannot be modified within
-        the function.
+        A function accepts zero or more arguments and returns a single value.
+        Function parameters are declared as in C. You are not allowed to assign
+        to parameters in Ballerina.
       </p>
 
       <Row
@@ -77,7 +49,7 @@ export function Functions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=36cc2ac6d242826441ad47f3b3e79ce6&file=functions.bal",
+                "https://play.ballerina.io/?gist=8599719a1220162bbfeebf154941fedd&file=functions.bal",
                 "_blank"
               );
             }}
@@ -231,102 +203,16 @@ export function Functions({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run functions.bal`}</span>
               <span>{`16`}</span>
-              <span>{`49.0`}</span>
-              <span>{`11`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/included-record-parameters/">
-              Included record parameters
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/rest-parameters/">Rest Parameters</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/default-values-for-function-parameters/">
-              Default values for function parameters
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/provide-function-arguments-by-name/">
-              Provide function arguments by name
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/function-pointers/">Function pointers</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/function-values/">Function values</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/function-types/">Function types</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/anonymous-function/">
-              Anonymous function
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/function-closure/">Function closure</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Binding patterns in match statement"
-            href="/learn/by-example/binding-patterns-in-match-statement"
+            title="Match statement"
+            href="/learn/by-example/match-statement"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -353,7 +239,7 @@ export function Functions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Binding patterns in match statement
+                  Match statement
                 </span>
               </div>
             </div>
@@ -361,8 +247,8 @@ export function Functions({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Included record parameters"
-            href="/learn/by-example/included-record-parameters"
+            title="Function values"
+            href="/learn/by-example/function-values"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -372,7 +258,7 @@ export function Functions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Included record parameters
+                  Function values
                 </span>
               </div>
               <svg

@@ -7,8 +7,8 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-// Use the value of the preceding \`str\` parameter to initialize the \`end\` parameter.
-function subString(string str, int 'start = 0, int end = str.length()) returns string {
+function subString(string str, int 'start = 0, int end = str.length())
+                                returns string {
     return str.substring('start, end);
 }
 
@@ -54,7 +54,7 @@ export function DefaultValuesForFunctionParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=aae744ff81b9ddeb87b863b3bb670cd0&file=default_values_for_function_parameters.bal",
+                "https://play.ballerina.io/?gist=9179bf49872c59345be982d6cbaa0f67&file=default_values_for_function_parameters.bal",
                 "_blank"
               );
             }}
@@ -214,28 +214,6 @@ export function DefaultValuesForFunctionParameters({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/rest-parameters/">Rest Parameters</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/provide-function-arguments-by-name/">
-              Provide function arguments by name
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

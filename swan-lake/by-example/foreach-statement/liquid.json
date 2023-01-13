@@ -1,16 +1,7 @@
 {
   "title": "Foreach statement",
-  "description": "This BBE demonstrates how to use the `foreach` statement to loop a list, iterate a structure, and use `foreach` statement with binding patterns in Ballerina.",
-  "keywords": [
-    "ballerina",
-    "ballerina by example",
-    "bbe",
-    "foreach",
-    "loops",
-    "iterate",
-    "iterable",
-    "collections"
-  ],
+  "description": "This BBE demonstrates foreach statement in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "foreach", "loops"],
   "permalink": "/learn/by-example/foreach-statement",
   "active": "foreach-statement",
   "redirect_from": [

@@ -1,16 +1,13 @@
 {
   "title": "Default values for record fields",
-  "description": "This BBE demonstrates the default values for record fields, adding default values to record fields, and default values in inclusions.",
+  "description": "This BBE demonstrates default values for record fields in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
+    "default value",
     "record",
-    "record type",
-    "record field",
-    "inclusion",
-    "record inclusion",
-    "default values"
+    "record field"
   ],
   "permalink": "/learn/by-example/default-values-for-record-fields",
   "active": "default-values-for-record-fields",

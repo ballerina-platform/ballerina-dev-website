@@ -9,12 +9,6 @@ export const codeSnippetData = [
 import ballerina/io;
 
 public function main() returns error? {
-    // The HTTP client's chunking behavior can be configured as \`CHUNKING_AUTO\`,
-    // \`CHUNKING_ALWAYS\`, or \`CHUNKING_NEVER\` only available HTTP/1.1 protocol.
-    // In this example, it is set to \`CHUNKING_NEVER\`, which means that chunking never happens irrespective of the request size.
-    // When chunking is set to \`CHUNKING_AUTO\`, chunking is done based on the request.
-    // The \`http1Settings\` annotation provides the chunking-related configurations.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings.
     http:Client albumClient = check new ("localhost:9090",
         httpVersion = http:HTTP_1_1,
         http1Settings = {
@@ -46,7 +40,12 @@ export function HttpClientChunking({ codeSnippets }) {
         The HTTP client can be configured for chunking. By default, the HTTP
         client sends messages with the <code>content-length</code> header. If
         the message size is larger than the buffer size (8K), messages are
-        chunked. Chunking can be disabled using the client options.
+        chunked. Chunking can be disabled using the client configuration. The
+        chunking behavior can be configured as <code>CHUNKING_AUTO</code>,{" "}
+        <code>CHUNKING_ALWAYS</code>, or <code>CHUNKING_NEVER</code> only
+        available HTTP/1.1 protocol. When the config is set to{" "}
+        <code>CHUNKING_ALWAYS</code>, chunking happens irrespective of the
+        response payload size.
       </p>
 
       <Row
@@ -57,6 +56,31 @@ export function HttpClientChunking({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=6da17fbb189ecf76b17242bf0c653221&file=http_client_chunking.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/http-client-chunking",

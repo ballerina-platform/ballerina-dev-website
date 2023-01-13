@@ -11,7 +11,6 @@ import ballerina/io;
 service / on new http:Listener(9090) {
 
     resource function post receiver(http:Request request) returns string|error {
-        // Retrieve the byte stream.
         stream<byte[], io:Error?> streamer = check request.getByteStream();
 
         // Writes the incoming stream to a file using the \`io:fileWriteBlocksFromStream\` API
@@ -37,9 +36,10 @@ export function HttpServiceFileUpload({ codeSnippets }) {
       <h1>HTTP service - File upload</h1>
 
       <p>
-        Ballerina supports HTTP input and output streaming capability based on
-        the Ballerina <code>stream</code> type. The example depicts a file
-        upload through streaming.
+        The input streaming is handled through the Ballerina <code>stream</code>{" "}
+        type. The resource can access the byte stream of the payload using the{" "}
+        <code>getByteStream</code> method of the <code>http:Request</code>. This
+        is useful when handling continuous payload, file uploads, etc.
       </p>
 
       <Row
@@ -50,6 +50,31 @@ export function HttpServiceFileUpload({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=7257cff05e3615bbb4a4608d19b00575&file=http_service_file_upload.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/http-service-file-upload",
@@ -187,13 +212,15 @@ export function HttpServiceFileUpload({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>
-        Invoke the service via the{" "}
-        <a href="/learn/by-example/http-client-file-upload">
-          Client file upload
-        </a>
-        .
-      </p>
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the service via the{" "}
+          <a href="/learn/by-example/http-client-file-upload">
+            Client file upload
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -212,7 +239,7 @@ export function HttpServiceFileUpload({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/http/#41-service-configuration">
-              <code>http</code> package - Specification
+              <code>http</code> module - Specification
             </a>
           </span>
         </li>

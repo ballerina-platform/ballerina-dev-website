@@ -20,7 +20,7 @@ table<Album> key(title) albums = table [
 service / on new http:Listener(9090) {
 
     // The resource returns \`409 Conflict\` status code as the error response status code using 
-    // \`StatusCodeResponse\` constants. This constant does not have a body or headers
+    // \`StatusCodeResponse\` constants. This constant does not have a body or headers.
     resource function post albums(@http:Payload Album album) returns Album|http:Conflict {
         if albums.hasKey(album.title) {
             return http:CONFLICT;
@@ -47,10 +47,14 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
       <h1>REST service - Send different status codes</h1>
 
       <p>
-        The resource method can return <code>StatusCodeResponse</code> record.
-        Ballerina provides built in records for each HTTP status codes. The{" "}
-        <code>StatusCodeResponse</code> constants are available to send the a
-        response without a body or headers.
+        The subtypes of the <code>http:StatusCodeResponse</code> record type
+        represent different HTTP status code responses. Returning them from the
+        resource function results in the relevant HTTP status code response. To
+        send a non-entity body response, use the relevant constant value
+        declared in the <code>http</code> module. These constant values can be
+        directly returned from the resource method by specifying the relevant
+        return type in the resource function signature. Use this when different
+        status code responses need to be sent without a body and headers.
       </p>
 
       <Row
@@ -61,6 +65,31 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=7cde9b735386e1ef019eeb48398311d3&file=http_send_different_status_codes.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/http-send-different-status-codes",
@@ -269,12 +298,21 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
               <span>{`< content-length: 0`}</span>
               <span>{`< server: ballerina`}</span>
               <span>{`< date: Mon, 5 Dec 2022 16:23:51 +0530`}</span>
-              <span>{`< `}</span>
-              <span>{`{"message":"album already exists"}`}</span>
+              <span>{`<`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-send-request-receive-response/">
+            Send request/Receive response client
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -283,7 +321,7 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

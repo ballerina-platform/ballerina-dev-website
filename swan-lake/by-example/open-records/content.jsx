@@ -7,59 +7,35 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-// \`Student\` type allows additional fields with \`anydata\` values.
-type Student record {
+// \`Person\` type allows additional fields with \`anydata\` values.
+type Person record {
     string name;
-    int age;
 };
 
-type PartTimeStudent record {|
+// \`Employee\` type allows additional fields with \`anydata\` values.
+type Employee record {
     string name;
-    int age;
-    // Rest descriptor allows additional fields with \`anydata\` values
-    // in the \`PartTimeStudent\` type.
-    anydata...;
-|};
+    int id;
+};
+
+// Adds an additional \`id\` field to \`e\`.
+Employee e = {
+    name: "James", id: 10
+};
+
+// You can assign an \`Employee\` type value to a \`Person\`.
+Person p = e;
+
+Person p2 = {
+    name: "John", "country": "UK"
+};
+
+// You can assign a \`Person\` type value to a \`map\`.
+map<anydata> m = p2;
 
 public function main() {
-    // Adds an additional \`country\` field to \`s1\`.
-    Student s1 = {
-        name: "John",
-        age: 25,
-        "country": "UK"
-    };
-    io:println(s1);
-
-    // Accesses the \`age\` field in \`s1\`.
-    int age = s1.age;
-    io:println(age);
-
-    // Accesses the \`country\` field in \`s1\`.
-    anydata country = s1["country"];
-    io:println(country);
-
-    // Adds an additional \`studyHours\` field to \`s2\`.
-    PartTimeStudent s2 = {
-        name: "Anne",
-        age: 23,
-        "studyHours": 6
-    };
-
-    // Accesses the \`studyHours\` field in \`s2\`.
-    anydata studyHours = s2["studyHours"];
-    io:println(studyHours);
-
-    // Adds an additional \`credits\` field to \`s2\`.
-    s2["credits"] = 120.5;
-    io:println(s2);
-
-    // You can assign a \`PartTimeStudent\` type value to a \`Student\`.
-    Student s3 = s2;
-    io:println(s3);
-
-    // You can assign a \`Person\` type value to a \`map\`.
-    map<anydata> s4 = s3;
-    io:println(s4);
+    io:println(p);
+    io:println(m);
 }
 `,
 ];
@@ -77,13 +53,11 @@ export function OpenRecords({ codeSnippets }) {
       <h1>Open records</h1>
 
       <p>
-        A record type that uses either the <code>&#123;</code> and{" "}
-        <code>&#125;</code> delimiters or the <code>&#123;|</code> and{" "}
-        <code>|&#125;</code> delimiters with a rest descriptor is considered
-        open. They allow fields other than those specified. The type of
-        unspecified fields is <code>anydata</code>. Open records belong to{" "}
-        <code>map&lt;anydata&gt;</code>. Quoted keys can be used to specify
-        fields that are not mentioned in the record type.
+        Record types are open by default. They allow fields other than those
+        specified. The type of unspecified fields is <code>anydata</code>.
+        Records are <code>maps</code>. Open records belong to{" "}
+        <code>map&lt;anydata&gt;</code>. Use quoted keys for fields not
+        mentioned in the <code>record</code> type.
       </p>
 
       <Row
@@ -96,7 +70,7 @@ export function OpenRecords({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8ef97de44a079c2b8ce3a087fc868697&file=open_records.bal",
+                "https://play.ballerina.io/?gist=18424f2a71cb83477757cca60d04cc7a&file=open_records.bal",
                 "_blank"
               );
             }}
@@ -249,47 +223,12 @@ export function OpenRecords({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run open_records.bal`}</span>
-              <span>{`{"name":"John","age":25,"country":"UK"}`}</span>
-              <span>{`25`}</span>
-              <span>{`UK`}</span>
-              <span>{`6`}</span>
-              <span>{`{"name":"Anne","age":23,"studyHours":6,"credits":120.5}`}</span>
-              <span>{`{"name":"Anne","age":23,"studyHours":6,"credits":120.5}`}</span>
-              <span>{`{"name":"Anne","age":23,"studyHours":6,"credits":120.5}`}</span>
+              <span>{`{"name":"James","id":10}`}</span>
+              <span>{`{"name":"John","country":"UK"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/records/">Records</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/controlling-openness/">
-              Controlling openness
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/maps/">Maps</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

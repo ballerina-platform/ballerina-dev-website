@@ -22,7 +22,7 @@ service /cookieDemo on serverEP {
 
             // Create a new cookie by setting \`name\` as the \`username\` and \`value\` as the logged-in user's name.
             // Set the cookies path as \`/\` to apply it to all the resources in the service.
-            http:Cookie cookie = new("username", name.toString(), path = "/");
+            http:Cookie cookie = new ("username", name.toString(), path = "/");
             http:Response response = new;
 
             // Add the created cookie to the response.
@@ -50,9 +50,7 @@ service /cookieDemo on serverEP {
             if user is string {
                 // Respond with the username added to the welcome message.
                 return "Welcome back " + user;
-
             }
-
         }
         return http:NOT_FOUND;
     }
@@ -74,7 +72,11 @@ export function HttpCookiesService({ codeSnippets }) {
 
       <p>
         HTTP cookies can track, personalize, and manage the session in the
-        service and client.
+        service. The cookies can be accessed from the <code>getCookies</code>{" "}
+        method of the <code>http:Request</code>. Setting cookies back in the
+        response is done by the <code>addCookie</code> method of the{" "}
+        <code>http:Response</code>. This is useful for services to maintain the
+        state.
       </p>
 
       <Row
@@ -85,6 +87,31 @@ export function HttpCookiesService({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=4c0f6147650c3748129fd8a3bb208b39&file=http_cookies_service.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/http-cookies-service",
@@ -224,8 +251,9 @@ export function HttpCookiesService({ codeSnippets }) {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/http-cookies-client/">Cookies client</a>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-cookies-client/">Cookies client</a>{" "}
+          example.
         </p>
       </blockquote>
 

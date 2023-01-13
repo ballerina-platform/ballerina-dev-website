@@ -47,10 +47,14 @@ export function Http2To11DowngradeService({ codeSnippets }) {
       <h1>HTTP service - HTTP/2 to HTTP/1.1 downgrade</h1>
 
       <p>
-        The HTTP service is configured to run over the HTTP/1.1 protocol. So
-        this service will only accept requests receiving over the HTTP/1.1
-        protocol. If an HTTP/2 enabled client sends a request to this service,
-        client will also get downgraded to use HTTP/1.1.
+        The HTTP service is configured to run over the HTTP/1.1 protocol.
+        Therefore this service only accepts requests received over the HTTP/1.1
+        protocol. If an HTTP2-enabled client sends a request to this service,
+        the client gets downgraded to use HTTP/1.1. If the listener is
+        configured to communicate over HTTPS, the ALPN negotiation of choosing
+        which protocol to be used over the secure connection is handled
+        internally. This avoids additional round trips and is independent of the
+        application-layer protocols.
       </p>
 
       <Row
@@ -61,6 +65,31 @@ export function Http2To11DowngradeService({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=f45e9dc710298679a89d7667b0146ef1&file=http_2_to_1_1_downgrade_service.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/http-2-to-1-1-downgrade-service",
@@ -265,10 +294,11 @@ export function Http2To11DowngradeService({ codeSnippets }) {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
-          </a>
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -279,7 +309,7 @@ export function Http2To11DowngradeService({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

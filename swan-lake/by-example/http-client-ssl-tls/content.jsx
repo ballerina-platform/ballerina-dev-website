@@ -8,17 +8,13 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
-    // An HTTP client can be configured to communicate through HTTPS as well.
-    // To secure a client using HTTPS, the client needs to be configured with
-    // a certificate file of the listener. The \`http:ClientSecureSocket\` record
-    // provides the SSL-related configurations of the client.
-    http:Client albumClient = check new("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }
@@ -42,9 +38,10 @@ export function HttpClientSslTls({ codeSnippets }) {
       <h1>HTTP client - SSL/TLS</h1>
 
       <p>
-        You can use the HTTPS client to connect or interact with an HTTPS
-        listener. Provide the <code>http:ClientSecureSocket</code>{" "}
-        configurations to the client to initiate an HTTPS connection.
+        The <code>http:Client</code> can be configured to communicate through
+        HTTPS by providing a certificate file. The certificate can be provided
+        through the <code>secureSocket</code> field of the client configuration.
+        Use this to secure the communication between the client and the server.
       </p>
 
       <Row
@@ -55,6 +52,31 @@ export function HttpClientSslTls({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=7b1da1f40f88469a13b1f9a7b28a818f&file=http_client_ssl_tls.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/http-client-ssl-tls",

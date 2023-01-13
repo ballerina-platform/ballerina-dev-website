@@ -6,23 +6,23 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
- 
+
 public function main() returns error? {
     int[] nums = [1, 2, 3, 4];
     int[] numsTimes10 = [];
- 
+
     // The \`from\` clause works similar to a \`foreach\` statement.
     check from var i in nums
-        // The \`do\` statement block is evaluated in each iteration.
+        // The \`do\` statement block is evaluated for each iteration.
         do {
             numsTimes10.push(i * 10);
         };
- 
+
     io:println(numsTimes10);
- 
+
     // Print only the even numbers in the \`nums\` array.
-    // Intermediate clauses such as \`let\` clause, \`join\` clause, \`order by\` clause,
-    // \`where clause\`, and \`limit\` clause can also be used.
+    // Intermediate clauses such as \`let\` clause, \`join\` clause, \`order by\` clause, \`where clause\` and \`limit\` clause
+    // can also be used.
     check from var i in nums
         where i % 2 == 0
         do {
@@ -45,18 +45,26 @@ export function QueryActions({ codeSnippets }) {
       <h1>Query actions</h1>
 
       <p>
-        A query action allows you to use the functionalities of a query
-        expression to iteratively execute a code block like a{" "}
-        <code>foreach</code> statement. A Query action starts with a{" "}
-        <code>from</code> clause and ends with a <code>do</code> clause. It can
-        contain all the intermediate clauses in a query expression.
+        The clauses in a query action are executed in the same way as the
+        clauses in a query expression.
       </p>
 
       <p>
-        The clauses in a query action are executed in the same way as the
-        clauses in a query expression. If a clause completes early with an error{" "}
+        Query action starts with the <code>from</code> clause and ends with the{" "}
+        <code>do</code> clause.
+      </p>
+
+      <p>
+        In the same way, the query is built in query expressions, query actions
+        also can have intermediate clauses of <code>let</code>,{" "}
+        <code>join</code>, <code>order by</code>, <code>where</code>, and{" "}
+        <code>limit</code>.
+      </p>
+
+      <p>
+        If a clause in the query action completes early with an error{" "}
         <code>e</code>, the result of the query action is <code>e</code>.
-        Otherwise, the result is <code>null</code>.
+        Otherwise, the result of the query action is <code>nil</code>.
       </p>
 
       <Row
@@ -69,7 +77,7 @@ export function QueryActions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2beaa8a80d4e839a05dfe8100ff35fb0&file=query_actions.bal",
+                "https://play.ballerina.io/?gist=aa463542f7112975fa8e000b2db95e20&file=query_actions.bal",
                 "_blank"
               );
             }}
@@ -229,18 +237,6 @@ export function QueryActions({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/query-expressions">Query expressions</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

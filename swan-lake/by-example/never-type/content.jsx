@@ -75,7 +75,7 @@ export function NeverType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=efebe1cb03d3895e6fdf0818d3685fb9&file=never_type.bal",
+                "https://play.ballerina.io/?gist=367d3db2129ee2acdce4bb00648b20bc&file=never_type.bal",
                 "_blank"
               );
             }}
@@ -241,7 +241,10 @@ export function NeverType({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Stream type" href="/learn/by-example/stream-type">
+          <Link
+            title="Dependent types"
+            href="/learn/by-example/dependent-types"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +270,7 @@ export function NeverType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Stream type
+                  Dependent types
                 </span>
               </div>
             </div>

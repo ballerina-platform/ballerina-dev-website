@@ -1,15 +1,13 @@
 {
   "title": "Let clause",
-  "description": "This BBE demonstrates the `let` clause in Ballerina, defining temporary variables inside a query expression, and defining support variables inside a query expression.",
+  "description": "This BBE demonstrates let clause in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "let clause",
     "query",
-    "query expression",
-    "where",
-    "condition"
+    "query expression"
   ],
   "permalink": "/learn/by-example/let-clause",
   "active": "let-clause",

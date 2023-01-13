@@ -7,22 +7,22 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-function add(int x, int y, int z) {
+function foo(int x, int y, int z) {
     io:println("Sum of x, y and z:", x + y + z);
 }
 
 public function main() {
-    // Calls the \`add\` function using the positional arguments.
-    add(1, 2, 3);
+    // Call the \`foo\` function using the positional arguments.
+    foo(1, 2, 3);
 
-    // Calls the \`add\` function using the named arguments in the same order as the parameters of the function definition.
-    add(x = 1, y = 2, z = 3);
+    // Call the \`foo\` function using the named arguments in the same order as the parameters of the function definition.
+    foo(x = 1, y = 2, z = 3);
 
-    // Calls the \`add\` function using the named arguments in a different order from the order of the parameters in the function definition.
-    add(z = 3, y = 2, x = 1);
+    // Call the \`foo\` function using the named arguments in a different order from the order of the parameters in the function definition.
+    foo(z = 3, y = 2, x = 1);
 
-    // Calls the \`add\` function using a combination of named arguments and positional arguments.
-    add(1, z = 3, y = 2);
+    // Call the \`foo\` function using a combination of named arguments and positional arguments.
+    foo(1, z = 3, y = 2);
 }
 `,
 ];
@@ -54,7 +54,7 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0b4f89784e5b9b67f1bd96372a0e9e88&file=provide_function_arguments_by_name.bal",
+                "https://play.ballerina.io/?gist=e184f9622885f1f561cec0f9c10306a6&file=provide_function_arguments_by_name.bal",
                 "_blank"
               );
             }}
@@ -215,28 +215,6 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/functions/">Functions</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/included-record-parameters/">
-              Included record parameters
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

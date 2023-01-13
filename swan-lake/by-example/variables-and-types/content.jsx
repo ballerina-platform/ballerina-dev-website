@@ -48,7 +48,7 @@ export function VariablesAndTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6ca419ae36af4d7d96b3609bed0eca13&file=variables_and_types.bal",
+                "https://play.ballerina.io/?gist=c8ecbb5d23d333d5fd7cfc64d4ab940b&file=variables_and_types.bal",
                 "_blank"
               );
             }}
@@ -209,7 +209,10 @@ export function VariablesAndTypes({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Init function" href="/learn/by-example/init-function">
+          <Link
+            title="Programs and modules"
+            href="/learn/by-example/programs-and-modules"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -235,7 +238,7 @@ export function VariablesAndTypes({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Init function
+                  Programs and modules
                 </span>
               </div>
             </div>

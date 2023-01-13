@@ -59,7 +59,7 @@ export function IncludedRecordParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c2ae54082dc81fad736fd5931a1c772a&file=included_record_parameters.bal",
+                "https://play.ballerina.io/?gist=d2e43f5d1dec7756b3ca31292a3b8456&file=included_record_parameters.bal",
                 "_blank"
               );
             }}
@@ -223,7 +223,10 @@ export function IncludedRecordParameters({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Functions" href="/learn/by-example/functions">
+          <Link
+            title="Function values"
+            href="/learn/by-example/function-values"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -249,7 +252,7 @@ export function IncludedRecordParameters({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Functions
+                  Function values
                 </span>
               </div>
             </div>

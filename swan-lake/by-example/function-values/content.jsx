@@ -6,19 +6,33 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
- 
+
+// Anonymous function syntax.
+var isOdd = function(int n) returns boolean {
+    return n % 2 != 0;
+};
+
+// Function type syntax.
+type IntFilter function (int n) returns boolean;
+
 // Module-level function definition.
 function isEven(int n) returns boolean {
-   return n % 2 == 0;
+    return n % 2 == 0;
 }
- 
-public function main() {
-   // The \`isEven\` function is referred as a value.
-   function (int n) returns boolean f = isEven;
 
-   // The function values can be executed like regular function calls.
-   io:println(f(5));
-   io:println(f(6));
+public function main() {
+    // The \`isEven\` function  referred as a value.
+    IntFilter f = isEven;
+    int[] nums = [1, 2, 3];
+
+    // Arrays provide the usual functional methods: 
+    // \`filter\`, \`map\`, \`forEach\`, and \`reduce\`.
+    int[] evenNums = nums.filter(f);
+    io:println(evenNums);
+
+    // Shorthand syntax when the type is inferred and the body is an expression.
+    int[] oddNums = nums.filter(n => n % 2 != 0);
+    io:println(oddNums);
 }
 `,
 ];
@@ -36,10 +50,9 @@ export function FunctionValues({ codeSnippets }) {
       <h1>Function values</h1>
 
       <p>
-        In Ballerina, a function is also a value implying that it can be stored
-        in variables and passed to or returned from the functions. A function
-        value can be executed by calling it. A function value cannot be assigned
-        to a defined function name.
+        Functions are values and work as closures. Function type is a separate
+        basic type. Anonymous function and type syntax look like function
+        definition without the name.
       </p>
 
       <Row
@@ -52,7 +65,7 @@ export function FunctionValues({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=582541c766c6efc34aa0eb095dc54ffd&file=function_values.bal",
+                "https://play.ballerina.io/?gist=5ec0d18421ddb95b97eb85a53274d77c&file=function_values.bal",
                 "_blank"
               );
             }}
@@ -205,47 +218,16 @@ export function FunctionValues({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run function_values.bal`}</span>
-              <span>{`false`}</span>
-              <span>{`true`}</span>
+              <span>{`[2]`}</span>
+              <span>{`[1,3]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/functions/">Functions</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/function-pointers/">Function pointers</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/function-types/">Function types</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Function pointers"
-            href="/learn/by-example/function-pointers"
-          >
+          <Link title="Functions" href="/learn/by-example/functions">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -271,14 +253,17 @@ export function FunctionValues({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Function pointers
+                  Functions
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Function types" href="/learn/by-example/function-types">
+          <Link
+            title="Included record parameters"
+            href="/learn/by-example/included-record-parameters"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -287,7 +272,7 @@ export function FunctionValues({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Function types
+                  Included record parameters
                 </span>
               </div>
               <svg

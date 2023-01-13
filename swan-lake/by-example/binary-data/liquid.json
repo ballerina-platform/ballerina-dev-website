@@ -1,15 +1,12 @@
 {
   "title": "Binary data",
-  "description": "Byte array literal, binary data, base16 data format, base64 data format.",
+  "description": "This BBE demonstrates binary data in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "binary data",
-    "byte",
-    "Base16",
-    "Base64",
-    "literal"
+    "byte"
   ],
   "permalink": "/learn/by-example/binary-data",
   "active": "binary-data",

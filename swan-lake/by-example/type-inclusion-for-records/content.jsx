@@ -7,32 +7,36 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type Person record {|
-    string name;
-    int age;
-|};
+type Date record {
+    int year;
+    int month;
+    int day;
+};
 
-type Student record {|
-    int studentId;
-    string code;
-|};
+type TimeOfDay record {
+    int hour;
+    int minute;
+    decimal seconds;
+};
 
-// The \`PartTimeStudent\` record has all the fields of \`Person\` and \`Student\`.
-type PartTimeStudent record {|
-    *Person;
-    *Student;
-    // Overrides the \`code\` field in \`Student\`.
-    string:Char code;
-|};
+// \`Time\` record has all the fields of \`Date\` and \`TimeOfDay\`.
+type Time record {
+    *Date;
+    *TimeOfDay;
+    // Overrides \`hour\` field in \`TimeOfDay\`.
+    int:Unsigned8 hour;
+};
 
 public function main() {
-    PartTimeStudent student = {
-        name: "Anne",
-        age: 23,
-        studentId: 1001,
-        code: "A"
+    Time time = {
+        year: 2022,
+        month: 8,
+        day: 20,
+        hour: 8,
+        minute: 12,
+        seconds: 3
     };
-    io:println(student);
+    io:println(time);
 }
 `,
 ];
@@ -51,10 +55,10 @@ export function TypeInclusionForRecords({ codeSnippets }) {
 
       <p>
         Type inclusion enables you to create a record by combining fields of
-        other records. You can include the record type <code>T</code> in the
-        record type descriptor of another record by using the <code>*T</code>{" "}
-        notation. This is effectively the same as copying the fields of the
-        included records into the including record.
+        other records. Using the <code>*T</code> notation, you can include the
+        record type T in the record type descriptor of another record. This is
+        effectively the same as copying the fields of the included records into
+        the including record.
       </p>
 
       <Row
@@ -67,7 +71,7 @@ export function TypeInclusionForRecords({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3c8174f8787f54e6e7af70311c5f8576&file=type_inclusion_for_records.bal",
+                "https://play.ballerina.io/?gist=52eea158a2f314a9a901e545172e1a69&file=type_inclusion_for_records.bal",
                 "_blank"
               );
             }}
@@ -220,41 +224,11 @@ export function TypeInclusionForRecords({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run type_inclusion_for_records.bal`}</span>
-              <span>{`{"code":"A","name":"Anne","age":23,"studentId":1001}`}</span>
+              <span>{`{"hour":8,"year":2022,"month":8,"day":20,"minute":12,"seconds":3}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/records/">Records</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/open-records/">Open Records</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/default-values-for-record-fields/">
-              Default values for record fields
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

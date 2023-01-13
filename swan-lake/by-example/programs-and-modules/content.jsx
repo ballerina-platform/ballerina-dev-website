@@ -47,7 +47,7 @@ export function ProgramsAndModules({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9914026f2f08a79ad7d52b3b4ca232c6&file=programs_and_modules.bal",
+                "https://play.ballerina.io/?gist=543a273ab32a5bd945ad3bba61eaacd6&file=programs_and_modules.bal",
                 "_blank"
               );
             }}
@@ -244,7 +244,10 @@ export function ProgramsAndModules({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Main function" href="/learn/by-example/main-function">
+          <Link
+            title="Variables and types"
+            href="/learn/by-example/variables-and-types"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -253,7 +256,7 @@ export function ProgramsAndModules({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Main function
+                  Variables and types
                 </span>
               </div>
               <svg

@@ -19,7 +19,7 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The resource returns the \`Album\` typed array value
+    // The resource returns the \`Album\` typed array value.
     resource function get albums() returns Album[] {
         return albums.toArray();
     }
@@ -42,14 +42,19 @@ export function HttpSendResponse({ codeSnippets }) {
       <h1>REST service - Send response</h1>
 
       <p>
-        The resource method can return <code>anydata</code> type. In that case,
-        the <code>Content-type</code> header of the response is automatically
-        infered from the return type. Additionally, the{" "}
-        <code>@http:Payload</code> annotation on the return type can be used to
-        overwrite the <code>Content-type</code>. The resource function can also
-        return <code>error</code>. In that case, a{" "}
-        <code>500 Internal Server Error</code> will be returned with the error
-        message in the body.
+        Returning an <code>anydata</code> type from the resource method results
+        in an HTTP response, where the returned value becomes the body. If the
+        returned type is <code>nil</code>, then a <code>202 Accepted</code>{" "}
+        response is returned to the client without the body. Otherwise, the
+        response contains the returned value as the payload, and the{" "}
+        <code>Content-type</code> header is inferred from the return type. In
+        addition, the response status code is <code>201 Created</code> for{" "}
+        <code>POST</code> resources and <code>200 Ok</code> for other resources.
+        Furthermore, the <code>@http:Payload</code> annotation on the return
+        type can be used to override the <code>Content-type</code> header.
+        Returning an <code>anydata</code> type from the resource method is
+        useful when the desired payload with the default status code and headers
+        needs to be sent as the response.
       </p>
 
       <Row
@@ -60,6 +65,31 @@ export function HttpSendResponse({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=30f10bae1a1d695fd7f42d46e7b4b672&file=http_send_response.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/http-send-response",
@@ -273,6 +303,16 @@ export function HttpSendResponse({ codeSnippets }) {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-data-binding/">
+            Payload data binding client
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -280,7 +320,7 @@ export function HttpSendResponse({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

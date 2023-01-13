@@ -7,18 +7,18 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type Position record {
+type Pair record {
     int x;
     int y;
 };
 
-type PositionRecord record {
-    Position p;
+type Rec record {
+    Pair p;
 };
 
-function matchFn1(Position position) {
-    match position {
-        // The binding pattern below matches mappings that contain at least the fields with the \`x\` and \`y\` keys.
+function matchFn1(Pair pair) {
+    match pair {
+        // The binding pattern below matches mappings that contain at least the fields with keys \`x\` and \`y\`.
         // The values of these fields can be accessed via the \`x\` and \`y\` variables within this block.
         var {x, y} => {
             io:println(x, ", ", y);
@@ -26,10 +26,10 @@ function matchFn1(Position position) {
     }
 }
 
-function matchFn2(Position position) {
-    match position {
+function matchFn2(Pair pair) {
+    match pair {
         // The binding pattern below also has a rest binding pattern to capture the additional fields
-        // that may be specified in the open record value assigned to the \`position\` variable.
+        // that may be specified in the open record value assigned to the \`pair\` variable.
         // Type of the \`rest\` variable can be considered a map of \`anydata\`. However, it cannot contain the
         // \`x\` or \`y\` keys. This can be represented using the \`never\` type as explained in the example for
         // the \`never\` type.
@@ -39,10 +39,10 @@ function matchFn2(Position position) {
     }
 }
 
-function matchFn3(PositionRecord r) {
+function matchFn3(Rec r) {
     match r {
-        // The pattern below matches a mapping that has a field with the \`p\` key and a value that is another
-        // mapping that contains at least the fields with \`x\` and \`y\` keys.
+        // The pattern below matches a mapping that has a field with key \`p\` and a value that is another
+        // mapping that contains at least the fields with keys \`x\` and \`y\`.
         var {p: {x, y}} => {
             io:println(x, ", ", y);
         }
@@ -50,13 +50,12 @@ function matchFn3(PositionRecord r) {
 }
 
 public function main() {
-    Position position = {x: 1, y: 2, "u": 3 , "v": 4};
-    matchFn1(position);
-    matchFn2(position);
+    Pair pair = {x: 1, y: 2, "u": 3 , "v": 4};
+    matchFn1(pair);
+    matchFn2(pair);
 
-    PositionRecord r = {p: position};
+    Rec r = {p: pair};
     matchFn3(r);
-
 }
 `,
 ];
@@ -95,31 +94,6 @@ export function BindingPatternsInMatchStatement({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=9e61df75ae1886667a7e4dbbca278c55&file=binding_patterns_in_match_statement.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/binding-patterns-in-match-statement",
@@ -258,41 +232,11 @@ export function BindingPatternsInMatchStatement({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/match-statement/">Match statement</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/if-statement/">If statement</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/typed-binding-pattern">
-              Typed binding pattern
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Match guard in match statement"
-            href="/learn/by-example/match-guard-in-match-statement"
+            title="Spread in binding patterns"
+            href="/learn/by-example/spread-in-binding-patterns"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -319,14 +263,14 @@ export function BindingPatternsInMatchStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Match guard in match statement
+                  Spread in binding patterns
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Functions" href="/learn/by-example/functions">
+          <Link title="Error handling" href="/learn/by-example/error-handling">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -335,7 +279,7 @@ export function BindingPatternsInMatchStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Functions
+                  Error handling
                 </span>
               </div>
               <svg

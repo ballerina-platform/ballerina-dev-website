@@ -7,40 +7,32 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type Student record {|
-    string name;
-    string country;
+type Coord record {|
+    float x;
+    float y;
 |};
 
-type PartTimeStudent record {|
-    string name;
-    string country;
-    // Rest descriptor of type \`string\` allows additional fields with \`string\` values.
+Coord x = { x: 1.0, y: 2.0 };
+
+// \`x\` is a \`map\` with \`float\` values.
+map<float> m1 = x;
+
+type Headers record {|
+    string 'from;
+    string to;
     string...;
 |};
 
+Headers h = {
+    'from: "Jane", to: "John"
+};
+
+// \`h\` is a \`map\` with \`string\` values.
+map<string> m2 = h;
+
 public function main() {
-    // \`s1\` can only have fields exclusively specified in \`Student\`.
-    Student s1 = {name: "Anne", country: "UK"};
-
-    // \`s1\` is a \`map\` with \`string\` values.
-    map<string> s2 = s1;
-    io:println(s2);
-
-    // \`s3\` has an additional \`faculty\` field.
-    PartTimeStudent s3 = {
-        name: "Anne",
-        country: "UK",
-        "faculty": "Science"
-    };
-
-    // Accesses the \`faculty\` field in \`s3\`.
-    string? faculty = s3["faculty"];
-    io:println(faculty);
-
-    // \`s3\` is a \`map\` with \`string\` values.
-    map<string> s4 = s3;
-    io:println(s4);
+    io:println(m1);
+    io:println(m2);
 }
 `,
 ];
@@ -58,10 +50,10 @@ export function ControllingOpenness({ codeSnippets }) {
       <h1>Controlling openness</h1>
 
       <p>
-        Use <code>record &#123;| ... |&#125;</code> to describe a record type
-        that allows exclusively what is specified in the body. Use an open
-        record of type <code>record &#123;| T...; |&#125;</code> to allow other
-        fields of type <code>T</code>. <code>map&lt;T&gt;</code> is the same as{" "}
+        Use <code>record &#123;| ... |&#125;</code> to describe a{" "}
+        <code>record</code> type that allows exclusively what is specified in
+        the body. Use <code>T...</code> to allow other fields of type{" "}
+        <code>T</code>. <code>map&lt;T&gt;</code> is same as{" "}
         <code>record &#123;| T...; |&#125;</code>.
       </p>
 
@@ -73,31 +65,6 @@ export function ControllingOpenness({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=e7c4888b15ba7f18d1224dbc8906ef0e&file=controlling_openness.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/controlling-openness",
@@ -228,41 +195,12 @@ export function ControllingOpenness({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run controlling_openness.bal`}</span>
-              <span>{`{"name":"Anne","country":"UK"}`}</span>
-              <span>{`Science`}</span>
-              <span>{`{"name":"Anne","country":"UK","faculty":"Science"}`}</span>
+              <span>{`{"x":1.0,"y":2.0}`}</span>
+              <span>{`{"from":"Jane","to":"John"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/records/">Records</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/open-records/">Open Records</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/maps/">Maps</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

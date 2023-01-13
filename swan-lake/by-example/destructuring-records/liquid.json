@@ -1,0 +1,19 @@
+{
+  "title": "Destructure records",
+  "description": "This BBE demonstrates on how records can be destructured in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "records",
+    "destructuring",
+    "query",
+    "query expression"
+  ],
+  "permalink": "/learn/by-example/destructuring-records",
+  "active": "destructuring-records",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/destructuring-records",
+    "/swan-lake/learn/by-example/destructuring-records.html"
+  ]
+}

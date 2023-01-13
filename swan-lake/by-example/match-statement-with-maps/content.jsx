@@ -6,28 +6,38 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
- 
-function execute(json j) {
-   	match j {
-   	    // A \`match\` statement can be used to match maps.
-   	    // Patterns on the left hand side in a match statement can have variable
-   	    // parts that can be captured.
-   	    {command: "print", amount: var x} => {
-   	        if x is int {
-   	            io:println("Int: ", x);
-   	        }
-   	    }
-	
-   	    _ => {
-   	        io:println("invalid command");
-   	    }
-   	}
+
+function foo(json j) returns error? {
+    match j {
+        // A \`match\` statement can be used to match maps.
+        // Patterns on the left hand side in a match statement can have variable
+        // parts that can be captured.
+        // Match semantics are open (may have fields other than those specified
+        // in the pattern).
+        {command: "add", amount: var x} => {
+            decimal n = check x.ensureType(decimal);
+            add(n);
+            return;
+        }
+
+        _ => {
+            return error("invalid command");
+        }
+    }
 }
- 
-public function main() {
-   	execute({command: "print", amount: 100, status: "pending"});
-   	execute({command: "print", amount: 10});
-   	execute({command: "subtract", amount: 100});
+
+decimal total = 0;
+
+function add(decimal amount) {
+    total += amount;
+    io:println("Total: ", total);
+}
+
+public function main() returns error? {
+    check foo({command: "add", amount: 100, status: "pending"});
+    check foo({command: "add", amount: 10});
+    check foo({command: "subtract", amount: 100});
+    return;
 }
 `,
 ];
@@ -59,31 +69,6 @@ export function MatchStatementWithMaps({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=1b8650a63c1ca3e3bcd9dccbb8dc5320&file=match_statement_with_maps.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/match-statement-with-maps",
@@ -214,39 +199,19 @@ export function MatchStatementWithMaps({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run match_statement_with_maps.bal`}</span>
-              <span>{`Int: 100`}</span>
-              <span>{`Int: 10`}</span>
-              <span>{`invalid command`}</span>
+              <span>{`Total: 100.0`}</span>
+              <span>{`Total: 110.0`}</span>
+              <span>{`error: invalid command`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/json-type/">JSON type</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/match-statement/">Match statement</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Access JSON elements"
-            href="/learn/by-example/access-json-elements"
+            title="Work directly with JSON"
+            href="/learn/by-example/working-directly-with-json"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -273,7 +238,7 @@ export function MatchStatementWithMaps({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Access JSON elements
+                  Work directly with JSON
                 </span>
               </div>
             </div>

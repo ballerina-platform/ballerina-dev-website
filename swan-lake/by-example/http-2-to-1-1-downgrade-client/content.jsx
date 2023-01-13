@@ -8,10 +8,10 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Since the default HTTP version is 2.0, HTTP version is set to 1.1.
@@ -36,9 +36,12 @@ export function Http2To11DowngradeClient({ codeSnippets }) {
 
       <p>
         The HTTP client is configured to run over the HTTP/1.1 protocol. This
-        client will only send requests over the HTTP/1.1 protocol. When you send
-        a request to an HTTP2 supported service using this client, they will get
-        downgraded to HTTP/1.1.
+        client only sends requests over the HTTP/1.1 protocol. When you send a
+        request to an HTTP2-supported service using this client, the connection
+        gets downgraded to HTTP/1.1. If the client is configured to communicate
+        over HTTPS, the ALPN negotiation of choosing which protocol to be used
+        over the secure connection is handled internally. This avoids additional
+        round trips and is independent of the application-layer protocols.
       </p>
 
       <Row
@@ -209,7 +212,7 @@ export function Http2To11DowngradeClient({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

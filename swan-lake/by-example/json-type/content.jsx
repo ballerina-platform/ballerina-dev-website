@@ -6,40 +6,22 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
+import ballerina/lang.value;
 
-type Student record {|
-    int id;
-    string name;
-|};
- 
-public function main() returns error? {
-    // As JSON is a union: \`()|boolean|int|float|decimal|string|json[]|map<json>\`,
-    // the following cases are allowed.
-    json n = null;
-    json i = 21;
-    json s = "str";
-    json a = [1, 2];
-    json m = {"x": n, "y": s, "z": a};
-    io:println(m);
-    json[] arr = [m, {"x": i}];
-    io:println(arr);
- 
-    string rawData = "{\\"id\\": 2, \\"name\\": \\"Georgy\\"}";
-    // Get the \`json\` value from the string.
-    json j = check rawData.fromJsonString();
-    io:println(j);
- 
-    // Access the fields of \`j\` using field access.
-    string name = check j.name;
-    io:println(name);
- 
-    // Convert the \`json\` into a user-defined type.
-    Student student = check j.cloneWithType();
-    io:println(student.id);
- 
-    // Convert the user-defined type to a \`json\`.
-    j = student;
-    io:println(j);
+json j = {"x": 1, "y": 2};
+
+// Returns the \`string\` that represents \`j\` in JSON format.
+string s = j.toJsonString();
+
+// Parses a \`string\` in the JSON format and returns the value that it represents.
+json j2 = check value:fromJsonString(s);
+
+// Allows \`null\` for JSON compatibility.
+json j3 = null;
+
+public function main() {
+    io:println(s);
+    io:println(j2);
 }
 `,
 ];
@@ -57,23 +39,21 @@ export function JsonType({ codeSnippets }) {
       <h1>JSON type</h1>
 
       <p>
-        The <code>json</code> type can be explained as a union of the simple
-        basic types, <code>string</code>, array of <code>json</code>, and{" "}
-        <code>json</code> mapping. Technically, the <code>json</code> type is a
-        union:{" "}
+        <code>json</code> type is a union:{" "}
         <code>()|boolean|int|float|decimal|string|json[]|map&lt;json&gt;</code>.
-        A <code>json</code> value can be converted to and from Ballerina
+        A <code>json</code> value can be converted to and from the JSON format
         straightforwardly except for the choice of the Ballerina numeric type.
-        Ballerina syntax is compatible with JSON and allows null literal to be
-        compatible with JSON.
+        Ballerina syntax is compatible with <code>JSON</code> and allows{" "}
+        <code>null</code> for <code>()</code> for JSON compatibility.
       </p>
 
       <p>
         <code>json</code> is <code>anydata</code> without <code>table</code> and{" "}
-        <code>xml</code>. <code>toJson()</code> recursively converts{" "}
-        <code>anydata</code> to <code>json</code>. Table values are converted to{" "}
-        <code>json</code> arrays and <code>xml</code> values are converted to
-        strings.
+        <code>xml</code>. <code>toJson</code> recursively converts{" "}
+        <code>anydata</code> to <code>json</code>. <code>table</code> values are
+        converted to <code>arrays</code>. <code>xml</code> values are converted
+        to <code>strings</code>.<code>json</code> and <code>xml</code> types are
+        not parallel.
       </p>
 
       <Row
@@ -84,31 +64,6 @@ export function JsonType({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=339f5b44560807eb747239c561bea3df&file=json_type.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/json-type",
@@ -239,70 +194,12 @@ export function JsonType({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run json_type.bal`}</span>
-              <span>{`{"x":null,"y":"str","z":[1,2]}`}</span>
-              <span>{`[{"x":null,"y":"str","z":[1,2]},{"x":21}]`}</span>
-              <span>{`{"id":2,"name":"Georgy"}`}</span>
-              <span>{`Georgy`}</span>
-              <span>{`2`}</span>
-              <span>{`{"id":2,"name":"Georgy"}`}</span>
+              <span>{`{"x":1, "y":2}`}</span>
+              <span>{`{"x":1,"y":2}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/access-json-elements/">
-              Access JSON elements
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/converting-from-json-to-user-defined-type-with-langlib-functions/">
-              Converting from JSON to user defined type with langlib functions
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/converting-from-user-defined-type-to-json/">
-              Converting from user-defined type to JSON
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/lang.value/0.0.0/functions#fromJsonString">
-              fromJsonString
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/lang.value/0.0.0/functions#cloneWithType">
-              cloneWithType
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -340,8 +237,8 @@ export function JsonType({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Access JSON elements"
-            href="/learn/by-example/access-json-elements"
+            title="Work directly with JSON"
+            href="/learn/by-example/working-directly-with-json"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -351,7 +248,7 @@ export function JsonType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Access JSON elements
+                  Work directly with JSON
                 </span>
               </div>
               <svg

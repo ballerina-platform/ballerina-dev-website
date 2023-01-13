@@ -7,38 +7,36 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-const switchStatus = "ON";
+const KEY = "xyzzy";
 
-function matchValue(any val) returns string {
-    // The value of the \`val\` variable is matched against the given value match patterns.
-    match val {
-        1 => {
-            return "Move forward";
+function matchTest(any v) returns string {
+    // The value of the \`v\` variable is matched against the given value match patterns.
+    match v {
+        17 => {
+            return "number";
         }
-        // Use \`|\` to match more than one value.
-        2|3 => {
-            return "Turn";
+        true => {
+            return "boolean";
         }
-        "STOP" => {
-            return "STOP";
+        "str" => {
+            return "string";
         }
-        switchStatus => {
-            return "Switch ON";
+        KEY => {
+            return "constant";
         }
-        // Use \`_\` to match type \`any\`.
+        0|1 => {
+            return "or";
+        }
         _ => {
-            return "Invalid instruction";
+            return "any";
         }
     }
-
 }
 
 public function main() {
-    io:println(matchValue(1));
-    io:println(matchValue(2));
-    io:println(matchValue("STOP"));
-    io:println(matchValue(switchStatus));
-    io:println(matchValue("default"));
+    io:println(matchTest("str"));
+    io:println(matchTest(17));
+    io:println(matchTest(20.5));
 }
 `,
 ];
@@ -79,31 +77,6 @@ export function MatchStatement({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=18e057d9862f8576cf7eb45fa357ded2&file=match_statement.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/match-statement",
@@ -234,31 +207,20 @@ export function MatchStatement({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run match_statement.bal`}</span>
-              <span>{`Move forward`}</span>
-              <span>{`Turn`}</span>
-              <span>{`STOP`}</span>
-              <span>{`Switch ON`}</span>
-              <span>{`Invalid instruction`}</span>
+              <span>{`string`}</span>
+              <span>{`number`}</span>
+              <span>{`any`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/if-statement/">If statement</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="If statement" href="/learn/by-example/if-statement">
+          <Link
+            title="Booleans and conditionals"
+            href="/learn/by-example/booleans"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -284,17 +246,14 @@ export function MatchStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  If statement
+                  Booleans and conditionals
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Match guard in match statement"
-            href="/learn/by-example/match-guard-in-match-statement"
-          >
+          <Link title="Functions" href="/learn/by-example/functions">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -303,7 +262,7 @@ export function MatchStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Match guard in match statement
+                  Functions
                 </span>
               </div>
               <svg

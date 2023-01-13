@@ -26,8 +26,7 @@ service / on new http:Listener(8080) {
     function init() returns error? {
         // Initiate the mysql client at the start of the service. This will be used
         // throughout the lifetime of the service.
-        self.db = check new (host = "localhost", port = 3306, user = "root",
-                            password = "Test@123", database = "MUSIC_STORE");
+        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
 
     resource function get artists() returns Artist[]|error {
@@ -35,7 +34,7 @@ service / on new http:Listener(8080) {
         stream<Artist, sql:Error?> artistStream = self.db->query(\`SELECT * FROM artists;\`);
 
         // Process the stream and convert results to Artist[] or return error.
-        return check from Artist artist in artistStream
+        return from Artist artist in artistStream
             select artist;
     }
 }
@@ -57,11 +56,11 @@ export function MysqlQueryColumnMapping({ codeSnippets }) {
       <h1>Database Access - Query with advanced mapping</h1>
 
       <p>
-        This BBE demonstrates how to use the MySQL client for query operations
-        with advanced mapping for column names.
+        The <code>mysql:Client</code> allows querying the database with the use
+        of <code>query</code> method. To map the table column name with a
+        different Ballerina record field use the <code>sql:Column</code>{" "}
+        annotation.
       </p>
-
-      <p>This BBE is written in the context of an artist microservice.</p>
 
       <blockquote>
         <p>
@@ -175,9 +174,9 @@ export function MysqlQueryColumnMapping({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Refer{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md">
-              <code>mysql-prerequisite</code>
+            To set up the database, see the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite">
+              Database Access Ballerina By Example - Prerequisites
             </a>
             .
           </span>

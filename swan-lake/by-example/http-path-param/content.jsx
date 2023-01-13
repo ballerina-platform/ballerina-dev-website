@@ -19,8 +19,8 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The path param is defined as a part of the resource path within brackets along with the type and it is
-    // extracted from the request URI.
+    // The path param is defined as a part of the resource path within brackets
+    // along with the type and it is extracted from the request URI.
     resource function get albums/[string title]() returns Album|http:NotFound {
         Album? album = albums[title];
         if album is () {
@@ -47,11 +47,14 @@ export function HttpPathParam({ codeSnippets }) {
       <h1>REST service - Path parameter</h1>
 
       <p>
-        The <code>http</code> module provides first class support for specifying{" "}
-        <code>Path parameters</code> in the resource path along with the type.
-        The supported types are <code>string</code>, <code>int</code>,{" "}
-        <code>float</code>, <code>boolean</code>, and <code>decimal</code>{" "}
-        (e.g., path/[string foo]).
+        The <code>path parameter</code> is a mandatory but variable part of a
+        resource URL. <code>path parameters</code> can be added to a resource
+        method by specifying the parameter type and name in the resource path
+        (eg: <code>albums/[string name]</code>). The <code>http</code> module
+        supports <code>string</code>, <code>int</code>, <code>float</code>,{" "}
+        <code>boolean</code>, and <code>decimal</code> types as path parameter
+        types. Use it when designing REST API endpoints that require dynamic
+        path segments.
       </p>
 
       <Row
@@ -264,6 +267,17 @@ export function HttpPathParam({ codeSnippets }) {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the client
+          given in the{" "}
+          <a href="/learn/by-example/http-client-path-parameter/">
+            HTTP client - Path parameter
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -271,7 +285,7 @@ export function HttpPathParam({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

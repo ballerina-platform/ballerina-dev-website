@@ -7,22 +7,22 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-function add(int x, int y, int z) {
+function foo(int x, int y, int z) {
     io:println("Sum of x, y and z:", x + y + z);
 }
 
 public function main() {
-    // Calls the \`add\` function using the positional arguments.
-    add(1, 2, 3);
+    // Call the \`foo\` function using the positional arguments.
+    foo(1, 2, 3);
 
-    // Calls the \`add\` function using the named arguments in the same order as the parameters of the function definition.
-    add(x = 1, y = 2, z = 3);
+    // Call the \`foo\` function using the named arguments in the same order as the parameters of the function definition.
+    foo(x = 1, y = 2, z = 3);
 
-    // Calls the \`add\` function using the named arguments in a different order from the order of the parameters in the function definition.
-    add(z = 3, y = 2, x = 1);
+    // Call the \`foo\` function using the named arguments in a different order from the order of the parameters in the function definition.
+    foo(z = 3, y = 2, x = 1);
 
-    // Calls the \`add\` function using a combination of named arguments and positional arguments.
-    add(1, z = 3, y = 2);
+    // Call the \`foo\` function using a combination of named arguments and positional arguments.
+    foo(1, z = 3, y = 2);
 }
 `,
 ];
@@ -52,31 +52,6 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=0b4f89784e5b9b67f1bd96372a0e9e88&file=provide_function_arguments_by_name.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/provide-function-arguments-by-name",
@@ -215,28 +190,6 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/functions/">Functions</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/included-record-parameters/">
-              Included record parameters
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

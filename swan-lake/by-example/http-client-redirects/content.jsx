@@ -8,16 +8,21 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
 public function main() returns error? {
     // The \`followRedirects\` record provides configurations associated with HTTP redirects.
-    http:Client httpClient = check new ("localhost:9090",
+    http:Client httpClient = check new ("localhost:9092",
         followRedirects = {
             enabled: true,
             maxCount: 5
         }
     );
-    string payload = check httpClient->/redirect;
-    io:println(string \`Response received: \${payload}\`);
+    Album[] payload = check httpClient->/redirect;
+    io:println(string \`Response received: \${payload.toJsonString()}\`);
 }
 `,
 ];
@@ -35,9 +40,12 @@ export function HttpClientRedirects({ codeSnippets }) {
       <h1>HTTP client - Redirects</h1>
 
       <p>
-        The HTTP client supports redirection. To follow redirects when calling
-        an external HTTP server using the Ballerina HTTP client connector, set{" "}
-        <code>followRedirect</code> to <code>true</code>.
+        The <code>http:Client</code> supports redirection. If the{" "}
+        <code>http:Response</code> contains a <code>redirect</code> status code
+        with <code>Location</code> header, the client internally calls the
+        respective endpoint and returns the successful response. To enable
+        redirection, set <code>followRedirect</code> to <code>true</code> in the
+        client config.
       </p>
 
       <Row
@@ -195,9 +203,7 @@ export function HttpClientRedirects({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_client_redirects.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`Response received: Hello World!`}</span>
+              <span>{`Response received: [{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
@@ -210,7 +216,7 @@ export function HttpClientRedirects({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

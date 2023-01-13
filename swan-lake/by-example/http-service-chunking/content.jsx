@@ -7,12 +7,23 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/http;
 
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
+
 @http:ServiceConfig {
     chunking: http:CHUNKING_ALWAYS
 }
 service / on new http:Listener(9090, httpVersion = http:HTTP_1_1) {
-    resource function get greeting() returns string {
-        return "Hello world!";
+
+    resource function get albums() returns Album[] {
+        return albums.toArray();
     }
 }
 `,
@@ -39,9 +50,9 @@ export function HttpServiceChunking({ codeSnippets }) {
         messages are chunked. Chunking can be disabled using the{" "}
         <code>@http:ServiceConfig</code>. The chunking behavior can be
         configured as <code>CHUNKING_AUTO</code>, <code>CHUNKING_ALWAYS</code>,
-        or <code>CHUNKING_NEVER</code> only available HTTP/1.1 protocol. In this
-        example, it is set to <code>CHUNKING_ALWAYS</code>, which means that
-        chunking happens irrespective of the response payload size.
+        or <code>CHUNKING_NEVER</code> only available HTTP/1.1 protocol. When
+        the config is set to <code>CHUNKING_ALWAYS</code>, chunking happens
+        irrespective of the response payload size.
       </p>
 
       <Row
@@ -247,19 +258,19 @@ export function HttpServiceChunking({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v localhost:9090/greeting`}</span>
-              <span>{`> GET /greeting HTTP/1.1`}</span>
+              <span>{`\$ curl -v localhost:9090/albums`}</span>
+              <span>{`> GET /albums HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`> `}</span>
               <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: text/plain`}</span>
+              <span>{`< content-type: application/json`}</span>
               <span>{`< transfer-encoding: chunked`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Nov 2022 14:34:29 +0530`}</span>
+              <span>{`< date: Wed, 4 Jan 2023 21:14:48 +0530`}</span>
               <span>{`< `}</span>
-              <span>{`Hello world!`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
@@ -272,7 +283,7 @@ export function HttpServiceChunking({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>
@@ -325,8 +336,8 @@ export function HttpServiceChunking({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Response with multiparts"
-            href="/learn/by-example/http-response-with-multiparts"
+            title="Sending headers"
+            href="/learn/by-example/http-send-header"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -336,7 +347,7 @@ export function HttpServiceChunking({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Response with multiparts
+                  Sending headers
                 </span>
               </div>
               <svg

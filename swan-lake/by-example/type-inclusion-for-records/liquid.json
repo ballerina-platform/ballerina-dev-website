@@ -1,15 +1,12 @@
 {
   "title": "Type inclusion for records",
-  "description": "This BBE demonstrates type inclusion for records, record type inclusion, and including fields of a record.",
+  "description": "This BBE demonstrates type inclusion for records in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "record",
-    "record type",
-    "record field",
-    "inclusion",
-    "record inclusion"
+    "type inclusion"
   ],
   "permalink": "/learn/by-example/type-inclusion-for-records",
   "active": "type-inclusion-for-records",

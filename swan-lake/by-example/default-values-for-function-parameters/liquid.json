@@ -1,11 +1,10 @@
 {
   "title": "Default values for function parameters",
-  "description": "This BBE demonstrates defining default parameter values in a function using the preceding parameter value as the default parameter value in Ballerina.",
+  "description": "This BBE demonstrates how to provide and use the default value of function parameters in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
-    "default parameter",
     "default value",
     "functions"
   ],

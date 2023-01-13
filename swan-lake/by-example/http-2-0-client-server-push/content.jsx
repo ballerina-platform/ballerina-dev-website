@@ -70,8 +70,8 @@ export function Http20ClientServerPush({ codeSnippets }) {
 
       <p>
         HTTP/2 server push messages can be received using the Ballerina{" "}
-        <code>http</code> client. HTTP/2 Server Push messages allow the server
-        to send resources to the client before the client requests for it.
+        <code>http:Client</code>. HTTP/2 Server Push messages allow the server
+        to send resources to the client before the client requests them.
       </p>
 
       <Row
@@ -324,8 +324,8 @@ export function Http20ClientServerPush({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Request interceptors"
-            href="/learn/by-example/http-request-interceptors"
+            title="Request interceptor"
+            href="/learn/by-example/http-request-interceptor"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -335,7 +335,7 @@ export function Http20ClientServerPush({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request interceptors
+                  Request interceptor
                 </span>
               </div>
               <svg

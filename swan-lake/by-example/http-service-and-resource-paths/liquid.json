@@ -1,0 +1,18 @@
+{
+  "title": "Service and resource paths",
+  "description": "BBE on how to use the `service-path`, `resource-name`, and `accessor-name` (HTTP verb) in Ballerina to dispatch and constrain the service in a RESTful manner.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http service",
+    "path",
+    "verb"
+  ],
+  "permalink": "/learn/by-example/http-service-and-resource-paths",
+  "active": "http-service-and-resource-paths",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-service-and-resource-paths",
+    "/swan-lake/learn/by-example/http-service-and-resource-paths.html"
+  ]
+}

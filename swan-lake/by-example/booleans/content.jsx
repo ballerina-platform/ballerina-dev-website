@@ -7,15 +7,19 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
+boolean flag = true;
+
+// Here's a conditional expression. Uses C syntax.
+int n = flag ? 1 : 2;
+
 public function main() {
-    boolean flag = true;
-    io:println(flag);
-
-    int x1 = 3;
-    int x2 = 2;
-
-    // The example below will output \`false\`.
-    io:println(x1 < x2);
+    // Parentheses are optional in conditions
+    // but curly braces are required in \`if/else\` and other compound statements.
+    if flag {
+        io:println(1);
+    } else {
+        io:println(2);
+    }
 }
 `,
 ];
@@ -49,31 +53,6 @@ export function Booleans({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=377da0abf8928b59fe7ca474b73911fa&file=booleans.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/booleans",
@@ -204,34 +183,11 @@ export function Booleans({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run booleans.bal`}</span>
-              <span>{`true`}</span>
-              <span>{`false`}</span>
+              <span>{`1`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/if-statement/">If statement</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/match-guard-in-match-statements/">
-              Match guard in match statements
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -268,7 +224,10 @@ export function Booleans({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="If statement" href="/learn/by-example/if-statement">
+          <Link
+            title="Match statement"
+            href="/learn/by-example/match-statement"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -277,7 +236,7 @@ export function Booleans({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  If statement
+                  Match statement
                 </span>
               </div>
               <svg

@@ -16,9 +16,7 @@ http:ClientConfiguration clientEPConfig = {
 };
 
 public function main() returns error? {
-    // Create a new HTTP client by giving the URL and the client configuration.
-    http:Client httpClient = check new("localhost:9095/cookieDemo", clientEPConfig);
-
+    http:Client httpClient = check new ("localhost:9095/cookieDemo", clientEPConfig);
     // Send an outbound request to the \`login\` backend resource with username and password.
     string loginResp = check httpClient->post("/login", {
         name: "John",
@@ -48,24 +46,14 @@ export function HttpCookiesClient({ codeSnippets }) {
       <h1>HTTP client - Cookies</h1>
 
       <p>
-        HTTP cookies can be enabled in the client using{" "}
-        <code>http:ClientConfiguration</code>.
+        HTTP cookies can track, personalize, and manage the session between the{" "}
+        <code>http:Client</code> and service. Cookie client behavior is enabled
+        using the <code>http:ClientConfiguration</code>. If the cookie-enabled
+        client receives a response with a cookie, the subsequent requests are
+        sent along with the same cookie. Therefore the same session id is passed
+        back to the service to retrieve the previous state. This is useful to
+        maintain stateful interaction.
       </p>
-
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the HTTP service given in the{" "}
-            <a href="/learn/by-example/http-cookies-service/">
-              Cookies service
-            </a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -150,6 +138,21 @@ export function HttpCookiesClient({ codeSnippets }) {
           )}
         </Col>
       </Row>
+
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the HTTP service given in the{" "}
+            <a href="/learn/by-example/http-cookies-service/">
+              Cookies service
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
 
       <p>Run the client program by executing the following command.</p>
 

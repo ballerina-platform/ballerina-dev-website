@@ -8,14 +8,27 @@ export const codeSnippetData = [
   `import ballerina/io;
 
 public function main() {
+    LinkedList link1 = {value: "link1", next: ()};
+    LinkedList link2 = {value: "link2", next: link1};
+    io:println(len(link2));
+}
 
-    // Loop through a list
-    string[] names = ["Bob", "Jo", "Ann", "Tom"];
-    int i = 0;
-    while i < names.length() {
-        io:println(names[i]);
-        i += 1;
+type LinkedList record {
+    string value;
+    LinkedList? next;
+};
+
+function len(LinkedList ll) returns int {
+    int n = 0;
+    LinkedList? v = ll;
+    // Executes the code block that is defined within the \`while\` block
+    // as long as the value of \`v\` is not \`nil\`.
+    while v != () {
+        n += 1;
+        v = v.next;
     }
+
+    return n;
 }
 `,
 ];
@@ -33,11 +46,9 @@ export function WhileStatement({ codeSnippets }) {
       <h1>While statement</h1>
 
       <p>
-        The <code>while</code> statement can be used to repeat a block of
-        statements until a boolean condition is true. The parentheses{" "}
-        <code>( )</code> around the boolean expression are not required.
-        However, it is required to enclose the statement block using curly
-        braces <code>&#123; &#125;</code>.
+        The <code>while</code> statement is a more flexible iteration than{" "}
+        <code>foreach</code>. <code>break</code> and <code>continue</code>{" "}
+        statements can be used within the loops to alter control flow.
       </p>
 
       <Row
@@ -178,44 +189,11 @@ export function WhileStatement({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run while_statement.bal`}</span>
-              <span>{`Bob`}</span>
-              <span>{`Jo`}</span>
-              <span>{`Ann`}</span>
-              <span>{`Tom`}</span>
+              <span>{`2`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/break-statement/">Break statement</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/continue-statement/">
-              Continue statement
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/foreach-statement/">Foreach statement</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -256,8 +234,8 @@ export function WhileStatement({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Break statement"
-            href="/learn/by-example/break-statement"
+            title="Langlib functions"
+            href="/learn/by-example/langlib-functions"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -267,7 +245,7 @@ export function WhileStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Break statement
+                  Langlib functions
                 </span>
               </div>
               <svg

@@ -38,6 +38,8 @@ export function HttpBasicRestService({ codeSnippets }) {
   const ref1 = createRef();
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
+  const [outputClick3, updateOutputClick3] = useState(false);
+  const ref3 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
@@ -46,12 +48,19 @@ export function HttpBasicRestService({ codeSnippets }) {
       <h1>REST service - Basic</h1>
 
       <p>
-        Ballerina supports writing RESTful with its first class service and
-        resource concepts. The <code>accessor-name</code>,{" "}
-        <code>service/resource name</code>, <code>data binding</code>,{" "}
-        <code>path</code> and <code>query</code> parameter support helps to
-        write meaningful APIs. The sample depicts the way of writing{" "}
-        <code>GET</code> and <code>POST</code> resources.
+        Ballerina language has first-class abstractions for service and resource
+        concepts in the form of <code>service</code> and{" "}
+        <code>resource functions</code>. A resource function consists of an
+        accessor and path. A service can have a collection of resource
+        functions. These abstractions allow mapping REST concepts such as
+        operations, resource paths and resource representations cleanly into
+        your program. <code>http:Service</code> can be used to write RESTful
+        services. A service is defined with a base path, the path common to all
+        resource paths. Each resource function is defined with the required
+        operation such as <code>get</code>, <code>put</code>, <code>post</code>,
+        etc and the path. Similar to regular functions resource functions have
+        input parameters and return types that are mapped to the HTTP request
+        and response.
       </p>
 
       <Row
@@ -193,15 +202,15 @@ export function HttpBasicRestService({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run http_basic_rest_api.bal`}</span>
+              <span>{`\$ bal run http_basic_rest_service.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
       <p>
-        Invoke the service by executing the following cURL command in a new
-        terminal.
+        Invoke the HTTP GET resource by executing the following cURL command in
+        a new terminal.
       </p>
 
       <Row
@@ -259,8 +268,69 @@ export function HttpBasicRestService({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ curl http://localhost:9090/albums`}</span>
               <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
-              <span>{`
-`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        Invoke the HTTP POST resource by executing the following cURL command in
+        a new terminal.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick3 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick3(true);
+                const extractedText = extractOutput(ref3.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick3(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref3}>
+            <code className="d-flex flex-column">
               <span>{`\$ curl http://localhost:9090/albums -H "Content-type:application/json" -d "{\\"title\\": \\"Sarah Vaughan and Clifford Brown\\", \\"artist\\": \\"Sarah Vaughan\\"}"`}</span>
               <span>{`{"title":"Sarah Vaughan and Clifford Brown", "artist":"Sarah Vaughan"}`}</span>
             </code>
@@ -270,10 +340,11 @@ export function HttpBasicRestService({ codeSnippets }) {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
-          </a>
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -284,7 +355,7 @@ export function HttpBasicRestService({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>
@@ -340,8 +411,8 @@ export function HttpBasicRestService({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service path and resource name"
-            href="/learn/by-example/http-service-path-and-resource-name"
+            title="Service and resource paths"
+            href="/learn/by-example/http-service-and-resource-paths"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -351,7 +422,7 @@ export function HttpBasicRestService({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service path and resource name
+                  Service and resource paths
                 </span>
               </div>
               <svg

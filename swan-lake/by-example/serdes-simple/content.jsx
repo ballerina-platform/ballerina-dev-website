@@ -16,7 +16,6 @@ type Student record {
 };
 
 public function main() returns error? {
-
     // Assign the value to the variable.
     Student studentValue = {
         id: 7894,
@@ -53,10 +52,18 @@ export function SerdesSimple({ codeSnippets }) {
       <h1>SerDes - Serialization/Deserialization</h1>
 
       <p>
-        The <code>serdes</code> module helps to serialize and deserialize
-        subtypes of Ballerina <code>anydata</code>. This example demonstrates
-        how to serialize and deserialize a user defined <code>record</code>{" "}
-        type.
+        The <code>serdes</code> module allows serializing and deserializing the
+        subtypes of Ballerina <code>anydata</code>. The{" "}
+        <code>serdes:Proto3Schema</code> object takes <code>typedesc</code> as
+        an argument when instantiating, and maps the given type to a Protocol
+        Buffer schema. The <code>serialize</code> and <code>deserialize</code>{" "}
+        methods of the <code>serdes:Proto3Schema</code> object serialize and
+        deserialize data using the generated Protocol Buffer schema. The{" "}
+        <code>serialize</code> method takes a value of the given type as an
+        argument whereas the <code>deserialize</code> method takes{" "}
+        <code>byte[]</code> as an argument and tries to bind the deserialized
+        value to the <code>typedesc</code> inferred from the
+        contextually-expected type.
       </p>
 
       <Row
@@ -67,31 +74,6 @@ export function SerdesSimple({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=0bcd57de748a0424fc5c7ee6fdf1ec48&file=serdes_simple.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/serdes-simple",
@@ -230,9 +212,9 @@ export function SerdesSimple({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
-      <ul style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
@@ -242,7 +224,7 @@ export function SerdesSimple({ codeSnippets }) {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
@@ -252,6 +234,7 @@ export function SerdesSimple({ codeSnippets }) {
           </span>
         </li>
       </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

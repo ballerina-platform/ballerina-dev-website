@@ -15,7 +15,6 @@ public function main() returns error? {
     http:Request request = new;
 
     // Sets the file as the request payload.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#setFileAsPayload.
     request.setFileAsPayload("./files/BallerinaLang.pdf", contentType = mime:APPLICATION_PDF);
 
     //Sends the request to the receiver service with the file content.
@@ -40,9 +39,11 @@ export function HttpClientFileUpload({ codeSnippets }) {
       <h1>HTTP client - File upload</h1>
 
       <p>
-        Ballerina supports HTTP input and output streaming capability based on
-        the Ballerina <code>stream</code> type. The example depicts a file
-        upload through streaming.
+        The output streaming is generally handled through the Ballerina{" "}
+        <code>stream</code> type. Additionally, the{" "}
+        <code>setFileAsPayload</code> of the <code>http:Request</code> is the
+        support function dedicated to file uploads. This is useful when handling
+        continuous payload, file uploads, etc.
       </p>
 
       <Row
@@ -223,7 +224,7 @@ export function HttpClientFileUpload({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/http/#2423-resource-methods">
-              <code>http</code> package - Specification
+              <code>http</code> module - Specification
             </a>
           </span>
         </li>

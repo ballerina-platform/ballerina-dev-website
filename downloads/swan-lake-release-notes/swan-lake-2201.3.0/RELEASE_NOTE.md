@@ -126,6 +126,7 @@ int result = -9223372036854775808; // error: '9223372036854775808' is out of ran
 ```
 
 >**Note:** This change has affected the `uuid` module. Therefore, if an application uses the`uuid` module or uses a package, which has a dependency on the `uuid` module, make sure that the UUID version is updated to 1.4.0. Otherwise, it would result in the aforementioned compilation error.
+> If the application has a direct dependency, please modify the UUID version to 1.4.0 through modifying the `Dependencies.toml`. If the dependency is transitive, please make sure to update the corresponding package or module to 1.4.0 and use it through updating the `Dependencies.toml`.
 
 #### Restriction on the typed binding pattern of an outer join clause to use `var`
 

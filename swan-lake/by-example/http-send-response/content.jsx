@@ -19,7 +19,7 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The resource returns the \`Album\` typed array value
+    // The resource returns the \`Album\` typed array value.
     resource function get albums() returns Album[] {
         return albums.toArray();
     }
@@ -42,14 +42,19 @@ export function HttpSendResponse({ codeSnippets }) {
       <h1>REST service - Send response</h1>
 
       <p>
-        The resource method can return <code>anydata</code> type. In that case,
-        the <code>Content-type</code> header of the response is automatically
-        infered from the return type. Additionally, the{" "}
-        <code>@http:Payload</code> annotation on the return type can be used to
-        overwrite the <code>Content-type</code>. The resource function can also
-        return <code>error</code>. In that case, a{" "}
-        <code>500 Internal Server Error</code> will be returned with the error
-        message in the body.
+        Returning an <code>anydata</code> type from the resource method results
+        in an HTTP response, where the returned value becomes the body. If the
+        returned type is <code>nil</code>, then a <code>202 Accepted</code>{" "}
+        response is returned to the client without the body. Otherwise, the
+        response contains the returned value as the payload, and the{" "}
+        <code>Content-type</code> header is inferred from the return type. In
+        addition, the response status code is <code>201 Created</code> for{" "}
+        <code>POST</code> resources and <code>200 Ok</code> for other resources.
+        Furthermore, the <code>@http:Payload</code> annotation on the return
+        type can be used to override the <code>Content-type</code> header.
+        Returning an <code>anydata</code> type from the resource method is
+        useful when the desired payload with the default status code and headers
+        needs to be sent as the response.
       </p>
 
       <Row
@@ -273,6 +278,16 @@ export function HttpSendResponse({ codeSnippets }) {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-data-binding/">
+            Payload data binding client
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -280,7 +295,7 @@ export function HttpSendResponse({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

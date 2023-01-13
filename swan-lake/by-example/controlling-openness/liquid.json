@@ -1,19 +1,11 @@
 {
   "title": "Control openness",
-  "description": "This BBE demonstrates controlling openness, open records, creating an open record, creating a closed record, inclusive record type, creating a record with unspecified fields, and allowing unspecified fields of a certain type in a record.",
+  "description": "This BBE demonstrates controlling openness in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
-    "open record",
-    "closed record",
-    "record",
-    "record type",
-    "record field",
-    "rest type",
-    "rest field",
-    "inclusive record",
-    "unspecified fields"
+    "controlling openness"
   ],
   "permalink": "/learn/by-example/controlling-openness",
   "active": "controlling-openness",

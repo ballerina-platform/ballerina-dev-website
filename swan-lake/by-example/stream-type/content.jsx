@@ -7,25 +7,29 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-// Defines a class called \`EvenNumberGenerator\`, which implements the \`next()\` method.
-// This will be invoked when the \`next()\` method of the stream gets invoked.
+// Defines a class called \`EvenNumberGenerator\`. Each class has its own \`next()\` method, which gets
+// invoked when the stream's \`next()\` function gets called.
 class EvenNumberGenerator {
     int i = 0;
-    public isolated function next() returns record {|int value;|}|error? {
+    public isolated function next() returns record {| int value; |}|error? {
         self.i += 2;
-        return {value: self.i};
+        return { value: self.i };
     }
 }
 
+type ResultValue record {|
+    int value;
+|};
+
 public function main() {
-    EvenNumberGenerator evenGen = new ();
+    EvenNumberGenerator evenGen = new();
 
     // Creates a \`stream\` passing an \`EvenNumberGenerator\` object to the \`stream\` constructor.
-    stream<int, error?> evenNumberStream = new (evenGen);
+    stream<int, error?> evenNumberStream = new(evenGen);
 
     var evenNumber = evenNumberStream.next();
-
-    if (evenNumber !is error?) {
+    
+    if (evenNumber is ResultValue) {
         io:println("Retrieved even number: ", evenNumber.value);
     }
 }
@@ -45,21 +49,14 @@ export function StreamType({ codeSnippets }) {
       <h1>Stream type</h1>
 
       <p>
-        A stream represents a sequence of values that are generated as needed.
-        The end of a stream is indicated with a termination value, which is
-        error or nil. The type <code>stream&lt;T,E&gt;</code> is a stream of
-        which the members of the sequence are of the type <code>T</code>, and
-        the termination value is type <code>E</code>.{" "}
-        <code>stream&lt;T&gt;</code> means <code>stream&lt;T,()&gt;</code>.
-      </p>
-
-      <p>
-        The stream type is a separate basic type, However like an object, it can
-        be initialized with a <code>new</code> expression by passing an object,
-        which implements the{" "}
-        <code>next() returns record&#123;| T value; |&#125;|C</code> method
-        where <code>C</code> is either <code>()</code>, <code>error</code> or{" "}
-        <code>error?</code>.
+        A <code>stream</code> represents a sequence of values that are generated
+        as needed. The end of a <code>stream</code> is indicated with a
+        termination value, which is <code>error</code> or <code>nil</code>. The
+        type <code>stream&lt;T,E&gt;</code> is a <code>stream</code> where the
+        members of the sequence are type <code>T</code> and termination value is
+        type <code>E</code>. <code>stream&lt;T&gt;</code> means{" "}
+        <code>stream&lt;T,()&gt;</code>. The <code>stream</code> type is a
+        separate basic type, but like an object.
       </p>
 
       <Row
@@ -70,31 +67,6 @@ export function StreamType({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=7a5d53135ec09555623c26e9a15720de&file=stream_type.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/stream-type",
@@ -231,35 +203,11 @@ export function StreamType({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/create-streams-with-query">
-              Create streams with query expression
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/querying-with-streams">
-              Querying with streams
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Dependent types"
-            href="/learn/by-example/dependent-types"
+            title="Outer Join clause"
+            href="/learn/by-example/outer-join-clause"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -286,14 +234,17 @@ export function StreamType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dependent types
+                  Outer Join clause
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Never type" href="/learn/by-example/never-type">
+          <Link
+            title="Querying with streams"
+            href="/learn/by-example/querying-with-streams"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -302,7 +253,7 @@ export function StreamType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Never type
+                  Querying with streams
                 </span>
               </div>
               <svg

@@ -8,10 +8,10 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
@@ -23,7 +23,7 @@ public function main() returns error? {
     io:println("GET request:" + albums.toJsonString());
 
     // Sends a \`POST\` request to the "/albums" resource.
-    Album album  = check albumClient->/albums.post({
+    Album album = check albumClient->/albums.post({
         title: "Sarah Vaughan and Clifford Brown",
         artist: "Sarah Vaughan"
     });
@@ -45,16 +45,17 @@ export function HttpClientSendRequestReceiveResponse({ codeSnippets }) {
       <h1>HTTP client - Send request/Receive response</h1>
 
       <p>
-        The HTTP client can be used to connect to and interact with an HTTP
-        server. The client is instantiated with URL and uses resource method to
-        make the network calls. The standard HTTP methods <code>get</code>,{" "}
-        <code>post</code>, <code>put</code>, <code>patch</code>,{" "}
-        <code>delete</code>, <code>head</code>, <code>options</code> are
-        available as resource methods and can be invoked as same as invoking a
-        remote method. To invoke an HTTP method, the relevant verb and the
-        required arguments can be provided after the <code>-&gt;</code>. For{" "}
-        <code>get</code> method, the verb is not explicitly needed since it will
-        be defaulted.
+        The <code>http:Client</code> interacts with an HTTP server. The client
+        is instantiated with the service URL and it uses resource methods to
+        send requests and receive responses from the backend service. The
+        standard HTTP methods <code>get</code>, <code>post</code>,{" "}
+        <code>put</code>, <code>patch</code>, <code>delete</code>,{" "}
+        <code>head</code>, and <code>options</code> are available as resource
+        accessors. A resource method invocation is done by providing the{" "}
+        <code>resource path</code>, relevant <code>resource accessor</code>, and
+        required arguments after the <code>-&gt;</code>. Since HTTP{" "}
+        <code>get</code> is the default resource method, the accessor is not
+        mandatory when invoking an HTTP <code>GET</code> resource.
       </p>
 
       <Row
@@ -65,31 +66,6 @@ export function HttpClientSendRequestReceiveResponse({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=767899882e57bc018af7262daaa66128&file=http_client_send_request_receive_response.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/http-client-send-request-receive-response",
@@ -253,7 +229,7 @@ export function HttpClientSendRequestReceiveResponse({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

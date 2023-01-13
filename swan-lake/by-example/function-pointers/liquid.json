@@ -1,11 +1,10 @@
 {
   "title": "Function pointers",
-  "description": "This BBE demonstrates using function pointers in function parameters, passing the default value to the parameters of the function pointers, and creating a function in Ballerina.",
+  "description": "This BBE introduces function pointers in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
-    "function definition",
     "function pointers",
     "defaultable parameters"
   ],

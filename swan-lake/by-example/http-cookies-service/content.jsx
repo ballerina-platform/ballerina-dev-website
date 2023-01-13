@@ -22,7 +22,7 @@ service /cookieDemo on serverEP {
 
             // Create a new cookie by setting \`name\` as the \`username\` and \`value\` as the logged-in user's name.
             // Set the cookies path as \`/\` to apply it to all the resources in the service.
-            http:Cookie cookie = new("username", name.toString(), path = "/");
+            http:Cookie cookie = new ("username", name.toString(), path = "/");
             http:Response response = new;
 
             // Add the created cookie to the response.
@@ -50,9 +50,7 @@ service /cookieDemo on serverEP {
             if user is string {
                 // Respond with the username added to the welcome message.
                 return "Welcome back " + user;
-
             }
-
         }
         return http:NOT_FOUND;
     }
@@ -74,7 +72,11 @@ export function HttpCookiesService({ codeSnippets }) {
 
       <p>
         HTTP cookies can track, personalize, and manage the session in the
-        service and client.
+        service. The cookies can be accessed from the <code>getCookies</code>{" "}
+        method of the <code>http:Request</code>. Setting cookies back in the
+        response is done by the <code>addCookie</code> method of the{" "}
+        <code>http:Response</code>. This is useful for services to maintain the
+        state.
       </p>
 
       <Row
@@ -224,8 +226,9 @@ export function HttpCookiesService({ codeSnippets }) {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/http-cookies-client/">Cookies client</a>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-cookies-client/">Cookies client</a>{" "}
+          example.
         </p>
       </blockquote>
 

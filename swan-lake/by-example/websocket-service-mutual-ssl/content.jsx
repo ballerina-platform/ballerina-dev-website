@@ -11,7 +11,7 @@ import ballerina/websocket;
 // A WebSocket listener can be configured to accept new connections that are
 // secured via mutual SSL.
 // The \`websocket:ListenerSecureSocket\` record provides the SSL-related listener configurations.
-listener websocket:Listener chatListener = new(9090,
+listener websocket:Listener chatListener = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -26,14 +26,16 @@ listener websocket:Listener chatListener = new(9090,
 );
 
 service /chat on chatListener {
+
     resource function get .() returns websocket:Service {
         return new ChatService();
-   }
+    }
 }
 
 service class ChatService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
+
+    remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
         check caller->writeMessage("Hello, How are you?");
     }
 }
@@ -53,10 +55,18 @@ export function WebsocketServiceMutualSsl({ codeSnippets }) {
       <h1>WebSocket service - Mutual SSL</h1>
 
       <p>
-        Ballerina supports mutual SSL, which is a certificate-based
-        authentication process in which two parties (the client and server)
-        authenticate each other by verifying the digital certificates. It
-        ensures that both parties are assured of each other's identity.
+        A <code>websocket:Listener</code> with enabled mutual SSL (mTLS) allows
+        you to expose a connection secured with mutual SSL, which is a
+        certificate-based authentication process in which two parties (the
+        client and server) authenticate each other by verifying the digital
+        certificates. It ensures that both parties are assured of each other's
+        identity. A <code>websocket:Listener</code> secured with mutual SSL is
+        created by providing the <code>secureSocket</code> configurations which
+        require the word <code>require</code> as the <code>verifyClient</code>,
+        the server's public certificate as the <code>certFile</code>, server's
+        private key as the <code>keyFile</code> and the client's certificate as
+        the <code>cert</code>. Use this to secure the WebSocket connection over
+        mutual SSL.
       </p>
 
       <Row
@@ -221,7 +231,7 @@ export function WebsocketServiceMutualSsl({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
+              <code>websocket</code> module - API documentation
             </a>
           </span>
         </li>

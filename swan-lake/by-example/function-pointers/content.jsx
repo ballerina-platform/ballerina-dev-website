@@ -11,26 +11,30 @@ function add(int v1, int v2) returns int {
     return v1 + v2;
 }
 
+function multiply(int v1, int v2) returns int {
+    return v1 * v2;
+}
+
 int num1 = 10;
 int num2 = 100;
 
-// In this example, the function pointer with default values for function pointer parameters is used 
-// as a parameter. 
+// Here, the function pointer with default values for function pointer parameters is used as a parameter. 
 function executeWithDefaultValues(function (int a = num1, int b = num2) returns int func) returns int {
     return func();
 }
 
-//  In this example, the function pointer without default values for the function pointer parameters is used 
-// as a parameter. 
+// Here, the function pointer without default values for function pointer parameters is used as a parameter. 
 function execute(function (int, int) returns int func, int v1, int v2) returns int {
     return func(v1, v2);
 }
 
 public function main() {
-    // The \`add\` function names serve as a function pointer argument in the
+    // The \`add\` and \`multiply\` function names serve as a function pointer argument in the
     // call to the \`executeWithDefaultValues\` and \`execute\` functions.
     io:println("Add num1 & num2: ", executeWithDefaultValues(add));
+    io:println("Multiply num1 & num2: ", executeWithDefaultValues(multiply));
     io:println("Add 1 & 2: ", execute(add, 1, 2));
+    io:println("Multiply 3 & 4: ", execute(multiply, 3, 4)); 
 }
 `,
 ];
@@ -62,31 +66,6 @@ export function FunctionPointers({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=e421b959be12df6b6f41569270227e9b&file=function_pointers.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/function-pointers",
@@ -218,41 +197,13 @@ export function FunctionPointers({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run function_pointers.bal`}</span>
               <span>{`Add num1 & num2: 110`}</span>
+              <span>{`Multiply num1 & num2: 1000`}</span>
               <span>{`Add 1 & 2: 3`}</span>
+              <span>{`Multiply 3 & 4: 12`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/function-values/">Functions values</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/default-values-for-function-parameters/">
-              Default values for function parameters
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/function-types/">Function types</a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -293,8 +244,8 @@ export function FunctionPointers({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Function values"
-            href="/learn/by-example/function-values"
+            title="Foreach statement"
+            href="/learn/by-example/foreach-statement"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -304,7 +255,7 @@ export function FunctionPointers({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Function values
+                  Foreach statement
                 </span>
               </div>
               <svg

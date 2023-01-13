@@ -8,16 +8,14 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Defines the HTTP client to call the OAuth2 secured APIs.
-    // The client is enriched with the \`Authorization: Bearer <token>\` header by
-    // passing the \`http:OAuth2ClientCredentialsGrantConfig\` for the \`auth\` configuration of the client.
-    http:Client albumClient = check new("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
@@ -52,11 +50,11 @@ export function HttpClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
       <h1>HTTP client - OAuth2 client credentials grant type</h1>
 
       <p>
-        A client, which is secured with OAuth2 client credentials grant type can
-        be used to connect to a secured service. The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>http:OAuth2ClientCredentialsGrantConfig</code> for the{" "}
-        <code>auth</code> configuration of the client.
+        The <code>http:Client</code> can connect to a service that is secured
+        with the OAuth2 client credentials grant type by adding the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header to each request.
+        The required configurations for this grant type can be specified in the{" "}
+        <code>auth</code> field of the client configuration.
       </p>
 
       <Row
@@ -236,7 +234,7 @@ export function HttpClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package - API documentation
+              <code>oauth2</code> module - API documentation
             </a>
           </span>
         </li>

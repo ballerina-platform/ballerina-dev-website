@@ -47,10 +47,14 @@ export function Http2To11DowngradeService({ codeSnippets }) {
       <h1>HTTP service - HTTP/2 to HTTP/1.1 downgrade</h1>
 
       <p>
-        The HTTP service is configured to run over the HTTP/1.1 protocol. So
-        this service will only accept requests receiving over the HTTP/1.1
-        protocol. If an HTTP/2 enabled client sends a request to this service,
-        client will also get downgraded to use HTTP/1.1.
+        The HTTP service is configured to run over the HTTP/1.1 protocol.
+        Therefore this service only accepts requests received over the HTTP/1.1
+        protocol. If an HTTP2-enabled client sends a request to this service,
+        the client gets downgraded to use HTTP/1.1. If the listener is
+        configured to communicate over HTTPS, the ALPN negotiation of choosing
+        which protocol to be used over the secure connection is handled
+        internally. This avoids additional round trips and is independent of the
+        application-layer protocols.
       </p>
 
       <Row
@@ -265,10 +269,11 @@ export function Http2To11DowngradeService({ codeSnippets }) {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
-          </a>
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -279,7 +284,7 @@ export function Http2To11DowngradeService({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

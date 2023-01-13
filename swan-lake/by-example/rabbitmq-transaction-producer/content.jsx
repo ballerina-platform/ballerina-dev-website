@@ -5,31 +5,35 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerinax/rabbitmq;
+  `import ballerina/http;
+import ballerinax/rabbitmq;
 
-public type Order record {|
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
     boolean isValid;
-|};
+};
 
-public function main() returns error? {
-    // Creates a ballerina RabbitMQ Client.
-    rabbitmq:Client newClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+service / on new http:Listener(9092) {
+    private final rabbitmq:Client orderClient;
 
-    transaction {
-        // Publishes the message using the routing key named "OrderQueue".
-        check newClient->publishMessage({
-            content: {
-                orderId: 1,
-                productName: "Sport shoe",
-                price: 27.5,
-                isValid: true
-            },
-            routingKey: "OrderQueue"
-        });
-        check commit;
+    function init() returns error? {
+        // Initiate the RabbitMQ client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.orderClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+    }
+
+    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
+        transaction {
+            // Publishes the message using newClient and the routing key named OrderQueue.
+            check self.orderClient->publishMessage({
+                content: newOrder,
+                routingKey: "OrderQueue"
+            });
+            check commit;
+        }
+        return http:ACCEPTED;
     }
 }
 `,
@@ -48,10 +52,14 @@ export function RabbitmqTransactionProducer({ codeSnippets }) {
       <h1>RabbitMQ client - Transactional producer</h1>
 
       <p>
-        A message is sent to an existing queue using the Ballerina RabbitMQ
-        channel and Ballerina transactions. Upon successful execution of the
-        transaction block, the channel will commit and rollback in the case of
-        any error.
+        The <code>rabbitmq:Client</code> can become a transactional producer by
+        publishing messages within a Ballerina transaction block. Upon
+        successful execution of the transaction block, the client will commit or
+        roll back in the case of any error. A <code>rabbitmq:Client</code> can
+        be created by passing the host and port of the RabbitMQ broker. To
+        publish messages, the <code>publishMessage</code> method, which requires
+        the message and queue name as arguments is used. Use it to publish
+        messages to the RabbitMQ server with ensured delivery.
       </p>
 
       <Row

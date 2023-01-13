@@ -28,7 +28,7 @@ service /http2service on http2ServiceEP {
 
         // Construct the requested resource.
         http:Response res = new;
-        json msg = { "response": { "name": "main resource" } };
+        json msg = {"response": {"name": "main resource"}};
         res.setPayload(msg);
 
         // Send the requested resource.
@@ -36,7 +36,7 @@ service /http2service on http2ServiceEP {
 
         // Construct promised resource1.
         http:Response push1 = new;
-        msg = { "push": { "name": "resource1" } };
+        msg = {"push": {"name": "resource1"}};
         push1.setPayload(msg);
 
         // Push promised \`resource1\`.
@@ -44,7 +44,7 @@ service /http2service on http2ServiceEP {
 
         // Construct promised \`resource2\`.
         http:Response push2 = new;
-        msg = { "push": { "name": "resource2" } };
+        msg = {"push": {"name": "resource2"}};
         push2.setPayload(msg);
 
         // Push promised \`resource2\`.
@@ -52,7 +52,7 @@ service /http2service on http2ServiceEP {
 
         // Construct promised \`resource3\`.
         http:Response push3 = new;
-        msg = { "push": { "name": "resource3" } };
+        msg = {"push": {"name": "resource3"}};
         push3.setPayload(msg);
 
         // Push promised \`resource3\`.
@@ -76,8 +76,8 @@ export function Http20ServerPush({ codeSnippets }) {
 
       <p>
         HTTP/2 server push messages can be sent using the Ballerina{" "}
-        <code>http</code> service. HTTP/2 Server Push messages allow the server
-        to send resources to the client before the client requests for it.
+        <code>http</code> service. HTTP/2 server push messages allow the server
+        to send resources to the client before the client requests them.
       </p>
 
       <Row
@@ -230,7 +230,8 @@ export function Http20ServerPush({ codeSnippets }) {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-2-0-client-server-push/">
             Server push client
-          </a>
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 

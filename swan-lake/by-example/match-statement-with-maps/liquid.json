@@ -1,6 +1,6 @@
 {
   "title": "Match statement with maps",
-  "description": "This BBE demonstrates how to match json to pattern and check json has required structure in Ballerina.",
+  "description": "This BBE demonstrates using the match statement with maps.",
   "keywords": [
     "ballerina",
     "ballerina by example",

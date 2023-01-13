@@ -8,10 +8,6 @@ export const codeSnippetData = [
   `import ballerina/io;
 
 public function main() returns error? {
-    // A gRPC client can be configured to communicate through SSL/TLS as well.
-    // To secure a client using SSL/TLS, the client needs to be configured with
-    // a certificate file of the listener.
-    // The \`grpc:ClientSecureSocket\` record provides the SSL-related configurations of the client.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         secureSocket = {
             cert: "../resource/path/to/public.crt"
@@ -37,10 +33,10 @@ export function GrpcClientSslTls({ codeSnippets }) {
       <h1>gRPC client - SSL/TLS</h1>
 
       <p>
-        You can use the gRPC client to connect or interact with a gRPC listener
-        secured with SSL/TLS. Provide the <code>grpc:ClientSecureSocket</code>{" "}
-        configurations to the client to initiate an HTTPS connection over
-        HTTP/2.
+        The <code>grpc:Client</code> can be configured to communicate through
+        HTTPS by providing a certificate file. The certificate can be provided
+        through the <code>secureSocket</code> field of the client configuration.
+        Use this to secure the communication between the client and the server.
       </p>
 
       <Row
@@ -128,12 +124,13 @@ export function GrpcClientSslTls({ codeSnippets }) {
       </Row>
 
       <p>
-        Setting up the client is the same as setting up the unary RPC client
-        with additional configurations. You can refer to the{" "}
-        <a href="/learn/by-example/grpc-client-unary/">
-          gRPC client - Unary RPC
-        </a>{" "}
-        to implement the client used here.
+        Setting up the client is the same as setting up the simple RPC client
+        with additional configurations. For information on implementing the
+        client, see{" "}
+        <a href="/learn/by-example/grpc-client-simple/">
+          gRPC client - Simple RPC
+        </a>
+        .
       </p>
 
       <h2>Prerequisites</h2>
@@ -151,7 +148,7 @@ export function GrpcClientSslTls({ codeSnippets }) {
         </li>
       </ul>
 
-      <p>Execute the command below to run the client.</p>
+      <p>Run the client by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"

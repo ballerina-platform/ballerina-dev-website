@@ -18,11 +18,9 @@ type Album record {
 };
 
 service / on new http:Listener(9090) {
+    private Album[] albums = [];
 
-    final Album[] albums = [];
-
-    // The \`album\` parameter in the payload annotation will get validated according to the
-    // constraints added. If the constraint fails, a \`400 Bad Request\` will be sent to the client.
+    // The \`album\` parameter in the payload annotation will get validated according to the constraints added.
     resource function post albums(@http:Payload Album album) returns http:Created {
         self.albums.push(album);
         return http:CREATED;
@@ -46,12 +44,17 @@ export function HttpServicePayloadConstraintValidation({ codeSnippets }) {
       <h1>REST service - Payload constraint validation</h1>
 
       <p>
-        Through service payload constraint validation, the request payload can
-        be validated according to the defined constraints. The constraint
-        validation happens along with the data binding step in the resource
-        signature parameter. If the validation fails, a{" "}
-        <code>400 Bad Request</code> response will be returned to the client
-        with the validation details.
+        The Ballerina <code>constraint</code> module allows adding additional
+        constraints to the response payload. The <code>http</code> resource
+        method uses the <code>constraint</code> module to validate the payload
+        against the given constraints. This validation happens soon after the
+        successful data-binding of the request payload before executing the
+        resource method. The constraints can be added to a given data type using
+        different annotations. If the validation fails, a{" "}
+        <code>400 Bad Request</code> response is returned to the client with the
+        validation error message. Use this to validate the request payload as
+        the application receives it, which protects the server against
+        unnecessary resource method processing and malicious payloads.
       </p>
 
       <Row
@@ -201,8 +204,7 @@ export function HttpServicePayloadConstraintValidation({ codeSnippets }) {
 
       <p>
         Invoke the service by executing the following cURL command in a new
-        terminal. Here, an album which exceeds the constraints are sent to the
-        service.
+        terminal. Here, an album with a lengthy title is sent to the service.
       </p>
 
       <Row
@@ -258,12 +260,39 @@ export function HttpServicePayloadConstraintValidation({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`curl http://localhost:9090/albums -H "Content-type:application/json" -d "{\\"title\\": \\"Sarah Vaughan and Clifford Brown\\", \\"artist\\": \\"Sarah Vaughan\\"}"`}</span>
+              <span>{`\$ curl -v http://localhost:9090/albums -H "Content-type:application/json" -d "{\\"title\\": \\"Sarah Vaughan and Clifford Brown\\", \\"artist\\": \\"Sarah Vaughan\\"}"`}</span>
+              <span>{`*   Trying 127.0.0.1:9090...`}</span>
+              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
+              <span>{`> POST /albums HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.79.1`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`> Content-type:application/json`}</span>
+              <span>{`> Content-Length: 72`}</span>
+              <span>{`> `}</span>
+              <span>{`* Mark bundle as not supporting multiuse`}</span>
+              <span>{`< HTTP/1.1 400 Bad Request`}</span>
+              <span>{`< content-type: text/plain`}</span>
+              <span>{`< content-length: 83`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Thu, 8 Dec 2022 11:13:19 +0530`}</span>
+              <span>{`< `}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`payload validation failed: Validation failed for '\$.title:maxLength' constraint(s).`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-send-request-receive-response/">
+            Send request/Receive response client
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -272,7 +301,7 @@ export function HttpServicePayloadConstraintValidation({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>
@@ -282,7 +311,7 @@ export function HttpServicePayloadConstraintValidation({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/http/">
-              <code>http</code> package - Specification
+              <code>http</code> module - Specification
             </a>
           </span>
         </li>
@@ -291,7 +320,7 @@ export function HttpServicePayloadConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/by-example/constraint-validations/">
+            <a href="/learn/by-example/constraint-validations/">
               Constraint validation example
             </a>
           </span>

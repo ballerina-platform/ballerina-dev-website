@@ -5,16 +5,15 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/io;
- 
-public function main() {
-    // Creates a \`byte\` array using the \`base16\` byte array literal.
-    byte[] arr1 = base16 \`55 EE 66 FF 77 AB\`;
-    io:println(arr1);
-    
+  `public function main() {
     // Creates a \`byte\` array using the \`base64\` byte array literal.
-    byte[] arr2 = base64 \`ABCD pqrs 5678 +/12\`;
-    io:println(arr2);
+    byte[] _ = base64 \`yPHaytRgJPg+QjjylUHakEwz1fWPx/wXCW41JSmqYW8=\`;
+
+    // Creates a \`byte\` using a hexadecimal numeral.
+    byte x = 0xA;
+
+    // \`byte & int\` will be \`byte\`.
+    byte _ = x & 0xFF;
 }
 `,
 ];
@@ -32,12 +31,20 @@ export function BinaryData({ codeSnippets }) {
       <h1>Binary data</h1>
 
       <p>
-        Binary data is represented by arrays of byte values. It is a special
-        syntax for byte arrays in <code>Base16</code> and <code>Base64</code>.
-        The encoding tables of both <code>Base16</code> and <code>Base64</code>{" "}
-        are the same as <code>RFC 4648</code>. A byte is an int in the range{" "}
-        <code>0</code> to <code>0xFF</code> and it is a subtype of{" "}
-        <code>int</code>.
+        Binary data is represented by arrays of <code>byte</code> values. It is
+        a special syntax for <code>byte</code> arrays in <code>base 64</code>{" "}
+        and <code>base 16</code>. The relationship between <code>byte</code> and{" "}
+        <code>int</code> is not the same as what you are used to. A{" "}
+        <code>byte</code> is an <code>int</code> in the range <code>0</code> to{" "}
+        <code>0xFF</code>. <code>byte</code> is a subtype of int.
+      </p>
+
+      <p>
+        The <code>int</code> type supports normal bitwise operators:{" "}
+        <code>&amp;</code> <code>|</code> <code>^</code> <code>~</code>{" "}
+        <code>&lt;&lt;</code> <code>&gt;&gt;</code> <code>&gt;&gt;&gt;</code>.
+        Ballerina knows the obvious rules about when bitwise operations produce
+        a <code>byte</code>.
       </p>
 
       <Row
@@ -48,31 +55,6 @@ export function BinaryData({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=94d23b274fb28b494fa4495ae863ed7b&file=binary_data.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/binary-data",
@@ -203,37 +185,17 @@ export function BinaryData({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run binary_data.bal`}</span>
-              <span>{`[85,238,102,255,119,171]`}</span>
-              <span>{`[0,16,131,166,170,236,231,174,252,251,253,118]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/arrays">Arrays</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/integers">Integers</a>
-          </span>
-        </li>
-      </ul>
-
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="List equality" href="/learn/by-example/list-equality">
+          <Link
+            title="Rest type in tuples"
+            href="/learn/by-example/rest-type-in-tuples"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +221,7 @@ export function BinaryData({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  List equality
+                  Rest type in tuples
                 </span>
               </div>
             </div>

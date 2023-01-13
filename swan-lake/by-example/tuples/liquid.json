@@ -1,18 +1,7 @@
 {
   "title": "Tuples",
-  "description": "This BBE demonstrates how to create a tuple, create a collection, create list with different member types, returning multiple values from a function, Accessing a tuple, Updating a tuple.",
-  "keywords": [
-    "ballerina",
-    "ballerina by example",
-    "bbe",
-    "tuples",
-    "collection",
-    "size",
-    "list",
-    "multiple",
-    "tuple type",
-    "access"
-  ],
+  "description": "This BBE demonstrates Ballerina tuple types.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "tuples"],
   "permalink": "/learn/by-example/tuples",
   "active": "tuples",
   "redirect_from": [

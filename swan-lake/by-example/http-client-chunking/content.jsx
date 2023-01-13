@@ -9,12 +9,6 @@ export const codeSnippetData = [
 import ballerina/io;
 
 public function main() returns error? {
-    // The HTTP client's chunking behavior can be configured as \`CHUNKING_AUTO\`,
-    // \`CHUNKING_ALWAYS\`, or \`CHUNKING_NEVER\` only available HTTP/1.1 protocol.
-    // In this example, it is set to \`CHUNKING_NEVER\`, which means that chunking never happens irrespective of the request size.
-    // When chunking is set to \`CHUNKING_AUTO\`, chunking is done based on the request.
-    // The \`http1Settings\` annotation provides the chunking-related configurations.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings.
     http:Client albumClient = check new ("localhost:9090",
         httpVersion = http:HTTP_1_1,
         http1Settings = {
@@ -46,7 +40,12 @@ export function HttpClientChunking({ codeSnippets }) {
         The HTTP client can be configured for chunking. By default, the HTTP
         client sends messages with the <code>content-length</code> header. If
         the message size is larger than the buffer size (8K), messages are
-        chunked. Chunking can be disabled using the client options.
+        chunked. Chunking can be disabled using the client configuration. The
+        chunking behavior can be configured as <code>CHUNKING_AUTO</code>,{" "}
+        <code>CHUNKING_ALWAYS</code>, or <code>CHUNKING_NEVER</code> only
+        available HTTP/1.1 protocol. When the config is set to{" "}
+        <code>CHUNKING_ALWAYS</code>, chunking happens irrespective of the
+        response payload size.
       </p>
 
       <Row

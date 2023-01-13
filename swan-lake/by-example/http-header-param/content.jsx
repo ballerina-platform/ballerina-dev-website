@@ -46,18 +46,17 @@ export function HttpHeaderParam({ codeSnippets }) {
       <h1>REST service - Header parameter</h1>
 
       <p>
-        The <code>http</code> module provides support for accessing inbound
-        request headers as resource method arguments. The header key can be
-        specified as a variable name along with the <code>@http:Header</code>{" "}
-        annotation. Else, it can be specified in the <code>name</code> field of
-        the annotation. The supported types are <code>string</code>,{" "}
-        <code>string[]</code>, and optional. The <code>string[]</code> type
-        returns all the values for a given header key while <code>string</code>{" "}
-        returns the first value. Unless the type is optional, the request will
-        be responded with a 400 Bad request in the absence of the mentioned
-        header. However, more header manipulations can be done via the{" "}
-        <code>http:Headers</code> header object, which also can be accessed as a
-        resource method argument without using the annotation.
+        The <code>@http:header</code> annotation allows reading header values
+        from the request. The annotation can be used to annotate a given
+        resource parameter. The name of the parameter must match the name of the
+        header. If there is a mismatch, then the header name must be given in
+        the annotation configuration. The resource parameter can be a simple
+        type or an array type (i.e., <code>string version</code> or{" "}
+        <code>string[] versions</code>). If there are many headers to read, a
+        record type can be used as the parameter. Unless the parameter is
+        optional (i.e., <code>string? version</code>), a{" "}
+        <code>400 Bad Request</code> response is sent to the client in the
+        absence of the mapping header.
       </p>
 
       <Row
@@ -270,6 +269,17 @@ export function HttpHeaderParam({ codeSnippets }) {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the client
+          given in the{" "}
+          <a href="/learn/by-example/http-client-header-parameter/">
+            HTTP client - Header parameter
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -277,7 +287,7 @@ export function HttpHeaderParam({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

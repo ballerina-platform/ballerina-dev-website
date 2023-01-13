@@ -19,17 +19,11 @@ sublinks:
           - title: Programs and modules
             id: 1
             url: programs-and-modules
-          - title: Main function
-            id: 2
-            url: main-function
-          - title: Init function
-            id: 3
-            url: init-function
           - title: Variables and types
-            id: 4
+            id: 2
             url: variables-and-types
           - title: Identifiers
-            id: 5
+            id: 3
             url: identifiers
       - title: Simple basic types
         id: 3
@@ -58,51 +52,33 @@ sublinks:
           - title: Booleans and conditionals
             id: 1
             url: booleans
-          - title: If statement
-            id: 2
-            url: if-statement
           - title: Match statement
-            id: 3
+            id: 2
             url: match-statement
-          - title: Match guard in match statement
-            id: 4
-            url: match-guard-in-match-statement
-          - title: Binding patterns in match statement
-            id: 5
-            url: binding-patterns-in-match-statement
       - title: Functions
         id: 6
         sublinks:
           - title: Functions
             id: 1
             url: functions
-          - title: Included record parameters
+          - title: Function values
             id: 2
+            url: function-values
+          - title: Included record parameters
+            id: 3
             url: included-record-parameters
           - title: Rest parameters
-            id: 3
+            id: 4
             url: rest-parameters
           - title: Default values for function parameters
-            id: 4
+            id: 5
             url: default-values-for-function-parameters
           - title: Provide function arguments by name
-            id: 5
+            id: 6
             url: provide-function-arguments-by-name
           - title: Function pointers
-            id: 6
-            url: function-pointers
-          - title: Function values
             id: 7
-            url: function-values
-          - title: Function types
-            id: 8
-            url: function-types
-          - title: Anonymous function
-            id: 9
-            url: anonymous-function
-          - title: Function closure
-            id: 10
-            url: function-closure
+            url: function-pointers
       - title: Iteration
         id: 7
         sublinks:
@@ -112,12 +88,6 @@ sublinks:
           - title: While statement
             id: 2
             url: while-statement
-          - title: Break statement
-            id: 3
-            url: break-statement
-          - title: Continue statement
-            id: 4
-            url: continue-statement
       - title: Lang library
         id: 8
         sublinks:
@@ -166,11 +136,8 @@ sublinks:
           - title: Dependent types
             id: 13
             url: dependent-types
-          - title: Stream type
-            id: 14
-            url: stream-type
           - title: Never type
-            id: 15
+            id: 14
             url: never-type
       - title: Expression-oriented style
         id: 10
@@ -184,26 +151,17 @@ sublinks:
           - title: Arrays
             id: 1
             url: arrays
-          - title: Nested arrays
-            id: 2
-            url: nested-arrays
           - title: Tuples
-            id: 3
+            id: 2
             url: tuples
+          - title: Destructure tuples
+            id: 3
+            url: destructure-tuples
           - title: Rest type in tuples
             id: 4
             url: rest-type-in-tuples
-          - title: Filler values of a list
-            id: 5
-            url: filler-values-of-a-list
-          - title: List subtyping
-            id: 6
-            url: list-subtyping
-          - title: List equality
-            id: 7
-            url: list-equality
           - title: Binary data
-            id: 8
+            id: 5
             url: binary-data
       - title: Mappings
         id: 12
@@ -265,30 +223,15 @@ sublinks:
       - title: Binding patterns
         id: 16
         sublinks:
-          - title: Mapping binding pattern
+          - title: Binding patterns in assignment
             id: 1
-            url: mapping-binding-pattern
-          - title: Rest binding pattern in mapping binding pattern
+            url: binding-patterns-in-assignment
+          - title: Spread in binding patterns
             id: 2
-            url: rest-binding-pattern-in-mapping-binding-pattern
-          - title: Error binding pattern
+            url: spread-in-binding-patterns
+          - title: Binding patterns in match statement
             id: 3
-            url: error-binding-pattern
-          - title: Rest binding pattern in error binding pattern
-            id: 4
-            url: rest-binding-pattern-in-error-binding-pattern
-          - title: Single use of typed binding patterns
-            id: 5
-            url: single-use-of-typed-binding
-          - title: Single use of typed binding patterns with on fail clause
-            id: 6
-            url: single-use-with-on-fail-clause
-          - title: Iterative use of typed binding patterns
-            id: 7
-            url: iterative-use-of-typed-binding
-          - title: Error binding pattern in match statement
-            id: 8
-            url: error-binding-pattern-in-match-statement
+            url: binding-patterns-in-match-statement
       - title: Error handling
         id: 17
         sublinks:
@@ -340,29 +283,26 @@ sublinks:
           - title: JSON type
             id: 1
             url: json-type
-          - title: Access JSON elements
+          - title: Work directly with JSON
             id: 2
-            url: access-json-elements
+            url: working-directly-with-json
           - title: Match statement with maps
             id: 3
             url: match-statement-with-maps
           - title: Convert from user-defined type to JSON
             id: 4
             url: converting-from-user-defined-type-to-json
-          - title: Converting from table and XML to JSON
+          - title: Convert from JSON to user-defined type
             id: 5
-            url: converting-from-table-and-xml-to-json
-          - title: Converting from JSON to user defined type with langlib functions
+            url: converting-from-json-to-user-defined-type
+          - title: Convert to user-defined type
             id: 6
-            url: converting-from-json-to-user-defined-type-with-langlib-functions
-          - title: Casting JSON to user-defined type
-            id: 7
-            url: casting-json-to-user-defined-type
+            url: converting-to-user-defined-type
           - title: Resource method typing
-            id: 8
+            id: 7
             url: resource-method-typing
           - title: JSON numbers
-            id: 9
+            id: 8
             url: json-numbers
       - title: Tables
         id: 21
@@ -382,44 +322,35 @@ sublinks:
           - title: Query expressions
             id: 1
             url: query-expressions
-          - title: Sort iterable objects
+          - title: Destructure records
             id: 2
-            url: sort-iterable-objects
+            url: destructuring-records
           - title: Let clause
             id: 3
             url: let-clause
-          - title: Limit clause
+          - title: Ordering
             id: 4
-            url: limit-clause
-          - title: Joining iterable objects
+            url: ordering
+          - title: Limit clause
             id: 5
-            url: joining-iterable-objects
+            url: limit-clause
           - title: Querying tables
             id: 6
             url: querying-tables
           - title: Create tables with query
             id: 7
-            url: create-tables-with-query
-          - title: Create maps with query
+            url: creating-tables-with-query
+          - title: Join clause
             id: 8
-            url: create-maps-with-query
-          - title: Create streams with query
+            url: join-clause
+          - title: Outer Join clause
             id: 9
-            url: create-streams-with-query
-          - title: On conflict clause
+            url: outer-join-clause
+          - title: Stream type
             id: 10
-            url: on-conflict-clause
-          - title: Iterating over xml with query
-            id: 11
-            url: iterating-over-xml-with-query
-          - title: Nested query expressions
-            id: 12
-            url: nested-query-expressions
-          - title: Destructure records using query
-            id: 13
-            url: destructure-records-using-query
+            url: stream-type
           - title: Querying with streams
-            id: 14
+            id: 11
             url: querying-with-streams
       - title: Query actions
         id: 23
@@ -655,9 +586,9 @@ sublinks:
           - title: Basic REST service
             id: 1
             url: http-basic-rest-service
-          - title: Service path and resource name
+          - title: Service and resource paths
             id: 2
-            url: http-service-path-and-resource-name
+            url: http-service-and-resource-paths
           - title: Payload data binding
             id: 3
             url: http-service-data-binding
@@ -682,8 +613,11 @@ sublinks:
           - title: Send different status codes with payload
             id: 10
             url: http-send-different-status-codes-with-payload
-          - title: Send cache response
+          - title: Error handling
             id: 11
+            url: http-default-error-handling
+          - title: Send cache response
+            id: 12
             url: http-service-cache-response
       - title: HTTP client
         id: 2
@@ -706,7 +640,7 @@ sublinks:
           - title: Header parameter
             id: 6
             url: http-client-header-parameter
-          - title: Caching
+          - title: Enable caching
             id: 7
             url: http-caching-client
       - title: REST service security
@@ -784,50 +718,59 @@ sublinks:
           - title: Default resource
             id: 1
             url: http-default-resource
-          - title: Redirects
+          - title: Request/Response
             id: 2
+            url: http-request-response
+          - title: Caller
+            id: 3
+            url: http-caller
+          - title: Redirects
+            id: 4
             url: http-service-redirects
           - title: CORS
-            id: 3
+            id: 5
             url: http-cors
           - title: 100 continue
-            id: 4
+            id: 6
             url: http-100-continue
           - title: Matrix parameter
-            id: 5
+            id: 7
             url: http-matrix-param
           - title: Restrict by media type
-            id: 6
+            id: 8
             url: http-restrict-by-media-type
           - title: File upload
-            id: 7
+            id: 9
             url: http-service-file-upload
           - title: Compression
-            id: 8
+            id: 10
             url: http-compression
           - title: Trace logs
-            id: 9
+            id: 11
             url: http-trace-logs
           - title: Access logs
-            id: 10
+            id: 12
             url: http-access-logs
           - title: Cookies
-            id: 11
+            id: 13
             url: http-cookies-service
           - title: Chunking
-            id: 12
+            id: 14
             url: http-service-chunking
+          - title: Sending headers
+            id: 15
+            url: http-send-header
           - title: Response with multiparts
-            id: 13
+            id: 16
             url: http-response-with-multiparts
           - title: Passthrough
-            id: 14
+            id: 17
             url: http-passthrough
           - title: HTTP/2 to HTTP/1.1 downgrade
-            id: 15
+            id: 18
             url: http-2-to-1-1-downgrade-service
           - title: HTTP/2 server push
-            id: 16
+            id: 19
             url: http-2-0-server-push
       - title: HTTP client advanced
         id: 7
@@ -859,12 +802,12 @@ sublinks:
       - title: HTTP service interceptors
         id: 8
         sublinks:
-          - title: Request interceptors
+          - title: Request interceptor
             id: 1
-            url: http-request-interceptors
-          - title: Response interceptors
+            url: http-request-interceptor
+          - title: Response interceptor
             id: 2
-            url: http-response-interceptors
+            url: http-response-interceptor
           - title: Error handling
             id: 3
             url: http-error-handling
@@ -877,12 +820,12 @@ sublinks:
           - title: Hello world
             id: 1
             url: graphql-hello-world
-          - title: Record as output object
-            id: 2
-            url: graphql-returning-record-values
           - title: Service as output object
-            id: 3
+            id: 2
             url: graphql-returning-service-objects
+          - title: Record as output object
+            id: 3
+            url: graphql-returning-record-values
           - title: Input types
             id: 4
             url: graphql-input-types
@@ -901,26 +844,32 @@ sublinks:
           - title: Interfaces implementing interfaces
             id: 9
             url: graphql-interfaces-implementing-interfaces
-          - title: GraphiQL client
+          - title: Union Types
             id: 10
+            url: graphql-service-union-types
+          - title: Error handling
+            id: 11
+            url: graphql-service-error-handling
+          - title: GraphiQL client
+            id: 12
             url: graphql-graphiql
           - title: Documentation
-            id: 11
+            id: 13
             url: graphql-documentation
           - title: Directives
-            id: 12
+            id: 14
             url: graphql-directives
           - title: Context
-            id: 13
+            id: 15
             url: graphql-context
           - title: Interceptors
-            id: 14
+            id: 16
             url: graphql-interceptors
           - title: File upload
-            id: 15
+            id: 17
             url: graphql-file-upload
           - title: Hierarchical resource paths
-            id: 16
+            id: 18
             url: graphql-hierarchical-resource-paths
       - title: GraphQL client
         id: 10
@@ -982,6 +931,9 @@ sublinks:
           - title: Payload constraint validation
             id: 2
             url: websocket-service-payload-constraint-validation
+          - title: Error handling
+            id: 3
+            url: websocket-service-error-handling
       - title: WebSocket client
         id: 14
         sublinks:
@@ -1069,9 +1021,9 @@ sublinks:
       - title: gRPC service
         id: 20
         sublinks:
-          - title: Unary RPC
+          - title: Simple RPC
             id: 1
-            url: grpc-service-unary
+            url: grpc-service-simple
           - title: Server-side streaming RPC
             id: 2
             url: grpc-service-server-streaming
@@ -1093,9 +1045,9 @@ sublinks:
       - title: gRPC client
         id: 21
         sublinks:
-          - title: Unary RPC
+          - title: Simple RPC
             id: 1
-            url: grpc-client-unary
+            url: grpc-client-simple
           - title: Server-side streaming RPC
             id: 2
             url: grpc-client-server-streaming
@@ -1210,23 +1162,29 @@ sublinks:
           - title: Constraint validation
             id: 2
             url: kafka-service-constraint-validation
-      - title: Kafka client
+          - title: Error handling
+            id: 3
+            url: kafka-service-error-handling
+      - title: Kafka producer
         id: 29
         sublinks:
           - title: Produce message
             id: 1
-            url: kafka-client-produce-message
-          - title: Payload data binding
-            id: 2
-            url: kafka-client-payload-data-binding
-          - title: Consumer record data binding
-            id: 3
-            url: kafka-client-consumer-record-data-binding
-          - title: Constraint validation
-            id: 4
-            url: kafka-client-constraint-validation
-      - title: Kafka service security
+            url: kafka-producer-produce-message
+      - title: Kafka consumer
         id: 30
+        sublinks:
+          - title: Payload data binding
+            id: 1
+            url: kafka-consumer-payload-data-binding
+          - title: Consumer record data binding
+            id: 2
+            url: kafka-consumer-consumer-record-data-binding
+          - title: Constraint validation
+            id: 3
+            url: kafka-consumer-constraint-validation
+      - title: Kafka service security
+        id: 31
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1234,23 +1192,26 @@ sublinks:
           - title: SASL authentication
             id: 2
             url: kafka-service-sasl
-      - title: Kafka client security
-        id: 31
-        sublinks:
-          - title: Producer SSL/TLS
-            id: 1
-            url: kafka-client-producer-ssl
-          - title: Consumer SSL/TLS
-            id: 2
-            url: kafka-client-consumer-ssl
-          - title: Producer SASL authentication
-            id: 3
-            url: kafka-client-producer-sasl
-          - title: Consumer SASL authentication
-            id: 4
-            url: kafka-client-consumer-sasl
-      - title: RabbitMQ service
+      - title: Kafka producer security
         id: 32
+        sublinks:
+          - title: SSL/TLS
+            id: 1
+            url: kafka-producer-ssl
+          - title: SASL authentication
+            id: 2
+            url: kafka-producer-sasl
+      - title: Kafka consumer security
+        id: 33
+        sublinks:
+          - title: SSL/TLS
+            id: 1
+            url: kafka-consumer-ssl
+          - title: SASL authentication
+            id: 2
+            url: kafka-consumer-sasl
+      - title: RabbitMQ service
+        id: 34
         sublinks:
           - title: Consume message
             id: 1
@@ -1265,7 +1226,7 @@ sublinks:
             id: 4
             url: rabbitmq-service-constraint-validation
       - title: RabbitMQ client
-        id: 33
+        id: 35
         sublinks:
           - title: Declare a queue
             id: 1
@@ -1283,7 +1244,7 @@ sublinks:
             id: 5
             url: rabbitmq-client-constraint-validation
       - title: RabbitMQ service security
-        id: 34
+        id: 36
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1292,7 +1253,7 @@ sublinks:
             id: 2
             url: rabbitmq-service-basic-auth
       - title: RabbitMQ client security
-        id: 35
+        id: 37
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1301,37 +1262,37 @@ sublinks:
             id: 2
             url: rabbitmq-client-basic-auth
       - title: TCP service
-        id: 36
+        id: 38
         sublinks:
           - title: Send/Receive bytes
             id: 1
             url: tcp-listener
       - title: TCP client
-        id: 37
+        id: 39
         sublinks:
           - title: Send/Receive bytes
             id: 1
             url: tcp-client
       - title: TCP service security
-        id: 38
+        id: 40
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-service-ssl-tls
       - title: TCP client security
-        id: 39
+        id: 41
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-client-ssl-tls
       - title: UDP service
-        id: 40
+        id: 42
         sublinks:
           - title: Send/Receive datagram
             id: 1
             url: udp-listener
       - title: UDP client
-        id: 41
+        id: 43
         sublinks:
           - title: Send/Receive datagram
             id: 1
@@ -1340,13 +1301,13 @@ sublinks:
             id: 2
             url: udp-connect-client
       - title: Email service
-        id: 42
+        id: 44
         sublinks:
           - title: Receive email
             id: 1
             url: receive-email-using-service
       - title: Email client
-        id: 43
+        id: 45
         sublinks:
           - title: Send email
             id: 1
@@ -1354,44 +1315,56 @@ sublinks:
           - title: Receive email
             id: 2
             url: receive-email-using-client
-      - title: FTP Service
-        id: 44
-        sublinks:
-          - title: Read file
-            id: 1
-            url: ftp-service-read
-          - title: Read/Write file
-            id: 2
-            url: ftp-service-read-write
-      - title: FTP Client
-        id: 45
-        sublinks:
-          - title: Read file
-            id: 1
-            url: ftp-client-read
-          - title: Write file
-            id: 2
-            url: ftp-client-write
-      - title: SFTP Service
+      - title: Email service security
         id: 46
         sublinks:
-          - title: Read file
+          - title: SSL/TLS
             id: 1
-            url: sftp-service-read
-          - title: Read/Write file
-            id: 2
-            url: sftp-service-read-write
-      - title: SFTP Client
+            url: email-service-ssl-tls
+      - title: Email client security
         id: 47
         sublinks:
-          - title: Read file
+          - title: SSL/TLS
             id: 1
-            url: sftp-client-read
-          - title: Write file
-            id: 2
-            url: sftp-client-write
-      - title: Database Access
+            url: email-client-ssl-tls
+      - title: FTP Service
         id: 48
+        sublinks:
+          - title: Receive file
+            id: 1
+            url: ftp-service-receive-file
+          - title: Send file
+            id: 2
+            url: ftp-service-send-file
+      - title: FTP Client
+        id: 49
+        sublinks:
+          - title: Receive file
+            id: 1
+            url: ftp-client-receive-file
+          - title: Send file
+            id: 2
+            url: ftp-client-send-file
+      - title: SFTP Service
+        id: 50
+        sublinks:
+          - title: Receive file
+            id: 1
+            url: sftp-service-receive-file
+          - title: Send file
+            id: 2
+            url: sftp-service-send-file
+      - title: SFTP Client
+        id: 51
+        sublinks:
+          - title: Receive file
+            id: 1
+            url: sftp-client-receive-file
+          - title: Send file
+            id: 2
+            url: sftp-client-send-file
+      - title: Database Access
+        id: 52
         sublinks:
           - title: Simple query
             id: 1
@@ -1415,7 +1388,7 @@ sublinks:
             id: 7
             url: mysql-call-stored-procedures
       - title: SerDes
-        id: 49
+        id: 53
         sublinks:
           - title: Serialization/Deserialization
             id: 1

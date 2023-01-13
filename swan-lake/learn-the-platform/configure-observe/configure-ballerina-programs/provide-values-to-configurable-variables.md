@@ -17,12 +17,12 @@ redirect_from:
 - /learn/guides/configuring-ballerina-programs/providing-values-to-configurable-variables
 ---
 
-The values for configurable variables can be provided through configuration files, command line arguments, and
+The values for configurable variables can be provided through configuration files, command-line arguments, and
 environment variables. The configuration values will be overridden in the following precedence order if the values are
 given through multiple ways when retrieving configurable values:
 
-- **Command line arguments:** The values can be configured through the command line arguments when executing the Ballerina program. The configurable
-    value provided through a command line argument is expected to be the `toString()` representation of the intended 
+- **Command-line arguments:** The values can be configured through the command-line arguments when executing the Ballerina program. The configurable
+    value provided through a command-line argument is expected to be the `toString()` representation of the intended 
     value.
 
 - **Configuration files:** The values can be configured through the configuration files in the <a href="https://toml.io/en/v0.4.0" target="_blank">TOML(v0.4) format</a>. 
@@ -35,21 +35,21 @@ given through multiple ways when retrieving configurable values:
 content is expected to be in the <a href="https://toml.io/en/v0.4.0" target="_blank">TOML(v0.4) format</a>.
 >**Note:** Providing multiple configuration values through separate environment variables is not supported.
 
-### Provide via command line arguments
+### Provide via command-line arguments
 
-The following syntax can be used to provide values for the variables through the command line parameters:
+The following syntax can be used to provide values for the variables through the command-line parameters:
 
 ```
 -Ckey=value
 ```
 
-Currently, the command line based configuration is only supported for configurable variables of types `int`, `byte`,
+Currently, the command-line based configuration is only supported for configurable variables of types `int`, `byte`,
 `float`, `boolean`, `string`, `decimal`, `enum` and `xml`.
 
-The following examples explain the way of providing command line arguments to configure variables of specific Ballerina
+The following examples explain the way of providing command-line arguments to configure variables of specific Ballerina
 types.
 
-| Ballerina type | Ballerina example                                                                                                                                                                     | Command line argument                                             |
+| Ballerina type | Ballerina example                                                                                                                                                                     | Command-line argument                                             |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
 | boolean        | <code>configurable boolean isAdmin = ?; </code>                                                                                                                                       | `bal run -- -CisAdmin=true` <br> or <br> `bal run -- -CisAdmin=1` |
 | int, byte      | <code>configurable byte age = ?; </code><br> <code>configurable int port = ?;</code>                                                                                                  | `bal run -- -Cage=25 -Cport=9090`                                 |

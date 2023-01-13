@@ -55,9 +55,25 @@ To view bug fixes, see the [GitHub milestone for 2201.3.2 (Swan Lake)](https://g
 ### New features
 
 ### Improvements
+To view improvements, see the GitHub milestone for 2201.3.2 (Swan Lake) of the repositories below.
+
+- [CLI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FCLI+is%3Aclosed+milestone%3A2201.3.2+label%3AType%2FImprovement+)
 
 ### Bug fixes
 To view bug fixes, see the GitHub milestone for 2201.3.2 (Swan Lake) of the repositories below.
 
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.3.2%22+is%3Aclosed)
+- [CLI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FCLI+is%3Aclosed+milestone%3A2201.3.2+label%3AType%2FBug+)
+- [Test framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FTestFramework+is%3Aclosed+milestone%3A2201.3.2+label%3AType%2FBug+)
 
+## Ballerina packages updates
+
+### New features
+
+### Improvements
+
+To view improvements, see the [GitHub milestone for 2201.3.2 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectAPI+is%3Aclosed+milestone%3A2201.3.2+label%3AType%2FImprovement+).
+
+### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for 2201.3.2 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectAPI+is%3Aclosed+milestone%3A2201.3.2+label%3AType%2FBug+).

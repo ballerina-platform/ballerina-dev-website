@@ -24,6 +24,10 @@ display:none;
 	.cVideoThumb:hover{border:1px solid #1eb5ae !important; transform: scale(1.05); transition: 0.3s;}
 	.VideoIframe{border:#a4a4a4 solid 1px !important;}
 	.VideoIframe:hover{border:1px solid #1eb5ae !important; }
+	@media only screen and (max-width: 670px){
+		.videoframeMobile{width:auto !important;height:auto !important}
+		.cVideoThumb{margin-bottom:10px}
+	}
 </style>
 The resources below will walk you through the Ballerina language.
 
@@ -38,7 +42,7 @@ The video series below explores the language concepts of Ballerina Swan Lake. Th
 <br/>
 <div class="row">
 <div class="col-sm-12 col-md-12 col-12">
-<iframe width="830" height="515" class="VideoIframe" style="margin-bottom: 15px;" src="https://www.youtube.com/embed/videoseries?list=PL7JOecNWBb0KX8RGAjF-oRknb_YIYN-dR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe  class="VideoIframe videoframeMobile" style="margin-bottom: 15px;width:830px;height:515px;" src="https://www.youtube.com/embed/videoseries?list=PL7JOecNWBb0KX8RGAjF-oRknb_YIYN-dR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 
@@ -81,7 +85,7 @@ You can also find the [slide deck](/learn/slides/language-walkthrough/Ballerina_
 
 <!--<embed width="191" height="207" name="lang-guide-slides" src="/learn/language-guide/Ballerina_Language_Presentation-2021-03-08.pdf" type="application/pdf">-->
 
-<iframe width="840" height="515" src="/learn/slides/language-walkthrough/Ballerina_Language_Presentation-2021-03-08.pdf" frameborder="0" allowfullscreen>
+<iframe class="videoframeMobile" width="840" height="515" src="/learn/slides/language-walkthrough/Ballerina_Language_Presentation-2021-03-08.pdf" frameborder="0" allowfullscreen>
 </iframe>
 
 <!--<style>

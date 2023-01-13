@@ -34,21 +34,6 @@
         "isLearnByExample": true
       },
       {
-        "name": "Main function",
-        "url": "main-function",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "disablePlayground": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Init function",
-        "url": "init-function",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
         "name": "Variables and types",
         "url": "variables-and-types",
         "verifyBuild": true,
@@ -126,29 +111,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "If statement",
-        "url": "if-statement",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
         "name": "Match statement",
         "url": "match-statement",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Match guard in match statement",
-        "url": "match-guard-in-match-statement",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Binding patterns in match statement",
-        "url": "binding-patterns-in-match-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -163,6 +127,13 @@
       {
         "name": "Functions",
         "url": "functions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Function values",
+        "url": "function-values",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -201,34 +172,6 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
-      },
-      {
-        "name": "Function values",
-        "url": "function-values",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Function types",
-        "url": "function-types",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Anonymous function",
-        "url": "anonymous-function",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Function closure",
-        "url": "function-closure",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
       }
     ]
   },
@@ -247,22 +190,6 @@
       {
         "name": "While statement",
         "url": "while-statement",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "disablePlayground": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Break statement",
-        "url": "break-statement",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "disablePlayground": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Continue statement",
-        "url": "continue-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "disablePlayground": true,
@@ -382,13 +309,6 @@
         "isLearnByExample": true
       },
       {
-        "name": "Stream type",
-        "url": "stream-type",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
         "name": "Never type",
         "url": "never-type",
         "verifyBuild": true,
@@ -424,13 +344,6 @@
         "isLearnByExample": true
       },
       {
-        "name": "Nested arrays",
-        "url": "nested-arrays",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
         "name": "Tuples",
         "url": "tuples",
         "verifyBuild": true,
@@ -438,29 +351,15 @@
         "isLearnByExample": true
       },
       {
+        "name": "Destructure tuples",
+        "url": "destructure-tuples",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Rest type in tuples",
         "url": "rest-type-in-tuples",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Filler values of a list",
-        "url": "filler-values-of-a-list",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "List subtyping",
-        "url": "list-subtyping",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "List equality",
-        "url": "list-equality",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -613,57 +512,22 @@
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Mapping binding pattern",
-        "url": "mapping-binding-pattern",
+        "name": "Binding patterns in assignment",
+        "url": "binding-patterns-in-assignment",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Rest binding pattern in mapping binding pattern",
-        "url": "rest-binding-pattern-in-mapping-binding-pattern",
+        "name": "Spread in binding patterns",
+        "url": "spread-in-binding-patterns",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Error binding pattern",
-        "url": "error-binding-pattern",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Rest binding pattern in error binding pattern",
-        "url": "rest-binding-pattern-in-error-binding-pattern",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Single use of typed binding patterns",
-        "url": "single-use-of-typed-binding",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Single use of typed binding patterns with on fail clause",
-        "url": "single-use-with-on-fail-clause",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Iterative use of typed binding patterns",
-        "url": "iterative-use-of-typed-binding",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Error binding pattern in match statement",
-        "url": "error-binding-pattern-in-match-statement",
+        "name": "Binding patterns in match statement",
+        "url": "binding-patterns-in-match-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -789,8 +653,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "Access JSON elements",
-        "url": "access-json-elements",
+        "name": "Work directly with JSON",
+        "url": "working-directly-with-json",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -810,22 +674,15 @@
         "isLearnByExample": true
       },
       {
-        "name": "Converting from table and XML to JSON",
-        "url": "converting-from-table-and-xml-to-json",
+        "name": "Convert from JSON to user-defined type",
+        "url": "converting-from-json-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Converting from JSON to user defined type with langlib functions",
-        "url": "converting-from-json-to-user-defined-type-with-langlib-functions",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Casting JSON to user-defined type",
-        "url": "casting-json-to-user-defined-type",
+        "name": "Convert to user-defined type",
+        "url": "converting-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -888,8 +745,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "Sort iterable objects",
-        "url": "sort-iterable-objects",
+        "name": "Destructure records",
+        "url": "destructuring-records",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -902,15 +759,15 @@
         "isLearnByExample": true
       },
       {
-        "name": "Limit clause",
-        "url": "limit-clause",
+        "name": "Ordering",
+        "url": "ordering",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Joining iterable objects",
-        "url": "joining-iterable-objects",
+        "name": "Limit clause",
+        "url": "limit-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -924,49 +781,28 @@
       },
       {
         "name": "Create tables with query",
-        "url": "create-tables-with-query",
+        "url": "creating-tables-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Create maps with query",
-        "url": "create-maps-with-query",
+        "name": "Join clause",
+        "url": "join-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Create streams with query",
-        "url": "create-streams-with-query",
+        "name": "Outer Join clause",
+        "url": "outer-join-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "On conflict clause",
-        "url": "on-conflict-clause",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Iterating over xml with query",
-        "url": "iterating-over-xml-with-query",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Nested query expressions",
-        "url": "nested-query-expressions",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Destructure records using query",
-        "url": "destructure-records-using-query",
+        "name": "Stream type",
+        "url": "stream-type",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1547,15 +1383,13 @@
         "url": "http-basic-rest-service",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Service path and resource name",
-        "url": "http-service-path-and-resource-name",
+        "name": "Service and resource paths",
+        "url": "http-service-and-resource-paths",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1563,7 +1397,6 @@
         "url": "http-service-data-binding",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1571,7 +1404,6 @@
         "url": "http-service-payload-constraint-validation",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1579,7 +1411,6 @@
         "url": "http-path-param",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1587,7 +1418,6 @@
         "url": "http-query-parameter",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1595,7 +1425,6 @@
         "url": "http-header-param",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1603,7 +1432,6 @@
         "url": "http-send-response",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1611,7 +1439,6 @@
         "url": "http-send-different-status-codes",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1619,7 +1446,13 @@
         "url": "http-send-different-status-codes-with-payload",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "http-default-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {
@@ -1627,7 +1460,6 @@
         "url": "http-service-cache-response",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       }
     ]
@@ -1642,6 +1474,7 @@
         "url": "http-client-send-request-receive-response",
         "verifyBuild": false,
         "verifyOutput": false,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1649,6 +1482,7 @@
         "url": "http-client-data-binding",
         "verifyBuild": true,
         "verifyOutput": false,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1656,7 +1490,7 @@
         "url": "http-client-payload-constraint-validation",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1664,7 +1498,7 @@
         "url": "http-client-path-parameter",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1672,7 +1506,7 @@
         "url": "http-client-query-parameter",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1680,15 +1514,15 @@
         "url": "http-client-header-parameter",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
-        "name": "Caching",
+        "name": "Enable caching",
         "url": "http-caching-client",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
@@ -1758,7 +1592,7 @@
         "url": "http-client-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1766,7 +1600,7 @@
         "url": "http-client-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1774,7 +1608,7 @@
         "url": "http-client-basic-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1782,7 +1616,7 @@
         "url": "http-client-bearer-token-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1790,7 +1624,7 @@
         "url": "http-client-self-signed-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1798,7 +1632,7 @@
         "url": "http-client-oauth2-client-credentials-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1806,7 +1640,7 @@
         "url": "http-client-oauth2-password-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1814,7 +1648,7 @@
         "url": "http-client-oauth2-refresh-token-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1822,7 +1656,7 @@
         "url": "http-client-oauth2-jwt-bearer-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
@@ -1837,7 +1671,7 @@
         "url": "http-timeout",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1845,7 +1679,7 @@
         "url": "http-retry",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1853,7 +1687,7 @@
         "url": "http-circuit-breaker",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1861,7 +1695,7 @@
         "url": "http-load-balancer",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1869,7 +1703,7 @@
         "url": "http-failover",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
@@ -1884,7 +1718,20 @@
         "url": "http-default-resource",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Request/Response",
+        "url": "http-request-response",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Caller",
+        "url": "http-caller",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {
@@ -1892,7 +1739,6 @@
         "url": "http-service-redirects",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1900,7 +1746,6 @@
         "url": "http-cors",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1908,7 +1753,6 @@
         "url": "http-100-continue",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1916,7 +1760,6 @@
         "url": "http-matrix-param",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1924,7 +1767,6 @@
         "url": "http-restrict-by-media-type",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1932,7 +1774,7 @@
         "url": "http-service-file-upload",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1940,23 +1782,22 @@
         "url": "http-compression",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
         "name": "Trace logs",
         "url": "http-trace-logs",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
         "name": "Access logs",
         "url": "http-access-logs",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1964,7 +1805,6 @@
         "url": "http-cookies-service",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1972,7 +1812,13 @@
         "url": "http-service-chunking",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Sending headers",
+        "url": "http-send-header",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {
@@ -1980,7 +1826,7 @@
         "url": "http-response-with-multiparts",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1988,7 +1834,7 @@
         "url": "http-passthrough",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1996,7 +1842,7 @@
         "url": "http-2-to-1-1-downgrade-service",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -2004,7 +1850,7 @@
         "url": "http-2-0-server-push",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
@@ -2019,7 +1865,7 @@
         "url": "http-client-redirects",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -2027,7 +1873,7 @@
         "url": "http-client-file-upload",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -2035,7 +1881,7 @@
         "url": "http-cookies-client",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -2043,7 +1889,7 @@
         "url": "http-client-chunking",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -2051,7 +1897,7 @@
         "url": "http-request-with-multiparts",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -2059,7 +1905,7 @@
         "url": "http-2-to-1-1-downgrade-client",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -2067,7 +1913,7 @@
         "url": "http-2-prior-knowledge-client",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -2075,7 +1921,7 @@
         "url": "http-2-0-client-server-push",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
@@ -2086,19 +1932,17 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Request interceptors",
-        "url": "http-request-interceptors",
+        "name": "Request interceptor",
+        "url": "http-request-interceptor",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Response interceptors",
-        "url": "http-response-interceptors",
+        "name": "Response interceptor",
+        "url": "http-response-interceptor",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -2106,7 +1950,6 @@
         "url": "http-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -2114,7 +1957,6 @@
         "url": "http-interceptor-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       }
     ]
@@ -2133,16 +1975,16 @@
         "isLearnByExample": false
       },
       {
-        "name": "Record as output object",
-        "url": "graphql-returning-record-values",
+        "name": "Service as output object",
+        "url": "graphql-returning-service-objects",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Service as output object",
-        "url": "graphql-returning-service-objects",
+        "name": "Record as output object",
+        "url": "graphql-returning-record-values",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2191,6 +2033,22 @@
       {
         "name": "Interfaces implementing interfaces",
         "url": "graphql-interfaces-implementing-interfaces",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Union Types",
+        "url": "graphql-service-union-types",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "graphql-service-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2405,6 +2263,15 @@
       {
         "name": "Payload constraint validation",
         "url": "websocket-service-payload-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "websocket-service-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Service cannot be stopped",
@@ -2637,8 +2504,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Unary RPC",
-        "url": "grpc-service-unary",
+        "name": "Simple RPC",
+        "url": "grpc-service-simple",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
@@ -2707,8 +2574,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Unary RPC",
-        "url": "grpc-client-unary",
+        "name": "Simple RPC",
+        "url": "grpc-client-simple",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
@@ -3027,26 +2894,42 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Kafka client",
-    "column": 2,
-    "category": "Network libraries",
-    "samples": [
+      },
       {
-        "name": "Produce message",
-        "url": "kafka-client-produce-message",
+        "name": "Error handling",
+        "url": "kafka-service-error-handling",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "Kafka producer",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Produce message",
+        "url": "kafka-producer-produce-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kafka consumer",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
       {
         "name": "Payload data binding",
-        "url": "kafka-client-payload-data-binding",
+        "url": "kafka-consumer-payload-data-binding",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3055,7 +2938,7 @@
       },
       {
         "name": "Consumer record data binding",
-        "url": "kafka-client-consumer-record-data-binding",
+        "url": "kafka-consumer-consumer-record-data-binding",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3064,7 +2947,7 @@
       },
       {
         "name": "Constraint validation",
-        "url": "kafka-client-constraint-validation",
+        "url": "kafka-consumer-constraint-validation",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3099,13 +2982,13 @@
     ]
   },
   {
-    "title": "Kafka client security",
+    "title": "Kafka producer security",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Producer SSL/TLS",
-        "url": "kafka-client-producer-ssl",
+        "name": "SSL/TLS",
+        "url": "kafka-producer-ssl",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3113,8 +2996,24 @@
         "isLearnByExample": false
       },
       {
-        "name": "Consumer SSL/TLS",
-        "url": "kafka-client-consumer-ssl",
+        "name": "SASL authentication",
+        "url": "kafka-producer-sasl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kafka consumer security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "kafka-consumer-ssl",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3122,17 +3021,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Producer SASL authentication",
-        "url": "kafka-client-producer-sasl",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Consumer SASL authentication",
-        "url": "kafka-client-consumer-sasl",
+        "name": "SASL authentication",
+        "url": "kafka-consumer-sasl",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3431,13 +3321,45 @@
     ]
   },
   {
+    "title": "Email service security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "email-service-ssl-tls",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Email client security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "email-client-ssl-tls",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "FTP Service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "ftp-service-read",
+        "name": "Receive file",
+        "url": "ftp-service-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3445,8 +3367,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Read/Write file",
-        "url": "ftp-service-read-write",
+        "name": "Send file",
+        "url": "ftp-service-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3461,8 +3383,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "ftp-client-read",
+        "name": "Receive file",
+        "url": "ftp-client-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3470,8 +3392,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write file",
-        "url": "ftp-client-write",
+        "name": "Send file",
+        "url": "ftp-client-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3486,8 +3408,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "sftp-service-read",
+        "name": "Receive file",
+        "url": "sftp-service-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3495,8 +3417,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Read/Write file",
-        "url": "sftp-service-read-write",
+        "name": "Send file",
+        "url": "sftp-service-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3511,8 +3433,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "sftp-client-read",
+        "name": "Receive file",
+        "url": "sftp-client-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3520,8 +3442,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write file",
-        "url": "sftp-client-write",
+        "name": "Send file",
+        "url": "sftp-client-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3646,7 +3568,7 @@
         "name": "Read/write CSV with data mapping",
         "url": "io-csv-datamapping",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {

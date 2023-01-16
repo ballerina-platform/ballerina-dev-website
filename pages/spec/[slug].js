@@ -158,25 +158,7 @@ export default function PostPage({ frontmatter, content, codeSnippets }) {
                   h4: ({ node, children, ...props }) => <h4 id={genrateId(children)} {...props}>{children}</h4>,
                   h5: ({ node, children, ...props }) => <h5 id={genrateId(children)} {...props}>{children}</h5>,
                   h6: ({ node, children, ...props }) => <h6 id={genrateId(children)} {...props}>{children}</h6>,
-                  code({ node, inline, className, children, ...props }) {
-                    const key = (children[0]).trim().split(/\r?\n/).map(row => row.trim()).join('\n');
-                    const highlightedCode = codes.get(key.hashCode());
-                    if (highlightedCode) {
-                      return <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
-                    }
-                    const match = /language-(\w+)/.exec(className || '')
-                    return inline ?
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
-                      : match ?
-                        <div dangerouslySetInnerHTML={{ __html: String(children).replace(/\n$/, '') }} />
-                        : <pre className='default'>
-                          <code className={className} {...props}>
-                            {children}
-                          </code>
-                        </pre>
-                  }
+                  
                 }}
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}

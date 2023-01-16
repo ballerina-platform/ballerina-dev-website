@@ -87,7 +87,7 @@ export async function getStaticProps({ params: { slug } }) {
   // slug = slug.join("/");
   const fileName = fs.readFileSync(`spec/${slug}/spec.md`, "utf-8");
   const { data: frontmatter, content } = matter(fileName);
-  // let codeSnippets = await highlight(content);
+  let codeSnippets = await highlight(content);
 
   return {
     props: {

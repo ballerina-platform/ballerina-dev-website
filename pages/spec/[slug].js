@@ -30,17 +30,17 @@ import Layout from '../../layouts/LayoutSpec';
 import { prefix } from '../../utils/prefix';
 import { highlight } from "../../utils/highlighter";
 
-String.prototype.hashCode = function () {
-  var hash = 0,
-    i, chr;
-  if (this.length === 0) return hash;
-  for (i = 0; i < this.length; i++) {
-    chr = this.charCodeAt(i);
-    hash = ((hash << 5) - hash) + chr;
-    hash |= 0;
-  }
-  return hash;
-}
+// String.prototype.hashCode = function () {
+//   var hash = 0,
+//     i, chr;
+//   if (this.length === 0) return hash;
+//   for (i = 0; i < this.length; i++) {
+//     chr = this.charCodeAt(i);
+//     hash = ((hash << 5) - hash) + chr;
+//     hash |= 0;
+//   }
+//   return hash;
+// }
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -87,19 +87,18 @@ export async function getStaticProps({ params: { slug } }) {
   // slug = slug.join("/");
   const fileName = fs.readFileSync(`spec/${slug}/spec.md`, "utf-8");
   const { data: frontmatter, content } = matter(fileName);
-  let codeSnippets = await highlight(content);
+  // let codeSnippets = await highlight(content);
 
   return {
     props: {
       frontmatter,
-      content,
-      codeSnippets
+      content
     },
   };
 }
 
-export default function PostPage({ frontmatter, content, codeSnippets }) {
-  const codes = codeSnippets ? new Map(JSON.parse(codeSnippets)) : new Map();
+export default function PostPage({ frontmatter, content }) {
+  // const codes = codeSnippets ? new Map(JSON.parse(codeSnippets)) : new Map();
 
   // Add id attributes to headings
   const extractText = (value) => {

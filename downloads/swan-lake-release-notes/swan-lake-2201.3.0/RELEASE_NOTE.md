@@ -125,7 +125,7 @@ Previously, `-9223372036854775808` was allowed to be used as an integer in Balle
 int result = -9223372036854775808; // error: '9223372036854775808' is out of range for 'int'
 ```
 
->**Note:** This change has affected the `uuid` module. Therefore, if an application uses the`uuid` module or uses a package, which has a dependency on the `uuid` module, make sure that the UUID version is updated to 1.4.0. Otherwise, it would result in the aforementioned compilation error.
+>**Note:** This change has affected the `uuid` module. Therefore, if an application uses the`uuid` module or uses a package, which has a dependency on the `uuid` module, make sure that the UUID version is updated to 1.4.0. Otherwise, it would result in the aforementioned compilation error. If the application has a direct dependency, modify the UUID version to 1.4.0 by modifying the `Dependencies.toml` file. If the dependency is transitive, make sure to update the corresponding package or module to 1.4.0 and use it by updating the `Dependencies.toml` file.
 
 #### Restriction on the typed binding pattern of an outer join clause to use `var`
 

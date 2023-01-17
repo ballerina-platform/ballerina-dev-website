@@ -715,13 +715,13 @@ const generate = async (examplesDir, outputDir) => {
 
                     let { fileName, codeContent } = extractCode(relPath, m[2]);
 
-                    // if (playground) {
-                    //   playgroundLink = await generatePlaygroundLink(
-                    //     codeContent,
-                    //     relPath,
-                    //     fileName
-                    //   );
-                    // }
+                    if (playground) {
+                      playgroundLink = await generatePlaygroundLink(
+                        codeContent,
+                        relPath,
+                        fileName
+                      );
+                    }
 
                     convertedLine = md.render(m[2], {
                       codeCount,

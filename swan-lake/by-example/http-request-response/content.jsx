@@ -47,7 +47,7 @@ export function HttpRequestResponse({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>HTTP request/response object</h1>
+      <h1>HTTP service - Request/Response object</h1>
 
       <p>
         <code>http:Request</code> and <code>http:Response</code> objects are
@@ -68,6 +68,31 @@ export function HttpRequestResponse({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=5c8ee21cdd8ac64b4d6a2c9d6915bb2d&file=http_request_response.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
           {codeClick1 ? (
             <button
               className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -88,7 +113,7 @@ export function HttpRequestResponse({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -322,7 +347,7 @@ export function HttpRequestResponse({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Caller" href="/learn/by-example/http-caller">
+          <Link title="Caller object" href="/learn/by-example/http-caller">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -331,7 +356,7 @@ export function HttpRequestResponse({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Caller
+                  Caller object
                 </span>
               </div>
               <svg

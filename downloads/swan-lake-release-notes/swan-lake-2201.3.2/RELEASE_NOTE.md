@@ -34,25 +34,11 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ## Language updates
 
-### New features
-
-### Improvements
-
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.3.2 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.3.2+label%3ATeam%2FCompilerFE).
 
-## Standard library updates
-
-### New features
-
-### Improvements
-
-### Bug fixes
-
 ## Developer tools updates
-
-### New features
 
 ### Improvements
 To view improvements, see the GitHub milestone for 2201.3.2 (Swan Lake) of the repositories below.
@@ -68,8 +54,6 @@ To view bug fixes, see the GitHub milestone for 2201.3.2 (Swan Lake) of the repo
 - [Component Model Generator](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectDesignTool+is%3Aclosed+milestone%3A2201.3.2+label%3AType%2FBug+)
 
 ## Ballerina packages updates
-
-### New features
 
 ### Improvements
 

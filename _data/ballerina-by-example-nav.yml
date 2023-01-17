@@ -718,10 +718,10 @@ sublinks:
           - title: Default resource
             id: 1
             url: http-default-resource
-          - title: Request/Response
+          - title: Request/Response object
             id: 2
             url: http-request-response
-          - title: Caller
+          - title: Caller object
             id: 3
             url: http-caller
           - title: Redirects
@@ -1498,7 +1498,7 @@ sublinks:
           - title: Schedule one time job
             id: 2
             url: task-one-time-job-execution
-          - title: Manage sheduled jobs
+          - title: Manage scheduled jobs
             id: 3
             url: manage-scheduled-jobs
       - title: UUID

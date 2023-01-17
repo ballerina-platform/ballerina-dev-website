@@ -1,5 +1,5 @@
 {
-  "title": "Request/Response",
+  "title": "Request/Response object",
   "description": "BBE on HTTP request and its usage with client in ballerina.",
   "keywords": [
     "ballerina",

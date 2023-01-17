@@ -127,7 +127,7 @@ export function Tracing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.1/examples/tracing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/tracing",
                 "_blank"
               );
             }}

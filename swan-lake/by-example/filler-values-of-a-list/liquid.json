@@ -1,0 +1,21 @@
+{
+  "title": "Filler values of a list",
+  "description": "Initialize an array and a collection with default values.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "filler",
+    "default",
+    "initialize",
+    "array",
+    "collection",
+    "tuple"
+  ],
+  "permalink": "/learn/by-example/filler-values-of-a-list",
+  "active": "filler-values-of-a-list",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/filler-values-of-a-list",
+    "/swan-lake/learn/by-example/filler-values-of-a-list.html"
+  ]
+}

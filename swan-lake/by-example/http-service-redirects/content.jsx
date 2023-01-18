@@ -7,15 +7,18 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/http;
 
-service / on new http:Listener(9092) {
+service / on new http:Listener(9090) {
+    resource function get redirect(http:Caller caller) returns error? {
+        http:Response res = new;
+        // Sends a redirect response with a location header.
+        check caller->redirect(res, http:REDIRECT_TEMPORARY_REDIRECT_307,
+                            ["http://localhost:9092/greeting"]);
+    }
+}
 
-    resource function get redirect() returns http:TemporaryRedirect {
-        // Return a redirect response record with the location header.
-        return {
-            headers: {
-                "Location": "http://localhost:9090/albums"
-            }
-        };
+service / on new http:Listener(9092) {
+    resource function get greeting() returns string {
+        return "Hello World!";
     }
 }
 `,
@@ -36,12 +39,9 @@ export function HttpServiceRedirects({ codeSnippets }) {
       <h1>HTTP service - Redirects</h1>
 
       <p>
-        Redirection is important to direct requests to the correct endpoints if
-        the called one is not existing or moved. The HTTP specification provides
-        standard status codes to notify such situation to the caller. The HTTP
-        service responds with <code>redirect</code> status code response along
-        with the <code>location</code> header of the new endpoint. This can be
-        done using the <code>http:StatusCodeResponse</code> records.
+        The HTTP service provides redirection through <code>redirect()</code>{" "}
+        method of <code>http:Caller</code>. The response contains the specified
+        status code and the <code>Location</code> header.
       </p>
 
       <Row
@@ -52,31 +52,6 @@ export function HttpServiceRedirects({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=46e5f8daffeb81f7d28d5676c62d8a8e&file=http_service_redirects.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-service-redirects",
@@ -153,21 +128,6 @@ export function HttpServiceRedirects({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Run the HTTP service given in the{" "}
-            <a href="/learn/by-example/http-basic-rest-service/">
-              Basic REST service
-            </a>{" "}
-            example.
-          </span>
-        </li>
-      </ul>
-
       <p>Run the service as follows.</p>
 
       <Row
@@ -237,7 +197,7 @@ export function HttpServiceRedirects({ codeSnippets }) {
       <blockquote>
         <p>
           <strong>Tip:</strong> You may invoke the service via{" "}
-          <a href="../http-client-redirects/">Redirect client</a> example.
+          <a href="../http-client-redirects/">Redirect client</a>.
         </p>
       </blockquote>
 
@@ -294,38 +254,37 @@ export function HttpServiceRedirects({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v localhost:9092/redirect -L`}</span>
+              <span>{`\$ curl -v http://localhost:9090/redirect -L`}</span>
               <span>{`> GET /redirect HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9092`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 307 Temporary Redirect`}</span>
-              <span>{`< Location: http://localhost:9090/albums`}</span>
-              <span>{`< content-length: 0`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Wed, 11 Jan 2023 10:45:36 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`* Issue another request to this URL: 'http://localhost:9090/albums'`}</span>
-              <span>{`* Found bundle for host localhost: 0x7feb7341b9c0 [can pipeline]`}</span>
-              <span>{`* Could pipeline, but not asked to!`}</span>
-              <span>{`*   Trying ::1...`}</span>
-              <span>{`* TCP_NODELAY set`}</span>
-              <span>{`* Connected to localhost (::1) port 9090 (#1)`}</span>
-              <span>{`> GET /albums HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`>`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: application/json`}</span>
-              <span>{`< content-length: 95`}</span>
+              <span>{`< HTTP/1.1 307 Temporary Redirect`}</span>
+              <span>{`< location: http://localhost:9092/greeting`}</span>
+              <span>{`< content-length: 0`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Wed, 11 Jan 2023 10:45:36 +0530`}</span>
+              <span>{`< date: Tue, 22 Nov 2022 11:15:46 +0530`}</span>
               <span>{`<`}</span>
-              <span>{`* Connection #1 to host localhost left intact`}</span>
-              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`* Issue another request to this URL: 'http://localhost:9092/greeting'`}</span>
+              <span>{`* Found bundle for host localhost: 0x7fef816187a0 [can pipeline]`}</span>
+              <span>{`* Could pipeline, but not asked to!`}</span>
+              <span>{`*   Trying ::1...`}</span>
+              <span>{`* TCP_NODELAY set`}</span>
+              <span>{`* Connected to localhost (::1) port 9092 (#1)`}</span>
+              <span>{`> GET /greeting HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9092`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`>`}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< content-type: text/plain`}</span>
+              <span>{`< content-length: 12`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Tue, 22 Nov 2022 11:15:46 +0530`}</span>
+              <span>{`<`}</span>
+              <span>{`Hello World!* Closing connection 0`}</span>
             </code>
           </pre>
         </Col>
@@ -338,7 +297,7 @@ export function HttpServiceRedirects({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>
@@ -357,7 +316,10 @@ export function HttpServiceRedirects({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Caller object" href="/learn/by-example/http-caller">
+          <Link
+            title="Default resource"
+            href="/learn/by-example/http-default-resource"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -383,7 +345,7 @@ export function HttpServiceRedirects({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Caller object
+                  Default resource
                 </span>
               </div>
             </div>

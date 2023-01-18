@@ -1,0 +1,18 @@
+{
+  "title": "Typed binding pattern",
+  "description": "This BBE demostrates the use of a typed binding pattern and a capture binding pattern",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binding pattern",
+    "typed binding pattern",
+    "capture binding pattern"
+  ],
+  "permalink": "/learn/by-example/typed-binding-pattern",
+  "active": "typed-binding-pattern",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/typed-binding-pattern",
+    "/swan-lake/learn/by-example/typed-binding-pattern.html"
+  ]
+}

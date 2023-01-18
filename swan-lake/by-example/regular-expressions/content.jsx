@@ -70,7 +70,7 @@ export function RegularExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=341597f8c3843fdafa1d5327c8e835e2&file=regular_expressions.bal",
+                "https://play.ballerina.io/?gist=e6a6f6cf4dec993d2b4bdfa0f44d2b8c&file=regular_expressions.bal",
                 "_blank"
               );
             }}

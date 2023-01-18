@@ -7,27 +7,69 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-public function main() {
+public function main() returns error? {
     // An XML element. There can be only one root element.
     xml x1 = xml \`<book>The Lost World</book>\`;
     io:println(x1);
 
-    // An XML text.
-    xml x2 = xml \`Hello, world!\`;
+    // An XML processing instruction.
+    xml x2 = xml \`<?target data?>\`;
     io:println(x2);
 
     // An XML comment.
     xml x3 = xml \`<!--I am a comment-->\`;
     io:println(x3);
 
-    // An XML processing instructions.
-    xml x4 = xml \`<?target data?>\`;
+    // An XML text.
+    xml x4 = xml \`Hello, world!\`;
     io:println(x4);
 
-    // Multiple XML items can be combined to form a sequence of XML.
-    // The resulting sequence is another \`xml\` value on its own.
-    xml x5 = x1 + x2 + x3 + x4;
-    io:println(x5);
+    // \`xml:createText\` can be used to convert a string to \`xmlText\`.
+    string hello = "Hello";
+    string world = "World";
+    xml:Text xmlString = xml:createText(hello + " " + world);
+    io:println(xmlString);
+
+    // Creates an XML value.
+    xml xmlValue = xml \`<name>Sherlock Holmes</name>
+                        <details>
+                          <author>Sir Arthur Conan Doyle</author>
+                          <language>English</language>
+                        </details>\`;
+
+    // \`x[i]\` or \`x.get(i)\` gives the \`i\`-th item.
+    io:println(xmlValue[0]);
+
+    // \`x.id\` accesses a required attribute named \`id\`. The result is an \`error\` if there is no such
+    // attribute or if \`x\` is not a singleton.
+    xml xmlHello = xml \`<para id="greeting">Hello</para>\`;
+    string id = check xmlHello.id;
+    io:println(id);
+
+    // \`x?.id\` accesses an optional attribute named \`id\`. The result is \`()\` if there is no such
+    // attribute.
+    string? name = check xmlHello?.name;
+    io:println(name);
+
+    xml xmlItems = xml
+        \`<items>
+            <!--Contents-->
+            <book>
+                <name>A Study in Scarlet</name>
+                <author><name>Arthur Conan Doyle</name></author>
+            </book>
+            <planner>Daily Planner<kind>day</kind><pages>365</pages></planner>
+            <book>
+                <name>The Sign of Four</name>
+                <author><name>Arthur Conan Doyle</name></author>
+            </book>
+            <pen><kind>marker</kind><color>blue</color></pen>
+        </items>\`;
+
+    // \`x.<items>\` - retrieves every element in \`x\` named \`items\`.
+    xml items = xmlItems.<items>;
+    io:println(items);
+
 }
 `,
 ];
@@ -68,7 +110,7 @@ export function XmlDataModel({ codeSnippets }) {
       </ul>
 
       <p>
-        XML document is an <code>xml</code> sequence with only one{" "}
+        An XML document is an <code>xml</code> sequence with only one{" "}
         <code>element</code> and no <code>text</code>. An <code>element</code>{" "}
         item is mutable and consists of:
       </p>
@@ -77,7 +119,7 @@ export function XmlDataModel({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            name: type <code>string</code>
+            <code>name</code>: type <code>string</code>
           </span>
         </li>
       </ul>
@@ -85,7 +127,7 @@ export function XmlDataModel({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            attributes: type <code>map&lt;string&gt;</code>
+            <code>attributes</code>: type <code>map&lt;string&gt;</code>
           </span>
         </li>
       </ul>
@@ -93,7 +135,7 @@ export function XmlDataModel({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            children: type <code>xml</code>
+            <code>children</code>: type <code>xml</code>
           </span>
         </li>
       </ul>
@@ -130,7 +172,7 @@ export function XmlDataModel({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9cfc22801887ce9e4e5e11eff86c860c&file=xml_data_model.bal",
+                "https://play.ballerina.io/?gist=e6d71e0a72367d7c71bd271f62cfc7d1&file=xml_data_model.bal",
                 "_blank"
               );
             }}
@@ -282,16 +324,55 @@ export function XmlDataModel({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run xml.bal`}</span>
+              <span>{`\$ bal run xml_data_model.bal`}</span>
               <span>{`<book>The Lost World</book>`}</span>
-              <span>{`Hello, world!`}</span>
-              <span>{`<!--I am a comment-->`}</span>
               <span>{`<?target data?>`}</span>
-              <span>{`<book>The Lost World</book>Hello, world!<!--I am a comment--><?target data?>`}</span>
+              <span>{`<!--I am a comment-->`}</span>
+              <span>{`Hello, world!`}</span>
+              <span>{`Hello World`}</span>
+              <span>{`<name>Sherlock Holmes</name>`}</span>
+              <span>{`greeting`}</span>
+              <span>{`
+`}</span>
+              <span>{`<items>`}</span>
+              <span>{`            <!--Contents-->`}</span>
+              <span>{`            <book>`}</span>
+              <span>{`                <name>A Study in Scarlet</name>`}</span>
+              <span>{`                <author><name>Arthur Conan Doyle</name></author>`}</span>
+              <span>{`            </book>`}</span>
+              <span>{`            <planner>Daily Planner<kind>day</kind><pages>365</pages></planner>`}</span>
+              <span>{`            <book>`}</span>
+              <span>{`                <name>The Sign of Four</name>`}</span>
+              <span>{`                <author><name>Arthur Conan Doyle</name></author>`}</span>
+              <span>{`            </book>`}</span>
+              <span>{`            <pen><kind>marker</kind><color>blue</color></pen>`}</span>
+              <span>{`        </items>`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/xml-operations/">XML operations</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/lang.xml/latest/">
+              <code>lang.xml</code> - Module documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

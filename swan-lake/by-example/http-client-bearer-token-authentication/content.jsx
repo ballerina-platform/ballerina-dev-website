@@ -8,14 +8,16 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {
+type Album readonly & record {|
     string title;
     string artist;
-};
+|};
 
 public function main() returns error? {
-    // Defines the HTTP client to call the APIs secured with bearer token authentication.
-    http:Client albumClient = check new ("localhost:9090",
+    // Defines the HTTP client to call the secured APIs.
+    // The client is enriched with the \`Authorization: Bearer <token>\` header by
+    // passing the \`http:BearerTokenConfig\` for the \`auth\` configuration of the client.
+    http:Client albumClient = check new("localhost:9090",
         auth = {
             token: "56ede317-4511-44b4-8579-a08f094ee8c5"
         },
@@ -42,11 +44,11 @@ export function HttpClientBearerTokenAuthentication({ codeSnippets }) {
       <h1>HTTP client - Bearer token authentication</h1>
 
       <p>
-        The <code>http:Client</code> can connect to a service that is secured
-        with bearer token authentication by adding the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header to each request.
-        The bearer token can be specified in the <code>auth</code> field of the
-        client configuration.
+        A client, which is secured with Bearer token auth can be used to connect
+        to a secured service. The client is enriched with the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
+        <code>http:BearerTokenConfig</code> for the <code>auth</code>{" "}
+        configuration of the client.
       </p>
 
       <Row
@@ -57,31 +59,6 @@ export function HttpClientBearerTokenAuthentication({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=bf3c2371f137c08b7e6e6c9f23cd4a7f&file=http_client_bearer_token_authentication.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-bearer-token-authentication",
@@ -160,12 +137,10 @@ export function HttpClientBearerTokenAuthentication({ codeSnippets }) {
 
       <h2>Prerequisites</h2>
 
-      <ul style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "8px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>
-            Run a sample secured service with bearer token authentication.
-          </span>
+          <span>Run a sample secured service.</span>
         </li>
       </ul>
 
@@ -248,7 +223,7 @@ export function HttpClientBearerTokenAuthentication({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> module - API documentation
+              <code>auth</code> package API documentation
             </a>
           </span>
         </li>

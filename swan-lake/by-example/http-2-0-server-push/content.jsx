@@ -28,7 +28,7 @@ service /http2service on http2ServiceEP {
 
         // Construct the requested resource.
         http:Response res = new;
-        json msg = {"response": {"name": "main resource"}};
+        json msg = { "response": { "name": "main resource" } };
         res.setPayload(msg);
 
         // Send the requested resource.
@@ -36,7 +36,7 @@ service /http2service on http2ServiceEP {
 
         // Construct promised resource1.
         http:Response push1 = new;
-        msg = {"push": {"name": "resource1"}};
+        msg = { "push": { "name": "resource1" } };
         push1.setPayload(msg);
 
         // Push promised \`resource1\`.
@@ -44,7 +44,7 @@ service /http2service on http2ServiceEP {
 
         // Construct promised \`resource2\`.
         http:Response push2 = new;
-        msg = {"push": {"name": "resource2"}};
+        msg = { "push": { "name": "resource2" } };
         push2.setPayload(msg);
 
         // Push promised \`resource2\`.
@@ -52,7 +52,7 @@ service /http2service on http2ServiceEP {
 
         // Construct promised \`resource3\`.
         http:Response push3 = new;
-        msg = {"push": {"name": "resource3"}};
+        msg = { "push": { "name": "resource3" } };
         push3.setPayload(msg);
 
         // Push promised \`resource3\`.
@@ -76,8 +76,8 @@ export function Http20ServerPush({ codeSnippets }) {
 
       <p>
         HTTP/2 server push messages can be sent using the Ballerina{" "}
-        <code>http</code> service. HTTP/2 server push messages allow the server
-        to send resources to the client before the client requests them.
+        <code>http</code> service. HTTP/2 Server Push messages allow the server
+        to send resources to the client before the client requests for it.
       </p>
 
       <Row
@@ -88,31 +88,6 @@ export function Http20ServerPush({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=59abf06147186fd0624eb29e59aac973&file=http_2_0_server_push.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-2-0-server-push",
@@ -255,8 +230,7 @@ export function Http20ServerPush({ codeSnippets }) {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-2-0-client-server-push/">
             Server push client
-          </a>{" "}
-          example.
+          </a>
         </p>
       </blockquote>
 

@@ -6,38 +6,28 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
-
-function foo(json j) returns error? {
-    match j {
-        // A \`match\` statement can be used to match maps.
-        // Patterns on the left hand side in a match statement can have variable
-        // parts that can be captured.
-        // Match semantics are open (may have fields other than those specified
-        // in the pattern).
-        {command: "add", amount: var x} => {
-            decimal n = check x.ensureType(decimal);
-            add(n);
-            return;
-        }
-
-        _ => {
-            return error("invalid command");
-        }
-    }
+ 
+function execute(json j) {
+   	match j {
+   	    // A \`match\` statement can be used to match maps.
+   	    // Patterns on the left hand side in a match statement can have variable
+   	    // parts that can be captured.
+   	    {command: "print", amount: var x} => {
+   	        if x is int {
+   	            io:println("Int: ", x);
+   	        }
+   	    }
+	
+   	    _ => {
+   	        io:println("invalid command");
+   	    }
+   	}
 }
-
-decimal total = 0;
-
-function add(decimal amount) {
-    total += amount;
-    io:println("Total: ", total);
-}
-
-public function main() returns error? {
-    check foo({command: "add", amount: 100, status: "pending"});
-    check foo({command: "add", amount: 10});
-    check foo({command: "subtract", amount: 100});
-    return;
+ 
+public function main() {
+   	execute({command: "print", amount: 100, status: "pending"});
+   	execute({command: "print", amount: 10});
+   	execute({command: "subtract", amount: 100});
 }
 `,
 ];
@@ -71,7 +61,7 @@ export function MatchStatementWithMaps({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6dccec70eb8469bda70460bb57611127&file=match_statement_with_maps.bal",
+                "https://play.ballerina.io/?gist=ce31a27eb6dba46b2649ddd751d30dc6&file=match_statement_with_maps.bal",
                 "_blank"
               );
             }}
@@ -224,19 +214,39 @@ export function MatchStatementWithMaps({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run match_statement_with_maps.bal`}</span>
-              <span>{`Total: 100.0`}</span>
-              <span>{`Total: 110.0`}</span>
-              <span>{`error: invalid command`}</span>
+              <span>{`Int: 100`}</span>
+              <span>{`Int: 10`}</span>
+              <span>{`invalid command`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/json-type/">JSON type</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/match-statement/">Match statement</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Work directly with JSON"
-            href="/learn/by-example/working-directly-with-json"
+            title="Accessing optional JSON elements"
+            href="/learn/by-example/access-optional-json-elements"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -263,7 +273,7 @@ export function MatchStatementWithMaps({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Work directly with JSON
+                  Accessing optional JSON elements
                 </span>
               </div>
             </div>

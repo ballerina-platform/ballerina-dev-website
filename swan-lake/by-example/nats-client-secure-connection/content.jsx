@@ -5,40 +5,19 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/http;
-import ballerinax/nats;
+  `import ballerinax/nats;
 
-type Order readonly & record {
-    int orderId;
-    string productName;
-    decimal price;
-    boolean isValid;
-};
+public function main() returns error? {
+    // Initializes a NATS client with TLS/SSL and username/password authentication.
+    nats:Client natsClient = check new(nats:DEFAULT_URL,
 
-service / on new http:Listener(9092) {
-    private final nats:Client orderClient;
-
-    function init() returns error? {
-        // Initiate the NATS client at the start of the service. This will be used
-        // throughout the lifetime of the service.
-        self.orderClient = check new (nats:DEFAULT_URL,
-            // To secure the client connection using TLS/SSL, the client needs to be configured with
-            // a certificate file of the server.
-            secureSocket = {
-                cert: "../resource/path/to/public.crt"
-            }
-        );
-    }
-
-    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
-        // Produces a message to the specified subject.
-        check self.orderClient->publishMessage({
-            content: newOrder,
-            subject: "orders.valid"
-        });
-
-        return http:ACCEPTED;
-    }
+        // To secure the client connection using TLS/SSL, the client needs to be configured with
+        // a certificate file of the server.
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
+    check natsClient.close();
 }
 `,
 ];
@@ -48,8 +27,6 @@ export function NatsClientSecureConnection({ codeSnippets }) {
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
-  const [outputClick2, updateOutputClick2] = useState(false);
-  const ref2 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
@@ -58,11 +35,14 @@ export function NatsClientSecureConnection({ codeSnippets }) {
       <h1>NATS client - SSL/TLS</h1>
 
       <p>
-        The <code>nats:Client</code> can be configured to connect to the server
-        via SSL/TLS by providing a certificate file. The certificate can be
-        provided through the <code>secureSocket</code> field of the{" "}
-        <code>nats:ConnectionConfiguration</code>. Use this to secure the
-        communication between the client and the server.
+        The NATS client connections can be secured by encrypting with TLS. In
+        this example, the underlying connection of the listener is secured with
+        basic authentication.
+      </p>
+
+      <p>
+        In this example, the underlying connection of the publisher is secured
+        with TLS/SSL.
       </p>
 
       <Row
@@ -219,71 +199,7 @@ export function NatsClientSecureConnection({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run nats_client_secure_connection.bal`}</span>
-            </code>
-          </pre>
-        </Col>
-      </Row>
-
-      <p>
-        Invoke the service by executing the following cURL command in a new
-        terminal.
-      </p>
-
-      <Row
-        className="bbeOutput mx-0 py-0 rounded "
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={12} className="d-flex align-items-start">
-          {outputClick2 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="output-btn bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              onClick={() => {
-                updateOutputClick2(true);
-                const extractedText = extractOutput(ref2.current.innerText);
-                copyToClipboard(extractedText);
-                setTimeout(() => {
-                  updateOutputClick2(false);
-                }, 3000);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#EEEEEE"
-                className="output-btn bi bi-clipboard"
-                viewBox="0 0 16 16"
-                aria-label="Copy to Clipboard"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          <pre ref={ref2}>
-            <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9092/orders -H "Content-type:application/json" -d "{\\"orderId\\": 1, \\"productName\\": \\"Sport shoe\\", \\"price\\": 27.5, \\"isValid\\": true}"`}</span>
+              <span>{`\$ bal run nats-client-secure-connection.bal`}</span>
             </code>
           </pre>
         </Col>

@@ -7,30 +7,22 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/http;
 
-type Album readonly & record {|
-    string title;
-    string artist;
-|};
-
-table<Album> key(title) albums = table [
-    {title: "Blue Train", artist: "John Coltrane"},
-    {title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan"}
-];
-
-// A \`ResponseErrorInterceptor\` service class implementation.
+// A \`ResponseErrorInterceptor\` service class implementation. It allows you
+// to intercept the errors and handle them accordingly. A \`ResponseErrorInterceptor\`
+// service can only have one remote function: \`interceptResponseError\`.
 service class ResponseErrorInterceptor {
     *http:ResponseErrorInterceptor;
 
     // The error occurred in the request-response path can be accessed by the 
     // mandatory argument: \`error\`. The remote function can return a response,
     // which will overwrite the existing error response.
-    remote function interceptResponseError(error err) returns http:BadRequest {
-        // In this case, all the errors are sent as \`400 BadRequest\` responses with a customized
-        // media type and body. Moreover, you can send different status code responses according to
-        // the error type.        
+    remote function interceptResponseError(error err) returns http:InternalServerError {
+        // In this case, all of the errors are sent as \`HTTP 500 internal server\` 
+        // errors with a customized media type and body. Moreover, you can send different
+        // responses according to the error type.        
         return {
             mediaType: "application/org+json",
-            body: {message: err.message()}
+            body: { message : err.message() }
         };
     }
 }
@@ -38,26 +30,28 @@ service class ResponseErrorInterceptor {
 // Creates a new \`ResponseErrorInterceptor\`.
 ResponseErrorInterceptor responseErrorInterceptor = new;
 
-// A \`ResponseErrorInterceptor\` can be configured at the listener level or
-// service level. Listener-level error interceptors can handle any error associated
+// A \`ResponseErrorInterceptor\` can be configured at the listener level or 
+// service level. Listener-level error interceptors can handle any error associated 
 // with the listener, whereas, service-level error interceptors can only handle
 // errors occurred during the service execution.
-listener http:Listener interceptorListener = new (9090,
+listener http:Listener interceptorListener = new http:Listener(9090, config = { 
     // To handle all of the errors, the \`ResponseErrorInterceptor\` is added as a first
     // interceptor as it has to be executed last.
-    interceptors = [responseErrorInterceptor]
-);
+    interceptors: [responseErrorInterceptor] 
+});
 
 service / on interceptorListener {
 
-    // If the request does not have an\`x-api-version\` header, then an error will be returned
+    // If the request does not include a \`checkHeader\`, then, this will return an error
     // and the execution will jump to the nearest \`ResponseErrorInterceptor\`.
-    resource function get albums(@http:Header {name: "x-api-version"} string xApiVersion)
-            returns Album[]|http:NotImplemented {
-        if xApiVersion != "v1" {
-            return http:NOT_IMPLEMENTED;
-        }
-        return albums.toArray();
+    resource function get greeting(@http:Header string checkHeader) returns http:Ok {
+        return {
+            headers: {
+                "checkedHeader" : checkHeader
+            },
+            mediaType: "application/org+json",
+            body: { message : "Greetings!" }
+        };
     }
 }
 `,
@@ -79,16 +73,13 @@ export function HttpErrorHandling({ codeSnippets }) {
 
       <p>
         Error handling is an integral part of any network program. Errors can be
-        returned by many components such as an interceptor, dispatcher, data
-        binder, security handler, etc. These errors are often handled by a
-        default handler and sent back as <code>500 InternalSeverError</code>{" "}
-        responses with the error message in the body. This behavior can be
-        changed by adding error interceptors to the interceptor pipeline, which
-        can intercept these errors and handle them as you wish. These error
-        interceptors can be placed anywhere in the interceptor pipeline. When
-        there is an error, execution jumps to the closest error interceptor. Use
-        these error interceptors to handle errors yourself and create
-        appropriate responses for different error types.
+        returned by many components such as interceptors, dispatcher,
+        data-binder, security handlers, etc. These errors are often handled by a
+        default handler and sent back as error responses with an entity-body.
+        With the introduction of error interceptors, you can intercept these
+        errors and handle them as you wish. These error interceptors can be
+        placed anywhere in the interceptor pipeline. When there is an error, the
+        execution jumps to the closest error interceptor.
       </p>
 
       <Row
@@ -99,31 +90,6 @@ export function HttpErrorHandling({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=cb890931a0f9e7cb477886f2179959f1&file=http_error_handling.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-error-handling",
@@ -319,36 +285,27 @@ export function HttpErrorHandling({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v http://localhost:9090/albums`}</span>
-              <span>{`*   Trying 127.0.0.1:9090...`}</span>
-              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> GET /albums HTTP/1.1`}</span>
+              <span>{`\$ curl -v http://localhost:9090/greeting`}</span>
+              <span>{`*   Trying ::1:9090...`}</span>
+              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
+              <span>{`> GET /greeting HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.79.1`}</span>
+              <span>{`> User-Agent: curl/7.77.0`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`> `}</span>
-              <span>{`* Mark bundle as not supporting multiuse`}</span>
-              <span>{`< HTTP/1.1 400 Bad Request`}</span>
+              <span>{`* Mark bundle as not supporting multiuse.`}</span>
+              <span>{`< HTTP/1.1 500 Internal Server Error`}</span>
               <span>{`< content-type: application/org+json`}</span>
-              <span>{`< content-length: 55`}</span>
+              <span>{`< content-length: 53`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Wed, 14 Dec 2022 15:33:27 +0530`}</span>
+              <span>{`< date: Tue, 19 Apr 2022 10:51:11 +0530`}</span>
               <span>{`< `}</span>
-              <span>{`{"message":"no header value found for 'x-api-version'"}`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`{"message":"no header value found for 'checkHeader'"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/http-client-send-request-receive-response/">
-            Send request/Receive response client
-          </a>{" "}
-          example.
-        </p>
-      </blockquote>
 
       <h2>Related links</h2>
 
@@ -357,7 +314,7 @@ export function HttpErrorHandling({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>
@@ -377,8 +334,8 @@ export function HttpErrorHandling({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Response interceptor"
-            href="/learn/by-example/http-response-interceptor"
+            title="Response interceptors"
+            href="/learn/by-example/http-response-interceptors"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -405,7 +362,7 @@ export function HttpErrorHandling({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Response interceptor
+                  Response interceptors
                 </span>
               </div>
             </div>

@@ -8,14 +8,16 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {
+type Album readonly & record {|
     string title;
     string artist;
-};
+|};
 
 public function main() returns error? {
-    // Defines the HTTP client to call the APIs secured with basic authentication.
-    http:Client albumClient = check new ("localhost:9090",
+    // Defines the HTTP client to call the Basic Auth secured APIs.
+    // The client is enriched with the \`Authorization: Basic <token>\` header by
+    // passing the \`http:CredentialsConfig\` for the \`auth\` configuration of the client.
+    http:Client albumClient = check new("localhost:9090",
         auth = {
             username: "ldclakmal",
             password: "ldclakmal@123"
@@ -43,11 +45,11 @@ export function HttpClientBasicAuthentication({ codeSnippets }) {
       <h1>HTTP client - Basic authentication</h1>
 
       <p>
-        The <code>http:Client</code> can connect to a service that is secured
-        with basic authentication by adding the{" "}
-        <code>Authorization: Basic &lt;token&gt;</code> header to each request.
-        The username and password for basic authentication can be specified in
-        the <code>auth</code> field of the client configuration.
+        A client, which is secured with basic authentication can be used to
+        connect to a secured service. The client is enriched with the{" "}
+        <code>Authorization: Basic &lt;token&gt;</code> header by passing the{" "}
+        <code>http:CredentialsConfig</code> for the <code>auth</code>{" "}
+        configuration of the client.
       </p>
 
       <Row
@@ -58,31 +60,6 @@ export function HttpClientBasicAuthentication({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=99a3828e8b7696125ad70d94da9c5709&file=http_client_basic_authentication.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-basic-authentication",
@@ -253,7 +230,7 @@ export function HttpClientBasicAuthentication({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-              <code>auth</code> module - API documentation
+              <code>auth</code> package - API documentation
             </a>
           </span>
         </li>

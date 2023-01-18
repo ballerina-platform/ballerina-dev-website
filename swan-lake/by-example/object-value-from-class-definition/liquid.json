@@ -1,0 +1,19 @@
+{
+  "title": "Object value from class definition",
+  "description": "This BBE demonstrates constructing an object using a new expression and defining classes in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "class",
+    "methods",
+    "new",
+    "object"
+  ],
+  "permalink": "/learn/by-example/object-value-from-class-definition",
+  "active": "object-value-from-class-definition",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/object-value-from-class-definition",
+    "/swan-lake/learn/by-example/object-value-from-class-definition.html"
+  ]
+}

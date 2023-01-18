@@ -20,7 +20,6 @@ service HelloWorld {
     value: GRPC_SERVER_STREAMING_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
-
     remote function lotsOfReplies(string name) returns stream<string, error?> {
         string[] greets = ["Hi", "Hey", "GM"];
         // Creates the array of responses by appending the received name.
@@ -52,12 +51,10 @@ export function GrpcServiceServerStreaming({ codeSnippets }) {
       <h1>gRPC service - Server-side streaming RPC</h1>
 
       <p>
-        A <code>grpc:Listener</code> is created by providing the port and a{" "}
-        <code>grpc:Service</code> is attached to it. In the server streaming
-        scenario, once a client is connected to the service and sends a request
-        message, the service sends multiple messages to the client. Use this to
-        receive a single request message from a client and send multiple
-        response messages back.
+        The gRPC Server Connector is used to expose gRPC services over HTTP/2.
+        In a gRPC server streaming scenario, a client sends a request to the
+        server and gets a stream to read the messages until all the messages are
+        read.
       </p>
 
       <h2>Generate the service definition</h2>
@@ -353,7 +350,7 @@ export function GrpcServiceServerStreaming({ codeSnippets }) {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
-          <span>Run the service by executing the command below.</span>
+          <span>Execute the command below to run the service.</span>
         </li>
       </ul>
 
@@ -433,7 +430,7 @@ export function GrpcServiceServerStreaming({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> module - API documentation
+              <code>grpc</code> package - API documentation
             </a>
           </span>
         </li>
@@ -462,7 +459,7 @@ export function GrpcServiceServerStreaming({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-service-simple">
+          <Link title="Unary RPC" href="/learn/by-example/grpc-service-unary">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -488,7 +485,7 @@ export function GrpcServiceServerStreaming({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Simple RPC
+                  Unary RPC
                 </span>
               </div>
             </div>

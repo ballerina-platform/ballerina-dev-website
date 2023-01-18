@@ -9,29 +9,40 @@ export const codeSnippetData = [
 import ballerina/io;
 
 public function main() returns error? {
+    // The circuit breaker looks for errors across a rolling time window.
+    // After the circuit is broken, it does not send requests to
+    // the backend until the \`resetTime\`.
     http:Client httpClient = check new ("localhost:9090",
+        // Configuration options that control the behavior of the circuit
+        // breaker.
         circuitBreaker = {
-            // The failure calculation window measures how long the circuit breaker keeps the
-            // statistics for the operations.
+            // Failure calculation window. This is how long the circuit
+            // breaker keeps the statistics for the operations.
             rollingWindow: {
 
-                // The period is in seconds for which the failure threshold is calculated.
+                // Time period in seconds for which the failure
+                // threshold is calculated.
                 timeWindow: 10,
 
-                // The granularity (in seconds) at which the time window slides.
-                // The rolling window is divided into buckets and slides by these increments.
+                // The granularity (in seconds) at which the time
+                // window slides. The \`RollingWindow\` is divided into
+                // buckets and slides by these increments.
                 bucketSize: 2,
 
-                // The minimum number of requests in the rolling window that trips the circuit.
+                // Minimum number of requests in the \`RollingWindow\` that
+                // will trip the circuit.
                 requestVolumeThreshold: 0
 
             },
-            // The threshold for request failures. When this threshold exceeds, the circuit trips.
-            // This is the ratio between failures and total requests. The ratio is calculated using
-            // the requests received within the given rolling window.
+            // The threshold for request failures.
+            // When this threshold exceeds, the circuit trips. This is the
+            // ratio between failures and total requests. The ratio is
+            // calculated using the requests received within the given
+            // rolling window.
             failureThreshold: 0.2,
 
-            // The period (in seconds) to wait before attempting to make another request to the upstream service.
+            // The time period (in seconds) to wait before attempting to
+            // make another request to the upstream service.
             resetTime: 10,
 
             // HTTP response status codes that are considered as failures
@@ -58,12 +69,8 @@ export function HttpCircuitBreaker({ codeSnippets }) {
       <h1>HTTP client - Circuit breaker</h1>
 
       <p>
-        The circuit breaker is used to gracefully handle errors that could occur
-        due to network and backend failures. This is configured in the{" "}
-        <code>circuitBreaker</code> field of the client configuration. The
-        circuit breaker looks for errors across a rolling time window. After the
-        circuit is broken, it does not send requests to the backend until the{" "}
-        <code>resetTime</code>.
+        The circuit breaker is used to gracefully handle errors which could
+        occur due to network and backend failures.
       </p>
 
       <Row
@@ -74,31 +81,6 @@ export function HttpCircuitBreaker({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=921f9cb5669993919ad45cd4729a9939&file=http_circuit_breaker.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-circuit-breaker",
@@ -258,7 +240,7 @@ export function HttpCircuitBreaker({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

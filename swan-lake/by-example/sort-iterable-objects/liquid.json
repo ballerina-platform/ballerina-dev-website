@@ -1,0 +1,23 @@
+{
+  "title": "Sort iterable objects",
+  "description": "This BBE demonstrates ordering in Ballerina, sorting iterable objects, sorting a table, and sorting a list, result, or a collection.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "order by clause",
+    "query",
+    "query expression",
+    "order",
+    "sort",
+    "ascending",
+    "descending",
+    "collection"
+  ],
+  "permalink": "/learn/by-example/sort-iterable-objects",
+  "active": "sort-iterable-objects",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/sort-iterable-objects",
+    "/swan-lake/learn/by-example/sort-iterable-objects.html"
+  ]
+}

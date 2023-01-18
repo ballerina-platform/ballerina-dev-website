@@ -19,11 +19,11 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The \`artist\` resource method argument is considered as the query parameter, which is extracted from the request URI.
+    // The \`artist\` resource method argument is considered as the query parameter which is extracted from the request URI.
     resource function get albums(string artist) returns Album[] {
         return from Album album in albums
-            where album.artist == artist
-            select album;
+               where album.artist == artist
+               select album;
     }
 }
 `,
@@ -44,19 +44,13 @@ export function HttpQueryParameter({ codeSnippets }) {
       <h1>REST service - Query parameter</h1>
 
       <p>
-        The query parameter in the resource argument represents the query
-        segment of the request URL. The argument name should be the key of the
-        query, and its value is mapped during the runtime by extracting it from
-        the URL. The query parameter does not need any additional annotation.
-        The supported types are <code>string</code>, <code>int</code>,{" "}
-        <code>float</code>, <code>boolean</code>, <code>decimal</code>, and{" "}
-        <code>array</code> types of the aforementioned types. The query
-        parameter type can be nilable (e.g., (<code>string? bar</code>)) and
-        defaultable (e.g., (<code>string bar = &quot;hello&quot;</code>)). When
-        a request contains query segments, retrieving them as resource arguments
-        is much simpler and well-recommended. Alternatively, the{" "}
-        <code>http:Request</code> also provides related methods to retrieve
-        query parameters.
+        The <code>http</code> module provides first class support for reading
+        URL query parameters as resource method argument. The supported types
+        are <code>string</code>, <code>int</code>, <code>float</code>,{" "}
+        <code>boolean</code>, <code>decimal</code>, and the{" "}
+        <code>array types</code> of the aforementioned types. The query param
+        type can be nilable (e.g., (<code>string? bar</code>)). The request also
+        provide certain method to retrieve query param at their convenience.
       </p>
 
       <Row
@@ -67,31 +61,6 @@ export function HttpQueryParameter({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=e0b1d51a17b86e95c1e5bbb52790112e&file=http_query_parameter.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-query-parameter",
@@ -294,17 +263,6 @@ export function HttpQueryParameter({ codeSnippets }) {
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the client
-          given in the{" "}
-          <a href="/learn/by-example/http-client-query-parameter/">
-            HTTP client - Query parameter
-          </a>{" "}
-          example.
-        </p>
-      </blockquote>
-
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -312,7 +270,7 @@ export function HttpQueryParameter({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

@@ -1,6 +1,6 @@
 {
   "title": "XML subtyping",
-  "description": "This BBE demonstrates XML subtyping",
+  "description": "This BBE demonstrates XML subtyping in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

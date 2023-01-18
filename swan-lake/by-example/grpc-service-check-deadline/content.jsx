@@ -12,7 +12,6 @@ import ballerina/protobuf.types.wrappers;
     value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
-
     remote function hello(wrappers:ContextString request) returns string|error {
         // Check if the deadline has been exceeded and response accordingly.
         boolean isCancelled = check grpc:isCancelled(request.headers);
@@ -38,13 +37,15 @@ export function GrpcServiceCheckDeadline({ codeSnippets }) {
       <h1>gRPC service - Check deadline</h1>
 
       <p>
-        The <code>grpc:Service</code> allows to check whether a deadline has
-        been exceeded in a client connection. Deadlines allow gRPC clients to
-        specify how long they are willing to wait for an RPC to complete. The
-        deadline is checked in the service using the <code>isCancelled</code>{" "}
-        method and a <code>grpc:DeadlineExceededError</code> is returned if it
-        is exceeded. Use this to check the upper limit on how long a call can
-        run.
+        Deadlines allow gRPC clients to specify how long they are willing to
+        wait for an RPC to complete before the RPC is terminated with the error{" "}
+        <code>DEADLINE_EXCEEDED</code>. The service checks whether the deadline
+        has been exceeded and will respond accordingly.
+      </p>
+
+      <p>
+        After implementing the service, you can add the deadline check as
+        follows.
       </p>
 
       <Row
@@ -132,16 +133,15 @@ export function GrpcServiceCheckDeadline({ codeSnippets }) {
       </Row>
 
       <p>
-        Setting up the service is the same as setting up the simple RPC service
-        with additional configurations. For information on implementing the
-        service, see{" "}
-        <a href="/learn/by-example/grpc-service-simple/">
-          gRPC service - Simple RPC
-        </a>
-        .
+        Setting up the service is the same as setting up the unary RPC service
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-service-unary/">
+          gRPC service - Unary RPC
+        </a>{" "}
+        to implement the service used below.
       </p>
 
-      <p>Run the service by executing the command below.</p>
+      <p>Execute the command below to run the service.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -274,7 +274,7 @@ export function GrpcServiceCheckDeadline({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Simple RPC" href="/learn/by-example/grpc-client-simple">
+          <Link title="Unary RPC" href="/learn/by-example/grpc-client-unary">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -283,7 +283,7 @@ export function GrpcServiceCheckDeadline({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Simple RPC
+                  Unary RPC
                 </span>
               </div>
               <svg

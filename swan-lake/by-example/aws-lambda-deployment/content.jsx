@@ -66,7 +66,7 @@ export function AwsLambdaDeployment({ codeSnippets }) {
 
       <p>
         For more information, see the{" "}
-        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
+        <a href="https://ballerina.io/learn/deployment/aws-lambda/">
           AWS Lambda Deployment Guide
         </a>
         .
@@ -304,10 +304,7 @@ export function AwsLambdaDeployment({ codeSnippets }) {
       <p>
         For instructions on getting the value for the
         <code>$LAMBDA_ROLE_ARN</code>, see{" "}
-        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
-          AWS Lambda deployment
-        </a>
-        .
+        <a href="/learn/deployment/aws-lambda/">AWS Lambda deployment</a>.
       </p>
 
       <Row
@@ -455,10 +452,7 @@ export function AwsLambdaDeployment({ codeSnippets }) {
 
       <p>
         For registration and execution details, see{" "}
-        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
-          AWS Lambda deployment
-        </a>
-        .
+        <a href="/learn/deployment/aws-lambda/">AWS Lambda deployment</a>.
       </p>
 
       <Row className="mt-auto mb-5">

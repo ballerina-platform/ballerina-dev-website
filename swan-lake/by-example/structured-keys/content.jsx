@@ -16,14 +16,19 @@ type Employee record {
 };
 
 public function main() {
-    // key field, \`name\` is of \`record\` type.
+    //In the key field, the \`name\` is of the \`record\` type.
     table<Employee> key(name) t = table [
-        {name: {first: "John", last: "Smith"}, salary: 100},
-        {name: {first: "Fred", last: "Bloggs"}, salary: 200}
-    ];
+            {name: {first: "John", last: "Smith"}, salary: 100},
+            {name: {first: "Fred", last: "Bloggs"}, salary: 200}
+        ];
 
     Employee? e = t[{first: "Fred", last: "Bloggs"}];
     io:println(e);
+
+    record {|string first; string last;|} n = {first: "Sam", last: "Smith"};
+    // Make the key immutable using \`cloneReadOnly()\`.
+    t.add({name: n.cloneReadOnly(), salary: 23});
+    io:println(t);
 }
 `,
 ];
@@ -41,12 +46,42 @@ export function StructuredKeys({ codeSnippets }) {
       <h1>Structured keys</h1>
 
       <p>
-        Key fields can be structured as long as they belong to any subtype of
-        plain data. The value of the key field must be immutable. The
-        initializer of the <code>readonly</code> field will be constructed as
-        immutable. In other cases, <code>cloneReadOnly()</code> can be used to
-        create an immutable value.
+        Key fields can be structured types as long as they belong to any subtype
+        of plain data. Plain data is a simple value, a sequence value, or a
+        structured value where all members are plain data. The value of the key
+        field must be immutable. The initializer of the read-only field will be
+        constructed as immutable. When using <code>add</code>/<code>put</code>,{" "}
+        <code>cloneReadOnly()</code> can be used to create an immutable value.
       </p>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/table-syntax/">Table syntax</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/multiple-key-fields/">
+              Multiple key fields
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/records/">Records</a>
+          </span>
+        </li>
+      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -58,7 +93,7 @@ export function StructuredKeys({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1ac54ea3e42e8f7496cbaf817aa24879&file=structured_keys.bal",
+                "https://play.ballerina.io/?gist=19880af7b4b31513253792ca793b24df&file=structured_keys.bal",
                 "_blank"
               );
             }}
@@ -212,10 +247,12 @@ export function StructuredKeys({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal run structured_keys.bal`}</span>
               <span>{`{"name":{"first":"Fred","last":"Bloggs"},"salary":200}`}</span>
+              <span>{`[{"name":{"first":"John","last":"Smith"},"salary":100},{"name":{"first":"Fred","last":"Bloggs"},"salary":200},{"name":{"first":"Sam","last":"Smith"},"salary":23}]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -12,7 +12,7 @@ public function main() returns error? {
     // Defines the WebSocket client to call the OAuth2 secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`websocket:OAuth2JwtBearerGrantConfig\` for the \`auth\` configuration of the client.
-    websocket:Client chatClient = check new ("wss://localhost:9090/foo/bar",
+    websocket:Client chatClient = check new("wss://localhost:9090/foo/bar",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
             assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
@@ -49,11 +49,11 @@ export function WebsocketClientOauth2JwtBearerGrantType({ codeSnippets }) {
       <h1>WebSocket client - OAuth2 JWT bearer grant type</h1>
 
       <p>
-        The <code>websocket:Client</code> can connect to a service that is
-        secured with the OAuth2 JWT bearer grant type by adding the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header to the initial
-        HTTP request. The required configurations for this grant type can be
-        specified in the <code>auth</code> field of the client configuration.
+        A client, which is secured with an OAuth2 JWT bearer grant type can be
+        used to connect to a secured service. The client is enriched with the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
+        <code>websocket:OAuth2JwtBearerGrantConfig</code> to the{" "}
+        <code>auth</code> configuration of the client.
       </p>
 
       <Row
@@ -222,7 +222,7 @@ export function WebsocketClientOauth2JwtBearerGrantType({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> module - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>
@@ -232,7 +232,7 @@ export function WebsocketClientOauth2JwtBearerGrantType({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> module - API documentation
+              <code>oauth2</code> package - API documentation
             </a>
           </span>
         </li>

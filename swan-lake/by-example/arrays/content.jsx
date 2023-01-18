@@ -6,21 +6,58 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
-
+ 
+const LENGTH = 3;
+ 
 public function main() {
-    int[] v = [1, 2, 3];
+    // Declare an int array of length 3.
+    int[3] numbers = [1, 2, 3];
+    io:println(numbers);
+ 
+    // Use a constant reference as the array length.
+    string[LENGTH] animals = ["cat", "dog", "mouse"];
+    io:println(animals);
+ 
+    // Declare a variable-length array.
+    int[] indexes = [1, 2];
+    indexes = [1, 2, 3, 4];
+    io:println(indexes);
+ 
+    // Length of the array can be inferred using \`*\`. The example below will declare an array of length 3.
+    string[*] colors = ["red", "green", "blue"];
+    io:println(colors);
+ 
+    // Elements of an array can be accessed using member access expression.
+    string firstColor = colors[0];
+    io:println(firstColor);
+ 
+    // Members of an array can be updated using member access expression in the LHS of an assignment.
+    colors[0] = "pink";
+    io:println(colors);
+ 
+    string[] names = ["Mike", "Amy", "Korina"];
+    // New members can be pushed to an open array by using the \`array:push()\` method.
+    names.push("Peter");
+    io:println(names);
+ 
+    int length = names.length();
+    // The \`array:length()\` method can be used to get the length of an array.
+    io:println(length);
+ 
+    // An element can be removed using the \`array:remove(n)\` method by passing the index.
+    string secondPerson = names.remove(1);
+    io:println(secondPerson);
+    io:println(names.length());
+ 
+    string[] fullNames = [];
+    // Array can be iterated using a foreach statement.
+    // There are other ways like query expressions for the same purpose.
+    // This will iterate over the \`names\` array and create a new array by adding the surnames to each name.
+    foreach string name in names {
+        fullNames.push(string \`\${name} Johnson\`);
+    }
 
-    // \`v[i]\` does indexed access.
-    int n = v[0];
-
-    io:println(n);
-
-    // \`v[i]\` is an \`lvalue\`.
-    v[3] = 4;
-
-    // \`len\` will be 4.
-    int len = v.length();
-    io:println(len);
+    io:println(fullNames);
 }
 `,
 ];
@@ -38,12 +75,18 @@ export function Arrays({ codeSnippets }) {
       <h1>Arrays</h1>
 
       <p>
-        <code>T[]</code> is an <code>array</code> of <code>T</code>. Arrays are
-        mutable. <code>==</code> and <code>!=</code> on arrays is deep: two
-        arrays are equal if they have the same members in the same order.
-        Ordering is lexicographical based on the ordering of the members.
-        Langlib <code>arr.length()</code> function gets the length;{" "}
-        <code>arr.setLength(n)</code> sets the length.
+        An array can be used to hold a set of values of the same type. The array
+        type can be defined as <code>T[n]</code> in which <code>T</code> is the
+        element type and <code>n</code> is the length of the array.{" "}
+        <code>n</code> must be an integer literal or constant reference of type{" "}
+        <code>int</code>. Optionally, you can create a variable-length array by
+        defining an array without <code>n</code> as <code>T[]</code>.
+      </p>
+
+      <p>
+        The length of the array can be inferred from the context by defining the
+        array as <code>T[*]</code>. The length of the array should be known in
+        compile time.
       </p>
 
       <Row
@@ -56,7 +99,7 @@ export function Arrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7d761e20804ed1c8aa983e582da0b398&file=arrays.bal",
+                "https://play.ballerina.io/?gist=76f98d169fbd19bf74f3b526641ea1dc&file=arrays.bal",
                 "_blank"
               );
             }}
@@ -209,12 +252,77 @@ export function Arrays({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run arrays.bal`}</span>
-              <span>{`1`}</span>
+              <span>{`[1,2,3]`}</span>
+              <span>{`["cat","dog","mouse"]`}</span>
+              <span>{`[1,2,3,4]`}</span>
+              <span>{`["red","green","blue"]`}</span>
+              <span>{`red`}</span>
+              <span>{`["pink","green","blue"]`}</span>
+              <span>{`["Mike","Amy","Korina","Peter"]`}</span>
               <span>{`4`}</span>
+              <span>{`Amy`}</span>
+              <span>{`3`}</span>
+              <span>{`["Mike Johnson","Korina Johnson","Peter Johnson"]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/lang.array">
+              Manipulating an array <code>(lang.array)</code>
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/tuples">Tuples</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/nested-arrays">Nested arrays</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/filler-values-of-a-list">
+              Filler values of a list
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/list-subtyping">List sub typing</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/list-equality">List equality</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -254,7 +362,7 @@ export function Arrays({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Tuples" href="/learn/by-example/tuples">
+          <Link title="Nested arrays" href="/learn/by-example/nested-arrays">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -263,7 +371,7 @@ export function Arrays({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Tuples
+                  Nested arrays
                 </span>
               </div>
               <svg

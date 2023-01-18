@@ -58,7 +58,7 @@ export function Strings({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6ad585bcd192c49ed55b57c05c7197e9&file=strings.bal",
+                "https://play.ballerina.io/?gist=9b93eeb83c91be596586742f557385ee&file=strings.bal",
                 "_blank"
               );
             }}
@@ -220,7 +220,7 @@ export function Strings({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Nil" href="/learn/by-example/nil">
+          <Link title="Boolean" href="/learn/by-example/boolean">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -246,17 +246,14 @@ export function Strings({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Nil
+                  Boolean
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Booleans and conditionals"
-            href="/learn/by-example/booleans"
-          >
+          <Link title="If statement" href="/learn/by-example/if-statement">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -265,7 +262,7 @@ export function Strings({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Booleans and conditionals
+                  If statement
                 </span>
               </div>
               <svg

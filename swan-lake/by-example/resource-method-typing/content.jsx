@@ -12,16 +12,19 @@ type Args record {|
     decimal y;
 |};
 
-listener http:Listener h = new (9090);
+type Response record {|
+    decimal result;
+|};
 
-service /calc on h {
-    // Resource method arguments can use user-defined types.
-    // Annotations can be used to refine the mapping between the Ballerina-declared
-    // type and wire format.
-    resource function post add(@http:Payload Args args) 
-            returns decimal {
-        return args.x + args.y;
-    }
+listener http:Listener ln = new (9090);
+
+service /calc on ln {
+   // Resource method arguments can use user-defined types.
+   // Annotations can be used to refine the mapping between the Ballerina-declared
+   // type and wire format.
+   resource function post add(@http:Payload Args args) returns Response {
+      return {result: args.x + args.y};
+   }
 }
 `,
 ];
@@ -41,18 +44,57 @@ export function ResourceMethodTyping({ codeSnippets }) {
       <h1>Resource method typing</h1>
 
       <p>
-        Resource method arguments can use user-defined types. Listener will use
-        introspection to map from protocol format (typically JSON) to
-        user-defined type, using <code>cloneWithType</code>. Return value that
-        is subtype of <code>anydata</code> will be mapped from user-defined type
-        to protocol format, typically JSON, using <code>toJson</code>.
+        Resource method arguments can use user-defined types. The listener will
+        use introspection to map the protocol format (typically JSON) to a
+        user-defined type using <code>cloneWithType</code>. The return value,
+        which is a subtype of anydata will be mapped from the user-defined type
+        to the protocol format typically JSON, using <code>toJson</code>.
       </p>
 
       <p>
-        Can generate API description (e.g. OpenAPI) from Ballerina service
-        declaration. Annotations can be used to refine the mapping between
-        Ballerina-declared type and wire format.
+        The API description (e.g. OpenAPI) can be generated from the Ballerina
+        service declaration. Annotations can be used to refine the mapping
+        between the Ballerina-declared type and wire format.
       </p>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/casting-json-to-user-defined-type/">
+              Casting JSON to user-defined type
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/json-type/">JSON type</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/http-data-binding/">
+              Service data binding
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http">http module</a>
+          </span>
+        </li>
+      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -256,18 +298,19 @@ export function ResourceMethodTyping({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/calc/add -d "{\\"x\\": 1.0, \\"y\\": 2.0}"`}</span>
-              <span>{`3.0`}</span>
+              <span>{`\$ curl http://localhost:9090/calc/add -H 'content-type: application/json' -d "{\\"x\\": 1.0, \\"y\\": 2.0}"`}</span>
+              <span>{`{"result":3.0}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Convert to user-defined type"
-            href="/learn/by-example/converting-to-user-defined-type"
+            title="Casting JSON to user-defined type"
+            href="/learn/by-example/casting-json-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -294,7 +337,7 @@ export function ResourceMethodTyping({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Convert to user-defined type
+                  Casting JSON to user-defined type
                 </span>
               </div>
             </div>

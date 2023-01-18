@@ -7,26 +7,32 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type Employee record {|
-    string company = "WS02";
+type Student record {|
     string name;
-    string department;
+    int age;
+    // Specifies a default value for \`code\`.
+    string code = "Admitted";
 |};
 
-type ContractEmployee record {|
-    *Employee;
-    int duration;
+type PartTimeStudent record {|
+    *Student;
+    int studyHours;
 |};
 
 public function main() returns error? {
-    // Calling the \`value:cloneWithType()\` function with \`Employee\` will make use of default values
-    // in \`Employee\`.
-    json j = {name: "John", department: "IT"};
-    io:println(check j.cloneWithType(Employee));
+    // Creates a \`Student\` record without explicitly specifying a value for the \`code\` field.
+    Student s1 = {name: "Anne", age: 23};
+    io:println(s1);
 
-    // \`*Employee\` copies the default values.
-    ContractEmployee emp = {name: "Anne", department: "HR", duration: 12};
-    io:println(emp);
+    json j = {name: "Anne", age: 23};
+    // Calling the \`value:cloneWithType()\` function with \`Student\` will make use of the default values
+    // in \`Student\`.
+    Student s2 = check j.cloneWithType(Student);
+    io:println(s2);
+
+    // \`*Student\` copies the default values.
+    PartTimeStudent s3 = {name: "Anne", age: 23, studyHours: 6};
+    io:println(s3);
 }
 `,
 ];
@@ -48,10 +54,10 @@ export function DefaultValuesForRecordFields({ codeSnippets }) {
         record's type descriptor. A default value is an expression. Default
         values do not affect static typing. They only affect the use of type
         descriptors to construct records. Calling the{" "}
-        <code>value:cloneWithType()</code> function with a record
-        type-descriptor <code>T</code> will make use of default values in{" "}
-        <code>T</code> if required. Similarly, using <code>*T</code> also copies
-        the default values.
+        <code>value:cloneWithType()</code> function with a record type
+        descriptor <code>T</code> will make use of the default values in{" "}
+        <code>T</code> if required. Similarly, using <code>*T</code> in type
+        inclusions also copies the default values.
       </p>
 
       <Row
@@ -64,7 +70,7 @@ export function DefaultValuesForRecordFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=31bac84302e61fbe3f17d1bcba9d2b20&file=default_values_for_record_fields.bal",
+                "https://play.ballerina.io/?gist=cff44e47914cb8176aa7deefef61c445&file=default_values_for_record_fields.bal",
                 "_blank"
               );
             }}
@@ -217,12 +223,43 @@ export function DefaultValuesForRecordFields({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run default_values_for_record_fields.bal`}</span>
-              <span>{`{"company":"WS02","name":"John","department":"IT"}`}</span>
-              <span>{`{"duration":12,"company":"WS02","name":"Anne","department":"HR"}`}</span>
+              <span>{`{"name":"Anne","age":23,"code":"Admitted"}`}</span>
+              <span>{`{"name":"Anne","age":23,"code":"Admitted"}`}</span>
+              <span>{`{"studyHours":6,"name":"Anne","age":23,"code":"Admitted"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/records/">Records</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/type-inclusion-for-records/">
+              Type inclusion for records
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/maps/">Maps</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

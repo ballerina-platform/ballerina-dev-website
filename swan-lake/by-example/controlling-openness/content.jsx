@@ -7,32 +7,40 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type Coord record {|
-    float x;
-    float y;
+type Student record {|
+    string name;
+    string country;
 |};
 
-Coord x = { x: 1.0, y: 2.0 };
-
-// \`x\` is a \`map\` with \`float\` values.
-map<float> m1 = x;
-
-type Headers record {|
-    string 'from;
-    string to;
+type PartTimeStudent record {|
+    string name;
+    string country;
+    // Rest descriptor of type \`string\` allows additional fields with \`string\` values.
     string...;
 |};
 
-Headers h = {
-    'from: "Jane", to: "John"
-};
-
-// \`h\` is a \`map\` with \`string\` values.
-map<string> m2 = h;
-
 public function main() {
-    io:println(m1);
-    io:println(m2);
+    // \`s1\` can only have fields exclusively specified in \`Student\`.
+    Student s1 = {name: "Anne", country: "UK"};
+
+    // \`s1\` is a \`map\` with \`string\` values.
+    map<string> s2 = s1;
+    io:println(s2);
+
+    // \`s3\` has an additional \`faculty\` field.
+    PartTimeStudent s3 = {
+        name: "Anne",
+        country: "UK",
+        "faculty": "Science"
+    };
+
+    // Accesses the \`faculty\` field in \`s3\`.
+    string? faculty = s3["faculty"];
+    io:println(faculty);
+
+    // \`s3\` is a \`map\` with \`string\` values.
+    map<string> s4 = s3;
+    io:println(s4);
 }
 `,
 ];
@@ -50,10 +58,10 @@ export function ControllingOpenness({ codeSnippets }) {
       <h1>Controlling openness</h1>
 
       <p>
-        Use <code>record &#123;| ... |&#125;</code> to describe a{" "}
-        <code>record</code> type that allows exclusively what is specified in
-        the body. Use <code>T...</code> to allow other fields of type{" "}
-        <code>T</code>. <code>map&lt;T&gt;</code> is same as{" "}
+        Use <code>record &#123;| ... |&#125;</code> to describe a record type
+        that allows exclusively what is specified in the body. Use an open
+        record of type <code>record &#123;| T...; |&#125;</code> to allow other
+        fields of type <code>T</code>. <code>map&lt;T&gt;</code> is the same as{" "}
         <code>record &#123;| T...; |&#125;</code>.
       </p>
 
@@ -67,7 +75,7 @@ export function ControllingOpenness({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=affe508dd4a0b6b4b922c6eb7c2db59a&file=controlling_openness.bal",
+                "https://play.ballerina.io/?gist=c2902a0c2ae3285fa33fc038e0768ee0&file=controlling_openness.bal",
                 "_blank"
               );
             }}
@@ -220,12 +228,41 @@ export function ControllingOpenness({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run controlling_openness.bal`}</span>
-              <span>{`{"x":1.0,"y":2.0}`}</span>
-              <span>{`{"from":"Jane","to":"John"}`}</span>
+              <span>{`{"name":"Anne","country":"UK"}`}</span>
+              <span>{`Science`}</span>
+              <span>{`{"name":"Anne","country":"UK","faculty":"Science"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/records/">Records</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/open-records/">Open Records</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/maps/">Maps</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

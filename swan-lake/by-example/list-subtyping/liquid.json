@@ -1,0 +1,19 @@
+{
+  "title": "List subtyping",
+  "description": "Check one list is a subset of another, Check one list can contains another list, Check one array is sub type of another",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "array",
+    "collection",
+    "tuple",
+    "sub type"
+  ],
+  "permalink": "/learn/by-example/list-subtyping",
+  "active": "list-subtyping",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/list-subtyping",
+    "/swan-lake/learn/by-example/list-subtyping.html"
+  ]
+}

@@ -7,31 +7,35 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-public class Counter {
-    // \`private\` means accessible only by code within the \`class\` definition.
-    private int n;
+class Engineer {
+    // A \`final\` field must be assigned exactly once.
+    final string name;
 
-    // \`init\` method initializes the object.
-    public function init(int n = 0) {
-        self.n = n;
+    int age;
+
+    // The \`init\` method initializes the object.
+    function init(string name, int age) {
+        // The \`init\` method can initialize the \`final\` field.
+        self.name = name;
+        self.age = age;
     }
 
-    public function get() returns int {
-        // Methods use \`self\` to access their object.
-        return self.n;
-
+    function getName() returns string {
+        // Methods use \`self\` to access their fields.
+        return self.name;
     }
 
-    public function inc() {
-        self.n += 1;
+    function getAge() returns int {
+        return self.age;
     }
 }
 
 public function main() {
     // Arguments to \`new\` are passed as arguments to \`init\`.
-    Counter counter = new (12);
+    Engineer engineer = new Engineer("Alice", 52);
 
-    io:println(counter.get());
+    io:println(engineer.getName());
+    io:println(engineer.getAge());
 }
 `,
 ];
@@ -49,11 +53,17 @@ export function DefiningClasses({ codeSnippets }) {
       <h1>Defining classes</h1>
 
       <p>
-        A module can contain <code>class</code> definitions. <code>init</code>{" "}
-        method initializes the object. Arguments to <code>new</code> are passed
-        as arguments to <code>init</code>. Methods use <code>self</code> to
-        access their object. <code>private</code> means accessible only by code
-        within the <code>class</code> definition.
+        Classes provide a template for bundling data and functionality together.
+        In Ballerina, classes are defined at the module level. The{" "}
+        <code>init</code> method is used to initialize an object and any
+        arguments passed to the <code>new</code> expression are passed as
+        arguments to the <code>init</code> method. The <code>init</code> method
+        can also be used to initialize the <code>final</code> fields.
+      </p>
+
+      <p>
+        The <code>self</code> variable is bound to the object and can be used to
+        access the fields and methods of the object.
       </p>
 
       <Row
@@ -66,7 +76,7 @@ export function DefiningClasses({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8a09bae0bf59c5d639f5d8d2922c6af0&file=defining_classes.bal",
+                "https://play.ballerina.io/?gist=4feb035828fa8cc6f4bd4100f935ccc3&file=defining_classes.bal",
                 "_blank"
               );
             }}
@@ -219,11 +229,40 @@ export function DefiningClasses({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run defining_classes.bal`}</span>
-              <span>{`12`}</span>
+              <span>{`Alice`}</span>
+              <span>{`52`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/object/">Object</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/init-return-type/">Init return type</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/object-values/">Object values</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -261,8 +300,8 @@ export function DefiningClasses({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Init return type"
-            href="/learn/by-example/init-return-type"
+            title="Object constructor"
+            href="/learn/by-example/object-constructor"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -272,7 +311,7 @@ export function DefiningClasses({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Init return type
+                  Object constructor
                 </span>
               </div>
               <svg

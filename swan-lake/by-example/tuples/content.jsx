@@ -6,27 +6,36 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
-
-// This tuple type contains a list whose first member is of the \`string\` type
-// and the second and third members are of the \`int\` type.
-type Id [string, int, int];
-
-type FloatPairArray float[2];
-
-// Ballerina allows defining the same list type of two floats as \`FloatPairArray\` using a tuple 
-// type by specifying the float type twice within the square brackets of the tuple definition.
-type FloatPairTuple [float, float];
-
-public function main () {
-    Id id = ["id 1", 0, 1];
-
-    // The individual elements of this tuple can be indexed by using the \`id[i]\` notation.
-    // Tuple indexing starts with zero.
-    string s = id[0];
-    io:println(s);
-    
-    int n = id[1];
-    io:println(n);
+ 
+public function main() {
+    // Declare a tuple of length 3 where the type of each members are \`string\`, \`int\`, \`boolean\` respectively.
+    [string, int, boolean] person = ["Mike", 24, false];
+    io:println(person);
+ 
+    // Tuple with member type descriptors of same type is equivalent to array with a length.
+    // This is equivalent to \`int[3]\`\`.
+    [int, int, int] numbers = [1, 2, 3];
+    io:println(numbers);
+ 
+    // Members of a tuple can be accessed using member access expression.
+    int age = person[1];
+    io:println(age);
+ 
+    // Members of a tuple can be updated using member access expression in LHS of a assignment
+    person[1] = 25;
+    io:println(person);
+ 
+    int length = person.length();
+    // \`array:length()\` method can be used to get the length of a tuple
+    io:println(length);
+ 
+    // Tuples can be used to return multiple values from a function.
+    var personDetails = getPersonDetails();
+    io:println(personDetails);
+}
+ 
+function getPersonDetails() returns [int, boolean] {
+    return [30, true];
 }
 `,
 ];
@@ -44,12 +53,17 @@ export function Tuples({ codeSnippets }) {
       <h1>Tuples</h1>
 
       <p>
-        The tuple type is another structured type supported by Ballerina, which
-        creates a list of values like arrays. The main difference between arrays
-        and tuples is that an array has only one type applicable to every member
-        of its list. In contrast, in a tuple type, you can individually specify
-        the types for each member. Tuples are most suitable for describing lists
-        with multiple types.
+        The tuple type is another structured type which creates a list of values
+        like arrays. The main difference between the arrays and the tuples is
+        that an array has only one type applicable to every member of its list.
+        In contrast, in a tuple type, you can individually specify the types for
+        each member. Tuples are most suitable for describing lists with multiple
+        types. Tuples can be used to return multiple values from a function.
+      </p>
+
+      <p>
+        Tuple type can be declared as a comma separated list of types inside a
+        square bracket <code>[ ]</code>.
       </p>
 
       <Row
@@ -62,7 +76,7 @@ export function Tuples({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e88e22c0a5894b3c8c0aa5f84dda80a4&file=tuples.bal",
+                "https://play.ballerina.io/?gist=a91097b51a39569e88f64583aefede56&file=tuples.bal",
                 "_blank"
               );
             }}
@@ -215,16 +229,68 @@ export function Tuples({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run tuples.bal`}</span>
-              <span>{`id 1`}</span>
-              <span>{`0`}</span>
+              <span>{`["Mike",24,false]`}</span>
+              <span>{`[1,2,3]`}</span>
+              <span>{`24`}</span>
+              <span>{`["Mike",25,false]`}</span>
+              <span>{`3`}</span>
+              <span>{`[30,true]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/arrays">Arrays</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/lang.array">
+              Manipulating an array <code>(lang.array)</code>
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/filler-values-of-a-list">
+              Filler values of a list
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/list-subtyping">List sub typing</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/list-equality">List equality</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Arrays" href="/learn/by-example/arrays">
+          <Link title="Nested arrays" href="/learn/by-example/nested-arrays">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -250,7 +316,7 @@ export function Tuples({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Arrays
+                  Nested arrays
                 </span>
               </div>
             </div>
@@ -258,8 +324,8 @@ export function Tuples({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Destructure tuples"
-            href="/learn/by-example/destructure-tuples"
+            title="Rest type in tuples"
+            href="/learn/by-example/rest-type-in-tuples"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -269,7 +335,7 @@ export function Tuples({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructure tuples
+                  Rest type in tuples
                 </span>
               </div>
               <svg

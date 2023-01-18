@@ -58,7 +58,7 @@ export function Nil({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=395a70145888b1afe3ff2fd20499da1a&file=nil.bal",
+                "https://play.ballerina.io/?gist=9cc0e2d37d5780b3e80b57ea015da5dc&file=nil.bal",
                 "_blank"
               );
             }}
@@ -251,7 +251,7 @@ export function Nil({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Strings" href="/learn/by-example/strings">
+          <Link title="Boolean" href="/learn/by-example/boolean">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -260,7 +260,7 @@ export function Nil({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Strings
+                  Boolean
                 </span>
               </div>
               <svg

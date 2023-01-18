@@ -7,26 +7,38 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type Headers record {
-   string 'from;
-   string to;
+type FullName record {
+    string firstName;
+    string lastName;
 
-   // Records can have optional fields.
-   string subject?;
-
+    // The \`title\` and \`middleName\` fields are optional.
+    string title?;
+    string middleName?;
 };
-
-Headers h = {
-  'from: "John",
-  to: "Jill"
-};
-
-// Use the \`?.\` operator to access the optional field.
-string? subject = h?.subject;
 
 public function main() {
-    io:println("Header value: ", h);
-    io:println("Subject value:", subject);
+
+    FullName name = {
+        title: "Mr",
+        firstName: "John",
+        lastName: "Doe"
+    };
+
+    // Use the \`?.\` operator to access the optional field.
+    io:println("Title: ", name?.title);
+
+    // A variable of type \`string?\` is used to construct an optional field.
+    string? middleName = name["middleName"];
+    io:println("Middle name: ", middleName);
+
+    // Remove the optional \`title\` field by assigning \`()\`.
+    name.title = ();
+    io:println(name.hasKey("title"));
+
+    // When destructuring the record \`name\`, if the \`title\` field is absent,
+    // then, its value becomes nil.
+    var {title, firstName: _, lastName: _} = name;
+    io:println(title is ());
 }
 `,
 ];
@@ -45,16 +57,18 @@ export function OptionalFields({ codeSnippets }) {
 
       <p>
         Fields of a <code>record</code> type can be marked as optional. These
-        fields can be omitted when creating a value of the <code>record</code>{" "}
-        type.
+        fields can be omitted when creating a value of the record type. A field{" "}
+        <code>f</code> of record type <code>r</code> can be accessed via
+        optional field access (e.g., <code>r?.f</code>) or member access (e.g.,{" "}
+        <code>r[&quot;f&quot;]</code>), which will both return <code>()</code>{" "}
+        if the field is not present in the record value.
       </p>
 
       <p>
-        Such fields can be accessed via optional field access (e.g.,{" "}
-        <code>p?.name</code>) or member access (e.g.,{" "}
-        <code>p[&quot;name&quot;]</code>), which will both return{" "}
-        <code>()</code> if the field is not present in the <code>record</code>{" "}
-        value.
+        A record that contains optional fields can be destructured. If the
+        optional field is not available, the type of the variable becomes{" "}
+        <code>nil</code>. The optional field value can also be removed from the
+        record by assigning <code>()</code> to the optional field.
       </p>
 
       <Row
@@ -67,7 +81,7 @@ export function OptionalFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0d708bdf942a44fd5b4b775b1437345e&file=optional_fields.bal",
+                "https://play.ballerina.io/?gist=8450d0acbffd038d2a8c6f39c5268694&file=optional_fields.bal",
                 "_blank"
               );
             }}
@@ -220,12 +234,26 @@ export function OptionalFields({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run optional_fields.bal`}</span>
-              <span>{`Header value: {"from":"John","to":"Jill"}`}</span>
-              <span>{`Subject value:`}</span>
+              <span>{`Title: Mr`}</span>
+              <span>{`Middle name: `}</span>
+              <span>{`false`}</span>
+              <span>{`true`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/records/">Records</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

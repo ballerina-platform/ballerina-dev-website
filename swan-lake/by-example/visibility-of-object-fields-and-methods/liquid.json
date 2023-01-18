@@ -1,0 +1,19 @@
+{
+  "title": "Visibility of object fields and methods",
+  "description": "This BBE demonstrates an access modifier in the class definition, modifying the visibility of object fields and methods, invoking methods and fields, and defining a class in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "class",
+    "object",
+    "access modifier",
+    "visibility"
+  ],
+  "permalink": "/learn/by-example/visibility-of-object-fields-and-methods",
+  "active": "visibility-of-object-fields-and-methods",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/visibility-of-object-fields-and-methods",
+    "/swan-lake/learn/by-example/visibility-of-object-fields-and-methods.html"
+  ]
+}

@@ -63,7 +63,7 @@ export function InitReturnType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f031ab3129584ae6254e3718ff6b8a84&file=init_return_type.bal",
+                "https://play.ballerina.io/?gist=f0aff252f3e3724a4ce9100436f27c16&file=init_return_type.bal",
                 "_blank"
               );
             }}
@@ -225,8 +225,8 @@ export function InitReturnType({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Define classes"
-            href="/learn/by-example/defining-classes"
+            title="Visibility of object fields and methods"
+            href="/learn/by-example/visibility-of-object-fields-and-methods"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -253,7 +253,7 @@ export function InitReturnType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Define classes
+                  Visibility of object fields and methods
                 </span>
               </div>
             </div>

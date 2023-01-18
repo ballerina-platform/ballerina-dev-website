@@ -11,46 +11,47 @@ type Cloneable object {
     function clone() returns Cloneable;
 };
 
-type Shape object {
-    // The \`Cloneable\` object type is included as a part of the interface of 
-    // the \`Shape\` object type.
+type Person object {
+    // The \`Cloneable\` object type is included as a part of the interface of
+    // the \`Person\` object type.
     *Cloneable;
 
-    // \`draw()\` is a part of \`Shape\`'s own type. 
+    string name;
+
+    // \`getName()\` is a part of the \`Person\`'s own type.
     // The \`clone()\` function is also included from the \`Cloneable\` type.
-    function draw() returns string;
+    function getName() returns string;
 };
 
-class Circle {
-    // The \`Circle\` class includes the \`Shape\` object type.
+class Engineer {
+    // The \`Engineer\` class includes the \`Person\` object type.
     // Therefore, it has to implement both the \`clone()\` and \`draw()\` methods.
-    *Shape;
+    *Person;
 
-    int radius;
-
-    function init(int radius) {
-        self.radius = radius;
+    function init(string name) {
+        // The \`name\` field is included from the \`Person\` type.
+        self.name = name;
     }
 
-    // Returning \`Circle\` is valid as the \`Circle\` type becomes a subtype of the \`Cloneable\` type
+    // Returning \`Engineer\` is valid as the \`Engineer\` type becomes a subtype of the \`Cloneable\` type
     // once it includes the \`Cloneable\` object type.
-    function clone() returns Circle {
-        return new(self.radius);
+    function clone() returns Engineer {
+        return new (self.name);
     }
 
-    function draw() returns string {
-        return string \`circle:\${self.radius}\`;
+    function getName() returns string {
+        return self.name;
     }
 }
 
 public function main() {
-    Circle circle = new Circle(5);
-    io:println(circle.draw());
+    Engineer engineer = new Engineer("Alice");
+    io:println(engineer.getName());
 
-    Circle circleClone = circle.clone();
-    io:println(circleClone.draw());
+    Engineer engineerClone = engineer.clone();
+    io:println(engineerClone.getName());
 
-    io:println(circle === circleClone);
+    io:println(engineer === engineerClone);
 }
 `,
 ];
@@ -77,8 +78,7 @@ export function ObjectTypeInclusion({ codeSnippets }) {
 
       <p>
         The implementation of the object type within the class that includes the
-        type is checked at the compile time. This provides interface
-        inheritance. Ballerina does not support implementation inheritance.
+        type is checked at the compile time.
       </p>
 
       <Row
@@ -91,7 +91,7 @@ export function ObjectTypeInclusion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7e38cf057bdd452bba9aee88a01c3a65&file=object_type_inclusion.bal",
+                "https://play.ballerina.io/?gist=3835b79b46f4bb4ba535de69ebcd127e&file=object_type_inclusion.bal",
                 "_blank"
               );
             }}
@@ -244,13 +244,43 @@ export function ObjectTypeInclusion({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run object_type_inclusion.bal`}</span>
+              <span>{`Alice`}</span>
+              <span>{`Alice`}</span>
               <span>{`false`}</span>
-              <span>{`circle:5`}</span>
-              <span>{`circle:5`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/object-types/">Object types</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/defining-classes/">Defining classes</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/type-inclusion-for-records/">
+              Type inclusion for records
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

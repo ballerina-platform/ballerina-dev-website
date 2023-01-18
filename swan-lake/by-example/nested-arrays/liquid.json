@@ -1,0 +1,24 @@
+{
+  "title": "Nested arrays",
+  "description": "BBE on creating nested array, create multidimensional array, create array of arrays, Accessing a nested array, Updating a nested array.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "collection",
+    "array",
+    "multidimensional",
+    "nested",
+    "array of arrays",
+    "list",
+    "access",
+    "update",
+    "matrix"
+  ],
+  "permalink": "/learn/by-example/nested-arrays",
+  "active": "nested-arrays",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/nested-arrays",
+    "/swan-lake/learn/by-example/nested-arrays.html"
+  ]
+}

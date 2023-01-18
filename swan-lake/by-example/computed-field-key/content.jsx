@@ -9,24 +9,23 @@ export const codeSnippetData = [
 
 const ID = "unique-identifier";
 
-function getDetailMap(string uniqueId,
-                      string firstName,
-                      string lastName,
-                      string idName, 
-                      string id) returns map<string> {
+function getStudentDetails(string studentId,
+        string name,
+        string org,
+        string orgName) returns map<string> {
     return {
-        // The \`"unique-identifier"\` value is substituted from the constant as the key.
-        [ID]: uniqueId,
-        name: firstName + " " + lastName,
-        // The key will be computed at runtime and will be the concatenation of \`_\` and
-        // the argument passed for \`idName\`.
-        ["_" + idName]: id
+        // The \`unique-identifier\` value is substituted from the constant \`ID\` as the key.
+        [ID] : studentId,
+        "name": name,
+        // The key computed at runtime will be the concatenation of \`_\` and
+        // the argument passed for \`org\`.
+        ["_" + org] : orgName
     };
 }
 
 public function main() {
-    map<string> detailMap = getDetailMap("AQW123", "John", "Doe", "employeeId", "123EMP");
-    io:println(detailMap);
+    map<string> studentDetails = getStudentDetails("stu123", "John", "school", "West High");
+    io:println(studentDetails);
 }
 `,
 ];
@@ -63,7 +62,7 @@ export function ComputedFieldKey({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=892307cb59d4666ba373a93bb75b9966&file=computed_field_key.bal",
+                "https://play.ballerina.io/?gist=8c51027a4c178f68b127557d395407e8&file=computed_field_key.bal",
                 "_blank"
               );
             }}
@@ -216,11 +215,23 @@ export function ComputedFieldKey({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run computed_field_key.bal`}</span>
-              <span>{`{"name":"John Doe","unique-identifier":"AQW123","_employeeId":"123EMP"}`}</span>
+              <span>{`{"name":"John","unique-identifier":"stu123","_school":"West High"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/maps/">Maps</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

@@ -12,11 +12,11 @@ type Person distinct object {
     public string name;
 };
 
-// The \`Engineer\` and \`Manager\` classes are structurally the same but introducing the  
+// The \`Engineer\` and \`Manager\` classes are structurally the same but introducing the
 // \`distinct\` keyword distinguishes them by considering them as nominal types.
 distinct class Engineer {
     *Person;
-    
+
     function init(string name) {
         self.name = name;
     }
@@ -24,22 +24,16 @@ distinct class Engineer {
 
 distinct class Manager {
     *Person;
-    
+
     function init(string name) {
         self.name = name;
     }
 }
 
-type Employee Engineer|Manager;
-
-function desc(Employee employee) returns string {
-    // The \`is\` operator can be used to distinguish distinct subtypes.
-    return employee is Engineer ? "Engineer" : "Manager";
-}
-
 public function main() {
-    Employee employee = new Engineer("James");
-    io:println(desc(employee));
+    Person person = new Engineer("Alice");
+    // The \`is\` operator can be used to distinguish distinct subtypes.
+    io:println(person is Engineer ? "Engineer" : "Manager");
 }
 `,
 ];
@@ -58,8 +52,8 @@ export function DistinctObjectTypes({ codeSnippets }) {
 
       <p>
         Using the <code>distinct</code> keyword in the type definition creates
-        distinct object types. This concept allows to define a type with nominal
-        typing within a structured type system. This is useful while interacting
+        distinct object types. This concept allows defining a type with nominal
+        typing within a structured type system. This is useful when interacting
         with the external world through API interfaces like <code>GraphQL</code>
         . You may want to leverage nominal typing via this distinct typing
         feature of Ballerina.
@@ -80,7 +74,7 @@ export function DistinctObjectTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c4f2253af417557459fbf0659b931e19&file=distinct_object_types.bal",
+                "https://play.ballerina.io/?gist=15e952f28250ea167d19daca57e86c7d&file=distinct_object_types.bal",
                 "_blank"
               );
             }}
@@ -239,6 +233,44 @@ export function DistinctObjectTypes({ codeSnippets }) {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/object-values/">Object values</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/error-subtyping/">Error subtyping</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/defining-classes/">Defining classes</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/why-ballerina/flexibly-typed/">
+              Flexibly typed
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
@@ -277,10 +309,7 @@ export function DistinctObjectTypes({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Binding patterns in assignment"
-            href="/learn/by-example/binding-patterns-in-assignment"
-          >
+          <Link title="Object closure" href="/learn/by-example/object-closure">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -289,7 +318,7 @@ export function DistinctObjectTypes({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Binding patterns in assignment
+                  Object closure
                 </span>
               </div>
               <svg

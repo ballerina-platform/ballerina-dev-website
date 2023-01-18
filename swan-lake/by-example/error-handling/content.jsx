@@ -64,7 +64,7 @@ export function ErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=08dca44349cfccdbb1def0d604cdc9e4&file=error_handling.bal",
+                "https://play.ballerina.io/?gist=bd630a6f28da7ea0bc0d7069104116ca&file=error_handling.bal",
                 "_blank"
               );
             }}
@@ -226,8 +226,8 @@ export function ErrorHandling({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Binding patterns in match statement"
-            href="/learn/by-example/binding-patterns-in-match-statement"
+            title="Error binding pattern in match statement"
+            href="/learn/by-example/error-binding-pattern-in-match-statement"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -254,7 +254,7 @@ export function ErrorHandling({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Binding patterns in match statement
+                  Error binding pattern in match statement
                 </span>
               </div>
             </div>

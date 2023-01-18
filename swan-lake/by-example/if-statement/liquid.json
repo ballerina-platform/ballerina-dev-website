@@ -1,0 +1,20 @@
+{
+  "title": "If statement",
+  "description": "This BBE demonstrates the use of `if` statements in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "boolean",
+    "operators",
+    "if",
+    "else",
+    "else if"
+  ],
+  "permalink": "/learn/by-example/if-statement",
+  "active": "if-statement",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/if-statement",
+    "/swan-lake/learn/by-example/if-statement.html"
+  ]
+}

@@ -7,29 +7,29 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-class MyClass {
-    int n;
+class Engineer {
+    string name;
 
-    function init(int n) {
-        self.n = n;
+    function init(string name) {
+        self.name = name;
     }
 
-    function func() {
-        self.n += 1;
+    function getName() returns string {
+        return self.name;
     }
 }
 
 public function main() {
     // Apply the \`new\` operator with a \`class\` to get an \`object\` value.
-    MyClass x = new MyClass(1234);
+    Engineer engineer = new Engineer("Alice");
 
-    // Call method using \`obj.foo(args)\`.
-    x.func();
+    // Call the \`getName\` method using the \`obj.method(args)\` syntax.
+    string engineerName = engineer.getName();
+    io:println(engineerName);
 
-    // Access field using \`obj.x\`.
-    int n = x.n;
-
-    io:println(n);
+    // Accessing the \`name\`  field using the \`obj.field\` syntax.
+    engineerName = engineer.name;
+    io:println(engineerName);
 }
 `,
 ];
@@ -47,16 +47,16 @@ export function Object({ codeSnippets }) {
       <h1>Object</h1>
 
       <p>
-        The <code>object</code> type is a separate basic type. An{" "}
-        <code>object</code> value has named methods and fields. Methods and
-        fields are in the same symbol space.
+        The <code>object</code> is a basic data type in Ballerina. An object
+        value has named methods and fields and these methods and fields share
+        the same symbol space. This means that it is not possible for an object
+        to have both a field and a method with the same name.
       </p>
 
       <p>
-        A <code>class</code> defines an <code>object</code> type and provides a
-        way to construct an object. Apply the <code>new</code> operator with a{" "}
-        <code>class</code> to get an object. Call method using{" "}
-        <code>obj.foo(args)</code>. Access field using <code>obj.x</code>.
+        A <code>class</code> is used to define an object type and provides a way
+        to construct an object. The <code>new</code> expression is used to
+        create an object from a <code>class</code> definition.
       </p>
 
       <Row
@@ -69,7 +69,7 @@ export function Object({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a1d34a74b501b1fc40e6c1b0ba74bc20&file=object.bal",
+                "https://play.ballerina.io/?gist=00005db9177d7bea05ccf2c3e096d966&file=object.bal",
                 "_blank"
               );
             }}
@@ -222,11 +222,70 @@ export function Object({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run object.bal`}</span>
-              <span>{`1235`}</span>
+              <span>{`Alice`}</span>
+              <span>{`Alice`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/defining-classes/">Defining classes</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/object-constructor/">
+              Object constructor
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/object-value-from-class-definition/">
+              Object value from class definition
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/visibility-of-object-fields-and-methods/">
+              Visibility of object fields and methods
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/object-types/">Object types</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/object-values/">Object values</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -267,7 +326,7 @@ export function Object({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Define classes"
+            title="Defining classes"
             href="/learn/by-example/defining-classes"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -278,7 +337,7 @@ export function Object({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Define classes
+                  Defining classes
                 </span>
               </div>
               <svg

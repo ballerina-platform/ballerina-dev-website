@@ -7,36 +7,32 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type Date record {
-    int year;
-    int month;
-    int day;
-};
+type Person record {|
+    string name;
+    int age;
+|};
 
-type TimeOfDay record {
-    int hour;
-    int minute;
-    decimal seconds;
-};
+type Student record {|
+    int studentId;
+    string code;
+|};
 
-// \`Time\` record has all the fields of \`Date\` and \`TimeOfDay\`.
-type Time record {
-    *Date;
-    *TimeOfDay;
-    // Overrides \`hour\` field in \`TimeOfDay\`.
-    int:Unsigned8 hour;
-};
+// The \`PartTimeStudent\` record has all the fields of \`Person\` and \`Student\`.
+type PartTimeStudent record {|
+    *Person;
+    *Student;
+    // Overrides the \`code\` field in \`Student\`.
+    string:Char code;
+|};
 
 public function main() {
-    Time time = {
-        year: 2022,
-        month: 8,
-        day: 20,
-        hour: 8,
-        minute: 12,
-        seconds: 3
+    PartTimeStudent student = {
+        name: "Anne",
+        age: 23,
+        studentId: 1001,
+        code: "A"
     };
-    io:println(time);
+    io:println(student);
 }
 `,
 ];
@@ -55,10 +51,10 @@ export function TypeInclusionForRecords({ codeSnippets }) {
 
       <p>
         Type inclusion enables you to create a record by combining fields of
-        other records. Using the <code>*T</code> notation, you can include the
-        record type T in the record type descriptor of another record. This is
-        effectively the same as copying the fields of the included records into
-        the including record.
+        other records. You can include the record type <code>T</code> in the
+        record type descriptor of another record by using the <code>*T</code>{" "}
+        notation. This is effectively the same as copying the fields of the
+        included records into the including record.
       </p>
 
       <Row
@@ -71,7 +67,7 @@ export function TypeInclusionForRecords({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1def266bb57e742837d0185c04efcb0d&file=type_inclusion_for_records.bal",
+                "https://play.ballerina.io/?gist=712a89ab39339df67b05c4c8a3e81a74&file=type_inclusion_for_records.bal",
                 "_blank"
               );
             }}
@@ -224,16 +220,46 @@ export function TypeInclusionForRecords({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run type_inclusion_for_records.bal`}</span>
-              <span>{`{"hour":8,"year":2022,"month":8,"day":20,"minute":12,"seconds":3}`}</span>
+              <span>{`{"code":"A","name":"Anne","age":23,"studentId":1001}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/records/">Records</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/open-records/">Open Records</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/default-values-for-record-fields/">
+              Default values for record fields
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Control openness"
+            title="Controlling openness"
             href="/learn/by-example/controlling-openness"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -261,7 +287,7 @@ export function TypeInclusionForRecords({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Control openness
+                  Controlling openness
                 </span>
               </div>
             </div>
